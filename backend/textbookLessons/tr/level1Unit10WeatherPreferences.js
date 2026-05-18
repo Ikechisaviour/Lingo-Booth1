@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('tr', {
-  slug: 'tr-l1u10',
-  title: 'Level 1 · Unit 10: Hava ve Tercihler — Weather and Preferences',
-  category: 'daily-life',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Describe weather and say what you like or prefer.',
-  vocabularyGoal: 'Use weather nouns, seasons, and preference expressions.',
-  grammarGoal: 'Use `seviyorum`, `sevmiyorum`, and `tercih ediyorum` in simple comparisons.',
-  speakingGoal: 'Describe today’s weather and compare two preferences.',
-  task: 'Choose a weekend plan based on the weather.',
-  expressionPractice: [
-    practice('describing-weather', 'Describing weather', 'Use one weather sentence.'),
-    practice('stating-like', 'Stating like', 'Use `seviyorum`.'),
-    practice('stating-preference', 'Stating preference', 'Use `tercih ediyorum`.'),
+module.exports = {
+  "title": "Level 1 · Unit 10: Hava ve Tercihler — Weather and Preferences",
+  "category": "daily-life",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "tr-level1unit10weatherpreferences-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Describe weather and say what you like or prefer."
+      ],
+      "task": "Choose a weekend plan based on the weather."
+    },
+    {
+      "id": "tr-level1unit10weatherpreferences-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "tr-level1unit10weatherpreferences-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 10: Hava ve Tercihler — Weather and Preferences with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "tr-level1unit10weatherpreferences-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 10: Hava ve Tercihler — Weather and Preferences sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "tr-level1unit10weatherpreferences-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Describe weather and say what you like or prefer."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "tr-level1unit10weatherpreferences-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 10: Hava ve Tercihler — Weather and Preferences with one nearby Turkish form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "tr-level1unit10weatherpreferences-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "tr-level1unit10weatherpreferences-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "tr-level1unit10weatherpreferences-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "tr-level1unit10weatherpreferences-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "tr-level1unit10weatherpreferences-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Choose a weekend plan based on the weather."
+      ],
+      "task": "Choose a weekend plan based on the weather."
+    }
   ],
-  relatedPools: ['topic-weather', 'topic-preferences'],
-  items: [
-    item('hava sıcak', 'ha-VA sı-JAK', '“The weather is hot.” Turkish often omits an explicit copula in present simple statements.', 'Bugün hava çok sıcak.', '“Today the weather is very hot.”'),
-    item('yağmur yağıyor', 'ya-MUR ya-ğı-YOR', '“It is raining.” The root and progressive suffix show Turkish verbal build-up clearly.', 'Şimdi yağmur yağıyor.', '“It is raining now.”'),
-    item('kar', 'KAR', '“Snow.” A central seasonal word in many parts of Turkey.', 'Kışın kar yağıyor.', '“In winter it snows.”'),
-    item('yaz / kış', 'YAZ / KIŞ', '“Summer / winter.” Useful comparison anchors.', 'Yazı seviyorum, kışı sevmiyorum.', '“I like summer, I do not like winter.”'),
-    item('seviyorum', 'se-vi-YO-rum', '“I like / love.” The present progressive-shaped form is the normal everyday preference form.', 'Serin havayı seviyorum.', '“I like cool weather.”'),
-    item('sevmiyorum', 'sev-mi-YO-rum', '“I do not like.” The negative marker sits before the tense suffix.', 'Çok sıcak havayı sevmiyorum.', '“I do not like very hot weather.”'),
-    item('tercih ediyorum', 'ter-CİH e-di-YO-rum', '“I prefer.” Useful when choosing between two options.', 'Denizi dağa tercih ediyorum.', '“I prefer the sea to the mountain.”'),
-    item('çünkü', 'çün-KÜ', '“Because.” It turns a preference into a fuller explanation.', 'İlkbaharı seviyorum çünkü hava güzel.', '“I like spring because the weather is nice.”'),
+  "expressionPractice": [
+    {
+      "id": "describing-weather",
+      "label": "Describing weather",
+      "goal": "Use one weather sentence."
+    },
+    {
+      "id": "stating-like",
+      "label": "Stating like",
+      "goal": "Use `seviyorum`."
+    },
+    {
+      "id": "stating-preference",
+      "label": "Stating preference",
+      "goal": "Use `tercih ediyorum`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-weather",
+    "topic-preferences"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-orientation"
+      ],
+      "targetText": "ders hedefi",
+      "romanization": "",
+      "nativeText": "Describe weather and say what you like or prefer.",
+      "pronunciation": "",
+      "exampleTarget": "ders hedefi",
+      "exampleNative": "The whole lesson is built toward this outcome: Choose a weekend plan based on the weather.",
+      "korean": "ders hedefi",
+      "english": "Describe weather and say what you like or prefer.",
+      "example": "ders hedefi",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Choose a weekend plan based on the weather."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-pronunciation"
+      ],
+      "targetText": "ses kontrolü",
+      "romanization": "",
+      "nativeText": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Bugün hava çok sıcak.\".",
+      "pronunciation": "",
+      "exampleTarget": "Bugün hava çok sıcak.",
+      "exampleNative": "“Today the weather is very hot.”",
+      "korean": "ses kontrolü",
+      "english": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Bugün hava çok sıcak.\".",
+      "example": "Bugün hava çok sıcak.",
+      "exampleEnglish": "“Today the weather is very hot.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1"
+      ],
+      "targetText": "hava sıcak",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 10: Hava ve Tercihler — Weather and Preferences with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Bugün hava çok sıcak.",
+      "exampleNative": "“Today the weather is very hot.”",
+      "korean": "hava sıcak",
+      "english": "Use the key language of Level 1 · Unit 10: Hava ve Tercihler — Weather and Preferences with the register and setting that the lesson requires.",
+      "example": "Bugün hava çok sıcak.",
+      "exampleEnglish": "“Today the weather is very hot.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-2"
+      ],
+      "targetText": "yağmur yağıyor",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 10: Hava ve Tercihler — Weather and Preferences sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Şimdi yağmur yağıyor.",
+      "exampleNative": "“It is raining now.”",
+      "korean": "yağmur yağıyor",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 10: Hava ve Tercihler — Weather and Preferences sound precise rather than merely understandable.",
+      "example": "Şimdi yağmur yağıyor.",
+      "exampleEnglish": "“It is raining now.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-grammar-1"
+      ],
+      "targetText": "hava sıcak",
+      "romanization": "",
+      "nativeText": "Describe weather and say what you like or prefer.",
+      "pronunciation": "",
+      "exampleTarget": "Bugün hava çok sıcak.",
+      "exampleNative": "“Today the weather is very hot.”",
+      "korean": "hava sıcak",
+      "english": "Describe weather and say what you like or prefer.",
+      "example": "Bugün hava çok sıcak.",
+      "exampleEnglish": "“Today the weather is very hot.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-grammar-2"
+      ],
+      "targetText": "yağmur yağıyor",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 10: Hava ve Tercihler — Weather and Preferences with one nearby Turkish form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Şimdi yağmur yağıyor.",
+      "exampleNative": "“It is raining now.”",
+      "korean": "yağmur yağıyor",
+      "english": "Contrast the main pattern in Level 1 · Unit 10: Hava ve Tercihler — Weather and Preferences with one nearby Turkish form so the learner can avoid literal translation.",
+      "example": "Şimdi yağmur yağıyor.",
+      "exampleEnglish": "“It is raining now.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-reading"
+      ],
+      "targetText": "okuma modeli",
+      "romanization": "",
+      "nativeText": "Read \"İlkbaharı seviyorum çünkü hava güzel.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "İlkbaharı seviyorum çünkü hava güzel.",
+      "exampleNative": "“I like spring because the weather is nice.”",
+      "korean": "okuma modeli",
+      "english": "Read \"İlkbaharı seviyorum çünkü hava güzel.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "İlkbaharı seviyorum çünkü hava güzel.",
+      "exampleEnglish": "“I like spring because the weather is nice.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-listening"
+      ],
+      "targetText": "diyalog modeli",
+      "romanization": "",
+      "nativeText": "Hear \"İlkbaharı seviyorum çünkü hava güzel.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "İlkbaharı seviyorum çünkü hava güzel.",
+      "exampleNative": "“I like spring because the weather is nice.”",
+      "korean": "diyalog modeli",
+      "english": "Hear \"İlkbaharı seviyorum çünkü hava güzel.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "İlkbaharı seviyorum çünkü hava güzel.",
+      "exampleEnglish": "“I like spring because the weather is nice.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-writing"
+      ],
+      "targetText": "yazma alıştırması",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Bugün hava çok sıcak.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Bugün hava çok sıcak.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "yazma alıştırması",
+      "english": "Write your own version after studying \"Bugün hava çok sıcak.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Bugün hava çok sıcak.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-culture"
+      ],
+      "targetText": "kullanım ve bağlam",
+      "romanization": "",
+      "nativeText": "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Şimdi yağmur yağıyor.",
+      "exampleNative": "“It is raining now.”",
+      "korean": "kullanım ve bağlam",
+      "english": "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used.",
+      "example": "Şimdi yağmur yağıyor.",
+      "exampleEnglish": "“It is raining now.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "son görev",
+      "romanization": "",
+      "nativeText": "Choose a weekend plan based on the weather.",
+      "pronunciation": "",
+      "exampleTarget": "İlkbaharı seviyorum çünkü hava güzel.",
+      "exampleNative": "Choose a weekend plan based on the weather.",
+      "korean": "son görev",
+      "english": "Choose a weekend plan based on the weather.",
+      "example": "İlkbaharı seviyorum çünkü hava güzel.",
+      "exampleEnglish": "Choose a weekend plan based on the weather."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-grammar-2"
+      ],
+      "targetText": "yaygın hata",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around suffix chains, vowel harmony, evidentiality, and word order. Begin by checking \"Şimdi yağmur yağıyor.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Şimdi yağmur yağıyor.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “It is raining now.”",
+      "korean": "yaygın hata",
+      "english": "Watch for literal-translation mistakes around suffix chains, vowel harmony, evidentiality, and word order. Begin by checking \"Şimdi yağmur yağıyor.\" against the model.",
+      "example": "Şimdi yağmur yağıyor.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “It is raining now.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-culture"
+      ],
+      "targetText": "üslup",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for sen, siz, a service tone, or a more formal wording before selecting the final form. Compare the social fit of \"Bugün hava çok sıcak.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Bugün hava çok sıcak.",
+      "exampleNative": "“Today the weather is very hot.”",
+      "korean": "üslup",
+      "english": "Check whether the setting calls for sen, siz, a service tone, or a more formal wording before selecting the final form. Compare the social fit of \"Bugün hava çok sıcak.\" before reusing it elsewhere.",
+      "example": "Bugün hava çok sıcak.",
+      "exampleEnglish": "“Today the weather is very hot.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "akıcılık",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Turkish message rather than as separate translated fragments. Aim to carry \"İlkbaharı seviyorum çünkü hava güzel.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "İlkbaharı seviyorum çünkü hava güzel.",
+      "exampleNative": "“I like spring because the weather is nice.”",
+      "korean": "akıcılık",
+      "english": "Say the idea as one connected Turkish message rather than as separate translated fragments. Aim to carry \"İlkbaharı seviyorum çünkü hava güzel.\" as one thought.",
+      "example": "İlkbaharı seviyorum çünkü hava güzel.",
+      "exampleEnglish": "“I like spring because the weather is nice.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "uygulama",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Bugün hava çok sıcak.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Bugün hava çok sıcak.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "uygulama",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Bugün hava çok sıcak.\" and move it into your own life.",
+      "example": "Bugün hava çok sıcak.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-grammar-1"
+      ],
+      "targetText": "hatırlama",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"hava sıcak\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "hava sıcak",
+      "exampleNative": "“The weather is hot.” Turkish often omits an explicit copula in present simple statements.",
+      "korean": "hatırlama",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"hava sıcak\" before looking back.",
+      "example": "hava sıcak",
+      "exampleEnglish": "“The weather is hot.” Turkish often omits an explicit copula in present simple statements."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-writing"
+      ],
+      "targetText": "genişletme",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"İlkbaharı seviyorum çünkü hava güzel.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "İlkbaharı seviyorum çünkü hava güzel.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "genişletme",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"İlkbaharı seviyorum çünkü hava güzel.\" rather than restarting from a blank sentence.",
+      "example": "İlkbaharı seviyorum çünkü hava güzel.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading"
+      ],
+      "targetText": "karşılaştırma",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 10: Hava ve Tercihler — Weather and Preferences with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Şimdi yağmur yağıyor.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Şimdi yağmur yağıyor.",
+      "exampleNative": "“It is raining now.”",
+      "korean": "karşılaştırma",
+      "english": "Compare the central form in Level 1 · Unit 10: Hava ve Tercihler — Weather and Preferences with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Şimdi yağmur yağıyor.\" as the comparison line.",
+      "example": "Şimdi yağmur yağıyor.",
+      "exampleEnglish": "“It is raining now.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-pronunciation"
+      ],
+      "targetText": "telaffuz düzeltme",
+      "romanization": "",
+      "nativeText": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Bugün hava çok sıcak.\".",
+      "pronunciation": "",
+      "exampleTarget": "Bugün hava çok sıcak.",
+      "exampleNative": "“Today the weather is very hot.”",
+      "korean": "telaffuz düzeltme",
+      "english": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Bugün hava çok sıcak.\".",
+      "example": "Bugün hava çok sıcak.",
+      "exampleEnglish": "“Today the weather is very hot.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "diyalog varyasyonu",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"İlkbaharı seviyorum çünkü hava güzel.\".",
+      "pronunciation": "",
+      "exampleTarget": "İlkbaharı seviyorum çünkü hava güzel.",
+      "exampleNative": "“I like spring because the weather is nice.”",
+      "korean": "diyalog varyasyonu",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"İlkbaharı seviyorum çünkü hava güzel.\".",
+      "example": "İlkbaharı seviyorum çünkü hava güzel.",
+      "exampleEnglish": "“I like spring because the weather is nice.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-writing"
+      ],
+      "targetText": "cümle kurma",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Bugün hava çok sıcak.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Bugün hava çok sıcak.",
+      "exampleNative": "“Today the weather is very hot.”",
+      "korean": "cümle kurma",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Bugün hava çok sıcak.\" one layer at a time.",
+      "example": "Bugün hava çok sıcak.",
+      "exampleEnglish": "“Today the weather is very hot.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-2"
+      ],
+      "targetText": "hızlı kontrol",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Şimdi yağmur yağıyor.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Şimdi yağmur yağıyor.",
+      "exampleNative": "“It is raining now.”",
+      "korean": "hızlı kontrol",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Şimdi yağmur yağıyor.\" as the deciding example.",
+      "example": "Şimdi yağmur yağıyor.",
+      "exampleEnglish": "“It is raining now.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-culture",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "değerlendirme",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"İlkbaharı seviyorum çünkü hava güzel.\".",
+      "pronunciation": "",
+      "exampleTarget": "İlkbaharı seviyorum çünkü hava güzel.",
+      "exampleNative": "“I like spring because the weather is nice.”",
+      "korean": "değerlendirme",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"İlkbaharı seviyorum çünkü hava güzel.\".",
+      "example": "İlkbaharı seviyorum çünkü hava güzel.",
+      "exampleEnglish": "“I like spring because the weather is nice.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "hava sıcak",
+      "romanization": "ha-VA sı-JAK",
+      "nativeText": "“The weather is hot.” Turkish often omits an explicit copula in present simple statements.",
+      "pronunciation": "ha-VA sı-JAK",
+      "exampleTarget": "Bugün hava çok sıcak.",
+      "exampleNative": "“Today the weather is very hot.”",
+      "korean": "hava sıcak",
+      "english": "“The weather is hot.” Turkish often omits an explicit copula in present simple statements.",
+      "example": "Bugün hava çok sıcak.",
+      "exampleEnglish": "“Today the weather is very hot.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "Bugün hava çok sıcak.",
+      "romanization": "ha-VA sı-JAK",
+      "nativeText": "Model use for \"Bugün hava çok sıcak.\": “Today the weather is very hot.”",
+      "pronunciation": "ha-VA sı-JAK",
+      "exampleTarget": "Bugün hava çok sıcak.",
+      "exampleNative": "“Today the weather is very hot.”",
+      "korean": "Bugün hava çok sıcak.",
+      "english": "Model use for \"Bugün hava çok sıcak.\": “Today the weather is very hot.”",
+      "example": "Bugün hava çok sıcak.",
+      "exampleEnglish": "“Today the weather is very hot.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "hava sıcak",
+      "romanization": "ha-VA sı-JAK",
+      "nativeText": "Usage focus for \"hava sıcak\": Use the key language of Level 1 · Unit 10: Hava ve Tercihler — Weather and Preferences with the register and setting that the lesson requires.",
+      "pronunciation": "ha-VA sı-JAK",
+      "exampleTarget": "Bugün hava çok sıcak.",
+      "exampleNative": "Notice what the form is doing here: “Today the weather is very hot.”",
+      "korean": "hava sıcak",
+      "english": "Usage focus for \"hava sıcak\": Use the key language of Level 1 · Unit 10: Hava ve Tercihler — Weather and Preferences with the register and setting that the lesson requires.",
+      "example": "Bugün hava çok sıcak.",
+      "exampleEnglish": "Notice what the form is doing here: “Today the weather is very hot.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "hava sıcak",
+      "romanization": "ha-VA sı-JAK",
+      "nativeText": "Contrast check for \"hava sıcak\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ha-VA sı-JAK",
+      "exampleTarget": "Bugün hava çok sıcak.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Today the weather is very hot.”",
+      "korean": "hava sıcak",
+      "english": "Contrast check for \"hava sıcak\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Bugün hava çok sıcak.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Today the weather is very hot.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "hava sıcak",
+      "romanization": "ha-VA sı-JAK",
+      "nativeText": "Recall \"hava sıcak\" from memory, then explain what would change if a nearby alternative replaced it in \"Bugün hava çok sıcak.\".",
+      "pronunciation": "ha-VA sı-JAK",
+      "exampleTarget": "Bugün hava çok sıcak.",
+      "exampleNative": "Self-check against the model before moving on: “Today the weather is very hot.”",
+      "korean": "hava sıcak",
+      "english": "Recall \"hava sıcak\" from memory, then explain what would change if a nearby alternative replaced it in \"Bugün hava çok sıcak.\".",
+      "example": "Bugün hava çok sıcak.",
+      "exampleEnglish": "Self-check against the model before moving on: “Today the weather is very hot.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "hava sıcak",
+      "romanization": "ha-VA sı-JAK",
+      "nativeText": "Repair \"hava sıcak\" inside \"Bugün hava çok sıcak.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 10: Hava ve Tercihler — Weather and Preferences with the register and setting that the lesson requires.",
+      "pronunciation": "ha-VA sı-JAK",
+      "exampleTarget": "Bugün hava çok sıcak.",
+      "exampleNative": "Use the model as the repair target: “Today the weather is very hot.”",
+      "korean": "hava sıcak",
+      "english": "Repair \"hava sıcak\" inside \"Bugün hava çok sıcak.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 10: Hava ve Tercihler — Weather and Preferences with the register and setting that the lesson requires.",
+      "example": "Bugün hava çok sıcak.",
+      "exampleEnglish": "Use the model as the repair target: “Today the weather is very hot.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "hava sıcak",
+      "romanization": "ha-VA sı-JAK",
+      "nativeText": "Transfer \"hava sıcak\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bugün hava çok sıcak.\".",
+      "pronunciation": "ha-VA sı-JAK",
+      "exampleTarget": "Bugün hava çok sıcak.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Today the weather is very hot.”",
+      "korean": "hava sıcak",
+      "english": "Transfer \"hava sıcak\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bugün hava çok sıcak.\".",
+      "example": "Bugün hava çok sıcak.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Today the weather is very hot.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "hava sıcak",
+      "romanization": "ha-VA sı-JAK",
+      "nativeText": "Find one word or phrase that naturally travels with \"hava sıcak\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ha-VA sı-JAK",
+      "exampleTarget": "Bugün hava çok sıcak.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Today the weather is very hot.”",
+      "korean": "hava sıcak",
+      "english": "Find one word or phrase that naturally travels with \"hava sıcak\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Bugün hava çok sıcak.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Today the weather is very hot.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "hava sıcak",
+      "romanization": "ha-VA sı-JAK",
+      "nativeText": "Listen for \"hava sıcak\" inside \"Bugün hava çok sıcak.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ha-VA sı-JAK",
+      "exampleTarget": "Bugün hava çok sıcak.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Today the weather is very hot.”",
+      "korean": "hava sıcak",
+      "english": "Listen for \"hava sıcak\" inside \"Bugün hava çok sıcak.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Bugün hava çok sıcak.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Today the weather is very hot.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "hava sıcak",
+      "romanization": "ha-VA sı-JAK",
+      "nativeText": "Write \"hava sıcak\" again without looking, then compare the exact written form against \"Bugün hava çok sıcak.\" before moving on.",
+      "pronunciation": "ha-VA sı-JAK",
+      "exampleTarget": "Bugün hava çok sıcak.",
+      "exampleNative": "Use the written model as the final correctness check: “Today the weather is very hot.”",
+      "korean": "hava sıcak",
+      "english": "Write \"hava sıcak\" again without looking, then compare the exact written form against \"Bugün hava çok sıcak.\" before moving on.",
+      "example": "Bugün hava çok sıcak.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Today the weather is very hot.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "hava sıcak",
+      "romanization": "ha-VA sı-JAK",
+      "nativeText": "Check whether \"hava sıcak\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Today the weather is very hot.”",
+      "pronunciation": "ha-VA sı-JAK",
+      "exampleTarget": "Bugün hava çok sıcak.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Today the weather is very hot.”",
+      "korean": "hava sıcak",
+      "english": "Check whether \"hava sıcak\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Today the weather is very hot.”",
+      "example": "Bugün hava çok sıcak.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Today the weather is very hot.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "yağmur yağıyor",
+      "romanization": "ya-MUR ya-ğı-YOR",
+      "nativeText": "“It is raining.” The root and progressive suffix show Turkish verbal build-up clearly.",
+      "pronunciation": "ya-MUR ya-ğı-YOR",
+      "exampleTarget": "Şimdi yağmur yağıyor.",
+      "exampleNative": "“It is raining now.”",
+      "korean": "yağmur yağıyor",
+      "english": "“It is raining.” The root and progressive suffix show Turkish verbal build-up clearly.",
+      "example": "Şimdi yağmur yağıyor.",
+      "exampleEnglish": "“It is raining now.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "Şimdi yağmur yağıyor.",
+      "romanization": "ya-MUR ya-ğı-YOR",
+      "nativeText": "Model use for \"Şimdi yağmur yağıyor.\": “It is raining now.”",
+      "pronunciation": "ya-MUR ya-ğı-YOR",
+      "exampleTarget": "Şimdi yağmur yağıyor.",
+      "exampleNative": "“It is raining now.”",
+      "korean": "Şimdi yağmur yağıyor.",
+      "english": "Model use for \"Şimdi yağmur yağıyor.\": “It is raining now.”",
+      "example": "Şimdi yağmur yağıyor.",
+      "exampleEnglish": "“It is raining now.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "yağmur yağıyor",
+      "romanization": "ya-MUR ya-ğı-YOR",
+      "nativeText": "Usage focus for \"yağmur yağıyor\": Distinguish the nearby wording choices that make Level 1 · Unit 10: Hava ve Tercihler — Weather and Preferences sound precise rather than merely understandable.",
+      "pronunciation": "ya-MUR ya-ğı-YOR",
+      "exampleTarget": "Şimdi yağmur yağıyor.",
+      "exampleNative": "Notice what the form is doing here: “It is raining now.”",
+      "korean": "yağmur yağıyor",
+      "english": "Usage focus for \"yağmur yağıyor\": Distinguish the nearby wording choices that make Level 1 · Unit 10: Hava ve Tercihler — Weather and Preferences sound precise rather than merely understandable.",
+      "example": "Şimdi yağmur yağıyor.",
+      "exampleEnglish": "Notice what the form is doing here: “It is raining now.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "yağmur yağıyor",
+      "romanization": "ya-MUR ya-ğı-YOR",
+      "nativeText": "Contrast check for \"yağmur yağıyor\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ya-MUR ya-ğı-YOR",
+      "exampleTarget": "Şimdi yağmur yağıyor.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “It is raining now.”",
+      "korean": "yağmur yağıyor",
+      "english": "Contrast check for \"yağmur yağıyor\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Şimdi yağmur yağıyor.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “It is raining now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "yağmur yağıyor",
+      "romanization": "ya-MUR ya-ğı-YOR",
+      "nativeText": "Recall \"yağmur yağıyor\" from memory, then explain what would change if a nearby alternative replaced it in \"Şimdi yağmur yağıyor.\".",
+      "pronunciation": "ya-MUR ya-ğı-YOR",
+      "exampleTarget": "Şimdi yağmur yağıyor.",
+      "exampleNative": "Self-check against the model before moving on: “It is raining now.”",
+      "korean": "yağmur yağıyor",
+      "english": "Recall \"yağmur yağıyor\" from memory, then explain what would change if a nearby alternative replaced it in \"Şimdi yağmur yağıyor.\".",
+      "example": "Şimdi yağmur yağıyor.",
+      "exampleEnglish": "Self-check against the model before moving on: “It is raining now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "yağmur yağıyor",
+      "romanization": "ya-MUR ya-ğı-YOR",
+      "nativeText": "Repair \"yağmur yağıyor\" inside \"Şimdi yağmur yağıyor.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 10: Hava ve Tercihler — Weather and Preferences sound precise rather than merely understandable.",
+      "pronunciation": "ya-MUR ya-ğı-YOR",
+      "exampleTarget": "Şimdi yağmur yağıyor.",
+      "exampleNative": "Use the model as the repair target: “It is raining now.”",
+      "korean": "yağmur yağıyor",
+      "english": "Repair \"yağmur yağıyor\" inside \"Şimdi yağmur yağıyor.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 10: Hava ve Tercihler — Weather and Preferences sound precise rather than merely understandable.",
+      "example": "Şimdi yağmur yağıyor.",
+      "exampleEnglish": "Use the model as the repair target: “It is raining now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "yağmur yağıyor",
+      "romanization": "ya-MUR ya-ğı-YOR",
+      "nativeText": "Transfer \"yağmur yağıyor\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Şimdi yağmur yağıyor.\".",
+      "pronunciation": "ya-MUR ya-ğı-YOR",
+      "exampleTarget": "Şimdi yağmur yağıyor.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “It is raining now.”",
+      "korean": "yağmur yağıyor",
+      "english": "Transfer \"yağmur yağıyor\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Şimdi yağmur yağıyor.\".",
+      "example": "Şimdi yağmur yağıyor.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “It is raining now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "yağmur yağıyor",
+      "romanization": "ya-MUR ya-ğı-YOR",
+      "nativeText": "Find one word or phrase that naturally travels with \"yağmur yağıyor\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ya-MUR ya-ğı-YOR",
+      "exampleTarget": "Şimdi yağmur yağıyor.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “It is raining now.”",
+      "korean": "yağmur yağıyor",
+      "english": "Find one word or phrase that naturally travels with \"yağmur yağıyor\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Şimdi yağmur yağıyor.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “It is raining now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "yağmur yağıyor",
+      "romanization": "ya-MUR ya-ğı-YOR",
+      "nativeText": "Listen for \"yağmur yağıyor\" inside \"Şimdi yağmur yağıyor.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ya-MUR ya-ğı-YOR",
+      "exampleTarget": "Şimdi yağmur yağıyor.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “It is raining now.”",
+      "korean": "yağmur yağıyor",
+      "english": "Listen for \"yağmur yağıyor\" inside \"Şimdi yağmur yağıyor.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Şimdi yağmur yağıyor.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “It is raining now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "yağmur yağıyor",
+      "romanization": "ya-MUR ya-ğı-YOR",
+      "nativeText": "Write \"yağmur yağıyor\" again without looking, then compare the exact written form against \"Şimdi yağmur yağıyor.\" before moving on.",
+      "pronunciation": "ya-MUR ya-ğı-YOR",
+      "exampleTarget": "Şimdi yağmur yağıyor.",
+      "exampleNative": "Use the written model as the final correctness check: “It is raining now.”",
+      "korean": "yağmur yağıyor",
+      "english": "Write \"yağmur yağıyor\" again without looking, then compare the exact written form against \"Şimdi yağmur yağıyor.\" before moving on.",
+      "example": "Şimdi yağmur yağıyor.",
+      "exampleEnglish": "Use the written model as the final correctness check: “It is raining now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "yağmur yağıyor",
+      "romanization": "ya-MUR ya-ğı-YOR",
+      "nativeText": "Check whether \"yağmur yağıyor\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “It is raining now.”",
+      "pronunciation": "ya-MUR ya-ğı-YOR",
+      "exampleTarget": "Şimdi yağmur yağıyor.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “It is raining now.”",
+      "korean": "yağmur yağıyor",
+      "english": "Check whether \"yağmur yağıyor\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “It is raining now.”",
+      "example": "Şimdi yağmur yağıyor.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “It is raining now.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "kar",
+      "romanization": "KAR",
+      "nativeText": "“Snow.” A central seasonal word in many parts of Turkey.",
+      "pronunciation": "KAR",
+      "exampleTarget": "Kışın kar yağıyor.",
+      "exampleNative": "“In winter it snows.”",
+      "korean": "kar",
+      "english": "“Snow.” A central seasonal word in many parts of Turkey.",
+      "example": "Kışın kar yağıyor.",
+      "exampleEnglish": "“In winter it snows.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "Kışın kar yağıyor.",
+      "romanization": "KAR",
+      "nativeText": "Model use for \"Kışın kar yağıyor.\": “In winter it snows.”",
+      "pronunciation": "KAR",
+      "exampleTarget": "Kışın kar yağıyor.",
+      "exampleNative": "“In winter it snows.”",
+      "korean": "Kışın kar yağıyor.",
+      "english": "Model use for \"Kışın kar yağıyor.\": “In winter it snows.”",
+      "example": "Kışın kar yağıyor.",
+      "exampleEnglish": "“In winter it snows.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "kar",
+      "romanization": "KAR",
+      "nativeText": "Usage focus for \"kar\": “Snow.” A central seasonal word in many parts of Turkey.",
+      "pronunciation": "KAR",
+      "exampleTarget": "Kışın kar yağıyor.",
+      "exampleNative": "Notice what the form is doing here: “In winter it snows.”",
+      "korean": "kar",
+      "english": "Usage focus for \"kar\": “Snow.” A central seasonal word in many parts of Turkey.",
+      "example": "Kışın kar yağıyor.",
+      "exampleEnglish": "Notice what the form is doing here: “In winter it snows.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "kar",
+      "romanization": "KAR",
+      "nativeText": "Contrast check for \"kar\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "KAR",
+      "exampleTarget": "Kışın kar yağıyor.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “In winter it snows.”",
+      "korean": "kar",
+      "english": "Contrast check for \"kar\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Kışın kar yağıyor.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “In winter it snows.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "kar",
+      "romanization": "KAR",
+      "nativeText": "Recall \"kar\" from memory, then explain what would change if a nearby alternative replaced it in \"Kışın kar yağıyor.\".",
+      "pronunciation": "KAR",
+      "exampleTarget": "Kışın kar yağıyor.",
+      "exampleNative": "Self-check against the model before moving on: “In winter it snows.”",
+      "korean": "kar",
+      "english": "Recall \"kar\" from memory, then explain what would change if a nearby alternative replaced it in \"Kışın kar yağıyor.\".",
+      "example": "Kışın kar yağıyor.",
+      "exampleEnglish": "Self-check against the model before moving on: “In winter it snows.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "kar",
+      "romanization": "KAR",
+      "nativeText": "Repair \"kar\" inside \"Kışın kar yağıyor.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Snow.” A central seasonal word in many parts of Turkey.",
+      "pronunciation": "KAR",
+      "exampleTarget": "Kışın kar yağıyor.",
+      "exampleNative": "Use the model as the repair target: “In winter it snows.”",
+      "korean": "kar",
+      "english": "Repair \"kar\" inside \"Kışın kar yağıyor.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Snow.” A central seasonal word in many parts of Turkey.",
+      "example": "Kışın kar yağıyor.",
+      "exampleEnglish": "Use the model as the repair target: “In winter it snows.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "kar",
+      "romanization": "KAR",
+      "nativeText": "Transfer \"kar\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Kışın kar yağıyor.\".",
+      "pronunciation": "KAR",
+      "exampleTarget": "Kışın kar yağıyor.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “In winter it snows.”",
+      "korean": "kar",
+      "english": "Transfer \"kar\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Kışın kar yağıyor.\".",
+      "example": "Kışın kar yağıyor.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “In winter it snows.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "kar",
+      "romanization": "KAR",
+      "nativeText": "Find one word or phrase that naturally travels with \"kar\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "KAR",
+      "exampleTarget": "Kışın kar yağıyor.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “In winter it snows.”",
+      "korean": "kar",
+      "english": "Find one word or phrase that naturally travels with \"kar\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Kışın kar yağıyor.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “In winter it snows.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "kar",
+      "romanization": "KAR",
+      "nativeText": "Listen for \"kar\" inside \"Kışın kar yağıyor.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "KAR",
+      "exampleTarget": "Kışın kar yağıyor.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “In winter it snows.”",
+      "korean": "kar",
+      "english": "Listen for \"kar\" inside \"Kışın kar yağıyor.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Kışın kar yağıyor.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “In winter it snows.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "kar",
+      "romanization": "KAR",
+      "nativeText": "Write \"kar\" again without looking, then compare the exact written form against \"Kışın kar yağıyor.\" before moving on.",
+      "pronunciation": "KAR",
+      "exampleTarget": "Kışın kar yağıyor.",
+      "exampleNative": "Use the written model as the final correctness check: “In winter it snows.”",
+      "korean": "kar",
+      "english": "Write \"kar\" again without looking, then compare the exact written form against \"Kışın kar yağıyor.\" before moving on.",
+      "example": "Kışın kar yağıyor.",
+      "exampleEnglish": "Use the written model as the final correctness check: “In winter it snows.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "kar",
+      "romanization": "KAR",
+      "nativeText": "Check whether \"kar\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “In winter it snows.”",
+      "pronunciation": "KAR",
+      "exampleTarget": "Kışın kar yağıyor.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “In winter it snows.”",
+      "korean": "kar",
+      "english": "Check whether \"kar\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “In winter it snows.”",
+      "example": "Kışın kar yağıyor.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “In winter it snows.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "yaz / kış",
+      "romanization": "YAZ / KIŞ",
+      "nativeText": "“Summer / winter.” Useful comparison anchors.",
+      "pronunciation": "YAZ / KIŞ",
+      "exampleTarget": "Yazı seviyorum, kışı sevmiyorum.",
+      "exampleNative": "“I like summer, I do not like winter.”",
+      "korean": "yaz / kış",
+      "english": "“Summer / winter.” Useful comparison anchors.",
+      "example": "Yazı seviyorum, kışı sevmiyorum.",
+      "exampleEnglish": "“I like summer, I do not like winter.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "Yazı seviyorum, kışı sevmiyorum.",
+      "romanization": "YAZ / KIŞ",
+      "nativeText": "Model use for \"Yazı seviyorum, kışı sevmiyorum.\": “I like summer, I do not like winter.”",
+      "pronunciation": "YAZ / KIŞ",
+      "exampleTarget": "Yazı seviyorum, kışı sevmiyorum.",
+      "exampleNative": "“I like summer, I do not like winter.”",
+      "korean": "Yazı seviyorum, kışı sevmiyorum.",
+      "english": "Model use for \"Yazı seviyorum, kışı sevmiyorum.\": “I like summer, I do not like winter.”",
+      "example": "Yazı seviyorum, kışı sevmiyorum.",
+      "exampleEnglish": "“I like summer, I do not like winter.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "yaz / kış",
+      "romanization": "YAZ / KIŞ",
+      "nativeText": "Usage focus for \"yaz / kış\": “Summer / winter.” Useful comparison anchors.",
+      "pronunciation": "YAZ / KIŞ",
+      "exampleTarget": "Yazı seviyorum, kışı sevmiyorum.",
+      "exampleNative": "Notice what the form is doing here: “I like summer, I do not like winter.”",
+      "korean": "yaz / kış",
+      "english": "Usage focus for \"yaz / kış\": “Summer / winter.” Useful comparison anchors.",
+      "example": "Yazı seviyorum, kışı sevmiyorum.",
+      "exampleEnglish": "Notice what the form is doing here: “I like summer, I do not like winter.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "yaz / kış",
+      "romanization": "YAZ / KIŞ",
+      "nativeText": "Contrast check for \"yaz / kış\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "YAZ / KIŞ",
+      "exampleTarget": "Yazı seviyorum, kışı sevmiyorum.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like summer, I do not like winter.”",
+      "korean": "yaz / kış",
+      "english": "Contrast check for \"yaz / kış\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Yazı seviyorum, kışı sevmiyorum.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like summer, I do not like winter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "yaz / kış",
+      "romanization": "YAZ / KIŞ",
+      "nativeText": "Recall \"yaz / kış\" from memory, then explain what would change if a nearby alternative replaced it in \"Yazı seviyorum, kışı sevmiyorum.\".",
+      "pronunciation": "YAZ / KIŞ",
+      "exampleTarget": "Yazı seviyorum, kışı sevmiyorum.",
+      "exampleNative": "Self-check against the model before moving on: “I like summer, I do not like winter.”",
+      "korean": "yaz / kış",
+      "english": "Recall \"yaz / kış\" from memory, then explain what would change if a nearby alternative replaced it in \"Yazı seviyorum, kışı sevmiyorum.\".",
+      "example": "Yazı seviyorum, kışı sevmiyorum.",
+      "exampleEnglish": "Self-check against the model before moving on: “I like summer, I do not like winter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "yaz / kış",
+      "romanization": "YAZ / KIŞ",
+      "nativeText": "Repair \"yaz / kış\" inside \"Yazı seviyorum, kışı sevmiyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Summer / winter.” Useful comparison anchors.",
+      "pronunciation": "YAZ / KIŞ",
+      "exampleTarget": "Yazı seviyorum, kışı sevmiyorum.",
+      "exampleNative": "Use the model as the repair target: “I like summer, I do not like winter.”",
+      "korean": "yaz / kış",
+      "english": "Repair \"yaz / kış\" inside \"Yazı seviyorum, kışı sevmiyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Summer / winter.” Useful comparison anchors.",
+      "example": "Yazı seviyorum, kışı sevmiyorum.",
+      "exampleEnglish": "Use the model as the repair target: “I like summer, I do not like winter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "yaz / kış",
+      "romanization": "YAZ / KIŞ",
+      "nativeText": "Transfer \"yaz / kış\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Yazı seviyorum, kışı sevmiyorum.\".",
+      "pronunciation": "YAZ / KIŞ",
+      "exampleTarget": "Yazı seviyorum, kışı sevmiyorum.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like summer, I do not like winter.”",
+      "korean": "yaz / kış",
+      "english": "Transfer \"yaz / kış\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Yazı seviyorum, kışı sevmiyorum.\".",
+      "example": "Yazı seviyorum, kışı sevmiyorum.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like summer, I do not like winter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "yaz / kış",
+      "romanization": "YAZ / KIŞ",
+      "nativeText": "Find one word or phrase that naturally travels with \"yaz / kış\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "YAZ / KIŞ",
+      "exampleTarget": "Yazı seviyorum, kışı sevmiyorum.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I like summer, I do not like winter.”",
+      "korean": "yaz / kış",
+      "english": "Find one word or phrase that naturally travels with \"yaz / kış\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Yazı seviyorum, kışı sevmiyorum.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I like summer, I do not like winter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "yaz / kış",
+      "romanization": "YAZ / KIŞ",
+      "nativeText": "Listen for \"yaz / kış\" inside \"Yazı seviyorum, kışı sevmiyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "YAZ / KIŞ",
+      "exampleTarget": "Yazı seviyorum, kışı sevmiyorum.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like summer, I do not like winter.”",
+      "korean": "yaz / kış",
+      "english": "Listen for \"yaz / kış\" inside \"Yazı seviyorum, kışı sevmiyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Yazı seviyorum, kışı sevmiyorum.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like summer, I do not like winter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "yaz / kış",
+      "romanization": "YAZ / KIŞ",
+      "nativeText": "Write \"yaz / kış\" again without looking, then compare the exact written form against \"Yazı seviyorum, kışı sevmiyorum.\" before moving on.",
+      "pronunciation": "YAZ / KIŞ",
+      "exampleTarget": "Yazı seviyorum, kışı sevmiyorum.",
+      "exampleNative": "Use the written model as the final correctness check: “I like summer, I do not like winter.”",
+      "korean": "yaz / kış",
+      "english": "Write \"yaz / kış\" again without looking, then compare the exact written form against \"Yazı seviyorum, kışı sevmiyorum.\" before moving on.",
+      "example": "Yazı seviyorum, kışı sevmiyorum.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I like summer, I do not like winter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "yaz / kış",
+      "romanization": "YAZ / KIŞ",
+      "nativeText": "Check whether \"yaz / kış\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like summer, I do not like winter.”",
+      "pronunciation": "YAZ / KIŞ",
+      "exampleTarget": "Yazı seviyorum, kışı sevmiyorum.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I like summer, I do not like winter.”",
+      "korean": "yaz / kış",
+      "english": "Check whether \"yaz / kış\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like summer, I do not like winter.”",
+      "example": "Yazı seviyorum, kışı sevmiyorum.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I like summer, I do not like winter.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "seviyorum",
+      "romanization": "se-vi-YO-rum",
+      "nativeText": "“I like / love.” The present progressive-shaped form is the normal everyday preference form.",
+      "pronunciation": "se-vi-YO-rum",
+      "exampleTarget": "Serin havayı seviyorum.",
+      "exampleNative": "“I like cool weather.”",
+      "korean": "seviyorum",
+      "english": "“I like / love.” The present progressive-shaped form is the normal everyday preference form.",
+      "example": "Serin havayı seviyorum.",
+      "exampleEnglish": "“I like cool weather.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "Serin havayı seviyorum.",
+      "romanization": "se-vi-YO-rum",
+      "nativeText": "Model use for \"Serin havayı seviyorum.\": “I like cool weather.”",
+      "pronunciation": "se-vi-YO-rum",
+      "exampleTarget": "Serin havayı seviyorum.",
+      "exampleNative": "“I like cool weather.”",
+      "korean": "Serin havayı seviyorum.",
+      "english": "Model use for \"Serin havayı seviyorum.\": “I like cool weather.”",
+      "example": "Serin havayı seviyorum.",
+      "exampleEnglish": "“I like cool weather.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "seviyorum",
+      "romanization": "se-vi-YO-rum",
+      "nativeText": "Usage focus for \"seviyorum\": “I like / love.” The present progressive-shaped form is the normal everyday preference form.",
+      "pronunciation": "se-vi-YO-rum",
+      "exampleTarget": "Serin havayı seviyorum.",
+      "exampleNative": "Notice what the form is doing here: “I like cool weather.”",
+      "korean": "seviyorum",
+      "english": "Usage focus for \"seviyorum\": “I like / love.” The present progressive-shaped form is the normal everyday preference form.",
+      "example": "Serin havayı seviyorum.",
+      "exampleEnglish": "Notice what the form is doing here: “I like cool weather.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "seviyorum",
+      "romanization": "se-vi-YO-rum",
+      "nativeText": "Contrast check for \"seviyorum\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "se-vi-YO-rum",
+      "exampleTarget": "Serin havayı seviyorum.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like cool weather.”",
+      "korean": "seviyorum",
+      "english": "Contrast check for \"seviyorum\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Serin havayı seviyorum.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like cool weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "seviyorum",
+      "romanization": "se-vi-YO-rum",
+      "nativeText": "Recall \"seviyorum\" from memory, then explain what would change if a nearby alternative replaced it in \"Serin havayı seviyorum.\".",
+      "pronunciation": "se-vi-YO-rum",
+      "exampleTarget": "Serin havayı seviyorum.",
+      "exampleNative": "Self-check against the model before moving on: “I like cool weather.”",
+      "korean": "seviyorum",
+      "english": "Recall \"seviyorum\" from memory, then explain what would change if a nearby alternative replaced it in \"Serin havayı seviyorum.\".",
+      "example": "Serin havayı seviyorum.",
+      "exampleEnglish": "Self-check against the model before moving on: “I like cool weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "seviyorum",
+      "romanization": "se-vi-YO-rum",
+      "nativeText": "Repair \"seviyorum\" inside \"Serin havayı seviyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I like / love.” The present progressive-shaped form is the normal everyday preference form.",
+      "pronunciation": "se-vi-YO-rum",
+      "exampleTarget": "Serin havayı seviyorum.",
+      "exampleNative": "Use the model as the repair target: “I like cool weather.”",
+      "korean": "seviyorum",
+      "english": "Repair \"seviyorum\" inside \"Serin havayı seviyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I like / love.” The present progressive-shaped form is the normal everyday preference form.",
+      "example": "Serin havayı seviyorum.",
+      "exampleEnglish": "Use the model as the repair target: “I like cool weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "seviyorum",
+      "romanization": "se-vi-YO-rum",
+      "nativeText": "Transfer \"seviyorum\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Serin havayı seviyorum.\".",
+      "pronunciation": "se-vi-YO-rum",
+      "exampleTarget": "Serin havayı seviyorum.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like cool weather.”",
+      "korean": "seviyorum",
+      "english": "Transfer \"seviyorum\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Serin havayı seviyorum.\".",
+      "example": "Serin havayı seviyorum.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like cool weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "seviyorum",
+      "romanization": "se-vi-YO-rum",
+      "nativeText": "Find one word or phrase that naturally travels with \"seviyorum\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "se-vi-YO-rum",
+      "exampleTarget": "Serin havayı seviyorum.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I like cool weather.”",
+      "korean": "seviyorum",
+      "english": "Find one word or phrase that naturally travels with \"seviyorum\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Serin havayı seviyorum.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I like cool weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "seviyorum",
+      "romanization": "se-vi-YO-rum",
+      "nativeText": "Listen for \"seviyorum\" inside \"Serin havayı seviyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "se-vi-YO-rum",
+      "exampleTarget": "Serin havayı seviyorum.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like cool weather.”",
+      "korean": "seviyorum",
+      "english": "Listen for \"seviyorum\" inside \"Serin havayı seviyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Serin havayı seviyorum.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like cool weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "seviyorum",
+      "romanization": "se-vi-YO-rum",
+      "nativeText": "Write \"seviyorum\" again without looking, then compare the exact written form against \"Serin havayı seviyorum.\" before moving on.",
+      "pronunciation": "se-vi-YO-rum",
+      "exampleTarget": "Serin havayı seviyorum.",
+      "exampleNative": "Use the written model as the final correctness check: “I like cool weather.”",
+      "korean": "seviyorum",
+      "english": "Write \"seviyorum\" again without looking, then compare the exact written form against \"Serin havayı seviyorum.\" before moving on.",
+      "example": "Serin havayı seviyorum.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I like cool weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "seviyorum",
+      "romanization": "se-vi-YO-rum",
+      "nativeText": "Check whether \"seviyorum\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like cool weather.”",
+      "pronunciation": "se-vi-YO-rum",
+      "exampleTarget": "Serin havayı seviyorum.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I like cool weather.”",
+      "korean": "seviyorum",
+      "english": "Check whether \"seviyorum\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like cool weather.”",
+      "example": "Serin havayı seviyorum.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I like cool weather.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "sevmiyorum",
+      "romanization": "sev-mi-YO-rum",
+      "nativeText": "“I do not like.” The negative marker sits before the tense suffix.",
+      "pronunciation": "sev-mi-YO-rum",
+      "exampleTarget": "Çok sıcak havayı sevmiyorum.",
+      "exampleNative": "“I do not like very hot weather.”",
+      "korean": "sevmiyorum",
+      "english": "“I do not like.” The negative marker sits before the tense suffix.",
+      "example": "Çok sıcak havayı sevmiyorum.",
+      "exampleEnglish": "“I do not like very hot weather.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "Çok sıcak havayı sevmiyorum.",
+      "romanization": "sev-mi-YO-rum",
+      "nativeText": "Model use for \"Çok sıcak havayı sevmiyorum.\": “I do not like very hot weather.”",
+      "pronunciation": "sev-mi-YO-rum",
+      "exampleTarget": "Çok sıcak havayı sevmiyorum.",
+      "exampleNative": "“I do not like very hot weather.”",
+      "korean": "Çok sıcak havayı sevmiyorum.",
+      "english": "Model use for \"Çok sıcak havayı sevmiyorum.\": “I do not like very hot weather.”",
+      "example": "Çok sıcak havayı sevmiyorum.",
+      "exampleEnglish": "“I do not like very hot weather.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "sevmiyorum",
+      "romanization": "sev-mi-YO-rum",
+      "nativeText": "Usage focus for \"sevmiyorum\": “I do not like.” The negative marker sits before the tense suffix.",
+      "pronunciation": "sev-mi-YO-rum",
+      "exampleTarget": "Çok sıcak havayı sevmiyorum.",
+      "exampleNative": "Notice what the form is doing here: “I do not like very hot weather.”",
+      "korean": "sevmiyorum",
+      "english": "Usage focus for \"sevmiyorum\": “I do not like.” The negative marker sits before the tense suffix.",
+      "example": "Çok sıcak havayı sevmiyorum.",
+      "exampleEnglish": "Notice what the form is doing here: “I do not like very hot weather.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "sevmiyorum",
+      "romanization": "sev-mi-YO-rum",
+      "nativeText": "Contrast check for \"sevmiyorum\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "sev-mi-YO-rum",
+      "exampleTarget": "Çok sıcak havayı sevmiyorum.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I do not like very hot weather.”",
+      "korean": "sevmiyorum",
+      "english": "Contrast check for \"sevmiyorum\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Çok sıcak havayı sevmiyorum.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I do not like very hot weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "sevmiyorum",
+      "romanization": "sev-mi-YO-rum",
+      "nativeText": "Recall \"sevmiyorum\" from memory, then explain what would change if a nearby alternative replaced it in \"Çok sıcak havayı sevmiyorum.\".",
+      "pronunciation": "sev-mi-YO-rum",
+      "exampleTarget": "Çok sıcak havayı sevmiyorum.",
+      "exampleNative": "Self-check against the model before moving on: “I do not like very hot weather.”",
+      "korean": "sevmiyorum",
+      "english": "Recall \"sevmiyorum\" from memory, then explain what would change if a nearby alternative replaced it in \"Çok sıcak havayı sevmiyorum.\".",
+      "example": "Çok sıcak havayı sevmiyorum.",
+      "exampleEnglish": "Self-check against the model before moving on: “I do not like very hot weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "sevmiyorum",
+      "romanization": "sev-mi-YO-rum",
+      "nativeText": "Repair \"sevmiyorum\" inside \"Çok sıcak havayı sevmiyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I do not like.” The negative marker sits before the tense suffix.",
+      "pronunciation": "sev-mi-YO-rum",
+      "exampleTarget": "Çok sıcak havayı sevmiyorum.",
+      "exampleNative": "Use the model as the repair target: “I do not like very hot weather.”",
+      "korean": "sevmiyorum",
+      "english": "Repair \"sevmiyorum\" inside \"Çok sıcak havayı sevmiyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I do not like.” The negative marker sits before the tense suffix.",
+      "example": "Çok sıcak havayı sevmiyorum.",
+      "exampleEnglish": "Use the model as the repair target: “I do not like very hot weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "sevmiyorum",
+      "romanization": "sev-mi-YO-rum",
+      "nativeText": "Transfer \"sevmiyorum\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Çok sıcak havayı sevmiyorum.\".",
+      "pronunciation": "sev-mi-YO-rum",
+      "exampleTarget": "Çok sıcak havayı sevmiyorum.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I do not like very hot weather.”",
+      "korean": "sevmiyorum",
+      "english": "Transfer \"sevmiyorum\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Çok sıcak havayı sevmiyorum.\".",
+      "example": "Çok sıcak havayı sevmiyorum.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I do not like very hot weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "sevmiyorum",
+      "romanization": "sev-mi-YO-rum",
+      "nativeText": "Find one word or phrase that naturally travels with \"sevmiyorum\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "sev-mi-YO-rum",
+      "exampleTarget": "Çok sıcak havayı sevmiyorum.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I do not like very hot weather.”",
+      "korean": "sevmiyorum",
+      "english": "Find one word or phrase that naturally travels with \"sevmiyorum\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Çok sıcak havayı sevmiyorum.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I do not like very hot weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "sevmiyorum",
+      "romanization": "sev-mi-YO-rum",
+      "nativeText": "Listen for \"sevmiyorum\" inside \"Çok sıcak havayı sevmiyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "sev-mi-YO-rum",
+      "exampleTarget": "Çok sıcak havayı sevmiyorum.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I do not like very hot weather.”",
+      "korean": "sevmiyorum",
+      "english": "Listen for \"sevmiyorum\" inside \"Çok sıcak havayı sevmiyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Çok sıcak havayı sevmiyorum.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I do not like very hot weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "sevmiyorum",
+      "romanization": "sev-mi-YO-rum",
+      "nativeText": "Write \"sevmiyorum\" again without looking, then compare the exact written form against \"Çok sıcak havayı sevmiyorum.\" before moving on.",
+      "pronunciation": "sev-mi-YO-rum",
+      "exampleTarget": "Çok sıcak havayı sevmiyorum.",
+      "exampleNative": "Use the written model as the final correctness check: “I do not like very hot weather.”",
+      "korean": "sevmiyorum",
+      "english": "Write \"sevmiyorum\" again without looking, then compare the exact written form against \"Çok sıcak havayı sevmiyorum.\" before moving on.",
+      "example": "Çok sıcak havayı sevmiyorum.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I do not like very hot weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "sevmiyorum",
+      "romanization": "sev-mi-YO-rum",
+      "nativeText": "Check whether \"sevmiyorum\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I do not like very hot weather.”",
+      "pronunciation": "sev-mi-YO-rum",
+      "exampleTarget": "Çok sıcak havayı sevmiyorum.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I do not like very hot weather.”",
+      "korean": "sevmiyorum",
+      "english": "Check whether \"sevmiyorum\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I do not like very hot weather.”",
+      "example": "Çok sıcak havayı sevmiyorum.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I do not like very hot weather.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "tercih ediyorum",
+      "romanization": "ter-CİH e-di-YO-rum",
+      "nativeText": "“I prefer.” Useful when choosing between two options.",
+      "pronunciation": "ter-CİH e-di-YO-rum",
+      "exampleTarget": "Denizi dağa tercih ediyorum.",
+      "exampleNative": "“I prefer the sea to the mountain.”",
+      "korean": "tercih ediyorum",
+      "english": "“I prefer.” Useful when choosing between two options.",
+      "example": "Denizi dağa tercih ediyorum.",
+      "exampleEnglish": "“I prefer the sea to the mountain.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "Denizi dağa tercih ediyorum.",
+      "romanization": "ter-CİH e-di-YO-rum",
+      "nativeText": "Model use for \"Denizi dağa tercih ediyorum.\": “I prefer the sea to the mountain.”",
+      "pronunciation": "ter-CİH e-di-YO-rum",
+      "exampleTarget": "Denizi dağa tercih ediyorum.",
+      "exampleNative": "“I prefer the sea to the mountain.”",
+      "korean": "Denizi dağa tercih ediyorum.",
+      "english": "Model use for \"Denizi dağa tercih ediyorum.\": “I prefer the sea to the mountain.”",
+      "example": "Denizi dağa tercih ediyorum.",
+      "exampleEnglish": "“I prefer the sea to the mountain.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "tercih ediyorum",
+      "romanization": "ter-CİH e-di-YO-rum",
+      "nativeText": "Usage focus for \"tercih ediyorum\": “I prefer.” Useful when choosing between two options.",
+      "pronunciation": "ter-CİH e-di-YO-rum",
+      "exampleTarget": "Denizi dağa tercih ediyorum.",
+      "exampleNative": "Notice what the form is doing here: “I prefer the sea to the mountain.”",
+      "korean": "tercih ediyorum",
+      "english": "Usage focus for \"tercih ediyorum\": “I prefer.” Useful when choosing between two options.",
+      "example": "Denizi dağa tercih ediyorum.",
+      "exampleEnglish": "Notice what the form is doing here: “I prefer the sea to the mountain.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "tercih ediyorum",
+      "romanization": "ter-CİH e-di-YO-rum",
+      "nativeText": "Contrast check for \"tercih ediyorum\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ter-CİH e-di-YO-rum",
+      "exampleTarget": "Denizi dağa tercih ediyorum.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I prefer the sea to the mountain.”",
+      "korean": "tercih ediyorum",
+      "english": "Contrast check for \"tercih ediyorum\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Denizi dağa tercih ediyorum.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I prefer the sea to the mountain.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "tercih ediyorum",
+      "romanization": "ter-CİH e-di-YO-rum",
+      "nativeText": "Recall \"tercih ediyorum\" from memory, then explain what would change if a nearby alternative replaced it in \"Denizi dağa tercih ediyorum.\".",
+      "pronunciation": "ter-CİH e-di-YO-rum",
+      "exampleTarget": "Denizi dağa tercih ediyorum.",
+      "exampleNative": "Self-check against the model before moving on: “I prefer the sea to the mountain.”",
+      "korean": "tercih ediyorum",
+      "english": "Recall \"tercih ediyorum\" from memory, then explain what would change if a nearby alternative replaced it in \"Denizi dağa tercih ediyorum.\".",
+      "example": "Denizi dağa tercih ediyorum.",
+      "exampleEnglish": "Self-check against the model before moving on: “I prefer the sea to the mountain.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "tercih ediyorum",
+      "romanization": "ter-CİH e-di-YO-rum",
+      "nativeText": "Repair \"tercih ediyorum\" inside \"Denizi dağa tercih ediyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I prefer.” Useful when choosing between two options.",
+      "pronunciation": "ter-CİH e-di-YO-rum",
+      "exampleTarget": "Denizi dağa tercih ediyorum.",
+      "exampleNative": "Use the model as the repair target: “I prefer the sea to the mountain.”",
+      "korean": "tercih ediyorum",
+      "english": "Repair \"tercih ediyorum\" inside \"Denizi dağa tercih ediyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I prefer.” Useful when choosing between two options.",
+      "example": "Denizi dağa tercih ediyorum.",
+      "exampleEnglish": "Use the model as the repair target: “I prefer the sea to the mountain.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "tercih ediyorum",
+      "romanization": "ter-CİH e-di-YO-rum",
+      "nativeText": "Transfer \"tercih ediyorum\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Denizi dağa tercih ediyorum.\".",
+      "pronunciation": "ter-CİH e-di-YO-rum",
+      "exampleTarget": "Denizi dağa tercih ediyorum.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I prefer the sea to the mountain.”",
+      "korean": "tercih ediyorum",
+      "english": "Transfer \"tercih ediyorum\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Denizi dağa tercih ediyorum.\".",
+      "example": "Denizi dağa tercih ediyorum.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I prefer the sea to the mountain.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "tercih ediyorum",
+      "romanization": "ter-CİH e-di-YO-rum",
+      "nativeText": "Find one word or phrase that naturally travels with \"tercih ediyorum\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ter-CİH e-di-YO-rum",
+      "exampleTarget": "Denizi dağa tercih ediyorum.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I prefer the sea to the mountain.”",
+      "korean": "tercih ediyorum",
+      "english": "Find one word or phrase that naturally travels with \"tercih ediyorum\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Denizi dağa tercih ediyorum.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I prefer the sea to the mountain.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "tercih ediyorum",
+      "romanization": "ter-CİH e-di-YO-rum",
+      "nativeText": "Listen for \"tercih ediyorum\" inside \"Denizi dağa tercih ediyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ter-CİH e-di-YO-rum",
+      "exampleTarget": "Denizi dağa tercih ediyorum.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I prefer the sea to the mountain.”",
+      "korean": "tercih ediyorum",
+      "english": "Listen for \"tercih ediyorum\" inside \"Denizi dağa tercih ediyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Denizi dağa tercih ediyorum.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I prefer the sea to the mountain.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "tercih ediyorum",
+      "romanization": "ter-CİH e-di-YO-rum",
+      "nativeText": "Write \"tercih ediyorum\" again without looking, then compare the exact written form against \"Denizi dağa tercih ediyorum.\" before moving on.",
+      "pronunciation": "ter-CİH e-di-YO-rum",
+      "exampleTarget": "Denizi dağa tercih ediyorum.",
+      "exampleNative": "Use the written model as the final correctness check: “I prefer the sea to the mountain.”",
+      "korean": "tercih ediyorum",
+      "english": "Write \"tercih ediyorum\" again without looking, then compare the exact written form against \"Denizi dağa tercih ediyorum.\" before moving on.",
+      "example": "Denizi dağa tercih ediyorum.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I prefer the sea to the mountain.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "tercih ediyorum",
+      "romanization": "ter-CİH e-di-YO-rum",
+      "nativeText": "Check whether \"tercih ediyorum\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I prefer the sea to the mountain.”",
+      "pronunciation": "ter-CİH e-di-YO-rum",
+      "exampleTarget": "Denizi dağa tercih ediyorum.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I prefer the sea to the mountain.”",
+      "korean": "tercih ediyorum",
+      "english": "Check whether \"tercih ediyorum\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I prefer the sea to the mountain.”",
+      "example": "Denizi dağa tercih ediyorum.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I prefer the sea to the mountain.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "çünkü",
+      "romanization": "çün-KÜ",
+      "nativeText": "“Because.” It turns a preference into a fuller explanation.",
+      "pronunciation": "çün-KÜ",
+      "exampleTarget": "İlkbaharı seviyorum çünkü hava güzel.",
+      "exampleNative": "“I like spring because the weather is nice.”",
+      "korean": "çünkü",
+      "english": "“Because.” It turns a preference into a fuller explanation.",
+      "example": "İlkbaharı seviyorum çünkü hava güzel.",
+      "exampleEnglish": "“I like spring because the weather is nice.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "İlkbaharı seviyorum çünkü hava güzel.",
+      "romanization": "çün-KÜ",
+      "nativeText": "Model use for \"İlkbaharı seviyorum çünkü hava güzel.\": “I like spring because the weather is nice.”",
+      "pronunciation": "çün-KÜ",
+      "exampleTarget": "İlkbaharı seviyorum çünkü hava güzel.",
+      "exampleNative": "“I like spring because the weather is nice.”",
+      "korean": "İlkbaharı seviyorum çünkü hava güzel.",
+      "english": "Model use for \"İlkbaharı seviyorum çünkü hava güzel.\": “I like spring because the weather is nice.”",
+      "example": "İlkbaharı seviyorum çünkü hava güzel.",
+      "exampleEnglish": "“I like spring because the weather is nice.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "çünkü",
+      "romanization": "çün-KÜ",
+      "nativeText": "Usage focus for \"çünkü\": “Because.” It turns a preference into a fuller explanation.",
+      "pronunciation": "çün-KÜ",
+      "exampleTarget": "İlkbaharı seviyorum çünkü hava güzel.",
+      "exampleNative": "Notice what the form is doing here: “I like spring because the weather is nice.”",
+      "korean": "çünkü",
+      "english": "Usage focus for \"çünkü\": “Because.” It turns a preference into a fuller explanation.",
+      "example": "İlkbaharı seviyorum çünkü hava güzel.",
+      "exampleEnglish": "Notice what the form is doing here: “I like spring because the weather is nice.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "çünkü",
+      "romanization": "çün-KÜ",
+      "nativeText": "Contrast check for \"çünkü\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "çün-KÜ",
+      "exampleTarget": "İlkbaharı seviyorum çünkü hava güzel.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like spring because the weather is nice.”",
+      "korean": "çünkü",
+      "english": "Contrast check for \"çünkü\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "İlkbaharı seviyorum çünkü hava güzel.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like spring because the weather is nice.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "çünkü",
+      "romanization": "çün-KÜ",
+      "nativeText": "Recall \"çünkü\" from memory, then explain what would change if a nearby alternative replaced it in \"İlkbaharı seviyorum çünkü hava güzel.\".",
+      "pronunciation": "çün-KÜ",
+      "exampleTarget": "İlkbaharı seviyorum çünkü hava güzel.",
+      "exampleNative": "Self-check against the model before moving on: “I like spring because the weather is nice.”",
+      "korean": "çünkü",
+      "english": "Recall \"çünkü\" from memory, then explain what would change if a nearby alternative replaced it in \"İlkbaharı seviyorum çünkü hava güzel.\".",
+      "example": "İlkbaharı seviyorum çünkü hava güzel.",
+      "exampleEnglish": "Self-check against the model before moving on: “I like spring because the weather is nice.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "çünkü",
+      "romanization": "çün-KÜ",
+      "nativeText": "Repair \"çünkü\" inside \"İlkbaharı seviyorum çünkü hava güzel.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Because.” It turns a preference into a fuller explanation.",
+      "pronunciation": "çün-KÜ",
+      "exampleTarget": "İlkbaharı seviyorum çünkü hava güzel.",
+      "exampleNative": "Use the model as the repair target: “I like spring because the weather is nice.”",
+      "korean": "çünkü",
+      "english": "Repair \"çünkü\" inside \"İlkbaharı seviyorum çünkü hava güzel.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Because.” It turns a preference into a fuller explanation.",
+      "example": "İlkbaharı seviyorum çünkü hava güzel.",
+      "exampleEnglish": "Use the model as the repair target: “I like spring because the weather is nice.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "çünkü",
+      "romanization": "çün-KÜ",
+      "nativeText": "Transfer \"çünkü\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"İlkbaharı seviyorum çünkü hava güzel.\".",
+      "pronunciation": "çün-KÜ",
+      "exampleTarget": "İlkbaharı seviyorum çünkü hava güzel.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like spring because the weather is nice.”",
+      "korean": "çünkü",
+      "english": "Transfer \"çünkü\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"İlkbaharı seviyorum çünkü hava güzel.\".",
+      "example": "İlkbaharı seviyorum çünkü hava güzel.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like spring because the weather is nice.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "çünkü",
+      "romanization": "çün-KÜ",
+      "nativeText": "Find one word or phrase that naturally travels with \"çünkü\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "çün-KÜ",
+      "exampleTarget": "İlkbaharı seviyorum çünkü hava güzel.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I like spring because the weather is nice.”",
+      "korean": "çünkü",
+      "english": "Find one word or phrase that naturally travels with \"çünkü\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "İlkbaharı seviyorum çünkü hava güzel.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I like spring because the weather is nice.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "çünkü",
+      "romanization": "çün-KÜ",
+      "nativeText": "Listen for \"çünkü\" inside \"İlkbaharı seviyorum çünkü hava güzel.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "çün-KÜ",
+      "exampleTarget": "İlkbaharı seviyorum çünkü hava güzel.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like spring because the weather is nice.”",
+      "korean": "çünkü",
+      "english": "Listen for \"çünkü\" inside \"İlkbaharı seviyorum çünkü hava güzel.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "İlkbaharı seviyorum çünkü hava güzel.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like spring because the weather is nice.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "çünkü",
+      "romanization": "çün-KÜ",
+      "nativeText": "Write \"çünkü\" again without looking, then compare the exact written form against \"İlkbaharı seviyorum çünkü hava güzel.\" before moving on.",
+      "pronunciation": "çün-KÜ",
+      "exampleTarget": "İlkbaharı seviyorum çünkü hava güzel.",
+      "exampleNative": "Use the written model as the final correctness check: “I like spring because the weather is nice.”",
+      "korean": "çünkü",
+      "english": "Write \"çünkü\" again without looking, then compare the exact written form against \"İlkbaharı seviyorum çünkü hava güzel.\" before moving on.",
+      "example": "İlkbaharı seviyorum çünkü hava güzel.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I like spring because the weather is nice.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit10weatherpreferences-vocabulary-1",
+        "tr-level1unit10weatherpreferences-vocabulary-2",
+        "tr-level1unit10weatherpreferences-grammar-1",
+        "tr-level1unit10weatherpreferences-grammar-2",
+        "tr-level1unit10weatherpreferences-reading",
+        "tr-level1unit10weatherpreferences-listening",
+        "tr-level1unit10weatherpreferences-writing",
+        "tr-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "çünkü",
+      "romanization": "çün-KÜ",
+      "nativeText": "Check whether \"çünkü\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like spring because the weather is nice.”",
+      "pronunciation": "çün-KÜ",
+      "exampleTarget": "İlkbaharı seviyorum çünkü hava güzel.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I like spring because the weather is nice.”",
+      "korean": "çünkü",
+      "english": "Check whether \"çünkü\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like spring because the weather is nice.”",
+      "example": "İlkbaharı seviyorum çünkü hava güzel.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I like spring because the weather is nice.”"
+    }
+  ],
+  "targetLang": "tr",
+  "nativeLang": "en",
+  "track": "textbook"
+};

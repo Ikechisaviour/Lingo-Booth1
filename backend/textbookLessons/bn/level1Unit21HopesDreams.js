@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('bn', {
-  slug: 'bn-l1u21',
-  title: 'Level 1 · Unit 21: আশা ও স্বপ্ন — Hopes and Dreams',
-  category: 'future',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Talk about future plans, hopes, and longer-term dreams.',
-  vocabularyGoal: 'Use future, study, work, travel, and aspiration vocabulary.',
-  grammarGoal: 'Use desire with `চাই`, future forms with `করব`, and hope expressions with `আশা করি`.',
-  speakingGoal: 'Describe one realistic plan and one longer dream with a reason.',
-  task: 'Give a short future-self introduction.',
-  expressionPractice: [
-    practice('stating-desire', 'Stating desire', 'Use `চাই`.'),
-    practice('stating-plan', 'Stating plan', 'Use one future form.'),
-    practice('stating-hope', 'Stating hope', 'Use `আশা করি`.'),
+module.exports = {
+  "title": "Level 1 · Unit 21: আশা ও স্বপ্ন — Hopes and Dreams",
+  "category": "future",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "bn-level1unit21hopesdreams-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Talk about future plans, hopes, and longer-term dreams."
+      ],
+      "task": "Give a short future-self introduction."
+    },
+    {
+      "id": "bn-level1unit21hopesdreams-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "bn-level1unit21hopesdreams-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 21: আশা ও স্বপ্ন — Hopes and Dreams with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "bn-level1unit21hopesdreams-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 21: আশা ও স্বপ্ন — Hopes and Dreams sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "bn-level1unit21hopesdreams-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Talk about future plans, hopes, and longer-term dreams."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "bn-level1unit21hopesdreams-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 21: আশা ও স্বপ্ন — Hopes and Dreams with one nearby Bengali form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "bn-level1unit21hopesdreams-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "bn-level1unit21hopesdreams-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "bn-level1unit21hopesdreams-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "bn-level1unit21hopesdreams-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "bn-level1unit21hopesdreams-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Give a short future-self introduction."
+      ],
+      "task": "Give a short future-self introduction."
+    }
   ],
-  relatedPools: ['topic-future', 'topic-goals'],
-  items: [
-    item('ভবিষ্যৎ', 'bhobishyot', '“Future.” A central abstract noun for plans and goals.', 'আমি আমার ভবিষ্যৎ নিয়ে ভাবি।', '“I think about my future.”'),
-    item('স্বপ্ন', 'shopno', '“Dream.” It can be literal or aspirational.', 'আমার স্বপ্ন ডাক্তার হওয়া।', '“My dream is to become a doctor.”'),
-    item('চাই', 'chai', '“Want.” A compact desire form.', 'আমি বাংলা ভালোভাবে শিখতে চাই।', '“I want to learn Bengali well.”'),
-    item('পড়ব', 'poṛbo', '“I will study.” A first-person future form.', 'আমি বিশ্ববিদ্যালয়ে ইঞ্জিনিয়ারিং পড়ব।', '“I will study engineering at university.”'),
-    item('আশা করি', 'asha kori', '“I hope.” A common hopeful frame.', 'আশা করি একদিন কলকাতায় যাব।', '“I hope I will go to Kolkata one day.”'),
-    item('হতে', 'hote', '“To become / to be.” Useful in career dreams.', 'আমি শিক্ষক হতে চাই।', '“I want to become a teacher.”'),
-    item('সুযোগ পেলে', 'sujog pele', '“If I get the opportunity.” A natural condition around future plans.', 'সুযোগ পেলে বিদেশে কাজ করব।', '“If I get the opportunity, I will work abroad.”'),
-    item('একদিন', 'ekdin', '“One day.” A simple phrase for distant hopes.', 'একদিন একটা বই লিখতে চাই।', '“One day I want to write a book.”'),
+  "expressionPractice": [
+    {
+      "id": "stating-desire",
+      "label": "Stating desire",
+      "goal": "Use `চাই`."
+    },
+    {
+      "id": "stating-plan",
+      "label": "Stating plan",
+      "goal": "Use one future form."
+    },
+    {
+      "id": "stating-hope",
+      "label": "Stating hope",
+      "goal": "Use `আশা করি`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-future",
+    "topic-goals"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-orientation"
+      ],
+      "targetText": "পাঠের লক্ষ্য",
+      "romanization": "",
+      "nativeText": "Talk about future plans, hopes, and longer-term dreams.",
+      "pronunciation": "",
+      "exampleTarget": "পাঠের লক্ষ্য",
+      "exampleNative": "The whole lesson is built toward this outcome: Give a short future-self introduction.",
+      "korean": "পাঠের লক্ষ্য",
+      "english": "Talk about future plans, hopes, and longer-term dreams.",
+      "example": "পাঠের লক্ষ্য",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Give a short future-self introduction."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-pronunciation"
+      ],
+      "targetText": "উচ্চারণ পরীক্ষা",
+      "romanization": "",
+      "nativeText": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আমি আমার ভবিষ্যৎ নিয়ে ভাবি।\".",
+      "pronunciation": "",
+      "exampleTarget": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "exampleNative": "“I think about my future.”",
+      "korean": "উচ্চারণ পরীক্ষা",
+      "english": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আমি আমার ভবিষ্যৎ নিয়ে ভাবি।\".",
+      "example": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "exampleEnglish": "“I think about my future.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1"
+      ],
+      "targetText": "ভবিষ্যৎ",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 21: আশা ও স্বপ্ন — Hopes and Dreams with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "exampleNative": "“I think about my future.”",
+      "korean": "ভবিষ্যৎ",
+      "english": "Use the key language of Level 1 · Unit 21: আশা ও স্বপ্ন — Hopes and Dreams with the register and setting that the lesson requires.",
+      "example": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "exampleEnglish": "“I think about my future.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-2"
+      ],
+      "targetText": "স্বপ্ন",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 21: আশা ও স্বপ্ন — Hopes and Dreams sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "আমার স্বপ্ন ডাক্তার হওয়া।",
+      "exampleNative": "“My dream is to become a doctor.”",
+      "korean": "স্বপ্ন",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 21: আশা ও স্বপ্ন — Hopes and Dreams sound precise rather than merely understandable.",
+      "example": "আমার স্বপ্ন ডাক্তার হওয়া।",
+      "exampleEnglish": "“My dream is to become a doctor.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-grammar-1"
+      ],
+      "targetText": "ভবিষ্যৎ",
+      "romanization": "",
+      "nativeText": "Talk about future plans, hopes, and longer-term dreams.",
+      "pronunciation": "",
+      "exampleTarget": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "exampleNative": "“I think about my future.”",
+      "korean": "ভবিষ্যৎ",
+      "english": "Talk about future plans, hopes, and longer-term dreams.",
+      "example": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "exampleEnglish": "“I think about my future.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-grammar-2"
+      ],
+      "targetText": "স্বপ্ন",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 21: আশা ও স্বপ্ন — Hopes and Dreams with one nearby Bengali form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "আমার স্বপ্ন ডাক্তার হওয়া।",
+      "exampleNative": "“My dream is to become a doctor.”",
+      "korean": "স্বপ্ন",
+      "english": "Contrast the main pattern in Level 1 · Unit 21: আশা ও স্বপ্ন — Hopes and Dreams with one nearby Bengali form so the learner can avoid literal translation.",
+      "example": "আমার স্বপ্ন ডাক্তার হওয়া।",
+      "exampleEnglish": "“My dream is to become a doctor.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-reading"
+      ],
+      "targetText": "পাঠ মডেল",
+      "romanization": "",
+      "nativeText": "Read \"একদিন একটা বই লিখতে চাই।\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "একদিন একটা বই লিখতে চাই।",
+      "exampleNative": "“One day I want to write a book.”",
+      "korean": "পাঠ মডেল",
+      "english": "Read \"একদিন একটা বই লিখতে চাই।\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "একদিন একটা বই লিখতে চাই।",
+      "exampleEnglish": "“One day I want to write a book.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-listening"
+      ],
+      "targetText": "সংলাপ মডেল",
+      "romanization": "",
+      "nativeText": "Hear \"একদিন একটা বই লিখতে চাই।\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "একদিন একটা বই লিখতে চাই।",
+      "exampleNative": "“One day I want to write a book.”",
+      "korean": "সংলাপ মডেল",
+      "english": "Hear \"একদিন একটা বই লিখতে চাই।\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "একদিন একটা বই লিখতে চাই।",
+      "exampleEnglish": "“One day I want to write a book.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-writing"
+      ],
+      "targetText": "লেখার অনুশীলন",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"আমি আমার ভবিষ্যৎ নিয়ে ভাবি।\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "লেখার অনুশীলন",
+      "english": "Write your own version after studying \"আমি আমার ভবিষ্যৎ নিয়ে ভাবি।\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-culture"
+      ],
+      "targetText": "ব্যবহার ও প্রসঙ্গ",
+      "romanization": "",
+      "nativeText": "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "আমার স্বপ্ন ডাক্তার হওয়া।",
+      "exampleNative": "“My dream is to become a doctor.”",
+      "korean": "ব্যবহার ও প্রসঙ্গ",
+      "english": "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used.",
+      "example": "আমার স্বপ্ন ডাক্তার হওয়া।",
+      "exampleEnglish": "“My dream is to become a doctor.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "চূড়ান্ত কাজ",
+      "romanization": "",
+      "nativeText": "Give a short future-self introduction.",
+      "pronunciation": "",
+      "exampleTarget": "একদিন একটা বই লিখতে চাই।",
+      "exampleNative": "Give a short future-self introduction.",
+      "korean": "চূড়ান্ত কাজ",
+      "english": "Give a short future-self introduction.",
+      "example": "একদিন একটা বই লিখতে চাই।",
+      "exampleEnglish": "Give a short future-self introduction."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-grammar-2"
+      ],
+      "targetText": "সাধারণ ভুল",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around pronoun levels, verb agreement, case markers, and register. Begin by checking \"আমার স্বপ্ন ডাক্তার হওয়া।\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "আমার স্বপ্ন ডাক্তার হওয়া।",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “My dream is to become a doctor.”",
+      "korean": "সাধারণ ভুল",
+      "english": "Watch for literal-translation mistakes around pronoun levels, verb agreement, case markers, and register. Begin by checking \"আমার স্বপ্ন ডাক্তার হওয়া।\" against the model.",
+      "example": "আমার স্বপ্ন ডাক্তার হওয়া।",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-culture"
+      ],
+      "targetText": "রেজিস্টার",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for familiar, respectful, or formal Bengali before selecting pronouns and verb endings. Compare the social fit of \"আমি আমার ভবিষ্যৎ নিয়ে ভাবি।\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "exampleNative": "“I think about my future.”",
+      "korean": "রেজিস্টার",
+      "english": "Check whether the setting calls for familiar, respectful, or formal Bengali before selecting pronouns and verb endings. Compare the social fit of \"আমি আমার ভবিষ্যৎ নিয়ে ভাবি।\" before reusing it elsewhere.",
+      "example": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "exampleEnglish": "“I think about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "সাবলীলতা",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Bengali message rather than as separate translated fragments. Aim to carry \"একদিন একটা বই লিখতে চাই।\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "একদিন একটা বই লিখতে চাই।",
+      "exampleNative": "“One day I want to write a book.”",
+      "korean": "সাবলীলতা",
+      "english": "Say the idea as one connected Bengali message rather than as separate translated fragments. Aim to carry \"একদিন একটা বই লিখতে চাই।\" as one thought.",
+      "example": "একদিন একটা বই লিখতে চাই।",
+      "exampleEnglish": "“One day I want to write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "প্রয়োগ",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"আমি আমার ভবিষ্যৎ নিয়ে ভাবি।\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "প্রয়োগ",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"আমি আমার ভবিষ্যৎ নিয়ে ভাবি।\" and move it into your own life.",
+      "example": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-grammar-1"
+      ],
+      "targetText": "স্মরণ",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"ভবিষ্যৎ\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "ভবিষ্যৎ",
+      "exampleNative": "“Future.” A central abstract noun for plans and goals.",
+      "korean": "স্মরণ",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"ভবিষ্যৎ\" before looking back.",
+      "example": "ভবিষ্যৎ",
+      "exampleEnglish": "“Future.” A central abstract noun for plans and goals."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-writing"
+      ],
+      "targetText": "বিস্তার",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"একদিন একটা বই লিখতে চাই।\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "একদিন একটা বই লিখতে চাই।",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "বিস্তার",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"একদিন একটা বই লিখতে চাই।\" rather than restarting from a blank sentence.",
+      "example": "একদিন একটা বই লিখতে চাই।",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading"
+      ],
+      "targetText": "তুলনা",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 21: আশা ও স্বপ্ন — Hopes and Dreams with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"আমার স্বপ্ন ডাক্তার হওয়া।\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "আমার স্বপ্ন ডাক্তার হওয়া।",
+      "exampleNative": "“My dream is to become a doctor.”",
+      "korean": "তুলনা",
+      "english": "Compare the central form in Level 1 · Unit 21: আশা ও স্বপ্ন — Hopes and Dreams with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"আমার স্বপ্ন ডাক্তার হওয়া।\" as the comparison line.",
+      "example": "আমার স্বপ্ন ডাক্তার হওয়া।",
+      "exampleEnglish": "“My dream is to become a doctor.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-pronunciation"
+      ],
+      "targetText": "উচ্চারণ সংশোধন",
+      "romanization": "",
+      "nativeText": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আমি আমার ভবিষ্যৎ নিয়ে ভাবি।\".",
+      "pronunciation": "",
+      "exampleTarget": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "exampleNative": "“I think about my future.”",
+      "korean": "উচ্চারণ সংশোধন",
+      "english": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আমি আমার ভবিষ্যৎ নিয়ে ভাবি।\".",
+      "example": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "exampleEnglish": "“I think about my future.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "সংলাপ পরিবর্তন",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"একদিন একটা বই লিখতে চাই।\".",
+      "pronunciation": "",
+      "exampleTarget": "একদিন একটা বই লিখতে চাই।",
+      "exampleNative": "“One day I want to write a book.”",
+      "korean": "সংলাপ পরিবর্তন",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"একদিন একটা বই লিখতে চাই।\".",
+      "example": "একদিন একটা বই লিখতে চাই।",
+      "exampleEnglish": "“One day I want to write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-writing"
+      ],
+      "targetText": "বাক্য গঠন",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"আমি আমার ভবিষ্যৎ নিয়ে ভাবি।\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "exampleNative": "“I think about my future.”",
+      "korean": "বাক্য গঠন",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"আমি আমার ভবিষ্যৎ নিয়ে ভাবি।\" one layer at a time.",
+      "example": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "exampleEnglish": "“I think about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-2"
+      ],
+      "targetText": "দ্রুত পরীক্ষা",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"আমার স্বপ্ন ডাক্তার হওয়া।\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "আমার স্বপ্ন ডাক্তার হওয়া।",
+      "exampleNative": "“My dream is to become a doctor.”",
+      "korean": "দ্রুত পরীক্ষা",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"আমার স্বপ্ন ডাক্তার হওয়া।\" as the deciding example.",
+      "example": "আমার স্বপ্ন ডাক্তার হওয়া।",
+      "exampleEnglish": "“My dream is to become a doctor.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-culture",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "পুনরালোচনা",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"একদিন একটা বই লিখতে চাই।\".",
+      "pronunciation": "",
+      "exampleTarget": "একদিন একটা বই লিখতে চাই।",
+      "exampleNative": "“One day I want to write a book.”",
+      "korean": "পুনরালোচনা",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"একদিন একটা বই লিখতে চাই।\".",
+      "example": "একদিন একটা বই লিখতে চাই।",
+      "exampleEnglish": "“One day I want to write a book.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ভবিষ্যৎ",
+      "romanization": "bhobishyot",
+      "nativeText": "“Future.” A central abstract noun for plans and goals.",
+      "pronunciation": "bhobishyot",
+      "exampleTarget": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "exampleNative": "“I think about my future.”",
+      "korean": "ভবিষ্যৎ",
+      "english": "“Future.” A central abstract noun for plans and goals.",
+      "example": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "exampleEnglish": "“I think about my future.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "romanization": "bhobishyot",
+      "nativeText": "Model use for \"আমি আমার ভবিষ্যৎ নিয়ে ভাবি।\": “I think about my future.”",
+      "pronunciation": "bhobishyot",
+      "exampleTarget": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "exampleNative": "“I think about my future.”",
+      "korean": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "english": "Model use for \"আমি আমার ভবিষ্যৎ নিয়ে ভাবি।\": “I think about my future.”",
+      "example": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "exampleEnglish": "“I think about my future.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ভবিষ্যৎ",
+      "romanization": "bhobishyot",
+      "nativeText": "Usage focus for \"ভবিষ্যৎ\": Use the key language of Level 1 · Unit 21: আশা ও স্বপ্ন — Hopes and Dreams with the register and setting that the lesson requires.",
+      "pronunciation": "bhobishyot",
+      "exampleTarget": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "exampleNative": "Notice what the form is doing here: “I think about my future.”",
+      "korean": "ভবিষ্যৎ",
+      "english": "Usage focus for \"ভবিষ্যৎ\": Use the key language of Level 1 · Unit 21: আশা ও স্বপ্ন — Hopes and Dreams with the register and setting that the lesson requires.",
+      "example": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "exampleEnglish": "Notice what the form is doing here: “I think about my future.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ভবিষ্যৎ",
+      "romanization": "bhobishyot",
+      "nativeText": "Contrast check for \"ভবিষ্যৎ\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "bhobishyot",
+      "exampleTarget": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I think about my future.”",
+      "korean": "ভবিষ্যৎ",
+      "english": "Contrast check for \"ভবিষ্যৎ\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I think about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ভবিষ্যৎ",
+      "romanization": "bhobishyot",
+      "nativeText": "Recall \"ভবিষ্যৎ\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি আমার ভবিষ্যৎ নিয়ে ভাবি।\".",
+      "pronunciation": "bhobishyot",
+      "exampleTarget": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "exampleNative": "Self-check against the model before moving on: “I think about my future.”",
+      "korean": "ভবিষ্যৎ",
+      "english": "Recall \"ভবিষ্যৎ\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি আমার ভবিষ্যৎ নিয়ে ভাবি।\".",
+      "example": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "exampleEnglish": "Self-check against the model before moving on: “I think about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ভবিষ্যৎ",
+      "romanization": "bhobishyot",
+      "nativeText": "Repair \"ভবিষ্যৎ\" inside \"আমি আমার ভবিষ্যৎ নিয়ে ভাবি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 21: আশা ও স্বপ্ন — Hopes and Dreams with the register and setting that the lesson requires.",
+      "pronunciation": "bhobishyot",
+      "exampleTarget": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "exampleNative": "Use the model as the repair target: “I think about my future.”",
+      "korean": "ভবিষ্যৎ",
+      "english": "Repair \"ভবিষ্যৎ\" inside \"আমি আমার ভবিষ্যৎ নিয়ে ভাবি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 21: আশা ও স্বপ্ন — Hopes and Dreams with the register and setting that the lesson requires.",
+      "example": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "exampleEnglish": "Use the model as the repair target: “I think about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ভবিষ্যৎ",
+      "romanization": "bhobishyot",
+      "nativeText": "Transfer \"ভবিষ্যৎ\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি আমার ভবিষ্যৎ নিয়ে ভাবি।\".",
+      "pronunciation": "bhobishyot",
+      "exampleTarget": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I think about my future.”",
+      "korean": "ভবিষ্যৎ",
+      "english": "Transfer \"ভবিষ্যৎ\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি আমার ভবিষ্যৎ নিয়ে ভাবি।\".",
+      "example": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I think about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ভবিষ্যৎ",
+      "romanization": "bhobishyot",
+      "nativeText": "Find one word or phrase that naturally travels with \"ভবিষ্যৎ\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "bhobishyot",
+      "exampleTarget": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I think about my future.”",
+      "korean": "ভবিষ্যৎ",
+      "english": "Find one word or phrase that naturally travels with \"ভবিষ্যৎ\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I think about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ভবিষ্যৎ",
+      "romanization": "bhobishyot",
+      "nativeText": "Listen for \"ভবিষ্যৎ\" inside \"আমি আমার ভবিষ্যৎ নিয়ে ভাবি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "bhobishyot",
+      "exampleTarget": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I think about my future.”",
+      "korean": "ভবিষ্যৎ",
+      "english": "Listen for \"ভবিষ্যৎ\" inside \"আমি আমার ভবিষ্যৎ নিয়ে ভাবি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I think about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ভবিষ্যৎ",
+      "romanization": "bhobishyot",
+      "nativeText": "Write \"ভবিষ্যৎ\" again without looking, then compare the exact written form against \"আমি আমার ভবিষ্যৎ নিয়ে ভাবি।\" before moving on.",
+      "pronunciation": "bhobishyot",
+      "exampleTarget": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "exampleNative": "Use the written model as the final correctness check: “I think about my future.”",
+      "korean": "ভবিষ্যৎ",
+      "english": "Write \"ভবিষ্যৎ\" again without looking, then compare the exact written form against \"আমি আমার ভবিষ্যৎ নিয়ে ভাবি।\" before moving on.",
+      "example": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I think about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ভবিষ্যৎ",
+      "romanization": "bhobishyot",
+      "nativeText": "Check whether \"ভবিষ্যৎ\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I think about my future.”",
+      "pronunciation": "bhobishyot",
+      "exampleTarget": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I think about my future.”",
+      "korean": "ভবিষ্যৎ",
+      "english": "Check whether \"ভবিষ্যৎ\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I think about my future.”",
+      "example": "আমি আমার ভবিষ্যৎ নিয়ে ভাবি।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I think about my future.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "স্বপ্ন",
+      "romanization": "shopno",
+      "nativeText": "“Dream.” It can be literal or aspirational.",
+      "pronunciation": "shopno",
+      "exampleTarget": "আমার স্বপ্ন ডাক্তার হওয়া।",
+      "exampleNative": "“My dream is to become a doctor.”",
+      "korean": "স্বপ্ন",
+      "english": "“Dream.” It can be literal or aspirational.",
+      "example": "আমার স্বপ্ন ডাক্তার হওয়া।",
+      "exampleEnglish": "“My dream is to become a doctor.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "আমার স্বপ্ন ডাক্তার হওয়া।",
+      "romanization": "shopno",
+      "nativeText": "Model use for \"আমার স্বপ্ন ডাক্তার হওয়া।\": “My dream is to become a doctor.”",
+      "pronunciation": "shopno",
+      "exampleTarget": "আমার স্বপ্ন ডাক্তার হওয়া।",
+      "exampleNative": "“My dream is to become a doctor.”",
+      "korean": "আমার স্বপ্ন ডাক্তার হওয়া।",
+      "english": "Model use for \"আমার স্বপ্ন ডাক্তার হওয়া।\": “My dream is to become a doctor.”",
+      "example": "আমার স্বপ্ন ডাক্তার হওয়া।",
+      "exampleEnglish": "“My dream is to become a doctor.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "স্বপ্ন",
+      "romanization": "shopno",
+      "nativeText": "Usage focus for \"স্বপ্ন\": Distinguish the nearby wording choices that make Level 1 · Unit 21: আশা ও স্বপ্ন — Hopes and Dreams sound precise rather than merely understandable.",
+      "pronunciation": "shopno",
+      "exampleTarget": "আমার স্বপ্ন ডাক্তার হওয়া।",
+      "exampleNative": "Notice what the form is doing here: “My dream is to become a doctor.”",
+      "korean": "স্বপ্ন",
+      "english": "Usage focus for \"স্বপ্ন\": Distinguish the nearby wording choices that make Level 1 · Unit 21: আশা ও স্বপ্ন — Hopes and Dreams sound precise rather than merely understandable.",
+      "example": "আমার স্বপ্ন ডাক্তার হওয়া।",
+      "exampleEnglish": "Notice what the form is doing here: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "স্বপ্ন",
+      "romanization": "shopno",
+      "nativeText": "Contrast check for \"স্বপ্ন\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "shopno",
+      "exampleTarget": "আমার স্বপ্ন ডাক্তার হওয়া।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My dream is to become a doctor.”",
+      "korean": "স্বপ্ন",
+      "english": "Contrast check for \"স্বপ্ন\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আমার স্বপ্ন ডাক্তার হওয়া।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "স্বপ্ন",
+      "romanization": "shopno",
+      "nativeText": "Recall \"স্বপ্ন\" from memory, then explain what would change if a nearby alternative replaced it in \"আমার স্বপ্ন ডাক্তার হওয়া।\".",
+      "pronunciation": "shopno",
+      "exampleTarget": "আমার স্বপ্ন ডাক্তার হওয়া।",
+      "exampleNative": "Self-check against the model before moving on: “My dream is to become a doctor.”",
+      "korean": "স্বপ্ন",
+      "english": "Recall \"স্বপ্ন\" from memory, then explain what would change if a nearby alternative replaced it in \"আমার স্বপ্ন ডাক্তার হওয়া।\".",
+      "example": "আমার স্বপ্ন ডাক্তার হওয়া।",
+      "exampleEnglish": "Self-check against the model before moving on: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "স্বপ্ন",
+      "romanization": "shopno",
+      "nativeText": "Repair \"স্বপ্ন\" inside \"আমার স্বপ্ন ডাক্তার হওয়া।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 21: আশা ও স্বপ্ন — Hopes and Dreams sound precise rather than merely understandable.",
+      "pronunciation": "shopno",
+      "exampleTarget": "আমার স্বপ্ন ডাক্তার হওয়া।",
+      "exampleNative": "Use the model as the repair target: “My dream is to become a doctor.”",
+      "korean": "স্বপ্ন",
+      "english": "Repair \"স্বপ্ন\" inside \"আমার স্বপ্ন ডাক্তার হওয়া।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 21: আশা ও স্বপ্ন — Hopes and Dreams sound precise rather than merely understandable.",
+      "example": "আমার স্বপ্ন ডাক্তার হওয়া।",
+      "exampleEnglish": "Use the model as the repair target: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "স্বপ্ন",
+      "romanization": "shopno",
+      "nativeText": "Transfer \"স্বপ্ন\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমার স্বপ্ন ডাক্তার হওয়া।\".",
+      "pronunciation": "shopno",
+      "exampleTarget": "আমার স্বপ্ন ডাক্তার হওয়া।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “My dream is to become a doctor.”",
+      "korean": "স্বপ্ন",
+      "english": "Transfer \"স্বপ্ন\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমার স্বপ্ন ডাক্তার হওয়া।\".",
+      "example": "আমার স্বপ্ন ডাক্তার হওয়া।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "স্বপ্ন",
+      "romanization": "shopno",
+      "nativeText": "Find one word or phrase that naturally travels with \"স্বপ্ন\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "shopno",
+      "exampleTarget": "আমার স্বপ্ন ডাক্তার হওয়া।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “My dream is to become a doctor.”",
+      "korean": "স্বপ্ন",
+      "english": "Find one word or phrase that naturally travels with \"স্বপ্ন\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আমার স্বপ্ন ডাক্তার হওয়া।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "স্বপ্ন",
+      "romanization": "shopno",
+      "nativeText": "Listen for \"স্বপ্ন\" inside \"আমার স্বপ্ন ডাক্তার হওয়া।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "shopno",
+      "exampleTarget": "আমার স্বপ্ন ডাক্তার হওয়া।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My dream is to become a doctor.”",
+      "korean": "স্বপ্ন",
+      "english": "Listen for \"স্বপ্ন\" inside \"আমার স্বপ্ন ডাক্তার হওয়া।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আমার স্বপ্ন ডাক্তার হওয়া।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "স্বপ্ন",
+      "romanization": "shopno",
+      "nativeText": "Write \"স্বপ্ন\" again without looking, then compare the exact written form against \"আমার স্বপ্ন ডাক্তার হওয়া।\" before moving on.",
+      "pronunciation": "shopno",
+      "exampleTarget": "আমার স্বপ্ন ডাক্তার হওয়া।",
+      "exampleNative": "Use the written model as the final correctness check: “My dream is to become a doctor.”",
+      "korean": "স্বপ্ন",
+      "english": "Write \"স্বপ্ন\" again without looking, then compare the exact written form against \"আমার স্বপ্ন ডাক্তার হওয়া।\" before moving on.",
+      "example": "আমার স্বপ্ন ডাক্তার হওয়া।",
+      "exampleEnglish": "Use the written model as the final correctness check: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "স্বপ্ন",
+      "romanization": "shopno",
+      "nativeText": "Check whether \"স্বপ্ন\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My dream is to become a doctor.”",
+      "pronunciation": "shopno",
+      "exampleTarget": "আমার স্বপ্ন ডাক্তার হওয়া।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “My dream is to become a doctor.”",
+      "korean": "স্বপ্ন",
+      "english": "Check whether \"স্বপ্ন\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My dream is to become a doctor.”",
+      "example": "আমার স্বপ্ন ডাক্তার হওয়া।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "চাই",
+      "romanization": "chai",
+      "nativeText": "“Want.” A compact desire form.",
+      "pronunciation": "chai",
+      "exampleTarget": "আমি বাংলা ভালোভাবে শিখতে চাই।",
+      "exampleNative": "“I want to learn Bengali well.”",
+      "korean": "চাই",
+      "english": "“Want.” A compact desire form.",
+      "example": "আমি বাংলা ভালোভাবে শিখতে চাই।",
+      "exampleEnglish": "“I want to learn Bengali well.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "আমি বাংলা ভালোভাবে শিখতে চাই।",
+      "romanization": "chai",
+      "nativeText": "Model use for \"আমি বাংলা ভালোভাবে শিখতে চাই।\": “I want to learn Bengali well.”",
+      "pronunciation": "chai",
+      "exampleTarget": "আমি বাংলা ভালোভাবে শিখতে চাই।",
+      "exampleNative": "“I want to learn Bengali well.”",
+      "korean": "আমি বাংলা ভালোভাবে শিখতে চাই।",
+      "english": "Model use for \"আমি বাংলা ভালোভাবে শিখতে চাই।\": “I want to learn Bengali well.”",
+      "example": "আমি বাংলা ভালোভাবে শিখতে চাই।",
+      "exampleEnglish": "“I want to learn Bengali well.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "চাই",
+      "romanization": "chai",
+      "nativeText": "Usage focus for \"চাই\": “Want.” A compact desire form.",
+      "pronunciation": "chai",
+      "exampleTarget": "আমি বাংলা ভালোভাবে শিখতে চাই।",
+      "exampleNative": "Notice what the form is doing here: “I want to learn Bengali well.”",
+      "korean": "চাই",
+      "english": "Usage focus for \"চাই\": “Want.” A compact desire form.",
+      "example": "আমি বাংলা ভালোভাবে শিখতে চাই।",
+      "exampleEnglish": "Notice what the form is doing here: “I want to learn Bengali well.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "চাই",
+      "romanization": "chai",
+      "nativeText": "Contrast check for \"চাই\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "chai",
+      "exampleTarget": "আমি বাংলা ভালোভাবে শিখতে চাই।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to learn Bengali well.”",
+      "korean": "চাই",
+      "english": "Contrast check for \"চাই\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আমি বাংলা ভালোভাবে শিখতে চাই।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to learn Bengali well.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "চাই",
+      "romanization": "chai",
+      "nativeText": "Recall \"চাই\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি বাংলা ভালোভাবে শিখতে চাই।\".",
+      "pronunciation": "chai",
+      "exampleTarget": "আমি বাংলা ভালোভাবে শিখতে চাই।",
+      "exampleNative": "Self-check against the model before moving on: “I want to learn Bengali well.”",
+      "korean": "চাই",
+      "english": "Recall \"চাই\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি বাংলা ভালোভাবে শিখতে চাই।\".",
+      "example": "আমি বাংলা ভালোভাবে শিখতে চাই।",
+      "exampleEnglish": "Self-check against the model before moving on: “I want to learn Bengali well.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "চাই",
+      "romanization": "chai",
+      "nativeText": "Repair \"চাই\" inside \"আমি বাংলা ভালোভাবে শিখতে চাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Want.” A compact desire form.",
+      "pronunciation": "chai",
+      "exampleTarget": "আমি বাংলা ভালোভাবে শিখতে চাই।",
+      "exampleNative": "Use the model as the repair target: “I want to learn Bengali well.”",
+      "korean": "চাই",
+      "english": "Repair \"চাই\" inside \"আমি বাংলা ভালোভাবে শিখতে চাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Want.” A compact desire form.",
+      "example": "আমি বাংলা ভালোভাবে শিখতে চাই।",
+      "exampleEnglish": "Use the model as the repair target: “I want to learn Bengali well.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "চাই",
+      "romanization": "chai",
+      "nativeText": "Transfer \"চাই\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি বাংলা ভালোভাবে শিখতে চাই।\".",
+      "pronunciation": "chai",
+      "exampleTarget": "আমি বাংলা ভালোভাবে শিখতে চাই।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to learn Bengali well.”",
+      "korean": "চাই",
+      "english": "Transfer \"চাই\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি বাংলা ভালোভাবে শিখতে চাই।\".",
+      "example": "আমি বাংলা ভালোভাবে শিখতে চাই।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to learn Bengali well.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "চাই",
+      "romanization": "chai",
+      "nativeText": "Find one word or phrase that naturally travels with \"চাই\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "chai",
+      "exampleTarget": "আমি বাংলা ভালোভাবে শিখতে চাই।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want to learn Bengali well.”",
+      "korean": "চাই",
+      "english": "Find one word or phrase that naturally travels with \"চাই\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আমি বাংলা ভালোভাবে শিখতে চাই।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want to learn Bengali well.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "চাই",
+      "romanization": "chai",
+      "nativeText": "Listen for \"চাই\" inside \"আমি বাংলা ভালোভাবে শিখতে চাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "chai",
+      "exampleTarget": "আমি বাংলা ভালোভাবে শিখতে চাই।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to learn Bengali well.”",
+      "korean": "চাই",
+      "english": "Listen for \"চাই\" inside \"আমি বাংলা ভালোভাবে শিখতে চাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আমি বাংলা ভালোভাবে শিখতে চাই।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to learn Bengali well.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "চাই",
+      "romanization": "chai",
+      "nativeText": "Write \"চাই\" again without looking, then compare the exact written form against \"আমি বাংলা ভালোভাবে শিখতে চাই।\" before moving on.",
+      "pronunciation": "chai",
+      "exampleTarget": "আমি বাংলা ভালোভাবে শিখতে চাই।",
+      "exampleNative": "Use the written model as the final correctness check: “I want to learn Bengali well.”",
+      "korean": "চাই",
+      "english": "Write \"চাই\" again without looking, then compare the exact written form against \"আমি বাংলা ভালোভাবে শিখতে চাই।\" before moving on.",
+      "example": "আমি বাংলা ভালোভাবে শিখতে চাই।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want to learn Bengali well.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "চাই",
+      "romanization": "chai",
+      "nativeText": "Check whether \"চাই\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to learn Bengali well.”",
+      "pronunciation": "chai",
+      "exampleTarget": "আমি বাংলা ভালোভাবে শিখতে চাই।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want to learn Bengali well.”",
+      "korean": "চাই",
+      "english": "Check whether \"চাই\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to learn Bengali well.”",
+      "example": "আমি বাংলা ভালোভাবে শিখতে চাই।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want to learn Bengali well.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "পড়ব",
+      "romanization": "poṛbo",
+      "nativeText": "“I will study.” A first-person future form.",
+      "pronunciation": "poṛbo",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে ইঞ্জিনিয়ারিং পড়ব।",
+      "exampleNative": "“I will study engineering at university.”",
+      "korean": "পড়ব",
+      "english": "“I will study.” A first-person future form.",
+      "example": "আমি বিশ্ববিদ্যালয়ে ইঞ্জিনিয়ারিং পড়ব।",
+      "exampleEnglish": "“I will study engineering at university.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "আমি বিশ্ববিদ্যালয়ে ইঞ্জিনিয়ারিং পড়ব।",
+      "romanization": "poṛbo",
+      "nativeText": "Model use for \"আমি বিশ্ববিদ্যালয়ে ইঞ্জিনিয়ারিং পড়ব।\": “I will study engineering at university.”",
+      "pronunciation": "poṛbo",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে ইঞ্জিনিয়ারিং পড়ব।",
+      "exampleNative": "“I will study engineering at university.”",
+      "korean": "আমি বিশ্ববিদ্যালয়ে ইঞ্জিনিয়ারিং পড়ব।",
+      "english": "Model use for \"আমি বিশ্ববিদ্যালয়ে ইঞ্জিনিয়ারিং পড়ব।\": “I will study engineering at university.”",
+      "example": "আমি বিশ্ববিদ্যালয়ে ইঞ্জিনিয়ারিং পড়ব।",
+      "exampleEnglish": "“I will study engineering at university.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "পড়ব",
+      "romanization": "poṛbo",
+      "nativeText": "Usage focus for \"পড়ব\": “I will study.” A first-person future form.",
+      "pronunciation": "poṛbo",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে ইঞ্জিনিয়ারিং পড়ব।",
+      "exampleNative": "Notice what the form is doing here: “I will study engineering at university.”",
+      "korean": "পড়ব",
+      "english": "Usage focus for \"পড়ব\": “I will study.” A first-person future form.",
+      "example": "আমি বিশ্ববিদ্যালয়ে ইঞ্জিনিয়ারিং পড়ব।",
+      "exampleEnglish": "Notice what the form is doing here: “I will study engineering at university.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "পড়ব",
+      "romanization": "poṛbo",
+      "nativeText": "Contrast check for \"পড়ব\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "poṛbo",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে ইঞ্জিনিয়ারিং পড়ব।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I will study engineering at university.”",
+      "korean": "পড়ব",
+      "english": "Contrast check for \"পড়ব\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আমি বিশ্ববিদ্যালয়ে ইঞ্জিনিয়ারিং পড়ব।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I will study engineering at university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "পড়ব",
+      "romanization": "poṛbo",
+      "nativeText": "Recall \"পড়ব\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি বিশ্ববিদ্যালয়ে ইঞ্জিনিয়ারিং পড়ব।\".",
+      "pronunciation": "poṛbo",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে ইঞ্জিনিয়ারিং পড়ব।",
+      "exampleNative": "Self-check against the model before moving on: “I will study engineering at university.”",
+      "korean": "পড়ব",
+      "english": "Recall \"পড়ব\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি বিশ্ববিদ্যালয়ে ইঞ্জিনিয়ারিং পড়ব।\".",
+      "example": "আমি বিশ্ববিদ্যালয়ে ইঞ্জিনিয়ারিং পড়ব।",
+      "exampleEnglish": "Self-check against the model before moving on: “I will study engineering at university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "পড়ব",
+      "romanization": "poṛbo",
+      "nativeText": "Repair \"পড়ব\" inside \"আমি বিশ্ববিদ্যালয়ে ইঞ্জিনিয়ারিং পড়ব।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I will study.” A first-person future form.",
+      "pronunciation": "poṛbo",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে ইঞ্জিনিয়ারিং পড়ব।",
+      "exampleNative": "Use the model as the repair target: “I will study engineering at university.”",
+      "korean": "পড়ব",
+      "english": "Repair \"পড়ব\" inside \"আমি বিশ্ববিদ্যালয়ে ইঞ্জিনিয়ারিং পড়ব।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I will study.” A first-person future form.",
+      "example": "আমি বিশ্ববিদ্যালয়ে ইঞ্জিনিয়ারিং পড়ব।",
+      "exampleEnglish": "Use the model as the repair target: “I will study engineering at university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "পড়ব",
+      "romanization": "poṛbo",
+      "nativeText": "Transfer \"পড়ব\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি বিশ্ববিদ্যালয়ে ইঞ্জিনিয়ারিং পড়ব।\".",
+      "pronunciation": "poṛbo",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে ইঞ্জিনিয়ারিং পড়ব।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I will study engineering at university.”",
+      "korean": "পড়ব",
+      "english": "Transfer \"পড়ব\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি বিশ্ববিদ্যালয়ে ইঞ্জিনিয়ারিং পড়ব।\".",
+      "example": "আমি বিশ্ববিদ্যালয়ে ইঞ্জিনিয়ারিং পড়ব।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I will study engineering at university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "পড়ব",
+      "romanization": "poṛbo",
+      "nativeText": "Find one word or phrase that naturally travels with \"পড়ব\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "poṛbo",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে ইঞ্জিনিয়ারিং পড়ব।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I will study engineering at university.”",
+      "korean": "পড়ব",
+      "english": "Find one word or phrase that naturally travels with \"পড়ব\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আমি বিশ্ববিদ্যালয়ে ইঞ্জিনিয়ারিং পড়ব।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I will study engineering at university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "পড়ব",
+      "romanization": "poṛbo",
+      "nativeText": "Listen for \"পড়ব\" inside \"আমি বিশ্ববিদ্যালয়ে ইঞ্জিনিয়ারিং পড়ব।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "poṛbo",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে ইঞ্জিনিয়ারিং পড়ব।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I will study engineering at university.”",
+      "korean": "পড়ব",
+      "english": "Listen for \"পড়ব\" inside \"আমি বিশ্ববিদ্যালয়ে ইঞ্জিনিয়ারিং পড়ব।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আমি বিশ্ববিদ্যালয়ে ইঞ্জিনিয়ারিং পড়ব।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I will study engineering at university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "পড়ব",
+      "romanization": "poṛbo",
+      "nativeText": "Write \"পড়ব\" again without looking, then compare the exact written form against \"আমি বিশ্ববিদ্যালয়ে ইঞ্জিনিয়ারিং পড়ব।\" before moving on.",
+      "pronunciation": "poṛbo",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে ইঞ্জিনিয়ারিং পড়ব।",
+      "exampleNative": "Use the written model as the final correctness check: “I will study engineering at university.”",
+      "korean": "পড়ব",
+      "english": "Write \"পড়ব\" again without looking, then compare the exact written form against \"আমি বিশ্ববিদ্যালয়ে ইঞ্জিনিয়ারিং পড়ব।\" before moving on.",
+      "example": "আমি বিশ্ববিদ্যালয়ে ইঞ্জিনিয়ারিং পড়ব।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I will study engineering at university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "পড়ব",
+      "romanization": "poṛbo",
+      "nativeText": "Check whether \"পড়ব\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I will study engineering at university.”",
+      "pronunciation": "poṛbo",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে ইঞ্জিনিয়ারিং পড়ব।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I will study engineering at university.”",
+      "korean": "পড়ব",
+      "english": "Check whether \"পড়ব\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I will study engineering at university.”",
+      "example": "আমি বিশ্ববিদ্যালয়ে ইঞ্জিনিয়ারিং পড়ব।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I will study engineering at university.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "আশা করি",
+      "romanization": "asha kori",
+      "nativeText": "“I hope.” A common hopeful frame.",
+      "pronunciation": "asha kori",
+      "exampleTarget": "আশা করি একদিন কলকাতায় যাব।",
+      "exampleNative": "“I hope I will go to Kolkata one day.”",
+      "korean": "আশা করি",
+      "english": "“I hope.” A common hopeful frame.",
+      "example": "আশা করি একদিন কলকাতায় যাব।",
+      "exampleEnglish": "“I hope I will go to Kolkata one day.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "আশা করি একদিন কলকাতায় যাব।",
+      "romanization": "asha kori",
+      "nativeText": "Model use for \"আশা করি একদিন কলকাতায় যাব।\": “I hope I will go to Kolkata one day.”",
+      "pronunciation": "asha kori",
+      "exampleTarget": "আশা করি একদিন কলকাতায় যাব।",
+      "exampleNative": "“I hope I will go to Kolkata one day.”",
+      "korean": "আশা করি একদিন কলকাতায় যাব।",
+      "english": "Model use for \"আশা করি একদিন কলকাতায় যাব।\": “I hope I will go to Kolkata one day.”",
+      "example": "আশা করি একদিন কলকাতায় যাব।",
+      "exampleEnglish": "“I hope I will go to Kolkata one day.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "আশা করি",
+      "romanization": "asha kori",
+      "nativeText": "Usage focus for \"আশা করি\": “I hope.” A common hopeful frame.",
+      "pronunciation": "asha kori",
+      "exampleTarget": "আশা করি একদিন কলকাতায় যাব।",
+      "exampleNative": "Notice what the form is doing here: “I hope I will go to Kolkata one day.”",
+      "korean": "আশা করি",
+      "english": "Usage focus for \"আশা করি\": “I hope.” A common hopeful frame.",
+      "example": "আশা করি একদিন কলকাতায় যাব।",
+      "exampleEnglish": "Notice what the form is doing here: “I hope I will go to Kolkata one day.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "আশা করি",
+      "romanization": "asha kori",
+      "nativeText": "Contrast check for \"আশা করি\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "asha kori",
+      "exampleTarget": "আশা করি একদিন কলকাতায় যাব।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I hope I will go to Kolkata one day.”",
+      "korean": "আশা করি",
+      "english": "Contrast check for \"আশা করি\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আশা করি একদিন কলকাতায় যাব।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I hope I will go to Kolkata one day.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "আশা করি",
+      "romanization": "asha kori",
+      "nativeText": "Recall \"আশা করি\" from memory, then explain what would change if a nearby alternative replaced it in \"আশা করি একদিন কলকাতায় যাব।\".",
+      "pronunciation": "asha kori",
+      "exampleTarget": "আশা করি একদিন কলকাতায় যাব।",
+      "exampleNative": "Self-check against the model before moving on: “I hope I will go to Kolkata one day.”",
+      "korean": "আশা করি",
+      "english": "Recall \"আশা করি\" from memory, then explain what would change if a nearby alternative replaced it in \"আশা করি একদিন কলকাতায় যাব।\".",
+      "example": "আশা করি একদিন কলকাতায় যাব।",
+      "exampleEnglish": "Self-check against the model before moving on: “I hope I will go to Kolkata one day.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "আশা করি",
+      "romanization": "asha kori",
+      "nativeText": "Repair \"আশা করি\" inside \"আশা করি একদিন কলকাতায় যাব।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I hope.” A common hopeful frame.",
+      "pronunciation": "asha kori",
+      "exampleTarget": "আশা করি একদিন কলকাতায় যাব।",
+      "exampleNative": "Use the model as the repair target: “I hope I will go to Kolkata one day.”",
+      "korean": "আশা করি",
+      "english": "Repair \"আশা করি\" inside \"আশা করি একদিন কলকাতায় যাব।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I hope.” A common hopeful frame.",
+      "example": "আশা করি একদিন কলকাতায় যাব।",
+      "exampleEnglish": "Use the model as the repair target: “I hope I will go to Kolkata one day.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "আশা করি",
+      "romanization": "asha kori",
+      "nativeText": "Transfer \"আশা করি\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আশা করি একদিন কলকাতায় যাব।\".",
+      "pronunciation": "asha kori",
+      "exampleTarget": "আশা করি একদিন কলকাতায় যাব।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I hope I will go to Kolkata one day.”",
+      "korean": "আশা করি",
+      "english": "Transfer \"আশা করি\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আশা করি একদিন কলকাতায় যাব।\".",
+      "example": "আশা করি একদিন কলকাতায় যাব।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I hope I will go to Kolkata one day.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "আশা করি",
+      "romanization": "asha kori",
+      "nativeText": "Find one word or phrase that naturally travels with \"আশা করি\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "asha kori",
+      "exampleTarget": "আশা করি একদিন কলকাতায় যাব।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I hope I will go to Kolkata one day.”",
+      "korean": "আশা করি",
+      "english": "Find one word or phrase that naturally travels with \"আশা করি\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আশা করি একদিন কলকাতায় যাব।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I hope I will go to Kolkata one day.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "আশা করি",
+      "romanization": "asha kori",
+      "nativeText": "Listen for \"আশা করি\" inside \"আশা করি একদিন কলকাতায় যাব।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "asha kori",
+      "exampleTarget": "আশা করি একদিন কলকাতায় যাব।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I hope I will go to Kolkata one day.”",
+      "korean": "আশা করি",
+      "english": "Listen for \"আশা করি\" inside \"আশা করি একদিন কলকাতায় যাব।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আশা করি একদিন কলকাতায় যাব।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I hope I will go to Kolkata one day.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "আশা করি",
+      "romanization": "asha kori",
+      "nativeText": "Write \"আশা করি\" again without looking, then compare the exact written form against \"আশা করি একদিন কলকাতায় যাব।\" before moving on.",
+      "pronunciation": "asha kori",
+      "exampleTarget": "আশা করি একদিন কলকাতায় যাব।",
+      "exampleNative": "Use the written model as the final correctness check: “I hope I will go to Kolkata one day.”",
+      "korean": "আশা করি",
+      "english": "Write \"আশা করি\" again without looking, then compare the exact written form against \"আশা করি একদিন কলকাতায় যাব।\" before moving on.",
+      "example": "আশা করি একদিন কলকাতায় যাব।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I hope I will go to Kolkata one day.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "আশা করি",
+      "romanization": "asha kori",
+      "nativeText": "Check whether \"আশা করি\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I hope I will go to Kolkata one day.”",
+      "pronunciation": "asha kori",
+      "exampleTarget": "আশা করি একদিন কলকাতায় যাব।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I hope I will go to Kolkata one day.”",
+      "korean": "আশা করি",
+      "english": "Check whether \"আশা করি\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I hope I will go to Kolkata one day.”",
+      "example": "আশা করি একদিন কলকাতায় যাব।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I hope I will go to Kolkata one day.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "হতে",
+      "romanization": "hote",
+      "nativeText": "“To become / to be.” Useful in career dreams.",
+      "pronunciation": "hote",
+      "exampleTarget": "আমি শিক্ষক হতে চাই।",
+      "exampleNative": "“I want to become a teacher.”",
+      "korean": "হতে",
+      "english": "“To become / to be.” Useful in career dreams.",
+      "example": "আমি শিক্ষক হতে চাই।",
+      "exampleEnglish": "“I want to become a teacher.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "আমি শিক্ষক হতে চাই।",
+      "romanization": "hote",
+      "nativeText": "Model use for \"আমি শিক্ষক হতে চাই।\": “I want to become a teacher.”",
+      "pronunciation": "hote",
+      "exampleTarget": "আমি শিক্ষক হতে চাই।",
+      "exampleNative": "“I want to become a teacher.”",
+      "korean": "আমি শিক্ষক হতে চাই।",
+      "english": "Model use for \"আমি শিক্ষক হতে চাই।\": “I want to become a teacher.”",
+      "example": "আমি শিক্ষক হতে চাই।",
+      "exampleEnglish": "“I want to become a teacher.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "হতে",
+      "romanization": "hote",
+      "nativeText": "Usage focus for \"হতে\": “To become / to be.” Useful in career dreams.",
+      "pronunciation": "hote",
+      "exampleTarget": "আমি শিক্ষক হতে চাই।",
+      "exampleNative": "Notice what the form is doing here: “I want to become a teacher.”",
+      "korean": "হতে",
+      "english": "Usage focus for \"হতে\": “To become / to be.” Useful in career dreams.",
+      "example": "আমি শিক্ষক হতে চাই।",
+      "exampleEnglish": "Notice what the form is doing here: “I want to become a teacher.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "হতে",
+      "romanization": "hote",
+      "nativeText": "Contrast check for \"হতে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "hote",
+      "exampleTarget": "আমি শিক্ষক হতে চাই।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to become a teacher.”",
+      "korean": "হতে",
+      "english": "Contrast check for \"হতে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আমি শিক্ষক হতে চাই।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to become a teacher.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "হতে",
+      "romanization": "hote",
+      "nativeText": "Recall \"হতে\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি শিক্ষক হতে চাই।\".",
+      "pronunciation": "hote",
+      "exampleTarget": "আমি শিক্ষক হতে চাই।",
+      "exampleNative": "Self-check against the model before moving on: “I want to become a teacher.”",
+      "korean": "হতে",
+      "english": "Recall \"হতে\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি শিক্ষক হতে চাই।\".",
+      "example": "আমি শিক্ষক হতে চাই।",
+      "exampleEnglish": "Self-check against the model before moving on: “I want to become a teacher.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "হতে",
+      "romanization": "hote",
+      "nativeText": "Repair \"হতে\" inside \"আমি শিক্ষক হতে চাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To become / to be.” Useful in career dreams.",
+      "pronunciation": "hote",
+      "exampleTarget": "আমি শিক্ষক হতে চাই।",
+      "exampleNative": "Use the model as the repair target: “I want to become a teacher.”",
+      "korean": "হতে",
+      "english": "Repair \"হতে\" inside \"আমি শিক্ষক হতে চাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To become / to be.” Useful in career dreams.",
+      "example": "আমি শিক্ষক হতে চাই।",
+      "exampleEnglish": "Use the model as the repair target: “I want to become a teacher.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "হতে",
+      "romanization": "hote",
+      "nativeText": "Transfer \"হতে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি শিক্ষক হতে চাই।\".",
+      "pronunciation": "hote",
+      "exampleTarget": "আমি শিক্ষক হতে চাই।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to become a teacher.”",
+      "korean": "হতে",
+      "english": "Transfer \"হতে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি শিক্ষক হতে চাই।\".",
+      "example": "আমি শিক্ষক হতে চাই।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to become a teacher.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "হতে",
+      "romanization": "hote",
+      "nativeText": "Find one word or phrase that naturally travels with \"হতে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "hote",
+      "exampleTarget": "আমি শিক্ষক হতে চাই।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want to become a teacher.”",
+      "korean": "হতে",
+      "english": "Find one word or phrase that naturally travels with \"হতে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আমি শিক্ষক হতে চাই।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want to become a teacher.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "হতে",
+      "romanization": "hote",
+      "nativeText": "Listen for \"হতে\" inside \"আমি শিক্ষক হতে চাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "hote",
+      "exampleTarget": "আমি শিক্ষক হতে চাই।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to become a teacher.”",
+      "korean": "হতে",
+      "english": "Listen for \"হতে\" inside \"আমি শিক্ষক হতে চাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আমি শিক্ষক হতে চাই।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to become a teacher.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "হতে",
+      "romanization": "hote",
+      "nativeText": "Write \"হতে\" again without looking, then compare the exact written form against \"আমি শিক্ষক হতে চাই।\" before moving on.",
+      "pronunciation": "hote",
+      "exampleTarget": "আমি শিক্ষক হতে চাই।",
+      "exampleNative": "Use the written model as the final correctness check: “I want to become a teacher.”",
+      "korean": "হতে",
+      "english": "Write \"হতে\" again without looking, then compare the exact written form against \"আমি শিক্ষক হতে চাই।\" before moving on.",
+      "example": "আমি শিক্ষক হতে চাই।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want to become a teacher.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "হতে",
+      "romanization": "hote",
+      "nativeText": "Check whether \"হতে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to become a teacher.”",
+      "pronunciation": "hote",
+      "exampleTarget": "আমি শিক্ষক হতে চাই।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want to become a teacher.”",
+      "korean": "হতে",
+      "english": "Check whether \"হতে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to become a teacher.”",
+      "example": "আমি শিক্ষক হতে চাই।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want to become a teacher.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "সুযোগ পেলে",
+      "romanization": "sujog pele",
+      "nativeText": "“If I get the opportunity.” A natural condition around future plans.",
+      "pronunciation": "sujog pele",
+      "exampleTarget": "সুযোগ পেলে বিদেশে কাজ করব।",
+      "exampleNative": "“If I get the opportunity, I will work abroad.”",
+      "korean": "সুযোগ পেলে",
+      "english": "“If I get the opportunity.” A natural condition around future plans.",
+      "example": "সুযোগ পেলে বিদেশে কাজ করব।",
+      "exampleEnglish": "“If I get the opportunity, I will work abroad.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "সুযোগ পেলে বিদেশে কাজ করব।",
+      "romanization": "sujog pele",
+      "nativeText": "Model use for \"সুযোগ পেলে বিদেশে কাজ করব।\": “If I get the opportunity, I will work abroad.”",
+      "pronunciation": "sujog pele",
+      "exampleTarget": "সুযোগ পেলে বিদেশে কাজ করব।",
+      "exampleNative": "“If I get the opportunity, I will work abroad.”",
+      "korean": "সুযোগ পেলে বিদেশে কাজ করব।",
+      "english": "Model use for \"সুযোগ পেলে বিদেশে কাজ করব।\": “If I get the opportunity, I will work abroad.”",
+      "example": "সুযোগ পেলে বিদেশে কাজ করব।",
+      "exampleEnglish": "“If I get the opportunity, I will work abroad.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "সুযোগ পেলে",
+      "romanization": "sujog pele",
+      "nativeText": "Usage focus for \"সুযোগ পেলে\": “If I get the opportunity.” A natural condition around future plans.",
+      "pronunciation": "sujog pele",
+      "exampleTarget": "সুযোগ পেলে বিদেশে কাজ করব।",
+      "exampleNative": "Notice what the form is doing here: “If I get the opportunity, I will work abroad.”",
+      "korean": "সুযোগ পেলে",
+      "english": "Usage focus for \"সুযোগ পেলে\": “If I get the opportunity.” A natural condition around future plans.",
+      "example": "সুযোগ পেলে বিদেশে কাজ করব।",
+      "exampleEnglish": "Notice what the form is doing here: “If I get the opportunity, I will work abroad.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "সুযোগ পেলে",
+      "romanization": "sujog pele",
+      "nativeText": "Contrast check for \"সুযোগ পেলে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "sujog pele",
+      "exampleTarget": "সুযোগ পেলে বিদেশে কাজ করব।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “If I get the opportunity, I will work abroad.”",
+      "korean": "সুযোগ পেলে",
+      "english": "Contrast check for \"সুযোগ পেলে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "সুযোগ পেলে বিদেশে কাজ করব।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “If I get the opportunity, I will work abroad.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "সুযোগ পেলে",
+      "romanization": "sujog pele",
+      "nativeText": "Recall \"সুযোগ পেলে\" from memory, then explain what would change if a nearby alternative replaced it in \"সুযোগ পেলে বিদেশে কাজ করব।\".",
+      "pronunciation": "sujog pele",
+      "exampleTarget": "সুযোগ পেলে বিদেশে কাজ করব।",
+      "exampleNative": "Self-check against the model before moving on: “If I get the opportunity, I will work abroad.”",
+      "korean": "সুযোগ পেলে",
+      "english": "Recall \"সুযোগ পেলে\" from memory, then explain what would change if a nearby alternative replaced it in \"সুযোগ পেলে বিদেশে কাজ করব।\".",
+      "example": "সুযোগ পেলে বিদেশে কাজ করব।",
+      "exampleEnglish": "Self-check against the model before moving on: “If I get the opportunity, I will work abroad.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "সুযোগ পেলে",
+      "romanization": "sujog pele",
+      "nativeText": "Repair \"সুযোগ পেলে\" inside \"সুযোগ পেলে বিদেশে কাজ করব।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “If I get the opportunity.” A natural condition around future plans.",
+      "pronunciation": "sujog pele",
+      "exampleTarget": "সুযোগ পেলে বিদেশে কাজ করব।",
+      "exampleNative": "Use the model as the repair target: “If I get the opportunity, I will work abroad.”",
+      "korean": "সুযোগ পেলে",
+      "english": "Repair \"সুযোগ পেলে\" inside \"সুযোগ পেলে বিদেশে কাজ করব।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “If I get the opportunity.” A natural condition around future plans.",
+      "example": "সুযোগ পেলে বিদেশে কাজ করব।",
+      "exampleEnglish": "Use the model as the repair target: “If I get the opportunity, I will work abroad.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "সুযোগ পেলে",
+      "romanization": "sujog pele",
+      "nativeText": "Transfer \"সুযোগ পেলে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"সুযোগ পেলে বিদেশে কাজ করব।\".",
+      "pronunciation": "sujog pele",
+      "exampleTarget": "সুযোগ পেলে বিদেশে কাজ করব।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “If I get the opportunity, I will work abroad.”",
+      "korean": "সুযোগ পেলে",
+      "english": "Transfer \"সুযোগ পেলে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"সুযোগ পেলে বিদেশে কাজ করব।\".",
+      "example": "সুযোগ পেলে বিদেশে কাজ করব।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “If I get the opportunity, I will work abroad.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "সুযোগ পেলে",
+      "romanization": "sujog pele",
+      "nativeText": "Find one word or phrase that naturally travels with \"সুযোগ পেলে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "sujog pele",
+      "exampleTarget": "সুযোগ পেলে বিদেশে কাজ করব।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “If I get the opportunity, I will work abroad.”",
+      "korean": "সুযোগ পেলে",
+      "english": "Find one word or phrase that naturally travels with \"সুযোগ পেলে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "সুযোগ পেলে বিদেশে কাজ করব।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “If I get the opportunity, I will work abroad.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "সুযোগ পেলে",
+      "romanization": "sujog pele",
+      "nativeText": "Listen for \"সুযোগ পেলে\" inside \"সুযোগ পেলে বিদেশে কাজ করব।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "sujog pele",
+      "exampleTarget": "সুযোগ পেলে বিদেশে কাজ করব।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “If I get the opportunity, I will work abroad.”",
+      "korean": "সুযোগ পেলে",
+      "english": "Listen for \"সুযোগ পেলে\" inside \"সুযোগ পেলে বিদেশে কাজ করব।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "সুযোগ পেলে বিদেশে কাজ করব।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “If I get the opportunity, I will work abroad.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "সুযোগ পেলে",
+      "romanization": "sujog pele",
+      "nativeText": "Write \"সুযোগ পেলে\" again without looking, then compare the exact written form against \"সুযোগ পেলে বিদেশে কাজ করব।\" before moving on.",
+      "pronunciation": "sujog pele",
+      "exampleTarget": "সুযোগ পেলে বিদেশে কাজ করব।",
+      "exampleNative": "Use the written model as the final correctness check: “If I get the opportunity, I will work abroad.”",
+      "korean": "সুযোগ পেলে",
+      "english": "Write \"সুযোগ পেলে\" again without looking, then compare the exact written form against \"সুযোগ পেলে বিদেশে কাজ করব।\" before moving on.",
+      "example": "সুযোগ পেলে বিদেশে কাজ করব।",
+      "exampleEnglish": "Use the written model as the final correctness check: “If I get the opportunity, I will work abroad.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "সুযোগ পেলে",
+      "romanization": "sujog pele",
+      "nativeText": "Check whether \"সুযোগ পেলে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “If I get the opportunity, I will work abroad.”",
+      "pronunciation": "sujog pele",
+      "exampleTarget": "সুযোগ পেলে বিদেশে কাজ করব।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “If I get the opportunity, I will work abroad.”",
+      "korean": "সুযোগ পেলে",
+      "english": "Check whether \"সুযোগ পেলে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “If I get the opportunity, I will work abroad.”",
+      "example": "সুযোগ পেলে বিদেশে কাজ করব।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “If I get the opportunity, I will work abroad.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "একদিন",
+      "romanization": "ekdin",
+      "nativeText": "“One day.” A simple phrase for distant hopes.",
+      "pronunciation": "ekdin",
+      "exampleTarget": "একদিন একটা বই লিখতে চাই।",
+      "exampleNative": "“One day I want to write a book.”",
+      "korean": "একদিন",
+      "english": "“One day.” A simple phrase for distant hopes.",
+      "example": "একদিন একটা বই লিখতে চাই।",
+      "exampleEnglish": "“One day I want to write a book.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "একদিন একটা বই লিখতে চাই।",
+      "romanization": "ekdin",
+      "nativeText": "Model use for \"একদিন একটা বই লিখতে চাই।\": “One day I want to write a book.”",
+      "pronunciation": "ekdin",
+      "exampleTarget": "একদিন একটা বই লিখতে চাই।",
+      "exampleNative": "“One day I want to write a book.”",
+      "korean": "একদিন একটা বই লিখতে চাই।",
+      "english": "Model use for \"একদিন একটা বই লিখতে চাই।\": “One day I want to write a book.”",
+      "example": "একদিন একটা বই লিখতে চাই।",
+      "exampleEnglish": "“One day I want to write a book.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "একদিন",
+      "romanization": "ekdin",
+      "nativeText": "Usage focus for \"একদিন\": “One day.” A simple phrase for distant hopes.",
+      "pronunciation": "ekdin",
+      "exampleTarget": "একদিন একটা বই লিখতে চাই।",
+      "exampleNative": "Notice what the form is doing here: “One day I want to write a book.”",
+      "korean": "একদিন",
+      "english": "Usage focus for \"একদিন\": “One day.” A simple phrase for distant hopes.",
+      "example": "একদিন একটা বই লিখতে চাই।",
+      "exampleEnglish": "Notice what the form is doing here: “One day I want to write a book.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "একদিন",
+      "romanization": "ekdin",
+      "nativeText": "Contrast check for \"একদিন\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ekdin",
+      "exampleTarget": "একদিন একটা বই লিখতে চাই।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “One day I want to write a book.”",
+      "korean": "একদিন",
+      "english": "Contrast check for \"একদিন\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "একদিন একটা বই লিখতে চাই।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “One day I want to write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "একদিন",
+      "romanization": "ekdin",
+      "nativeText": "Recall \"একদিন\" from memory, then explain what would change if a nearby alternative replaced it in \"একদিন একটা বই লিখতে চাই।\".",
+      "pronunciation": "ekdin",
+      "exampleTarget": "একদিন একটা বই লিখতে চাই।",
+      "exampleNative": "Self-check against the model before moving on: “One day I want to write a book.”",
+      "korean": "একদিন",
+      "english": "Recall \"একদিন\" from memory, then explain what would change if a nearby alternative replaced it in \"একদিন একটা বই লিখতে চাই।\".",
+      "example": "একদিন একটা বই লিখতে চাই।",
+      "exampleEnglish": "Self-check against the model before moving on: “One day I want to write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "একদিন",
+      "romanization": "ekdin",
+      "nativeText": "Repair \"একদিন\" inside \"একদিন একটা বই লিখতে চাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “One day.” A simple phrase for distant hopes.",
+      "pronunciation": "ekdin",
+      "exampleTarget": "একদিন একটা বই লিখতে চাই।",
+      "exampleNative": "Use the model as the repair target: “One day I want to write a book.”",
+      "korean": "একদিন",
+      "english": "Repair \"একদিন\" inside \"একদিন একটা বই লিখতে চাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “One day.” A simple phrase for distant hopes.",
+      "example": "একদিন একটা বই লিখতে চাই।",
+      "exampleEnglish": "Use the model as the repair target: “One day I want to write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "একদিন",
+      "romanization": "ekdin",
+      "nativeText": "Transfer \"একদিন\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"একদিন একটা বই লিখতে চাই।\".",
+      "pronunciation": "ekdin",
+      "exampleTarget": "একদিন একটা বই লিখতে চাই।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “One day I want to write a book.”",
+      "korean": "একদিন",
+      "english": "Transfer \"একদিন\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"একদিন একটা বই লিখতে চাই।\".",
+      "example": "একদিন একটা বই লিখতে চাই।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “One day I want to write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "একদিন",
+      "romanization": "ekdin",
+      "nativeText": "Find one word or phrase that naturally travels with \"একদিন\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ekdin",
+      "exampleTarget": "একদিন একটা বই লিখতে চাই।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “One day I want to write a book.”",
+      "korean": "একদিন",
+      "english": "Find one word or phrase that naturally travels with \"একদিন\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "একদিন একটা বই লিখতে চাই।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “One day I want to write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "একদিন",
+      "romanization": "ekdin",
+      "nativeText": "Listen for \"একদিন\" inside \"একদিন একটা বই লিখতে চাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ekdin",
+      "exampleTarget": "একদিন একটা বই লিখতে চাই।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “One day I want to write a book.”",
+      "korean": "একদিন",
+      "english": "Listen for \"একদিন\" inside \"একদিন একটা বই লিখতে চাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "একদিন একটা বই লিখতে চাই।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “One day I want to write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "একদিন",
+      "romanization": "ekdin",
+      "nativeText": "Write \"একদিন\" again without looking, then compare the exact written form against \"একদিন একটা বই লিখতে চাই।\" before moving on.",
+      "pronunciation": "ekdin",
+      "exampleTarget": "একদিন একটা বই লিখতে চাই।",
+      "exampleNative": "Use the written model as the final correctness check: “One day I want to write a book.”",
+      "korean": "একদিন",
+      "english": "Write \"একদিন\" again without looking, then compare the exact written form against \"একদিন একটা বই লিখতে চাই।\" before moving on.",
+      "example": "একদিন একটা বই লিখতে চাই।",
+      "exampleEnglish": "Use the written model as the final correctness check: “One day I want to write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit21hopesdreams-vocabulary-1",
+        "bn-level1unit21hopesdreams-vocabulary-2",
+        "bn-level1unit21hopesdreams-grammar-1",
+        "bn-level1unit21hopesdreams-grammar-2",
+        "bn-level1unit21hopesdreams-reading",
+        "bn-level1unit21hopesdreams-listening",
+        "bn-level1unit21hopesdreams-writing",
+        "bn-level1unit21hopesdreams-task"
+      ],
+      "targetText": "একদিন",
+      "romanization": "ekdin",
+      "nativeText": "Check whether \"একদিন\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “One day I want to write a book.”",
+      "pronunciation": "ekdin",
+      "exampleTarget": "একদিন একটা বই লিখতে চাই।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “One day I want to write a book.”",
+      "korean": "একদিন",
+      "english": "Check whether \"একদিন\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “One day I want to write a book.”",
+      "example": "একদিন একটা বই লিখতে চাই।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “One day I want to write a book.”"
+    }
+  ],
+  "targetLang": "bn",
+  "nativeLang": "en",
+  "track": "textbook"
+};

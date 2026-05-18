@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('nl', {
-  slug: 'nl-l1u8',
-  title: 'Level 1 · Unit 8: Winkelen — Shopping',
-  category: 'shopping',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Shop for everyday items, ask prices, compare options, and pay.',
-  vocabularyGoal: 'Use price, size, color, and payment vocabulary.',
-  grammarGoal: 'Use `de/het` awareness with demonstratives such as `deze/dit` and simple comparatives with `-er` or `meer`.',
-  speakingGoal: 'Ask a price, request one item, and compare two options.',
-  task: 'Buy one practical item in a winkel or market stall.',
-  expressionPractice: [
-    practice('asking-price', 'Asking price', 'Use `hoeveel kost dit?`.'),
-    practice('choosing-item', 'Choosing item', 'Use `deze` or `dit` correctly.'),
-    practice('comparing', 'Comparing items', 'Use `goedkoper`.'),
+module.exports = {
+  "title": "Level 1 · Unit 8: Winkelen — Shopping",
+  "category": "shopping",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "nl-level1unit08shopping-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Shop for everyday items, ask prices, compare options, and pay."
+      ],
+      "task": "Buy one practical item in a winkel or market stall."
+    },
+    {
+      "id": "nl-level1unit08shopping-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "nl-level1unit08shopping-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 8: Winkelen — Shopping with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "nl-level1unit08shopping-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 8: Winkelen — Shopping sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "nl-level1unit08shopping-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Shop for everyday items, ask prices, compare options, and pay."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "nl-level1unit08shopping-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 8: Winkelen — Shopping with one nearby Dutch form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "nl-level1unit08shopping-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "nl-level1unit08shopping-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "nl-level1unit08shopping-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "nl-level1unit08shopping-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "nl-level1unit08shopping-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Buy one practical item in a winkel or market stall."
+      ],
+      "task": "Buy one practical item in a winkel or market stall."
+    }
   ],
-  relatedPools: ['topic-shopping', 'topic-service'],
-  items: [
-    item('hoeveel kost dit?', 'hoo-FEEL kost dit', '“How much does this cost?” A basic service question.', 'Hoeveel kost deze tas?', '“How much does this bag cost?”'),
-    item('deze / dit', 'DAY-zə / dit', '“This” for `de` nouns / `het` nouns. The article class matters even when English gives no clue.', 'Ik wil deze tas en dit boek.', '“I want this bag and this book.”'),
-    item('goedkoper', 'khood-KOH-per', '“Cheaper.” The common comparative adds `-er`.', 'Heeft u iets goedkoper?', '“Do you have something cheaper?”'),
-    item('duur', 'dyr', '“Expensive.” A short adjective common in shopping talk.', 'Deze jas is duur.', '“This coat is expensive.”'),
-    item('grote maat', 'KHROH-tə maht', '“Large size.” The adjective takes `-e` before many attributed nouns.', 'Ik zoek een grote maat.', '“I am looking for a large size.”'),
-    item('rode trui', 'ROH-də troy', '“Red sweater.” Color adjectives often show the same attributive `-e`.', 'Heeft u een rode trui?', '“Do you have a red sweater?”'),
-    item('een kilo', 'ən KEE-loh', '“One kilo.” Markets use measures naturally with food nouns.', 'Ik wil een kilo appels.', '“I want one kilo of apples.”'),
-    item('contant / met pin', 'kon-TANT / met pin', '“Cash / by card.” `Met pin` is the everyday Dutch payment phrase.', 'Kan ik met pin betalen?', '“Can I pay by card?”'),
+  "expressionPractice": [
+    {
+      "id": "asking-price",
+      "label": "Asking price",
+      "goal": "Use `hoeveel kost dit?`."
+    },
+    {
+      "id": "choosing-item",
+      "label": "Choosing item",
+      "goal": "Use `deze` or `dit` correctly."
+    },
+    {
+      "id": "comparing",
+      "label": "Comparing items",
+      "goal": "Use `goedkoper`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-shopping",
+    "topic-service"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit08shopping-orientation"
+      ],
+      "targetText": "lesdoel",
+      "romanization": "",
+      "nativeText": "Shop for everyday items, ask prices, compare options, and pay.",
+      "pronunciation": "",
+      "exampleTarget": "lesdoel",
+      "exampleNative": "The whole lesson is built toward this outcome: Buy one practical item in a winkel or market stall.",
+      "korean": "lesdoel",
+      "english": "Shop for everyday items, ask prices, compare options, and pay.",
+      "example": "lesdoel",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Buy one practical item in a winkel or market stall."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "nl-level1unit08shopping-pronunciation"
+      ],
+      "targetText": "klankcontrole",
+      "romanization": "",
+      "nativeText": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Hoeveel kost deze tas?\".",
+      "pronunciation": "",
+      "exampleTarget": "Hoeveel kost deze tas?",
+      "exampleNative": "“How much does this bag cost?”",
+      "korean": "klankcontrole",
+      "english": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Hoeveel kost deze tas?\".",
+      "example": "Hoeveel kost deze tas?",
+      "exampleEnglish": "“How much does this bag cost?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1"
+      ],
+      "targetText": "hoeveel kost dit?",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 8: Winkelen — Shopping with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Hoeveel kost deze tas?",
+      "exampleNative": "“How much does this bag cost?”",
+      "korean": "hoeveel kost dit?",
+      "english": "Use the key language of Level 1 · Unit 8: Winkelen — Shopping with the register and setting that the lesson requires.",
+      "example": "Hoeveel kost deze tas?",
+      "exampleEnglish": "“How much does this bag cost?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-2"
+      ],
+      "targetText": "deze / dit",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 8: Winkelen — Shopping sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Ik wil deze tas en dit boek.",
+      "exampleNative": "“I want this bag and this book.”",
+      "korean": "deze / dit",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 8: Winkelen — Shopping sound precise rather than merely understandable.",
+      "example": "Ik wil deze tas en dit boek.",
+      "exampleEnglish": "“I want this bag and this book.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "nl-level1unit08shopping-grammar-1"
+      ],
+      "targetText": "hoeveel kost dit?",
+      "romanization": "",
+      "nativeText": "Shop for everyday items, ask prices, compare options, and pay.",
+      "pronunciation": "",
+      "exampleTarget": "Hoeveel kost deze tas?",
+      "exampleNative": "“How much does this bag cost?”",
+      "korean": "hoeveel kost dit?",
+      "english": "Shop for everyday items, ask prices, compare options, and pay.",
+      "example": "Hoeveel kost deze tas?",
+      "exampleEnglish": "“How much does this bag cost?”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "nl-level1unit08shopping-grammar-2"
+      ],
+      "targetText": "deze / dit",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 8: Winkelen — Shopping with one nearby Dutch form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Ik wil deze tas en dit boek.",
+      "exampleNative": "“I want this bag and this book.”",
+      "korean": "deze / dit",
+      "english": "Contrast the main pattern in Level 1 · Unit 8: Winkelen — Shopping with one nearby Dutch form so the learner can avoid literal translation.",
+      "example": "Ik wil deze tas en dit boek.",
+      "exampleEnglish": "“I want this bag and this book.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "nl-level1unit08shopping-reading"
+      ],
+      "targetText": "leesmodel",
+      "romanization": "",
+      "nativeText": "Read \"Kan ik met pin betalen?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Kan ik met pin betalen?",
+      "exampleNative": "“Can I pay by card?”",
+      "korean": "leesmodel",
+      "english": "Read \"Kan ik met pin betalen?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Kan ik met pin betalen?",
+      "exampleEnglish": "“Can I pay by card?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit08shopping-listening"
+      ],
+      "targetText": "dialoogmodel",
+      "romanization": "",
+      "nativeText": "Hear \"Kan ik met pin betalen?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Kan ik met pin betalen?",
+      "exampleNative": "“Can I pay by card?”",
+      "korean": "dialoogmodel",
+      "english": "Hear \"Kan ik met pin betalen?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Kan ik met pin betalen?",
+      "exampleEnglish": "“Can I pay by card?”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "nl-level1unit08shopping-writing"
+      ],
+      "targetText": "schrijfoefening",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Hoeveel kost deze tas?\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Hoeveel kost deze tas?",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "schrijfoefening",
+      "english": "Write your own version after studying \"Hoeveel kost deze tas?\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Hoeveel kost deze tas?",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "nl-level1unit08shopping-culture"
+      ],
+      "targetText": "gebruik en context",
+      "romanization": "",
+      "nativeText": "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Ik wil deze tas en dit boek.",
+      "exampleNative": "“I want this bag and this book.”",
+      "korean": "gebruik en context",
+      "english": "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used.",
+      "example": "Ik wil deze tas en dit boek.",
+      "exampleEnglish": "“I want this bag and this book.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "eindtaak",
+      "romanization": "",
+      "nativeText": "Buy one practical item in a winkel or market stall.",
+      "pronunciation": "",
+      "exampleTarget": "Kan ik met pin betalen?",
+      "exampleNative": "Buy one practical item in a winkel or market stall.",
+      "korean": "eindtaak",
+      "english": "Buy one practical item in a winkel or market stall.",
+      "example": "Kan ik met pin betalen?",
+      "exampleEnglish": "Buy one practical item in a winkel or market stall."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit08shopping-grammar-2"
+      ],
+      "targetText": "veelgemaakte fout",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around verb-second order, separable verbs, pronouns, and article choice. Begin by checking \"Ik wil deze tas en dit boek.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Ik wil deze tas en dit boek.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “I want this bag and this book.”",
+      "korean": "veelgemaakte fout",
+      "english": "Watch for literal-translation mistakes around verb-second order, separable verbs, pronouns, and article choice. Begin by checking \"Ik wil deze tas en dit boek.\" against the model.",
+      "example": "Ik wil deze tas en dit boek.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “I want this bag and this book.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-culture"
+      ],
+      "targetText": "register",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for jij, u, a service register, or a more relaxed everyday choice before selecting the final wording. Compare the social fit of \"Hoeveel kost deze tas?\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Hoeveel kost deze tas?",
+      "exampleNative": "“How much does this bag cost?”",
+      "korean": "register",
+      "english": "Check whether the setting calls for jij, u, a service register, or a more relaxed everyday choice before selecting the final wording. Compare the social fit of \"Hoeveel kost deze tas?\" before reusing it elsewhere.",
+      "example": "Hoeveel kost deze tas?",
+      "exampleEnglish": "“How much does this bag cost?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "vloeiendheid",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Dutch message rather than as separate translated fragments. Aim to carry \"Kan ik met pin betalen?\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Kan ik met pin betalen?",
+      "exampleNative": "“Can I pay by card?”",
+      "korean": "vloeiendheid",
+      "english": "Say the idea as one connected Dutch message rather than as separate translated fragments. Aim to carry \"Kan ik met pin betalen?\" as one thought.",
+      "example": "Kan ik met pin betalen?",
+      "exampleEnglish": "“Can I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "toepassing",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Hoeveel kost deze tas?\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Hoeveel kost deze tas?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "toepassing",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Hoeveel kost deze tas?\" and move it into your own life.",
+      "example": "Hoeveel kost deze tas?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-grammar-1"
+      ],
+      "targetText": "actief ophalen",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"hoeveel kost dit?\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "hoeveel kost dit?",
+      "exampleNative": "“How much does this cost?” A basic service question.",
+      "korean": "actief ophalen",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"hoeveel kost dit?\" before looking back.",
+      "example": "hoeveel kost dit?",
+      "exampleEnglish": "“How much does this cost?” A basic service question."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-writing"
+      ],
+      "targetText": "uitbreiding",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Kan ik met pin betalen?\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Kan ik met pin betalen?",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "uitbreiding",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Kan ik met pin betalen?\" rather than restarting from a blank sentence.",
+      "example": "Kan ik met pin betalen?",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading"
+      ],
+      "targetText": "vergelijking",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 8: Winkelen — Shopping with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Ik wil deze tas en dit boek.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Ik wil deze tas en dit boek.",
+      "exampleNative": "“I want this bag and this book.”",
+      "korean": "vergelijking",
+      "english": "Compare the central form in Level 1 · Unit 8: Winkelen — Shopping with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Ik wil deze tas en dit boek.\" as the comparison line.",
+      "example": "Ik wil deze tas en dit boek.",
+      "exampleEnglish": "“I want this bag and this book.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "nl-level1unit08shopping-pronunciation"
+      ],
+      "targetText": "uitspraakcorrectie",
+      "romanization": "",
+      "nativeText": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Hoeveel kost deze tas?\".",
+      "pronunciation": "",
+      "exampleTarget": "Hoeveel kost deze tas?",
+      "exampleNative": "“How much does this bag cost?”",
+      "korean": "uitspraakcorrectie",
+      "english": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Hoeveel kost deze tas?\".",
+      "example": "Hoeveel kost deze tas?",
+      "exampleEnglish": "“How much does this bag cost?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "dialoogvariatie",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Kan ik met pin betalen?\".",
+      "pronunciation": "",
+      "exampleTarget": "Kan ik met pin betalen?",
+      "exampleNative": "“Can I pay by card?”",
+      "korean": "dialoogvariatie",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Kan ik met pin betalen?\".",
+      "example": "Kan ik met pin betalen?",
+      "exampleEnglish": "“Can I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-writing"
+      ],
+      "targetText": "zinsbouw",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Hoeveel kost deze tas?\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Hoeveel kost deze tas?",
+      "exampleNative": "“How much does this bag cost?”",
+      "korean": "zinsbouw",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Hoeveel kost deze tas?\" one layer at a time.",
+      "example": "Hoeveel kost deze tas?",
+      "exampleEnglish": "“How much does this bag cost?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-2"
+      ],
+      "targetText": "snelle check",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Ik wil deze tas en dit boek.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Ik wil deze tas en dit boek.",
+      "exampleNative": "“I want this bag and this book.”",
+      "korean": "snelle check",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Ik wil deze tas en dit boek.\" as the deciding example.",
+      "example": "Ik wil deze tas en dit boek.",
+      "exampleEnglish": "“I want this bag and this book.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit08shopping-culture",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "terugblik",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Kan ik met pin betalen?\".",
+      "pronunciation": "",
+      "exampleTarget": "Kan ik met pin betalen?",
+      "exampleNative": "“Can I pay by card?”",
+      "korean": "terugblik",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Kan ik met pin betalen?\".",
+      "example": "Kan ik met pin betalen?",
+      "exampleEnglish": "“Can I pay by card?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "hoeveel kost dit?",
+      "romanization": "hoo-FEEL kost dit",
+      "nativeText": "“How much does this cost?” A basic service question.",
+      "pronunciation": "hoo-FEEL kost dit",
+      "exampleTarget": "Hoeveel kost deze tas?",
+      "exampleNative": "“How much does this bag cost?”",
+      "korean": "hoeveel kost dit?",
+      "english": "“How much does this cost?” A basic service question.",
+      "example": "Hoeveel kost deze tas?",
+      "exampleEnglish": "“How much does this bag cost?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "Hoeveel kost deze tas?",
+      "romanization": "hoo-FEEL kost dit",
+      "nativeText": "Model use for \"Hoeveel kost deze tas?\": “How much does this bag cost?”",
+      "pronunciation": "hoo-FEEL kost dit",
+      "exampleTarget": "Hoeveel kost deze tas?",
+      "exampleNative": "“How much does this bag cost?”",
+      "korean": "Hoeveel kost deze tas?",
+      "english": "Model use for \"Hoeveel kost deze tas?\": “How much does this bag cost?”",
+      "example": "Hoeveel kost deze tas?",
+      "exampleEnglish": "“How much does this bag cost?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "hoeveel kost dit?",
+      "romanization": "hoo-FEEL kost dit",
+      "nativeText": "Usage focus for \"hoeveel kost dit?\": Use the key language of Level 1 · Unit 8: Winkelen — Shopping with the register and setting that the lesson requires.",
+      "pronunciation": "hoo-FEEL kost dit",
+      "exampleTarget": "Hoeveel kost deze tas?",
+      "exampleNative": "Notice what the form is doing here: “How much does this bag cost?”",
+      "korean": "hoeveel kost dit?",
+      "english": "Usage focus for \"hoeveel kost dit?\": Use the key language of Level 1 · Unit 8: Winkelen — Shopping with the register and setting that the lesson requires.",
+      "example": "Hoeveel kost deze tas?",
+      "exampleEnglish": "Notice what the form is doing here: “How much does this bag cost?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "hoeveel kost dit?",
+      "romanization": "hoo-FEEL kost dit",
+      "nativeText": "Contrast check for \"hoeveel kost dit?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "hoo-FEEL kost dit",
+      "exampleTarget": "Hoeveel kost deze tas?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How much does this bag cost?”",
+      "korean": "hoeveel kost dit?",
+      "english": "Contrast check for \"hoeveel kost dit?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Hoeveel kost deze tas?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How much does this bag cost?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "hoeveel kost dit?",
+      "romanization": "hoo-FEEL kost dit",
+      "nativeText": "Recall \"hoeveel kost dit?\" from memory, then explain what would change if a nearby alternative replaced it in \"Hoeveel kost deze tas?\".",
+      "pronunciation": "hoo-FEEL kost dit",
+      "exampleTarget": "Hoeveel kost deze tas?",
+      "exampleNative": "Self-check against the model before moving on: “How much does this bag cost?”",
+      "korean": "hoeveel kost dit?",
+      "english": "Recall \"hoeveel kost dit?\" from memory, then explain what would change if a nearby alternative replaced it in \"Hoeveel kost deze tas?\".",
+      "example": "Hoeveel kost deze tas?",
+      "exampleEnglish": "Self-check against the model before moving on: “How much does this bag cost?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "hoeveel kost dit?",
+      "romanization": "hoo-FEEL kost dit",
+      "nativeText": "Repair \"hoeveel kost dit?\" inside \"Hoeveel kost deze tas?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 8: Winkelen — Shopping with the register and setting that the lesson requires.",
+      "pronunciation": "hoo-FEEL kost dit",
+      "exampleTarget": "Hoeveel kost deze tas?",
+      "exampleNative": "Use the model as the repair target: “How much does this bag cost?”",
+      "korean": "hoeveel kost dit?",
+      "english": "Repair \"hoeveel kost dit?\" inside \"Hoeveel kost deze tas?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 8: Winkelen — Shopping with the register and setting that the lesson requires.",
+      "example": "Hoeveel kost deze tas?",
+      "exampleEnglish": "Use the model as the repair target: “How much does this bag cost?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "hoeveel kost dit?",
+      "romanization": "hoo-FEEL kost dit",
+      "nativeText": "Transfer \"hoeveel kost dit?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Hoeveel kost deze tas?\".",
+      "pronunciation": "hoo-FEEL kost dit",
+      "exampleTarget": "Hoeveel kost deze tas?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “How much does this bag cost?”",
+      "korean": "hoeveel kost dit?",
+      "english": "Transfer \"hoeveel kost dit?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Hoeveel kost deze tas?\".",
+      "example": "Hoeveel kost deze tas?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “How much does this bag cost?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "hoeveel kost dit?",
+      "romanization": "hoo-FEEL kost dit",
+      "nativeText": "Find one word or phrase that naturally travels with \"hoeveel kost dit?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "hoo-FEEL kost dit",
+      "exampleTarget": "Hoeveel kost deze tas?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “How much does this bag cost?”",
+      "korean": "hoeveel kost dit?",
+      "english": "Find one word or phrase that naturally travels with \"hoeveel kost dit?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Hoeveel kost deze tas?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “How much does this bag cost?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "hoeveel kost dit?",
+      "romanization": "hoo-FEEL kost dit",
+      "nativeText": "Listen for \"hoeveel kost dit?\" inside \"Hoeveel kost deze tas?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "hoo-FEEL kost dit",
+      "exampleTarget": "Hoeveel kost deze tas?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How much does this bag cost?”",
+      "korean": "hoeveel kost dit?",
+      "english": "Listen for \"hoeveel kost dit?\" inside \"Hoeveel kost deze tas?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Hoeveel kost deze tas?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How much does this bag cost?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "hoeveel kost dit?",
+      "romanization": "hoo-FEEL kost dit",
+      "nativeText": "Write \"hoeveel kost dit?\" again without looking, then compare the exact written form against \"Hoeveel kost deze tas?\" before moving on.",
+      "pronunciation": "hoo-FEEL kost dit",
+      "exampleTarget": "Hoeveel kost deze tas?",
+      "exampleNative": "Use the written model as the final correctness check: “How much does this bag cost?”",
+      "korean": "hoeveel kost dit?",
+      "english": "Write \"hoeveel kost dit?\" again without looking, then compare the exact written form against \"Hoeveel kost deze tas?\" before moving on.",
+      "example": "Hoeveel kost deze tas?",
+      "exampleEnglish": "Use the written model as the final correctness check: “How much does this bag cost?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "hoeveel kost dit?",
+      "romanization": "hoo-FEEL kost dit",
+      "nativeText": "Check whether \"hoeveel kost dit?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How much does this bag cost?”",
+      "pronunciation": "hoo-FEEL kost dit",
+      "exampleTarget": "Hoeveel kost deze tas?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “How much does this bag cost?”",
+      "korean": "hoeveel kost dit?",
+      "english": "Check whether \"hoeveel kost dit?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How much does this bag cost?”",
+      "example": "Hoeveel kost deze tas?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “How much does this bag cost?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "deze / dit",
+      "romanization": "DAY-zə / dit",
+      "nativeText": "“This” for `de` nouns / `het` nouns. The article class matters even when English gives no clue.",
+      "pronunciation": "DAY-zə / dit",
+      "exampleTarget": "Ik wil deze tas en dit boek.",
+      "exampleNative": "“I want this bag and this book.”",
+      "korean": "deze / dit",
+      "english": "“This” for `de` nouns / `het` nouns. The article class matters even when English gives no clue.",
+      "example": "Ik wil deze tas en dit boek.",
+      "exampleEnglish": "“I want this bag and this book.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "Ik wil deze tas en dit boek.",
+      "romanization": "DAY-zə / dit",
+      "nativeText": "Model use for \"Ik wil deze tas en dit boek.\": “I want this bag and this book.”",
+      "pronunciation": "DAY-zə / dit",
+      "exampleTarget": "Ik wil deze tas en dit boek.",
+      "exampleNative": "“I want this bag and this book.”",
+      "korean": "Ik wil deze tas en dit boek.",
+      "english": "Model use for \"Ik wil deze tas en dit boek.\": “I want this bag and this book.”",
+      "example": "Ik wil deze tas en dit boek.",
+      "exampleEnglish": "“I want this bag and this book.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "deze / dit",
+      "romanization": "DAY-zə / dit",
+      "nativeText": "Usage focus for \"deze / dit\": Distinguish the nearby wording choices that make Level 1 · Unit 8: Winkelen — Shopping sound precise rather than merely understandable.",
+      "pronunciation": "DAY-zə / dit",
+      "exampleTarget": "Ik wil deze tas en dit boek.",
+      "exampleNative": "Notice what the form is doing here: “I want this bag and this book.”",
+      "korean": "deze / dit",
+      "english": "Usage focus for \"deze / dit\": Distinguish the nearby wording choices that make Level 1 · Unit 8: Winkelen — Shopping sound precise rather than merely understandable.",
+      "example": "Ik wil deze tas en dit boek.",
+      "exampleEnglish": "Notice what the form is doing here: “I want this bag and this book.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "deze / dit",
+      "romanization": "DAY-zə / dit",
+      "nativeText": "Contrast check for \"deze / dit\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "DAY-zə / dit",
+      "exampleTarget": "Ik wil deze tas en dit boek.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want this bag and this book.”",
+      "korean": "deze / dit",
+      "english": "Contrast check for \"deze / dit\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik wil deze tas en dit boek.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want this bag and this book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "deze / dit",
+      "romanization": "DAY-zə / dit",
+      "nativeText": "Recall \"deze / dit\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik wil deze tas en dit boek.\".",
+      "pronunciation": "DAY-zə / dit",
+      "exampleTarget": "Ik wil deze tas en dit boek.",
+      "exampleNative": "Self-check against the model before moving on: “I want this bag and this book.”",
+      "korean": "deze / dit",
+      "english": "Recall \"deze / dit\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik wil deze tas en dit boek.\".",
+      "example": "Ik wil deze tas en dit boek.",
+      "exampleEnglish": "Self-check against the model before moving on: “I want this bag and this book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "deze / dit",
+      "romanization": "DAY-zə / dit",
+      "nativeText": "Repair \"deze / dit\" inside \"Ik wil deze tas en dit boek.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 8: Winkelen — Shopping sound precise rather than merely understandable.",
+      "pronunciation": "DAY-zə / dit",
+      "exampleTarget": "Ik wil deze tas en dit boek.",
+      "exampleNative": "Use the model as the repair target: “I want this bag and this book.”",
+      "korean": "deze / dit",
+      "english": "Repair \"deze / dit\" inside \"Ik wil deze tas en dit boek.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 8: Winkelen — Shopping sound precise rather than merely understandable.",
+      "example": "Ik wil deze tas en dit boek.",
+      "exampleEnglish": "Use the model as the repair target: “I want this bag and this book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "deze / dit",
+      "romanization": "DAY-zə / dit",
+      "nativeText": "Transfer \"deze / dit\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik wil deze tas en dit boek.\".",
+      "pronunciation": "DAY-zə / dit",
+      "exampleTarget": "Ik wil deze tas en dit boek.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want this bag and this book.”",
+      "korean": "deze / dit",
+      "english": "Transfer \"deze / dit\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik wil deze tas en dit boek.\".",
+      "example": "Ik wil deze tas en dit boek.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want this bag and this book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "deze / dit",
+      "romanization": "DAY-zə / dit",
+      "nativeText": "Find one word or phrase that naturally travels with \"deze / dit\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "DAY-zə / dit",
+      "exampleTarget": "Ik wil deze tas en dit boek.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want this bag and this book.”",
+      "korean": "deze / dit",
+      "english": "Find one word or phrase that naturally travels with \"deze / dit\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik wil deze tas en dit boek.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want this bag and this book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "deze / dit",
+      "romanization": "DAY-zə / dit",
+      "nativeText": "Listen for \"deze / dit\" inside \"Ik wil deze tas en dit boek.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "DAY-zə / dit",
+      "exampleTarget": "Ik wil deze tas en dit boek.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want this bag and this book.”",
+      "korean": "deze / dit",
+      "english": "Listen for \"deze / dit\" inside \"Ik wil deze tas en dit boek.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik wil deze tas en dit boek.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want this bag and this book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "deze / dit",
+      "romanization": "DAY-zə / dit",
+      "nativeText": "Write \"deze / dit\" again without looking, then compare the exact written form against \"Ik wil deze tas en dit boek.\" before moving on.",
+      "pronunciation": "DAY-zə / dit",
+      "exampleTarget": "Ik wil deze tas en dit boek.",
+      "exampleNative": "Use the written model as the final correctness check: “I want this bag and this book.”",
+      "korean": "deze / dit",
+      "english": "Write \"deze / dit\" again without looking, then compare the exact written form against \"Ik wil deze tas en dit boek.\" before moving on.",
+      "example": "Ik wil deze tas en dit boek.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want this bag and this book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "deze / dit",
+      "romanization": "DAY-zə / dit",
+      "nativeText": "Check whether \"deze / dit\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want this bag and this book.”",
+      "pronunciation": "DAY-zə / dit",
+      "exampleTarget": "Ik wil deze tas en dit boek.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want this bag and this book.”",
+      "korean": "deze / dit",
+      "english": "Check whether \"deze / dit\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want this bag and this book.”",
+      "example": "Ik wil deze tas en dit boek.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want this bag and this book.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "goedkoper",
+      "romanization": "khood-KOH-per",
+      "nativeText": "“Cheaper.” The common comparative adds `-er`.",
+      "pronunciation": "khood-KOH-per",
+      "exampleTarget": "Heeft u iets goedkoper?",
+      "exampleNative": "“Do you have something cheaper?”",
+      "korean": "goedkoper",
+      "english": "“Cheaper.” The common comparative adds `-er`.",
+      "example": "Heeft u iets goedkoper?",
+      "exampleEnglish": "“Do you have something cheaper?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "Heeft u iets goedkoper?",
+      "romanization": "khood-KOH-per",
+      "nativeText": "Model use for \"Heeft u iets goedkoper?\": “Do you have something cheaper?”",
+      "pronunciation": "khood-KOH-per",
+      "exampleTarget": "Heeft u iets goedkoper?",
+      "exampleNative": "“Do you have something cheaper?”",
+      "korean": "Heeft u iets goedkoper?",
+      "english": "Model use for \"Heeft u iets goedkoper?\": “Do you have something cheaper?”",
+      "example": "Heeft u iets goedkoper?",
+      "exampleEnglish": "“Do you have something cheaper?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "goedkoper",
+      "romanization": "khood-KOH-per",
+      "nativeText": "Usage focus for \"goedkoper\": “Cheaper.” The common comparative adds `-er`.",
+      "pronunciation": "khood-KOH-per",
+      "exampleTarget": "Heeft u iets goedkoper?",
+      "exampleNative": "Notice what the form is doing here: “Do you have something cheaper?”",
+      "korean": "goedkoper",
+      "english": "Usage focus for \"goedkoper\": “Cheaper.” The common comparative adds `-er`.",
+      "example": "Heeft u iets goedkoper?",
+      "exampleEnglish": "Notice what the form is doing here: “Do you have something cheaper?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "goedkoper",
+      "romanization": "khood-KOH-per",
+      "nativeText": "Contrast check for \"goedkoper\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "khood-KOH-per",
+      "exampleTarget": "Heeft u iets goedkoper?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Do you have something cheaper?”",
+      "korean": "goedkoper",
+      "english": "Contrast check for \"goedkoper\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Heeft u iets goedkoper?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Do you have something cheaper?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "goedkoper",
+      "romanization": "khood-KOH-per",
+      "nativeText": "Recall \"goedkoper\" from memory, then explain what would change if a nearby alternative replaced it in \"Heeft u iets goedkoper?\".",
+      "pronunciation": "khood-KOH-per",
+      "exampleTarget": "Heeft u iets goedkoper?",
+      "exampleNative": "Self-check against the model before moving on: “Do you have something cheaper?”",
+      "korean": "goedkoper",
+      "english": "Recall \"goedkoper\" from memory, then explain what would change if a nearby alternative replaced it in \"Heeft u iets goedkoper?\".",
+      "example": "Heeft u iets goedkoper?",
+      "exampleEnglish": "Self-check against the model before moving on: “Do you have something cheaper?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "goedkoper",
+      "romanization": "khood-KOH-per",
+      "nativeText": "Repair \"goedkoper\" inside \"Heeft u iets goedkoper?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Cheaper.” The common comparative adds `-er`.",
+      "pronunciation": "khood-KOH-per",
+      "exampleTarget": "Heeft u iets goedkoper?",
+      "exampleNative": "Use the model as the repair target: “Do you have something cheaper?”",
+      "korean": "goedkoper",
+      "english": "Repair \"goedkoper\" inside \"Heeft u iets goedkoper?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Cheaper.” The common comparative adds `-er`.",
+      "example": "Heeft u iets goedkoper?",
+      "exampleEnglish": "Use the model as the repair target: “Do you have something cheaper?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "goedkoper",
+      "romanization": "khood-KOH-per",
+      "nativeText": "Transfer \"goedkoper\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Heeft u iets goedkoper?\".",
+      "pronunciation": "khood-KOH-per",
+      "exampleTarget": "Heeft u iets goedkoper?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Do you have something cheaper?”",
+      "korean": "goedkoper",
+      "english": "Transfer \"goedkoper\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Heeft u iets goedkoper?\".",
+      "example": "Heeft u iets goedkoper?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Do you have something cheaper?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "goedkoper",
+      "romanization": "khood-KOH-per",
+      "nativeText": "Find one word or phrase that naturally travels with \"goedkoper\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "khood-KOH-per",
+      "exampleTarget": "Heeft u iets goedkoper?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Do you have something cheaper?”",
+      "korean": "goedkoper",
+      "english": "Find one word or phrase that naturally travels with \"goedkoper\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Heeft u iets goedkoper?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Do you have something cheaper?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "goedkoper",
+      "romanization": "khood-KOH-per",
+      "nativeText": "Listen for \"goedkoper\" inside \"Heeft u iets goedkoper?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "khood-KOH-per",
+      "exampleTarget": "Heeft u iets goedkoper?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Do you have something cheaper?”",
+      "korean": "goedkoper",
+      "english": "Listen for \"goedkoper\" inside \"Heeft u iets goedkoper?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Heeft u iets goedkoper?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Do you have something cheaper?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "goedkoper",
+      "romanization": "khood-KOH-per",
+      "nativeText": "Write \"goedkoper\" again without looking, then compare the exact written form against \"Heeft u iets goedkoper?\" before moving on.",
+      "pronunciation": "khood-KOH-per",
+      "exampleTarget": "Heeft u iets goedkoper?",
+      "exampleNative": "Use the written model as the final correctness check: “Do you have something cheaper?”",
+      "korean": "goedkoper",
+      "english": "Write \"goedkoper\" again without looking, then compare the exact written form against \"Heeft u iets goedkoper?\" before moving on.",
+      "example": "Heeft u iets goedkoper?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Do you have something cheaper?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "goedkoper",
+      "romanization": "khood-KOH-per",
+      "nativeText": "Check whether \"goedkoper\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Do you have something cheaper?”",
+      "pronunciation": "khood-KOH-per",
+      "exampleTarget": "Heeft u iets goedkoper?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Do you have something cheaper?”",
+      "korean": "goedkoper",
+      "english": "Check whether \"goedkoper\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Do you have something cheaper?”",
+      "example": "Heeft u iets goedkoper?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Do you have something cheaper?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "duur",
+      "romanization": "dyr",
+      "nativeText": "“Expensive.” A short adjective common in shopping talk.",
+      "pronunciation": "dyr",
+      "exampleTarget": "Deze jas is duur.",
+      "exampleNative": "“This coat is expensive.”",
+      "korean": "duur",
+      "english": "“Expensive.” A short adjective common in shopping talk.",
+      "example": "Deze jas is duur.",
+      "exampleEnglish": "“This coat is expensive.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "Deze jas is duur.",
+      "romanization": "dyr",
+      "nativeText": "Model use for \"Deze jas is duur.\": “This coat is expensive.”",
+      "pronunciation": "dyr",
+      "exampleTarget": "Deze jas is duur.",
+      "exampleNative": "“This coat is expensive.”",
+      "korean": "Deze jas is duur.",
+      "english": "Model use for \"Deze jas is duur.\": “This coat is expensive.”",
+      "example": "Deze jas is duur.",
+      "exampleEnglish": "“This coat is expensive.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "duur",
+      "romanization": "dyr",
+      "nativeText": "Usage focus for \"duur\": “Expensive.” A short adjective common in shopping talk.",
+      "pronunciation": "dyr",
+      "exampleTarget": "Deze jas is duur.",
+      "exampleNative": "Notice what the form is doing here: “This coat is expensive.”",
+      "korean": "duur",
+      "english": "Usage focus for \"duur\": “Expensive.” A short adjective common in shopping talk.",
+      "example": "Deze jas is duur.",
+      "exampleEnglish": "Notice what the form is doing here: “This coat is expensive.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "duur",
+      "romanization": "dyr",
+      "nativeText": "Contrast check for \"duur\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "dyr",
+      "exampleTarget": "Deze jas is duur.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “This coat is expensive.”",
+      "korean": "duur",
+      "english": "Contrast check for \"duur\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Deze jas is duur.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “This coat is expensive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "duur",
+      "romanization": "dyr",
+      "nativeText": "Recall \"duur\" from memory, then explain what would change if a nearby alternative replaced it in \"Deze jas is duur.\".",
+      "pronunciation": "dyr",
+      "exampleTarget": "Deze jas is duur.",
+      "exampleNative": "Self-check against the model before moving on: “This coat is expensive.”",
+      "korean": "duur",
+      "english": "Recall \"duur\" from memory, then explain what would change if a nearby alternative replaced it in \"Deze jas is duur.\".",
+      "example": "Deze jas is duur.",
+      "exampleEnglish": "Self-check against the model before moving on: “This coat is expensive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "duur",
+      "romanization": "dyr",
+      "nativeText": "Repair \"duur\" inside \"Deze jas is duur.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Expensive.” A short adjective common in shopping talk.",
+      "pronunciation": "dyr",
+      "exampleTarget": "Deze jas is duur.",
+      "exampleNative": "Use the model as the repair target: “This coat is expensive.”",
+      "korean": "duur",
+      "english": "Repair \"duur\" inside \"Deze jas is duur.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Expensive.” A short adjective common in shopping talk.",
+      "example": "Deze jas is duur.",
+      "exampleEnglish": "Use the model as the repair target: “This coat is expensive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "duur",
+      "romanization": "dyr",
+      "nativeText": "Transfer \"duur\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Deze jas is duur.\".",
+      "pronunciation": "dyr",
+      "exampleTarget": "Deze jas is duur.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “This coat is expensive.”",
+      "korean": "duur",
+      "english": "Transfer \"duur\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Deze jas is duur.\".",
+      "example": "Deze jas is duur.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “This coat is expensive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "duur",
+      "romanization": "dyr",
+      "nativeText": "Find one word or phrase that naturally travels with \"duur\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "dyr",
+      "exampleTarget": "Deze jas is duur.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “This coat is expensive.”",
+      "korean": "duur",
+      "english": "Find one word or phrase that naturally travels with \"duur\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Deze jas is duur.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “This coat is expensive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "duur",
+      "romanization": "dyr",
+      "nativeText": "Listen for \"duur\" inside \"Deze jas is duur.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "dyr",
+      "exampleTarget": "Deze jas is duur.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “This coat is expensive.”",
+      "korean": "duur",
+      "english": "Listen for \"duur\" inside \"Deze jas is duur.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Deze jas is duur.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “This coat is expensive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "duur",
+      "romanization": "dyr",
+      "nativeText": "Write \"duur\" again without looking, then compare the exact written form against \"Deze jas is duur.\" before moving on.",
+      "pronunciation": "dyr",
+      "exampleTarget": "Deze jas is duur.",
+      "exampleNative": "Use the written model as the final correctness check: “This coat is expensive.”",
+      "korean": "duur",
+      "english": "Write \"duur\" again without looking, then compare the exact written form against \"Deze jas is duur.\" before moving on.",
+      "example": "Deze jas is duur.",
+      "exampleEnglish": "Use the written model as the final correctness check: “This coat is expensive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "duur",
+      "romanization": "dyr",
+      "nativeText": "Check whether \"duur\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “This coat is expensive.”",
+      "pronunciation": "dyr",
+      "exampleTarget": "Deze jas is duur.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “This coat is expensive.”",
+      "korean": "duur",
+      "english": "Check whether \"duur\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “This coat is expensive.”",
+      "example": "Deze jas is duur.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “This coat is expensive.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "grote maat",
+      "romanization": "KHROH-tə maht",
+      "nativeText": "“Large size.” The adjective takes `-e` before many attributed nouns.",
+      "pronunciation": "KHROH-tə maht",
+      "exampleTarget": "Ik zoek een grote maat.",
+      "exampleNative": "“I am looking for a large size.”",
+      "korean": "grote maat",
+      "english": "“Large size.” The adjective takes `-e` before many attributed nouns.",
+      "example": "Ik zoek een grote maat.",
+      "exampleEnglish": "“I am looking for a large size.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "Ik zoek een grote maat.",
+      "romanization": "KHROH-tə maht",
+      "nativeText": "Model use for \"Ik zoek een grote maat.\": “I am looking for a large size.”",
+      "pronunciation": "KHROH-tə maht",
+      "exampleTarget": "Ik zoek een grote maat.",
+      "exampleNative": "“I am looking for a large size.”",
+      "korean": "Ik zoek een grote maat.",
+      "english": "Model use for \"Ik zoek een grote maat.\": “I am looking for a large size.”",
+      "example": "Ik zoek een grote maat.",
+      "exampleEnglish": "“I am looking for a large size.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "grote maat",
+      "romanization": "KHROH-tə maht",
+      "nativeText": "Usage focus for \"grote maat\": “Large size.” The adjective takes `-e` before many attributed nouns.",
+      "pronunciation": "KHROH-tə maht",
+      "exampleTarget": "Ik zoek een grote maat.",
+      "exampleNative": "Notice what the form is doing here: “I am looking for a large size.”",
+      "korean": "grote maat",
+      "english": "Usage focus for \"grote maat\": “Large size.” The adjective takes `-e` before many attributed nouns.",
+      "example": "Ik zoek een grote maat.",
+      "exampleEnglish": "Notice what the form is doing here: “I am looking for a large size.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "grote maat",
+      "romanization": "KHROH-tə maht",
+      "nativeText": "Contrast check for \"grote maat\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "KHROH-tə maht",
+      "exampleTarget": "Ik zoek een grote maat.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am looking for a large size.”",
+      "korean": "grote maat",
+      "english": "Contrast check for \"grote maat\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik zoek een grote maat.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am looking for a large size.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "grote maat",
+      "romanization": "KHROH-tə maht",
+      "nativeText": "Recall \"grote maat\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik zoek een grote maat.\".",
+      "pronunciation": "KHROH-tə maht",
+      "exampleTarget": "Ik zoek een grote maat.",
+      "exampleNative": "Self-check against the model before moving on: “I am looking for a large size.”",
+      "korean": "grote maat",
+      "english": "Recall \"grote maat\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik zoek een grote maat.\".",
+      "example": "Ik zoek een grote maat.",
+      "exampleEnglish": "Self-check against the model before moving on: “I am looking for a large size.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "grote maat",
+      "romanization": "KHROH-tə maht",
+      "nativeText": "Repair \"grote maat\" inside \"Ik zoek een grote maat.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Large size.” The adjective takes `-e` before many attributed nouns.",
+      "pronunciation": "KHROH-tə maht",
+      "exampleTarget": "Ik zoek een grote maat.",
+      "exampleNative": "Use the model as the repair target: “I am looking for a large size.”",
+      "korean": "grote maat",
+      "english": "Repair \"grote maat\" inside \"Ik zoek een grote maat.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Large size.” The adjective takes `-e` before many attributed nouns.",
+      "example": "Ik zoek een grote maat.",
+      "exampleEnglish": "Use the model as the repair target: “I am looking for a large size.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "grote maat",
+      "romanization": "KHROH-tə maht",
+      "nativeText": "Transfer \"grote maat\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik zoek een grote maat.\".",
+      "pronunciation": "KHROH-tə maht",
+      "exampleTarget": "Ik zoek een grote maat.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am looking for a large size.”",
+      "korean": "grote maat",
+      "english": "Transfer \"grote maat\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik zoek een grote maat.\".",
+      "example": "Ik zoek een grote maat.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am looking for a large size.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "grote maat",
+      "romanization": "KHROH-tə maht",
+      "nativeText": "Find one word or phrase that naturally travels with \"grote maat\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "KHROH-tə maht",
+      "exampleTarget": "Ik zoek een grote maat.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I am looking for a large size.”",
+      "korean": "grote maat",
+      "english": "Find one word or phrase that naturally travels with \"grote maat\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik zoek een grote maat.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I am looking for a large size.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "grote maat",
+      "romanization": "KHROH-tə maht",
+      "nativeText": "Listen for \"grote maat\" inside \"Ik zoek een grote maat.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "KHROH-tə maht",
+      "exampleTarget": "Ik zoek een grote maat.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am looking for a large size.”",
+      "korean": "grote maat",
+      "english": "Listen for \"grote maat\" inside \"Ik zoek een grote maat.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik zoek een grote maat.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am looking for a large size.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "grote maat",
+      "romanization": "KHROH-tə maht",
+      "nativeText": "Write \"grote maat\" again without looking, then compare the exact written form against \"Ik zoek een grote maat.\" before moving on.",
+      "pronunciation": "KHROH-tə maht",
+      "exampleTarget": "Ik zoek een grote maat.",
+      "exampleNative": "Use the written model as the final correctness check: “I am looking for a large size.”",
+      "korean": "grote maat",
+      "english": "Write \"grote maat\" again without looking, then compare the exact written form against \"Ik zoek een grote maat.\" before moving on.",
+      "example": "Ik zoek een grote maat.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I am looking for a large size.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "grote maat",
+      "romanization": "KHROH-tə maht",
+      "nativeText": "Check whether \"grote maat\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am looking for a large size.”",
+      "pronunciation": "KHROH-tə maht",
+      "exampleTarget": "Ik zoek een grote maat.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I am looking for a large size.”",
+      "korean": "grote maat",
+      "english": "Check whether \"grote maat\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am looking for a large size.”",
+      "example": "Ik zoek een grote maat.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I am looking for a large size.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "rode trui",
+      "romanization": "ROH-də troy",
+      "nativeText": "“Red sweater.” Color adjectives often show the same attributive `-e`.",
+      "pronunciation": "ROH-də troy",
+      "exampleTarget": "Heeft u een rode trui?",
+      "exampleNative": "“Do you have a red sweater?”",
+      "korean": "rode trui",
+      "english": "“Red sweater.” Color adjectives often show the same attributive `-e`.",
+      "example": "Heeft u een rode trui?",
+      "exampleEnglish": "“Do you have a red sweater?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "Heeft u een rode trui?",
+      "romanization": "ROH-də troy",
+      "nativeText": "Model use for \"Heeft u een rode trui?\": “Do you have a red sweater?”",
+      "pronunciation": "ROH-də troy",
+      "exampleTarget": "Heeft u een rode trui?",
+      "exampleNative": "“Do you have a red sweater?”",
+      "korean": "Heeft u een rode trui?",
+      "english": "Model use for \"Heeft u een rode trui?\": “Do you have a red sweater?”",
+      "example": "Heeft u een rode trui?",
+      "exampleEnglish": "“Do you have a red sweater?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "rode trui",
+      "romanization": "ROH-də troy",
+      "nativeText": "Usage focus for \"rode trui\": “Red sweater.” Color adjectives often show the same attributive `-e`.",
+      "pronunciation": "ROH-də troy",
+      "exampleTarget": "Heeft u een rode trui?",
+      "exampleNative": "Notice what the form is doing here: “Do you have a red sweater?”",
+      "korean": "rode trui",
+      "english": "Usage focus for \"rode trui\": “Red sweater.” Color adjectives often show the same attributive `-e`.",
+      "example": "Heeft u een rode trui?",
+      "exampleEnglish": "Notice what the form is doing here: “Do you have a red sweater?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "rode trui",
+      "romanization": "ROH-də troy",
+      "nativeText": "Contrast check for \"rode trui\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ROH-də troy",
+      "exampleTarget": "Heeft u een rode trui?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Do you have a red sweater?”",
+      "korean": "rode trui",
+      "english": "Contrast check for \"rode trui\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Heeft u een rode trui?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Do you have a red sweater?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "rode trui",
+      "romanization": "ROH-də troy",
+      "nativeText": "Recall \"rode trui\" from memory, then explain what would change if a nearby alternative replaced it in \"Heeft u een rode trui?\".",
+      "pronunciation": "ROH-də troy",
+      "exampleTarget": "Heeft u een rode trui?",
+      "exampleNative": "Self-check against the model before moving on: “Do you have a red sweater?”",
+      "korean": "rode trui",
+      "english": "Recall \"rode trui\" from memory, then explain what would change if a nearby alternative replaced it in \"Heeft u een rode trui?\".",
+      "example": "Heeft u een rode trui?",
+      "exampleEnglish": "Self-check against the model before moving on: “Do you have a red sweater?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "rode trui",
+      "romanization": "ROH-də troy",
+      "nativeText": "Repair \"rode trui\" inside \"Heeft u een rode trui?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Red sweater.” Color adjectives often show the same attributive `-e`.",
+      "pronunciation": "ROH-də troy",
+      "exampleTarget": "Heeft u een rode trui?",
+      "exampleNative": "Use the model as the repair target: “Do you have a red sweater?”",
+      "korean": "rode trui",
+      "english": "Repair \"rode trui\" inside \"Heeft u een rode trui?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Red sweater.” Color adjectives often show the same attributive `-e`.",
+      "example": "Heeft u een rode trui?",
+      "exampleEnglish": "Use the model as the repair target: “Do you have a red sweater?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "rode trui",
+      "romanization": "ROH-də troy",
+      "nativeText": "Transfer \"rode trui\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Heeft u een rode trui?\".",
+      "pronunciation": "ROH-də troy",
+      "exampleTarget": "Heeft u een rode trui?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Do you have a red sweater?”",
+      "korean": "rode trui",
+      "english": "Transfer \"rode trui\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Heeft u een rode trui?\".",
+      "example": "Heeft u een rode trui?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Do you have a red sweater?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "rode trui",
+      "romanization": "ROH-də troy",
+      "nativeText": "Find one word or phrase that naturally travels with \"rode trui\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ROH-də troy",
+      "exampleTarget": "Heeft u een rode trui?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Do you have a red sweater?”",
+      "korean": "rode trui",
+      "english": "Find one word or phrase that naturally travels with \"rode trui\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Heeft u een rode trui?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Do you have a red sweater?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "rode trui",
+      "romanization": "ROH-də troy",
+      "nativeText": "Listen for \"rode trui\" inside \"Heeft u een rode trui?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ROH-də troy",
+      "exampleTarget": "Heeft u een rode trui?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Do you have a red sweater?”",
+      "korean": "rode trui",
+      "english": "Listen for \"rode trui\" inside \"Heeft u een rode trui?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Heeft u een rode trui?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Do you have a red sweater?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "rode trui",
+      "romanization": "ROH-də troy",
+      "nativeText": "Write \"rode trui\" again without looking, then compare the exact written form against \"Heeft u een rode trui?\" before moving on.",
+      "pronunciation": "ROH-də troy",
+      "exampleTarget": "Heeft u een rode trui?",
+      "exampleNative": "Use the written model as the final correctness check: “Do you have a red sweater?”",
+      "korean": "rode trui",
+      "english": "Write \"rode trui\" again without looking, then compare the exact written form against \"Heeft u een rode trui?\" before moving on.",
+      "example": "Heeft u een rode trui?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Do you have a red sweater?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "rode trui",
+      "romanization": "ROH-də troy",
+      "nativeText": "Check whether \"rode trui\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Do you have a red sweater?”",
+      "pronunciation": "ROH-də troy",
+      "exampleTarget": "Heeft u een rode trui?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Do you have a red sweater?”",
+      "korean": "rode trui",
+      "english": "Check whether \"rode trui\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Do you have a red sweater?”",
+      "example": "Heeft u een rode trui?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Do you have a red sweater?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "een kilo",
+      "romanization": "ən KEE-loh",
+      "nativeText": "“One kilo.” Markets use measures naturally with food nouns.",
+      "pronunciation": "ən KEE-loh",
+      "exampleTarget": "Ik wil een kilo appels.",
+      "exampleNative": "“I want one kilo of apples.”",
+      "korean": "een kilo",
+      "english": "“One kilo.” Markets use measures naturally with food nouns.",
+      "example": "Ik wil een kilo appels.",
+      "exampleEnglish": "“I want one kilo of apples.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "Ik wil een kilo appels.",
+      "romanization": "ən KEE-loh",
+      "nativeText": "Model use for \"Ik wil een kilo appels.\": “I want one kilo of apples.”",
+      "pronunciation": "ən KEE-loh",
+      "exampleTarget": "Ik wil een kilo appels.",
+      "exampleNative": "“I want one kilo of apples.”",
+      "korean": "Ik wil een kilo appels.",
+      "english": "Model use for \"Ik wil een kilo appels.\": “I want one kilo of apples.”",
+      "example": "Ik wil een kilo appels.",
+      "exampleEnglish": "“I want one kilo of apples.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "een kilo",
+      "romanization": "ən KEE-loh",
+      "nativeText": "Usage focus for \"een kilo\": “One kilo.” Markets use measures naturally with food nouns.",
+      "pronunciation": "ən KEE-loh",
+      "exampleTarget": "Ik wil een kilo appels.",
+      "exampleNative": "Notice what the form is doing here: “I want one kilo of apples.”",
+      "korean": "een kilo",
+      "english": "Usage focus for \"een kilo\": “One kilo.” Markets use measures naturally with food nouns.",
+      "example": "Ik wil een kilo appels.",
+      "exampleEnglish": "Notice what the form is doing here: “I want one kilo of apples.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "een kilo",
+      "romanization": "ən KEE-loh",
+      "nativeText": "Contrast check for \"een kilo\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ən KEE-loh",
+      "exampleTarget": "Ik wil een kilo appels.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want one kilo of apples.”",
+      "korean": "een kilo",
+      "english": "Contrast check for \"een kilo\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik wil een kilo appels.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want one kilo of apples.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "een kilo",
+      "romanization": "ən KEE-loh",
+      "nativeText": "Recall \"een kilo\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik wil een kilo appels.\".",
+      "pronunciation": "ən KEE-loh",
+      "exampleTarget": "Ik wil een kilo appels.",
+      "exampleNative": "Self-check against the model before moving on: “I want one kilo of apples.”",
+      "korean": "een kilo",
+      "english": "Recall \"een kilo\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik wil een kilo appels.\".",
+      "example": "Ik wil een kilo appels.",
+      "exampleEnglish": "Self-check against the model before moving on: “I want one kilo of apples.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "een kilo",
+      "romanization": "ən KEE-loh",
+      "nativeText": "Repair \"een kilo\" inside \"Ik wil een kilo appels.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “One kilo.” Markets use measures naturally with food nouns.",
+      "pronunciation": "ən KEE-loh",
+      "exampleTarget": "Ik wil een kilo appels.",
+      "exampleNative": "Use the model as the repair target: “I want one kilo of apples.”",
+      "korean": "een kilo",
+      "english": "Repair \"een kilo\" inside \"Ik wil een kilo appels.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “One kilo.” Markets use measures naturally with food nouns.",
+      "example": "Ik wil een kilo appels.",
+      "exampleEnglish": "Use the model as the repair target: “I want one kilo of apples.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "een kilo",
+      "romanization": "ən KEE-loh",
+      "nativeText": "Transfer \"een kilo\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik wil een kilo appels.\".",
+      "pronunciation": "ən KEE-loh",
+      "exampleTarget": "Ik wil een kilo appels.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want one kilo of apples.”",
+      "korean": "een kilo",
+      "english": "Transfer \"een kilo\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik wil een kilo appels.\".",
+      "example": "Ik wil een kilo appels.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want one kilo of apples.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "een kilo",
+      "romanization": "ən KEE-loh",
+      "nativeText": "Find one word or phrase that naturally travels with \"een kilo\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ən KEE-loh",
+      "exampleTarget": "Ik wil een kilo appels.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want one kilo of apples.”",
+      "korean": "een kilo",
+      "english": "Find one word or phrase that naturally travels with \"een kilo\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik wil een kilo appels.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want one kilo of apples.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "een kilo",
+      "romanization": "ən KEE-loh",
+      "nativeText": "Listen for \"een kilo\" inside \"Ik wil een kilo appels.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ən KEE-loh",
+      "exampleTarget": "Ik wil een kilo appels.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want one kilo of apples.”",
+      "korean": "een kilo",
+      "english": "Listen for \"een kilo\" inside \"Ik wil een kilo appels.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik wil een kilo appels.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want one kilo of apples.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "een kilo",
+      "romanization": "ən KEE-loh",
+      "nativeText": "Write \"een kilo\" again without looking, then compare the exact written form against \"Ik wil een kilo appels.\" before moving on.",
+      "pronunciation": "ən KEE-loh",
+      "exampleTarget": "Ik wil een kilo appels.",
+      "exampleNative": "Use the written model as the final correctness check: “I want one kilo of apples.”",
+      "korean": "een kilo",
+      "english": "Write \"een kilo\" again without looking, then compare the exact written form against \"Ik wil een kilo appels.\" before moving on.",
+      "example": "Ik wil een kilo appels.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want one kilo of apples.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "een kilo",
+      "romanization": "ən KEE-loh",
+      "nativeText": "Check whether \"een kilo\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want one kilo of apples.”",
+      "pronunciation": "ən KEE-loh",
+      "exampleTarget": "Ik wil een kilo appels.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want one kilo of apples.”",
+      "korean": "een kilo",
+      "english": "Check whether \"een kilo\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want one kilo of apples.”",
+      "example": "Ik wil een kilo appels.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want one kilo of apples.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "contant / met pin",
+      "romanization": "kon-TANT / met pin",
+      "nativeText": "“Cash / by card.” `Met pin` is the everyday Dutch payment phrase.",
+      "pronunciation": "kon-TANT / met pin",
+      "exampleTarget": "Kan ik met pin betalen?",
+      "exampleNative": "“Can I pay by card?”",
+      "korean": "contant / met pin",
+      "english": "“Cash / by card.” `Met pin` is the everyday Dutch payment phrase.",
+      "example": "Kan ik met pin betalen?",
+      "exampleEnglish": "“Can I pay by card?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "Kan ik met pin betalen?",
+      "romanization": "kon-TANT / met pin",
+      "nativeText": "Model use for \"Kan ik met pin betalen?\": “Can I pay by card?”",
+      "pronunciation": "kon-TANT / met pin",
+      "exampleTarget": "Kan ik met pin betalen?",
+      "exampleNative": "“Can I pay by card?”",
+      "korean": "Kan ik met pin betalen?",
+      "english": "Model use for \"Kan ik met pin betalen?\": “Can I pay by card?”",
+      "example": "Kan ik met pin betalen?",
+      "exampleEnglish": "“Can I pay by card?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "contant / met pin",
+      "romanization": "kon-TANT / met pin",
+      "nativeText": "Usage focus for \"contant / met pin\": “Cash / by card.” `Met pin` is the everyday Dutch payment phrase.",
+      "pronunciation": "kon-TANT / met pin",
+      "exampleTarget": "Kan ik met pin betalen?",
+      "exampleNative": "Notice what the form is doing here: “Can I pay by card?”",
+      "korean": "contant / met pin",
+      "english": "Usage focus for \"contant / met pin\": “Cash / by card.” `Met pin` is the everyday Dutch payment phrase.",
+      "example": "Kan ik met pin betalen?",
+      "exampleEnglish": "Notice what the form is doing here: “Can I pay by card?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "contant / met pin",
+      "romanization": "kon-TANT / met pin",
+      "nativeText": "Contrast check for \"contant / met pin\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kon-TANT / met pin",
+      "exampleTarget": "Kan ik met pin betalen?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Can I pay by card?”",
+      "korean": "contant / met pin",
+      "english": "Contrast check for \"contant / met pin\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Kan ik met pin betalen?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Can I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "contant / met pin",
+      "romanization": "kon-TANT / met pin",
+      "nativeText": "Recall \"contant / met pin\" from memory, then explain what would change if a nearby alternative replaced it in \"Kan ik met pin betalen?\".",
+      "pronunciation": "kon-TANT / met pin",
+      "exampleTarget": "Kan ik met pin betalen?",
+      "exampleNative": "Self-check against the model before moving on: “Can I pay by card?”",
+      "korean": "contant / met pin",
+      "english": "Recall \"contant / met pin\" from memory, then explain what would change if a nearby alternative replaced it in \"Kan ik met pin betalen?\".",
+      "example": "Kan ik met pin betalen?",
+      "exampleEnglish": "Self-check against the model before moving on: “Can I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "contant / met pin",
+      "romanization": "kon-TANT / met pin",
+      "nativeText": "Repair \"contant / met pin\" inside \"Kan ik met pin betalen?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Cash / by card.” `Met pin` is the everyday Dutch payment phrase.",
+      "pronunciation": "kon-TANT / met pin",
+      "exampleTarget": "Kan ik met pin betalen?",
+      "exampleNative": "Use the model as the repair target: “Can I pay by card?”",
+      "korean": "contant / met pin",
+      "english": "Repair \"contant / met pin\" inside \"Kan ik met pin betalen?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Cash / by card.” `Met pin` is the everyday Dutch payment phrase.",
+      "example": "Kan ik met pin betalen?",
+      "exampleEnglish": "Use the model as the repair target: “Can I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "contant / met pin",
+      "romanization": "kon-TANT / met pin",
+      "nativeText": "Transfer \"contant / met pin\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Kan ik met pin betalen?\".",
+      "pronunciation": "kon-TANT / met pin",
+      "exampleTarget": "Kan ik met pin betalen?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Can I pay by card?”",
+      "korean": "contant / met pin",
+      "english": "Transfer \"contant / met pin\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Kan ik met pin betalen?\".",
+      "example": "Kan ik met pin betalen?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Can I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "contant / met pin",
+      "romanization": "kon-TANT / met pin",
+      "nativeText": "Find one word or phrase that naturally travels with \"contant / met pin\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kon-TANT / met pin",
+      "exampleTarget": "Kan ik met pin betalen?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Can I pay by card?”",
+      "korean": "contant / met pin",
+      "english": "Find one word or phrase that naturally travels with \"contant / met pin\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Kan ik met pin betalen?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Can I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "contant / met pin",
+      "romanization": "kon-TANT / met pin",
+      "nativeText": "Listen for \"contant / met pin\" inside \"Kan ik met pin betalen?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kon-TANT / met pin",
+      "exampleTarget": "Kan ik met pin betalen?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Can I pay by card?”",
+      "korean": "contant / met pin",
+      "english": "Listen for \"contant / met pin\" inside \"Kan ik met pin betalen?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Kan ik met pin betalen?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Can I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "contant / met pin",
+      "romanization": "kon-TANT / met pin",
+      "nativeText": "Write \"contant / met pin\" again without looking, then compare the exact written form against \"Kan ik met pin betalen?\" before moving on.",
+      "pronunciation": "kon-TANT / met pin",
+      "exampleTarget": "Kan ik met pin betalen?",
+      "exampleNative": "Use the written model as the final correctness check: “Can I pay by card?”",
+      "korean": "contant / met pin",
+      "english": "Write \"contant / met pin\" again without looking, then compare the exact written form against \"Kan ik met pin betalen?\" before moving on.",
+      "example": "Kan ik met pin betalen?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Can I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit08shopping-vocabulary-1",
+        "nl-level1unit08shopping-vocabulary-2",
+        "nl-level1unit08shopping-grammar-1",
+        "nl-level1unit08shopping-grammar-2",
+        "nl-level1unit08shopping-reading",
+        "nl-level1unit08shopping-listening",
+        "nl-level1unit08shopping-writing",
+        "nl-level1unit08shopping-task"
+      ],
+      "targetText": "contant / met pin",
+      "romanization": "kon-TANT / met pin",
+      "nativeText": "Check whether \"contant / met pin\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Can I pay by card?”",
+      "pronunciation": "kon-TANT / met pin",
+      "exampleTarget": "Kan ik met pin betalen?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Can I pay by card?”",
+      "korean": "contant / met pin",
+      "english": "Check whether \"contant / met pin\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Can I pay by card?”",
+      "example": "Kan ik met pin betalen?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Can I pay by card?”"
+    }
+  ],
+  "targetLang": "nl",
+  "nativeLang": "en",
+  "track": "textbook"
+};

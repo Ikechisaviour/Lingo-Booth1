@@ -363,7 +363,7 @@ const lesson = {
       [ACT.grammarCopula],
     ),
     createContentItem(
-      'Agreement on the verb',
+      'வினை ஒத்திசைவு',
       'verb agreement',
       'Tamil verbs agree with the subject in PERSON + NUMBER + GENDER + HONOR. The copula and every verb take one of these endings: -ēṉ (1sg), -ōm (1pl), -āy (2sg-intimate), -īrkaḷ (2pl/polite), -āṉ (3sg-masc-peer), -āḷ (3sg-fem-peer), -ār/-ārkaḷ (3sg/pl-honorific), -atu (3sg-neuter).',
       'sentence',
@@ -378,7 +378,7 @@ const lesson = {
       [ACT.grammarCopula],
     ),
     createContentItem(
-      'Zero copula in identity',
+      'இணைப்புச் சொல் இல்லா அடையாளம்',
       'zero copula',
       'In present-tense identity sentences ("X is Y" where both are nouns), Tamil typically DROPS the copula. "என் பெயர் ராஜா" ("My name [is] Raja") is more natural than the explicit "என் பெயர் ராஜா ஆகிறது". The drop is the default; adding the copula sounds slightly formal/emphatic.',
       'sentence',
@@ -415,7 +415,7 @@ const lesson = {
       [ACT.grammarPronouns],
     ),
     createContentItem(
-      'Three "you" — register table',
+      'நீ / நீங்கள் / தாங்கள்',
       'three "you"',
       'CRITICAL TABLE: நீ nī = intimate (use ONLY with close peers, children, family); நீங்கள் nīṅkaḷ = polite/familiar/plural (the default for any adult you don\'t know intimately); தாங்கள் tāṅkaḷ = very formal (elders, dignitaries, customers). The verb ending MUST agree.',
       'sentence',
@@ -441,7 +441,7 @@ const lesson = {
       [ACT.grammarNegation],
     ),
     createContentItem(
-      'Verbal negation suffix',
+      'வினை மறுப்பு',
       'verbal negation',
       'For verbal negation (didn\'t do, don\'t do habitually), Tamil uses a negative verb suffix instead of a separate word. The auxiliary மாட்டு māṭṭu marks future negation: நான் வரமாட்டேன் nāṉ vara-māṭṭēṉ ("I won\'t come"). Past negation uses -illai with the infinitive: நான் வரவில்லை nāṉ varavillai ("I didn\'t come").',
       'sentence',
@@ -451,7 +451,7 @@ const lesson = {
       [ACT.grammarNegation],
     ),
     createContentItem(
-      'X-illai, Y correction pattern',
+      'X இல்லை, Y',
       'X-illai, Y',
       'Polite correction pattern: state the wrong assumption with illai, then offer the correct version. "X-illai, Y" — the "but" is implicit. Three parts: rejected guess, illai, offered alternative.',
       'sentence',

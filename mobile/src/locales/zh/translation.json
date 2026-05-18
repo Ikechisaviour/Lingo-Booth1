@@ -23,7 +23,8 @@
     "saving": "保存...",
     "search": "搜索",
     "notSet": "未设置",
-    "all": "全部"
+    "all": "全部",
+    "reset": "重置"
   },
   "languages": {
     "en": "英语",
@@ -218,7 +219,8 @@
       "fri": "F",
       "sat": "S",
       "sun": "S"
-    }
+    },
+    "contactDesc": "问题、反馈或要报告的问题"
   },
   "lessons": {
     "title": "{{language}} 课程",
@@ -738,7 +740,102 @@
     "modeBreakdown": "模式分布",
     "searchUsers": "搜索用户...",
     "all": "全部",
-    "demo": "演示"
+    "demo": "演示",
+    "failures": "失败",
+    "messages": "留言",
+    "userFailures": "用户端故障",
+    "openFailures": "{{count}} 打开失败",
+    "criticalFailures": "{{count}} 临界",
+    "clearing": "清算...",
+    "loadingFailures": "加载失败...",
+    "noOpenFailures": "没有开放的用户端故障。",
+    "acknowledge": "承认",
+    "page": "页",
+    "device": "设备",
+    "languagePair": "语言对",
+    "clientStatus": "客户",
+    "pageOf": "第 {{total}} 页{{page}}",
+    "guestUser": "访客用户",
+    "unknownUser": "未知用户",
+    "unknown": "未知",
+    "clearFailuresTitle": "清除开放故障？",
+    "clearFailuresBody": "将所有 {{count}} 打开故障标记为已确认？",
+    "contactMessages": "联系留言",
+    "unreadMessages": "{{count}} 未读消息",
+    "allMessages": "所有消息",
+    "registeredUsers": "注册用户",
+    "guestUsers": "访客用户",
+    "loadingMessages": "正在加载消息...",
+    "noUnreadMessages": "没有未读的联系信息。",
+    "registeredUser": "注册用户",
+    "contactMessage": "联系方式留言",
+    "markRead": "标记已读",
+    "name": "姓名",
+    "accountTier": "账户等级",
+    "clearMessagesTitle": "清除未读消息？",
+    "clearMessagesBody": "将所有{{count}}未读联系人消息标记为已读？",
+    "demoDifficulty": {
+      "beginner": "初学者",
+      "balanced": "均衡",
+      "natural": "自然的",
+      "challenge": "挑战"
+    },
+    "demoScenarios": {
+      "friendlyChat": "友好聊天",
+      "cafeWorker": "与咖啡馆工作人员交谈",
+      "taxiDriver": "向出租车司机寻求帮助",
+      "meetingNew": "结识新朋友"
+    },
+    "demoReplyPlaceholder": "实践合作伙伴的回复将显示在此处。",
+    "demoTipPlaceholder": "用任一选定的语言询问。 您可以改变主题、询问含义或要求更简单的措辞。",
+    "promoteConfirmShort": "让{{username}}成为管理员？",
+    "promote": "推动",
+    "deleteUserTitle": "删除用户",
+    "deleteUserConfirmShort": "永久删除{{username}}？ 此操作无法撤消。",
+    "demoReset": "对话重置。",
+    "demoNoReply": "没有回复。",
+    "demoNoCoachingNote": "没有教练说明。",
+    "demoResponseFailed": "这次我无法回应。 请再试一次。",
+    "demoConnectionIssue": "连接问题。 稍后再试一次。",
+    "tapForDetails": "点击查看详情",
+    "activeWeek": "活跃7天",
+    "countries": "国家",
+    "conversion": "转换",
+    "engagement": "订婚",
+    "totalCardsStudied": "学习的卡片总数",
+    "totalAudioPlays": "音频播放总数",
+    "lessonsViewed": "观看的课程",
+    "topLanguagePairs": "热门语言对",
+    "sessionsCount": "{{count}} 会话",
+    "deviceBreakdown": "设备故障",
+    "recentSessions": "最近的会议 ({{count}})",
+    "cardsStudiedCount": "{{count}} 卡",
+    "pageNumber": "页{{page}}",
+    "noGuestData": "没有可用的宾客数据",
+    "loadData": "加载数据",
+    "speakingDemo": "口语演示",
+    "demoIntro": "仅限管理员对话预览。 它不会保存音频或学习者进度。",
+    "scenario": "设想",
+    "customScenario": "自定义场景",
+    "learningLanguage": "学习语言",
+    "nativeLanguage": "母语",
+    "listenFor": "听听",
+    "difficulty": "困难",
+    "learnerTurnInput": "输入或粘贴学习者所说的内容",
+    "interrupt": "打断",
+    "conversationState": "会话状态",
+    "lastLearnerTurn": "最后一个学习者回合",
+    "noTurnSentYet": "尚未发送轮次。",
+    "practicePartnerResponse": "练习伙伴回应",
+    "coachNote": "教练备注",
+    "userDetails": "用户详细信息",
+    "totalXp": "总经验值",
+    "studyMode": "学习模式",
+    "languages": "语言",
+    "loginCount": "登录次数",
+    "memberSince": "会员自",
+    "suspendReasonLabel": "暂停原因",
+    "userDetailsLoadFailed": "无法加载用户详细信息"
   },
   "pricing": {
     "kicker": "计划",
@@ -820,7 +917,9 @@
     "discountCode": "折扣码",
     "discountPlaceholder": "可选代码",
     "discountUnavailable": "该折扣代码不适用于此计划。",
-    "automaticDiscountApplied": "已应用 {{discount}} 自动折扣"
+    "automaticDiscountApplied": "已应用 {{discount}} 自动折扣",
+    "signInToChooseTitle": "创建帐户以继续",
+    "signInToChooseBody": "在选择付费计划之前创建一个帐户或登录，以便为您附加访问权限。"
   },
   "billing": {
     "kicker": "计费",
@@ -975,7 +1074,8 @@
     },
     "titlePrefix": {
       "unit": "级别{{level}} · 单位{{unit}}: {{title}}"
-    }
+    },
+    "retry": "再试一次"
   },
   "classLesson": {
     "loading": "正在加载课程...",
@@ -1114,7 +1214,10 @@
     "saveReply": "保存回复",
     "saveExample": "保存示例",
     "practiceEverywhere": "到处练习这个",
-    "selfTestReason": "从课堂上保存以供快速自检。"
+    "selfTestReason": "从课堂上保存以供快速自检。",
+    "previous": "以前的",
+    "lessonGuide": "课程指导",
+    "activityXOfY": "{{total}} 的活动 {{current}}"
   },
   "exercise": {
     "kicker": "锻炼",
@@ -1182,7 +1285,8 @@
     "recapUsefulPhrases": "有用的短语",
     "recapReview": "回顾下一个",
     "recapReviewFallback": "保存一个短语并在另一种练习模式中重复使用它。",
-    "practiceLabel": "会话练习"
+    "practiceLabel": "会话练习",
+    "practiceSetup": "练习设置"
   },
   "context": {
     "backToProfile": "返回个人资料",
@@ -1304,7 +1408,10 @@
       "memory": "从记忆中"
     },
     "savedReason": "省去了另一遍的写作练习。",
-    "selfTestReason": "免去写作练习以进行快速自测。"
+    "selfTestReason": "免去写作练习以进行快速自测。",
+    "hideNotebook": "隐藏笔记本",
+    "showNotebook": "显示笔记本",
+    "hideAddPanel": "隐藏添加面板"
   },
   "certificates": {
     "kicker": "证书",
@@ -1472,5 +1579,44 @@
     "firstThreeDayReviewBody": "返回到昨天看到的内容，以便第一个项目开始粘住。",
     "firstThreeDaySpeakBody": "使用简短的说话轮流，以便语言尽早离开页面。",
     "firstThreeDayLearnBody": "从一节小型指导课开始，这样两人就有一个明确的起点。"
+  },
+  "resetPassword": {
+    "title": "重置密码",
+    "subtitle": "请输入您的新密码。",
+    "error": "重置密码失败，请重试。",
+    "invalidLink": "此重置链接无效或已过期。",
+    "noToken": "缺少重置令牌。请申请新的重置链接。",
+    "requestNew": "申请新的重置链接",
+    "success": "密码已成功重置。",
+    "goToLogin": "前往登录",
+    "newPasswordPlaceholder": "新密码",
+    "resetButton": "重置密码",
+    "failed": "无法重置密码。 请再试一次。",
+    "kicker": "重置密码",
+    "missingToken": "此重置链接丢失或无效。",
+    "newPassword": "新密码",
+    "confirmPassword": "确认密码",
+    "submit": "重置密码"
+  },
+  "contact": {
+    "navLabel": "??",
+    "kicker": "联系我们",
+    "title": "告诉我们您需要什么",
+    "subtitle": "发送问题、报告问题或分享反馈。 我们将审核您的消息并在需要时回复。",
+    "infoTitle": "我们正在倾听",
+    "infoText": "此表单中的消息会在可用时与帐户上下文一起安全保存，以便我们可以了解发生的情况并更快地提供帮助。",
+    "name": "??",
+    "namePlaceholder": "你的名字",
+    "email": "电子邮件",
+    "emailPlaceholder": "你@example.com",
+    "subject": "??",
+    "subjectPlaceholder": "这是关于什么的？",
+    "message": "??",
+    "messagePlaceholder": "在这里写下您的留言...",
+    "send": "发送消息",
+    "success": "谢谢。 您的留言已收到。",
+    "error": "我们现在无法发送您的消息。 请再试一次。",
+    "companyTrap": "公司",
+    "profileHint": "发送问题、报告问题或分享来自此设备的反馈。"
   }
 }

@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('ta', {
-  slug: 'ta-l1u7',
-  title: 'Level 1 · Unit 7: எங்கு செல்கிறீர்கள்? — Going Places',
-  category: 'travel',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Say where you are, where you are going, and ask for simple directions.',
-  vocabularyGoal: 'Use common destinations, route words, and direction phrases.',
-  grammarGoal: 'Use locative and dative case endings to separate “at” from “to.”',
-  speakingGoal: 'Say where you are, ask how to get somewhere, and give one short route.',
-  task: 'Guide a visitor from campus to a nearby shop.',
-  expressionPractice: [
-    practice('stating-location', 'Stating location', 'Use one locative form.'),
-    practice('stating-destination', 'Stating destination', 'Use one dative form.'),
-    practice('asking-route', 'Asking route', 'Use `எப்படி போகலாம்?`.'),
+module.exports = {
+  "title": "Level 1 · Unit 7: எங்கு செல்கிறீர்கள்? — Going Places",
+  "category": "travel",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ta-level1unit07goingplaces-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Say where you are, where you are going, and ask for simple directions."
+      ],
+      "task": "Guide a visitor from campus to a nearby shop."
+    },
+    {
+      "id": "ta-level1unit07goingplaces-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ta-level1unit07goingplaces-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 7: எங்கு செல்கிறீர்கள்? — Going Places with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ta-level1unit07goingplaces-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 7: எங்கு செல்கிறீர்கள்? — Going Places sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ta-level1unit07goingplaces-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Say where you are, where you are going, and ask for simple directions."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ta-level1unit07goingplaces-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 7: எங்கு செல்கிறீர்கள்? — Going Places with one nearby Tamil form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ta-level1unit07goingplaces-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ta-level1unit07goingplaces-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ta-level1unit07goingplaces-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ta-level1unit07goingplaces-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ta-level1unit07goingplaces-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Guide a visitor from campus to a nearby shop."
+      ],
+      "task": "Guide a visitor from campus to a nearby shop."
+    }
   ],
-  relatedPools: ['topic-travel', 'topic-directions'],
-  items: [
-    item('பல்கலைக்கழகத்தில்', 'palkalaikkaḻakattil', '“At the university.” The locative suffix marks place.', 'நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.', '“I am at the university.”'),
-    item('நூலகத்திற்கு செல்கிறேன்', 'nūlakatirkku celkiṟēṉ', '“I am going to the library.” The dative suffix marks destination.', 'வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.', '“After class I am going to the library.”'),
-    item('வீட்டிலிருந்து', 'vīṭṭiliruntu', '“From home.” The ablative-style form marks origin.', 'நான் வீட்டிலிருந்து வருகிறேன்.', '“I am coming from home.”'),
-    item('இடப்பக்கம் திரும்புங்கள்', 'iṭappakkam tirumpuṅkaḷ', '“Turn left.” The plural imperative is polite.', 'சிக்னலில் இடப்பக்கம் திரும்புங்கள்.', '“At the signal, turn left.”'),
-    item('நேராக செல்லுங்கள்', 'nērāka celluṅkaḷ', '“Go straight.” A useful route instruction.', 'நேராக சென்று வங்கியை கடக்கவும்.', '“Go straight and pass the bank.”'),
-    item('அருகில் / தூரத்தில்', 'arukil / tūrattil', '“Nearby / far away.” Locative-style forms describe distance.', 'நிலையம் அருகில் உள்ளது.', '“The station is nearby.”'),
-    item('...க்கு எப்படி போகலாம்?', '...kku eppaṭi pōkalām', '“How can I go to ...?” A practical route question.', 'மருத்துவமனைக்கு எப்படி போகலாம்?', '“How can I go to the hospital?”'),
-    item('அருகில்', 'arukil', '“Near / beside.” Useful for landmark descriptions.', 'கஃபே வங்கியின் அருகில் உள்ளது.', '“The cafe is near the bank.”'),
+  "expressionPractice": [
+    {
+      "id": "stating-location",
+      "label": "Stating location",
+      "goal": "Use one locative form."
+    },
+    {
+      "id": "stating-destination",
+      "label": "Stating destination",
+      "goal": "Use one dative form."
+    },
+    {
+      "id": "asking-route",
+      "label": "Asking route",
+      "goal": "Use `எப்படி போகலாம்?`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-travel",
+    "topic-directions"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit07goingplaces-orientation"
+      ],
+      "targetText": "பாட இலக்கு",
+      "romanization": "",
+      "nativeText": "Say where you are, where you are going, and ask for simple directions.",
+      "pronunciation": "",
+      "exampleTarget": "பாட இலக்கு",
+      "exampleNative": "The whole lesson is built toward this outcome: Guide a visitor from campus to a nearby shop.",
+      "korean": "பாட இலக்கு",
+      "english": "Say where you are, where you are going, and ask for simple directions.",
+      "example": "பாட இலக்கு",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Guide a visitor from campus to a nearby shop."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1unit07goingplaces-pronunciation"
+      ],
+      "targetText": "ஒலி சரிபார்ப்பு",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.\".",
+      "pronunciation": "",
+      "exampleTarget": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "exampleNative": "“I am at the university.”",
+      "korean": "ஒலி சரிபார்ப்பு",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.\".",
+      "example": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "exampleEnglish": "“I am at the university.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1"
+      ],
+      "targetText": "பல்கலைக்கழகத்தில்",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 7: எங்கு செல்கிறீர்கள்? — Going Places with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "exampleNative": "“I am at the university.”",
+      "korean": "பல்கலைக்கழகத்தில்",
+      "english": "Use the key language of Level 1 · Unit 7: எங்கு செல்கிறீர்கள்? — Going Places with the register and setting that the lesson requires.",
+      "example": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "exampleEnglish": "“I am at the university.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-2"
+      ],
+      "targetText": "நூலகத்திற்கு செல்கிறேன்",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 7: எங்கு செல்கிறீர்கள்? — Going Places sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.",
+      "exampleNative": "“After class I am going to the library.”",
+      "korean": "நூலகத்திற்கு செல்கிறேன்",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 7: எங்கு செல்கிறீர்கள்? — Going Places sound precise rather than merely understandable.",
+      "example": "வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.",
+      "exampleEnglish": "“After class I am going to the library.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1unit07goingplaces-grammar-1"
+      ],
+      "targetText": "பல்கலைக்கழகத்தில்",
+      "romanization": "",
+      "nativeText": "Say where you are, where you are going, and ask for simple directions.",
+      "pronunciation": "",
+      "exampleTarget": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "exampleNative": "“I am at the university.”",
+      "korean": "பல்கலைக்கழகத்தில்",
+      "english": "Say where you are, where you are going, and ask for simple directions.",
+      "example": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "exampleEnglish": "“I am at the university.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1unit07goingplaces-grammar-2"
+      ],
+      "targetText": "நூலகத்திற்கு செல்கிறேன்",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 7: எங்கு செல்கிறீர்கள்? — Going Places with one nearby Tamil form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.",
+      "exampleNative": "“After class I am going to the library.”",
+      "korean": "நூலகத்திற்கு செல்கிறேன்",
+      "english": "Contrast the main pattern in Level 1 · Unit 7: எங்கு செல்கிறீர்கள்? — Going Places with one nearby Tamil form so the learner can avoid literal translation.",
+      "example": "வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.",
+      "exampleEnglish": "“After class I am going to the library.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ta-level1unit07goingplaces-reading"
+      ],
+      "targetText": "வாசிப்பு மாதிரி",
+      "romanization": "",
+      "nativeText": "Read \"கஃபே வங்கியின் அருகில் உள்ளது.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "கஃபே வங்கியின் அருகில் உள்ளது.",
+      "exampleNative": "“The cafe is near the bank.”",
+      "korean": "வாசிப்பு மாதிரி",
+      "english": "Read \"கஃபே வங்கியின் அருகில் உள்ளது.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "கஃபே வங்கியின் அருகில் உள்ளது.",
+      "exampleEnglish": "“The cafe is near the bank.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit07goingplaces-listening"
+      ],
+      "targetText": "உரையாடல் மாதிரி",
+      "romanization": "",
+      "nativeText": "Hear \"கஃபே வங்கியின் அருகில் உள்ளது.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "கஃபே வங்கியின் அருகில் உள்ளது.",
+      "exampleNative": "“The cafe is near the bank.”",
+      "korean": "உரையாடல் மாதிரி",
+      "english": "Hear \"கஃபே வங்கியின் அருகில் உள்ளது.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "கஃபே வங்கியின் அருகில் உள்ளது.",
+      "exampleEnglish": "“The cafe is near the bank.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ta-level1unit07goingplaces-writing"
+      ],
+      "targetText": "எழுத்துப் பயிற்சி",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "எழுத்துப் பயிற்சி",
+      "english": "Write your own version after studying \"நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1unit07goingplaces-culture"
+      ],
+      "targetText": "பயன்பாடும் சூழலும்",
+      "romanization": "",
+      "nativeText": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.",
+      "exampleNative": "“After class I am going to the library.”",
+      "korean": "பயன்பாடும் சூழலும்",
+      "english": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used.",
+      "example": "வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.",
+      "exampleEnglish": "“After class I am going to the library.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "இறுதி செயல்",
+      "romanization": "",
+      "nativeText": "Guide a visitor from campus to a nearby shop.",
+      "pronunciation": "",
+      "exampleTarget": "கஃபே வங்கியின் அருகில் உள்ளது.",
+      "exampleNative": "Guide a visitor from campus to a nearby shop.",
+      "korean": "இறுதி செயல்",
+      "english": "Guide a visitor from campus to a nearby shop.",
+      "example": "கஃபே வங்கியின் அருகில் உள்ளது.",
+      "exampleEnglish": "Guide a visitor from campus to a nearby shop."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit07goingplaces-grammar-2"
+      ],
+      "targetText": "பொதுவான பிழை",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “After class I am going to the library.”",
+      "korean": "பொதுவான பிழை",
+      "english": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.\" against the model.",
+      "example": "வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “After class I am going to the library.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-culture"
+      ],
+      "targetText": "மொழிநடை",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "exampleNative": "“I am at the university.”",
+      "korean": "மொழிநடை",
+      "english": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.\" before reusing it elsewhere.",
+      "example": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "exampleEnglish": "“I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "சரளம்",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"கஃபே வங்கியின் அருகில் உள்ளது.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "கஃபே வங்கியின் அருகில் உள்ளது.",
+      "exampleNative": "“The cafe is near the bank.”",
+      "korean": "சரளம்",
+      "english": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"கஃபே வங்கியின் அருகில் உள்ளது.\" as one thought.",
+      "example": "கஃபே வங்கியின் அருகில் உள்ளது.",
+      "exampleEnglish": "“The cafe is near the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "பயன்பாடு",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "பயன்பாடு",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.\" and move it into your own life.",
+      "example": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-grammar-1"
+      ],
+      "targetText": "நினைவூட்டல்",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"பல்கலைக்கழகத்தில்\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "பல்கலைக்கழகத்தில்",
+      "exampleNative": "“At the university.” The locative suffix marks place.",
+      "korean": "நினைவூட்டல்",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"பல்கலைக்கழகத்தில்\" before looking back.",
+      "example": "பல்கலைக்கழகத்தில்",
+      "exampleEnglish": "“At the university.” The locative suffix marks place."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-writing"
+      ],
+      "targetText": "விரிவாக்கம்",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"கஃபே வங்கியின் அருகில் உள்ளது.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "கஃபே வங்கியின் அருகில் உள்ளது.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "விரிவாக்கம்",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"கஃபே வங்கியின் அருகில் உள்ளது.\" rather than restarting from a blank sentence.",
+      "example": "கஃபே வங்கியின் அருகில் உள்ளது.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading"
+      ],
+      "targetText": "ஒப்பீடு",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 7: எங்கு செல்கிறீர்கள்? — Going Places with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.",
+      "exampleNative": "“After class I am going to the library.”",
+      "korean": "ஒப்பீடு",
+      "english": "Compare the central form in Level 1 · Unit 7: எங்கு செல்கிறீர்கள்? — Going Places with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.\" as the comparison line.",
+      "example": "வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.",
+      "exampleEnglish": "“After class I am going to the library.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1unit07goingplaces-pronunciation"
+      ],
+      "targetText": "உச்சரிப்பு திருத்தம்",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.\".",
+      "pronunciation": "",
+      "exampleTarget": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "exampleNative": "“I am at the university.”",
+      "korean": "உச்சரிப்பு திருத்தம்",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.\".",
+      "example": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "exampleEnglish": "“I am at the university.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "உரையாடல் மாற்றம்",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"கஃபே வங்கியின் அருகில் உள்ளது.\".",
+      "pronunciation": "",
+      "exampleTarget": "கஃபே வங்கியின் அருகில் உள்ளது.",
+      "exampleNative": "“The cafe is near the bank.”",
+      "korean": "உரையாடல் மாற்றம்",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"கஃபே வங்கியின் அருகில் உள்ளது.\".",
+      "example": "கஃபே வங்கியின் அருகில் உள்ளது.",
+      "exampleEnglish": "“The cafe is near the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-writing"
+      ],
+      "targetText": "வாக்கிய கட்டமைப்பு",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "exampleNative": "“I am at the university.”",
+      "korean": "வாக்கிய கட்டமைப்பு",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.\" one layer at a time.",
+      "example": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "exampleEnglish": "“I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-2"
+      ],
+      "targetText": "விரைவு சோதனை",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.",
+      "exampleNative": "“After class I am going to the library.”",
+      "korean": "விரைவு சோதனை",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.\" as the deciding example.",
+      "example": "வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.",
+      "exampleEnglish": "“After class I am going to the library.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit07goingplaces-culture",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "மீள்பார்வு",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"கஃபே வங்கியின் அருகில் உள்ளது.\".",
+      "pronunciation": "",
+      "exampleTarget": "கஃபே வங்கியின் அருகில் உள்ளது.",
+      "exampleNative": "“The cafe is near the bank.”",
+      "korean": "மீள்பார்வு",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"கஃபே வங்கியின் அருகில் உள்ளது.\".",
+      "example": "கஃபே வங்கியின் அருகில் உள்ளது.",
+      "exampleEnglish": "“The cafe is near the bank.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "பல்கலைக்கழகத்தில்",
+      "romanization": "palkalaikkaḻakattil",
+      "nativeText": "“At the university.” The locative suffix marks place.",
+      "pronunciation": "palkalaikkaḻakattil",
+      "exampleTarget": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "exampleNative": "“I am at the university.”",
+      "korean": "பல்கலைக்கழகத்தில்",
+      "english": "“At the university.” The locative suffix marks place.",
+      "example": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "exampleEnglish": "“I am at the university.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "romanization": "palkalaikkaḻakattil",
+      "nativeText": "Model use for \"நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.\": “I am at the university.”",
+      "pronunciation": "palkalaikkaḻakattil",
+      "exampleTarget": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "exampleNative": "“I am at the university.”",
+      "korean": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "english": "Model use for \"நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.\": “I am at the university.”",
+      "example": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "exampleEnglish": "“I am at the university.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "பல்கலைக்கழகத்தில்",
+      "romanization": "palkalaikkaḻakattil",
+      "nativeText": "Usage focus for \"பல்கலைக்கழகத்தில்\": Use the key language of Level 1 · Unit 7: எங்கு செல்கிறீர்கள்? — Going Places with the register and setting that the lesson requires.",
+      "pronunciation": "palkalaikkaḻakattil",
+      "exampleTarget": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "exampleNative": "Notice what the form is doing here: “I am at the university.”",
+      "korean": "பல்கலைக்கழகத்தில்",
+      "english": "Usage focus for \"பல்கலைக்கழகத்தில்\": Use the key language of Level 1 · Unit 7: எங்கு செல்கிறீர்கள்? — Going Places with the register and setting that the lesson requires.",
+      "example": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "exampleEnglish": "Notice what the form is doing here: “I am at the university.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "பல்கலைக்கழகத்தில்",
+      "romanization": "palkalaikkaḻakattil",
+      "nativeText": "Contrast check for \"பல்கலைக்கழகத்தில்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "palkalaikkaḻakattil",
+      "exampleTarget": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am at the university.”",
+      "korean": "பல்கலைக்கழகத்தில்",
+      "english": "Contrast check for \"பல்கலைக்கழகத்தில்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "பல்கலைக்கழகத்தில்",
+      "romanization": "palkalaikkaḻakattil",
+      "nativeText": "Recall \"பல்கலைக்கழகத்தில்\" from memory, then explain what would change if a nearby alternative replaced it in \"நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.\".",
+      "pronunciation": "palkalaikkaḻakattil",
+      "exampleTarget": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "exampleNative": "Self-check against the model before moving on: “I am at the university.”",
+      "korean": "பல்கலைக்கழகத்தில்",
+      "english": "Recall \"பல்கலைக்கழகத்தில்\" from memory, then explain what would change if a nearby alternative replaced it in \"நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.\".",
+      "example": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "exampleEnglish": "Self-check against the model before moving on: “I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "பல்கலைக்கழகத்தில்",
+      "romanization": "palkalaikkaḻakattil",
+      "nativeText": "Repair \"பல்கலைக்கழகத்தில்\" inside \"நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 7: எங்கு செல்கிறீர்கள்? — Going Places with the register and setting that the lesson requires.",
+      "pronunciation": "palkalaikkaḻakattil",
+      "exampleTarget": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "exampleNative": "Use the model as the repair target: “I am at the university.”",
+      "korean": "பல்கலைக்கழகத்தில்",
+      "english": "Repair \"பல்கலைக்கழகத்தில்\" inside \"நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 7: எங்கு செல்கிறீர்கள்? — Going Places with the register and setting that the lesson requires.",
+      "example": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "exampleEnglish": "Use the model as the repair target: “I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "பல்கலைக்கழகத்தில்",
+      "romanization": "palkalaikkaḻakattil",
+      "nativeText": "Transfer \"பல்கலைக்கழகத்தில்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.\".",
+      "pronunciation": "palkalaikkaḻakattil",
+      "exampleTarget": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am at the university.”",
+      "korean": "பல்கலைக்கழகத்தில்",
+      "english": "Transfer \"பல்கலைக்கழகத்தில்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.\".",
+      "example": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "பல்கலைக்கழகத்தில்",
+      "romanization": "palkalaikkaḻakattil",
+      "nativeText": "Find one word or phrase that naturally travels with \"பல்கலைக்கழகத்தில்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "palkalaikkaḻakattil",
+      "exampleTarget": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I am at the university.”",
+      "korean": "பல்கலைக்கழகத்தில்",
+      "english": "Find one word or phrase that naturally travels with \"பல்கலைக்கழகத்தில்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "பல்கலைக்கழகத்தில்",
+      "romanization": "palkalaikkaḻakattil",
+      "nativeText": "Listen for \"பல்கலைக்கழகத்தில்\" inside \"நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "palkalaikkaḻakattil",
+      "exampleTarget": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am at the university.”",
+      "korean": "பல்கலைக்கழகத்தில்",
+      "english": "Listen for \"பல்கலைக்கழகத்தில்\" inside \"நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "பல்கலைக்கழகத்தில்",
+      "romanization": "palkalaikkaḻakattil",
+      "nativeText": "Write \"பல்கலைக்கழகத்தில்\" again without looking, then compare the exact written form against \"நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.\" before moving on.",
+      "pronunciation": "palkalaikkaḻakattil",
+      "exampleTarget": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "exampleNative": "Use the written model as the final correctness check: “I am at the university.”",
+      "korean": "பல்கலைக்கழகத்தில்",
+      "english": "Write \"பல்கலைக்கழகத்தில்\" again without looking, then compare the exact written form against \"நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.\" before moving on.",
+      "example": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "பல்கலைக்கழகத்தில்",
+      "romanization": "palkalaikkaḻakattil",
+      "nativeText": "Check whether \"பல்கலைக்கழகத்தில்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am at the university.”",
+      "pronunciation": "palkalaikkaḻakattil",
+      "exampleTarget": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I am at the university.”",
+      "korean": "பல்கலைக்கழகத்தில்",
+      "english": "Check whether \"பல்கலைக்கழகத்தில்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am at the university.”",
+      "example": "நான் பல்கலைக்கழகத்தில் இருக்கிறேன்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I am at the university.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "நூலகத்திற்கு செல்கிறேன்",
+      "romanization": "nūlakatirkku celkiṟēṉ",
+      "nativeText": "“I am going to the library.” The dative suffix marks destination.",
+      "pronunciation": "nūlakatirkku celkiṟēṉ",
+      "exampleTarget": "வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.",
+      "exampleNative": "“After class I am going to the library.”",
+      "korean": "நூலகத்திற்கு செல்கிறேன்",
+      "english": "“I am going to the library.” The dative suffix marks destination.",
+      "example": "வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.",
+      "exampleEnglish": "“After class I am going to the library.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.",
+      "romanization": "nūlakatirkku celkiṟēṉ",
+      "nativeText": "Model use for \"வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.\": “After class I am going to the library.”",
+      "pronunciation": "nūlakatirkku celkiṟēṉ",
+      "exampleTarget": "வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.",
+      "exampleNative": "“After class I am going to the library.”",
+      "korean": "வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.",
+      "english": "Model use for \"வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.\": “After class I am going to the library.”",
+      "example": "வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.",
+      "exampleEnglish": "“After class I am going to the library.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "நூலகத்திற்கு செல்கிறேன்",
+      "romanization": "nūlakatirkku celkiṟēṉ",
+      "nativeText": "Usage focus for \"நூலகத்திற்கு செல்கிறேன்\": Distinguish the nearby wording choices that make Level 1 · Unit 7: எங்கு செல்கிறீர்கள்? — Going Places sound precise rather than merely understandable.",
+      "pronunciation": "nūlakatirkku celkiṟēṉ",
+      "exampleTarget": "வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.",
+      "exampleNative": "Notice what the form is doing here: “After class I am going to the library.”",
+      "korean": "நூலகத்திற்கு செல்கிறேன்",
+      "english": "Usage focus for \"நூலகத்திற்கு செல்கிறேன்\": Distinguish the nearby wording choices that make Level 1 · Unit 7: எங்கு செல்கிறீர்கள்? — Going Places sound precise rather than merely understandable.",
+      "example": "வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.",
+      "exampleEnglish": "Notice what the form is doing here: “After class I am going to the library.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "நூலகத்திற்கு செல்கிறேன்",
+      "romanization": "nūlakatirkku celkiṟēṉ",
+      "nativeText": "Contrast check for \"நூலகத்திற்கு செல்கிறேன்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "nūlakatirkku celkiṟēṉ",
+      "exampleTarget": "வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “After class I am going to the library.”",
+      "korean": "நூலகத்திற்கு செல்கிறேன்",
+      "english": "Contrast check for \"நூலகத்திற்கு செல்கிறேன்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “After class I am going to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "நூலகத்திற்கு செல்கிறேன்",
+      "romanization": "nūlakatirkku celkiṟēṉ",
+      "nativeText": "Recall \"நூலகத்திற்கு செல்கிறேன்\" from memory, then explain what would change if a nearby alternative replaced it in \"வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.\".",
+      "pronunciation": "nūlakatirkku celkiṟēṉ",
+      "exampleTarget": "வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.",
+      "exampleNative": "Self-check against the model before moving on: “After class I am going to the library.”",
+      "korean": "நூலகத்திற்கு செல்கிறேன்",
+      "english": "Recall \"நூலகத்திற்கு செல்கிறேன்\" from memory, then explain what would change if a nearby alternative replaced it in \"வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.\".",
+      "example": "வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.",
+      "exampleEnglish": "Self-check against the model before moving on: “After class I am going to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "நூலகத்திற்கு செல்கிறேன்",
+      "romanization": "nūlakatirkku celkiṟēṉ",
+      "nativeText": "Repair \"நூலகத்திற்கு செல்கிறேன்\" inside \"வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 7: எங்கு செல்கிறீர்கள்? — Going Places sound precise rather than merely understandable.",
+      "pronunciation": "nūlakatirkku celkiṟēṉ",
+      "exampleTarget": "வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.",
+      "exampleNative": "Use the model as the repair target: “After class I am going to the library.”",
+      "korean": "நூலகத்திற்கு செல்கிறேன்",
+      "english": "Repair \"நூலகத்திற்கு செல்கிறேன்\" inside \"வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 7: எங்கு செல்கிறீர்கள்? — Going Places sound precise rather than merely understandable.",
+      "example": "வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.",
+      "exampleEnglish": "Use the model as the repair target: “After class I am going to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "நூலகத்திற்கு செல்கிறேன்",
+      "romanization": "nūlakatirkku celkiṟēṉ",
+      "nativeText": "Transfer \"நூலகத்திற்கு செல்கிறேன்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.\".",
+      "pronunciation": "nūlakatirkku celkiṟēṉ",
+      "exampleTarget": "வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “After class I am going to the library.”",
+      "korean": "நூலகத்திற்கு செல்கிறேன்",
+      "english": "Transfer \"நூலகத்திற்கு செல்கிறேன்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.\".",
+      "example": "வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “After class I am going to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "நூலகத்திற்கு செல்கிறேன்",
+      "romanization": "nūlakatirkku celkiṟēṉ",
+      "nativeText": "Find one word or phrase that naturally travels with \"நூலகத்திற்கு செல்கிறேன்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "nūlakatirkku celkiṟēṉ",
+      "exampleTarget": "வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “After class I am going to the library.”",
+      "korean": "நூலகத்திற்கு செல்கிறேன்",
+      "english": "Find one word or phrase that naturally travels with \"நூலகத்திற்கு செல்கிறேன்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “After class I am going to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "நூலகத்திற்கு செல்கிறேன்",
+      "romanization": "nūlakatirkku celkiṟēṉ",
+      "nativeText": "Listen for \"நூலகத்திற்கு செல்கிறேன்\" inside \"வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "nūlakatirkku celkiṟēṉ",
+      "exampleTarget": "வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “After class I am going to the library.”",
+      "korean": "நூலகத்திற்கு செல்கிறேன்",
+      "english": "Listen for \"நூலகத்திற்கு செல்கிறேன்\" inside \"வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “After class I am going to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "நூலகத்திற்கு செல்கிறேன்",
+      "romanization": "nūlakatirkku celkiṟēṉ",
+      "nativeText": "Write \"நூலகத்திற்கு செல்கிறேன்\" again without looking, then compare the exact written form against \"வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.\" before moving on.",
+      "pronunciation": "nūlakatirkku celkiṟēṉ",
+      "exampleTarget": "வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.",
+      "exampleNative": "Use the written model as the final correctness check: “After class I am going to the library.”",
+      "korean": "நூலகத்திற்கு செல்கிறேன்",
+      "english": "Write \"நூலகத்திற்கு செல்கிறேன்\" again without looking, then compare the exact written form against \"வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.\" before moving on.",
+      "example": "வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “After class I am going to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "நூலகத்திற்கு செல்கிறேன்",
+      "romanization": "nūlakatirkku celkiṟēṉ",
+      "nativeText": "Check whether \"நூலகத்திற்கு செல்கிறேன்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “After class I am going to the library.”",
+      "pronunciation": "nūlakatirkku celkiṟēṉ",
+      "exampleTarget": "வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “After class I am going to the library.”",
+      "korean": "நூலகத்திற்கு செல்கிறேன்",
+      "english": "Check whether \"நூலகத்திற்கு செல்கிறேன்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “After class I am going to the library.”",
+      "example": "வகுப்புக்குப் பிறகு நூலகத்திற்கு செல்கிறேன்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “After class I am going to the library.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "வீட்டிலிருந்து",
+      "romanization": "vīṭṭiliruntu",
+      "nativeText": "“From home.” The ablative-style form marks origin.",
+      "pronunciation": "vīṭṭiliruntu",
+      "exampleTarget": "நான் வீட்டிலிருந்து வருகிறேன்.",
+      "exampleNative": "“I am coming from home.”",
+      "korean": "வீட்டிலிருந்து",
+      "english": "“From home.” The ablative-style form marks origin.",
+      "example": "நான் வீட்டிலிருந்து வருகிறேன்.",
+      "exampleEnglish": "“I am coming from home.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "நான் வீட்டிலிருந்து வருகிறேன்.",
+      "romanization": "vīṭṭiliruntu",
+      "nativeText": "Model use for \"நான் வீட்டிலிருந்து வருகிறேன்.\": “I am coming from home.”",
+      "pronunciation": "vīṭṭiliruntu",
+      "exampleTarget": "நான் வீட்டிலிருந்து வருகிறேன்.",
+      "exampleNative": "“I am coming from home.”",
+      "korean": "நான் வீட்டிலிருந்து வருகிறேன்.",
+      "english": "Model use for \"நான் வீட்டிலிருந்து வருகிறேன்.\": “I am coming from home.”",
+      "example": "நான் வீட்டிலிருந்து வருகிறேன்.",
+      "exampleEnglish": "“I am coming from home.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "வீட்டிலிருந்து",
+      "romanization": "vīṭṭiliruntu",
+      "nativeText": "Usage focus for \"வீட்டிலிருந்து\": “From home.” The ablative-style form marks origin.",
+      "pronunciation": "vīṭṭiliruntu",
+      "exampleTarget": "நான் வீட்டிலிருந்து வருகிறேன்.",
+      "exampleNative": "Notice what the form is doing here: “I am coming from home.”",
+      "korean": "வீட்டிலிருந்து",
+      "english": "Usage focus for \"வீட்டிலிருந்து\": “From home.” The ablative-style form marks origin.",
+      "example": "நான் வீட்டிலிருந்து வருகிறேன்.",
+      "exampleEnglish": "Notice what the form is doing here: “I am coming from home.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "வீட்டிலிருந்து",
+      "romanization": "vīṭṭiliruntu",
+      "nativeText": "Contrast check for \"வீட்டிலிருந்து\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "vīṭṭiliruntu",
+      "exampleTarget": "நான் வீட்டிலிருந்து வருகிறேன்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am coming from home.”",
+      "korean": "வீட்டிலிருந்து",
+      "english": "Contrast check for \"வீட்டிலிருந்து\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "நான் வீட்டிலிருந்து வருகிறேன்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am coming from home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "வீட்டிலிருந்து",
+      "romanization": "vīṭṭiliruntu",
+      "nativeText": "Recall \"வீட்டிலிருந்து\" from memory, then explain what would change if a nearby alternative replaced it in \"நான் வீட்டிலிருந்து வருகிறேன்.\".",
+      "pronunciation": "vīṭṭiliruntu",
+      "exampleTarget": "நான் வீட்டிலிருந்து வருகிறேன்.",
+      "exampleNative": "Self-check against the model before moving on: “I am coming from home.”",
+      "korean": "வீட்டிலிருந்து",
+      "english": "Recall \"வீட்டிலிருந்து\" from memory, then explain what would change if a nearby alternative replaced it in \"நான் வீட்டிலிருந்து வருகிறேன்.\".",
+      "example": "நான் வீட்டிலிருந்து வருகிறேன்.",
+      "exampleEnglish": "Self-check against the model before moving on: “I am coming from home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "வீட்டிலிருந்து",
+      "romanization": "vīṭṭiliruntu",
+      "nativeText": "Repair \"வீட்டிலிருந்து\" inside \"நான் வீட்டிலிருந்து வருகிறேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “From home.” The ablative-style form marks origin.",
+      "pronunciation": "vīṭṭiliruntu",
+      "exampleTarget": "நான் வீட்டிலிருந்து வருகிறேன்.",
+      "exampleNative": "Use the model as the repair target: “I am coming from home.”",
+      "korean": "வீட்டிலிருந்து",
+      "english": "Repair \"வீட்டிலிருந்து\" inside \"நான் வீட்டிலிருந்து வருகிறேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “From home.” The ablative-style form marks origin.",
+      "example": "நான் வீட்டிலிருந்து வருகிறேன்.",
+      "exampleEnglish": "Use the model as the repair target: “I am coming from home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "வீட்டிலிருந்து",
+      "romanization": "vīṭṭiliruntu",
+      "nativeText": "Transfer \"வீட்டிலிருந்து\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நான் வீட்டிலிருந்து வருகிறேன்.\".",
+      "pronunciation": "vīṭṭiliruntu",
+      "exampleTarget": "நான் வீட்டிலிருந்து வருகிறேன்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am coming from home.”",
+      "korean": "வீட்டிலிருந்து",
+      "english": "Transfer \"வீட்டிலிருந்து\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நான் வீட்டிலிருந்து வருகிறேன்.\".",
+      "example": "நான் வீட்டிலிருந்து வருகிறேன்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am coming from home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "வீட்டிலிருந்து",
+      "romanization": "vīṭṭiliruntu",
+      "nativeText": "Find one word or phrase that naturally travels with \"வீட்டிலிருந்து\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "vīṭṭiliruntu",
+      "exampleTarget": "நான் வீட்டிலிருந்து வருகிறேன்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I am coming from home.”",
+      "korean": "வீட்டிலிருந்து",
+      "english": "Find one word or phrase that naturally travels with \"வீட்டிலிருந்து\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "நான் வீட்டிலிருந்து வருகிறேன்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I am coming from home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "வீட்டிலிருந்து",
+      "romanization": "vīṭṭiliruntu",
+      "nativeText": "Listen for \"வீட்டிலிருந்து\" inside \"நான் வீட்டிலிருந்து வருகிறேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "vīṭṭiliruntu",
+      "exampleTarget": "நான் வீட்டிலிருந்து வருகிறேன்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am coming from home.”",
+      "korean": "வீட்டிலிருந்து",
+      "english": "Listen for \"வீட்டிலிருந்து\" inside \"நான் வீட்டிலிருந்து வருகிறேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "நான் வீட்டிலிருந்து வருகிறேன்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am coming from home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "வீட்டிலிருந்து",
+      "romanization": "vīṭṭiliruntu",
+      "nativeText": "Write \"வீட்டிலிருந்து\" again without looking, then compare the exact written form against \"நான் வீட்டிலிருந்து வருகிறேன்.\" before moving on.",
+      "pronunciation": "vīṭṭiliruntu",
+      "exampleTarget": "நான் வீட்டிலிருந்து வருகிறேன்.",
+      "exampleNative": "Use the written model as the final correctness check: “I am coming from home.”",
+      "korean": "வீட்டிலிருந்து",
+      "english": "Write \"வீட்டிலிருந்து\" again without looking, then compare the exact written form against \"நான் வீட்டிலிருந்து வருகிறேன்.\" before moving on.",
+      "example": "நான் வீட்டிலிருந்து வருகிறேன்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I am coming from home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "வீட்டிலிருந்து",
+      "romanization": "vīṭṭiliruntu",
+      "nativeText": "Check whether \"வீட்டிலிருந்து\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am coming from home.”",
+      "pronunciation": "vīṭṭiliruntu",
+      "exampleTarget": "நான் வீட்டிலிருந்து வருகிறேன்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I am coming from home.”",
+      "korean": "வீட்டிலிருந்து",
+      "english": "Check whether \"வீட்டிலிருந்து\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am coming from home.”",
+      "example": "நான் வீட்டிலிருந்து வருகிறேன்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I am coming from home.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "இடப்பக்கம் திரும்புங்கள்",
+      "romanization": "iṭappakkam tirumpuṅkaḷ",
+      "nativeText": "“Turn left.” The plural imperative is polite.",
+      "pronunciation": "iṭappakkam tirumpuṅkaḷ",
+      "exampleTarget": "சிக்னலில் இடப்பக்கம் திரும்புங்கள்.",
+      "exampleNative": "“At the signal, turn left.”",
+      "korean": "இடப்பக்கம் திரும்புங்கள்",
+      "english": "“Turn left.” The plural imperative is polite.",
+      "example": "சிக்னலில் இடப்பக்கம் திரும்புங்கள்.",
+      "exampleEnglish": "“At the signal, turn left.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "சிக்னலில் இடப்பக்கம் திரும்புங்கள்.",
+      "romanization": "iṭappakkam tirumpuṅkaḷ",
+      "nativeText": "Model use for \"சிக்னலில் இடப்பக்கம் திரும்புங்கள்.\": “At the signal, turn left.”",
+      "pronunciation": "iṭappakkam tirumpuṅkaḷ",
+      "exampleTarget": "சிக்னலில் இடப்பக்கம் திரும்புங்கள்.",
+      "exampleNative": "“At the signal, turn left.”",
+      "korean": "சிக்னலில் இடப்பக்கம் திரும்புங்கள்.",
+      "english": "Model use for \"சிக்னலில் இடப்பக்கம் திரும்புங்கள்.\": “At the signal, turn left.”",
+      "example": "சிக்னலில் இடப்பக்கம் திரும்புங்கள்.",
+      "exampleEnglish": "“At the signal, turn left.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "இடப்பக்கம் திரும்புங்கள்",
+      "romanization": "iṭappakkam tirumpuṅkaḷ",
+      "nativeText": "Usage focus for \"இடப்பக்கம் திரும்புங்கள்\": “Turn left.” The plural imperative is polite.",
+      "pronunciation": "iṭappakkam tirumpuṅkaḷ",
+      "exampleTarget": "சிக்னலில் இடப்பக்கம் திரும்புங்கள்.",
+      "exampleNative": "Notice what the form is doing here: “At the signal, turn left.”",
+      "korean": "இடப்பக்கம் திரும்புங்கள்",
+      "english": "Usage focus for \"இடப்பக்கம் திரும்புங்கள்\": “Turn left.” The plural imperative is polite.",
+      "example": "சிக்னலில் இடப்பக்கம் திரும்புங்கள்.",
+      "exampleEnglish": "Notice what the form is doing here: “At the signal, turn left.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "இடப்பக்கம் திரும்புங்கள்",
+      "romanization": "iṭappakkam tirumpuṅkaḷ",
+      "nativeText": "Contrast check for \"இடப்பக்கம் திரும்புங்கள்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "iṭappakkam tirumpuṅkaḷ",
+      "exampleTarget": "சிக்னலில் இடப்பக்கம் திரும்புங்கள்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “At the signal, turn left.”",
+      "korean": "இடப்பக்கம் திரும்புங்கள்",
+      "english": "Contrast check for \"இடப்பக்கம் திரும்புங்கள்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "சிக்னலில் இடப்பக்கம் திரும்புங்கள்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “At the signal, turn left.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "இடப்பக்கம் திரும்புங்கள்",
+      "romanization": "iṭappakkam tirumpuṅkaḷ",
+      "nativeText": "Recall \"இடப்பக்கம் திரும்புங்கள்\" from memory, then explain what would change if a nearby alternative replaced it in \"சிக்னலில் இடப்பக்கம் திரும்புங்கள்.\".",
+      "pronunciation": "iṭappakkam tirumpuṅkaḷ",
+      "exampleTarget": "சிக்னலில் இடப்பக்கம் திரும்புங்கள்.",
+      "exampleNative": "Self-check against the model before moving on: “At the signal, turn left.”",
+      "korean": "இடப்பக்கம் திரும்புங்கள்",
+      "english": "Recall \"இடப்பக்கம் திரும்புங்கள்\" from memory, then explain what would change if a nearby alternative replaced it in \"சிக்னலில் இடப்பக்கம் திரும்புங்கள்.\".",
+      "example": "சிக்னலில் இடப்பக்கம் திரும்புங்கள்.",
+      "exampleEnglish": "Self-check against the model before moving on: “At the signal, turn left.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "இடப்பக்கம் திரும்புங்கள்",
+      "romanization": "iṭappakkam tirumpuṅkaḷ",
+      "nativeText": "Repair \"இடப்பக்கம் திரும்புங்கள்\" inside \"சிக்னலில் இடப்பக்கம் திரும்புங்கள்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Turn left.” The plural imperative is polite.",
+      "pronunciation": "iṭappakkam tirumpuṅkaḷ",
+      "exampleTarget": "சிக்னலில் இடப்பக்கம் திரும்புங்கள்.",
+      "exampleNative": "Use the model as the repair target: “At the signal, turn left.”",
+      "korean": "இடப்பக்கம் திரும்புங்கள்",
+      "english": "Repair \"இடப்பக்கம் திரும்புங்கள்\" inside \"சிக்னலில் இடப்பக்கம் திரும்புங்கள்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Turn left.” The plural imperative is polite.",
+      "example": "சிக்னலில் இடப்பக்கம் திரும்புங்கள்.",
+      "exampleEnglish": "Use the model as the repair target: “At the signal, turn left.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "இடப்பக்கம் திரும்புங்கள்",
+      "romanization": "iṭappakkam tirumpuṅkaḷ",
+      "nativeText": "Transfer \"இடப்பக்கம் திரும்புங்கள்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"சிக்னலில் இடப்பக்கம் திரும்புங்கள்.\".",
+      "pronunciation": "iṭappakkam tirumpuṅkaḷ",
+      "exampleTarget": "சிக்னலில் இடப்பக்கம் திரும்புங்கள்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “At the signal, turn left.”",
+      "korean": "இடப்பக்கம் திரும்புங்கள்",
+      "english": "Transfer \"இடப்பக்கம் திரும்புங்கள்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"சிக்னலில் இடப்பக்கம் திரும்புங்கள்.\".",
+      "example": "சிக்னலில் இடப்பக்கம் திரும்புங்கள்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “At the signal, turn left.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "இடப்பக்கம் திரும்புங்கள்",
+      "romanization": "iṭappakkam tirumpuṅkaḷ",
+      "nativeText": "Find one word or phrase that naturally travels with \"இடப்பக்கம் திரும்புங்கள்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "iṭappakkam tirumpuṅkaḷ",
+      "exampleTarget": "சிக்னலில் இடப்பக்கம் திரும்புங்கள்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “At the signal, turn left.”",
+      "korean": "இடப்பக்கம் திரும்புங்கள்",
+      "english": "Find one word or phrase that naturally travels with \"இடப்பக்கம் திரும்புங்கள்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "சிக்னலில் இடப்பக்கம் திரும்புங்கள்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “At the signal, turn left.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "இடப்பக்கம் திரும்புங்கள்",
+      "romanization": "iṭappakkam tirumpuṅkaḷ",
+      "nativeText": "Listen for \"இடப்பக்கம் திரும்புங்கள்\" inside \"சிக்னலில் இடப்பக்கம் திரும்புங்கள்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "iṭappakkam tirumpuṅkaḷ",
+      "exampleTarget": "சிக்னலில் இடப்பக்கம் திரும்புங்கள்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “At the signal, turn left.”",
+      "korean": "இடப்பக்கம் திரும்புங்கள்",
+      "english": "Listen for \"இடப்பக்கம் திரும்புங்கள்\" inside \"சிக்னலில் இடப்பக்கம் திரும்புங்கள்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "சிக்னலில் இடப்பக்கம் திரும்புங்கள்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “At the signal, turn left.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "இடப்பக்கம் திரும்புங்கள்",
+      "romanization": "iṭappakkam tirumpuṅkaḷ",
+      "nativeText": "Write \"இடப்பக்கம் திரும்புங்கள்\" again without looking, then compare the exact written form against \"சிக்னலில் இடப்பக்கம் திரும்புங்கள்.\" before moving on.",
+      "pronunciation": "iṭappakkam tirumpuṅkaḷ",
+      "exampleTarget": "சிக்னலில் இடப்பக்கம் திரும்புங்கள்.",
+      "exampleNative": "Use the written model as the final correctness check: “At the signal, turn left.”",
+      "korean": "இடப்பக்கம் திரும்புங்கள்",
+      "english": "Write \"இடப்பக்கம் திரும்புங்கள்\" again without looking, then compare the exact written form against \"சிக்னலில் இடப்பக்கம் திரும்புங்கள்.\" before moving on.",
+      "example": "சிக்னலில் இடப்பக்கம் திரும்புங்கள்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “At the signal, turn left.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "இடப்பக்கம் திரும்புங்கள்",
+      "romanization": "iṭappakkam tirumpuṅkaḷ",
+      "nativeText": "Check whether \"இடப்பக்கம் திரும்புங்கள்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “At the signal, turn left.”",
+      "pronunciation": "iṭappakkam tirumpuṅkaḷ",
+      "exampleTarget": "சிக்னலில் இடப்பக்கம் திரும்புங்கள்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “At the signal, turn left.”",
+      "korean": "இடப்பக்கம் திரும்புங்கள்",
+      "english": "Check whether \"இடப்பக்கம் திரும்புங்கள்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “At the signal, turn left.”",
+      "example": "சிக்னலில் இடப்பக்கம் திரும்புங்கள்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “At the signal, turn left.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "நேராக செல்லுங்கள்",
+      "romanization": "nērāka celluṅkaḷ",
+      "nativeText": "“Go straight.” A useful route instruction.",
+      "pronunciation": "nērāka celluṅkaḷ",
+      "exampleTarget": "நேராக சென்று வங்கியை கடக்கவும்.",
+      "exampleNative": "“Go straight and pass the bank.”",
+      "korean": "நேராக செல்லுங்கள்",
+      "english": "“Go straight.” A useful route instruction.",
+      "example": "நேராக சென்று வங்கியை கடக்கவும்.",
+      "exampleEnglish": "“Go straight and pass the bank.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "நேராக சென்று வங்கியை கடக்கவும்.",
+      "romanization": "nērāka celluṅkaḷ",
+      "nativeText": "Model use for \"நேராக சென்று வங்கியை கடக்கவும்.\": “Go straight and pass the bank.”",
+      "pronunciation": "nērāka celluṅkaḷ",
+      "exampleTarget": "நேராக சென்று வங்கியை கடக்கவும்.",
+      "exampleNative": "“Go straight and pass the bank.”",
+      "korean": "நேராக சென்று வங்கியை கடக்கவும்.",
+      "english": "Model use for \"நேராக சென்று வங்கியை கடக்கவும்.\": “Go straight and pass the bank.”",
+      "example": "நேராக சென்று வங்கியை கடக்கவும்.",
+      "exampleEnglish": "“Go straight and pass the bank.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "நேராக செல்லுங்கள்",
+      "romanization": "nērāka celluṅkaḷ",
+      "nativeText": "Usage focus for \"நேராக செல்லுங்கள்\": “Go straight.” A useful route instruction.",
+      "pronunciation": "nērāka celluṅkaḷ",
+      "exampleTarget": "நேராக சென்று வங்கியை கடக்கவும்.",
+      "exampleNative": "Notice what the form is doing here: “Go straight and pass the bank.”",
+      "korean": "நேராக செல்லுங்கள்",
+      "english": "Usage focus for \"நேராக செல்லுங்கள்\": “Go straight.” A useful route instruction.",
+      "example": "நேராக சென்று வங்கியை கடக்கவும்.",
+      "exampleEnglish": "Notice what the form is doing here: “Go straight and pass the bank.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "நேராக செல்லுங்கள்",
+      "romanization": "nērāka celluṅkaḷ",
+      "nativeText": "Contrast check for \"நேராக செல்லுங்கள்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "nērāka celluṅkaḷ",
+      "exampleTarget": "நேராக சென்று வங்கியை கடக்கவும்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Go straight and pass the bank.”",
+      "korean": "நேராக செல்லுங்கள்",
+      "english": "Contrast check for \"நேராக செல்லுங்கள்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "நேராக சென்று வங்கியை கடக்கவும்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Go straight and pass the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "நேராக செல்லுங்கள்",
+      "romanization": "nērāka celluṅkaḷ",
+      "nativeText": "Recall \"நேராக செல்லுங்கள்\" from memory, then explain what would change if a nearby alternative replaced it in \"நேராக சென்று வங்கியை கடக்கவும்.\".",
+      "pronunciation": "nērāka celluṅkaḷ",
+      "exampleTarget": "நேராக சென்று வங்கியை கடக்கவும்.",
+      "exampleNative": "Self-check against the model before moving on: “Go straight and pass the bank.”",
+      "korean": "நேராக செல்லுங்கள்",
+      "english": "Recall \"நேராக செல்லுங்கள்\" from memory, then explain what would change if a nearby alternative replaced it in \"நேராக சென்று வங்கியை கடக்கவும்.\".",
+      "example": "நேராக சென்று வங்கியை கடக்கவும்.",
+      "exampleEnglish": "Self-check against the model before moving on: “Go straight and pass the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "நேராக செல்லுங்கள்",
+      "romanization": "nērāka celluṅkaḷ",
+      "nativeText": "Repair \"நேராக செல்லுங்கள்\" inside \"நேராக சென்று வங்கியை கடக்கவும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Go straight.” A useful route instruction.",
+      "pronunciation": "nērāka celluṅkaḷ",
+      "exampleTarget": "நேராக சென்று வங்கியை கடக்கவும்.",
+      "exampleNative": "Use the model as the repair target: “Go straight and pass the bank.”",
+      "korean": "நேராக செல்லுங்கள்",
+      "english": "Repair \"நேராக செல்லுங்கள்\" inside \"நேராக சென்று வங்கியை கடக்கவும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Go straight.” A useful route instruction.",
+      "example": "நேராக சென்று வங்கியை கடக்கவும்.",
+      "exampleEnglish": "Use the model as the repair target: “Go straight and pass the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "நேராக செல்லுங்கள்",
+      "romanization": "nērāka celluṅkaḷ",
+      "nativeText": "Transfer \"நேராக செல்லுங்கள்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நேராக சென்று வங்கியை கடக்கவும்.\".",
+      "pronunciation": "nērāka celluṅkaḷ",
+      "exampleTarget": "நேராக சென்று வங்கியை கடக்கவும்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Go straight and pass the bank.”",
+      "korean": "நேராக செல்லுங்கள்",
+      "english": "Transfer \"நேராக செல்லுங்கள்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நேராக சென்று வங்கியை கடக்கவும்.\".",
+      "example": "நேராக சென்று வங்கியை கடக்கவும்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Go straight and pass the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "நேராக செல்லுங்கள்",
+      "romanization": "nērāka celluṅkaḷ",
+      "nativeText": "Find one word or phrase that naturally travels with \"நேராக செல்லுங்கள்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "nērāka celluṅkaḷ",
+      "exampleTarget": "நேராக சென்று வங்கியை கடக்கவும்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Go straight and pass the bank.”",
+      "korean": "நேராக செல்லுங்கள்",
+      "english": "Find one word or phrase that naturally travels with \"நேராக செல்லுங்கள்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "நேராக சென்று வங்கியை கடக்கவும்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Go straight and pass the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "நேராக செல்லுங்கள்",
+      "romanization": "nērāka celluṅkaḷ",
+      "nativeText": "Listen for \"நேராக செல்லுங்கள்\" inside \"நேராக சென்று வங்கியை கடக்கவும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "nērāka celluṅkaḷ",
+      "exampleTarget": "நேராக சென்று வங்கியை கடக்கவும்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Go straight and pass the bank.”",
+      "korean": "நேராக செல்லுங்கள்",
+      "english": "Listen for \"நேராக செல்லுங்கள்\" inside \"நேராக சென்று வங்கியை கடக்கவும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "நேராக சென்று வங்கியை கடக்கவும்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Go straight and pass the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "நேராக செல்லுங்கள்",
+      "romanization": "nērāka celluṅkaḷ",
+      "nativeText": "Write \"நேராக செல்லுங்கள்\" again without looking, then compare the exact written form against \"நேராக சென்று வங்கியை கடக்கவும்.\" before moving on.",
+      "pronunciation": "nērāka celluṅkaḷ",
+      "exampleTarget": "நேராக சென்று வங்கியை கடக்கவும்.",
+      "exampleNative": "Use the written model as the final correctness check: “Go straight and pass the bank.”",
+      "korean": "நேராக செல்லுங்கள்",
+      "english": "Write \"நேராக செல்லுங்கள்\" again without looking, then compare the exact written form against \"நேராக சென்று வங்கியை கடக்கவும்.\" before moving on.",
+      "example": "நேராக சென்று வங்கியை கடக்கவும்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Go straight and pass the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "நேராக செல்லுங்கள்",
+      "romanization": "nērāka celluṅkaḷ",
+      "nativeText": "Check whether \"நேராக செல்லுங்கள்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Go straight and pass the bank.”",
+      "pronunciation": "nērāka celluṅkaḷ",
+      "exampleTarget": "நேராக சென்று வங்கியை கடக்கவும்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Go straight and pass the bank.”",
+      "korean": "நேராக செல்லுங்கள்",
+      "english": "Check whether \"நேராக செல்லுங்கள்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Go straight and pass the bank.”",
+      "example": "நேராக சென்று வங்கியை கடக்கவும்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Go straight and pass the bank.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "அருகில் / தூரத்தில்",
+      "romanization": "arukil / tūrattil",
+      "nativeText": "“Nearby / far away.” Locative-style forms describe distance.",
+      "pronunciation": "arukil / tūrattil",
+      "exampleTarget": "நிலையம் அருகில் உள்ளது.",
+      "exampleNative": "“The station is nearby.”",
+      "korean": "அருகில் / தூரத்தில்",
+      "english": "“Nearby / far away.” Locative-style forms describe distance.",
+      "example": "நிலையம் அருகில் உள்ளது.",
+      "exampleEnglish": "“The station is nearby.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "நிலையம் அருகில் உள்ளது.",
+      "romanization": "arukil / tūrattil",
+      "nativeText": "Model use for \"நிலையம் அருகில் உள்ளது.\": “The station is nearby.”",
+      "pronunciation": "arukil / tūrattil",
+      "exampleTarget": "நிலையம் அருகில் உள்ளது.",
+      "exampleNative": "“The station is nearby.”",
+      "korean": "நிலையம் அருகில் உள்ளது.",
+      "english": "Model use for \"நிலையம் அருகில் உள்ளது.\": “The station is nearby.”",
+      "example": "நிலையம் அருகில் உள்ளது.",
+      "exampleEnglish": "“The station is nearby.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "அருகில் / தூரத்தில்",
+      "romanization": "arukil / tūrattil",
+      "nativeText": "Usage focus for \"அருகில் / தூரத்தில்\": “Nearby / far away.” Locative-style forms describe distance.",
+      "pronunciation": "arukil / tūrattil",
+      "exampleTarget": "நிலையம் அருகில் உள்ளது.",
+      "exampleNative": "Notice what the form is doing here: “The station is nearby.”",
+      "korean": "அருகில் / தூரத்தில்",
+      "english": "Usage focus for \"அருகில் / தூரத்தில்\": “Nearby / far away.” Locative-style forms describe distance.",
+      "example": "நிலையம் அருகில் உள்ளது.",
+      "exampleEnglish": "Notice what the form is doing here: “The station is nearby.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "அருகில் / தூரத்தில்",
+      "romanization": "arukil / tūrattil",
+      "nativeText": "Contrast check for \"அருகில் / தூரத்தில்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "arukil / tūrattil",
+      "exampleTarget": "நிலையம் அருகில் உள்ளது.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The station is nearby.”",
+      "korean": "அருகில் / தூரத்தில்",
+      "english": "Contrast check for \"அருகில் / தூரத்தில்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "நிலையம் அருகில் உள்ளது.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The station is nearby.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "அருகில் / தூரத்தில்",
+      "romanization": "arukil / tūrattil",
+      "nativeText": "Recall \"அருகில் / தூரத்தில்\" from memory, then explain what would change if a nearby alternative replaced it in \"நிலையம் அருகில் உள்ளது.\".",
+      "pronunciation": "arukil / tūrattil",
+      "exampleTarget": "நிலையம் அருகில் உள்ளது.",
+      "exampleNative": "Self-check against the model before moving on: “The station is nearby.”",
+      "korean": "அருகில் / தூரத்தில்",
+      "english": "Recall \"அருகில் / தூரத்தில்\" from memory, then explain what would change if a nearby alternative replaced it in \"நிலையம் அருகில் உள்ளது.\".",
+      "example": "நிலையம் அருகில் உள்ளது.",
+      "exampleEnglish": "Self-check against the model before moving on: “The station is nearby.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "அருகில் / தூரத்தில்",
+      "romanization": "arukil / tūrattil",
+      "nativeText": "Repair \"அருகில் / தூரத்தில்\" inside \"நிலையம் அருகில் உள்ளது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Nearby / far away.” Locative-style forms describe distance.",
+      "pronunciation": "arukil / tūrattil",
+      "exampleTarget": "நிலையம் அருகில் உள்ளது.",
+      "exampleNative": "Use the model as the repair target: “The station is nearby.”",
+      "korean": "அருகில் / தூரத்தில்",
+      "english": "Repair \"அருகில் / தூரத்தில்\" inside \"நிலையம் அருகில் உள்ளது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Nearby / far away.” Locative-style forms describe distance.",
+      "example": "நிலையம் அருகில் உள்ளது.",
+      "exampleEnglish": "Use the model as the repair target: “The station is nearby.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "அருகில் / தூரத்தில்",
+      "romanization": "arukil / tūrattil",
+      "nativeText": "Transfer \"அருகில் / தூரத்தில்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நிலையம் அருகில் உள்ளது.\".",
+      "pronunciation": "arukil / tūrattil",
+      "exampleTarget": "நிலையம் அருகில் உள்ளது.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The station is nearby.”",
+      "korean": "அருகில் / தூரத்தில்",
+      "english": "Transfer \"அருகில் / தூரத்தில்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நிலையம் அருகில் உள்ளது.\".",
+      "example": "நிலையம் அருகில் உள்ளது.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The station is nearby.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "அருகில் / தூரத்தில்",
+      "romanization": "arukil / tūrattil",
+      "nativeText": "Find one word or phrase that naturally travels with \"அருகில் / தூரத்தில்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "arukil / tūrattil",
+      "exampleTarget": "நிலையம் அருகில் உள்ளது.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The station is nearby.”",
+      "korean": "அருகில் / தூரத்தில்",
+      "english": "Find one word or phrase that naturally travels with \"அருகில் / தூரத்தில்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "நிலையம் அருகில் உள்ளது.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The station is nearby.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "அருகில் / தூரத்தில்",
+      "romanization": "arukil / tūrattil",
+      "nativeText": "Listen for \"அருகில் / தூரத்தில்\" inside \"நிலையம் அருகில் உள்ளது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "arukil / tūrattil",
+      "exampleTarget": "நிலையம் அருகில் உள்ளது.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The station is nearby.”",
+      "korean": "அருகில் / தூரத்தில்",
+      "english": "Listen for \"அருகில் / தூரத்தில்\" inside \"நிலையம் அருகில் உள்ளது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "நிலையம் அருகில் உள்ளது.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The station is nearby.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "அருகில் / தூரத்தில்",
+      "romanization": "arukil / tūrattil",
+      "nativeText": "Write \"அருகில் / தூரத்தில்\" again without looking, then compare the exact written form against \"நிலையம் அருகில் உள்ளது.\" before moving on.",
+      "pronunciation": "arukil / tūrattil",
+      "exampleTarget": "நிலையம் அருகில் உள்ளது.",
+      "exampleNative": "Use the written model as the final correctness check: “The station is nearby.”",
+      "korean": "அருகில் / தூரத்தில்",
+      "english": "Write \"அருகில் / தூரத்தில்\" again without looking, then compare the exact written form against \"நிலையம் அருகில் உள்ளது.\" before moving on.",
+      "example": "நிலையம் அருகில் உள்ளது.",
+      "exampleEnglish": "Use the written model as the final correctness check: “The station is nearby.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "அருகில் / தூரத்தில்",
+      "romanization": "arukil / tūrattil",
+      "nativeText": "Check whether \"அருகில் / தூரத்தில்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The station is nearby.”",
+      "pronunciation": "arukil / tūrattil",
+      "exampleTarget": "நிலையம் அருகில் உள்ளது.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The station is nearby.”",
+      "korean": "அருகில் / தூரத்தில்",
+      "english": "Check whether \"அருகில் / தூரத்தில்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The station is nearby.”",
+      "example": "நிலையம் அருகில் உள்ளது.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The station is nearby.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "...க்கு எப்படி போகலாம்?",
+      "romanization": "...kku eppaṭi pōkalām",
+      "nativeText": "“How can I go to ...?” A practical route question.",
+      "pronunciation": "...kku eppaṭi pōkalām",
+      "exampleTarget": "மருத்துவமனைக்கு எப்படி போகலாம்?",
+      "exampleNative": "“How can I go to the hospital?”",
+      "korean": "...க்கு எப்படி போகலாம்?",
+      "english": "“How can I go to ...?” A practical route question.",
+      "example": "மருத்துவமனைக்கு எப்படி போகலாம்?",
+      "exampleEnglish": "“How can I go to the hospital?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "மருத்துவமனைக்கு எப்படி போகலாம்?",
+      "romanization": "...kku eppaṭi pōkalām",
+      "nativeText": "Model use for \"மருத்துவமனைக்கு எப்படி போகலாம்?\": “How can I go to the hospital?”",
+      "pronunciation": "...kku eppaṭi pōkalām",
+      "exampleTarget": "மருத்துவமனைக்கு எப்படி போகலாம்?",
+      "exampleNative": "“How can I go to the hospital?”",
+      "korean": "மருத்துவமனைக்கு எப்படி போகலாம்?",
+      "english": "Model use for \"மருத்துவமனைக்கு எப்படி போகலாம்?\": “How can I go to the hospital?”",
+      "example": "மருத்துவமனைக்கு எப்படி போகலாம்?",
+      "exampleEnglish": "“How can I go to the hospital?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "...க்கு எப்படி போகலாம்?",
+      "romanization": "...kku eppaṭi pōkalām",
+      "nativeText": "Usage focus for \"...க்கு எப்படி போகலாம்?\": “How can I go to ...?” A practical route question.",
+      "pronunciation": "...kku eppaṭi pōkalām",
+      "exampleTarget": "மருத்துவமனைக்கு எப்படி போகலாம்?",
+      "exampleNative": "Notice what the form is doing here: “How can I go to the hospital?”",
+      "korean": "...க்கு எப்படி போகலாம்?",
+      "english": "Usage focus for \"...க்கு எப்படி போகலாம்?\": “How can I go to ...?” A practical route question.",
+      "example": "மருத்துவமனைக்கு எப்படி போகலாம்?",
+      "exampleEnglish": "Notice what the form is doing here: “How can I go to the hospital?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "...க்கு எப்படி போகலாம்?",
+      "romanization": "...kku eppaṭi pōkalām",
+      "nativeText": "Contrast check for \"...க்கு எப்படி போகலாம்?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "...kku eppaṭi pōkalām",
+      "exampleTarget": "மருத்துவமனைக்கு எப்படி போகலாம்?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How can I go to the hospital?”",
+      "korean": "...க்கு எப்படி போகலாம்?",
+      "english": "Contrast check for \"...க்கு எப்படி போகலாம்?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "மருத்துவமனைக்கு எப்படி போகலாம்?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How can I go to the hospital?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "...க்கு எப்படி போகலாம்?",
+      "romanization": "...kku eppaṭi pōkalām",
+      "nativeText": "Recall \"...க்கு எப்படி போகலாம்?\" from memory, then explain what would change if a nearby alternative replaced it in \"மருத்துவமனைக்கு எப்படி போகலாம்?\".",
+      "pronunciation": "...kku eppaṭi pōkalām",
+      "exampleTarget": "மருத்துவமனைக்கு எப்படி போகலாம்?",
+      "exampleNative": "Self-check against the model before moving on: “How can I go to the hospital?”",
+      "korean": "...க்கு எப்படி போகலாம்?",
+      "english": "Recall \"...க்கு எப்படி போகலாம்?\" from memory, then explain what would change if a nearby alternative replaced it in \"மருத்துவமனைக்கு எப்படி போகலாம்?\".",
+      "example": "மருத்துவமனைக்கு எப்படி போகலாம்?",
+      "exampleEnglish": "Self-check against the model before moving on: “How can I go to the hospital?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "...க்கு எப்படி போகலாம்?",
+      "romanization": "...kku eppaṭi pōkalām",
+      "nativeText": "Repair \"...க்கு எப்படி போகலாம்?\" inside \"மருத்துவமனைக்கு எப்படி போகலாம்?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “How can I go to ...?” A practical route question.",
+      "pronunciation": "...kku eppaṭi pōkalām",
+      "exampleTarget": "மருத்துவமனைக்கு எப்படி போகலாம்?",
+      "exampleNative": "Use the model as the repair target: “How can I go to the hospital?”",
+      "korean": "...க்கு எப்படி போகலாம்?",
+      "english": "Repair \"...க்கு எப்படி போகலாம்?\" inside \"மருத்துவமனைக்கு எப்படி போகலாம்?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “How can I go to ...?” A practical route question.",
+      "example": "மருத்துவமனைக்கு எப்படி போகலாம்?",
+      "exampleEnglish": "Use the model as the repair target: “How can I go to the hospital?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "...க்கு எப்படி போகலாம்?",
+      "romanization": "...kku eppaṭi pōkalām",
+      "nativeText": "Transfer \"...க்கு எப்படி போகலாம்?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"மருத்துவமனைக்கு எப்படி போகலாம்?\".",
+      "pronunciation": "...kku eppaṭi pōkalām",
+      "exampleTarget": "மருத்துவமனைக்கு எப்படி போகலாம்?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “How can I go to the hospital?”",
+      "korean": "...க்கு எப்படி போகலாம்?",
+      "english": "Transfer \"...க்கு எப்படி போகலாம்?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"மருத்துவமனைக்கு எப்படி போகலாம்?\".",
+      "example": "மருத்துவமனைக்கு எப்படி போகலாம்?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “How can I go to the hospital?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "...க்கு எப்படி போகலாம்?",
+      "romanization": "...kku eppaṭi pōkalām",
+      "nativeText": "Find one word or phrase that naturally travels with \"...க்கு எப்படி போகலாம்?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "...kku eppaṭi pōkalām",
+      "exampleTarget": "மருத்துவமனைக்கு எப்படி போகலாம்?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “How can I go to the hospital?”",
+      "korean": "...க்கு எப்படி போகலாம்?",
+      "english": "Find one word or phrase that naturally travels with \"...க்கு எப்படி போகலாம்?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "மருத்துவமனைக்கு எப்படி போகலாம்?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “How can I go to the hospital?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "...க்கு எப்படி போகலாம்?",
+      "romanization": "...kku eppaṭi pōkalām",
+      "nativeText": "Listen for \"...க்கு எப்படி போகலாம்?\" inside \"மருத்துவமனைக்கு எப்படி போகலாம்?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "...kku eppaṭi pōkalām",
+      "exampleTarget": "மருத்துவமனைக்கு எப்படி போகலாம்?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How can I go to the hospital?”",
+      "korean": "...க்கு எப்படி போகலாம்?",
+      "english": "Listen for \"...க்கு எப்படி போகலாம்?\" inside \"மருத்துவமனைக்கு எப்படி போகலாம்?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "மருத்துவமனைக்கு எப்படி போகலாம்?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How can I go to the hospital?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "...க்கு எப்படி போகலாம்?",
+      "romanization": "...kku eppaṭi pōkalām",
+      "nativeText": "Write \"...க்கு எப்படி போகலாம்?\" again without looking, then compare the exact written form against \"மருத்துவமனைக்கு எப்படி போகலாம்?\" before moving on.",
+      "pronunciation": "...kku eppaṭi pōkalām",
+      "exampleTarget": "மருத்துவமனைக்கு எப்படி போகலாம்?",
+      "exampleNative": "Use the written model as the final correctness check: “How can I go to the hospital?”",
+      "korean": "...க்கு எப்படி போகலாம்?",
+      "english": "Write \"...க்கு எப்படி போகலாம்?\" again without looking, then compare the exact written form against \"மருத்துவமனைக்கு எப்படி போகலாம்?\" before moving on.",
+      "example": "மருத்துவமனைக்கு எப்படி போகலாம்?",
+      "exampleEnglish": "Use the written model as the final correctness check: “How can I go to the hospital?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "...க்கு எப்படி போகலாம்?",
+      "romanization": "...kku eppaṭi pōkalām",
+      "nativeText": "Check whether \"...க்கு எப்படி போகலாம்?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How can I go to the hospital?”",
+      "pronunciation": "...kku eppaṭi pōkalām",
+      "exampleTarget": "மருத்துவமனைக்கு எப்படி போகலாம்?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “How can I go to the hospital?”",
+      "korean": "...க்கு எப்படி போகலாம்?",
+      "english": "Check whether \"...க்கு எப்படி போகலாம்?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How can I go to the hospital?”",
+      "example": "மருத்துவமனைக்கு எப்படி போகலாம்?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “How can I go to the hospital?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "அருகில்",
+      "romanization": "arukil",
+      "nativeText": "“Near / beside.” Useful for landmark descriptions.",
+      "pronunciation": "arukil",
+      "exampleTarget": "கஃபே வங்கியின் அருகில் உள்ளது.",
+      "exampleNative": "“The cafe is near the bank.”",
+      "korean": "அருகில்",
+      "english": "“Near / beside.” Useful for landmark descriptions.",
+      "example": "கஃபே வங்கியின் அருகில் உள்ளது.",
+      "exampleEnglish": "“The cafe is near the bank.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "கஃபே வங்கியின் அருகில் உள்ளது.",
+      "romanization": "arukil",
+      "nativeText": "Model use for \"கஃபே வங்கியின் அருகில் உள்ளது.\": “The cafe is near the bank.”",
+      "pronunciation": "arukil",
+      "exampleTarget": "கஃபே வங்கியின் அருகில் உள்ளது.",
+      "exampleNative": "“The cafe is near the bank.”",
+      "korean": "கஃபே வங்கியின் அருகில் உள்ளது.",
+      "english": "Model use for \"கஃபே வங்கியின் அருகில் உள்ளது.\": “The cafe is near the bank.”",
+      "example": "கஃபே வங்கியின் அருகில் உள்ளது.",
+      "exampleEnglish": "“The cafe is near the bank.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "அருகில்",
+      "romanization": "arukil",
+      "nativeText": "Usage focus for \"அருகில்\": “Near / beside.” Useful for landmark descriptions.",
+      "pronunciation": "arukil",
+      "exampleTarget": "கஃபே வங்கியின் அருகில் உள்ளது.",
+      "exampleNative": "Notice what the form is doing here: “The cafe is near the bank.”",
+      "korean": "அருகில்",
+      "english": "Usage focus for \"அருகில்\": “Near / beside.” Useful for landmark descriptions.",
+      "example": "கஃபே வங்கியின் அருகில் உள்ளது.",
+      "exampleEnglish": "Notice what the form is doing here: “The cafe is near the bank.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "அருகில்",
+      "romanization": "arukil",
+      "nativeText": "Contrast check for \"அருகில்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "arukil",
+      "exampleTarget": "கஃபே வங்கியின் அருகில் உள்ளது.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The cafe is near the bank.”",
+      "korean": "அருகில்",
+      "english": "Contrast check for \"அருகில்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "கஃபே வங்கியின் அருகில் உள்ளது.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The cafe is near the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "அருகில்",
+      "romanization": "arukil",
+      "nativeText": "Recall \"அருகில்\" from memory, then explain what would change if a nearby alternative replaced it in \"கஃபே வங்கியின் அருகில் உள்ளது.\".",
+      "pronunciation": "arukil",
+      "exampleTarget": "கஃபே வங்கியின் அருகில் உள்ளது.",
+      "exampleNative": "Self-check against the model before moving on: “The cafe is near the bank.”",
+      "korean": "அருகில்",
+      "english": "Recall \"அருகில்\" from memory, then explain what would change if a nearby alternative replaced it in \"கஃபே வங்கியின் அருகில் உள்ளது.\".",
+      "example": "கஃபே வங்கியின் அருகில் உள்ளது.",
+      "exampleEnglish": "Self-check against the model before moving on: “The cafe is near the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "அருகில்",
+      "romanization": "arukil",
+      "nativeText": "Repair \"அருகில்\" inside \"கஃபே வங்கியின் அருகில் உள்ளது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Near / beside.” Useful for landmark descriptions.",
+      "pronunciation": "arukil",
+      "exampleTarget": "கஃபே வங்கியின் அருகில் உள்ளது.",
+      "exampleNative": "Use the model as the repair target: “The cafe is near the bank.”",
+      "korean": "அருகில்",
+      "english": "Repair \"அருகில்\" inside \"கஃபே வங்கியின் அருகில் உள்ளது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Near / beside.” Useful for landmark descriptions.",
+      "example": "கஃபே வங்கியின் அருகில் உள்ளது.",
+      "exampleEnglish": "Use the model as the repair target: “The cafe is near the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "அருகில்",
+      "romanization": "arukil",
+      "nativeText": "Transfer \"அருகில்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"கஃபே வங்கியின் அருகில் உள்ளது.\".",
+      "pronunciation": "arukil",
+      "exampleTarget": "கஃபே வங்கியின் அருகில் உள்ளது.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The cafe is near the bank.”",
+      "korean": "அருகில்",
+      "english": "Transfer \"அருகில்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"கஃபே வங்கியின் அருகில் உள்ளது.\".",
+      "example": "கஃபே வங்கியின் அருகில் உள்ளது.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The cafe is near the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "அருகில்",
+      "romanization": "arukil",
+      "nativeText": "Find one word or phrase that naturally travels with \"அருகில்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "arukil",
+      "exampleTarget": "கஃபே வங்கியின் அருகில் உள்ளது.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The cafe is near the bank.”",
+      "korean": "அருகில்",
+      "english": "Find one word or phrase that naturally travels with \"அருகில்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "கஃபே வங்கியின் அருகில் உள்ளது.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The cafe is near the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "அருகில்",
+      "romanization": "arukil",
+      "nativeText": "Listen for \"அருகில்\" inside \"கஃபே வங்கியின் அருகில் உள்ளது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "arukil",
+      "exampleTarget": "கஃபே வங்கியின் அருகில் உள்ளது.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The cafe is near the bank.”",
+      "korean": "அருகில்",
+      "english": "Listen for \"அருகில்\" inside \"கஃபே வங்கியின் அருகில் உள்ளது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "கஃபே வங்கியின் அருகில் உள்ளது.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The cafe is near the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "அருகில்",
+      "romanization": "arukil",
+      "nativeText": "Write \"அருகில்\" again without looking, then compare the exact written form against \"கஃபே வங்கியின் அருகில் உள்ளது.\" before moving on.",
+      "pronunciation": "arukil",
+      "exampleTarget": "கஃபே வங்கியின் அருகில் உள்ளது.",
+      "exampleNative": "Use the written model as the final correctness check: “The cafe is near the bank.”",
+      "korean": "அருகில்",
+      "english": "Write \"அருகில்\" again without looking, then compare the exact written form against \"கஃபே வங்கியின் அருகில் உள்ளது.\" before moving on.",
+      "example": "கஃபே வங்கியின் அருகில் உள்ளது.",
+      "exampleEnglish": "Use the written model as the final correctness check: “The cafe is near the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit07goingplaces-vocabulary-1",
+        "ta-level1unit07goingplaces-vocabulary-2",
+        "ta-level1unit07goingplaces-grammar-1",
+        "ta-level1unit07goingplaces-grammar-2",
+        "ta-level1unit07goingplaces-reading",
+        "ta-level1unit07goingplaces-listening",
+        "ta-level1unit07goingplaces-writing",
+        "ta-level1unit07goingplaces-task"
+      ],
+      "targetText": "அருகில்",
+      "romanization": "arukil",
+      "nativeText": "Check whether \"அருகில்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The cafe is near the bank.”",
+      "pronunciation": "arukil",
+      "exampleTarget": "கஃபே வங்கியின் அருகில் உள்ளது.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The cafe is near the bank.”",
+      "korean": "அருகில்",
+      "english": "Check whether \"அருகில்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The cafe is near the bank.”",
+      "example": "கஃபே வங்கியின் அருகில் உள்ளது.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The cafe is near the bank.”"
+    }
+  ],
+  "targetLang": "ta",
+  "nativeLang": "en",
+  "track": "textbook"
+};

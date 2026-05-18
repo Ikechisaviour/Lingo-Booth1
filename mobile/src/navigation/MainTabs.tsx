@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
 import { Alert, ScrollView, StyleSheet, TouchableOpacity, useWindowDimensions, View } from 'react-native';
-import { Button, Text, TextInput } from 'react-native-paper';
+import { Button, Text } from 'react-native-paper';
 import { ExpoSpeechRecognitionModule, useSpeechRecognitionEvent } from 'expo-speech-recognition';
 import { useAuthStore } from '../stores/authStore';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -18,6 +18,13 @@ import { displayPartsForMessage, languageLabel, languageRole, speechChunksForPar
 import { contrastingVoiceForLocale, roleVoiceForLocale, tutorVoiceForLocale } from '../utils/roleVoices';
 import { looksLikeRawEnglishForNative } from '../utils/languagePairPolicy';
 import VoicePickerModal from '../components/VoicePickerModal';
+import {
+  ClassLessonActivityStrip,
+  ClassLessonItemPicker,
+  ClassLessonSpeechControls,
+  ClassLessonTutorThread,
+  ClassLessonTutorComposer,
+} from '../screens/classLesson/ClassLessonSections';
 
 import HomeScreen from '../screens/home/HomeScreen';
 import LevelCheckScreen from '../screens/home/LevelCheckScreen';
@@ -33,6 +40,7 @@ import ProfileScreen from '../screens/profile/ProfileScreen';
 import BillingScreen from '../screens/billing/BillingScreen';
 import InstitutionDashboardScreen from '../screens/institution/InstitutionDashboardScreen';
 import AdminScreen from '../screens/admin/AdminScreen';
+import ContactScreen from '../screens/support/ContactScreen';
 
 const Tab = createBottomTabNavigator();
 const HomeStack = createNativeStackNavigator();
@@ -180,6 +188,7 @@ const HomeStackScreen: React.FC = () => (
     <HomeStack.Screen name="HomeMain" component={HomeScreen} />
     <HomeStack.Screen name="Progress" component={ProgressScreen} />
     <HomeStack.Screen name="LevelCheck" component={LevelCheckScreen} />
+    <HomeStack.Screen name="Contact" component={ContactScreen} />
   </HomeStack.Navigator>
 );
 
@@ -188,7 +197,11 @@ const firstText = (...values: Array<string | undefined>) =>
 
 const itemTarget = (item?: ClassLessonItem) => firstText(item?.targetText, item?.korean);
 const itemNative = (item?: ClassLessonItem) => firstText(item?.nativeText, item?.english);
-const itemExampleTarget = (item?: ClassLessonItem) => firstText(item?.exampleTarget, item?.example);
+const normalizeStudyText = (value = '') => String(value || '').trim().toLowerCase();
+const itemExampleTarget = (item?: ClassLessonItem) => {
+  const example = firstText(item?.exampleTarget, item?.example);
+  return normalizeStudyText(example) === normalizeStudyText(itemTarget(item)) ? '' : example;
+};
 const itemExampleNative = (item?: ClassLessonItem) => firstText(item?.exampleNative, item?.exampleEnglish);
 const CLASS_ITEM_WINDOW_SIZE = 8;
 
@@ -535,11 +548,14 @@ const ClassHomeScreen: React.FC<any> = ({ navigation }) => {
   const [classLessons, setClassLessons] = useState<ClassLesson[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [reloadKey, setReloadKey] = useState(0);
 
   useEffect(() => {
     let cancelled = false;
 
     async function loadClassLessons() {
+      setLoading(true);
+      setError('');
       try {
         classLessonService.preparePair().catch(() => {});
         const response = await classLessonService.getClassLessonSummaries();
@@ -562,7 +578,7 @@ const ClassHomeScreen: React.FC<any> = ({ navigation }) => {
         });
         setClassLessons(list);
       } catch {
-        if (!cancelled) setError(t('classList.loadError', 'Could not load class lessons.'));
+        if (!cancelled) setError(t('classList.loadError', "We couldn't load your lessons right now. Please check your connection and try again."));
       } finally {
         if (!cancelled) setLoading(false);
       }
@@ -572,7 +588,9 @@ const ClassHomeScreen: React.FC<any> = ({ navigation }) => {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [reloadKey]);
+
+  const handleRetry = () => setReloadKey((n) => n + 1);
 
   return (
     <View style={styles.screen}>
@@ -582,7 +600,14 @@ const ClassHomeScreen: React.FC<any> = ({ navigation }) => {
         <Text style={styles.subtitle}>{t('classList.subtitleShort', 'Pick a unit and practice it in conversation.')}</Text>
 
         {loading && <Text style={styles.subtitle}>{t('classList.loading', 'Loading lessons...')}</Text>}
-        {!!error && <Text style={styles.errorText}>{error}</Text>}
+        {!!error && (
+          <View style={styles.errorBlock}>
+            <Text style={styles.errorText}>{error}</Text>
+            <Button mode="outlined" onPress={handleRetry} style={styles.errorRetry}>
+              {t('classList.retry', 'Try again')}
+            </Button>
+          </View>
+        )}
         {!loading && !error && classLessons.length === 0 && (
           <View style={styles.comingSoonBox}>
             <Text style={styles.comingSoonTitle}>{t('classList.emptyTitle', 'Coming soon')}</Text>
@@ -661,6 +686,7 @@ const ClassLessonScreen: React.FC<any> = ({ route, navigation }) => {
   const [certificateLoading, setCertificateLoading] = useState(false);
   const [certificateIssuing, setCertificateIssuing] = useState(false);
   const [itemWindowLoading, setItemWindowLoading] = useState(false);
+  const [lessonGuideOpen, setLessonGuideOpen] = useState(false);
   const tutorRequestInFlightRef = useRef(false);
   // Per-session set of example groups already cued. Stops the
   // "Example conversation. Listen to Person A and Person B." sentence from
@@ -807,6 +833,16 @@ const ClassLessonScreen: React.FC<any> = ({ route, navigation }) => {
     () => itemIndicesForActivity(items, selectedActivity?.id),
     [items, selectedActivity?.id],
   );
+  const activityItemGroups = useMemo(() => {
+    const groups: Array<{ label: string; indices: number[] }> = [];
+    activityItemIndices.forEach((idx) => {
+      const label = itemSectionKey(items[idx]?.type);
+      const last = groups[groups.length - 1];
+      if (last && last.label === label) last.indices.push(idx);
+      else groups.push({ label, indices: [idx] });
+    });
+    return groups;
+  }, [activityItemIndices, items]);
   const progressPercent = items.length ? Math.round((completedItems.length / items.length) * 100) : 0;
   const certificate = certificateStatus?.certificate;
 
@@ -1056,7 +1092,7 @@ const ClassLessonScreen: React.FC<any> = ({ route, navigation }) => {
       const rawReply = String(data.reply || '').trim();
       const reply = rawReply === FORMATTING_FALLBACK_REPLY
         ? lessonActionFallback(selectedItem, selectedActivity, targetLanguage || 'ko', nativeLanguage || 'en', t)
-        : rawReply || 'Let us continue.';
+        : rawReply || t('classLesson.fallback.continue', { defaultValue: 'Let us continue with the next part of the lesson.' });
       const assistantMessage = tutorMessage('assistant', reply, false, {
         speechParts: Array.isArray(data.speechParts) ? data.speechParts : [],
         displayParts: Array.isArray(data.displayParts) ? data.displayParts : [],
@@ -1637,225 +1673,101 @@ const ClassLessonScreen: React.FC<any> = ({ route, navigation }) => {
         </View>
       )}
 
-      <View style={styles.speechRow}>
-        <Button
-          mode={speechEnabled ? 'contained-tonal' : 'outlined'}
-          icon={speechEnabled ? 'volume-high' : 'volume-off'}
-          onPress={() => {
-            if (speechEnabled) speechService.cancel().catch(() => {});
-            setSpeechEnabled((enabled) => !enabled);
-          }}
-          style={styles.speechButton}
-        >
-          {speechEnabled
-            ? t('classLesson.spokenRepliesOn', 'Spoken replies on')
-            : t('classLesson.spokenRepliesOff', 'Spoken replies off')}
-        </Button>
-        <Button
-          mode={speakNativeGloss ? 'contained-tonal' : 'outlined'}
-          onPress={() => {
-            setSpeakNativeGloss((value) => {
-              const next = !value;
-              AsyncStorage.setItem('classSpeakNativeGloss', String(next)).catch(() => {});
-              return next;
-            });
-          }}
-          style={styles.speechButton}
-        >
-          {speakNativeGloss
-            ? t('classLesson.speakLanguage', { lang: nativeName, defaultValue: 'Speak {{lang}}' })
-            : t('classLesson.languageSilent', { lang: nativeName, defaultValue: '{{lang}} silent' })}
-        </Button>
-        <Button
-          mode={speechInputMode === 'target' ? 'contained-tonal' : 'outlined'}
-          onPress={() => setSpeechInputMode('target')}
-          style={styles.speechButton}
-        >
-          {t('classLesson.languageMic', { lang: targetName, defaultValue: '{{lang}} mic' })}
-        </Button>
-        <Button
-          mode={speechInputMode === 'native' ? 'contained-tonal' : 'outlined'}
-          onPress={() => setSpeechInputMode('native')}
-          style={styles.speechButton}
-        >
-          {t('classLesson.languageMic', { lang: nativeName, defaultValue: '{{lang}} mic' })}
-        </Button>
-        <Button
-          mode={listening ? 'contained' : 'outlined'}
-          icon={listening ? 'microphone-off' : 'microphone'}
-          onPress={listening ? stopListening : startListening}
-          disabled={tutorLoading}
-          style={styles.speechButton}
-        >
-          {listening ? t('classLesson.stopMic', 'Stop mic') : t('classLesson.speak', 'Speak')}
-        </Button>
-      </View>
+      <ClassLessonSpeechControls
+        styles={styles}
+        t={t}
+        speechEnabled={speechEnabled}
+        speakNativeGloss={speakNativeGloss}
+        speechInputMode={speechInputMode}
+        listening={listening}
+        tutorLoading={tutorLoading}
+        nativeName={nativeName}
+        targetName={targetName}
+        onToggleSpeech={() => {
+          if (speechEnabled) speechService.cancel().catch(() => {});
+          setSpeechEnabled((enabled) => !enabled);
+        }}
+        onToggleNativeGloss={() => {
+          setSpeakNativeGloss((value) => {
+            const next = !value;
+            AsyncStorage.setItem('classSpeakNativeGloss', String(next)).catch(() => {});
+            return next;
+          });
+        }}
+        onSelectSpeechInputMode={setSpeechInputMode}
+        onToggleListening={listening ? stopListening : startListening}
+      />
 
-      <View style={styles.tutorPanel}>
-        <View style={styles.tutorPanelHeader}>
-          <View>
-            <Text style={styles.tutorPanelKicker}>{t('classLesson.tutorThread', 'Tutor thread')}</Text>
-            <Text style={styles.tutorPanelTitle}>{t('classLesson.guidedClassHelp', 'Guided class help')}</Text>
-          </View>
-          <View style={[styles.tutorStatusDot, (listening || tutorLoading) && styles.tutorStatusDotActive]} />
+      <ClassLessonTutorThread
+        styles={styles}
+        t={t}
+        tutorThreadRef={tutorThreadRef}
+        messages={messages}
+        listening={listening}
+        tutorLoading={tutorLoading}
+        renderMessageBody={renderTutorMessageBody}
+        onReplayMessage={speakTutorMessage}
+        canSaveMessageForReview={(message) => !!studyTextsForTutorMessage(message).targetText}
+        onSaveMessageForReview={saveTutorMessageForReview}
+        onRetryMessage={retryTutorMessage}
+      />
+
+      <ClassLessonTutorComposer
+        styles={styles}
+        t={t}
+        progressSyncState={progressSyncState}
+        input={input}
+        listening={listening}
+        tutorLoading={tutorLoading}
+        onChangeInput={setInput}
+        onToggleListening={listening ? stopListening : startListening}
+        onSend={sendInput}
+      />
+
+      <TouchableOpacity
+        style={styles.lessonGuideToggle}
+        onPress={() => setLessonGuideOpen((open) => !open)}
+        activeOpacity={0.8}
+      >
+        <View style={styles.lessonGuideSummary}>
+          <Text style={styles.kicker}>{t('classLesson.lessonGuide', 'Lesson guide')}</Text>
+          <Text style={styles.lessonGuideTitle} numberOfLines={1}>{displaySelectedActivity?.title}</Text>
+          <Text style={styles.lessonGuideMeta}>
+            {t('classLesson.activityXOfY', {
+              current: selectedActivityIndex + 1,
+              total: activityPlan.length,
+              defaultValue: 'Activity {{current}} of {{total}}',
+            })}
+          </Text>
         </View>
-        <ScrollView
-          ref={tutorThreadRef}
-          style={styles.tutorThread}
-          contentContainerStyle={styles.tutorThreadContent}
-          nestedScrollEnabled
-        >
-          {messages.map((message) => (
-            <View key={message.id} style={[styles.tutorBubble, message.role === 'user' ? styles.tutorBubbleUser : styles.tutorBubbleAssistant]}>
-              <Text style={styles.tutorLabel}>{message.role === 'user' ? t('classLesson.you', 'You') : t('classLesson.tutorKicker', 'Tutor')}</Text>
-              {renderTutorMessageBody(message)}
-              {message.role === 'assistant' && !message.error && (
-                <View style={styles.tutorMessageActions}>
-                  <Button
-                    mode="text"
-                    icon="volume-high"
-                    onPress={() => speakTutorMessage(message)}
-                    compact
-                    style={styles.replayButton}
-                    labelStyle={styles.replayLabel}
-                  >
-                    {t('classLesson.replay', 'Replay')}
-                  </Button>
-                  {!!studyTextsForTutorMessage(message).targetText && (
-                    <Button
-                      mode="text"
-                      icon="bookmark-outline"
-                      onPress={() => saveTutorMessageForReview(message)}
-                      compact
-                      style={styles.replayButton}
-                      labelStyle={styles.replayLabel}
-                    >
-                      {t('classLesson.saveReply', 'Save reply')}
-                    </Button>
-                  )}
-                </View>
-              )}
-              {message.role === 'assistant' && message.error && !!message.retryInstructionText && (
-                <Button
-                  mode="outlined"
-                  icon="refresh"
-                  onPress={() => retryTutorMessage(message)}
-                  compact
-                  disabled={tutorLoading}
-                  style={styles.replayButton}
-                  labelStyle={styles.replayLabel}
-                >
-                  {t('classLesson.retry', 'Retry')}
-                </Button>
-              )}
-            </View>
-          ))}
-          {tutorLoading && (
-            <View style={[styles.tutorBubble, styles.tutorBubbleAssistant]}>
-              <Text style={styles.tutorLabel}>{t('classLesson.tutorKicker', 'Tutor')}</Text>
-              <Text style={styles.tutorText}>{t('classLesson.preparingExplanation', 'Preparing your next explanation...')}</Text>
-            </View>
-          )}
-        </ScrollView>
-      </View>
-
-      <View style={styles.mobileTutorInput}>
-        <Text style={styles.syncNote}>
-          {progressSyncState === 'synced' ? t('classLesson.progressSynced', 'Progress synced.') : t('classLesson.progressLocal', 'Progress saved on this device.')}
-        </Text>
-        <TextInput
-          mode="outlined"
-          value={input}
-          onChangeText={setInput}
-          placeholder={t('classLesson.inputPlaceholder', 'Ask a question or type your answer...')}
-          multiline
-          style={styles.classTutorInput}
+        <MaterialCommunityIcons
+          name={lessonGuideOpen ? 'chevron-up' : 'chevron-down'}
+          size={22}
+          color={colors.textSecondary}
         />
-        <View style={styles.sendRow}>
-          <Button
-            mode="outlined"
-            icon={listening ? 'microphone-off' : 'microphone'}
-            onPress={listening ? stopListening : startListening}
-            disabled={tutorLoading}
-            style={styles.sendButton}
-          >
-            {listening ? t('classLesson.stop', 'Stop') : t('classLesson.speak', 'Speak')}
-          </Button>
-          <Button mode="contained" onPress={sendInput} disabled={!input.trim() || tutorLoading} style={styles.sendButton}>{t('classLesson.send', 'Send')}</Button>
-        </View>
-      </View>
+      </TouchableOpacity>
 
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.activityStrip}>
-        {displayActivityPlan.map((activity, index) => (
-          <TouchableOpacity
-            key={activity.id}
-            style={[styles.activityChip, selectedActivityIndex === index && styles.activityChipActive]}
-            onPress={() => setSelectedActivityIndex(index)}
-          >
-            <Text style={[styles.activityChipSection, selectedActivityIndex === index && styles.activityChipSectionActive]}>
-              {activity.section}
-            </Text>
-            <Text style={[styles.activityChipText, selectedActivityIndex === index && styles.activityChipTextActive]}>
-              {activity.title}
-            </Text>
-          </TouchableOpacity>
-        ))}
-      </ScrollView>
+      {lessonGuideOpen && (
+      <>
+        <ClassLessonActivityStrip
+          styles={styles}
+          activities={displayActivityPlan}
+          selectedActivityIndex={selectedActivityIndex}
+          onSelectActivity={setSelectedActivityIndex}
+        />
 
-      {/*
-        Item picker: when the activity mixes types, split into per-section
-        sub-strips with subheadings; otherwise render flat. Mirrors web.
-      */}
-      {(() => {
-        const labelFor = (type?: string) => {
-          return itemSectionKey(type);
-        };
-        const groups: Array<{ label: string; indices: number[] }> = [];
-        for (const idx of activityItemIndices) {
-          const label = labelFor(items[idx]?.type);
-          const last = groups[groups.length - 1];
-          if (last && last.label === label) last.indices.push(idx);
-          else groups.push({ label, indices: [idx] });
-        }
-        const showHeadings = groups.length > 1;
-        return (
-          <View style={styles.itemPickerGroups}>
-            {groups.map((group) => (
-              <View key={group.label} style={styles.itemPickerGroup}>
-                {showHeadings && (
-                  <Text style={styles.itemPickerGroupLabel}>
-                    {t(`classLesson.section.${group.label}`, group.label)} ({group.indices.length})
-                  </Text>
-                )}
-                <View style={styles.itemPicker}>
-                  {group.indices.map((globalIndex) => {
-                    const item = items[globalIndex];
-                    if (!item) return null;
-                    const positionInActivity = activityItemIndices.indexOf(globalIndex);
-                    return (
-                      <TouchableOpacity
-                        key={`${item.type}-${globalIndex}`}
-                        style={[
-                          styles.itemChip,
-                          completedItems.includes(globalIndex) && styles.itemChipDone,
-                          selectedIndex === globalIndex && styles.itemChipActive,
-                        ]}
-                        onPress={() => setSelectedIndex(globalIndex)}
-                      >
-                        <Text style={[styles.itemChipText, selectedIndex === globalIndex && styles.itemChipTextActive]}>
-                          {positionInActivity + 1}
-                        </Text>
-                      </TouchableOpacity>
-                    );
-                  })}
-                </View>
-              </View>
-            ))}
-          </View>
-        );
-      })()}
+        <ClassLessonItemPicker
+          styles={styles}
+          t={t}
+          groups={activityItemGroups}
+          items={items}
+          activityItemIndices={activityItemIndices}
+          completedItems={completedItems}
+          selectedIndex={selectedIndex}
+          onSelectItem={setSelectedIndex}
+        />
 
-      <View style={styles.lessonCard}>
+        <View style={styles.lessonCard}>
         <Text style={styles.kicker}>{displaySelectedActivity?.section || t('classLesson.section.practice', 'Practice')} {selectedActivityIndex + 1} / {activityPlan.length}</Text>
         <Text style={styles.activityTitle}>{displaySelectedActivity?.title}</Text>
         {displaySelectedActivity?.goals.map((goal) => (
@@ -1915,9 +1827,9 @@ const ClassLessonScreen: React.FC<any> = ({ route, navigation }) => {
         ) : (
           <Text style={styles.lessonNative}>{t('classLesson.loading', 'Loading class lesson...')}</Text>
         )}
-      </View>
+        </View>
 
-      <View style={styles.lessonActions}>
+        <View style={styles.lessonActions}>
         <Button mode="contained" onPress={teachSelected} disabled={tutorLoading || !selectedItemReady}>{t('classLesson.teach', 'Teach')}</Button>
         <Button mode="outlined" onPress={practiceSelected} disabled={tutorLoading || !selectedItemReady}>{t('classLesson.practice', 'Practice')}</Button>
         <Button mode="outlined" onPress={saveSelectedForReview} disabled={!selectedItemReady}>
@@ -1951,8 +1863,8 @@ const ClassLessonScreen: React.FC<any> = ({ route, navigation }) => {
         >
           {t('classLesson.next', 'Next')}
         </Button>
-      </View>
-      <View style={styles.practiceEverywhere}>
+        </View>
+        <View style={styles.practiceEverywhere}>
         <Text style={styles.practiceEverywhereLabel}>{t('classLesson.practiceEverywhere', 'Practice this everywhere')}</Text>
         <View style={styles.practiceEverywhereButtons}>
           <Button mode="outlined" compact onPress={listenToSelectedItem} disabled={!selectedItemReady}>{t('learningHub.listen', 'Listen')}</Button>
@@ -1961,7 +1873,9 @@ const ClassLessonScreen: React.FC<any> = ({ route, navigation }) => {
           <Button mode="outlined" compact onPress={() => openSelectedPracticeSurface('flashcard')} disabled={!selectedItemReady}>{t('learningHub.practiceFlashcard', 'Flashcard')}</Button>
           <Button mode="outlined" compact onPress={selfTestSelectedItem} disabled={!selectedItemReady}>{t('learningHub.practiceQuiz', 'Self-test')}</Button>
         </View>
-      </View>
+        </View>
+      </>
+      )}
 
     </ScrollView>
   );
@@ -2059,6 +1973,7 @@ const ProfileStackScreen: React.FC = () => (
     <ProfileStack.Screen name="Institution" component={InstitutionDashboardScreen} />
     <ProfileStack.Screen name="LearningPersonalization" component={ContextPracticeScreen} />
     <ProfileStack.Screen name="Admin" component={AdminScreen} />
+    <ProfileStack.Screen name="Contact" component={ContactScreen} />
   </ProfileStack.Navigator>
 );
 
@@ -2271,6 +2186,14 @@ const createLocalStyles = (colors: AppColors) => StyleSheet.create({
     color: colors.error,
     lineHeight: 20,
   },
+  errorBlock: {
+    marginTop: 16,
+    gap: 12,
+    alignItems: 'flex-start',
+  },
+  errorRetry: {
+    alignSelf: 'flex-start',
+  },
   lessonScroll: {
     flex: 1,
     backgroundColor: colors.background,
@@ -2278,6 +2201,31 @@ const createLocalStyles = (colors: AppColors) => StyleSheet.create({
   lessonContent: {
     padding: 18,
     gap: 14,
+  },
+  lessonGuideToggle: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 12,
+    padding: 14,
+    borderWidth: 1,
+    borderColor: colors.border,
+    borderRadius: 8,
+    backgroundColor: colors.surface,
+  },
+  lessonGuideSummary: {
+    flex: 1,
+    minWidth: 0,
+    gap: 2,
+  },
+  lessonGuideTitle: {
+    color: colors.textPrimary,
+    fontWeight: '900',
+  },
+  lessonGuideMeta: {
+    color: colors.textSecondary,
+    fontSize: 12,
+    fontWeight: '700',
   },
   activityStrip: {
     gap: 8,

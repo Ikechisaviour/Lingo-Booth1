@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('tr', {
-  slug: 'tr-l1u15',
-  title: 'Level 1 · Unit 15: Telefon ve Mesajlar — Phone Calls and Messages',
-  category: 'communication',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Make short calls, leave messages, and ask for repetition.',
-  vocabularyGoal: 'Use phone, message, number, and callback vocabulary.',
-  grammarGoal: 'Use polite request forms with `-abilir misiniz` and concise report phrases.',
-  speakingGoal: 'Open a call, ask for someone, leave a message, and confirm a number.',
-  task: 'Leave a clear message for a classmate.',
-  expressionPractice: [
-    practice('opening-call', 'Opening call', 'Use one phone greeting and identify yourself.'),
-    practice('leaving-message', 'Leaving message', 'Use `mesaj bırakabilir miyim?`.'),
-    practice('asking-repeat', 'Asking repetition', 'Use `tekrar eder misiniz?`.'),
+module.exports = {
+  "title": "Level 1 · Unit 15: Telefon ve Mesajlar — Phone Calls and Messages",
+  "category": "communication",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "tr-level1unit15phonemessages-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Make short calls, leave messages, and ask for repetition."
+      ],
+      "task": "Leave a clear message for a classmate."
+    },
+    {
+      "id": "tr-level1unit15phonemessages-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "tr-level1unit15phonemessages-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 15: Telefon ve Mesajlar — Phone Calls and Messages with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "tr-level1unit15phonemessages-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 15: Telefon ve Mesajlar — Phone Calls and Messages sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "tr-level1unit15phonemessages-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Make short calls, leave messages, and ask for repetition."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "tr-level1unit15phonemessages-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 15: Telefon ve Mesajlar — Phone Calls and Messages with one nearby Turkish form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "tr-level1unit15phonemessages-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "tr-level1unit15phonemessages-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "tr-level1unit15phonemessages-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "tr-level1unit15phonemessages-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "tr-level1unit15phonemessages-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Leave a clear message for a classmate."
+      ],
+      "task": "Leave a clear message for a classmate."
+    }
   ],
-  relatedPools: ['topic-communication', 'topic-service'],
-  items: [
-    item('alo', 'a-LO', 'The standard Turkish phone greeting.', 'Alo, ben Elif.', '“Hello, this is Elif.”'),
-    item('... ile görüşebilir miyim?', 'i-LE gö-rü-şe-bi-LİR mi-YİM', '“May I speak with ...?” A polite phone request.', 'Ayşe Hanım ile görüşebilir miyim?', '“May I speak with Ms. Ayşe?”'),
-    item('şu anda burada değil', 'şu an-DA bu-ra-DA de-ĞİL', '“Is not here right now.” A simple status phrase.', 'Şu anda burada değil.', '“He is not here right now.”'),
-    item('mesaj', 'me-SAJ', '“Message.” Useful for phone and app contexts.', 'Mesaj bırakabilir miyim?', '“May I leave a message?”'),
-    item('lütfen söyler misiniz?', 'lüt-FEN söy-LER mi-Sİ-niz', '“Could you please tell them?” A courteous relay request.', 'Aradığımı lütfen söyler misiniz?', '“Could you please say that I called?”'),
-    item('telefon numarası', 'te-le-FON nu-ma-ra-SI', '“Phone number.” A possessed compound in Turkish form.', 'Telefon numaranız nedir?', '“What is your phone number?”'),
-    item('tekrar eder misiniz?', 'tek-RAR e-DER mi-Sİ-niz', '“Could you repeat?” A crucial repair phrase.', 'Numarayı tekrar eder misiniz?', '“Could you repeat the number?”'),
-    item('sonra tekrar ararım', 'son-RA tek-RAR a-ra-RIM', '“I will call again later.” A natural call-ending promise.', 'Tamam, sonra tekrar ararım.', '“Okay, I will call again later.”'),
+  "expressionPractice": [
+    {
+      "id": "opening-call",
+      "label": "Opening call",
+      "goal": "Use one phone greeting and identify yourself."
+    },
+    {
+      "id": "leaving-message",
+      "label": "Leaving message",
+      "goal": "Use `mesaj bırakabilir miyim?`."
+    },
+    {
+      "id": "asking-repeat",
+      "label": "Asking repetition",
+      "goal": "Use `tekrar eder misiniz?`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-communication",
+    "topic-service"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit15phonemessages-orientation"
+      ],
+      "targetText": "ders hedefi",
+      "romanization": "",
+      "nativeText": "Make short calls, leave messages, and ask for repetition.",
+      "pronunciation": "",
+      "exampleTarget": "ders hedefi",
+      "exampleNative": "The whole lesson is built toward this outcome: Leave a clear message for a classmate.",
+      "korean": "ders hedefi",
+      "english": "Make short calls, leave messages, and ask for repetition.",
+      "example": "ders hedefi",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Leave a clear message for a classmate."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "tr-level1unit15phonemessages-pronunciation"
+      ],
+      "targetText": "ses kontrolü",
+      "romanization": "",
+      "nativeText": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Alo, ben Elif.\".",
+      "pronunciation": "",
+      "exampleTarget": "Alo, ben Elif.",
+      "exampleNative": "“Hello, this is Elif.”",
+      "korean": "ses kontrolü",
+      "english": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Alo, ben Elif.\".",
+      "example": "Alo, ben Elif.",
+      "exampleEnglish": "“Hello, this is Elif.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1"
+      ],
+      "targetText": "alo",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 15: Telefon ve Mesajlar — Phone Calls and Messages with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Alo, ben Elif.",
+      "exampleNative": "“Hello, this is Elif.”",
+      "korean": "alo",
+      "english": "Use the key language of Level 1 · Unit 15: Telefon ve Mesajlar — Phone Calls and Messages with the register and setting that the lesson requires.",
+      "example": "Alo, ben Elif.",
+      "exampleEnglish": "“Hello, this is Elif.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-2"
+      ],
+      "targetText": "... ile görüşebilir miyim?",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 15: Telefon ve Mesajlar — Phone Calls and Messages sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Ayşe Hanım ile görüşebilir miyim?",
+      "exampleNative": "“May I speak with Ms. Ayşe?”",
+      "korean": "... ile görüşebilir miyim?",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 15: Telefon ve Mesajlar — Phone Calls and Messages sound precise rather than merely understandable.",
+      "example": "Ayşe Hanım ile görüşebilir miyim?",
+      "exampleEnglish": "“May I speak with Ms. Ayşe?”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "tr-level1unit15phonemessages-grammar-1"
+      ],
+      "targetText": "alo",
+      "romanization": "",
+      "nativeText": "Make short calls, leave messages, and ask for repetition.",
+      "pronunciation": "",
+      "exampleTarget": "Alo, ben Elif.",
+      "exampleNative": "“Hello, this is Elif.”",
+      "korean": "alo",
+      "english": "Make short calls, leave messages, and ask for repetition.",
+      "example": "Alo, ben Elif.",
+      "exampleEnglish": "“Hello, this is Elif.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "tr-level1unit15phonemessages-grammar-2"
+      ],
+      "targetText": "... ile görüşebilir miyim?",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 15: Telefon ve Mesajlar — Phone Calls and Messages with one nearby Turkish form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Ayşe Hanım ile görüşebilir miyim?",
+      "exampleNative": "“May I speak with Ms. Ayşe?”",
+      "korean": "... ile görüşebilir miyim?",
+      "english": "Contrast the main pattern in Level 1 · Unit 15: Telefon ve Mesajlar — Phone Calls and Messages with one nearby Turkish form so the learner can avoid literal translation.",
+      "example": "Ayşe Hanım ile görüşebilir miyim?",
+      "exampleEnglish": "“May I speak with Ms. Ayşe?”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "tr-level1unit15phonemessages-reading"
+      ],
+      "targetText": "okuma modeli",
+      "romanization": "",
+      "nativeText": "Read \"Tamam, sonra tekrar ararım.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Tamam, sonra tekrar ararım.",
+      "exampleNative": "“Okay, I will call again later.”",
+      "korean": "okuma modeli",
+      "english": "Read \"Tamam, sonra tekrar ararım.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Tamam, sonra tekrar ararım.",
+      "exampleEnglish": "“Okay, I will call again later.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit15phonemessages-listening"
+      ],
+      "targetText": "diyalog modeli",
+      "romanization": "",
+      "nativeText": "Hear \"Tamam, sonra tekrar ararım.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Tamam, sonra tekrar ararım.",
+      "exampleNative": "“Okay, I will call again later.”",
+      "korean": "diyalog modeli",
+      "english": "Hear \"Tamam, sonra tekrar ararım.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Tamam, sonra tekrar ararım.",
+      "exampleEnglish": "“Okay, I will call again later.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "tr-level1unit15phonemessages-writing"
+      ],
+      "targetText": "yazma alıştırması",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Alo, ben Elif.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Alo, ben Elif.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "yazma alıştırması",
+      "english": "Write your own version after studying \"Alo, ben Elif.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Alo, ben Elif.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "tr-level1unit15phonemessages-culture"
+      ],
+      "targetText": "kullanım ve bağlam",
+      "romanization": "",
+      "nativeText": "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Ayşe Hanım ile görüşebilir miyim?",
+      "exampleNative": "“May I speak with Ms. Ayşe?”",
+      "korean": "kullanım ve bağlam",
+      "english": "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used.",
+      "example": "Ayşe Hanım ile görüşebilir miyim?",
+      "exampleEnglish": "“May I speak with Ms. Ayşe?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "son görev",
+      "romanization": "",
+      "nativeText": "Leave a clear message for a classmate.",
+      "pronunciation": "",
+      "exampleTarget": "Tamam, sonra tekrar ararım.",
+      "exampleNative": "Leave a clear message for a classmate.",
+      "korean": "son görev",
+      "english": "Leave a clear message for a classmate.",
+      "example": "Tamam, sonra tekrar ararım.",
+      "exampleEnglish": "Leave a clear message for a classmate."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit15phonemessages-grammar-2"
+      ],
+      "targetText": "yaygın hata",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around suffix chains, vowel harmony, evidentiality, and word order. Begin by checking \"Ayşe Hanım ile görüşebilir miyim?\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Ayşe Hanım ile görüşebilir miyim?",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “May I speak with Ms. Ayşe?”",
+      "korean": "yaygın hata",
+      "english": "Watch for literal-translation mistakes around suffix chains, vowel harmony, evidentiality, and word order. Begin by checking \"Ayşe Hanım ile görüşebilir miyim?\" against the model.",
+      "example": "Ayşe Hanım ile görüşebilir miyim?",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “May I speak with Ms. Ayşe?”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-culture"
+      ],
+      "targetText": "üslup",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for sen, siz, a service tone, or a more formal wording before selecting the final form. Compare the social fit of \"Alo, ben Elif.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Alo, ben Elif.",
+      "exampleNative": "“Hello, this is Elif.”",
+      "korean": "üslup",
+      "english": "Check whether the setting calls for sen, siz, a service tone, or a more formal wording before selecting the final form. Compare the social fit of \"Alo, ben Elif.\" before reusing it elsewhere.",
+      "example": "Alo, ben Elif.",
+      "exampleEnglish": "“Hello, this is Elif.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "akıcılık",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Turkish message rather than as separate translated fragments. Aim to carry \"Tamam, sonra tekrar ararım.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Tamam, sonra tekrar ararım.",
+      "exampleNative": "“Okay, I will call again later.”",
+      "korean": "akıcılık",
+      "english": "Say the idea as one connected Turkish message rather than as separate translated fragments. Aim to carry \"Tamam, sonra tekrar ararım.\" as one thought.",
+      "example": "Tamam, sonra tekrar ararım.",
+      "exampleEnglish": "“Okay, I will call again later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "uygulama",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Alo, ben Elif.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Alo, ben Elif.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "uygulama",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Alo, ben Elif.\" and move it into your own life.",
+      "example": "Alo, ben Elif.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-grammar-1"
+      ],
+      "targetText": "hatırlama",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"alo\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "alo",
+      "exampleNative": "The standard Turkish phone greeting.",
+      "korean": "hatırlama",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"alo\" before looking back.",
+      "example": "alo",
+      "exampleEnglish": "The standard Turkish phone greeting."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-writing"
+      ],
+      "targetText": "genişletme",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Tamam, sonra tekrar ararım.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Tamam, sonra tekrar ararım.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "genişletme",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Tamam, sonra tekrar ararım.\" rather than restarting from a blank sentence.",
+      "example": "Tamam, sonra tekrar ararım.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading"
+      ],
+      "targetText": "karşılaştırma",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 15: Telefon ve Mesajlar — Phone Calls and Messages with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Ayşe Hanım ile görüşebilir miyim?\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Ayşe Hanım ile görüşebilir miyim?",
+      "exampleNative": "“May I speak with Ms. Ayşe?”",
+      "korean": "karşılaştırma",
+      "english": "Compare the central form in Level 1 · Unit 15: Telefon ve Mesajlar — Phone Calls and Messages with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Ayşe Hanım ile görüşebilir miyim?\" as the comparison line.",
+      "example": "Ayşe Hanım ile görüşebilir miyim?",
+      "exampleEnglish": "“May I speak with Ms. Ayşe?”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "tr-level1unit15phonemessages-pronunciation"
+      ],
+      "targetText": "telaffuz düzeltme",
+      "romanization": "",
+      "nativeText": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Alo, ben Elif.\".",
+      "pronunciation": "",
+      "exampleTarget": "Alo, ben Elif.",
+      "exampleNative": "“Hello, this is Elif.”",
+      "korean": "telaffuz düzeltme",
+      "english": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Alo, ben Elif.\".",
+      "example": "Alo, ben Elif.",
+      "exampleEnglish": "“Hello, this is Elif.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "diyalog varyasyonu",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Tamam, sonra tekrar ararım.\".",
+      "pronunciation": "",
+      "exampleTarget": "Tamam, sonra tekrar ararım.",
+      "exampleNative": "“Okay, I will call again later.”",
+      "korean": "diyalog varyasyonu",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Tamam, sonra tekrar ararım.\".",
+      "example": "Tamam, sonra tekrar ararım.",
+      "exampleEnglish": "“Okay, I will call again later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-writing"
+      ],
+      "targetText": "cümle kurma",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Alo, ben Elif.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Alo, ben Elif.",
+      "exampleNative": "“Hello, this is Elif.”",
+      "korean": "cümle kurma",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Alo, ben Elif.\" one layer at a time.",
+      "example": "Alo, ben Elif.",
+      "exampleEnglish": "“Hello, this is Elif.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-2"
+      ],
+      "targetText": "hızlı kontrol",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Ayşe Hanım ile görüşebilir miyim?\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Ayşe Hanım ile görüşebilir miyim?",
+      "exampleNative": "“May I speak with Ms. Ayşe?”",
+      "korean": "hızlı kontrol",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Ayşe Hanım ile görüşebilir miyim?\" as the deciding example.",
+      "example": "Ayşe Hanım ile görüşebilir miyim?",
+      "exampleEnglish": "“May I speak with Ms. Ayşe?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit15phonemessages-culture",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "değerlendirme",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Tamam, sonra tekrar ararım.\".",
+      "pronunciation": "",
+      "exampleTarget": "Tamam, sonra tekrar ararım.",
+      "exampleNative": "“Okay, I will call again later.”",
+      "korean": "değerlendirme",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Tamam, sonra tekrar ararım.\".",
+      "example": "Tamam, sonra tekrar ararım.",
+      "exampleEnglish": "“Okay, I will call again later.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "alo",
+      "romanization": "a-LO",
+      "nativeText": "The standard Turkish phone greeting.",
+      "pronunciation": "a-LO",
+      "exampleTarget": "Alo, ben Elif.",
+      "exampleNative": "“Hello, this is Elif.”",
+      "korean": "alo",
+      "english": "The standard Turkish phone greeting.",
+      "example": "Alo, ben Elif.",
+      "exampleEnglish": "“Hello, this is Elif.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "Alo, ben Elif.",
+      "romanization": "a-LO",
+      "nativeText": "Model use for \"Alo, ben Elif.\": “Hello, this is Elif.”",
+      "pronunciation": "a-LO",
+      "exampleTarget": "Alo, ben Elif.",
+      "exampleNative": "“Hello, this is Elif.”",
+      "korean": "Alo, ben Elif.",
+      "english": "Model use for \"Alo, ben Elif.\": “Hello, this is Elif.”",
+      "example": "Alo, ben Elif.",
+      "exampleEnglish": "“Hello, this is Elif.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "alo",
+      "romanization": "a-LO",
+      "nativeText": "Usage focus for \"alo\": Use the key language of Level 1 · Unit 15: Telefon ve Mesajlar — Phone Calls and Messages with the register and setting that the lesson requires.",
+      "pronunciation": "a-LO",
+      "exampleTarget": "Alo, ben Elif.",
+      "exampleNative": "Notice what the form is doing here: “Hello, this is Elif.”",
+      "korean": "alo",
+      "english": "Usage focus for \"alo\": Use the key language of Level 1 · Unit 15: Telefon ve Mesajlar — Phone Calls and Messages with the register and setting that the lesson requires.",
+      "example": "Alo, ben Elif.",
+      "exampleEnglish": "Notice what the form is doing here: “Hello, this is Elif.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "alo",
+      "romanization": "a-LO",
+      "nativeText": "Contrast check for \"alo\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "a-LO",
+      "exampleTarget": "Alo, ben Elif.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Hello, this is Elif.”",
+      "korean": "alo",
+      "english": "Contrast check for \"alo\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Alo, ben Elif.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Hello, this is Elif.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "alo",
+      "romanization": "a-LO",
+      "nativeText": "Recall \"alo\" from memory, then explain what would change if a nearby alternative replaced it in \"Alo, ben Elif.\".",
+      "pronunciation": "a-LO",
+      "exampleTarget": "Alo, ben Elif.",
+      "exampleNative": "Self-check against the model before moving on: “Hello, this is Elif.”",
+      "korean": "alo",
+      "english": "Recall \"alo\" from memory, then explain what would change if a nearby alternative replaced it in \"Alo, ben Elif.\".",
+      "example": "Alo, ben Elif.",
+      "exampleEnglish": "Self-check against the model before moving on: “Hello, this is Elif.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "alo",
+      "romanization": "a-LO",
+      "nativeText": "Repair \"alo\" inside \"Alo, ben Elif.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 15: Telefon ve Mesajlar — Phone Calls and Messages with the register and setting that the lesson requires.",
+      "pronunciation": "a-LO",
+      "exampleTarget": "Alo, ben Elif.",
+      "exampleNative": "Use the model as the repair target: “Hello, this is Elif.”",
+      "korean": "alo",
+      "english": "Repair \"alo\" inside \"Alo, ben Elif.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 15: Telefon ve Mesajlar — Phone Calls and Messages with the register and setting that the lesson requires.",
+      "example": "Alo, ben Elif.",
+      "exampleEnglish": "Use the model as the repair target: “Hello, this is Elif.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "alo",
+      "romanization": "a-LO",
+      "nativeText": "Transfer \"alo\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Alo, ben Elif.\".",
+      "pronunciation": "a-LO",
+      "exampleTarget": "Alo, ben Elif.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Hello, this is Elif.”",
+      "korean": "alo",
+      "english": "Transfer \"alo\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Alo, ben Elif.\".",
+      "example": "Alo, ben Elif.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Hello, this is Elif.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "alo",
+      "romanization": "a-LO",
+      "nativeText": "Find one word or phrase that naturally travels with \"alo\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "a-LO",
+      "exampleTarget": "Alo, ben Elif.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Hello, this is Elif.”",
+      "korean": "alo",
+      "english": "Find one word or phrase that naturally travels with \"alo\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Alo, ben Elif.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Hello, this is Elif.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "alo",
+      "romanization": "a-LO",
+      "nativeText": "Listen for \"alo\" inside \"Alo, ben Elif.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "a-LO",
+      "exampleTarget": "Alo, ben Elif.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Hello, this is Elif.”",
+      "korean": "alo",
+      "english": "Listen for \"alo\" inside \"Alo, ben Elif.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Alo, ben Elif.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Hello, this is Elif.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "alo",
+      "romanization": "a-LO",
+      "nativeText": "Write \"alo\" again without looking, then compare the exact written form against \"Alo, ben Elif.\" before moving on.",
+      "pronunciation": "a-LO",
+      "exampleTarget": "Alo, ben Elif.",
+      "exampleNative": "Use the written model as the final correctness check: “Hello, this is Elif.”",
+      "korean": "alo",
+      "english": "Write \"alo\" again without looking, then compare the exact written form against \"Alo, ben Elif.\" before moving on.",
+      "example": "Alo, ben Elif.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Hello, this is Elif.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "alo",
+      "romanization": "a-LO",
+      "nativeText": "Check whether \"alo\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Hello, this is Elif.”",
+      "pronunciation": "a-LO",
+      "exampleTarget": "Alo, ben Elif.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Hello, this is Elif.”",
+      "korean": "alo",
+      "english": "Check whether \"alo\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Hello, this is Elif.”",
+      "example": "Alo, ben Elif.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Hello, this is Elif.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "... ile görüşebilir miyim?",
+      "romanization": "i-LE gö-rü-şe-bi-LİR mi-YİM",
+      "nativeText": "“May I speak with ...?” A polite phone request.",
+      "pronunciation": "i-LE gö-rü-şe-bi-LİR mi-YİM",
+      "exampleTarget": "Ayşe Hanım ile görüşebilir miyim?",
+      "exampleNative": "“May I speak with Ms. Ayşe?”",
+      "korean": "... ile görüşebilir miyim?",
+      "english": "“May I speak with ...?” A polite phone request.",
+      "example": "Ayşe Hanım ile görüşebilir miyim?",
+      "exampleEnglish": "“May I speak with Ms. Ayşe?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "Ayşe Hanım ile görüşebilir miyim?",
+      "romanization": "i-LE gö-rü-şe-bi-LİR mi-YİM",
+      "nativeText": "Model use for \"Ayşe Hanım ile görüşebilir miyim?\": “May I speak with Ms. Ayşe?”",
+      "pronunciation": "i-LE gö-rü-şe-bi-LİR mi-YİM",
+      "exampleTarget": "Ayşe Hanım ile görüşebilir miyim?",
+      "exampleNative": "“May I speak with Ms. Ayşe?”",
+      "korean": "Ayşe Hanım ile görüşebilir miyim?",
+      "english": "Model use for \"Ayşe Hanım ile görüşebilir miyim?\": “May I speak with Ms. Ayşe?”",
+      "example": "Ayşe Hanım ile görüşebilir miyim?",
+      "exampleEnglish": "“May I speak with Ms. Ayşe?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "... ile görüşebilir miyim?",
+      "romanization": "i-LE gö-rü-şe-bi-LİR mi-YİM",
+      "nativeText": "Usage focus for \"... ile görüşebilir miyim?\": Distinguish the nearby wording choices that make Level 1 · Unit 15: Telefon ve Mesajlar — Phone Calls and Messages sound precise rather than merely understandable.",
+      "pronunciation": "i-LE gö-rü-şe-bi-LİR mi-YİM",
+      "exampleTarget": "Ayşe Hanım ile görüşebilir miyim?",
+      "exampleNative": "Notice what the form is doing here: “May I speak with Ms. Ayşe?”",
+      "korean": "... ile görüşebilir miyim?",
+      "english": "Usage focus for \"... ile görüşebilir miyim?\": Distinguish the nearby wording choices that make Level 1 · Unit 15: Telefon ve Mesajlar — Phone Calls and Messages sound precise rather than merely understandable.",
+      "example": "Ayşe Hanım ile görüşebilir miyim?",
+      "exampleEnglish": "Notice what the form is doing here: “May I speak with Ms. Ayşe?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "... ile görüşebilir miyim?",
+      "romanization": "i-LE gö-rü-şe-bi-LİR mi-YİM",
+      "nativeText": "Contrast check for \"... ile görüşebilir miyim?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "i-LE gö-rü-şe-bi-LİR mi-YİM",
+      "exampleTarget": "Ayşe Hanım ile görüşebilir miyim?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I speak with Ms. Ayşe?”",
+      "korean": "... ile görüşebilir miyim?",
+      "english": "Contrast check for \"... ile görüşebilir miyim?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ayşe Hanım ile görüşebilir miyim?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I speak with Ms. Ayşe?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "... ile görüşebilir miyim?",
+      "romanization": "i-LE gö-rü-şe-bi-LİR mi-YİM",
+      "nativeText": "Recall \"... ile görüşebilir miyim?\" from memory, then explain what would change if a nearby alternative replaced it in \"Ayşe Hanım ile görüşebilir miyim?\".",
+      "pronunciation": "i-LE gö-rü-şe-bi-LİR mi-YİM",
+      "exampleTarget": "Ayşe Hanım ile görüşebilir miyim?",
+      "exampleNative": "Self-check against the model before moving on: “May I speak with Ms. Ayşe?”",
+      "korean": "... ile görüşebilir miyim?",
+      "english": "Recall \"... ile görüşebilir miyim?\" from memory, then explain what would change if a nearby alternative replaced it in \"Ayşe Hanım ile görüşebilir miyim?\".",
+      "example": "Ayşe Hanım ile görüşebilir miyim?",
+      "exampleEnglish": "Self-check against the model before moving on: “May I speak with Ms. Ayşe?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "... ile görüşebilir miyim?",
+      "romanization": "i-LE gö-rü-şe-bi-LİR mi-YİM",
+      "nativeText": "Repair \"... ile görüşebilir miyim?\" inside \"Ayşe Hanım ile görüşebilir miyim?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 15: Telefon ve Mesajlar — Phone Calls and Messages sound precise rather than merely understandable.",
+      "pronunciation": "i-LE gö-rü-şe-bi-LİR mi-YİM",
+      "exampleTarget": "Ayşe Hanım ile görüşebilir miyim?",
+      "exampleNative": "Use the model as the repair target: “May I speak with Ms. Ayşe?”",
+      "korean": "... ile görüşebilir miyim?",
+      "english": "Repair \"... ile görüşebilir miyim?\" inside \"Ayşe Hanım ile görüşebilir miyim?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 15: Telefon ve Mesajlar — Phone Calls and Messages sound precise rather than merely understandable.",
+      "example": "Ayşe Hanım ile görüşebilir miyim?",
+      "exampleEnglish": "Use the model as the repair target: “May I speak with Ms. Ayşe?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "... ile görüşebilir miyim?",
+      "romanization": "i-LE gö-rü-şe-bi-LİR mi-YİM",
+      "nativeText": "Transfer \"... ile görüşebilir miyim?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ayşe Hanım ile görüşebilir miyim?\".",
+      "pronunciation": "i-LE gö-rü-şe-bi-LİR mi-YİM",
+      "exampleTarget": "Ayşe Hanım ile görüşebilir miyim?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I speak with Ms. Ayşe?”",
+      "korean": "... ile görüşebilir miyim?",
+      "english": "Transfer \"... ile görüşebilir miyim?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ayşe Hanım ile görüşebilir miyim?\".",
+      "example": "Ayşe Hanım ile görüşebilir miyim?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I speak with Ms. Ayşe?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "... ile görüşebilir miyim?",
+      "romanization": "i-LE gö-rü-şe-bi-LİR mi-YİM",
+      "nativeText": "Find one word or phrase that naturally travels with \"... ile görüşebilir miyim?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "i-LE gö-rü-şe-bi-LİR mi-YİM",
+      "exampleTarget": "Ayşe Hanım ile görüşebilir miyim?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “May I speak with Ms. Ayşe?”",
+      "korean": "... ile görüşebilir miyim?",
+      "english": "Find one word or phrase that naturally travels with \"... ile görüşebilir miyim?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ayşe Hanım ile görüşebilir miyim?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “May I speak with Ms. Ayşe?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "... ile görüşebilir miyim?",
+      "romanization": "i-LE gö-rü-şe-bi-LİR mi-YİM",
+      "nativeText": "Listen for \"... ile görüşebilir miyim?\" inside \"Ayşe Hanım ile görüşebilir miyim?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "i-LE gö-rü-şe-bi-LİR mi-YİM",
+      "exampleTarget": "Ayşe Hanım ile görüşebilir miyim?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I speak with Ms. Ayşe?”",
+      "korean": "... ile görüşebilir miyim?",
+      "english": "Listen for \"... ile görüşebilir miyim?\" inside \"Ayşe Hanım ile görüşebilir miyim?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ayşe Hanım ile görüşebilir miyim?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I speak with Ms. Ayşe?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "... ile görüşebilir miyim?",
+      "romanization": "i-LE gö-rü-şe-bi-LİR mi-YİM",
+      "nativeText": "Write \"... ile görüşebilir miyim?\" again without looking, then compare the exact written form against \"Ayşe Hanım ile görüşebilir miyim?\" before moving on.",
+      "pronunciation": "i-LE gö-rü-şe-bi-LİR mi-YİM",
+      "exampleTarget": "Ayşe Hanım ile görüşebilir miyim?",
+      "exampleNative": "Use the written model as the final correctness check: “May I speak with Ms. Ayşe?”",
+      "korean": "... ile görüşebilir miyim?",
+      "english": "Write \"... ile görüşebilir miyim?\" again without looking, then compare the exact written form against \"Ayşe Hanım ile görüşebilir miyim?\" before moving on.",
+      "example": "Ayşe Hanım ile görüşebilir miyim?",
+      "exampleEnglish": "Use the written model as the final correctness check: “May I speak with Ms. Ayşe?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "... ile görüşebilir miyim?",
+      "romanization": "i-LE gö-rü-şe-bi-LİR mi-YİM",
+      "nativeText": "Check whether \"... ile görüşebilir miyim?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I speak with Ms. Ayşe?”",
+      "pronunciation": "i-LE gö-rü-şe-bi-LİR mi-YİM",
+      "exampleTarget": "Ayşe Hanım ile görüşebilir miyim?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “May I speak with Ms. Ayşe?”",
+      "korean": "... ile görüşebilir miyim?",
+      "english": "Check whether \"... ile görüşebilir miyim?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I speak with Ms. Ayşe?”",
+      "example": "Ayşe Hanım ile görüşebilir miyim?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “May I speak with Ms. Ayşe?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "şu anda burada değil",
+      "romanization": "şu an-DA bu-ra-DA de-ĞİL",
+      "nativeText": "“Is not here right now.” A simple status phrase.",
+      "pronunciation": "şu an-DA bu-ra-DA de-ĞİL",
+      "exampleTarget": "Şu anda burada değil.",
+      "exampleNative": "“He is not here right now.”",
+      "korean": "şu anda burada değil",
+      "english": "“Is not here right now.” A simple status phrase.",
+      "example": "Şu anda burada değil.",
+      "exampleEnglish": "“He is not here right now.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "Şu anda burada değil.",
+      "romanization": "şu an-DA bu-ra-DA de-ĞİL",
+      "nativeText": "Model use for \"Şu anda burada değil.\": “He is not here right now.”",
+      "pronunciation": "şu an-DA bu-ra-DA de-ĞİL",
+      "exampleTarget": "Şu anda burada değil.",
+      "exampleNative": "“He is not here right now.”",
+      "korean": "Şu anda burada değil.",
+      "english": "Model use for \"Şu anda burada değil.\": “He is not here right now.”",
+      "example": "Şu anda burada değil.",
+      "exampleEnglish": "“He is not here right now.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "şu anda burada değil",
+      "romanization": "şu an-DA bu-ra-DA de-ĞİL",
+      "nativeText": "Usage focus for \"şu anda burada değil\": “Is not here right now.” A simple status phrase.",
+      "pronunciation": "şu an-DA bu-ra-DA de-ĞİL",
+      "exampleTarget": "Şu anda burada değil.",
+      "exampleNative": "Notice what the form is doing here: “He is not here right now.”",
+      "korean": "şu anda burada değil",
+      "english": "Usage focus for \"şu anda burada değil\": “Is not here right now.” A simple status phrase.",
+      "example": "Şu anda burada değil.",
+      "exampleEnglish": "Notice what the form is doing here: “He is not here right now.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "şu anda burada değil",
+      "romanization": "şu an-DA bu-ra-DA de-ĞİL",
+      "nativeText": "Contrast check for \"şu anda burada değil\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "şu an-DA bu-ra-DA de-ĞİL",
+      "exampleTarget": "Şu anda burada değil.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “He is not here right now.”",
+      "korean": "şu anda burada değil",
+      "english": "Contrast check for \"şu anda burada değil\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Şu anda burada değil.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “He is not here right now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "şu anda burada değil",
+      "romanization": "şu an-DA bu-ra-DA de-ĞİL",
+      "nativeText": "Recall \"şu anda burada değil\" from memory, then explain what would change if a nearby alternative replaced it in \"Şu anda burada değil.\".",
+      "pronunciation": "şu an-DA bu-ra-DA de-ĞİL",
+      "exampleTarget": "Şu anda burada değil.",
+      "exampleNative": "Self-check against the model before moving on: “He is not here right now.”",
+      "korean": "şu anda burada değil",
+      "english": "Recall \"şu anda burada değil\" from memory, then explain what would change if a nearby alternative replaced it in \"Şu anda burada değil.\".",
+      "example": "Şu anda burada değil.",
+      "exampleEnglish": "Self-check against the model before moving on: “He is not here right now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "şu anda burada değil",
+      "romanization": "şu an-DA bu-ra-DA de-ĞİL",
+      "nativeText": "Repair \"şu anda burada değil\" inside \"Şu anda burada değil.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Is not here right now.” A simple status phrase.",
+      "pronunciation": "şu an-DA bu-ra-DA de-ĞİL",
+      "exampleTarget": "Şu anda burada değil.",
+      "exampleNative": "Use the model as the repair target: “He is not here right now.”",
+      "korean": "şu anda burada değil",
+      "english": "Repair \"şu anda burada değil\" inside \"Şu anda burada değil.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Is not here right now.” A simple status phrase.",
+      "example": "Şu anda burada değil.",
+      "exampleEnglish": "Use the model as the repair target: “He is not here right now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "şu anda burada değil",
+      "romanization": "şu an-DA bu-ra-DA de-ĞİL",
+      "nativeText": "Transfer \"şu anda burada değil\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Şu anda burada değil.\".",
+      "pronunciation": "şu an-DA bu-ra-DA de-ĞİL",
+      "exampleTarget": "Şu anda burada değil.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “He is not here right now.”",
+      "korean": "şu anda burada değil",
+      "english": "Transfer \"şu anda burada değil\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Şu anda burada değil.\".",
+      "example": "Şu anda burada değil.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “He is not here right now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "şu anda burada değil",
+      "romanization": "şu an-DA bu-ra-DA de-ĞİL",
+      "nativeText": "Find one word or phrase that naturally travels with \"şu anda burada değil\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "şu an-DA bu-ra-DA de-ĞİL",
+      "exampleTarget": "Şu anda burada değil.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “He is not here right now.”",
+      "korean": "şu anda burada değil",
+      "english": "Find one word or phrase that naturally travels with \"şu anda burada değil\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Şu anda burada değil.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “He is not here right now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "şu anda burada değil",
+      "romanization": "şu an-DA bu-ra-DA de-ĞİL",
+      "nativeText": "Listen for \"şu anda burada değil\" inside \"Şu anda burada değil.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "şu an-DA bu-ra-DA de-ĞİL",
+      "exampleTarget": "Şu anda burada değil.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “He is not here right now.”",
+      "korean": "şu anda burada değil",
+      "english": "Listen for \"şu anda burada değil\" inside \"Şu anda burada değil.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Şu anda burada değil.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “He is not here right now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "şu anda burada değil",
+      "romanization": "şu an-DA bu-ra-DA de-ĞİL",
+      "nativeText": "Write \"şu anda burada değil\" again without looking, then compare the exact written form against \"Şu anda burada değil.\" before moving on.",
+      "pronunciation": "şu an-DA bu-ra-DA de-ĞİL",
+      "exampleTarget": "Şu anda burada değil.",
+      "exampleNative": "Use the written model as the final correctness check: “He is not here right now.”",
+      "korean": "şu anda burada değil",
+      "english": "Write \"şu anda burada değil\" again without looking, then compare the exact written form against \"Şu anda burada değil.\" before moving on.",
+      "example": "Şu anda burada değil.",
+      "exampleEnglish": "Use the written model as the final correctness check: “He is not here right now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "şu anda burada değil",
+      "romanization": "şu an-DA bu-ra-DA de-ĞİL",
+      "nativeText": "Check whether \"şu anda burada değil\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “He is not here right now.”",
+      "pronunciation": "şu an-DA bu-ra-DA de-ĞİL",
+      "exampleTarget": "Şu anda burada değil.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “He is not here right now.”",
+      "korean": "şu anda burada değil",
+      "english": "Check whether \"şu anda burada değil\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “He is not here right now.”",
+      "example": "Şu anda burada değil.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “He is not here right now.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "mesaj",
+      "romanization": "me-SAJ",
+      "nativeText": "“Message.” Useful for phone and app contexts.",
+      "pronunciation": "me-SAJ",
+      "exampleTarget": "Mesaj bırakabilir miyim?",
+      "exampleNative": "“May I leave a message?”",
+      "korean": "mesaj",
+      "english": "“Message.” Useful for phone and app contexts.",
+      "example": "Mesaj bırakabilir miyim?",
+      "exampleEnglish": "“May I leave a message?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "Mesaj bırakabilir miyim?",
+      "romanization": "me-SAJ",
+      "nativeText": "Model use for \"Mesaj bırakabilir miyim?\": “May I leave a message?”",
+      "pronunciation": "me-SAJ",
+      "exampleTarget": "Mesaj bırakabilir miyim?",
+      "exampleNative": "“May I leave a message?”",
+      "korean": "Mesaj bırakabilir miyim?",
+      "english": "Model use for \"Mesaj bırakabilir miyim?\": “May I leave a message?”",
+      "example": "Mesaj bırakabilir miyim?",
+      "exampleEnglish": "“May I leave a message?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "mesaj",
+      "romanization": "me-SAJ",
+      "nativeText": "Usage focus for \"mesaj\": “Message.” Useful for phone and app contexts.",
+      "pronunciation": "me-SAJ",
+      "exampleTarget": "Mesaj bırakabilir miyim?",
+      "exampleNative": "Notice what the form is doing here: “May I leave a message?”",
+      "korean": "mesaj",
+      "english": "Usage focus for \"mesaj\": “Message.” Useful for phone and app contexts.",
+      "example": "Mesaj bırakabilir miyim?",
+      "exampleEnglish": "Notice what the form is doing here: “May I leave a message?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "mesaj",
+      "romanization": "me-SAJ",
+      "nativeText": "Contrast check for \"mesaj\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "me-SAJ",
+      "exampleTarget": "Mesaj bırakabilir miyim?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I leave a message?”",
+      "korean": "mesaj",
+      "english": "Contrast check for \"mesaj\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Mesaj bırakabilir miyim?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I leave a message?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "mesaj",
+      "romanization": "me-SAJ",
+      "nativeText": "Recall \"mesaj\" from memory, then explain what would change if a nearby alternative replaced it in \"Mesaj bırakabilir miyim?\".",
+      "pronunciation": "me-SAJ",
+      "exampleTarget": "Mesaj bırakabilir miyim?",
+      "exampleNative": "Self-check against the model before moving on: “May I leave a message?”",
+      "korean": "mesaj",
+      "english": "Recall \"mesaj\" from memory, then explain what would change if a nearby alternative replaced it in \"Mesaj bırakabilir miyim?\".",
+      "example": "Mesaj bırakabilir miyim?",
+      "exampleEnglish": "Self-check against the model before moving on: “May I leave a message?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "mesaj",
+      "romanization": "me-SAJ",
+      "nativeText": "Repair \"mesaj\" inside \"Mesaj bırakabilir miyim?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Message.” Useful for phone and app contexts.",
+      "pronunciation": "me-SAJ",
+      "exampleTarget": "Mesaj bırakabilir miyim?",
+      "exampleNative": "Use the model as the repair target: “May I leave a message?”",
+      "korean": "mesaj",
+      "english": "Repair \"mesaj\" inside \"Mesaj bırakabilir miyim?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Message.” Useful for phone and app contexts.",
+      "example": "Mesaj bırakabilir miyim?",
+      "exampleEnglish": "Use the model as the repair target: “May I leave a message?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "mesaj",
+      "romanization": "me-SAJ",
+      "nativeText": "Transfer \"mesaj\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Mesaj bırakabilir miyim?\".",
+      "pronunciation": "me-SAJ",
+      "exampleTarget": "Mesaj bırakabilir miyim?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I leave a message?”",
+      "korean": "mesaj",
+      "english": "Transfer \"mesaj\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Mesaj bırakabilir miyim?\".",
+      "example": "Mesaj bırakabilir miyim?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I leave a message?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "mesaj",
+      "romanization": "me-SAJ",
+      "nativeText": "Find one word or phrase that naturally travels with \"mesaj\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "me-SAJ",
+      "exampleTarget": "Mesaj bırakabilir miyim?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “May I leave a message?”",
+      "korean": "mesaj",
+      "english": "Find one word or phrase that naturally travels with \"mesaj\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Mesaj bırakabilir miyim?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “May I leave a message?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "mesaj",
+      "romanization": "me-SAJ",
+      "nativeText": "Listen for \"mesaj\" inside \"Mesaj bırakabilir miyim?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "me-SAJ",
+      "exampleTarget": "Mesaj bırakabilir miyim?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I leave a message?”",
+      "korean": "mesaj",
+      "english": "Listen for \"mesaj\" inside \"Mesaj bırakabilir miyim?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Mesaj bırakabilir miyim?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I leave a message?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "mesaj",
+      "romanization": "me-SAJ",
+      "nativeText": "Write \"mesaj\" again without looking, then compare the exact written form against \"Mesaj bırakabilir miyim?\" before moving on.",
+      "pronunciation": "me-SAJ",
+      "exampleTarget": "Mesaj bırakabilir miyim?",
+      "exampleNative": "Use the written model as the final correctness check: “May I leave a message?”",
+      "korean": "mesaj",
+      "english": "Write \"mesaj\" again without looking, then compare the exact written form against \"Mesaj bırakabilir miyim?\" before moving on.",
+      "example": "Mesaj bırakabilir miyim?",
+      "exampleEnglish": "Use the written model as the final correctness check: “May I leave a message?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "mesaj",
+      "romanization": "me-SAJ",
+      "nativeText": "Check whether \"mesaj\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I leave a message?”",
+      "pronunciation": "me-SAJ",
+      "exampleTarget": "Mesaj bırakabilir miyim?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “May I leave a message?”",
+      "korean": "mesaj",
+      "english": "Check whether \"mesaj\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I leave a message?”",
+      "example": "Mesaj bırakabilir miyim?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “May I leave a message?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "lütfen söyler misiniz?",
+      "romanization": "lüt-FEN söy-LER mi-Sİ-niz",
+      "nativeText": "“Could you please tell them?” A courteous relay request.",
+      "pronunciation": "lüt-FEN söy-LER mi-Sİ-niz",
+      "exampleTarget": "Aradığımı lütfen söyler misiniz?",
+      "exampleNative": "“Could you please say that I called?”",
+      "korean": "lütfen söyler misiniz?",
+      "english": "“Could you please tell them?” A courteous relay request.",
+      "example": "Aradığımı lütfen söyler misiniz?",
+      "exampleEnglish": "“Could you please say that I called?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "Aradığımı lütfen söyler misiniz?",
+      "romanization": "lüt-FEN söy-LER mi-Sİ-niz",
+      "nativeText": "Model use for \"Aradığımı lütfen söyler misiniz?\": “Could you please say that I called?”",
+      "pronunciation": "lüt-FEN söy-LER mi-Sİ-niz",
+      "exampleTarget": "Aradığımı lütfen söyler misiniz?",
+      "exampleNative": "“Could you please say that I called?”",
+      "korean": "Aradığımı lütfen söyler misiniz?",
+      "english": "Model use for \"Aradığımı lütfen söyler misiniz?\": “Could you please say that I called?”",
+      "example": "Aradığımı lütfen söyler misiniz?",
+      "exampleEnglish": "“Could you please say that I called?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "lütfen söyler misiniz?",
+      "romanization": "lüt-FEN söy-LER mi-Sİ-niz",
+      "nativeText": "Usage focus for \"lütfen söyler misiniz?\": “Could you please tell them?” A courteous relay request.",
+      "pronunciation": "lüt-FEN söy-LER mi-Sİ-niz",
+      "exampleTarget": "Aradığımı lütfen söyler misiniz?",
+      "exampleNative": "Notice what the form is doing here: “Could you please say that I called?”",
+      "korean": "lütfen söyler misiniz?",
+      "english": "Usage focus for \"lütfen söyler misiniz?\": “Could you please tell them?” A courteous relay request.",
+      "example": "Aradığımı lütfen söyler misiniz?",
+      "exampleEnglish": "Notice what the form is doing here: “Could you please say that I called?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "lütfen söyler misiniz?",
+      "romanization": "lüt-FEN söy-LER mi-Sİ-niz",
+      "nativeText": "Contrast check for \"lütfen söyler misiniz?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "lüt-FEN söy-LER mi-Sİ-niz",
+      "exampleTarget": "Aradığımı lütfen söyler misiniz?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Could you please say that I called?”",
+      "korean": "lütfen söyler misiniz?",
+      "english": "Contrast check for \"lütfen söyler misiniz?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Aradığımı lütfen söyler misiniz?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Could you please say that I called?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "lütfen söyler misiniz?",
+      "romanization": "lüt-FEN söy-LER mi-Sİ-niz",
+      "nativeText": "Recall \"lütfen söyler misiniz?\" from memory, then explain what would change if a nearby alternative replaced it in \"Aradığımı lütfen söyler misiniz?\".",
+      "pronunciation": "lüt-FEN söy-LER mi-Sİ-niz",
+      "exampleTarget": "Aradığımı lütfen söyler misiniz?",
+      "exampleNative": "Self-check against the model before moving on: “Could you please say that I called?”",
+      "korean": "lütfen söyler misiniz?",
+      "english": "Recall \"lütfen söyler misiniz?\" from memory, then explain what would change if a nearby alternative replaced it in \"Aradığımı lütfen söyler misiniz?\".",
+      "example": "Aradığımı lütfen söyler misiniz?",
+      "exampleEnglish": "Self-check against the model before moving on: “Could you please say that I called?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "lütfen söyler misiniz?",
+      "romanization": "lüt-FEN söy-LER mi-Sİ-niz",
+      "nativeText": "Repair \"lütfen söyler misiniz?\" inside \"Aradığımı lütfen söyler misiniz?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Could you please tell them?” A courteous relay request.",
+      "pronunciation": "lüt-FEN söy-LER mi-Sİ-niz",
+      "exampleTarget": "Aradığımı lütfen söyler misiniz?",
+      "exampleNative": "Use the model as the repair target: “Could you please say that I called?”",
+      "korean": "lütfen söyler misiniz?",
+      "english": "Repair \"lütfen söyler misiniz?\" inside \"Aradığımı lütfen söyler misiniz?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Could you please tell them?” A courteous relay request.",
+      "example": "Aradığımı lütfen söyler misiniz?",
+      "exampleEnglish": "Use the model as the repair target: “Could you please say that I called?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "lütfen söyler misiniz?",
+      "romanization": "lüt-FEN söy-LER mi-Sİ-niz",
+      "nativeText": "Transfer \"lütfen söyler misiniz?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Aradığımı lütfen söyler misiniz?\".",
+      "pronunciation": "lüt-FEN söy-LER mi-Sİ-niz",
+      "exampleTarget": "Aradığımı lütfen söyler misiniz?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Could you please say that I called?”",
+      "korean": "lütfen söyler misiniz?",
+      "english": "Transfer \"lütfen söyler misiniz?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Aradığımı lütfen söyler misiniz?\".",
+      "example": "Aradığımı lütfen söyler misiniz?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Could you please say that I called?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "lütfen söyler misiniz?",
+      "romanization": "lüt-FEN söy-LER mi-Sİ-niz",
+      "nativeText": "Find one word or phrase that naturally travels with \"lütfen söyler misiniz?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "lüt-FEN söy-LER mi-Sİ-niz",
+      "exampleTarget": "Aradığımı lütfen söyler misiniz?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Could you please say that I called?”",
+      "korean": "lütfen söyler misiniz?",
+      "english": "Find one word or phrase that naturally travels with \"lütfen söyler misiniz?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Aradığımı lütfen söyler misiniz?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Could you please say that I called?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "lütfen söyler misiniz?",
+      "romanization": "lüt-FEN söy-LER mi-Sİ-niz",
+      "nativeText": "Listen for \"lütfen söyler misiniz?\" inside \"Aradığımı lütfen söyler misiniz?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "lüt-FEN söy-LER mi-Sİ-niz",
+      "exampleTarget": "Aradığımı lütfen söyler misiniz?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Could you please say that I called?”",
+      "korean": "lütfen söyler misiniz?",
+      "english": "Listen for \"lütfen söyler misiniz?\" inside \"Aradığımı lütfen söyler misiniz?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Aradığımı lütfen söyler misiniz?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Could you please say that I called?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "lütfen söyler misiniz?",
+      "romanization": "lüt-FEN söy-LER mi-Sİ-niz",
+      "nativeText": "Write \"lütfen söyler misiniz?\" again without looking, then compare the exact written form against \"Aradığımı lütfen söyler misiniz?\" before moving on.",
+      "pronunciation": "lüt-FEN söy-LER mi-Sİ-niz",
+      "exampleTarget": "Aradığımı lütfen söyler misiniz?",
+      "exampleNative": "Use the written model as the final correctness check: “Could you please say that I called?”",
+      "korean": "lütfen söyler misiniz?",
+      "english": "Write \"lütfen söyler misiniz?\" again without looking, then compare the exact written form against \"Aradığımı lütfen söyler misiniz?\" before moving on.",
+      "example": "Aradığımı lütfen söyler misiniz?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Could you please say that I called?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "lütfen söyler misiniz?",
+      "romanization": "lüt-FEN söy-LER mi-Sİ-niz",
+      "nativeText": "Check whether \"lütfen söyler misiniz?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Could you please say that I called?”",
+      "pronunciation": "lüt-FEN söy-LER mi-Sİ-niz",
+      "exampleTarget": "Aradığımı lütfen söyler misiniz?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Could you please say that I called?”",
+      "korean": "lütfen söyler misiniz?",
+      "english": "Check whether \"lütfen söyler misiniz?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Could you please say that I called?”",
+      "example": "Aradığımı lütfen söyler misiniz?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Could you please say that I called?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "telefon numarası",
+      "romanization": "te-le-FON nu-ma-ra-SI",
+      "nativeText": "“Phone number.” A possessed compound in Turkish form.",
+      "pronunciation": "te-le-FON nu-ma-ra-SI",
+      "exampleTarget": "Telefon numaranız nedir?",
+      "exampleNative": "“What is your phone number?”",
+      "korean": "telefon numarası",
+      "english": "“Phone number.” A possessed compound in Turkish form.",
+      "example": "Telefon numaranız nedir?",
+      "exampleEnglish": "“What is your phone number?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "Telefon numaranız nedir?",
+      "romanization": "te-le-FON nu-ma-ra-SI",
+      "nativeText": "Model use for \"Telefon numaranız nedir?\": “What is your phone number?”",
+      "pronunciation": "te-le-FON nu-ma-ra-SI",
+      "exampleTarget": "Telefon numaranız nedir?",
+      "exampleNative": "“What is your phone number?”",
+      "korean": "Telefon numaranız nedir?",
+      "english": "Model use for \"Telefon numaranız nedir?\": “What is your phone number?”",
+      "example": "Telefon numaranız nedir?",
+      "exampleEnglish": "“What is your phone number?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "telefon numarası",
+      "romanization": "te-le-FON nu-ma-ra-SI",
+      "nativeText": "Usage focus for \"telefon numarası\": “Phone number.” A possessed compound in Turkish form.",
+      "pronunciation": "te-le-FON nu-ma-ra-SI",
+      "exampleTarget": "Telefon numaranız nedir?",
+      "exampleNative": "Notice what the form is doing here: “What is your phone number?”",
+      "korean": "telefon numarası",
+      "english": "Usage focus for \"telefon numarası\": “Phone number.” A possessed compound in Turkish form.",
+      "example": "Telefon numaranız nedir?",
+      "exampleEnglish": "Notice what the form is doing here: “What is your phone number?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "telefon numarası",
+      "romanization": "te-le-FON nu-ma-ra-SI",
+      "nativeText": "Contrast check for \"telefon numarası\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "te-le-FON nu-ma-ra-SI",
+      "exampleTarget": "Telefon numaranız nedir?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What is your phone number?”",
+      "korean": "telefon numarası",
+      "english": "Contrast check for \"telefon numarası\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Telefon numaranız nedir?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What is your phone number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "telefon numarası",
+      "romanization": "te-le-FON nu-ma-ra-SI",
+      "nativeText": "Recall \"telefon numarası\" from memory, then explain what would change if a nearby alternative replaced it in \"Telefon numaranız nedir?\".",
+      "pronunciation": "te-le-FON nu-ma-ra-SI",
+      "exampleTarget": "Telefon numaranız nedir?",
+      "exampleNative": "Self-check against the model before moving on: “What is your phone number?”",
+      "korean": "telefon numarası",
+      "english": "Recall \"telefon numarası\" from memory, then explain what would change if a nearby alternative replaced it in \"Telefon numaranız nedir?\".",
+      "example": "Telefon numaranız nedir?",
+      "exampleEnglish": "Self-check against the model before moving on: “What is your phone number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "telefon numarası",
+      "romanization": "te-le-FON nu-ma-ra-SI",
+      "nativeText": "Repair \"telefon numarası\" inside \"Telefon numaranız nedir?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Phone number.” A possessed compound in Turkish form.",
+      "pronunciation": "te-le-FON nu-ma-ra-SI",
+      "exampleTarget": "Telefon numaranız nedir?",
+      "exampleNative": "Use the model as the repair target: “What is your phone number?”",
+      "korean": "telefon numarası",
+      "english": "Repair \"telefon numarası\" inside \"Telefon numaranız nedir?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Phone number.” A possessed compound in Turkish form.",
+      "example": "Telefon numaranız nedir?",
+      "exampleEnglish": "Use the model as the repair target: “What is your phone number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "telefon numarası",
+      "romanization": "te-le-FON nu-ma-ra-SI",
+      "nativeText": "Transfer \"telefon numarası\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Telefon numaranız nedir?\".",
+      "pronunciation": "te-le-FON nu-ma-ra-SI",
+      "exampleTarget": "Telefon numaranız nedir?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “What is your phone number?”",
+      "korean": "telefon numarası",
+      "english": "Transfer \"telefon numarası\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Telefon numaranız nedir?\".",
+      "example": "Telefon numaranız nedir?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “What is your phone number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "telefon numarası",
+      "romanization": "te-le-FON nu-ma-ra-SI",
+      "nativeText": "Find one word or phrase that naturally travels with \"telefon numarası\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "te-le-FON nu-ma-ra-SI",
+      "exampleTarget": "Telefon numaranız nedir?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “What is your phone number?”",
+      "korean": "telefon numarası",
+      "english": "Find one word or phrase that naturally travels with \"telefon numarası\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Telefon numaranız nedir?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “What is your phone number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "telefon numarası",
+      "romanization": "te-le-FON nu-ma-ra-SI",
+      "nativeText": "Listen for \"telefon numarası\" inside \"Telefon numaranız nedir?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "te-le-FON nu-ma-ra-SI",
+      "exampleTarget": "Telefon numaranız nedir?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What is your phone number?”",
+      "korean": "telefon numarası",
+      "english": "Listen for \"telefon numarası\" inside \"Telefon numaranız nedir?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Telefon numaranız nedir?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What is your phone number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "telefon numarası",
+      "romanization": "te-le-FON nu-ma-ra-SI",
+      "nativeText": "Write \"telefon numarası\" again without looking, then compare the exact written form against \"Telefon numaranız nedir?\" before moving on.",
+      "pronunciation": "te-le-FON nu-ma-ra-SI",
+      "exampleTarget": "Telefon numaranız nedir?",
+      "exampleNative": "Use the written model as the final correctness check: “What is your phone number?”",
+      "korean": "telefon numarası",
+      "english": "Write \"telefon numarası\" again without looking, then compare the exact written form against \"Telefon numaranız nedir?\" before moving on.",
+      "example": "Telefon numaranız nedir?",
+      "exampleEnglish": "Use the written model as the final correctness check: “What is your phone number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "telefon numarası",
+      "romanization": "te-le-FON nu-ma-ra-SI",
+      "nativeText": "Check whether \"telefon numarası\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What is your phone number?”",
+      "pronunciation": "te-le-FON nu-ma-ra-SI",
+      "exampleTarget": "Telefon numaranız nedir?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “What is your phone number?”",
+      "korean": "telefon numarası",
+      "english": "Check whether \"telefon numarası\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What is your phone number?”",
+      "example": "Telefon numaranız nedir?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “What is your phone number?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "tekrar eder misiniz?",
+      "romanization": "tek-RAR e-DER mi-Sİ-niz",
+      "nativeText": "“Could you repeat?” A crucial repair phrase.",
+      "pronunciation": "tek-RAR e-DER mi-Sİ-niz",
+      "exampleTarget": "Numarayı tekrar eder misiniz?",
+      "exampleNative": "“Could you repeat the number?”",
+      "korean": "tekrar eder misiniz?",
+      "english": "“Could you repeat?” A crucial repair phrase.",
+      "example": "Numarayı tekrar eder misiniz?",
+      "exampleEnglish": "“Could you repeat the number?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "Numarayı tekrar eder misiniz?",
+      "romanization": "tek-RAR e-DER mi-Sİ-niz",
+      "nativeText": "Model use for \"Numarayı tekrar eder misiniz?\": “Could you repeat the number?”",
+      "pronunciation": "tek-RAR e-DER mi-Sİ-niz",
+      "exampleTarget": "Numarayı tekrar eder misiniz?",
+      "exampleNative": "“Could you repeat the number?”",
+      "korean": "Numarayı tekrar eder misiniz?",
+      "english": "Model use for \"Numarayı tekrar eder misiniz?\": “Could you repeat the number?”",
+      "example": "Numarayı tekrar eder misiniz?",
+      "exampleEnglish": "“Could you repeat the number?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "tekrar eder misiniz?",
+      "romanization": "tek-RAR e-DER mi-Sİ-niz",
+      "nativeText": "Usage focus for \"tekrar eder misiniz?\": “Could you repeat?” A crucial repair phrase.",
+      "pronunciation": "tek-RAR e-DER mi-Sİ-niz",
+      "exampleTarget": "Numarayı tekrar eder misiniz?",
+      "exampleNative": "Notice what the form is doing here: “Could you repeat the number?”",
+      "korean": "tekrar eder misiniz?",
+      "english": "Usage focus for \"tekrar eder misiniz?\": “Could you repeat?” A crucial repair phrase.",
+      "example": "Numarayı tekrar eder misiniz?",
+      "exampleEnglish": "Notice what the form is doing here: “Could you repeat the number?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "tekrar eder misiniz?",
+      "romanization": "tek-RAR e-DER mi-Sİ-niz",
+      "nativeText": "Contrast check for \"tekrar eder misiniz?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "tek-RAR e-DER mi-Sİ-niz",
+      "exampleTarget": "Numarayı tekrar eder misiniz?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Could you repeat the number?”",
+      "korean": "tekrar eder misiniz?",
+      "english": "Contrast check for \"tekrar eder misiniz?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Numarayı tekrar eder misiniz?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Could you repeat the number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "tekrar eder misiniz?",
+      "romanization": "tek-RAR e-DER mi-Sİ-niz",
+      "nativeText": "Recall \"tekrar eder misiniz?\" from memory, then explain what would change if a nearby alternative replaced it in \"Numarayı tekrar eder misiniz?\".",
+      "pronunciation": "tek-RAR e-DER mi-Sİ-niz",
+      "exampleTarget": "Numarayı tekrar eder misiniz?",
+      "exampleNative": "Self-check against the model before moving on: “Could you repeat the number?”",
+      "korean": "tekrar eder misiniz?",
+      "english": "Recall \"tekrar eder misiniz?\" from memory, then explain what would change if a nearby alternative replaced it in \"Numarayı tekrar eder misiniz?\".",
+      "example": "Numarayı tekrar eder misiniz?",
+      "exampleEnglish": "Self-check against the model before moving on: “Could you repeat the number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "tekrar eder misiniz?",
+      "romanization": "tek-RAR e-DER mi-Sİ-niz",
+      "nativeText": "Repair \"tekrar eder misiniz?\" inside \"Numarayı tekrar eder misiniz?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Could you repeat?” A crucial repair phrase.",
+      "pronunciation": "tek-RAR e-DER mi-Sİ-niz",
+      "exampleTarget": "Numarayı tekrar eder misiniz?",
+      "exampleNative": "Use the model as the repair target: “Could you repeat the number?”",
+      "korean": "tekrar eder misiniz?",
+      "english": "Repair \"tekrar eder misiniz?\" inside \"Numarayı tekrar eder misiniz?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Could you repeat?” A crucial repair phrase.",
+      "example": "Numarayı tekrar eder misiniz?",
+      "exampleEnglish": "Use the model as the repair target: “Could you repeat the number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "tekrar eder misiniz?",
+      "romanization": "tek-RAR e-DER mi-Sİ-niz",
+      "nativeText": "Transfer \"tekrar eder misiniz?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Numarayı tekrar eder misiniz?\".",
+      "pronunciation": "tek-RAR e-DER mi-Sİ-niz",
+      "exampleTarget": "Numarayı tekrar eder misiniz?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Could you repeat the number?”",
+      "korean": "tekrar eder misiniz?",
+      "english": "Transfer \"tekrar eder misiniz?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Numarayı tekrar eder misiniz?\".",
+      "example": "Numarayı tekrar eder misiniz?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Could you repeat the number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "tekrar eder misiniz?",
+      "romanization": "tek-RAR e-DER mi-Sİ-niz",
+      "nativeText": "Find one word or phrase that naturally travels with \"tekrar eder misiniz?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "tek-RAR e-DER mi-Sİ-niz",
+      "exampleTarget": "Numarayı tekrar eder misiniz?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Could you repeat the number?”",
+      "korean": "tekrar eder misiniz?",
+      "english": "Find one word or phrase that naturally travels with \"tekrar eder misiniz?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Numarayı tekrar eder misiniz?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Could you repeat the number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "tekrar eder misiniz?",
+      "romanization": "tek-RAR e-DER mi-Sİ-niz",
+      "nativeText": "Listen for \"tekrar eder misiniz?\" inside \"Numarayı tekrar eder misiniz?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "tek-RAR e-DER mi-Sİ-niz",
+      "exampleTarget": "Numarayı tekrar eder misiniz?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Could you repeat the number?”",
+      "korean": "tekrar eder misiniz?",
+      "english": "Listen for \"tekrar eder misiniz?\" inside \"Numarayı tekrar eder misiniz?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Numarayı tekrar eder misiniz?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Could you repeat the number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "tekrar eder misiniz?",
+      "romanization": "tek-RAR e-DER mi-Sİ-niz",
+      "nativeText": "Write \"tekrar eder misiniz?\" again without looking, then compare the exact written form against \"Numarayı tekrar eder misiniz?\" before moving on.",
+      "pronunciation": "tek-RAR e-DER mi-Sİ-niz",
+      "exampleTarget": "Numarayı tekrar eder misiniz?",
+      "exampleNative": "Use the written model as the final correctness check: “Could you repeat the number?”",
+      "korean": "tekrar eder misiniz?",
+      "english": "Write \"tekrar eder misiniz?\" again without looking, then compare the exact written form against \"Numarayı tekrar eder misiniz?\" before moving on.",
+      "example": "Numarayı tekrar eder misiniz?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Could you repeat the number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "tekrar eder misiniz?",
+      "romanization": "tek-RAR e-DER mi-Sİ-niz",
+      "nativeText": "Check whether \"tekrar eder misiniz?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Could you repeat the number?”",
+      "pronunciation": "tek-RAR e-DER mi-Sİ-niz",
+      "exampleTarget": "Numarayı tekrar eder misiniz?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Could you repeat the number?”",
+      "korean": "tekrar eder misiniz?",
+      "english": "Check whether \"tekrar eder misiniz?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Could you repeat the number?”",
+      "example": "Numarayı tekrar eder misiniz?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Could you repeat the number?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "sonra tekrar ararım",
+      "romanization": "son-RA tek-RAR a-ra-RIM",
+      "nativeText": "“I will call again later.” A natural call-ending promise.",
+      "pronunciation": "son-RA tek-RAR a-ra-RIM",
+      "exampleTarget": "Tamam, sonra tekrar ararım.",
+      "exampleNative": "“Okay, I will call again later.”",
+      "korean": "sonra tekrar ararım",
+      "english": "“I will call again later.” A natural call-ending promise.",
+      "example": "Tamam, sonra tekrar ararım.",
+      "exampleEnglish": "“Okay, I will call again later.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "Tamam, sonra tekrar ararım.",
+      "romanization": "son-RA tek-RAR a-ra-RIM",
+      "nativeText": "Model use for \"Tamam, sonra tekrar ararım.\": “Okay, I will call again later.”",
+      "pronunciation": "son-RA tek-RAR a-ra-RIM",
+      "exampleTarget": "Tamam, sonra tekrar ararım.",
+      "exampleNative": "“Okay, I will call again later.”",
+      "korean": "Tamam, sonra tekrar ararım.",
+      "english": "Model use for \"Tamam, sonra tekrar ararım.\": “Okay, I will call again later.”",
+      "example": "Tamam, sonra tekrar ararım.",
+      "exampleEnglish": "“Okay, I will call again later.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "sonra tekrar ararım",
+      "romanization": "son-RA tek-RAR a-ra-RIM",
+      "nativeText": "Usage focus for \"sonra tekrar ararım\": “I will call again later.” A natural call-ending promise.",
+      "pronunciation": "son-RA tek-RAR a-ra-RIM",
+      "exampleTarget": "Tamam, sonra tekrar ararım.",
+      "exampleNative": "Notice what the form is doing here: “Okay, I will call again later.”",
+      "korean": "sonra tekrar ararım",
+      "english": "Usage focus for \"sonra tekrar ararım\": “I will call again later.” A natural call-ending promise.",
+      "example": "Tamam, sonra tekrar ararım.",
+      "exampleEnglish": "Notice what the form is doing here: “Okay, I will call again later.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "sonra tekrar ararım",
+      "romanization": "son-RA tek-RAR a-ra-RIM",
+      "nativeText": "Contrast check for \"sonra tekrar ararım\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "son-RA tek-RAR a-ra-RIM",
+      "exampleTarget": "Tamam, sonra tekrar ararım.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Okay, I will call again later.”",
+      "korean": "sonra tekrar ararım",
+      "english": "Contrast check for \"sonra tekrar ararım\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Tamam, sonra tekrar ararım.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Okay, I will call again later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "sonra tekrar ararım",
+      "romanization": "son-RA tek-RAR a-ra-RIM",
+      "nativeText": "Recall \"sonra tekrar ararım\" from memory, then explain what would change if a nearby alternative replaced it in \"Tamam, sonra tekrar ararım.\".",
+      "pronunciation": "son-RA tek-RAR a-ra-RIM",
+      "exampleTarget": "Tamam, sonra tekrar ararım.",
+      "exampleNative": "Self-check against the model before moving on: “Okay, I will call again later.”",
+      "korean": "sonra tekrar ararım",
+      "english": "Recall \"sonra tekrar ararım\" from memory, then explain what would change if a nearby alternative replaced it in \"Tamam, sonra tekrar ararım.\".",
+      "example": "Tamam, sonra tekrar ararım.",
+      "exampleEnglish": "Self-check against the model before moving on: “Okay, I will call again later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "sonra tekrar ararım",
+      "romanization": "son-RA tek-RAR a-ra-RIM",
+      "nativeText": "Repair \"sonra tekrar ararım\" inside \"Tamam, sonra tekrar ararım.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I will call again later.” A natural call-ending promise.",
+      "pronunciation": "son-RA tek-RAR a-ra-RIM",
+      "exampleTarget": "Tamam, sonra tekrar ararım.",
+      "exampleNative": "Use the model as the repair target: “Okay, I will call again later.”",
+      "korean": "sonra tekrar ararım",
+      "english": "Repair \"sonra tekrar ararım\" inside \"Tamam, sonra tekrar ararım.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I will call again later.” A natural call-ending promise.",
+      "example": "Tamam, sonra tekrar ararım.",
+      "exampleEnglish": "Use the model as the repair target: “Okay, I will call again later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "sonra tekrar ararım",
+      "romanization": "son-RA tek-RAR a-ra-RIM",
+      "nativeText": "Transfer \"sonra tekrar ararım\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Tamam, sonra tekrar ararım.\".",
+      "pronunciation": "son-RA tek-RAR a-ra-RIM",
+      "exampleTarget": "Tamam, sonra tekrar ararım.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Okay, I will call again later.”",
+      "korean": "sonra tekrar ararım",
+      "english": "Transfer \"sonra tekrar ararım\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Tamam, sonra tekrar ararım.\".",
+      "example": "Tamam, sonra tekrar ararım.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Okay, I will call again later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "sonra tekrar ararım",
+      "romanization": "son-RA tek-RAR a-ra-RIM",
+      "nativeText": "Find one word or phrase that naturally travels with \"sonra tekrar ararım\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "son-RA tek-RAR a-ra-RIM",
+      "exampleTarget": "Tamam, sonra tekrar ararım.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Okay, I will call again later.”",
+      "korean": "sonra tekrar ararım",
+      "english": "Find one word or phrase that naturally travels with \"sonra tekrar ararım\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Tamam, sonra tekrar ararım.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Okay, I will call again later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "sonra tekrar ararım",
+      "romanization": "son-RA tek-RAR a-ra-RIM",
+      "nativeText": "Listen for \"sonra tekrar ararım\" inside \"Tamam, sonra tekrar ararım.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "son-RA tek-RAR a-ra-RIM",
+      "exampleTarget": "Tamam, sonra tekrar ararım.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Okay, I will call again later.”",
+      "korean": "sonra tekrar ararım",
+      "english": "Listen for \"sonra tekrar ararım\" inside \"Tamam, sonra tekrar ararım.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Tamam, sonra tekrar ararım.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Okay, I will call again later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "sonra tekrar ararım",
+      "romanization": "son-RA tek-RAR a-ra-RIM",
+      "nativeText": "Write \"sonra tekrar ararım\" again without looking, then compare the exact written form against \"Tamam, sonra tekrar ararım.\" before moving on.",
+      "pronunciation": "son-RA tek-RAR a-ra-RIM",
+      "exampleTarget": "Tamam, sonra tekrar ararım.",
+      "exampleNative": "Use the written model as the final correctness check: “Okay, I will call again later.”",
+      "korean": "sonra tekrar ararım",
+      "english": "Write \"sonra tekrar ararım\" again without looking, then compare the exact written form against \"Tamam, sonra tekrar ararım.\" before moving on.",
+      "example": "Tamam, sonra tekrar ararım.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Okay, I will call again later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit15phonemessages-vocabulary-1",
+        "tr-level1unit15phonemessages-vocabulary-2",
+        "tr-level1unit15phonemessages-grammar-1",
+        "tr-level1unit15phonemessages-grammar-2",
+        "tr-level1unit15phonemessages-reading",
+        "tr-level1unit15phonemessages-listening",
+        "tr-level1unit15phonemessages-writing",
+        "tr-level1unit15phonemessages-task"
+      ],
+      "targetText": "sonra tekrar ararım",
+      "romanization": "son-RA tek-RAR a-ra-RIM",
+      "nativeText": "Check whether \"sonra tekrar ararım\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Okay, I will call again later.”",
+      "pronunciation": "son-RA tek-RAR a-ra-RIM",
+      "exampleTarget": "Tamam, sonra tekrar ararım.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Okay, I will call again later.”",
+      "korean": "sonra tekrar ararım",
+      "english": "Check whether \"sonra tekrar ararım\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Okay, I will call again later.”",
+      "example": "Tamam, sonra tekrar ararım.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Okay, I will call again later.”"
+    }
+  ],
+  "targetLang": "tr",
+  "nativeLang": "en",
+  "track": "textbook"
+};

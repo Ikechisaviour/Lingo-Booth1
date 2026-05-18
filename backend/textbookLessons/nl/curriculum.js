@@ -20,6 +20,35 @@ const level1Unit18Health = require('./level1Unit18Health');
 const level1Unit19CulturalHolidays = require('./level1Unit19CulturalHolidays');
 const level1Unit20Suggestions = require('./level1Unit20Suggestions');
 const level1Unit21HopesDreams = require('./level1Unit21HopesDreams');
+const level2Unit02HealthyLife = require('./level2Unit02HealthyLife');
+const level2Unit03Sports = require('./level2Unit03Sports');
+const level2Unit04ModernRelationships = require('./level2Unit04ModernRelationships');
+const level2Unit05ProverbsIdioms = require('./level2Unit05ProverbsIdioms');
+const level2Unit06Performances = require('./level2Unit06Performances');
+const level2Unit07RightWrong = require('./level2Unit07RightWrong');
+const level2Unit08IntriguingWorld = require('./level2Unit08IntriguingWorld');
+const level2Unit09PopCulture = require('./level2Unit09PopCulture');
+const level2Review01 = require('./level2Review01');
+const level2Review02 = require('./level2Review02');
+const level2Review03 = require('./level2Review03');
+const level2AdultUnit01Greetings = require('./level2AdultUnit01Greetings');
+const level2AdultUnit02WorkSchedule = require('./level2AdultUnit02WorkSchedule');
+const level2AdultUnit03Food = require('./level2AdultUnit03Food');
+const level2AdultUnit04Commute = require('./level2AdultUnit04Commute');
+const level2AdultUnit05Buying = require('./level2AdultUnit05Buying');
+const level2AdultUnit06DormLife = require('./level2AdultUnit06DormLife');
+const level2AdultUnit07Safety = require('./level2AdultUnit07Safety');
+const level2AdultUnit08Medical = require('./level2AdultUnit08Medical');
+const level2AdultUnit09Weekend = require('./level2AdultUnit09Weekend');
+const level2AdultUnit10Rules = require('./level2AdultUnit10Rules');
+const level2AdultUnit11JobHunting = require('./level2AdultUnit11JobHunting');
+const level2AdultUnit12Housing = require('./level2AdultUnit12Housing');
+const level3Cluster1WordOrder = require('./level3Cluster1WordOrder');
+const level3Cluster2SeparableVerbs = require('./level3Cluster2SeparableVerbs');
+const level3Cluster3Diminutives = require('./level3Cluster3Diminutives');
+const level3Cluster4PastTenses = require('./level3Cluster4PastTenses');
+const level3Cluster5Pronouns = require('./level3Cluster5Pronouns');
+const level3Cluster6Register = require('./level3Cluster6Register');
 
 module.exports = {
   level1Foundation,
@@ -44,4 +73,33 @@ module.exports = {
   level1Unit19CulturalHolidays,
   level1Unit20Suggestions,
   level1Unit21HopesDreams,
+  level2Unit02HealthyLife,
+  level2Unit03Sports,
+  level2Unit04ModernRelationships,
+  level2Unit05ProverbsIdioms,
+  level2Unit06Performances,
+  level2Unit07RightWrong,
+  level2Unit08IntriguingWorld,
+  level2Unit09PopCulture,
+  level2Review01,
+  level2Review02,
+  level2Review03,
+  level2AdultUnit01Greetings,
+  level2AdultUnit02WorkSchedule,
+  level2AdultUnit03Food,
+  level2AdultUnit04Commute,
+  level2AdultUnit05Buying,
+  level2AdultUnit06DormLife,
+  level2AdultUnit07Safety,
+  level2AdultUnit08Medical,
+  level2AdultUnit09Weekend,
+  level2AdultUnit10Rules,
+  level2AdultUnit11JobHunting,
+  level2AdultUnit12Housing,
+  level3Cluster1WordOrder,
+  level3Cluster2SeparableVerbs,
+  level3Cluster3Diminutives,
+  level3Cluster4PastTenses,
+  level3Cluster5Pronouns,
+  level3Cluster6Register,
 };

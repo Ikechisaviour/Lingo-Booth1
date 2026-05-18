@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('ru', {
-  slug: 'ru-l1u17',
-  title: 'Level 1 · Unit 17: На почте — Post Office',
-  category: 'service',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Handle basic postal tasks such as sending letters, parcels, and asking about delivery.',
-  vocabularyGoal: 'Use letter, parcel, stamp, address, and delivery words.',
-  grammarGoal: 'Use `отправить`, `кому`, and simple service phrases with case-sensitive destinations.',
-  speakingGoal: 'Say what you want to send, where it goes, and ask when it arrives.',
-  task: 'Send one parcel at a post office counter.',
-  expressionPractice: [
-    practice('service-need', 'Stating service need', 'Use `я хочу отправить`.'),
-    practice('destination', 'Giving destination', 'Use one destination form.'),
-    practice('asking-arrival', 'Asking arrival', 'Use `когда дойдёт?`.'),
+module.exports = {
+  "title": "Level 1 · Unit 17: На почте — Post Office",
+  "category": "service",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ru-level1unit17postoffice-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Handle basic postal tasks such as sending letters, parcels, and asking about delivery."
+      ],
+      "task": "Send one parcel at a post office counter."
+    },
+    {
+      "id": "ru-level1unit17postoffice-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ru-level1unit17postoffice-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 17: На почте — Post Office with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ru-level1unit17postoffice-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 17: На почте — Post Office sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ru-level1unit17postoffice-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Handle basic postal tasks such as sending letters, parcels, and asking about delivery."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ru-level1unit17postoffice-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 17: На почте — Post Office with one nearby Russian form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ru-level1unit17postoffice-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ru-level1unit17postoffice-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ru-level1unit17postoffice-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ru-level1unit17postoffice-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ru-level1unit17postoffice-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Send one parcel at a post office counter."
+      ],
+      "task": "Send one parcel at a post office counter."
+    }
   ],
-  relatedPools: ['topic-service', 'topic-travel'],
-  items: [
-    item('почта', 'pochta', '“Post office / mail.” Context decides whether the place or system is meant.', 'Почта находится рядом с банком.', '“The post office is next to the bank.”'),
-    item('письмо', 'pismo', '“Letter.” A neuter noun with a soft sign in writing.', 'Я хочу отправить письмо.', '“I want to send a letter.”'),
-    item('посылка', 'posylka', '“Parcel.” A practical service noun.', 'Эта посылка для Новосибирска.', '“This parcel is for Novosibirsk.”'),
-    item('марка', 'marka', '“Stamp.” A small but necessary postal word.', 'Мне нужны две марки.', '“I need two stamps.”'),
-    item('адрес', 'adres', '“Address.” It appears in many formal service tasks.', 'Напишите полный адрес.', '“Write the full address.”'),
-    item('я хочу отправить', 'ya khochu otpravit', '“I want to send.” The perfective verb suits the single completed transaction.', 'Я хочу отправить посылку в Казань.', '“I want to send a parcel to Kazan.”'),
-    item('сколько стоит доставка?', 'skolko stoit dostavka', '“How much does delivery cost?” A practical shipping question.', 'Сколько стоит доставка до Самары?', '“How much does delivery to Samara cost?”'),
-    item('когда дойдёт?', 'kogda doydyot', '“When will it arrive?” Literally “when will it reach.”', 'Когда посылка дойдёт?', '“When will the parcel arrive?”'),
+  "expressionPractice": [
+    {
+      "id": "service-need",
+      "label": "Stating service need",
+      "goal": "Use `я хочу отправить`."
+    },
+    {
+      "id": "destination",
+      "label": "Giving destination",
+      "goal": "Use one destination form."
+    },
+    {
+      "id": "asking-arrival",
+      "label": "Asking arrival",
+      "goal": "Use `когда дойдёт?`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-service",
+    "topic-travel"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit17postoffice-orientation"
+      ],
+      "targetText": "цель урока",
+      "romanization": "",
+      "nativeText": "Handle basic postal tasks such as sending letters, parcels, and asking about delivery.",
+      "pronunciation": "",
+      "exampleTarget": "цель урока",
+      "exampleNative": "The whole lesson is built toward this outcome: Send one parcel at a post office counter.",
+      "korean": "цель урока",
+      "english": "Handle basic postal tasks such as sending letters, parcels, and asking about delivery.",
+      "example": "цель урока",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Send one parcel at a post office counter."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ru-level1unit17postoffice-pronunciation"
+      ],
+      "targetText": "проверка произношения",
+      "romanization": "",
+      "nativeText": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Почта находится рядом с банком.\".",
+      "pronunciation": "",
+      "exampleTarget": "Почта находится рядом с банком.",
+      "exampleNative": "“The post office is next to the bank.”",
+      "korean": "проверка произношения",
+      "english": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Почта находится рядом с банком.\".",
+      "example": "Почта находится рядом с банком.",
+      "exampleEnglish": "“The post office is next to the bank.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1"
+      ],
+      "targetText": "почта",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 17: На почте — Post Office with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Почта находится рядом с банком.",
+      "exampleNative": "“The post office is next to the bank.”",
+      "korean": "почта",
+      "english": "Use the key language of Level 1 · Unit 17: На почте — Post Office with the register and setting that the lesson requires.",
+      "example": "Почта находится рядом с банком.",
+      "exampleEnglish": "“The post office is next to the bank.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-2"
+      ],
+      "targetText": "письмо",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 17: На почте — Post Office sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Я хочу отправить письмо.",
+      "exampleNative": "“I want to send a letter.”",
+      "korean": "письмо",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 17: На почте — Post Office sound precise rather than merely understandable.",
+      "example": "Я хочу отправить письмо.",
+      "exampleEnglish": "“I want to send a letter.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ru-level1unit17postoffice-grammar-1"
+      ],
+      "targetText": "почта",
+      "romanization": "",
+      "nativeText": "Handle basic postal tasks such as sending letters, parcels, and asking about delivery.",
+      "pronunciation": "",
+      "exampleTarget": "Почта находится рядом с банком.",
+      "exampleNative": "“The post office is next to the bank.”",
+      "korean": "почта",
+      "english": "Handle basic postal tasks such as sending letters, parcels, and asking about delivery.",
+      "example": "Почта находится рядом с банком.",
+      "exampleEnglish": "“The post office is next to the bank.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ru-level1unit17postoffice-grammar-2"
+      ],
+      "targetText": "письмо",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 17: На почте — Post Office with one nearby Russian form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Я хочу отправить письмо.",
+      "exampleNative": "“I want to send a letter.”",
+      "korean": "письмо",
+      "english": "Contrast the main pattern in Level 1 · Unit 17: На почте — Post Office with one nearby Russian form so the learner can avoid literal translation.",
+      "example": "Я хочу отправить письмо.",
+      "exampleEnglish": "“I want to send a letter.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ru-level1unit17postoffice-reading"
+      ],
+      "targetText": "модель чтения",
+      "romanization": "",
+      "nativeText": "Read \"Когда посылка дойдёт?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Когда посылка дойдёт?",
+      "exampleNative": "“When will the parcel arrive?”",
+      "korean": "модель чтения",
+      "english": "Read \"Когда посылка дойдёт?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Когда посылка дойдёт?",
+      "exampleEnglish": "“When will the parcel arrive?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit17postoffice-listening"
+      ],
+      "targetText": "модель диалога",
+      "romanization": "",
+      "nativeText": "Hear \"Когда посылка дойдёт?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Когда посылка дойдёт?",
+      "exampleNative": "“When will the parcel arrive?”",
+      "korean": "модель диалога",
+      "english": "Hear \"Когда посылка дойдёт?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Когда посылка дойдёт?",
+      "exampleEnglish": "“When will the parcel arrive?”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ru-level1unit17postoffice-writing"
+      ],
+      "targetText": "письменная практика",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Почта находится рядом с банком.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Почта находится рядом с банком.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "письменная практика",
+      "english": "Write your own version after studying \"Почта находится рядом с банком.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Почта находится рядом с банком.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ru-level1unit17postoffice-culture"
+      ],
+      "targetText": "употребление и контекст",
+      "romanization": "",
+      "nativeText": "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Я хочу отправить письмо.",
+      "exampleNative": "“I want to send a letter.”",
+      "korean": "употребление и контекст",
+      "english": "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used.",
+      "example": "Я хочу отправить письмо.",
+      "exampleEnglish": "“I want to send a letter.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "итоговое задание",
+      "romanization": "",
+      "nativeText": "Send one parcel at a post office counter.",
+      "pronunciation": "",
+      "exampleTarget": "Когда посылка дойдёт?",
+      "exampleNative": "Send one parcel at a post office counter.",
+      "korean": "итоговое задание",
+      "english": "Send one parcel at a post office counter.",
+      "example": "Когда посылка дойдёт?",
+      "exampleEnglish": "Send one parcel at a post office counter."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit17postoffice-grammar-2"
+      ],
+      "targetText": "частая ошибка",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around case, aspect, motion verbs, and stress-sensitive forms. Begin by checking \"Я хочу отправить письмо.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Я хочу отправить письмо.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “I want to send a letter.”",
+      "korean": "частая ошибка",
+      "english": "Watch for literal-translation mistakes around case, aspect, motion verbs, and stress-sensitive forms. Begin by checking \"Я хочу отправить письмо.\" against the model.",
+      "example": "Я хочу отправить письмо.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “I want to send a letter.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-culture"
+      ],
+      "targetText": "регистр",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for ты, вы, a service register, or a more formal written choice. Compare the social fit of \"Почта находится рядом с банком.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Почта находится рядом с банком.",
+      "exampleNative": "“The post office is next to the bank.”",
+      "korean": "регистр",
+      "english": "Check whether the setting calls for ты, вы, a service register, or a more formal written choice. Compare the social fit of \"Почта находится рядом с банком.\" before reusing it elsewhere.",
+      "example": "Почта находится рядом с банком.",
+      "exampleEnglish": "“The post office is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "беглость",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Russian message rather than as separate translated fragments. Aim to carry \"Когда посылка дойдёт?\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Когда посылка дойдёт?",
+      "exampleNative": "“When will the parcel arrive?”",
+      "korean": "беглость",
+      "english": "Say the idea as one connected Russian message rather than as separate translated fragments. Aim to carry \"Когда посылка дойдёт?\" as one thought.",
+      "example": "Когда посылка дойдёт?",
+      "exampleEnglish": "“When will the parcel arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "перенос",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Почта находится рядом с банком.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Почта находится рядом с банком.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "перенос",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Почта находится рядом с банком.\" and move it into your own life.",
+      "example": "Почта находится рядом с банком.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-grammar-1"
+      ],
+      "targetText": "воспроизведение",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"почта\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "почта",
+      "exampleNative": "“Post office / mail.” Context decides whether the place or system is meant.",
+      "korean": "воспроизведение",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"почта\" before looking back.",
+      "example": "почта",
+      "exampleEnglish": "“Post office / mail.” Context decides whether the place or system is meant."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-writing"
+      ],
+      "targetText": "расширение",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Когда посылка дойдёт?\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Когда посылка дойдёт?",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "расширение",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Когда посылка дойдёт?\" rather than restarting from a blank sentence.",
+      "example": "Когда посылка дойдёт?",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading"
+      ],
+      "targetText": "сравнение",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 17: На почте — Post Office with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Я хочу отправить письмо.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Я хочу отправить письмо.",
+      "exampleNative": "“I want to send a letter.”",
+      "korean": "сравнение",
+      "english": "Compare the central form in Level 1 · Unit 17: На почте — Post Office with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Я хочу отправить письмо.\" as the comparison line.",
+      "example": "Я хочу отправить письмо.",
+      "exampleEnglish": "“I want to send a letter.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ru-level1unit17postoffice-pronunciation"
+      ],
+      "targetText": "исправление произношения",
+      "romanization": "",
+      "nativeText": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Почта находится рядом с банком.\".",
+      "pronunciation": "",
+      "exampleTarget": "Почта находится рядом с банком.",
+      "exampleNative": "“The post office is next to the bank.”",
+      "korean": "исправление произношения",
+      "english": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Почта находится рядом с банком.\".",
+      "example": "Почта находится рядом с банком.",
+      "exampleEnglish": "“The post office is next to the bank.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "вариация диалога",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Когда посылка дойдёт?\".",
+      "pronunciation": "",
+      "exampleTarget": "Когда посылка дойдёт?",
+      "exampleNative": "“When will the parcel arrive?”",
+      "korean": "вариация диалога",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Когда посылка дойдёт?\".",
+      "example": "Когда посылка дойдёт?",
+      "exampleEnglish": "“When will the parcel arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-writing"
+      ],
+      "targetText": "построение предложения",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Почта находится рядом с банком.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Почта находится рядом с банком.",
+      "exampleNative": "“The post office is next to the bank.”",
+      "korean": "построение предложения",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Почта находится рядом с банком.\" one layer at a time.",
+      "example": "Почта находится рядом с банком.",
+      "exampleEnglish": "“The post office is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-2"
+      ],
+      "targetText": "быстрая проверка",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Я хочу отправить письмо.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Я хочу отправить письмо.",
+      "exampleNative": "“I want to send a letter.”",
+      "korean": "быстрая проверка",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Я хочу отправить письмо.\" as the deciding example.",
+      "example": "Я хочу отправить письмо.",
+      "exampleEnglish": "“I want to send a letter.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit17postoffice-culture",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "рефлексия",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Когда посылка дойдёт?\".",
+      "pronunciation": "",
+      "exampleTarget": "Когда посылка дойдёт?",
+      "exampleNative": "“When will the parcel arrive?”",
+      "korean": "рефлексия",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Когда посылка дойдёт?\".",
+      "example": "Когда посылка дойдёт?",
+      "exampleEnglish": "“When will the parcel arrive?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "почта",
+      "romanization": "pochta",
+      "nativeText": "“Post office / mail.” Context decides whether the place or system is meant.",
+      "pronunciation": "pochta",
+      "exampleTarget": "Почта находится рядом с банком.",
+      "exampleNative": "“The post office is next to the bank.”",
+      "korean": "почта",
+      "english": "“Post office / mail.” Context decides whether the place or system is meant.",
+      "example": "Почта находится рядом с банком.",
+      "exampleEnglish": "“The post office is next to the bank.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "Почта находится рядом с банком.",
+      "romanization": "pochta",
+      "nativeText": "Model use for \"Почта находится рядом с банком.\": “The post office is next to the bank.”",
+      "pronunciation": "pochta",
+      "exampleTarget": "Почта находится рядом с банком.",
+      "exampleNative": "“The post office is next to the bank.”",
+      "korean": "Почта находится рядом с банком.",
+      "english": "Model use for \"Почта находится рядом с банком.\": “The post office is next to the bank.”",
+      "example": "Почта находится рядом с банком.",
+      "exampleEnglish": "“The post office is next to the bank.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "почта",
+      "romanization": "pochta",
+      "nativeText": "Usage focus for \"почта\": Use the key language of Level 1 · Unit 17: На почте — Post Office with the register and setting that the lesson requires.",
+      "pronunciation": "pochta",
+      "exampleTarget": "Почта находится рядом с банком.",
+      "exampleNative": "Notice what the form is doing here: “The post office is next to the bank.”",
+      "korean": "почта",
+      "english": "Usage focus for \"почта\": Use the key language of Level 1 · Unit 17: На почте — Post Office with the register and setting that the lesson requires.",
+      "example": "Почта находится рядом с банком.",
+      "exampleEnglish": "Notice what the form is doing here: “The post office is next to the bank.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "почта",
+      "romanization": "pochta",
+      "nativeText": "Contrast check for \"почта\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "pochta",
+      "exampleTarget": "Почта находится рядом с банком.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The post office is next to the bank.”",
+      "korean": "почта",
+      "english": "Contrast check for \"почта\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Почта находится рядом с банком.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The post office is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "почта",
+      "romanization": "pochta",
+      "nativeText": "Recall \"почта\" from memory, then explain what would change if a nearby alternative replaced it in \"Почта находится рядом с банком.\".",
+      "pronunciation": "pochta",
+      "exampleTarget": "Почта находится рядом с банком.",
+      "exampleNative": "Self-check against the model before moving on: “The post office is next to the bank.”",
+      "korean": "почта",
+      "english": "Recall \"почта\" from memory, then explain what would change if a nearby alternative replaced it in \"Почта находится рядом с банком.\".",
+      "example": "Почта находится рядом с банком.",
+      "exampleEnglish": "Self-check against the model before moving on: “The post office is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "почта",
+      "romanization": "pochta",
+      "nativeText": "Repair \"почта\" inside \"Почта находится рядом с банком.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 17: На почте — Post Office with the register and setting that the lesson requires.",
+      "pronunciation": "pochta",
+      "exampleTarget": "Почта находится рядом с банком.",
+      "exampleNative": "Use the model as the repair target: “The post office is next to the bank.”",
+      "korean": "почта",
+      "english": "Repair \"почта\" inside \"Почта находится рядом с банком.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 17: На почте — Post Office with the register and setting that the lesson requires.",
+      "example": "Почта находится рядом с банком.",
+      "exampleEnglish": "Use the model as the repair target: “The post office is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "почта",
+      "romanization": "pochta",
+      "nativeText": "Transfer \"почта\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Почта находится рядом с банком.\".",
+      "pronunciation": "pochta",
+      "exampleTarget": "Почта находится рядом с банком.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The post office is next to the bank.”",
+      "korean": "почта",
+      "english": "Transfer \"почта\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Почта находится рядом с банком.\".",
+      "example": "Почта находится рядом с банком.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The post office is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "почта",
+      "romanization": "pochta",
+      "nativeText": "Find one word or phrase that naturally travels with \"почта\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "pochta",
+      "exampleTarget": "Почта находится рядом с банком.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The post office is next to the bank.”",
+      "korean": "почта",
+      "english": "Find one word or phrase that naturally travels with \"почта\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Почта находится рядом с банком.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The post office is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "почта",
+      "romanization": "pochta",
+      "nativeText": "Listen for \"почта\" inside \"Почта находится рядом с банком.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "pochta",
+      "exampleTarget": "Почта находится рядом с банком.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The post office is next to the bank.”",
+      "korean": "почта",
+      "english": "Listen for \"почта\" inside \"Почта находится рядом с банком.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Почта находится рядом с банком.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The post office is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "почта",
+      "romanization": "pochta",
+      "nativeText": "Write \"почта\" again without looking, then compare the exact written form against \"Почта находится рядом с банком.\" before moving on.",
+      "pronunciation": "pochta",
+      "exampleTarget": "Почта находится рядом с банком.",
+      "exampleNative": "Use the written model as the final correctness check: “The post office is next to the bank.”",
+      "korean": "почта",
+      "english": "Write \"почта\" again without looking, then compare the exact written form against \"Почта находится рядом с банком.\" before moving on.",
+      "example": "Почта находится рядом с банком.",
+      "exampleEnglish": "Use the written model as the final correctness check: “The post office is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "почта",
+      "romanization": "pochta",
+      "nativeText": "Check whether \"почта\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The post office is next to the bank.”",
+      "pronunciation": "pochta",
+      "exampleTarget": "Почта находится рядом с банком.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The post office is next to the bank.”",
+      "korean": "почта",
+      "english": "Check whether \"почта\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The post office is next to the bank.”",
+      "example": "Почта находится рядом с банком.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The post office is next to the bank.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "письмо",
+      "romanization": "pismo",
+      "nativeText": "“Letter.” A neuter noun with a soft sign in writing.",
+      "pronunciation": "pismo",
+      "exampleTarget": "Я хочу отправить письмо.",
+      "exampleNative": "“I want to send a letter.”",
+      "korean": "письмо",
+      "english": "“Letter.” A neuter noun with a soft sign in writing.",
+      "example": "Я хочу отправить письмо.",
+      "exampleEnglish": "“I want to send a letter.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "Я хочу отправить письмо.",
+      "romanization": "pismo",
+      "nativeText": "Model use for \"Я хочу отправить письмо.\": “I want to send a letter.”",
+      "pronunciation": "pismo",
+      "exampleTarget": "Я хочу отправить письмо.",
+      "exampleNative": "“I want to send a letter.”",
+      "korean": "Я хочу отправить письмо.",
+      "english": "Model use for \"Я хочу отправить письмо.\": “I want to send a letter.”",
+      "example": "Я хочу отправить письмо.",
+      "exampleEnglish": "“I want to send a letter.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "письмо",
+      "romanization": "pismo",
+      "nativeText": "Usage focus for \"письмо\": Distinguish the nearby wording choices that make Level 1 · Unit 17: На почте — Post Office sound precise rather than merely understandable.",
+      "pronunciation": "pismo",
+      "exampleTarget": "Я хочу отправить письмо.",
+      "exampleNative": "Notice what the form is doing here: “I want to send a letter.”",
+      "korean": "письмо",
+      "english": "Usage focus for \"письмо\": Distinguish the nearby wording choices that make Level 1 · Unit 17: На почте — Post Office sound precise rather than merely understandable.",
+      "example": "Я хочу отправить письмо.",
+      "exampleEnglish": "Notice what the form is doing here: “I want to send a letter.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "письмо",
+      "romanization": "pismo",
+      "nativeText": "Contrast check for \"письмо\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "pismo",
+      "exampleTarget": "Я хочу отправить письмо.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to send a letter.”",
+      "korean": "письмо",
+      "english": "Contrast check for \"письмо\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Я хочу отправить письмо.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to send a letter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "письмо",
+      "romanization": "pismo",
+      "nativeText": "Recall \"письмо\" from memory, then explain what would change if a nearby alternative replaced it in \"Я хочу отправить письмо.\".",
+      "pronunciation": "pismo",
+      "exampleTarget": "Я хочу отправить письмо.",
+      "exampleNative": "Self-check against the model before moving on: “I want to send a letter.”",
+      "korean": "письмо",
+      "english": "Recall \"письмо\" from memory, then explain what would change if a nearby alternative replaced it in \"Я хочу отправить письмо.\".",
+      "example": "Я хочу отправить письмо.",
+      "exampleEnglish": "Self-check against the model before moving on: “I want to send a letter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "письмо",
+      "romanization": "pismo",
+      "nativeText": "Repair \"письмо\" inside \"Я хочу отправить письмо.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 17: На почте — Post Office sound precise rather than merely understandable.",
+      "pronunciation": "pismo",
+      "exampleTarget": "Я хочу отправить письмо.",
+      "exampleNative": "Use the model as the repair target: “I want to send a letter.”",
+      "korean": "письмо",
+      "english": "Repair \"письмо\" inside \"Я хочу отправить письмо.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 17: На почте — Post Office sound precise rather than merely understandable.",
+      "example": "Я хочу отправить письмо.",
+      "exampleEnglish": "Use the model as the repair target: “I want to send a letter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "письмо",
+      "romanization": "pismo",
+      "nativeText": "Transfer \"письмо\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я хочу отправить письмо.\".",
+      "pronunciation": "pismo",
+      "exampleTarget": "Я хочу отправить письмо.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to send a letter.”",
+      "korean": "письмо",
+      "english": "Transfer \"письмо\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я хочу отправить письмо.\".",
+      "example": "Я хочу отправить письмо.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to send a letter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "письмо",
+      "romanization": "pismo",
+      "nativeText": "Find one word or phrase that naturally travels with \"письмо\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "pismo",
+      "exampleTarget": "Я хочу отправить письмо.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want to send a letter.”",
+      "korean": "письмо",
+      "english": "Find one word or phrase that naturally travels with \"письмо\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Я хочу отправить письмо.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want to send a letter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "письмо",
+      "romanization": "pismo",
+      "nativeText": "Listen for \"письмо\" inside \"Я хочу отправить письмо.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "pismo",
+      "exampleTarget": "Я хочу отправить письмо.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to send a letter.”",
+      "korean": "письмо",
+      "english": "Listen for \"письмо\" inside \"Я хочу отправить письмо.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Я хочу отправить письмо.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to send a letter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "письмо",
+      "romanization": "pismo",
+      "nativeText": "Write \"письмо\" again without looking, then compare the exact written form against \"Я хочу отправить письмо.\" before moving on.",
+      "pronunciation": "pismo",
+      "exampleTarget": "Я хочу отправить письмо.",
+      "exampleNative": "Use the written model as the final correctness check: “I want to send a letter.”",
+      "korean": "письмо",
+      "english": "Write \"письмо\" again without looking, then compare the exact written form against \"Я хочу отправить письмо.\" before moving on.",
+      "example": "Я хочу отправить письмо.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want to send a letter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "письмо",
+      "romanization": "pismo",
+      "nativeText": "Check whether \"письмо\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to send a letter.”",
+      "pronunciation": "pismo",
+      "exampleTarget": "Я хочу отправить письмо.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want to send a letter.”",
+      "korean": "письмо",
+      "english": "Check whether \"письмо\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to send a letter.”",
+      "example": "Я хочу отправить письмо.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want to send a letter.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "посылка",
+      "romanization": "posylka",
+      "nativeText": "“Parcel.” A practical service noun.",
+      "pronunciation": "posylka",
+      "exampleTarget": "Эта посылка для Новосибирска.",
+      "exampleNative": "“This parcel is for Novosibirsk.”",
+      "korean": "посылка",
+      "english": "“Parcel.” A practical service noun.",
+      "example": "Эта посылка для Новосибирска.",
+      "exampleEnglish": "“This parcel is for Novosibirsk.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "Эта посылка для Новосибирска.",
+      "romanization": "posylka",
+      "nativeText": "Model use for \"Эта посылка для Новосибирска.\": “This parcel is for Novosibirsk.”",
+      "pronunciation": "posylka",
+      "exampleTarget": "Эта посылка для Новосибирска.",
+      "exampleNative": "“This parcel is for Novosibirsk.”",
+      "korean": "Эта посылка для Новосибирска.",
+      "english": "Model use for \"Эта посылка для Новосибирска.\": “This parcel is for Novosibirsk.”",
+      "example": "Эта посылка для Новосибирска.",
+      "exampleEnglish": "“This parcel is for Novosibirsk.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "посылка",
+      "romanization": "posylka",
+      "nativeText": "Usage focus for \"посылка\": “Parcel.” A practical service noun.",
+      "pronunciation": "posylka",
+      "exampleTarget": "Эта посылка для Новосибирска.",
+      "exampleNative": "Notice what the form is doing here: “This parcel is for Novosibirsk.”",
+      "korean": "посылка",
+      "english": "Usage focus for \"посылка\": “Parcel.” A practical service noun.",
+      "example": "Эта посылка для Новосибирска.",
+      "exampleEnglish": "Notice what the form is doing here: “This parcel is for Novosibirsk.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "посылка",
+      "romanization": "posylka",
+      "nativeText": "Contrast check for \"посылка\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "posylka",
+      "exampleTarget": "Эта посылка для Новосибирска.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “This parcel is for Novosibirsk.”",
+      "korean": "посылка",
+      "english": "Contrast check for \"посылка\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Эта посылка для Новосибирска.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “This parcel is for Novosibirsk.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "посылка",
+      "romanization": "posylka",
+      "nativeText": "Recall \"посылка\" from memory, then explain what would change if a nearby alternative replaced it in \"Эта посылка для Новосибирска.\".",
+      "pronunciation": "posylka",
+      "exampleTarget": "Эта посылка для Новосибирска.",
+      "exampleNative": "Self-check against the model before moving on: “This parcel is for Novosibirsk.”",
+      "korean": "посылка",
+      "english": "Recall \"посылка\" from memory, then explain what would change if a nearby alternative replaced it in \"Эта посылка для Новосибирска.\".",
+      "example": "Эта посылка для Новосибирска.",
+      "exampleEnglish": "Self-check against the model before moving on: “This parcel is for Novosibirsk.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "посылка",
+      "romanization": "posylka",
+      "nativeText": "Repair \"посылка\" inside \"Эта посылка для Новосибирска.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Parcel.” A practical service noun.",
+      "pronunciation": "posylka",
+      "exampleTarget": "Эта посылка для Новосибирска.",
+      "exampleNative": "Use the model as the repair target: “This parcel is for Novosibirsk.”",
+      "korean": "посылка",
+      "english": "Repair \"посылка\" inside \"Эта посылка для Новосибирска.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Parcel.” A practical service noun.",
+      "example": "Эта посылка для Новосибирска.",
+      "exampleEnglish": "Use the model as the repair target: “This parcel is for Novosibirsk.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "посылка",
+      "romanization": "posylka",
+      "nativeText": "Transfer \"посылка\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Эта посылка для Новосибирска.\".",
+      "pronunciation": "posylka",
+      "exampleTarget": "Эта посылка для Новосибирска.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “This parcel is for Novosibirsk.”",
+      "korean": "посылка",
+      "english": "Transfer \"посылка\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Эта посылка для Новосибирска.\".",
+      "example": "Эта посылка для Новосибирска.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “This parcel is for Novosibirsk.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "посылка",
+      "romanization": "posylka",
+      "nativeText": "Find one word or phrase that naturally travels with \"посылка\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "posylka",
+      "exampleTarget": "Эта посылка для Новосибирска.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “This parcel is for Novosibirsk.”",
+      "korean": "посылка",
+      "english": "Find one word or phrase that naturally travels with \"посылка\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Эта посылка для Новосибирска.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “This parcel is for Novosibirsk.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "посылка",
+      "romanization": "posylka",
+      "nativeText": "Listen for \"посылка\" inside \"Эта посылка для Новосибирска.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "posylka",
+      "exampleTarget": "Эта посылка для Новосибирска.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “This parcel is for Novosibirsk.”",
+      "korean": "посылка",
+      "english": "Listen for \"посылка\" inside \"Эта посылка для Новосибирска.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Эта посылка для Новосибирска.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “This parcel is for Novosibirsk.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "посылка",
+      "romanization": "posylka",
+      "nativeText": "Write \"посылка\" again without looking, then compare the exact written form against \"Эта посылка для Новосибирска.\" before moving on.",
+      "pronunciation": "posylka",
+      "exampleTarget": "Эта посылка для Новосибирска.",
+      "exampleNative": "Use the written model as the final correctness check: “This parcel is for Novosibirsk.”",
+      "korean": "посылка",
+      "english": "Write \"посылка\" again without looking, then compare the exact written form against \"Эта посылка для Новосибирска.\" before moving on.",
+      "example": "Эта посылка для Новосибирска.",
+      "exampleEnglish": "Use the written model as the final correctness check: “This parcel is for Novosibirsk.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "посылка",
+      "romanization": "posylka",
+      "nativeText": "Check whether \"посылка\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “This parcel is for Novosibirsk.”",
+      "pronunciation": "posylka",
+      "exampleTarget": "Эта посылка для Новосибирска.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “This parcel is for Novosibirsk.”",
+      "korean": "посылка",
+      "english": "Check whether \"посылка\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “This parcel is for Novosibirsk.”",
+      "example": "Эта посылка для Новосибирска.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “This parcel is for Novosibirsk.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "марка",
+      "romanization": "marka",
+      "nativeText": "“Stamp.” A small but necessary postal word.",
+      "pronunciation": "marka",
+      "exampleTarget": "Мне нужны две марки.",
+      "exampleNative": "“I need two stamps.”",
+      "korean": "марка",
+      "english": "“Stamp.” A small but necessary postal word.",
+      "example": "Мне нужны две марки.",
+      "exampleEnglish": "“I need two stamps.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "Мне нужны две марки.",
+      "romanization": "marka",
+      "nativeText": "Model use for \"Мне нужны две марки.\": “I need two stamps.”",
+      "pronunciation": "marka",
+      "exampleTarget": "Мне нужны две марки.",
+      "exampleNative": "“I need two stamps.”",
+      "korean": "Мне нужны две марки.",
+      "english": "Model use for \"Мне нужны две марки.\": “I need two stamps.”",
+      "example": "Мне нужны две марки.",
+      "exampleEnglish": "“I need two stamps.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "марка",
+      "romanization": "marka",
+      "nativeText": "Usage focus for \"марка\": “Stamp.” A small but necessary postal word.",
+      "pronunciation": "marka",
+      "exampleTarget": "Мне нужны две марки.",
+      "exampleNative": "Notice what the form is doing here: “I need two stamps.”",
+      "korean": "марка",
+      "english": "Usage focus for \"марка\": “Stamp.” A small but necessary postal word.",
+      "example": "Мне нужны две марки.",
+      "exampleEnglish": "Notice what the form is doing here: “I need two stamps.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "марка",
+      "romanization": "marka",
+      "nativeText": "Contrast check for \"марка\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "marka",
+      "exampleTarget": "Мне нужны две марки.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I need two stamps.”",
+      "korean": "марка",
+      "english": "Contrast check for \"марка\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Мне нужны две марки.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I need two stamps.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "марка",
+      "romanization": "marka",
+      "nativeText": "Recall \"марка\" from memory, then explain what would change if a nearby alternative replaced it in \"Мне нужны две марки.\".",
+      "pronunciation": "marka",
+      "exampleTarget": "Мне нужны две марки.",
+      "exampleNative": "Self-check against the model before moving on: “I need two stamps.”",
+      "korean": "марка",
+      "english": "Recall \"марка\" from memory, then explain what would change if a nearby alternative replaced it in \"Мне нужны две марки.\".",
+      "example": "Мне нужны две марки.",
+      "exampleEnglish": "Self-check against the model before moving on: “I need two stamps.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "марка",
+      "romanization": "marka",
+      "nativeText": "Repair \"марка\" inside \"Мне нужны две марки.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Stamp.” A small but necessary postal word.",
+      "pronunciation": "marka",
+      "exampleTarget": "Мне нужны две марки.",
+      "exampleNative": "Use the model as the repair target: “I need two stamps.”",
+      "korean": "марка",
+      "english": "Repair \"марка\" inside \"Мне нужны две марки.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Stamp.” A small but necessary postal word.",
+      "example": "Мне нужны две марки.",
+      "exampleEnglish": "Use the model as the repair target: “I need two stamps.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "марка",
+      "romanization": "marka",
+      "nativeText": "Transfer \"марка\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Мне нужны две марки.\".",
+      "pronunciation": "marka",
+      "exampleTarget": "Мне нужны две марки.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I need two stamps.”",
+      "korean": "марка",
+      "english": "Transfer \"марка\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Мне нужны две марки.\".",
+      "example": "Мне нужны две марки.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I need two stamps.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "марка",
+      "romanization": "marka",
+      "nativeText": "Find one word or phrase that naturally travels with \"марка\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "marka",
+      "exampleTarget": "Мне нужны две марки.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I need two stamps.”",
+      "korean": "марка",
+      "english": "Find one word or phrase that naturally travels with \"марка\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Мне нужны две марки.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I need two stamps.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "марка",
+      "romanization": "marka",
+      "nativeText": "Listen for \"марка\" inside \"Мне нужны две марки.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "marka",
+      "exampleTarget": "Мне нужны две марки.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I need two stamps.”",
+      "korean": "марка",
+      "english": "Listen for \"марка\" inside \"Мне нужны две марки.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Мне нужны две марки.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I need two stamps.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "марка",
+      "romanization": "marka",
+      "nativeText": "Write \"марка\" again without looking, then compare the exact written form against \"Мне нужны две марки.\" before moving on.",
+      "pronunciation": "marka",
+      "exampleTarget": "Мне нужны две марки.",
+      "exampleNative": "Use the written model as the final correctness check: “I need two stamps.”",
+      "korean": "марка",
+      "english": "Write \"марка\" again without looking, then compare the exact written form against \"Мне нужны две марки.\" before moving on.",
+      "example": "Мне нужны две марки.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I need two stamps.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "марка",
+      "romanization": "marka",
+      "nativeText": "Check whether \"марка\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I need two stamps.”",
+      "pronunciation": "marka",
+      "exampleTarget": "Мне нужны две марки.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I need two stamps.”",
+      "korean": "марка",
+      "english": "Check whether \"марка\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I need two stamps.”",
+      "example": "Мне нужны две марки.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I need two stamps.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "адрес",
+      "romanization": "adres",
+      "nativeText": "“Address.” It appears in many formal service tasks.",
+      "pronunciation": "adres",
+      "exampleTarget": "Напишите полный адрес.",
+      "exampleNative": "“Write the full address.”",
+      "korean": "адрес",
+      "english": "“Address.” It appears in many formal service tasks.",
+      "example": "Напишите полный адрес.",
+      "exampleEnglish": "“Write the full address.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "Напишите полный адрес.",
+      "romanization": "adres",
+      "nativeText": "Model use for \"Напишите полный адрес.\": “Write the full address.”",
+      "pronunciation": "adres",
+      "exampleTarget": "Напишите полный адрес.",
+      "exampleNative": "“Write the full address.”",
+      "korean": "Напишите полный адрес.",
+      "english": "Model use for \"Напишите полный адрес.\": “Write the full address.”",
+      "example": "Напишите полный адрес.",
+      "exampleEnglish": "“Write the full address.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "адрес",
+      "romanization": "adres",
+      "nativeText": "Usage focus for \"адрес\": “Address.” It appears in many formal service tasks.",
+      "pronunciation": "adres",
+      "exampleTarget": "Напишите полный адрес.",
+      "exampleNative": "Notice what the form is doing here: “Write the full address.”",
+      "korean": "адрес",
+      "english": "Usage focus for \"адрес\": “Address.” It appears in many formal service tasks.",
+      "example": "Напишите полный адрес.",
+      "exampleEnglish": "Notice what the form is doing here: “Write the full address.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "адрес",
+      "romanization": "adres",
+      "nativeText": "Contrast check for \"адрес\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "adres",
+      "exampleTarget": "Напишите полный адрес.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Write the full address.”",
+      "korean": "адрес",
+      "english": "Contrast check for \"адрес\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Напишите полный адрес.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Write the full address.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "адрес",
+      "romanization": "adres",
+      "nativeText": "Recall \"адрес\" from memory, then explain what would change if a nearby alternative replaced it in \"Напишите полный адрес.\".",
+      "pronunciation": "adres",
+      "exampleTarget": "Напишите полный адрес.",
+      "exampleNative": "Self-check against the model before moving on: “Write the full address.”",
+      "korean": "адрес",
+      "english": "Recall \"адрес\" from memory, then explain what would change if a nearby alternative replaced it in \"Напишите полный адрес.\".",
+      "example": "Напишите полный адрес.",
+      "exampleEnglish": "Self-check against the model before moving on: “Write the full address.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "адрес",
+      "romanization": "adres",
+      "nativeText": "Repair \"адрес\" inside \"Напишите полный адрес.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Address.” It appears in many formal service tasks.",
+      "pronunciation": "adres",
+      "exampleTarget": "Напишите полный адрес.",
+      "exampleNative": "Use the model as the repair target: “Write the full address.”",
+      "korean": "адрес",
+      "english": "Repair \"адрес\" inside \"Напишите полный адрес.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Address.” It appears in many formal service tasks.",
+      "example": "Напишите полный адрес.",
+      "exampleEnglish": "Use the model as the repair target: “Write the full address.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "адрес",
+      "romanization": "adres",
+      "nativeText": "Transfer \"адрес\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Напишите полный адрес.\".",
+      "pronunciation": "adres",
+      "exampleTarget": "Напишите полный адрес.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Write the full address.”",
+      "korean": "адрес",
+      "english": "Transfer \"адрес\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Напишите полный адрес.\".",
+      "example": "Напишите полный адрес.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Write the full address.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "адрес",
+      "romanization": "adres",
+      "nativeText": "Find one word or phrase that naturally travels with \"адрес\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "adres",
+      "exampleTarget": "Напишите полный адрес.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Write the full address.”",
+      "korean": "адрес",
+      "english": "Find one word or phrase that naturally travels with \"адрес\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Напишите полный адрес.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Write the full address.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "адрес",
+      "romanization": "adres",
+      "nativeText": "Listen for \"адрес\" inside \"Напишите полный адрес.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "adres",
+      "exampleTarget": "Напишите полный адрес.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Write the full address.”",
+      "korean": "адрес",
+      "english": "Listen for \"адрес\" inside \"Напишите полный адрес.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Напишите полный адрес.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Write the full address.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "адрес",
+      "romanization": "adres",
+      "nativeText": "Write \"адрес\" again without looking, then compare the exact written form against \"Напишите полный адрес.\" before moving on.",
+      "pronunciation": "adres",
+      "exampleTarget": "Напишите полный адрес.",
+      "exampleNative": "Use the written model as the final correctness check: “Write the full address.”",
+      "korean": "адрес",
+      "english": "Write \"адрес\" again without looking, then compare the exact written form against \"Напишите полный адрес.\" before moving on.",
+      "example": "Напишите полный адрес.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Write the full address.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "адрес",
+      "romanization": "adres",
+      "nativeText": "Check whether \"адрес\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Write the full address.”",
+      "pronunciation": "adres",
+      "exampleTarget": "Напишите полный адрес.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Write the full address.”",
+      "korean": "адрес",
+      "english": "Check whether \"адрес\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Write the full address.”",
+      "example": "Напишите полный адрес.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Write the full address.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "я хочу отправить",
+      "romanization": "ya khochu otpravit",
+      "nativeText": "“I want to send.” The perfective verb suits the single completed transaction.",
+      "pronunciation": "ya khochu otpravit",
+      "exampleTarget": "Я хочу отправить посылку в Казань.",
+      "exampleNative": "“I want to send a parcel to Kazan.”",
+      "korean": "я хочу отправить",
+      "english": "“I want to send.” The perfective verb suits the single completed transaction.",
+      "example": "Я хочу отправить посылку в Казань.",
+      "exampleEnglish": "“I want to send a parcel to Kazan.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "Я хочу отправить посылку в Казань.",
+      "romanization": "ya khochu otpravit",
+      "nativeText": "Model use for \"Я хочу отправить посылку в Казань.\": “I want to send a parcel to Kazan.”",
+      "pronunciation": "ya khochu otpravit",
+      "exampleTarget": "Я хочу отправить посылку в Казань.",
+      "exampleNative": "“I want to send a parcel to Kazan.”",
+      "korean": "Я хочу отправить посылку в Казань.",
+      "english": "Model use for \"Я хочу отправить посылку в Казань.\": “I want to send a parcel to Kazan.”",
+      "example": "Я хочу отправить посылку в Казань.",
+      "exampleEnglish": "“I want to send a parcel to Kazan.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "я хочу отправить",
+      "romanization": "ya khochu otpravit",
+      "nativeText": "Usage focus for \"я хочу отправить\": “I want to send.” The perfective verb suits the single completed transaction.",
+      "pronunciation": "ya khochu otpravit",
+      "exampleTarget": "Я хочу отправить посылку в Казань.",
+      "exampleNative": "Notice what the form is doing here: “I want to send a parcel to Kazan.”",
+      "korean": "я хочу отправить",
+      "english": "Usage focus for \"я хочу отправить\": “I want to send.” The perfective verb suits the single completed transaction.",
+      "example": "Я хочу отправить посылку в Казань.",
+      "exampleEnglish": "Notice what the form is doing here: “I want to send a parcel to Kazan.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "я хочу отправить",
+      "romanization": "ya khochu otpravit",
+      "nativeText": "Contrast check for \"я хочу отправить\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ya khochu otpravit",
+      "exampleTarget": "Я хочу отправить посылку в Казань.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to send a parcel to Kazan.”",
+      "korean": "я хочу отправить",
+      "english": "Contrast check for \"я хочу отправить\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Я хочу отправить посылку в Казань.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to send a parcel to Kazan.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "я хочу отправить",
+      "romanization": "ya khochu otpravit",
+      "nativeText": "Recall \"я хочу отправить\" from memory, then explain what would change if a nearby alternative replaced it in \"Я хочу отправить посылку в Казань.\".",
+      "pronunciation": "ya khochu otpravit",
+      "exampleTarget": "Я хочу отправить посылку в Казань.",
+      "exampleNative": "Self-check against the model before moving on: “I want to send a parcel to Kazan.”",
+      "korean": "я хочу отправить",
+      "english": "Recall \"я хочу отправить\" from memory, then explain what would change if a nearby alternative replaced it in \"Я хочу отправить посылку в Казань.\".",
+      "example": "Я хочу отправить посылку в Казань.",
+      "exampleEnglish": "Self-check against the model before moving on: “I want to send a parcel to Kazan.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "я хочу отправить",
+      "romanization": "ya khochu otpravit",
+      "nativeText": "Repair \"я хочу отправить\" inside \"Я хочу отправить посылку в Казань.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I want to send.” The perfective verb suits the single completed transaction.",
+      "pronunciation": "ya khochu otpravit",
+      "exampleTarget": "Я хочу отправить посылку в Казань.",
+      "exampleNative": "Use the model as the repair target: “I want to send a parcel to Kazan.”",
+      "korean": "я хочу отправить",
+      "english": "Repair \"я хочу отправить\" inside \"Я хочу отправить посылку в Казань.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I want to send.” The perfective verb suits the single completed transaction.",
+      "example": "Я хочу отправить посылку в Казань.",
+      "exampleEnglish": "Use the model as the repair target: “I want to send a parcel to Kazan.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "я хочу отправить",
+      "romanization": "ya khochu otpravit",
+      "nativeText": "Transfer \"я хочу отправить\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я хочу отправить посылку в Казань.\".",
+      "pronunciation": "ya khochu otpravit",
+      "exampleTarget": "Я хочу отправить посылку в Казань.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to send a parcel to Kazan.”",
+      "korean": "я хочу отправить",
+      "english": "Transfer \"я хочу отправить\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я хочу отправить посылку в Казань.\".",
+      "example": "Я хочу отправить посылку в Казань.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to send a parcel to Kazan.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "я хочу отправить",
+      "romanization": "ya khochu otpravit",
+      "nativeText": "Find one word or phrase that naturally travels with \"я хочу отправить\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ya khochu otpravit",
+      "exampleTarget": "Я хочу отправить посылку в Казань.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want to send a parcel to Kazan.”",
+      "korean": "я хочу отправить",
+      "english": "Find one word or phrase that naturally travels with \"я хочу отправить\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Я хочу отправить посылку в Казань.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want to send a parcel to Kazan.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "я хочу отправить",
+      "romanization": "ya khochu otpravit",
+      "nativeText": "Listen for \"я хочу отправить\" inside \"Я хочу отправить посылку в Казань.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ya khochu otpravit",
+      "exampleTarget": "Я хочу отправить посылку в Казань.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to send a parcel to Kazan.”",
+      "korean": "я хочу отправить",
+      "english": "Listen for \"я хочу отправить\" inside \"Я хочу отправить посылку в Казань.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Я хочу отправить посылку в Казань.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to send a parcel to Kazan.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "я хочу отправить",
+      "romanization": "ya khochu otpravit",
+      "nativeText": "Write \"я хочу отправить\" again without looking, then compare the exact written form against \"Я хочу отправить посылку в Казань.\" before moving on.",
+      "pronunciation": "ya khochu otpravit",
+      "exampleTarget": "Я хочу отправить посылку в Казань.",
+      "exampleNative": "Use the written model as the final correctness check: “I want to send a parcel to Kazan.”",
+      "korean": "я хочу отправить",
+      "english": "Write \"я хочу отправить\" again without looking, then compare the exact written form against \"Я хочу отправить посылку в Казань.\" before moving on.",
+      "example": "Я хочу отправить посылку в Казань.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want to send a parcel to Kazan.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "я хочу отправить",
+      "romanization": "ya khochu otpravit",
+      "nativeText": "Check whether \"я хочу отправить\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to send a parcel to Kazan.”",
+      "pronunciation": "ya khochu otpravit",
+      "exampleTarget": "Я хочу отправить посылку в Казань.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want to send a parcel to Kazan.”",
+      "korean": "я хочу отправить",
+      "english": "Check whether \"я хочу отправить\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to send a parcel to Kazan.”",
+      "example": "Я хочу отправить посылку в Казань.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want to send a parcel to Kazan.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "сколько стоит доставка?",
+      "romanization": "skolko stoit dostavka",
+      "nativeText": "“How much does delivery cost?” A practical shipping question.",
+      "pronunciation": "skolko stoit dostavka",
+      "exampleTarget": "Сколько стоит доставка до Самары?",
+      "exampleNative": "“How much does delivery to Samara cost?”",
+      "korean": "сколько стоит доставка?",
+      "english": "“How much does delivery cost?” A practical shipping question.",
+      "example": "Сколько стоит доставка до Самары?",
+      "exampleEnglish": "“How much does delivery to Samara cost?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "Сколько стоит доставка до Самары?",
+      "romanization": "skolko stoit dostavka",
+      "nativeText": "Model use for \"Сколько стоит доставка до Самары?\": “How much does delivery to Samara cost?”",
+      "pronunciation": "skolko stoit dostavka",
+      "exampleTarget": "Сколько стоит доставка до Самары?",
+      "exampleNative": "“How much does delivery to Samara cost?”",
+      "korean": "Сколько стоит доставка до Самары?",
+      "english": "Model use for \"Сколько стоит доставка до Самары?\": “How much does delivery to Samara cost?”",
+      "example": "Сколько стоит доставка до Самары?",
+      "exampleEnglish": "“How much does delivery to Samara cost?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "сколько стоит доставка?",
+      "romanization": "skolko stoit dostavka",
+      "nativeText": "Usage focus for \"сколько стоит доставка?\": “How much does delivery cost?” A practical shipping question.",
+      "pronunciation": "skolko stoit dostavka",
+      "exampleTarget": "Сколько стоит доставка до Самары?",
+      "exampleNative": "Notice what the form is doing here: “How much does delivery to Samara cost?”",
+      "korean": "сколько стоит доставка?",
+      "english": "Usage focus for \"сколько стоит доставка?\": “How much does delivery cost?” A practical shipping question.",
+      "example": "Сколько стоит доставка до Самары?",
+      "exampleEnglish": "Notice what the form is doing here: “How much does delivery to Samara cost?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "сколько стоит доставка?",
+      "romanization": "skolko stoit dostavka",
+      "nativeText": "Contrast check for \"сколько стоит доставка?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "skolko stoit dostavka",
+      "exampleTarget": "Сколько стоит доставка до Самары?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How much does delivery to Samara cost?”",
+      "korean": "сколько стоит доставка?",
+      "english": "Contrast check for \"сколько стоит доставка?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Сколько стоит доставка до Самары?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How much does delivery to Samara cost?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "сколько стоит доставка?",
+      "romanization": "skolko stoit dostavka",
+      "nativeText": "Recall \"сколько стоит доставка?\" from memory, then explain what would change if a nearby alternative replaced it in \"Сколько стоит доставка до Самары?\".",
+      "pronunciation": "skolko stoit dostavka",
+      "exampleTarget": "Сколько стоит доставка до Самары?",
+      "exampleNative": "Self-check against the model before moving on: “How much does delivery to Samara cost?”",
+      "korean": "сколько стоит доставка?",
+      "english": "Recall \"сколько стоит доставка?\" from memory, then explain what would change if a nearby alternative replaced it in \"Сколько стоит доставка до Самары?\".",
+      "example": "Сколько стоит доставка до Самары?",
+      "exampleEnglish": "Self-check against the model before moving on: “How much does delivery to Samara cost?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "сколько стоит доставка?",
+      "romanization": "skolko stoit dostavka",
+      "nativeText": "Repair \"сколько стоит доставка?\" inside \"Сколько стоит доставка до Самары?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “How much does delivery cost?” A practical shipping question.",
+      "pronunciation": "skolko stoit dostavka",
+      "exampleTarget": "Сколько стоит доставка до Самары?",
+      "exampleNative": "Use the model as the repair target: “How much does delivery to Samara cost?”",
+      "korean": "сколько стоит доставка?",
+      "english": "Repair \"сколько стоит доставка?\" inside \"Сколько стоит доставка до Самары?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “How much does delivery cost?” A practical shipping question.",
+      "example": "Сколько стоит доставка до Самары?",
+      "exampleEnglish": "Use the model as the repair target: “How much does delivery to Samara cost?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "сколько стоит доставка?",
+      "romanization": "skolko stoit dostavka",
+      "nativeText": "Transfer \"сколько стоит доставка?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Сколько стоит доставка до Самары?\".",
+      "pronunciation": "skolko stoit dostavka",
+      "exampleTarget": "Сколько стоит доставка до Самары?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “How much does delivery to Samara cost?”",
+      "korean": "сколько стоит доставка?",
+      "english": "Transfer \"сколько стоит доставка?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Сколько стоит доставка до Самары?\".",
+      "example": "Сколько стоит доставка до Самары?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “How much does delivery to Samara cost?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "сколько стоит доставка?",
+      "romanization": "skolko stoit dostavka",
+      "nativeText": "Find one word or phrase that naturally travels with \"сколько стоит доставка?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "skolko stoit dostavka",
+      "exampleTarget": "Сколько стоит доставка до Самары?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “How much does delivery to Samara cost?”",
+      "korean": "сколько стоит доставка?",
+      "english": "Find one word or phrase that naturally travels with \"сколько стоит доставка?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Сколько стоит доставка до Самары?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “How much does delivery to Samara cost?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "сколько стоит доставка?",
+      "romanization": "skolko stoit dostavka",
+      "nativeText": "Listen for \"сколько стоит доставка?\" inside \"Сколько стоит доставка до Самары?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "skolko stoit dostavka",
+      "exampleTarget": "Сколько стоит доставка до Самары?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How much does delivery to Samara cost?”",
+      "korean": "сколько стоит доставка?",
+      "english": "Listen for \"сколько стоит доставка?\" inside \"Сколько стоит доставка до Самары?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Сколько стоит доставка до Самары?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How much does delivery to Samara cost?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "сколько стоит доставка?",
+      "romanization": "skolko stoit dostavka",
+      "nativeText": "Write \"сколько стоит доставка?\" again without looking, then compare the exact written form against \"Сколько стоит доставка до Самары?\" before moving on.",
+      "pronunciation": "skolko stoit dostavka",
+      "exampleTarget": "Сколько стоит доставка до Самары?",
+      "exampleNative": "Use the written model as the final correctness check: “How much does delivery to Samara cost?”",
+      "korean": "сколько стоит доставка?",
+      "english": "Write \"сколько стоит доставка?\" again without looking, then compare the exact written form against \"Сколько стоит доставка до Самары?\" before moving on.",
+      "example": "Сколько стоит доставка до Самары?",
+      "exampleEnglish": "Use the written model as the final correctness check: “How much does delivery to Samara cost?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "сколько стоит доставка?",
+      "romanization": "skolko stoit dostavka",
+      "nativeText": "Check whether \"сколько стоит доставка?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How much does delivery to Samara cost?”",
+      "pronunciation": "skolko stoit dostavka",
+      "exampleTarget": "Сколько стоит доставка до Самары?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “How much does delivery to Samara cost?”",
+      "korean": "сколько стоит доставка?",
+      "english": "Check whether \"сколько стоит доставка?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How much does delivery to Samara cost?”",
+      "example": "Сколько стоит доставка до Самары?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “How much does delivery to Samara cost?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "когда дойдёт?",
+      "romanization": "kogda doydyot",
+      "nativeText": "“When will it arrive?” Literally “when will it reach.”",
+      "pronunciation": "kogda doydyot",
+      "exampleTarget": "Когда посылка дойдёт?",
+      "exampleNative": "“When will the parcel arrive?”",
+      "korean": "когда дойдёт?",
+      "english": "“When will it arrive?” Literally “when will it reach.”",
+      "example": "Когда посылка дойдёт?",
+      "exampleEnglish": "“When will the parcel arrive?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "Когда посылка дойдёт?",
+      "romanization": "kogda doydyot",
+      "nativeText": "Model use for \"Когда посылка дойдёт?\": “When will the parcel arrive?”",
+      "pronunciation": "kogda doydyot",
+      "exampleTarget": "Когда посылка дойдёт?",
+      "exampleNative": "“When will the parcel arrive?”",
+      "korean": "Когда посылка дойдёт?",
+      "english": "Model use for \"Когда посылка дойдёт?\": “When will the parcel arrive?”",
+      "example": "Когда посылка дойдёт?",
+      "exampleEnglish": "“When will the parcel arrive?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "когда дойдёт?",
+      "romanization": "kogda doydyot",
+      "nativeText": "Usage focus for \"когда дойдёт?\": “When will it arrive?” Literally “when will it reach.”",
+      "pronunciation": "kogda doydyot",
+      "exampleTarget": "Когда посылка дойдёт?",
+      "exampleNative": "Notice what the form is doing here: “When will the parcel arrive?”",
+      "korean": "когда дойдёт?",
+      "english": "Usage focus for \"когда дойдёт?\": “When will it arrive?” Literally “when will it reach.”",
+      "example": "Когда посылка дойдёт?",
+      "exampleEnglish": "Notice what the form is doing here: “When will the parcel arrive?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "когда дойдёт?",
+      "romanization": "kogda doydyot",
+      "nativeText": "Contrast check for \"когда дойдёт?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kogda doydyot",
+      "exampleTarget": "Когда посылка дойдёт?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “When will the parcel arrive?”",
+      "korean": "когда дойдёт?",
+      "english": "Contrast check for \"когда дойдёт?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Когда посылка дойдёт?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “When will the parcel arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "когда дойдёт?",
+      "romanization": "kogda doydyot",
+      "nativeText": "Recall \"когда дойдёт?\" from memory, then explain what would change if a nearby alternative replaced it in \"Когда посылка дойдёт?\".",
+      "pronunciation": "kogda doydyot",
+      "exampleTarget": "Когда посылка дойдёт?",
+      "exampleNative": "Self-check against the model before moving on: “When will the parcel arrive?”",
+      "korean": "когда дойдёт?",
+      "english": "Recall \"когда дойдёт?\" from memory, then explain what would change if a nearby alternative replaced it in \"Когда посылка дойдёт?\".",
+      "example": "Когда посылка дойдёт?",
+      "exampleEnglish": "Self-check against the model before moving on: “When will the parcel arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "когда дойдёт?",
+      "romanization": "kogda doydyot",
+      "nativeText": "Repair \"когда дойдёт?\" inside \"Когда посылка дойдёт?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “When will it arrive?” Literally “when will it reach.”",
+      "pronunciation": "kogda doydyot",
+      "exampleTarget": "Когда посылка дойдёт?",
+      "exampleNative": "Use the model as the repair target: “When will the parcel arrive?”",
+      "korean": "когда дойдёт?",
+      "english": "Repair \"когда дойдёт?\" inside \"Когда посылка дойдёт?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “When will it arrive?” Literally “when will it reach.”",
+      "example": "Когда посылка дойдёт?",
+      "exampleEnglish": "Use the model as the repair target: “When will the parcel arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "когда дойдёт?",
+      "romanization": "kogda doydyot",
+      "nativeText": "Transfer \"когда дойдёт?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Когда посылка дойдёт?\".",
+      "pronunciation": "kogda doydyot",
+      "exampleTarget": "Когда посылка дойдёт?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “When will the parcel arrive?”",
+      "korean": "когда дойдёт?",
+      "english": "Transfer \"когда дойдёт?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Когда посылка дойдёт?\".",
+      "example": "Когда посылка дойдёт?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “When will the parcel arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "когда дойдёт?",
+      "romanization": "kogda doydyot",
+      "nativeText": "Find one word or phrase that naturally travels with \"когда дойдёт?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kogda doydyot",
+      "exampleTarget": "Когда посылка дойдёт?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “When will the parcel arrive?”",
+      "korean": "когда дойдёт?",
+      "english": "Find one word or phrase that naturally travels with \"когда дойдёт?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Когда посылка дойдёт?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “When will the parcel arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "когда дойдёт?",
+      "romanization": "kogda doydyot",
+      "nativeText": "Listen for \"когда дойдёт?\" inside \"Когда посылка дойдёт?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kogda doydyot",
+      "exampleTarget": "Когда посылка дойдёт?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “When will the parcel arrive?”",
+      "korean": "когда дойдёт?",
+      "english": "Listen for \"когда дойдёт?\" inside \"Когда посылка дойдёт?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Когда посылка дойдёт?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “When will the parcel arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "когда дойдёт?",
+      "romanization": "kogda doydyot",
+      "nativeText": "Write \"когда дойдёт?\" again without looking, then compare the exact written form against \"Когда посылка дойдёт?\" before moving on.",
+      "pronunciation": "kogda doydyot",
+      "exampleTarget": "Когда посылка дойдёт?",
+      "exampleNative": "Use the written model as the final correctness check: “When will the parcel arrive?”",
+      "korean": "когда дойдёт?",
+      "english": "Write \"когда дойдёт?\" again without looking, then compare the exact written form against \"Когда посылка дойдёт?\" before moving on.",
+      "example": "Когда посылка дойдёт?",
+      "exampleEnglish": "Use the written model as the final correctness check: “When will the parcel arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit17postoffice-vocabulary-1",
+        "ru-level1unit17postoffice-vocabulary-2",
+        "ru-level1unit17postoffice-grammar-1",
+        "ru-level1unit17postoffice-grammar-2",
+        "ru-level1unit17postoffice-reading",
+        "ru-level1unit17postoffice-listening",
+        "ru-level1unit17postoffice-writing",
+        "ru-level1unit17postoffice-task"
+      ],
+      "targetText": "когда дойдёт?",
+      "romanization": "kogda doydyot",
+      "nativeText": "Check whether \"когда дойдёт?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “When will the parcel arrive?”",
+      "pronunciation": "kogda doydyot",
+      "exampleTarget": "Когда посылка дойдёт?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “When will the parcel arrive?”",
+      "korean": "когда дойдёт?",
+      "english": "Check whether \"когда дойдёт?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “When will the parcel arrive?”",
+      "example": "Когда посылка дойдёт?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “When will the parcel arrive?”"
+    }
+  ],
+  "targetLang": "ru",
+  "nativeLang": "en",
+  "track": "textbook"
+};

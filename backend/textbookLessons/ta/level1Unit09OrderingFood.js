@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('ta', {
-  slug: 'ta-l1u9',
-  title: 'Level 1 · Unit 9: உணவு ஆர்டர் செய்வது — Ordering Food',
-  category: 'food',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Order food and drinks politely in a canteen or restaurant.',
-  vocabularyGoal: 'Use food, drink, portion, and service words.',
-  grammarGoal: 'Use polite request forms with `வேண்டும்`, `கொடுக்க முடியுமா`, and `இல்லாமல்`.',
-  speakingGoal: 'Place a complete order, change one detail, and ask for the bill.',
-  task: 'Roleplay ordering a simple Tamil meal.',
-  expressionPractice: [
-    practice('ordering-politely', 'Ordering politely', 'Use `எனக்கு ... வேண்டும்`.'),
-    practice('customizing', 'Customizing', 'Use `இல்லாமல்`.'),
-    practice('closing-order', 'Closing order', 'Ask for the bill naturally.'),
+module.exports = {
+  "title": "Level 1 · Unit 9: உணவு ஆர்டர் செய்வது — Ordering Food",
+  "category": "food",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ta-level1unit09orderingfood-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Order food and drinks politely in a canteen or restaurant."
+      ],
+      "task": "Roleplay ordering a simple Tamil meal."
+    },
+    {
+      "id": "ta-level1unit09orderingfood-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ta-level1unit09orderingfood-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 9: உணவு ஆர்டர் செய்வது — Ordering Food with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ta-level1unit09orderingfood-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 9: உணவு ஆர்டர் செய்வது — Ordering Food sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ta-level1unit09orderingfood-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Order food and drinks politely in a canteen or restaurant."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ta-level1unit09orderingfood-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 9: உணவு ஆர்டர் செய்வது — Ordering Food with one nearby Tamil form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ta-level1unit09orderingfood-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ta-level1unit09orderingfood-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ta-level1unit09orderingfood-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ta-level1unit09orderingfood-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ta-level1unit09orderingfood-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Roleplay ordering a simple Tamil meal."
+      ],
+      "task": "Roleplay ordering a simple Tamil meal."
+    }
   ],
-  relatedPools: ['topic-food', 'topic-service'],
-  items: [
-    item('எனக்கு ஒரு காபி வேண்டும்', 'eṉakku oru kāpi vēṇṭum', '“I want one coffee.” The dative-like `எனக்கு` marks the experiencer/recipient.', 'எனக்கு ஒரு காபி வேண்டும்.', '“I want one coffee.”'),
-    item('கொடுக்க முடியுமா?', 'koṭukka muṭiyumā', '“Could you give?” A polite request frame.', 'ஒரு தோசை கொடுக்க முடியுமா?', '“Could you give one dosa?”'),
-    item('சர்க்கரை இல்லாமல்', 'carkkarai illāmal', '“Without sugar.” `இல்லாமல்` means “without.”', 'சர்க்கரை இல்லாமல் தேநீர் வேண்டும்.', '“I want tea without sugar.”'),
-    item('காரம் குறைவு', 'kāram kuṟaivu', '“Less spicy.” A practical food customization phrase.', 'காரம் குறைவு சாம்பார் வேண்டும்.', '“I want less-spicy sambar.”'),
-    item('இங்கே சாப்பிட', 'iṅkē cāppiṭa', '“To eat here.” The infinitive-style form names the action.', 'இங்கே சாப்பிடவா அல்லது பார்சலா?', '“For eating here or parcel?”'),
-    item('பார்சல்', 'pārcal', '“Parcel / takeaway.” A very common South Indian restaurant word.', 'இதை பார்சல் செய்யுங்கள்.', '“Please make this takeaway.”'),
-    item('ஒரு பங்கு', 'oru paṅku', '“One portion.” Useful for serving-sized orders.', 'ஒரு பங்கு இட்லி வேண்டும்.', '“I want one portion of idli.”'),
-    item('பில் கொடுங்கள்', 'pil koṭuṅkaḷ', '“Please give the bill.” A polite complete closing phrase.', 'பில் கொடுங்கள்.', '“Please give the bill.”'),
+  "expressionPractice": [
+    {
+      "id": "ordering-politely",
+      "label": "Ordering politely",
+      "goal": "Use `எனக்கு ... வேண்டும்`."
+    },
+    {
+      "id": "customizing",
+      "label": "Customizing",
+      "goal": "Use `இல்லாமல்`."
+    },
+    {
+      "id": "closing-order",
+      "label": "Closing order",
+      "goal": "Ask for the bill naturally."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-food",
+    "topic-service"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit09orderingfood-orientation"
+      ],
+      "targetText": "பாட இலக்கு",
+      "romanization": "",
+      "nativeText": "Order food and drinks politely in a canteen or restaurant.",
+      "pronunciation": "",
+      "exampleTarget": "பாட இலக்கு",
+      "exampleNative": "The whole lesson is built toward this outcome: Roleplay ordering a simple Tamil meal.",
+      "korean": "பாட இலக்கு",
+      "english": "Order food and drinks politely in a canteen or restaurant.",
+      "example": "பாட இலக்கு",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Roleplay ordering a simple Tamil meal."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1unit09orderingfood-pronunciation"
+      ],
+      "targetText": "ஒலி சரிபார்ப்பு",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"எனக்கு ஒரு காபி வேண்டும்.\".",
+      "pronunciation": "",
+      "exampleTarget": "எனக்கு ஒரு காபி வேண்டும்.",
+      "exampleNative": "“I want one coffee.”",
+      "korean": "ஒலி சரிபார்ப்பு",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"எனக்கு ஒரு காபி வேண்டும்.\".",
+      "example": "எனக்கு ஒரு காபி வேண்டும்.",
+      "exampleEnglish": "“I want one coffee.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1"
+      ],
+      "targetText": "எனக்கு ஒரு காபி வேண்டும்",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 9: உணவு ஆர்டர் செய்வது — Ordering Food with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "எனக்கு ஒரு காபி வேண்டும்.",
+      "exampleNative": "“I want one coffee.”",
+      "korean": "எனக்கு ஒரு காபி வேண்டும்",
+      "english": "Use the key language of Level 1 · Unit 9: உணவு ஆர்டர் செய்வது — Ordering Food with the register and setting that the lesson requires.",
+      "example": "எனக்கு ஒரு காபி வேண்டும்.",
+      "exampleEnglish": "“I want one coffee.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-2"
+      ],
+      "targetText": "கொடுக்க முடியுமா?",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 9: உணவு ஆர்டர் செய்வது — Ordering Food sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "ஒரு தோசை கொடுக்க முடியுமா?",
+      "exampleNative": "“Could you give one dosa?”",
+      "korean": "கொடுக்க முடியுமா?",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 9: உணவு ஆர்டர் செய்வது — Ordering Food sound precise rather than merely understandable.",
+      "example": "ஒரு தோசை கொடுக்க முடியுமா?",
+      "exampleEnglish": "“Could you give one dosa?”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1unit09orderingfood-grammar-1"
+      ],
+      "targetText": "எனக்கு ஒரு காபி வேண்டும்",
+      "romanization": "",
+      "nativeText": "Order food and drinks politely in a canteen or restaurant.",
+      "pronunciation": "",
+      "exampleTarget": "எனக்கு ஒரு காபி வேண்டும்.",
+      "exampleNative": "“I want one coffee.”",
+      "korean": "எனக்கு ஒரு காபி வேண்டும்",
+      "english": "Order food and drinks politely in a canteen or restaurant.",
+      "example": "எனக்கு ஒரு காபி வேண்டும்.",
+      "exampleEnglish": "“I want one coffee.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1unit09orderingfood-grammar-2"
+      ],
+      "targetText": "கொடுக்க முடியுமா?",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 9: உணவு ஆர்டர் செய்வது — Ordering Food with one nearby Tamil form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "ஒரு தோசை கொடுக்க முடியுமா?",
+      "exampleNative": "“Could you give one dosa?”",
+      "korean": "கொடுக்க முடியுமா?",
+      "english": "Contrast the main pattern in Level 1 · Unit 9: உணவு ஆர்டர் செய்வது — Ordering Food with one nearby Tamil form so the learner can avoid literal translation.",
+      "example": "ஒரு தோசை கொடுக்க முடியுமா?",
+      "exampleEnglish": "“Could you give one dosa?”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ta-level1unit09orderingfood-reading"
+      ],
+      "targetText": "வாசிப்பு மாதிரி",
+      "romanization": "",
+      "nativeText": "Read \"பில் கொடுங்கள்.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "பில் கொடுங்கள்.",
+      "exampleNative": "“Please give the bill.”",
+      "korean": "வாசிப்பு மாதிரி",
+      "english": "Read \"பில் கொடுங்கள்.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "பில் கொடுங்கள்.",
+      "exampleEnglish": "“Please give the bill.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit09orderingfood-listening"
+      ],
+      "targetText": "உரையாடல் மாதிரி",
+      "romanization": "",
+      "nativeText": "Hear \"பில் கொடுங்கள்.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "பில் கொடுங்கள்.",
+      "exampleNative": "“Please give the bill.”",
+      "korean": "உரையாடல் மாதிரி",
+      "english": "Hear \"பில் கொடுங்கள்.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "பில் கொடுங்கள்.",
+      "exampleEnglish": "“Please give the bill.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ta-level1unit09orderingfood-writing"
+      ],
+      "targetText": "எழுத்துப் பயிற்சி",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"எனக்கு ஒரு காபி வேண்டும்.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "எனக்கு ஒரு காபி வேண்டும்.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "எழுத்துப் பயிற்சி",
+      "english": "Write your own version after studying \"எனக்கு ஒரு காபி வேண்டும்.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "எனக்கு ஒரு காபி வேண்டும்.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1unit09orderingfood-culture"
+      ],
+      "targetText": "பயன்பாடும் சூழலும்",
+      "romanization": "",
+      "nativeText": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "ஒரு தோசை கொடுக்க முடியுமா?",
+      "exampleNative": "“Could you give one dosa?”",
+      "korean": "பயன்பாடும் சூழலும்",
+      "english": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used.",
+      "example": "ஒரு தோசை கொடுக்க முடியுமா?",
+      "exampleEnglish": "“Could you give one dosa?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "இறுதி செயல்",
+      "romanization": "",
+      "nativeText": "Roleplay ordering a simple Tamil meal.",
+      "pronunciation": "",
+      "exampleTarget": "பில் கொடுங்கள்.",
+      "exampleNative": "Roleplay ordering a simple Tamil meal.",
+      "korean": "இறுதி செயல்",
+      "english": "Roleplay ordering a simple Tamil meal.",
+      "example": "பில் கொடுங்கள்.",
+      "exampleEnglish": "Roleplay ordering a simple Tamil meal."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit09orderingfood-grammar-2"
+      ],
+      "targetText": "பொதுவான பிழை",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"ஒரு தோசை கொடுக்க முடியுமா?\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "ஒரு தோசை கொடுக்க முடியுமா?",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “Could you give one dosa?”",
+      "korean": "பொதுவான பிழை",
+      "english": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"ஒரு தோசை கொடுக்க முடியுமா?\" against the model.",
+      "example": "ஒரு தோசை கொடுக்க முடியுமா?",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “Could you give one dosa?”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-culture"
+      ],
+      "targetText": "மொழிநடை",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"எனக்கு ஒரு காபி வேண்டும்.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "எனக்கு ஒரு காபி வேண்டும்.",
+      "exampleNative": "“I want one coffee.”",
+      "korean": "மொழிநடை",
+      "english": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"எனக்கு ஒரு காபி வேண்டும்.\" before reusing it elsewhere.",
+      "example": "எனக்கு ஒரு காபி வேண்டும்.",
+      "exampleEnglish": "“I want one coffee.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "சரளம்",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"பில் கொடுங்கள்.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "பில் கொடுங்கள்.",
+      "exampleNative": "“Please give the bill.”",
+      "korean": "சரளம்",
+      "english": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"பில் கொடுங்கள்.\" as one thought.",
+      "example": "பில் கொடுங்கள்.",
+      "exampleEnglish": "“Please give the bill.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "பயன்பாடு",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"எனக்கு ஒரு காபி வேண்டும்.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "எனக்கு ஒரு காபி வேண்டும்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "பயன்பாடு",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"எனக்கு ஒரு காபி வேண்டும்.\" and move it into your own life.",
+      "example": "எனக்கு ஒரு காபி வேண்டும்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-grammar-1"
+      ],
+      "targetText": "நினைவூட்டல்",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"எனக்கு ஒரு காபி வேண்டும்\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "எனக்கு ஒரு காபி வேண்டும்",
+      "exampleNative": "“I want one coffee.” The dative-like `எனக்கு` marks the experiencer/recipient.",
+      "korean": "நினைவூட்டல்",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"எனக்கு ஒரு காபி வேண்டும்\" before looking back.",
+      "example": "எனக்கு ஒரு காபி வேண்டும்",
+      "exampleEnglish": "“I want one coffee.” The dative-like `எனக்கு` marks the experiencer/recipient."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-writing"
+      ],
+      "targetText": "விரிவாக்கம்",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"பில் கொடுங்கள்.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "பில் கொடுங்கள்.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "விரிவாக்கம்",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"பில் கொடுங்கள்.\" rather than restarting from a blank sentence.",
+      "example": "பில் கொடுங்கள்.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading"
+      ],
+      "targetText": "ஒப்பீடு",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 9: உணவு ஆர்டர் செய்வது — Ordering Food with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"ஒரு தோசை கொடுக்க முடியுமா?\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "ஒரு தோசை கொடுக்க முடியுமா?",
+      "exampleNative": "“Could you give one dosa?”",
+      "korean": "ஒப்பீடு",
+      "english": "Compare the central form in Level 1 · Unit 9: உணவு ஆர்டர் செய்வது — Ordering Food with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"ஒரு தோசை கொடுக்க முடியுமா?\" as the comparison line.",
+      "example": "ஒரு தோசை கொடுக்க முடியுமா?",
+      "exampleEnglish": "“Could you give one dosa?”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1unit09orderingfood-pronunciation"
+      ],
+      "targetText": "உச்சரிப்பு திருத்தம்",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"எனக்கு ஒரு காபி வேண்டும்.\".",
+      "pronunciation": "",
+      "exampleTarget": "எனக்கு ஒரு காபி வேண்டும்.",
+      "exampleNative": "“I want one coffee.”",
+      "korean": "உச்சரிப்பு திருத்தம்",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"எனக்கு ஒரு காபி வேண்டும்.\".",
+      "example": "எனக்கு ஒரு காபி வேண்டும்.",
+      "exampleEnglish": "“I want one coffee.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "உரையாடல் மாற்றம்",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"பில் கொடுங்கள்.\".",
+      "pronunciation": "",
+      "exampleTarget": "பில் கொடுங்கள்.",
+      "exampleNative": "“Please give the bill.”",
+      "korean": "உரையாடல் மாற்றம்",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"பில் கொடுங்கள்.\".",
+      "example": "பில் கொடுங்கள்.",
+      "exampleEnglish": "“Please give the bill.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-writing"
+      ],
+      "targetText": "வாக்கிய கட்டமைப்பு",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"எனக்கு ஒரு காபி வேண்டும்.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "எனக்கு ஒரு காபி வேண்டும்.",
+      "exampleNative": "“I want one coffee.”",
+      "korean": "வாக்கிய கட்டமைப்பு",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"எனக்கு ஒரு காபி வேண்டும்.\" one layer at a time.",
+      "example": "எனக்கு ஒரு காபி வேண்டும்.",
+      "exampleEnglish": "“I want one coffee.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-2"
+      ],
+      "targetText": "விரைவு சோதனை",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"ஒரு தோசை கொடுக்க முடியுமா?\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "ஒரு தோசை கொடுக்க முடியுமா?",
+      "exampleNative": "“Could you give one dosa?”",
+      "korean": "விரைவு சோதனை",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"ஒரு தோசை கொடுக்க முடியுமா?\" as the deciding example.",
+      "example": "ஒரு தோசை கொடுக்க முடியுமா?",
+      "exampleEnglish": "“Could you give one dosa?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit09orderingfood-culture",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "மீள்பார்வு",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"பில் கொடுங்கள்.\".",
+      "pronunciation": "",
+      "exampleTarget": "பில் கொடுங்கள்.",
+      "exampleNative": "“Please give the bill.”",
+      "korean": "மீள்பார்வு",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"பில் கொடுங்கள்.\".",
+      "example": "பில் கொடுங்கள்.",
+      "exampleEnglish": "“Please give the bill.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "எனக்கு ஒரு காபி வேண்டும்",
+      "romanization": "eṉakku oru kāpi vēṇṭum",
+      "nativeText": "“I want one coffee.” The dative-like `எனக்கு` marks the experiencer/recipient.",
+      "pronunciation": "eṉakku oru kāpi vēṇṭum",
+      "exampleTarget": "எனக்கு ஒரு காபி வேண்டும்.",
+      "exampleNative": "“I want one coffee.”",
+      "korean": "எனக்கு ஒரு காபி வேண்டும்",
+      "english": "“I want one coffee.” The dative-like `எனக்கு` marks the experiencer/recipient.",
+      "example": "எனக்கு ஒரு காபி வேண்டும்.",
+      "exampleEnglish": "“I want one coffee.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "எனக்கு ஒரு காபி வேண்டும்.",
+      "romanization": "eṉakku oru kāpi vēṇṭum",
+      "nativeText": "Model use for \"எனக்கு ஒரு காபி வேண்டும்.\": “I want one coffee.”",
+      "pronunciation": "eṉakku oru kāpi vēṇṭum",
+      "exampleTarget": "எனக்கு ஒரு காபி வேண்டும்.",
+      "exampleNative": "“I want one coffee.”",
+      "korean": "எனக்கு ஒரு காபி வேண்டும்.",
+      "english": "Model use for \"எனக்கு ஒரு காபி வேண்டும்.\": “I want one coffee.”",
+      "example": "எனக்கு ஒரு காபி வேண்டும்.",
+      "exampleEnglish": "“I want one coffee.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "எனக்கு ஒரு காபி வேண்டும்",
+      "romanization": "eṉakku oru kāpi vēṇṭum",
+      "nativeText": "Usage focus for \"எனக்கு ஒரு காபி வேண்டும்\": Use the key language of Level 1 · Unit 9: உணவு ஆர்டர் செய்வது — Ordering Food with the register and setting that the lesson requires.",
+      "pronunciation": "eṉakku oru kāpi vēṇṭum",
+      "exampleTarget": "எனக்கு ஒரு காபி வேண்டும்.",
+      "exampleNative": "Notice what the form is doing here: “I want one coffee.”",
+      "korean": "எனக்கு ஒரு காபி வேண்டும்",
+      "english": "Usage focus for \"எனக்கு ஒரு காபி வேண்டும்\": Use the key language of Level 1 · Unit 9: உணவு ஆர்டர் செய்வது — Ordering Food with the register and setting that the lesson requires.",
+      "example": "எனக்கு ஒரு காபி வேண்டும்.",
+      "exampleEnglish": "Notice what the form is doing here: “I want one coffee.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "எனக்கு ஒரு காபி வேண்டும்",
+      "romanization": "eṉakku oru kāpi vēṇṭum",
+      "nativeText": "Contrast check for \"எனக்கு ஒரு காபி வேண்டும்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "eṉakku oru kāpi vēṇṭum",
+      "exampleTarget": "எனக்கு ஒரு காபி வேண்டும்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want one coffee.”",
+      "korean": "எனக்கு ஒரு காபி வேண்டும்",
+      "english": "Contrast check for \"எனக்கு ஒரு காபி வேண்டும்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "எனக்கு ஒரு காபி வேண்டும்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want one coffee.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "எனக்கு ஒரு காபி வேண்டும்",
+      "romanization": "eṉakku oru kāpi vēṇṭum",
+      "nativeText": "Recall \"எனக்கு ஒரு காபி வேண்டும்\" from memory, then explain what would change if a nearby alternative replaced it in \"எனக்கு ஒரு காபி வேண்டும்.\".",
+      "pronunciation": "eṉakku oru kāpi vēṇṭum",
+      "exampleTarget": "எனக்கு ஒரு காபி வேண்டும்.",
+      "exampleNative": "Self-check against the model before moving on: “I want one coffee.”",
+      "korean": "எனக்கு ஒரு காபி வேண்டும்",
+      "english": "Recall \"எனக்கு ஒரு காபி வேண்டும்\" from memory, then explain what would change if a nearby alternative replaced it in \"எனக்கு ஒரு காபி வேண்டும்.\".",
+      "example": "எனக்கு ஒரு காபி வேண்டும்.",
+      "exampleEnglish": "Self-check against the model before moving on: “I want one coffee.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "எனக்கு ஒரு காபி வேண்டும்",
+      "romanization": "eṉakku oru kāpi vēṇṭum",
+      "nativeText": "Repair \"எனக்கு ஒரு காபி வேண்டும்\" inside \"எனக்கு ஒரு காபி வேண்டும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 9: உணவு ஆர்டர் செய்வது — Ordering Food with the register and setting that the lesson requires.",
+      "pronunciation": "eṉakku oru kāpi vēṇṭum",
+      "exampleTarget": "எனக்கு ஒரு காபி வேண்டும்.",
+      "exampleNative": "Use the model as the repair target: “I want one coffee.”",
+      "korean": "எனக்கு ஒரு காபி வேண்டும்",
+      "english": "Repair \"எனக்கு ஒரு காபி வேண்டும்\" inside \"எனக்கு ஒரு காபி வேண்டும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 9: உணவு ஆர்டர் செய்வது — Ordering Food with the register and setting that the lesson requires.",
+      "example": "எனக்கு ஒரு காபி வேண்டும்.",
+      "exampleEnglish": "Use the model as the repair target: “I want one coffee.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "எனக்கு ஒரு காபி வேண்டும்",
+      "romanization": "eṉakku oru kāpi vēṇṭum",
+      "nativeText": "Transfer \"எனக்கு ஒரு காபி வேண்டும்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"எனக்கு ஒரு காபி வேண்டும்.\".",
+      "pronunciation": "eṉakku oru kāpi vēṇṭum",
+      "exampleTarget": "எனக்கு ஒரு காபி வேண்டும்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want one coffee.”",
+      "korean": "எனக்கு ஒரு காபி வேண்டும்",
+      "english": "Transfer \"எனக்கு ஒரு காபி வேண்டும்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"எனக்கு ஒரு காபி வேண்டும்.\".",
+      "example": "எனக்கு ஒரு காபி வேண்டும்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want one coffee.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "எனக்கு ஒரு காபி வேண்டும்",
+      "romanization": "eṉakku oru kāpi vēṇṭum",
+      "nativeText": "Find one word or phrase that naturally travels with \"எனக்கு ஒரு காபி வேண்டும்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "eṉakku oru kāpi vēṇṭum",
+      "exampleTarget": "எனக்கு ஒரு காபி வேண்டும்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want one coffee.”",
+      "korean": "எனக்கு ஒரு காபி வேண்டும்",
+      "english": "Find one word or phrase that naturally travels with \"எனக்கு ஒரு காபி வேண்டும்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "எனக்கு ஒரு காபி வேண்டும்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want one coffee.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "எனக்கு ஒரு காபி வேண்டும்",
+      "romanization": "eṉakku oru kāpi vēṇṭum",
+      "nativeText": "Listen for \"எனக்கு ஒரு காபி வேண்டும்\" inside \"எனக்கு ஒரு காபி வேண்டும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "eṉakku oru kāpi vēṇṭum",
+      "exampleTarget": "எனக்கு ஒரு காபி வேண்டும்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want one coffee.”",
+      "korean": "எனக்கு ஒரு காபி வேண்டும்",
+      "english": "Listen for \"எனக்கு ஒரு காபி வேண்டும்\" inside \"எனக்கு ஒரு காபி வேண்டும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "எனக்கு ஒரு காபி வேண்டும்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want one coffee.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "எனக்கு ஒரு காபி வேண்டும்",
+      "romanization": "eṉakku oru kāpi vēṇṭum",
+      "nativeText": "Write \"எனக்கு ஒரு காபி வேண்டும்\" again without looking, then compare the exact written form against \"எனக்கு ஒரு காபி வேண்டும்.\" before moving on.",
+      "pronunciation": "eṉakku oru kāpi vēṇṭum",
+      "exampleTarget": "எனக்கு ஒரு காபி வேண்டும்.",
+      "exampleNative": "Use the written model as the final correctness check: “I want one coffee.”",
+      "korean": "எனக்கு ஒரு காபி வேண்டும்",
+      "english": "Write \"எனக்கு ஒரு காபி வேண்டும்\" again without looking, then compare the exact written form against \"எனக்கு ஒரு காபி வேண்டும்.\" before moving on.",
+      "example": "எனக்கு ஒரு காபி வேண்டும்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want one coffee.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "எனக்கு ஒரு காபி வேண்டும்",
+      "romanization": "eṉakku oru kāpi vēṇṭum",
+      "nativeText": "Check whether \"எனக்கு ஒரு காபி வேண்டும்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want one coffee.”",
+      "pronunciation": "eṉakku oru kāpi vēṇṭum",
+      "exampleTarget": "எனக்கு ஒரு காபி வேண்டும்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want one coffee.”",
+      "korean": "எனக்கு ஒரு காபி வேண்டும்",
+      "english": "Check whether \"எனக்கு ஒரு காபி வேண்டும்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want one coffee.”",
+      "example": "எனக்கு ஒரு காபி வேண்டும்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want one coffee.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "கொடுக்க முடியுமா?",
+      "romanization": "koṭukka muṭiyumā",
+      "nativeText": "“Could you give?” A polite request frame.",
+      "pronunciation": "koṭukka muṭiyumā",
+      "exampleTarget": "ஒரு தோசை கொடுக்க முடியுமா?",
+      "exampleNative": "“Could you give one dosa?”",
+      "korean": "கொடுக்க முடியுமா?",
+      "english": "“Could you give?” A polite request frame.",
+      "example": "ஒரு தோசை கொடுக்க முடியுமா?",
+      "exampleEnglish": "“Could you give one dosa?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "ஒரு தோசை கொடுக்க முடியுமா?",
+      "romanization": "koṭukka muṭiyumā",
+      "nativeText": "Model use for \"ஒரு தோசை கொடுக்க முடியுமா?\": “Could you give one dosa?”",
+      "pronunciation": "koṭukka muṭiyumā",
+      "exampleTarget": "ஒரு தோசை கொடுக்க முடியுமா?",
+      "exampleNative": "“Could you give one dosa?”",
+      "korean": "ஒரு தோசை கொடுக்க முடியுமா?",
+      "english": "Model use for \"ஒரு தோசை கொடுக்க முடியுமா?\": “Could you give one dosa?”",
+      "example": "ஒரு தோசை கொடுக்க முடியுமா?",
+      "exampleEnglish": "“Could you give one dosa?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "கொடுக்க முடியுமா?",
+      "romanization": "koṭukka muṭiyumā",
+      "nativeText": "Usage focus for \"கொடுக்க முடியுமா?\": Distinguish the nearby wording choices that make Level 1 · Unit 9: உணவு ஆர்டர் செய்வது — Ordering Food sound precise rather than merely understandable.",
+      "pronunciation": "koṭukka muṭiyumā",
+      "exampleTarget": "ஒரு தோசை கொடுக்க முடியுமா?",
+      "exampleNative": "Notice what the form is doing here: “Could you give one dosa?”",
+      "korean": "கொடுக்க முடியுமா?",
+      "english": "Usage focus for \"கொடுக்க முடியுமா?\": Distinguish the nearby wording choices that make Level 1 · Unit 9: உணவு ஆர்டர் செய்வது — Ordering Food sound precise rather than merely understandable.",
+      "example": "ஒரு தோசை கொடுக்க முடியுமா?",
+      "exampleEnglish": "Notice what the form is doing here: “Could you give one dosa?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "கொடுக்க முடியுமா?",
+      "romanization": "koṭukka muṭiyumā",
+      "nativeText": "Contrast check for \"கொடுக்க முடியுமா?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "koṭukka muṭiyumā",
+      "exampleTarget": "ஒரு தோசை கொடுக்க முடியுமா?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Could you give one dosa?”",
+      "korean": "கொடுக்க முடியுமா?",
+      "english": "Contrast check for \"கொடுக்க முடியுமா?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "ஒரு தோசை கொடுக்க முடியுமா?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Could you give one dosa?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "கொடுக்க முடியுமா?",
+      "romanization": "koṭukka muṭiyumā",
+      "nativeText": "Recall \"கொடுக்க முடியுமா?\" from memory, then explain what would change if a nearby alternative replaced it in \"ஒரு தோசை கொடுக்க முடியுமா?\".",
+      "pronunciation": "koṭukka muṭiyumā",
+      "exampleTarget": "ஒரு தோசை கொடுக்க முடியுமா?",
+      "exampleNative": "Self-check against the model before moving on: “Could you give one dosa?”",
+      "korean": "கொடுக்க முடியுமா?",
+      "english": "Recall \"கொடுக்க முடியுமா?\" from memory, then explain what would change if a nearby alternative replaced it in \"ஒரு தோசை கொடுக்க முடியுமா?\".",
+      "example": "ஒரு தோசை கொடுக்க முடியுமா?",
+      "exampleEnglish": "Self-check against the model before moving on: “Could you give one dosa?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "கொடுக்க முடியுமா?",
+      "romanization": "koṭukka muṭiyumā",
+      "nativeText": "Repair \"கொடுக்க முடியுமா?\" inside \"ஒரு தோசை கொடுக்க முடியுமா?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 9: உணவு ஆர்டர் செய்வது — Ordering Food sound precise rather than merely understandable.",
+      "pronunciation": "koṭukka muṭiyumā",
+      "exampleTarget": "ஒரு தோசை கொடுக்க முடியுமா?",
+      "exampleNative": "Use the model as the repair target: “Could you give one dosa?”",
+      "korean": "கொடுக்க முடியுமா?",
+      "english": "Repair \"கொடுக்க முடியுமா?\" inside \"ஒரு தோசை கொடுக்க முடியுமா?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 9: உணவு ஆர்டர் செய்வது — Ordering Food sound precise rather than merely understandable.",
+      "example": "ஒரு தோசை கொடுக்க முடியுமா?",
+      "exampleEnglish": "Use the model as the repair target: “Could you give one dosa?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "கொடுக்க முடியுமா?",
+      "romanization": "koṭukka muṭiyumā",
+      "nativeText": "Transfer \"கொடுக்க முடியுமா?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ஒரு தோசை கொடுக்க முடியுமா?\".",
+      "pronunciation": "koṭukka muṭiyumā",
+      "exampleTarget": "ஒரு தோசை கொடுக்க முடியுமா?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Could you give one dosa?”",
+      "korean": "கொடுக்க முடியுமா?",
+      "english": "Transfer \"கொடுக்க முடியுமா?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ஒரு தோசை கொடுக்க முடியுமா?\".",
+      "example": "ஒரு தோசை கொடுக்க முடியுமா?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Could you give one dosa?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "கொடுக்க முடியுமா?",
+      "romanization": "koṭukka muṭiyumā",
+      "nativeText": "Find one word or phrase that naturally travels with \"கொடுக்க முடியுமா?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "koṭukka muṭiyumā",
+      "exampleTarget": "ஒரு தோசை கொடுக்க முடியுமா?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Could you give one dosa?”",
+      "korean": "கொடுக்க முடியுமா?",
+      "english": "Find one word or phrase that naturally travels with \"கொடுக்க முடியுமா?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "ஒரு தோசை கொடுக்க முடியுமா?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Could you give one dosa?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "கொடுக்க முடியுமா?",
+      "romanization": "koṭukka muṭiyumā",
+      "nativeText": "Listen for \"கொடுக்க முடியுமா?\" inside \"ஒரு தோசை கொடுக்க முடியுமா?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "koṭukka muṭiyumā",
+      "exampleTarget": "ஒரு தோசை கொடுக்க முடியுமா?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Could you give one dosa?”",
+      "korean": "கொடுக்க முடியுமா?",
+      "english": "Listen for \"கொடுக்க முடியுமா?\" inside \"ஒரு தோசை கொடுக்க முடியுமா?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "ஒரு தோசை கொடுக்க முடியுமா?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Could you give one dosa?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "கொடுக்க முடியுமா?",
+      "romanization": "koṭukka muṭiyumā",
+      "nativeText": "Write \"கொடுக்க முடியுமா?\" again without looking, then compare the exact written form against \"ஒரு தோசை கொடுக்க முடியுமா?\" before moving on.",
+      "pronunciation": "koṭukka muṭiyumā",
+      "exampleTarget": "ஒரு தோசை கொடுக்க முடியுமா?",
+      "exampleNative": "Use the written model as the final correctness check: “Could you give one dosa?”",
+      "korean": "கொடுக்க முடியுமா?",
+      "english": "Write \"கொடுக்க முடியுமா?\" again without looking, then compare the exact written form against \"ஒரு தோசை கொடுக்க முடியுமா?\" before moving on.",
+      "example": "ஒரு தோசை கொடுக்க முடியுமா?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Could you give one dosa?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "கொடுக்க முடியுமா?",
+      "romanization": "koṭukka muṭiyumā",
+      "nativeText": "Check whether \"கொடுக்க முடியுமா?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Could you give one dosa?”",
+      "pronunciation": "koṭukka muṭiyumā",
+      "exampleTarget": "ஒரு தோசை கொடுக்க முடியுமா?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Could you give one dosa?”",
+      "korean": "கொடுக்க முடியுமா?",
+      "english": "Check whether \"கொடுக்க முடியுமா?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Could you give one dosa?”",
+      "example": "ஒரு தோசை கொடுக்க முடியுமா?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Could you give one dosa?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "சர்க்கரை இல்லாமல்",
+      "romanization": "carkkarai illāmal",
+      "nativeText": "“Without sugar.” `இல்லாமல்` means “without.”",
+      "pronunciation": "carkkarai illāmal",
+      "exampleTarget": "சர்க்கரை இல்லாமல் தேநீர் வேண்டும்.",
+      "exampleNative": "“I want tea without sugar.”",
+      "korean": "சர்க்கரை இல்லாமல்",
+      "english": "“Without sugar.” `இல்லாமல்` means “without.”",
+      "example": "சர்க்கரை இல்லாமல் தேநீர் வேண்டும்.",
+      "exampleEnglish": "“I want tea without sugar.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "சர்க்கரை இல்லாமல் தேநீர் வேண்டும்.",
+      "romanization": "carkkarai illāmal",
+      "nativeText": "Model use for \"சர்க்கரை இல்லாமல் தேநீர் வேண்டும்.\": “I want tea without sugar.”",
+      "pronunciation": "carkkarai illāmal",
+      "exampleTarget": "சர்க்கரை இல்லாமல் தேநீர் வேண்டும்.",
+      "exampleNative": "“I want tea without sugar.”",
+      "korean": "சர்க்கரை இல்லாமல் தேநீர் வேண்டும்.",
+      "english": "Model use for \"சர்க்கரை இல்லாமல் தேநீர் வேண்டும்.\": “I want tea without sugar.”",
+      "example": "சர்க்கரை இல்லாமல் தேநீர் வேண்டும்.",
+      "exampleEnglish": "“I want tea without sugar.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "சர்க்கரை இல்லாமல்",
+      "romanization": "carkkarai illāmal",
+      "nativeText": "Usage focus for \"சர்க்கரை இல்லாமல்\": “Without sugar.” `இல்லாமல்` means “without.”",
+      "pronunciation": "carkkarai illāmal",
+      "exampleTarget": "சர்க்கரை இல்லாமல் தேநீர் வேண்டும்.",
+      "exampleNative": "Notice what the form is doing here: “I want tea without sugar.”",
+      "korean": "சர்க்கரை இல்லாமல்",
+      "english": "Usage focus for \"சர்க்கரை இல்லாமல்\": “Without sugar.” `இல்லாமல்` means “without.”",
+      "example": "சர்க்கரை இல்லாமல் தேநீர் வேண்டும்.",
+      "exampleEnglish": "Notice what the form is doing here: “I want tea without sugar.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "சர்க்கரை இல்லாமல்",
+      "romanization": "carkkarai illāmal",
+      "nativeText": "Contrast check for \"சர்க்கரை இல்லாமல்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "carkkarai illāmal",
+      "exampleTarget": "சர்க்கரை இல்லாமல் தேநீர் வேண்டும்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want tea without sugar.”",
+      "korean": "சர்க்கரை இல்லாமல்",
+      "english": "Contrast check for \"சர்க்கரை இல்லாமல்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "சர்க்கரை இல்லாமல் தேநீர் வேண்டும்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want tea without sugar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "சர்க்கரை இல்லாமல்",
+      "romanization": "carkkarai illāmal",
+      "nativeText": "Recall \"சர்க்கரை இல்லாமல்\" from memory, then explain what would change if a nearby alternative replaced it in \"சர்க்கரை இல்லாமல் தேநீர் வேண்டும்.\".",
+      "pronunciation": "carkkarai illāmal",
+      "exampleTarget": "சர்க்கரை இல்லாமல் தேநீர் வேண்டும்.",
+      "exampleNative": "Self-check against the model before moving on: “I want tea without sugar.”",
+      "korean": "சர்க்கரை இல்லாமல்",
+      "english": "Recall \"சர்க்கரை இல்லாமல்\" from memory, then explain what would change if a nearby alternative replaced it in \"சர்க்கரை இல்லாமல் தேநீர் வேண்டும்.\".",
+      "example": "சர்க்கரை இல்லாமல் தேநீர் வேண்டும்.",
+      "exampleEnglish": "Self-check against the model before moving on: “I want tea without sugar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "சர்க்கரை இல்லாமல்",
+      "romanization": "carkkarai illāmal",
+      "nativeText": "Repair \"சர்க்கரை இல்லாமல்\" inside \"சர்க்கரை இல்லாமல் தேநீர் வேண்டும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Without sugar.” `இல்லாமல்` means “without.”",
+      "pronunciation": "carkkarai illāmal",
+      "exampleTarget": "சர்க்கரை இல்லாமல் தேநீர் வேண்டும்.",
+      "exampleNative": "Use the model as the repair target: “I want tea without sugar.”",
+      "korean": "சர்க்கரை இல்லாமல்",
+      "english": "Repair \"சர்க்கரை இல்லாமல்\" inside \"சர்க்கரை இல்லாமல் தேநீர் வேண்டும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Without sugar.” `இல்லாமல்` means “without.”",
+      "example": "சர்க்கரை இல்லாமல் தேநீர் வேண்டும்.",
+      "exampleEnglish": "Use the model as the repair target: “I want tea without sugar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "சர்க்கரை இல்லாமல்",
+      "romanization": "carkkarai illāmal",
+      "nativeText": "Transfer \"சர்க்கரை இல்லாமல்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"சர்க்கரை இல்லாமல் தேநீர் வேண்டும்.\".",
+      "pronunciation": "carkkarai illāmal",
+      "exampleTarget": "சர்க்கரை இல்லாமல் தேநீர் வேண்டும்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want tea without sugar.”",
+      "korean": "சர்க்கரை இல்லாமல்",
+      "english": "Transfer \"சர்க்கரை இல்லாமல்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"சர்க்கரை இல்லாமல் தேநீர் வேண்டும்.\".",
+      "example": "சர்க்கரை இல்லாமல் தேநீர் வேண்டும்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want tea without sugar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "சர்க்கரை இல்லாமல்",
+      "romanization": "carkkarai illāmal",
+      "nativeText": "Find one word or phrase that naturally travels with \"சர்க்கரை இல்லாமல்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "carkkarai illāmal",
+      "exampleTarget": "சர்க்கரை இல்லாமல் தேநீர் வேண்டும்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want tea without sugar.”",
+      "korean": "சர்க்கரை இல்லாமல்",
+      "english": "Find one word or phrase that naturally travels with \"சர்க்கரை இல்லாமல்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "சர்க்கரை இல்லாமல் தேநீர் வேண்டும்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want tea without sugar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "சர்க்கரை இல்லாமல்",
+      "romanization": "carkkarai illāmal",
+      "nativeText": "Listen for \"சர்க்கரை இல்லாமல்\" inside \"சர்க்கரை இல்லாமல் தேநீர் வேண்டும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "carkkarai illāmal",
+      "exampleTarget": "சர்க்கரை இல்லாமல் தேநீர் வேண்டும்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want tea without sugar.”",
+      "korean": "சர்க்கரை இல்லாமல்",
+      "english": "Listen for \"சர்க்கரை இல்லாமல்\" inside \"சர்க்கரை இல்லாமல் தேநீர் வேண்டும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "சர்க்கரை இல்லாமல் தேநீர் வேண்டும்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want tea without sugar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "சர்க்கரை இல்லாமல்",
+      "romanization": "carkkarai illāmal",
+      "nativeText": "Write \"சர்க்கரை இல்லாமல்\" again without looking, then compare the exact written form against \"சர்க்கரை இல்லாமல் தேநீர் வேண்டும்.\" before moving on.",
+      "pronunciation": "carkkarai illāmal",
+      "exampleTarget": "சர்க்கரை இல்லாமல் தேநீர் வேண்டும்.",
+      "exampleNative": "Use the written model as the final correctness check: “I want tea without sugar.”",
+      "korean": "சர்க்கரை இல்லாமல்",
+      "english": "Write \"சர்க்கரை இல்லாமல்\" again without looking, then compare the exact written form against \"சர்க்கரை இல்லாமல் தேநீர் வேண்டும்.\" before moving on.",
+      "example": "சர்க்கரை இல்லாமல் தேநீர் வேண்டும்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want tea without sugar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "சர்க்கரை இல்லாமல்",
+      "romanization": "carkkarai illāmal",
+      "nativeText": "Check whether \"சர்க்கரை இல்லாமல்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want tea without sugar.”",
+      "pronunciation": "carkkarai illāmal",
+      "exampleTarget": "சர்க்கரை இல்லாமல் தேநீர் வேண்டும்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want tea without sugar.”",
+      "korean": "சர்க்கரை இல்லாமல்",
+      "english": "Check whether \"சர்க்கரை இல்லாமல்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want tea without sugar.”",
+      "example": "சர்க்கரை இல்லாமல் தேநீர் வேண்டும்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want tea without sugar.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "காரம் குறைவு",
+      "romanization": "kāram kuṟaivu",
+      "nativeText": "“Less spicy.” A practical food customization phrase.",
+      "pronunciation": "kāram kuṟaivu",
+      "exampleTarget": "காரம் குறைவு சாம்பார் வேண்டும்.",
+      "exampleNative": "“I want less-spicy sambar.”",
+      "korean": "காரம் குறைவு",
+      "english": "“Less spicy.” A practical food customization phrase.",
+      "example": "காரம் குறைவு சாம்பார் வேண்டும்.",
+      "exampleEnglish": "“I want less-spicy sambar.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "காரம் குறைவு சாம்பார் வேண்டும்.",
+      "romanization": "kāram kuṟaivu",
+      "nativeText": "Model use for \"காரம் குறைவு சாம்பார் வேண்டும்.\": “I want less-spicy sambar.”",
+      "pronunciation": "kāram kuṟaivu",
+      "exampleTarget": "காரம் குறைவு சாம்பார் வேண்டும்.",
+      "exampleNative": "“I want less-spicy sambar.”",
+      "korean": "காரம் குறைவு சாம்பார் வேண்டும்.",
+      "english": "Model use for \"காரம் குறைவு சாம்பார் வேண்டும்.\": “I want less-spicy sambar.”",
+      "example": "காரம் குறைவு சாம்பார் வேண்டும்.",
+      "exampleEnglish": "“I want less-spicy sambar.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "காரம் குறைவு",
+      "romanization": "kāram kuṟaivu",
+      "nativeText": "Usage focus for \"காரம் குறைவு\": “Less spicy.” A practical food customization phrase.",
+      "pronunciation": "kāram kuṟaivu",
+      "exampleTarget": "காரம் குறைவு சாம்பார் வேண்டும்.",
+      "exampleNative": "Notice what the form is doing here: “I want less-spicy sambar.”",
+      "korean": "காரம் குறைவு",
+      "english": "Usage focus for \"காரம் குறைவு\": “Less spicy.” A practical food customization phrase.",
+      "example": "காரம் குறைவு சாம்பார் வேண்டும்.",
+      "exampleEnglish": "Notice what the form is doing here: “I want less-spicy sambar.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "காரம் குறைவு",
+      "romanization": "kāram kuṟaivu",
+      "nativeText": "Contrast check for \"காரம் குறைவு\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kāram kuṟaivu",
+      "exampleTarget": "காரம் குறைவு சாம்பார் வேண்டும்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want less-spicy sambar.”",
+      "korean": "காரம் குறைவு",
+      "english": "Contrast check for \"காரம் குறைவு\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "காரம் குறைவு சாம்பார் வேண்டும்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want less-spicy sambar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "காரம் குறைவு",
+      "romanization": "kāram kuṟaivu",
+      "nativeText": "Recall \"காரம் குறைவு\" from memory, then explain what would change if a nearby alternative replaced it in \"காரம் குறைவு சாம்பார் வேண்டும்.\".",
+      "pronunciation": "kāram kuṟaivu",
+      "exampleTarget": "காரம் குறைவு சாம்பார் வேண்டும்.",
+      "exampleNative": "Self-check against the model before moving on: “I want less-spicy sambar.”",
+      "korean": "காரம் குறைவு",
+      "english": "Recall \"காரம் குறைவு\" from memory, then explain what would change if a nearby alternative replaced it in \"காரம் குறைவு சாம்பார் வேண்டும்.\".",
+      "example": "காரம் குறைவு சாம்பார் வேண்டும்.",
+      "exampleEnglish": "Self-check against the model before moving on: “I want less-spicy sambar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "காரம் குறைவு",
+      "romanization": "kāram kuṟaivu",
+      "nativeText": "Repair \"காரம் குறைவு\" inside \"காரம் குறைவு சாம்பார் வேண்டும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Less spicy.” A practical food customization phrase.",
+      "pronunciation": "kāram kuṟaivu",
+      "exampleTarget": "காரம் குறைவு சாம்பார் வேண்டும்.",
+      "exampleNative": "Use the model as the repair target: “I want less-spicy sambar.”",
+      "korean": "காரம் குறைவு",
+      "english": "Repair \"காரம் குறைவு\" inside \"காரம் குறைவு சாம்பார் வேண்டும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Less spicy.” A practical food customization phrase.",
+      "example": "காரம் குறைவு சாம்பார் வேண்டும்.",
+      "exampleEnglish": "Use the model as the repair target: “I want less-spicy sambar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "காரம் குறைவு",
+      "romanization": "kāram kuṟaivu",
+      "nativeText": "Transfer \"காரம் குறைவு\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"காரம் குறைவு சாம்பார் வேண்டும்.\".",
+      "pronunciation": "kāram kuṟaivu",
+      "exampleTarget": "காரம் குறைவு சாம்பார் வேண்டும்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want less-spicy sambar.”",
+      "korean": "காரம் குறைவு",
+      "english": "Transfer \"காரம் குறைவு\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"காரம் குறைவு சாம்பார் வேண்டும்.\".",
+      "example": "காரம் குறைவு சாம்பார் வேண்டும்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want less-spicy sambar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "காரம் குறைவு",
+      "romanization": "kāram kuṟaivu",
+      "nativeText": "Find one word or phrase that naturally travels with \"காரம் குறைவு\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kāram kuṟaivu",
+      "exampleTarget": "காரம் குறைவு சாம்பார் வேண்டும்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want less-spicy sambar.”",
+      "korean": "காரம் குறைவு",
+      "english": "Find one word or phrase that naturally travels with \"காரம் குறைவு\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "காரம் குறைவு சாம்பார் வேண்டும்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want less-spicy sambar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "காரம் குறைவு",
+      "romanization": "kāram kuṟaivu",
+      "nativeText": "Listen for \"காரம் குறைவு\" inside \"காரம் குறைவு சாம்பார் வேண்டும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kāram kuṟaivu",
+      "exampleTarget": "காரம் குறைவு சாம்பார் வேண்டும்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want less-spicy sambar.”",
+      "korean": "காரம் குறைவு",
+      "english": "Listen for \"காரம் குறைவு\" inside \"காரம் குறைவு சாம்பார் வேண்டும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "காரம் குறைவு சாம்பார் வேண்டும்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want less-spicy sambar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "காரம் குறைவு",
+      "romanization": "kāram kuṟaivu",
+      "nativeText": "Write \"காரம் குறைவு\" again without looking, then compare the exact written form against \"காரம் குறைவு சாம்பார் வேண்டும்.\" before moving on.",
+      "pronunciation": "kāram kuṟaivu",
+      "exampleTarget": "காரம் குறைவு சாம்பார் வேண்டும்.",
+      "exampleNative": "Use the written model as the final correctness check: “I want less-spicy sambar.”",
+      "korean": "காரம் குறைவு",
+      "english": "Write \"காரம் குறைவு\" again without looking, then compare the exact written form against \"காரம் குறைவு சாம்பார் வேண்டும்.\" before moving on.",
+      "example": "காரம் குறைவு சாம்பார் வேண்டும்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want less-spicy sambar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "காரம் குறைவு",
+      "romanization": "kāram kuṟaivu",
+      "nativeText": "Check whether \"காரம் குறைவு\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want less-spicy sambar.”",
+      "pronunciation": "kāram kuṟaivu",
+      "exampleTarget": "காரம் குறைவு சாம்பார் வேண்டும்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want less-spicy sambar.”",
+      "korean": "காரம் குறைவு",
+      "english": "Check whether \"காரம் குறைவு\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want less-spicy sambar.”",
+      "example": "காரம் குறைவு சாம்பார் வேண்டும்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want less-spicy sambar.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "இங்கே சாப்பிட",
+      "romanization": "iṅkē cāppiṭa",
+      "nativeText": "“To eat here.” The infinitive-style form names the action.",
+      "pronunciation": "iṅkē cāppiṭa",
+      "exampleTarget": "இங்கே சாப்பிடவா அல்லது பார்சலா?",
+      "exampleNative": "“For eating here or parcel?”",
+      "korean": "இங்கே சாப்பிட",
+      "english": "“To eat here.” The infinitive-style form names the action.",
+      "example": "இங்கே சாப்பிடவா அல்லது பார்சலா?",
+      "exampleEnglish": "“For eating here or parcel?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "இங்கே சாப்பிடவா அல்லது பார்சலா?",
+      "romanization": "iṅkē cāppiṭa",
+      "nativeText": "Model use for \"இங்கே சாப்பிடவா அல்லது பார்சலா?\": “For eating here or parcel?”",
+      "pronunciation": "iṅkē cāppiṭa",
+      "exampleTarget": "இங்கே சாப்பிடவா அல்லது பார்சலா?",
+      "exampleNative": "“For eating here or parcel?”",
+      "korean": "இங்கே சாப்பிடவா அல்லது பார்சலா?",
+      "english": "Model use for \"இங்கே சாப்பிடவா அல்லது பார்சலா?\": “For eating here or parcel?”",
+      "example": "இங்கே சாப்பிடவா அல்லது பார்சலா?",
+      "exampleEnglish": "“For eating here or parcel?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "இங்கே சாப்பிட",
+      "romanization": "iṅkē cāppiṭa",
+      "nativeText": "Usage focus for \"இங்கே சாப்பிட\": “To eat here.” The infinitive-style form names the action.",
+      "pronunciation": "iṅkē cāppiṭa",
+      "exampleTarget": "இங்கே சாப்பிடவா அல்லது பார்சலா?",
+      "exampleNative": "Notice what the form is doing here: “For eating here or parcel?”",
+      "korean": "இங்கே சாப்பிட",
+      "english": "Usage focus for \"இங்கே சாப்பிட\": “To eat here.” The infinitive-style form names the action.",
+      "example": "இங்கே சாப்பிடவா அல்லது பார்சலா?",
+      "exampleEnglish": "Notice what the form is doing here: “For eating here or parcel?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "இங்கே சாப்பிட",
+      "romanization": "iṅkē cāppiṭa",
+      "nativeText": "Contrast check for \"இங்கே சாப்பிட\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "iṅkē cāppiṭa",
+      "exampleTarget": "இங்கே சாப்பிடவா அல்லது பார்சலா?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “For eating here or parcel?”",
+      "korean": "இங்கே சாப்பிட",
+      "english": "Contrast check for \"இங்கே சாப்பிட\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "இங்கே சாப்பிடவா அல்லது பார்சலா?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “For eating here or parcel?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "இங்கே சாப்பிட",
+      "romanization": "iṅkē cāppiṭa",
+      "nativeText": "Recall \"இங்கே சாப்பிட\" from memory, then explain what would change if a nearby alternative replaced it in \"இங்கே சாப்பிடவா அல்லது பார்சலா?\".",
+      "pronunciation": "iṅkē cāppiṭa",
+      "exampleTarget": "இங்கே சாப்பிடவா அல்லது பார்சலா?",
+      "exampleNative": "Self-check against the model before moving on: “For eating here or parcel?”",
+      "korean": "இங்கே சாப்பிட",
+      "english": "Recall \"இங்கே சாப்பிட\" from memory, then explain what would change if a nearby alternative replaced it in \"இங்கே சாப்பிடவா அல்லது பார்சலா?\".",
+      "example": "இங்கே சாப்பிடவா அல்லது பார்சலா?",
+      "exampleEnglish": "Self-check against the model before moving on: “For eating here or parcel?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "இங்கே சாப்பிட",
+      "romanization": "iṅkē cāppiṭa",
+      "nativeText": "Repair \"இங்கே சாப்பிட\" inside \"இங்கே சாப்பிடவா அல்லது பார்சலா?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To eat here.” The infinitive-style form names the action.",
+      "pronunciation": "iṅkē cāppiṭa",
+      "exampleTarget": "இங்கே சாப்பிடவா அல்லது பார்சலா?",
+      "exampleNative": "Use the model as the repair target: “For eating here or parcel?”",
+      "korean": "இங்கே சாப்பிட",
+      "english": "Repair \"இங்கே சாப்பிட\" inside \"இங்கே சாப்பிடவா அல்லது பார்சலா?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To eat here.” The infinitive-style form names the action.",
+      "example": "இங்கே சாப்பிடவா அல்லது பார்சலா?",
+      "exampleEnglish": "Use the model as the repair target: “For eating here or parcel?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "இங்கே சாப்பிட",
+      "romanization": "iṅkē cāppiṭa",
+      "nativeText": "Transfer \"இங்கே சாப்பிட\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இங்கே சாப்பிடவா அல்லது பார்சலா?\".",
+      "pronunciation": "iṅkē cāppiṭa",
+      "exampleTarget": "இங்கே சாப்பிடவா அல்லது பார்சலா?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “For eating here or parcel?”",
+      "korean": "இங்கே சாப்பிட",
+      "english": "Transfer \"இங்கே சாப்பிட\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இங்கே சாப்பிடவா அல்லது பார்சலா?\".",
+      "example": "இங்கே சாப்பிடவா அல்லது பார்சலா?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “For eating here or parcel?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "இங்கே சாப்பிட",
+      "romanization": "iṅkē cāppiṭa",
+      "nativeText": "Find one word or phrase that naturally travels with \"இங்கே சாப்பிட\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "iṅkē cāppiṭa",
+      "exampleTarget": "இங்கே சாப்பிடவா அல்லது பார்சலா?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “For eating here or parcel?”",
+      "korean": "இங்கே சாப்பிட",
+      "english": "Find one word or phrase that naturally travels with \"இங்கே சாப்பிட\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "இங்கே சாப்பிடவா அல்லது பார்சலா?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “For eating here or parcel?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "இங்கே சாப்பிட",
+      "romanization": "iṅkē cāppiṭa",
+      "nativeText": "Listen for \"இங்கே சாப்பிட\" inside \"இங்கே சாப்பிடவா அல்லது பார்சலா?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "iṅkē cāppiṭa",
+      "exampleTarget": "இங்கே சாப்பிடவா அல்லது பார்சலா?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “For eating here or parcel?”",
+      "korean": "இங்கே சாப்பிட",
+      "english": "Listen for \"இங்கே சாப்பிட\" inside \"இங்கே சாப்பிடவா அல்லது பார்சலா?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "இங்கே சாப்பிடவா அல்லது பார்சலா?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “For eating here or parcel?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "இங்கே சாப்பிட",
+      "romanization": "iṅkē cāppiṭa",
+      "nativeText": "Write \"இங்கே சாப்பிட\" again without looking, then compare the exact written form against \"இங்கே சாப்பிடவா அல்லது பார்சலா?\" before moving on.",
+      "pronunciation": "iṅkē cāppiṭa",
+      "exampleTarget": "இங்கே சாப்பிடவா அல்லது பார்சலா?",
+      "exampleNative": "Use the written model as the final correctness check: “For eating here or parcel?”",
+      "korean": "இங்கே சாப்பிட",
+      "english": "Write \"இங்கே சாப்பிட\" again without looking, then compare the exact written form against \"இங்கே சாப்பிடவா அல்லது பார்சலா?\" before moving on.",
+      "example": "இங்கே சாப்பிடவா அல்லது பார்சலா?",
+      "exampleEnglish": "Use the written model as the final correctness check: “For eating here or parcel?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "இங்கே சாப்பிட",
+      "romanization": "iṅkē cāppiṭa",
+      "nativeText": "Check whether \"இங்கே சாப்பிட\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “For eating here or parcel?”",
+      "pronunciation": "iṅkē cāppiṭa",
+      "exampleTarget": "இங்கே சாப்பிடவா அல்லது பார்சலா?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “For eating here or parcel?”",
+      "korean": "இங்கே சாப்பிட",
+      "english": "Check whether \"இங்கே சாப்பிட\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “For eating here or parcel?”",
+      "example": "இங்கே சாப்பிடவா அல்லது பார்சலா?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “For eating here or parcel?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "பார்சல்",
+      "romanization": "pārcal",
+      "nativeText": "“Parcel / takeaway.” A very common South Indian restaurant word.",
+      "pronunciation": "pārcal",
+      "exampleTarget": "இதை பார்சல் செய்யுங்கள்.",
+      "exampleNative": "“Please make this takeaway.”",
+      "korean": "பார்சல்",
+      "english": "“Parcel / takeaway.” A very common South Indian restaurant word.",
+      "example": "இதை பார்சல் செய்யுங்கள்.",
+      "exampleEnglish": "“Please make this takeaway.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "இதை பார்சல் செய்யுங்கள்.",
+      "romanization": "pārcal",
+      "nativeText": "Model use for \"இதை பார்சல் செய்யுங்கள்.\": “Please make this takeaway.”",
+      "pronunciation": "pārcal",
+      "exampleTarget": "இதை பார்சல் செய்யுங்கள்.",
+      "exampleNative": "“Please make this takeaway.”",
+      "korean": "இதை பார்சல் செய்யுங்கள்.",
+      "english": "Model use for \"இதை பார்சல் செய்யுங்கள்.\": “Please make this takeaway.”",
+      "example": "இதை பார்சல் செய்யுங்கள்.",
+      "exampleEnglish": "“Please make this takeaway.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "பார்சல்",
+      "romanization": "pārcal",
+      "nativeText": "Usage focus for \"பார்சல்\": “Parcel / takeaway.” A very common South Indian restaurant word.",
+      "pronunciation": "pārcal",
+      "exampleTarget": "இதை பார்சல் செய்யுங்கள்.",
+      "exampleNative": "Notice what the form is doing here: “Please make this takeaway.”",
+      "korean": "பார்சல்",
+      "english": "Usage focus for \"பார்சல்\": “Parcel / takeaway.” A very common South Indian restaurant word.",
+      "example": "இதை பார்சல் செய்யுங்கள்.",
+      "exampleEnglish": "Notice what the form is doing here: “Please make this takeaway.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "பார்சல்",
+      "romanization": "pārcal",
+      "nativeText": "Contrast check for \"பார்சல்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "pārcal",
+      "exampleTarget": "இதை பார்சல் செய்யுங்கள்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Please make this takeaway.”",
+      "korean": "பார்சல்",
+      "english": "Contrast check for \"பார்சல்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "இதை பார்சல் செய்யுங்கள்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Please make this takeaway.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "பார்சல்",
+      "romanization": "pārcal",
+      "nativeText": "Recall \"பார்சல்\" from memory, then explain what would change if a nearby alternative replaced it in \"இதை பார்சல் செய்யுங்கள்.\".",
+      "pronunciation": "pārcal",
+      "exampleTarget": "இதை பார்சல் செய்யுங்கள்.",
+      "exampleNative": "Self-check against the model before moving on: “Please make this takeaway.”",
+      "korean": "பார்சல்",
+      "english": "Recall \"பார்சல்\" from memory, then explain what would change if a nearby alternative replaced it in \"இதை பார்சல் செய்யுங்கள்.\".",
+      "example": "இதை பார்சல் செய்யுங்கள்.",
+      "exampleEnglish": "Self-check against the model before moving on: “Please make this takeaway.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "பார்சல்",
+      "romanization": "pārcal",
+      "nativeText": "Repair \"பார்சல்\" inside \"இதை பார்சல் செய்யுங்கள்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Parcel / takeaway.” A very common South Indian restaurant word.",
+      "pronunciation": "pārcal",
+      "exampleTarget": "இதை பார்சல் செய்யுங்கள்.",
+      "exampleNative": "Use the model as the repair target: “Please make this takeaway.”",
+      "korean": "பார்சல்",
+      "english": "Repair \"பார்சல்\" inside \"இதை பார்சல் செய்யுங்கள்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Parcel / takeaway.” A very common South Indian restaurant word.",
+      "example": "இதை பார்சல் செய்யுங்கள்.",
+      "exampleEnglish": "Use the model as the repair target: “Please make this takeaway.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "பார்சல்",
+      "romanization": "pārcal",
+      "nativeText": "Transfer \"பார்சல்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இதை பார்சல் செய்யுங்கள்.\".",
+      "pronunciation": "pārcal",
+      "exampleTarget": "இதை பார்சல் செய்யுங்கள்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Please make this takeaway.”",
+      "korean": "பார்சல்",
+      "english": "Transfer \"பார்சல்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இதை பார்சல் செய்யுங்கள்.\".",
+      "example": "இதை பார்சல் செய்யுங்கள்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Please make this takeaway.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "பார்சல்",
+      "romanization": "pārcal",
+      "nativeText": "Find one word or phrase that naturally travels with \"பார்சல்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "pārcal",
+      "exampleTarget": "இதை பார்சல் செய்யுங்கள்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Please make this takeaway.”",
+      "korean": "பார்சல்",
+      "english": "Find one word or phrase that naturally travels with \"பார்சல்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "இதை பார்சல் செய்யுங்கள்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Please make this takeaway.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "பார்சல்",
+      "romanization": "pārcal",
+      "nativeText": "Listen for \"பார்சல்\" inside \"இதை பார்சல் செய்யுங்கள்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "pārcal",
+      "exampleTarget": "இதை பார்சல் செய்யுங்கள்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Please make this takeaway.”",
+      "korean": "பார்சல்",
+      "english": "Listen for \"பார்சல்\" inside \"இதை பார்சல் செய்யுங்கள்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "இதை பார்சல் செய்யுங்கள்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Please make this takeaway.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "பார்சல்",
+      "romanization": "pārcal",
+      "nativeText": "Write \"பார்சல்\" again without looking, then compare the exact written form against \"இதை பார்சல் செய்யுங்கள்.\" before moving on.",
+      "pronunciation": "pārcal",
+      "exampleTarget": "இதை பார்சல் செய்யுங்கள்.",
+      "exampleNative": "Use the written model as the final correctness check: “Please make this takeaway.”",
+      "korean": "பார்சல்",
+      "english": "Write \"பார்சல்\" again without looking, then compare the exact written form against \"இதை பார்சல் செய்யுங்கள்.\" before moving on.",
+      "example": "இதை பார்சல் செய்யுங்கள்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Please make this takeaway.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "பார்சல்",
+      "romanization": "pārcal",
+      "nativeText": "Check whether \"பார்சல்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Please make this takeaway.”",
+      "pronunciation": "pārcal",
+      "exampleTarget": "இதை பார்சல் செய்யுங்கள்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Please make this takeaway.”",
+      "korean": "பார்சல்",
+      "english": "Check whether \"பார்சல்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Please make this takeaway.”",
+      "example": "இதை பார்சல் செய்யுங்கள்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Please make this takeaway.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "ஒரு பங்கு",
+      "romanization": "oru paṅku",
+      "nativeText": "“One portion.” Useful for serving-sized orders.",
+      "pronunciation": "oru paṅku",
+      "exampleTarget": "ஒரு பங்கு இட்லி வேண்டும்.",
+      "exampleNative": "“I want one portion of idli.”",
+      "korean": "ஒரு பங்கு",
+      "english": "“One portion.” Useful for serving-sized orders.",
+      "example": "ஒரு பங்கு இட்லி வேண்டும்.",
+      "exampleEnglish": "“I want one portion of idli.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "ஒரு பங்கு இட்லி வேண்டும்.",
+      "romanization": "oru paṅku",
+      "nativeText": "Model use for \"ஒரு பங்கு இட்லி வேண்டும்.\": “I want one portion of idli.”",
+      "pronunciation": "oru paṅku",
+      "exampleTarget": "ஒரு பங்கு இட்லி வேண்டும்.",
+      "exampleNative": "“I want one portion of idli.”",
+      "korean": "ஒரு பங்கு இட்லி வேண்டும்.",
+      "english": "Model use for \"ஒரு பங்கு இட்லி வேண்டும்.\": “I want one portion of idli.”",
+      "example": "ஒரு பங்கு இட்லி வேண்டும்.",
+      "exampleEnglish": "“I want one portion of idli.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "ஒரு பங்கு",
+      "romanization": "oru paṅku",
+      "nativeText": "Usage focus for \"ஒரு பங்கு\": “One portion.” Useful for serving-sized orders.",
+      "pronunciation": "oru paṅku",
+      "exampleTarget": "ஒரு பங்கு இட்லி வேண்டும்.",
+      "exampleNative": "Notice what the form is doing here: “I want one portion of idli.”",
+      "korean": "ஒரு பங்கு",
+      "english": "Usage focus for \"ஒரு பங்கு\": “One portion.” Useful for serving-sized orders.",
+      "example": "ஒரு பங்கு இட்லி வேண்டும்.",
+      "exampleEnglish": "Notice what the form is doing here: “I want one portion of idli.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "ஒரு பங்கு",
+      "romanization": "oru paṅku",
+      "nativeText": "Contrast check for \"ஒரு பங்கு\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "oru paṅku",
+      "exampleTarget": "ஒரு பங்கு இட்லி வேண்டும்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want one portion of idli.”",
+      "korean": "ஒரு பங்கு",
+      "english": "Contrast check for \"ஒரு பங்கு\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "ஒரு பங்கு இட்லி வேண்டும்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want one portion of idli.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "ஒரு பங்கு",
+      "romanization": "oru paṅku",
+      "nativeText": "Recall \"ஒரு பங்கு\" from memory, then explain what would change if a nearby alternative replaced it in \"ஒரு பங்கு இட்லி வேண்டும்.\".",
+      "pronunciation": "oru paṅku",
+      "exampleTarget": "ஒரு பங்கு இட்லி வேண்டும்.",
+      "exampleNative": "Self-check against the model before moving on: “I want one portion of idli.”",
+      "korean": "ஒரு பங்கு",
+      "english": "Recall \"ஒரு பங்கு\" from memory, then explain what would change if a nearby alternative replaced it in \"ஒரு பங்கு இட்லி வேண்டும்.\".",
+      "example": "ஒரு பங்கு இட்லி வேண்டும்.",
+      "exampleEnglish": "Self-check against the model before moving on: “I want one portion of idli.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "ஒரு பங்கு",
+      "romanization": "oru paṅku",
+      "nativeText": "Repair \"ஒரு பங்கு\" inside \"ஒரு பங்கு இட்லி வேண்டும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “One portion.” Useful for serving-sized orders.",
+      "pronunciation": "oru paṅku",
+      "exampleTarget": "ஒரு பங்கு இட்லி வேண்டும்.",
+      "exampleNative": "Use the model as the repair target: “I want one portion of idli.”",
+      "korean": "ஒரு பங்கு",
+      "english": "Repair \"ஒரு பங்கு\" inside \"ஒரு பங்கு இட்லி வேண்டும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “One portion.” Useful for serving-sized orders.",
+      "example": "ஒரு பங்கு இட்லி வேண்டும்.",
+      "exampleEnglish": "Use the model as the repair target: “I want one portion of idli.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "ஒரு பங்கு",
+      "romanization": "oru paṅku",
+      "nativeText": "Transfer \"ஒரு பங்கு\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ஒரு பங்கு இட்லி வேண்டும்.\".",
+      "pronunciation": "oru paṅku",
+      "exampleTarget": "ஒரு பங்கு இட்லி வேண்டும்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want one portion of idli.”",
+      "korean": "ஒரு பங்கு",
+      "english": "Transfer \"ஒரு பங்கு\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ஒரு பங்கு இட்லி வேண்டும்.\".",
+      "example": "ஒரு பங்கு இட்லி வேண்டும்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want one portion of idli.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "ஒரு பங்கு",
+      "romanization": "oru paṅku",
+      "nativeText": "Find one word or phrase that naturally travels with \"ஒரு பங்கு\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "oru paṅku",
+      "exampleTarget": "ஒரு பங்கு இட்லி வேண்டும்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want one portion of idli.”",
+      "korean": "ஒரு பங்கு",
+      "english": "Find one word or phrase that naturally travels with \"ஒரு பங்கு\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "ஒரு பங்கு இட்லி வேண்டும்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want one portion of idli.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "ஒரு பங்கு",
+      "romanization": "oru paṅku",
+      "nativeText": "Listen for \"ஒரு பங்கு\" inside \"ஒரு பங்கு இட்லி வேண்டும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "oru paṅku",
+      "exampleTarget": "ஒரு பங்கு இட்லி வேண்டும்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want one portion of idli.”",
+      "korean": "ஒரு பங்கு",
+      "english": "Listen for \"ஒரு பங்கு\" inside \"ஒரு பங்கு இட்லி வேண்டும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "ஒரு பங்கு இட்லி வேண்டும்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want one portion of idli.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "ஒரு பங்கு",
+      "romanization": "oru paṅku",
+      "nativeText": "Write \"ஒரு பங்கு\" again without looking, then compare the exact written form against \"ஒரு பங்கு இட்லி வேண்டும்.\" before moving on.",
+      "pronunciation": "oru paṅku",
+      "exampleTarget": "ஒரு பங்கு இட்லி வேண்டும்.",
+      "exampleNative": "Use the written model as the final correctness check: “I want one portion of idli.”",
+      "korean": "ஒரு பங்கு",
+      "english": "Write \"ஒரு பங்கு\" again without looking, then compare the exact written form against \"ஒரு பங்கு இட்லி வேண்டும்.\" before moving on.",
+      "example": "ஒரு பங்கு இட்லி வேண்டும்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want one portion of idli.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "ஒரு பங்கு",
+      "romanization": "oru paṅku",
+      "nativeText": "Check whether \"ஒரு பங்கு\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want one portion of idli.”",
+      "pronunciation": "oru paṅku",
+      "exampleTarget": "ஒரு பங்கு இட்லி வேண்டும்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want one portion of idli.”",
+      "korean": "ஒரு பங்கு",
+      "english": "Check whether \"ஒரு பங்கு\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want one portion of idli.”",
+      "example": "ஒரு பங்கு இட்லி வேண்டும்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want one portion of idli.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "பில் கொடுங்கள்",
+      "romanization": "pil koṭuṅkaḷ",
+      "nativeText": "“Please give the bill.” A polite complete closing phrase.",
+      "pronunciation": "pil koṭuṅkaḷ",
+      "exampleTarget": "பில் கொடுங்கள்.",
+      "exampleNative": "“Please give the bill.”",
+      "korean": "பில் கொடுங்கள்",
+      "english": "“Please give the bill.” A polite complete closing phrase.",
+      "example": "பில் கொடுங்கள்.",
+      "exampleEnglish": "“Please give the bill.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "பில் கொடுங்கள்.",
+      "romanization": "pil koṭuṅkaḷ",
+      "nativeText": "Model use for \"பில் கொடுங்கள்.\": “Please give the bill.”",
+      "pronunciation": "pil koṭuṅkaḷ",
+      "exampleTarget": "பில் கொடுங்கள்.",
+      "exampleNative": "“Please give the bill.”",
+      "korean": "பில் கொடுங்கள்.",
+      "english": "Model use for \"பில் கொடுங்கள்.\": “Please give the bill.”",
+      "example": "பில் கொடுங்கள்.",
+      "exampleEnglish": "“Please give the bill.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "பில் கொடுங்கள்",
+      "romanization": "pil koṭuṅkaḷ",
+      "nativeText": "Usage focus for \"பில் கொடுங்கள்\": “Please give the bill.” A polite complete closing phrase.",
+      "pronunciation": "pil koṭuṅkaḷ",
+      "exampleTarget": "பில் கொடுங்கள்.",
+      "exampleNative": "Notice what the form is doing here: “Please give the bill.”",
+      "korean": "பில் கொடுங்கள்",
+      "english": "Usage focus for \"பில் கொடுங்கள்\": “Please give the bill.” A polite complete closing phrase.",
+      "example": "பில் கொடுங்கள்.",
+      "exampleEnglish": "Notice what the form is doing here: “Please give the bill.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "பில் கொடுங்கள்",
+      "romanization": "pil koṭuṅkaḷ",
+      "nativeText": "Contrast check for \"பில் கொடுங்கள்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "pil koṭuṅkaḷ",
+      "exampleTarget": "பில் கொடுங்கள்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Please give the bill.”",
+      "korean": "பில் கொடுங்கள்",
+      "english": "Contrast check for \"பில் கொடுங்கள்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "பில் கொடுங்கள்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Please give the bill.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "பில் கொடுங்கள்",
+      "romanization": "pil koṭuṅkaḷ",
+      "nativeText": "Recall \"பில் கொடுங்கள்\" from memory, then explain what would change if a nearby alternative replaced it in \"பில் கொடுங்கள்.\".",
+      "pronunciation": "pil koṭuṅkaḷ",
+      "exampleTarget": "பில் கொடுங்கள்.",
+      "exampleNative": "Self-check against the model before moving on: “Please give the bill.”",
+      "korean": "பில் கொடுங்கள்",
+      "english": "Recall \"பில் கொடுங்கள்\" from memory, then explain what would change if a nearby alternative replaced it in \"பில் கொடுங்கள்.\".",
+      "example": "பில் கொடுங்கள்.",
+      "exampleEnglish": "Self-check against the model before moving on: “Please give the bill.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "பில் கொடுங்கள்",
+      "romanization": "pil koṭuṅkaḷ",
+      "nativeText": "Repair \"பில் கொடுங்கள்\" inside \"பில் கொடுங்கள்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Please give the bill.” A polite complete closing phrase.",
+      "pronunciation": "pil koṭuṅkaḷ",
+      "exampleTarget": "பில் கொடுங்கள்.",
+      "exampleNative": "Use the model as the repair target: “Please give the bill.”",
+      "korean": "பில் கொடுங்கள்",
+      "english": "Repair \"பில் கொடுங்கள்\" inside \"பில் கொடுங்கள்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Please give the bill.” A polite complete closing phrase.",
+      "example": "பில் கொடுங்கள்.",
+      "exampleEnglish": "Use the model as the repair target: “Please give the bill.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "பில் கொடுங்கள்",
+      "romanization": "pil koṭuṅkaḷ",
+      "nativeText": "Transfer \"பில் கொடுங்கள்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"பில் கொடுங்கள்.\".",
+      "pronunciation": "pil koṭuṅkaḷ",
+      "exampleTarget": "பில் கொடுங்கள்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Please give the bill.”",
+      "korean": "பில் கொடுங்கள்",
+      "english": "Transfer \"பில் கொடுங்கள்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"பில் கொடுங்கள்.\".",
+      "example": "பில் கொடுங்கள்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Please give the bill.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "பில் கொடுங்கள்",
+      "romanization": "pil koṭuṅkaḷ",
+      "nativeText": "Find one word or phrase that naturally travels with \"பில் கொடுங்கள்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "pil koṭuṅkaḷ",
+      "exampleTarget": "பில் கொடுங்கள்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Please give the bill.”",
+      "korean": "பில் கொடுங்கள்",
+      "english": "Find one word or phrase that naturally travels with \"பில் கொடுங்கள்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "பில் கொடுங்கள்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Please give the bill.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "பில் கொடுங்கள்",
+      "romanization": "pil koṭuṅkaḷ",
+      "nativeText": "Listen for \"பில் கொடுங்கள்\" inside \"பில் கொடுங்கள்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "pil koṭuṅkaḷ",
+      "exampleTarget": "பில் கொடுங்கள்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Please give the bill.”",
+      "korean": "பில் கொடுங்கள்",
+      "english": "Listen for \"பில் கொடுங்கள்\" inside \"பில் கொடுங்கள்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "பில் கொடுங்கள்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Please give the bill.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "பில் கொடுங்கள்",
+      "romanization": "pil koṭuṅkaḷ",
+      "nativeText": "Write \"பில் கொடுங்கள்\" again without looking, then compare the exact written form against \"பில் கொடுங்கள்.\" before moving on.",
+      "pronunciation": "pil koṭuṅkaḷ",
+      "exampleTarget": "பில் கொடுங்கள்.",
+      "exampleNative": "Use the written model as the final correctness check: “Please give the bill.”",
+      "korean": "பில் கொடுங்கள்",
+      "english": "Write \"பில் கொடுங்கள்\" again without looking, then compare the exact written form against \"பில் கொடுங்கள்.\" before moving on.",
+      "example": "பில் கொடுங்கள்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Please give the bill.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit09orderingfood-vocabulary-1",
+        "ta-level1unit09orderingfood-vocabulary-2",
+        "ta-level1unit09orderingfood-grammar-1",
+        "ta-level1unit09orderingfood-grammar-2",
+        "ta-level1unit09orderingfood-reading",
+        "ta-level1unit09orderingfood-listening",
+        "ta-level1unit09orderingfood-writing",
+        "ta-level1unit09orderingfood-task"
+      ],
+      "targetText": "பில் கொடுங்கள்",
+      "romanization": "pil koṭuṅkaḷ",
+      "nativeText": "Check whether \"பில் கொடுங்கள்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Please give the bill.”",
+      "pronunciation": "pil koṭuṅkaḷ",
+      "exampleTarget": "பில் கொடுங்கள்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Please give the bill.”",
+      "korean": "பில் கொடுங்கள்",
+      "english": "Check whether \"பில் கொடுங்கள்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Please give the bill.”",
+      "example": "பில் கொடுங்கள்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Please give the bill.”"
+    }
+  ],
+  "targetLang": "ta",
+  "nativeLang": "en",
+  "track": "textbook"
+};

@@ -23,7 +23,8 @@
     "saving": "Besparing...",
     "search": "Zoekopdracht",
     "notSet": "Niet ingesteld",
-    "all": "Alle"
+    "all": "Alle",
+    "reset": "Opnieuw instellen"
   },
   "languages": {
     "en": "Engels",
@@ -218,7 +219,8 @@
       "fri": "F",
       "sat": "S",
       "sun": "S"
-    }
+    },
+    "contactDesc": "Vragen, feedback of een probleem om te melden"
   },
   "lessons": {
     "title": "{{language}} Lessen",
@@ -738,7 +740,102 @@
     "modeBreakdown": "Modusoverzicht",
     "searchUsers": "Gebruikers zoeken...",
     "all": "Alle",
-    "demo": "Demo"
+    "demo": "Demo",
+    "failures": "Mislukkingen",
+    "messages": "Berichten",
+    "userFailures": "Fouten aan de gebruikerszijde",
+    "openFailures": "{{count}} open fouten",
+    "criticalFailures": "{{count}} kritisch",
+    "clearing": "Wissen...",
+    "loadingFailures": "Fouten bij het laden...",
+    "noOpenFailures": "Geen open fouten aan de gebruikerszijde.",
+    "acknowledge": "Erkennen",
+    "page": "Pagina",
+    "device": "Apparaat",
+    "languagePair": "Taalpaar",
+    "clientStatus": "Cliënt",
+    "pageOf": "Pagina {{page}} van {{total}}",
+    "guestUser": "Gastgebruiker",
+    "unknownUser": "Onbekende gebruiker",
+    "unknown": "Onbekend",
+    "clearFailuresTitle": "Openstaande fouten wissen?",
+    "clearFailuresBody": "Alle {{count}} openstaande fouten markeren als bevestigd?",
+    "contactMessages": "Contactberichten",
+    "unreadMessages": "{{count}} ongelezen berichten",
+    "allMessages": "Alle berichten",
+    "registeredUsers": "Geregistreerde gebruikers",
+    "guestUsers": "Gastgebruikers",
+    "loadingMessages": "Berichten laden...",
+    "noUnreadMessages": "Geen ongelezen contactberichten.",
+    "registeredUser": "Geregistreerde gebruiker",
+    "contactMessage": "Contactbericht",
+    "markRead": "Markeer gelezen",
+    "name": "Naam",
+    "accountTier": "Accountniveau",
+    "clearMessagesTitle": "Ongelezen berichten wissen?",
+    "clearMessagesBody": "Alle {{count}} ongelezen contactberichten markeren als gelezen?",
+    "demoDifficulty": {
+      "beginner": "Beginner",
+      "balanced": "Evenwichtig",
+      "natural": "Natuurlijk",
+      "challenge": "Uitdaging"
+    },
+    "demoScenarios": {
+      "friendlyChat": "Vriendelijk praatje",
+      "cafeWorker": "Praten met een cafémedewerker",
+      "taxiDriver": "Een taxichauffeur om hulp vragen",
+      "meetingNew": "Iemand nieuw ontmoeten"
+    },
+    "demoReplyPlaceholder": "Het antwoord van de oefenpartner verschijnt hier.",
+    "demoTipPlaceholder": "Vraag het in een van de geselecteerde talen. U kunt van onderwerp veranderen, naar betekenissen vragen of om eenvoudigere bewoordingen verzoeken.",
+    "promoteConfirmShort": "{{username}} een beheerder maken?",
+    "promote": "Bevorderen",
+    "deleteUserTitle": "Gebruiker verwijderen",
+    "deleteUserConfirmShort": "{{username}} definitief verwijderen? Dit kan niet ongedaan worden gemaakt.",
+    "demoReset": "Gesprek gereset.",
+    "demoNoReply": "Er is geen antwoord teruggekomen.",
+    "demoNoCoachingNote": "Geen coachingsbriefje.",
+    "demoResponseFailed": "Deze keer kon ik niet reageren. Probeer het opnieuw.",
+    "demoConnectionIssue": "Verbindingsprobleem. Probeer het zo nog eens.",
+    "tapForDetails": "Tik voor details",
+    "activeWeek": "Actief 7d",
+    "countries": "Landen",
+    "conversion": "Conversie",
+    "engagement": "Betrokkenheid",
+    "totalCardsStudied": "Totaal aantal bestudeerde kaarten",
+    "totalAudioPlays": "Totaal aantal audioweergaven",
+    "lessonsViewed": "Lessen bekeken",
+    "topLanguagePairs": "Toptaalparen",
+    "sessionsCount": "{{count}} sessies",
+    "deviceBreakdown": "Apparaatstoring",
+    "recentSessions": "Recente sessies ({{count}})",
+    "cardsStudiedCount": "{{count}}-kaarten",
+    "pageNumber": "Pagina {{page}}",
+    "noGuestData": "Geen gastgegevens beschikbaar",
+    "loadData": "Gegevens laden",
+    "speakingDemo": "Sprekende demo",
+    "demoIntro": "Gespreksvoorbeeld alleen voor beheerders. Er worden geen audio of de voortgang van de leerling opgeslagen.",
+    "scenario": "Scenario",
+    "customScenario": "Aangepast scenario",
+    "learningLanguage": "Taal leren",
+    "nativeLanguage": "Moedertaal",
+    "listenFor": "Luister naar",
+    "difficulty": "Moeilijkheidsgraad",
+    "learnerTurnInput": "Typ of plak wat de leerling heeft gezegd",
+    "interrupt": "Onderbreken",
+    "conversationState": "Conversatie staat",
+    "lastLearnerTurn": "Laatste beurt van de leerling",
+    "noTurnSentYet": "Nog geen beurt verzonden.",
+    "practicePartnerResponse": "Oefen de partnerreactie",
+    "coachNote": "Opmerking van de coach",
+    "userDetails": "Gebruikersgegevens",
+    "totalXp": "Totaal XP",
+    "studyMode": "Studiemodus",
+    "languages": "Talen",
+    "loginCount": "Aantal aanmeldingen",
+    "memberSince": "Lid sinds",
+    "suspendReasonLabel": "Reden opschorten",
+    "userDetailsLoadFailed": "Kan gebruikersgegevens niet laden"
   },
   "pricing": {
     "kicker": "Plannen",
@@ -820,7 +917,9 @@
     "discountCode": "Kortingscode",
     "discountPlaceholder": "Optionele code",
     "discountUnavailable": "Die kortingscode is niet beschikbaar voor dit abonnement.",
-    "automaticDiscountApplied": "Automatische korting van {{discount}} toegepast"
+    "automaticDiscountApplied": "Automatische korting van {{discount}} toegepast",
+    "signInToChooseTitle": "Maak een account aan om door te gaan",
+    "signInToChooseBody": "Maak een account aan of log in voordat u een betaald abonnement kiest, zodat uw toegang aan u kan worden gekoppeld."
   },
   "billing": {
     "kicker": "Facturering",
@@ -960,7 +1059,7 @@
     "untitled": "Naamloze les",
     "cardStats": "{{vocab}} woordenschat / {{sentences}} voorbeelden / {{conversations}} dialogen",
     "classFallback": "Klas",
-    "loadError": "Kan leslessen niet laden. Zorg ervoor dat de backend actief en gezaaid is.",
+    "loadError": "We kunnen je lessen momenteel niet laden. Controleer uw verbinding en probeer het opnieuw.",
     "tracks": {
       "foundationTitle": "Niveau {{level}} - Fundering",
       "foundationSubtitle": "Begin hier met het klank- en schrijfsysteem voor {{language}}.",
@@ -975,7 +1074,8 @@
     },
     "titlePrefix": {
       "unit": "Niveau {{level}} · Eenheid {{unit}}: {{title}}"
-    }
+    },
+    "retry": "Probeer het opnieuw"
   },
   "classLesson": {
     "loading": "Lesles laden...",
@@ -1114,7 +1214,10 @@
     "saveReply": "Antwoord opslaan",
     "saveExample": "Voorbeeld opslaan",
     "practiceEverywhere": "Oefen dit overal",
-    "selfTestReason": "Opgeslagen uit de les voor een snelle zelftest."
+    "selfTestReason": "Opgeslagen uit de les voor een snelle zelftest.",
+    "previous": "Vorig",
+    "lessonGuide": "Lesgids",
+    "activityXOfY": "Activiteit {{current}} van {{total}}"
   },
   "exercise": {
     "kicker": "Oefening",
@@ -1182,7 +1285,8 @@
     "recapUsefulPhrases": "Nuttige zinnen",
     "recapReview": "Beoordeel hierna",
     "recapReviewFallback": "Bewaar één zin en hergebruik deze in een andere oefenmodus.",
-    "practiceLabel": "Conversatie praktijk"
+    "practiceLabel": "Conversatie praktijk",
+    "practiceSetup": "Oefen de opstelling"
   },
   "context": {
     "backToProfile": "Terug naar profiel",
@@ -1304,7 +1408,10 @@
       "memory": "Uit het geheugen"
     },
     "savedReason": "Gered van schrijfoefening voor nog een pasje.",
-    "selfTestReason": "Gered uit de schrijfoefening voor een snelle zelftest."
+    "selfTestReason": "Gered uit de schrijfoefening voor een snelle zelftest.",
+    "hideNotebook": "Notitieboekje verbergen",
+    "showNotebook": "Notitieboekje tonen",
+    "hideAddPanel": "Verberg het toevoegpaneel"
   },
   "certificates": {
     "kicker": "Certificaat",
@@ -1472,5 +1579,44 @@
     "firstThreeDayReviewBody": "Keer een keer terug naar wat je gisteren zag, zodat de eerste items blijven hangen.",
     "firstThreeDaySpeakBody": "Gebruik een korte spreekbeurt, zodat de taal vroegtijdig de pagina verlaat.",
     "firstThreeDayLearnBody": "Begin met één kleine begeleide les, zodat het tweetal een duidelijk startpunt heeft."
+  },
+  "resetPassword": {
+    "title": "Wachtwoord opnieuw instellen",
+    "subtitle": "Voer je nieuwe wachtwoord in.",
+    "error": "Kan het wachtwoord niet opnieuw instellen. Probeer het opnieuw.",
+    "invalidLink": "Deze resetlink is ongeldig of verlopen.",
+    "noToken": "Resettoken ontbreekt. Vraag een nieuwe link aan.",
+    "requestNew": "Nieuwe link aanvragen",
+    "success": "Je wachtwoord is succesvol opnieuw ingesteld.",
+    "goToLogin": "Ga naar inloggen",
+    "newPasswordPlaceholder": "Nieuw wachtwoord",
+    "resetButton": "Wachtwoord opnieuw instellen",
+    "failed": "Kan wachtwoord niet opnieuw instellen. Probeer het opnieuw.",
+    "kicker": "Wachtwoord opnieuw instellen",
+    "missingToken": "Deze resetlink ontbreekt of is ongeldig.",
+    "newPassword": "Nieuw wachtwoord",
+    "confirmPassword": "Bevestig wachtwoord",
+    "submit": "Wachtwoord opnieuw instellen"
+  },
+  "contact": {
+    "navLabel": "Contact",
+    "kicker": "Neem contact op",
+    "title": "Vertel ons wat je nodig hebt",
+    "subtitle": "Stel een vraag, meld een probleem of deel feedback. We bekijken je bericht en reageren wanneer dat nodig is.",
+    "infoTitle": "We luisteren",
+    "infoText": "Berichten uit dit formulier worden veilig opgeslagen met beschikbare accountcontext, zodat we sneller kunnen begrijpen wat er is gebeurd en kunnen helpen.",
+    "name": "Naam",
+    "namePlaceholder": "Je naam",
+    "email": "E-mail",
+    "emailPlaceholder": "jij@voorbeeld.com",
+    "subject": "Onderwerp",
+    "subjectPlaceholder": "Waar gaat dit over?",
+    "message": "Bericht",
+    "messagePlaceholder": "Schrijf je bericht hier...",
+    "send": "Bericht verzenden",
+    "success": "Bedankt. Je bericht is ontvangen.",
+    "error": "We konden je bericht nu niet verzenden. Probeer het opnieuw.",
+    "companyTrap": "Bedrijf",
+    "profileHint": "Stuur een vraag, meld een probleem of deel feedback vanaf dit apparaat."
   }
 }

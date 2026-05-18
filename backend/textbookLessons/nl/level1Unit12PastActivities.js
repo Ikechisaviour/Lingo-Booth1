@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('nl', {
-  slug: 'nl-l1u12',
-  title: 'Level 1 · Unit 12: Wat Heb Je Gedaan? — Past Activities',
-  category: 'daily-life',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Talk about completed past activities with the Dutch perfect tense.',
-  vocabularyGoal: 'Use past-time markers and common activity verbs.',
-  grammarGoal: 'Use `hebben` or `zijn` plus a past participle, and notice separable prefixes in participles.',
-  speakingGoal: 'Say what you did yesterday and ask someone else one past question.',
-  task: 'Give a short update about yesterday.',
-  expressionPractice: [
-    practice('stating-past', 'Stating past action', 'Use one perfect-tense sentence.'),
-    practice('sequencing', 'Sequencing', 'Use `daarna`.'),
-    practice('asking-past', 'Asking about past', 'Use `wat heb je gedaan?`.'),
+module.exports = {
+  "title": "Level 1 · Unit 12: Wat Heb Je Gedaan? — Past Activities",
+  "category": "daily-life",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "nl-level1unit12pastactivities-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Talk about completed past activities with the Dutch perfect tense."
+      ],
+      "task": "Give a short update about yesterday."
+    },
+    {
+      "id": "nl-level1unit12pastactivities-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "nl-level1unit12pastactivities-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 12: Wat Heb Je Gedaan? — Past Activities with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "nl-level1unit12pastactivities-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 12: Wat Heb Je Gedaan? — Past Activities sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "nl-level1unit12pastactivities-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Talk about completed past activities with the Dutch perfect tense."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "nl-level1unit12pastactivities-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 12: Wat Heb Je Gedaan? — Past Activities with one nearby Dutch form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "nl-level1unit12pastactivities-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "nl-level1unit12pastactivities-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "nl-level1unit12pastactivities-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "nl-level1unit12pastactivities-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "nl-level1unit12pastactivities-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Give a short update about yesterday."
+      ],
+      "task": "Give a short update about yesterday."
+    }
   ],
-  relatedPools: ['topic-routines', 'topic-time'],
-  items: [
-    item('ik heb gegeten', 'ik hep khə-AY-ten', '“I ate / have eaten.” Most activity verbs use `hebben` in the perfect.', 'Gisteren heb ik thuis gegeten.', '“Yesterday I ate at home.”'),
-    item('ik ben gegaan', 'ik ben khə-KHAHN', '“I went.” Motion toward a new location commonly uses `zijn`.', 'Ik ben naar de bibliotheek gegaan.', '“I went to the library.”'),
-    item('ik heb gestudeerd', 'ik hep khə-sty-DEERT', '“I studied.” A regular weak participle with `ge-`.', 'Ik heb twee uur gestudeerd.', '“I studied for two hours.”'),
-    item('ik ben opgestaan', 'ik ben OP-khə-stahn', '“I got up.” The separable prefix stays before `ge` in the participle.', 'Ik ben vroeg opgestaan.', '“I got up early.”'),
-    item('daarna', 'dahr-NAH', '“After that.” A simple sequence connector.', 'Daarna heb ik mijn vriend ontmoet.', '“After that I met my friend.”'),
-    item('vorige week', 'VOH-ri-khə vayk', '“Last week.” A common past-time phrase.', 'Vorige week zijn we naar het museum gegaan.', '“Last week we went to the museum.”'),
-    item('wat heb je gedaan?', 'vat hep yə khə-DAHN', '“What did you do?” A core past-question frame.', 'Wat heb je gisteren gedaan?', '“What did you do yesterday?”'),
-    item('al', 'al', '“Already.” Useful with completed actions and questions.', 'Heb je al geluncht?', '“Have you already had lunch?”'),
+  "expressionPractice": [
+    {
+      "id": "stating-past",
+      "label": "Stating past action",
+      "goal": "Use one perfect-tense sentence."
+    },
+    {
+      "id": "sequencing",
+      "label": "Sequencing",
+      "goal": "Use `daarna`."
+    },
+    {
+      "id": "asking-past",
+      "label": "Asking about past",
+      "goal": "Use `wat heb je gedaan?`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-routines",
+    "topic-time"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit12pastactivities-orientation"
+      ],
+      "targetText": "lesdoel",
+      "romanization": "",
+      "nativeText": "Talk about completed past activities with the Dutch perfect tense.",
+      "pronunciation": "",
+      "exampleTarget": "lesdoel",
+      "exampleNative": "The whole lesson is built toward this outcome: Give a short update about yesterday.",
+      "korean": "lesdoel",
+      "english": "Talk about completed past activities with the Dutch perfect tense.",
+      "example": "lesdoel",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Give a short update about yesterday."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "nl-level1unit12pastactivities-pronunciation"
+      ],
+      "targetText": "klankcontrole",
+      "romanization": "",
+      "nativeText": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Gisteren heb ik thuis gegeten.\".",
+      "pronunciation": "",
+      "exampleTarget": "Gisteren heb ik thuis gegeten.",
+      "exampleNative": "“Yesterday I ate at home.”",
+      "korean": "klankcontrole",
+      "english": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Gisteren heb ik thuis gegeten.\".",
+      "example": "Gisteren heb ik thuis gegeten.",
+      "exampleEnglish": "“Yesterday I ate at home.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1"
+      ],
+      "targetText": "ik heb gegeten",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 12: Wat Heb Je Gedaan? — Past Activities with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Gisteren heb ik thuis gegeten.",
+      "exampleNative": "“Yesterday I ate at home.”",
+      "korean": "ik heb gegeten",
+      "english": "Use the key language of Level 1 · Unit 12: Wat Heb Je Gedaan? — Past Activities with the register and setting that the lesson requires.",
+      "example": "Gisteren heb ik thuis gegeten.",
+      "exampleEnglish": "“Yesterday I ate at home.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-2"
+      ],
+      "targetText": "ik ben gegaan",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 12: Wat Heb Je Gedaan? — Past Activities sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Ik ben naar de bibliotheek gegaan.",
+      "exampleNative": "“I went to the library.”",
+      "korean": "ik ben gegaan",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 12: Wat Heb Je Gedaan? — Past Activities sound precise rather than merely understandable.",
+      "example": "Ik ben naar de bibliotheek gegaan.",
+      "exampleEnglish": "“I went to the library.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "nl-level1unit12pastactivities-grammar-1"
+      ],
+      "targetText": "ik heb gegeten",
+      "romanization": "",
+      "nativeText": "Talk about completed past activities with the Dutch perfect tense.",
+      "pronunciation": "",
+      "exampleTarget": "Gisteren heb ik thuis gegeten.",
+      "exampleNative": "“Yesterday I ate at home.”",
+      "korean": "ik heb gegeten",
+      "english": "Talk about completed past activities with the Dutch perfect tense.",
+      "example": "Gisteren heb ik thuis gegeten.",
+      "exampleEnglish": "“Yesterday I ate at home.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "nl-level1unit12pastactivities-grammar-2"
+      ],
+      "targetText": "ik ben gegaan",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 12: Wat Heb Je Gedaan? — Past Activities with one nearby Dutch form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Ik ben naar de bibliotheek gegaan.",
+      "exampleNative": "“I went to the library.”",
+      "korean": "ik ben gegaan",
+      "english": "Contrast the main pattern in Level 1 · Unit 12: Wat Heb Je Gedaan? — Past Activities with one nearby Dutch form so the learner can avoid literal translation.",
+      "example": "Ik ben naar de bibliotheek gegaan.",
+      "exampleEnglish": "“I went to the library.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "nl-level1unit12pastactivities-reading"
+      ],
+      "targetText": "leesmodel",
+      "romanization": "",
+      "nativeText": "Read \"Heb je al geluncht?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Heb je al geluncht?",
+      "exampleNative": "“Have you already had lunch?”",
+      "korean": "leesmodel",
+      "english": "Read \"Heb je al geluncht?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Heb je al geluncht?",
+      "exampleEnglish": "“Have you already had lunch?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit12pastactivities-listening"
+      ],
+      "targetText": "dialoogmodel",
+      "romanization": "",
+      "nativeText": "Hear \"Heb je al geluncht?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Heb je al geluncht?",
+      "exampleNative": "“Have you already had lunch?”",
+      "korean": "dialoogmodel",
+      "english": "Hear \"Heb je al geluncht?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Heb je al geluncht?",
+      "exampleEnglish": "“Have you already had lunch?”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "nl-level1unit12pastactivities-writing"
+      ],
+      "targetText": "schrijfoefening",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Gisteren heb ik thuis gegeten.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Gisteren heb ik thuis gegeten.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "schrijfoefening",
+      "english": "Write your own version after studying \"Gisteren heb ik thuis gegeten.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Gisteren heb ik thuis gegeten.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "nl-level1unit12pastactivities-culture"
+      ],
+      "targetText": "gebruik en context",
+      "romanization": "",
+      "nativeText": "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Ik ben naar de bibliotheek gegaan.",
+      "exampleNative": "“I went to the library.”",
+      "korean": "gebruik en context",
+      "english": "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used.",
+      "example": "Ik ben naar de bibliotheek gegaan.",
+      "exampleEnglish": "“I went to the library.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "eindtaak",
+      "romanization": "",
+      "nativeText": "Give a short update about yesterday.",
+      "pronunciation": "",
+      "exampleTarget": "Heb je al geluncht?",
+      "exampleNative": "Give a short update about yesterday.",
+      "korean": "eindtaak",
+      "english": "Give a short update about yesterday.",
+      "example": "Heb je al geluncht?",
+      "exampleEnglish": "Give a short update about yesterday."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit12pastactivities-grammar-2"
+      ],
+      "targetText": "veelgemaakte fout",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around verb-second order, separable verbs, pronouns, and article choice. Begin by checking \"Ik ben naar de bibliotheek gegaan.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Ik ben naar de bibliotheek gegaan.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “I went to the library.”",
+      "korean": "veelgemaakte fout",
+      "english": "Watch for literal-translation mistakes around verb-second order, separable verbs, pronouns, and article choice. Begin by checking \"Ik ben naar de bibliotheek gegaan.\" against the model.",
+      "example": "Ik ben naar de bibliotheek gegaan.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “I went to the library.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-culture"
+      ],
+      "targetText": "register",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for jij, u, a service register, or a more relaxed everyday choice before selecting the final wording. Compare the social fit of \"Gisteren heb ik thuis gegeten.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Gisteren heb ik thuis gegeten.",
+      "exampleNative": "“Yesterday I ate at home.”",
+      "korean": "register",
+      "english": "Check whether the setting calls for jij, u, a service register, or a more relaxed everyday choice before selecting the final wording. Compare the social fit of \"Gisteren heb ik thuis gegeten.\" before reusing it elsewhere.",
+      "example": "Gisteren heb ik thuis gegeten.",
+      "exampleEnglish": "“Yesterday I ate at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "vloeiendheid",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Dutch message rather than as separate translated fragments. Aim to carry \"Heb je al geluncht?\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Heb je al geluncht?",
+      "exampleNative": "“Have you already had lunch?”",
+      "korean": "vloeiendheid",
+      "english": "Say the idea as one connected Dutch message rather than as separate translated fragments. Aim to carry \"Heb je al geluncht?\" as one thought.",
+      "example": "Heb je al geluncht?",
+      "exampleEnglish": "“Have you already had lunch?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "toepassing",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Gisteren heb ik thuis gegeten.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Gisteren heb ik thuis gegeten.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "toepassing",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Gisteren heb ik thuis gegeten.\" and move it into your own life.",
+      "example": "Gisteren heb ik thuis gegeten.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-grammar-1"
+      ],
+      "targetText": "actief ophalen",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"ik heb gegeten\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "ik heb gegeten",
+      "exampleNative": "“I ate / have eaten.” Most activity verbs use `hebben` in the perfect.",
+      "korean": "actief ophalen",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"ik heb gegeten\" before looking back.",
+      "example": "ik heb gegeten",
+      "exampleEnglish": "“I ate / have eaten.” Most activity verbs use `hebben` in the perfect."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-writing"
+      ],
+      "targetText": "uitbreiding",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Heb je al geluncht?\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Heb je al geluncht?",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "uitbreiding",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Heb je al geluncht?\" rather than restarting from a blank sentence.",
+      "example": "Heb je al geluncht?",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading"
+      ],
+      "targetText": "vergelijking",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 12: Wat Heb Je Gedaan? — Past Activities with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Ik ben naar de bibliotheek gegaan.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Ik ben naar de bibliotheek gegaan.",
+      "exampleNative": "“I went to the library.”",
+      "korean": "vergelijking",
+      "english": "Compare the central form in Level 1 · Unit 12: Wat Heb Je Gedaan? — Past Activities with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Ik ben naar de bibliotheek gegaan.\" as the comparison line.",
+      "example": "Ik ben naar de bibliotheek gegaan.",
+      "exampleEnglish": "“I went to the library.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "nl-level1unit12pastactivities-pronunciation"
+      ],
+      "targetText": "uitspraakcorrectie",
+      "romanization": "",
+      "nativeText": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Gisteren heb ik thuis gegeten.\".",
+      "pronunciation": "",
+      "exampleTarget": "Gisteren heb ik thuis gegeten.",
+      "exampleNative": "“Yesterday I ate at home.”",
+      "korean": "uitspraakcorrectie",
+      "english": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Gisteren heb ik thuis gegeten.\".",
+      "example": "Gisteren heb ik thuis gegeten.",
+      "exampleEnglish": "“Yesterday I ate at home.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "dialoogvariatie",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Heb je al geluncht?\".",
+      "pronunciation": "",
+      "exampleTarget": "Heb je al geluncht?",
+      "exampleNative": "“Have you already had lunch?”",
+      "korean": "dialoogvariatie",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Heb je al geluncht?\".",
+      "example": "Heb je al geluncht?",
+      "exampleEnglish": "“Have you already had lunch?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-writing"
+      ],
+      "targetText": "zinsbouw",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Gisteren heb ik thuis gegeten.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Gisteren heb ik thuis gegeten.",
+      "exampleNative": "“Yesterday I ate at home.”",
+      "korean": "zinsbouw",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Gisteren heb ik thuis gegeten.\" one layer at a time.",
+      "example": "Gisteren heb ik thuis gegeten.",
+      "exampleEnglish": "“Yesterday I ate at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-2"
+      ],
+      "targetText": "snelle check",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Ik ben naar de bibliotheek gegaan.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Ik ben naar de bibliotheek gegaan.",
+      "exampleNative": "“I went to the library.”",
+      "korean": "snelle check",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Ik ben naar de bibliotheek gegaan.\" as the deciding example.",
+      "example": "Ik ben naar de bibliotheek gegaan.",
+      "exampleEnglish": "“I went to the library.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit12pastactivities-culture",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "terugblik",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Heb je al geluncht?\".",
+      "pronunciation": "",
+      "exampleTarget": "Heb je al geluncht?",
+      "exampleNative": "“Have you already had lunch?”",
+      "korean": "terugblik",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Heb je al geluncht?\".",
+      "example": "Heb je al geluncht?",
+      "exampleEnglish": "“Have you already had lunch?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik heb gegeten",
+      "romanization": "ik hep khə-AY-ten",
+      "nativeText": "“I ate / have eaten.” Most activity verbs use `hebben` in the perfect.",
+      "pronunciation": "ik hep khə-AY-ten",
+      "exampleTarget": "Gisteren heb ik thuis gegeten.",
+      "exampleNative": "“Yesterday I ate at home.”",
+      "korean": "ik heb gegeten",
+      "english": "“I ate / have eaten.” Most activity verbs use `hebben` in the perfect.",
+      "example": "Gisteren heb ik thuis gegeten.",
+      "exampleEnglish": "“Yesterday I ate at home.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "Gisteren heb ik thuis gegeten.",
+      "romanization": "ik hep khə-AY-ten",
+      "nativeText": "Model use for \"Gisteren heb ik thuis gegeten.\": “Yesterday I ate at home.”",
+      "pronunciation": "ik hep khə-AY-ten",
+      "exampleTarget": "Gisteren heb ik thuis gegeten.",
+      "exampleNative": "“Yesterday I ate at home.”",
+      "korean": "Gisteren heb ik thuis gegeten.",
+      "english": "Model use for \"Gisteren heb ik thuis gegeten.\": “Yesterday I ate at home.”",
+      "example": "Gisteren heb ik thuis gegeten.",
+      "exampleEnglish": "“Yesterday I ate at home.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik heb gegeten",
+      "romanization": "ik hep khə-AY-ten",
+      "nativeText": "Usage focus for \"ik heb gegeten\": Use the key language of Level 1 · Unit 12: Wat Heb Je Gedaan? — Past Activities with the register and setting that the lesson requires.",
+      "pronunciation": "ik hep khə-AY-ten",
+      "exampleTarget": "Gisteren heb ik thuis gegeten.",
+      "exampleNative": "Notice what the form is doing here: “Yesterday I ate at home.”",
+      "korean": "ik heb gegeten",
+      "english": "Usage focus for \"ik heb gegeten\": Use the key language of Level 1 · Unit 12: Wat Heb Je Gedaan? — Past Activities with the register and setting that the lesson requires.",
+      "example": "Gisteren heb ik thuis gegeten.",
+      "exampleEnglish": "Notice what the form is doing here: “Yesterday I ate at home.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik heb gegeten",
+      "romanization": "ik hep khə-AY-ten",
+      "nativeText": "Contrast check for \"ik heb gegeten\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ik hep khə-AY-ten",
+      "exampleTarget": "Gisteren heb ik thuis gegeten.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Yesterday I ate at home.”",
+      "korean": "ik heb gegeten",
+      "english": "Contrast check for \"ik heb gegeten\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Gisteren heb ik thuis gegeten.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Yesterday I ate at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik heb gegeten",
+      "romanization": "ik hep khə-AY-ten",
+      "nativeText": "Recall \"ik heb gegeten\" from memory, then explain what would change if a nearby alternative replaced it in \"Gisteren heb ik thuis gegeten.\".",
+      "pronunciation": "ik hep khə-AY-ten",
+      "exampleTarget": "Gisteren heb ik thuis gegeten.",
+      "exampleNative": "Self-check against the model before moving on: “Yesterday I ate at home.”",
+      "korean": "ik heb gegeten",
+      "english": "Recall \"ik heb gegeten\" from memory, then explain what would change if a nearby alternative replaced it in \"Gisteren heb ik thuis gegeten.\".",
+      "example": "Gisteren heb ik thuis gegeten.",
+      "exampleEnglish": "Self-check against the model before moving on: “Yesterday I ate at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik heb gegeten",
+      "romanization": "ik hep khə-AY-ten",
+      "nativeText": "Repair \"ik heb gegeten\" inside \"Gisteren heb ik thuis gegeten.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 12: Wat Heb Je Gedaan? — Past Activities with the register and setting that the lesson requires.",
+      "pronunciation": "ik hep khə-AY-ten",
+      "exampleTarget": "Gisteren heb ik thuis gegeten.",
+      "exampleNative": "Use the model as the repair target: “Yesterday I ate at home.”",
+      "korean": "ik heb gegeten",
+      "english": "Repair \"ik heb gegeten\" inside \"Gisteren heb ik thuis gegeten.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 12: Wat Heb Je Gedaan? — Past Activities with the register and setting that the lesson requires.",
+      "example": "Gisteren heb ik thuis gegeten.",
+      "exampleEnglish": "Use the model as the repair target: “Yesterday I ate at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik heb gegeten",
+      "romanization": "ik hep khə-AY-ten",
+      "nativeText": "Transfer \"ik heb gegeten\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Gisteren heb ik thuis gegeten.\".",
+      "pronunciation": "ik hep khə-AY-ten",
+      "exampleTarget": "Gisteren heb ik thuis gegeten.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Yesterday I ate at home.”",
+      "korean": "ik heb gegeten",
+      "english": "Transfer \"ik heb gegeten\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Gisteren heb ik thuis gegeten.\".",
+      "example": "Gisteren heb ik thuis gegeten.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Yesterday I ate at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik heb gegeten",
+      "romanization": "ik hep khə-AY-ten",
+      "nativeText": "Find one word or phrase that naturally travels with \"ik heb gegeten\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ik hep khə-AY-ten",
+      "exampleTarget": "Gisteren heb ik thuis gegeten.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Yesterday I ate at home.”",
+      "korean": "ik heb gegeten",
+      "english": "Find one word or phrase that naturally travels with \"ik heb gegeten\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Gisteren heb ik thuis gegeten.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Yesterday I ate at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik heb gegeten",
+      "romanization": "ik hep khə-AY-ten",
+      "nativeText": "Listen for \"ik heb gegeten\" inside \"Gisteren heb ik thuis gegeten.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ik hep khə-AY-ten",
+      "exampleTarget": "Gisteren heb ik thuis gegeten.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Yesterday I ate at home.”",
+      "korean": "ik heb gegeten",
+      "english": "Listen for \"ik heb gegeten\" inside \"Gisteren heb ik thuis gegeten.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Gisteren heb ik thuis gegeten.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Yesterday I ate at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik heb gegeten",
+      "romanization": "ik hep khə-AY-ten",
+      "nativeText": "Write \"ik heb gegeten\" again without looking, then compare the exact written form against \"Gisteren heb ik thuis gegeten.\" before moving on.",
+      "pronunciation": "ik hep khə-AY-ten",
+      "exampleTarget": "Gisteren heb ik thuis gegeten.",
+      "exampleNative": "Use the written model as the final correctness check: “Yesterday I ate at home.”",
+      "korean": "ik heb gegeten",
+      "english": "Write \"ik heb gegeten\" again without looking, then compare the exact written form against \"Gisteren heb ik thuis gegeten.\" before moving on.",
+      "example": "Gisteren heb ik thuis gegeten.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Yesterday I ate at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik heb gegeten",
+      "romanization": "ik hep khə-AY-ten",
+      "nativeText": "Check whether \"ik heb gegeten\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Yesterday I ate at home.”",
+      "pronunciation": "ik hep khə-AY-ten",
+      "exampleTarget": "Gisteren heb ik thuis gegeten.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Yesterday I ate at home.”",
+      "korean": "ik heb gegeten",
+      "english": "Check whether \"ik heb gegeten\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Yesterday I ate at home.”",
+      "example": "Gisteren heb ik thuis gegeten.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Yesterday I ate at home.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik ben gegaan",
+      "romanization": "ik ben khə-KHAHN",
+      "nativeText": "“I went.” Motion toward a new location commonly uses `zijn`.",
+      "pronunciation": "ik ben khə-KHAHN",
+      "exampleTarget": "Ik ben naar de bibliotheek gegaan.",
+      "exampleNative": "“I went to the library.”",
+      "korean": "ik ben gegaan",
+      "english": "“I went.” Motion toward a new location commonly uses `zijn`.",
+      "example": "Ik ben naar de bibliotheek gegaan.",
+      "exampleEnglish": "“I went to the library.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "Ik ben naar de bibliotheek gegaan.",
+      "romanization": "ik ben khə-KHAHN",
+      "nativeText": "Model use for \"Ik ben naar de bibliotheek gegaan.\": “I went to the library.”",
+      "pronunciation": "ik ben khə-KHAHN",
+      "exampleTarget": "Ik ben naar de bibliotheek gegaan.",
+      "exampleNative": "“I went to the library.”",
+      "korean": "Ik ben naar de bibliotheek gegaan.",
+      "english": "Model use for \"Ik ben naar de bibliotheek gegaan.\": “I went to the library.”",
+      "example": "Ik ben naar de bibliotheek gegaan.",
+      "exampleEnglish": "“I went to the library.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik ben gegaan",
+      "romanization": "ik ben khə-KHAHN",
+      "nativeText": "Usage focus for \"ik ben gegaan\": Distinguish the nearby wording choices that make Level 1 · Unit 12: Wat Heb Je Gedaan? — Past Activities sound precise rather than merely understandable.",
+      "pronunciation": "ik ben khə-KHAHN",
+      "exampleTarget": "Ik ben naar de bibliotheek gegaan.",
+      "exampleNative": "Notice what the form is doing here: “I went to the library.”",
+      "korean": "ik ben gegaan",
+      "english": "Usage focus for \"ik ben gegaan\": Distinguish the nearby wording choices that make Level 1 · Unit 12: Wat Heb Je Gedaan? — Past Activities sound precise rather than merely understandable.",
+      "example": "Ik ben naar de bibliotheek gegaan.",
+      "exampleEnglish": "Notice what the form is doing here: “I went to the library.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik ben gegaan",
+      "romanization": "ik ben khə-KHAHN",
+      "nativeText": "Contrast check for \"ik ben gegaan\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ik ben khə-KHAHN",
+      "exampleTarget": "Ik ben naar de bibliotheek gegaan.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I went to the library.”",
+      "korean": "ik ben gegaan",
+      "english": "Contrast check for \"ik ben gegaan\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik ben naar de bibliotheek gegaan.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I went to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik ben gegaan",
+      "romanization": "ik ben khə-KHAHN",
+      "nativeText": "Recall \"ik ben gegaan\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik ben naar de bibliotheek gegaan.\".",
+      "pronunciation": "ik ben khə-KHAHN",
+      "exampleTarget": "Ik ben naar de bibliotheek gegaan.",
+      "exampleNative": "Self-check against the model before moving on: “I went to the library.”",
+      "korean": "ik ben gegaan",
+      "english": "Recall \"ik ben gegaan\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik ben naar de bibliotheek gegaan.\".",
+      "example": "Ik ben naar de bibliotheek gegaan.",
+      "exampleEnglish": "Self-check against the model before moving on: “I went to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik ben gegaan",
+      "romanization": "ik ben khə-KHAHN",
+      "nativeText": "Repair \"ik ben gegaan\" inside \"Ik ben naar de bibliotheek gegaan.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 12: Wat Heb Je Gedaan? — Past Activities sound precise rather than merely understandable.",
+      "pronunciation": "ik ben khə-KHAHN",
+      "exampleTarget": "Ik ben naar de bibliotheek gegaan.",
+      "exampleNative": "Use the model as the repair target: “I went to the library.”",
+      "korean": "ik ben gegaan",
+      "english": "Repair \"ik ben gegaan\" inside \"Ik ben naar de bibliotheek gegaan.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 12: Wat Heb Je Gedaan? — Past Activities sound precise rather than merely understandable.",
+      "example": "Ik ben naar de bibliotheek gegaan.",
+      "exampleEnglish": "Use the model as the repair target: “I went to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik ben gegaan",
+      "romanization": "ik ben khə-KHAHN",
+      "nativeText": "Transfer \"ik ben gegaan\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik ben naar de bibliotheek gegaan.\".",
+      "pronunciation": "ik ben khə-KHAHN",
+      "exampleTarget": "Ik ben naar de bibliotheek gegaan.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I went to the library.”",
+      "korean": "ik ben gegaan",
+      "english": "Transfer \"ik ben gegaan\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik ben naar de bibliotheek gegaan.\".",
+      "example": "Ik ben naar de bibliotheek gegaan.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I went to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik ben gegaan",
+      "romanization": "ik ben khə-KHAHN",
+      "nativeText": "Find one word or phrase that naturally travels with \"ik ben gegaan\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ik ben khə-KHAHN",
+      "exampleTarget": "Ik ben naar de bibliotheek gegaan.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I went to the library.”",
+      "korean": "ik ben gegaan",
+      "english": "Find one word or phrase that naturally travels with \"ik ben gegaan\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik ben naar de bibliotheek gegaan.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I went to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik ben gegaan",
+      "romanization": "ik ben khə-KHAHN",
+      "nativeText": "Listen for \"ik ben gegaan\" inside \"Ik ben naar de bibliotheek gegaan.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ik ben khə-KHAHN",
+      "exampleTarget": "Ik ben naar de bibliotheek gegaan.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I went to the library.”",
+      "korean": "ik ben gegaan",
+      "english": "Listen for \"ik ben gegaan\" inside \"Ik ben naar de bibliotheek gegaan.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik ben naar de bibliotheek gegaan.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I went to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik ben gegaan",
+      "romanization": "ik ben khə-KHAHN",
+      "nativeText": "Write \"ik ben gegaan\" again without looking, then compare the exact written form against \"Ik ben naar de bibliotheek gegaan.\" before moving on.",
+      "pronunciation": "ik ben khə-KHAHN",
+      "exampleTarget": "Ik ben naar de bibliotheek gegaan.",
+      "exampleNative": "Use the written model as the final correctness check: “I went to the library.”",
+      "korean": "ik ben gegaan",
+      "english": "Write \"ik ben gegaan\" again without looking, then compare the exact written form against \"Ik ben naar de bibliotheek gegaan.\" before moving on.",
+      "example": "Ik ben naar de bibliotheek gegaan.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I went to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik ben gegaan",
+      "romanization": "ik ben khə-KHAHN",
+      "nativeText": "Check whether \"ik ben gegaan\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I went to the library.”",
+      "pronunciation": "ik ben khə-KHAHN",
+      "exampleTarget": "Ik ben naar de bibliotheek gegaan.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I went to the library.”",
+      "korean": "ik ben gegaan",
+      "english": "Check whether \"ik ben gegaan\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I went to the library.”",
+      "example": "Ik ben naar de bibliotheek gegaan.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I went to the library.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik heb gestudeerd",
+      "romanization": "ik hep khə-sty-DEERT",
+      "nativeText": "“I studied.” A regular weak participle with `ge-`.",
+      "pronunciation": "ik hep khə-sty-DEERT",
+      "exampleTarget": "Ik heb twee uur gestudeerd.",
+      "exampleNative": "“I studied for two hours.”",
+      "korean": "ik heb gestudeerd",
+      "english": "“I studied.” A regular weak participle with `ge-`.",
+      "example": "Ik heb twee uur gestudeerd.",
+      "exampleEnglish": "“I studied for two hours.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "Ik heb twee uur gestudeerd.",
+      "romanization": "ik hep khə-sty-DEERT",
+      "nativeText": "Model use for \"Ik heb twee uur gestudeerd.\": “I studied for two hours.”",
+      "pronunciation": "ik hep khə-sty-DEERT",
+      "exampleTarget": "Ik heb twee uur gestudeerd.",
+      "exampleNative": "“I studied for two hours.”",
+      "korean": "Ik heb twee uur gestudeerd.",
+      "english": "Model use for \"Ik heb twee uur gestudeerd.\": “I studied for two hours.”",
+      "example": "Ik heb twee uur gestudeerd.",
+      "exampleEnglish": "“I studied for two hours.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik heb gestudeerd",
+      "romanization": "ik hep khə-sty-DEERT",
+      "nativeText": "Usage focus for \"ik heb gestudeerd\": “I studied.” A regular weak participle with `ge-`.",
+      "pronunciation": "ik hep khə-sty-DEERT",
+      "exampleTarget": "Ik heb twee uur gestudeerd.",
+      "exampleNative": "Notice what the form is doing here: “I studied for two hours.”",
+      "korean": "ik heb gestudeerd",
+      "english": "Usage focus for \"ik heb gestudeerd\": “I studied.” A regular weak participle with `ge-`.",
+      "example": "Ik heb twee uur gestudeerd.",
+      "exampleEnglish": "Notice what the form is doing here: “I studied for two hours.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik heb gestudeerd",
+      "romanization": "ik hep khə-sty-DEERT",
+      "nativeText": "Contrast check for \"ik heb gestudeerd\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ik hep khə-sty-DEERT",
+      "exampleTarget": "Ik heb twee uur gestudeerd.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I studied for two hours.”",
+      "korean": "ik heb gestudeerd",
+      "english": "Contrast check for \"ik heb gestudeerd\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik heb twee uur gestudeerd.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I studied for two hours.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik heb gestudeerd",
+      "romanization": "ik hep khə-sty-DEERT",
+      "nativeText": "Recall \"ik heb gestudeerd\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik heb twee uur gestudeerd.\".",
+      "pronunciation": "ik hep khə-sty-DEERT",
+      "exampleTarget": "Ik heb twee uur gestudeerd.",
+      "exampleNative": "Self-check against the model before moving on: “I studied for two hours.”",
+      "korean": "ik heb gestudeerd",
+      "english": "Recall \"ik heb gestudeerd\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik heb twee uur gestudeerd.\".",
+      "example": "Ik heb twee uur gestudeerd.",
+      "exampleEnglish": "Self-check against the model before moving on: “I studied for two hours.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik heb gestudeerd",
+      "romanization": "ik hep khə-sty-DEERT",
+      "nativeText": "Repair \"ik heb gestudeerd\" inside \"Ik heb twee uur gestudeerd.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I studied.” A regular weak participle with `ge-`.",
+      "pronunciation": "ik hep khə-sty-DEERT",
+      "exampleTarget": "Ik heb twee uur gestudeerd.",
+      "exampleNative": "Use the model as the repair target: “I studied for two hours.”",
+      "korean": "ik heb gestudeerd",
+      "english": "Repair \"ik heb gestudeerd\" inside \"Ik heb twee uur gestudeerd.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I studied.” A regular weak participle with `ge-`.",
+      "example": "Ik heb twee uur gestudeerd.",
+      "exampleEnglish": "Use the model as the repair target: “I studied for two hours.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik heb gestudeerd",
+      "romanization": "ik hep khə-sty-DEERT",
+      "nativeText": "Transfer \"ik heb gestudeerd\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik heb twee uur gestudeerd.\".",
+      "pronunciation": "ik hep khə-sty-DEERT",
+      "exampleTarget": "Ik heb twee uur gestudeerd.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I studied for two hours.”",
+      "korean": "ik heb gestudeerd",
+      "english": "Transfer \"ik heb gestudeerd\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik heb twee uur gestudeerd.\".",
+      "example": "Ik heb twee uur gestudeerd.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I studied for two hours.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik heb gestudeerd",
+      "romanization": "ik hep khə-sty-DEERT",
+      "nativeText": "Find one word or phrase that naturally travels with \"ik heb gestudeerd\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ik hep khə-sty-DEERT",
+      "exampleTarget": "Ik heb twee uur gestudeerd.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I studied for two hours.”",
+      "korean": "ik heb gestudeerd",
+      "english": "Find one word or phrase that naturally travels with \"ik heb gestudeerd\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik heb twee uur gestudeerd.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I studied for two hours.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik heb gestudeerd",
+      "romanization": "ik hep khə-sty-DEERT",
+      "nativeText": "Listen for \"ik heb gestudeerd\" inside \"Ik heb twee uur gestudeerd.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ik hep khə-sty-DEERT",
+      "exampleTarget": "Ik heb twee uur gestudeerd.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I studied for two hours.”",
+      "korean": "ik heb gestudeerd",
+      "english": "Listen for \"ik heb gestudeerd\" inside \"Ik heb twee uur gestudeerd.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik heb twee uur gestudeerd.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I studied for two hours.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik heb gestudeerd",
+      "romanization": "ik hep khə-sty-DEERT",
+      "nativeText": "Write \"ik heb gestudeerd\" again without looking, then compare the exact written form against \"Ik heb twee uur gestudeerd.\" before moving on.",
+      "pronunciation": "ik hep khə-sty-DEERT",
+      "exampleTarget": "Ik heb twee uur gestudeerd.",
+      "exampleNative": "Use the written model as the final correctness check: “I studied for two hours.”",
+      "korean": "ik heb gestudeerd",
+      "english": "Write \"ik heb gestudeerd\" again without looking, then compare the exact written form against \"Ik heb twee uur gestudeerd.\" before moving on.",
+      "example": "Ik heb twee uur gestudeerd.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I studied for two hours.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik heb gestudeerd",
+      "romanization": "ik hep khə-sty-DEERT",
+      "nativeText": "Check whether \"ik heb gestudeerd\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I studied for two hours.”",
+      "pronunciation": "ik hep khə-sty-DEERT",
+      "exampleTarget": "Ik heb twee uur gestudeerd.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I studied for two hours.”",
+      "korean": "ik heb gestudeerd",
+      "english": "Check whether \"ik heb gestudeerd\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I studied for two hours.”",
+      "example": "Ik heb twee uur gestudeerd.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I studied for two hours.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik ben opgestaan",
+      "romanization": "ik ben OP-khə-stahn",
+      "nativeText": "“I got up.” The separable prefix stays before `ge` in the participle.",
+      "pronunciation": "ik ben OP-khə-stahn",
+      "exampleTarget": "Ik ben vroeg opgestaan.",
+      "exampleNative": "“I got up early.”",
+      "korean": "ik ben opgestaan",
+      "english": "“I got up.” The separable prefix stays before `ge` in the participle.",
+      "example": "Ik ben vroeg opgestaan.",
+      "exampleEnglish": "“I got up early.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "Ik ben vroeg opgestaan.",
+      "romanization": "ik ben OP-khə-stahn",
+      "nativeText": "Model use for \"Ik ben vroeg opgestaan.\": “I got up early.”",
+      "pronunciation": "ik ben OP-khə-stahn",
+      "exampleTarget": "Ik ben vroeg opgestaan.",
+      "exampleNative": "“I got up early.”",
+      "korean": "Ik ben vroeg opgestaan.",
+      "english": "Model use for \"Ik ben vroeg opgestaan.\": “I got up early.”",
+      "example": "Ik ben vroeg opgestaan.",
+      "exampleEnglish": "“I got up early.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik ben opgestaan",
+      "romanization": "ik ben OP-khə-stahn",
+      "nativeText": "Usage focus for \"ik ben opgestaan\": “I got up.” The separable prefix stays before `ge` in the participle.",
+      "pronunciation": "ik ben OP-khə-stahn",
+      "exampleTarget": "Ik ben vroeg opgestaan.",
+      "exampleNative": "Notice what the form is doing here: “I got up early.”",
+      "korean": "ik ben opgestaan",
+      "english": "Usage focus for \"ik ben opgestaan\": “I got up.” The separable prefix stays before `ge` in the participle.",
+      "example": "Ik ben vroeg opgestaan.",
+      "exampleEnglish": "Notice what the form is doing here: “I got up early.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik ben opgestaan",
+      "romanization": "ik ben OP-khə-stahn",
+      "nativeText": "Contrast check for \"ik ben opgestaan\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ik ben OP-khə-stahn",
+      "exampleTarget": "Ik ben vroeg opgestaan.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I got up early.”",
+      "korean": "ik ben opgestaan",
+      "english": "Contrast check for \"ik ben opgestaan\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik ben vroeg opgestaan.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I got up early.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik ben opgestaan",
+      "romanization": "ik ben OP-khə-stahn",
+      "nativeText": "Recall \"ik ben opgestaan\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik ben vroeg opgestaan.\".",
+      "pronunciation": "ik ben OP-khə-stahn",
+      "exampleTarget": "Ik ben vroeg opgestaan.",
+      "exampleNative": "Self-check against the model before moving on: “I got up early.”",
+      "korean": "ik ben opgestaan",
+      "english": "Recall \"ik ben opgestaan\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik ben vroeg opgestaan.\".",
+      "example": "Ik ben vroeg opgestaan.",
+      "exampleEnglish": "Self-check against the model before moving on: “I got up early.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik ben opgestaan",
+      "romanization": "ik ben OP-khə-stahn",
+      "nativeText": "Repair \"ik ben opgestaan\" inside \"Ik ben vroeg opgestaan.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I got up.” The separable prefix stays before `ge` in the participle.",
+      "pronunciation": "ik ben OP-khə-stahn",
+      "exampleTarget": "Ik ben vroeg opgestaan.",
+      "exampleNative": "Use the model as the repair target: “I got up early.”",
+      "korean": "ik ben opgestaan",
+      "english": "Repair \"ik ben opgestaan\" inside \"Ik ben vroeg opgestaan.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I got up.” The separable prefix stays before `ge` in the participle.",
+      "example": "Ik ben vroeg opgestaan.",
+      "exampleEnglish": "Use the model as the repair target: “I got up early.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik ben opgestaan",
+      "romanization": "ik ben OP-khə-stahn",
+      "nativeText": "Transfer \"ik ben opgestaan\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik ben vroeg opgestaan.\".",
+      "pronunciation": "ik ben OP-khə-stahn",
+      "exampleTarget": "Ik ben vroeg opgestaan.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I got up early.”",
+      "korean": "ik ben opgestaan",
+      "english": "Transfer \"ik ben opgestaan\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik ben vroeg opgestaan.\".",
+      "example": "Ik ben vroeg opgestaan.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I got up early.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik ben opgestaan",
+      "romanization": "ik ben OP-khə-stahn",
+      "nativeText": "Find one word or phrase that naturally travels with \"ik ben opgestaan\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ik ben OP-khə-stahn",
+      "exampleTarget": "Ik ben vroeg opgestaan.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I got up early.”",
+      "korean": "ik ben opgestaan",
+      "english": "Find one word or phrase that naturally travels with \"ik ben opgestaan\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik ben vroeg opgestaan.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I got up early.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik ben opgestaan",
+      "romanization": "ik ben OP-khə-stahn",
+      "nativeText": "Listen for \"ik ben opgestaan\" inside \"Ik ben vroeg opgestaan.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ik ben OP-khə-stahn",
+      "exampleTarget": "Ik ben vroeg opgestaan.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I got up early.”",
+      "korean": "ik ben opgestaan",
+      "english": "Listen for \"ik ben opgestaan\" inside \"Ik ben vroeg opgestaan.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik ben vroeg opgestaan.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I got up early.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik ben opgestaan",
+      "romanization": "ik ben OP-khə-stahn",
+      "nativeText": "Write \"ik ben opgestaan\" again without looking, then compare the exact written form against \"Ik ben vroeg opgestaan.\" before moving on.",
+      "pronunciation": "ik ben OP-khə-stahn",
+      "exampleTarget": "Ik ben vroeg opgestaan.",
+      "exampleNative": "Use the written model as the final correctness check: “I got up early.”",
+      "korean": "ik ben opgestaan",
+      "english": "Write \"ik ben opgestaan\" again without looking, then compare the exact written form against \"Ik ben vroeg opgestaan.\" before moving on.",
+      "example": "Ik ben vroeg opgestaan.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I got up early.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "ik ben opgestaan",
+      "romanization": "ik ben OP-khə-stahn",
+      "nativeText": "Check whether \"ik ben opgestaan\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I got up early.”",
+      "pronunciation": "ik ben OP-khə-stahn",
+      "exampleTarget": "Ik ben vroeg opgestaan.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I got up early.”",
+      "korean": "ik ben opgestaan",
+      "english": "Check whether \"ik ben opgestaan\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I got up early.”",
+      "example": "Ik ben vroeg opgestaan.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I got up early.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "daarna",
+      "romanization": "dahr-NAH",
+      "nativeText": "“After that.” A simple sequence connector.",
+      "pronunciation": "dahr-NAH",
+      "exampleTarget": "Daarna heb ik mijn vriend ontmoet.",
+      "exampleNative": "“After that I met my friend.”",
+      "korean": "daarna",
+      "english": "“After that.” A simple sequence connector.",
+      "example": "Daarna heb ik mijn vriend ontmoet.",
+      "exampleEnglish": "“After that I met my friend.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "Daarna heb ik mijn vriend ontmoet.",
+      "romanization": "dahr-NAH",
+      "nativeText": "Model use for \"Daarna heb ik mijn vriend ontmoet.\": “After that I met my friend.”",
+      "pronunciation": "dahr-NAH",
+      "exampleTarget": "Daarna heb ik mijn vriend ontmoet.",
+      "exampleNative": "“After that I met my friend.”",
+      "korean": "Daarna heb ik mijn vriend ontmoet.",
+      "english": "Model use for \"Daarna heb ik mijn vriend ontmoet.\": “After that I met my friend.”",
+      "example": "Daarna heb ik mijn vriend ontmoet.",
+      "exampleEnglish": "“After that I met my friend.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "daarna",
+      "romanization": "dahr-NAH",
+      "nativeText": "Usage focus for \"daarna\": “After that.” A simple sequence connector.",
+      "pronunciation": "dahr-NAH",
+      "exampleTarget": "Daarna heb ik mijn vriend ontmoet.",
+      "exampleNative": "Notice what the form is doing here: “After that I met my friend.”",
+      "korean": "daarna",
+      "english": "Usage focus for \"daarna\": “After that.” A simple sequence connector.",
+      "example": "Daarna heb ik mijn vriend ontmoet.",
+      "exampleEnglish": "Notice what the form is doing here: “After that I met my friend.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "daarna",
+      "romanization": "dahr-NAH",
+      "nativeText": "Contrast check for \"daarna\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "dahr-NAH",
+      "exampleTarget": "Daarna heb ik mijn vriend ontmoet.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “After that I met my friend.”",
+      "korean": "daarna",
+      "english": "Contrast check for \"daarna\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Daarna heb ik mijn vriend ontmoet.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “After that I met my friend.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "daarna",
+      "romanization": "dahr-NAH",
+      "nativeText": "Recall \"daarna\" from memory, then explain what would change if a nearby alternative replaced it in \"Daarna heb ik mijn vriend ontmoet.\".",
+      "pronunciation": "dahr-NAH",
+      "exampleTarget": "Daarna heb ik mijn vriend ontmoet.",
+      "exampleNative": "Self-check against the model before moving on: “After that I met my friend.”",
+      "korean": "daarna",
+      "english": "Recall \"daarna\" from memory, then explain what would change if a nearby alternative replaced it in \"Daarna heb ik mijn vriend ontmoet.\".",
+      "example": "Daarna heb ik mijn vriend ontmoet.",
+      "exampleEnglish": "Self-check against the model before moving on: “After that I met my friend.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "daarna",
+      "romanization": "dahr-NAH",
+      "nativeText": "Repair \"daarna\" inside \"Daarna heb ik mijn vriend ontmoet.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “After that.” A simple sequence connector.",
+      "pronunciation": "dahr-NAH",
+      "exampleTarget": "Daarna heb ik mijn vriend ontmoet.",
+      "exampleNative": "Use the model as the repair target: “After that I met my friend.”",
+      "korean": "daarna",
+      "english": "Repair \"daarna\" inside \"Daarna heb ik mijn vriend ontmoet.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “After that.” A simple sequence connector.",
+      "example": "Daarna heb ik mijn vriend ontmoet.",
+      "exampleEnglish": "Use the model as the repair target: “After that I met my friend.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "daarna",
+      "romanization": "dahr-NAH",
+      "nativeText": "Transfer \"daarna\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Daarna heb ik mijn vriend ontmoet.\".",
+      "pronunciation": "dahr-NAH",
+      "exampleTarget": "Daarna heb ik mijn vriend ontmoet.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “After that I met my friend.”",
+      "korean": "daarna",
+      "english": "Transfer \"daarna\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Daarna heb ik mijn vriend ontmoet.\".",
+      "example": "Daarna heb ik mijn vriend ontmoet.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “After that I met my friend.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "daarna",
+      "romanization": "dahr-NAH",
+      "nativeText": "Find one word or phrase that naturally travels with \"daarna\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "dahr-NAH",
+      "exampleTarget": "Daarna heb ik mijn vriend ontmoet.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “After that I met my friend.”",
+      "korean": "daarna",
+      "english": "Find one word or phrase that naturally travels with \"daarna\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Daarna heb ik mijn vriend ontmoet.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “After that I met my friend.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "daarna",
+      "romanization": "dahr-NAH",
+      "nativeText": "Listen for \"daarna\" inside \"Daarna heb ik mijn vriend ontmoet.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "dahr-NAH",
+      "exampleTarget": "Daarna heb ik mijn vriend ontmoet.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “After that I met my friend.”",
+      "korean": "daarna",
+      "english": "Listen for \"daarna\" inside \"Daarna heb ik mijn vriend ontmoet.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Daarna heb ik mijn vriend ontmoet.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “After that I met my friend.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "daarna",
+      "romanization": "dahr-NAH",
+      "nativeText": "Write \"daarna\" again without looking, then compare the exact written form against \"Daarna heb ik mijn vriend ontmoet.\" before moving on.",
+      "pronunciation": "dahr-NAH",
+      "exampleTarget": "Daarna heb ik mijn vriend ontmoet.",
+      "exampleNative": "Use the written model as the final correctness check: “After that I met my friend.”",
+      "korean": "daarna",
+      "english": "Write \"daarna\" again without looking, then compare the exact written form against \"Daarna heb ik mijn vriend ontmoet.\" before moving on.",
+      "example": "Daarna heb ik mijn vriend ontmoet.",
+      "exampleEnglish": "Use the written model as the final correctness check: “After that I met my friend.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "daarna",
+      "romanization": "dahr-NAH",
+      "nativeText": "Check whether \"daarna\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “After that I met my friend.”",
+      "pronunciation": "dahr-NAH",
+      "exampleTarget": "Daarna heb ik mijn vriend ontmoet.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “After that I met my friend.”",
+      "korean": "daarna",
+      "english": "Check whether \"daarna\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “After that I met my friend.”",
+      "example": "Daarna heb ik mijn vriend ontmoet.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “After that I met my friend.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "vorige week",
+      "romanization": "VOH-ri-khə vayk",
+      "nativeText": "“Last week.” A common past-time phrase.",
+      "pronunciation": "VOH-ri-khə vayk",
+      "exampleTarget": "Vorige week zijn we naar het museum gegaan.",
+      "exampleNative": "“Last week we went to the museum.”",
+      "korean": "vorige week",
+      "english": "“Last week.” A common past-time phrase.",
+      "example": "Vorige week zijn we naar het museum gegaan.",
+      "exampleEnglish": "“Last week we went to the museum.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "Vorige week zijn we naar het museum gegaan.",
+      "romanization": "VOH-ri-khə vayk",
+      "nativeText": "Model use for \"Vorige week zijn we naar het museum gegaan.\": “Last week we went to the museum.”",
+      "pronunciation": "VOH-ri-khə vayk",
+      "exampleTarget": "Vorige week zijn we naar het museum gegaan.",
+      "exampleNative": "“Last week we went to the museum.”",
+      "korean": "Vorige week zijn we naar het museum gegaan.",
+      "english": "Model use for \"Vorige week zijn we naar het museum gegaan.\": “Last week we went to the museum.”",
+      "example": "Vorige week zijn we naar het museum gegaan.",
+      "exampleEnglish": "“Last week we went to the museum.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "vorige week",
+      "romanization": "VOH-ri-khə vayk",
+      "nativeText": "Usage focus for \"vorige week\": “Last week.” A common past-time phrase.",
+      "pronunciation": "VOH-ri-khə vayk",
+      "exampleTarget": "Vorige week zijn we naar het museum gegaan.",
+      "exampleNative": "Notice what the form is doing here: “Last week we went to the museum.”",
+      "korean": "vorige week",
+      "english": "Usage focus for \"vorige week\": “Last week.” A common past-time phrase.",
+      "example": "Vorige week zijn we naar het museum gegaan.",
+      "exampleEnglish": "Notice what the form is doing here: “Last week we went to the museum.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "vorige week",
+      "romanization": "VOH-ri-khə vayk",
+      "nativeText": "Contrast check for \"vorige week\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "VOH-ri-khə vayk",
+      "exampleTarget": "Vorige week zijn we naar het museum gegaan.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Last week we went to the museum.”",
+      "korean": "vorige week",
+      "english": "Contrast check for \"vorige week\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Vorige week zijn we naar het museum gegaan.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Last week we went to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "vorige week",
+      "romanization": "VOH-ri-khə vayk",
+      "nativeText": "Recall \"vorige week\" from memory, then explain what would change if a nearby alternative replaced it in \"Vorige week zijn we naar het museum gegaan.\".",
+      "pronunciation": "VOH-ri-khə vayk",
+      "exampleTarget": "Vorige week zijn we naar het museum gegaan.",
+      "exampleNative": "Self-check against the model before moving on: “Last week we went to the museum.”",
+      "korean": "vorige week",
+      "english": "Recall \"vorige week\" from memory, then explain what would change if a nearby alternative replaced it in \"Vorige week zijn we naar het museum gegaan.\".",
+      "example": "Vorige week zijn we naar het museum gegaan.",
+      "exampleEnglish": "Self-check against the model before moving on: “Last week we went to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "vorige week",
+      "romanization": "VOH-ri-khə vayk",
+      "nativeText": "Repair \"vorige week\" inside \"Vorige week zijn we naar het museum gegaan.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Last week.” A common past-time phrase.",
+      "pronunciation": "VOH-ri-khə vayk",
+      "exampleTarget": "Vorige week zijn we naar het museum gegaan.",
+      "exampleNative": "Use the model as the repair target: “Last week we went to the museum.”",
+      "korean": "vorige week",
+      "english": "Repair \"vorige week\" inside \"Vorige week zijn we naar het museum gegaan.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Last week.” A common past-time phrase.",
+      "example": "Vorige week zijn we naar het museum gegaan.",
+      "exampleEnglish": "Use the model as the repair target: “Last week we went to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "vorige week",
+      "romanization": "VOH-ri-khə vayk",
+      "nativeText": "Transfer \"vorige week\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Vorige week zijn we naar het museum gegaan.\".",
+      "pronunciation": "VOH-ri-khə vayk",
+      "exampleTarget": "Vorige week zijn we naar het museum gegaan.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Last week we went to the museum.”",
+      "korean": "vorige week",
+      "english": "Transfer \"vorige week\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Vorige week zijn we naar het museum gegaan.\".",
+      "example": "Vorige week zijn we naar het museum gegaan.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Last week we went to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "vorige week",
+      "romanization": "VOH-ri-khə vayk",
+      "nativeText": "Find one word or phrase that naturally travels with \"vorige week\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "VOH-ri-khə vayk",
+      "exampleTarget": "Vorige week zijn we naar het museum gegaan.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Last week we went to the museum.”",
+      "korean": "vorige week",
+      "english": "Find one word or phrase that naturally travels with \"vorige week\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Vorige week zijn we naar het museum gegaan.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Last week we went to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "vorige week",
+      "romanization": "VOH-ri-khə vayk",
+      "nativeText": "Listen for \"vorige week\" inside \"Vorige week zijn we naar het museum gegaan.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "VOH-ri-khə vayk",
+      "exampleTarget": "Vorige week zijn we naar het museum gegaan.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Last week we went to the museum.”",
+      "korean": "vorige week",
+      "english": "Listen for \"vorige week\" inside \"Vorige week zijn we naar het museum gegaan.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Vorige week zijn we naar het museum gegaan.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Last week we went to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "vorige week",
+      "romanization": "VOH-ri-khə vayk",
+      "nativeText": "Write \"vorige week\" again without looking, then compare the exact written form against \"Vorige week zijn we naar het museum gegaan.\" before moving on.",
+      "pronunciation": "VOH-ri-khə vayk",
+      "exampleTarget": "Vorige week zijn we naar het museum gegaan.",
+      "exampleNative": "Use the written model as the final correctness check: “Last week we went to the museum.”",
+      "korean": "vorige week",
+      "english": "Write \"vorige week\" again without looking, then compare the exact written form against \"Vorige week zijn we naar het museum gegaan.\" before moving on.",
+      "example": "Vorige week zijn we naar het museum gegaan.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Last week we went to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "vorige week",
+      "romanization": "VOH-ri-khə vayk",
+      "nativeText": "Check whether \"vorige week\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Last week we went to the museum.”",
+      "pronunciation": "VOH-ri-khə vayk",
+      "exampleTarget": "Vorige week zijn we naar het museum gegaan.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Last week we went to the museum.”",
+      "korean": "vorige week",
+      "english": "Check whether \"vorige week\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Last week we went to the museum.”",
+      "example": "Vorige week zijn we naar het museum gegaan.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Last week we went to the museum.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "wat heb je gedaan?",
+      "romanization": "vat hep yə khə-DAHN",
+      "nativeText": "“What did you do?” A core past-question frame.",
+      "pronunciation": "vat hep yə khə-DAHN",
+      "exampleTarget": "Wat heb je gisteren gedaan?",
+      "exampleNative": "“What did you do yesterday?”",
+      "korean": "wat heb je gedaan?",
+      "english": "“What did you do?” A core past-question frame.",
+      "example": "Wat heb je gisteren gedaan?",
+      "exampleEnglish": "“What did you do yesterday?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "Wat heb je gisteren gedaan?",
+      "romanization": "vat hep yə khə-DAHN",
+      "nativeText": "Model use for \"Wat heb je gisteren gedaan?\": “What did you do yesterday?”",
+      "pronunciation": "vat hep yə khə-DAHN",
+      "exampleTarget": "Wat heb je gisteren gedaan?",
+      "exampleNative": "“What did you do yesterday?”",
+      "korean": "Wat heb je gisteren gedaan?",
+      "english": "Model use for \"Wat heb je gisteren gedaan?\": “What did you do yesterday?”",
+      "example": "Wat heb je gisteren gedaan?",
+      "exampleEnglish": "“What did you do yesterday?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "wat heb je gedaan?",
+      "romanization": "vat hep yə khə-DAHN",
+      "nativeText": "Usage focus for \"wat heb je gedaan?\": “What did you do?” A core past-question frame.",
+      "pronunciation": "vat hep yə khə-DAHN",
+      "exampleTarget": "Wat heb je gisteren gedaan?",
+      "exampleNative": "Notice what the form is doing here: “What did you do yesterday?”",
+      "korean": "wat heb je gedaan?",
+      "english": "Usage focus for \"wat heb je gedaan?\": “What did you do?” A core past-question frame.",
+      "example": "Wat heb je gisteren gedaan?",
+      "exampleEnglish": "Notice what the form is doing here: “What did you do yesterday?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "wat heb je gedaan?",
+      "romanization": "vat hep yə khə-DAHN",
+      "nativeText": "Contrast check for \"wat heb je gedaan?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "vat hep yə khə-DAHN",
+      "exampleTarget": "Wat heb je gisteren gedaan?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What did you do yesterday?”",
+      "korean": "wat heb je gedaan?",
+      "english": "Contrast check for \"wat heb je gedaan?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Wat heb je gisteren gedaan?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What did you do yesterday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "wat heb je gedaan?",
+      "romanization": "vat hep yə khə-DAHN",
+      "nativeText": "Recall \"wat heb je gedaan?\" from memory, then explain what would change if a nearby alternative replaced it in \"Wat heb je gisteren gedaan?\".",
+      "pronunciation": "vat hep yə khə-DAHN",
+      "exampleTarget": "Wat heb je gisteren gedaan?",
+      "exampleNative": "Self-check against the model before moving on: “What did you do yesterday?”",
+      "korean": "wat heb je gedaan?",
+      "english": "Recall \"wat heb je gedaan?\" from memory, then explain what would change if a nearby alternative replaced it in \"Wat heb je gisteren gedaan?\".",
+      "example": "Wat heb je gisteren gedaan?",
+      "exampleEnglish": "Self-check against the model before moving on: “What did you do yesterday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "wat heb je gedaan?",
+      "romanization": "vat hep yə khə-DAHN",
+      "nativeText": "Repair \"wat heb je gedaan?\" inside \"Wat heb je gisteren gedaan?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “What did you do?” A core past-question frame.",
+      "pronunciation": "vat hep yə khə-DAHN",
+      "exampleTarget": "Wat heb je gisteren gedaan?",
+      "exampleNative": "Use the model as the repair target: “What did you do yesterday?”",
+      "korean": "wat heb je gedaan?",
+      "english": "Repair \"wat heb je gedaan?\" inside \"Wat heb je gisteren gedaan?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “What did you do?” A core past-question frame.",
+      "example": "Wat heb je gisteren gedaan?",
+      "exampleEnglish": "Use the model as the repair target: “What did you do yesterday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "wat heb je gedaan?",
+      "romanization": "vat hep yə khə-DAHN",
+      "nativeText": "Transfer \"wat heb je gedaan?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Wat heb je gisteren gedaan?\".",
+      "pronunciation": "vat hep yə khə-DAHN",
+      "exampleTarget": "Wat heb je gisteren gedaan?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “What did you do yesterday?”",
+      "korean": "wat heb je gedaan?",
+      "english": "Transfer \"wat heb je gedaan?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Wat heb je gisteren gedaan?\".",
+      "example": "Wat heb je gisteren gedaan?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “What did you do yesterday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "wat heb je gedaan?",
+      "romanization": "vat hep yə khə-DAHN",
+      "nativeText": "Find one word or phrase that naturally travels with \"wat heb je gedaan?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "vat hep yə khə-DAHN",
+      "exampleTarget": "Wat heb je gisteren gedaan?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “What did you do yesterday?”",
+      "korean": "wat heb je gedaan?",
+      "english": "Find one word or phrase that naturally travels with \"wat heb je gedaan?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Wat heb je gisteren gedaan?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “What did you do yesterday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "wat heb je gedaan?",
+      "romanization": "vat hep yə khə-DAHN",
+      "nativeText": "Listen for \"wat heb je gedaan?\" inside \"Wat heb je gisteren gedaan?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "vat hep yə khə-DAHN",
+      "exampleTarget": "Wat heb je gisteren gedaan?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What did you do yesterday?”",
+      "korean": "wat heb je gedaan?",
+      "english": "Listen for \"wat heb je gedaan?\" inside \"Wat heb je gisteren gedaan?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Wat heb je gisteren gedaan?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What did you do yesterday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "wat heb je gedaan?",
+      "romanization": "vat hep yə khə-DAHN",
+      "nativeText": "Write \"wat heb je gedaan?\" again without looking, then compare the exact written form against \"Wat heb je gisteren gedaan?\" before moving on.",
+      "pronunciation": "vat hep yə khə-DAHN",
+      "exampleTarget": "Wat heb je gisteren gedaan?",
+      "exampleNative": "Use the written model as the final correctness check: “What did you do yesterday?”",
+      "korean": "wat heb je gedaan?",
+      "english": "Write \"wat heb je gedaan?\" again without looking, then compare the exact written form against \"Wat heb je gisteren gedaan?\" before moving on.",
+      "example": "Wat heb je gisteren gedaan?",
+      "exampleEnglish": "Use the written model as the final correctness check: “What did you do yesterday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "wat heb je gedaan?",
+      "romanization": "vat hep yə khə-DAHN",
+      "nativeText": "Check whether \"wat heb je gedaan?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What did you do yesterday?”",
+      "pronunciation": "vat hep yə khə-DAHN",
+      "exampleTarget": "Wat heb je gisteren gedaan?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “What did you do yesterday?”",
+      "korean": "wat heb je gedaan?",
+      "english": "Check whether \"wat heb je gedaan?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What did you do yesterday?”",
+      "example": "Wat heb je gisteren gedaan?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “What did you do yesterday?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "al",
+      "romanization": "al",
+      "nativeText": "“Already.” Useful with completed actions and questions.",
+      "pronunciation": "al",
+      "exampleTarget": "Heb je al geluncht?",
+      "exampleNative": "“Have you already had lunch?”",
+      "korean": "al",
+      "english": "“Already.” Useful with completed actions and questions.",
+      "example": "Heb je al geluncht?",
+      "exampleEnglish": "“Have you already had lunch?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "Heb je al geluncht?",
+      "romanization": "al",
+      "nativeText": "Model use for \"Heb je al geluncht?\": “Have you already had lunch?”",
+      "pronunciation": "al",
+      "exampleTarget": "Heb je al geluncht?",
+      "exampleNative": "“Have you already had lunch?”",
+      "korean": "Heb je al geluncht?",
+      "english": "Model use for \"Heb je al geluncht?\": “Have you already had lunch?”",
+      "example": "Heb je al geluncht?",
+      "exampleEnglish": "“Have you already had lunch?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "al",
+      "romanization": "al",
+      "nativeText": "Usage focus for \"al\": “Already.” Useful with completed actions and questions.",
+      "pronunciation": "al",
+      "exampleTarget": "Heb je al geluncht?",
+      "exampleNative": "Notice what the form is doing here: “Have you already had lunch?”",
+      "korean": "al",
+      "english": "Usage focus for \"al\": “Already.” Useful with completed actions and questions.",
+      "example": "Heb je al geluncht?",
+      "exampleEnglish": "Notice what the form is doing here: “Have you already had lunch?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "al",
+      "romanization": "al",
+      "nativeText": "Contrast check for \"al\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "al",
+      "exampleTarget": "Heb je al geluncht?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Have you already had lunch?”",
+      "korean": "al",
+      "english": "Contrast check for \"al\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Heb je al geluncht?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Have you already had lunch?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "al",
+      "romanization": "al",
+      "nativeText": "Recall \"al\" from memory, then explain what would change if a nearby alternative replaced it in \"Heb je al geluncht?\".",
+      "pronunciation": "al",
+      "exampleTarget": "Heb je al geluncht?",
+      "exampleNative": "Self-check against the model before moving on: “Have you already had lunch?”",
+      "korean": "al",
+      "english": "Recall \"al\" from memory, then explain what would change if a nearby alternative replaced it in \"Heb je al geluncht?\".",
+      "example": "Heb je al geluncht?",
+      "exampleEnglish": "Self-check against the model before moving on: “Have you already had lunch?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "al",
+      "romanization": "al",
+      "nativeText": "Repair \"al\" inside \"Heb je al geluncht?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Already.” Useful with completed actions and questions.",
+      "pronunciation": "al",
+      "exampleTarget": "Heb je al geluncht?",
+      "exampleNative": "Use the model as the repair target: “Have you already had lunch?”",
+      "korean": "al",
+      "english": "Repair \"al\" inside \"Heb je al geluncht?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Already.” Useful with completed actions and questions.",
+      "example": "Heb je al geluncht?",
+      "exampleEnglish": "Use the model as the repair target: “Have you already had lunch?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "al",
+      "romanization": "al",
+      "nativeText": "Transfer \"al\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Heb je al geluncht?\".",
+      "pronunciation": "al",
+      "exampleTarget": "Heb je al geluncht?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Have you already had lunch?”",
+      "korean": "al",
+      "english": "Transfer \"al\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Heb je al geluncht?\".",
+      "example": "Heb je al geluncht?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Have you already had lunch?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "al",
+      "romanization": "al",
+      "nativeText": "Find one word or phrase that naturally travels with \"al\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "al",
+      "exampleTarget": "Heb je al geluncht?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Have you already had lunch?”",
+      "korean": "al",
+      "english": "Find one word or phrase that naturally travels with \"al\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Heb je al geluncht?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Have you already had lunch?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "al",
+      "romanization": "al",
+      "nativeText": "Listen for \"al\" inside \"Heb je al geluncht?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "al",
+      "exampleTarget": "Heb je al geluncht?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Have you already had lunch?”",
+      "korean": "al",
+      "english": "Listen for \"al\" inside \"Heb je al geluncht?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Heb je al geluncht?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Have you already had lunch?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "al",
+      "romanization": "al",
+      "nativeText": "Write \"al\" again without looking, then compare the exact written form against \"Heb je al geluncht?\" before moving on.",
+      "pronunciation": "al",
+      "exampleTarget": "Heb je al geluncht?",
+      "exampleNative": "Use the written model as the final correctness check: “Have you already had lunch?”",
+      "korean": "al",
+      "english": "Write \"al\" again without looking, then compare the exact written form against \"Heb je al geluncht?\" before moving on.",
+      "example": "Heb je al geluncht?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Have you already had lunch?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit12pastactivities-vocabulary-1",
+        "nl-level1unit12pastactivities-vocabulary-2",
+        "nl-level1unit12pastactivities-grammar-1",
+        "nl-level1unit12pastactivities-grammar-2",
+        "nl-level1unit12pastactivities-reading",
+        "nl-level1unit12pastactivities-listening",
+        "nl-level1unit12pastactivities-writing",
+        "nl-level1unit12pastactivities-task"
+      ],
+      "targetText": "al",
+      "romanization": "al",
+      "nativeText": "Check whether \"al\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Have you already had lunch?”",
+      "pronunciation": "al",
+      "exampleTarget": "Heb je al geluncht?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Have you already had lunch?”",
+      "korean": "al",
+      "english": "Check whether \"al\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Have you already had lunch?”",
+      "example": "Heb je al geluncht?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Have you already had lunch?”"
+    }
+  ],
+  "targetLang": "nl",
+  "nativeLang": "en",
+  "track": "textbook"
+};

@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('bn', {
-  slug: 'bn-l1u8',
-  title: 'Level 1 · Unit 8: কেনাকাটা — Shopping',
-  category: 'shopping',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Shop for everyday items, ask prices, compare options, and pay.',
-  vocabularyGoal: 'Use price, color, size, and payment words.',
-  grammarGoal: 'Use demonstratives, classifiers, and comparison words in practical shopping talk.',
-  speakingGoal: 'Ask a price, request one item, and compare two options.',
-  task: 'Buy one practical item in a shop or market.',
-  expressionPractice: [
-    practice('asking-price', 'Asking price', 'Use `এটার দাম কত?`.'),
-    practice('choosing-item', 'Choosing item', 'Use one classifier phrase.'),
-    practice('comparing', 'Comparing items', 'Use `আরও সস্তা`.'),
+module.exports = {
+  "title": "Level 1 · Unit 8: কেনাকাটা — Shopping",
+  "category": "shopping",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "bn-level1unit08shopping-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Shop for everyday items, ask prices, compare options, and pay."
+      ],
+      "task": "Buy one practical item in a shop or market."
+    },
+    {
+      "id": "bn-level1unit08shopping-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "bn-level1unit08shopping-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 8: কেনাকাটা — Shopping with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "bn-level1unit08shopping-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 8: কেনাকাটা — Shopping sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "bn-level1unit08shopping-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Shop for everyday items, ask prices, compare options, and pay."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "bn-level1unit08shopping-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 8: কেনাকাটা — Shopping with one nearby Bengali form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "bn-level1unit08shopping-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "bn-level1unit08shopping-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "bn-level1unit08shopping-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "bn-level1unit08shopping-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "bn-level1unit08shopping-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Buy one practical item in a shop or market."
+      ],
+      "task": "Buy one practical item in a shop or market."
+    }
   ],
-  relatedPools: ['topic-shopping', 'topic-service'],
-  items: [
-    item('এটার দাম কত?', 'etar dam koto', '“How much is this?” The classifier-like form keeps the item specific.', 'এই ব্যাগটার দাম কত?', '“How much is this bag?”'),
-    item('এটা চাই', 'eta chai', '“I want this.” A concise shopping phrase.', 'এটা চাই, ওটা না।', '“I want this, not that.”'),
-    item('আরও সস্তা', 'aro shosta', '“Cheaper / more cheap.” A practical comparison phrase.', 'আরও সস্তা কিছু আছে?', '“Is there anything cheaper?”'),
-    item('দামী', 'dami', '“Expensive.” A useful descriptive adjective.', 'এই জামাটা দামী।', '“This shirt is expensive.”'),
-    item('বড় সাইজ', 'boro size', '“Large size.” A practical clothing phrase.', 'বড় সাইজ আছে?', '“Do you have a large size?”'),
-    item('লাল', 'lal', '“Red.” Color words are straightforward but high-frequency.', 'লাল শাড়ি চাই।', '“I want a red sari.”'),
-    item('এক কেজি', 'ek keji', '“One kilogram.” Food shopping naturally uses measure words.', 'এক কেজি আম চাই।', '“I want one kilo of mangoes.”'),
-    item('নগদ / কার্ডে', 'nogod / card-e', '“Cash / by card.” Useful payment choices.', 'কার্ডে দিতে পারি?', '“Can I pay by card?”'),
+  "expressionPractice": [
+    {
+      "id": "asking-price",
+      "label": "Asking price",
+      "goal": "Use `এটার দাম কত?`."
+    },
+    {
+      "id": "choosing-item",
+      "label": "Choosing item",
+      "goal": "Use one classifier phrase."
+    },
+    {
+      "id": "comparing",
+      "label": "Comparing items",
+      "goal": "Use `আরও সস্তা`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-shopping",
+    "topic-service"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit08shopping-orientation"
+      ],
+      "targetText": "পাঠের লক্ষ্য",
+      "romanization": "",
+      "nativeText": "Shop for everyday items, ask prices, compare options, and pay.",
+      "pronunciation": "",
+      "exampleTarget": "পাঠের লক্ষ্য",
+      "exampleNative": "The whole lesson is built toward this outcome: Buy one practical item in a shop or market.",
+      "korean": "পাঠের লক্ষ্য",
+      "english": "Shop for everyday items, ask prices, compare options, and pay.",
+      "example": "পাঠের লক্ষ্য",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Buy one practical item in a shop or market."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "bn-level1unit08shopping-pronunciation"
+      ],
+      "targetText": "উচ্চারণ পরীক্ষা",
+      "romanization": "",
+      "nativeText": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"এই ব্যাগটার দাম কত?\".",
+      "pronunciation": "",
+      "exampleTarget": "এই ব্যাগটার দাম কত?",
+      "exampleNative": "“How much is this bag?”",
+      "korean": "উচ্চারণ পরীক্ষা",
+      "english": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"এই ব্যাগটার দাম কত?\".",
+      "example": "এই ব্যাগটার দাম কত?",
+      "exampleEnglish": "“How much is this bag?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1"
+      ],
+      "targetText": "এটার দাম কত?",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 8: কেনাকাটা — Shopping with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "এই ব্যাগটার দাম কত?",
+      "exampleNative": "“How much is this bag?”",
+      "korean": "এটার দাম কত?",
+      "english": "Use the key language of Level 1 · Unit 8: কেনাকাটা — Shopping with the register and setting that the lesson requires.",
+      "example": "এই ব্যাগটার দাম কত?",
+      "exampleEnglish": "“How much is this bag?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-2"
+      ],
+      "targetText": "এটা চাই",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 8: কেনাকাটা — Shopping sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "এটা চাই, ওটা না।",
+      "exampleNative": "“I want this, not that.”",
+      "korean": "এটা চাই",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 8: কেনাকাটা — Shopping sound precise rather than merely understandable.",
+      "example": "এটা চাই, ওটা না।",
+      "exampleEnglish": "“I want this, not that.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "bn-level1unit08shopping-grammar-1"
+      ],
+      "targetText": "এটার দাম কত?",
+      "romanization": "",
+      "nativeText": "Shop for everyday items, ask prices, compare options, and pay.",
+      "pronunciation": "",
+      "exampleTarget": "এই ব্যাগটার দাম কত?",
+      "exampleNative": "“How much is this bag?”",
+      "korean": "এটার দাম কত?",
+      "english": "Shop for everyday items, ask prices, compare options, and pay.",
+      "example": "এই ব্যাগটার দাম কত?",
+      "exampleEnglish": "“How much is this bag?”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "bn-level1unit08shopping-grammar-2"
+      ],
+      "targetText": "এটা চাই",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 8: কেনাকাটা — Shopping with one nearby Bengali form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "এটা চাই, ওটা না।",
+      "exampleNative": "“I want this, not that.”",
+      "korean": "এটা চাই",
+      "english": "Contrast the main pattern in Level 1 · Unit 8: কেনাকাটা — Shopping with one nearby Bengali form so the learner can avoid literal translation.",
+      "example": "এটা চাই, ওটা না।",
+      "exampleEnglish": "“I want this, not that.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "bn-level1unit08shopping-reading"
+      ],
+      "targetText": "পাঠ মডেল",
+      "romanization": "",
+      "nativeText": "Read \"কার্ডে দিতে পারি?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "কার্ডে দিতে পারি?",
+      "exampleNative": "“Can I pay by card?”",
+      "korean": "পাঠ মডেল",
+      "english": "Read \"কার্ডে দিতে পারি?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "কার্ডে দিতে পারি?",
+      "exampleEnglish": "“Can I pay by card?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit08shopping-listening"
+      ],
+      "targetText": "সংলাপ মডেল",
+      "romanization": "",
+      "nativeText": "Hear \"কার্ডে দিতে পারি?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "কার্ডে দিতে পারি?",
+      "exampleNative": "“Can I pay by card?”",
+      "korean": "সংলাপ মডেল",
+      "english": "Hear \"কার্ডে দিতে পারি?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "কার্ডে দিতে পারি?",
+      "exampleEnglish": "“Can I pay by card?”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "bn-level1unit08shopping-writing"
+      ],
+      "targetText": "লেখার অনুশীলন",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"এই ব্যাগটার দাম কত?\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "এই ব্যাগটার দাম কত?",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "লেখার অনুশীলন",
+      "english": "Write your own version after studying \"এই ব্যাগটার দাম কত?\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "এই ব্যাগটার দাম কত?",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "bn-level1unit08shopping-culture"
+      ],
+      "targetText": "ব্যবহার ও প্রসঙ্গ",
+      "romanization": "",
+      "nativeText": "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "এটা চাই, ওটা না।",
+      "exampleNative": "“I want this, not that.”",
+      "korean": "ব্যবহার ও প্রসঙ্গ",
+      "english": "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used.",
+      "example": "এটা চাই, ওটা না।",
+      "exampleEnglish": "“I want this, not that.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "চূড়ান্ত কাজ",
+      "romanization": "",
+      "nativeText": "Buy one practical item in a shop or market.",
+      "pronunciation": "",
+      "exampleTarget": "কার্ডে দিতে পারি?",
+      "exampleNative": "Buy one practical item in a shop or market.",
+      "korean": "চূড়ান্ত কাজ",
+      "english": "Buy one practical item in a shop or market.",
+      "example": "কার্ডে দিতে পারি?",
+      "exampleEnglish": "Buy one practical item in a shop or market."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit08shopping-grammar-2"
+      ],
+      "targetText": "সাধারণ ভুল",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around pronoun levels, verb agreement, case markers, and register. Begin by checking \"এটা চাই, ওটা না।\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "এটা চাই, ওটা না।",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “I want this, not that.”",
+      "korean": "সাধারণ ভুল",
+      "english": "Watch for literal-translation mistakes around pronoun levels, verb agreement, case markers, and register. Begin by checking \"এটা চাই, ওটা না।\" against the model.",
+      "example": "এটা চাই, ওটা না।",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “I want this, not that.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-culture"
+      ],
+      "targetText": "রেজিস্টার",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for familiar, respectful, or formal Bengali before selecting pronouns and verb endings. Compare the social fit of \"এই ব্যাগটার দাম কত?\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "এই ব্যাগটার দাম কত?",
+      "exampleNative": "“How much is this bag?”",
+      "korean": "রেজিস্টার",
+      "english": "Check whether the setting calls for familiar, respectful, or formal Bengali before selecting pronouns and verb endings. Compare the social fit of \"এই ব্যাগটার দাম কত?\" before reusing it elsewhere.",
+      "example": "এই ব্যাগটার দাম কত?",
+      "exampleEnglish": "“How much is this bag?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "সাবলীলতা",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Bengali message rather than as separate translated fragments. Aim to carry \"কার্ডে দিতে পারি?\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "কার্ডে দিতে পারি?",
+      "exampleNative": "“Can I pay by card?”",
+      "korean": "সাবলীলতা",
+      "english": "Say the idea as one connected Bengali message rather than as separate translated fragments. Aim to carry \"কার্ডে দিতে পারি?\" as one thought.",
+      "example": "কার্ডে দিতে পারি?",
+      "exampleEnglish": "“Can I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "প্রয়োগ",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"এই ব্যাগটার দাম কত?\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "এই ব্যাগটার দাম কত?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "প্রয়োগ",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"এই ব্যাগটার দাম কত?\" and move it into your own life.",
+      "example": "এই ব্যাগটার দাম কত?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-grammar-1"
+      ],
+      "targetText": "স্মরণ",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"এটার দাম কত?\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "এটার দাম কত?",
+      "exampleNative": "“How much is this?” The classifier-like form keeps the item specific.",
+      "korean": "স্মরণ",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"এটার দাম কত?\" before looking back.",
+      "example": "এটার দাম কত?",
+      "exampleEnglish": "“How much is this?” The classifier-like form keeps the item specific."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-writing"
+      ],
+      "targetText": "বিস্তার",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"কার্ডে দিতে পারি?\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "কার্ডে দিতে পারি?",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "বিস্তার",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"কার্ডে দিতে পারি?\" rather than restarting from a blank sentence.",
+      "example": "কার্ডে দিতে পারি?",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading"
+      ],
+      "targetText": "তুলনা",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 8: কেনাকাটা — Shopping with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"এটা চাই, ওটা না।\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "এটা চাই, ওটা না।",
+      "exampleNative": "“I want this, not that.”",
+      "korean": "তুলনা",
+      "english": "Compare the central form in Level 1 · Unit 8: কেনাকাটা — Shopping with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"এটা চাই, ওটা না।\" as the comparison line.",
+      "example": "এটা চাই, ওটা না।",
+      "exampleEnglish": "“I want this, not that.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "bn-level1unit08shopping-pronunciation"
+      ],
+      "targetText": "উচ্চারণ সংশোধন",
+      "romanization": "",
+      "nativeText": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"এই ব্যাগটার দাম কত?\".",
+      "pronunciation": "",
+      "exampleTarget": "এই ব্যাগটার দাম কত?",
+      "exampleNative": "“How much is this bag?”",
+      "korean": "উচ্চারণ সংশোধন",
+      "english": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"এই ব্যাগটার দাম কত?\".",
+      "example": "এই ব্যাগটার দাম কত?",
+      "exampleEnglish": "“How much is this bag?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "সংলাপ পরিবর্তন",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"কার্ডে দিতে পারি?\".",
+      "pronunciation": "",
+      "exampleTarget": "কার্ডে দিতে পারি?",
+      "exampleNative": "“Can I pay by card?”",
+      "korean": "সংলাপ পরিবর্তন",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"কার্ডে দিতে পারি?\".",
+      "example": "কার্ডে দিতে পারি?",
+      "exampleEnglish": "“Can I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-writing"
+      ],
+      "targetText": "বাক্য গঠন",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"এই ব্যাগটার দাম কত?\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "এই ব্যাগটার দাম কত?",
+      "exampleNative": "“How much is this bag?”",
+      "korean": "বাক্য গঠন",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"এই ব্যাগটার দাম কত?\" one layer at a time.",
+      "example": "এই ব্যাগটার দাম কত?",
+      "exampleEnglish": "“How much is this bag?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-2"
+      ],
+      "targetText": "দ্রুত পরীক্ষা",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"এটা চাই, ওটা না।\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "এটা চাই, ওটা না।",
+      "exampleNative": "“I want this, not that.”",
+      "korean": "দ্রুত পরীক্ষা",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"এটা চাই, ওটা না।\" as the deciding example.",
+      "example": "এটা চাই, ওটা না।",
+      "exampleEnglish": "“I want this, not that.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit08shopping-culture",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "পুনরালোচনা",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"কার্ডে দিতে পারি?\".",
+      "pronunciation": "",
+      "exampleTarget": "কার্ডে দিতে পারি?",
+      "exampleNative": "“Can I pay by card?”",
+      "korean": "পুনরালোচনা",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"কার্ডে দিতে পারি?\".",
+      "example": "কার্ডে দিতে পারি?",
+      "exampleEnglish": "“Can I pay by card?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "এটার দাম কত?",
+      "romanization": "etar dam koto",
+      "nativeText": "“How much is this?” The classifier-like form keeps the item specific.",
+      "pronunciation": "etar dam koto",
+      "exampleTarget": "এই ব্যাগটার দাম কত?",
+      "exampleNative": "“How much is this bag?”",
+      "korean": "এটার দাম কত?",
+      "english": "“How much is this?” The classifier-like form keeps the item specific.",
+      "example": "এই ব্যাগটার দাম কত?",
+      "exampleEnglish": "“How much is this bag?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "এই ব্যাগটার দাম কত?",
+      "romanization": "etar dam koto",
+      "nativeText": "Model use for \"এই ব্যাগটার দাম কত?\": “How much is this bag?”",
+      "pronunciation": "etar dam koto",
+      "exampleTarget": "এই ব্যাগটার দাম কত?",
+      "exampleNative": "“How much is this bag?”",
+      "korean": "এই ব্যাগটার দাম কত?",
+      "english": "Model use for \"এই ব্যাগটার দাম কত?\": “How much is this bag?”",
+      "example": "এই ব্যাগটার দাম কত?",
+      "exampleEnglish": "“How much is this bag?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "এটার দাম কত?",
+      "romanization": "etar dam koto",
+      "nativeText": "Usage focus for \"এটার দাম কত?\": Use the key language of Level 1 · Unit 8: কেনাকাটা — Shopping with the register and setting that the lesson requires.",
+      "pronunciation": "etar dam koto",
+      "exampleTarget": "এই ব্যাগটার দাম কত?",
+      "exampleNative": "Notice what the form is doing here: “How much is this bag?”",
+      "korean": "এটার দাম কত?",
+      "english": "Usage focus for \"এটার দাম কত?\": Use the key language of Level 1 · Unit 8: কেনাকাটা — Shopping with the register and setting that the lesson requires.",
+      "example": "এই ব্যাগটার দাম কত?",
+      "exampleEnglish": "Notice what the form is doing here: “How much is this bag?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "এটার দাম কত?",
+      "romanization": "etar dam koto",
+      "nativeText": "Contrast check for \"এটার দাম কত?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "etar dam koto",
+      "exampleTarget": "এই ব্যাগটার দাম কত?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How much is this bag?”",
+      "korean": "এটার দাম কত?",
+      "english": "Contrast check for \"এটার দাম কত?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "এই ব্যাগটার দাম কত?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How much is this bag?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "এটার দাম কত?",
+      "romanization": "etar dam koto",
+      "nativeText": "Recall \"এটার দাম কত?\" from memory, then explain what would change if a nearby alternative replaced it in \"এই ব্যাগটার দাম কত?\".",
+      "pronunciation": "etar dam koto",
+      "exampleTarget": "এই ব্যাগটার দাম কত?",
+      "exampleNative": "Self-check against the model before moving on: “How much is this bag?”",
+      "korean": "এটার দাম কত?",
+      "english": "Recall \"এটার দাম কত?\" from memory, then explain what would change if a nearby alternative replaced it in \"এই ব্যাগটার দাম কত?\".",
+      "example": "এই ব্যাগটার দাম কত?",
+      "exampleEnglish": "Self-check against the model before moving on: “How much is this bag?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "এটার দাম কত?",
+      "romanization": "etar dam koto",
+      "nativeText": "Repair \"এটার দাম কত?\" inside \"এই ব্যাগটার দাম কত?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 8: কেনাকাটা — Shopping with the register and setting that the lesson requires.",
+      "pronunciation": "etar dam koto",
+      "exampleTarget": "এই ব্যাগটার দাম কত?",
+      "exampleNative": "Use the model as the repair target: “How much is this bag?”",
+      "korean": "এটার দাম কত?",
+      "english": "Repair \"এটার দাম কত?\" inside \"এই ব্যাগটার দাম কত?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 8: কেনাকাটা — Shopping with the register and setting that the lesson requires.",
+      "example": "এই ব্যাগটার দাম কত?",
+      "exampleEnglish": "Use the model as the repair target: “How much is this bag?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "এটার দাম কত?",
+      "romanization": "etar dam koto",
+      "nativeText": "Transfer \"এটার দাম কত?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"এই ব্যাগটার দাম কত?\".",
+      "pronunciation": "etar dam koto",
+      "exampleTarget": "এই ব্যাগটার দাম কত?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “How much is this bag?”",
+      "korean": "এটার দাম কত?",
+      "english": "Transfer \"এটার দাম কত?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"এই ব্যাগটার দাম কত?\".",
+      "example": "এই ব্যাগটার দাম কত?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “How much is this bag?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "এটার দাম কত?",
+      "romanization": "etar dam koto",
+      "nativeText": "Find one word or phrase that naturally travels with \"এটার দাম কত?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "etar dam koto",
+      "exampleTarget": "এই ব্যাগটার দাম কত?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “How much is this bag?”",
+      "korean": "এটার দাম কত?",
+      "english": "Find one word or phrase that naturally travels with \"এটার দাম কত?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "এই ব্যাগটার দাম কত?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “How much is this bag?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "এটার দাম কত?",
+      "romanization": "etar dam koto",
+      "nativeText": "Listen for \"এটার দাম কত?\" inside \"এই ব্যাগটার দাম কত?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "etar dam koto",
+      "exampleTarget": "এই ব্যাগটার দাম কত?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How much is this bag?”",
+      "korean": "এটার দাম কত?",
+      "english": "Listen for \"এটার দাম কত?\" inside \"এই ব্যাগটার দাম কত?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "এই ব্যাগটার দাম কত?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How much is this bag?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "এটার দাম কত?",
+      "romanization": "etar dam koto",
+      "nativeText": "Write \"এটার দাম কত?\" again without looking, then compare the exact written form against \"এই ব্যাগটার দাম কত?\" before moving on.",
+      "pronunciation": "etar dam koto",
+      "exampleTarget": "এই ব্যাগটার দাম কত?",
+      "exampleNative": "Use the written model as the final correctness check: “How much is this bag?”",
+      "korean": "এটার দাম কত?",
+      "english": "Write \"এটার দাম কত?\" again without looking, then compare the exact written form against \"এই ব্যাগটার দাম কত?\" before moving on.",
+      "example": "এই ব্যাগটার দাম কত?",
+      "exampleEnglish": "Use the written model as the final correctness check: “How much is this bag?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "এটার দাম কত?",
+      "romanization": "etar dam koto",
+      "nativeText": "Check whether \"এটার দাম কত?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How much is this bag?”",
+      "pronunciation": "etar dam koto",
+      "exampleTarget": "এই ব্যাগটার দাম কত?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “How much is this bag?”",
+      "korean": "এটার দাম কত?",
+      "english": "Check whether \"এটার দাম কত?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How much is this bag?”",
+      "example": "এই ব্যাগটার দাম কত?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “How much is this bag?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "এটা চাই",
+      "romanization": "eta chai",
+      "nativeText": "“I want this.” A concise shopping phrase.",
+      "pronunciation": "eta chai",
+      "exampleTarget": "এটা চাই, ওটা না।",
+      "exampleNative": "“I want this, not that.”",
+      "korean": "এটা চাই",
+      "english": "“I want this.” A concise shopping phrase.",
+      "example": "এটা চাই, ওটা না।",
+      "exampleEnglish": "“I want this, not that.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "এটা চাই, ওটা না।",
+      "romanization": "eta chai",
+      "nativeText": "Model use for \"এটা চাই, ওটা না।\": “I want this, not that.”",
+      "pronunciation": "eta chai",
+      "exampleTarget": "এটা চাই, ওটা না।",
+      "exampleNative": "“I want this, not that.”",
+      "korean": "এটা চাই, ওটা না।",
+      "english": "Model use for \"এটা চাই, ওটা না।\": “I want this, not that.”",
+      "example": "এটা চাই, ওটা না।",
+      "exampleEnglish": "“I want this, not that.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "এটা চাই",
+      "romanization": "eta chai",
+      "nativeText": "Usage focus for \"এটা চাই\": Distinguish the nearby wording choices that make Level 1 · Unit 8: কেনাকাটা — Shopping sound precise rather than merely understandable.",
+      "pronunciation": "eta chai",
+      "exampleTarget": "এটা চাই, ওটা না।",
+      "exampleNative": "Notice what the form is doing here: “I want this, not that.”",
+      "korean": "এটা চাই",
+      "english": "Usage focus for \"এটা চাই\": Distinguish the nearby wording choices that make Level 1 · Unit 8: কেনাকাটা — Shopping sound precise rather than merely understandable.",
+      "example": "এটা চাই, ওটা না।",
+      "exampleEnglish": "Notice what the form is doing here: “I want this, not that.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "এটা চাই",
+      "romanization": "eta chai",
+      "nativeText": "Contrast check for \"এটা চাই\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "eta chai",
+      "exampleTarget": "এটা চাই, ওটা না।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want this, not that.”",
+      "korean": "এটা চাই",
+      "english": "Contrast check for \"এটা চাই\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "এটা চাই, ওটা না।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want this, not that.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "এটা চাই",
+      "romanization": "eta chai",
+      "nativeText": "Recall \"এটা চাই\" from memory, then explain what would change if a nearby alternative replaced it in \"এটা চাই, ওটা না।\".",
+      "pronunciation": "eta chai",
+      "exampleTarget": "এটা চাই, ওটা না।",
+      "exampleNative": "Self-check against the model before moving on: “I want this, not that.”",
+      "korean": "এটা চাই",
+      "english": "Recall \"এটা চাই\" from memory, then explain what would change if a nearby alternative replaced it in \"এটা চাই, ওটা না।\".",
+      "example": "এটা চাই, ওটা না।",
+      "exampleEnglish": "Self-check against the model before moving on: “I want this, not that.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "এটা চাই",
+      "romanization": "eta chai",
+      "nativeText": "Repair \"এটা চাই\" inside \"এটা চাই, ওটা না।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 8: কেনাকাটা — Shopping sound precise rather than merely understandable.",
+      "pronunciation": "eta chai",
+      "exampleTarget": "এটা চাই, ওটা না।",
+      "exampleNative": "Use the model as the repair target: “I want this, not that.”",
+      "korean": "এটা চাই",
+      "english": "Repair \"এটা চাই\" inside \"এটা চাই, ওটা না।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 8: কেনাকাটা — Shopping sound precise rather than merely understandable.",
+      "example": "এটা চাই, ওটা না।",
+      "exampleEnglish": "Use the model as the repair target: “I want this, not that.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "এটা চাই",
+      "romanization": "eta chai",
+      "nativeText": "Transfer \"এটা চাই\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"এটা চাই, ওটা না।\".",
+      "pronunciation": "eta chai",
+      "exampleTarget": "এটা চাই, ওটা না।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want this, not that.”",
+      "korean": "এটা চাই",
+      "english": "Transfer \"এটা চাই\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"এটা চাই, ওটা না।\".",
+      "example": "এটা চাই, ওটা না।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want this, not that.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "এটা চাই",
+      "romanization": "eta chai",
+      "nativeText": "Find one word or phrase that naturally travels with \"এটা চাই\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "eta chai",
+      "exampleTarget": "এটা চাই, ওটা না।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want this, not that.”",
+      "korean": "এটা চাই",
+      "english": "Find one word or phrase that naturally travels with \"এটা চাই\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "এটা চাই, ওটা না।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want this, not that.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "এটা চাই",
+      "romanization": "eta chai",
+      "nativeText": "Listen for \"এটা চাই\" inside \"এটা চাই, ওটা না।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "eta chai",
+      "exampleTarget": "এটা চাই, ওটা না।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want this, not that.”",
+      "korean": "এটা চাই",
+      "english": "Listen for \"এটা চাই\" inside \"এটা চাই, ওটা না।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "এটা চাই, ওটা না।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want this, not that.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "এটা চাই",
+      "romanization": "eta chai",
+      "nativeText": "Write \"এটা চাই\" again without looking, then compare the exact written form against \"এটা চাই, ওটা না।\" before moving on.",
+      "pronunciation": "eta chai",
+      "exampleTarget": "এটা চাই, ওটা না।",
+      "exampleNative": "Use the written model as the final correctness check: “I want this, not that.”",
+      "korean": "এটা চাই",
+      "english": "Write \"এটা চাই\" again without looking, then compare the exact written form against \"এটা চাই, ওটা না।\" before moving on.",
+      "example": "এটা চাই, ওটা না।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want this, not that.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "এটা চাই",
+      "romanization": "eta chai",
+      "nativeText": "Check whether \"এটা চাই\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want this, not that.”",
+      "pronunciation": "eta chai",
+      "exampleTarget": "এটা চাই, ওটা না।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want this, not that.”",
+      "korean": "এটা চাই",
+      "english": "Check whether \"এটা চাই\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want this, not that.”",
+      "example": "এটা চাই, ওটা না।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want this, not that.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "আরও সস্তা",
+      "romanization": "aro shosta",
+      "nativeText": "“Cheaper / more cheap.” A practical comparison phrase.",
+      "pronunciation": "aro shosta",
+      "exampleTarget": "আরও সস্তা কিছু আছে?",
+      "exampleNative": "“Is there anything cheaper?”",
+      "korean": "আরও সস্তা",
+      "english": "“Cheaper / more cheap.” A practical comparison phrase.",
+      "example": "আরও সস্তা কিছু আছে?",
+      "exampleEnglish": "“Is there anything cheaper?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "আরও সস্তা কিছু আছে?",
+      "romanization": "aro shosta",
+      "nativeText": "Model use for \"আরও সস্তা কিছু আছে?\": “Is there anything cheaper?”",
+      "pronunciation": "aro shosta",
+      "exampleTarget": "আরও সস্তা কিছু আছে?",
+      "exampleNative": "“Is there anything cheaper?”",
+      "korean": "আরও সস্তা কিছু আছে?",
+      "english": "Model use for \"আরও সস্তা কিছু আছে?\": “Is there anything cheaper?”",
+      "example": "আরও সস্তা কিছু আছে?",
+      "exampleEnglish": "“Is there anything cheaper?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "আরও সস্তা",
+      "romanization": "aro shosta",
+      "nativeText": "Usage focus for \"আরও সস্তা\": “Cheaper / more cheap.” A practical comparison phrase.",
+      "pronunciation": "aro shosta",
+      "exampleTarget": "আরও সস্তা কিছু আছে?",
+      "exampleNative": "Notice what the form is doing here: “Is there anything cheaper?”",
+      "korean": "আরও সস্তা",
+      "english": "Usage focus for \"আরও সস্তা\": “Cheaper / more cheap.” A practical comparison phrase.",
+      "example": "আরও সস্তা কিছু আছে?",
+      "exampleEnglish": "Notice what the form is doing here: “Is there anything cheaper?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "আরও সস্তা",
+      "romanization": "aro shosta",
+      "nativeText": "Contrast check for \"আরও সস্তা\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "aro shosta",
+      "exampleTarget": "আরও সস্তা কিছু আছে?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Is there anything cheaper?”",
+      "korean": "আরও সস্তা",
+      "english": "Contrast check for \"আরও সস্তা\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আরও সস্তা কিছু আছে?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Is there anything cheaper?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "আরও সস্তা",
+      "romanization": "aro shosta",
+      "nativeText": "Recall \"আরও সস্তা\" from memory, then explain what would change if a nearby alternative replaced it in \"আরও সস্তা কিছু আছে?\".",
+      "pronunciation": "aro shosta",
+      "exampleTarget": "আরও সস্তা কিছু আছে?",
+      "exampleNative": "Self-check against the model before moving on: “Is there anything cheaper?”",
+      "korean": "আরও সস্তা",
+      "english": "Recall \"আরও সস্তা\" from memory, then explain what would change if a nearby alternative replaced it in \"আরও সস্তা কিছু আছে?\".",
+      "example": "আরও সস্তা কিছু আছে?",
+      "exampleEnglish": "Self-check against the model before moving on: “Is there anything cheaper?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "আরও সস্তা",
+      "romanization": "aro shosta",
+      "nativeText": "Repair \"আরও সস্তা\" inside \"আরও সস্তা কিছু আছে?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Cheaper / more cheap.” A practical comparison phrase.",
+      "pronunciation": "aro shosta",
+      "exampleTarget": "আরও সস্তা কিছু আছে?",
+      "exampleNative": "Use the model as the repair target: “Is there anything cheaper?”",
+      "korean": "আরও সস্তা",
+      "english": "Repair \"আরও সস্তা\" inside \"আরও সস্তা কিছু আছে?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Cheaper / more cheap.” A practical comparison phrase.",
+      "example": "আরও সস্তা কিছু আছে?",
+      "exampleEnglish": "Use the model as the repair target: “Is there anything cheaper?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "আরও সস্তা",
+      "romanization": "aro shosta",
+      "nativeText": "Transfer \"আরও সস্তা\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আরও সস্তা কিছু আছে?\".",
+      "pronunciation": "aro shosta",
+      "exampleTarget": "আরও সস্তা কিছু আছে?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Is there anything cheaper?”",
+      "korean": "আরও সস্তা",
+      "english": "Transfer \"আরও সস্তা\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আরও সস্তা কিছু আছে?\".",
+      "example": "আরও সস্তা কিছু আছে?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Is there anything cheaper?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "আরও সস্তা",
+      "romanization": "aro shosta",
+      "nativeText": "Find one word or phrase that naturally travels with \"আরও সস্তা\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "aro shosta",
+      "exampleTarget": "আরও সস্তা কিছু আছে?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Is there anything cheaper?”",
+      "korean": "আরও সস্তা",
+      "english": "Find one word or phrase that naturally travels with \"আরও সস্তা\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আরও সস্তা কিছু আছে?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Is there anything cheaper?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "আরও সস্তা",
+      "romanization": "aro shosta",
+      "nativeText": "Listen for \"আরও সস্তা\" inside \"আরও সস্তা কিছু আছে?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "aro shosta",
+      "exampleTarget": "আরও সস্তা কিছু আছে?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Is there anything cheaper?”",
+      "korean": "আরও সস্তা",
+      "english": "Listen for \"আরও সস্তা\" inside \"আরও সস্তা কিছু আছে?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আরও সস্তা কিছু আছে?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Is there anything cheaper?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "আরও সস্তা",
+      "romanization": "aro shosta",
+      "nativeText": "Write \"আরও সস্তা\" again without looking, then compare the exact written form against \"আরও সস্তা কিছু আছে?\" before moving on.",
+      "pronunciation": "aro shosta",
+      "exampleTarget": "আরও সস্তা কিছু আছে?",
+      "exampleNative": "Use the written model as the final correctness check: “Is there anything cheaper?”",
+      "korean": "আরও সস্তা",
+      "english": "Write \"আরও সস্তা\" again without looking, then compare the exact written form against \"আরও সস্তা কিছু আছে?\" before moving on.",
+      "example": "আরও সস্তা কিছু আছে?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Is there anything cheaper?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "আরও সস্তা",
+      "romanization": "aro shosta",
+      "nativeText": "Check whether \"আরও সস্তা\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Is there anything cheaper?”",
+      "pronunciation": "aro shosta",
+      "exampleTarget": "আরও সস্তা কিছু আছে?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Is there anything cheaper?”",
+      "korean": "আরও সস্তা",
+      "english": "Check whether \"আরও সস্তা\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Is there anything cheaper?”",
+      "example": "আরও সস্তা কিছু আছে?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Is there anything cheaper?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "দামী",
+      "romanization": "dami",
+      "nativeText": "“Expensive.” A useful descriptive adjective.",
+      "pronunciation": "dami",
+      "exampleTarget": "এই জামাটা দামী।",
+      "exampleNative": "“This shirt is expensive.”",
+      "korean": "দামী",
+      "english": "“Expensive.” A useful descriptive adjective.",
+      "example": "এই জামাটা দামী।",
+      "exampleEnglish": "“This shirt is expensive.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "এই জামাটা দামী।",
+      "romanization": "dami",
+      "nativeText": "Model use for \"এই জামাটা দামী।\": “This shirt is expensive.”",
+      "pronunciation": "dami",
+      "exampleTarget": "এই জামাটা দামী।",
+      "exampleNative": "“This shirt is expensive.”",
+      "korean": "এই জামাটা দামী।",
+      "english": "Model use for \"এই জামাটা দামী।\": “This shirt is expensive.”",
+      "example": "এই জামাটা দামী।",
+      "exampleEnglish": "“This shirt is expensive.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "দামী",
+      "romanization": "dami",
+      "nativeText": "Usage focus for \"দামী\": “Expensive.” A useful descriptive adjective.",
+      "pronunciation": "dami",
+      "exampleTarget": "এই জামাটা দামী।",
+      "exampleNative": "Notice what the form is doing here: “This shirt is expensive.”",
+      "korean": "দামী",
+      "english": "Usage focus for \"দামী\": “Expensive.” A useful descriptive adjective.",
+      "example": "এই জামাটা দামী।",
+      "exampleEnglish": "Notice what the form is doing here: “This shirt is expensive.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "দামী",
+      "romanization": "dami",
+      "nativeText": "Contrast check for \"দামী\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "dami",
+      "exampleTarget": "এই জামাটা দামী।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “This shirt is expensive.”",
+      "korean": "দামী",
+      "english": "Contrast check for \"দামী\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "এই জামাটা দামী।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “This shirt is expensive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "দামী",
+      "romanization": "dami",
+      "nativeText": "Recall \"দামী\" from memory, then explain what would change if a nearby alternative replaced it in \"এই জামাটা দামী।\".",
+      "pronunciation": "dami",
+      "exampleTarget": "এই জামাটা দামী।",
+      "exampleNative": "Self-check against the model before moving on: “This shirt is expensive.”",
+      "korean": "দামী",
+      "english": "Recall \"দামী\" from memory, then explain what would change if a nearby alternative replaced it in \"এই জামাটা দামী।\".",
+      "example": "এই জামাটা দামী।",
+      "exampleEnglish": "Self-check against the model before moving on: “This shirt is expensive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "দামী",
+      "romanization": "dami",
+      "nativeText": "Repair \"দামী\" inside \"এই জামাটা দামী।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Expensive.” A useful descriptive adjective.",
+      "pronunciation": "dami",
+      "exampleTarget": "এই জামাটা দামী।",
+      "exampleNative": "Use the model as the repair target: “This shirt is expensive.”",
+      "korean": "দামী",
+      "english": "Repair \"দামী\" inside \"এই জামাটা দামী।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Expensive.” A useful descriptive adjective.",
+      "example": "এই জামাটা দামী।",
+      "exampleEnglish": "Use the model as the repair target: “This shirt is expensive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "দামী",
+      "romanization": "dami",
+      "nativeText": "Transfer \"দামী\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"এই জামাটা দামী।\".",
+      "pronunciation": "dami",
+      "exampleTarget": "এই জামাটা দামী।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “This shirt is expensive.”",
+      "korean": "দামী",
+      "english": "Transfer \"দামী\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"এই জামাটা দামী।\".",
+      "example": "এই জামাটা দামী।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “This shirt is expensive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "দামী",
+      "romanization": "dami",
+      "nativeText": "Find one word or phrase that naturally travels with \"দামী\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "dami",
+      "exampleTarget": "এই জামাটা দামী।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “This shirt is expensive.”",
+      "korean": "দামী",
+      "english": "Find one word or phrase that naturally travels with \"দামী\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "এই জামাটা দামী।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “This shirt is expensive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "দামী",
+      "romanization": "dami",
+      "nativeText": "Listen for \"দামী\" inside \"এই জামাটা দামী।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "dami",
+      "exampleTarget": "এই জামাটা দামী।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “This shirt is expensive.”",
+      "korean": "দামী",
+      "english": "Listen for \"দামী\" inside \"এই জামাটা দামী।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "এই জামাটা দামী।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “This shirt is expensive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "দামী",
+      "romanization": "dami",
+      "nativeText": "Write \"দামী\" again without looking, then compare the exact written form against \"এই জামাটা দামী।\" before moving on.",
+      "pronunciation": "dami",
+      "exampleTarget": "এই জামাটা দামী।",
+      "exampleNative": "Use the written model as the final correctness check: “This shirt is expensive.”",
+      "korean": "দামী",
+      "english": "Write \"দামী\" again without looking, then compare the exact written form against \"এই জামাটা দামী।\" before moving on.",
+      "example": "এই জামাটা দামী।",
+      "exampleEnglish": "Use the written model as the final correctness check: “This shirt is expensive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "দামী",
+      "romanization": "dami",
+      "nativeText": "Check whether \"দামী\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “This shirt is expensive.”",
+      "pronunciation": "dami",
+      "exampleTarget": "এই জামাটা দামী।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “This shirt is expensive.”",
+      "korean": "দামী",
+      "english": "Check whether \"দামী\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “This shirt is expensive.”",
+      "example": "এই জামাটা দামী।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “This shirt is expensive.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "বড় সাইজ",
+      "romanization": "boro size",
+      "nativeText": "“Large size.” A practical clothing phrase.",
+      "pronunciation": "boro size",
+      "exampleTarget": "বড় সাইজ আছে?",
+      "exampleNative": "“Do you have a large size?”",
+      "korean": "বড় সাইজ",
+      "english": "“Large size.” A practical clothing phrase.",
+      "example": "বড় সাইজ আছে?",
+      "exampleEnglish": "“Do you have a large size?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "বড় সাইজ আছে?",
+      "romanization": "boro size",
+      "nativeText": "Model use for \"বড় সাইজ আছে?\": “Do you have a large size?”",
+      "pronunciation": "boro size",
+      "exampleTarget": "বড় সাইজ আছে?",
+      "exampleNative": "“Do you have a large size?”",
+      "korean": "বড় সাইজ আছে?",
+      "english": "Model use for \"বড় সাইজ আছে?\": “Do you have a large size?”",
+      "example": "বড় সাইজ আছে?",
+      "exampleEnglish": "“Do you have a large size?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "বড় সাইজ",
+      "romanization": "boro size",
+      "nativeText": "Usage focus for \"বড় সাইজ\": “Large size.” A practical clothing phrase.",
+      "pronunciation": "boro size",
+      "exampleTarget": "বড় সাইজ আছে?",
+      "exampleNative": "Notice what the form is doing here: “Do you have a large size?”",
+      "korean": "বড় সাইজ",
+      "english": "Usage focus for \"বড় সাইজ\": “Large size.” A practical clothing phrase.",
+      "example": "বড় সাইজ আছে?",
+      "exampleEnglish": "Notice what the form is doing here: “Do you have a large size?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "বড় সাইজ",
+      "romanization": "boro size",
+      "nativeText": "Contrast check for \"বড় সাইজ\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "boro size",
+      "exampleTarget": "বড় সাইজ আছে?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Do you have a large size?”",
+      "korean": "বড় সাইজ",
+      "english": "Contrast check for \"বড় সাইজ\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "বড় সাইজ আছে?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Do you have a large size?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "বড় সাইজ",
+      "romanization": "boro size",
+      "nativeText": "Recall \"বড় সাইজ\" from memory, then explain what would change if a nearby alternative replaced it in \"বড় সাইজ আছে?\".",
+      "pronunciation": "boro size",
+      "exampleTarget": "বড় সাইজ আছে?",
+      "exampleNative": "Self-check against the model before moving on: “Do you have a large size?”",
+      "korean": "বড় সাইজ",
+      "english": "Recall \"বড় সাইজ\" from memory, then explain what would change if a nearby alternative replaced it in \"বড় সাইজ আছে?\".",
+      "example": "বড় সাইজ আছে?",
+      "exampleEnglish": "Self-check against the model before moving on: “Do you have a large size?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "বড় সাইজ",
+      "romanization": "boro size",
+      "nativeText": "Repair \"বড় সাইজ\" inside \"বড় সাইজ আছে?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Large size.” A practical clothing phrase.",
+      "pronunciation": "boro size",
+      "exampleTarget": "বড় সাইজ আছে?",
+      "exampleNative": "Use the model as the repair target: “Do you have a large size?”",
+      "korean": "বড় সাইজ",
+      "english": "Repair \"বড় সাইজ\" inside \"বড় সাইজ আছে?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Large size.” A practical clothing phrase.",
+      "example": "বড় সাইজ আছে?",
+      "exampleEnglish": "Use the model as the repair target: “Do you have a large size?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "বড় সাইজ",
+      "romanization": "boro size",
+      "nativeText": "Transfer \"বড় সাইজ\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"বড় সাইজ আছে?\".",
+      "pronunciation": "boro size",
+      "exampleTarget": "বড় সাইজ আছে?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Do you have a large size?”",
+      "korean": "বড় সাইজ",
+      "english": "Transfer \"বড় সাইজ\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"বড় সাইজ আছে?\".",
+      "example": "বড় সাইজ আছে?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Do you have a large size?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "বড় সাইজ",
+      "romanization": "boro size",
+      "nativeText": "Find one word or phrase that naturally travels with \"বড় সাইজ\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "boro size",
+      "exampleTarget": "বড় সাইজ আছে?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Do you have a large size?”",
+      "korean": "বড় সাইজ",
+      "english": "Find one word or phrase that naturally travels with \"বড় সাইজ\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "বড় সাইজ আছে?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Do you have a large size?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "বড় সাইজ",
+      "romanization": "boro size",
+      "nativeText": "Listen for \"বড় সাইজ\" inside \"বড় সাইজ আছে?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "boro size",
+      "exampleTarget": "বড় সাইজ আছে?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Do you have a large size?”",
+      "korean": "বড় সাইজ",
+      "english": "Listen for \"বড় সাইজ\" inside \"বড় সাইজ আছে?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "বড় সাইজ আছে?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Do you have a large size?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "বড় সাইজ",
+      "romanization": "boro size",
+      "nativeText": "Write \"বড় সাইজ\" again without looking, then compare the exact written form against \"বড় সাইজ আছে?\" before moving on.",
+      "pronunciation": "boro size",
+      "exampleTarget": "বড় সাইজ আছে?",
+      "exampleNative": "Use the written model as the final correctness check: “Do you have a large size?”",
+      "korean": "বড় সাইজ",
+      "english": "Write \"বড় সাইজ\" again without looking, then compare the exact written form against \"বড় সাইজ আছে?\" before moving on.",
+      "example": "বড় সাইজ আছে?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Do you have a large size?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "বড় সাইজ",
+      "romanization": "boro size",
+      "nativeText": "Check whether \"বড় সাইজ\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Do you have a large size?”",
+      "pronunciation": "boro size",
+      "exampleTarget": "বড় সাইজ আছে?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Do you have a large size?”",
+      "korean": "বড় সাইজ",
+      "english": "Check whether \"বড় সাইজ\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Do you have a large size?”",
+      "example": "বড় সাইজ আছে?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Do you have a large size?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "লাল",
+      "romanization": "lal",
+      "nativeText": "“Red.” Color words are straightforward but high-frequency.",
+      "pronunciation": "lal",
+      "exampleTarget": "লাল শাড়ি চাই।",
+      "exampleNative": "“I want a red sari.”",
+      "korean": "লাল",
+      "english": "“Red.” Color words are straightforward but high-frequency.",
+      "example": "লাল শাড়ি চাই।",
+      "exampleEnglish": "“I want a red sari.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "লাল শাড়ি চাই।",
+      "romanization": "lal",
+      "nativeText": "Model use for \"লাল শাড়ি চাই।\": “I want a red sari.”",
+      "pronunciation": "lal",
+      "exampleTarget": "লাল শাড়ি চাই।",
+      "exampleNative": "“I want a red sari.”",
+      "korean": "লাল শাড়ি চাই।",
+      "english": "Model use for \"লাল শাড়ি চাই।\": “I want a red sari.”",
+      "example": "লাল শাড়ি চাই।",
+      "exampleEnglish": "“I want a red sari.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "লাল",
+      "romanization": "lal",
+      "nativeText": "Usage focus for \"লাল\": “Red.” Color words are straightforward but high-frequency.",
+      "pronunciation": "lal",
+      "exampleTarget": "লাল শাড়ি চাই।",
+      "exampleNative": "Notice what the form is doing here: “I want a red sari.”",
+      "korean": "লাল",
+      "english": "Usage focus for \"লাল\": “Red.” Color words are straightforward but high-frequency.",
+      "example": "লাল শাড়ি চাই।",
+      "exampleEnglish": "Notice what the form is doing here: “I want a red sari.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "লাল",
+      "romanization": "lal",
+      "nativeText": "Contrast check for \"লাল\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "lal",
+      "exampleTarget": "লাল শাড়ি চাই।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want a red sari.”",
+      "korean": "লাল",
+      "english": "Contrast check for \"লাল\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "লাল শাড়ি চাই।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want a red sari.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "লাল",
+      "romanization": "lal",
+      "nativeText": "Recall \"লাল\" from memory, then explain what would change if a nearby alternative replaced it in \"লাল শাড়ি চাই।\".",
+      "pronunciation": "lal",
+      "exampleTarget": "লাল শাড়ি চাই।",
+      "exampleNative": "Self-check against the model before moving on: “I want a red sari.”",
+      "korean": "লাল",
+      "english": "Recall \"লাল\" from memory, then explain what would change if a nearby alternative replaced it in \"লাল শাড়ি চাই।\".",
+      "example": "লাল শাড়ি চাই।",
+      "exampleEnglish": "Self-check against the model before moving on: “I want a red sari.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "লাল",
+      "romanization": "lal",
+      "nativeText": "Repair \"লাল\" inside \"লাল শাড়ি চাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Red.” Color words are straightforward but high-frequency.",
+      "pronunciation": "lal",
+      "exampleTarget": "লাল শাড়ি চাই।",
+      "exampleNative": "Use the model as the repair target: “I want a red sari.”",
+      "korean": "লাল",
+      "english": "Repair \"লাল\" inside \"লাল শাড়ি চাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Red.” Color words are straightforward but high-frequency.",
+      "example": "লাল শাড়ি চাই।",
+      "exampleEnglish": "Use the model as the repair target: “I want a red sari.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "লাল",
+      "romanization": "lal",
+      "nativeText": "Transfer \"লাল\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"লাল শাড়ি চাই।\".",
+      "pronunciation": "lal",
+      "exampleTarget": "লাল শাড়ি চাই।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want a red sari.”",
+      "korean": "লাল",
+      "english": "Transfer \"লাল\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"লাল শাড়ি চাই।\".",
+      "example": "লাল শাড়ি চাই।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want a red sari.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "লাল",
+      "romanization": "lal",
+      "nativeText": "Find one word or phrase that naturally travels with \"লাল\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "lal",
+      "exampleTarget": "লাল শাড়ি চাই।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want a red sari.”",
+      "korean": "লাল",
+      "english": "Find one word or phrase that naturally travels with \"লাল\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "লাল শাড়ি চাই।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want a red sari.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "লাল",
+      "romanization": "lal",
+      "nativeText": "Listen for \"লাল\" inside \"লাল শাড়ি চাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "lal",
+      "exampleTarget": "লাল শাড়ি চাই।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want a red sari.”",
+      "korean": "লাল",
+      "english": "Listen for \"লাল\" inside \"লাল শাড়ি চাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "লাল শাড়ি চাই।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want a red sari.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "লাল",
+      "romanization": "lal",
+      "nativeText": "Write \"লাল\" again without looking, then compare the exact written form against \"লাল শাড়ি চাই।\" before moving on.",
+      "pronunciation": "lal",
+      "exampleTarget": "লাল শাড়ি চাই।",
+      "exampleNative": "Use the written model as the final correctness check: “I want a red sari.”",
+      "korean": "লাল",
+      "english": "Write \"লাল\" again without looking, then compare the exact written form against \"লাল শাড়ি চাই।\" before moving on.",
+      "example": "লাল শাড়ি চাই।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want a red sari.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "লাল",
+      "romanization": "lal",
+      "nativeText": "Check whether \"লাল\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want a red sari.”",
+      "pronunciation": "lal",
+      "exampleTarget": "লাল শাড়ি চাই।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want a red sari.”",
+      "korean": "লাল",
+      "english": "Check whether \"লাল\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want a red sari.”",
+      "example": "লাল শাড়ি চাই।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want a red sari.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "এক কেজি",
+      "romanization": "ek keji",
+      "nativeText": "“One kilogram.” Food shopping naturally uses measure words.",
+      "pronunciation": "ek keji",
+      "exampleTarget": "এক কেজি আম চাই।",
+      "exampleNative": "“I want one kilo of mangoes.”",
+      "korean": "এক কেজি",
+      "english": "“One kilogram.” Food shopping naturally uses measure words.",
+      "example": "এক কেজি আম চাই।",
+      "exampleEnglish": "“I want one kilo of mangoes.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "এক কেজি আম চাই।",
+      "romanization": "ek keji",
+      "nativeText": "Model use for \"এক কেজি আম চাই।\": “I want one kilo of mangoes.”",
+      "pronunciation": "ek keji",
+      "exampleTarget": "এক কেজি আম চাই।",
+      "exampleNative": "“I want one kilo of mangoes.”",
+      "korean": "এক কেজি আম চাই।",
+      "english": "Model use for \"এক কেজি আম চাই।\": “I want one kilo of mangoes.”",
+      "example": "এক কেজি আম চাই।",
+      "exampleEnglish": "“I want one kilo of mangoes.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "এক কেজি",
+      "romanization": "ek keji",
+      "nativeText": "Usage focus for \"এক কেজি\": “One kilogram.” Food shopping naturally uses measure words.",
+      "pronunciation": "ek keji",
+      "exampleTarget": "এক কেজি আম চাই।",
+      "exampleNative": "Notice what the form is doing here: “I want one kilo of mangoes.”",
+      "korean": "এক কেজি",
+      "english": "Usage focus for \"এক কেজি\": “One kilogram.” Food shopping naturally uses measure words.",
+      "example": "এক কেজি আম চাই।",
+      "exampleEnglish": "Notice what the form is doing here: “I want one kilo of mangoes.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "এক কেজি",
+      "romanization": "ek keji",
+      "nativeText": "Contrast check for \"এক কেজি\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ek keji",
+      "exampleTarget": "এক কেজি আম চাই।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want one kilo of mangoes.”",
+      "korean": "এক কেজি",
+      "english": "Contrast check for \"এক কেজি\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "এক কেজি আম চাই।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want one kilo of mangoes.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "এক কেজি",
+      "romanization": "ek keji",
+      "nativeText": "Recall \"এক কেজি\" from memory, then explain what would change if a nearby alternative replaced it in \"এক কেজি আম চাই।\".",
+      "pronunciation": "ek keji",
+      "exampleTarget": "এক কেজি আম চাই।",
+      "exampleNative": "Self-check against the model before moving on: “I want one kilo of mangoes.”",
+      "korean": "এক কেজি",
+      "english": "Recall \"এক কেজি\" from memory, then explain what would change if a nearby alternative replaced it in \"এক কেজি আম চাই।\".",
+      "example": "এক কেজি আম চাই।",
+      "exampleEnglish": "Self-check against the model before moving on: “I want one kilo of mangoes.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "এক কেজি",
+      "romanization": "ek keji",
+      "nativeText": "Repair \"এক কেজি\" inside \"এক কেজি আম চাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “One kilogram.” Food shopping naturally uses measure words.",
+      "pronunciation": "ek keji",
+      "exampleTarget": "এক কেজি আম চাই।",
+      "exampleNative": "Use the model as the repair target: “I want one kilo of mangoes.”",
+      "korean": "এক কেজি",
+      "english": "Repair \"এক কেজি\" inside \"এক কেজি আম চাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “One kilogram.” Food shopping naturally uses measure words.",
+      "example": "এক কেজি আম চাই।",
+      "exampleEnglish": "Use the model as the repair target: “I want one kilo of mangoes.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "এক কেজি",
+      "romanization": "ek keji",
+      "nativeText": "Transfer \"এক কেজি\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"এক কেজি আম চাই।\".",
+      "pronunciation": "ek keji",
+      "exampleTarget": "এক কেজি আম চাই।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want one kilo of mangoes.”",
+      "korean": "এক কেজি",
+      "english": "Transfer \"এক কেজি\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"এক কেজি আম চাই।\".",
+      "example": "এক কেজি আম চাই।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want one kilo of mangoes.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "এক কেজি",
+      "romanization": "ek keji",
+      "nativeText": "Find one word or phrase that naturally travels with \"এক কেজি\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ek keji",
+      "exampleTarget": "এক কেজি আম চাই।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want one kilo of mangoes.”",
+      "korean": "এক কেজি",
+      "english": "Find one word or phrase that naturally travels with \"এক কেজি\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "এক কেজি আম চাই।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want one kilo of mangoes.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "এক কেজি",
+      "romanization": "ek keji",
+      "nativeText": "Listen for \"এক কেজি\" inside \"এক কেজি আম চাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ek keji",
+      "exampleTarget": "এক কেজি আম চাই।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want one kilo of mangoes.”",
+      "korean": "এক কেজি",
+      "english": "Listen for \"এক কেজি\" inside \"এক কেজি আম চাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "এক কেজি আম চাই।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want one kilo of mangoes.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "এক কেজি",
+      "romanization": "ek keji",
+      "nativeText": "Write \"এক কেজি\" again without looking, then compare the exact written form against \"এক কেজি আম চাই।\" before moving on.",
+      "pronunciation": "ek keji",
+      "exampleTarget": "এক কেজি আম চাই।",
+      "exampleNative": "Use the written model as the final correctness check: “I want one kilo of mangoes.”",
+      "korean": "এক কেজি",
+      "english": "Write \"এক কেজি\" again without looking, then compare the exact written form against \"এক কেজি আম চাই।\" before moving on.",
+      "example": "এক কেজি আম চাই।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want one kilo of mangoes.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "এক কেজি",
+      "romanization": "ek keji",
+      "nativeText": "Check whether \"এক কেজি\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want one kilo of mangoes.”",
+      "pronunciation": "ek keji",
+      "exampleTarget": "এক কেজি আম চাই।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want one kilo of mangoes.”",
+      "korean": "এক কেজি",
+      "english": "Check whether \"এক কেজি\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want one kilo of mangoes.”",
+      "example": "এক কেজি আম চাই।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want one kilo of mangoes.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "নগদ / কার্ডে",
+      "romanization": "nogod / card-e",
+      "nativeText": "“Cash / by card.” Useful payment choices.",
+      "pronunciation": "nogod / card-e",
+      "exampleTarget": "কার্ডে দিতে পারি?",
+      "exampleNative": "“Can I pay by card?”",
+      "korean": "নগদ / কার্ডে",
+      "english": "“Cash / by card.” Useful payment choices.",
+      "example": "কার্ডে দিতে পারি?",
+      "exampleEnglish": "“Can I pay by card?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "কার্ডে দিতে পারি?",
+      "romanization": "nogod / card-e",
+      "nativeText": "Model use for \"কার্ডে দিতে পারি?\": “Can I pay by card?”",
+      "pronunciation": "nogod / card-e",
+      "exampleTarget": "কার্ডে দিতে পারি?",
+      "exampleNative": "“Can I pay by card?”",
+      "korean": "কার্ডে দিতে পারি?",
+      "english": "Model use for \"কার্ডে দিতে পারি?\": “Can I pay by card?”",
+      "example": "কার্ডে দিতে পারি?",
+      "exampleEnglish": "“Can I pay by card?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "নগদ / কার্ডে",
+      "romanization": "nogod / card-e",
+      "nativeText": "Usage focus for \"নগদ / কার্ডে\": “Cash / by card.” Useful payment choices.",
+      "pronunciation": "nogod / card-e",
+      "exampleTarget": "কার্ডে দিতে পারি?",
+      "exampleNative": "Notice what the form is doing here: “Can I pay by card?”",
+      "korean": "নগদ / কার্ডে",
+      "english": "Usage focus for \"নগদ / কার্ডে\": “Cash / by card.” Useful payment choices.",
+      "example": "কার্ডে দিতে পারি?",
+      "exampleEnglish": "Notice what the form is doing here: “Can I pay by card?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "নগদ / কার্ডে",
+      "romanization": "nogod / card-e",
+      "nativeText": "Contrast check for \"নগদ / কার্ডে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "nogod / card-e",
+      "exampleTarget": "কার্ডে দিতে পারি?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Can I pay by card?”",
+      "korean": "নগদ / কার্ডে",
+      "english": "Contrast check for \"নগদ / কার্ডে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "কার্ডে দিতে পারি?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Can I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "নগদ / কার্ডে",
+      "romanization": "nogod / card-e",
+      "nativeText": "Recall \"নগদ / কার্ডে\" from memory, then explain what would change if a nearby alternative replaced it in \"কার্ডে দিতে পারি?\".",
+      "pronunciation": "nogod / card-e",
+      "exampleTarget": "কার্ডে দিতে পারি?",
+      "exampleNative": "Self-check against the model before moving on: “Can I pay by card?”",
+      "korean": "নগদ / কার্ডে",
+      "english": "Recall \"নগদ / কার্ডে\" from memory, then explain what would change if a nearby alternative replaced it in \"কার্ডে দিতে পারি?\".",
+      "example": "কার্ডে দিতে পারি?",
+      "exampleEnglish": "Self-check against the model before moving on: “Can I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "নগদ / কার্ডে",
+      "romanization": "nogod / card-e",
+      "nativeText": "Repair \"নগদ / কার্ডে\" inside \"কার্ডে দিতে পারি?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Cash / by card.” Useful payment choices.",
+      "pronunciation": "nogod / card-e",
+      "exampleTarget": "কার্ডে দিতে পারি?",
+      "exampleNative": "Use the model as the repair target: “Can I pay by card?”",
+      "korean": "নগদ / কার্ডে",
+      "english": "Repair \"নগদ / কার্ডে\" inside \"কার্ডে দিতে পারি?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Cash / by card.” Useful payment choices.",
+      "example": "কার্ডে দিতে পারি?",
+      "exampleEnglish": "Use the model as the repair target: “Can I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "নগদ / কার্ডে",
+      "romanization": "nogod / card-e",
+      "nativeText": "Transfer \"নগদ / কার্ডে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"কার্ডে দিতে পারি?\".",
+      "pronunciation": "nogod / card-e",
+      "exampleTarget": "কার্ডে দিতে পারি?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Can I pay by card?”",
+      "korean": "নগদ / কার্ডে",
+      "english": "Transfer \"নগদ / কার্ডে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"কার্ডে দিতে পারি?\".",
+      "example": "কার্ডে দিতে পারি?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Can I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "নগদ / কার্ডে",
+      "romanization": "nogod / card-e",
+      "nativeText": "Find one word or phrase that naturally travels with \"নগদ / কার্ডে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "nogod / card-e",
+      "exampleTarget": "কার্ডে দিতে পারি?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Can I pay by card?”",
+      "korean": "নগদ / কার্ডে",
+      "english": "Find one word or phrase that naturally travels with \"নগদ / কার্ডে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "কার্ডে দিতে পারি?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Can I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "নগদ / কার্ডে",
+      "romanization": "nogod / card-e",
+      "nativeText": "Listen for \"নগদ / কার্ডে\" inside \"কার্ডে দিতে পারি?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "nogod / card-e",
+      "exampleTarget": "কার্ডে দিতে পারি?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Can I pay by card?”",
+      "korean": "নগদ / কার্ডে",
+      "english": "Listen for \"নগদ / কার্ডে\" inside \"কার্ডে দিতে পারি?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "কার্ডে দিতে পারি?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Can I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "নগদ / কার্ডে",
+      "romanization": "nogod / card-e",
+      "nativeText": "Write \"নগদ / কার্ডে\" again without looking, then compare the exact written form against \"কার্ডে দিতে পারি?\" before moving on.",
+      "pronunciation": "nogod / card-e",
+      "exampleTarget": "কার্ডে দিতে পারি?",
+      "exampleNative": "Use the written model as the final correctness check: “Can I pay by card?”",
+      "korean": "নগদ / কার্ডে",
+      "english": "Write \"নগদ / কার্ডে\" again without looking, then compare the exact written form against \"কার্ডে দিতে পারি?\" before moving on.",
+      "example": "কার্ডে দিতে পারি?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Can I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit08shopping-vocabulary-1",
+        "bn-level1unit08shopping-vocabulary-2",
+        "bn-level1unit08shopping-grammar-1",
+        "bn-level1unit08shopping-grammar-2",
+        "bn-level1unit08shopping-reading",
+        "bn-level1unit08shopping-listening",
+        "bn-level1unit08shopping-writing",
+        "bn-level1unit08shopping-task"
+      ],
+      "targetText": "নগদ / কার্ডে",
+      "romanization": "nogod / card-e",
+      "nativeText": "Check whether \"নগদ / কার্ডে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Can I pay by card?”",
+      "pronunciation": "nogod / card-e",
+      "exampleTarget": "কার্ডে দিতে পারি?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Can I pay by card?”",
+      "korean": "নগদ / কার্ডে",
+      "english": "Check whether \"নগদ / কার্ডে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Can I pay by card?”",
+      "example": "কার্ডে দিতে পারি?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Can I pay by card?”"
+    }
+  ],
+  "targetLang": "bn",
+  "nativeLang": "en",
+  "track": "textbook"
+};

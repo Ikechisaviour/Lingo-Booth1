@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('tr', {
-  slug: 'tr-l1u18',
-  title: 'Level 1 · Unit 18: Sağlık — Health',
-  category: 'health',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Describe simple symptoms, ask for help, and understand basic health advice.',
-  vocabularyGoal: 'Use body-part, symptom, medicine, and clinic words.',
-  grammarGoal: 'Use possessive body-part expressions, `var`, and obligation forms in health talk.',
-  speakingGoal: 'Say what hurts, describe one symptom, and understand one instruction.',
-  task: 'Explain a minor illness at a pharmacy or clinic.',
-  expressionPractice: [
-    practice('describing-symptom', 'Describing symptom', 'Use one possessed body-part phrase.'),
-    practice('asking-help', 'Asking help', 'Use `ilaç lazım`.'),
-    practice('understanding-advice', 'Understanding advice', 'Recognize one recommendation and one prohibition.'),
+module.exports = {
+  "title": "Level 1 · Unit 18: Sağlık — Health",
+  "category": "health",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "tr-level1unit18health-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Describe simple symptoms, ask for help, and understand basic health advice."
+      ],
+      "task": "Explain a minor illness at a pharmacy or clinic."
+    },
+    {
+      "id": "tr-level1unit18health-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "tr-level1unit18health-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 18: Sağlık — Health with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "tr-level1unit18health-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 18: Sağlık — Health sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "tr-level1unit18health-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Describe simple symptoms, ask for help, and understand basic health advice."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "tr-level1unit18health-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 18: Sağlık — Health with one nearby Turkish form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "tr-level1unit18health-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "tr-level1unit18health-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "tr-level1unit18health-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "tr-level1unit18health-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "tr-level1unit18health-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Explain a minor illness at a pharmacy or clinic."
+      ],
+      "task": "Explain a minor illness at a pharmacy or clinic."
+    }
   ],
-  relatedPools: ['topic-health', 'topic-service'],
-  items: [
-    item('başım ağrıyor', 'ba-ŞIM ağ-rı-YOR', '“My head hurts.” The body part carries a first-person possessive suffix.', 'Sabahdan beri başım ağrıyor.', '“My head has hurt since morning.”'),
-    item('ateşim var', 'a-TE-şim VAR', '“I have a fever.” Literally “my fever exists.”', 'Ateşim var ve çok yorgunum.', '“I have a fever and I am very tired.”'),
-    item('öksürük', 'ök-sü-RÜK', '“Cough.” A common symptom noun.', 'Kuru öksürüğüm var.', '“I have a dry cough.”'),
-    item('midem ağrıyor', 'mi-DEM ağ-rı-YOR', '“My stomach hurts.” Another body-part-plus-possessive pattern.', 'Yemekten sonra midem ağrıyor.', '“My stomach hurts after eating.”'),
-    item('ilaç', 'i-LAÇ', '“Medicine.” Practical in pharmacy talk.', 'Grip için ilaç lazım.', '“Medicine is needed for the flu.”'),
-    item('doktor', 'dok-TOR', '“Doctor.” A common profession noun.', 'Doktora gitmem gerekiyor.', '“I need to go to the doctor.”'),
-    item('dinlenmelisiniz', 'din-len-me-Lİ-si-niz', '“You should rest.” A polite necessity form.', 'İki gün dinlenmelisiniz.', '“You should rest for two days.”'),
-    item('acı yemeyin', 'a-CI ye-me-YİN', '“Do not eat spicy food.” A polite negative command.', 'Bugün acı yemeyin.', '“Do not eat spicy food today.”'),
+  "expressionPractice": [
+    {
+      "id": "describing-symptom",
+      "label": "Describing symptom",
+      "goal": "Use one possessed body-part phrase."
+    },
+    {
+      "id": "asking-help",
+      "label": "Asking help",
+      "goal": "Use `ilaç lazım`."
+    },
+    {
+      "id": "understanding-advice",
+      "label": "Understanding advice",
+      "goal": "Recognize one recommendation and one prohibition."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-health",
+    "topic-service"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit18health-orientation"
+      ],
+      "targetText": "ders hedefi",
+      "romanization": "",
+      "nativeText": "Describe simple symptoms, ask for help, and understand basic health advice.",
+      "pronunciation": "",
+      "exampleTarget": "ders hedefi",
+      "exampleNative": "The whole lesson is built toward this outcome: Explain a minor illness at a pharmacy or clinic.",
+      "korean": "ders hedefi",
+      "english": "Describe simple symptoms, ask for help, and understand basic health advice.",
+      "example": "ders hedefi",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Explain a minor illness at a pharmacy or clinic."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "tr-level1unit18health-pronunciation"
+      ],
+      "targetText": "ses kontrolü",
+      "romanization": "",
+      "nativeText": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Sabahdan beri başım ağrıyor.\".",
+      "pronunciation": "",
+      "exampleTarget": "Sabahdan beri başım ağrıyor.",
+      "exampleNative": "“My head has hurt since morning.”",
+      "korean": "ses kontrolü",
+      "english": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Sabahdan beri başım ağrıyor.\".",
+      "example": "Sabahdan beri başım ağrıyor.",
+      "exampleEnglish": "“My head has hurt since morning.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1"
+      ],
+      "targetText": "başım ağrıyor",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 18: Sağlık — Health with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Sabahdan beri başım ağrıyor.",
+      "exampleNative": "“My head has hurt since morning.”",
+      "korean": "başım ağrıyor",
+      "english": "Use the key language of Level 1 · Unit 18: Sağlık — Health with the register and setting that the lesson requires.",
+      "example": "Sabahdan beri başım ağrıyor.",
+      "exampleEnglish": "“My head has hurt since morning.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-2"
+      ],
+      "targetText": "ateşim var",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 18: Sağlık — Health sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Ateşim var ve çok yorgunum.",
+      "exampleNative": "“I have a fever and I am very tired.”",
+      "korean": "ateşim var",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 18: Sağlık — Health sound precise rather than merely understandable.",
+      "example": "Ateşim var ve çok yorgunum.",
+      "exampleEnglish": "“I have a fever and I am very tired.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "tr-level1unit18health-grammar-1"
+      ],
+      "targetText": "başım ağrıyor",
+      "romanization": "",
+      "nativeText": "Describe simple symptoms, ask for help, and understand basic health advice.",
+      "pronunciation": "",
+      "exampleTarget": "Sabahdan beri başım ağrıyor.",
+      "exampleNative": "“My head has hurt since morning.”",
+      "korean": "başım ağrıyor",
+      "english": "Describe simple symptoms, ask for help, and understand basic health advice.",
+      "example": "Sabahdan beri başım ağrıyor.",
+      "exampleEnglish": "“My head has hurt since morning.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "tr-level1unit18health-grammar-2"
+      ],
+      "targetText": "ateşim var",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 18: Sağlık — Health with one nearby Turkish form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Ateşim var ve çok yorgunum.",
+      "exampleNative": "“I have a fever and I am very tired.”",
+      "korean": "ateşim var",
+      "english": "Contrast the main pattern in Level 1 · Unit 18: Sağlık — Health with one nearby Turkish form so the learner can avoid literal translation.",
+      "example": "Ateşim var ve çok yorgunum.",
+      "exampleEnglish": "“I have a fever and I am very tired.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "tr-level1unit18health-reading"
+      ],
+      "targetText": "okuma modeli",
+      "romanization": "",
+      "nativeText": "Read \"Bugün acı yemeyin.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Bugün acı yemeyin.",
+      "exampleNative": "“Do not eat spicy food today.”",
+      "korean": "okuma modeli",
+      "english": "Read \"Bugün acı yemeyin.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Bugün acı yemeyin.",
+      "exampleEnglish": "“Do not eat spicy food today.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit18health-listening"
+      ],
+      "targetText": "diyalog modeli",
+      "romanization": "",
+      "nativeText": "Hear \"Bugün acı yemeyin.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Bugün acı yemeyin.",
+      "exampleNative": "“Do not eat spicy food today.”",
+      "korean": "diyalog modeli",
+      "english": "Hear \"Bugün acı yemeyin.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Bugün acı yemeyin.",
+      "exampleEnglish": "“Do not eat spicy food today.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "tr-level1unit18health-writing"
+      ],
+      "targetText": "yazma alıştırması",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Sabahdan beri başım ağrıyor.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Sabahdan beri başım ağrıyor.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "yazma alıştırması",
+      "english": "Write your own version after studying \"Sabahdan beri başım ağrıyor.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Sabahdan beri başım ağrıyor.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "tr-level1unit18health-culture"
+      ],
+      "targetText": "kullanım ve bağlam",
+      "romanization": "",
+      "nativeText": "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Ateşim var ve çok yorgunum.",
+      "exampleNative": "“I have a fever and I am very tired.”",
+      "korean": "kullanım ve bağlam",
+      "english": "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used.",
+      "example": "Ateşim var ve çok yorgunum.",
+      "exampleEnglish": "“I have a fever and I am very tired.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "son görev",
+      "romanization": "",
+      "nativeText": "Explain a minor illness at a pharmacy or clinic.",
+      "pronunciation": "",
+      "exampleTarget": "Bugün acı yemeyin.",
+      "exampleNative": "Explain a minor illness at a pharmacy or clinic.",
+      "korean": "son görev",
+      "english": "Explain a minor illness at a pharmacy or clinic.",
+      "example": "Bugün acı yemeyin.",
+      "exampleEnglish": "Explain a minor illness at a pharmacy or clinic."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit18health-grammar-2"
+      ],
+      "targetText": "yaygın hata",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around suffix chains, vowel harmony, evidentiality, and word order. Begin by checking \"Ateşim var ve çok yorgunum.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Ateşim var ve çok yorgunum.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “I have a fever and I am very tired.”",
+      "korean": "yaygın hata",
+      "english": "Watch for literal-translation mistakes around suffix chains, vowel harmony, evidentiality, and word order. Begin by checking \"Ateşim var ve çok yorgunum.\" against the model.",
+      "example": "Ateşim var ve çok yorgunum.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “I have a fever and I am very tired.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-culture"
+      ],
+      "targetText": "üslup",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for sen, siz, a service tone, or a more formal wording before selecting the final form. Compare the social fit of \"Sabahdan beri başım ağrıyor.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Sabahdan beri başım ağrıyor.",
+      "exampleNative": "“My head has hurt since morning.”",
+      "korean": "üslup",
+      "english": "Check whether the setting calls for sen, siz, a service tone, or a more formal wording before selecting the final form. Compare the social fit of \"Sabahdan beri başım ağrıyor.\" before reusing it elsewhere.",
+      "example": "Sabahdan beri başım ağrıyor.",
+      "exampleEnglish": "“My head has hurt since morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "akıcılık",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Turkish message rather than as separate translated fragments. Aim to carry \"Bugün acı yemeyin.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Bugün acı yemeyin.",
+      "exampleNative": "“Do not eat spicy food today.”",
+      "korean": "akıcılık",
+      "english": "Say the idea as one connected Turkish message rather than as separate translated fragments. Aim to carry \"Bugün acı yemeyin.\" as one thought.",
+      "example": "Bugün acı yemeyin.",
+      "exampleEnglish": "“Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "uygulama",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Sabahdan beri başım ağrıyor.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Sabahdan beri başım ağrıyor.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "uygulama",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Sabahdan beri başım ağrıyor.\" and move it into your own life.",
+      "example": "Sabahdan beri başım ağrıyor.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-grammar-1"
+      ],
+      "targetText": "hatırlama",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"başım ağrıyor\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "başım ağrıyor",
+      "exampleNative": "“My head hurts.” The body part carries a first-person possessive suffix.",
+      "korean": "hatırlama",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"başım ağrıyor\" before looking back.",
+      "example": "başım ağrıyor",
+      "exampleEnglish": "“My head hurts.” The body part carries a first-person possessive suffix."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-writing"
+      ],
+      "targetText": "genişletme",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Bugün acı yemeyin.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Bugün acı yemeyin.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "genişletme",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Bugün acı yemeyin.\" rather than restarting from a blank sentence.",
+      "example": "Bugün acı yemeyin.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading"
+      ],
+      "targetText": "karşılaştırma",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 18: Sağlık — Health with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Ateşim var ve çok yorgunum.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Ateşim var ve çok yorgunum.",
+      "exampleNative": "“I have a fever and I am very tired.”",
+      "korean": "karşılaştırma",
+      "english": "Compare the central form in Level 1 · Unit 18: Sağlık — Health with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Ateşim var ve çok yorgunum.\" as the comparison line.",
+      "example": "Ateşim var ve çok yorgunum.",
+      "exampleEnglish": "“I have a fever and I am very tired.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "tr-level1unit18health-pronunciation"
+      ],
+      "targetText": "telaffuz düzeltme",
+      "romanization": "",
+      "nativeText": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Sabahdan beri başım ağrıyor.\".",
+      "pronunciation": "",
+      "exampleTarget": "Sabahdan beri başım ağrıyor.",
+      "exampleNative": "“My head has hurt since morning.”",
+      "korean": "telaffuz düzeltme",
+      "english": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Sabahdan beri başım ağrıyor.\".",
+      "example": "Sabahdan beri başım ağrıyor.",
+      "exampleEnglish": "“My head has hurt since morning.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "diyalog varyasyonu",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Bugün acı yemeyin.\".",
+      "pronunciation": "",
+      "exampleTarget": "Bugün acı yemeyin.",
+      "exampleNative": "“Do not eat spicy food today.”",
+      "korean": "diyalog varyasyonu",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Bugün acı yemeyin.\".",
+      "example": "Bugün acı yemeyin.",
+      "exampleEnglish": "“Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-writing"
+      ],
+      "targetText": "cümle kurma",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Sabahdan beri başım ağrıyor.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Sabahdan beri başım ağrıyor.",
+      "exampleNative": "“My head has hurt since morning.”",
+      "korean": "cümle kurma",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Sabahdan beri başım ağrıyor.\" one layer at a time.",
+      "example": "Sabahdan beri başım ağrıyor.",
+      "exampleEnglish": "“My head has hurt since morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-2"
+      ],
+      "targetText": "hızlı kontrol",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Ateşim var ve çok yorgunum.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Ateşim var ve çok yorgunum.",
+      "exampleNative": "“I have a fever and I am very tired.”",
+      "korean": "hızlı kontrol",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Ateşim var ve çok yorgunum.\" as the deciding example.",
+      "example": "Ateşim var ve çok yorgunum.",
+      "exampleEnglish": "“I have a fever and I am very tired.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit18health-culture",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "değerlendirme",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Bugün acı yemeyin.\".",
+      "pronunciation": "",
+      "exampleTarget": "Bugün acı yemeyin.",
+      "exampleNative": "“Do not eat spicy food today.”",
+      "korean": "değerlendirme",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Bugün acı yemeyin.\".",
+      "example": "Bugün acı yemeyin.",
+      "exampleEnglish": "“Do not eat spicy food today.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "başım ağrıyor",
+      "romanization": "ba-ŞIM ağ-rı-YOR",
+      "nativeText": "“My head hurts.” The body part carries a first-person possessive suffix.",
+      "pronunciation": "ba-ŞIM ağ-rı-YOR",
+      "exampleTarget": "Sabahdan beri başım ağrıyor.",
+      "exampleNative": "“My head has hurt since morning.”",
+      "korean": "başım ağrıyor",
+      "english": "“My head hurts.” The body part carries a first-person possessive suffix.",
+      "example": "Sabahdan beri başım ağrıyor.",
+      "exampleEnglish": "“My head has hurt since morning.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "Sabahdan beri başım ağrıyor.",
+      "romanization": "ba-ŞIM ağ-rı-YOR",
+      "nativeText": "Model use for \"Sabahdan beri başım ağrıyor.\": “My head has hurt since morning.”",
+      "pronunciation": "ba-ŞIM ağ-rı-YOR",
+      "exampleTarget": "Sabahdan beri başım ağrıyor.",
+      "exampleNative": "“My head has hurt since morning.”",
+      "korean": "Sabahdan beri başım ağrıyor.",
+      "english": "Model use for \"Sabahdan beri başım ağrıyor.\": “My head has hurt since morning.”",
+      "example": "Sabahdan beri başım ağrıyor.",
+      "exampleEnglish": "“My head has hurt since morning.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "başım ağrıyor",
+      "romanization": "ba-ŞIM ağ-rı-YOR",
+      "nativeText": "Usage focus for \"başım ağrıyor\": Use the key language of Level 1 · Unit 18: Sağlık — Health with the register and setting that the lesson requires.",
+      "pronunciation": "ba-ŞIM ağ-rı-YOR",
+      "exampleTarget": "Sabahdan beri başım ağrıyor.",
+      "exampleNative": "Notice what the form is doing here: “My head has hurt since morning.”",
+      "korean": "başım ağrıyor",
+      "english": "Usage focus for \"başım ağrıyor\": Use the key language of Level 1 · Unit 18: Sağlık — Health with the register and setting that the lesson requires.",
+      "example": "Sabahdan beri başım ağrıyor.",
+      "exampleEnglish": "Notice what the form is doing here: “My head has hurt since morning.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "başım ağrıyor",
+      "romanization": "ba-ŞIM ağ-rı-YOR",
+      "nativeText": "Contrast check for \"başım ağrıyor\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ba-ŞIM ağ-rı-YOR",
+      "exampleTarget": "Sabahdan beri başım ağrıyor.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My head has hurt since morning.”",
+      "korean": "başım ağrıyor",
+      "english": "Contrast check for \"başım ağrıyor\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Sabahdan beri başım ağrıyor.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My head has hurt since morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "başım ağrıyor",
+      "romanization": "ba-ŞIM ağ-rı-YOR",
+      "nativeText": "Recall \"başım ağrıyor\" from memory, then explain what would change if a nearby alternative replaced it in \"Sabahdan beri başım ağrıyor.\".",
+      "pronunciation": "ba-ŞIM ağ-rı-YOR",
+      "exampleTarget": "Sabahdan beri başım ağrıyor.",
+      "exampleNative": "Self-check against the model before moving on: “My head has hurt since morning.”",
+      "korean": "başım ağrıyor",
+      "english": "Recall \"başım ağrıyor\" from memory, then explain what would change if a nearby alternative replaced it in \"Sabahdan beri başım ağrıyor.\".",
+      "example": "Sabahdan beri başım ağrıyor.",
+      "exampleEnglish": "Self-check against the model before moving on: “My head has hurt since morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "başım ağrıyor",
+      "romanization": "ba-ŞIM ağ-rı-YOR",
+      "nativeText": "Repair \"başım ağrıyor\" inside \"Sabahdan beri başım ağrıyor.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 18: Sağlık — Health with the register and setting that the lesson requires.",
+      "pronunciation": "ba-ŞIM ağ-rı-YOR",
+      "exampleTarget": "Sabahdan beri başım ağrıyor.",
+      "exampleNative": "Use the model as the repair target: “My head has hurt since morning.”",
+      "korean": "başım ağrıyor",
+      "english": "Repair \"başım ağrıyor\" inside \"Sabahdan beri başım ağrıyor.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 18: Sağlık — Health with the register and setting that the lesson requires.",
+      "example": "Sabahdan beri başım ağrıyor.",
+      "exampleEnglish": "Use the model as the repair target: “My head has hurt since morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "başım ağrıyor",
+      "romanization": "ba-ŞIM ağ-rı-YOR",
+      "nativeText": "Transfer \"başım ağrıyor\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Sabahdan beri başım ağrıyor.\".",
+      "pronunciation": "ba-ŞIM ağ-rı-YOR",
+      "exampleTarget": "Sabahdan beri başım ağrıyor.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “My head has hurt since morning.”",
+      "korean": "başım ağrıyor",
+      "english": "Transfer \"başım ağrıyor\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Sabahdan beri başım ağrıyor.\".",
+      "example": "Sabahdan beri başım ağrıyor.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “My head has hurt since morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "başım ağrıyor",
+      "romanization": "ba-ŞIM ağ-rı-YOR",
+      "nativeText": "Find one word or phrase that naturally travels with \"başım ağrıyor\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ba-ŞIM ağ-rı-YOR",
+      "exampleTarget": "Sabahdan beri başım ağrıyor.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “My head has hurt since morning.”",
+      "korean": "başım ağrıyor",
+      "english": "Find one word or phrase that naturally travels with \"başım ağrıyor\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Sabahdan beri başım ağrıyor.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “My head has hurt since morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "başım ağrıyor",
+      "romanization": "ba-ŞIM ağ-rı-YOR",
+      "nativeText": "Listen for \"başım ağrıyor\" inside \"Sabahdan beri başım ağrıyor.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ba-ŞIM ağ-rı-YOR",
+      "exampleTarget": "Sabahdan beri başım ağrıyor.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My head has hurt since morning.”",
+      "korean": "başım ağrıyor",
+      "english": "Listen for \"başım ağrıyor\" inside \"Sabahdan beri başım ağrıyor.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Sabahdan beri başım ağrıyor.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My head has hurt since morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "başım ağrıyor",
+      "romanization": "ba-ŞIM ağ-rı-YOR",
+      "nativeText": "Write \"başım ağrıyor\" again without looking, then compare the exact written form against \"Sabahdan beri başım ağrıyor.\" before moving on.",
+      "pronunciation": "ba-ŞIM ağ-rı-YOR",
+      "exampleTarget": "Sabahdan beri başım ağrıyor.",
+      "exampleNative": "Use the written model as the final correctness check: “My head has hurt since morning.”",
+      "korean": "başım ağrıyor",
+      "english": "Write \"başım ağrıyor\" again without looking, then compare the exact written form against \"Sabahdan beri başım ağrıyor.\" before moving on.",
+      "example": "Sabahdan beri başım ağrıyor.",
+      "exampleEnglish": "Use the written model as the final correctness check: “My head has hurt since morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "başım ağrıyor",
+      "romanization": "ba-ŞIM ağ-rı-YOR",
+      "nativeText": "Check whether \"başım ağrıyor\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My head has hurt since morning.”",
+      "pronunciation": "ba-ŞIM ağ-rı-YOR",
+      "exampleTarget": "Sabahdan beri başım ağrıyor.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “My head has hurt since morning.”",
+      "korean": "başım ağrıyor",
+      "english": "Check whether \"başım ağrıyor\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My head has hurt since morning.”",
+      "example": "Sabahdan beri başım ağrıyor.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “My head has hurt since morning.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "ateşim var",
+      "romanization": "a-TE-şim VAR",
+      "nativeText": "“I have a fever.” Literally “my fever exists.”",
+      "pronunciation": "a-TE-şim VAR",
+      "exampleTarget": "Ateşim var ve çok yorgunum.",
+      "exampleNative": "“I have a fever and I am very tired.”",
+      "korean": "ateşim var",
+      "english": "“I have a fever.” Literally “my fever exists.”",
+      "example": "Ateşim var ve çok yorgunum.",
+      "exampleEnglish": "“I have a fever and I am very tired.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "Ateşim var ve çok yorgunum.",
+      "romanization": "a-TE-şim VAR",
+      "nativeText": "Model use for \"Ateşim var ve çok yorgunum.\": “I have a fever and I am very tired.”",
+      "pronunciation": "a-TE-şim VAR",
+      "exampleTarget": "Ateşim var ve çok yorgunum.",
+      "exampleNative": "“I have a fever and I am very tired.”",
+      "korean": "Ateşim var ve çok yorgunum.",
+      "english": "Model use for \"Ateşim var ve çok yorgunum.\": “I have a fever and I am very tired.”",
+      "example": "Ateşim var ve çok yorgunum.",
+      "exampleEnglish": "“I have a fever and I am very tired.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "ateşim var",
+      "romanization": "a-TE-şim VAR",
+      "nativeText": "Usage focus for \"ateşim var\": Distinguish the nearby wording choices that make Level 1 · Unit 18: Sağlık — Health sound precise rather than merely understandable.",
+      "pronunciation": "a-TE-şim VAR",
+      "exampleTarget": "Ateşim var ve çok yorgunum.",
+      "exampleNative": "Notice what the form is doing here: “I have a fever and I am very tired.”",
+      "korean": "ateşim var",
+      "english": "Usage focus for \"ateşim var\": Distinguish the nearby wording choices that make Level 1 · Unit 18: Sağlık — Health sound precise rather than merely understandable.",
+      "example": "Ateşim var ve çok yorgunum.",
+      "exampleEnglish": "Notice what the form is doing here: “I have a fever and I am very tired.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "ateşim var",
+      "romanization": "a-TE-şim VAR",
+      "nativeText": "Contrast check for \"ateşim var\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "a-TE-şim VAR",
+      "exampleTarget": "Ateşim var ve çok yorgunum.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have a fever and I am very tired.”",
+      "korean": "ateşim var",
+      "english": "Contrast check for \"ateşim var\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ateşim var ve çok yorgunum.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have a fever and I am very tired.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "ateşim var",
+      "romanization": "a-TE-şim VAR",
+      "nativeText": "Recall \"ateşim var\" from memory, then explain what would change if a nearby alternative replaced it in \"Ateşim var ve çok yorgunum.\".",
+      "pronunciation": "a-TE-şim VAR",
+      "exampleTarget": "Ateşim var ve çok yorgunum.",
+      "exampleNative": "Self-check against the model before moving on: “I have a fever and I am very tired.”",
+      "korean": "ateşim var",
+      "english": "Recall \"ateşim var\" from memory, then explain what would change if a nearby alternative replaced it in \"Ateşim var ve çok yorgunum.\".",
+      "example": "Ateşim var ve çok yorgunum.",
+      "exampleEnglish": "Self-check against the model before moving on: “I have a fever and I am very tired.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "ateşim var",
+      "romanization": "a-TE-şim VAR",
+      "nativeText": "Repair \"ateşim var\" inside \"Ateşim var ve çok yorgunum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 18: Sağlık — Health sound precise rather than merely understandable.",
+      "pronunciation": "a-TE-şim VAR",
+      "exampleTarget": "Ateşim var ve çok yorgunum.",
+      "exampleNative": "Use the model as the repair target: “I have a fever and I am very tired.”",
+      "korean": "ateşim var",
+      "english": "Repair \"ateşim var\" inside \"Ateşim var ve çok yorgunum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 18: Sağlık — Health sound precise rather than merely understandable.",
+      "example": "Ateşim var ve çok yorgunum.",
+      "exampleEnglish": "Use the model as the repair target: “I have a fever and I am very tired.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "ateşim var",
+      "romanization": "a-TE-şim VAR",
+      "nativeText": "Transfer \"ateşim var\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ateşim var ve çok yorgunum.\".",
+      "pronunciation": "a-TE-şim VAR",
+      "exampleTarget": "Ateşim var ve çok yorgunum.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have a fever and I am very tired.”",
+      "korean": "ateşim var",
+      "english": "Transfer \"ateşim var\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ateşim var ve çok yorgunum.\".",
+      "example": "Ateşim var ve çok yorgunum.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have a fever and I am very tired.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "ateşim var",
+      "romanization": "a-TE-şim VAR",
+      "nativeText": "Find one word or phrase that naturally travels with \"ateşim var\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "a-TE-şim VAR",
+      "exampleTarget": "Ateşim var ve çok yorgunum.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I have a fever and I am very tired.”",
+      "korean": "ateşim var",
+      "english": "Find one word or phrase that naturally travels with \"ateşim var\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ateşim var ve çok yorgunum.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I have a fever and I am very tired.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "ateşim var",
+      "romanization": "a-TE-şim VAR",
+      "nativeText": "Listen for \"ateşim var\" inside \"Ateşim var ve çok yorgunum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "a-TE-şim VAR",
+      "exampleTarget": "Ateşim var ve çok yorgunum.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have a fever and I am very tired.”",
+      "korean": "ateşim var",
+      "english": "Listen for \"ateşim var\" inside \"Ateşim var ve çok yorgunum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ateşim var ve çok yorgunum.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have a fever and I am very tired.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "ateşim var",
+      "romanization": "a-TE-şim VAR",
+      "nativeText": "Write \"ateşim var\" again without looking, then compare the exact written form against \"Ateşim var ve çok yorgunum.\" before moving on.",
+      "pronunciation": "a-TE-şim VAR",
+      "exampleTarget": "Ateşim var ve çok yorgunum.",
+      "exampleNative": "Use the written model as the final correctness check: “I have a fever and I am very tired.”",
+      "korean": "ateşim var",
+      "english": "Write \"ateşim var\" again without looking, then compare the exact written form against \"Ateşim var ve çok yorgunum.\" before moving on.",
+      "example": "Ateşim var ve çok yorgunum.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I have a fever and I am very tired.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "ateşim var",
+      "romanization": "a-TE-şim VAR",
+      "nativeText": "Check whether \"ateşim var\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have a fever and I am very tired.”",
+      "pronunciation": "a-TE-şim VAR",
+      "exampleTarget": "Ateşim var ve çok yorgunum.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I have a fever and I am very tired.”",
+      "korean": "ateşim var",
+      "english": "Check whether \"ateşim var\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have a fever and I am very tired.”",
+      "example": "Ateşim var ve çok yorgunum.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I have a fever and I am very tired.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "öksürük",
+      "romanization": "ök-sü-RÜK",
+      "nativeText": "“Cough.” A common symptom noun.",
+      "pronunciation": "ök-sü-RÜK",
+      "exampleTarget": "Kuru öksürüğüm var.",
+      "exampleNative": "“I have a dry cough.”",
+      "korean": "öksürük",
+      "english": "“Cough.” A common symptom noun.",
+      "example": "Kuru öksürüğüm var.",
+      "exampleEnglish": "“I have a dry cough.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "Kuru öksürüğüm var.",
+      "romanization": "ök-sü-RÜK",
+      "nativeText": "Model use for \"Kuru öksürüğüm var.\": “I have a dry cough.”",
+      "pronunciation": "ök-sü-RÜK",
+      "exampleTarget": "Kuru öksürüğüm var.",
+      "exampleNative": "“I have a dry cough.”",
+      "korean": "Kuru öksürüğüm var.",
+      "english": "Model use for \"Kuru öksürüğüm var.\": “I have a dry cough.”",
+      "example": "Kuru öksürüğüm var.",
+      "exampleEnglish": "“I have a dry cough.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "öksürük",
+      "romanization": "ök-sü-RÜK",
+      "nativeText": "Usage focus for \"öksürük\": “Cough.” A common symptom noun.",
+      "pronunciation": "ök-sü-RÜK",
+      "exampleTarget": "Kuru öksürüğüm var.",
+      "exampleNative": "Notice what the form is doing here: “I have a dry cough.”",
+      "korean": "öksürük",
+      "english": "Usage focus for \"öksürük\": “Cough.” A common symptom noun.",
+      "example": "Kuru öksürüğüm var.",
+      "exampleEnglish": "Notice what the form is doing here: “I have a dry cough.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "öksürük",
+      "romanization": "ök-sü-RÜK",
+      "nativeText": "Contrast check for \"öksürük\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ök-sü-RÜK",
+      "exampleTarget": "Kuru öksürüğüm var.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have a dry cough.”",
+      "korean": "öksürük",
+      "english": "Contrast check for \"öksürük\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Kuru öksürüğüm var.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have a dry cough.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "öksürük",
+      "romanization": "ök-sü-RÜK",
+      "nativeText": "Recall \"öksürük\" from memory, then explain what would change if a nearby alternative replaced it in \"Kuru öksürüğüm var.\".",
+      "pronunciation": "ök-sü-RÜK",
+      "exampleTarget": "Kuru öksürüğüm var.",
+      "exampleNative": "Self-check against the model before moving on: “I have a dry cough.”",
+      "korean": "öksürük",
+      "english": "Recall \"öksürük\" from memory, then explain what would change if a nearby alternative replaced it in \"Kuru öksürüğüm var.\".",
+      "example": "Kuru öksürüğüm var.",
+      "exampleEnglish": "Self-check against the model before moving on: “I have a dry cough.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "öksürük",
+      "romanization": "ök-sü-RÜK",
+      "nativeText": "Repair \"öksürük\" inside \"Kuru öksürüğüm var.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Cough.” A common symptom noun.",
+      "pronunciation": "ök-sü-RÜK",
+      "exampleTarget": "Kuru öksürüğüm var.",
+      "exampleNative": "Use the model as the repair target: “I have a dry cough.”",
+      "korean": "öksürük",
+      "english": "Repair \"öksürük\" inside \"Kuru öksürüğüm var.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Cough.” A common symptom noun.",
+      "example": "Kuru öksürüğüm var.",
+      "exampleEnglish": "Use the model as the repair target: “I have a dry cough.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "öksürük",
+      "romanization": "ök-sü-RÜK",
+      "nativeText": "Transfer \"öksürük\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Kuru öksürüğüm var.\".",
+      "pronunciation": "ök-sü-RÜK",
+      "exampleTarget": "Kuru öksürüğüm var.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have a dry cough.”",
+      "korean": "öksürük",
+      "english": "Transfer \"öksürük\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Kuru öksürüğüm var.\".",
+      "example": "Kuru öksürüğüm var.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have a dry cough.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "öksürük",
+      "romanization": "ök-sü-RÜK",
+      "nativeText": "Find one word or phrase that naturally travels with \"öksürük\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ök-sü-RÜK",
+      "exampleTarget": "Kuru öksürüğüm var.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I have a dry cough.”",
+      "korean": "öksürük",
+      "english": "Find one word or phrase that naturally travels with \"öksürük\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Kuru öksürüğüm var.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I have a dry cough.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "öksürük",
+      "romanization": "ök-sü-RÜK",
+      "nativeText": "Listen for \"öksürük\" inside \"Kuru öksürüğüm var.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ök-sü-RÜK",
+      "exampleTarget": "Kuru öksürüğüm var.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have a dry cough.”",
+      "korean": "öksürük",
+      "english": "Listen for \"öksürük\" inside \"Kuru öksürüğüm var.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Kuru öksürüğüm var.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have a dry cough.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "öksürük",
+      "romanization": "ök-sü-RÜK",
+      "nativeText": "Write \"öksürük\" again without looking, then compare the exact written form against \"Kuru öksürüğüm var.\" before moving on.",
+      "pronunciation": "ök-sü-RÜK",
+      "exampleTarget": "Kuru öksürüğüm var.",
+      "exampleNative": "Use the written model as the final correctness check: “I have a dry cough.”",
+      "korean": "öksürük",
+      "english": "Write \"öksürük\" again without looking, then compare the exact written form against \"Kuru öksürüğüm var.\" before moving on.",
+      "example": "Kuru öksürüğüm var.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I have a dry cough.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "öksürük",
+      "romanization": "ök-sü-RÜK",
+      "nativeText": "Check whether \"öksürük\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have a dry cough.”",
+      "pronunciation": "ök-sü-RÜK",
+      "exampleTarget": "Kuru öksürüğüm var.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I have a dry cough.”",
+      "korean": "öksürük",
+      "english": "Check whether \"öksürük\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have a dry cough.”",
+      "example": "Kuru öksürüğüm var.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I have a dry cough.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "midem ağrıyor",
+      "romanization": "mi-DEM ağ-rı-YOR",
+      "nativeText": "“My stomach hurts.” Another body-part-plus-possessive pattern.",
+      "pronunciation": "mi-DEM ağ-rı-YOR",
+      "exampleTarget": "Yemekten sonra midem ağrıyor.",
+      "exampleNative": "“My stomach hurts after eating.”",
+      "korean": "midem ağrıyor",
+      "english": "“My stomach hurts.” Another body-part-plus-possessive pattern.",
+      "example": "Yemekten sonra midem ağrıyor.",
+      "exampleEnglish": "“My stomach hurts after eating.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "Yemekten sonra midem ağrıyor.",
+      "romanization": "mi-DEM ağ-rı-YOR",
+      "nativeText": "Model use for \"Yemekten sonra midem ağrıyor.\": “My stomach hurts after eating.”",
+      "pronunciation": "mi-DEM ağ-rı-YOR",
+      "exampleTarget": "Yemekten sonra midem ağrıyor.",
+      "exampleNative": "“My stomach hurts after eating.”",
+      "korean": "Yemekten sonra midem ağrıyor.",
+      "english": "Model use for \"Yemekten sonra midem ağrıyor.\": “My stomach hurts after eating.”",
+      "example": "Yemekten sonra midem ağrıyor.",
+      "exampleEnglish": "“My stomach hurts after eating.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "midem ağrıyor",
+      "romanization": "mi-DEM ağ-rı-YOR",
+      "nativeText": "Usage focus for \"midem ağrıyor\": “My stomach hurts.” Another body-part-plus-possessive pattern.",
+      "pronunciation": "mi-DEM ağ-rı-YOR",
+      "exampleTarget": "Yemekten sonra midem ağrıyor.",
+      "exampleNative": "Notice what the form is doing here: “My stomach hurts after eating.”",
+      "korean": "midem ağrıyor",
+      "english": "Usage focus for \"midem ağrıyor\": “My stomach hurts.” Another body-part-plus-possessive pattern.",
+      "example": "Yemekten sonra midem ağrıyor.",
+      "exampleEnglish": "Notice what the form is doing here: “My stomach hurts after eating.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "midem ağrıyor",
+      "romanization": "mi-DEM ağ-rı-YOR",
+      "nativeText": "Contrast check for \"midem ağrıyor\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "mi-DEM ağ-rı-YOR",
+      "exampleTarget": "Yemekten sonra midem ağrıyor.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My stomach hurts after eating.”",
+      "korean": "midem ağrıyor",
+      "english": "Contrast check for \"midem ağrıyor\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Yemekten sonra midem ağrıyor.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My stomach hurts after eating.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "midem ağrıyor",
+      "romanization": "mi-DEM ağ-rı-YOR",
+      "nativeText": "Recall \"midem ağrıyor\" from memory, then explain what would change if a nearby alternative replaced it in \"Yemekten sonra midem ağrıyor.\".",
+      "pronunciation": "mi-DEM ağ-rı-YOR",
+      "exampleTarget": "Yemekten sonra midem ağrıyor.",
+      "exampleNative": "Self-check against the model before moving on: “My stomach hurts after eating.”",
+      "korean": "midem ağrıyor",
+      "english": "Recall \"midem ağrıyor\" from memory, then explain what would change if a nearby alternative replaced it in \"Yemekten sonra midem ağrıyor.\".",
+      "example": "Yemekten sonra midem ağrıyor.",
+      "exampleEnglish": "Self-check against the model before moving on: “My stomach hurts after eating.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "midem ağrıyor",
+      "romanization": "mi-DEM ağ-rı-YOR",
+      "nativeText": "Repair \"midem ağrıyor\" inside \"Yemekten sonra midem ağrıyor.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “My stomach hurts.” Another body-part-plus-possessive pattern.",
+      "pronunciation": "mi-DEM ağ-rı-YOR",
+      "exampleTarget": "Yemekten sonra midem ağrıyor.",
+      "exampleNative": "Use the model as the repair target: “My stomach hurts after eating.”",
+      "korean": "midem ağrıyor",
+      "english": "Repair \"midem ağrıyor\" inside \"Yemekten sonra midem ağrıyor.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “My stomach hurts.” Another body-part-plus-possessive pattern.",
+      "example": "Yemekten sonra midem ağrıyor.",
+      "exampleEnglish": "Use the model as the repair target: “My stomach hurts after eating.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "midem ağrıyor",
+      "romanization": "mi-DEM ağ-rı-YOR",
+      "nativeText": "Transfer \"midem ağrıyor\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Yemekten sonra midem ağrıyor.\".",
+      "pronunciation": "mi-DEM ağ-rı-YOR",
+      "exampleTarget": "Yemekten sonra midem ağrıyor.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “My stomach hurts after eating.”",
+      "korean": "midem ağrıyor",
+      "english": "Transfer \"midem ağrıyor\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Yemekten sonra midem ağrıyor.\".",
+      "example": "Yemekten sonra midem ağrıyor.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “My stomach hurts after eating.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "midem ağrıyor",
+      "romanization": "mi-DEM ağ-rı-YOR",
+      "nativeText": "Find one word or phrase that naturally travels with \"midem ağrıyor\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "mi-DEM ağ-rı-YOR",
+      "exampleTarget": "Yemekten sonra midem ağrıyor.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “My stomach hurts after eating.”",
+      "korean": "midem ağrıyor",
+      "english": "Find one word or phrase that naturally travels with \"midem ağrıyor\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Yemekten sonra midem ağrıyor.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “My stomach hurts after eating.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "midem ağrıyor",
+      "romanization": "mi-DEM ağ-rı-YOR",
+      "nativeText": "Listen for \"midem ağrıyor\" inside \"Yemekten sonra midem ağrıyor.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "mi-DEM ağ-rı-YOR",
+      "exampleTarget": "Yemekten sonra midem ağrıyor.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My stomach hurts after eating.”",
+      "korean": "midem ağrıyor",
+      "english": "Listen for \"midem ağrıyor\" inside \"Yemekten sonra midem ağrıyor.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Yemekten sonra midem ağrıyor.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My stomach hurts after eating.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "midem ağrıyor",
+      "romanization": "mi-DEM ağ-rı-YOR",
+      "nativeText": "Write \"midem ağrıyor\" again without looking, then compare the exact written form against \"Yemekten sonra midem ağrıyor.\" before moving on.",
+      "pronunciation": "mi-DEM ağ-rı-YOR",
+      "exampleTarget": "Yemekten sonra midem ağrıyor.",
+      "exampleNative": "Use the written model as the final correctness check: “My stomach hurts after eating.”",
+      "korean": "midem ağrıyor",
+      "english": "Write \"midem ağrıyor\" again without looking, then compare the exact written form against \"Yemekten sonra midem ağrıyor.\" before moving on.",
+      "example": "Yemekten sonra midem ağrıyor.",
+      "exampleEnglish": "Use the written model as the final correctness check: “My stomach hurts after eating.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "midem ağrıyor",
+      "romanization": "mi-DEM ağ-rı-YOR",
+      "nativeText": "Check whether \"midem ağrıyor\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My stomach hurts after eating.”",
+      "pronunciation": "mi-DEM ağ-rı-YOR",
+      "exampleTarget": "Yemekten sonra midem ağrıyor.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “My stomach hurts after eating.”",
+      "korean": "midem ağrıyor",
+      "english": "Check whether \"midem ağrıyor\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My stomach hurts after eating.”",
+      "example": "Yemekten sonra midem ağrıyor.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “My stomach hurts after eating.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "ilaç",
+      "romanization": "i-LAÇ",
+      "nativeText": "“Medicine.” Practical in pharmacy talk.",
+      "pronunciation": "i-LAÇ",
+      "exampleTarget": "Grip için ilaç lazım.",
+      "exampleNative": "“Medicine is needed for the flu.”",
+      "korean": "ilaç",
+      "english": "“Medicine.” Practical in pharmacy talk.",
+      "example": "Grip için ilaç lazım.",
+      "exampleEnglish": "“Medicine is needed for the flu.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "Grip için ilaç lazım.",
+      "romanization": "i-LAÇ",
+      "nativeText": "Model use for \"Grip için ilaç lazım.\": “Medicine is needed for the flu.”",
+      "pronunciation": "i-LAÇ",
+      "exampleTarget": "Grip için ilaç lazım.",
+      "exampleNative": "“Medicine is needed for the flu.”",
+      "korean": "Grip için ilaç lazım.",
+      "english": "Model use for \"Grip için ilaç lazım.\": “Medicine is needed for the flu.”",
+      "example": "Grip için ilaç lazım.",
+      "exampleEnglish": "“Medicine is needed for the flu.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "ilaç",
+      "romanization": "i-LAÇ",
+      "nativeText": "Usage focus for \"ilaç\": “Medicine.” Practical in pharmacy talk.",
+      "pronunciation": "i-LAÇ",
+      "exampleTarget": "Grip için ilaç lazım.",
+      "exampleNative": "Notice what the form is doing here: “Medicine is needed for the flu.”",
+      "korean": "ilaç",
+      "english": "Usage focus for \"ilaç\": “Medicine.” Practical in pharmacy talk.",
+      "example": "Grip için ilaç lazım.",
+      "exampleEnglish": "Notice what the form is doing here: “Medicine is needed for the flu.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "ilaç",
+      "romanization": "i-LAÇ",
+      "nativeText": "Contrast check for \"ilaç\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "i-LAÇ",
+      "exampleTarget": "Grip için ilaç lazım.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Medicine is needed for the flu.”",
+      "korean": "ilaç",
+      "english": "Contrast check for \"ilaç\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Grip için ilaç lazım.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Medicine is needed for the flu.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "ilaç",
+      "romanization": "i-LAÇ",
+      "nativeText": "Recall \"ilaç\" from memory, then explain what would change if a nearby alternative replaced it in \"Grip için ilaç lazım.\".",
+      "pronunciation": "i-LAÇ",
+      "exampleTarget": "Grip için ilaç lazım.",
+      "exampleNative": "Self-check against the model before moving on: “Medicine is needed for the flu.”",
+      "korean": "ilaç",
+      "english": "Recall \"ilaç\" from memory, then explain what would change if a nearby alternative replaced it in \"Grip için ilaç lazım.\".",
+      "example": "Grip için ilaç lazım.",
+      "exampleEnglish": "Self-check against the model before moving on: “Medicine is needed for the flu.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "ilaç",
+      "romanization": "i-LAÇ",
+      "nativeText": "Repair \"ilaç\" inside \"Grip için ilaç lazım.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Medicine.” Practical in pharmacy talk.",
+      "pronunciation": "i-LAÇ",
+      "exampleTarget": "Grip için ilaç lazım.",
+      "exampleNative": "Use the model as the repair target: “Medicine is needed for the flu.”",
+      "korean": "ilaç",
+      "english": "Repair \"ilaç\" inside \"Grip için ilaç lazım.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Medicine.” Practical in pharmacy talk.",
+      "example": "Grip için ilaç lazım.",
+      "exampleEnglish": "Use the model as the repair target: “Medicine is needed for the flu.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "ilaç",
+      "romanization": "i-LAÇ",
+      "nativeText": "Transfer \"ilaç\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Grip için ilaç lazım.\".",
+      "pronunciation": "i-LAÇ",
+      "exampleTarget": "Grip için ilaç lazım.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Medicine is needed for the flu.”",
+      "korean": "ilaç",
+      "english": "Transfer \"ilaç\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Grip için ilaç lazım.\".",
+      "example": "Grip için ilaç lazım.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Medicine is needed for the flu.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "ilaç",
+      "romanization": "i-LAÇ",
+      "nativeText": "Find one word or phrase that naturally travels with \"ilaç\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "i-LAÇ",
+      "exampleTarget": "Grip için ilaç lazım.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Medicine is needed for the flu.”",
+      "korean": "ilaç",
+      "english": "Find one word or phrase that naturally travels with \"ilaç\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Grip için ilaç lazım.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Medicine is needed for the flu.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "ilaç",
+      "romanization": "i-LAÇ",
+      "nativeText": "Listen for \"ilaç\" inside \"Grip için ilaç lazım.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "i-LAÇ",
+      "exampleTarget": "Grip için ilaç lazım.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Medicine is needed for the flu.”",
+      "korean": "ilaç",
+      "english": "Listen for \"ilaç\" inside \"Grip için ilaç lazım.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Grip için ilaç lazım.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Medicine is needed for the flu.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "ilaç",
+      "romanization": "i-LAÇ",
+      "nativeText": "Write \"ilaç\" again without looking, then compare the exact written form against \"Grip için ilaç lazım.\" before moving on.",
+      "pronunciation": "i-LAÇ",
+      "exampleTarget": "Grip için ilaç lazım.",
+      "exampleNative": "Use the written model as the final correctness check: “Medicine is needed for the flu.”",
+      "korean": "ilaç",
+      "english": "Write \"ilaç\" again without looking, then compare the exact written form against \"Grip için ilaç lazım.\" before moving on.",
+      "example": "Grip için ilaç lazım.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Medicine is needed for the flu.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "ilaç",
+      "romanization": "i-LAÇ",
+      "nativeText": "Check whether \"ilaç\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Medicine is needed for the flu.”",
+      "pronunciation": "i-LAÇ",
+      "exampleTarget": "Grip için ilaç lazım.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Medicine is needed for the flu.”",
+      "korean": "ilaç",
+      "english": "Check whether \"ilaç\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Medicine is needed for the flu.”",
+      "example": "Grip için ilaç lazım.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Medicine is needed for the flu.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "doktor",
+      "romanization": "dok-TOR",
+      "nativeText": "“Doctor.” A common profession noun.",
+      "pronunciation": "dok-TOR",
+      "exampleTarget": "Doktora gitmem gerekiyor.",
+      "exampleNative": "“I need to go to the doctor.”",
+      "korean": "doktor",
+      "english": "“Doctor.” A common profession noun.",
+      "example": "Doktora gitmem gerekiyor.",
+      "exampleEnglish": "“I need to go to the doctor.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "Doktora gitmem gerekiyor.",
+      "romanization": "dok-TOR",
+      "nativeText": "Model use for \"Doktora gitmem gerekiyor.\": “I need to go to the doctor.”",
+      "pronunciation": "dok-TOR",
+      "exampleTarget": "Doktora gitmem gerekiyor.",
+      "exampleNative": "“I need to go to the doctor.”",
+      "korean": "Doktora gitmem gerekiyor.",
+      "english": "Model use for \"Doktora gitmem gerekiyor.\": “I need to go to the doctor.”",
+      "example": "Doktora gitmem gerekiyor.",
+      "exampleEnglish": "“I need to go to the doctor.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "doktor",
+      "romanization": "dok-TOR",
+      "nativeText": "Usage focus for \"doktor\": “Doctor.” A common profession noun.",
+      "pronunciation": "dok-TOR",
+      "exampleTarget": "Doktora gitmem gerekiyor.",
+      "exampleNative": "Notice what the form is doing here: “I need to go to the doctor.”",
+      "korean": "doktor",
+      "english": "Usage focus for \"doktor\": “Doctor.” A common profession noun.",
+      "example": "Doktora gitmem gerekiyor.",
+      "exampleEnglish": "Notice what the form is doing here: “I need to go to the doctor.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "doktor",
+      "romanization": "dok-TOR",
+      "nativeText": "Contrast check for \"doktor\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "dok-TOR",
+      "exampleTarget": "Doktora gitmem gerekiyor.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I need to go to the doctor.”",
+      "korean": "doktor",
+      "english": "Contrast check for \"doktor\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Doktora gitmem gerekiyor.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I need to go to the doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "doktor",
+      "romanization": "dok-TOR",
+      "nativeText": "Recall \"doktor\" from memory, then explain what would change if a nearby alternative replaced it in \"Doktora gitmem gerekiyor.\".",
+      "pronunciation": "dok-TOR",
+      "exampleTarget": "Doktora gitmem gerekiyor.",
+      "exampleNative": "Self-check against the model before moving on: “I need to go to the doctor.”",
+      "korean": "doktor",
+      "english": "Recall \"doktor\" from memory, then explain what would change if a nearby alternative replaced it in \"Doktora gitmem gerekiyor.\".",
+      "example": "Doktora gitmem gerekiyor.",
+      "exampleEnglish": "Self-check against the model before moving on: “I need to go to the doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "doktor",
+      "romanization": "dok-TOR",
+      "nativeText": "Repair \"doktor\" inside \"Doktora gitmem gerekiyor.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Doctor.” A common profession noun.",
+      "pronunciation": "dok-TOR",
+      "exampleTarget": "Doktora gitmem gerekiyor.",
+      "exampleNative": "Use the model as the repair target: “I need to go to the doctor.”",
+      "korean": "doktor",
+      "english": "Repair \"doktor\" inside \"Doktora gitmem gerekiyor.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Doctor.” A common profession noun.",
+      "example": "Doktora gitmem gerekiyor.",
+      "exampleEnglish": "Use the model as the repair target: “I need to go to the doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "doktor",
+      "romanization": "dok-TOR",
+      "nativeText": "Transfer \"doktor\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Doktora gitmem gerekiyor.\".",
+      "pronunciation": "dok-TOR",
+      "exampleTarget": "Doktora gitmem gerekiyor.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I need to go to the doctor.”",
+      "korean": "doktor",
+      "english": "Transfer \"doktor\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Doktora gitmem gerekiyor.\".",
+      "example": "Doktora gitmem gerekiyor.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I need to go to the doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "doktor",
+      "romanization": "dok-TOR",
+      "nativeText": "Find one word or phrase that naturally travels with \"doktor\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "dok-TOR",
+      "exampleTarget": "Doktora gitmem gerekiyor.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I need to go to the doctor.”",
+      "korean": "doktor",
+      "english": "Find one word or phrase that naturally travels with \"doktor\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Doktora gitmem gerekiyor.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I need to go to the doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "doktor",
+      "romanization": "dok-TOR",
+      "nativeText": "Listen for \"doktor\" inside \"Doktora gitmem gerekiyor.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "dok-TOR",
+      "exampleTarget": "Doktora gitmem gerekiyor.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I need to go to the doctor.”",
+      "korean": "doktor",
+      "english": "Listen for \"doktor\" inside \"Doktora gitmem gerekiyor.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Doktora gitmem gerekiyor.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I need to go to the doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "doktor",
+      "romanization": "dok-TOR",
+      "nativeText": "Write \"doktor\" again without looking, then compare the exact written form against \"Doktora gitmem gerekiyor.\" before moving on.",
+      "pronunciation": "dok-TOR",
+      "exampleTarget": "Doktora gitmem gerekiyor.",
+      "exampleNative": "Use the written model as the final correctness check: “I need to go to the doctor.”",
+      "korean": "doktor",
+      "english": "Write \"doktor\" again without looking, then compare the exact written form against \"Doktora gitmem gerekiyor.\" before moving on.",
+      "example": "Doktora gitmem gerekiyor.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I need to go to the doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "doktor",
+      "romanization": "dok-TOR",
+      "nativeText": "Check whether \"doktor\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I need to go to the doctor.”",
+      "pronunciation": "dok-TOR",
+      "exampleTarget": "Doktora gitmem gerekiyor.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I need to go to the doctor.”",
+      "korean": "doktor",
+      "english": "Check whether \"doktor\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I need to go to the doctor.”",
+      "example": "Doktora gitmem gerekiyor.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I need to go to the doctor.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "dinlenmelisiniz",
+      "romanization": "din-len-me-Lİ-si-niz",
+      "nativeText": "“You should rest.” A polite necessity form.",
+      "pronunciation": "din-len-me-Lİ-si-niz",
+      "exampleTarget": "İki gün dinlenmelisiniz.",
+      "exampleNative": "“You should rest for two days.”",
+      "korean": "dinlenmelisiniz",
+      "english": "“You should rest.” A polite necessity form.",
+      "example": "İki gün dinlenmelisiniz.",
+      "exampleEnglish": "“You should rest for two days.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "İki gün dinlenmelisiniz.",
+      "romanization": "din-len-me-Lİ-si-niz",
+      "nativeText": "Model use for \"İki gün dinlenmelisiniz.\": “You should rest for two days.”",
+      "pronunciation": "din-len-me-Lİ-si-niz",
+      "exampleTarget": "İki gün dinlenmelisiniz.",
+      "exampleNative": "“You should rest for two days.”",
+      "korean": "İki gün dinlenmelisiniz.",
+      "english": "Model use for \"İki gün dinlenmelisiniz.\": “You should rest for two days.”",
+      "example": "İki gün dinlenmelisiniz.",
+      "exampleEnglish": "“You should rest for two days.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "dinlenmelisiniz",
+      "romanization": "din-len-me-Lİ-si-niz",
+      "nativeText": "Usage focus for \"dinlenmelisiniz\": “You should rest.” A polite necessity form.",
+      "pronunciation": "din-len-me-Lİ-si-niz",
+      "exampleTarget": "İki gün dinlenmelisiniz.",
+      "exampleNative": "Notice what the form is doing here: “You should rest for two days.”",
+      "korean": "dinlenmelisiniz",
+      "english": "Usage focus for \"dinlenmelisiniz\": “You should rest.” A polite necessity form.",
+      "example": "İki gün dinlenmelisiniz.",
+      "exampleEnglish": "Notice what the form is doing here: “You should rest for two days.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "dinlenmelisiniz",
+      "romanization": "din-len-me-Lİ-si-niz",
+      "nativeText": "Contrast check for \"dinlenmelisiniz\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "din-len-me-Lİ-si-niz",
+      "exampleTarget": "İki gün dinlenmelisiniz.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “You should rest for two days.”",
+      "korean": "dinlenmelisiniz",
+      "english": "Contrast check for \"dinlenmelisiniz\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "İki gün dinlenmelisiniz.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “You should rest for two days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "dinlenmelisiniz",
+      "romanization": "din-len-me-Lİ-si-niz",
+      "nativeText": "Recall \"dinlenmelisiniz\" from memory, then explain what would change if a nearby alternative replaced it in \"İki gün dinlenmelisiniz.\".",
+      "pronunciation": "din-len-me-Lİ-si-niz",
+      "exampleTarget": "İki gün dinlenmelisiniz.",
+      "exampleNative": "Self-check against the model before moving on: “You should rest for two days.”",
+      "korean": "dinlenmelisiniz",
+      "english": "Recall \"dinlenmelisiniz\" from memory, then explain what would change if a nearby alternative replaced it in \"İki gün dinlenmelisiniz.\".",
+      "example": "İki gün dinlenmelisiniz.",
+      "exampleEnglish": "Self-check against the model before moving on: “You should rest for two days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "dinlenmelisiniz",
+      "romanization": "din-len-me-Lİ-si-niz",
+      "nativeText": "Repair \"dinlenmelisiniz\" inside \"İki gün dinlenmelisiniz.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “You should rest.” A polite necessity form.",
+      "pronunciation": "din-len-me-Lİ-si-niz",
+      "exampleTarget": "İki gün dinlenmelisiniz.",
+      "exampleNative": "Use the model as the repair target: “You should rest for two days.”",
+      "korean": "dinlenmelisiniz",
+      "english": "Repair \"dinlenmelisiniz\" inside \"İki gün dinlenmelisiniz.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “You should rest.” A polite necessity form.",
+      "example": "İki gün dinlenmelisiniz.",
+      "exampleEnglish": "Use the model as the repair target: “You should rest for two days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "dinlenmelisiniz",
+      "romanization": "din-len-me-Lİ-si-niz",
+      "nativeText": "Transfer \"dinlenmelisiniz\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"İki gün dinlenmelisiniz.\".",
+      "pronunciation": "din-len-me-Lİ-si-niz",
+      "exampleTarget": "İki gün dinlenmelisiniz.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “You should rest for two days.”",
+      "korean": "dinlenmelisiniz",
+      "english": "Transfer \"dinlenmelisiniz\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"İki gün dinlenmelisiniz.\".",
+      "example": "İki gün dinlenmelisiniz.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “You should rest for two days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "dinlenmelisiniz",
+      "romanization": "din-len-me-Lİ-si-niz",
+      "nativeText": "Find one word or phrase that naturally travels with \"dinlenmelisiniz\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "din-len-me-Lİ-si-niz",
+      "exampleTarget": "İki gün dinlenmelisiniz.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “You should rest for two days.”",
+      "korean": "dinlenmelisiniz",
+      "english": "Find one word or phrase that naturally travels with \"dinlenmelisiniz\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "İki gün dinlenmelisiniz.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “You should rest for two days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "dinlenmelisiniz",
+      "romanization": "din-len-me-Lİ-si-niz",
+      "nativeText": "Listen for \"dinlenmelisiniz\" inside \"İki gün dinlenmelisiniz.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "din-len-me-Lİ-si-niz",
+      "exampleTarget": "İki gün dinlenmelisiniz.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “You should rest for two days.”",
+      "korean": "dinlenmelisiniz",
+      "english": "Listen for \"dinlenmelisiniz\" inside \"İki gün dinlenmelisiniz.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "İki gün dinlenmelisiniz.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “You should rest for two days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "dinlenmelisiniz",
+      "romanization": "din-len-me-Lİ-si-niz",
+      "nativeText": "Write \"dinlenmelisiniz\" again without looking, then compare the exact written form against \"İki gün dinlenmelisiniz.\" before moving on.",
+      "pronunciation": "din-len-me-Lİ-si-niz",
+      "exampleTarget": "İki gün dinlenmelisiniz.",
+      "exampleNative": "Use the written model as the final correctness check: “You should rest for two days.”",
+      "korean": "dinlenmelisiniz",
+      "english": "Write \"dinlenmelisiniz\" again without looking, then compare the exact written form against \"İki gün dinlenmelisiniz.\" before moving on.",
+      "example": "İki gün dinlenmelisiniz.",
+      "exampleEnglish": "Use the written model as the final correctness check: “You should rest for two days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "dinlenmelisiniz",
+      "romanization": "din-len-me-Lİ-si-niz",
+      "nativeText": "Check whether \"dinlenmelisiniz\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “You should rest for two days.”",
+      "pronunciation": "din-len-me-Lİ-si-niz",
+      "exampleTarget": "İki gün dinlenmelisiniz.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “You should rest for two days.”",
+      "korean": "dinlenmelisiniz",
+      "english": "Check whether \"dinlenmelisiniz\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “You should rest for two days.”",
+      "example": "İki gün dinlenmelisiniz.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “You should rest for two days.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "acı yemeyin",
+      "romanization": "a-CI ye-me-YİN",
+      "nativeText": "“Do not eat spicy food.” A polite negative command.",
+      "pronunciation": "a-CI ye-me-YİN",
+      "exampleTarget": "Bugün acı yemeyin.",
+      "exampleNative": "“Do not eat spicy food today.”",
+      "korean": "acı yemeyin",
+      "english": "“Do not eat spicy food.” A polite negative command.",
+      "example": "Bugün acı yemeyin.",
+      "exampleEnglish": "“Do not eat spicy food today.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "Bugün acı yemeyin.",
+      "romanization": "a-CI ye-me-YİN",
+      "nativeText": "Model use for \"Bugün acı yemeyin.\": “Do not eat spicy food today.”",
+      "pronunciation": "a-CI ye-me-YİN",
+      "exampleTarget": "Bugün acı yemeyin.",
+      "exampleNative": "“Do not eat spicy food today.”",
+      "korean": "Bugün acı yemeyin.",
+      "english": "Model use for \"Bugün acı yemeyin.\": “Do not eat spicy food today.”",
+      "example": "Bugün acı yemeyin.",
+      "exampleEnglish": "“Do not eat spicy food today.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "acı yemeyin",
+      "romanization": "a-CI ye-me-YİN",
+      "nativeText": "Usage focus for \"acı yemeyin\": “Do not eat spicy food.” A polite negative command.",
+      "pronunciation": "a-CI ye-me-YİN",
+      "exampleTarget": "Bugün acı yemeyin.",
+      "exampleNative": "Notice what the form is doing here: “Do not eat spicy food today.”",
+      "korean": "acı yemeyin",
+      "english": "Usage focus for \"acı yemeyin\": “Do not eat spicy food.” A polite negative command.",
+      "example": "Bugün acı yemeyin.",
+      "exampleEnglish": "Notice what the form is doing here: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "acı yemeyin",
+      "romanization": "a-CI ye-me-YİN",
+      "nativeText": "Contrast check for \"acı yemeyin\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "a-CI ye-me-YİN",
+      "exampleTarget": "Bugün acı yemeyin.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Do not eat spicy food today.”",
+      "korean": "acı yemeyin",
+      "english": "Contrast check for \"acı yemeyin\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Bugün acı yemeyin.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "acı yemeyin",
+      "romanization": "a-CI ye-me-YİN",
+      "nativeText": "Recall \"acı yemeyin\" from memory, then explain what would change if a nearby alternative replaced it in \"Bugün acı yemeyin.\".",
+      "pronunciation": "a-CI ye-me-YİN",
+      "exampleTarget": "Bugün acı yemeyin.",
+      "exampleNative": "Self-check against the model before moving on: “Do not eat spicy food today.”",
+      "korean": "acı yemeyin",
+      "english": "Recall \"acı yemeyin\" from memory, then explain what would change if a nearby alternative replaced it in \"Bugün acı yemeyin.\".",
+      "example": "Bugün acı yemeyin.",
+      "exampleEnglish": "Self-check against the model before moving on: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "acı yemeyin",
+      "romanization": "a-CI ye-me-YİN",
+      "nativeText": "Repair \"acı yemeyin\" inside \"Bugün acı yemeyin.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Do not eat spicy food.” A polite negative command.",
+      "pronunciation": "a-CI ye-me-YİN",
+      "exampleTarget": "Bugün acı yemeyin.",
+      "exampleNative": "Use the model as the repair target: “Do not eat spicy food today.”",
+      "korean": "acı yemeyin",
+      "english": "Repair \"acı yemeyin\" inside \"Bugün acı yemeyin.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Do not eat spicy food.” A polite negative command.",
+      "example": "Bugün acı yemeyin.",
+      "exampleEnglish": "Use the model as the repair target: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "acı yemeyin",
+      "romanization": "a-CI ye-me-YİN",
+      "nativeText": "Transfer \"acı yemeyin\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bugün acı yemeyin.\".",
+      "pronunciation": "a-CI ye-me-YİN",
+      "exampleTarget": "Bugün acı yemeyin.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Do not eat spicy food today.”",
+      "korean": "acı yemeyin",
+      "english": "Transfer \"acı yemeyin\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bugün acı yemeyin.\".",
+      "example": "Bugün acı yemeyin.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "acı yemeyin",
+      "romanization": "a-CI ye-me-YİN",
+      "nativeText": "Find one word or phrase that naturally travels with \"acı yemeyin\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "a-CI ye-me-YİN",
+      "exampleTarget": "Bugün acı yemeyin.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Do not eat spicy food today.”",
+      "korean": "acı yemeyin",
+      "english": "Find one word or phrase that naturally travels with \"acı yemeyin\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Bugün acı yemeyin.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "acı yemeyin",
+      "romanization": "a-CI ye-me-YİN",
+      "nativeText": "Listen for \"acı yemeyin\" inside \"Bugün acı yemeyin.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "a-CI ye-me-YİN",
+      "exampleTarget": "Bugün acı yemeyin.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Do not eat spicy food today.”",
+      "korean": "acı yemeyin",
+      "english": "Listen for \"acı yemeyin\" inside \"Bugün acı yemeyin.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Bugün acı yemeyin.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "acı yemeyin",
+      "romanization": "a-CI ye-me-YİN",
+      "nativeText": "Write \"acı yemeyin\" again without looking, then compare the exact written form against \"Bugün acı yemeyin.\" before moving on.",
+      "pronunciation": "a-CI ye-me-YİN",
+      "exampleTarget": "Bugün acı yemeyin.",
+      "exampleNative": "Use the written model as the final correctness check: “Do not eat spicy food today.”",
+      "korean": "acı yemeyin",
+      "english": "Write \"acı yemeyin\" again without looking, then compare the exact written form against \"Bugün acı yemeyin.\" before moving on.",
+      "example": "Bugün acı yemeyin.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit18health-vocabulary-1",
+        "tr-level1unit18health-vocabulary-2",
+        "tr-level1unit18health-grammar-1",
+        "tr-level1unit18health-grammar-2",
+        "tr-level1unit18health-reading",
+        "tr-level1unit18health-listening",
+        "tr-level1unit18health-writing",
+        "tr-level1unit18health-task"
+      ],
+      "targetText": "acı yemeyin",
+      "romanization": "a-CI ye-me-YİN",
+      "nativeText": "Check whether \"acı yemeyin\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Do not eat spicy food today.”",
+      "pronunciation": "a-CI ye-me-YİN",
+      "exampleTarget": "Bugün acı yemeyin.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Do not eat spicy food today.”",
+      "korean": "acı yemeyin",
+      "english": "Check whether \"acı yemeyin\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Do not eat spicy food today.”",
+      "example": "Bugün acı yemeyin.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Do not eat spicy food today.”"
+    }
+  ],
+  "targetLang": "tr",
+  "nativeLang": "en",
+  "track": "textbook"
+};

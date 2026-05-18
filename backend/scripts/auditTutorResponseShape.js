@@ -61,6 +61,19 @@ if (practiceSpeech[0]?.language !== 'zh') {
   issues.push('practice audio must begin with the target-language material.');
 }
 
+const duplicateExampleParts = buildClassLessonDisplayParts('', 'ja', 'hi', {
+  action: 'teach',
+  itemType: 'note',
+  activityTitle: 'आधार',
+  target: '学習目標',
+  native: 'समझें कि जापानी ध्वनि के लिए काना, अर्थ के लिए कांजी और भाषण की समय इकाई के रूप में मोरे का उपयोग करते हैं।',
+  exampleTarget: '学習目標',
+  exampleNative: 'संपूर्ण पाठ इस परिणाम की ओर बनाया गया है।',
+}, phrases);
+if (duplicateExampleParts.some((part) => part.section === 'example')) {
+  issues.push('Tutor display parts must suppress duplicate examples when exampleTarget repeats the target exactly.');
+}
+
 if (issues.length) {
   console.error('Tutor response-shape audit failed:');
   issues.forEach((issue) => console.error(`- ${issue}`));

@@ -1,144 +1,2793 @@
-// Level 1 Unit 4 — Daily Routines (Russian)
-
-const createContentItem = (target, translit, note, type = 'word', example = '', exampleNote = '', breakdown = null, activityIds = []) => ({
-  type, activityIds, targetText: target, romanization: translit, nativeText: note, pronunciation: translit,
-  exampleTarget: example || target, exampleNative: exampleNote || note,
-  korean: target, english: note, example: example || target, exampleEnglish: exampleNote || note,
-  ...(breakdown ? { breakdown: breakdown.map(b => ({ target: b.target, native: b.note, korean: b.target, english: b.note })) } : {}),
-});
-
-const ACT = {
-  orientation: 'ru-l1u4-orientation', pronunciation: 'ru-l1u4-pronunciation',
-  vocabularyMorning: 'ru-l1u4-vocab-morning', vocabularyAfternoon: 'ru-l1u4-vocab-afternoon', vocabularyEvening: 'ru-l1u4-vocab-evening',
-  grammarReflexive: 'ru-l1u4-grammar-reflexive', grammarTime: 'ru-l1u4-grammar-time', grammarFrequency: 'ru-l1u4-grammar-frequency',
-  reading: 'ru-l1u4-reading', listening: 'ru-l1u4-listening', writing: 'ru-l1u4-writing',
-  culture: 'ru-l1u4-culture', task: 'ru-l1u4-task',
-};
-
-const activities = [
-  { id: ACT.orientation, section: 'Orientation', title: 'What you will be able to do', goals: [
-    'Describe your daily routine from waking up to going to bed using 20+ everyday verbs (вставать, умываться, завтракать, идти на работу, обедать, ужинать, ложиться спать).',
-    'Tell time in Russian on the clock face (Который час? Сколько времени? Сейчас три часа.) and use telephone-style schedule expressions (в восемь утра).',
-    'Use frequency adverbs (всегда, обычно, часто, иногда, редко, никогда) to describe how often something happens.',
-  ], task: 'Picture a typical weekday at МГУ — from 6 am wake-up to midnight bedtime. By the end of this lesson you should narrate every step of it in Russian without searching for verbs.' },
-  { id: ACT.pronunciation, section: 'Pronunciation', title: 'Reflexive -ся / -сь endings', goals: [
-    'Pronounce reflexive verbs correctly: after a consonant use -ся (умываюсь, ложусь spelled with -сь), after a vowel use -сь (умываю + сь → умываюсь).',
-    'Apply final devoicing in past tense forms: встал /fstal/, проснулся /prɐsˈnulsʲə/.',
-    'Apply akanye in long verbs: возвращаюсь /vəzvrɐˈʂʂajʊsʲ/ — multi-syllable verbs with heavy reduction.',
-  ], task: 'Drill 10 reflexive verbs in 1sg and 3sg forms, marking stress.' },
-  { id: ACT.vocabularyMorning, section: 'Vocabulary I', title: 'Morning routine', goals: ['Memorize 10 morning verbs', 'Distinguish perfective vs imperfective aspect pairs'], task: 'Narrate your morning in 6 sentences.' },
-  { id: ACT.vocabularyAfternoon, section: 'Vocabulary II', title: 'Afternoon activities', goals: ['Memorize 8 afternoon verbs', 'Describe work/study activities'], task: 'Narrate your afternoon.' },
-  { id: ACT.vocabularyEvening, section: 'Vocabulary III', title: 'Evening routine', goals: ['Memorize 8 evening verbs', 'Distinguish ложиться спать vs идти спать'], task: 'Narrate your evening.' },
-  { id: ACT.grammarReflexive, section: 'Grammar I', title: 'Reflexive verbs (-ся / -сь)', goals: [
-    'Form reflexive verbs by adding -ся (after consonant) or -сь (after vowel) to the regular verb stem: мыть (to wash sth) → мыться (to wash oneself).',
-    'Recognize that reflexive verbs cover four semantic types: true reflexive (мыться), reciprocal (целоваться), passive (изучается), and motion middle (учиться).',
-  ], task: 'Convert 6 transitive verbs to their reflexive equivalents.' },
-  { id: ACT.grammarTime, section: 'Grammar II', title: 'Telling time', goals: [
-    'Form Который час? answers using the час pattern: один час (1:00), два часа (2-4:00), пять часов (5-12:00) — different forms after different numerals.',
-    'Express "at X o\'clock" using в + accusative: в три часа, в пять часов, в час дня.',
-    'Distinguish утра / дня / вечера / ночи as time-of-day qualifiers (3 of the day vs 3 of the night).',
-  ], task: 'Tell time on 8 clock faces and translate 8 schedule sentences.' },
-  { id: ACT.grammarFrequency, section: 'Grammar III', title: 'Frequency adverbs', goals: [
-    'Order the frequency scale: всегда (always) > обычно (usually) > часто (often) > иногда (sometimes) > редко (rarely) > никогда (never).',
-    'Use double negation with никогда: Я никогда НЕ ем мясо. (Russian negation requires both никогда AND the not-particle).',
-  ], task: 'Build 6 sentences each using a different frequency adverb.' },
-  { id: ACT.reading, section: 'Reading', title: 'A typical МГУ student day', goals: ['Read a 6-sentence narrative', 'Answer comprehension questions'], task: 'Read aloud and answer 4 questions.' },
-  { id: ACT.listening, section: 'Listening', title: 'Comparing morning routines', goals: ['Follow a 6-turn dialogue', 'Identify register markers'], task: 'Summarize each speaker\'s day.' },
-  { id: ACT.writing, section: 'Writing', title: 'My weekday schedule', goals: ['Write 6-8 sentences', 'Use 3 reflexive verbs and 2 frequency adverbs'], task: 'Draft your schedule.' },
-  { id: ACT.culture, section: 'Culture Note', title: 'Russian work/study rhythm', goals: [
-    'Know that Russian students often have early starts (8:30 first pair, "первая пара") and long days, with пары (90-min "couples") rather than 50-min lectures.',
-    'Recognize the обед / перерыв meal/break culture and the workplace значение of being at your desk by 9.',
-  ], task: 'Compare a typical МГУ schedule with your own.' },
-  { id: ACT.task, section: 'Task', title: 'Describe a typical day at МГУ', goals: ['Combine all skills', 'Use 8+ verbs in sequence'], task: 'Roleplay narrating your day to a Russian friend.' },
-];
-
-const lesson = {
-  title: 'Level 1 · Unit 4: Мой день — Daily Routines',
-  category: 'daily-life', difficulty: 'beginner', targetLang: 'ru', nativeLang: 'en',
-  track: 'textbook', lessonType: 'thematic', activities,
-  expressionPractice: [
-    { id: 'narrating-routine', label: 'Narrating routine', goal: 'Tell your daily schedule from morning to night in chronological order.' },
-    { id: 'telling-time', label: 'Telling time', goal: 'Read clock faces and schedule times in Russian.' },
-    { id: 'reflexive-verbs', label: 'Reflexive verbs', goal: 'Use -ся/-сь endings correctly for self-directed actions.' },
-    { id: 'frequency', label: 'Frequency adverbs', goal: 'Place всегда/часто/иногда/никогда correctly with double negation.' },
+module.exports = {
+  "title": "Level 1 · Unit 4: Мой день — Daily Routines",
+  "category": "daily-life",
+  "difficulty": "beginner",
+  "targetLang": "ru",
+  "nativeLang": "en",
+  "track": "textbook",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ru-level1unit04dailyroutines-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Describe your daily routine from waking up to going to bed using 20+ everyday verbs (вставать, умываться, завтракать, идти на работу, обедать, ужинать, ложиться спать)."
+      ],
+      "task": "Roleplay narrating your day to a Russian friend."
+    },
+    {
+      "id": "ru-level1unit04dailyroutines-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ru-level1unit04dailyroutines-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 4: Мой день — Daily Routines with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ru-level1unit04dailyroutines-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 4: Мой день — Daily Routines sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ru-level1unit04dailyroutines-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Describe your daily routine from waking up to going to bed using 20+ everyday verbs (вставать, умываться, завтракать, идти на работу, обедать, ужинать, ложиться спать)."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ru-level1unit04dailyroutines-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 4: Мой день — Daily Routines with one nearby Russian form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ru-level1unit04dailyroutines-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ru-level1unit04dailyroutines-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ru-level1unit04dailyroutines-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ru-level1unit04dailyroutines-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ru-level1unit04dailyroutines-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Roleplay narrating your day to a Russian friend."
+      ],
+      "task": "Roleplay narrating your day to a Russian friend."
+    }
   ],
-  relatedPools: ['topic-daily-life', 'topic-time'],
-  content: [
-    createContentItem('Цели урока', 'Tseli uroka', 'By the end of this lesson, you can describe your entire weekday from waking up to bedtime in Russian, telling time, ordering events chronologically, and noting frequency. The verbs and time expressions covered here recur in nearly every later Russian lesson.', 'word', 'Утро → день → вечер → ночь.', '"Morning → day → evening → night." — the four periods of a Russian day.', null, [ACT.orientation]),
-    createContentItem('Реальный сценарий', 'Realnyy stsenariy', 'You are sharing a kitchen with a Russian student in МГУ dorm ДАС at 7:30 am. They ask "А ты во сколько встаёшь?" (And when do you get up?). You need to give a full schedule from морнинг to evening using everyday verbs and times.', 'word', 'А ты во сколько встаёшь?', '"And when do you get up?" — во variant of в before consonant cluster; сколько is "how much/at what time".', null, [ACT.orientation]),
-    createContentItem('Расписание дня', 'Raspisaniye dnya', 'A typical МГУ student day: 6:30 wake-up, 7:30 breakfast, 8:30 first pair (пара), 12:00 lunch, 14:00 second pair, 16:00 library, 19:00 dinner, 21:00 free time, 23:00 sleep. Each step has a standard verb in Russian.', 'word', '6:30 встаю → 7:30 завтракаю → 8:30 пара → 12:00 обедаю → 14:00 пара → 16:00 учу → 19:00 ужинаю → 23:00 ложусь спать.', 'A full schedule template; use it as model for your own day.', null, [ACT.orientation]),
-
-    createContentItem('вставать / встать', 'vstavat\' / vstat\'', 'To get up (imperfective / perfective aspect pair). Imperfective вставать = "to get up [habitually / over time]"; perfective встать = "to get up [completed action]". Я встаю в семь утра ("I get up at 7 am" — habitual).', 'word', 'Я встаю в семь.', '"I get up at seven." — imperfective for habit.', [
-      { target: 'imperfective вставать', note: 'habitual or ongoing; conjugation: встаю, встаёшь, встаёт, встаём, встаёте, встают' },
-      { target: 'perfective встать', note: 'completed action; future: встану, встанешь, встанет' },
-    ], [ACT.vocabularyMorning]),
-    createContentItem('просыпаться / проснуться', 'prosypatsya / prosnutsya', 'To wake up (reflexive aspect pair). Просыпаться (impf, "to wake up [over time]") vs проснуться (pf, "to wake up [completed]"). Я просыпаюсь рано (I wake up early — habitual). Я проснулся в шесть (I woke up at 6 — past pf).', 'word', 'Я просыпаюсь рано.', '"I wake up early." — reflexive impf for habit.', null, [ACT.vocabularyMorning]),
-    createContentItem('умываться / умыться', 'umyvatsya / umytsya', 'To wash one\'s face (reflexive aspect pair). The -ся reflexive ending means the action is directed at oneself.', 'word', 'Я умываюсь и чищу зубы.', '"I wash my face and brush my teeth." — two morning verbs.', null, [ACT.vocabularyMorning]),
-    createContentItem('чистить зубы', 'chistit\' zuby', 'To brush teeth (NOT reflexive). Чистить = "to clean"; зубы = "teeth" (plural of зуб). Direct object construction.', 'word', 'Я чищу зубы каждое утро.', '"I brush my teeth every morning." — every-morning frequency.', null, [ACT.vocabularyMorning]),
-    createContentItem('принимать душ', 'prinimat\' dush', 'To take a shower. Lit. "to receive a shower". Душ is masculine. Pf: принять душ.', 'word', 'Я принимаю душ утром.', '"I take a shower in the morning." — утром is adv "in the morning" (instr case form).', null, [ACT.vocabularyMorning]),
-    createContentItem('завтракать / позавтракать', 'zavtrakat / pozavtrakat', 'To have breakfast (impf/pf pair). Завтрак = breakfast (n). Я завтракаю в восемь = "I have breakfast at 8".', 'word', 'Что ты ешь на завтрак?', '"What do you eat for breakfast?" — на + acc; завтрак as object of "for".', null, [ACT.vocabularyMorning]),
-    createContentItem('одеваться / одеться', 'odevatsya / odetsya', 'To get dressed (reflexive aspect pair). Одеть кого-то = "to dress someone"; одеться = "to dress oneself".', 'word', 'Я быстро одеваюсь.', '"I get dressed quickly." — adv быстро ("quickly").', null, [ACT.vocabularyMorning]),
-    createContentItem('идти на работу / в университет', 'idti na rabotu / v universitet', 'To go to work / to university. На for работа (event-like), в for университет (place). Both with idti + acc.', 'word', 'Я иду на работу.', '"I am going to work." — unidirectional motion.', null, [ACT.vocabularyMorning]),
-    createContentItem('пить кофе', 'pit\' kofe', 'To drink coffee. Кофе is masculine and indeclinable. Пить is irregular: пью, пьёшь, пьёт, пьём, пьёте, пьют.', 'word', 'Я пью кофе утром.', '"I drink coffee in the morning." — high-frequency phrase.', null, [ACT.vocabularyMorning]),
-
-    createContentItem('работать', 'rabotat\'', 'To work (impf). 1st conjugation: работаю, работаешь, работает, работаем, работаете, работают. Object: над + instr (работать над проектом = "to work on a project").', 'word', 'Я работаю в офисе.', '"I work in an office." — в + prep case офисе.', null, [ACT.vocabularyAfternoon]),
-    createContentItem('учиться', 'uchitsya', 'To study (reflexive, intransitive). Used for "to study at [a school/uni]": Я учусь в МГУ. Different from учить (to study sth) and изучать (to study sth systematically).', 'word', 'Я учусь в университете.', '"I study at university." — reflexive verb without explicit object.', null, [ACT.vocabularyAfternoon]),
-    createContentItem('обедать / пообедать', 'obedat\' / poobedat\'', 'To have lunch (impf/pf). Обед = lunch (m). Я обедаю в час = "I have lunch at one".', 'word', 'Где ты обедаешь?', '"Where do you eat lunch?" — daily question among colleagues.', null, [ACT.vocabularyAfternoon]),
-    createContentItem('учить / выучить', 'uchit\' / vyuchit\'', 'To learn / memorize (something). Note: учить ≠ учиться. Я учу русский = "I am studying Russian". Pf выучить = completed learning.', 'word', 'Я учу новые слова.', '"I am learning new words." — учить with direct object (acc).', null, [ACT.vocabularyAfternoon]),
-    createContentItem('читать', 'chitat\'', 'To read (impf). 1st conjugation: читаю, читаешь, читает, читаем, читаете, читают. Pf: прочитать.', 'word', 'Я читаю книгу.', '"I am reading a book." — книгу acc of книга.', null, [ACT.vocabularyAfternoon]),
-    createContentItem('писать', 'pisat\'', 'To write (impf). Irregular: пишу, пишешь, пишет, пишем, пишете, пишут (с → ш in conjugation). Pf: написать.', 'word', 'Я пишу письмо.', '"I am writing a letter." — письмо (n) accusative same as nom for inanimate.', null, [ACT.vocabularyAfternoon]),
-    createContentItem('встречаться с', 'vstrechat\'sya s', 'To meet with (reflexive, takes c + instr). Я встречаюсь с другом = "I am meeting with a friend".', 'word', 'Я встречаюсь с другом в кафе.', '"I am meeting with a friend at a cafe." — с + instr case другом.', null, [ACT.vocabularyAfternoon]),
-    createContentItem('возвращаться', 'vozvrashchatsya', 'To return / come back (reflexive impf). Pf: вернуться. Я возвращаюсь домой в семь = "I return home at seven".', 'word', 'Я возвращаюсь домой поздно.', '"I return home late." — домой is adv "homeward" (motion form of дом).', null, [ACT.vocabularyAfternoon]),
-
-    createContentItem('ужинать / поужинать', 'uzhinat\' / pouzhinat\'', 'To have dinner (impf/pf). Ужин = dinner (m). Я ужинаю в восемь = "I have dinner at 8".', 'word', 'Что ты ешь на ужин?', '"What do you eat for dinner?" — standard evening question.', null, [ACT.vocabularyEvening]),
-    createContentItem('смотреть телевизор', 'smotret\' televizor', 'To watch TV. Смотреть takes acc. Pf: посмотреть.', 'word', 'Я смотрю телевизор вечером.', '"I watch TV in the evening." — вечером instr-case adverb.', null, [ACT.vocabularyEvening]),
-    createContentItem('гулять', 'gulyat\'', 'To take a walk / stroll (impf). 1st conj. Pf: погулять. Я гуляю с собакой = "I walk the dog".', 'word', 'Я гуляю в парке.', '"I take a walk in the park." — в + prep case парке.', null, [ACT.vocabularyEvening]),
-    createContentItem('читать книгу', 'chitat\' knigu', 'To read a book (evening leisure activity).', 'word', 'Я читаю книгу перед сном.', '"I read a book before sleep." — перед + instr case сном.', null, [ACT.vocabularyEvening]),
-    createContentItem('звонить / позвонить', 'zvonit\' / pozvonit\'', 'To call (by phone) (impf/pf pair). Takes dative: звонить кому = "to call someone". Я звоню маме = "I call mom".', 'word', 'Я звоню маме каждый вечер.', '"I call my mom every evening." — маме dat of мама.', null, [ACT.vocabularyEvening]),
-    createContentItem('ложиться спать / лечь спать', 'lozhit\'sya spat\' / lech spat\'', 'To go to bed (impf/pf pair). Ложиться = "to lie down"; the спать (to sleep) infinitive specifies that it\'s for sleeping. Я ложусь спать в одиннадцать.', 'word', 'Я ложусь спать в 11 вечера.', '"I go to bed at 11 PM." — в + acc + вечера ("of the evening").', null, [ACT.vocabularyEvening]),
-    createContentItem('спать', 'spat\'', 'To sleep (impf). Irregular present: сплю, спишь, спит, спим, спите, спят. Pf is усыпать / уснуть ("to fall asleep").', 'word', 'Я сплю восемь часов.', '"I sleep eight hours." — accusative для duration.', null, [ACT.vocabularyEvening]),
-    createContentItem('просыпаться', 'prosypatsya (impf)', 'See morning section — completed cycle for evening: ложусь → сплю → просыпаюсь.', 'word', 'Я просыпаюсь рано.', '"I wake up early."', null, [ACT.vocabularyEvening]),
-
-    createContentItem('Возвратные глаголы -ся / -сь', 'Reflexive verbs -sya / -s', 'Russian reflexive verbs add the suffix -ся (after consonant) or -сь (after vowel) to the regular verb stem. Four semantic types: (1) true reflexive (мыться "to wash oneself"); (2) reciprocal (целоваться "to kiss each other"); (3) passive (изучается "is being studied"); (4) intransitive-marker (учиться "to study", смеяться "to laugh"). Same form, four meanings.', 'sentence', 'я мою стол (I wash the table) → я моюсь (I wash myself, reflexive)\nя люблю её → они любятся (they love each other, reciprocal)\nстудент изучает русский → русский изучается (Russian is being studied, passive)\nя учу русский → я учусь (I am a student, intrans-marker)', 'The -ся suffix has been the historical marker of all four functions; context determines which.', [
-      { target: '-ся after consonant', note: 'моюсь, учусь, ложусь — vowel + ся attached' },
-      { target: '-сь after vowel', note: 'моется, учится, ложится — consonant + ся after the vowel of the verb stem' },
-      { target: 'past tense pattern', note: 'мылся (m), мылась (f), мылось (n), мылись (pl)' },
-    ], [ACT.grammarReflexive]),
-
-    createContentItem('Время — час / часы / часов', 'Time — chas / chasy / chasov', 'Russian "X o\'clock" uses different forms of час depending on the number: 1 час (singular nominative for 1), 2/3/4 часа (genitive singular after 2-4), 5-12 часов (genitive plural after 5-12). Apply across hours.', 'sentence', 'Сейчас один час. (1:00)\nСейчас два часа. (2:00)\nСейчас пять часов. (5:00)\nСейчас одиннадцать часов. (11:00)', 'The 1/2-4/5+ pattern is general across counted nouns — first numeral rule learners encounter.', [
-      { target: '1 + час (nom sg)', note: 'один час, двадцать один час; specific singular form' },
-      { target: '2-4 + часа (gen sg)', note: 'два часа, три часа, четыре часа, двадцать два часа' },
-      { target: '5-20 + часов (gen pl)', note: 'пять часов, ... десять часов, ... двадцать часов' },
-    ], [ACT.grammarTime]),
-    createContentItem('В + accusative for time', 'V + acc for time', '"At X o\'clock" uses в + accusative. For time, accusative of час forms is same as nominative for the numeral. в три часа = "at 3 o\'clock", в восемь утра = "at 8 in the morning".', 'sentence', 'в три часа · в час дня · в семь утра · в одиннадцать вечера', 'The genitive utra/дня/вечера/ночи is the time-of-day qualifier.', null, [ACT.grammarTime]),
-    createContentItem('утра / дня / вечера / ночи', 'utra / dnya / vechera / nochi', 'Russian distinguishes four times of day: утро (morning, 4-11 am), день (day, noon-5 pm), вечер (evening, 6-11 pm), ночь (night, midnight-3 am). Used as genitive after a time: восемь утра = "8 of the morning".', 'sentence', 'три утра — 3:00 AM (early morning)\nтри дня — 3:00 PM (afternoon)\nсемь вечера — 7:00 PM (evening)\nдва ночи — 2:00 AM (deep night)', 'Russian does NOT use AM/PM; instead specify утра/дня/вечера/ночи for clarity.', null, [ACT.grammarTime]),
-
-    createContentItem('Частотные наречия', 'Chastotnye narechiya — frequency adverbs', 'Six common frequency adverbs ordered: всегда (always) > обычно (usually) > часто (often) > иногда (sometimes) > редко (rarely) > никогда (never).', 'sentence', 'Я всегда завтракаю. (I always have breakfast.)\nЯ обычно встаю в семь. (I usually get up at 7.)\nЯ часто читаю. (I often read.)\nЯ иногда смотрю фильмы. (I sometimes watch films.)\nЯ редко ем мясо. (I rarely eat meat.)\nЯ никогда НЕ курю. (I never smoke.)', 'Pay attention to the last example: никогда requires DOUBLE negation with не.', [
-      { target: 'всегда always', note: 'highest frequency; placed between subject and verb' },
-      { target: 'обычно usually', note: 'high frequency; typical default' },
-      { target: 'часто often', note: 'frequent but not constant' },
-      { target: 'иногда sometimes', note: 'medium-low frequency' },
-      { target: 'редко rarely', note: 'low frequency' },
-      { target: 'никогда never', note: 'zero frequency; requires double negation with не' },
-    ], [ACT.grammarFrequency]),
-    createContentItem('Двойное отрицание', 'Dvoynoye otritsaniye — double negation', 'CRITICAL RULE: Russian negative adverbs (никогда, никто, ничто, нигде, никак) REQUIRE the additional не with the verb. "I never eat meat" is Я никогда НЕ ем мясо — both никогда AND не. Single negation is wrong: *Я никогда ем мясо.', 'sentence', 'Я никогда не курю. (correct)\n*Я никогда курю. (wrong)', 'Russian double negation differs from English; English uses single negation: "I never smoke".', null, [ACT.grammarFrequency]),
-
-    createContentItem('День студента МГУ', 'Den\' studenta MGU', 'A short narrative of a typical day. Read aloud and identify each verb\'s aspect (impf for habit, pf for completed).', 'sentence', 'Я встаю в 6:30. Я умываюсь, чищу зубы, и одеваюсь. В 7:30 я завтракаю. В 8:00 я еду в университет на метро. В 8:30 у меня первая пара. После пары я обедаю в столовой. В 14:00 у меня вторая пара. Вечером я учусь в библиотеке до семи. В 23:00 я ложусь спать.', 'Standard student-day narrative; every key verb appears.', null, [ACT.reading]),
-    createContentItem('Вопросы', 'Voprosy', 'Four comprehension questions about the daily narrative.', 'sentence', 'Q1: Во сколько он встаёт? Q2: Где он обедает? Q3: Что он делает вечером? Q4: Во сколько он ложится спать?', 'Mix of во сколько, где, что.', null, [ACT.reading]),
-
-    createContentItem('Сравнение утра', 'Comparison of mornings', 'Two МГУ students compare their morning routines.', 'conversation', 'Аня: Ты во сколько встаёшь?\nИван: В шесть утра. А ты?\nАня: А я обычно в семь. Завтракаешь дома?\nИван: Да, всегда. Кофе и бутерброд.\nАня: А я иногда пропускаю завтрак.\nИван: Это плохо. Завтрак — самое важное.', 'Casual peer comparison; covers frequency adverbs and breakfast vocabulary.', null, [ACT.listening]),
-
-    createContentItem('Мой расписание', 'Moye raspisaniye', 'A sample written daily-schedule paragraph.', 'sentence', 'Я обычно встаю в 7. Сначала я принимаю душ, потом завтракаю. В 8:30 я иду на первую пару. После пары я обедаю с друзьями. Я часто учусь в библиотеке до вечера. Я всегда ложусь спать в 11.', 'Sequence words: сначала (first), потом (then), после (after), всегда (always) — anchor the chronological narrative.', null, [ACT.writing]),
-
-    createContentItem('Пара в МГУ', 'Para v MGU', 'Russian university classes are organized into пары (literally "pairs") — 90-minute blocks divided into two 45-minute halves with a 5-minute break in the middle. A typical student has 3-5 pairs per day. The first pair (первая пара) starts at 8:30 or 9:00 sharply.', 'sentence', 'У меня сегодня четыре пары.', '"I have four pairs today." — typical schedule complexity.', [
-      { target: 'пара para', note: 'literally "pair" — Russian academic class block; 90 min total' },
-      { target: 'первая пара', note: 'first pair of the day; usually 8:30 AM' },
-      { target: 'окно okno', note: 'literally "window" — slang for a free period between pairs' },
-    ], [ACT.culture]),
-    createContentItem('Обед в России', 'Obed v Rossii', 'Russian обед is typically eaten 12:00-14:00 and is the main meal of the day — soup (первое), main dish (второе), and compote (третье). At МГУ, students eat in столовая (canteen) or бистро (modern fast-cafe). Lunch is significant — never skipped.', 'sentence', 'Обед — первое, второе, и третье.', 'Three-course lunch structure; deeply ingrained in Russian eating culture.', null, [ACT.culture]),
-
-    createContentItem('Задание: расскажи о дне', 'Zadaniye: rasskazhi o dne', 'Narrate your typical weekday at МГУ in 8-10 sentences to the AI tutor playing a curious Russian friend.', 'conversation', 'Друг: Расскажи, как проходит твой день?\nВы: [полный рассказ с временем и наречиями частоты]\nДруг: А когда ты учишь домашнее задание?\nВы: [ответ]\nДруг: Понятно.', 'Combines verbs, time expressions, frequency adverbs, and reflexive verbs into one coherent narrative.', null, [ACT.task]),
+  "expressionPractice": [
+    {
+      "id": "narrating-routine",
+      "label": "Narrating routine",
+      "goal": "Tell your daily schedule from morning to night in chronological order."
+    },
+    {
+      "id": "telling-time",
+      "label": "Telling time",
+      "goal": "Read clock faces and schedule times in Russian."
+    },
+    {
+      "id": "reflexive-verbs",
+      "label": "Reflexive verbs",
+      "goal": "Use -ся/-сь endings correctly for self-directed actions."
+    },
+    {
+      "id": "frequency",
+      "label": "Frequency adverbs",
+      "goal": "Place всегда/часто/иногда/никогда correctly with double negation."
+    }
   ],
+  "relatedPools": [
+    "topic-daily-life",
+    "topic-time"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-orientation"
+      ],
+      "targetText": "цель урока",
+      "romanization": "",
+      "nativeText": "Describe your daily routine from waking up to going to bed using 20+ everyday verbs (вставать, умываться, завтракать, идти на работу, обедать, ужинать, ложиться спать).",
+      "pronunciation": "",
+      "exampleTarget": "цель урока",
+      "exampleNative": "The whole lesson is built toward this outcome: Roleplay narrating your day to a Russian friend.",
+      "korean": "цель урока",
+      "english": "Describe your daily routine from waking up to going to bed using 20+ everyday verbs (вставать, умываться, завтракать, идти на работу, обедать, ужинать, ложиться спать).",
+      "example": "цель урока",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Roleplay narrating your day to a Russian friend."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-pronunciation"
+      ],
+      "targetText": "проверка произношения",
+      "romanization": "",
+      "nativeText": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Утро → день → вечер → ночь.\".",
+      "pronunciation": "",
+      "exampleTarget": "Утро → день → вечер → ночь.",
+      "exampleNative": "\"Morning → day → evening → night.\" — the four periods of a Russian day.",
+      "korean": "проверка произношения",
+      "english": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Утро → день → вечер → ночь.\".",
+      "example": "Утро → день → вечер → ночь.",
+      "exampleEnglish": "\"Morning → day → evening → night.\" — the four periods of a Russian day."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1"
+      ],
+      "targetText": "Цели урока",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 4: Мой день — Daily Routines with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Утро → день → вечер → ночь.",
+      "exampleNative": "\"Morning → day → evening → night.\" — the four periods of a Russian day.",
+      "korean": "Цели урока",
+      "english": "Use the key language of Level 1 · Unit 4: Мой день — Daily Routines with the register and setting that the lesson requires.",
+      "example": "Утро → день → вечер → ночь.",
+      "exampleEnglish": "\"Morning → day → evening → night.\" — the four periods of a Russian day."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-2"
+      ],
+      "targetText": "Реальный сценарий",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 4: Мой день — Daily Routines sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "А ты во сколько встаёшь?",
+      "exampleNative": "\"And when do you get up?\" — во variant of в before consonant cluster; сколько is \"how much/at what time\".",
+      "korean": "Реальный сценарий",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 4: Мой день — Daily Routines sound precise rather than merely understandable.",
+      "example": "А ты во сколько встаёшь?",
+      "exampleEnglish": "\"And when do you get up?\" — во variant of в before consonant cluster; сколько is \"how much/at what time\"."
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-grammar-1"
+      ],
+      "targetText": "Цели урока",
+      "romanization": "",
+      "nativeText": "Describe your daily routine from waking up to going to bed using 20+ everyday verbs (вставать, умываться, завтракать, идти на работу, обедать, ужинать, ложиться спать).",
+      "pronunciation": "",
+      "exampleTarget": "Утро → день → вечер → ночь.",
+      "exampleNative": "\"Morning → day → evening → night.\" — the four periods of a Russian day.",
+      "korean": "Цели урока",
+      "english": "Describe your daily routine from waking up to going to bed using 20+ everyday verbs (вставать, умываться, завтракать, идти на работу, обедать, ужинать, ложиться спать).",
+      "example": "Утро → день → вечер → ночь.",
+      "exampleEnglish": "\"Morning → day → evening → night.\" — the four periods of a Russian day."
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-grammar-2"
+      ],
+      "targetText": "Реальный сценарий",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 4: Мой день — Daily Routines with one nearby Russian form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "А ты во сколько встаёшь?",
+      "exampleNative": "\"And when do you get up?\" — во variant of в before consonant cluster; сколько is \"how much/at what time\".",
+      "korean": "Реальный сценарий",
+      "english": "Contrast the main pattern in Level 1 · Unit 4: Мой день — Daily Routines with one nearby Russian form so the learner can avoid literal translation.",
+      "example": "А ты во сколько встаёшь?",
+      "exampleEnglish": "\"And when do you get up?\" — во variant of в before consonant cluster; сколько is \"how much/at what time\"."
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-reading"
+      ],
+      "targetText": "модель чтения",
+      "romanization": "",
+      "nativeText": "Read the connected model for модель чтения as one message. Notice how \"Обед — первое, второе, и третье.\" lets the lesson vocabulary and grammar work together instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Обед — первое, второе, и третье.",
+      "exampleNative": "Three-course lunch structure; deeply ingrained in Russian eating culture.",
+      "korean": "модель чтения",
+      "english": "Read the connected model for модель чтения as one message. Notice how \"Обед — первое, второе, и третье.\" lets the lesson vocabulary and grammar work together instead of appearing as isolated flashcards.",
+      "example": "Обед — первое, второе, и третье.",
+      "exampleEnglish": "Three-course lunch structure; deeply ingrained in Russian eating culture."
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-listening"
+      ],
+      "targetText": "модель диалога",
+      "romanization": "",
+      "nativeText": "Hear \"Обед — первое, второе, и третье.\" as interaction, not as a sentence list. The listening goal is to follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Обед — первое, второе, и третье.",
+      "exampleNative": "Three-course lunch structure; deeply ingrained in Russian eating culture.",
+      "korean": "модель диалога",
+      "english": "Hear \"Обед — первое, второе, и третье.\" as interaction, not as a sentence list. The listening goal is to follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Обед — первое, второе, и третье.",
+      "exampleEnglish": "Three-course lunch structure; deeply ingrained in Russian eating culture."
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-writing"
+      ],
+      "targetText": "письменная практика",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Утро → день → вечер → ночь.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Утро → день → вечер → ночь.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "письменная практика",
+      "english": "Write your own version after studying \"Утро → день → вечер → ночь.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Утро → день → вечер → ночь.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-culture"
+      ],
+      "targetText": "употребление и контекст",
+      "romanization": "",
+      "nativeText": "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used. Use \"А ты во сколько встаёшь?\" as the social comparison point for this lesson.",
+      "pronunciation": "",
+      "exampleTarget": "А ты во сколько встаёшь?",
+      "exampleNative": "\"And when do you get up?\" — во variant of в before consonant cluster; сколько is \"how much/at what time\".",
+      "korean": "употребление и контекст",
+      "english": "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used. Use \"А ты во сколько встаёшь?\" as the social comparison point for this lesson.",
+      "example": "А ты во сколько встаёшь?",
+      "exampleEnglish": "\"And when do you get up?\" — во variant of в before consonant cluster; сколько is \"how much/at what time\"."
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "итоговое задание",
+      "romanization": "",
+      "nativeText": "Roleplay narrating your day to a Russian friend.",
+      "pronunciation": "",
+      "exampleTarget": "Обед — первое, второе, и третье.",
+      "exampleNative": "Roleplay narrating your day to a Russian friend.",
+      "korean": "итоговое задание",
+      "english": "Roleplay narrating your day to a Russian friend.",
+      "example": "Обед — первое, второе, и третье.",
+      "exampleEnglish": "Roleplay narrating your day to a Russian friend."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-grammar-2"
+      ],
+      "targetText": "частая ошибка",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around case, aspect, motion verbs, and stress-sensitive forms. Begin by checking \"А ты во сколько встаёшь?\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "А ты во сколько встаёшь?",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: \"And when do you get up?\" — во variant of в before consonant cluster; сколько is \"how much/at what time\".",
+      "korean": "частая ошибка",
+      "english": "Watch for literal-translation mistakes around case, aspect, motion verbs, and stress-sensitive forms. Begin by checking \"А ты во сколько встаёшь?\" against the model.",
+      "example": "А ты во сколько встаёшь?",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: \"And when do you get up?\" — во variant of в before consonant cluster; сколько is \"how much/at what time\"."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-culture"
+      ],
+      "targetText": "регистр",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for ты, вы, a service register, or a more formal written choice. Compare the social fit of \"Утро → день → вечер → ночь.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Утро → день → вечер → ночь.",
+      "exampleNative": "\"Morning → day → evening → night.\" — the four periods of a Russian day.",
+      "korean": "регистр",
+      "english": "Check whether the setting calls for ты, вы, a service register, or a more formal written choice. Compare the social fit of \"Утро → день → вечер → ночь.\" before reusing it elsewhere.",
+      "example": "Утро → день → вечер → ночь.",
+      "exampleEnglish": "\"Morning → day → evening → night.\" — the four periods of a Russian day."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "беглость",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Russian message rather than as separate translated fragments. Aim to carry \"Обед — первое, второе, и третье.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Обед — первое, второе, и третье.",
+      "exampleNative": "Three-course lunch structure; deeply ingrained in Russian eating culture.",
+      "korean": "беглость",
+      "english": "Say the idea as one connected Russian message rather than as separate translated fragments. Aim to carry \"Обед — первое, второе, и третье.\" as one thought.",
+      "example": "Обед — первое, второе, и третье.",
+      "exampleEnglish": "Three-course lunch structure; deeply ingrained in Russian eating culture."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "перенос",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Утро → день → вечер → ночь.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Утро → день → вечер → ночь.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "перенос",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Утро → день → вечер → ночь.\" and move it into your own life.",
+      "example": "Утро → день → вечер → ночь.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-grammar-1"
+      ],
+      "targetText": "воспроизведение",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"Цели урока\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "Цели урока",
+      "exampleNative": "By the end of this lesson, you can describe your entire weekday from waking up to bedtime in Russian, telling time, ordering events chronologically, and noting frequency. The verbs and time expressions covered here recur in nearly every later Russian lesson.",
+      "korean": "воспроизведение",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"Цели урока\" before looking back.",
+      "example": "Цели урока",
+      "exampleEnglish": "By the end of this lesson, you can describe your entire weekday from waking up to bedtime in Russian, telling time, ordering events chronologically, and noting frequency. The verbs and time expressions covered here recur in nearly every later Russian lesson."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-writing"
+      ],
+      "targetText": "расширение",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Обед — первое, второе, и третье.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Обед — первое, второе, и третье.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "расширение",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Обед — первое, второе, и третье.\" rather than restarting from a blank sentence.",
+      "example": "Обед — первое, второе, и третье.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading"
+      ],
+      "targetText": "сравнение",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 4: Мой день — Daily Routines with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"А ты во сколько встаёшь?\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "А ты во сколько встаёшь?",
+      "exampleNative": "\"And when do you get up?\" — во variant of в before consonant cluster; сколько is \"how much/at what time\".",
+      "korean": "сравнение",
+      "english": "Compare the central form in Level 1 · Unit 4: Мой день — Daily Routines with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"А ты во сколько встаёшь?\" as the comparison line.",
+      "example": "А ты во сколько встаёшь?",
+      "exampleEnglish": "\"And when do you get up?\" — во variant of в before consonant cluster; сколько is \"how much/at what time\"."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-pronunciation"
+      ],
+      "targetText": "исправление произношения",
+      "romanization": "",
+      "nativeText": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. Use \"Утро → день → вечер → ночь.\" as the repair line.",
+      "pronunciation": "",
+      "exampleTarget": "Утро → день → вечер → ночь.",
+      "exampleNative": "\"Morning → day → evening → night.\" — the four periods of a Russian day.",
+      "korean": "исправление произношения",
+      "english": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. Use \"Утро → день → вечер → ночь.\" as the repair line.",
+      "example": "Утро → день → вечер → ночь.",
+      "exampleEnglish": "\"Morning → day → evening → night.\" — the four periods of a Russian day."
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "вариация диалога",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Обед — первое, второе, и третье.\".",
+      "pronunciation": "",
+      "exampleTarget": "Обед — первое, второе, и третье.",
+      "exampleNative": "Three-course lunch structure; deeply ingrained in Russian eating culture.",
+      "korean": "вариация диалога",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Обед — первое, второе, и третье.\".",
+      "example": "Обед — первое, второе, и третье.",
+      "exampleEnglish": "Three-course lunch structure; deeply ingrained in Russian eating culture."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-writing"
+      ],
+      "targetText": "построение предложения",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Утро → день → вечер → ночь.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Утро → день → вечер → ночь.",
+      "exampleNative": "\"Morning → day → evening → night.\" — the four periods of a Russian day.",
+      "korean": "построение предложения",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Утро → день → вечер → ночь.\" one layer at a time.",
+      "example": "Утро → день → вечер → ночь.",
+      "exampleEnglish": "\"Morning → day → evening → night.\" — the four periods of a Russian day."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-2"
+      ],
+      "targetText": "быстрая проверка",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"А ты во сколько встаёшь?\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "А ты во сколько встаёшь?",
+      "exampleNative": "\"And when do you get up?\" — во variant of в before consonant cluster; сколько is \"how much/at what time\".",
+      "korean": "быстрая проверка",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"А ты во сколько встаёшь?\" as the deciding example.",
+      "example": "А ты во сколько встаёшь?",
+      "exampleEnglish": "\"And when do you get up?\" — во variant of в before consonant cluster; сколько is \"how much/at what time\"."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-culture",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "рефлексия",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Обед — первое, второе, и третье.\".",
+      "pronunciation": "",
+      "exampleTarget": "Обед — первое, второе, и третье.",
+      "exampleNative": "Three-course lunch structure; deeply ingrained in Russian eating culture.",
+      "korean": "рефлексия",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Обед — первое, второе, и третье.\".",
+      "example": "Обед — первое, второе, и третье.",
+      "exampleEnglish": "Three-course lunch structure; deeply ingrained in Russian eating culture."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Цели урока",
+      "romanization": "Tseli uroka",
+      "nativeText": "By the end of this lesson, you can describe your entire weekday from waking up to bedtime in Russian, telling time, ordering events chronologically, and noting frequency. The verbs and time expressions covered here recur in nearly every later Russian lesson.",
+      "pronunciation": "Tseli uroka",
+      "exampleTarget": "Утро → день → вечер → ночь.",
+      "exampleNative": "\"Morning → day → evening → night.\" — the four periods of a Russian day.",
+      "korean": "Цели урока",
+      "english": "By the end of this lesson, you can describe your entire weekday from waking up to bedtime in Russian, telling time, ordering events chronologically, and noting frequency. The verbs and time expressions covered here recur in nearly every later Russian lesson.",
+      "example": "Утро → день → вечер → ночь.",
+      "exampleEnglish": "\"Morning → day → evening → night.\" — the four periods of a Russian day."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Реальный сценарий",
+      "romanization": "Realnyy stsenariy",
+      "nativeText": "You are sharing a kitchen with a Russian student in МГУ dorm ДАС at 7:30 am. They ask \"А ты во сколько встаёшь?\" (And when do you get up?). You need to give a full schedule from морнинг to evening using everyday verbs and times.",
+      "pronunciation": "Realnyy stsenariy",
+      "exampleTarget": "А ты во сколько встаёшь?",
+      "exampleNative": "\"And when do you get up?\" — во variant of в before consonant cluster; сколько is \"how much/at what time\".",
+      "korean": "Реальный сценарий",
+      "english": "You are sharing a kitchen with a Russian student in МГУ dorm ДАС at 7:30 am. They ask \"А ты во сколько встаёшь?\" (And when do you get up?). You need to give a full schedule from морнинг to evening using everyday verbs and times.",
+      "example": "А ты во сколько встаёшь?",
+      "exampleEnglish": "\"And when do you get up?\" — во variant of в before consonant cluster; сколько is \"how much/at what time\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Расписание дня",
+      "romanization": "Raspisaniye dnya",
+      "nativeText": "A typical МГУ student day: 6:30 wake-up, 7:30 breakfast, 8:30 first pair (пара), 12:00 lunch, 14:00 second pair, 16:00 library, 19:00 dinner, 21:00 free time, 23:00 sleep. Each step has a standard verb in Russian.",
+      "pronunciation": "Raspisaniye dnya",
+      "exampleTarget": "6:30 встаю → 7:30 завтракаю → 8:30 пара → 12:00 обедаю → 14:00 пара → 16:00 учу → 19:00 ужинаю → 23:00 ложусь спать.",
+      "exampleNative": "A full schedule template; use it as model for your own day.",
+      "korean": "Расписание дня",
+      "english": "A typical МГУ student day: 6:30 wake-up, 7:30 breakfast, 8:30 first pair (пара), 12:00 lunch, 14:00 second pair, 16:00 library, 19:00 dinner, 21:00 free time, 23:00 sleep. Each step has a standard verb in Russian.",
+      "example": "6:30 встаю → 7:30 завтракаю → 8:30 пара → 12:00 обедаю → 14:00 пара → 16:00 учу → 19:00 ужинаю → 23:00 ложусь спать.",
+      "exampleEnglish": "A full schedule template; use it as model for your own day."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "вставать / встать",
+      "romanization": "vstavat' / vstat'",
+      "nativeText": "To get up (imperfective / perfective aspect pair). Imperfective вставать = \"to get up [habitually / over time]\"; perfective встать = \"to get up [completed action]\". Я встаю в семь утра (\"I get up at 7 am\" — habitual).",
+      "pronunciation": "vstavat' / vstat'",
+      "exampleTarget": "Я встаю в семь.",
+      "exampleNative": "\"I get up at seven.\" — imperfective for habit.",
+      "korean": "вставать / встать",
+      "english": "To get up (imperfective / perfective aspect pair). Imperfective вставать = \"to get up [habitually / over time]\"; perfective встать = \"to get up [completed action]\". Я встаю в семь утра (\"I get up at 7 am\" — habitual).",
+      "example": "Я встаю в семь.",
+      "exampleEnglish": "\"I get up at seven.\" — imperfective for habit."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "просыпаться / проснуться",
+      "romanization": "prosypatsya / prosnutsya",
+      "nativeText": "To wake up (reflexive aspect pair). Просыпаться (impf, \"to wake up [over time]\") vs проснуться (pf, \"to wake up [completed]\"). Я просыпаюсь рано (I wake up early — habitual). Я проснулся в шесть (I woke up at 6 — past pf).",
+      "pronunciation": "prosypatsya / prosnutsya",
+      "exampleTarget": "Я просыпаюсь рано.",
+      "exampleNative": "\"I wake up early.\" — reflexive impf for habit.",
+      "korean": "просыпаться / проснуться",
+      "english": "To wake up (reflexive aspect pair). Просыпаться (impf, \"to wake up [over time]\") vs проснуться (pf, \"to wake up [completed]\"). Я просыпаюсь рано (I wake up early — habitual). Я проснулся в шесть (I woke up at 6 — past pf).",
+      "example": "Я просыпаюсь рано.",
+      "exampleEnglish": "\"I wake up early.\" — reflexive impf for habit."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "умываться / умыться",
+      "romanization": "umyvatsya / umytsya",
+      "nativeText": "To wash one's face (reflexive aspect pair). The -ся reflexive ending means the action is directed at oneself.",
+      "pronunciation": "umyvatsya / umytsya",
+      "exampleTarget": "Я умываюсь и чищу зубы.",
+      "exampleNative": "\"I wash my face and brush my teeth.\" — two morning verbs.",
+      "korean": "умываться / умыться",
+      "english": "To wash one's face (reflexive aspect pair). The -ся reflexive ending means the action is directed at oneself.",
+      "example": "Я умываюсь и чищу зубы.",
+      "exampleEnglish": "\"I wash my face and brush my teeth.\" — two morning verbs."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "чистить зубы",
+      "romanization": "chistit' zuby",
+      "nativeText": "To brush teeth (NOT reflexive). Чистить = \"to clean\"; зубы = \"teeth\" (plural of зуб). Direct object construction.",
+      "pronunciation": "chistit' zuby",
+      "exampleTarget": "Я чищу зубы каждое утро.",
+      "exampleNative": "\"I brush my teeth every morning.\" — every-morning frequency.",
+      "korean": "чистить зубы",
+      "english": "To brush teeth (NOT reflexive). Чистить = \"to clean\"; зубы = \"teeth\" (plural of зуб). Direct object construction.",
+      "example": "Я чищу зубы каждое утро.",
+      "exampleEnglish": "\"I brush my teeth every morning.\" — every-morning frequency."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "принимать душ",
+      "romanization": "prinimat' dush",
+      "nativeText": "To take a shower. Lit. \"to receive a shower\". Душ is masculine. Pf: принять душ.",
+      "pronunciation": "prinimat' dush",
+      "exampleTarget": "Я принимаю душ утром.",
+      "exampleNative": "\"I take a shower in the morning.\" — утром is adv \"in the morning\" (instr case form).",
+      "korean": "принимать душ",
+      "english": "To take a shower. Lit. \"to receive a shower\". Душ is masculine. Pf: принять душ.",
+      "example": "Я принимаю душ утром.",
+      "exampleEnglish": "\"I take a shower in the morning.\" — утром is adv \"in the morning\" (instr case form)."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "завтракать / позавтракать",
+      "romanization": "zavtrakat / pozavtrakat",
+      "nativeText": "To have breakfast (impf/pf pair). Завтрак = breakfast (n). Я завтракаю в восемь = \"I have breakfast at 8\".",
+      "pronunciation": "zavtrakat / pozavtrakat",
+      "exampleTarget": "Что ты ешь на завтрак?",
+      "exampleNative": "\"What do you eat for breakfast?\" — на + acc; завтрак as object of \"for\".",
+      "korean": "завтракать / позавтракать",
+      "english": "To have breakfast (impf/pf pair). Завтрак = breakfast (n). Я завтракаю в восемь = \"I have breakfast at 8\".",
+      "example": "Что ты ешь на завтрак?",
+      "exampleEnglish": "\"What do you eat for breakfast?\" — на + acc; завтрак as object of \"for\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "одеваться / одеться",
+      "romanization": "odevatsya / odetsya",
+      "nativeText": "To get dressed (reflexive aspect pair). Одеть кого-то = \"to dress someone\"; одеться = \"to dress oneself\".",
+      "pronunciation": "odevatsya / odetsya",
+      "exampleTarget": "Я быстро одеваюсь.",
+      "exampleNative": "\"I get dressed quickly.\" — adv быстро (\"quickly\").",
+      "korean": "одеваться / одеться",
+      "english": "To get dressed (reflexive aspect pair). Одеть кого-то = \"to dress someone\"; одеться = \"to dress oneself\".",
+      "example": "Я быстро одеваюсь.",
+      "exampleEnglish": "\"I get dressed quickly.\" — adv быстро (\"quickly\")."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "идти на работу / в университет",
+      "romanization": "idti na rabotu / v universitet",
+      "nativeText": "To go to work / to university. На for работа (event-like), в for университет (place). Both with idti + acc.",
+      "pronunciation": "idti na rabotu / v universitet",
+      "exampleTarget": "Я иду на работу.",
+      "exampleNative": "\"I am going to work.\" — unidirectional motion.",
+      "korean": "идти на работу / в университет",
+      "english": "To go to work / to university. На for работа (event-like), в for университет (place). Both with idti + acc.",
+      "example": "Я иду на работу.",
+      "exampleEnglish": "\"I am going to work.\" — unidirectional motion."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "пить кофе",
+      "romanization": "pit' kofe",
+      "nativeText": "To drink coffee. Кофе is masculine and indeclinable. Пить is irregular: пью, пьёшь, пьёт, пьём, пьёте, пьют.",
+      "pronunciation": "pit' kofe",
+      "exampleTarget": "Я пью кофе утром.",
+      "exampleNative": "\"I drink coffee in the morning.\" — high-frequency phrase.",
+      "korean": "пить кофе",
+      "english": "To drink coffee. Кофе is masculine and indeclinable. Пить is irregular: пью, пьёшь, пьёт, пьём, пьёте, пьют.",
+      "example": "Я пью кофе утром.",
+      "exampleEnglish": "\"I drink coffee in the morning.\" — high-frequency phrase."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "работать",
+      "romanization": "rabotat'",
+      "nativeText": "To work (impf). 1st conjugation: работаю, работаешь, работает, работаем, работаете, работают. Object: над + instr (работать над проектом = \"to work on a project\").",
+      "pronunciation": "rabotat'",
+      "exampleTarget": "Я работаю в офисе.",
+      "exampleNative": "\"I work in an office.\" — в + prep case офисе.",
+      "korean": "работать",
+      "english": "To work (impf). 1st conjugation: работаю, работаешь, работает, работаем, работаете, работают. Object: над + instr (работать над проектом = \"to work on a project\").",
+      "example": "Я работаю в офисе.",
+      "exampleEnglish": "\"I work in an office.\" — в + prep case офисе."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "учиться",
+      "romanization": "uchitsya",
+      "nativeText": "To study (reflexive, intransitive). Used for \"to study at [a school/uni]\": Я учусь в МГУ. Different from учить (to study sth) and изучать (to study sth systematically).",
+      "pronunciation": "uchitsya",
+      "exampleTarget": "Я учусь в университете.",
+      "exampleNative": "\"I study at university.\" — reflexive verb without explicit object.",
+      "korean": "учиться",
+      "english": "To study (reflexive, intransitive). Used for \"to study at [a school/uni]\": Я учусь в МГУ. Different from учить (to study sth) and изучать (to study sth systematically).",
+      "example": "Я учусь в университете.",
+      "exampleEnglish": "\"I study at university.\" — reflexive verb without explicit object."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "обедать / пообедать",
+      "romanization": "obedat' / poobedat'",
+      "nativeText": "To have lunch (impf/pf). Обед = lunch (m). Я обедаю в час = \"I have lunch at one\".",
+      "pronunciation": "obedat' / poobedat'",
+      "exampleTarget": "Где ты обедаешь?",
+      "exampleNative": "\"Where do you eat lunch?\" — daily question among colleagues.",
+      "korean": "обедать / пообедать",
+      "english": "To have lunch (impf/pf). Обед = lunch (m). Я обедаю в час = \"I have lunch at one\".",
+      "example": "Где ты обедаешь?",
+      "exampleEnglish": "\"Where do you eat lunch?\" — daily question among colleagues."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "учить / выучить",
+      "romanization": "uchit' / vyuchit'",
+      "nativeText": "To learn / memorize (something). Note: учить ≠ учиться. Я учу русский = \"I am studying Russian\". Pf выучить = completed learning.",
+      "pronunciation": "uchit' / vyuchit'",
+      "exampleTarget": "Я учу новые слова.",
+      "exampleNative": "\"I am learning new words.\" — учить with direct object (acc).",
+      "korean": "учить / выучить",
+      "english": "To learn / memorize (something). Note: учить ≠ учиться. Я учу русский = \"I am studying Russian\". Pf выучить = completed learning.",
+      "example": "Я учу новые слова.",
+      "exampleEnglish": "\"I am learning new words.\" — учить with direct object (acc)."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "читать",
+      "romanization": "chitat'",
+      "nativeText": "To read (impf). 1st conjugation: читаю, читаешь, читает, читаем, читаете, читают. Pf: прочитать.",
+      "pronunciation": "chitat'",
+      "exampleTarget": "Я читаю книгу.",
+      "exampleNative": "\"I am reading a book.\" — книгу acc of книга.",
+      "korean": "читать",
+      "english": "To read (impf). 1st conjugation: читаю, читаешь, читает, читаем, читаете, читают. Pf: прочитать.",
+      "example": "Я читаю книгу.",
+      "exampleEnglish": "\"I am reading a book.\" — книгу acc of книга."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "писать",
+      "romanization": "pisat'",
+      "nativeText": "To write (impf). Irregular: пишу, пишешь, пишет, пишем, пишете, пишут (с → ш in conjugation). Pf: написать.",
+      "pronunciation": "pisat'",
+      "exampleTarget": "Я пишу письмо.",
+      "exampleNative": "\"I am writing a letter.\" — письмо (n) accusative same as nom for inanimate.",
+      "korean": "писать",
+      "english": "To write (impf). Irregular: пишу, пишешь, пишет, пишем, пишете, пишут (с → ш in conjugation). Pf: написать.",
+      "example": "Я пишу письмо.",
+      "exampleEnglish": "\"I am writing a letter.\" — письмо (n) accusative same as nom for inanimate."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "встречаться с",
+      "romanization": "vstrechat'sya s",
+      "nativeText": "To meet with (reflexive, takes c + instr). Я встречаюсь с другом = \"I am meeting with a friend\".",
+      "pronunciation": "vstrechat'sya s",
+      "exampleTarget": "Я встречаюсь с другом в кафе.",
+      "exampleNative": "\"I am meeting with a friend at a cafe.\" — с + instr case другом.",
+      "korean": "встречаться с",
+      "english": "To meet with (reflexive, takes c + instr). Я встречаюсь с другом = \"I am meeting with a friend\".",
+      "example": "Я встречаюсь с другом в кафе.",
+      "exampleEnglish": "\"I am meeting with a friend at a cafe.\" — с + instr case другом."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "возвращаться",
+      "romanization": "vozvrashchatsya",
+      "nativeText": "To return / come back (reflexive impf). Pf: вернуться. Я возвращаюсь домой в семь = \"I return home at seven\".",
+      "pronunciation": "vozvrashchatsya",
+      "exampleTarget": "Я возвращаюсь домой поздно.",
+      "exampleNative": "\"I return home late.\" — домой is adv \"homeward\" (motion form of дом).",
+      "korean": "возвращаться",
+      "english": "To return / come back (reflexive impf). Pf: вернуться. Я возвращаюсь домой в семь = \"I return home at seven\".",
+      "example": "Я возвращаюсь домой поздно.",
+      "exampleEnglish": "\"I return home late.\" — домой is adv \"homeward\" (motion form of дом)."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "ужинать / поужинать",
+      "romanization": "uzhinat' / pouzhinat'",
+      "nativeText": "To have dinner (impf/pf). Ужин = dinner (m). Я ужинаю в восемь = \"I have dinner at 8\".",
+      "pronunciation": "uzhinat' / pouzhinat'",
+      "exampleTarget": "Что ты ешь на ужин?",
+      "exampleNative": "\"What do you eat for dinner?\" — standard evening question.",
+      "korean": "ужинать / поужинать",
+      "english": "To have dinner (impf/pf). Ужин = dinner (m). Я ужинаю в восемь = \"I have dinner at 8\".",
+      "example": "Что ты ешь на ужин?",
+      "exampleEnglish": "\"What do you eat for dinner?\" — standard evening question."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "смотреть телевизор",
+      "romanization": "smotret' televizor",
+      "nativeText": "To watch TV. Смотреть takes acc. Pf: посмотреть.",
+      "pronunciation": "smotret' televizor",
+      "exampleTarget": "Я смотрю телевизор вечером.",
+      "exampleNative": "\"I watch TV in the evening.\" — вечером instr-case adverb.",
+      "korean": "смотреть телевизор",
+      "english": "To watch TV. Смотреть takes acc. Pf: посмотреть.",
+      "example": "Я смотрю телевизор вечером.",
+      "exampleEnglish": "\"I watch TV in the evening.\" — вечером instr-case adverb."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "гулять",
+      "romanization": "gulyat'",
+      "nativeText": "To take a walk / stroll (impf). 1st conj. Pf: погулять. Я гуляю с собакой = \"I walk the dog\".",
+      "pronunciation": "gulyat'",
+      "exampleTarget": "Я гуляю в парке.",
+      "exampleNative": "\"I take a walk in the park.\" — в + prep case парке.",
+      "korean": "гулять",
+      "english": "To take a walk / stroll (impf). 1st conj. Pf: погулять. Я гуляю с собакой = \"I walk the dog\".",
+      "example": "Я гуляю в парке.",
+      "exampleEnglish": "\"I take a walk in the park.\" — в + prep case парке."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "читать книгу",
+      "romanization": "chitat' knigu",
+      "nativeText": "To read a book (evening leisure activity).",
+      "pronunciation": "chitat' knigu",
+      "exampleTarget": "Я читаю книгу перед сном.",
+      "exampleNative": "\"I read a book before sleep.\" — перед + instr case сном.",
+      "korean": "читать книгу",
+      "english": "To read a book (evening leisure activity).",
+      "example": "Я читаю книгу перед сном.",
+      "exampleEnglish": "\"I read a book before sleep.\" — перед + instr case сном."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "звонить / позвонить",
+      "romanization": "zvonit' / pozvonit'",
+      "nativeText": "To call (by phone) (impf/pf pair). Takes dative: звонить кому = \"to call someone\". Я звоню маме = \"I call mom\".",
+      "pronunciation": "zvonit' / pozvonit'",
+      "exampleTarget": "Я звоню маме каждый вечер.",
+      "exampleNative": "\"I call my mom every evening.\" — маме dat of мама.",
+      "korean": "звонить / позвонить",
+      "english": "To call (by phone) (impf/pf pair). Takes dative: звонить кому = \"to call someone\". Я звоню маме = \"I call mom\".",
+      "example": "Я звоню маме каждый вечер.",
+      "exampleEnglish": "\"I call my mom every evening.\" — маме dat of мама."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "ложиться спать / лечь спать",
+      "romanization": "lozhit'sya spat' / lech spat'",
+      "nativeText": "To go to bed (impf/pf pair). Ложиться = \"to lie down\"; the спать (to sleep) infinitive specifies that it's for sleeping. Я ложусь спать в одиннадцать.",
+      "pronunciation": "lozhit'sya spat' / lech spat'",
+      "exampleTarget": "Я ложусь спать в 11 вечера.",
+      "exampleNative": "\"I go to bed at 11 PM.\" — в + acc + вечера (\"of the evening\").",
+      "korean": "ложиться спать / лечь спать",
+      "english": "To go to bed (impf/pf pair). Ложиться = \"to lie down\"; the спать (to sleep) infinitive specifies that it's for sleeping. Я ложусь спать в одиннадцать.",
+      "example": "Я ложусь спать в 11 вечера.",
+      "exampleEnglish": "\"I go to bed at 11 PM.\" — в + acc + вечера (\"of the evening\")."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "спать",
+      "romanization": "spat'",
+      "nativeText": "To sleep (impf). Irregular present: сплю, спишь, спит, спим, спите, спят. Pf is усыпать / уснуть (\"to fall asleep\").",
+      "pronunciation": "spat'",
+      "exampleTarget": "Я сплю восемь часов.",
+      "exampleNative": "\"I sleep eight hours.\" — accusative для duration.",
+      "korean": "спать",
+      "english": "To sleep (impf). Irregular present: сплю, спишь, спит, спим, спите, спят. Pf is усыпать / уснуть (\"to fall asleep\").",
+      "example": "Я сплю восемь часов.",
+      "exampleEnglish": "\"I sleep eight hours.\" — accusative для duration."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "просыпаться",
+      "romanization": "prosypatsya (impf)",
+      "nativeText": "See morning section — completed cycle for evening: ложусь → сплю → просыпаюсь.",
+      "pronunciation": "prosypatsya (impf)",
+      "exampleTarget": "Я просыпаюсь рано.",
+      "exampleNative": "\"I wake up early.\"",
+      "korean": "просыпаться",
+      "english": "See morning section — completed cycle for evening: ложусь → сплю → просыпаюсь.",
+      "example": "Я просыпаюсь рано.",
+      "exampleEnglish": "\"I wake up early.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Возвратные глаголы -ся / -сь",
+      "romanization": "Reflexive verbs -sya / -s",
+      "nativeText": "Russian reflexive verbs add the suffix -ся (after consonant) or -сь (after vowel) to the regular verb stem. Four semantic types: (1) true reflexive (мыться \"to wash oneself\"); (2) reciprocal (целоваться \"to kiss each other\"); (3) passive (изучается \"is being studied\"); (4) intransitive-marker (учиться \"to study\", смеяться \"to laugh\"). Same form, four meanings.",
+      "pronunciation": "Reflexive verbs -sya / -s",
+      "exampleTarget": "я мою стол (I wash the table) → я моюсь (I wash myself, reflexive)\nя люблю её → они любятся (they love each other, reciprocal)\nстудент изучает русский → русский изучается (Russian is being studied, passive)\nя учу русский → я учусь (I am a student, intrans-marker)",
+      "exampleNative": "The -ся suffix has been the historical marker of all four functions; context determines which.",
+      "korean": "Возвратные глаголы -ся / -сь",
+      "english": "Russian reflexive verbs add the suffix -ся (after consonant) or -сь (after vowel) to the regular verb stem. Four semantic types: (1) true reflexive (мыться \"to wash oneself\"); (2) reciprocal (целоваться \"to kiss each other\"); (3) passive (изучается \"is being studied\"); (4) intransitive-marker (учиться \"to study\", смеяться \"to laugh\"). Same form, four meanings.",
+      "example": "я мою стол (I wash the table) → я моюсь (I wash myself, reflexive)\nя люблю её → они любятся (they love each other, reciprocal)\nстудент изучает русский → русский изучается (Russian is being studied, passive)\nя учу русский → я учусь (I am a student, intrans-marker)",
+      "exampleEnglish": "The -ся suffix has been the historical marker of all four functions; context determines which."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Время — час / часы / часов",
+      "romanization": "Time — chas / chasy / chasov",
+      "nativeText": "Russian \"X o'clock\" uses different forms of час depending on the number: 1 час (singular nominative for 1), 2/3/4 часа (genitive singular after 2-4), 5-12 часов (genitive plural after 5-12). Apply across hours.",
+      "pronunciation": "Time — chas / chasy / chasov",
+      "exampleTarget": "Сейчас один час. (1:00)\nСейчас два часа. (2:00)\nСейчас пять часов. (5:00)\nСейчас одиннадцать часов. (11:00)",
+      "exampleNative": "The 1/2-4/5+ pattern is general across counted nouns — first numeral rule learners encounter.",
+      "korean": "Время — час / часы / часов",
+      "english": "Russian \"X o'clock\" uses different forms of час depending on the number: 1 час (singular nominative for 1), 2/3/4 часа (genitive singular after 2-4), 5-12 часов (genitive plural after 5-12). Apply across hours.",
+      "example": "Сейчас один час. (1:00)\nСейчас два часа. (2:00)\nСейчас пять часов. (5:00)\nСейчас одиннадцать часов. (11:00)",
+      "exampleEnglish": "The 1/2-4/5+ pattern is general across counted nouns — first numeral rule learners encounter."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "В + accusative for time",
+      "romanization": "V + acc for time",
+      "nativeText": "\"At X o'clock\" uses в + accusative. For time, accusative of час forms is same as nominative for the numeral. в три часа = \"at 3 o'clock\", в восемь утра = \"at 8 in the morning\".",
+      "pronunciation": "V + acc for time",
+      "exampleTarget": "в три часа · в час дня · в семь утра · в одиннадцать вечера",
+      "exampleNative": "The genitive utra/дня/вечера/ночи is the time-of-day qualifier.",
+      "korean": "В + accusative for time",
+      "english": "\"At X o'clock\" uses в + accusative. For time, accusative of час forms is same as nominative for the numeral. в три часа = \"at 3 o'clock\", в восемь утра = \"at 8 in the morning\".",
+      "example": "в три часа · в час дня · в семь утра · в одиннадцать вечера",
+      "exampleEnglish": "The genitive utra/дня/вечера/ночи is the time-of-day qualifier."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "утра / дня / вечера / ночи",
+      "romanization": "utra / dnya / vechera / nochi",
+      "nativeText": "Russian distinguishes four times of day: утро (morning, 4-11 am), день (day, noon-5 pm), вечер (evening, 6-11 pm), ночь (night, midnight-3 am). Used as genitive after a time: восемь утра = \"8 of the morning\".",
+      "pronunciation": "utra / dnya / vechera / nochi",
+      "exampleTarget": "три утра — 3:00 AM (early morning)\nтри дня — 3:00 PM (afternoon)\nсемь вечера — 7:00 PM (evening)\nдва ночи — 2:00 AM (deep night)",
+      "exampleNative": "Russian does NOT use AM/PM; instead specify утра/дня/вечера/ночи for clarity.",
+      "korean": "утра / дня / вечера / ночи",
+      "english": "Russian distinguishes four times of day: утро (morning, 4-11 am), день (day, noon-5 pm), вечер (evening, 6-11 pm), ночь (night, midnight-3 am). Used as genitive after a time: восемь утра = \"8 of the morning\".",
+      "example": "три утра — 3:00 AM (early morning)\nтри дня — 3:00 PM (afternoon)\nсемь вечера — 7:00 PM (evening)\nдва ночи — 2:00 AM (deep night)",
+      "exampleEnglish": "Russian does NOT use AM/PM; instead specify утра/дня/вечера/ночи for clarity."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Частотные наречия",
+      "romanization": "Chastotnye narechiya — frequency adverbs",
+      "nativeText": "Six common frequency adverbs ordered: всегда (always) > обычно (usually) > часто (often) > иногда (sometimes) > редко (rarely) > никогда (never).",
+      "pronunciation": "Chastotnye narechiya — frequency adverbs",
+      "exampleTarget": "Я всегда завтракаю. (I always have breakfast.)\nЯ обычно встаю в семь. (I usually get up at 7.)\nЯ часто читаю. (I often read.)\nЯ иногда смотрю фильмы. (I sometimes watch films.)\nЯ редко ем мясо. (I rarely eat meat.)\nЯ никогда НЕ курю. (I never smoke.)",
+      "exampleNative": "Pay attention to the last example: никогда requires DOUBLE negation with не.",
+      "korean": "Частотные наречия",
+      "english": "Six common frequency adverbs ordered: всегда (always) > обычно (usually) > часто (often) > иногда (sometimes) > редко (rarely) > никогда (never).",
+      "example": "Я всегда завтракаю. (I always have breakfast.)\nЯ обычно встаю в семь. (I usually get up at 7.)\nЯ часто читаю. (I often read.)\nЯ иногда смотрю фильмы. (I sometimes watch films.)\nЯ редко ем мясо. (I rarely eat meat.)\nЯ никогда НЕ курю. (I never smoke.)",
+      "exampleEnglish": "Pay attention to the last example: никогда requires DOUBLE negation with не."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Двойное отрицание",
+      "romanization": "Dvoynoye otritsaniye — double negation",
+      "nativeText": "CRITICAL RULE: Russian negative adverbs (никогда, никто, ничто, нигде, никак) REQUIRE the additional не with the verb. \"I never eat meat\" is Я никогда НЕ ем мясо — both никогда AND не. Single negation is wrong: *Я никогда ем мясо.",
+      "pronunciation": "Dvoynoye otritsaniye — double negation",
+      "exampleTarget": "Я никогда не курю. (correct)\n*Я никогда курю. (wrong)",
+      "exampleNative": "Russian double negation differs from English; English uses single negation: \"I never smoke\".",
+      "korean": "Двойное отрицание",
+      "english": "CRITICAL RULE: Russian negative adverbs (никогда, никто, ничто, нигде, никак) REQUIRE the additional не with the verb. \"I never eat meat\" is Я никогда НЕ ем мясо — both никогда AND не. Single negation is wrong: *Я никогда ем мясо.",
+      "example": "Я никогда не курю. (correct)\n*Я никогда курю. (wrong)",
+      "exampleEnglish": "Russian double negation differs from English; English uses single negation: \"I never smoke\"."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "День студента МГУ",
+      "romanization": "Den' studenta MGU",
+      "nativeText": "A short narrative of a typical day. Read aloud and identify each verb's aspect (impf for habit, pf for completed).",
+      "pronunciation": "Den' studenta MGU",
+      "exampleTarget": "Я встаю в 6:30. Я умываюсь, чищу зубы, и одеваюсь. В 7:30 я завтракаю. В 8:00 я еду в университет на метро. В 8:30 у меня первая пара. После пары я обедаю в столовой. В 14:00 у меня вторая пара. Вечером я учусь в библиотеке до семи. В 23:00 я ложусь спать.",
+      "exampleNative": "Standard student-day narrative; every key verb appears.",
+      "korean": "День студента МГУ",
+      "english": "A short narrative of a typical day. Read aloud and identify each verb's aspect (impf for habit, pf for completed).",
+      "example": "Я встаю в 6:30. Я умываюсь, чищу зубы, и одеваюсь. В 7:30 я завтракаю. В 8:00 я еду в университет на метро. В 8:30 у меня первая пара. После пары я обедаю в столовой. В 14:00 у меня вторая пара. Вечером я учусь в библиотеке до семи. В 23:00 я ложусь спать.",
+      "exampleEnglish": "Standard student-day narrative; every key verb appears."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Вопросы",
+      "romanization": "Voprosy",
+      "nativeText": "Four comprehension questions about the daily narrative.",
+      "pronunciation": "Voprosy",
+      "exampleTarget": "Q1: Во сколько он встаёт? Q2: Где он обедает? Q3: Что он делает вечером? Q4: Во сколько он ложится спать?",
+      "exampleNative": "Mix of во сколько, где, что.",
+      "korean": "Вопросы",
+      "english": "Four comprehension questions about the daily narrative.",
+      "example": "Q1: Во сколько он встаёт? Q2: Где он обедает? Q3: Что он делает вечером? Q4: Во сколько он ложится спать?",
+      "exampleEnglish": "Mix of во сколько, где, что."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Мой расписание",
+      "romanization": "Moye raspisaniye",
+      "nativeText": "A sample written daily-schedule paragraph.",
+      "pronunciation": "Moye raspisaniye",
+      "exampleTarget": "Я обычно встаю в 7. Сначала я принимаю душ, потом завтракаю. В 8:30 я иду на первую пару. После пары я обедаю с друзьями. Я часто учусь в библиотеке до вечера. Я всегда ложусь спать в 11.",
+      "exampleNative": "Sequence words: сначала (first), потом (then), после (after), всегда (always) — anchor the chronological narrative.",
+      "korean": "Мой расписание",
+      "english": "A sample written daily-schedule paragraph.",
+      "example": "Я обычно встаю в 7. Сначала я принимаю душ, потом завтракаю. В 8:30 я иду на первую пару. После пары я обедаю с друзьями. Я часто учусь в библиотеке до вечера. Я всегда ложусь спать в 11.",
+      "exampleEnglish": "Sequence words: сначала (first), потом (then), после (after), всегда (always) — anchor the chronological narrative."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Пара в МГУ",
+      "romanization": "Para v MGU",
+      "nativeText": "Russian university classes are organized into пары (literally \"pairs\") — 90-minute blocks divided into two 45-minute halves with a 5-minute break in the middle. A typical student has 3-5 pairs per day. The first pair (первая пара) starts at 8:30 or 9:00 sharply.",
+      "pronunciation": "Para v MGU",
+      "exampleTarget": "У меня сегодня четыре пары.",
+      "exampleNative": "\"I have four pairs today.\" — typical schedule complexity.",
+      "korean": "Пара в МГУ",
+      "english": "Russian university classes are organized into пары (literally \"pairs\") — 90-minute blocks divided into two 45-minute halves with a 5-minute break in the middle. A typical student has 3-5 pairs per day. The first pair (первая пара) starts at 8:30 or 9:00 sharply.",
+      "example": "У меня сегодня четыре пары.",
+      "exampleEnglish": "\"I have four pairs today.\" — typical schedule complexity."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Обед в России",
+      "romanization": "Obed v Rossii",
+      "nativeText": "Russian обед is typically eaten 12:00-14:00 and is the main meal of the day — soup (первое), main dish (второе), and compote (третье). At МГУ, students eat in столовая (canteen) or бистро (modern fast-cafe). Lunch is significant — never skipped.",
+      "pronunciation": "Obed v Rossii",
+      "exampleTarget": "Обед — первое, второе, и третье.",
+      "exampleNative": "Three-course lunch structure; deeply ingrained in Russian eating culture.",
+      "korean": "Обед в России",
+      "english": "Russian обед is typically eaten 12:00-14:00 and is the main meal of the day — soup (первое), main dish (второе), and compote (третье). At МГУ, students eat in столовая (canteen) or бистро (modern fast-cafe). Lunch is significant — never skipped.",
+      "example": "Обед — первое, второе, и третье.",
+      "exampleEnglish": "Three-course lunch structure; deeply ingrained in Russian eating culture."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Утро → день → вечер → ночь.",
+      "romanization": "Tseli uroka",
+      "nativeText": "Model use for \"Цели урока\": By the end of this lesson, you can describe your entire weekday from waking up to bedtime in Russian, telling time, ordering events chronologically, and noting frequency. The verbs and time expressions covered here recur in nearly every later Russian lesson.",
+      "pronunciation": "Tseli uroka",
+      "exampleTarget": "Утро → день → вечер → ночь.",
+      "exampleNative": "\"Morning → day → evening → night.\" — the four periods of a Russian day.",
+      "korean": "Утро → день → вечер → ночь.",
+      "english": "Model use for \"Цели урока\": By the end of this lesson, you can describe your entire weekday from waking up to bedtime in Russian, telling time, ordering events chronologically, and noting frequency. The verbs and time expressions covered here recur in nearly every later Russian lesson.",
+      "example": "Утро → день → вечер → ночь.",
+      "exampleEnglish": "\"Morning → day → evening → night.\" — the four periods of a Russian day."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Цели урока",
+      "romanization": "Tseli uroka",
+      "nativeText": "Usage focus for \"Цели урока\": By the end of this lesson, you can describe your entire weekday from waking up to bedtime in Russian, telling time, ordering events chronologically, and noting frequency. The verbs and time expressions covered here recur in nearly every later Russian lesson.",
+      "pronunciation": "Tseli uroka",
+      "exampleTarget": "Утро → день → вечер → ночь.",
+      "exampleNative": "Notice what the form is doing here: \"Morning → day → evening → night.\" — the four periods of a Russian day.",
+      "korean": "Цели урока",
+      "english": "Usage focus for \"Цели урока\": By the end of this lesson, you can describe your entire weekday from waking up to bedtime in Russian, telling time, ordering events chronologically, and noting frequency. The verbs and time expressions covered here recur in nearly every later Russian lesson.",
+      "example": "Утро → день → вечер → ночь.",
+      "exampleEnglish": "Notice what the form is doing here: \"Morning → day → evening → night.\" — the four periods of a Russian day."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Цели урока",
+      "romanization": "Tseli uroka",
+      "nativeText": "Contrast check for \"Цели урока\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "Tseli uroka",
+      "exampleTarget": "Утро → день → вечер → ночь.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"Morning → day → evening → night.\" — the four periods of a Russian day.",
+      "korean": "Цели урока",
+      "english": "Contrast check for \"Цели урока\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Утро → день → вечер → ночь.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"Morning → day → evening → night.\" — the four periods of a Russian day."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Цели урока",
+      "romanization": "Tseli uroka",
+      "nativeText": "Recall \"Цели урока\" from memory, then explain what would change if a nearby alternative replaced it in \"Утро → день → вечер → ночь.\".",
+      "pronunciation": "Tseli uroka",
+      "exampleTarget": "Утро → день → вечер → ночь.",
+      "exampleNative": "Self-check against the model before moving on: \"Morning → day → evening → night.\" — the four periods of a Russian day.",
+      "korean": "Цели урока",
+      "english": "Recall \"Цели урока\" from memory, then explain what would change if a nearby alternative replaced it in \"Утро → день → вечер → ночь.\".",
+      "example": "Утро → день → вечер → ночь.",
+      "exampleEnglish": "Self-check against the model before moving on: \"Morning → day → evening → night.\" — the four periods of a Russian day."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Цели урока",
+      "romanization": "Tseli uroka",
+      "nativeText": "Repair \"Цели урока\" inside \"Утро → день → вечер → ночь.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: By the end of this lesson, you can describe your entire weekday from waking up to bedtime in Russian, telling time, ordering events chronologically, and noting frequency. The verbs and time expressions covered here recur in nearly every later Russian lesson.",
+      "pronunciation": "Tseli uroka",
+      "exampleTarget": "Утро → день → вечер → ночь.",
+      "exampleNative": "Use the model as the repair target: \"Morning → day → evening → night.\" — the four periods of a Russian day.",
+      "korean": "Цели урока",
+      "english": "Repair \"Цели урока\" inside \"Утро → день → вечер → ночь.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: By the end of this lesson, you can describe your entire weekday from waking up to bedtime in Russian, telling time, ordering events chronologically, and noting frequency. The verbs and time expressions covered here recur in nearly every later Russian lesson.",
+      "example": "Утро → день → вечер → ночь.",
+      "exampleEnglish": "Use the model as the repair target: \"Morning → day → evening → night.\" — the four periods of a Russian day."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Цели урока",
+      "romanization": "Tseli uroka",
+      "nativeText": "Transfer \"Цели урока\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Утро → день → вечер → ночь.\".",
+      "pronunciation": "Tseli uroka",
+      "exampleTarget": "Утро → день → вечер → ночь.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: \"Morning → day → evening → night.\" — the four periods of a Russian day.",
+      "korean": "Цели урока",
+      "english": "Transfer \"Цели урока\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Утро → день → вечер → ночь.\".",
+      "example": "Утро → день → вечер → ночь.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: \"Morning → day → evening → night.\" — the four periods of a Russian day."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Цели урока",
+      "romanization": "Tseli uroka",
+      "nativeText": "Find one word or phrase that naturally travels with \"Цели урока\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "Tseli uroka",
+      "exampleTarget": "Утро → день → вечер → ночь.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: \"Morning → day → evening → night.\" — the four periods of a Russian day.",
+      "korean": "Цели урока",
+      "english": "Find one word or phrase that naturally travels with \"Цели урока\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Утро → день → вечер → ночь.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: \"Morning → day → evening → night.\" — the four periods of a Russian day."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Цели урока",
+      "romanization": "Tseli uroka",
+      "nativeText": "Listen for \"Цели урока\" inside \"Утро → день → вечер → ночь.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "Tseli uroka",
+      "exampleTarget": "Утро → день → вечер → ночь.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"Morning → day → evening → night.\" — the four periods of a Russian day.",
+      "korean": "Цели урока",
+      "english": "Listen for \"Цели урока\" inside \"Утро → день → вечер → ночь.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Утро → день → вечер → ночь.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"Morning → day → evening → night.\" — the four periods of a Russian day."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Цели урока",
+      "romanization": "Tseli uroka",
+      "nativeText": "Write \"Цели урока\" again without looking, then compare the exact written form against \"Утро → день → вечер → ночь.\" before moving on.",
+      "pronunciation": "Tseli uroka",
+      "exampleTarget": "Утро → день → вечер → ночь.",
+      "exampleNative": "Use the written model as the final correctness check: \"Morning → day → evening → night.\" — the four periods of a Russian day.",
+      "korean": "Цели урока",
+      "english": "Write \"Цели урока\" again without looking, then compare the exact written form against \"Утро → день → вечер → ночь.\" before moving on.",
+      "example": "Утро → день → вечер → ночь.",
+      "exampleEnglish": "Use the written model as the final correctness check: \"Morning → day → evening → night.\" — the four periods of a Russian day."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Цели урока",
+      "romanization": "Tseli uroka",
+      "nativeText": "Check whether \"Цели урока\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"Morning → day → evening → night.\" — the four periods of a Russian day.",
+      "pronunciation": "Tseli uroka",
+      "exampleTarget": "Утро → день → вечер → ночь.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: \"Morning → day → evening → night.\" — the four periods of a Russian day.",
+      "korean": "Цели урока",
+      "english": "Check whether \"Цели урока\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"Morning → day → evening → night.\" — the four periods of a Russian day.",
+      "example": "Утро → день → вечер → ночь.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: \"Morning → day → evening → night.\" — the four periods of a Russian day."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "А ты во сколько встаёшь?",
+      "romanization": "Realnyy stsenariy",
+      "nativeText": "Model use for \"Реальный сценарий\": You are sharing a kitchen with a Russian student in МГУ dorm ДАС at 7:30 am. They ask \"А ты во сколько встаёшь?\" (And when do you get up?). You need to give a full schedule from морнинг to evening using everyday verbs and times.",
+      "pronunciation": "Realnyy stsenariy",
+      "exampleTarget": "А ты во сколько встаёшь?",
+      "exampleNative": "\"And when do you get up?\" — во variant of в before consonant cluster; сколько is \"how much/at what time\".",
+      "korean": "А ты во сколько встаёшь?",
+      "english": "Model use for \"Реальный сценарий\": You are sharing a kitchen with a Russian student in МГУ dorm ДАС at 7:30 am. They ask \"А ты во сколько встаёшь?\" (And when do you get up?). You need to give a full schedule from морнинг to evening using everyday verbs and times.",
+      "example": "А ты во сколько встаёшь?",
+      "exampleEnglish": "\"And when do you get up?\" — во variant of в before consonant cluster; сколько is \"how much/at what time\"."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Реальный сценарий",
+      "romanization": "Realnyy stsenariy",
+      "nativeText": "Usage focus for \"Реальный сценарий\": You are sharing a kitchen with a Russian student in МГУ dorm ДАС at 7:30 am. They ask \"А ты во сколько встаёшь?\" (And when do you get up?). You need to give a full schedule from морнинг to evening using everyday verbs and times.",
+      "pronunciation": "Realnyy stsenariy",
+      "exampleTarget": "А ты во сколько встаёшь?",
+      "exampleNative": "Notice what the form is doing here: \"And when do you get up?\" — во variant of в before consonant cluster; сколько is \"how much/at what time\".",
+      "korean": "Реальный сценарий",
+      "english": "Usage focus for \"Реальный сценарий\": You are sharing a kitchen with a Russian student in МГУ dorm ДАС at 7:30 am. They ask \"А ты во сколько встаёшь?\" (And when do you get up?). You need to give a full schedule from морнинг to evening using everyday verbs and times.",
+      "example": "А ты во сколько встаёшь?",
+      "exampleEnglish": "Notice what the form is doing here: \"And when do you get up?\" — во variant of в before consonant cluster; сколько is \"how much/at what time\"."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Реальный сценарий",
+      "romanization": "Realnyy stsenariy",
+      "nativeText": "Contrast check for \"Реальный сценарий\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "Realnyy stsenariy",
+      "exampleTarget": "А ты во сколько встаёшь?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"And when do you get up?\" — во variant of в before consonant cluster; сколько is \"how much/at what time\".",
+      "korean": "Реальный сценарий",
+      "english": "Contrast check for \"Реальный сценарий\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "А ты во сколько встаёшь?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"And when do you get up?\" — во variant of в before consonant cluster; сколько is \"how much/at what time\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Реальный сценарий",
+      "romanization": "Realnyy stsenariy",
+      "nativeText": "Recall \"Реальный сценарий\" from memory, then explain what would change if a nearby alternative replaced it in \"А ты во сколько встаёшь?\".",
+      "pronunciation": "Realnyy stsenariy",
+      "exampleTarget": "А ты во сколько встаёшь?",
+      "exampleNative": "Self-check against the model before moving on: \"And when do you get up?\" — во variant of в before consonant cluster; сколько is \"how much/at what time\".",
+      "korean": "Реальный сценарий",
+      "english": "Recall \"Реальный сценарий\" from memory, then explain what would change if a nearby alternative replaced it in \"А ты во сколько встаёшь?\".",
+      "example": "А ты во сколько встаёшь?",
+      "exampleEnglish": "Self-check against the model before moving on: \"And when do you get up?\" — во variant of в before consonant cluster; сколько is \"how much/at what time\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Реальный сценарий",
+      "romanization": "Realnyy stsenariy",
+      "nativeText": "Repair \"Реальный сценарий\" inside \"А ты во сколько встаёшь?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: You are sharing a kitchen with a Russian student in МГУ dorm ДАС at 7:30 am. They ask \"А ты во сколько встаёшь?\" (And when do you get up?). You need to give a full schedule from морнинг to evening using everyday verbs and times.",
+      "pronunciation": "Realnyy stsenariy",
+      "exampleTarget": "А ты во сколько встаёшь?",
+      "exampleNative": "Use the model as the repair target: \"And when do you get up?\" — во variant of в before consonant cluster; сколько is \"how much/at what time\".",
+      "korean": "Реальный сценарий",
+      "english": "Repair \"Реальный сценарий\" inside \"А ты во сколько встаёшь?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: You are sharing a kitchen with a Russian student in МГУ dorm ДАС at 7:30 am. They ask \"А ты во сколько встаёшь?\" (And when do you get up?). You need to give a full schedule from морнинг to evening using everyday verbs and times.",
+      "example": "А ты во сколько встаёшь?",
+      "exampleEnglish": "Use the model as the repair target: \"And when do you get up?\" — во variant of в before consonant cluster; сколько is \"how much/at what time\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Реальный сценарий",
+      "romanization": "Realnyy stsenariy",
+      "nativeText": "Transfer \"Реальный сценарий\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"А ты во сколько встаёшь?\".",
+      "pronunciation": "Realnyy stsenariy",
+      "exampleTarget": "А ты во сколько встаёшь?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: \"And when do you get up?\" — во variant of в before consonant cluster; сколько is \"how much/at what time\".",
+      "korean": "Реальный сценарий",
+      "english": "Transfer \"Реальный сценарий\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"А ты во сколько встаёшь?\".",
+      "example": "А ты во сколько встаёшь?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: \"And when do you get up?\" — во variant of в before consonant cluster; сколько is \"how much/at what time\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Реальный сценарий",
+      "romanization": "Realnyy stsenariy",
+      "nativeText": "Find one word or phrase that naturally travels with \"Реальный сценарий\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "Realnyy stsenariy",
+      "exampleTarget": "А ты во сколько встаёшь?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: \"And when do you get up?\" — во variant of в before consonant cluster; сколько is \"how much/at what time\".",
+      "korean": "Реальный сценарий",
+      "english": "Find one word or phrase that naturally travels with \"Реальный сценарий\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "А ты во сколько встаёшь?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: \"And when do you get up?\" — во variant of в before consonant cluster; сколько is \"how much/at what time\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Реальный сценарий",
+      "romanization": "Realnyy stsenariy",
+      "nativeText": "Listen for \"Реальный сценарий\" inside \"А ты во сколько встаёшь?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "Realnyy stsenariy",
+      "exampleTarget": "А ты во сколько встаёшь?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"And when do you get up?\" — во variant of в before consonant cluster; сколько is \"how much/at what time\".",
+      "korean": "Реальный сценарий",
+      "english": "Listen for \"Реальный сценарий\" inside \"А ты во сколько встаёшь?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "А ты во сколько встаёшь?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"And when do you get up?\" — во variant of в before consonant cluster; сколько is \"how much/at what time\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Реальный сценарий",
+      "romanization": "Realnyy stsenariy",
+      "nativeText": "Write \"Реальный сценарий\" again without looking, then compare the exact written form against \"А ты во сколько встаёшь?\" before moving on.",
+      "pronunciation": "Realnyy stsenariy",
+      "exampleTarget": "А ты во сколько встаёшь?",
+      "exampleNative": "Use the written model as the final correctness check: \"And when do you get up?\" — во variant of в before consonant cluster; сколько is \"how much/at what time\".",
+      "korean": "Реальный сценарий",
+      "english": "Write \"Реальный сценарий\" again without looking, then compare the exact written form against \"А ты во сколько встаёшь?\" before moving on.",
+      "example": "А ты во сколько встаёшь?",
+      "exampleEnglish": "Use the written model as the final correctness check: \"And when do you get up?\" — во variant of в before consonant cluster; сколько is \"how much/at what time\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Реальный сценарий",
+      "romanization": "Realnyy stsenariy",
+      "nativeText": "Check whether \"Реальный сценарий\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"And when do you get up?\" — во variant of в before consonant cluster; сколько is \"how much/at what time\".",
+      "pronunciation": "Realnyy stsenariy",
+      "exampleTarget": "А ты во сколько встаёшь?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: \"And when do you get up?\" — во variant of в before consonant cluster; сколько is \"how much/at what time\".",
+      "korean": "Реальный сценарий",
+      "english": "Check whether \"Реальный сценарий\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"And when do you get up?\" — во variant of в before consonant cluster; сколько is \"how much/at what time\".",
+      "example": "А ты во сколько встаёшь?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: \"And when do you get up?\" — во variant of в before consonant cluster; сколько is \"how much/at what time\"."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "6:30 встаю → 7:30 завтракаю → 8:30 пара → 12:00 обедаю → 14:00 пара → 16:00 учу → 19:00 ужинаю → 23:00 ложусь спать.",
+      "romanization": "Raspisaniye dnya",
+      "nativeText": "Model use for \"Расписание дня\": A typical МГУ student day: 6:30 wake-up, 7:30 breakfast, 8:30 first pair (пара), 12:00 lunch, 14:00 second pair, 16:00 library, 19:00 dinner, 21:00 free time, 23:00 sleep. Each step has a standard verb in Russian.",
+      "pronunciation": "Raspisaniye dnya",
+      "exampleTarget": "6:30 встаю → 7:30 завтракаю → 8:30 пара → 12:00 обедаю → 14:00 пара → 16:00 учу → 19:00 ужинаю → 23:00 ложусь спать.",
+      "exampleNative": "A full schedule template; use it as model for your own day.",
+      "korean": "6:30 встаю → 7:30 завтракаю → 8:30 пара → 12:00 обедаю → 14:00 пара → 16:00 учу → 19:00 ужинаю → 23:00 ложусь спать.",
+      "english": "Model use for \"Расписание дня\": A typical МГУ student day: 6:30 wake-up, 7:30 breakfast, 8:30 first pair (пара), 12:00 lunch, 14:00 second pair, 16:00 library, 19:00 dinner, 21:00 free time, 23:00 sleep. Each step has a standard verb in Russian.",
+      "example": "6:30 встаю → 7:30 завтракаю → 8:30 пара → 12:00 обедаю → 14:00 пара → 16:00 учу → 19:00 ужинаю → 23:00 ложусь спать.",
+      "exampleEnglish": "A full schedule template; use it as model for your own day."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Расписание дня",
+      "romanization": "Raspisaniye dnya",
+      "nativeText": "Usage focus for \"Расписание дня\": A typical МГУ student day: 6:30 wake-up, 7:30 breakfast, 8:30 first pair (пара), 12:00 lunch, 14:00 second pair, 16:00 library, 19:00 dinner, 21:00 free time, 23:00 sleep. Each step has a standard verb in Russian.",
+      "pronunciation": "Raspisaniye dnya",
+      "exampleTarget": "6:30 встаю → 7:30 завтракаю → 8:30 пара → 12:00 обедаю → 14:00 пара → 16:00 учу → 19:00 ужинаю → 23:00 ложусь спать.",
+      "exampleNative": "Notice what the form is doing here: A full schedule template; use it as model for your own day.",
+      "korean": "Расписание дня",
+      "english": "Usage focus for \"Расписание дня\": A typical МГУ student day: 6:30 wake-up, 7:30 breakfast, 8:30 first pair (пара), 12:00 lunch, 14:00 second pair, 16:00 library, 19:00 dinner, 21:00 free time, 23:00 sleep. Each step has a standard verb in Russian.",
+      "example": "6:30 встаю → 7:30 завтракаю → 8:30 пара → 12:00 обедаю → 14:00 пара → 16:00 учу → 19:00 ужинаю → 23:00 ложусь спать.",
+      "exampleEnglish": "Notice what the form is doing here: A full schedule template; use it as model for your own day."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Расписание дня",
+      "romanization": "Raspisaniye dnya",
+      "nativeText": "Contrast check for \"Расписание дня\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "Raspisaniye dnya",
+      "exampleTarget": "6:30 встаю → 7:30 завтракаю → 8:30 пара → 12:00 обедаю → 14:00 пара → 16:00 учу → 19:00 ужинаю → 23:00 ложусь спать.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: A full schedule template; use it as model for your own day.",
+      "korean": "Расписание дня",
+      "english": "Contrast check for \"Расписание дня\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "6:30 встаю → 7:30 завтракаю → 8:30 пара → 12:00 обедаю → 14:00 пара → 16:00 учу → 19:00 ужинаю → 23:00 ложусь спать.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: A full schedule template; use it as model for your own day."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Расписание дня",
+      "romanization": "Raspisaniye dnya",
+      "nativeText": "Recall \"Расписание дня\" from memory, then explain what would change if a nearby alternative replaced it in \"6:30 встаю → 7:30 завтракаю → 8:30 пара → 12:00 обедаю → 14:00 пара → 16:00 учу → 19:00 ужинаю → 23:00 ложусь спать.\".",
+      "pronunciation": "Raspisaniye dnya",
+      "exampleTarget": "6:30 встаю → 7:30 завтракаю → 8:30 пара → 12:00 обедаю → 14:00 пара → 16:00 учу → 19:00 ужинаю → 23:00 ложусь спать.",
+      "exampleNative": "Self-check against the model before moving on: A full schedule template; use it as model for your own day.",
+      "korean": "Расписание дня",
+      "english": "Recall \"Расписание дня\" from memory, then explain what would change if a nearby alternative replaced it in \"6:30 встаю → 7:30 завтракаю → 8:30 пара → 12:00 обедаю → 14:00 пара → 16:00 учу → 19:00 ужинаю → 23:00 ложусь спать.\".",
+      "example": "6:30 встаю → 7:30 завтракаю → 8:30 пара → 12:00 обедаю → 14:00 пара → 16:00 учу → 19:00 ужинаю → 23:00 ложусь спать.",
+      "exampleEnglish": "Self-check against the model before moving on: A full schedule template; use it as model for your own day."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Расписание дня",
+      "romanization": "Raspisaniye dnya",
+      "nativeText": "Repair \"Расписание дня\" inside \"6:30 встаю → 7:30 завтракаю → 8:30 пара → 12:00 обедаю → 14:00 пара → 16:00 учу → 19:00 ужинаю → 23:00 ложусь спать.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: A typical МГУ student day: 6:30 wake-up, 7:30 breakfast, 8:30 first pair (пара), 12:00 lunch, 14:00 second pair, 16:00 library, 19:00 dinner, 21:00 free time, 23:00 sleep. Each step has a standard verb in Russian.",
+      "pronunciation": "Raspisaniye dnya",
+      "exampleTarget": "6:30 встаю → 7:30 завтракаю → 8:30 пара → 12:00 обедаю → 14:00 пара → 16:00 учу → 19:00 ужинаю → 23:00 ложусь спать.",
+      "exampleNative": "Use the model as the repair target: A full schedule template; use it as model for your own day.",
+      "korean": "Расписание дня",
+      "english": "Repair \"Расписание дня\" inside \"6:30 встаю → 7:30 завтракаю → 8:30 пара → 12:00 обедаю → 14:00 пара → 16:00 учу → 19:00 ужинаю → 23:00 ложусь спать.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: A typical МГУ student day: 6:30 wake-up, 7:30 breakfast, 8:30 first pair (пара), 12:00 lunch, 14:00 second pair, 16:00 library, 19:00 dinner, 21:00 free time, 23:00 sleep. Each step has a standard verb in Russian.",
+      "example": "6:30 встаю → 7:30 завтракаю → 8:30 пара → 12:00 обедаю → 14:00 пара → 16:00 учу → 19:00 ужинаю → 23:00 ложусь спать.",
+      "exampleEnglish": "Use the model as the repair target: A full schedule template; use it as model for your own day."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Расписание дня",
+      "romanization": "Raspisaniye dnya",
+      "nativeText": "Transfer \"Расписание дня\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"6:30 встаю → 7:30 завтракаю → 8:30 пара → 12:00 обедаю → 14:00 пара → 16:00 учу → 19:00 ужинаю → 23:00 ложусь спать.\".",
+      "pronunciation": "Raspisaniye dnya",
+      "exampleTarget": "6:30 встаю → 7:30 завтракаю → 8:30 пара → 12:00 обедаю → 14:00 пара → 16:00 учу → 19:00 ужинаю → 23:00 ложусь спать.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: A full schedule template; use it as model for your own day.",
+      "korean": "Расписание дня",
+      "english": "Transfer \"Расписание дня\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"6:30 встаю → 7:30 завтракаю → 8:30 пара → 12:00 обедаю → 14:00 пара → 16:00 учу → 19:00 ужинаю → 23:00 ложусь спать.\".",
+      "example": "6:30 встаю → 7:30 завтракаю → 8:30 пара → 12:00 обедаю → 14:00 пара → 16:00 учу → 19:00 ужинаю → 23:00 ложусь спать.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: A full schedule template; use it as model for your own day."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Расписание дня",
+      "romanization": "Raspisaniye dnya",
+      "nativeText": "Find one word or phrase that naturally travels with \"Расписание дня\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "Raspisaniye dnya",
+      "exampleTarget": "6:30 встаю → 7:30 завтракаю → 8:30 пара → 12:00 обедаю → 14:00 пара → 16:00 учу → 19:00 ужинаю → 23:00 ложусь спать.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: A full schedule template; use it as model for your own day.",
+      "korean": "Расписание дня",
+      "english": "Find one word or phrase that naturally travels with \"Расписание дня\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "6:30 встаю → 7:30 завтракаю → 8:30 пара → 12:00 обедаю → 14:00 пара → 16:00 учу → 19:00 ужинаю → 23:00 ложусь спать.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: A full schedule template; use it as model for your own day."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Расписание дня",
+      "romanization": "Raspisaniye dnya",
+      "nativeText": "Listen for \"Расписание дня\" inside \"6:30 встаю → 7:30 завтракаю → 8:30 пара → 12:00 обедаю → 14:00 пара → 16:00 учу → 19:00 ужинаю → 23:00 ложусь спать.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "Raspisaniye dnya",
+      "exampleTarget": "6:30 встаю → 7:30 завтракаю → 8:30 пара → 12:00 обедаю → 14:00 пара → 16:00 учу → 19:00 ужинаю → 23:00 ложусь спать.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: A full schedule template; use it as model for your own day.",
+      "korean": "Расписание дня",
+      "english": "Listen for \"Расписание дня\" inside \"6:30 встаю → 7:30 завтракаю → 8:30 пара → 12:00 обедаю → 14:00 пара → 16:00 учу → 19:00 ужинаю → 23:00 ложусь спать.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "6:30 встаю → 7:30 завтракаю → 8:30 пара → 12:00 обедаю → 14:00 пара → 16:00 учу → 19:00 ужинаю → 23:00 ложусь спать.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: A full schedule template; use it as model for your own day."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Расписание дня",
+      "romanization": "Raspisaniye dnya",
+      "nativeText": "Write \"Расписание дня\" again without looking, then compare the exact written form against \"6:30 встаю → 7:30 завтракаю → 8:30 пара → 12:00 обедаю → 14:00 пара → 16:00 учу → 19:00 ужинаю → 23:00 ложусь спать.\" before moving on.",
+      "pronunciation": "Raspisaniye dnya",
+      "exampleTarget": "6:30 встаю → 7:30 завтракаю → 8:30 пара → 12:00 обедаю → 14:00 пара → 16:00 учу → 19:00 ужинаю → 23:00 ложусь спать.",
+      "exampleNative": "Use the written model as the final correctness check: A full schedule template; use it as model for your own day.",
+      "korean": "Расписание дня",
+      "english": "Write \"Расписание дня\" again without looking, then compare the exact written form against \"6:30 встаю → 7:30 завтракаю → 8:30 пара → 12:00 обедаю → 14:00 пара → 16:00 учу → 19:00 ужинаю → 23:00 ложусь спать.\" before moving on.",
+      "example": "6:30 встаю → 7:30 завтракаю → 8:30 пара → 12:00 обедаю → 14:00 пара → 16:00 учу → 19:00 ужинаю → 23:00 ложусь спать.",
+      "exampleEnglish": "Use the written model as the final correctness check: A full schedule template; use it as model for your own day."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Расписание дня",
+      "romanization": "Raspisaniye dnya",
+      "nativeText": "Check whether \"Расписание дня\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: A full schedule template; use it as model for your own day.",
+      "pronunciation": "Raspisaniye dnya",
+      "exampleTarget": "6:30 встаю → 7:30 завтракаю → 8:30 пара → 12:00 обедаю → 14:00 пара → 16:00 учу → 19:00 ужинаю → 23:00 ложусь спать.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: A full schedule template; use it as model for your own day.",
+      "korean": "Расписание дня",
+      "english": "Check whether \"Расписание дня\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: A full schedule template; use it as model for your own day.",
+      "example": "6:30 встаю → 7:30 завтракаю → 8:30 пара → 12:00 обедаю → 14:00 пара → 16:00 учу → 19:00 ужинаю → 23:00 ложусь спать.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: A full schedule template; use it as model for your own day."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Я встаю в семь.",
+      "romanization": "vstavat' / vstat'",
+      "nativeText": "Model use for \"вставать / встать\": To get up (imperfective / perfective aspect pair). Imperfective вставать = \"to get up [habitually / over time]\"; perfective встать = \"to get up [completed action]\". Я встаю в семь утра (\"I get up at 7 am\" — habitual).",
+      "pronunciation": "vstavat' / vstat'",
+      "exampleTarget": "Я встаю в семь.",
+      "exampleNative": "\"I get up at seven.\" — imperfective for habit.",
+      "korean": "Я встаю в семь.",
+      "english": "Model use for \"вставать / встать\": To get up (imperfective / perfective aspect pair). Imperfective вставать = \"to get up [habitually / over time]\"; perfective встать = \"to get up [completed action]\". Я встаю в семь утра (\"I get up at 7 am\" — habitual).",
+      "example": "Я встаю в семь.",
+      "exampleEnglish": "\"I get up at seven.\" — imperfective for habit."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "вставать / встать",
+      "romanization": "vstavat' / vstat'",
+      "nativeText": "Usage focus for \"вставать / встать\": To get up (imperfective / perfective aspect pair). Imperfective вставать = \"to get up [habitually / over time]\"; perfective встать = \"to get up [completed action]\". Я встаю в семь утра (\"I get up at 7 am\" — habitual).",
+      "pronunciation": "vstavat' / vstat'",
+      "exampleTarget": "Я встаю в семь.",
+      "exampleNative": "Notice what the form is doing here: \"I get up at seven.\" — imperfective for habit.",
+      "korean": "вставать / встать",
+      "english": "Usage focus for \"вставать / встать\": To get up (imperfective / perfective aspect pair). Imperfective вставать = \"to get up [habitually / over time]\"; perfective встать = \"to get up [completed action]\". Я встаю в семь утра (\"I get up at 7 am\" — habitual).",
+      "example": "Я встаю в семь.",
+      "exampleEnglish": "Notice what the form is doing here: \"I get up at seven.\" — imperfective for habit."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "вставать / встать",
+      "romanization": "vstavat' / vstat'",
+      "nativeText": "Contrast check for \"вставать / встать\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "vstavat' / vstat'",
+      "exampleTarget": "Я встаю в семь.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"I get up at seven.\" — imperfective for habit.",
+      "korean": "вставать / встать",
+      "english": "Contrast check for \"вставать / встать\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Я встаю в семь.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"I get up at seven.\" — imperfective for habit."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "вставать / встать",
+      "romanization": "vstavat' / vstat'",
+      "nativeText": "Recall \"вставать / встать\" from memory, then explain what would change if a nearby alternative replaced it in \"Я встаю в семь.\".",
+      "pronunciation": "vstavat' / vstat'",
+      "exampleTarget": "Я встаю в семь.",
+      "exampleNative": "Self-check against the model before moving on: \"I get up at seven.\" — imperfective for habit.",
+      "korean": "вставать / встать",
+      "english": "Recall \"вставать / встать\" from memory, then explain what would change if a nearby alternative replaced it in \"Я встаю в семь.\".",
+      "example": "Я встаю в семь.",
+      "exampleEnglish": "Self-check against the model before moving on: \"I get up at seven.\" — imperfective for habit."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "вставать / встать",
+      "romanization": "vstavat' / vstat'",
+      "nativeText": "Repair \"вставать / встать\" inside \"Я встаю в семь.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: To get up (imperfective / perfective aspect pair). Imperfective вставать = \"to get up [habitually / over time]\"; perfective встать = \"to get up [completed action]\". Я встаю в семь утра (\"I get up at 7 am\" — habitual).",
+      "pronunciation": "vstavat' / vstat'",
+      "exampleTarget": "Я встаю в семь.",
+      "exampleNative": "Use the model as the repair target: \"I get up at seven.\" — imperfective for habit.",
+      "korean": "вставать / встать",
+      "english": "Repair \"вставать / встать\" inside \"Я встаю в семь.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: To get up (imperfective / perfective aspect pair). Imperfective вставать = \"to get up [habitually / over time]\"; perfective встать = \"to get up [completed action]\". Я встаю в семь утра (\"I get up at 7 am\" — habitual).",
+      "example": "Я встаю в семь.",
+      "exampleEnglish": "Use the model as the repair target: \"I get up at seven.\" — imperfective for habit."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "вставать / встать",
+      "romanization": "vstavat' / vstat'",
+      "nativeText": "Transfer \"вставать / встать\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я встаю в семь.\".",
+      "pronunciation": "vstavat' / vstat'",
+      "exampleTarget": "Я встаю в семь.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: \"I get up at seven.\" — imperfective for habit.",
+      "korean": "вставать / встать",
+      "english": "Transfer \"вставать / встать\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я встаю в семь.\".",
+      "example": "Я встаю в семь.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: \"I get up at seven.\" — imperfective for habit."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "вставать / встать",
+      "romanization": "vstavat' / vstat'",
+      "nativeText": "Find one word or phrase that naturally travels with \"вставать / встать\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "vstavat' / vstat'",
+      "exampleTarget": "Я встаю в семь.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: \"I get up at seven.\" — imperfective for habit.",
+      "korean": "вставать / встать",
+      "english": "Find one word or phrase that naturally travels with \"вставать / встать\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Я встаю в семь.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: \"I get up at seven.\" — imperfective for habit."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "вставать / встать",
+      "romanization": "vstavat' / vstat'",
+      "nativeText": "Listen for \"вставать / встать\" inside \"Я встаю в семь.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "vstavat' / vstat'",
+      "exampleTarget": "Я встаю в семь.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"I get up at seven.\" — imperfective for habit.",
+      "korean": "вставать / встать",
+      "english": "Listen for \"вставать / встать\" inside \"Я встаю в семь.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Я встаю в семь.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"I get up at seven.\" — imperfective for habit."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "вставать / встать",
+      "romanization": "vstavat' / vstat'",
+      "nativeText": "Write \"вставать / встать\" again without looking, then compare the exact written form against \"Я встаю в семь.\" before moving on.",
+      "pronunciation": "vstavat' / vstat'",
+      "exampleTarget": "Я встаю в семь.",
+      "exampleNative": "Use the written model as the final correctness check: \"I get up at seven.\" — imperfective for habit.",
+      "korean": "вставать / встать",
+      "english": "Write \"вставать / встать\" again without looking, then compare the exact written form against \"Я встаю в семь.\" before moving on.",
+      "example": "Я встаю в семь.",
+      "exampleEnglish": "Use the written model as the final correctness check: \"I get up at seven.\" — imperfective for habit."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "вставать / встать",
+      "romanization": "vstavat' / vstat'",
+      "nativeText": "Check whether \"вставать / встать\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"I get up at seven.\" — imperfective for habit.",
+      "pronunciation": "vstavat' / vstat'",
+      "exampleTarget": "Я встаю в семь.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: \"I get up at seven.\" — imperfective for habit.",
+      "korean": "вставать / встать",
+      "english": "Check whether \"вставать / встать\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"I get up at seven.\" — imperfective for habit.",
+      "example": "Я встаю в семь.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: \"I get up at seven.\" — imperfective for habit."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Я просыпаюсь рано.",
+      "romanization": "prosypatsya / prosnutsya",
+      "nativeText": "Model use for \"просыпаться / проснуться\": To wake up (reflexive aspect pair). Просыпаться (impf, \"to wake up [over time]\") vs проснуться (pf, \"to wake up [completed]\"). Я просыпаюсь рано (I wake up early — habitual). Я проснулся в шесть (I woke up at 6 — past pf).",
+      "pronunciation": "prosypatsya / prosnutsya",
+      "exampleTarget": "Я просыпаюсь рано.",
+      "exampleNative": "\"I wake up early.\" — reflexive impf for habit.",
+      "korean": "Я просыпаюсь рано.",
+      "english": "Model use for \"просыпаться / проснуться\": To wake up (reflexive aspect pair). Просыпаться (impf, \"to wake up [over time]\") vs проснуться (pf, \"to wake up [completed]\"). Я просыпаюсь рано (I wake up early — habitual). Я проснулся в шесть (I woke up at 6 — past pf).",
+      "example": "Я просыпаюсь рано.",
+      "exampleEnglish": "\"I wake up early.\" — reflexive impf for habit."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "просыпаться / проснуться",
+      "romanization": "prosypatsya / prosnutsya",
+      "nativeText": "Usage focus for \"просыпаться / проснуться\": To wake up (reflexive aspect pair). Просыпаться (impf, \"to wake up [over time]\") vs проснуться (pf, \"to wake up [completed]\"). Я просыпаюсь рано (I wake up early — habitual). Я проснулся в шесть (I woke up at 6 — past pf).",
+      "pronunciation": "prosypatsya / prosnutsya",
+      "exampleTarget": "Я просыпаюсь рано.",
+      "exampleNative": "Notice what the form is doing here: \"I wake up early.\" — reflexive impf for habit.",
+      "korean": "просыпаться / проснуться",
+      "english": "Usage focus for \"просыпаться / проснуться\": To wake up (reflexive aspect pair). Просыпаться (impf, \"to wake up [over time]\") vs проснуться (pf, \"to wake up [completed]\"). Я просыпаюсь рано (I wake up early — habitual). Я проснулся в шесть (I woke up at 6 — past pf).",
+      "example": "Я просыпаюсь рано.",
+      "exampleEnglish": "Notice what the form is doing here: \"I wake up early.\" — reflexive impf for habit."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "просыпаться / проснуться",
+      "romanization": "prosypatsya / prosnutsya",
+      "nativeText": "Contrast check for \"просыпаться / проснуться\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "prosypatsya / prosnutsya",
+      "exampleTarget": "Я просыпаюсь рано.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"I wake up early.\" — reflexive impf for habit.",
+      "korean": "просыпаться / проснуться",
+      "english": "Contrast check for \"просыпаться / проснуться\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Я просыпаюсь рано.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"I wake up early.\" — reflexive impf for habit."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "просыпаться / проснуться",
+      "romanization": "prosypatsya / prosnutsya",
+      "nativeText": "Recall \"просыпаться / проснуться\" from memory, then explain what would change if a nearby alternative replaced it in \"Я просыпаюсь рано.\".",
+      "pronunciation": "prosypatsya / prosnutsya",
+      "exampleTarget": "Я просыпаюсь рано.",
+      "exampleNative": "Self-check against the model before moving on: \"I wake up early.\" — reflexive impf for habit.",
+      "korean": "просыпаться / проснуться",
+      "english": "Recall \"просыпаться / проснуться\" from memory, then explain what would change if a nearby alternative replaced it in \"Я просыпаюсь рано.\".",
+      "example": "Я просыпаюсь рано.",
+      "exampleEnglish": "Self-check against the model before moving on: \"I wake up early.\" — reflexive impf for habit."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "просыпаться / проснуться",
+      "romanization": "prosypatsya / prosnutsya",
+      "nativeText": "Repair \"просыпаться / проснуться\" inside \"Я просыпаюсь рано.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: To wake up (reflexive aspect pair). Просыпаться (impf, \"to wake up [over time]\") vs проснуться (pf, \"to wake up [completed]\"). Я просыпаюсь рано (I wake up early — habitual). Я проснулся в шесть (I woke up at 6 — past pf).",
+      "pronunciation": "prosypatsya / prosnutsya",
+      "exampleTarget": "Я просыпаюсь рано.",
+      "exampleNative": "Use the model as the repair target: \"I wake up early.\" — reflexive impf for habit.",
+      "korean": "просыпаться / проснуться",
+      "english": "Repair \"просыпаться / проснуться\" inside \"Я просыпаюсь рано.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: To wake up (reflexive aspect pair). Просыпаться (impf, \"to wake up [over time]\") vs проснуться (pf, \"to wake up [completed]\"). Я просыпаюсь рано (I wake up early — habitual). Я проснулся в шесть (I woke up at 6 — past pf).",
+      "example": "Я просыпаюсь рано.",
+      "exampleEnglish": "Use the model as the repair target: \"I wake up early.\" — reflexive impf for habit."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "просыпаться / проснуться",
+      "romanization": "prosypatsya / prosnutsya",
+      "nativeText": "Transfer \"просыпаться / проснуться\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я просыпаюсь рано.\".",
+      "pronunciation": "prosypatsya / prosnutsya",
+      "exampleTarget": "Я просыпаюсь рано.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: \"I wake up early.\" — reflexive impf for habit.",
+      "korean": "просыпаться / проснуться",
+      "english": "Transfer \"просыпаться / проснуться\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я просыпаюсь рано.\".",
+      "example": "Я просыпаюсь рано.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: \"I wake up early.\" — reflexive impf for habit."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "просыпаться / проснуться",
+      "romanization": "prosypatsya / prosnutsya",
+      "nativeText": "Find one word or phrase that naturally travels with \"просыпаться / проснуться\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "prosypatsya / prosnutsya",
+      "exampleTarget": "Я просыпаюсь рано.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: \"I wake up early.\" — reflexive impf for habit.",
+      "korean": "просыпаться / проснуться",
+      "english": "Find one word or phrase that naturally travels with \"просыпаться / проснуться\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Я просыпаюсь рано.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: \"I wake up early.\" — reflexive impf for habit."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "просыпаться / проснуться",
+      "romanization": "prosypatsya / prosnutsya",
+      "nativeText": "Listen for \"просыпаться / проснуться\" inside \"Я просыпаюсь рано.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "prosypatsya / prosnutsya",
+      "exampleTarget": "Я просыпаюсь рано.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"I wake up early.\" — reflexive impf for habit.",
+      "korean": "просыпаться / проснуться",
+      "english": "Listen for \"просыпаться / проснуться\" inside \"Я просыпаюсь рано.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Я просыпаюсь рано.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"I wake up early.\" — reflexive impf for habit."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "просыпаться / проснуться",
+      "romanization": "prosypatsya / prosnutsya",
+      "nativeText": "Write \"просыпаться / проснуться\" again without looking, then compare the exact written form against \"Я просыпаюсь рано.\" before moving on.",
+      "pronunciation": "prosypatsya / prosnutsya",
+      "exampleTarget": "Я просыпаюсь рано.",
+      "exampleNative": "Use the written model as the final correctness check: \"I wake up early.\" — reflexive impf for habit.",
+      "korean": "просыпаться / проснуться",
+      "english": "Write \"просыпаться / проснуться\" again without looking, then compare the exact written form against \"Я просыпаюсь рано.\" before moving on.",
+      "example": "Я просыпаюсь рано.",
+      "exampleEnglish": "Use the written model as the final correctness check: \"I wake up early.\" — reflexive impf for habit."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "просыпаться / проснуться",
+      "romanization": "prosypatsya / prosnutsya",
+      "nativeText": "Check whether \"просыпаться / проснуться\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"I wake up early.\" — reflexive impf for habit.",
+      "pronunciation": "prosypatsya / prosnutsya",
+      "exampleTarget": "Я просыпаюсь рано.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: \"I wake up early.\" — reflexive impf for habit.",
+      "korean": "просыпаться / проснуться",
+      "english": "Check whether \"просыпаться / проснуться\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"I wake up early.\" — reflexive impf for habit.",
+      "example": "Я просыпаюсь рано.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: \"I wake up early.\" — reflexive impf for habit."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Я умываюсь и чищу зубы.",
+      "romanization": "umyvatsya / umytsya",
+      "nativeText": "Model use for \"умываться / умыться\": To wash one's face (reflexive aspect pair). The -ся reflexive ending means the action is directed at oneself.",
+      "pronunciation": "umyvatsya / umytsya",
+      "exampleTarget": "Я умываюсь и чищу зубы.",
+      "exampleNative": "\"I wash my face and brush my teeth.\" — two morning verbs.",
+      "korean": "Я умываюсь и чищу зубы.",
+      "english": "Model use for \"умываться / умыться\": To wash one's face (reflexive aspect pair). The -ся reflexive ending means the action is directed at oneself.",
+      "example": "Я умываюсь и чищу зубы.",
+      "exampleEnglish": "\"I wash my face and brush my teeth.\" — two morning verbs."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "умываться / умыться",
+      "romanization": "umyvatsya / umytsya",
+      "nativeText": "Usage focus for \"умываться / умыться\": To wash one's face (reflexive aspect pair). The -ся reflexive ending means the action is directed at oneself.",
+      "pronunciation": "umyvatsya / umytsya",
+      "exampleTarget": "Я умываюсь и чищу зубы.",
+      "exampleNative": "Notice what the form is doing here: \"I wash my face and brush my teeth.\" — two morning verbs.",
+      "korean": "умываться / умыться",
+      "english": "Usage focus for \"умываться / умыться\": To wash one's face (reflexive aspect pair). The -ся reflexive ending means the action is directed at oneself.",
+      "example": "Я умываюсь и чищу зубы.",
+      "exampleEnglish": "Notice what the form is doing here: \"I wash my face and brush my teeth.\" — two morning verbs."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "умываться / умыться",
+      "romanization": "umyvatsya / umytsya",
+      "nativeText": "Contrast check for \"умываться / умыться\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "umyvatsya / umytsya",
+      "exampleTarget": "Я умываюсь и чищу зубы.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"I wash my face and brush my teeth.\" — two morning verbs.",
+      "korean": "умываться / умыться",
+      "english": "Contrast check for \"умываться / умыться\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Я умываюсь и чищу зубы.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"I wash my face and brush my teeth.\" — two morning verbs."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "умываться / умыться",
+      "romanization": "umyvatsya / umytsya",
+      "nativeText": "Recall \"умываться / умыться\" from memory, then explain what would change if a nearby alternative replaced it in \"Я умываюсь и чищу зубы.\".",
+      "pronunciation": "umyvatsya / umytsya",
+      "exampleTarget": "Я умываюсь и чищу зубы.",
+      "exampleNative": "Self-check against the model before moving on: \"I wash my face and brush my teeth.\" — two morning verbs.",
+      "korean": "умываться / умыться",
+      "english": "Recall \"умываться / умыться\" from memory, then explain what would change if a nearby alternative replaced it in \"Я умываюсь и чищу зубы.\".",
+      "example": "Я умываюсь и чищу зубы.",
+      "exampleEnglish": "Self-check against the model before moving on: \"I wash my face and brush my teeth.\" — two morning verbs."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "умываться / умыться",
+      "romanization": "umyvatsya / umytsya",
+      "nativeText": "Repair \"умываться / умыться\" inside \"Я умываюсь и чищу зубы.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: To wash one's face (reflexive aspect pair). The -ся reflexive ending means the action is directed at oneself.",
+      "pronunciation": "umyvatsya / umytsya",
+      "exampleTarget": "Я умываюсь и чищу зубы.",
+      "exampleNative": "Use the model as the repair target: \"I wash my face and brush my teeth.\" — two morning verbs.",
+      "korean": "умываться / умыться",
+      "english": "Repair \"умываться / умыться\" inside \"Я умываюсь и чищу зубы.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: To wash one's face (reflexive aspect pair). The -ся reflexive ending means the action is directed at oneself.",
+      "example": "Я умываюсь и чищу зубы.",
+      "exampleEnglish": "Use the model as the repair target: \"I wash my face and brush my teeth.\" — two morning verbs."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "умываться / умыться",
+      "romanization": "umyvatsya / umytsya",
+      "nativeText": "Transfer \"умываться / умыться\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я умываюсь и чищу зубы.\".",
+      "pronunciation": "umyvatsya / umytsya",
+      "exampleTarget": "Я умываюсь и чищу зубы.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: \"I wash my face and brush my teeth.\" — two morning verbs.",
+      "korean": "умываться / умыться",
+      "english": "Transfer \"умываться / умыться\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я умываюсь и чищу зубы.\".",
+      "example": "Я умываюсь и чищу зубы.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: \"I wash my face and brush my teeth.\" — two morning verbs."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "умываться / умыться",
+      "romanization": "umyvatsya / umytsya",
+      "nativeText": "Find one word or phrase that naturally travels with \"умываться / умыться\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "umyvatsya / umytsya",
+      "exampleTarget": "Я умываюсь и чищу зубы.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: \"I wash my face and brush my teeth.\" — two morning verbs.",
+      "korean": "умываться / умыться",
+      "english": "Find one word or phrase that naturally travels with \"умываться / умыться\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Я умываюсь и чищу зубы.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: \"I wash my face and brush my teeth.\" — two morning verbs."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "умываться / умыться",
+      "romanization": "umyvatsya / umytsya",
+      "nativeText": "Listen for \"умываться / умыться\" inside \"Я умываюсь и чищу зубы.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "umyvatsya / umytsya",
+      "exampleTarget": "Я умываюсь и чищу зубы.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"I wash my face and brush my teeth.\" — two morning verbs.",
+      "korean": "умываться / умыться",
+      "english": "Listen for \"умываться / умыться\" inside \"Я умываюсь и чищу зубы.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Я умываюсь и чищу зубы.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"I wash my face and brush my teeth.\" — two morning verbs."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "умываться / умыться",
+      "romanization": "umyvatsya / umytsya",
+      "nativeText": "Write \"умываться / умыться\" again without looking, then compare the exact written form against \"Я умываюсь и чищу зубы.\" before moving on.",
+      "pronunciation": "umyvatsya / umytsya",
+      "exampleTarget": "Я умываюсь и чищу зубы.",
+      "exampleNative": "Use the written model as the final correctness check: \"I wash my face and brush my teeth.\" — two morning verbs.",
+      "korean": "умываться / умыться",
+      "english": "Write \"умываться / умыться\" again without looking, then compare the exact written form against \"Я умываюсь и чищу зубы.\" before moving on.",
+      "example": "Я умываюсь и чищу зубы.",
+      "exampleEnglish": "Use the written model as the final correctness check: \"I wash my face and brush my teeth.\" — two morning verbs."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit04dailyroutines-vocabulary-1",
+        "ru-level1unit04dailyroutines-vocabulary-2",
+        "ru-level1unit04dailyroutines-grammar-1",
+        "ru-level1unit04dailyroutines-grammar-2",
+        "ru-level1unit04dailyroutines-reading",
+        "ru-level1unit04dailyroutines-listening",
+        "ru-level1unit04dailyroutines-writing",
+        "ru-level1unit04dailyroutines-task"
+      ],
+      "targetText": "умываться / умыться",
+      "romanization": "umyvatsya / umytsya",
+      "nativeText": "Check whether \"умываться / умыться\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"I wash my face and brush my teeth.\" — two morning verbs.",
+      "pronunciation": "umyvatsya / umytsya",
+      "exampleTarget": "Я умываюсь и чищу зубы.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: \"I wash my face and brush my teeth.\" — two morning verbs.",
+      "korean": "умываться / умыться",
+      "english": "Check whether \"умываться / умыться\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"I wash my face and brush my teeth.\" — two morning verbs.",
+      "example": "Я умываюсь и чищу зубы.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: \"I wash my face and brush my teeth.\" — two morning verbs."
+    }
+  ]
 };
-
-module.exports = lesson;

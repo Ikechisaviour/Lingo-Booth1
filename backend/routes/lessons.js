@@ -10,16 +10,20 @@ const {
   getOrCreateTranslation,
   applyTranslation,
   batchTranslateRaw,
+  batchTranslatePreservingTargetScript,
+  preservesTargetScriptSegments,
   translationSourceFingerprint,
 } = require('../utils/translationService');
 const { normalizeLessonForLanguagePair } = require('../utils/languageConcepts');
 const { enrichLessonWithPronunciation } = require('../utils/pronunciationService');
 const {
   NON_LATIN_TARGET_LANGS,
+  containsTargetScript,
   normalizeTargetLayerForDisplay,
 } = require('../utils/targetLayerPolicy');
 
-const VALID_CATEGORIES = ['daily-life', 'business', 'travel', 'greetings', 'food', 'shopping', 'healthcare', 'career'];
+const { LESSON_CATEGORIES } = Lesson;
+const VALID_CATEGORIES = LESSON_CATEGORIES;
 const VALID_DIFFICULTIES = ['beginner', 'intermediate', 'advanced', 'sentences'];
 const VALID_TRACKS = ['textbook', 'practice'];
 const CLASS_LESSON_TRACK = 'textbook';
@@ -65,11 +69,15 @@ function normalizeLang(code, fallback = 'en') {
 }
 
 function stripEnglishMeaningParentheticals(text, targetLang, nativeLang) {
-  if (!text || nativeLang === 'en' || targetLang === 'en' || !NON_LATIN_TARGET_LANGS.has(targetLang)) {
+  if (!text || targetLang === 'en' || !NON_LATIN_TARGET_LANGS.has(targetLang)) {
     return text;
   }
   let cleaned = String(text)
-    .replace(/\s*\(([A-Za-z][A-Za-z\s,'/-]{2,})\)/g, '')
+    .replace(/\s*\(([^)]*)\)/g, (match, inner) => (
+      /[A-Za-z]{3,}/.test(inner) && !containsTargetScript(inner, targetLang)
+        ? ''
+        : match
+    ))
     .replace(/\s+vs\s+/gi, ' / ')
     .replace(/\s+([,.;:!?])/g, '$1')
     .replace(/\s{2,}/g, ' ')
@@ -79,6 +87,8 @@ function stripEnglishMeaningParentheticals(text, targetLang, nativeLang) {
     cleaned = cleaned
       // Target examples such as "mā 妈 mother" should display as "mā 妈".
       .replace(/([A-Za-zÀ-žĀ-žǍǎǏǐǑǒǓǔǕ-ǜüÜ\s'-]+[\u3400-\u9FFF]+)\s+[A-Za-z][A-Za-z\s'"-]*(?=(\s*(?:[·,;/]|$)))/g, '$1')
+      // Reverse-order examples such as "妈 mā mother" should display as "妈 mā".
+      .replace(/([\u3400-\u9FFF]+(?:\s+[A-Za-zÀ-žĀ-žǍǎǏǐǑǒǓǔǕ-ǜüÜ'-]+)+)\s+[A-Za-z][A-Za-z\s'"-]*(?=(\s*(?:[·,;/]|$)))/g, '$1')
       // Target examples such as "国/國 (country)" should display as "国/國".
       .replace(/([\u3400-\u9FFF][\u3400-\u9FFF/／]*)\s*\([A-Za-z][^)]+\)/g, '$1')
       .replace(/\s+([·,;/])/g, ' $1')
@@ -203,7 +213,7 @@ async function addCourseOrderingMetadata(lessonsJson, targetLang) {
   const trackOrder = { foundation: 1, thematic: 2, adult: 3, grammar: 4 };
   lessonsJson.forEach((lesson) => {
     const course = orderMap.get(String(lesson._id));
-    if (course) lesson.course = course;
+    lesson.course = course || inferCourseOrderingMetadata(lesson);
   });
 
   lessonsJson.sort((a, b) => {
@@ -222,6 +232,79 @@ async function addCourseOrderingMetadata(lessonsJson, targetLang) {
   });
 
   return lessonsJson;
+}
+
+function inferCourseOrderingMetadata(lesson = {}) {
+  const curriculumKey = String(lesson.curriculumKey || '').trim();
+  const title = String(lesson.title || '').trim();
+  const difficulty = String(lesson.difficulty || '').trim().toLowerCase();
+  const lessonType = String(lesson.lessonType || '').trim().toLowerCase();
+
+  const matchPosition = (pattern) => {
+    const match = curriculumKey.match(pattern);
+    return match ? Number(match[1]) : null;
+  };
+
+  const fallbackPosition = () => {
+    if (/foundation|입문/i.test(title)) return 0;
+    const reviewMatch = title.match(/(?:review|복습)\s*(\d+)/i);
+    if (reviewMatch) return Number(reviewMatch[1]) * 3 + 0.5;
+    const unitMatch = title.match(/(?:unit|unidad|unité|unidade|einheit|unità|ünite|lesson|lektion|lección|leçon|урок|단원)\s*(\d+)/i);
+    if (unitMatch) return Number(unitMatch[1]);
+    const koreanUnitMatch = title.match(/(\d+)\s*과/);
+    if (koreanUnitMatch) return Number(koreanUnitMatch[1]);
+    const clusterMatch = title.match(/cluster\s*(\d+)/i);
+    if (clusterMatch) return Number(clusterMatch[1]);
+    return 999;
+  };
+
+  if (curriculumKey === 'level1Foundation' || lessonType === 'foundation') {
+    return { level: 1, track: 'foundation', position: 0, kind: 'foundation' };
+  }
+
+  const level1UnitPosition = matchPosition(/^level1Unit(\d+)/i);
+  if (level1UnitPosition != null) {
+    return { level: 1, track: 'thematic', position: level1UnitPosition, kind: 'unit' };
+  }
+
+  const adultPosition = matchPosition(/^level2AdultUnit(\d+)/i);
+  if (adultPosition != null || lessonType === 'workplace') {
+    return { level: 2, track: 'adult', position: adultPosition ?? fallbackPosition(), kind: 'unit' };
+  }
+
+  const reviewPosition = matchPosition(/^level2Review(\d+)/i);
+  if (reviewPosition != null || lessonType === 'review') {
+    return { level: 2, track: 'thematic', position: reviewPosition != null ? reviewPosition * 3 + 0.5 : fallbackPosition(), kind: 'review' };
+  }
+
+  const level2UnitPosition = matchPosition(/^level2Unit(\d+)/i);
+  if (level2UnitPosition != null || difficulty === 'intermediate') {
+    return { level: 2, track: 'thematic', position: level2UnitPosition ?? fallbackPosition(), kind: 'unit' };
+  }
+
+  const grammarPosition = matchPosition(/^level3Cluster(\d+)/i);
+  if (grammarPosition != null || lessonType === 'grammar' || difficulty === 'advanced') {
+    return { level: 3, track: 'grammar', position: grammarPosition ?? fallbackPosition(), kind: 'unit' };
+  }
+
+  if (difficulty === 'beginner') {
+    return { level: 1, track: 'thematic', position: fallbackPosition(), kind: 'unit' };
+  }
+
+  return { level: 9, track: 'other', position: fallbackPosition(), kind: 'unit' };
+}
+
+async function sortLessonsByCourseOrder(lessons, targetLang) {
+  if (!Array.isArray(lessons) || lessons.length === 0 || !targetLang) return lessons;
+
+  const orderedJson = lessons.map((lesson) => lesson.toJSON());
+  await addCourseOrderingMetadata(orderedJson, targetLang);
+  const rank = new Map(orderedJson.map((lesson, index) => [String(lesson._id), index]));
+
+  return [...lessons].sort((a, b) => (
+    (rank.get(String(a._id)) ?? Number.MAX_SAFE_INTEGER)
+    - (rank.get(String(b._id)) ?? Number.MAX_SAFE_INTEGER)
+  ));
 }
 
 function classLessonStats(content = []) {
@@ -588,14 +671,10 @@ async function loadClassLessonProgress(req, classLessonId, nativeLanguage, targe
 async function warmClassLessonPair(targetLang, nativeLang, userId = '') {
   const normalizedTargetLang = normalizeLang(targetLang || 'ko');
   const normalizedNativeLang = normalizeLang(nativeLang || 'en');
-  const lessons = await Lesson.find({
+  const lessons = await sortLessonsByCourseOrder(await Lesson.find({
     track: CLASS_LESSON_TRACK,
     targetLang: normalizedTargetLang,
-  }).sort({
-    'course.level': 1,
-    'course.track': 1,
-    'course.position': 1,
-  });
+  }), normalizedTargetLang);
 
   if (!lessons.length) return;
 
@@ -607,9 +686,21 @@ async function warmClassLessonPair(targetLang, nativeLang, userId = '') {
         lang: normalizedNativeLang,
         title: { $ne: '' },
       }).select('lessonId title').lean();
-      const cachedTitleIds = new Set(cachedTitles.map((row) => String(row.lessonId)));
+      const lessonTitleById = new Map(lessons.map((lesson) => [String(lesson._id), lesson.title]));
+      const cachedTitleIds = new Set(cachedTitles
+        .filter((row) => preservesTargetScriptSegments(
+          lessonTitleById.get(String(row.lessonId)) || '',
+          row.title,
+          normalizedTargetLang,
+        ))
+        .map((row) => String(row.lessonId)));
       const uncached = lessons.filter((lesson) => lesson.title && !cachedTitleIds.has(String(lesson._id)));
-      const translatedTitles = await batchTranslateRaw(uncached.map((lesson) => lesson.title), 'en', normalizedNativeLang);
+      const translatedTitles = await batchTranslatePreservingTargetScript(
+        uncached.map((lesson) => lesson.title),
+        'en',
+        normalizedNativeLang,
+        normalizedTargetLang,
+      );
       await Promise.all(uncached.map((lesson, index) => {
         const translated = translatedTitles[index]?.failed ? '' : (translatedTitles[index]?.text || '');
         if (!translated) return Promise.resolve();
@@ -685,15 +776,21 @@ router.get('/', optionalAuth, async (req, res) => {
     const summaryView = contentKind === 'classLesson' && req.query.view === 'summary';
     const lessonQuery = Lesson.find(filter);
     if (summaryView) {
-      lessonQuery.select('_id title category difficulty track lessonType targetLang nativeLang course content.type');
+      lessonQuery.select('_id title category difficulty track lessonType targetLang nativeLang curriculumKey course content.type');
     }
     const lessons = await lessonQuery;
     const lessonsJson = lessons.map(l => l.toJSON());
 
+    if (contentKind === 'classLesson') {
+      // Preserve source-title ordering before title translation rewrites the
+      // visible label into the learner's native language. Some locales cannot
+      // be parsed back into unit numbers reliably after that transformation.
+      await addCourseOrderingMetadata(lessonsJson, normalizedTargetLang);
+    }
+
     // Translate lesson titles for non-English native speakers
     if (normalizedNativeLang !== 'en') {
       const Translation = require('../models/Translation');
-      const { batchTranslateRaw } = require('../utils/translationService');
       const lessonIds = lessonsJson.map(l => l._id);
       const translations = await Translation.find({
         lessonId: { $in: lessonIds },
@@ -701,15 +798,19 @@ router.get('/', optionalAuth, async (req, res) => {
       }).select('lessonId title').lean();
 
       const titleMap = {};
+      const sourceTitleById = new Map(lessonsJson.map((lesson) => [String(lesson._id), lesson.title]));
       translations.forEach(t => {
-        if (t.title) titleMap[t.lessonId.toString()] = t.title;
+        const sourceTitle = sourceTitleById.get(t.lessonId.toString()) || '';
+        if (t.title && preservesTargetScriptSegments(sourceTitle, t.title, normalizedTargetLang)) {
+          titleMap[t.lessonId.toString()] = t.title;
+        }
       });
 
       // Find lessons without cached title translations
       const uncached = lessonsJson.filter(l => !titleMap[l._id.toString()] && l.title);
       if (uncached.length > 0) {
         const titles = uncached.map(l => l.title);
-        const results = await batchTranslateRaw(titles, 'en', normalizedNativeLang);
+        const results = await batchTranslatePreservingTargetScript(titles, 'en', normalizedNativeLang, normalizedTargetLang);
         for (let i = 0; i < uncached.length; i++) {
           const translated = results[i]?.failed ? '' : (results[i]?.text || '');
           if (!translated) continue;
@@ -737,7 +838,6 @@ router.get('/', optionalAuth, async (req, res) => {
           normalizeTargetLayerForDisplay(lessonObj, normalizedTargetLang);
         });
       }
-      await addCourseOrderingMetadata(lessonsJson, normalizedTargetLang);
     }
 
     if (summaryView) {

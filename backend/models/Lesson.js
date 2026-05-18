@@ -1,13 +1,85 @@
 const mongoose = require('mongoose');
 
+const LESSON_CATEGORIES = [
+  'ability',
+  'business',
+  'career',
+  'classroom',
+  'communication',
+  'cultural-anchor',
+  'culture',
+  'culture-family',
+  'daily-life',
+  'daily-routines',
+  'dates',
+  'dates-calendar',
+  'directions',
+  'food',
+  'foundation',
+  'future',
+  'grammar',
+  'greetings',
+  'health',
+  'healthcare',
+  'housing',
+  'leisure',
+  'life-in-india',
+  'life-philippines',
+  'locations',
+  'past',
+  'past-activities',
+  'people',
+  'planning',
+  'relationships',
+  'review',
+  'routines',
+  'scheduling',
+  'school',
+  'service',
+  'services',
+  'shopping',
+  'society',
+  'sports',
+  'study',
+  'suggestions',
+  'time',
+  'transport',
+  'transportation',
+  'travel',
+  'weather',
+  'work',
+  'workplace',
+];
+
+const LESSON_CONTENT_TYPES = [
+  'conversation',
+  'culture',
+  'grammar',
+  'note',
+  'paragraph',
+  'practice',
+  'pronunciation',
+  'reading',
+  'sentence',
+  'word',
+  'writing',
+];
+
 const lessonSchema = new mongoose.Schema({
+  // Stable authored key inside a target-language curriculum module, e.g.
+  // `level2Review01`. Unlike titles, this survives localized display and lets
+  // review lessons point to other lessons without embedding Mongo IDs in seeds.
+  curriculumKey: {
+    type: String,
+    trim: true,
+  },
   title: {
     type: String,
     required: true,
   },
   category: {
     type: String,
-    enum: ['daily-life', 'business', 'travel', 'greetings', 'food', 'shopping', 'healthcare', 'career'],
+    enum: LESSON_CATEGORIES,
     required: true,
   },
   difficulty: {
@@ -49,12 +121,11 @@ const lessonSchema = new mongoose.Schema({
     label: String,
     goal: String,
   }],
-  // For review lessons (lessonType === 'review'): the source units this
-  // review consolidates. Empty for non-review lessons.
-  reviewOf: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Lesson',
-  }],
+  // For review lessons (lessonType === 'review'): the stable curriculum keys of
+  // the source units this review consolidates. Empty for non-review lessons.
+  // These deliberately stay as authored keys instead of ObjectIds so seeds are
+  // portable across local, staging, and Atlas databases.
+  reviewOf: [String],
   // Keys of `VocabPool` documents the AI tutor may pull additional
   // vocabulary from on demand. The brief surfaces the keys, not the pool
   // contents (the pool is fetched only when the tutor decides it needs more
@@ -80,7 +151,7 @@ const lessonSchema = new mongoose.Schema({
   content: [{
     type: {
       type: String,
-      enum: ['word', 'sentence', 'conversation'],
+      enum: LESSON_CONTENT_TYPES,
       required: true,
     },
     // Activity tags — which lesson activities this item supports. Empty/missing = available in all.
@@ -126,6 +197,7 @@ const lessonSchema = new mongoose.Schema({
 // Index for efficient language-filtered queries
 lessonSchema.index({ targetLang: 1, category: 1, difficulty: 1 });
 lessonSchema.index({ track: 1, targetLang: 1 });
+lessonSchema.index({ targetLang: 1, curriculumKey: 1 }, { sparse: true });
 
 // Virtual getters: resolve generic fields, falling back to legacy fields
 lessonSchema.set('toJSON', { virtuals: false, transform: function(doc, ret) {
@@ -152,3 +224,5 @@ lessonSchema.set('toJSON', { virtuals: false, transform: function(doc, ret) {
 }});
 
 module.exports = mongoose.model('Lesson', lessonSchema);
+module.exports.LESSON_CATEGORIES = LESSON_CATEGORIES;
+module.exports.LESSON_CONTENT_TYPES = LESSON_CONTENT_TYPES;

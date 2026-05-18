@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('nl', {
-  slug: 'nl-l1u21',
-  title: 'Level 1 · Unit 21: Plannen en Dromen — Hopes and Dreams',
-  category: 'future',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Talk about future plans, hopes, and longer-term dreams.',
-  vocabularyGoal: 'Use future, study, work, travel, and aspiration words.',
-  grammarGoal: 'Use `ik wil`, `ik ga`, and `ik hoop` to separate desire, plan, and hope.',
-  speakingGoal: 'Describe one realistic plan and one longer dream with a reason.',
-  task: 'Give a short future-self introduction.',
-  expressionPractice: [
-    practice('stating-desire', 'Stating desire', 'Use `ik wil`.'),
-    practice('stating-plan', 'Stating plan', 'Use `ik ga` plus infinitive.'),
-    practice('stating-hope', 'Stating hope', 'Use `ik hoop`.'),
+module.exports = {
+  "title": "Level 1 · Unit 21: Plannen en Dromen — Hopes and Dreams",
+  "category": "future",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "nl-level1unit21hopesdreams-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Talk about future plans, hopes, and longer-term dreams."
+      ],
+      "task": "Give a short future-self introduction."
+    },
+    {
+      "id": "nl-level1unit21hopesdreams-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "nl-level1unit21hopesdreams-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 21: Plannen en Dromen — Hopes and Dreams with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "nl-level1unit21hopesdreams-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 21: Plannen en Dromen — Hopes and Dreams sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "nl-level1unit21hopesdreams-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Talk about future plans, hopes, and longer-term dreams."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "nl-level1unit21hopesdreams-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 21: Plannen en Dromen — Hopes and Dreams with one nearby Dutch form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "nl-level1unit21hopesdreams-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "nl-level1unit21hopesdreams-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "nl-level1unit21hopesdreams-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "nl-level1unit21hopesdreams-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "nl-level1unit21hopesdreams-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Give a short future-self introduction."
+      ],
+      "task": "Give a short future-self introduction."
+    }
   ],
-  relatedPools: ['topic-future', 'topic-goals'],
-  items: [
-    item('toekomst', 'TOO-komst', '“Future.” A common abstract noun for planning and goals.', 'Ik denk vaak aan mijn toekomst.', '“I often think about my future.”'),
-    item('droom', 'drohm', '“Dream.” It can be literal or aspirational.', 'Mijn droom is dokter worden.', '“My dream is to become a doctor.”'),
-    item('ik wil', 'ik vil', '“I want.” A direct expression of desire.', 'Ik wil goed Nederlands leren.', '“I want to learn Dutch well.”'),
-    item('ik ga studeren', 'ik kha sty-DAY-ren', '“I am going to study.” `Gaan + infinitive` is a common future frame.', 'Ik ga techniek studeren.', '“I am going to study engineering.”'),
-    item('ik hoop', 'ik hohp', '“I hope.” Often followed by a clause with subordinate word order.', 'Ik hoop dat ik naar Nederland kan gaan.', '“I hope that I can go to the Netherlands.”'),
-    item('worden', 'VOR-den', '“To become.” A core verb for career dreams.', 'Ik wil leraar worden.', '“I want to become a teacher.”'),
-    item('als ik de kans krijg', 'als ik də kans khreykh', '“If I get the chance.” A natural condition around future plans.', 'Als ik de kans krijg, wil ik in Amsterdam werken.', '“If I get the chance, I want to work in Amsterdam.”'),
-    item('ooit', 'OYT', '“Someday / ever.” A compact word for distant hopes.', 'Ooit wil ik een boek schrijven.', '“Someday I want to write a book.”'),
+  "expressionPractice": [
+    {
+      "id": "stating-desire",
+      "label": "Stating desire",
+      "goal": "Use `ik wil`."
+    },
+    {
+      "id": "stating-plan",
+      "label": "Stating plan",
+      "goal": "Use `ik ga` plus infinitive."
+    },
+    {
+      "id": "stating-hope",
+      "label": "Stating hope",
+      "goal": "Use `ik hoop`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-future",
+    "topic-goals"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-orientation"
+      ],
+      "targetText": "lesdoel",
+      "romanization": "",
+      "nativeText": "Talk about future plans, hopes, and longer-term dreams.",
+      "pronunciation": "",
+      "exampleTarget": "lesdoel",
+      "exampleNative": "The whole lesson is built toward this outcome: Give a short future-self introduction.",
+      "korean": "lesdoel",
+      "english": "Talk about future plans, hopes, and longer-term dreams.",
+      "example": "lesdoel",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Give a short future-self introduction."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-pronunciation"
+      ],
+      "targetText": "klankcontrole",
+      "romanization": "",
+      "nativeText": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Ik denk vaak aan mijn toekomst.\".",
+      "pronunciation": "",
+      "exampleTarget": "Ik denk vaak aan mijn toekomst.",
+      "exampleNative": "“I often think about my future.”",
+      "korean": "klankcontrole",
+      "english": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Ik denk vaak aan mijn toekomst.\".",
+      "example": "Ik denk vaak aan mijn toekomst.",
+      "exampleEnglish": "“I often think about my future.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1"
+      ],
+      "targetText": "toekomst",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 21: Plannen en Dromen — Hopes and Dreams with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Ik denk vaak aan mijn toekomst.",
+      "exampleNative": "“I often think about my future.”",
+      "korean": "toekomst",
+      "english": "Use the key language of Level 1 · Unit 21: Plannen en Dromen — Hopes and Dreams with the register and setting that the lesson requires.",
+      "example": "Ik denk vaak aan mijn toekomst.",
+      "exampleEnglish": "“I often think about my future.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-2"
+      ],
+      "targetText": "droom",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 21: Plannen en Dromen — Hopes and Dreams sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Mijn droom is dokter worden.",
+      "exampleNative": "“My dream is to become a doctor.”",
+      "korean": "droom",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 21: Plannen en Dromen — Hopes and Dreams sound precise rather than merely understandable.",
+      "example": "Mijn droom is dokter worden.",
+      "exampleEnglish": "“My dream is to become a doctor.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-grammar-1"
+      ],
+      "targetText": "toekomst",
+      "romanization": "",
+      "nativeText": "Talk about future plans, hopes, and longer-term dreams.",
+      "pronunciation": "",
+      "exampleTarget": "Ik denk vaak aan mijn toekomst.",
+      "exampleNative": "“I often think about my future.”",
+      "korean": "toekomst",
+      "english": "Talk about future plans, hopes, and longer-term dreams.",
+      "example": "Ik denk vaak aan mijn toekomst.",
+      "exampleEnglish": "“I often think about my future.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-grammar-2"
+      ],
+      "targetText": "droom",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 21: Plannen en Dromen — Hopes and Dreams with one nearby Dutch form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Mijn droom is dokter worden.",
+      "exampleNative": "“My dream is to become a doctor.”",
+      "korean": "droom",
+      "english": "Contrast the main pattern in Level 1 · Unit 21: Plannen en Dromen — Hopes and Dreams with one nearby Dutch form so the learner can avoid literal translation.",
+      "example": "Mijn droom is dokter worden.",
+      "exampleEnglish": "“My dream is to become a doctor.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-reading"
+      ],
+      "targetText": "leesmodel",
+      "romanization": "",
+      "nativeText": "Read \"Ooit wil ik een boek schrijven.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Ooit wil ik een boek schrijven.",
+      "exampleNative": "“Someday I want to write a book.”",
+      "korean": "leesmodel",
+      "english": "Read \"Ooit wil ik een boek schrijven.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Ooit wil ik een boek schrijven.",
+      "exampleEnglish": "“Someday I want to write a book.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-listening"
+      ],
+      "targetText": "dialoogmodel",
+      "romanization": "",
+      "nativeText": "Hear \"Ooit wil ik een boek schrijven.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Ooit wil ik een boek schrijven.",
+      "exampleNative": "“Someday I want to write a book.”",
+      "korean": "dialoogmodel",
+      "english": "Hear \"Ooit wil ik een boek schrijven.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Ooit wil ik een boek schrijven.",
+      "exampleEnglish": "“Someday I want to write a book.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-writing"
+      ],
+      "targetText": "schrijfoefening",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Ik denk vaak aan mijn toekomst.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Ik denk vaak aan mijn toekomst.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "schrijfoefening",
+      "english": "Write your own version after studying \"Ik denk vaak aan mijn toekomst.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Ik denk vaak aan mijn toekomst.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-culture"
+      ],
+      "targetText": "gebruik en context",
+      "romanization": "",
+      "nativeText": "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Mijn droom is dokter worden.",
+      "exampleNative": "“My dream is to become a doctor.”",
+      "korean": "gebruik en context",
+      "english": "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used.",
+      "example": "Mijn droom is dokter worden.",
+      "exampleEnglish": "“My dream is to become a doctor.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "eindtaak",
+      "romanization": "",
+      "nativeText": "Give a short future-self introduction.",
+      "pronunciation": "",
+      "exampleTarget": "Ooit wil ik een boek schrijven.",
+      "exampleNative": "Give a short future-self introduction.",
+      "korean": "eindtaak",
+      "english": "Give a short future-self introduction.",
+      "example": "Ooit wil ik een boek schrijven.",
+      "exampleEnglish": "Give a short future-self introduction."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-grammar-2"
+      ],
+      "targetText": "veelgemaakte fout",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around verb-second order, separable verbs, pronouns, and article choice. Begin by checking \"Mijn droom is dokter worden.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Mijn droom is dokter worden.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “My dream is to become a doctor.”",
+      "korean": "veelgemaakte fout",
+      "english": "Watch for literal-translation mistakes around verb-second order, separable verbs, pronouns, and article choice. Begin by checking \"Mijn droom is dokter worden.\" against the model.",
+      "example": "Mijn droom is dokter worden.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-culture"
+      ],
+      "targetText": "register",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for jij, u, a service register, or a more relaxed everyday choice before selecting the final wording. Compare the social fit of \"Ik denk vaak aan mijn toekomst.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Ik denk vaak aan mijn toekomst.",
+      "exampleNative": "“I often think about my future.”",
+      "korean": "register",
+      "english": "Check whether the setting calls for jij, u, a service register, or a more relaxed everyday choice before selecting the final wording. Compare the social fit of \"Ik denk vaak aan mijn toekomst.\" before reusing it elsewhere.",
+      "example": "Ik denk vaak aan mijn toekomst.",
+      "exampleEnglish": "“I often think about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "vloeiendheid",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Dutch message rather than as separate translated fragments. Aim to carry \"Ooit wil ik een boek schrijven.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Ooit wil ik een boek schrijven.",
+      "exampleNative": "“Someday I want to write a book.”",
+      "korean": "vloeiendheid",
+      "english": "Say the idea as one connected Dutch message rather than as separate translated fragments. Aim to carry \"Ooit wil ik een boek schrijven.\" as one thought.",
+      "example": "Ooit wil ik een boek schrijven.",
+      "exampleEnglish": "“Someday I want to write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "toepassing",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Ik denk vaak aan mijn toekomst.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Ik denk vaak aan mijn toekomst.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "toepassing",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Ik denk vaak aan mijn toekomst.\" and move it into your own life.",
+      "example": "Ik denk vaak aan mijn toekomst.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-grammar-1"
+      ],
+      "targetText": "actief ophalen",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"toekomst\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "toekomst",
+      "exampleNative": "“Future.” A common abstract noun for planning and goals.",
+      "korean": "actief ophalen",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"toekomst\" before looking back.",
+      "example": "toekomst",
+      "exampleEnglish": "“Future.” A common abstract noun for planning and goals."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-writing"
+      ],
+      "targetText": "uitbreiding",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Ooit wil ik een boek schrijven.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Ooit wil ik een boek schrijven.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "uitbreiding",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Ooit wil ik een boek schrijven.\" rather than restarting from a blank sentence.",
+      "example": "Ooit wil ik een boek schrijven.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading"
+      ],
+      "targetText": "vergelijking",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 21: Plannen en Dromen — Hopes and Dreams with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Mijn droom is dokter worden.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Mijn droom is dokter worden.",
+      "exampleNative": "“My dream is to become a doctor.”",
+      "korean": "vergelijking",
+      "english": "Compare the central form in Level 1 · Unit 21: Plannen en Dromen — Hopes and Dreams with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Mijn droom is dokter worden.\" as the comparison line.",
+      "example": "Mijn droom is dokter worden.",
+      "exampleEnglish": "“My dream is to become a doctor.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-pronunciation"
+      ],
+      "targetText": "uitspraakcorrectie",
+      "romanization": "",
+      "nativeText": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Ik denk vaak aan mijn toekomst.\".",
+      "pronunciation": "",
+      "exampleTarget": "Ik denk vaak aan mijn toekomst.",
+      "exampleNative": "“I often think about my future.”",
+      "korean": "uitspraakcorrectie",
+      "english": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Ik denk vaak aan mijn toekomst.\".",
+      "example": "Ik denk vaak aan mijn toekomst.",
+      "exampleEnglish": "“I often think about my future.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "dialoogvariatie",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Ooit wil ik een boek schrijven.\".",
+      "pronunciation": "",
+      "exampleTarget": "Ooit wil ik een boek schrijven.",
+      "exampleNative": "“Someday I want to write a book.”",
+      "korean": "dialoogvariatie",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Ooit wil ik een boek schrijven.\".",
+      "example": "Ooit wil ik een boek schrijven.",
+      "exampleEnglish": "“Someday I want to write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-writing"
+      ],
+      "targetText": "zinsbouw",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Ik denk vaak aan mijn toekomst.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Ik denk vaak aan mijn toekomst.",
+      "exampleNative": "“I often think about my future.”",
+      "korean": "zinsbouw",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Ik denk vaak aan mijn toekomst.\" one layer at a time.",
+      "example": "Ik denk vaak aan mijn toekomst.",
+      "exampleEnglish": "“I often think about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-2"
+      ],
+      "targetText": "snelle check",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Mijn droom is dokter worden.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Mijn droom is dokter worden.",
+      "exampleNative": "“My dream is to become a doctor.”",
+      "korean": "snelle check",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Mijn droom is dokter worden.\" as the deciding example.",
+      "example": "Mijn droom is dokter worden.",
+      "exampleEnglish": "“My dream is to become a doctor.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-culture",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "terugblik",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Ooit wil ik een boek schrijven.\".",
+      "pronunciation": "",
+      "exampleTarget": "Ooit wil ik een boek schrijven.",
+      "exampleNative": "“Someday I want to write a book.”",
+      "korean": "terugblik",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Ooit wil ik een boek schrijven.\".",
+      "example": "Ooit wil ik een boek schrijven.",
+      "exampleEnglish": "“Someday I want to write a book.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "toekomst",
+      "romanization": "TOO-komst",
+      "nativeText": "“Future.” A common abstract noun for planning and goals.",
+      "pronunciation": "TOO-komst",
+      "exampleTarget": "Ik denk vaak aan mijn toekomst.",
+      "exampleNative": "“I often think about my future.”",
+      "korean": "toekomst",
+      "english": "“Future.” A common abstract noun for planning and goals.",
+      "example": "Ik denk vaak aan mijn toekomst.",
+      "exampleEnglish": "“I often think about my future.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "Ik denk vaak aan mijn toekomst.",
+      "romanization": "TOO-komst",
+      "nativeText": "Model use for \"Ik denk vaak aan mijn toekomst.\": “I often think about my future.”",
+      "pronunciation": "TOO-komst",
+      "exampleTarget": "Ik denk vaak aan mijn toekomst.",
+      "exampleNative": "“I often think about my future.”",
+      "korean": "Ik denk vaak aan mijn toekomst.",
+      "english": "Model use for \"Ik denk vaak aan mijn toekomst.\": “I often think about my future.”",
+      "example": "Ik denk vaak aan mijn toekomst.",
+      "exampleEnglish": "“I often think about my future.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "toekomst",
+      "romanization": "TOO-komst",
+      "nativeText": "Usage focus for \"toekomst\": Use the key language of Level 1 · Unit 21: Plannen en Dromen — Hopes and Dreams with the register and setting that the lesson requires.",
+      "pronunciation": "TOO-komst",
+      "exampleTarget": "Ik denk vaak aan mijn toekomst.",
+      "exampleNative": "Notice what the form is doing here: “I often think about my future.”",
+      "korean": "toekomst",
+      "english": "Usage focus for \"toekomst\": Use the key language of Level 1 · Unit 21: Plannen en Dromen — Hopes and Dreams with the register and setting that the lesson requires.",
+      "example": "Ik denk vaak aan mijn toekomst.",
+      "exampleEnglish": "Notice what the form is doing here: “I often think about my future.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "toekomst",
+      "romanization": "TOO-komst",
+      "nativeText": "Contrast check for \"toekomst\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "TOO-komst",
+      "exampleTarget": "Ik denk vaak aan mijn toekomst.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I often think about my future.”",
+      "korean": "toekomst",
+      "english": "Contrast check for \"toekomst\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik denk vaak aan mijn toekomst.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I often think about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "toekomst",
+      "romanization": "TOO-komst",
+      "nativeText": "Recall \"toekomst\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik denk vaak aan mijn toekomst.\".",
+      "pronunciation": "TOO-komst",
+      "exampleTarget": "Ik denk vaak aan mijn toekomst.",
+      "exampleNative": "Self-check against the model before moving on: “I often think about my future.”",
+      "korean": "toekomst",
+      "english": "Recall \"toekomst\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik denk vaak aan mijn toekomst.\".",
+      "example": "Ik denk vaak aan mijn toekomst.",
+      "exampleEnglish": "Self-check against the model before moving on: “I often think about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "toekomst",
+      "romanization": "TOO-komst",
+      "nativeText": "Repair \"toekomst\" inside \"Ik denk vaak aan mijn toekomst.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 21: Plannen en Dromen — Hopes and Dreams with the register and setting that the lesson requires.",
+      "pronunciation": "TOO-komst",
+      "exampleTarget": "Ik denk vaak aan mijn toekomst.",
+      "exampleNative": "Use the model as the repair target: “I often think about my future.”",
+      "korean": "toekomst",
+      "english": "Repair \"toekomst\" inside \"Ik denk vaak aan mijn toekomst.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 21: Plannen en Dromen — Hopes and Dreams with the register and setting that the lesson requires.",
+      "example": "Ik denk vaak aan mijn toekomst.",
+      "exampleEnglish": "Use the model as the repair target: “I often think about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "toekomst",
+      "romanization": "TOO-komst",
+      "nativeText": "Transfer \"toekomst\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik denk vaak aan mijn toekomst.\".",
+      "pronunciation": "TOO-komst",
+      "exampleTarget": "Ik denk vaak aan mijn toekomst.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I often think about my future.”",
+      "korean": "toekomst",
+      "english": "Transfer \"toekomst\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik denk vaak aan mijn toekomst.\".",
+      "example": "Ik denk vaak aan mijn toekomst.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I often think about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "toekomst",
+      "romanization": "TOO-komst",
+      "nativeText": "Find one word or phrase that naturally travels with \"toekomst\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "TOO-komst",
+      "exampleTarget": "Ik denk vaak aan mijn toekomst.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I often think about my future.”",
+      "korean": "toekomst",
+      "english": "Find one word or phrase that naturally travels with \"toekomst\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik denk vaak aan mijn toekomst.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I often think about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "toekomst",
+      "romanization": "TOO-komst",
+      "nativeText": "Listen for \"toekomst\" inside \"Ik denk vaak aan mijn toekomst.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "TOO-komst",
+      "exampleTarget": "Ik denk vaak aan mijn toekomst.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I often think about my future.”",
+      "korean": "toekomst",
+      "english": "Listen for \"toekomst\" inside \"Ik denk vaak aan mijn toekomst.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik denk vaak aan mijn toekomst.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I often think about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "toekomst",
+      "romanization": "TOO-komst",
+      "nativeText": "Write \"toekomst\" again without looking, then compare the exact written form against \"Ik denk vaak aan mijn toekomst.\" before moving on.",
+      "pronunciation": "TOO-komst",
+      "exampleTarget": "Ik denk vaak aan mijn toekomst.",
+      "exampleNative": "Use the written model as the final correctness check: “I often think about my future.”",
+      "korean": "toekomst",
+      "english": "Write \"toekomst\" again without looking, then compare the exact written form against \"Ik denk vaak aan mijn toekomst.\" before moving on.",
+      "example": "Ik denk vaak aan mijn toekomst.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I often think about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "toekomst",
+      "romanization": "TOO-komst",
+      "nativeText": "Check whether \"toekomst\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I often think about my future.”",
+      "pronunciation": "TOO-komst",
+      "exampleTarget": "Ik denk vaak aan mijn toekomst.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I often think about my future.”",
+      "korean": "toekomst",
+      "english": "Check whether \"toekomst\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I often think about my future.”",
+      "example": "Ik denk vaak aan mijn toekomst.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I often think about my future.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "droom",
+      "romanization": "drohm",
+      "nativeText": "“Dream.” It can be literal or aspirational.",
+      "pronunciation": "drohm",
+      "exampleTarget": "Mijn droom is dokter worden.",
+      "exampleNative": "“My dream is to become a doctor.”",
+      "korean": "droom",
+      "english": "“Dream.” It can be literal or aspirational.",
+      "example": "Mijn droom is dokter worden.",
+      "exampleEnglish": "“My dream is to become a doctor.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "Mijn droom is dokter worden.",
+      "romanization": "drohm",
+      "nativeText": "Model use for \"Mijn droom is dokter worden.\": “My dream is to become a doctor.”",
+      "pronunciation": "drohm",
+      "exampleTarget": "Mijn droom is dokter worden.",
+      "exampleNative": "“My dream is to become a doctor.”",
+      "korean": "Mijn droom is dokter worden.",
+      "english": "Model use for \"Mijn droom is dokter worden.\": “My dream is to become a doctor.”",
+      "example": "Mijn droom is dokter worden.",
+      "exampleEnglish": "“My dream is to become a doctor.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "droom",
+      "romanization": "drohm",
+      "nativeText": "Usage focus for \"droom\": Distinguish the nearby wording choices that make Level 1 · Unit 21: Plannen en Dromen — Hopes and Dreams sound precise rather than merely understandable.",
+      "pronunciation": "drohm",
+      "exampleTarget": "Mijn droom is dokter worden.",
+      "exampleNative": "Notice what the form is doing here: “My dream is to become a doctor.”",
+      "korean": "droom",
+      "english": "Usage focus for \"droom\": Distinguish the nearby wording choices that make Level 1 · Unit 21: Plannen en Dromen — Hopes and Dreams sound precise rather than merely understandable.",
+      "example": "Mijn droom is dokter worden.",
+      "exampleEnglish": "Notice what the form is doing here: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "droom",
+      "romanization": "drohm",
+      "nativeText": "Contrast check for \"droom\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "drohm",
+      "exampleTarget": "Mijn droom is dokter worden.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My dream is to become a doctor.”",
+      "korean": "droom",
+      "english": "Contrast check for \"droom\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Mijn droom is dokter worden.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "droom",
+      "romanization": "drohm",
+      "nativeText": "Recall \"droom\" from memory, then explain what would change if a nearby alternative replaced it in \"Mijn droom is dokter worden.\".",
+      "pronunciation": "drohm",
+      "exampleTarget": "Mijn droom is dokter worden.",
+      "exampleNative": "Self-check against the model before moving on: “My dream is to become a doctor.”",
+      "korean": "droom",
+      "english": "Recall \"droom\" from memory, then explain what would change if a nearby alternative replaced it in \"Mijn droom is dokter worden.\".",
+      "example": "Mijn droom is dokter worden.",
+      "exampleEnglish": "Self-check against the model before moving on: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "droom",
+      "romanization": "drohm",
+      "nativeText": "Repair \"droom\" inside \"Mijn droom is dokter worden.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 21: Plannen en Dromen — Hopes and Dreams sound precise rather than merely understandable.",
+      "pronunciation": "drohm",
+      "exampleTarget": "Mijn droom is dokter worden.",
+      "exampleNative": "Use the model as the repair target: “My dream is to become a doctor.”",
+      "korean": "droom",
+      "english": "Repair \"droom\" inside \"Mijn droom is dokter worden.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 21: Plannen en Dromen — Hopes and Dreams sound precise rather than merely understandable.",
+      "example": "Mijn droom is dokter worden.",
+      "exampleEnglish": "Use the model as the repair target: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "droom",
+      "romanization": "drohm",
+      "nativeText": "Transfer \"droom\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Mijn droom is dokter worden.\".",
+      "pronunciation": "drohm",
+      "exampleTarget": "Mijn droom is dokter worden.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “My dream is to become a doctor.”",
+      "korean": "droom",
+      "english": "Transfer \"droom\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Mijn droom is dokter worden.\".",
+      "example": "Mijn droom is dokter worden.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "droom",
+      "romanization": "drohm",
+      "nativeText": "Find one word or phrase that naturally travels with \"droom\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "drohm",
+      "exampleTarget": "Mijn droom is dokter worden.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “My dream is to become a doctor.”",
+      "korean": "droom",
+      "english": "Find one word or phrase that naturally travels with \"droom\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Mijn droom is dokter worden.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "droom",
+      "romanization": "drohm",
+      "nativeText": "Listen for \"droom\" inside \"Mijn droom is dokter worden.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "drohm",
+      "exampleTarget": "Mijn droom is dokter worden.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My dream is to become a doctor.”",
+      "korean": "droom",
+      "english": "Listen for \"droom\" inside \"Mijn droom is dokter worden.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Mijn droom is dokter worden.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "droom",
+      "romanization": "drohm",
+      "nativeText": "Write \"droom\" again without looking, then compare the exact written form against \"Mijn droom is dokter worden.\" before moving on.",
+      "pronunciation": "drohm",
+      "exampleTarget": "Mijn droom is dokter worden.",
+      "exampleNative": "Use the written model as the final correctness check: “My dream is to become a doctor.”",
+      "korean": "droom",
+      "english": "Write \"droom\" again without looking, then compare the exact written form against \"Mijn droom is dokter worden.\" before moving on.",
+      "example": "Mijn droom is dokter worden.",
+      "exampleEnglish": "Use the written model as the final correctness check: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "droom",
+      "romanization": "drohm",
+      "nativeText": "Check whether \"droom\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My dream is to become a doctor.”",
+      "pronunciation": "drohm",
+      "exampleTarget": "Mijn droom is dokter worden.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “My dream is to become a doctor.”",
+      "korean": "droom",
+      "english": "Check whether \"droom\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My dream is to become a doctor.”",
+      "example": "Mijn droom is dokter worden.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ik wil",
+      "romanization": "ik vil",
+      "nativeText": "“I want.” A direct expression of desire.",
+      "pronunciation": "ik vil",
+      "exampleTarget": "Ik wil goed Nederlands leren.",
+      "exampleNative": "“I want to learn Dutch well.”",
+      "korean": "ik wil",
+      "english": "“I want.” A direct expression of desire.",
+      "example": "Ik wil goed Nederlands leren.",
+      "exampleEnglish": "“I want to learn Dutch well.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "Ik wil goed Nederlands leren.",
+      "romanization": "ik vil",
+      "nativeText": "Model use for \"Ik wil goed Nederlands leren.\": “I want to learn Dutch well.”",
+      "pronunciation": "ik vil",
+      "exampleTarget": "Ik wil goed Nederlands leren.",
+      "exampleNative": "“I want to learn Dutch well.”",
+      "korean": "Ik wil goed Nederlands leren.",
+      "english": "Model use for \"Ik wil goed Nederlands leren.\": “I want to learn Dutch well.”",
+      "example": "Ik wil goed Nederlands leren.",
+      "exampleEnglish": "“I want to learn Dutch well.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ik wil",
+      "romanization": "ik vil",
+      "nativeText": "Usage focus for \"ik wil\": “I want.” A direct expression of desire.",
+      "pronunciation": "ik vil",
+      "exampleTarget": "Ik wil goed Nederlands leren.",
+      "exampleNative": "Notice what the form is doing here: “I want to learn Dutch well.”",
+      "korean": "ik wil",
+      "english": "Usage focus for \"ik wil\": “I want.” A direct expression of desire.",
+      "example": "Ik wil goed Nederlands leren.",
+      "exampleEnglish": "Notice what the form is doing here: “I want to learn Dutch well.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ik wil",
+      "romanization": "ik vil",
+      "nativeText": "Contrast check for \"ik wil\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ik vil",
+      "exampleTarget": "Ik wil goed Nederlands leren.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to learn Dutch well.”",
+      "korean": "ik wil",
+      "english": "Contrast check for \"ik wil\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik wil goed Nederlands leren.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to learn Dutch well.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ik wil",
+      "romanization": "ik vil",
+      "nativeText": "Recall \"ik wil\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik wil goed Nederlands leren.\".",
+      "pronunciation": "ik vil",
+      "exampleTarget": "Ik wil goed Nederlands leren.",
+      "exampleNative": "Self-check against the model before moving on: “I want to learn Dutch well.”",
+      "korean": "ik wil",
+      "english": "Recall \"ik wil\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik wil goed Nederlands leren.\".",
+      "example": "Ik wil goed Nederlands leren.",
+      "exampleEnglish": "Self-check against the model before moving on: “I want to learn Dutch well.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ik wil",
+      "romanization": "ik vil",
+      "nativeText": "Repair \"ik wil\" inside \"Ik wil goed Nederlands leren.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I want.” A direct expression of desire.",
+      "pronunciation": "ik vil",
+      "exampleTarget": "Ik wil goed Nederlands leren.",
+      "exampleNative": "Use the model as the repair target: “I want to learn Dutch well.”",
+      "korean": "ik wil",
+      "english": "Repair \"ik wil\" inside \"Ik wil goed Nederlands leren.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I want.” A direct expression of desire.",
+      "example": "Ik wil goed Nederlands leren.",
+      "exampleEnglish": "Use the model as the repair target: “I want to learn Dutch well.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ik wil",
+      "romanization": "ik vil",
+      "nativeText": "Transfer \"ik wil\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik wil goed Nederlands leren.\".",
+      "pronunciation": "ik vil",
+      "exampleTarget": "Ik wil goed Nederlands leren.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to learn Dutch well.”",
+      "korean": "ik wil",
+      "english": "Transfer \"ik wil\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik wil goed Nederlands leren.\".",
+      "example": "Ik wil goed Nederlands leren.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to learn Dutch well.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ik wil",
+      "romanization": "ik vil",
+      "nativeText": "Find one word or phrase that naturally travels with \"ik wil\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ik vil",
+      "exampleTarget": "Ik wil goed Nederlands leren.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want to learn Dutch well.”",
+      "korean": "ik wil",
+      "english": "Find one word or phrase that naturally travels with \"ik wil\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik wil goed Nederlands leren.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want to learn Dutch well.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ik wil",
+      "romanization": "ik vil",
+      "nativeText": "Listen for \"ik wil\" inside \"Ik wil goed Nederlands leren.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ik vil",
+      "exampleTarget": "Ik wil goed Nederlands leren.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to learn Dutch well.”",
+      "korean": "ik wil",
+      "english": "Listen for \"ik wil\" inside \"Ik wil goed Nederlands leren.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik wil goed Nederlands leren.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to learn Dutch well.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ik wil",
+      "romanization": "ik vil",
+      "nativeText": "Write \"ik wil\" again without looking, then compare the exact written form against \"Ik wil goed Nederlands leren.\" before moving on.",
+      "pronunciation": "ik vil",
+      "exampleTarget": "Ik wil goed Nederlands leren.",
+      "exampleNative": "Use the written model as the final correctness check: “I want to learn Dutch well.”",
+      "korean": "ik wil",
+      "english": "Write \"ik wil\" again without looking, then compare the exact written form against \"Ik wil goed Nederlands leren.\" before moving on.",
+      "example": "Ik wil goed Nederlands leren.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want to learn Dutch well.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ik wil",
+      "romanization": "ik vil",
+      "nativeText": "Check whether \"ik wil\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to learn Dutch well.”",
+      "pronunciation": "ik vil",
+      "exampleTarget": "Ik wil goed Nederlands leren.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want to learn Dutch well.”",
+      "korean": "ik wil",
+      "english": "Check whether \"ik wil\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to learn Dutch well.”",
+      "example": "Ik wil goed Nederlands leren.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want to learn Dutch well.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ik ga studeren",
+      "romanization": "ik kha sty-DAY-ren",
+      "nativeText": "“I am going to study.” `Gaan + infinitive` is a common future frame.",
+      "pronunciation": "ik kha sty-DAY-ren",
+      "exampleTarget": "Ik ga techniek studeren.",
+      "exampleNative": "“I am going to study engineering.”",
+      "korean": "ik ga studeren",
+      "english": "“I am going to study.” `Gaan + infinitive` is a common future frame.",
+      "example": "Ik ga techniek studeren.",
+      "exampleEnglish": "“I am going to study engineering.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "Ik ga techniek studeren.",
+      "romanization": "ik kha sty-DAY-ren",
+      "nativeText": "Model use for \"Ik ga techniek studeren.\": “I am going to study engineering.”",
+      "pronunciation": "ik kha sty-DAY-ren",
+      "exampleTarget": "Ik ga techniek studeren.",
+      "exampleNative": "“I am going to study engineering.”",
+      "korean": "Ik ga techniek studeren.",
+      "english": "Model use for \"Ik ga techniek studeren.\": “I am going to study engineering.”",
+      "example": "Ik ga techniek studeren.",
+      "exampleEnglish": "“I am going to study engineering.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ik ga studeren",
+      "romanization": "ik kha sty-DAY-ren",
+      "nativeText": "Usage focus for \"ik ga studeren\": “I am going to study.” `Gaan + infinitive` is a common future frame.",
+      "pronunciation": "ik kha sty-DAY-ren",
+      "exampleTarget": "Ik ga techniek studeren.",
+      "exampleNative": "Notice what the form is doing here: “I am going to study engineering.”",
+      "korean": "ik ga studeren",
+      "english": "Usage focus for \"ik ga studeren\": “I am going to study.” `Gaan + infinitive` is a common future frame.",
+      "example": "Ik ga techniek studeren.",
+      "exampleEnglish": "Notice what the form is doing here: “I am going to study engineering.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ik ga studeren",
+      "romanization": "ik kha sty-DAY-ren",
+      "nativeText": "Contrast check for \"ik ga studeren\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ik kha sty-DAY-ren",
+      "exampleTarget": "Ik ga techniek studeren.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am going to study engineering.”",
+      "korean": "ik ga studeren",
+      "english": "Contrast check for \"ik ga studeren\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik ga techniek studeren.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am going to study engineering.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ik ga studeren",
+      "romanization": "ik kha sty-DAY-ren",
+      "nativeText": "Recall \"ik ga studeren\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik ga techniek studeren.\".",
+      "pronunciation": "ik kha sty-DAY-ren",
+      "exampleTarget": "Ik ga techniek studeren.",
+      "exampleNative": "Self-check against the model before moving on: “I am going to study engineering.”",
+      "korean": "ik ga studeren",
+      "english": "Recall \"ik ga studeren\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik ga techniek studeren.\".",
+      "example": "Ik ga techniek studeren.",
+      "exampleEnglish": "Self-check against the model before moving on: “I am going to study engineering.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ik ga studeren",
+      "romanization": "ik kha sty-DAY-ren",
+      "nativeText": "Repair \"ik ga studeren\" inside \"Ik ga techniek studeren.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I am going to study.” `Gaan + infinitive` is a common future frame.",
+      "pronunciation": "ik kha sty-DAY-ren",
+      "exampleTarget": "Ik ga techniek studeren.",
+      "exampleNative": "Use the model as the repair target: “I am going to study engineering.”",
+      "korean": "ik ga studeren",
+      "english": "Repair \"ik ga studeren\" inside \"Ik ga techniek studeren.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I am going to study.” `Gaan + infinitive` is a common future frame.",
+      "example": "Ik ga techniek studeren.",
+      "exampleEnglish": "Use the model as the repair target: “I am going to study engineering.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ik ga studeren",
+      "romanization": "ik kha sty-DAY-ren",
+      "nativeText": "Transfer \"ik ga studeren\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik ga techniek studeren.\".",
+      "pronunciation": "ik kha sty-DAY-ren",
+      "exampleTarget": "Ik ga techniek studeren.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am going to study engineering.”",
+      "korean": "ik ga studeren",
+      "english": "Transfer \"ik ga studeren\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik ga techniek studeren.\".",
+      "example": "Ik ga techniek studeren.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am going to study engineering.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ik ga studeren",
+      "romanization": "ik kha sty-DAY-ren",
+      "nativeText": "Find one word or phrase that naturally travels with \"ik ga studeren\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ik kha sty-DAY-ren",
+      "exampleTarget": "Ik ga techniek studeren.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I am going to study engineering.”",
+      "korean": "ik ga studeren",
+      "english": "Find one word or phrase that naturally travels with \"ik ga studeren\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik ga techniek studeren.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I am going to study engineering.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ik ga studeren",
+      "romanization": "ik kha sty-DAY-ren",
+      "nativeText": "Listen for \"ik ga studeren\" inside \"Ik ga techniek studeren.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ik kha sty-DAY-ren",
+      "exampleTarget": "Ik ga techniek studeren.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am going to study engineering.”",
+      "korean": "ik ga studeren",
+      "english": "Listen for \"ik ga studeren\" inside \"Ik ga techniek studeren.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik ga techniek studeren.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am going to study engineering.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ik ga studeren",
+      "romanization": "ik kha sty-DAY-ren",
+      "nativeText": "Write \"ik ga studeren\" again without looking, then compare the exact written form against \"Ik ga techniek studeren.\" before moving on.",
+      "pronunciation": "ik kha sty-DAY-ren",
+      "exampleTarget": "Ik ga techniek studeren.",
+      "exampleNative": "Use the written model as the final correctness check: “I am going to study engineering.”",
+      "korean": "ik ga studeren",
+      "english": "Write \"ik ga studeren\" again without looking, then compare the exact written form against \"Ik ga techniek studeren.\" before moving on.",
+      "example": "Ik ga techniek studeren.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I am going to study engineering.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ik ga studeren",
+      "romanization": "ik kha sty-DAY-ren",
+      "nativeText": "Check whether \"ik ga studeren\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am going to study engineering.”",
+      "pronunciation": "ik kha sty-DAY-ren",
+      "exampleTarget": "Ik ga techniek studeren.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I am going to study engineering.”",
+      "korean": "ik ga studeren",
+      "english": "Check whether \"ik ga studeren\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am going to study engineering.”",
+      "example": "Ik ga techniek studeren.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I am going to study engineering.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ik hoop",
+      "romanization": "ik hohp",
+      "nativeText": "“I hope.” Often followed by a clause with subordinate word order.",
+      "pronunciation": "ik hohp",
+      "exampleTarget": "Ik hoop dat ik naar Nederland kan gaan.",
+      "exampleNative": "“I hope that I can go to the Netherlands.”",
+      "korean": "ik hoop",
+      "english": "“I hope.” Often followed by a clause with subordinate word order.",
+      "example": "Ik hoop dat ik naar Nederland kan gaan.",
+      "exampleEnglish": "“I hope that I can go to the Netherlands.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "Ik hoop dat ik naar Nederland kan gaan.",
+      "romanization": "ik hohp",
+      "nativeText": "Model use for \"Ik hoop dat ik naar Nederland kan gaan.\": “I hope that I can go to the Netherlands.”",
+      "pronunciation": "ik hohp",
+      "exampleTarget": "Ik hoop dat ik naar Nederland kan gaan.",
+      "exampleNative": "“I hope that I can go to the Netherlands.”",
+      "korean": "Ik hoop dat ik naar Nederland kan gaan.",
+      "english": "Model use for \"Ik hoop dat ik naar Nederland kan gaan.\": “I hope that I can go to the Netherlands.”",
+      "example": "Ik hoop dat ik naar Nederland kan gaan.",
+      "exampleEnglish": "“I hope that I can go to the Netherlands.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ik hoop",
+      "romanization": "ik hohp",
+      "nativeText": "Usage focus for \"ik hoop\": “I hope.” Often followed by a clause with subordinate word order.",
+      "pronunciation": "ik hohp",
+      "exampleTarget": "Ik hoop dat ik naar Nederland kan gaan.",
+      "exampleNative": "Notice what the form is doing here: “I hope that I can go to the Netherlands.”",
+      "korean": "ik hoop",
+      "english": "Usage focus for \"ik hoop\": “I hope.” Often followed by a clause with subordinate word order.",
+      "example": "Ik hoop dat ik naar Nederland kan gaan.",
+      "exampleEnglish": "Notice what the form is doing here: “I hope that I can go to the Netherlands.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ik hoop",
+      "romanization": "ik hohp",
+      "nativeText": "Contrast check for \"ik hoop\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ik hohp",
+      "exampleTarget": "Ik hoop dat ik naar Nederland kan gaan.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I hope that I can go to the Netherlands.”",
+      "korean": "ik hoop",
+      "english": "Contrast check for \"ik hoop\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik hoop dat ik naar Nederland kan gaan.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I hope that I can go to the Netherlands.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ik hoop",
+      "romanization": "ik hohp",
+      "nativeText": "Recall \"ik hoop\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik hoop dat ik naar Nederland kan gaan.\".",
+      "pronunciation": "ik hohp",
+      "exampleTarget": "Ik hoop dat ik naar Nederland kan gaan.",
+      "exampleNative": "Self-check against the model before moving on: “I hope that I can go to the Netherlands.”",
+      "korean": "ik hoop",
+      "english": "Recall \"ik hoop\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik hoop dat ik naar Nederland kan gaan.\".",
+      "example": "Ik hoop dat ik naar Nederland kan gaan.",
+      "exampleEnglish": "Self-check against the model before moving on: “I hope that I can go to the Netherlands.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ik hoop",
+      "romanization": "ik hohp",
+      "nativeText": "Repair \"ik hoop\" inside \"Ik hoop dat ik naar Nederland kan gaan.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I hope.” Often followed by a clause with subordinate word order.",
+      "pronunciation": "ik hohp",
+      "exampleTarget": "Ik hoop dat ik naar Nederland kan gaan.",
+      "exampleNative": "Use the model as the repair target: “I hope that I can go to the Netherlands.”",
+      "korean": "ik hoop",
+      "english": "Repair \"ik hoop\" inside \"Ik hoop dat ik naar Nederland kan gaan.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I hope.” Often followed by a clause with subordinate word order.",
+      "example": "Ik hoop dat ik naar Nederland kan gaan.",
+      "exampleEnglish": "Use the model as the repair target: “I hope that I can go to the Netherlands.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ik hoop",
+      "romanization": "ik hohp",
+      "nativeText": "Transfer \"ik hoop\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik hoop dat ik naar Nederland kan gaan.\".",
+      "pronunciation": "ik hohp",
+      "exampleTarget": "Ik hoop dat ik naar Nederland kan gaan.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I hope that I can go to the Netherlands.”",
+      "korean": "ik hoop",
+      "english": "Transfer \"ik hoop\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik hoop dat ik naar Nederland kan gaan.\".",
+      "example": "Ik hoop dat ik naar Nederland kan gaan.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I hope that I can go to the Netherlands.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ik hoop",
+      "romanization": "ik hohp",
+      "nativeText": "Find one word or phrase that naturally travels with \"ik hoop\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ik hohp",
+      "exampleTarget": "Ik hoop dat ik naar Nederland kan gaan.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I hope that I can go to the Netherlands.”",
+      "korean": "ik hoop",
+      "english": "Find one word or phrase that naturally travels with \"ik hoop\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik hoop dat ik naar Nederland kan gaan.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I hope that I can go to the Netherlands.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ik hoop",
+      "romanization": "ik hohp",
+      "nativeText": "Listen for \"ik hoop\" inside \"Ik hoop dat ik naar Nederland kan gaan.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ik hohp",
+      "exampleTarget": "Ik hoop dat ik naar Nederland kan gaan.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I hope that I can go to the Netherlands.”",
+      "korean": "ik hoop",
+      "english": "Listen for \"ik hoop\" inside \"Ik hoop dat ik naar Nederland kan gaan.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik hoop dat ik naar Nederland kan gaan.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I hope that I can go to the Netherlands.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ik hoop",
+      "romanization": "ik hohp",
+      "nativeText": "Write \"ik hoop\" again without looking, then compare the exact written form against \"Ik hoop dat ik naar Nederland kan gaan.\" before moving on.",
+      "pronunciation": "ik hohp",
+      "exampleTarget": "Ik hoop dat ik naar Nederland kan gaan.",
+      "exampleNative": "Use the written model as the final correctness check: “I hope that I can go to the Netherlands.”",
+      "korean": "ik hoop",
+      "english": "Write \"ik hoop\" again without looking, then compare the exact written form against \"Ik hoop dat ik naar Nederland kan gaan.\" before moving on.",
+      "example": "Ik hoop dat ik naar Nederland kan gaan.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I hope that I can go to the Netherlands.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ik hoop",
+      "romanization": "ik hohp",
+      "nativeText": "Check whether \"ik hoop\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I hope that I can go to the Netherlands.”",
+      "pronunciation": "ik hohp",
+      "exampleTarget": "Ik hoop dat ik naar Nederland kan gaan.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I hope that I can go to the Netherlands.”",
+      "korean": "ik hoop",
+      "english": "Check whether \"ik hoop\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I hope that I can go to the Netherlands.”",
+      "example": "Ik hoop dat ik naar Nederland kan gaan.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I hope that I can go to the Netherlands.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "worden",
+      "romanization": "VOR-den",
+      "nativeText": "“To become.” A core verb for career dreams.",
+      "pronunciation": "VOR-den",
+      "exampleTarget": "Ik wil leraar worden.",
+      "exampleNative": "“I want to become a teacher.”",
+      "korean": "worden",
+      "english": "“To become.” A core verb for career dreams.",
+      "example": "Ik wil leraar worden.",
+      "exampleEnglish": "“I want to become a teacher.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "Ik wil leraar worden.",
+      "romanization": "VOR-den",
+      "nativeText": "Model use for \"Ik wil leraar worden.\": “I want to become a teacher.”",
+      "pronunciation": "VOR-den",
+      "exampleTarget": "Ik wil leraar worden.",
+      "exampleNative": "“I want to become a teacher.”",
+      "korean": "Ik wil leraar worden.",
+      "english": "Model use for \"Ik wil leraar worden.\": “I want to become a teacher.”",
+      "example": "Ik wil leraar worden.",
+      "exampleEnglish": "“I want to become a teacher.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "worden",
+      "romanization": "VOR-den",
+      "nativeText": "Usage focus for \"worden\": “To become.” A core verb for career dreams.",
+      "pronunciation": "VOR-den",
+      "exampleTarget": "Ik wil leraar worden.",
+      "exampleNative": "Notice what the form is doing here: “I want to become a teacher.”",
+      "korean": "worden",
+      "english": "Usage focus for \"worden\": “To become.” A core verb for career dreams.",
+      "example": "Ik wil leraar worden.",
+      "exampleEnglish": "Notice what the form is doing here: “I want to become a teacher.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "worden",
+      "romanization": "VOR-den",
+      "nativeText": "Contrast check for \"worden\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "VOR-den",
+      "exampleTarget": "Ik wil leraar worden.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to become a teacher.”",
+      "korean": "worden",
+      "english": "Contrast check for \"worden\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik wil leraar worden.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to become a teacher.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "worden",
+      "romanization": "VOR-den",
+      "nativeText": "Recall \"worden\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik wil leraar worden.\".",
+      "pronunciation": "VOR-den",
+      "exampleTarget": "Ik wil leraar worden.",
+      "exampleNative": "Self-check against the model before moving on: “I want to become a teacher.”",
+      "korean": "worden",
+      "english": "Recall \"worden\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik wil leraar worden.\".",
+      "example": "Ik wil leraar worden.",
+      "exampleEnglish": "Self-check against the model before moving on: “I want to become a teacher.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "worden",
+      "romanization": "VOR-den",
+      "nativeText": "Repair \"worden\" inside \"Ik wil leraar worden.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To become.” A core verb for career dreams.",
+      "pronunciation": "VOR-den",
+      "exampleTarget": "Ik wil leraar worden.",
+      "exampleNative": "Use the model as the repair target: “I want to become a teacher.”",
+      "korean": "worden",
+      "english": "Repair \"worden\" inside \"Ik wil leraar worden.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To become.” A core verb for career dreams.",
+      "example": "Ik wil leraar worden.",
+      "exampleEnglish": "Use the model as the repair target: “I want to become a teacher.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "worden",
+      "romanization": "VOR-den",
+      "nativeText": "Transfer \"worden\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik wil leraar worden.\".",
+      "pronunciation": "VOR-den",
+      "exampleTarget": "Ik wil leraar worden.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to become a teacher.”",
+      "korean": "worden",
+      "english": "Transfer \"worden\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik wil leraar worden.\".",
+      "example": "Ik wil leraar worden.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to become a teacher.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "worden",
+      "romanization": "VOR-den",
+      "nativeText": "Find one word or phrase that naturally travels with \"worden\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "VOR-den",
+      "exampleTarget": "Ik wil leraar worden.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want to become a teacher.”",
+      "korean": "worden",
+      "english": "Find one word or phrase that naturally travels with \"worden\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik wil leraar worden.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want to become a teacher.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "worden",
+      "romanization": "VOR-den",
+      "nativeText": "Listen for \"worden\" inside \"Ik wil leraar worden.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "VOR-den",
+      "exampleTarget": "Ik wil leraar worden.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to become a teacher.”",
+      "korean": "worden",
+      "english": "Listen for \"worden\" inside \"Ik wil leraar worden.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik wil leraar worden.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to become a teacher.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "worden",
+      "romanization": "VOR-den",
+      "nativeText": "Write \"worden\" again without looking, then compare the exact written form against \"Ik wil leraar worden.\" before moving on.",
+      "pronunciation": "VOR-den",
+      "exampleTarget": "Ik wil leraar worden.",
+      "exampleNative": "Use the written model as the final correctness check: “I want to become a teacher.”",
+      "korean": "worden",
+      "english": "Write \"worden\" again without looking, then compare the exact written form against \"Ik wil leraar worden.\" before moving on.",
+      "example": "Ik wil leraar worden.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want to become a teacher.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "worden",
+      "romanization": "VOR-den",
+      "nativeText": "Check whether \"worden\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to become a teacher.”",
+      "pronunciation": "VOR-den",
+      "exampleTarget": "Ik wil leraar worden.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want to become a teacher.”",
+      "korean": "worden",
+      "english": "Check whether \"worden\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to become a teacher.”",
+      "example": "Ik wil leraar worden.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want to become a teacher.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "als ik de kans krijg",
+      "romanization": "als ik də kans khreykh",
+      "nativeText": "“If I get the chance.” A natural condition around future plans.",
+      "pronunciation": "als ik də kans khreykh",
+      "exampleTarget": "Als ik de kans krijg, wil ik in Amsterdam werken.",
+      "exampleNative": "“If I get the chance, I want to work in Amsterdam.”",
+      "korean": "als ik de kans krijg",
+      "english": "“If I get the chance.” A natural condition around future plans.",
+      "example": "Als ik de kans krijg, wil ik in Amsterdam werken.",
+      "exampleEnglish": "“If I get the chance, I want to work in Amsterdam.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "Als ik de kans krijg, wil ik in Amsterdam werken.",
+      "romanization": "als ik də kans khreykh",
+      "nativeText": "Model use for \"Als ik de kans krijg, wil ik in Amsterdam werken.\": “If I get the chance, I want to work in Amsterdam.”",
+      "pronunciation": "als ik də kans khreykh",
+      "exampleTarget": "Als ik de kans krijg, wil ik in Amsterdam werken.",
+      "exampleNative": "“If I get the chance, I want to work in Amsterdam.”",
+      "korean": "Als ik de kans krijg, wil ik in Amsterdam werken.",
+      "english": "Model use for \"Als ik de kans krijg, wil ik in Amsterdam werken.\": “If I get the chance, I want to work in Amsterdam.”",
+      "example": "Als ik de kans krijg, wil ik in Amsterdam werken.",
+      "exampleEnglish": "“If I get the chance, I want to work in Amsterdam.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "als ik de kans krijg",
+      "romanization": "als ik də kans khreykh",
+      "nativeText": "Usage focus for \"als ik de kans krijg\": “If I get the chance.” A natural condition around future plans.",
+      "pronunciation": "als ik də kans khreykh",
+      "exampleTarget": "Als ik de kans krijg, wil ik in Amsterdam werken.",
+      "exampleNative": "Notice what the form is doing here: “If I get the chance, I want to work in Amsterdam.”",
+      "korean": "als ik de kans krijg",
+      "english": "Usage focus for \"als ik de kans krijg\": “If I get the chance.” A natural condition around future plans.",
+      "example": "Als ik de kans krijg, wil ik in Amsterdam werken.",
+      "exampleEnglish": "Notice what the form is doing here: “If I get the chance, I want to work in Amsterdam.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "als ik de kans krijg",
+      "romanization": "als ik də kans khreykh",
+      "nativeText": "Contrast check for \"als ik de kans krijg\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "als ik də kans khreykh",
+      "exampleTarget": "Als ik de kans krijg, wil ik in Amsterdam werken.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “If I get the chance, I want to work in Amsterdam.”",
+      "korean": "als ik de kans krijg",
+      "english": "Contrast check for \"als ik de kans krijg\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Als ik de kans krijg, wil ik in Amsterdam werken.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “If I get the chance, I want to work in Amsterdam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "als ik de kans krijg",
+      "romanization": "als ik də kans khreykh",
+      "nativeText": "Recall \"als ik de kans krijg\" from memory, then explain what would change if a nearby alternative replaced it in \"Als ik de kans krijg, wil ik in Amsterdam werken.\".",
+      "pronunciation": "als ik də kans khreykh",
+      "exampleTarget": "Als ik de kans krijg, wil ik in Amsterdam werken.",
+      "exampleNative": "Self-check against the model before moving on: “If I get the chance, I want to work in Amsterdam.”",
+      "korean": "als ik de kans krijg",
+      "english": "Recall \"als ik de kans krijg\" from memory, then explain what would change if a nearby alternative replaced it in \"Als ik de kans krijg, wil ik in Amsterdam werken.\".",
+      "example": "Als ik de kans krijg, wil ik in Amsterdam werken.",
+      "exampleEnglish": "Self-check against the model before moving on: “If I get the chance, I want to work in Amsterdam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "als ik de kans krijg",
+      "romanization": "als ik də kans khreykh",
+      "nativeText": "Repair \"als ik de kans krijg\" inside \"Als ik de kans krijg, wil ik in Amsterdam werken.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “If I get the chance.” A natural condition around future plans.",
+      "pronunciation": "als ik də kans khreykh",
+      "exampleTarget": "Als ik de kans krijg, wil ik in Amsterdam werken.",
+      "exampleNative": "Use the model as the repair target: “If I get the chance, I want to work in Amsterdam.”",
+      "korean": "als ik de kans krijg",
+      "english": "Repair \"als ik de kans krijg\" inside \"Als ik de kans krijg, wil ik in Amsterdam werken.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “If I get the chance.” A natural condition around future plans.",
+      "example": "Als ik de kans krijg, wil ik in Amsterdam werken.",
+      "exampleEnglish": "Use the model as the repair target: “If I get the chance, I want to work in Amsterdam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "als ik de kans krijg",
+      "romanization": "als ik də kans khreykh",
+      "nativeText": "Transfer \"als ik de kans krijg\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Als ik de kans krijg, wil ik in Amsterdam werken.\".",
+      "pronunciation": "als ik də kans khreykh",
+      "exampleTarget": "Als ik de kans krijg, wil ik in Amsterdam werken.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “If I get the chance, I want to work in Amsterdam.”",
+      "korean": "als ik de kans krijg",
+      "english": "Transfer \"als ik de kans krijg\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Als ik de kans krijg, wil ik in Amsterdam werken.\".",
+      "example": "Als ik de kans krijg, wil ik in Amsterdam werken.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “If I get the chance, I want to work in Amsterdam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "als ik de kans krijg",
+      "romanization": "als ik də kans khreykh",
+      "nativeText": "Find one word or phrase that naturally travels with \"als ik de kans krijg\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "als ik də kans khreykh",
+      "exampleTarget": "Als ik de kans krijg, wil ik in Amsterdam werken.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “If I get the chance, I want to work in Amsterdam.”",
+      "korean": "als ik de kans krijg",
+      "english": "Find one word or phrase that naturally travels with \"als ik de kans krijg\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Als ik de kans krijg, wil ik in Amsterdam werken.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “If I get the chance, I want to work in Amsterdam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "als ik de kans krijg",
+      "romanization": "als ik də kans khreykh",
+      "nativeText": "Listen for \"als ik de kans krijg\" inside \"Als ik de kans krijg, wil ik in Amsterdam werken.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "als ik də kans khreykh",
+      "exampleTarget": "Als ik de kans krijg, wil ik in Amsterdam werken.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “If I get the chance, I want to work in Amsterdam.”",
+      "korean": "als ik de kans krijg",
+      "english": "Listen for \"als ik de kans krijg\" inside \"Als ik de kans krijg, wil ik in Amsterdam werken.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Als ik de kans krijg, wil ik in Amsterdam werken.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “If I get the chance, I want to work in Amsterdam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "als ik de kans krijg",
+      "romanization": "als ik də kans khreykh",
+      "nativeText": "Write \"als ik de kans krijg\" again without looking, then compare the exact written form against \"Als ik de kans krijg, wil ik in Amsterdam werken.\" before moving on.",
+      "pronunciation": "als ik də kans khreykh",
+      "exampleTarget": "Als ik de kans krijg, wil ik in Amsterdam werken.",
+      "exampleNative": "Use the written model as the final correctness check: “If I get the chance, I want to work in Amsterdam.”",
+      "korean": "als ik de kans krijg",
+      "english": "Write \"als ik de kans krijg\" again without looking, then compare the exact written form against \"Als ik de kans krijg, wil ik in Amsterdam werken.\" before moving on.",
+      "example": "Als ik de kans krijg, wil ik in Amsterdam werken.",
+      "exampleEnglish": "Use the written model as the final correctness check: “If I get the chance, I want to work in Amsterdam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "als ik de kans krijg",
+      "romanization": "als ik də kans khreykh",
+      "nativeText": "Check whether \"als ik de kans krijg\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “If I get the chance, I want to work in Amsterdam.”",
+      "pronunciation": "als ik də kans khreykh",
+      "exampleTarget": "Als ik de kans krijg, wil ik in Amsterdam werken.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “If I get the chance, I want to work in Amsterdam.”",
+      "korean": "als ik de kans krijg",
+      "english": "Check whether \"als ik de kans krijg\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “If I get the chance, I want to work in Amsterdam.”",
+      "example": "Als ik de kans krijg, wil ik in Amsterdam werken.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “If I get the chance, I want to work in Amsterdam.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ooit",
+      "romanization": "OYT",
+      "nativeText": "“Someday / ever.” A compact word for distant hopes.",
+      "pronunciation": "OYT",
+      "exampleTarget": "Ooit wil ik een boek schrijven.",
+      "exampleNative": "“Someday I want to write a book.”",
+      "korean": "ooit",
+      "english": "“Someday / ever.” A compact word for distant hopes.",
+      "example": "Ooit wil ik een boek schrijven.",
+      "exampleEnglish": "“Someday I want to write a book.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "Ooit wil ik een boek schrijven.",
+      "romanization": "OYT",
+      "nativeText": "Model use for \"Ooit wil ik een boek schrijven.\": “Someday I want to write a book.”",
+      "pronunciation": "OYT",
+      "exampleTarget": "Ooit wil ik een boek schrijven.",
+      "exampleNative": "“Someday I want to write a book.”",
+      "korean": "Ooit wil ik een boek schrijven.",
+      "english": "Model use for \"Ooit wil ik een boek schrijven.\": “Someday I want to write a book.”",
+      "example": "Ooit wil ik een boek schrijven.",
+      "exampleEnglish": "“Someday I want to write a book.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ooit",
+      "romanization": "OYT",
+      "nativeText": "Usage focus for \"ooit\": “Someday / ever.” A compact word for distant hopes.",
+      "pronunciation": "OYT",
+      "exampleTarget": "Ooit wil ik een boek schrijven.",
+      "exampleNative": "Notice what the form is doing here: “Someday I want to write a book.”",
+      "korean": "ooit",
+      "english": "Usage focus for \"ooit\": “Someday / ever.” A compact word for distant hopes.",
+      "example": "Ooit wil ik een boek schrijven.",
+      "exampleEnglish": "Notice what the form is doing here: “Someday I want to write a book.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ooit",
+      "romanization": "OYT",
+      "nativeText": "Contrast check for \"ooit\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "OYT",
+      "exampleTarget": "Ooit wil ik een boek schrijven.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Someday I want to write a book.”",
+      "korean": "ooit",
+      "english": "Contrast check for \"ooit\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ooit wil ik een boek schrijven.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Someday I want to write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ooit",
+      "romanization": "OYT",
+      "nativeText": "Recall \"ooit\" from memory, then explain what would change if a nearby alternative replaced it in \"Ooit wil ik een boek schrijven.\".",
+      "pronunciation": "OYT",
+      "exampleTarget": "Ooit wil ik een boek schrijven.",
+      "exampleNative": "Self-check against the model before moving on: “Someday I want to write a book.”",
+      "korean": "ooit",
+      "english": "Recall \"ooit\" from memory, then explain what would change if a nearby alternative replaced it in \"Ooit wil ik een boek schrijven.\".",
+      "example": "Ooit wil ik een boek schrijven.",
+      "exampleEnglish": "Self-check against the model before moving on: “Someday I want to write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ooit",
+      "romanization": "OYT",
+      "nativeText": "Repair \"ooit\" inside \"Ooit wil ik een boek schrijven.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Someday / ever.” A compact word for distant hopes.",
+      "pronunciation": "OYT",
+      "exampleTarget": "Ooit wil ik een boek schrijven.",
+      "exampleNative": "Use the model as the repair target: “Someday I want to write a book.”",
+      "korean": "ooit",
+      "english": "Repair \"ooit\" inside \"Ooit wil ik een boek schrijven.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Someday / ever.” A compact word for distant hopes.",
+      "example": "Ooit wil ik een boek schrijven.",
+      "exampleEnglish": "Use the model as the repair target: “Someday I want to write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ooit",
+      "romanization": "OYT",
+      "nativeText": "Transfer \"ooit\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ooit wil ik een boek schrijven.\".",
+      "pronunciation": "OYT",
+      "exampleTarget": "Ooit wil ik een boek schrijven.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Someday I want to write a book.”",
+      "korean": "ooit",
+      "english": "Transfer \"ooit\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ooit wil ik een boek schrijven.\".",
+      "example": "Ooit wil ik een boek schrijven.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Someday I want to write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ooit",
+      "romanization": "OYT",
+      "nativeText": "Find one word or phrase that naturally travels with \"ooit\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "OYT",
+      "exampleTarget": "Ooit wil ik een boek schrijven.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Someday I want to write a book.”",
+      "korean": "ooit",
+      "english": "Find one word or phrase that naturally travels with \"ooit\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ooit wil ik een boek schrijven.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Someday I want to write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ooit",
+      "romanization": "OYT",
+      "nativeText": "Listen for \"ooit\" inside \"Ooit wil ik een boek schrijven.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "OYT",
+      "exampleTarget": "Ooit wil ik een boek schrijven.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Someday I want to write a book.”",
+      "korean": "ooit",
+      "english": "Listen for \"ooit\" inside \"Ooit wil ik een boek schrijven.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ooit wil ik een boek schrijven.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Someday I want to write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ooit",
+      "romanization": "OYT",
+      "nativeText": "Write \"ooit\" again without looking, then compare the exact written form against \"Ooit wil ik een boek schrijven.\" before moving on.",
+      "pronunciation": "OYT",
+      "exampleTarget": "Ooit wil ik een boek schrijven.",
+      "exampleNative": "Use the written model as the final correctness check: “Someday I want to write a book.”",
+      "korean": "ooit",
+      "english": "Write \"ooit\" again without looking, then compare the exact written form against \"Ooit wil ik een boek schrijven.\" before moving on.",
+      "example": "Ooit wil ik een boek schrijven.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Someday I want to write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit21hopesdreams-vocabulary-1",
+        "nl-level1unit21hopesdreams-vocabulary-2",
+        "nl-level1unit21hopesdreams-grammar-1",
+        "nl-level1unit21hopesdreams-grammar-2",
+        "nl-level1unit21hopesdreams-reading",
+        "nl-level1unit21hopesdreams-listening",
+        "nl-level1unit21hopesdreams-writing",
+        "nl-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ooit",
+      "romanization": "OYT",
+      "nativeText": "Check whether \"ooit\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Someday I want to write a book.”",
+      "pronunciation": "OYT",
+      "exampleTarget": "Ooit wil ik een boek schrijven.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Someday I want to write a book.”",
+      "korean": "ooit",
+      "english": "Check whether \"ooit\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Someday I want to write a book.”",
+      "example": "Ooit wil ik een boek schrijven.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Someday I want to write a book.”"
+    }
+  ],
+  "targetLang": "nl",
+  "nativeLang": "en",
+  "track": "textbook"
+};

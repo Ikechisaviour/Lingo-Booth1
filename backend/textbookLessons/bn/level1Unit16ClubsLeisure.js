@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('bn', {
-  slug: 'bn-l1u16',
-  title: 'Level 1 · Unit 16: ক্লাব ও অবসর — Clubs and Leisure',
-  category: 'leisure',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Talk about hobbies, clubs, and what you do in your free time.',
-  vocabularyGoal: 'Use hobby words, club words, and frequency expressions.',
-  grammarGoal: 'Use verbal nouns or infinitive-like forms with `ভালো লাগে` and simple frequency words.',
-  speakingGoal: 'Describe one hobby, ask about another person’s hobby, and recommend a club.',
-  task: 'Introduce your hobby and choose one student club.',
-  expressionPractice: [
-    practice('stating-hobby', 'Stating hobby', 'Use one activity plus `ভালো লাগে`.'),
-    practice('frequency', 'Talking frequency', 'Use `প্রায়ই` or `কখনও কখনও`.'),
-    practice('recommending', 'Recommending club', 'Give one reason with `কারণ`.'),
+module.exports = {
+  "title": "Level 1 · Unit 16: ক্লাব ও অবসর — Clubs and Leisure",
+  "category": "leisure",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "bn-level1unit16clubsleisure-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Talk about hobbies, clubs, and what you do in your free time."
+      ],
+      "task": "Introduce your hobby and choose one student club."
+    },
+    {
+      "id": "bn-level1unit16clubsleisure-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "bn-level1unit16clubsleisure-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 16: ক্লাব ও অবসর — Clubs and Leisure with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "bn-level1unit16clubsleisure-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 16: ক্লাব ও অবসর — Clubs and Leisure sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "bn-level1unit16clubsleisure-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Talk about hobbies, clubs, and what you do in your free time."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "bn-level1unit16clubsleisure-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 16: ক্লাব ও অবসর — Clubs and Leisure with one nearby Bengali form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "bn-level1unit16clubsleisure-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "bn-level1unit16clubsleisure-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "bn-level1unit16clubsleisure-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "bn-level1unit16clubsleisure-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "bn-level1unit16clubsleisure-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Introduce your hobby and choose one student club."
+      ],
+      "task": "Introduce your hobby and choose one student club."
+    }
   ],
-  relatedPools: ['topic-leisure', 'topic-campus'],
-  items: [
-    item('শখ', 'shokh', '“Hobby.” A practical personal-introduction noun.', 'আমার শখ ছবি তোলা।', '“My hobby is taking photos.”'),
-    item('ক্লাব', 'klab', '“Club.” Useful for campus and social groups.', 'আমি নাট্য ক্লাবে যোগ দিচ্ছি।', '“I am joining the drama club.”'),
-    item('বই পড়তে ভালো লাগে', 'boi poṛte bhalo lage', '“I like reading books.” A natural liking construction.', 'আমার উপন্যাস পড়তে ভালো লাগে।', '“I like reading novels.”'),
-    item('গিটার বাজানো', 'gitar bajano', '“Playing guitar.”', 'তার গিটার বাজানো ভালো লাগে।', '“She likes playing guitar.”'),
-    item('খেলাধুলা', 'kheladhula', '“Sports / play.” A common leisure noun.', 'আমি সপ্তাহে তিন দিন খেলাধুলা করি।', '“I play sports three days a week.”'),
-    item('প্রায়ই', 'prayi', '“Often.” A useful frequency word.', 'আমরা প্রায়ই সিনেমা দেখি।', '“We often watch films.”'),
-    item('কখনও কখনও', 'kokhono kokhono', '“Sometimes.” Repetition creates the frequency meaning.', 'কখনও কখনও আমি রান্না করি।', '“Sometimes I cook.”'),
-    item('অবসর সময়', 'obshor shomoy', '“Free time.” A useful hobby-question frame.', 'অবসর সময়ে আপনি কী করেন?', '“What do you do in your free time?”'),
+  "expressionPractice": [
+    {
+      "id": "stating-hobby",
+      "label": "Stating hobby",
+      "goal": "Use one activity plus `ভালো লাগে`."
+    },
+    {
+      "id": "frequency",
+      "label": "Talking frequency",
+      "goal": "Use `প্রায়ই` or `কখনও কখনও`."
+    },
+    {
+      "id": "recommending",
+      "label": "Recommending club",
+      "goal": "Give one reason with `কারণ`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-leisure",
+    "topic-campus"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-orientation"
+      ],
+      "targetText": "পাঠের লক্ষ্য",
+      "romanization": "",
+      "nativeText": "Talk about hobbies, clubs, and what you do in your free time.",
+      "pronunciation": "",
+      "exampleTarget": "পাঠের লক্ষ্য",
+      "exampleNative": "The whole lesson is built toward this outcome: Introduce your hobby and choose one student club.",
+      "korean": "পাঠের লক্ষ্য",
+      "english": "Talk about hobbies, clubs, and what you do in your free time.",
+      "example": "পাঠের লক্ষ্য",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Introduce your hobby and choose one student club."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-pronunciation"
+      ],
+      "targetText": "উচ্চারণ পরীক্ষা",
+      "romanization": "",
+      "nativeText": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আমার শখ ছবি তোলা।\".",
+      "pronunciation": "",
+      "exampleTarget": "আমার শখ ছবি তোলা।",
+      "exampleNative": "“My hobby is taking photos.”",
+      "korean": "উচ্চারণ পরীক্ষা",
+      "english": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আমার শখ ছবি তোলা।\".",
+      "example": "আমার শখ ছবি তোলা।",
+      "exampleEnglish": "“My hobby is taking photos.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1"
+      ],
+      "targetText": "শখ",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 16: ক্লাব ও অবসর — Clubs and Leisure with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "আমার শখ ছবি তোলা।",
+      "exampleNative": "“My hobby is taking photos.”",
+      "korean": "শখ",
+      "english": "Use the key language of Level 1 · Unit 16: ক্লাব ও অবসর — Clubs and Leisure with the register and setting that the lesson requires.",
+      "example": "আমার শখ ছবি তোলা।",
+      "exampleEnglish": "“My hobby is taking photos.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-2"
+      ],
+      "targetText": "ক্লাব",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 16: ক্লাব ও অবসর — Clubs and Leisure sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "আমি নাট্য ক্লাবে যোগ দিচ্ছি।",
+      "exampleNative": "“I am joining the drama club.”",
+      "korean": "ক্লাব",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 16: ক্লাব ও অবসর — Clubs and Leisure sound precise rather than merely understandable.",
+      "example": "আমি নাট্য ক্লাবে যোগ দিচ্ছি।",
+      "exampleEnglish": "“I am joining the drama club.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-grammar-1"
+      ],
+      "targetText": "শখ",
+      "romanization": "",
+      "nativeText": "Talk about hobbies, clubs, and what you do in your free time.",
+      "pronunciation": "",
+      "exampleTarget": "আমার শখ ছবি তোলা।",
+      "exampleNative": "“My hobby is taking photos.”",
+      "korean": "শখ",
+      "english": "Talk about hobbies, clubs, and what you do in your free time.",
+      "example": "আমার শখ ছবি তোলা।",
+      "exampleEnglish": "“My hobby is taking photos.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-grammar-2"
+      ],
+      "targetText": "ক্লাব",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 16: ক্লাব ও অবসর — Clubs and Leisure with one nearby Bengali form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "আমি নাট্য ক্লাবে যোগ দিচ্ছি।",
+      "exampleNative": "“I am joining the drama club.”",
+      "korean": "ক্লাব",
+      "english": "Contrast the main pattern in Level 1 · Unit 16: ক্লাব ও অবসর — Clubs and Leisure with one nearby Bengali form so the learner can avoid literal translation.",
+      "example": "আমি নাট্য ক্লাবে যোগ দিচ্ছি।",
+      "exampleEnglish": "“I am joining the drama club.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-reading"
+      ],
+      "targetText": "পাঠ মডেল",
+      "romanization": "",
+      "nativeText": "Read \"অবসর সময়ে আপনি কী করেন?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "অবসর সময়ে আপনি কী করেন?",
+      "exampleNative": "“What do you do in your free time?”",
+      "korean": "পাঠ মডেল",
+      "english": "Read \"অবসর সময়ে আপনি কী করেন?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "অবসর সময়ে আপনি কী করেন?",
+      "exampleEnglish": "“What do you do in your free time?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-listening"
+      ],
+      "targetText": "সংলাপ মডেল",
+      "romanization": "",
+      "nativeText": "Hear \"অবসর সময়ে আপনি কী করেন?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "অবসর সময়ে আপনি কী করেন?",
+      "exampleNative": "“What do you do in your free time?”",
+      "korean": "সংলাপ মডেল",
+      "english": "Hear \"অবসর সময়ে আপনি কী করেন?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "অবসর সময়ে আপনি কী করেন?",
+      "exampleEnglish": "“What do you do in your free time?”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-writing"
+      ],
+      "targetText": "লেখার অনুশীলন",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"আমার শখ ছবি তোলা।\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "আমার শখ ছবি তোলা।",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "লেখার অনুশীলন",
+      "english": "Write your own version after studying \"আমার শখ ছবি তোলা।\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "আমার শখ ছবি তোলা।",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-culture"
+      ],
+      "targetText": "ব্যবহার ও প্রসঙ্গ",
+      "romanization": "",
+      "nativeText": "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "আমি নাট্য ক্লাবে যোগ দিচ্ছি।",
+      "exampleNative": "“I am joining the drama club.”",
+      "korean": "ব্যবহার ও প্রসঙ্গ",
+      "english": "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used.",
+      "example": "আমি নাট্য ক্লাবে যোগ দিচ্ছি।",
+      "exampleEnglish": "“I am joining the drama club.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "চূড়ান্ত কাজ",
+      "romanization": "",
+      "nativeText": "Introduce your hobby and choose one student club.",
+      "pronunciation": "",
+      "exampleTarget": "অবসর সময়ে আপনি কী করেন?",
+      "exampleNative": "Introduce your hobby and choose one student club.",
+      "korean": "চূড়ান্ত কাজ",
+      "english": "Introduce your hobby and choose one student club.",
+      "example": "অবসর সময়ে আপনি কী করেন?",
+      "exampleEnglish": "Introduce your hobby and choose one student club."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-grammar-2"
+      ],
+      "targetText": "সাধারণ ভুল",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around pronoun levels, verb agreement, case markers, and register. Begin by checking \"আমি নাট্য ক্লাবে যোগ দিচ্ছি।\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "আমি নাট্য ক্লাবে যোগ দিচ্ছি।",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “I am joining the drama club.”",
+      "korean": "সাধারণ ভুল",
+      "english": "Watch for literal-translation mistakes around pronoun levels, verb agreement, case markers, and register. Begin by checking \"আমি নাট্য ক্লাবে যোগ দিচ্ছি।\" against the model.",
+      "example": "আমি নাট্য ক্লাবে যোগ দিচ্ছি।",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “I am joining the drama club.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-culture"
+      ],
+      "targetText": "রেজিস্টার",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for familiar, respectful, or formal Bengali before selecting pronouns and verb endings. Compare the social fit of \"আমার শখ ছবি তোলা।\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "আমার শখ ছবি তোলা।",
+      "exampleNative": "“My hobby is taking photos.”",
+      "korean": "রেজিস্টার",
+      "english": "Check whether the setting calls for familiar, respectful, or formal Bengali before selecting pronouns and verb endings. Compare the social fit of \"আমার শখ ছবি তোলা।\" before reusing it elsewhere.",
+      "example": "আমার শখ ছবি তোলা।",
+      "exampleEnglish": "“My hobby is taking photos.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "সাবলীলতা",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Bengali message rather than as separate translated fragments. Aim to carry \"অবসর সময়ে আপনি কী করেন?\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "অবসর সময়ে আপনি কী করেন?",
+      "exampleNative": "“What do you do in your free time?”",
+      "korean": "সাবলীলতা",
+      "english": "Say the idea as one connected Bengali message rather than as separate translated fragments. Aim to carry \"অবসর সময়ে আপনি কী করেন?\" as one thought.",
+      "example": "অবসর সময়ে আপনি কী করেন?",
+      "exampleEnglish": "“What do you do in your free time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "প্রয়োগ",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"আমার শখ ছবি তোলা।\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "আমার শখ ছবি তোলা।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "প্রয়োগ",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"আমার শখ ছবি তোলা।\" and move it into your own life.",
+      "example": "আমার শখ ছবি তোলা।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-grammar-1"
+      ],
+      "targetText": "স্মরণ",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"শখ\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "শখ",
+      "exampleNative": "“Hobby.” A practical personal-introduction noun.",
+      "korean": "স্মরণ",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"শখ\" before looking back.",
+      "example": "শখ",
+      "exampleEnglish": "“Hobby.” A practical personal-introduction noun."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-writing"
+      ],
+      "targetText": "বিস্তার",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"অবসর সময়ে আপনি কী করেন?\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "অবসর সময়ে আপনি কী করেন?",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "বিস্তার",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"অবসর সময়ে আপনি কী করেন?\" rather than restarting from a blank sentence.",
+      "example": "অবসর সময়ে আপনি কী করেন?",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading"
+      ],
+      "targetText": "তুলনা",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 16: ক্লাব ও অবসর — Clubs and Leisure with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"আমি নাট্য ক্লাবে যোগ দিচ্ছি।\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "আমি নাট্য ক্লাবে যোগ দিচ্ছি।",
+      "exampleNative": "“I am joining the drama club.”",
+      "korean": "তুলনা",
+      "english": "Compare the central form in Level 1 · Unit 16: ক্লাব ও অবসর — Clubs and Leisure with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"আমি নাট্য ক্লাবে যোগ দিচ্ছি।\" as the comparison line.",
+      "example": "আমি নাট্য ক্লাবে যোগ দিচ্ছি।",
+      "exampleEnglish": "“I am joining the drama club.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-pronunciation"
+      ],
+      "targetText": "উচ্চারণ সংশোধন",
+      "romanization": "",
+      "nativeText": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আমার শখ ছবি তোলা।\".",
+      "pronunciation": "",
+      "exampleTarget": "আমার শখ ছবি তোলা।",
+      "exampleNative": "“My hobby is taking photos.”",
+      "korean": "উচ্চারণ সংশোধন",
+      "english": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আমার শখ ছবি তোলা।\".",
+      "example": "আমার শখ ছবি তোলা।",
+      "exampleEnglish": "“My hobby is taking photos.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "সংলাপ পরিবর্তন",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"অবসর সময়ে আপনি কী করেন?\".",
+      "pronunciation": "",
+      "exampleTarget": "অবসর সময়ে আপনি কী করেন?",
+      "exampleNative": "“What do you do in your free time?”",
+      "korean": "সংলাপ পরিবর্তন",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"অবসর সময়ে আপনি কী করেন?\".",
+      "example": "অবসর সময়ে আপনি কী করেন?",
+      "exampleEnglish": "“What do you do in your free time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-writing"
+      ],
+      "targetText": "বাক্য গঠন",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"আমার শখ ছবি তোলা।\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "আমার শখ ছবি তোলা।",
+      "exampleNative": "“My hobby is taking photos.”",
+      "korean": "বাক্য গঠন",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"আমার শখ ছবি তোলা।\" one layer at a time.",
+      "example": "আমার শখ ছবি তোলা।",
+      "exampleEnglish": "“My hobby is taking photos.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-2"
+      ],
+      "targetText": "দ্রুত পরীক্ষা",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"আমি নাট্য ক্লাবে যোগ দিচ্ছি।\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "আমি নাট্য ক্লাবে যোগ দিচ্ছি।",
+      "exampleNative": "“I am joining the drama club.”",
+      "korean": "দ্রুত পরীক্ষা",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"আমি নাট্য ক্লাবে যোগ দিচ্ছি।\" as the deciding example.",
+      "example": "আমি নাট্য ক্লাবে যোগ দিচ্ছি।",
+      "exampleEnglish": "“I am joining the drama club.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-culture",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "পুনরালোচনা",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"অবসর সময়ে আপনি কী করেন?\".",
+      "pronunciation": "",
+      "exampleTarget": "অবসর সময়ে আপনি কী করেন?",
+      "exampleNative": "“What do you do in your free time?”",
+      "korean": "পুনরালোচনা",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"অবসর সময়ে আপনি কী করেন?\".",
+      "example": "অবসর সময়ে আপনি কী করেন?",
+      "exampleEnglish": "“What do you do in your free time?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "শখ",
+      "romanization": "shokh",
+      "nativeText": "“Hobby.” A practical personal-introduction noun.",
+      "pronunciation": "shokh",
+      "exampleTarget": "আমার শখ ছবি তোলা।",
+      "exampleNative": "“My hobby is taking photos.”",
+      "korean": "শখ",
+      "english": "“Hobby.” A practical personal-introduction noun.",
+      "example": "আমার শখ ছবি তোলা।",
+      "exampleEnglish": "“My hobby is taking photos.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "আমার শখ ছবি তোলা।",
+      "romanization": "shokh",
+      "nativeText": "Model use for \"আমার শখ ছবি তোলা।\": “My hobby is taking photos.”",
+      "pronunciation": "shokh",
+      "exampleTarget": "আমার শখ ছবি তোলা।",
+      "exampleNative": "“My hobby is taking photos.”",
+      "korean": "আমার শখ ছবি তোলা।",
+      "english": "Model use for \"আমার শখ ছবি তোলা।\": “My hobby is taking photos.”",
+      "example": "আমার শখ ছবি তোলা।",
+      "exampleEnglish": "“My hobby is taking photos.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "শখ",
+      "romanization": "shokh",
+      "nativeText": "Usage focus for \"শখ\": Use the key language of Level 1 · Unit 16: ক্লাব ও অবসর — Clubs and Leisure with the register and setting that the lesson requires.",
+      "pronunciation": "shokh",
+      "exampleTarget": "আমার শখ ছবি তোলা।",
+      "exampleNative": "Notice what the form is doing here: “My hobby is taking photos.”",
+      "korean": "শখ",
+      "english": "Usage focus for \"শখ\": Use the key language of Level 1 · Unit 16: ক্লাব ও অবসর — Clubs and Leisure with the register and setting that the lesson requires.",
+      "example": "আমার শখ ছবি তোলা।",
+      "exampleEnglish": "Notice what the form is doing here: “My hobby is taking photos.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "শখ",
+      "romanization": "shokh",
+      "nativeText": "Contrast check for \"শখ\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "shokh",
+      "exampleTarget": "আমার শখ ছবি তোলা।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My hobby is taking photos.”",
+      "korean": "শখ",
+      "english": "Contrast check for \"শখ\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আমার শখ ছবি তোলা।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My hobby is taking photos.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "শখ",
+      "romanization": "shokh",
+      "nativeText": "Recall \"শখ\" from memory, then explain what would change if a nearby alternative replaced it in \"আমার শখ ছবি তোলা।\".",
+      "pronunciation": "shokh",
+      "exampleTarget": "আমার শখ ছবি তোলা।",
+      "exampleNative": "Self-check against the model before moving on: “My hobby is taking photos.”",
+      "korean": "শখ",
+      "english": "Recall \"শখ\" from memory, then explain what would change if a nearby alternative replaced it in \"আমার শখ ছবি তোলা।\".",
+      "example": "আমার শখ ছবি তোলা।",
+      "exampleEnglish": "Self-check against the model before moving on: “My hobby is taking photos.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "শখ",
+      "romanization": "shokh",
+      "nativeText": "Repair \"শখ\" inside \"আমার শখ ছবি তোলা।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 16: ক্লাব ও অবসর — Clubs and Leisure with the register and setting that the lesson requires.",
+      "pronunciation": "shokh",
+      "exampleTarget": "আমার শখ ছবি তোলা।",
+      "exampleNative": "Use the model as the repair target: “My hobby is taking photos.”",
+      "korean": "শখ",
+      "english": "Repair \"শখ\" inside \"আমার শখ ছবি তোলা।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 16: ক্লাব ও অবসর — Clubs and Leisure with the register and setting that the lesson requires.",
+      "example": "আমার শখ ছবি তোলা।",
+      "exampleEnglish": "Use the model as the repair target: “My hobby is taking photos.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "শখ",
+      "romanization": "shokh",
+      "nativeText": "Transfer \"শখ\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমার শখ ছবি তোলা।\".",
+      "pronunciation": "shokh",
+      "exampleTarget": "আমার শখ ছবি তোলা।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “My hobby is taking photos.”",
+      "korean": "শখ",
+      "english": "Transfer \"শখ\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমার শখ ছবি তোলা।\".",
+      "example": "আমার শখ ছবি তোলা।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “My hobby is taking photos.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "শখ",
+      "romanization": "shokh",
+      "nativeText": "Find one word or phrase that naturally travels with \"শখ\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "shokh",
+      "exampleTarget": "আমার শখ ছবি তোলা।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “My hobby is taking photos.”",
+      "korean": "শখ",
+      "english": "Find one word or phrase that naturally travels with \"শখ\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আমার শখ ছবি তোলা।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “My hobby is taking photos.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "শখ",
+      "romanization": "shokh",
+      "nativeText": "Listen for \"শখ\" inside \"আমার শখ ছবি তোলা।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "shokh",
+      "exampleTarget": "আমার শখ ছবি তোলা।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My hobby is taking photos.”",
+      "korean": "শখ",
+      "english": "Listen for \"শখ\" inside \"আমার শখ ছবি তোলা।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আমার শখ ছবি তোলা।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My hobby is taking photos.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "শখ",
+      "romanization": "shokh",
+      "nativeText": "Write \"শখ\" again without looking, then compare the exact written form against \"আমার শখ ছবি তোলা।\" before moving on.",
+      "pronunciation": "shokh",
+      "exampleTarget": "আমার শখ ছবি তোলা।",
+      "exampleNative": "Use the written model as the final correctness check: “My hobby is taking photos.”",
+      "korean": "শখ",
+      "english": "Write \"শখ\" again without looking, then compare the exact written form against \"আমার শখ ছবি তোলা।\" before moving on.",
+      "example": "আমার শখ ছবি তোলা।",
+      "exampleEnglish": "Use the written model as the final correctness check: “My hobby is taking photos.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "শখ",
+      "romanization": "shokh",
+      "nativeText": "Check whether \"শখ\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My hobby is taking photos.”",
+      "pronunciation": "shokh",
+      "exampleTarget": "আমার শখ ছবি তোলা।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “My hobby is taking photos.”",
+      "korean": "শখ",
+      "english": "Check whether \"শখ\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My hobby is taking photos.”",
+      "example": "আমার শখ ছবি তোলা।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “My hobby is taking photos.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "ক্লাব",
+      "romanization": "klab",
+      "nativeText": "“Club.” Useful for campus and social groups.",
+      "pronunciation": "klab",
+      "exampleTarget": "আমি নাট্য ক্লাবে যোগ দিচ্ছি।",
+      "exampleNative": "“I am joining the drama club.”",
+      "korean": "ক্লাব",
+      "english": "“Club.” Useful for campus and social groups.",
+      "example": "আমি নাট্য ক্লাবে যোগ দিচ্ছি।",
+      "exampleEnglish": "“I am joining the drama club.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "আমি নাট্য ক্লাবে যোগ দিচ্ছি।",
+      "romanization": "klab",
+      "nativeText": "Model use for \"আমি নাট্য ক্লাবে যোগ দিচ্ছি।\": “I am joining the drama club.”",
+      "pronunciation": "klab",
+      "exampleTarget": "আমি নাট্য ক্লাবে যোগ দিচ্ছি।",
+      "exampleNative": "“I am joining the drama club.”",
+      "korean": "আমি নাট্য ক্লাবে যোগ দিচ্ছি।",
+      "english": "Model use for \"আমি নাট্য ক্লাবে যোগ দিচ্ছি।\": “I am joining the drama club.”",
+      "example": "আমি নাট্য ক্লাবে যোগ দিচ্ছি।",
+      "exampleEnglish": "“I am joining the drama club.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "ক্লাব",
+      "romanization": "klab",
+      "nativeText": "Usage focus for \"ক্লাব\": Distinguish the nearby wording choices that make Level 1 · Unit 16: ক্লাব ও অবসর — Clubs and Leisure sound precise rather than merely understandable.",
+      "pronunciation": "klab",
+      "exampleTarget": "আমি নাট্য ক্লাবে যোগ দিচ্ছি।",
+      "exampleNative": "Notice what the form is doing here: “I am joining the drama club.”",
+      "korean": "ক্লাব",
+      "english": "Usage focus for \"ক্লাব\": Distinguish the nearby wording choices that make Level 1 · Unit 16: ক্লাব ও অবসর — Clubs and Leisure sound precise rather than merely understandable.",
+      "example": "আমি নাট্য ক্লাবে যোগ দিচ্ছি।",
+      "exampleEnglish": "Notice what the form is doing here: “I am joining the drama club.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "ক্লাব",
+      "romanization": "klab",
+      "nativeText": "Contrast check for \"ক্লাব\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "klab",
+      "exampleTarget": "আমি নাট্য ক্লাবে যোগ দিচ্ছি।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am joining the drama club.”",
+      "korean": "ক্লাব",
+      "english": "Contrast check for \"ক্লাব\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আমি নাট্য ক্লাবে যোগ দিচ্ছি।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am joining the drama club.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "ক্লাব",
+      "romanization": "klab",
+      "nativeText": "Recall \"ক্লাব\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি নাট্য ক্লাবে যোগ দিচ্ছি।\".",
+      "pronunciation": "klab",
+      "exampleTarget": "আমি নাট্য ক্লাবে যোগ দিচ্ছি।",
+      "exampleNative": "Self-check against the model before moving on: “I am joining the drama club.”",
+      "korean": "ক্লাব",
+      "english": "Recall \"ক্লাব\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি নাট্য ক্লাবে যোগ দিচ্ছি।\".",
+      "example": "আমি নাট্য ক্লাবে যোগ দিচ্ছি।",
+      "exampleEnglish": "Self-check against the model before moving on: “I am joining the drama club.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "ক্লাব",
+      "romanization": "klab",
+      "nativeText": "Repair \"ক্লাব\" inside \"আমি নাট্য ক্লাবে যোগ দিচ্ছি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 16: ক্লাব ও অবসর — Clubs and Leisure sound precise rather than merely understandable.",
+      "pronunciation": "klab",
+      "exampleTarget": "আমি নাট্য ক্লাবে যোগ দিচ্ছি।",
+      "exampleNative": "Use the model as the repair target: “I am joining the drama club.”",
+      "korean": "ক্লাব",
+      "english": "Repair \"ক্লাব\" inside \"আমি নাট্য ক্লাবে যোগ দিচ্ছি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 16: ক্লাব ও অবসর — Clubs and Leisure sound precise rather than merely understandable.",
+      "example": "আমি নাট্য ক্লাবে যোগ দিচ্ছি।",
+      "exampleEnglish": "Use the model as the repair target: “I am joining the drama club.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "ক্লাব",
+      "romanization": "klab",
+      "nativeText": "Transfer \"ক্লাব\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি নাট্য ক্লাবে যোগ দিচ্ছি।\".",
+      "pronunciation": "klab",
+      "exampleTarget": "আমি নাট্য ক্লাবে যোগ দিচ্ছি।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am joining the drama club.”",
+      "korean": "ক্লাব",
+      "english": "Transfer \"ক্লাব\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি নাট্য ক্লাবে যোগ দিচ্ছি।\".",
+      "example": "আমি নাট্য ক্লাবে যোগ দিচ্ছি।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am joining the drama club.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "ক্লাব",
+      "romanization": "klab",
+      "nativeText": "Find one word or phrase that naturally travels with \"ক্লাব\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "klab",
+      "exampleTarget": "আমি নাট্য ক্লাবে যোগ দিচ্ছি।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I am joining the drama club.”",
+      "korean": "ক্লাব",
+      "english": "Find one word or phrase that naturally travels with \"ক্লাব\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আমি নাট্য ক্লাবে যোগ দিচ্ছি।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I am joining the drama club.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "ক্লাব",
+      "romanization": "klab",
+      "nativeText": "Listen for \"ক্লাব\" inside \"আমি নাট্য ক্লাবে যোগ দিচ্ছি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "klab",
+      "exampleTarget": "আমি নাট্য ক্লাবে যোগ দিচ্ছি।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am joining the drama club.”",
+      "korean": "ক্লাব",
+      "english": "Listen for \"ক্লাব\" inside \"আমি নাট্য ক্লাবে যোগ দিচ্ছি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আমি নাট্য ক্লাবে যোগ দিচ্ছি।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am joining the drama club.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "ক্লাব",
+      "romanization": "klab",
+      "nativeText": "Write \"ক্লাব\" again without looking, then compare the exact written form against \"আমি নাট্য ক্লাবে যোগ দিচ্ছি।\" before moving on.",
+      "pronunciation": "klab",
+      "exampleTarget": "আমি নাট্য ক্লাবে যোগ দিচ্ছি।",
+      "exampleNative": "Use the written model as the final correctness check: “I am joining the drama club.”",
+      "korean": "ক্লাব",
+      "english": "Write \"ক্লাব\" again without looking, then compare the exact written form against \"আমি নাট্য ক্লাবে যোগ দিচ্ছি।\" before moving on.",
+      "example": "আমি নাট্য ক্লাবে যোগ দিচ্ছি।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I am joining the drama club.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "ক্লাব",
+      "romanization": "klab",
+      "nativeText": "Check whether \"ক্লাব\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am joining the drama club.”",
+      "pronunciation": "klab",
+      "exampleTarget": "আমি নাট্য ক্লাবে যোগ দিচ্ছি।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I am joining the drama club.”",
+      "korean": "ক্লাব",
+      "english": "Check whether \"ক্লাব\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am joining the drama club.”",
+      "example": "আমি নাট্য ক্লাবে যোগ দিচ্ছি।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I am joining the drama club.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "বই পড়তে ভালো লাগে",
+      "romanization": "boi poṛte bhalo lage",
+      "nativeText": "“I like reading books.” A natural liking construction.",
+      "pronunciation": "boi poṛte bhalo lage",
+      "exampleTarget": "আমার উপন্যাস পড়তে ভালো লাগে।",
+      "exampleNative": "“I like reading novels.”",
+      "korean": "বই পড়তে ভালো লাগে",
+      "english": "“I like reading books.” A natural liking construction.",
+      "example": "আমার উপন্যাস পড়তে ভালো লাগে।",
+      "exampleEnglish": "“I like reading novels.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "আমার উপন্যাস পড়তে ভালো লাগে।",
+      "romanization": "boi poṛte bhalo lage",
+      "nativeText": "Model use for \"আমার উপন্যাস পড়তে ভালো লাগে।\": “I like reading novels.”",
+      "pronunciation": "boi poṛte bhalo lage",
+      "exampleTarget": "আমার উপন্যাস পড়তে ভালো লাগে।",
+      "exampleNative": "“I like reading novels.”",
+      "korean": "আমার উপন্যাস পড়তে ভালো লাগে।",
+      "english": "Model use for \"আমার উপন্যাস পড়তে ভালো লাগে।\": “I like reading novels.”",
+      "example": "আমার উপন্যাস পড়তে ভালো লাগে।",
+      "exampleEnglish": "“I like reading novels.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "বই পড়তে ভালো লাগে",
+      "romanization": "boi poṛte bhalo lage",
+      "nativeText": "Usage focus for \"বই পড়তে ভালো লাগে\": “I like reading books.” A natural liking construction.",
+      "pronunciation": "boi poṛte bhalo lage",
+      "exampleTarget": "আমার উপন্যাস পড়তে ভালো লাগে।",
+      "exampleNative": "Notice what the form is doing here: “I like reading novels.”",
+      "korean": "বই পড়তে ভালো লাগে",
+      "english": "Usage focus for \"বই পড়তে ভালো লাগে\": “I like reading books.” A natural liking construction.",
+      "example": "আমার উপন্যাস পড়তে ভালো লাগে।",
+      "exampleEnglish": "Notice what the form is doing here: “I like reading novels.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "বই পড়তে ভালো লাগে",
+      "romanization": "boi poṛte bhalo lage",
+      "nativeText": "Contrast check for \"বই পড়তে ভালো লাগে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "boi poṛte bhalo lage",
+      "exampleTarget": "আমার উপন্যাস পড়তে ভালো লাগে।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like reading novels.”",
+      "korean": "বই পড়তে ভালো লাগে",
+      "english": "Contrast check for \"বই পড়তে ভালো লাগে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আমার উপন্যাস পড়তে ভালো লাগে।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like reading novels.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "বই পড়তে ভালো লাগে",
+      "romanization": "boi poṛte bhalo lage",
+      "nativeText": "Recall \"বই পড়তে ভালো লাগে\" from memory, then explain what would change if a nearby alternative replaced it in \"আমার উপন্যাস পড়তে ভালো লাগে।\".",
+      "pronunciation": "boi poṛte bhalo lage",
+      "exampleTarget": "আমার উপন্যাস পড়তে ভালো লাগে।",
+      "exampleNative": "Self-check against the model before moving on: “I like reading novels.”",
+      "korean": "বই পড়তে ভালো লাগে",
+      "english": "Recall \"বই পড়তে ভালো লাগে\" from memory, then explain what would change if a nearby alternative replaced it in \"আমার উপন্যাস পড়তে ভালো লাগে।\".",
+      "example": "আমার উপন্যাস পড়তে ভালো লাগে।",
+      "exampleEnglish": "Self-check against the model before moving on: “I like reading novels.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "বই পড়তে ভালো লাগে",
+      "romanization": "boi poṛte bhalo lage",
+      "nativeText": "Repair \"বই পড়তে ভালো লাগে\" inside \"আমার উপন্যাস পড়তে ভালো লাগে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I like reading books.” A natural liking construction.",
+      "pronunciation": "boi poṛte bhalo lage",
+      "exampleTarget": "আমার উপন্যাস পড়তে ভালো লাগে।",
+      "exampleNative": "Use the model as the repair target: “I like reading novels.”",
+      "korean": "বই পড়তে ভালো লাগে",
+      "english": "Repair \"বই পড়তে ভালো লাগে\" inside \"আমার উপন্যাস পড়তে ভালো লাগে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I like reading books.” A natural liking construction.",
+      "example": "আমার উপন্যাস পড়তে ভালো লাগে।",
+      "exampleEnglish": "Use the model as the repair target: “I like reading novels.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "বই পড়তে ভালো লাগে",
+      "romanization": "boi poṛte bhalo lage",
+      "nativeText": "Transfer \"বই পড়তে ভালো লাগে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমার উপন্যাস পড়তে ভালো লাগে।\".",
+      "pronunciation": "boi poṛte bhalo lage",
+      "exampleTarget": "আমার উপন্যাস পড়তে ভালো লাগে।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like reading novels.”",
+      "korean": "বই পড়তে ভালো লাগে",
+      "english": "Transfer \"বই পড়তে ভালো লাগে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমার উপন্যাস পড়তে ভালো লাগে।\".",
+      "example": "আমার উপন্যাস পড়তে ভালো লাগে।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like reading novels.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "বই পড়তে ভালো লাগে",
+      "romanization": "boi poṛte bhalo lage",
+      "nativeText": "Find one word or phrase that naturally travels with \"বই পড়তে ভালো লাগে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "boi poṛte bhalo lage",
+      "exampleTarget": "আমার উপন্যাস পড়তে ভালো লাগে।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I like reading novels.”",
+      "korean": "বই পড়তে ভালো লাগে",
+      "english": "Find one word or phrase that naturally travels with \"বই পড়তে ভালো লাগে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আমার উপন্যাস পড়তে ভালো লাগে।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I like reading novels.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "বই পড়তে ভালো লাগে",
+      "romanization": "boi poṛte bhalo lage",
+      "nativeText": "Listen for \"বই পড়তে ভালো লাগে\" inside \"আমার উপন্যাস পড়তে ভালো লাগে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "boi poṛte bhalo lage",
+      "exampleTarget": "আমার উপন্যাস পড়তে ভালো লাগে।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like reading novels.”",
+      "korean": "বই পড়তে ভালো লাগে",
+      "english": "Listen for \"বই পড়তে ভালো লাগে\" inside \"আমার উপন্যাস পড়তে ভালো লাগে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আমার উপন্যাস পড়তে ভালো লাগে।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like reading novels.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "বই পড়তে ভালো লাগে",
+      "romanization": "boi poṛte bhalo lage",
+      "nativeText": "Write \"বই পড়তে ভালো লাগে\" again without looking, then compare the exact written form against \"আমার উপন্যাস পড়তে ভালো লাগে।\" before moving on.",
+      "pronunciation": "boi poṛte bhalo lage",
+      "exampleTarget": "আমার উপন্যাস পড়তে ভালো লাগে।",
+      "exampleNative": "Use the written model as the final correctness check: “I like reading novels.”",
+      "korean": "বই পড়তে ভালো লাগে",
+      "english": "Write \"বই পড়তে ভালো লাগে\" again without looking, then compare the exact written form against \"আমার উপন্যাস পড়তে ভালো লাগে।\" before moving on.",
+      "example": "আমার উপন্যাস পড়তে ভালো লাগে।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I like reading novels.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "বই পড়তে ভালো লাগে",
+      "romanization": "boi poṛte bhalo lage",
+      "nativeText": "Check whether \"বই পড়তে ভালো লাগে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like reading novels.”",
+      "pronunciation": "boi poṛte bhalo lage",
+      "exampleTarget": "আমার উপন্যাস পড়তে ভালো লাগে।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I like reading novels.”",
+      "korean": "বই পড়তে ভালো লাগে",
+      "english": "Check whether \"বই পড়তে ভালো লাগে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like reading novels.”",
+      "example": "আমার উপন্যাস পড়তে ভালো লাগে।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I like reading novels.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "গিটার বাজানো",
+      "romanization": "gitar bajano",
+      "nativeText": "“Playing guitar.”",
+      "pronunciation": "gitar bajano",
+      "exampleTarget": "তার গিটার বাজানো ভালো লাগে।",
+      "exampleNative": "“She likes playing guitar.”",
+      "korean": "গিটার বাজানো",
+      "english": "“Playing guitar.”",
+      "example": "তার গিটার বাজানো ভালো লাগে।",
+      "exampleEnglish": "“She likes playing guitar.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "তার গিটার বাজানো ভালো লাগে।",
+      "romanization": "gitar bajano",
+      "nativeText": "Model use for \"তার গিটার বাজানো ভালো লাগে।\": “She likes playing guitar.”",
+      "pronunciation": "gitar bajano",
+      "exampleTarget": "তার গিটার বাজানো ভালো লাগে।",
+      "exampleNative": "“She likes playing guitar.”",
+      "korean": "তার গিটার বাজানো ভালো লাগে।",
+      "english": "Model use for \"তার গিটার বাজানো ভালো লাগে।\": “She likes playing guitar.”",
+      "example": "তার গিটার বাজানো ভালো লাগে।",
+      "exampleEnglish": "“She likes playing guitar.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "গিটার বাজানো",
+      "romanization": "gitar bajano",
+      "nativeText": "Usage focus for \"গিটার বাজানো\": “Playing guitar.”",
+      "pronunciation": "gitar bajano",
+      "exampleTarget": "তার গিটার বাজানো ভালো লাগে।",
+      "exampleNative": "Notice what the form is doing here: “She likes playing guitar.”",
+      "korean": "গিটার বাজানো",
+      "english": "Usage focus for \"গিটার বাজানো\": “Playing guitar.”",
+      "example": "তার গিটার বাজানো ভালো লাগে।",
+      "exampleEnglish": "Notice what the form is doing here: “She likes playing guitar.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "গিটার বাজানো",
+      "romanization": "gitar bajano",
+      "nativeText": "Contrast check for \"গিটার বাজানো\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "gitar bajano",
+      "exampleTarget": "তার গিটার বাজানো ভালো লাগে।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “She likes playing guitar.”",
+      "korean": "গিটার বাজানো",
+      "english": "Contrast check for \"গিটার বাজানো\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "তার গিটার বাজানো ভালো লাগে।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “She likes playing guitar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "গিটার বাজানো",
+      "romanization": "gitar bajano",
+      "nativeText": "Recall \"গিটার বাজানো\" from memory, then explain what would change if a nearby alternative replaced it in \"তার গিটার বাজানো ভালো লাগে।\".",
+      "pronunciation": "gitar bajano",
+      "exampleTarget": "তার গিটার বাজানো ভালো লাগে।",
+      "exampleNative": "Self-check against the model before moving on: “She likes playing guitar.”",
+      "korean": "গিটার বাজানো",
+      "english": "Recall \"গিটার বাজানো\" from memory, then explain what would change if a nearby alternative replaced it in \"তার গিটার বাজানো ভালো লাগে।\".",
+      "example": "তার গিটার বাজানো ভালো লাগে।",
+      "exampleEnglish": "Self-check against the model before moving on: “She likes playing guitar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "গিটার বাজানো",
+      "romanization": "gitar bajano",
+      "nativeText": "Repair \"গিটার বাজানো\" inside \"তার গিটার বাজানো ভালো লাগে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Playing guitar.”",
+      "pronunciation": "gitar bajano",
+      "exampleTarget": "তার গিটার বাজানো ভালো লাগে।",
+      "exampleNative": "Use the model as the repair target: “She likes playing guitar.”",
+      "korean": "গিটার বাজানো",
+      "english": "Repair \"গিটার বাজানো\" inside \"তার গিটার বাজানো ভালো লাগে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Playing guitar.”",
+      "example": "তার গিটার বাজানো ভালো লাগে।",
+      "exampleEnglish": "Use the model as the repair target: “She likes playing guitar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "গিটার বাজানো",
+      "romanization": "gitar bajano",
+      "nativeText": "Transfer \"গিটার বাজানো\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"তার গিটার বাজানো ভালো লাগে।\".",
+      "pronunciation": "gitar bajano",
+      "exampleTarget": "তার গিটার বাজানো ভালো লাগে।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “She likes playing guitar.”",
+      "korean": "গিটার বাজানো",
+      "english": "Transfer \"গিটার বাজানো\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"তার গিটার বাজানো ভালো লাগে।\".",
+      "example": "তার গিটার বাজানো ভালো লাগে।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “She likes playing guitar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "গিটার বাজানো",
+      "romanization": "gitar bajano",
+      "nativeText": "Find one word or phrase that naturally travels with \"গিটার বাজানো\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "gitar bajano",
+      "exampleTarget": "তার গিটার বাজানো ভালো লাগে।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “She likes playing guitar.”",
+      "korean": "গিটার বাজানো",
+      "english": "Find one word or phrase that naturally travels with \"গিটার বাজানো\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "তার গিটার বাজানো ভালো লাগে।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “She likes playing guitar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "গিটার বাজানো",
+      "romanization": "gitar bajano",
+      "nativeText": "Listen for \"গিটার বাজানো\" inside \"তার গিটার বাজানো ভালো লাগে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "gitar bajano",
+      "exampleTarget": "তার গিটার বাজানো ভালো লাগে।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “She likes playing guitar.”",
+      "korean": "গিটার বাজানো",
+      "english": "Listen for \"গিটার বাজানো\" inside \"তার গিটার বাজানো ভালো লাগে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "তার গিটার বাজানো ভালো লাগে।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “She likes playing guitar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "গিটার বাজানো",
+      "romanization": "gitar bajano",
+      "nativeText": "Write \"গিটার বাজানো\" again without looking, then compare the exact written form against \"তার গিটার বাজানো ভালো লাগে।\" before moving on.",
+      "pronunciation": "gitar bajano",
+      "exampleTarget": "তার গিটার বাজানো ভালো লাগে।",
+      "exampleNative": "Use the written model as the final correctness check: “She likes playing guitar.”",
+      "korean": "গিটার বাজানো",
+      "english": "Write \"গিটার বাজানো\" again without looking, then compare the exact written form against \"তার গিটার বাজানো ভালো লাগে।\" before moving on.",
+      "example": "তার গিটার বাজানো ভালো লাগে।",
+      "exampleEnglish": "Use the written model as the final correctness check: “She likes playing guitar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "গিটার বাজানো",
+      "romanization": "gitar bajano",
+      "nativeText": "Check whether \"গিটার বাজানো\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “She likes playing guitar.”",
+      "pronunciation": "gitar bajano",
+      "exampleTarget": "তার গিটার বাজানো ভালো লাগে।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “She likes playing guitar.”",
+      "korean": "গিটার বাজানো",
+      "english": "Check whether \"গিটার বাজানো\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “She likes playing guitar.”",
+      "example": "তার গিটার বাজানো ভালো লাগে।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “She likes playing guitar.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "খেলাধুলা",
+      "romanization": "kheladhula",
+      "nativeText": "“Sports / play.” A common leisure noun.",
+      "pronunciation": "kheladhula",
+      "exampleTarget": "আমি সপ্তাহে তিন দিন খেলাধুলা করি।",
+      "exampleNative": "“I play sports three days a week.”",
+      "korean": "খেলাধুলা",
+      "english": "“Sports / play.” A common leisure noun.",
+      "example": "আমি সপ্তাহে তিন দিন খেলাধুলা করি।",
+      "exampleEnglish": "“I play sports three days a week.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "আমি সপ্তাহে তিন দিন খেলাধুলা করি।",
+      "romanization": "kheladhula",
+      "nativeText": "Model use for \"আমি সপ্তাহে তিন দিন খেলাধুলা করি।\": “I play sports three days a week.”",
+      "pronunciation": "kheladhula",
+      "exampleTarget": "আমি সপ্তাহে তিন দিন খেলাধুলা করি।",
+      "exampleNative": "“I play sports three days a week.”",
+      "korean": "আমি সপ্তাহে তিন দিন খেলাধুলা করি।",
+      "english": "Model use for \"আমি সপ্তাহে তিন দিন খেলাধুলা করি।\": “I play sports three days a week.”",
+      "example": "আমি সপ্তাহে তিন দিন খেলাধুলা করি।",
+      "exampleEnglish": "“I play sports three days a week.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "খেলাধুলা",
+      "romanization": "kheladhula",
+      "nativeText": "Usage focus for \"খেলাধুলা\": “Sports / play.” A common leisure noun.",
+      "pronunciation": "kheladhula",
+      "exampleTarget": "আমি সপ্তাহে তিন দিন খেলাধুলা করি।",
+      "exampleNative": "Notice what the form is doing here: “I play sports three days a week.”",
+      "korean": "খেলাধুলা",
+      "english": "Usage focus for \"খেলাধুলা\": “Sports / play.” A common leisure noun.",
+      "example": "আমি সপ্তাহে তিন দিন খেলাধুলা করি।",
+      "exampleEnglish": "Notice what the form is doing here: “I play sports three days a week.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "খেলাধুলা",
+      "romanization": "kheladhula",
+      "nativeText": "Contrast check for \"খেলাধুলা\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kheladhula",
+      "exampleTarget": "আমি সপ্তাহে তিন দিন খেলাধুলা করি।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I play sports three days a week.”",
+      "korean": "খেলাধুলা",
+      "english": "Contrast check for \"খেলাধুলা\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আমি সপ্তাহে তিন দিন খেলাধুলা করি।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I play sports three days a week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "খেলাধুলা",
+      "romanization": "kheladhula",
+      "nativeText": "Recall \"খেলাধুলা\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি সপ্তাহে তিন দিন খেলাধুলা করি।\".",
+      "pronunciation": "kheladhula",
+      "exampleTarget": "আমি সপ্তাহে তিন দিন খেলাধুলা করি।",
+      "exampleNative": "Self-check against the model before moving on: “I play sports three days a week.”",
+      "korean": "খেলাধুলা",
+      "english": "Recall \"খেলাধুলা\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি সপ্তাহে তিন দিন খেলাধুলা করি।\".",
+      "example": "আমি সপ্তাহে তিন দিন খেলাধুলা করি।",
+      "exampleEnglish": "Self-check against the model before moving on: “I play sports three days a week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "খেলাধুলা",
+      "romanization": "kheladhula",
+      "nativeText": "Repair \"খেলাধুলা\" inside \"আমি সপ্তাহে তিন দিন খেলাধুলা করি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Sports / play.” A common leisure noun.",
+      "pronunciation": "kheladhula",
+      "exampleTarget": "আমি সপ্তাহে তিন দিন খেলাধুলা করি।",
+      "exampleNative": "Use the model as the repair target: “I play sports three days a week.”",
+      "korean": "খেলাধুলা",
+      "english": "Repair \"খেলাধুলা\" inside \"আমি সপ্তাহে তিন দিন খেলাধুলা করি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Sports / play.” A common leisure noun.",
+      "example": "আমি সপ্তাহে তিন দিন খেলাধুলা করি।",
+      "exampleEnglish": "Use the model as the repair target: “I play sports three days a week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "খেলাধুলা",
+      "romanization": "kheladhula",
+      "nativeText": "Transfer \"খেলাধুলা\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি সপ্তাহে তিন দিন খেলাধুলা করি।\".",
+      "pronunciation": "kheladhula",
+      "exampleTarget": "আমি সপ্তাহে তিন দিন খেলাধুলা করি।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I play sports three days a week.”",
+      "korean": "খেলাধুলা",
+      "english": "Transfer \"খেলাধুলা\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি সপ্তাহে তিন দিন খেলাধুলা করি।\".",
+      "example": "আমি সপ্তাহে তিন দিন খেলাধুলা করি।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I play sports three days a week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "খেলাধুলা",
+      "romanization": "kheladhula",
+      "nativeText": "Find one word or phrase that naturally travels with \"খেলাধুলা\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kheladhula",
+      "exampleTarget": "আমি সপ্তাহে তিন দিন খেলাধুলা করি।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I play sports three days a week.”",
+      "korean": "খেলাধুলা",
+      "english": "Find one word or phrase that naturally travels with \"খেলাধুলা\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আমি সপ্তাহে তিন দিন খেলাধুলা করি।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I play sports three days a week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "খেলাধুলা",
+      "romanization": "kheladhula",
+      "nativeText": "Listen for \"খেলাধুলা\" inside \"আমি সপ্তাহে তিন দিন খেলাধুলা করি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kheladhula",
+      "exampleTarget": "আমি সপ্তাহে তিন দিন খেলাধুলা করি।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I play sports three days a week.”",
+      "korean": "খেলাধুলা",
+      "english": "Listen for \"খেলাধুলা\" inside \"আমি সপ্তাহে তিন দিন খেলাধুলা করি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আমি সপ্তাহে তিন দিন খেলাধুলা করি।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I play sports three days a week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "খেলাধুলা",
+      "romanization": "kheladhula",
+      "nativeText": "Write \"খেলাধুলা\" again without looking, then compare the exact written form against \"আমি সপ্তাহে তিন দিন খেলাধুলা করি।\" before moving on.",
+      "pronunciation": "kheladhula",
+      "exampleTarget": "আমি সপ্তাহে তিন দিন খেলাধুলা করি।",
+      "exampleNative": "Use the written model as the final correctness check: “I play sports three days a week.”",
+      "korean": "খেলাধুলা",
+      "english": "Write \"খেলাধুলা\" again without looking, then compare the exact written form against \"আমি সপ্তাহে তিন দিন খেলাধুলা করি।\" before moving on.",
+      "example": "আমি সপ্তাহে তিন দিন খেলাধুলা করি।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I play sports three days a week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "খেলাধুলা",
+      "romanization": "kheladhula",
+      "nativeText": "Check whether \"খেলাধুলা\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I play sports three days a week.”",
+      "pronunciation": "kheladhula",
+      "exampleTarget": "আমি সপ্তাহে তিন দিন খেলাধুলা করি।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I play sports three days a week.”",
+      "korean": "খেলাধুলা",
+      "english": "Check whether \"খেলাধুলা\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I play sports three days a week.”",
+      "example": "আমি সপ্তাহে তিন দিন খেলাধুলা করি।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I play sports three days a week.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "প্রায়ই",
+      "romanization": "prayi",
+      "nativeText": "“Often.” A useful frequency word.",
+      "pronunciation": "prayi",
+      "exampleTarget": "আমরা প্রায়ই সিনেমা দেখি।",
+      "exampleNative": "“We often watch films.”",
+      "korean": "প্রায়ই",
+      "english": "“Often.” A useful frequency word.",
+      "example": "আমরা প্রায়ই সিনেমা দেখি।",
+      "exampleEnglish": "“We often watch films.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "আমরা প্রায়ই সিনেমা দেখি।",
+      "romanization": "prayi",
+      "nativeText": "Model use for \"আমরা প্রায়ই সিনেমা দেখি।\": “We often watch films.”",
+      "pronunciation": "prayi",
+      "exampleTarget": "আমরা প্রায়ই সিনেমা দেখি।",
+      "exampleNative": "“We often watch films.”",
+      "korean": "আমরা প্রায়ই সিনেমা দেখি।",
+      "english": "Model use for \"আমরা প্রায়ই সিনেমা দেখি।\": “We often watch films.”",
+      "example": "আমরা প্রায়ই সিনেমা দেখি।",
+      "exampleEnglish": "“We often watch films.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "প্রায়ই",
+      "romanization": "prayi",
+      "nativeText": "Usage focus for \"প্রায়ই\": “Often.” A useful frequency word.",
+      "pronunciation": "prayi",
+      "exampleTarget": "আমরা প্রায়ই সিনেমা দেখি।",
+      "exampleNative": "Notice what the form is doing here: “We often watch films.”",
+      "korean": "প্রায়ই",
+      "english": "Usage focus for \"প্রায়ই\": “Often.” A useful frequency word.",
+      "example": "আমরা প্রায়ই সিনেমা দেখি।",
+      "exampleEnglish": "Notice what the form is doing here: “We often watch films.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "প্রায়ই",
+      "romanization": "prayi",
+      "nativeText": "Contrast check for \"প্রায়ই\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "prayi",
+      "exampleTarget": "আমরা প্রায়ই সিনেমা দেখি।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “We often watch films.”",
+      "korean": "প্রায়ই",
+      "english": "Contrast check for \"প্রায়ই\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আমরা প্রায়ই সিনেমা দেখি।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “We often watch films.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "প্রায়ই",
+      "romanization": "prayi",
+      "nativeText": "Recall \"প্রায়ই\" from memory, then explain what would change if a nearby alternative replaced it in \"আমরা প্রায়ই সিনেমা দেখি।\".",
+      "pronunciation": "prayi",
+      "exampleTarget": "আমরা প্রায়ই সিনেমা দেখি।",
+      "exampleNative": "Self-check against the model before moving on: “We often watch films.”",
+      "korean": "প্রায়ই",
+      "english": "Recall \"প্রায়ই\" from memory, then explain what would change if a nearby alternative replaced it in \"আমরা প্রায়ই সিনেমা দেখি।\".",
+      "example": "আমরা প্রায়ই সিনেমা দেখি।",
+      "exampleEnglish": "Self-check against the model before moving on: “We often watch films.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "প্রায়ই",
+      "romanization": "prayi",
+      "nativeText": "Repair \"প্রায়ই\" inside \"আমরা প্রায়ই সিনেমা দেখি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Often.” A useful frequency word.",
+      "pronunciation": "prayi",
+      "exampleTarget": "আমরা প্রায়ই সিনেমা দেখি।",
+      "exampleNative": "Use the model as the repair target: “We often watch films.”",
+      "korean": "প্রায়ই",
+      "english": "Repair \"প্রায়ই\" inside \"আমরা প্রায়ই সিনেমা দেখি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Often.” A useful frequency word.",
+      "example": "আমরা প্রায়ই সিনেমা দেখি।",
+      "exampleEnglish": "Use the model as the repair target: “We often watch films.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "প্রায়ই",
+      "romanization": "prayi",
+      "nativeText": "Transfer \"প্রায়ই\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমরা প্রায়ই সিনেমা দেখি।\".",
+      "pronunciation": "prayi",
+      "exampleTarget": "আমরা প্রায়ই সিনেমা দেখি।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “We often watch films.”",
+      "korean": "প্রায়ই",
+      "english": "Transfer \"প্রায়ই\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমরা প্রায়ই সিনেমা দেখি।\".",
+      "example": "আমরা প্রায়ই সিনেমা দেখি।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “We often watch films.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "প্রায়ই",
+      "romanization": "prayi",
+      "nativeText": "Find one word or phrase that naturally travels with \"প্রায়ই\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "prayi",
+      "exampleTarget": "আমরা প্রায়ই সিনেমা দেখি।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “We often watch films.”",
+      "korean": "প্রায়ই",
+      "english": "Find one word or phrase that naturally travels with \"প্রায়ই\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আমরা প্রায়ই সিনেমা দেখি।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “We often watch films.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "প্রায়ই",
+      "romanization": "prayi",
+      "nativeText": "Listen for \"প্রায়ই\" inside \"আমরা প্রায়ই সিনেমা দেখি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "prayi",
+      "exampleTarget": "আমরা প্রায়ই সিনেমা দেখি।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “We often watch films.”",
+      "korean": "প্রায়ই",
+      "english": "Listen for \"প্রায়ই\" inside \"আমরা প্রায়ই সিনেমা দেখি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আমরা প্রায়ই সিনেমা দেখি।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “We often watch films.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "প্রায়ই",
+      "romanization": "prayi",
+      "nativeText": "Write \"প্রায়ই\" again without looking, then compare the exact written form against \"আমরা প্রায়ই সিনেমা দেখি।\" before moving on.",
+      "pronunciation": "prayi",
+      "exampleTarget": "আমরা প্রায়ই সিনেমা দেখি।",
+      "exampleNative": "Use the written model as the final correctness check: “We often watch films.”",
+      "korean": "প্রায়ই",
+      "english": "Write \"প্রায়ই\" again without looking, then compare the exact written form against \"আমরা প্রায়ই সিনেমা দেখি।\" before moving on.",
+      "example": "আমরা প্রায়ই সিনেমা দেখি।",
+      "exampleEnglish": "Use the written model as the final correctness check: “We often watch films.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "প্রায়ই",
+      "romanization": "prayi",
+      "nativeText": "Check whether \"প্রায়ই\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “We often watch films.”",
+      "pronunciation": "prayi",
+      "exampleTarget": "আমরা প্রায়ই সিনেমা দেখি।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “We often watch films.”",
+      "korean": "প্রায়ই",
+      "english": "Check whether \"প্রায়ই\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “We often watch films.”",
+      "example": "আমরা প্রায়ই সিনেমা দেখি।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “We often watch films.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "কখনও কখনও",
+      "romanization": "kokhono kokhono",
+      "nativeText": "“Sometimes.” Repetition creates the frequency meaning.",
+      "pronunciation": "kokhono kokhono",
+      "exampleTarget": "কখনও কখনও আমি রান্না করি।",
+      "exampleNative": "“Sometimes I cook.”",
+      "korean": "কখনও কখনও",
+      "english": "“Sometimes.” Repetition creates the frequency meaning.",
+      "example": "কখনও কখনও আমি রান্না করি।",
+      "exampleEnglish": "“Sometimes I cook.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "কখনও কখনও আমি রান্না করি।",
+      "romanization": "kokhono kokhono",
+      "nativeText": "Model use for \"কখনও কখনও আমি রান্না করি।\": “Sometimes I cook.”",
+      "pronunciation": "kokhono kokhono",
+      "exampleTarget": "কখনও কখনও আমি রান্না করি।",
+      "exampleNative": "“Sometimes I cook.”",
+      "korean": "কখনও কখনও আমি রান্না করি।",
+      "english": "Model use for \"কখনও কখনও আমি রান্না করি।\": “Sometimes I cook.”",
+      "example": "কখনও কখনও আমি রান্না করি।",
+      "exampleEnglish": "“Sometimes I cook.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "কখনও কখনও",
+      "romanization": "kokhono kokhono",
+      "nativeText": "Usage focus for \"কখনও কখনও\": “Sometimes.” Repetition creates the frequency meaning.",
+      "pronunciation": "kokhono kokhono",
+      "exampleTarget": "কখনও কখনও আমি রান্না করি।",
+      "exampleNative": "Notice what the form is doing here: “Sometimes I cook.”",
+      "korean": "কখনও কখনও",
+      "english": "Usage focus for \"কখনও কখনও\": “Sometimes.” Repetition creates the frequency meaning.",
+      "example": "কখনও কখনও আমি রান্না করি।",
+      "exampleEnglish": "Notice what the form is doing here: “Sometimes I cook.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "কখনও কখনও",
+      "romanization": "kokhono kokhono",
+      "nativeText": "Contrast check for \"কখনও কখনও\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kokhono kokhono",
+      "exampleTarget": "কখনও কখনও আমি রান্না করি।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Sometimes I cook.”",
+      "korean": "কখনও কখনও",
+      "english": "Contrast check for \"কখনও কখনও\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "কখনও কখনও আমি রান্না করি।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Sometimes I cook.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "কখনও কখনও",
+      "romanization": "kokhono kokhono",
+      "nativeText": "Recall \"কখনও কখনও\" from memory, then explain what would change if a nearby alternative replaced it in \"কখনও কখনও আমি রান্না করি।\".",
+      "pronunciation": "kokhono kokhono",
+      "exampleTarget": "কখনও কখনও আমি রান্না করি।",
+      "exampleNative": "Self-check against the model before moving on: “Sometimes I cook.”",
+      "korean": "কখনও কখনও",
+      "english": "Recall \"কখনও কখনও\" from memory, then explain what would change if a nearby alternative replaced it in \"কখনও কখনও আমি রান্না করি।\".",
+      "example": "কখনও কখনও আমি রান্না করি।",
+      "exampleEnglish": "Self-check against the model before moving on: “Sometimes I cook.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "কখনও কখনও",
+      "romanization": "kokhono kokhono",
+      "nativeText": "Repair \"কখনও কখনও\" inside \"কখনও কখনও আমি রান্না করি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Sometimes.” Repetition creates the frequency meaning.",
+      "pronunciation": "kokhono kokhono",
+      "exampleTarget": "কখনও কখনও আমি রান্না করি।",
+      "exampleNative": "Use the model as the repair target: “Sometimes I cook.”",
+      "korean": "কখনও কখনও",
+      "english": "Repair \"কখনও কখনও\" inside \"কখনও কখনও আমি রান্না করি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Sometimes.” Repetition creates the frequency meaning.",
+      "example": "কখনও কখনও আমি রান্না করি।",
+      "exampleEnglish": "Use the model as the repair target: “Sometimes I cook.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "কখনও কখনও",
+      "romanization": "kokhono kokhono",
+      "nativeText": "Transfer \"কখনও কখনও\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"কখনও কখনও আমি রান্না করি।\".",
+      "pronunciation": "kokhono kokhono",
+      "exampleTarget": "কখনও কখনও আমি রান্না করি।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Sometimes I cook.”",
+      "korean": "কখনও কখনও",
+      "english": "Transfer \"কখনও কখনও\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"কখনও কখনও আমি রান্না করি।\".",
+      "example": "কখনও কখনও আমি রান্না করি।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Sometimes I cook.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "কখনও কখনও",
+      "romanization": "kokhono kokhono",
+      "nativeText": "Find one word or phrase that naturally travels with \"কখনও কখনও\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kokhono kokhono",
+      "exampleTarget": "কখনও কখনও আমি রান্না করি।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Sometimes I cook.”",
+      "korean": "কখনও কখনও",
+      "english": "Find one word or phrase that naturally travels with \"কখনও কখনও\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "কখনও কখনও আমি রান্না করি।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Sometimes I cook.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "কখনও কখনও",
+      "romanization": "kokhono kokhono",
+      "nativeText": "Listen for \"কখনও কখনও\" inside \"কখনও কখনও আমি রান্না করি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kokhono kokhono",
+      "exampleTarget": "কখনও কখনও আমি রান্না করি।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Sometimes I cook.”",
+      "korean": "কখনও কখনও",
+      "english": "Listen for \"কখনও কখনও\" inside \"কখনও কখনও আমি রান্না করি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "কখনও কখনও আমি রান্না করি।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Sometimes I cook.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "কখনও কখনও",
+      "romanization": "kokhono kokhono",
+      "nativeText": "Write \"কখনও কখনও\" again without looking, then compare the exact written form against \"কখনও কখনও আমি রান্না করি।\" before moving on.",
+      "pronunciation": "kokhono kokhono",
+      "exampleTarget": "কখনও কখনও আমি রান্না করি।",
+      "exampleNative": "Use the written model as the final correctness check: “Sometimes I cook.”",
+      "korean": "কখনও কখনও",
+      "english": "Write \"কখনও কখনও\" again without looking, then compare the exact written form against \"কখনও কখনও আমি রান্না করি।\" before moving on.",
+      "example": "কখনও কখনও আমি রান্না করি।",
+      "exampleEnglish": "Use the written model as the final correctness check: “Sometimes I cook.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "কখনও কখনও",
+      "romanization": "kokhono kokhono",
+      "nativeText": "Check whether \"কখনও কখনও\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Sometimes I cook.”",
+      "pronunciation": "kokhono kokhono",
+      "exampleTarget": "কখনও কখনও আমি রান্না করি।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Sometimes I cook.”",
+      "korean": "কখনও কখনও",
+      "english": "Check whether \"কখনও কখনও\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Sometimes I cook.”",
+      "example": "কখনও কখনও আমি রান্না করি।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Sometimes I cook.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "অবসর সময়",
+      "romanization": "obshor shomoy",
+      "nativeText": "“Free time.” A useful hobby-question frame.",
+      "pronunciation": "obshor shomoy",
+      "exampleTarget": "অবসর সময়ে আপনি কী করেন?",
+      "exampleNative": "“What do you do in your free time?”",
+      "korean": "অবসর সময়",
+      "english": "“Free time.” A useful hobby-question frame.",
+      "example": "অবসর সময়ে আপনি কী করেন?",
+      "exampleEnglish": "“What do you do in your free time?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "অবসর সময়ে আপনি কী করেন?",
+      "romanization": "obshor shomoy",
+      "nativeText": "Model use for \"অবসর সময়ে আপনি কী করেন?\": “What do you do in your free time?”",
+      "pronunciation": "obshor shomoy",
+      "exampleTarget": "অবসর সময়ে আপনি কী করেন?",
+      "exampleNative": "“What do you do in your free time?”",
+      "korean": "অবসর সময়ে আপনি কী করেন?",
+      "english": "Model use for \"অবসর সময়ে আপনি কী করেন?\": “What do you do in your free time?”",
+      "example": "অবসর সময়ে আপনি কী করেন?",
+      "exampleEnglish": "“What do you do in your free time?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "অবসর সময়",
+      "romanization": "obshor shomoy",
+      "nativeText": "Usage focus for \"অবসর সময়\": “Free time.” A useful hobby-question frame.",
+      "pronunciation": "obshor shomoy",
+      "exampleTarget": "অবসর সময়ে আপনি কী করেন?",
+      "exampleNative": "Notice what the form is doing here: “What do you do in your free time?”",
+      "korean": "অবসর সময়",
+      "english": "Usage focus for \"অবসর সময়\": “Free time.” A useful hobby-question frame.",
+      "example": "অবসর সময়ে আপনি কী করেন?",
+      "exampleEnglish": "Notice what the form is doing here: “What do you do in your free time?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "অবসর সময়",
+      "romanization": "obshor shomoy",
+      "nativeText": "Contrast check for \"অবসর সময়\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "obshor shomoy",
+      "exampleTarget": "অবসর সময়ে আপনি কী করেন?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What do you do in your free time?”",
+      "korean": "অবসর সময়",
+      "english": "Contrast check for \"অবসর সময়\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "অবসর সময়ে আপনি কী করেন?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What do you do in your free time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "অবসর সময়",
+      "romanization": "obshor shomoy",
+      "nativeText": "Recall \"অবসর সময়\" from memory, then explain what would change if a nearby alternative replaced it in \"অবসর সময়ে আপনি কী করেন?\".",
+      "pronunciation": "obshor shomoy",
+      "exampleTarget": "অবসর সময়ে আপনি কী করেন?",
+      "exampleNative": "Self-check against the model before moving on: “What do you do in your free time?”",
+      "korean": "অবসর সময়",
+      "english": "Recall \"অবসর সময়\" from memory, then explain what would change if a nearby alternative replaced it in \"অবসর সময়ে আপনি কী করেন?\".",
+      "example": "অবসর সময়ে আপনি কী করেন?",
+      "exampleEnglish": "Self-check against the model before moving on: “What do you do in your free time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "অবসর সময়",
+      "romanization": "obshor shomoy",
+      "nativeText": "Repair \"অবসর সময়\" inside \"অবসর সময়ে আপনি কী করেন?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Free time.” A useful hobby-question frame.",
+      "pronunciation": "obshor shomoy",
+      "exampleTarget": "অবসর সময়ে আপনি কী করেন?",
+      "exampleNative": "Use the model as the repair target: “What do you do in your free time?”",
+      "korean": "অবসর সময়",
+      "english": "Repair \"অবসর সময়\" inside \"অবসর সময়ে আপনি কী করেন?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Free time.” A useful hobby-question frame.",
+      "example": "অবসর সময়ে আপনি কী করেন?",
+      "exampleEnglish": "Use the model as the repair target: “What do you do in your free time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "অবসর সময়",
+      "romanization": "obshor shomoy",
+      "nativeText": "Transfer \"অবসর সময়\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"অবসর সময়ে আপনি কী করেন?\".",
+      "pronunciation": "obshor shomoy",
+      "exampleTarget": "অবসর সময়ে আপনি কী করেন?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “What do you do in your free time?”",
+      "korean": "অবসর সময়",
+      "english": "Transfer \"অবসর সময়\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"অবসর সময়ে আপনি কী করেন?\".",
+      "example": "অবসর সময়ে আপনি কী করেন?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “What do you do in your free time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "অবসর সময়",
+      "romanization": "obshor shomoy",
+      "nativeText": "Find one word or phrase that naturally travels with \"অবসর সময়\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "obshor shomoy",
+      "exampleTarget": "অবসর সময়ে আপনি কী করেন?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “What do you do in your free time?”",
+      "korean": "অবসর সময়",
+      "english": "Find one word or phrase that naturally travels with \"অবসর সময়\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "অবসর সময়ে আপনি কী করেন?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “What do you do in your free time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "অবসর সময়",
+      "romanization": "obshor shomoy",
+      "nativeText": "Listen for \"অবসর সময়\" inside \"অবসর সময়ে আপনি কী করেন?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "obshor shomoy",
+      "exampleTarget": "অবসর সময়ে আপনি কী করেন?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What do you do in your free time?”",
+      "korean": "অবসর সময়",
+      "english": "Listen for \"অবসর সময়\" inside \"অবসর সময়ে আপনি কী করেন?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "অবসর সময়ে আপনি কী করেন?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What do you do in your free time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "অবসর সময়",
+      "romanization": "obshor shomoy",
+      "nativeText": "Write \"অবসর সময়\" again without looking, then compare the exact written form against \"অবসর সময়ে আপনি কী করেন?\" before moving on.",
+      "pronunciation": "obshor shomoy",
+      "exampleTarget": "অবসর সময়ে আপনি কী করেন?",
+      "exampleNative": "Use the written model as the final correctness check: “What do you do in your free time?”",
+      "korean": "অবসর সময়",
+      "english": "Write \"অবসর সময়\" again without looking, then compare the exact written form against \"অবসর সময়ে আপনি কী করেন?\" before moving on.",
+      "example": "অবসর সময়ে আপনি কী করেন?",
+      "exampleEnglish": "Use the written model as the final correctness check: “What do you do in your free time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit16clubsleisure-vocabulary-1",
+        "bn-level1unit16clubsleisure-vocabulary-2",
+        "bn-level1unit16clubsleisure-grammar-1",
+        "bn-level1unit16clubsleisure-grammar-2",
+        "bn-level1unit16clubsleisure-reading",
+        "bn-level1unit16clubsleisure-listening",
+        "bn-level1unit16clubsleisure-writing",
+        "bn-level1unit16clubsleisure-task"
+      ],
+      "targetText": "অবসর সময়",
+      "romanization": "obshor shomoy",
+      "nativeText": "Check whether \"অবসর সময়\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What do you do in your free time?”",
+      "pronunciation": "obshor shomoy",
+      "exampleTarget": "অবসর সময়ে আপনি কী করেন?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “What do you do in your free time?”",
+      "korean": "অবসর সময়",
+      "english": "Check whether \"অবসর সময়\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What do you do in your free time?”",
+      "example": "অবসর সময়ে আপনি কী করেন?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “What do you do in your free time?”"
+    }
+  ],
+  "targetLang": "bn",
+  "nativeLang": "en",
+  "track": "textbook"
+};

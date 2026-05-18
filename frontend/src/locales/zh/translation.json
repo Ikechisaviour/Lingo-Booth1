@@ -968,7 +968,9 @@
     "practiceEverywhereAria": "在其他地方练习这个项目",
     "practiceEverywhere": "到处练习这个",
     "saveReply": "保存回复",
-    "selfTestReason": "从课堂上保存以供快速自检。"
+    "selfTestReason": "从课堂上保存以供快速自检。",
+    "hideOutline": "隐藏轮廓",
+    "showOutline": "显示轮廓"
   },
   "classList": {
     "heroAriaLabel": "班级",
@@ -1009,7 +1011,10 @@
     },
     "titlePrefix": {
       "unit": "级别{{level}} · 单位{{unit}}: {{title}}"
-    }
+    },
+    "retry": "再试一次",
+    "progressAriaLabel": "班级进度",
+    "progressCaption": "{{percent}}% 完成 · {{completed}} 共 {{total}} 项"
   },
   "contextPractice": {
     "title": "围绕你塑造的课程",
@@ -1092,7 +1097,9 @@
     "recapWentWell": "什么进展顺利",
     "recapUsefulPhrases": "有用的短语",
     "recapReview": "回顾下一个",
-    "recapReviewFallback": "保存一个短语并在另一种练习模式中重复使用它。"
+    "recapReviewFallback": "保存一个短语并在另一种练习模式中重复使用它。",
+    "hideSetup": "隐藏设置",
+    "showSetup": "显示设置"
   },
   "exerciseHub": {
     "ariaLabel": "锻炼",
@@ -1187,7 +1194,9 @@
       "default": "{{index}}。 {{char}}：复制形状，然后从内存中写入。"
     },
     "savedReason": "省去了另一遍的写作练习。",
-    "selfTestReason": "免去写作练习以进行快速自测。"
+    "selfTestReason": "免去写作练习以进行快速自测。",
+    "hideNotebook": "隐藏笔记本",
+    "showNotebook": "显示笔记本"
   },
   "institution": {
     "kicker": "机构",

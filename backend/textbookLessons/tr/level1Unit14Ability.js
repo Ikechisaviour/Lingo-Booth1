@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('tr', {
-  slug: 'tr-l1u14',
-  title: 'Level 1 · Unit 14: Yapabilmek — Ability and Permission',
-  category: 'daily-life',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Talk about ability, permission, and obligation with Turkish suffixes.',
-  vocabularyGoal: 'Use skill, permission, and obligation language.',
-  grammarGoal: 'Use the ability suffix `-ebil/-abil`, permission questions, and `-malı/-meli` for necessity.',
-  speakingGoal: 'Say what you can do, ask permission, and state one obligation.',
-  task: 'Handle three everyday ability and permission questions.',
-  expressionPractice: [
-    practice('stating-ability', 'Stating ability', 'Use one `-ebil/-abil` form.'),
-    practice('asking-permission', 'Asking permission', 'Use `...ebilir miyim?`.'),
-    practice('stating-obligation', 'Stating obligation', 'Use one `-malı/-meli` form.'),
+module.exports = {
+  "title": "Level 1 · Unit 14: Yapabilmek — Ability and Permission",
+  "category": "daily-life",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "tr-level1unit14ability-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Talk about ability, permission, and obligation with Turkish suffixes."
+      ],
+      "task": "Handle three everyday ability and permission questions."
+    },
+    {
+      "id": "tr-level1unit14ability-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "tr-level1unit14ability-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 14: Yapabilmek — Ability and Permission with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "tr-level1unit14ability-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 14: Yapabilmek — Ability and Permission sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "tr-level1unit14ability-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Talk about ability, permission, and obligation with Turkish suffixes."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "tr-level1unit14ability-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 14: Yapabilmek — Ability and Permission with one nearby Turkish form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "tr-level1unit14ability-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "tr-level1unit14ability-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "tr-level1unit14ability-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "tr-level1unit14ability-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "tr-level1unit14ability-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Handle three everyday ability and permission questions."
+      ],
+      "task": "Handle three everyday ability and permission questions."
+    }
   ],
-  relatedPools: ['topic-ability', 'topic-classroom'],
-  items: [
-    item('yüzebilirim', 'yü-ze-bi-Lİ-rim', '“I can swim.” The ability suffix fits inside the verb before person marking.', 'Ben yüzebilirim.', '“I can swim.”'),
-    item('gelemem', 'ge-le-MEM', '“I cannot come.” The negative ability form contracts differently from a simple negative.', 'Bugün gelemem.', '“I cannot come today.”'),
-    item('girebilir miyim?', 'gi-re-bi-LİR mi-YİM', '“May I enter?” A polite permission question.', 'Sınıfa girebilir miyim?', '“May I enter the classroom?”'),
-    item('yasak', 'ya-SAK', '“Forbidden / prohibited.” Common on signs and in rules.', 'Burada sigara içmek yasak.', '“Smoking here is forbidden.”'),
-    item('çalışmalıyım', 'ça-lış-ma-LI-yım', '“I must study.” The necessity suffix follows vowel harmony.', 'Sınav için çalışmalıyım.', '“I must study for the exam.”'),
-    item('gerekiyor', 'ge-re-ki-YOR', '“It is necessary.” A common impersonal obligation form.', 'Pasaport gerekiyor.', '“A passport is required.”'),
-    item('öğrenmek', 'öğ-ren-MEK', '“To learn.” Useful with ability and goals.', 'Araba kullanmayı öğrenmek istiyorum.', '“I want to learn to drive.”'),
-    item('başarabilirim', 'ba-şa-ra-bi-Lİ-rim', '“I can succeed / manage.” A good learner-confidence word built from the same suffix logic.', 'Daha çok çalışırsam başarabilirim.', '“If I study more, I can succeed.”'),
+  "expressionPractice": [
+    {
+      "id": "stating-ability",
+      "label": "Stating ability",
+      "goal": "Use one `-ebil/-abil` form."
+    },
+    {
+      "id": "asking-permission",
+      "label": "Asking permission",
+      "goal": "Use `...ebilir miyim?`."
+    },
+    {
+      "id": "stating-obligation",
+      "label": "Stating obligation",
+      "goal": "Use one `-malı/-meli` form."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-ability",
+    "topic-classroom"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit14ability-orientation"
+      ],
+      "targetText": "ders hedefi",
+      "romanization": "",
+      "nativeText": "Talk about ability, permission, and obligation with Turkish suffixes.",
+      "pronunciation": "",
+      "exampleTarget": "ders hedefi",
+      "exampleNative": "The whole lesson is built toward this outcome: Handle three everyday ability and permission questions.",
+      "korean": "ders hedefi",
+      "english": "Talk about ability, permission, and obligation with Turkish suffixes.",
+      "example": "ders hedefi",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Handle three everyday ability and permission questions."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "tr-level1unit14ability-pronunciation"
+      ],
+      "targetText": "ses kontrolü",
+      "romanization": "",
+      "nativeText": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Ben yüzebilirim.\".",
+      "pronunciation": "",
+      "exampleTarget": "Ben yüzebilirim.",
+      "exampleNative": "“I can swim.”",
+      "korean": "ses kontrolü",
+      "english": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Ben yüzebilirim.\".",
+      "example": "Ben yüzebilirim.",
+      "exampleEnglish": "“I can swim.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1"
+      ],
+      "targetText": "yüzebilirim",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 14: Yapabilmek — Ability and Permission with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Ben yüzebilirim.",
+      "exampleNative": "“I can swim.”",
+      "korean": "yüzebilirim",
+      "english": "Use the key language of Level 1 · Unit 14: Yapabilmek — Ability and Permission with the register and setting that the lesson requires.",
+      "example": "Ben yüzebilirim.",
+      "exampleEnglish": "“I can swim.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-2"
+      ],
+      "targetText": "gelemem",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 14: Yapabilmek — Ability and Permission sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Bugün gelemem.",
+      "exampleNative": "“I cannot come today.”",
+      "korean": "gelemem",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 14: Yapabilmek — Ability and Permission sound precise rather than merely understandable.",
+      "example": "Bugün gelemem.",
+      "exampleEnglish": "“I cannot come today.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "tr-level1unit14ability-grammar-1"
+      ],
+      "targetText": "yüzebilirim",
+      "romanization": "",
+      "nativeText": "Talk about ability, permission, and obligation with Turkish suffixes.",
+      "pronunciation": "",
+      "exampleTarget": "Ben yüzebilirim.",
+      "exampleNative": "“I can swim.”",
+      "korean": "yüzebilirim",
+      "english": "Talk about ability, permission, and obligation with Turkish suffixes.",
+      "example": "Ben yüzebilirim.",
+      "exampleEnglish": "“I can swim.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "tr-level1unit14ability-grammar-2"
+      ],
+      "targetText": "gelemem",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 14: Yapabilmek — Ability and Permission with one nearby Turkish form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Bugün gelemem.",
+      "exampleNative": "“I cannot come today.”",
+      "korean": "gelemem",
+      "english": "Contrast the main pattern in Level 1 · Unit 14: Yapabilmek — Ability and Permission with one nearby Turkish form so the learner can avoid literal translation.",
+      "example": "Bugün gelemem.",
+      "exampleEnglish": "“I cannot come today.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "tr-level1unit14ability-reading"
+      ],
+      "targetText": "okuma modeli",
+      "romanization": "",
+      "nativeText": "Read \"Daha çok çalışırsam başarabilirim.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Daha çok çalışırsam başarabilirim.",
+      "exampleNative": "“If I study more, I can succeed.”",
+      "korean": "okuma modeli",
+      "english": "Read \"Daha çok çalışırsam başarabilirim.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Daha çok çalışırsam başarabilirim.",
+      "exampleEnglish": "“If I study more, I can succeed.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit14ability-listening"
+      ],
+      "targetText": "diyalog modeli",
+      "romanization": "",
+      "nativeText": "Hear \"Daha çok çalışırsam başarabilirim.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Daha çok çalışırsam başarabilirim.",
+      "exampleNative": "“If I study more, I can succeed.”",
+      "korean": "diyalog modeli",
+      "english": "Hear \"Daha çok çalışırsam başarabilirim.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Daha çok çalışırsam başarabilirim.",
+      "exampleEnglish": "“If I study more, I can succeed.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "tr-level1unit14ability-writing"
+      ],
+      "targetText": "yazma alıştırması",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Ben yüzebilirim.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Ben yüzebilirim.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "yazma alıştırması",
+      "english": "Write your own version after studying \"Ben yüzebilirim.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Ben yüzebilirim.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "tr-level1unit14ability-culture"
+      ],
+      "targetText": "kullanım ve bağlam",
+      "romanization": "",
+      "nativeText": "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Bugün gelemem.",
+      "exampleNative": "“I cannot come today.”",
+      "korean": "kullanım ve bağlam",
+      "english": "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used.",
+      "example": "Bugün gelemem.",
+      "exampleEnglish": "“I cannot come today.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "son görev",
+      "romanization": "",
+      "nativeText": "Handle three everyday ability and permission questions.",
+      "pronunciation": "",
+      "exampleTarget": "Daha çok çalışırsam başarabilirim.",
+      "exampleNative": "Handle three everyday ability and permission questions.",
+      "korean": "son görev",
+      "english": "Handle three everyday ability and permission questions.",
+      "example": "Daha çok çalışırsam başarabilirim.",
+      "exampleEnglish": "Handle three everyday ability and permission questions."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit14ability-grammar-2"
+      ],
+      "targetText": "yaygın hata",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around suffix chains, vowel harmony, evidentiality, and word order. Begin by checking \"Bugün gelemem.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Bugün gelemem.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “I cannot come today.”",
+      "korean": "yaygın hata",
+      "english": "Watch for literal-translation mistakes around suffix chains, vowel harmony, evidentiality, and word order. Begin by checking \"Bugün gelemem.\" against the model.",
+      "example": "Bugün gelemem.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “I cannot come today.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-culture"
+      ],
+      "targetText": "üslup",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for sen, siz, a service tone, or a more formal wording before selecting the final form. Compare the social fit of \"Ben yüzebilirim.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Ben yüzebilirim.",
+      "exampleNative": "“I can swim.”",
+      "korean": "üslup",
+      "english": "Check whether the setting calls for sen, siz, a service tone, or a more formal wording before selecting the final form. Compare the social fit of \"Ben yüzebilirim.\" before reusing it elsewhere.",
+      "example": "Ben yüzebilirim.",
+      "exampleEnglish": "“I can swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "akıcılık",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Turkish message rather than as separate translated fragments. Aim to carry \"Daha çok çalışırsam başarabilirim.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Daha çok çalışırsam başarabilirim.",
+      "exampleNative": "“If I study more, I can succeed.”",
+      "korean": "akıcılık",
+      "english": "Say the idea as one connected Turkish message rather than as separate translated fragments. Aim to carry \"Daha çok çalışırsam başarabilirim.\" as one thought.",
+      "example": "Daha çok çalışırsam başarabilirim.",
+      "exampleEnglish": "“If I study more, I can succeed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "uygulama",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Ben yüzebilirim.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Ben yüzebilirim.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "uygulama",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Ben yüzebilirim.\" and move it into your own life.",
+      "example": "Ben yüzebilirim.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-grammar-1"
+      ],
+      "targetText": "hatırlama",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"yüzebilirim\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "yüzebilirim",
+      "exampleNative": "“I can swim.” The ability suffix fits inside the verb before person marking.",
+      "korean": "hatırlama",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"yüzebilirim\" before looking back.",
+      "example": "yüzebilirim",
+      "exampleEnglish": "“I can swim.” The ability suffix fits inside the verb before person marking."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-writing"
+      ],
+      "targetText": "genişletme",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Daha çok çalışırsam başarabilirim.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Daha çok çalışırsam başarabilirim.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "genişletme",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Daha çok çalışırsam başarabilirim.\" rather than restarting from a blank sentence.",
+      "example": "Daha çok çalışırsam başarabilirim.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading"
+      ],
+      "targetText": "karşılaştırma",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 14: Yapabilmek — Ability and Permission with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Bugün gelemem.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Bugün gelemem.",
+      "exampleNative": "“I cannot come today.”",
+      "korean": "karşılaştırma",
+      "english": "Compare the central form in Level 1 · Unit 14: Yapabilmek — Ability and Permission with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Bugün gelemem.\" as the comparison line.",
+      "example": "Bugün gelemem.",
+      "exampleEnglish": "“I cannot come today.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "tr-level1unit14ability-pronunciation"
+      ],
+      "targetText": "telaffuz düzeltme",
+      "romanization": "",
+      "nativeText": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Ben yüzebilirim.\".",
+      "pronunciation": "",
+      "exampleTarget": "Ben yüzebilirim.",
+      "exampleNative": "“I can swim.”",
+      "korean": "telaffuz düzeltme",
+      "english": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Ben yüzebilirim.\".",
+      "example": "Ben yüzebilirim.",
+      "exampleEnglish": "“I can swim.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "diyalog varyasyonu",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Daha çok çalışırsam başarabilirim.\".",
+      "pronunciation": "",
+      "exampleTarget": "Daha çok çalışırsam başarabilirim.",
+      "exampleNative": "“If I study more, I can succeed.”",
+      "korean": "diyalog varyasyonu",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Daha çok çalışırsam başarabilirim.\".",
+      "example": "Daha çok çalışırsam başarabilirim.",
+      "exampleEnglish": "“If I study more, I can succeed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-writing"
+      ],
+      "targetText": "cümle kurma",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Ben yüzebilirim.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Ben yüzebilirim.",
+      "exampleNative": "“I can swim.”",
+      "korean": "cümle kurma",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Ben yüzebilirim.\" one layer at a time.",
+      "example": "Ben yüzebilirim.",
+      "exampleEnglish": "“I can swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-2"
+      ],
+      "targetText": "hızlı kontrol",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Bugün gelemem.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Bugün gelemem.",
+      "exampleNative": "“I cannot come today.”",
+      "korean": "hızlı kontrol",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Bugün gelemem.\" as the deciding example.",
+      "example": "Bugün gelemem.",
+      "exampleEnglish": "“I cannot come today.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit14ability-culture",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "değerlendirme",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Daha çok çalışırsam başarabilirim.\".",
+      "pronunciation": "",
+      "exampleTarget": "Daha çok çalışırsam başarabilirim.",
+      "exampleNative": "“If I study more, I can succeed.”",
+      "korean": "değerlendirme",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Daha çok çalışırsam başarabilirim.\".",
+      "example": "Daha çok çalışırsam başarabilirim.",
+      "exampleEnglish": "“If I study more, I can succeed.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "yüzebilirim",
+      "romanization": "yü-ze-bi-Lİ-rim",
+      "nativeText": "“I can swim.” The ability suffix fits inside the verb before person marking.",
+      "pronunciation": "yü-ze-bi-Lİ-rim",
+      "exampleTarget": "Ben yüzebilirim.",
+      "exampleNative": "“I can swim.”",
+      "korean": "yüzebilirim",
+      "english": "“I can swim.” The ability suffix fits inside the verb before person marking.",
+      "example": "Ben yüzebilirim.",
+      "exampleEnglish": "“I can swim.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "Ben yüzebilirim.",
+      "romanization": "yü-ze-bi-Lİ-rim",
+      "nativeText": "Model use for \"Ben yüzebilirim.\": “I can swim.”",
+      "pronunciation": "yü-ze-bi-Lİ-rim",
+      "exampleTarget": "Ben yüzebilirim.",
+      "exampleNative": "“I can swim.”",
+      "korean": "Ben yüzebilirim.",
+      "english": "Model use for \"Ben yüzebilirim.\": “I can swim.”",
+      "example": "Ben yüzebilirim.",
+      "exampleEnglish": "“I can swim.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "yüzebilirim",
+      "romanization": "yü-ze-bi-Lİ-rim",
+      "nativeText": "Usage focus for \"yüzebilirim\": Use the key language of Level 1 · Unit 14: Yapabilmek — Ability and Permission with the register and setting that the lesson requires.",
+      "pronunciation": "yü-ze-bi-Lİ-rim",
+      "exampleTarget": "Ben yüzebilirim.",
+      "exampleNative": "Notice what the form is doing here: “I can swim.”",
+      "korean": "yüzebilirim",
+      "english": "Usage focus for \"yüzebilirim\": Use the key language of Level 1 · Unit 14: Yapabilmek — Ability and Permission with the register and setting that the lesson requires.",
+      "example": "Ben yüzebilirim.",
+      "exampleEnglish": "Notice what the form is doing here: “I can swim.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "yüzebilirim",
+      "romanization": "yü-ze-bi-Lİ-rim",
+      "nativeText": "Contrast check for \"yüzebilirim\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "yü-ze-bi-Lİ-rim",
+      "exampleTarget": "Ben yüzebilirim.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I can swim.”",
+      "korean": "yüzebilirim",
+      "english": "Contrast check for \"yüzebilirim\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ben yüzebilirim.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I can swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "yüzebilirim",
+      "romanization": "yü-ze-bi-Lİ-rim",
+      "nativeText": "Recall \"yüzebilirim\" from memory, then explain what would change if a nearby alternative replaced it in \"Ben yüzebilirim.\".",
+      "pronunciation": "yü-ze-bi-Lİ-rim",
+      "exampleTarget": "Ben yüzebilirim.",
+      "exampleNative": "Self-check against the model before moving on: “I can swim.”",
+      "korean": "yüzebilirim",
+      "english": "Recall \"yüzebilirim\" from memory, then explain what would change if a nearby alternative replaced it in \"Ben yüzebilirim.\".",
+      "example": "Ben yüzebilirim.",
+      "exampleEnglish": "Self-check against the model before moving on: “I can swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "yüzebilirim",
+      "romanization": "yü-ze-bi-Lİ-rim",
+      "nativeText": "Repair \"yüzebilirim\" inside \"Ben yüzebilirim.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 14: Yapabilmek — Ability and Permission with the register and setting that the lesson requires.",
+      "pronunciation": "yü-ze-bi-Lİ-rim",
+      "exampleTarget": "Ben yüzebilirim.",
+      "exampleNative": "Use the model as the repair target: “I can swim.”",
+      "korean": "yüzebilirim",
+      "english": "Repair \"yüzebilirim\" inside \"Ben yüzebilirim.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 14: Yapabilmek — Ability and Permission with the register and setting that the lesson requires.",
+      "example": "Ben yüzebilirim.",
+      "exampleEnglish": "Use the model as the repair target: “I can swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "yüzebilirim",
+      "romanization": "yü-ze-bi-Lİ-rim",
+      "nativeText": "Transfer \"yüzebilirim\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ben yüzebilirim.\".",
+      "pronunciation": "yü-ze-bi-Lİ-rim",
+      "exampleTarget": "Ben yüzebilirim.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I can swim.”",
+      "korean": "yüzebilirim",
+      "english": "Transfer \"yüzebilirim\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ben yüzebilirim.\".",
+      "example": "Ben yüzebilirim.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I can swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "yüzebilirim",
+      "romanization": "yü-ze-bi-Lİ-rim",
+      "nativeText": "Find one word or phrase that naturally travels with \"yüzebilirim\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "yü-ze-bi-Lİ-rim",
+      "exampleTarget": "Ben yüzebilirim.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I can swim.”",
+      "korean": "yüzebilirim",
+      "english": "Find one word or phrase that naturally travels with \"yüzebilirim\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ben yüzebilirim.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I can swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "yüzebilirim",
+      "romanization": "yü-ze-bi-Lİ-rim",
+      "nativeText": "Listen for \"yüzebilirim\" inside \"Ben yüzebilirim.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "yü-ze-bi-Lİ-rim",
+      "exampleTarget": "Ben yüzebilirim.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I can swim.”",
+      "korean": "yüzebilirim",
+      "english": "Listen for \"yüzebilirim\" inside \"Ben yüzebilirim.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ben yüzebilirim.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I can swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "yüzebilirim",
+      "romanization": "yü-ze-bi-Lİ-rim",
+      "nativeText": "Write \"yüzebilirim\" again without looking, then compare the exact written form against \"Ben yüzebilirim.\" before moving on.",
+      "pronunciation": "yü-ze-bi-Lİ-rim",
+      "exampleTarget": "Ben yüzebilirim.",
+      "exampleNative": "Use the written model as the final correctness check: “I can swim.”",
+      "korean": "yüzebilirim",
+      "english": "Write \"yüzebilirim\" again without looking, then compare the exact written form against \"Ben yüzebilirim.\" before moving on.",
+      "example": "Ben yüzebilirim.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I can swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "yüzebilirim",
+      "romanization": "yü-ze-bi-Lİ-rim",
+      "nativeText": "Check whether \"yüzebilirim\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I can swim.”",
+      "pronunciation": "yü-ze-bi-Lİ-rim",
+      "exampleTarget": "Ben yüzebilirim.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I can swim.”",
+      "korean": "yüzebilirim",
+      "english": "Check whether \"yüzebilirim\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I can swim.”",
+      "example": "Ben yüzebilirim.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I can swim.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "gelemem",
+      "romanization": "ge-le-MEM",
+      "nativeText": "“I cannot come.” The negative ability form contracts differently from a simple negative.",
+      "pronunciation": "ge-le-MEM",
+      "exampleTarget": "Bugün gelemem.",
+      "exampleNative": "“I cannot come today.”",
+      "korean": "gelemem",
+      "english": "“I cannot come.” The negative ability form contracts differently from a simple negative.",
+      "example": "Bugün gelemem.",
+      "exampleEnglish": "“I cannot come today.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "Bugün gelemem.",
+      "romanization": "ge-le-MEM",
+      "nativeText": "Model use for \"Bugün gelemem.\": “I cannot come today.”",
+      "pronunciation": "ge-le-MEM",
+      "exampleTarget": "Bugün gelemem.",
+      "exampleNative": "“I cannot come today.”",
+      "korean": "Bugün gelemem.",
+      "english": "Model use for \"Bugün gelemem.\": “I cannot come today.”",
+      "example": "Bugün gelemem.",
+      "exampleEnglish": "“I cannot come today.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "gelemem",
+      "romanization": "ge-le-MEM",
+      "nativeText": "Usage focus for \"gelemem\": Distinguish the nearby wording choices that make Level 1 · Unit 14: Yapabilmek — Ability and Permission sound precise rather than merely understandable.",
+      "pronunciation": "ge-le-MEM",
+      "exampleTarget": "Bugün gelemem.",
+      "exampleNative": "Notice what the form is doing here: “I cannot come today.”",
+      "korean": "gelemem",
+      "english": "Usage focus for \"gelemem\": Distinguish the nearby wording choices that make Level 1 · Unit 14: Yapabilmek — Ability and Permission sound precise rather than merely understandable.",
+      "example": "Bugün gelemem.",
+      "exampleEnglish": "Notice what the form is doing here: “I cannot come today.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "gelemem",
+      "romanization": "ge-le-MEM",
+      "nativeText": "Contrast check for \"gelemem\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ge-le-MEM",
+      "exampleTarget": "Bugün gelemem.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I cannot come today.”",
+      "korean": "gelemem",
+      "english": "Contrast check for \"gelemem\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Bugün gelemem.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I cannot come today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "gelemem",
+      "romanization": "ge-le-MEM",
+      "nativeText": "Recall \"gelemem\" from memory, then explain what would change if a nearby alternative replaced it in \"Bugün gelemem.\".",
+      "pronunciation": "ge-le-MEM",
+      "exampleTarget": "Bugün gelemem.",
+      "exampleNative": "Self-check against the model before moving on: “I cannot come today.”",
+      "korean": "gelemem",
+      "english": "Recall \"gelemem\" from memory, then explain what would change if a nearby alternative replaced it in \"Bugün gelemem.\".",
+      "example": "Bugün gelemem.",
+      "exampleEnglish": "Self-check against the model before moving on: “I cannot come today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "gelemem",
+      "romanization": "ge-le-MEM",
+      "nativeText": "Repair \"gelemem\" inside \"Bugün gelemem.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 14: Yapabilmek — Ability and Permission sound precise rather than merely understandable.",
+      "pronunciation": "ge-le-MEM",
+      "exampleTarget": "Bugün gelemem.",
+      "exampleNative": "Use the model as the repair target: “I cannot come today.”",
+      "korean": "gelemem",
+      "english": "Repair \"gelemem\" inside \"Bugün gelemem.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 14: Yapabilmek — Ability and Permission sound precise rather than merely understandable.",
+      "example": "Bugün gelemem.",
+      "exampleEnglish": "Use the model as the repair target: “I cannot come today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "gelemem",
+      "romanization": "ge-le-MEM",
+      "nativeText": "Transfer \"gelemem\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bugün gelemem.\".",
+      "pronunciation": "ge-le-MEM",
+      "exampleTarget": "Bugün gelemem.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I cannot come today.”",
+      "korean": "gelemem",
+      "english": "Transfer \"gelemem\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bugün gelemem.\".",
+      "example": "Bugün gelemem.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I cannot come today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "gelemem",
+      "romanization": "ge-le-MEM",
+      "nativeText": "Find one word or phrase that naturally travels with \"gelemem\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ge-le-MEM",
+      "exampleTarget": "Bugün gelemem.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I cannot come today.”",
+      "korean": "gelemem",
+      "english": "Find one word or phrase that naturally travels with \"gelemem\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Bugün gelemem.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I cannot come today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "gelemem",
+      "romanization": "ge-le-MEM",
+      "nativeText": "Listen for \"gelemem\" inside \"Bugün gelemem.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ge-le-MEM",
+      "exampleTarget": "Bugün gelemem.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I cannot come today.”",
+      "korean": "gelemem",
+      "english": "Listen for \"gelemem\" inside \"Bugün gelemem.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Bugün gelemem.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I cannot come today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "gelemem",
+      "romanization": "ge-le-MEM",
+      "nativeText": "Write \"gelemem\" again without looking, then compare the exact written form against \"Bugün gelemem.\" before moving on.",
+      "pronunciation": "ge-le-MEM",
+      "exampleTarget": "Bugün gelemem.",
+      "exampleNative": "Use the written model as the final correctness check: “I cannot come today.”",
+      "korean": "gelemem",
+      "english": "Write \"gelemem\" again without looking, then compare the exact written form against \"Bugün gelemem.\" before moving on.",
+      "example": "Bugün gelemem.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I cannot come today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "gelemem",
+      "romanization": "ge-le-MEM",
+      "nativeText": "Check whether \"gelemem\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I cannot come today.”",
+      "pronunciation": "ge-le-MEM",
+      "exampleTarget": "Bugün gelemem.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I cannot come today.”",
+      "korean": "gelemem",
+      "english": "Check whether \"gelemem\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I cannot come today.”",
+      "example": "Bugün gelemem.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I cannot come today.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "girebilir miyim?",
+      "romanization": "gi-re-bi-LİR mi-YİM",
+      "nativeText": "“May I enter?” A polite permission question.",
+      "pronunciation": "gi-re-bi-LİR mi-YİM",
+      "exampleTarget": "Sınıfa girebilir miyim?",
+      "exampleNative": "“May I enter the classroom?”",
+      "korean": "girebilir miyim?",
+      "english": "“May I enter?” A polite permission question.",
+      "example": "Sınıfa girebilir miyim?",
+      "exampleEnglish": "“May I enter the classroom?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "Sınıfa girebilir miyim?",
+      "romanization": "gi-re-bi-LİR mi-YİM",
+      "nativeText": "Model use for \"Sınıfa girebilir miyim?\": “May I enter the classroom?”",
+      "pronunciation": "gi-re-bi-LİR mi-YİM",
+      "exampleTarget": "Sınıfa girebilir miyim?",
+      "exampleNative": "“May I enter the classroom?”",
+      "korean": "Sınıfa girebilir miyim?",
+      "english": "Model use for \"Sınıfa girebilir miyim?\": “May I enter the classroom?”",
+      "example": "Sınıfa girebilir miyim?",
+      "exampleEnglish": "“May I enter the classroom?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "girebilir miyim?",
+      "romanization": "gi-re-bi-LİR mi-YİM",
+      "nativeText": "Usage focus for \"girebilir miyim?\": “May I enter?” A polite permission question.",
+      "pronunciation": "gi-re-bi-LİR mi-YİM",
+      "exampleTarget": "Sınıfa girebilir miyim?",
+      "exampleNative": "Notice what the form is doing here: “May I enter the classroom?”",
+      "korean": "girebilir miyim?",
+      "english": "Usage focus for \"girebilir miyim?\": “May I enter?” A polite permission question.",
+      "example": "Sınıfa girebilir miyim?",
+      "exampleEnglish": "Notice what the form is doing here: “May I enter the classroom?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "girebilir miyim?",
+      "romanization": "gi-re-bi-LİR mi-YİM",
+      "nativeText": "Contrast check for \"girebilir miyim?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "gi-re-bi-LİR mi-YİM",
+      "exampleTarget": "Sınıfa girebilir miyim?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I enter the classroom?”",
+      "korean": "girebilir miyim?",
+      "english": "Contrast check for \"girebilir miyim?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Sınıfa girebilir miyim?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I enter the classroom?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "girebilir miyim?",
+      "romanization": "gi-re-bi-LİR mi-YİM",
+      "nativeText": "Recall \"girebilir miyim?\" from memory, then explain what would change if a nearby alternative replaced it in \"Sınıfa girebilir miyim?\".",
+      "pronunciation": "gi-re-bi-LİR mi-YİM",
+      "exampleTarget": "Sınıfa girebilir miyim?",
+      "exampleNative": "Self-check against the model before moving on: “May I enter the classroom?”",
+      "korean": "girebilir miyim?",
+      "english": "Recall \"girebilir miyim?\" from memory, then explain what would change if a nearby alternative replaced it in \"Sınıfa girebilir miyim?\".",
+      "example": "Sınıfa girebilir miyim?",
+      "exampleEnglish": "Self-check against the model before moving on: “May I enter the classroom?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "girebilir miyim?",
+      "romanization": "gi-re-bi-LİR mi-YİM",
+      "nativeText": "Repair \"girebilir miyim?\" inside \"Sınıfa girebilir miyim?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “May I enter?” A polite permission question.",
+      "pronunciation": "gi-re-bi-LİR mi-YİM",
+      "exampleTarget": "Sınıfa girebilir miyim?",
+      "exampleNative": "Use the model as the repair target: “May I enter the classroom?”",
+      "korean": "girebilir miyim?",
+      "english": "Repair \"girebilir miyim?\" inside \"Sınıfa girebilir miyim?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “May I enter?” A polite permission question.",
+      "example": "Sınıfa girebilir miyim?",
+      "exampleEnglish": "Use the model as the repair target: “May I enter the classroom?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "girebilir miyim?",
+      "romanization": "gi-re-bi-LİR mi-YİM",
+      "nativeText": "Transfer \"girebilir miyim?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Sınıfa girebilir miyim?\".",
+      "pronunciation": "gi-re-bi-LİR mi-YİM",
+      "exampleTarget": "Sınıfa girebilir miyim?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I enter the classroom?”",
+      "korean": "girebilir miyim?",
+      "english": "Transfer \"girebilir miyim?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Sınıfa girebilir miyim?\".",
+      "example": "Sınıfa girebilir miyim?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I enter the classroom?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "girebilir miyim?",
+      "romanization": "gi-re-bi-LİR mi-YİM",
+      "nativeText": "Find one word or phrase that naturally travels with \"girebilir miyim?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "gi-re-bi-LİR mi-YİM",
+      "exampleTarget": "Sınıfa girebilir miyim?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “May I enter the classroom?”",
+      "korean": "girebilir miyim?",
+      "english": "Find one word or phrase that naturally travels with \"girebilir miyim?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Sınıfa girebilir miyim?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “May I enter the classroom?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "girebilir miyim?",
+      "romanization": "gi-re-bi-LİR mi-YİM",
+      "nativeText": "Listen for \"girebilir miyim?\" inside \"Sınıfa girebilir miyim?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "gi-re-bi-LİR mi-YİM",
+      "exampleTarget": "Sınıfa girebilir miyim?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I enter the classroom?”",
+      "korean": "girebilir miyim?",
+      "english": "Listen for \"girebilir miyim?\" inside \"Sınıfa girebilir miyim?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Sınıfa girebilir miyim?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I enter the classroom?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "girebilir miyim?",
+      "romanization": "gi-re-bi-LİR mi-YİM",
+      "nativeText": "Write \"girebilir miyim?\" again without looking, then compare the exact written form against \"Sınıfa girebilir miyim?\" before moving on.",
+      "pronunciation": "gi-re-bi-LİR mi-YİM",
+      "exampleTarget": "Sınıfa girebilir miyim?",
+      "exampleNative": "Use the written model as the final correctness check: “May I enter the classroom?”",
+      "korean": "girebilir miyim?",
+      "english": "Write \"girebilir miyim?\" again without looking, then compare the exact written form against \"Sınıfa girebilir miyim?\" before moving on.",
+      "example": "Sınıfa girebilir miyim?",
+      "exampleEnglish": "Use the written model as the final correctness check: “May I enter the classroom?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "girebilir miyim?",
+      "romanization": "gi-re-bi-LİR mi-YİM",
+      "nativeText": "Check whether \"girebilir miyim?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I enter the classroom?”",
+      "pronunciation": "gi-re-bi-LİR mi-YİM",
+      "exampleTarget": "Sınıfa girebilir miyim?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “May I enter the classroom?”",
+      "korean": "girebilir miyim?",
+      "english": "Check whether \"girebilir miyim?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I enter the classroom?”",
+      "example": "Sınıfa girebilir miyim?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “May I enter the classroom?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "yasak",
+      "romanization": "ya-SAK",
+      "nativeText": "“Forbidden / prohibited.” Common on signs and in rules.",
+      "pronunciation": "ya-SAK",
+      "exampleTarget": "Burada sigara içmek yasak.",
+      "exampleNative": "“Smoking here is forbidden.”",
+      "korean": "yasak",
+      "english": "“Forbidden / prohibited.” Common on signs and in rules.",
+      "example": "Burada sigara içmek yasak.",
+      "exampleEnglish": "“Smoking here is forbidden.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "Burada sigara içmek yasak.",
+      "romanization": "ya-SAK",
+      "nativeText": "Model use for \"Burada sigara içmek yasak.\": “Smoking here is forbidden.”",
+      "pronunciation": "ya-SAK",
+      "exampleTarget": "Burada sigara içmek yasak.",
+      "exampleNative": "“Smoking here is forbidden.”",
+      "korean": "Burada sigara içmek yasak.",
+      "english": "Model use for \"Burada sigara içmek yasak.\": “Smoking here is forbidden.”",
+      "example": "Burada sigara içmek yasak.",
+      "exampleEnglish": "“Smoking here is forbidden.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "yasak",
+      "romanization": "ya-SAK",
+      "nativeText": "Usage focus for \"yasak\": “Forbidden / prohibited.” Common on signs and in rules.",
+      "pronunciation": "ya-SAK",
+      "exampleTarget": "Burada sigara içmek yasak.",
+      "exampleNative": "Notice what the form is doing here: “Smoking here is forbidden.”",
+      "korean": "yasak",
+      "english": "Usage focus for \"yasak\": “Forbidden / prohibited.” Common on signs and in rules.",
+      "example": "Burada sigara içmek yasak.",
+      "exampleEnglish": "Notice what the form is doing here: “Smoking here is forbidden.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "yasak",
+      "romanization": "ya-SAK",
+      "nativeText": "Contrast check for \"yasak\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ya-SAK",
+      "exampleTarget": "Burada sigara içmek yasak.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Smoking here is forbidden.”",
+      "korean": "yasak",
+      "english": "Contrast check for \"yasak\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Burada sigara içmek yasak.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Smoking here is forbidden.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "yasak",
+      "romanization": "ya-SAK",
+      "nativeText": "Recall \"yasak\" from memory, then explain what would change if a nearby alternative replaced it in \"Burada sigara içmek yasak.\".",
+      "pronunciation": "ya-SAK",
+      "exampleTarget": "Burada sigara içmek yasak.",
+      "exampleNative": "Self-check against the model before moving on: “Smoking here is forbidden.”",
+      "korean": "yasak",
+      "english": "Recall \"yasak\" from memory, then explain what would change if a nearby alternative replaced it in \"Burada sigara içmek yasak.\".",
+      "example": "Burada sigara içmek yasak.",
+      "exampleEnglish": "Self-check against the model before moving on: “Smoking here is forbidden.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "yasak",
+      "romanization": "ya-SAK",
+      "nativeText": "Repair \"yasak\" inside \"Burada sigara içmek yasak.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Forbidden / prohibited.” Common on signs and in rules.",
+      "pronunciation": "ya-SAK",
+      "exampleTarget": "Burada sigara içmek yasak.",
+      "exampleNative": "Use the model as the repair target: “Smoking here is forbidden.”",
+      "korean": "yasak",
+      "english": "Repair \"yasak\" inside \"Burada sigara içmek yasak.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Forbidden / prohibited.” Common on signs and in rules.",
+      "example": "Burada sigara içmek yasak.",
+      "exampleEnglish": "Use the model as the repair target: “Smoking here is forbidden.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "yasak",
+      "romanization": "ya-SAK",
+      "nativeText": "Transfer \"yasak\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Burada sigara içmek yasak.\".",
+      "pronunciation": "ya-SAK",
+      "exampleTarget": "Burada sigara içmek yasak.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Smoking here is forbidden.”",
+      "korean": "yasak",
+      "english": "Transfer \"yasak\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Burada sigara içmek yasak.\".",
+      "example": "Burada sigara içmek yasak.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Smoking here is forbidden.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "yasak",
+      "romanization": "ya-SAK",
+      "nativeText": "Find one word or phrase that naturally travels with \"yasak\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ya-SAK",
+      "exampleTarget": "Burada sigara içmek yasak.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Smoking here is forbidden.”",
+      "korean": "yasak",
+      "english": "Find one word or phrase that naturally travels with \"yasak\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Burada sigara içmek yasak.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Smoking here is forbidden.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "yasak",
+      "romanization": "ya-SAK",
+      "nativeText": "Listen for \"yasak\" inside \"Burada sigara içmek yasak.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ya-SAK",
+      "exampleTarget": "Burada sigara içmek yasak.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Smoking here is forbidden.”",
+      "korean": "yasak",
+      "english": "Listen for \"yasak\" inside \"Burada sigara içmek yasak.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Burada sigara içmek yasak.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Smoking here is forbidden.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "yasak",
+      "romanization": "ya-SAK",
+      "nativeText": "Write \"yasak\" again without looking, then compare the exact written form against \"Burada sigara içmek yasak.\" before moving on.",
+      "pronunciation": "ya-SAK",
+      "exampleTarget": "Burada sigara içmek yasak.",
+      "exampleNative": "Use the written model as the final correctness check: “Smoking here is forbidden.”",
+      "korean": "yasak",
+      "english": "Write \"yasak\" again without looking, then compare the exact written form against \"Burada sigara içmek yasak.\" before moving on.",
+      "example": "Burada sigara içmek yasak.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Smoking here is forbidden.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "yasak",
+      "romanization": "ya-SAK",
+      "nativeText": "Check whether \"yasak\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Smoking here is forbidden.”",
+      "pronunciation": "ya-SAK",
+      "exampleTarget": "Burada sigara içmek yasak.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Smoking here is forbidden.”",
+      "korean": "yasak",
+      "english": "Check whether \"yasak\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Smoking here is forbidden.”",
+      "example": "Burada sigara içmek yasak.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Smoking here is forbidden.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "çalışmalıyım",
+      "romanization": "ça-lış-ma-LI-yım",
+      "nativeText": "“I must study.” The necessity suffix follows vowel harmony.",
+      "pronunciation": "ça-lış-ma-LI-yım",
+      "exampleTarget": "Sınav için çalışmalıyım.",
+      "exampleNative": "“I must study for the exam.”",
+      "korean": "çalışmalıyım",
+      "english": "“I must study.” The necessity suffix follows vowel harmony.",
+      "example": "Sınav için çalışmalıyım.",
+      "exampleEnglish": "“I must study for the exam.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "Sınav için çalışmalıyım.",
+      "romanization": "ça-lış-ma-LI-yım",
+      "nativeText": "Model use for \"Sınav için çalışmalıyım.\": “I must study for the exam.”",
+      "pronunciation": "ça-lış-ma-LI-yım",
+      "exampleTarget": "Sınav için çalışmalıyım.",
+      "exampleNative": "“I must study for the exam.”",
+      "korean": "Sınav için çalışmalıyım.",
+      "english": "Model use for \"Sınav için çalışmalıyım.\": “I must study for the exam.”",
+      "example": "Sınav için çalışmalıyım.",
+      "exampleEnglish": "“I must study for the exam.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "çalışmalıyım",
+      "romanization": "ça-lış-ma-LI-yım",
+      "nativeText": "Usage focus for \"çalışmalıyım\": “I must study.” The necessity suffix follows vowel harmony.",
+      "pronunciation": "ça-lış-ma-LI-yım",
+      "exampleTarget": "Sınav için çalışmalıyım.",
+      "exampleNative": "Notice what the form is doing here: “I must study for the exam.”",
+      "korean": "çalışmalıyım",
+      "english": "Usage focus for \"çalışmalıyım\": “I must study.” The necessity suffix follows vowel harmony.",
+      "example": "Sınav için çalışmalıyım.",
+      "exampleEnglish": "Notice what the form is doing here: “I must study for the exam.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "çalışmalıyım",
+      "romanization": "ça-lış-ma-LI-yım",
+      "nativeText": "Contrast check for \"çalışmalıyım\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ça-lış-ma-LI-yım",
+      "exampleTarget": "Sınav için çalışmalıyım.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I must study for the exam.”",
+      "korean": "çalışmalıyım",
+      "english": "Contrast check for \"çalışmalıyım\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Sınav için çalışmalıyım.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I must study for the exam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "çalışmalıyım",
+      "romanization": "ça-lış-ma-LI-yım",
+      "nativeText": "Recall \"çalışmalıyım\" from memory, then explain what would change if a nearby alternative replaced it in \"Sınav için çalışmalıyım.\".",
+      "pronunciation": "ça-lış-ma-LI-yım",
+      "exampleTarget": "Sınav için çalışmalıyım.",
+      "exampleNative": "Self-check against the model before moving on: “I must study for the exam.”",
+      "korean": "çalışmalıyım",
+      "english": "Recall \"çalışmalıyım\" from memory, then explain what would change if a nearby alternative replaced it in \"Sınav için çalışmalıyım.\".",
+      "example": "Sınav için çalışmalıyım.",
+      "exampleEnglish": "Self-check against the model before moving on: “I must study for the exam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "çalışmalıyım",
+      "romanization": "ça-lış-ma-LI-yım",
+      "nativeText": "Repair \"çalışmalıyım\" inside \"Sınav için çalışmalıyım.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I must study.” The necessity suffix follows vowel harmony.",
+      "pronunciation": "ça-lış-ma-LI-yım",
+      "exampleTarget": "Sınav için çalışmalıyım.",
+      "exampleNative": "Use the model as the repair target: “I must study for the exam.”",
+      "korean": "çalışmalıyım",
+      "english": "Repair \"çalışmalıyım\" inside \"Sınav için çalışmalıyım.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I must study.” The necessity suffix follows vowel harmony.",
+      "example": "Sınav için çalışmalıyım.",
+      "exampleEnglish": "Use the model as the repair target: “I must study for the exam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "çalışmalıyım",
+      "romanization": "ça-lış-ma-LI-yım",
+      "nativeText": "Transfer \"çalışmalıyım\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Sınav için çalışmalıyım.\".",
+      "pronunciation": "ça-lış-ma-LI-yım",
+      "exampleTarget": "Sınav için çalışmalıyım.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I must study for the exam.”",
+      "korean": "çalışmalıyım",
+      "english": "Transfer \"çalışmalıyım\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Sınav için çalışmalıyım.\".",
+      "example": "Sınav için çalışmalıyım.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I must study for the exam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "çalışmalıyım",
+      "romanization": "ça-lış-ma-LI-yım",
+      "nativeText": "Find one word or phrase that naturally travels with \"çalışmalıyım\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ça-lış-ma-LI-yım",
+      "exampleTarget": "Sınav için çalışmalıyım.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I must study for the exam.”",
+      "korean": "çalışmalıyım",
+      "english": "Find one word or phrase that naturally travels with \"çalışmalıyım\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Sınav için çalışmalıyım.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I must study for the exam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "çalışmalıyım",
+      "romanization": "ça-lış-ma-LI-yım",
+      "nativeText": "Listen for \"çalışmalıyım\" inside \"Sınav için çalışmalıyım.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ça-lış-ma-LI-yım",
+      "exampleTarget": "Sınav için çalışmalıyım.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I must study for the exam.”",
+      "korean": "çalışmalıyım",
+      "english": "Listen for \"çalışmalıyım\" inside \"Sınav için çalışmalıyım.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Sınav için çalışmalıyım.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I must study for the exam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "çalışmalıyım",
+      "romanization": "ça-lış-ma-LI-yım",
+      "nativeText": "Write \"çalışmalıyım\" again without looking, then compare the exact written form against \"Sınav için çalışmalıyım.\" before moving on.",
+      "pronunciation": "ça-lış-ma-LI-yım",
+      "exampleTarget": "Sınav için çalışmalıyım.",
+      "exampleNative": "Use the written model as the final correctness check: “I must study for the exam.”",
+      "korean": "çalışmalıyım",
+      "english": "Write \"çalışmalıyım\" again without looking, then compare the exact written form against \"Sınav için çalışmalıyım.\" before moving on.",
+      "example": "Sınav için çalışmalıyım.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I must study for the exam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "çalışmalıyım",
+      "romanization": "ça-lış-ma-LI-yım",
+      "nativeText": "Check whether \"çalışmalıyım\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I must study for the exam.”",
+      "pronunciation": "ça-lış-ma-LI-yım",
+      "exampleTarget": "Sınav için çalışmalıyım.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I must study for the exam.”",
+      "korean": "çalışmalıyım",
+      "english": "Check whether \"çalışmalıyım\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I must study for the exam.”",
+      "example": "Sınav için çalışmalıyım.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I must study for the exam.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "gerekiyor",
+      "romanization": "ge-re-ki-YOR",
+      "nativeText": "“It is necessary.” A common impersonal obligation form.",
+      "pronunciation": "ge-re-ki-YOR",
+      "exampleTarget": "Pasaport gerekiyor.",
+      "exampleNative": "“A passport is required.”",
+      "korean": "gerekiyor",
+      "english": "“It is necessary.” A common impersonal obligation form.",
+      "example": "Pasaport gerekiyor.",
+      "exampleEnglish": "“A passport is required.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "Pasaport gerekiyor.",
+      "romanization": "ge-re-ki-YOR",
+      "nativeText": "Model use for \"Pasaport gerekiyor.\": “A passport is required.”",
+      "pronunciation": "ge-re-ki-YOR",
+      "exampleTarget": "Pasaport gerekiyor.",
+      "exampleNative": "“A passport is required.”",
+      "korean": "Pasaport gerekiyor.",
+      "english": "Model use for \"Pasaport gerekiyor.\": “A passport is required.”",
+      "example": "Pasaport gerekiyor.",
+      "exampleEnglish": "“A passport is required.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "gerekiyor",
+      "romanization": "ge-re-ki-YOR",
+      "nativeText": "Usage focus for \"gerekiyor\": “It is necessary.” A common impersonal obligation form.",
+      "pronunciation": "ge-re-ki-YOR",
+      "exampleTarget": "Pasaport gerekiyor.",
+      "exampleNative": "Notice what the form is doing here: “A passport is required.”",
+      "korean": "gerekiyor",
+      "english": "Usage focus for \"gerekiyor\": “It is necessary.” A common impersonal obligation form.",
+      "example": "Pasaport gerekiyor.",
+      "exampleEnglish": "Notice what the form is doing here: “A passport is required.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "gerekiyor",
+      "romanization": "ge-re-ki-YOR",
+      "nativeText": "Contrast check for \"gerekiyor\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ge-re-ki-YOR",
+      "exampleTarget": "Pasaport gerekiyor.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “A passport is required.”",
+      "korean": "gerekiyor",
+      "english": "Contrast check for \"gerekiyor\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Pasaport gerekiyor.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “A passport is required.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "gerekiyor",
+      "romanization": "ge-re-ki-YOR",
+      "nativeText": "Recall \"gerekiyor\" from memory, then explain what would change if a nearby alternative replaced it in \"Pasaport gerekiyor.\".",
+      "pronunciation": "ge-re-ki-YOR",
+      "exampleTarget": "Pasaport gerekiyor.",
+      "exampleNative": "Self-check against the model before moving on: “A passport is required.”",
+      "korean": "gerekiyor",
+      "english": "Recall \"gerekiyor\" from memory, then explain what would change if a nearby alternative replaced it in \"Pasaport gerekiyor.\".",
+      "example": "Pasaport gerekiyor.",
+      "exampleEnglish": "Self-check against the model before moving on: “A passport is required.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "gerekiyor",
+      "romanization": "ge-re-ki-YOR",
+      "nativeText": "Repair \"gerekiyor\" inside \"Pasaport gerekiyor.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “It is necessary.” A common impersonal obligation form.",
+      "pronunciation": "ge-re-ki-YOR",
+      "exampleTarget": "Pasaport gerekiyor.",
+      "exampleNative": "Use the model as the repair target: “A passport is required.”",
+      "korean": "gerekiyor",
+      "english": "Repair \"gerekiyor\" inside \"Pasaport gerekiyor.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “It is necessary.” A common impersonal obligation form.",
+      "example": "Pasaport gerekiyor.",
+      "exampleEnglish": "Use the model as the repair target: “A passport is required.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "gerekiyor",
+      "romanization": "ge-re-ki-YOR",
+      "nativeText": "Transfer \"gerekiyor\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Pasaport gerekiyor.\".",
+      "pronunciation": "ge-re-ki-YOR",
+      "exampleTarget": "Pasaport gerekiyor.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “A passport is required.”",
+      "korean": "gerekiyor",
+      "english": "Transfer \"gerekiyor\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Pasaport gerekiyor.\".",
+      "example": "Pasaport gerekiyor.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “A passport is required.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "gerekiyor",
+      "romanization": "ge-re-ki-YOR",
+      "nativeText": "Find one word or phrase that naturally travels with \"gerekiyor\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ge-re-ki-YOR",
+      "exampleTarget": "Pasaport gerekiyor.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “A passport is required.”",
+      "korean": "gerekiyor",
+      "english": "Find one word or phrase that naturally travels with \"gerekiyor\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Pasaport gerekiyor.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “A passport is required.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "gerekiyor",
+      "romanization": "ge-re-ki-YOR",
+      "nativeText": "Listen for \"gerekiyor\" inside \"Pasaport gerekiyor.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ge-re-ki-YOR",
+      "exampleTarget": "Pasaport gerekiyor.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “A passport is required.”",
+      "korean": "gerekiyor",
+      "english": "Listen for \"gerekiyor\" inside \"Pasaport gerekiyor.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Pasaport gerekiyor.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “A passport is required.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "gerekiyor",
+      "romanization": "ge-re-ki-YOR",
+      "nativeText": "Write \"gerekiyor\" again without looking, then compare the exact written form against \"Pasaport gerekiyor.\" before moving on.",
+      "pronunciation": "ge-re-ki-YOR",
+      "exampleTarget": "Pasaport gerekiyor.",
+      "exampleNative": "Use the written model as the final correctness check: “A passport is required.”",
+      "korean": "gerekiyor",
+      "english": "Write \"gerekiyor\" again without looking, then compare the exact written form against \"Pasaport gerekiyor.\" before moving on.",
+      "example": "Pasaport gerekiyor.",
+      "exampleEnglish": "Use the written model as the final correctness check: “A passport is required.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "gerekiyor",
+      "romanization": "ge-re-ki-YOR",
+      "nativeText": "Check whether \"gerekiyor\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “A passport is required.”",
+      "pronunciation": "ge-re-ki-YOR",
+      "exampleTarget": "Pasaport gerekiyor.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “A passport is required.”",
+      "korean": "gerekiyor",
+      "english": "Check whether \"gerekiyor\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “A passport is required.”",
+      "example": "Pasaport gerekiyor.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “A passport is required.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "öğrenmek",
+      "romanization": "öğ-ren-MEK",
+      "nativeText": "“To learn.” Useful with ability and goals.",
+      "pronunciation": "öğ-ren-MEK",
+      "exampleTarget": "Araba kullanmayı öğrenmek istiyorum.",
+      "exampleNative": "“I want to learn to drive.”",
+      "korean": "öğrenmek",
+      "english": "“To learn.” Useful with ability and goals.",
+      "example": "Araba kullanmayı öğrenmek istiyorum.",
+      "exampleEnglish": "“I want to learn to drive.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "Araba kullanmayı öğrenmek istiyorum.",
+      "romanization": "öğ-ren-MEK",
+      "nativeText": "Model use for \"Araba kullanmayı öğrenmek istiyorum.\": “I want to learn to drive.”",
+      "pronunciation": "öğ-ren-MEK",
+      "exampleTarget": "Araba kullanmayı öğrenmek istiyorum.",
+      "exampleNative": "“I want to learn to drive.”",
+      "korean": "Araba kullanmayı öğrenmek istiyorum.",
+      "english": "Model use for \"Araba kullanmayı öğrenmek istiyorum.\": “I want to learn to drive.”",
+      "example": "Araba kullanmayı öğrenmek istiyorum.",
+      "exampleEnglish": "“I want to learn to drive.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "öğrenmek",
+      "romanization": "öğ-ren-MEK",
+      "nativeText": "Usage focus for \"öğrenmek\": “To learn.” Useful with ability and goals.",
+      "pronunciation": "öğ-ren-MEK",
+      "exampleTarget": "Araba kullanmayı öğrenmek istiyorum.",
+      "exampleNative": "Notice what the form is doing here: “I want to learn to drive.”",
+      "korean": "öğrenmek",
+      "english": "Usage focus for \"öğrenmek\": “To learn.” Useful with ability and goals.",
+      "example": "Araba kullanmayı öğrenmek istiyorum.",
+      "exampleEnglish": "Notice what the form is doing here: “I want to learn to drive.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "öğrenmek",
+      "romanization": "öğ-ren-MEK",
+      "nativeText": "Contrast check for \"öğrenmek\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "öğ-ren-MEK",
+      "exampleTarget": "Araba kullanmayı öğrenmek istiyorum.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to learn to drive.”",
+      "korean": "öğrenmek",
+      "english": "Contrast check for \"öğrenmek\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Araba kullanmayı öğrenmek istiyorum.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to learn to drive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "öğrenmek",
+      "romanization": "öğ-ren-MEK",
+      "nativeText": "Recall \"öğrenmek\" from memory, then explain what would change if a nearby alternative replaced it in \"Araba kullanmayı öğrenmek istiyorum.\".",
+      "pronunciation": "öğ-ren-MEK",
+      "exampleTarget": "Araba kullanmayı öğrenmek istiyorum.",
+      "exampleNative": "Self-check against the model before moving on: “I want to learn to drive.”",
+      "korean": "öğrenmek",
+      "english": "Recall \"öğrenmek\" from memory, then explain what would change if a nearby alternative replaced it in \"Araba kullanmayı öğrenmek istiyorum.\".",
+      "example": "Araba kullanmayı öğrenmek istiyorum.",
+      "exampleEnglish": "Self-check against the model before moving on: “I want to learn to drive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "öğrenmek",
+      "romanization": "öğ-ren-MEK",
+      "nativeText": "Repair \"öğrenmek\" inside \"Araba kullanmayı öğrenmek istiyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To learn.” Useful with ability and goals.",
+      "pronunciation": "öğ-ren-MEK",
+      "exampleTarget": "Araba kullanmayı öğrenmek istiyorum.",
+      "exampleNative": "Use the model as the repair target: “I want to learn to drive.”",
+      "korean": "öğrenmek",
+      "english": "Repair \"öğrenmek\" inside \"Araba kullanmayı öğrenmek istiyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To learn.” Useful with ability and goals.",
+      "example": "Araba kullanmayı öğrenmek istiyorum.",
+      "exampleEnglish": "Use the model as the repair target: “I want to learn to drive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "öğrenmek",
+      "romanization": "öğ-ren-MEK",
+      "nativeText": "Transfer \"öğrenmek\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Araba kullanmayı öğrenmek istiyorum.\".",
+      "pronunciation": "öğ-ren-MEK",
+      "exampleTarget": "Araba kullanmayı öğrenmek istiyorum.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to learn to drive.”",
+      "korean": "öğrenmek",
+      "english": "Transfer \"öğrenmek\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Araba kullanmayı öğrenmek istiyorum.\".",
+      "example": "Araba kullanmayı öğrenmek istiyorum.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to learn to drive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "öğrenmek",
+      "romanization": "öğ-ren-MEK",
+      "nativeText": "Find one word or phrase that naturally travels with \"öğrenmek\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "öğ-ren-MEK",
+      "exampleTarget": "Araba kullanmayı öğrenmek istiyorum.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want to learn to drive.”",
+      "korean": "öğrenmek",
+      "english": "Find one word or phrase that naturally travels with \"öğrenmek\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Araba kullanmayı öğrenmek istiyorum.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want to learn to drive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "öğrenmek",
+      "romanization": "öğ-ren-MEK",
+      "nativeText": "Listen for \"öğrenmek\" inside \"Araba kullanmayı öğrenmek istiyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "öğ-ren-MEK",
+      "exampleTarget": "Araba kullanmayı öğrenmek istiyorum.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to learn to drive.”",
+      "korean": "öğrenmek",
+      "english": "Listen for \"öğrenmek\" inside \"Araba kullanmayı öğrenmek istiyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Araba kullanmayı öğrenmek istiyorum.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to learn to drive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "öğrenmek",
+      "romanization": "öğ-ren-MEK",
+      "nativeText": "Write \"öğrenmek\" again without looking, then compare the exact written form against \"Araba kullanmayı öğrenmek istiyorum.\" before moving on.",
+      "pronunciation": "öğ-ren-MEK",
+      "exampleTarget": "Araba kullanmayı öğrenmek istiyorum.",
+      "exampleNative": "Use the written model as the final correctness check: “I want to learn to drive.”",
+      "korean": "öğrenmek",
+      "english": "Write \"öğrenmek\" again without looking, then compare the exact written form against \"Araba kullanmayı öğrenmek istiyorum.\" before moving on.",
+      "example": "Araba kullanmayı öğrenmek istiyorum.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want to learn to drive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "öğrenmek",
+      "romanization": "öğ-ren-MEK",
+      "nativeText": "Check whether \"öğrenmek\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to learn to drive.”",
+      "pronunciation": "öğ-ren-MEK",
+      "exampleTarget": "Araba kullanmayı öğrenmek istiyorum.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want to learn to drive.”",
+      "korean": "öğrenmek",
+      "english": "Check whether \"öğrenmek\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to learn to drive.”",
+      "example": "Araba kullanmayı öğrenmek istiyorum.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want to learn to drive.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "başarabilirim",
+      "romanization": "ba-şa-ra-bi-Lİ-rim",
+      "nativeText": "“I can succeed / manage.” A good learner-confidence word built from the same suffix logic.",
+      "pronunciation": "ba-şa-ra-bi-Lİ-rim",
+      "exampleTarget": "Daha çok çalışırsam başarabilirim.",
+      "exampleNative": "“If I study more, I can succeed.”",
+      "korean": "başarabilirim",
+      "english": "“I can succeed / manage.” A good learner-confidence word built from the same suffix logic.",
+      "example": "Daha çok çalışırsam başarabilirim.",
+      "exampleEnglish": "“If I study more, I can succeed.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "Daha çok çalışırsam başarabilirim.",
+      "romanization": "ba-şa-ra-bi-Lİ-rim",
+      "nativeText": "Model use for \"Daha çok çalışırsam başarabilirim.\": “If I study more, I can succeed.”",
+      "pronunciation": "ba-şa-ra-bi-Lİ-rim",
+      "exampleTarget": "Daha çok çalışırsam başarabilirim.",
+      "exampleNative": "“If I study more, I can succeed.”",
+      "korean": "Daha çok çalışırsam başarabilirim.",
+      "english": "Model use for \"Daha çok çalışırsam başarabilirim.\": “If I study more, I can succeed.”",
+      "example": "Daha çok çalışırsam başarabilirim.",
+      "exampleEnglish": "“If I study more, I can succeed.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "başarabilirim",
+      "romanization": "ba-şa-ra-bi-Lİ-rim",
+      "nativeText": "Usage focus for \"başarabilirim\": “I can succeed / manage.” A good learner-confidence word built from the same suffix logic.",
+      "pronunciation": "ba-şa-ra-bi-Lİ-rim",
+      "exampleTarget": "Daha çok çalışırsam başarabilirim.",
+      "exampleNative": "Notice what the form is doing here: “If I study more, I can succeed.”",
+      "korean": "başarabilirim",
+      "english": "Usage focus for \"başarabilirim\": “I can succeed / manage.” A good learner-confidence word built from the same suffix logic.",
+      "example": "Daha çok çalışırsam başarabilirim.",
+      "exampleEnglish": "Notice what the form is doing here: “If I study more, I can succeed.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "başarabilirim",
+      "romanization": "ba-şa-ra-bi-Lİ-rim",
+      "nativeText": "Contrast check for \"başarabilirim\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ba-şa-ra-bi-Lİ-rim",
+      "exampleTarget": "Daha çok çalışırsam başarabilirim.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “If I study more, I can succeed.”",
+      "korean": "başarabilirim",
+      "english": "Contrast check for \"başarabilirim\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Daha çok çalışırsam başarabilirim.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “If I study more, I can succeed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "başarabilirim",
+      "romanization": "ba-şa-ra-bi-Lİ-rim",
+      "nativeText": "Recall \"başarabilirim\" from memory, then explain what would change if a nearby alternative replaced it in \"Daha çok çalışırsam başarabilirim.\".",
+      "pronunciation": "ba-şa-ra-bi-Lİ-rim",
+      "exampleTarget": "Daha çok çalışırsam başarabilirim.",
+      "exampleNative": "Self-check against the model before moving on: “If I study more, I can succeed.”",
+      "korean": "başarabilirim",
+      "english": "Recall \"başarabilirim\" from memory, then explain what would change if a nearby alternative replaced it in \"Daha çok çalışırsam başarabilirim.\".",
+      "example": "Daha çok çalışırsam başarabilirim.",
+      "exampleEnglish": "Self-check against the model before moving on: “If I study more, I can succeed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "başarabilirim",
+      "romanization": "ba-şa-ra-bi-Lİ-rim",
+      "nativeText": "Repair \"başarabilirim\" inside \"Daha çok çalışırsam başarabilirim.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I can succeed / manage.” A good learner-confidence word built from the same suffix logic.",
+      "pronunciation": "ba-şa-ra-bi-Lİ-rim",
+      "exampleTarget": "Daha çok çalışırsam başarabilirim.",
+      "exampleNative": "Use the model as the repair target: “If I study more, I can succeed.”",
+      "korean": "başarabilirim",
+      "english": "Repair \"başarabilirim\" inside \"Daha çok çalışırsam başarabilirim.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I can succeed / manage.” A good learner-confidence word built from the same suffix logic.",
+      "example": "Daha çok çalışırsam başarabilirim.",
+      "exampleEnglish": "Use the model as the repair target: “If I study more, I can succeed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "başarabilirim",
+      "romanization": "ba-şa-ra-bi-Lİ-rim",
+      "nativeText": "Transfer \"başarabilirim\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Daha çok çalışırsam başarabilirim.\".",
+      "pronunciation": "ba-şa-ra-bi-Lİ-rim",
+      "exampleTarget": "Daha çok çalışırsam başarabilirim.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “If I study more, I can succeed.”",
+      "korean": "başarabilirim",
+      "english": "Transfer \"başarabilirim\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Daha çok çalışırsam başarabilirim.\".",
+      "example": "Daha çok çalışırsam başarabilirim.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “If I study more, I can succeed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "başarabilirim",
+      "romanization": "ba-şa-ra-bi-Lİ-rim",
+      "nativeText": "Find one word or phrase that naturally travels with \"başarabilirim\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ba-şa-ra-bi-Lİ-rim",
+      "exampleTarget": "Daha çok çalışırsam başarabilirim.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “If I study more, I can succeed.”",
+      "korean": "başarabilirim",
+      "english": "Find one word or phrase that naturally travels with \"başarabilirim\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Daha çok çalışırsam başarabilirim.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “If I study more, I can succeed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "başarabilirim",
+      "romanization": "ba-şa-ra-bi-Lİ-rim",
+      "nativeText": "Listen for \"başarabilirim\" inside \"Daha çok çalışırsam başarabilirim.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ba-şa-ra-bi-Lİ-rim",
+      "exampleTarget": "Daha çok çalışırsam başarabilirim.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “If I study more, I can succeed.”",
+      "korean": "başarabilirim",
+      "english": "Listen for \"başarabilirim\" inside \"Daha çok çalışırsam başarabilirim.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Daha çok çalışırsam başarabilirim.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “If I study more, I can succeed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "başarabilirim",
+      "romanization": "ba-şa-ra-bi-Lİ-rim",
+      "nativeText": "Write \"başarabilirim\" again without looking, then compare the exact written form against \"Daha çok çalışırsam başarabilirim.\" before moving on.",
+      "pronunciation": "ba-şa-ra-bi-Lİ-rim",
+      "exampleTarget": "Daha çok çalışırsam başarabilirim.",
+      "exampleNative": "Use the written model as the final correctness check: “If I study more, I can succeed.”",
+      "korean": "başarabilirim",
+      "english": "Write \"başarabilirim\" again without looking, then compare the exact written form against \"Daha çok çalışırsam başarabilirim.\" before moving on.",
+      "example": "Daha çok çalışırsam başarabilirim.",
+      "exampleEnglish": "Use the written model as the final correctness check: “If I study more, I can succeed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit14ability-vocabulary-1",
+        "tr-level1unit14ability-vocabulary-2",
+        "tr-level1unit14ability-grammar-1",
+        "tr-level1unit14ability-grammar-2",
+        "tr-level1unit14ability-reading",
+        "tr-level1unit14ability-listening",
+        "tr-level1unit14ability-writing",
+        "tr-level1unit14ability-task"
+      ],
+      "targetText": "başarabilirim",
+      "romanization": "ba-şa-ra-bi-Lİ-rim",
+      "nativeText": "Check whether \"başarabilirim\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “If I study more, I can succeed.”",
+      "pronunciation": "ba-şa-ra-bi-Lİ-rim",
+      "exampleTarget": "Daha çok çalışırsam başarabilirim.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “If I study more, I can succeed.”",
+      "korean": "başarabilirim",
+      "english": "Check whether \"başarabilirim\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “If I study more, I can succeed.”",
+      "example": "Daha çok çalışırsam başarabilirim.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “If I study more, I can succeed.”"
+    }
+  ],
+  "targetLang": "tr",
+  "nativeLang": "en",
+  "track": "textbook"
+};

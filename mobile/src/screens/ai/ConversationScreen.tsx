@@ -4,8 +4,10 @@ import {
   Platform,
   ScrollView,
   StyleSheet,
+  TouchableOpacity,
   View,
 } from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ExpoSpeechRecognitionModule, useSpeechRecognitionEvent } from 'expo-speech-recognition';
 import { useRoute } from '@react-navigation/native';
@@ -801,6 +803,7 @@ const ConversationScreen: React.FC = () => {
   const [roleState, setRoleState] = useState<ConversationRoleState | null>(null);
   const [customRoleplay, setCustomRoleplay] = useState<CustomRoleplay>({});
   const [scenarioMenuOpen, setScenarioMenuOpen] = useState(false);
+  const [controlsOpen, setControlsOpen] = useState(false);
   const [contextRecommendations, setContextRecommendations] = useState<PracticeRecommendations | null>(null);
   const [countdownNow, setCountdownNow] = useState(Date.now());
   const [roleplayRecap, setRoleplayRecap] = useState<RoleplayRecap | null>(null);
@@ -1709,6 +1712,25 @@ const ConversationScreen: React.FC = () => {
         </View>
       </View>
 
+      <TouchableOpacity
+        style={styles.controlsToggle}
+        onPress={() => setControlsOpen((open) => !open)}
+        activeOpacity={0.8}
+      >
+        <View style={styles.controlsToggleText}>
+          <Text style={styles.label}>{t('conversation.practiceSetup', 'Practice setup')}</Text>
+          <Text style={styles.controlsToggleSummary} numberOfLines={1}>
+            {supportLabelFor(nativeLanguage, supportLevel)} · {memoryScope === 'cloud'
+              ? t('conversation.syncedMemory', 'Synced memory')
+              : memoryScope === 'device'
+                ? t('conversation.deviceMemory', 'Device memory')
+                : t('conversation.noSavedMemory', 'No saved memory')}
+          </Text>
+        </View>
+        <MaterialCommunityIcons name={controlsOpen ? 'chevron-up' : 'chevron-down'} size={22} color={colors.textSecondary} />
+      </TouchableOpacity>
+
+      {controlsOpen && (
       <View style={styles.controls}>
         <View style={styles.supportHeader}>
           <Text style={styles.label}>{t('conversation.support', 'Support')}</Text>
@@ -1808,6 +1830,7 @@ const ConversationScreen: React.FC = () => {
           </>
         )}
       </View>
+      )}
 
       <View style={styles.threadShell}>
         <View style={styles.threadHeader}>
@@ -1991,6 +2014,29 @@ const createStyles = (colors: AppColors) => StyleSheet.create({
   planText: { color: colors.textSecondary, fontWeight: '800', fontSize: 11 },
   planTextCloud: { color: colors.accentGreen },
   planTextBlocked: { color: colors.accentRed },
+  controlsToggle: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 12,
+    marginHorizontal: 12,
+    marginTop: 10,
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: colors.border,
+    backgroundColor: colors.surface,
+  },
+  controlsToggleText: {
+    flex: 1,
+    minWidth: 0,
+    gap: 3,
+  },
+  controlsToggleSummary: {
+    color: colors.textPrimary,
+    fontWeight: '800',
+  },
   controls: {
     paddingHorizontal: 14,
     paddingTop: 12,

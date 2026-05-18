@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('tr', {
-  slug: 'tr-l1u6',
-  title: 'Level 1 · Unit 6: Tarihler ve Takvim — Dates and Calendar',
-  category: 'time',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Talk about days, dates, and short plans while hearing vowel harmony in common time suffixes.',
-  vocabularyGoal: 'Use weekdays, months, today/tomorrow/yesterday, and calendar questions.',
-  grammarGoal: 'Use time suffixes such as `-de/-da` and date order without losing vowel harmony.',
-  speakingGoal: 'Say today’s date, ask when something happens, and answer with one plan.',
-  task: 'Arrange a simple study meeting on a calendar.',
-  expressionPractice: [
-    practice('asking-date', 'Asking the date', 'Use `bugün ayın kaçı?` and `ne zaman?`.'),
-    practice('stating-date', 'Stating a date', 'Use one weekday and one numbered date.'),
-    practice('making-plan', 'Making a plan', 'Use `pazartesi günü` or `gelecek hafta`.'),
+module.exports = {
+  "title": "Level 1 · Unit 6: Tarihler ve Takvim — Dates and Calendar",
+  "category": "time",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "tr-level1unit06datescalendar-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Talk about days, dates, and short plans while hearing vowel harmony in common time suffixes."
+      ],
+      "task": "Arrange a simple study meeting on a calendar."
+    },
+    {
+      "id": "tr-level1unit06datescalendar-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "tr-level1unit06datescalendar-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 6: Tarihler ve Takvim — Dates and Calendar with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "tr-level1unit06datescalendar-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 6: Tarihler ve Takvim — Dates and Calendar sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "tr-level1unit06datescalendar-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Talk about days, dates, and short plans while hearing vowel harmony in common time suffixes."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "tr-level1unit06datescalendar-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 6: Tarihler ve Takvim — Dates and Calendar with one nearby Turkish form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "tr-level1unit06datescalendar-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "tr-level1unit06datescalendar-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "tr-level1unit06datescalendar-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "tr-level1unit06datescalendar-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "tr-level1unit06datescalendar-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Arrange a simple study meeting on a calendar."
+      ],
+      "task": "Arrange a simple study meeting on a calendar."
+    }
   ],
-  relatedPools: ['topic-time', 'topic-calendar'],
-  items: [
-    item('bugün', 'bu-GÜN', '“Today.” A high-frequency time word with front-rounded vowel harmony in later suffixes.', 'Bugün pazartesi.', '“Today is Monday.”'),
-    item('yarın', 'ya-RIN', '“Tomorrow.” The undotted ı is a core Turkish sound learners need to keep distinct.', 'Yarın dersim var.', '“Tomorrow I have class.”'),
-    item('dün', 'DÜN', '“Yesterday.” Short, common, and useful for every past-tense unit that follows.', 'Dün evdeydim.', '“Yesterday I was at home.”'),
-    item('pazartesi günü', 'pa-zar-TE-si GÜ-nü', '“On Monday.” `Günü` makes the day expression explicit and natural.', 'Sınav pazartesi günü.', '“The exam is on Monday.”'),
-    item('bugün ayın kaçı?', 'bu-GÜN a-YIN KA-çı', '“What is today’s date?” Literally “today is which of the month?”', 'Bugün ayın kaçı?', '“What is today’s date?”'),
-    item('beş Mayıs', 'BEŞ ma-YIS', '“May fifth.” Turkish names the day number before the month.', 'Ders beş Mayıs’ta başlıyor.', '“Class starts on May fifth.”'),
-    item('gelecek hafta', 'ge-le-JEK HAF-ta', '“Next week.” A practical near-future phrase.', 'Gelecek hafta görüşürüz.', '“We will see each other next week.”'),
-    item('ne zaman?', 'ne za-MAN', '“When?” A core question phrase for time and plans.', 'Toplantı ne zaman?', '“When is the meeting?”'),
+  "expressionPractice": [
+    {
+      "id": "asking-date",
+      "label": "Asking the date",
+      "goal": "Use `bugün ayın kaçı?` and `ne zaman?`."
+    },
+    {
+      "id": "stating-date",
+      "label": "Stating a date",
+      "goal": "Use one weekday and one numbered date."
+    },
+    {
+      "id": "making-plan",
+      "label": "Making a plan",
+      "goal": "Use `pazartesi günü` or `gelecek hafta`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-time",
+    "topic-calendar"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit06datescalendar-orientation"
+      ],
+      "targetText": "ders hedefi",
+      "romanization": "",
+      "nativeText": "Talk about days, dates, and short plans while hearing vowel harmony in common time suffixes.",
+      "pronunciation": "",
+      "exampleTarget": "ders hedefi",
+      "exampleNative": "The whole lesson is built toward this outcome: Arrange a simple study meeting on a calendar.",
+      "korean": "ders hedefi",
+      "english": "Talk about days, dates, and short plans while hearing vowel harmony in common time suffixes.",
+      "example": "ders hedefi",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Arrange a simple study meeting on a calendar."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "tr-level1unit06datescalendar-pronunciation"
+      ],
+      "targetText": "ses kontrolü",
+      "romanization": "",
+      "nativeText": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Bugün pazartesi.\".",
+      "pronunciation": "",
+      "exampleTarget": "Bugün pazartesi.",
+      "exampleNative": "“Today is Monday.”",
+      "korean": "ses kontrolü",
+      "english": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Bugün pazartesi.\".",
+      "example": "Bugün pazartesi.",
+      "exampleEnglish": "“Today is Monday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1"
+      ],
+      "targetText": "bugün",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 6: Tarihler ve Takvim — Dates and Calendar with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Bugün pazartesi.",
+      "exampleNative": "“Today is Monday.”",
+      "korean": "bugün",
+      "english": "Use the key language of Level 1 · Unit 6: Tarihler ve Takvim — Dates and Calendar with the register and setting that the lesson requires.",
+      "example": "Bugün pazartesi.",
+      "exampleEnglish": "“Today is Monday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-2"
+      ],
+      "targetText": "yarın",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 6: Tarihler ve Takvim — Dates and Calendar sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Yarın dersim var.",
+      "exampleNative": "“Tomorrow I have class.”",
+      "korean": "yarın",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 6: Tarihler ve Takvim — Dates and Calendar sound precise rather than merely understandable.",
+      "example": "Yarın dersim var.",
+      "exampleEnglish": "“Tomorrow I have class.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "tr-level1unit06datescalendar-grammar-1"
+      ],
+      "targetText": "bugün",
+      "romanization": "",
+      "nativeText": "Talk about days, dates, and short plans while hearing vowel harmony in common time suffixes.",
+      "pronunciation": "",
+      "exampleTarget": "Bugün pazartesi.",
+      "exampleNative": "“Today is Monday.”",
+      "korean": "bugün",
+      "english": "Talk about days, dates, and short plans while hearing vowel harmony in common time suffixes.",
+      "example": "Bugün pazartesi.",
+      "exampleEnglish": "“Today is Monday.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "tr-level1unit06datescalendar-grammar-2"
+      ],
+      "targetText": "yarın",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 6: Tarihler ve Takvim — Dates and Calendar with one nearby Turkish form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Yarın dersim var.",
+      "exampleNative": "“Tomorrow I have class.”",
+      "korean": "yarın",
+      "english": "Contrast the main pattern in Level 1 · Unit 6: Tarihler ve Takvim — Dates and Calendar with one nearby Turkish form so the learner can avoid literal translation.",
+      "example": "Yarın dersim var.",
+      "exampleEnglish": "“Tomorrow I have class.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "tr-level1unit06datescalendar-reading"
+      ],
+      "targetText": "okuma modeli",
+      "romanization": "",
+      "nativeText": "Read \"Toplantı ne zaman?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Toplantı ne zaman?",
+      "exampleNative": "“When is the meeting?”",
+      "korean": "okuma modeli",
+      "english": "Read \"Toplantı ne zaman?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Toplantı ne zaman?",
+      "exampleEnglish": "“When is the meeting?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit06datescalendar-listening"
+      ],
+      "targetText": "diyalog modeli",
+      "romanization": "",
+      "nativeText": "Hear \"Toplantı ne zaman?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Toplantı ne zaman?",
+      "exampleNative": "“When is the meeting?”",
+      "korean": "diyalog modeli",
+      "english": "Hear \"Toplantı ne zaman?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Toplantı ne zaman?",
+      "exampleEnglish": "“When is the meeting?”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "tr-level1unit06datescalendar-writing"
+      ],
+      "targetText": "yazma alıştırması",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Bugün pazartesi.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Bugün pazartesi.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "yazma alıştırması",
+      "english": "Write your own version after studying \"Bugün pazartesi.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Bugün pazartesi.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "tr-level1unit06datescalendar-culture"
+      ],
+      "targetText": "kullanım ve bağlam",
+      "romanization": "",
+      "nativeText": "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Yarın dersim var.",
+      "exampleNative": "“Tomorrow I have class.”",
+      "korean": "kullanım ve bağlam",
+      "english": "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used.",
+      "example": "Yarın dersim var.",
+      "exampleEnglish": "“Tomorrow I have class.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "son görev",
+      "romanization": "",
+      "nativeText": "Arrange a simple study meeting on a calendar.",
+      "pronunciation": "",
+      "exampleTarget": "Toplantı ne zaman?",
+      "exampleNative": "Arrange a simple study meeting on a calendar.",
+      "korean": "son görev",
+      "english": "Arrange a simple study meeting on a calendar.",
+      "example": "Toplantı ne zaman?",
+      "exampleEnglish": "Arrange a simple study meeting on a calendar."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit06datescalendar-grammar-2"
+      ],
+      "targetText": "yaygın hata",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around suffix chains, vowel harmony, evidentiality, and word order. Begin by checking \"Yarın dersim var.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Yarın dersim var.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “Tomorrow I have class.”",
+      "korean": "yaygın hata",
+      "english": "Watch for literal-translation mistakes around suffix chains, vowel harmony, evidentiality, and word order. Begin by checking \"Yarın dersim var.\" against the model.",
+      "example": "Yarın dersim var.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “Tomorrow I have class.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-culture"
+      ],
+      "targetText": "üslup",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for sen, siz, a service tone, or a more formal wording before selecting the final form. Compare the social fit of \"Bugün pazartesi.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Bugün pazartesi.",
+      "exampleNative": "“Today is Monday.”",
+      "korean": "üslup",
+      "english": "Check whether the setting calls for sen, siz, a service tone, or a more formal wording before selecting the final form. Compare the social fit of \"Bugün pazartesi.\" before reusing it elsewhere.",
+      "example": "Bugün pazartesi.",
+      "exampleEnglish": "“Today is Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "akıcılık",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Turkish message rather than as separate translated fragments. Aim to carry \"Toplantı ne zaman?\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Toplantı ne zaman?",
+      "exampleNative": "“When is the meeting?”",
+      "korean": "akıcılık",
+      "english": "Say the idea as one connected Turkish message rather than as separate translated fragments. Aim to carry \"Toplantı ne zaman?\" as one thought.",
+      "example": "Toplantı ne zaman?",
+      "exampleEnglish": "“When is the meeting?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "uygulama",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Bugün pazartesi.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Bugün pazartesi.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "uygulama",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Bugün pazartesi.\" and move it into your own life.",
+      "example": "Bugün pazartesi.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-grammar-1"
+      ],
+      "targetText": "hatırlama",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"bugün\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "bugün",
+      "exampleNative": "“Today.” A high-frequency time word with front-rounded vowel harmony in later suffixes.",
+      "korean": "hatırlama",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"bugün\" before looking back.",
+      "example": "bugün",
+      "exampleEnglish": "“Today.” A high-frequency time word with front-rounded vowel harmony in later suffixes."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-writing"
+      ],
+      "targetText": "genişletme",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Toplantı ne zaman?\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Toplantı ne zaman?",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "genişletme",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Toplantı ne zaman?\" rather than restarting from a blank sentence.",
+      "example": "Toplantı ne zaman?",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading"
+      ],
+      "targetText": "karşılaştırma",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 6: Tarihler ve Takvim — Dates and Calendar with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Yarın dersim var.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Yarın dersim var.",
+      "exampleNative": "“Tomorrow I have class.”",
+      "korean": "karşılaştırma",
+      "english": "Compare the central form in Level 1 · Unit 6: Tarihler ve Takvim — Dates and Calendar with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Yarın dersim var.\" as the comparison line.",
+      "example": "Yarın dersim var.",
+      "exampleEnglish": "“Tomorrow I have class.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "tr-level1unit06datescalendar-pronunciation"
+      ],
+      "targetText": "telaffuz düzeltme",
+      "romanization": "",
+      "nativeText": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Bugün pazartesi.\".",
+      "pronunciation": "",
+      "exampleTarget": "Bugün pazartesi.",
+      "exampleNative": "“Today is Monday.”",
+      "korean": "telaffuz düzeltme",
+      "english": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Bugün pazartesi.\".",
+      "example": "Bugün pazartesi.",
+      "exampleEnglish": "“Today is Monday.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "diyalog varyasyonu",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Toplantı ne zaman?\".",
+      "pronunciation": "",
+      "exampleTarget": "Toplantı ne zaman?",
+      "exampleNative": "“When is the meeting?”",
+      "korean": "diyalog varyasyonu",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Toplantı ne zaman?\".",
+      "example": "Toplantı ne zaman?",
+      "exampleEnglish": "“When is the meeting?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-writing"
+      ],
+      "targetText": "cümle kurma",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Bugün pazartesi.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Bugün pazartesi.",
+      "exampleNative": "“Today is Monday.”",
+      "korean": "cümle kurma",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Bugün pazartesi.\" one layer at a time.",
+      "example": "Bugün pazartesi.",
+      "exampleEnglish": "“Today is Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-2"
+      ],
+      "targetText": "hızlı kontrol",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Yarın dersim var.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Yarın dersim var.",
+      "exampleNative": "“Tomorrow I have class.”",
+      "korean": "hızlı kontrol",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Yarın dersim var.\" as the deciding example.",
+      "example": "Yarın dersim var.",
+      "exampleEnglish": "“Tomorrow I have class.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit06datescalendar-culture",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "değerlendirme",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Toplantı ne zaman?\".",
+      "pronunciation": "",
+      "exampleTarget": "Toplantı ne zaman?",
+      "exampleNative": "“When is the meeting?”",
+      "korean": "değerlendirme",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Toplantı ne zaman?\".",
+      "example": "Toplantı ne zaman?",
+      "exampleEnglish": "“When is the meeting?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "bugün",
+      "romanization": "bu-GÜN",
+      "nativeText": "“Today.” A high-frequency time word with front-rounded vowel harmony in later suffixes.",
+      "pronunciation": "bu-GÜN",
+      "exampleTarget": "Bugün pazartesi.",
+      "exampleNative": "“Today is Monday.”",
+      "korean": "bugün",
+      "english": "“Today.” A high-frequency time word with front-rounded vowel harmony in later suffixes.",
+      "example": "Bugün pazartesi.",
+      "exampleEnglish": "“Today is Monday.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "Bugün pazartesi.",
+      "romanization": "bu-GÜN",
+      "nativeText": "Model use for \"Bugün pazartesi.\": “Today is Monday.”",
+      "pronunciation": "bu-GÜN",
+      "exampleTarget": "Bugün pazartesi.",
+      "exampleNative": "“Today is Monday.”",
+      "korean": "Bugün pazartesi.",
+      "english": "Model use for \"Bugün pazartesi.\": “Today is Monday.”",
+      "example": "Bugün pazartesi.",
+      "exampleEnglish": "“Today is Monday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "bugün",
+      "romanization": "bu-GÜN",
+      "nativeText": "Usage focus for \"bugün\": Use the key language of Level 1 · Unit 6: Tarihler ve Takvim — Dates and Calendar with the register and setting that the lesson requires.",
+      "pronunciation": "bu-GÜN",
+      "exampleTarget": "Bugün pazartesi.",
+      "exampleNative": "Notice what the form is doing here: “Today is Monday.”",
+      "korean": "bugün",
+      "english": "Usage focus for \"bugün\": Use the key language of Level 1 · Unit 6: Tarihler ve Takvim — Dates and Calendar with the register and setting that the lesson requires.",
+      "example": "Bugün pazartesi.",
+      "exampleEnglish": "Notice what the form is doing here: “Today is Monday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "bugün",
+      "romanization": "bu-GÜN",
+      "nativeText": "Contrast check for \"bugün\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "bu-GÜN",
+      "exampleTarget": "Bugün pazartesi.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Today is Monday.”",
+      "korean": "bugün",
+      "english": "Contrast check for \"bugün\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Bugün pazartesi.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Today is Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "bugün",
+      "romanization": "bu-GÜN",
+      "nativeText": "Recall \"bugün\" from memory, then explain what would change if a nearby alternative replaced it in \"Bugün pazartesi.\".",
+      "pronunciation": "bu-GÜN",
+      "exampleTarget": "Bugün pazartesi.",
+      "exampleNative": "Self-check against the model before moving on: “Today is Monday.”",
+      "korean": "bugün",
+      "english": "Recall \"bugün\" from memory, then explain what would change if a nearby alternative replaced it in \"Bugün pazartesi.\".",
+      "example": "Bugün pazartesi.",
+      "exampleEnglish": "Self-check against the model before moving on: “Today is Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "bugün",
+      "romanization": "bu-GÜN",
+      "nativeText": "Repair \"bugün\" inside \"Bugün pazartesi.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 6: Tarihler ve Takvim — Dates and Calendar with the register and setting that the lesson requires.",
+      "pronunciation": "bu-GÜN",
+      "exampleTarget": "Bugün pazartesi.",
+      "exampleNative": "Use the model as the repair target: “Today is Monday.”",
+      "korean": "bugün",
+      "english": "Repair \"bugün\" inside \"Bugün pazartesi.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 6: Tarihler ve Takvim — Dates and Calendar with the register and setting that the lesson requires.",
+      "example": "Bugün pazartesi.",
+      "exampleEnglish": "Use the model as the repair target: “Today is Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "bugün",
+      "romanization": "bu-GÜN",
+      "nativeText": "Transfer \"bugün\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bugün pazartesi.\".",
+      "pronunciation": "bu-GÜN",
+      "exampleTarget": "Bugün pazartesi.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Today is Monday.”",
+      "korean": "bugün",
+      "english": "Transfer \"bugün\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bugün pazartesi.\".",
+      "example": "Bugün pazartesi.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Today is Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "bugün",
+      "romanization": "bu-GÜN",
+      "nativeText": "Find one word or phrase that naturally travels with \"bugün\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "bu-GÜN",
+      "exampleTarget": "Bugün pazartesi.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Today is Monday.”",
+      "korean": "bugün",
+      "english": "Find one word or phrase that naturally travels with \"bugün\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Bugün pazartesi.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Today is Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "bugün",
+      "romanization": "bu-GÜN",
+      "nativeText": "Listen for \"bugün\" inside \"Bugün pazartesi.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "bu-GÜN",
+      "exampleTarget": "Bugün pazartesi.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Today is Monday.”",
+      "korean": "bugün",
+      "english": "Listen for \"bugün\" inside \"Bugün pazartesi.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Bugün pazartesi.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Today is Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "bugün",
+      "romanization": "bu-GÜN",
+      "nativeText": "Write \"bugün\" again without looking, then compare the exact written form against \"Bugün pazartesi.\" before moving on.",
+      "pronunciation": "bu-GÜN",
+      "exampleTarget": "Bugün pazartesi.",
+      "exampleNative": "Use the written model as the final correctness check: “Today is Monday.”",
+      "korean": "bugün",
+      "english": "Write \"bugün\" again without looking, then compare the exact written form against \"Bugün pazartesi.\" before moving on.",
+      "example": "Bugün pazartesi.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Today is Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "bugün",
+      "romanization": "bu-GÜN",
+      "nativeText": "Check whether \"bugün\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Today is Monday.”",
+      "pronunciation": "bu-GÜN",
+      "exampleTarget": "Bugün pazartesi.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Today is Monday.”",
+      "korean": "bugün",
+      "english": "Check whether \"bugün\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Today is Monday.”",
+      "example": "Bugün pazartesi.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Today is Monday.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "yarın",
+      "romanization": "ya-RIN",
+      "nativeText": "“Tomorrow.” The undotted ı is a core Turkish sound learners need to keep distinct.",
+      "pronunciation": "ya-RIN",
+      "exampleTarget": "Yarın dersim var.",
+      "exampleNative": "“Tomorrow I have class.”",
+      "korean": "yarın",
+      "english": "“Tomorrow.” The undotted ı is a core Turkish sound learners need to keep distinct.",
+      "example": "Yarın dersim var.",
+      "exampleEnglish": "“Tomorrow I have class.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "Yarın dersim var.",
+      "romanization": "ya-RIN",
+      "nativeText": "Model use for \"Yarın dersim var.\": “Tomorrow I have class.”",
+      "pronunciation": "ya-RIN",
+      "exampleTarget": "Yarın dersim var.",
+      "exampleNative": "“Tomorrow I have class.”",
+      "korean": "Yarın dersim var.",
+      "english": "Model use for \"Yarın dersim var.\": “Tomorrow I have class.”",
+      "example": "Yarın dersim var.",
+      "exampleEnglish": "“Tomorrow I have class.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "yarın",
+      "romanization": "ya-RIN",
+      "nativeText": "Usage focus for \"yarın\": Distinguish the nearby wording choices that make Level 1 · Unit 6: Tarihler ve Takvim — Dates and Calendar sound precise rather than merely understandable.",
+      "pronunciation": "ya-RIN",
+      "exampleTarget": "Yarın dersim var.",
+      "exampleNative": "Notice what the form is doing here: “Tomorrow I have class.”",
+      "korean": "yarın",
+      "english": "Usage focus for \"yarın\": Distinguish the nearby wording choices that make Level 1 · Unit 6: Tarihler ve Takvim — Dates and Calendar sound precise rather than merely understandable.",
+      "example": "Yarın dersim var.",
+      "exampleEnglish": "Notice what the form is doing here: “Tomorrow I have class.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "yarın",
+      "romanization": "ya-RIN",
+      "nativeText": "Contrast check for \"yarın\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ya-RIN",
+      "exampleTarget": "Yarın dersim var.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Tomorrow I have class.”",
+      "korean": "yarın",
+      "english": "Contrast check for \"yarın\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Yarın dersim var.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Tomorrow I have class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "yarın",
+      "romanization": "ya-RIN",
+      "nativeText": "Recall \"yarın\" from memory, then explain what would change if a nearby alternative replaced it in \"Yarın dersim var.\".",
+      "pronunciation": "ya-RIN",
+      "exampleTarget": "Yarın dersim var.",
+      "exampleNative": "Self-check against the model before moving on: “Tomorrow I have class.”",
+      "korean": "yarın",
+      "english": "Recall \"yarın\" from memory, then explain what would change if a nearby alternative replaced it in \"Yarın dersim var.\".",
+      "example": "Yarın dersim var.",
+      "exampleEnglish": "Self-check against the model before moving on: “Tomorrow I have class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "yarın",
+      "romanization": "ya-RIN",
+      "nativeText": "Repair \"yarın\" inside \"Yarın dersim var.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 6: Tarihler ve Takvim — Dates and Calendar sound precise rather than merely understandable.",
+      "pronunciation": "ya-RIN",
+      "exampleTarget": "Yarın dersim var.",
+      "exampleNative": "Use the model as the repair target: “Tomorrow I have class.”",
+      "korean": "yarın",
+      "english": "Repair \"yarın\" inside \"Yarın dersim var.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 6: Tarihler ve Takvim — Dates and Calendar sound precise rather than merely understandable.",
+      "example": "Yarın dersim var.",
+      "exampleEnglish": "Use the model as the repair target: “Tomorrow I have class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "yarın",
+      "romanization": "ya-RIN",
+      "nativeText": "Transfer \"yarın\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Yarın dersim var.\".",
+      "pronunciation": "ya-RIN",
+      "exampleTarget": "Yarın dersim var.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Tomorrow I have class.”",
+      "korean": "yarın",
+      "english": "Transfer \"yarın\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Yarın dersim var.\".",
+      "example": "Yarın dersim var.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Tomorrow I have class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "yarın",
+      "romanization": "ya-RIN",
+      "nativeText": "Find one word or phrase that naturally travels with \"yarın\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ya-RIN",
+      "exampleTarget": "Yarın dersim var.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Tomorrow I have class.”",
+      "korean": "yarın",
+      "english": "Find one word or phrase that naturally travels with \"yarın\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Yarın dersim var.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Tomorrow I have class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "yarın",
+      "romanization": "ya-RIN",
+      "nativeText": "Listen for \"yarın\" inside \"Yarın dersim var.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ya-RIN",
+      "exampleTarget": "Yarın dersim var.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Tomorrow I have class.”",
+      "korean": "yarın",
+      "english": "Listen for \"yarın\" inside \"Yarın dersim var.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Yarın dersim var.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Tomorrow I have class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "yarın",
+      "romanization": "ya-RIN",
+      "nativeText": "Write \"yarın\" again without looking, then compare the exact written form against \"Yarın dersim var.\" before moving on.",
+      "pronunciation": "ya-RIN",
+      "exampleTarget": "Yarın dersim var.",
+      "exampleNative": "Use the written model as the final correctness check: “Tomorrow I have class.”",
+      "korean": "yarın",
+      "english": "Write \"yarın\" again without looking, then compare the exact written form against \"Yarın dersim var.\" before moving on.",
+      "example": "Yarın dersim var.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Tomorrow I have class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "yarın",
+      "romanization": "ya-RIN",
+      "nativeText": "Check whether \"yarın\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Tomorrow I have class.”",
+      "pronunciation": "ya-RIN",
+      "exampleTarget": "Yarın dersim var.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Tomorrow I have class.”",
+      "korean": "yarın",
+      "english": "Check whether \"yarın\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Tomorrow I have class.”",
+      "example": "Yarın dersim var.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Tomorrow I have class.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "dün",
+      "romanization": "DÜN",
+      "nativeText": "“Yesterday.” Short, common, and useful for every past-tense unit that follows.",
+      "pronunciation": "DÜN",
+      "exampleTarget": "Dün evdeydim.",
+      "exampleNative": "“Yesterday I was at home.”",
+      "korean": "dün",
+      "english": "“Yesterday.” Short, common, and useful for every past-tense unit that follows.",
+      "example": "Dün evdeydim.",
+      "exampleEnglish": "“Yesterday I was at home.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "Dün evdeydim.",
+      "romanization": "DÜN",
+      "nativeText": "Model use for \"Dün evdeydim.\": “Yesterday I was at home.”",
+      "pronunciation": "DÜN",
+      "exampleTarget": "Dün evdeydim.",
+      "exampleNative": "“Yesterday I was at home.”",
+      "korean": "Dün evdeydim.",
+      "english": "Model use for \"Dün evdeydim.\": “Yesterday I was at home.”",
+      "example": "Dün evdeydim.",
+      "exampleEnglish": "“Yesterday I was at home.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "dün",
+      "romanization": "DÜN",
+      "nativeText": "Usage focus for \"dün\": “Yesterday.” Short, common, and useful for every past-tense unit that follows.",
+      "pronunciation": "DÜN",
+      "exampleTarget": "Dün evdeydim.",
+      "exampleNative": "Notice what the form is doing here: “Yesterday I was at home.”",
+      "korean": "dün",
+      "english": "Usage focus for \"dün\": “Yesterday.” Short, common, and useful for every past-tense unit that follows.",
+      "example": "Dün evdeydim.",
+      "exampleEnglish": "Notice what the form is doing here: “Yesterday I was at home.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "dün",
+      "romanization": "DÜN",
+      "nativeText": "Contrast check for \"dün\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "DÜN",
+      "exampleTarget": "Dün evdeydim.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Yesterday I was at home.”",
+      "korean": "dün",
+      "english": "Contrast check for \"dün\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Dün evdeydim.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Yesterday I was at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "dün",
+      "romanization": "DÜN",
+      "nativeText": "Recall \"dün\" from memory, then explain what would change if a nearby alternative replaced it in \"Dün evdeydim.\".",
+      "pronunciation": "DÜN",
+      "exampleTarget": "Dün evdeydim.",
+      "exampleNative": "Self-check against the model before moving on: “Yesterday I was at home.”",
+      "korean": "dün",
+      "english": "Recall \"dün\" from memory, then explain what would change if a nearby alternative replaced it in \"Dün evdeydim.\".",
+      "example": "Dün evdeydim.",
+      "exampleEnglish": "Self-check against the model before moving on: “Yesterday I was at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "dün",
+      "romanization": "DÜN",
+      "nativeText": "Repair \"dün\" inside \"Dün evdeydim.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Yesterday.” Short, common, and useful for every past-tense unit that follows.",
+      "pronunciation": "DÜN",
+      "exampleTarget": "Dün evdeydim.",
+      "exampleNative": "Use the model as the repair target: “Yesterday I was at home.”",
+      "korean": "dün",
+      "english": "Repair \"dün\" inside \"Dün evdeydim.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Yesterday.” Short, common, and useful for every past-tense unit that follows.",
+      "example": "Dün evdeydim.",
+      "exampleEnglish": "Use the model as the repair target: “Yesterday I was at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "dün",
+      "romanization": "DÜN",
+      "nativeText": "Transfer \"dün\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Dün evdeydim.\".",
+      "pronunciation": "DÜN",
+      "exampleTarget": "Dün evdeydim.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Yesterday I was at home.”",
+      "korean": "dün",
+      "english": "Transfer \"dün\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Dün evdeydim.\".",
+      "example": "Dün evdeydim.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Yesterday I was at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "dün",
+      "romanization": "DÜN",
+      "nativeText": "Find one word or phrase that naturally travels with \"dün\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "DÜN",
+      "exampleTarget": "Dün evdeydim.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Yesterday I was at home.”",
+      "korean": "dün",
+      "english": "Find one word or phrase that naturally travels with \"dün\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Dün evdeydim.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Yesterday I was at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "dün",
+      "romanization": "DÜN",
+      "nativeText": "Listen for \"dün\" inside \"Dün evdeydim.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "DÜN",
+      "exampleTarget": "Dün evdeydim.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Yesterday I was at home.”",
+      "korean": "dün",
+      "english": "Listen for \"dün\" inside \"Dün evdeydim.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Dün evdeydim.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Yesterday I was at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "dün",
+      "romanization": "DÜN",
+      "nativeText": "Write \"dün\" again without looking, then compare the exact written form against \"Dün evdeydim.\" before moving on.",
+      "pronunciation": "DÜN",
+      "exampleTarget": "Dün evdeydim.",
+      "exampleNative": "Use the written model as the final correctness check: “Yesterday I was at home.”",
+      "korean": "dün",
+      "english": "Write \"dün\" again without looking, then compare the exact written form against \"Dün evdeydim.\" before moving on.",
+      "example": "Dün evdeydim.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Yesterday I was at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "dün",
+      "romanization": "DÜN",
+      "nativeText": "Check whether \"dün\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Yesterday I was at home.”",
+      "pronunciation": "DÜN",
+      "exampleTarget": "Dün evdeydim.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Yesterday I was at home.”",
+      "korean": "dün",
+      "english": "Check whether \"dün\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Yesterday I was at home.”",
+      "example": "Dün evdeydim.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Yesterday I was at home.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "pazartesi günü",
+      "romanization": "pa-zar-TE-si GÜ-nü",
+      "nativeText": "“On Monday.” `Günü` makes the day expression explicit and natural.",
+      "pronunciation": "pa-zar-TE-si GÜ-nü",
+      "exampleTarget": "Sınav pazartesi günü.",
+      "exampleNative": "“The exam is on Monday.”",
+      "korean": "pazartesi günü",
+      "english": "“On Monday.” `Günü` makes the day expression explicit and natural.",
+      "example": "Sınav pazartesi günü.",
+      "exampleEnglish": "“The exam is on Monday.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "Sınav pazartesi günü.",
+      "romanization": "pa-zar-TE-si GÜ-nü",
+      "nativeText": "Model use for \"Sınav pazartesi günü.\": “The exam is on Monday.”",
+      "pronunciation": "pa-zar-TE-si GÜ-nü",
+      "exampleTarget": "Sınav pazartesi günü.",
+      "exampleNative": "“The exam is on Monday.”",
+      "korean": "Sınav pazartesi günü.",
+      "english": "Model use for \"Sınav pazartesi günü.\": “The exam is on Monday.”",
+      "example": "Sınav pazartesi günü.",
+      "exampleEnglish": "“The exam is on Monday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "pazartesi günü",
+      "romanization": "pa-zar-TE-si GÜ-nü",
+      "nativeText": "Usage focus for \"pazartesi günü\": “On Monday.” `Günü` makes the day expression explicit and natural.",
+      "pronunciation": "pa-zar-TE-si GÜ-nü",
+      "exampleTarget": "Sınav pazartesi günü.",
+      "exampleNative": "Notice what the form is doing here: “The exam is on Monday.”",
+      "korean": "pazartesi günü",
+      "english": "Usage focus for \"pazartesi günü\": “On Monday.” `Günü` makes the day expression explicit and natural.",
+      "example": "Sınav pazartesi günü.",
+      "exampleEnglish": "Notice what the form is doing here: “The exam is on Monday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "pazartesi günü",
+      "romanization": "pa-zar-TE-si GÜ-nü",
+      "nativeText": "Contrast check for \"pazartesi günü\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "pa-zar-TE-si GÜ-nü",
+      "exampleTarget": "Sınav pazartesi günü.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The exam is on Monday.”",
+      "korean": "pazartesi günü",
+      "english": "Contrast check for \"pazartesi günü\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Sınav pazartesi günü.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The exam is on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "pazartesi günü",
+      "romanization": "pa-zar-TE-si GÜ-nü",
+      "nativeText": "Recall \"pazartesi günü\" from memory, then explain what would change if a nearby alternative replaced it in \"Sınav pazartesi günü.\".",
+      "pronunciation": "pa-zar-TE-si GÜ-nü",
+      "exampleTarget": "Sınav pazartesi günü.",
+      "exampleNative": "Self-check against the model before moving on: “The exam is on Monday.”",
+      "korean": "pazartesi günü",
+      "english": "Recall \"pazartesi günü\" from memory, then explain what would change if a nearby alternative replaced it in \"Sınav pazartesi günü.\".",
+      "example": "Sınav pazartesi günü.",
+      "exampleEnglish": "Self-check against the model before moving on: “The exam is on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "pazartesi günü",
+      "romanization": "pa-zar-TE-si GÜ-nü",
+      "nativeText": "Repair \"pazartesi günü\" inside \"Sınav pazartesi günü.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “On Monday.” `Günü` makes the day expression explicit and natural.",
+      "pronunciation": "pa-zar-TE-si GÜ-nü",
+      "exampleTarget": "Sınav pazartesi günü.",
+      "exampleNative": "Use the model as the repair target: “The exam is on Monday.”",
+      "korean": "pazartesi günü",
+      "english": "Repair \"pazartesi günü\" inside \"Sınav pazartesi günü.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “On Monday.” `Günü` makes the day expression explicit and natural.",
+      "example": "Sınav pazartesi günü.",
+      "exampleEnglish": "Use the model as the repair target: “The exam is on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "pazartesi günü",
+      "romanization": "pa-zar-TE-si GÜ-nü",
+      "nativeText": "Transfer \"pazartesi günü\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Sınav pazartesi günü.\".",
+      "pronunciation": "pa-zar-TE-si GÜ-nü",
+      "exampleTarget": "Sınav pazartesi günü.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The exam is on Monday.”",
+      "korean": "pazartesi günü",
+      "english": "Transfer \"pazartesi günü\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Sınav pazartesi günü.\".",
+      "example": "Sınav pazartesi günü.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The exam is on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "pazartesi günü",
+      "romanization": "pa-zar-TE-si GÜ-nü",
+      "nativeText": "Find one word or phrase that naturally travels with \"pazartesi günü\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "pa-zar-TE-si GÜ-nü",
+      "exampleTarget": "Sınav pazartesi günü.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The exam is on Monday.”",
+      "korean": "pazartesi günü",
+      "english": "Find one word or phrase that naturally travels with \"pazartesi günü\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Sınav pazartesi günü.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The exam is on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "pazartesi günü",
+      "romanization": "pa-zar-TE-si GÜ-nü",
+      "nativeText": "Listen for \"pazartesi günü\" inside \"Sınav pazartesi günü.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "pa-zar-TE-si GÜ-nü",
+      "exampleTarget": "Sınav pazartesi günü.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The exam is on Monday.”",
+      "korean": "pazartesi günü",
+      "english": "Listen for \"pazartesi günü\" inside \"Sınav pazartesi günü.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Sınav pazartesi günü.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The exam is on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "pazartesi günü",
+      "romanization": "pa-zar-TE-si GÜ-nü",
+      "nativeText": "Write \"pazartesi günü\" again without looking, then compare the exact written form against \"Sınav pazartesi günü.\" before moving on.",
+      "pronunciation": "pa-zar-TE-si GÜ-nü",
+      "exampleTarget": "Sınav pazartesi günü.",
+      "exampleNative": "Use the written model as the final correctness check: “The exam is on Monday.”",
+      "korean": "pazartesi günü",
+      "english": "Write \"pazartesi günü\" again without looking, then compare the exact written form against \"Sınav pazartesi günü.\" before moving on.",
+      "example": "Sınav pazartesi günü.",
+      "exampleEnglish": "Use the written model as the final correctness check: “The exam is on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "pazartesi günü",
+      "romanization": "pa-zar-TE-si GÜ-nü",
+      "nativeText": "Check whether \"pazartesi günü\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The exam is on Monday.”",
+      "pronunciation": "pa-zar-TE-si GÜ-nü",
+      "exampleTarget": "Sınav pazartesi günü.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The exam is on Monday.”",
+      "korean": "pazartesi günü",
+      "english": "Check whether \"pazartesi günü\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The exam is on Monday.”",
+      "example": "Sınav pazartesi günü.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The exam is on Monday.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "bugün ayın kaçı?",
+      "romanization": "bu-GÜN a-YIN KA-çı",
+      "nativeText": "“What is today’s date?” Literally “today is which of the month?”",
+      "pronunciation": "bu-GÜN a-YIN KA-çı",
+      "exampleTarget": "Bugün ayın kaçı?",
+      "exampleNative": "“What is today’s date?”",
+      "korean": "bugün ayın kaçı?",
+      "english": "“What is today’s date?” Literally “today is which of the month?”",
+      "example": "Bugün ayın kaçı?",
+      "exampleEnglish": "“What is today’s date?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "Bugün ayın kaçı?",
+      "romanization": "bu-GÜN a-YIN KA-çı",
+      "nativeText": "Model use for \"Bugün ayın kaçı?\": “What is today’s date?”",
+      "pronunciation": "bu-GÜN a-YIN KA-çı",
+      "exampleTarget": "Bugün ayın kaçı?",
+      "exampleNative": "“What is today’s date?”",
+      "korean": "Bugün ayın kaçı?",
+      "english": "Model use for \"Bugün ayın kaçı?\": “What is today’s date?”",
+      "example": "Bugün ayın kaçı?",
+      "exampleEnglish": "“What is today’s date?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "bugün ayın kaçı?",
+      "romanization": "bu-GÜN a-YIN KA-çı",
+      "nativeText": "Usage focus for \"bugün ayın kaçı?\": “What is today’s date?” Literally “today is which of the month?”",
+      "pronunciation": "bu-GÜN a-YIN KA-çı",
+      "exampleTarget": "Bugün ayın kaçı?",
+      "exampleNative": "Notice what the form is doing here: “What is today’s date?”",
+      "korean": "bugün ayın kaçı?",
+      "english": "Usage focus for \"bugün ayın kaçı?\": “What is today’s date?” Literally “today is which of the month?”",
+      "example": "Bugün ayın kaçı?",
+      "exampleEnglish": "Notice what the form is doing here: “What is today’s date?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "bugün ayın kaçı?",
+      "romanization": "bu-GÜN a-YIN KA-çı",
+      "nativeText": "Contrast check for \"bugün ayın kaçı?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "bu-GÜN a-YIN KA-çı",
+      "exampleTarget": "Bugün ayın kaçı?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What is today’s date?”",
+      "korean": "bugün ayın kaçı?",
+      "english": "Contrast check for \"bugün ayın kaçı?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Bugün ayın kaçı?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What is today’s date?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "bugün ayın kaçı?",
+      "romanization": "bu-GÜN a-YIN KA-çı",
+      "nativeText": "Recall \"bugün ayın kaçı?\" from memory, then explain what would change if a nearby alternative replaced it in \"Bugün ayın kaçı?\".",
+      "pronunciation": "bu-GÜN a-YIN KA-çı",
+      "exampleTarget": "Bugün ayın kaçı?",
+      "exampleNative": "Self-check against the model before moving on: “What is today’s date?”",
+      "korean": "bugün ayın kaçı?",
+      "english": "Recall \"bugün ayın kaçı?\" from memory, then explain what would change if a nearby alternative replaced it in \"Bugün ayın kaçı?\".",
+      "example": "Bugün ayın kaçı?",
+      "exampleEnglish": "Self-check against the model before moving on: “What is today’s date?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "bugün ayın kaçı?",
+      "romanization": "bu-GÜN a-YIN KA-çı",
+      "nativeText": "Repair \"bugün ayın kaçı?\" inside \"Bugün ayın kaçı?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “What is today’s date?” Literally “today is which of the month?”",
+      "pronunciation": "bu-GÜN a-YIN KA-çı",
+      "exampleTarget": "Bugün ayın kaçı?",
+      "exampleNative": "Use the model as the repair target: “What is today’s date?”",
+      "korean": "bugün ayın kaçı?",
+      "english": "Repair \"bugün ayın kaçı?\" inside \"Bugün ayın kaçı?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “What is today’s date?” Literally “today is which of the month?”",
+      "example": "Bugün ayın kaçı?",
+      "exampleEnglish": "Use the model as the repair target: “What is today’s date?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "bugün ayın kaçı?",
+      "romanization": "bu-GÜN a-YIN KA-çı",
+      "nativeText": "Transfer \"bugün ayın kaçı?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bugün ayın kaçı?\".",
+      "pronunciation": "bu-GÜN a-YIN KA-çı",
+      "exampleTarget": "Bugün ayın kaçı?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “What is today’s date?”",
+      "korean": "bugün ayın kaçı?",
+      "english": "Transfer \"bugün ayın kaçı?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bugün ayın kaçı?\".",
+      "example": "Bugün ayın kaçı?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “What is today’s date?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "bugün ayın kaçı?",
+      "romanization": "bu-GÜN a-YIN KA-çı",
+      "nativeText": "Find one word or phrase that naturally travels with \"bugün ayın kaçı?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "bu-GÜN a-YIN KA-çı",
+      "exampleTarget": "Bugün ayın kaçı?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “What is today’s date?”",
+      "korean": "bugün ayın kaçı?",
+      "english": "Find one word or phrase that naturally travels with \"bugün ayın kaçı?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Bugün ayın kaçı?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “What is today’s date?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "bugün ayın kaçı?",
+      "romanization": "bu-GÜN a-YIN KA-çı",
+      "nativeText": "Listen for \"bugün ayın kaçı?\" inside \"Bugün ayın kaçı?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "bu-GÜN a-YIN KA-çı",
+      "exampleTarget": "Bugün ayın kaçı?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What is today’s date?”",
+      "korean": "bugün ayın kaçı?",
+      "english": "Listen for \"bugün ayın kaçı?\" inside \"Bugün ayın kaçı?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Bugün ayın kaçı?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What is today’s date?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "bugün ayın kaçı?",
+      "romanization": "bu-GÜN a-YIN KA-çı",
+      "nativeText": "Write \"bugün ayın kaçı?\" again without looking, then compare the exact written form against \"Bugün ayın kaçı?\" before moving on.",
+      "pronunciation": "bu-GÜN a-YIN KA-çı",
+      "exampleTarget": "Bugün ayın kaçı?",
+      "exampleNative": "Use the written model as the final correctness check: “What is today’s date?”",
+      "korean": "bugün ayın kaçı?",
+      "english": "Write \"bugün ayın kaçı?\" again without looking, then compare the exact written form against \"Bugün ayın kaçı?\" before moving on.",
+      "example": "Bugün ayın kaçı?",
+      "exampleEnglish": "Use the written model as the final correctness check: “What is today’s date?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "bugün ayın kaçı?",
+      "romanization": "bu-GÜN a-YIN KA-çı",
+      "nativeText": "Check whether \"bugün ayın kaçı?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What is today’s date?”",
+      "pronunciation": "bu-GÜN a-YIN KA-çı",
+      "exampleTarget": "Bugün ayın kaçı?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “What is today’s date?”",
+      "korean": "bugün ayın kaçı?",
+      "english": "Check whether \"bugün ayın kaçı?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What is today’s date?”",
+      "example": "Bugün ayın kaçı?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “What is today’s date?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "beş Mayıs",
+      "romanization": "BEŞ ma-YIS",
+      "nativeText": "“May fifth.” Turkish names the day number before the month.",
+      "pronunciation": "BEŞ ma-YIS",
+      "exampleTarget": "Ders beş Mayıs’ta başlıyor.",
+      "exampleNative": "“Class starts on May fifth.”",
+      "korean": "beş Mayıs",
+      "english": "“May fifth.” Turkish names the day number before the month.",
+      "example": "Ders beş Mayıs’ta başlıyor.",
+      "exampleEnglish": "“Class starts on May fifth.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "Ders beş Mayıs’ta başlıyor.",
+      "romanization": "BEŞ ma-YIS",
+      "nativeText": "Model use for \"Ders beş Mayıs’ta başlıyor.\": “Class starts on May fifth.”",
+      "pronunciation": "BEŞ ma-YIS",
+      "exampleTarget": "Ders beş Mayıs’ta başlıyor.",
+      "exampleNative": "“Class starts on May fifth.”",
+      "korean": "Ders beş Mayıs’ta başlıyor.",
+      "english": "Model use for \"Ders beş Mayıs’ta başlıyor.\": “Class starts on May fifth.”",
+      "example": "Ders beş Mayıs’ta başlıyor.",
+      "exampleEnglish": "“Class starts on May fifth.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "beş Mayıs",
+      "romanization": "BEŞ ma-YIS",
+      "nativeText": "Usage focus for \"beş Mayıs\": “May fifth.” Turkish names the day number before the month.",
+      "pronunciation": "BEŞ ma-YIS",
+      "exampleTarget": "Ders beş Mayıs’ta başlıyor.",
+      "exampleNative": "Notice what the form is doing here: “Class starts on May fifth.”",
+      "korean": "beş Mayıs",
+      "english": "Usage focus for \"beş Mayıs\": “May fifth.” Turkish names the day number before the month.",
+      "example": "Ders beş Mayıs’ta başlıyor.",
+      "exampleEnglish": "Notice what the form is doing here: “Class starts on May fifth.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "beş Mayıs",
+      "romanization": "BEŞ ma-YIS",
+      "nativeText": "Contrast check for \"beş Mayıs\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "BEŞ ma-YIS",
+      "exampleTarget": "Ders beş Mayıs’ta başlıyor.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Class starts on May fifth.”",
+      "korean": "beş Mayıs",
+      "english": "Contrast check for \"beş Mayıs\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ders beş Mayıs’ta başlıyor.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Class starts on May fifth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "beş Mayıs",
+      "romanization": "BEŞ ma-YIS",
+      "nativeText": "Recall \"beş Mayıs\" from memory, then explain what would change if a nearby alternative replaced it in \"Ders beş Mayıs’ta başlıyor.\".",
+      "pronunciation": "BEŞ ma-YIS",
+      "exampleTarget": "Ders beş Mayıs’ta başlıyor.",
+      "exampleNative": "Self-check against the model before moving on: “Class starts on May fifth.”",
+      "korean": "beş Mayıs",
+      "english": "Recall \"beş Mayıs\" from memory, then explain what would change if a nearby alternative replaced it in \"Ders beş Mayıs’ta başlıyor.\".",
+      "example": "Ders beş Mayıs’ta başlıyor.",
+      "exampleEnglish": "Self-check against the model before moving on: “Class starts on May fifth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "beş Mayıs",
+      "romanization": "BEŞ ma-YIS",
+      "nativeText": "Repair \"beş Mayıs\" inside \"Ders beş Mayıs’ta başlıyor.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “May fifth.” Turkish names the day number before the month.",
+      "pronunciation": "BEŞ ma-YIS",
+      "exampleTarget": "Ders beş Mayıs’ta başlıyor.",
+      "exampleNative": "Use the model as the repair target: “Class starts on May fifth.”",
+      "korean": "beş Mayıs",
+      "english": "Repair \"beş Mayıs\" inside \"Ders beş Mayıs’ta başlıyor.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “May fifth.” Turkish names the day number before the month.",
+      "example": "Ders beş Mayıs’ta başlıyor.",
+      "exampleEnglish": "Use the model as the repair target: “Class starts on May fifth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "beş Mayıs",
+      "romanization": "BEŞ ma-YIS",
+      "nativeText": "Transfer \"beş Mayıs\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ders beş Mayıs’ta başlıyor.\".",
+      "pronunciation": "BEŞ ma-YIS",
+      "exampleTarget": "Ders beş Mayıs’ta başlıyor.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Class starts on May fifth.”",
+      "korean": "beş Mayıs",
+      "english": "Transfer \"beş Mayıs\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ders beş Mayıs’ta başlıyor.\".",
+      "example": "Ders beş Mayıs’ta başlıyor.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Class starts on May fifth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "beş Mayıs",
+      "romanization": "BEŞ ma-YIS",
+      "nativeText": "Find one word or phrase that naturally travels with \"beş Mayıs\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "BEŞ ma-YIS",
+      "exampleTarget": "Ders beş Mayıs’ta başlıyor.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Class starts on May fifth.”",
+      "korean": "beş Mayıs",
+      "english": "Find one word or phrase that naturally travels with \"beş Mayıs\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ders beş Mayıs’ta başlıyor.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Class starts on May fifth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "beş Mayıs",
+      "romanization": "BEŞ ma-YIS",
+      "nativeText": "Listen for \"beş Mayıs\" inside \"Ders beş Mayıs’ta başlıyor.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "BEŞ ma-YIS",
+      "exampleTarget": "Ders beş Mayıs’ta başlıyor.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Class starts on May fifth.”",
+      "korean": "beş Mayıs",
+      "english": "Listen for \"beş Mayıs\" inside \"Ders beş Mayıs’ta başlıyor.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ders beş Mayıs’ta başlıyor.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Class starts on May fifth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "beş Mayıs",
+      "romanization": "BEŞ ma-YIS",
+      "nativeText": "Write \"beş Mayıs\" again without looking, then compare the exact written form against \"Ders beş Mayıs’ta başlıyor.\" before moving on.",
+      "pronunciation": "BEŞ ma-YIS",
+      "exampleTarget": "Ders beş Mayıs’ta başlıyor.",
+      "exampleNative": "Use the written model as the final correctness check: “Class starts on May fifth.”",
+      "korean": "beş Mayıs",
+      "english": "Write \"beş Mayıs\" again without looking, then compare the exact written form against \"Ders beş Mayıs’ta başlıyor.\" before moving on.",
+      "example": "Ders beş Mayıs’ta başlıyor.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Class starts on May fifth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "beş Mayıs",
+      "romanization": "BEŞ ma-YIS",
+      "nativeText": "Check whether \"beş Mayıs\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Class starts on May fifth.”",
+      "pronunciation": "BEŞ ma-YIS",
+      "exampleTarget": "Ders beş Mayıs’ta başlıyor.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Class starts on May fifth.”",
+      "korean": "beş Mayıs",
+      "english": "Check whether \"beş Mayıs\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Class starts on May fifth.”",
+      "example": "Ders beş Mayıs’ta başlıyor.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Class starts on May fifth.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "gelecek hafta",
+      "romanization": "ge-le-JEK HAF-ta",
+      "nativeText": "“Next week.” A practical near-future phrase.",
+      "pronunciation": "ge-le-JEK HAF-ta",
+      "exampleTarget": "Gelecek hafta görüşürüz.",
+      "exampleNative": "“We will see each other next week.”",
+      "korean": "gelecek hafta",
+      "english": "“Next week.” A practical near-future phrase.",
+      "example": "Gelecek hafta görüşürüz.",
+      "exampleEnglish": "“We will see each other next week.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "Gelecek hafta görüşürüz.",
+      "romanization": "ge-le-JEK HAF-ta",
+      "nativeText": "Model use for \"Gelecek hafta görüşürüz.\": “We will see each other next week.”",
+      "pronunciation": "ge-le-JEK HAF-ta",
+      "exampleTarget": "Gelecek hafta görüşürüz.",
+      "exampleNative": "“We will see each other next week.”",
+      "korean": "Gelecek hafta görüşürüz.",
+      "english": "Model use for \"Gelecek hafta görüşürüz.\": “We will see each other next week.”",
+      "example": "Gelecek hafta görüşürüz.",
+      "exampleEnglish": "“We will see each other next week.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "gelecek hafta",
+      "romanization": "ge-le-JEK HAF-ta",
+      "nativeText": "Usage focus for \"gelecek hafta\": “Next week.” A practical near-future phrase.",
+      "pronunciation": "ge-le-JEK HAF-ta",
+      "exampleTarget": "Gelecek hafta görüşürüz.",
+      "exampleNative": "Notice what the form is doing here: “We will see each other next week.”",
+      "korean": "gelecek hafta",
+      "english": "Usage focus for \"gelecek hafta\": “Next week.” A practical near-future phrase.",
+      "example": "Gelecek hafta görüşürüz.",
+      "exampleEnglish": "Notice what the form is doing here: “We will see each other next week.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "gelecek hafta",
+      "romanization": "ge-le-JEK HAF-ta",
+      "nativeText": "Contrast check for \"gelecek hafta\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ge-le-JEK HAF-ta",
+      "exampleTarget": "Gelecek hafta görüşürüz.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “We will see each other next week.”",
+      "korean": "gelecek hafta",
+      "english": "Contrast check for \"gelecek hafta\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Gelecek hafta görüşürüz.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “We will see each other next week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "gelecek hafta",
+      "romanization": "ge-le-JEK HAF-ta",
+      "nativeText": "Recall \"gelecek hafta\" from memory, then explain what would change if a nearby alternative replaced it in \"Gelecek hafta görüşürüz.\".",
+      "pronunciation": "ge-le-JEK HAF-ta",
+      "exampleTarget": "Gelecek hafta görüşürüz.",
+      "exampleNative": "Self-check against the model before moving on: “We will see each other next week.”",
+      "korean": "gelecek hafta",
+      "english": "Recall \"gelecek hafta\" from memory, then explain what would change if a nearby alternative replaced it in \"Gelecek hafta görüşürüz.\".",
+      "example": "Gelecek hafta görüşürüz.",
+      "exampleEnglish": "Self-check against the model before moving on: “We will see each other next week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "gelecek hafta",
+      "romanization": "ge-le-JEK HAF-ta",
+      "nativeText": "Repair \"gelecek hafta\" inside \"Gelecek hafta görüşürüz.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Next week.” A practical near-future phrase.",
+      "pronunciation": "ge-le-JEK HAF-ta",
+      "exampleTarget": "Gelecek hafta görüşürüz.",
+      "exampleNative": "Use the model as the repair target: “We will see each other next week.”",
+      "korean": "gelecek hafta",
+      "english": "Repair \"gelecek hafta\" inside \"Gelecek hafta görüşürüz.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Next week.” A practical near-future phrase.",
+      "example": "Gelecek hafta görüşürüz.",
+      "exampleEnglish": "Use the model as the repair target: “We will see each other next week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "gelecek hafta",
+      "romanization": "ge-le-JEK HAF-ta",
+      "nativeText": "Transfer \"gelecek hafta\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Gelecek hafta görüşürüz.\".",
+      "pronunciation": "ge-le-JEK HAF-ta",
+      "exampleTarget": "Gelecek hafta görüşürüz.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “We will see each other next week.”",
+      "korean": "gelecek hafta",
+      "english": "Transfer \"gelecek hafta\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Gelecek hafta görüşürüz.\".",
+      "example": "Gelecek hafta görüşürüz.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “We will see each other next week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "gelecek hafta",
+      "romanization": "ge-le-JEK HAF-ta",
+      "nativeText": "Find one word or phrase that naturally travels with \"gelecek hafta\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ge-le-JEK HAF-ta",
+      "exampleTarget": "Gelecek hafta görüşürüz.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “We will see each other next week.”",
+      "korean": "gelecek hafta",
+      "english": "Find one word or phrase that naturally travels with \"gelecek hafta\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Gelecek hafta görüşürüz.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “We will see each other next week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "gelecek hafta",
+      "romanization": "ge-le-JEK HAF-ta",
+      "nativeText": "Listen for \"gelecek hafta\" inside \"Gelecek hafta görüşürüz.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ge-le-JEK HAF-ta",
+      "exampleTarget": "Gelecek hafta görüşürüz.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “We will see each other next week.”",
+      "korean": "gelecek hafta",
+      "english": "Listen for \"gelecek hafta\" inside \"Gelecek hafta görüşürüz.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Gelecek hafta görüşürüz.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “We will see each other next week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "gelecek hafta",
+      "romanization": "ge-le-JEK HAF-ta",
+      "nativeText": "Write \"gelecek hafta\" again without looking, then compare the exact written form against \"Gelecek hafta görüşürüz.\" before moving on.",
+      "pronunciation": "ge-le-JEK HAF-ta",
+      "exampleTarget": "Gelecek hafta görüşürüz.",
+      "exampleNative": "Use the written model as the final correctness check: “We will see each other next week.”",
+      "korean": "gelecek hafta",
+      "english": "Write \"gelecek hafta\" again without looking, then compare the exact written form against \"Gelecek hafta görüşürüz.\" before moving on.",
+      "example": "Gelecek hafta görüşürüz.",
+      "exampleEnglish": "Use the written model as the final correctness check: “We will see each other next week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "gelecek hafta",
+      "romanization": "ge-le-JEK HAF-ta",
+      "nativeText": "Check whether \"gelecek hafta\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “We will see each other next week.”",
+      "pronunciation": "ge-le-JEK HAF-ta",
+      "exampleTarget": "Gelecek hafta görüşürüz.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “We will see each other next week.”",
+      "korean": "gelecek hafta",
+      "english": "Check whether \"gelecek hafta\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “We will see each other next week.”",
+      "example": "Gelecek hafta görüşürüz.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “We will see each other next week.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "ne zaman?",
+      "romanization": "ne za-MAN",
+      "nativeText": "“When?” A core question phrase for time and plans.",
+      "pronunciation": "ne za-MAN",
+      "exampleTarget": "Toplantı ne zaman?",
+      "exampleNative": "“When is the meeting?”",
+      "korean": "ne zaman?",
+      "english": "“When?” A core question phrase for time and plans.",
+      "example": "Toplantı ne zaman?",
+      "exampleEnglish": "“When is the meeting?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "Toplantı ne zaman?",
+      "romanization": "ne za-MAN",
+      "nativeText": "Model use for \"Toplantı ne zaman?\": “When is the meeting?”",
+      "pronunciation": "ne za-MAN",
+      "exampleTarget": "Toplantı ne zaman?",
+      "exampleNative": "“When is the meeting?”",
+      "korean": "Toplantı ne zaman?",
+      "english": "Model use for \"Toplantı ne zaman?\": “When is the meeting?”",
+      "example": "Toplantı ne zaman?",
+      "exampleEnglish": "“When is the meeting?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "ne zaman?",
+      "romanization": "ne za-MAN",
+      "nativeText": "Usage focus for \"ne zaman?\": “When?” A core question phrase for time and plans.",
+      "pronunciation": "ne za-MAN",
+      "exampleTarget": "Toplantı ne zaman?",
+      "exampleNative": "Notice what the form is doing here: “When is the meeting?”",
+      "korean": "ne zaman?",
+      "english": "Usage focus for \"ne zaman?\": “When?” A core question phrase for time and plans.",
+      "example": "Toplantı ne zaman?",
+      "exampleEnglish": "Notice what the form is doing here: “When is the meeting?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "ne zaman?",
+      "romanization": "ne za-MAN",
+      "nativeText": "Contrast check for \"ne zaman?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ne za-MAN",
+      "exampleTarget": "Toplantı ne zaman?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “When is the meeting?”",
+      "korean": "ne zaman?",
+      "english": "Contrast check for \"ne zaman?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Toplantı ne zaman?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “When is the meeting?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "ne zaman?",
+      "romanization": "ne za-MAN",
+      "nativeText": "Recall \"ne zaman?\" from memory, then explain what would change if a nearby alternative replaced it in \"Toplantı ne zaman?\".",
+      "pronunciation": "ne za-MAN",
+      "exampleTarget": "Toplantı ne zaman?",
+      "exampleNative": "Self-check against the model before moving on: “When is the meeting?”",
+      "korean": "ne zaman?",
+      "english": "Recall \"ne zaman?\" from memory, then explain what would change if a nearby alternative replaced it in \"Toplantı ne zaman?\".",
+      "example": "Toplantı ne zaman?",
+      "exampleEnglish": "Self-check against the model before moving on: “When is the meeting?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "ne zaman?",
+      "romanization": "ne za-MAN",
+      "nativeText": "Repair \"ne zaman?\" inside \"Toplantı ne zaman?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “When?” A core question phrase for time and plans.",
+      "pronunciation": "ne za-MAN",
+      "exampleTarget": "Toplantı ne zaman?",
+      "exampleNative": "Use the model as the repair target: “When is the meeting?”",
+      "korean": "ne zaman?",
+      "english": "Repair \"ne zaman?\" inside \"Toplantı ne zaman?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “When?” A core question phrase for time and plans.",
+      "example": "Toplantı ne zaman?",
+      "exampleEnglish": "Use the model as the repair target: “When is the meeting?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "ne zaman?",
+      "romanization": "ne za-MAN",
+      "nativeText": "Transfer \"ne zaman?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Toplantı ne zaman?\".",
+      "pronunciation": "ne za-MAN",
+      "exampleTarget": "Toplantı ne zaman?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “When is the meeting?”",
+      "korean": "ne zaman?",
+      "english": "Transfer \"ne zaman?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Toplantı ne zaman?\".",
+      "example": "Toplantı ne zaman?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “When is the meeting?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "ne zaman?",
+      "romanization": "ne za-MAN",
+      "nativeText": "Find one word or phrase that naturally travels with \"ne zaman?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ne za-MAN",
+      "exampleTarget": "Toplantı ne zaman?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “When is the meeting?”",
+      "korean": "ne zaman?",
+      "english": "Find one word or phrase that naturally travels with \"ne zaman?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Toplantı ne zaman?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “When is the meeting?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "ne zaman?",
+      "romanization": "ne za-MAN",
+      "nativeText": "Listen for \"ne zaman?\" inside \"Toplantı ne zaman?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ne za-MAN",
+      "exampleTarget": "Toplantı ne zaman?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “When is the meeting?”",
+      "korean": "ne zaman?",
+      "english": "Listen for \"ne zaman?\" inside \"Toplantı ne zaman?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Toplantı ne zaman?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “When is the meeting?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "ne zaman?",
+      "romanization": "ne za-MAN",
+      "nativeText": "Write \"ne zaman?\" again without looking, then compare the exact written form against \"Toplantı ne zaman?\" before moving on.",
+      "pronunciation": "ne za-MAN",
+      "exampleTarget": "Toplantı ne zaman?",
+      "exampleNative": "Use the written model as the final correctness check: “When is the meeting?”",
+      "korean": "ne zaman?",
+      "english": "Write \"ne zaman?\" again without looking, then compare the exact written form against \"Toplantı ne zaman?\" before moving on.",
+      "example": "Toplantı ne zaman?",
+      "exampleEnglish": "Use the written model as the final correctness check: “When is the meeting?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit06datescalendar-vocabulary-1",
+        "tr-level1unit06datescalendar-vocabulary-2",
+        "tr-level1unit06datescalendar-grammar-1",
+        "tr-level1unit06datescalendar-grammar-2",
+        "tr-level1unit06datescalendar-reading",
+        "tr-level1unit06datescalendar-listening",
+        "tr-level1unit06datescalendar-writing",
+        "tr-level1unit06datescalendar-task"
+      ],
+      "targetText": "ne zaman?",
+      "romanization": "ne za-MAN",
+      "nativeText": "Check whether \"ne zaman?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “When is the meeting?”",
+      "pronunciation": "ne za-MAN",
+      "exampleTarget": "Toplantı ne zaman?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “When is the meeting?”",
+      "korean": "ne zaman?",
+      "english": "Check whether \"ne zaman?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “When is the meeting?”",
+      "example": "Toplantı ne zaman?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “When is the meeting?”"
+    }
+  ],
+  "targetLang": "tr",
+  "nativeLang": "en",
+  "track": "textbook"
+};

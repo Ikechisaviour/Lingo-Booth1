@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('ta', {
-  slug: 'ta-l1u19',
-  title: 'Level 1 · Unit 19: திருவிழாக்கள் மற்றும் மரபுகள் — Cultural Holidays',
-  category: 'culture',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Talk about Tamil festivals, greetings, and family customs.',
-  vocabularyGoal: 'Use holiday, family, greeting, and tradition words.',
-  grammarGoal: 'Use habitual present forms and future forms to describe customs and plans.',
-  speakingGoal: 'Describe one festival, say what people usually do, and give an appropriate greeting.',
-  task: 'Explain one Tamil festival to a visitor.',
-  expressionPractice: [
-    practice('naming-holiday', 'Naming holiday', 'Introduce one festival clearly.'),
-    practice('describing-custom', 'Describing custom', 'Use one repeated action.'),
-    practice('giving-greeting', 'Giving greeting', 'Use the formula that fits the occasion.'),
+module.exports = {
+  "title": "Level 1 · Unit 19: திருவிழாக்கள் மற்றும் மரபுகள் — Cultural Holidays",
+  "category": "culture",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ta-level1unit19culturalholidays-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Talk about Tamil festivals, greetings, and family customs."
+      ],
+      "task": "Explain one Tamil festival to a visitor."
+    },
+    {
+      "id": "ta-level1unit19culturalholidays-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ta-level1unit19culturalholidays-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 19: திருவிழாக்கள் மற்றும் மரபுகள் — Cultural Holidays with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ta-level1unit19culturalholidays-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 19: திருவிழாக்கள் மற்றும் மரபுகள் — Cultural Holidays sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ta-level1unit19culturalholidays-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Talk about Tamil festivals, greetings, and family customs."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ta-level1unit19culturalholidays-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 19: திருவிழாக்கள் மற்றும் மரபுகள் — Cultural Holidays with one nearby Tamil form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ta-level1unit19culturalholidays-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ta-level1unit19culturalholidays-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ta-level1unit19culturalholidays-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ta-level1unit19culturalholidays-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ta-level1unit19culturalholidays-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Explain one Tamil festival to a visitor."
+      ],
+      "task": "Explain one Tamil festival to a visitor."
+    }
   ],
-  relatedPools: ['topic-culture', 'topic-family'],
-  items: [
-    item('பொங்கல்', 'poṅkal', 'The major Tamil harvest festival, strongly tied to family, food, and agrarian gratitude.', 'பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.', '“At Pongal the family gathers together.”'),
-    item('தமிழ் புத்தாண்டு', 'tamiḻ puttāṇṭu', 'Tamil New Year, marked by greetings, temple visits, and festive meals.', 'தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.', '“Tamil New Year comes in April.”'),
-    item('தீபாவளி', 'tīpāvaḷi', 'Deepavali, associated with lights, sweets, new clothes, and family visits.', 'தீபாவளியில் புதிய உடை அணிவார்கள்.', '“At Deepavali people wear new clothes.”'),
-    item('கோலம்', 'kōlam', 'Decorative threshold drawings, especially visible in daily and festive Tamil culture.', 'காலை கோலம் போடுகிறார்கள்.', '“In the morning they draw kolam.”'),
-    item('வழக்கமாக', 'vaḻakkamāka', '“Usually.” A useful word for customs.', 'வழக்கமாக நாம் உறவினரைச் சந்திக்கிறோம்.', '“Usually we meet relatives.”'),
-    item('கொண்டாட', 'koṇṭāṭa', '“To celebrate.” A central festival verb.', 'நீங்கள் எப்படி பொங்கல் கொண்டாடுகிறீர்கள்?', '“How do you celebrate Pongal?”'),
-    item('இனிய பொங்கல் நல்வாழ்த்துகள்', 'iniya poṅkal nalvāḻttukaḷ', '“Happy Pongal wishes.” A holiday greeting formula.', 'இனிய பொங்கல் நல்வாழ்த்துகள்!', '“Happy Pongal!”'),
-    item('மரபு', 'marapu', '“Tradition.” A useful bridge noun for cultural explanations.', 'இது ஒரு முக்கியமான மரபு.', '“This is an important tradition.”'),
+  "expressionPractice": [
+    {
+      "id": "naming-holiday",
+      "label": "Naming holiday",
+      "goal": "Introduce one festival clearly."
+    },
+    {
+      "id": "describing-custom",
+      "label": "Describing custom",
+      "goal": "Use one repeated action."
+    },
+    {
+      "id": "giving-greeting",
+      "label": "Giving greeting",
+      "goal": "Use the formula that fits the occasion."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-culture",
+    "topic-family"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-orientation"
+      ],
+      "targetText": "பாட இலக்கு",
+      "romanization": "",
+      "nativeText": "Talk about Tamil festivals, greetings, and family customs.",
+      "pronunciation": "",
+      "exampleTarget": "பாட இலக்கு",
+      "exampleNative": "The whole lesson is built toward this outcome: Explain one Tamil festival to a visitor.",
+      "korean": "பாட இலக்கு",
+      "english": "Talk about Tamil festivals, greetings, and family customs.",
+      "example": "பாட இலக்கு",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Explain one Tamil festival to a visitor."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-pronunciation"
+      ],
+      "targetText": "ஒலி சரிபார்ப்பு",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.\".",
+      "pronunciation": "",
+      "exampleTarget": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "exampleNative": "“At Pongal the family gathers together.”",
+      "korean": "ஒலி சரிபார்ப்பு",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.\".",
+      "example": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "exampleEnglish": "“At Pongal the family gathers together.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1"
+      ],
+      "targetText": "பொங்கல்",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 19: திருவிழாக்கள் மற்றும் மரபுகள் — Cultural Holidays with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "exampleNative": "“At Pongal the family gathers together.”",
+      "korean": "பொங்கல்",
+      "english": "Use the key language of Level 1 · Unit 19: திருவிழாக்கள் மற்றும் மரபுகள் — Cultural Holidays with the register and setting that the lesson requires.",
+      "example": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "exampleEnglish": "“At Pongal the family gathers together.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-2"
+      ],
+      "targetText": "தமிழ் புத்தாண்டு",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 19: திருவிழாக்கள் மற்றும் மரபுகள் — Cultural Holidays sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.",
+      "exampleNative": "“Tamil New Year comes in April.”",
+      "korean": "தமிழ் புத்தாண்டு",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 19: திருவிழாக்கள் மற்றும் மரபுகள் — Cultural Holidays sound precise rather than merely understandable.",
+      "example": "தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.",
+      "exampleEnglish": "“Tamil New Year comes in April.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-grammar-1"
+      ],
+      "targetText": "பொங்கல்",
+      "romanization": "",
+      "nativeText": "Talk about Tamil festivals, greetings, and family customs.",
+      "pronunciation": "",
+      "exampleTarget": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "exampleNative": "“At Pongal the family gathers together.”",
+      "korean": "பொங்கல்",
+      "english": "Talk about Tamil festivals, greetings, and family customs.",
+      "example": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "exampleEnglish": "“At Pongal the family gathers together.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-grammar-2"
+      ],
+      "targetText": "தமிழ் புத்தாண்டு",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 19: திருவிழாக்கள் மற்றும் மரபுகள் — Cultural Holidays with one nearby Tamil form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.",
+      "exampleNative": "“Tamil New Year comes in April.”",
+      "korean": "தமிழ் புத்தாண்டு",
+      "english": "Contrast the main pattern in Level 1 · Unit 19: திருவிழாக்கள் மற்றும் மரபுகள் — Cultural Holidays with one nearby Tamil form so the learner can avoid literal translation.",
+      "example": "தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.",
+      "exampleEnglish": "“Tamil New Year comes in April.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-reading"
+      ],
+      "targetText": "வாசிப்பு மாதிரி",
+      "romanization": "",
+      "nativeText": "Read \"இது ஒரு முக்கியமான மரபு.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "இது ஒரு முக்கியமான மரபு.",
+      "exampleNative": "“This is an important tradition.”",
+      "korean": "வாசிப்பு மாதிரி",
+      "english": "Read \"இது ஒரு முக்கியமான மரபு.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "இது ஒரு முக்கியமான மரபு.",
+      "exampleEnglish": "“This is an important tradition.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-listening"
+      ],
+      "targetText": "உரையாடல் மாதிரி",
+      "romanization": "",
+      "nativeText": "Hear \"இது ஒரு முக்கியமான மரபு.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "இது ஒரு முக்கியமான மரபு.",
+      "exampleNative": "“This is an important tradition.”",
+      "korean": "உரையாடல் மாதிரி",
+      "english": "Hear \"இது ஒரு முக்கியமான மரபு.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "இது ஒரு முக்கியமான மரபு.",
+      "exampleEnglish": "“This is an important tradition.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-writing"
+      ],
+      "targetText": "எழுத்துப் பயிற்சி",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "எழுத்துப் பயிற்சி",
+      "english": "Write your own version after studying \"பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-culture"
+      ],
+      "targetText": "பயன்பாடும் சூழலும்",
+      "romanization": "",
+      "nativeText": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.",
+      "exampleNative": "“Tamil New Year comes in April.”",
+      "korean": "பயன்பாடும் சூழலும்",
+      "english": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used.",
+      "example": "தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.",
+      "exampleEnglish": "“Tamil New Year comes in April.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "இறுதி செயல்",
+      "romanization": "",
+      "nativeText": "Explain one Tamil festival to a visitor.",
+      "pronunciation": "",
+      "exampleTarget": "இது ஒரு முக்கியமான மரபு.",
+      "exampleNative": "Explain one Tamil festival to a visitor.",
+      "korean": "இறுதி செயல்",
+      "english": "Explain one Tamil festival to a visitor.",
+      "example": "இது ஒரு முக்கியமான மரபு.",
+      "exampleEnglish": "Explain one Tamil festival to a visitor."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-grammar-2"
+      ],
+      "targetText": "பொதுவான பிழை",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “Tamil New Year comes in April.”",
+      "korean": "பொதுவான பிழை",
+      "english": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.\" against the model.",
+      "example": "தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “Tamil New Year comes in April.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-culture"
+      ],
+      "targetText": "மொழிநடை",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "exampleNative": "“At Pongal the family gathers together.”",
+      "korean": "மொழிநடை",
+      "english": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.\" before reusing it elsewhere.",
+      "example": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "exampleEnglish": "“At Pongal the family gathers together.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "சரளம்",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"இது ஒரு முக்கியமான மரபு.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "இது ஒரு முக்கியமான மரபு.",
+      "exampleNative": "“This is an important tradition.”",
+      "korean": "சரளம்",
+      "english": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"இது ஒரு முக்கியமான மரபு.\" as one thought.",
+      "example": "இது ஒரு முக்கியமான மரபு.",
+      "exampleEnglish": "“This is an important tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "பயன்பாடு",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "பயன்பாடு",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.\" and move it into your own life.",
+      "example": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-grammar-1"
+      ],
+      "targetText": "நினைவூட்டல்",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"பொங்கல்\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "பொங்கல்",
+      "exampleNative": "The major Tamil harvest festival, strongly tied to family, food, and agrarian gratitude.",
+      "korean": "நினைவூட்டல்",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"பொங்கல்\" before looking back.",
+      "example": "பொங்கல்",
+      "exampleEnglish": "The major Tamil harvest festival, strongly tied to family, food, and agrarian gratitude."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-writing"
+      ],
+      "targetText": "விரிவாக்கம்",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"இது ஒரு முக்கியமான மரபு.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "இது ஒரு முக்கியமான மரபு.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "விரிவாக்கம்",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"இது ஒரு முக்கியமான மரபு.\" rather than restarting from a blank sentence.",
+      "example": "இது ஒரு முக்கியமான மரபு.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading"
+      ],
+      "targetText": "ஒப்பீடு",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 19: திருவிழாக்கள் மற்றும் மரபுகள் — Cultural Holidays with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.",
+      "exampleNative": "“Tamil New Year comes in April.”",
+      "korean": "ஒப்பீடு",
+      "english": "Compare the central form in Level 1 · Unit 19: திருவிழாக்கள் மற்றும் மரபுகள் — Cultural Holidays with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.\" as the comparison line.",
+      "example": "தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.",
+      "exampleEnglish": "“Tamil New Year comes in April.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-pronunciation"
+      ],
+      "targetText": "உச்சரிப்பு திருத்தம்",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.\".",
+      "pronunciation": "",
+      "exampleTarget": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "exampleNative": "“At Pongal the family gathers together.”",
+      "korean": "உச்சரிப்பு திருத்தம்",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.\".",
+      "example": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "exampleEnglish": "“At Pongal the family gathers together.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "உரையாடல் மாற்றம்",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"இது ஒரு முக்கியமான மரபு.\".",
+      "pronunciation": "",
+      "exampleTarget": "இது ஒரு முக்கியமான மரபு.",
+      "exampleNative": "“This is an important tradition.”",
+      "korean": "உரையாடல் மாற்றம்",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"இது ஒரு முக்கியமான மரபு.\".",
+      "example": "இது ஒரு முக்கியமான மரபு.",
+      "exampleEnglish": "“This is an important tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-writing"
+      ],
+      "targetText": "வாக்கிய கட்டமைப்பு",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "exampleNative": "“At Pongal the family gathers together.”",
+      "korean": "வாக்கிய கட்டமைப்பு",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.\" one layer at a time.",
+      "example": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "exampleEnglish": "“At Pongal the family gathers together.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-2"
+      ],
+      "targetText": "விரைவு சோதனை",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.",
+      "exampleNative": "“Tamil New Year comes in April.”",
+      "korean": "விரைவு சோதனை",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.\" as the deciding example.",
+      "example": "தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.",
+      "exampleEnglish": "“Tamil New Year comes in April.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-culture",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "மீள்பார்வு",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"இது ஒரு முக்கியமான மரபு.\".",
+      "pronunciation": "",
+      "exampleTarget": "இது ஒரு முக்கியமான மரபு.",
+      "exampleNative": "“This is an important tradition.”",
+      "korean": "மீள்பார்வு",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"இது ஒரு முக்கியமான மரபு.\".",
+      "example": "இது ஒரு முக்கியமான மரபு.",
+      "exampleEnglish": "“This is an important tradition.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "பொங்கல்",
+      "romanization": "poṅkal",
+      "nativeText": "The major Tamil harvest festival, strongly tied to family, food, and agrarian gratitude.",
+      "pronunciation": "poṅkal",
+      "exampleTarget": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "exampleNative": "“At Pongal the family gathers together.”",
+      "korean": "பொங்கல்",
+      "english": "The major Tamil harvest festival, strongly tied to family, food, and agrarian gratitude.",
+      "example": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "exampleEnglish": "“At Pongal the family gathers together.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "romanization": "poṅkal",
+      "nativeText": "Model use for \"பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.\": “At Pongal the family gathers together.”",
+      "pronunciation": "poṅkal",
+      "exampleTarget": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "exampleNative": "“At Pongal the family gathers together.”",
+      "korean": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "english": "Model use for \"பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.\": “At Pongal the family gathers together.”",
+      "example": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "exampleEnglish": "“At Pongal the family gathers together.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "பொங்கல்",
+      "romanization": "poṅkal",
+      "nativeText": "Usage focus for \"பொங்கல்\": Use the key language of Level 1 · Unit 19: திருவிழாக்கள் மற்றும் மரபுகள் — Cultural Holidays with the register and setting that the lesson requires.",
+      "pronunciation": "poṅkal",
+      "exampleTarget": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "exampleNative": "Notice what the form is doing here: “At Pongal the family gathers together.”",
+      "korean": "பொங்கல்",
+      "english": "Usage focus for \"பொங்கல்\": Use the key language of Level 1 · Unit 19: திருவிழாக்கள் மற்றும் மரபுகள் — Cultural Holidays with the register and setting that the lesson requires.",
+      "example": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "exampleEnglish": "Notice what the form is doing here: “At Pongal the family gathers together.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "பொங்கல்",
+      "romanization": "poṅkal",
+      "nativeText": "Contrast check for \"பொங்கல்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "poṅkal",
+      "exampleTarget": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “At Pongal the family gathers together.”",
+      "korean": "பொங்கல்",
+      "english": "Contrast check for \"பொங்கல்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “At Pongal the family gathers together.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "பொங்கல்",
+      "romanization": "poṅkal",
+      "nativeText": "Recall \"பொங்கல்\" from memory, then explain what would change if a nearby alternative replaced it in \"பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.\".",
+      "pronunciation": "poṅkal",
+      "exampleTarget": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "exampleNative": "Self-check against the model before moving on: “At Pongal the family gathers together.”",
+      "korean": "பொங்கல்",
+      "english": "Recall \"பொங்கல்\" from memory, then explain what would change if a nearby alternative replaced it in \"பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.\".",
+      "example": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "exampleEnglish": "Self-check against the model before moving on: “At Pongal the family gathers together.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "பொங்கல்",
+      "romanization": "poṅkal",
+      "nativeText": "Repair \"பொங்கல்\" inside \"பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 19: திருவிழாக்கள் மற்றும் மரபுகள் — Cultural Holidays with the register and setting that the lesson requires.",
+      "pronunciation": "poṅkal",
+      "exampleTarget": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "exampleNative": "Use the model as the repair target: “At Pongal the family gathers together.”",
+      "korean": "பொங்கல்",
+      "english": "Repair \"பொங்கல்\" inside \"பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 19: திருவிழாக்கள் மற்றும் மரபுகள் — Cultural Holidays with the register and setting that the lesson requires.",
+      "example": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "exampleEnglish": "Use the model as the repair target: “At Pongal the family gathers together.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "பொங்கல்",
+      "romanization": "poṅkal",
+      "nativeText": "Transfer \"பொங்கல்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.\".",
+      "pronunciation": "poṅkal",
+      "exampleTarget": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “At Pongal the family gathers together.”",
+      "korean": "பொங்கல்",
+      "english": "Transfer \"பொங்கல்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.\".",
+      "example": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “At Pongal the family gathers together.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "பொங்கல்",
+      "romanization": "poṅkal",
+      "nativeText": "Find one word or phrase that naturally travels with \"பொங்கல்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "poṅkal",
+      "exampleTarget": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “At Pongal the family gathers together.”",
+      "korean": "பொங்கல்",
+      "english": "Find one word or phrase that naturally travels with \"பொங்கல்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “At Pongal the family gathers together.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "பொங்கல்",
+      "romanization": "poṅkal",
+      "nativeText": "Listen for \"பொங்கல்\" inside \"பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "poṅkal",
+      "exampleTarget": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “At Pongal the family gathers together.”",
+      "korean": "பொங்கல்",
+      "english": "Listen for \"பொங்கல்\" inside \"பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “At Pongal the family gathers together.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "பொங்கல்",
+      "romanization": "poṅkal",
+      "nativeText": "Write \"பொங்கல்\" again without looking, then compare the exact written form against \"பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.\" before moving on.",
+      "pronunciation": "poṅkal",
+      "exampleTarget": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "exampleNative": "Use the written model as the final correctness check: “At Pongal the family gathers together.”",
+      "korean": "பொங்கல்",
+      "english": "Write \"பொங்கல்\" again without looking, then compare the exact written form against \"பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.\" before moving on.",
+      "example": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "exampleEnglish": "Use the written model as the final correctness check: “At Pongal the family gathers together.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "பொங்கல்",
+      "romanization": "poṅkal",
+      "nativeText": "Check whether \"பொங்கல்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “At Pongal the family gathers together.”",
+      "pronunciation": "poṅkal",
+      "exampleTarget": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “At Pongal the family gathers together.”",
+      "korean": "பொங்கல்",
+      "english": "Check whether \"பொங்கல்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “At Pongal the family gathers together.”",
+      "example": "பொங்கலில் குடும்பம் ஒன்று கூடுகிறது.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “At Pongal the family gathers together.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "தமிழ் புத்தாண்டு",
+      "romanization": "tamiḻ puttāṇṭu",
+      "nativeText": "Tamil New Year, marked by greetings, temple visits, and festive meals.",
+      "pronunciation": "tamiḻ puttāṇṭu",
+      "exampleTarget": "தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.",
+      "exampleNative": "“Tamil New Year comes in April.”",
+      "korean": "தமிழ் புத்தாண்டு",
+      "english": "Tamil New Year, marked by greetings, temple visits, and festive meals.",
+      "example": "தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.",
+      "exampleEnglish": "“Tamil New Year comes in April.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.",
+      "romanization": "tamiḻ puttāṇṭu",
+      "nativeText": "Model use for \"தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.\": “Tamil New Year comes in April.”",
+      "pronunciation": "tamiḻ puttāṇṭu",
+      "exampleTarget": "தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.",
+      "exampleNative": "“Tamil New Year comes in April.”",
+      "korean": "தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.",
+      "english": "Model use for \"தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.\": “Tamil New Year comes in April.”",
+      "example": "தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.",
+      "exampleEnglish": "“Tamil New Year comes in April.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "தமிழ் புத்தாண்டு",
+      "romanization": "tamiḻ puttāṇṭu",
+      "nativeText": "Usage focus for \"தமிழ் புத்தாண்டு\": Distinguish the nearby wording choices that make Level 1 · Unit 19: திருவிழாக்கள் மற்றும் மரபுகள் — Cultural Holidays sound precise rather than merely understandable.",
+      "pronunciation": "tamiḻ puttāṇṭu",
+      "exampleTarget": "தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.",
+      "exampleNative": "Notice what the form is doing here: “Tamil New Year comes in April.”",
+      "korean": "தமிழ் புத்தாண்டு",
+      "english": "Usage focus for \"தமிழ் புத்தாண்டு\": Distinguish the nearby wording choices that make Level 1 · Unit 19: திருவிழாக்கள் மற்றும் மரபுகள் — Cultural Holidays sound precise rather than merely understandable.",
+      "example": "தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.",
+      "exampleEnglish": "Notice what the form is doing here: “Tamil New Year comes in April.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "தமிழ் புத்தாண்டு",
+      "romanization": "tamiḻ puttāṇṭu",
+      "nativeText": "Contrast check for \"தமிழ் புத்தாண்டு\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "tamiḻ puttāṇṭu",
+      "exampleTarget": "தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Tamil New Year comes in April.”",
+      "korean": "தமிழ் புத்தாண்டு",
+      "english": "Contrast check for \"தமிழ் புத்தாண்டு\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Tamil New Year comes in April.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "தமிழ் புத்தாண்டு",
+      "romanization": "tamiḻ puttāṇṭu",
+      "nativeText": "Recall \"தமிழ் புத்தாண்டு\" from memory, then explain what would change if a nearby alternative replaced it in \"தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.\".",
+      "pronunciation": "tamiḻ puttāṇṭu",
+      "exampleTarget": "தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.",
+      "exampleNative": "Self-check against the model before moving on: “Tamil New Year comes in April.”",
+      "korean": "தமிழ் புத்தாண்டு",
+      "english": "Recall \"தமிழ் புத்தாண்டு\" from memory, then explain what would change if a nearby alternative replaced it in \"தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.\".",
+      "example": "தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.",
+      "exampleEnglish": "Self-check against the model before moving on: “Tamil New Year comes in April.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "தமிழ் புத்தாண்டு",
+      "romanization": "tamiḻ puttāṇṭu",
+      "nativeText": "Repair \"தமிழ் புத்தாண்டு\" inside \"தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 19: திருவிழாக்கள் மற்றும் மரபுகள் — Cultural Holidays sound precise rather than merely understandable.",
+      "pronunciation": "tamiḻ puttāṇṭu",
+      "exampleTarget": "தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.",
+      "exampleNative": "Use the model as the repair target: “Tamil New Year comes in April.”",
+      "korean": "தமிழ் புத்தாண்டு",
+      "english": "Repair \"தமிழ் புத்தாண்டு\" inside \"தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 19: திருவிழாக்கள் மற்றும் மரபுகள் — Cultural Holidays sound precise rather than merely understandable.",
+      "example": "தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.",
+      "exampleEnglish": "Use the model as the repair target: “Tamil New Year comes in April.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "தமிழ் புத்தாண்டு",
+      "romanization": "tamiḻ puttāṇṭu",
+      "nativeText": "Transfer \"தமிழ் புத்தாண்டு\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.\".",
+      "pronunciation": "tamiḻ puttāṇṭu",
+      "exampleTarget": "தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Tamil New Year comes in April.”",
+      "korean": "தமிழ் புத்தாண்டு",
+      "english": "Transfer \"தமிழ் புத்தாண்டு\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.\".",
+      "example": "தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Tamil New Year comes in April.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "தமிழ் புத்தாண்டு",
+      "romanization": "tamiḻ puttāṇṭu",
+      "nativeText": "Find one word or phrase that naturally travels with \"தமிழ் புத்தாண்டு\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "tamiḻ puttāṇṭu",
+      "exampleTarget": "தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Tamil New Year comes in April.”",
+      "korean": "தமிழ் புத்தாண்டு",
+      "english": "Find one word or phrase that naturally travels with \"தமிழ் புத்தாண்டு\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Tamil New Year comes in April.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "தமிழ் புத்தாண்டு",
+      "romanization": "tamiḻ puttāṇṭu",
+      "nativeText": "Listen for \"தமிழ் புத்தாண்டு\" inside \"தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "tamiḻ puttāṇṭu",
+      "exampleTarget": "தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Tamil New Year comes in April.”",
+      "korean": "தமிழ் புத்தாண்டு",
+      "english": "Listen for \"தமிழ் புத்தாண்டு\" inside \"தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Tamil New Year comes in April.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "தமிழ் புத்தாண்டு",
+      "romanization": "tamiḻ puttāṇṭu",
+      "nativeText": "Write \"தமிழ் புத்தாண்டு\" again without looking, then compare the exact written form against \"தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.\" before moving on.",
+      "pronunciation": "tamiḻ puttāṇṭu",
+      "exampleTarget": "தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.",
+      "exampleNative": "Use the written model as the final correctness check: “Tamil New Year comes in April.”",
+      "korean": "தமிழ் புத்தாண்டு",
+      "english": "Write \"தமிழ் புத்தாண்டு\" again without looking, then compare the exact written form against \"தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.\" before moving on.",
+      "example": "தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Tamil New Year comes in April.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "தமிழ் புத்தாண்டு",
+      "romanization": "tamiḻ puttāṇṭu",
+      "nativeText": "Check whether \"தமிழ் புத்தாண்டு\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Tamil New Year comes in April.”",
+      "pronunciation": "tamiḻ puttāṇṭu",
+      "exampleTarget": "தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Tamil New Year comes in April.”",
+      "korean": "தமிழ் புத்தாண்டு",
+      "english": "Check whether \"தமிழ் புத்தாண்டு\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Tamil New Year comes in April.”",
+      "example": "தமிழ் புத்தாண்டு ஏப்ரலில் வருகிறது.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Tamil New Year comes in April.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "தீபாவளி",
+      "romanization": "tīpāvaḷi",
+      "nativeText": "Deepavali, associated with lights, sweets, new clothes, and family visits.",
+      "pronunciation": "tīpāvaḷi",
+      "exampleTarget": "தீபாவளியில் புதிய உடை அணிவார்கள்.",
+      "exampleNative": "“At Deepavali people wear new clothes.”",
+      "korean": "தீபாவளி",
+      "english": "Deepavali, associated with lights, sweets, new clothes, and family visits.",
+      "example": "தீபாவளியில் புதிய உடை அணிவார்கள்.",
+      "exampleEnglish": "“At Deepavali people wear new clothes.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "தீபாவளியில் புதிய உடை அணிவார்கள்.",
+      "romanization": "tīpāvaḷi",
+      "nativeText": "Model use for \"தீபாவளியில் புதிய உடை அணிவார்கள்.\": “At Deepavali people wear new clothes.”",
+      "pronunciation": "tīpāvaḷi",
+      "exampleTarget": "தீபாவளியில் புதிய உடை அணிவார்கள்.",
+      "exampleNative": "“At Deepavali people wear new clothes.”",
+      "korean": "தீபாவளியில் புதிய உடை அணிவார்கள்.",
+      "english": "Model use for \"தீபாவளியில் புதிய உடை அணிவார்கள்.\": “At Deepavali people wear new clothes.”",
+      "example": "தீபாவளியில் புதிய உடை அணிவார்கள்.",
+      "exampleEnglish": "“At Deepavali people wear new clothes.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "தீபாவளி",
+      "romanization": "tīpāvaḷi",
+      "nativeText": "Usage focus for \"தீபாவளி\": Deepavali, associated with lights, sweets, new clothes, and family visits.",
+      "pronunciation": "tīpāvaḷi",
+      "exampleTarget": "தீபாவளியில் புதிய உடை அணிவார்கள்.",
+      "exampleNative": "Notice what the form is doing here: “At Deepavali people wear new clothes.”",
+      "korean": "தீபாவளி",
+      "english": "Usage focus for \"தீபாவளி\": Deepavali, associated with lights, sweets, new clothes, and family visits.",
+      "example": "தீபாவளியில் புதிய உடை அணிவார்கள்.",
+      "exampleEnglish": "Notice what the form is doing here: “At Deepavali people wear new clothes.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "தீபாவளி",
+      "romanization": "tīpāvaḷi",
+      "nativeText": "Contrast check for \"தீபாவளி\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "tīpāvaḷi",
+      "exampleTarget": "தீபாவளியில் புதிய உடை அணிவார்கள்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “At Deepavali people wear new clothes.”",
+      "korean": "தீபாவளி",
+      "english": "Contrast check for \"தீபாவளி\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "தீபாவளியில் புதிய உடை அணிவார்கள்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “At Deepavali people wear new clothes.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "தீபாவளி",
+      "romanization": "tīpāvaḷi",
+      "nativeText": "Recall \"தீபாவளி\" from memory, then explain what would change if a nearby alternative replaced it in \"தீபாவளியில் புதிய உடை அணிவார்கள்.\".",
+      "pronunciation": "tīpāvaḷi",
+      "exampleTarget": "தீபாவளியில் புதிய உடை அணிவார்கள்.",
+      "exampleNative": "Self-check against the model before moving on: “At Deepavali people wear new clothes.”",
+      "korean": "தீபாவளி",
+      "english": "Recall \"தீபாவளி\" from memory, then explain what would change if a nearby alternative replaced it in \"தீபாவளியில் புதிய உடை அணிவார்கள்.\".",
+      "example": "தீபாவளியில் புதிய உடை அணிவார்கள்.",
+      "exampleEnglish": "Self-check against the model before moving on: “At Deepavali people wear new clothes.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "தீபாவளி",
+      "romanization": "tīpāvaḷi",
+      "nativeText": "Repair \"தீபாவளி\" inside \"தீபாவளியில் புதிய உடை அணிவார்கள்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Deepavali, associated with lights, sweets, new clothes, and family visits.",
+      "pronunciation": "tīpāvaḷi",
+      "exampleTarget": "தீபாவளியில் புதிய உடை அணிவார்கள்.",
+      "exampleNative": "Use the model as the repair target: “At Deepavali people wear new clothes.”",
+      "korean": "தீபாவளி",
+      "english": "Repair \"தீபாவளி\" inside \"தீபாவளியில் புதிய உடை அணிவார்கள்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Deepavali, associated with lights, sweets, new clothes, and family visits.",
+      "example": "தீபாவளியில் புதிய உடை அணிவார்கள்.",
+      "exampleEnglish": "Use the model as the repair target: “At Deepavali people wear new clothes.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "தீபாவளி",
+      "romanization": "tīpāvaḷi",
+      "nativeText": "Transfer \"தீபாவளி\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"தீபாவளியில் புதிய உடை அணிவார்கள்.\".",
+      "pronunciation": "tīpāvaḷi",
+      "exampleTarget": "தீபாவளியில் புதிய உடை அணிவார்கள்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “At Deepavali people wear new clothes.”",
+      "korean": "தீபாவளி",
+      "english": "Transfer \"தீபாவளி\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"தீபாவளியில் புதிய உடை அணிவார்கள்.\".",
+      "example": "தீபாவளியில் புதிய உடை அணிவார்கள்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “At Deepavali people wear new clothes.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "தீபாவளி",
+      "romanization": "tīpāvaḷi",
+      "nativeText": "Find one word or phrase that naturally travels with \"தீபாவளி\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "tīpāvaḷi",
+      "exampleTarget": "தீபாவளியில் புதிய உடை அணிவார்கள்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “At Deepavali people wear new clothes.”",
+      "korean": "தீபாவளி",
+      "english": "Find one word or phrase that naturally travels with \"தீபாவளி\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "தீபாவளியில் புதிய உடை அணிவார்கள்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “At Deepavali people wear new clothes.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "தீபாவளி",
+      "romanization": "tīpāvaḷi",
+      "nativeText": "Listen for \"தீபாவளி\" inside \"தீபாவளியில் புதிய உடை அணிவார்கள்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "tīpāvaḷi",
+      "exampleTarget": "தீபாவளியில் புதிய உடை அணிவார்கள்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “At Deepavali people wear new clothes.”",
+      "korean": "தீபாவளி",
+      "english": "Listen for \"தீபாவளி\" inside \"தீபாவளியில் புதிய உடை அணிவார்கள்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "தீபாவளியில் புதிய உடை அணிவார்கள்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “At Deepavali people wear new clothes.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "தீபாவளி",
+      "romanization": "tīpāvaḷi",
+      "nativeText": "Write \"தீபாவளி\" again without looking, then compare the exact written form against \"தீபாவளியில் புதிய உடை அணிவார்கள்.\" before moving on.",
+      "pronunciation": "tīpāvaḷi",
+      "exampleTarget": "தீபாவளியில் புதிய உடை அணிவார்கள்.",
+      "exampleNative": "Use the written model as the final correctness check: “At Deepavali people wear new clothes.”",
+      "korean": "தீபாவளி",
+      "english": "Write \"தீபாவளி\" again without looking, then compare the exact written form against \"தீபாவளியில் புதிய உடை அணிவார்கள்.\" before moving on.",
+      "example": "தீபாவளியில் புதிய உடை அணிவார்கள்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “At Deepavali people wear new clothes.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "தீபாவளி",
+      "romanization": "tīpāvaḷi",
+      "nativeText": "Check whether \"தீபாவளி\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “At Deepavali people wear new clothes.”",
+      "pronunciation": "tīpāvaḷi",
+      "exampleTarget": "தீபாவளியில் புதிய உடை அணிவார்கள்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “At Deepavali people wear new clothes.”",
+      "korean": "தீபாவளி",
+      "english": "Check whether \"தீபாவளி\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “At Deepavali people wear new clothes.”",
+      "example": "தீபாவளியில் புதிய உடை அணிவார்கள்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “At Deepavali people wear new clothes.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "கோலம்",
+      "romanization": "kōlam",
+      "nativeText": "Decorative threshold drawings, especially visible in daily and festive Tamil culture.",
+      "pronunciation": "kōlam",
+      "exampleTarget": "காலை கோலம் போடுகிறார்கள்.",
+      "exampleNative": "“In the morning they draw kolam.”",
+      "korean": "கோலம்",
+      "english": "Decorative threshold drawings, especially visible in daily and festive Tamil culture.",
+      "example": "காலை கோலம் போடுகிறார்கள்.",
+      "exampleEnglish": "“In the morning they draw kolam.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "காலை கோலம் போடுகிறார்கள்.",
+      "romanization": "kōlam",
+      "nativeText": "Model use for \"காலை கோலம் போடுகிறார்கள்.\": “In the morning they draw kolam.”",
+      "pronunciation": "kōlam",
+      "exampleTarget": "காலை கோலம் போடுகிறார்கள்.",
+      "exampleNative": "“In the morning they draw kolam.”",
+      "korean": "காலை கோலம் போடுகிறார்கள்.",
+      "english": "Model use for \"காலை கோலம் போடுகிறார்கள்.\": “In the morning they draw kolam.”",
+      "example": "காலை கோலம் போடுகிறார்கள்.",
+      "exampleEnglish": "“In the morning they draw kolam.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "கோலம்",
+      "romanization": "kōlam",
+      "nativeText": "Usage focus for \"கோலம்\": Decorative threshold drawings, especially visible in daily and festive Tamil culture.",
+      "pronunciation": "kōlam",
+      "exampleTarget": "காலை கோலம் போடுகிறார்கள்.",
+      "exampleNative": "Notice what the form is doing here: “In the morning they draw kolam.”",
+      "korean": "கோலம்",
+      "english": "Usage focus for \"கோலம்\": Decorative threshold drawings, especially visible in daily and festive Tamil culture.",
+      "example": "காலை கோலம் போடுகிறார்கள்.",
+      "exampleEnglish": "Notice what the form is doing here: “In the morning they draw kolam.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "கோலம்",
+      "romanization": "kōlam",
+      "nativeText": "Contrast check for \"கோலம்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kōlam",
+      "exampleTarget": "காலை கோலம் போடுகிறார்கள்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “In the morning they draw kolam.”",
+      "korean": "கோலம்",
+      "english": "Contrast check for \"கோலம்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "காலை கோலம் போடுகிறார்கள்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “In the morning they draw kolam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "கோலம்",
+      "romanization": "kōlam",
+      "nativeText": "Recall \"கோலம்\" from memory, then explain what would change if a nearby alternative replaced it in \"காலை கோலம் போடுகிறார்கள்.\".",
+      "pronunciation": "kōlam",
+      "exampleTarget": "காலை கோலம் போடுகிறார்கள்.",
+      "exampleNative": "Self-check against the model before moving on: “In the morning they draw kolam.”",
+      "korean": "கோலம்",
+      "english": "Recall \"கோலம்\" from memory, then explain what would change if a nearby alternative replaced it in \"காலை கோலம் போடுகிறார்கள்.\".",
+      "example": "காலை கோலம் போடுகிறார்கள்.",
+      "exampleEnglish": "Self-check against the model before moving on: “In the morning they draw kolam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "கோலம்",
+      "romanization": "kōlam",
+      "nativeText": "Repair \"கோலம்\" inside \"காலை கோலம் போடுகிறார்கள்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Decorative threshold drawings, especially visible in daily and festive Tamil culture.",
+      "pronunciation": "kōlam",
+      "exampleTarget": "காலை கோலம் போடுகிறார்கள்.",
+      "exampleNative": "Use the model as the repair target: “In the morning they draw kolam.”",
+      "korean": "கோலம்",
+      "english": "Repair \"கோலம்\" inside \"காலை கோலம் போடுகிறார்கள்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Decorative threshold drawings, especially visible in daily and festive Tamil culture.",
+      "example": "காலை கோலம் போடுகிறார்கள்.",
+      "exampleEnglish": "Use the model as the repair target: “In the morning they draw kolam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "கோலம்",
+      "romanization": "kōlam",
+      "nativeText": "Transfer \"கோலம்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"காலை கோலம் போடுகிறார்கள்.\".",
+      "pronunciation": "kōlam",
+      "exampleTarget": "காலை கோலம் போடுகிறார்கள்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “In the morning they draw kolam.”",
+      "korean": "கோலம்",
+      "english": "Transfer \"கோலம்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"காலை கோலம் போடுகிறார்கள்.\".",
+      "example": "காலை கோலம் போடுகிறார்கள்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “In the morning they draw kolam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "கோலம்",
+      "romanization": "kōlam",
+      "nativeText": "Find one word or phrase that naturally travels with \"கோலம்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kōlam",
+      "exampleTarget": "காலை கோலம் போடுகிறார்கள்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “In the morning they draw kolam.”",
+      "korean": "கோலம்",
+      "english": "Find one word or phrase that naturally travels with \"கோலம்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "காலை கோலம் போடுகிறார்கள்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “In the morning they draw kolam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "கோலம்",
+      "romanization": "kōlam",
+      "nativeText": "Listen for \"கோலம்\" inside \"காலை கோலம் போடுகிறார்கள்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kōlam",
+      "exampleTarget": "காலை கோலம் போடுகிறார்கள்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “In the morning they draw kolam.”",
+      "korean": "கோலம்",
+      "english": "Listen for \"கோலம்\" inside \"காலை கோலம் போடுகிறார்கள்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "காலை கோலம் போடுகிறார்கள்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “In the morning they draw kolam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "கோலம்",
+      "romanization": "kōlam",
+      "nativeText": "Write \"கோலம்\" again without looking, then compare the exact written form against \"காலை கோலம் போடுகிறார்கள்.\" before moving on.",
+      "pronunciation": "kōlam",
+      "exampleTarget": "காலை கோலம் போடுகிறார்கள்.",
+      "exampleNative": "Use the written model as the final correctness check: “In the morning they draw kolam.”",
+      "korean": "கோலம்",
+      "english": "Write \"கோலம்\" again without looking, then compare the exact written form against \"காலை கோலம் போடுகிறார்கள்.\" before moving on.",
+      "example": "காலை கோலம் போடுகிறார்கள்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “In the morning they draw kolam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "கோலம்",
+      "romanization": "kōlam",
+      "nativeText": "Check whether \"கோலம்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “In the morning they draw kolam.”",
+      "pronunciation": "kōlam",
+      "exampleTarget": "காலை கோலம் போடுகிறார்கள்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “In the morning they draw kolam.”",
+      "korean": "கோலம்",
+      "english": "Check whether \"கோலம்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “In the morning they draw kolam.”",
+      "example": "காலை கோலம் போடுகிறார்கள்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “In the morning they draw kolam.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "வழக்கமாக",
+      "romanization": "vaḻakkamāka",
+      "nativeText": "“Usually.” A useful word for customs.",
+      "pronunciation": "vaḻakkamāka",
+      "exampleTarget": "வழக்கமாக நாம் உறவினரைச் சந்திக்கிறோம்.",
+      "exampleNative": "“Usually we meet relatives.”",
+      "korean": "வழக்கமாக",
+      "english": "“Usually.” A useful word for customs.",
+      "example": "வழக்கமாக நாம் உறவினரைச் சந்திக்கிறோம்.",
+      "exampleEnglish": "“Usually we meet relatives.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "வழக்கமாக நாம் உறவினரைச் சந்திக்கிறோம்.",
+      "romanization": "vaḻakkamāka",
+      "nativeText": "Model use for \"வழக்கமாக நாம் உறவினரைச் சந்திக்கிறோம்.\": “Usually we meet relatives.”",
+      "pronunciation": "vaḻakkamāka",
+      "exampleTarget": "வழக்கமாக நாம் உறவினரைச் சந்திக்கிறோம்.",
+      "exampleNative": "“Usually we meet relatives.”",
+      "korean": "வழக்கமாக நாம் உறவினரைச் சந்திக்கிறோம்.",
+      "english": "Model use for \"வழக்கமாக நாம் உறவினரைச் சந்திக்கிறோம்.\": “Usually we meet relatives.”",
+      "example": "வழக்கமாக நாம் உறவினரைச் சந்திக்கிறோம்.",
+      "exampleEnglish": "“Usually we meet relatives.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "வழக்கமாக",
+      "romanization": "vaḻakkamāka",
+      "nativeText": "Usage focus for \"வழக்கமாக\": “Usually.” A useful word for customs.",
+      "pronunciation": "vaḻakkamāka",
+      "exampleTarget": "வழக்கமாக நாம் உறவினரைச் சந்திக்கிறோம்.",
+      "exampleNative": "Notice what the form is doing here: “Usually we meet relatives.”",
+      "korean": "வழக்கமாக",
+      "english": "Usage focus for \"வழக்கமாக\": “Usually.” A useful word for customs.",
+      "example": "வழக்கமாக நாம் உறவினரைச் சந்திக்கிறோம்.",
+      "exampleEnglish": "Notice what the form is doing here: “Usually we meet relatives.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "வழக்கமாக",
+      "romanization": "vaḻakkamāka",
+      "nativeText": "Contrast check for \"வழக்கமாக\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "vaḻakkamāka",
+      "exampleTarget": "வழக்கமாக நாம் உறவினரைச் சந்திக்கிறோம்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Usually we meet relatives.”",
+      "korean": "வழக்கமாக",
+      "english": "Contrast check for \"வழக்கமாக\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "வழக்கமாக நாம் உறவினரைச் சந்திக்கிறோம்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Usually we meet relatives.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "வழக்கமாக",
+      "romanization": "vaḻakkamāka",
+      "nativeText": "Recall \"வழக்கமாக\" from memory, then explain what would change if a nearby alternative replaced it in \"வழக்கமாக நாம் உறவினரைச் சந்திக்கிறோம்.\".",
+      "pronunciation": "vaḻakkamāka",
+      "exampleTarget": "வழக்கமாக நாம் உறவினரைச் சந்திக்கிறோம்.",
+      "exampleNative": "Self-check against the model before moving on: “Usually we meet relatives.”",
+      "korean": "வழக்கமாக",
+      "english": "Recall \"வழக்கமாக\" from memory, then explain what would change if a nearby alternative replaced it in \"வழக்கமாக நாம் உறவினரைச் சந்திக்கிறோம்.\".",
+      "example": "வழக்கமாக நாம் உறவினரைச் சந்திக்கிறோம்.",
+      "exampleEnglish": "Self-check against the model before moving on: “Usually we meet relatives.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "வழக்கமாக",
+      "romanization": "vaḻakkamāka",
+      "nativeText": "Repair \"வழக்கமாக\" inside \"வழக்கமாக நாம் உறவினரைச் சந்திக்கிறோம்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Usually.” A useful word for customs.",
+      "pronunciation": "vaḻakkamāka",
+      "exampleTarget": "வழக்கமாக நாம் உறவினரைச் சந்திக்கிறோம்.",
+      "exampleNative": "Use the model as the repair target: “Usually we meet relatives.”",
+      "korean": "வழக்கமாக",
+      "english": "Repair \"வழக்கமாக\" inside \"வழக்கமாக நாம் உறவினரைச் சந்திக்கிறோம்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Usually.” A useful word for customs.",
+      "example": "வழக்கமாக நாம் உறவினரைச் சந்திக்கிறோம்.",
+      "exampleEnglish": "Use the model as the repair target: “Usually we meet relatives.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "வழக்கமாக",
+      "romanization": "vaḻakkamāka",
+      "nativeText": "Transfer \"வழக்கமாக\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"வழக்கமாக நாம் உறவினரைச் சந்திக்கிறோம்.\".",
+      "pronunciation": "vaḻakkamāka",
+      "exampleTarget": "வழக்கமாக நாம் உறவினரைச் சந்திக்கிறோம்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Usually we meet relatives.”",
+      "korean": "வழக்கமாக",
+      "english": "Transfer \"வழக்கமாக\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"வழக்கமாக நாம் உறவினரைச் சந்திக்கிறோம்.\".",
+      "example": "வழக்கமாக நாம் உறவினரைச் சந்திக்கிறோம்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Usually we meet relatives.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "வழக்கமாக",
+      "romanization": "vaḻakkamāka",
+      "nativeText": "Find one word or phrase that naturally travels with \"வழக்கமாக\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "vaḻakkamāka",
+      "exampleTarget": "வழக்கமாக நாம் உறவினரைச் சந்திக்கிறோம்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Usually we meet relatives.”",
+      "korean": "வழக்கமாக",
+      "english": "Find one word or phrase that naturally travels with \"வழக்கமாக\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "வழக்கமாக நாம் உறவினரைச் சந்திக்கிறோம்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Usually we meet relatives.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "வழக்கமாக",
+      "romanization": "vaḻakkamāka",
+      "nativeText": "Listen for \"வழக்கமாக\" inside \"வழக்கமாக நாம் உறவினரைச் சந்திக்கிறோம்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "vaḻakkamāka",
+      "exampleTarget": "வழக்கமாக நாம் உறவினரைச் சந்திக்கிறோம்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Usually we meet relatives.”",
+      "korean": "வழக்கமாக",
+      "english": "Listen for \"வழக்கமாக\" inside \"வழக்கமாக நாம் உறவினரைச் சந்திக்கிறோம்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "வழக்கமாக நாம் உறவினரைச் சந்திக்கிறோம்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Usually we meet relatives.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "வழக்கமாக",
+      "romanization": "vaḻakkamāka",
+      "nativeText": "Write \"வழக்கமாக\" again without looking, then compare the exact written form against \"வழக்கமாக நாம் உறவினரைச் சந்திக்கிறோம்.\" before moving on.",
+      "pronunciation": "vaḻakkamāka",
+      "exampleTarget": "வழக்கமாக நாம் உறவினரைச் சந்திக்கிறோம்.",
+      "exampleNative": "Use the written model as the final correctness check: “Usually we meet relatives.”",
+      "korean": "வழக்கமாக",
+      "english": "Write \"வழக்கமாக\" again without looking, then compare the exact written form against \"வழக்கமாக நாம் உறவினரைச் சந்திக்கிறோம்.\" before moving on.",
+      "example": "வழக்கமாக நாம் உறவினரைச் சந்திக்கிறோம்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Usually we meet relatives.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "வழக்கமாக",
+      "romanization": "vaḻakkamāka",
+      "nativeText": "Check whether \"வழக்கமாக\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Usually we meet relatives.”",
+      "pronunciation": "vaḻakkamāka",
+      "exampleTarget": "வழக்கமாக நாம் உறவினரைச் சந்திக்கிறோம்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Usually we meet relatives.”",
+      "korean": "வழக்கமாக",
+      "english": "Check whether \"வழக்கமாக\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Usually we meet relatives.”",
+      "example": "வழக்கமாக நாம் உறவினரைச் சந்திக்கிறோம்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Usually we meet relatives.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "கொண்டாட",
+      "romanization": "koṇṭāṭa",
+      "nativeText": "“To celebrate.” A central festival verb.",
+      "pronunciation": "koṇṭāṭa",
+      "exampleTarget": "நீங்கள் எப்படி பொங்கல் கொண்டாடுகிறீர்கள்?",
+      "exampleNative": "“How do you celebrate Pongal?”",
+      "korean": "கொண்டாட",
+      "english": "“To celebrate.” A central festival verb.",
+      "example": "நீங்கள் எப்படி பொங்கல் கொண்டாடுகிறீர்கள்?",
+      "exampleEnglish": "“How do you celebrate Pongal?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "நீங்கள் எப்படி பொங்கல் கொண்டாடுகிறீர்கள்?",
+      "romanization": "koṇṭāṭa",
+      "nativeText": "Model use for \"நீங்கள் எப்படி பொங்கல் கொண்டாடுகிறீர்கள்?\": “How do you celebrate Pongal?”",
+      "pronunciation": "koṇṭāṭa",
+      "exampleTarget": "நீங்கள் எப்படி பொங்கல் கொண்டாடுகிறீர்கள்?",
+      "exampleNative": "“How do you celebrate Pongal?”",
+      "korean": "நீங்கள் எப்படி பொங்கல் கொண்டாடுகிறீர்கள்?",
+      "english": "Model use for \"நீங்கள் எப்படி பொங்கல் கொண்டாடுகிறீர்கள்?\": “How do you celebrate Pongal?”",
+      "example": "நீங்கள் எப்படி பொங்கல் கொண்டாடுகிறீர்கள்?",
+      "exampleEnglish": "“How do you celebrate Pongal?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "கொண்டாட",
+      "romanization": "koṇṭāṭa",
+      "nativeText": "Usage focus for \"கொண்டாட\": “To celebrate.” A central festival verb.",
+      "pronunciation": "koṇṭāṭa",
+      "exampleTarget": "நீங்கள் எப்படி பொங்கல் கொண்டாடுகிறீர்கள்?",
+      "exampleNative": "Notice what the form is doing here: “How do you celebrate Pongal?”",
+      "korean": "கொண்டாட",
+      "english": "Usage focus for \"கொண்டாட\": “To celebrate.” A central festival verb.",
+      "example": "நீங்கள் எப்படி பொங்கல் கொண்டாடுகிறீர்கள்?",
+      "exampleEnglish": "Notice what the form is doing here: “How do you celebrate Pongal?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "கொண்டாட",
+      "romanization": "koṇṭāṭa",
+      "nativeText": "Contrast check for \"கொண்டாட\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "koṇṭāṭa",
+      "exampleTarget": "நீங்கள் எப்படி பொங்கல் கொண்டாடுகிறீர்கள்?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How do you celebrate Pongal?”",
+      "korean": "கொண்டாட",
+      "english": "Contrast check for \"கொண்டாட\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "நீங்கள் எப்படி பொங்கல் கொண்டாடுகிறீர்கள்?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How do you celebrate Pongal?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "கொண்டாட",
+      "romanization": "koṇṭāṭa",
+      "nativeText": "Recall \"கொண்டாட\" from memory, then explain what would change if a nearby alternative replaced it in \"நீங்கள் எப்படி பொங்கல் கொண்டாடுகிறீர்கள்?\".",
+      "pronunciation": "koṇṭāṭa",
+      "exampleTarget": "நீங்கள் எப்படி பொங்கல் கொண்டாடுகிறீர்கள்?",
+      "exampleNative": "Self-check against the model before moving on: “How do you celebrate Pongal?”",
+      "korean": "கொண்டாட",
+      "english": "Recall \"கொண்டாட\" from memory, then explain what would change if a nearby alternative replaced it in \"நீங்கள் எப்படி பொங்கல் கொண்டாடுகிறீர்கள்?\".",
+      "example": "நீங்கள் எப்படி பொங்கல் கொண்டாடுகிறீர்கள்?",
+      "exampleEnglish": "Self-check against the model before moving on: “How do you celebrate Pongal?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "கொண்டாட",
+      "romanization": "koṇṭāṭa",
+      "nativeText": "Repair \"கொண்டாட\" inside \"நீங்கள் எப்படி பொங்கல் கொண்டாடுகிறீர்கள்?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To celebrate.” A central festival verb.",
+      "pronunciation": "koṇṭāṭa",
+      "exampleTarget": "நீங்கள் எப்படி பொங்கல் கொண்டாடுகிறீர்கள்?",
+      "exampleNative": "Use the model as the repair target: “How do you celebrate Pongal?”",
+      "korean": "கொண்டாட",
+      "english": "Repair \"கொண்டாட\" inside \"நீங்கள் எப்படி பொங்கல் கொண்டாடுகிறீர்கள்?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To celebrate.” A central festival verb.",
+      "example": "நீங்கள் எப்படி பொங்கல் கொண்டாடுகிறீர்கள்?",
+      "exampleEnglish": "Use the model as the repair target: “How do you celebrate Pongal?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "கொண்டாட",
+      "romanization": "koṇṭāṭa",
+      "nativeText": "Transfer \"கொண்டாட\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நீங்கள் எப்படி பொங்கல் கொண்டாடுகிறீர்கள்?\".",
+      "pronunciation": "koṇṭāṭa",
+      "exampleTarget": "நீங்கள் எப்படி பொங்கல் கொண்டாடுகிறீர்கள்?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “How do you celebrate Pongal?”",
+      "korean": "கொண்டாட",
+      "english": "Transfer \"கொண்டாட\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நீங்கள் எப்படி பொங்கல் கொண்டாடுகிறீர்கள்?\".",
+      "example": "நீங்கள் எப்படி பொங்கல் கொண்டாடுகிறீர்கள்?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “How do you celebrate Pongal?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "கொண்டாட",
+      "romanization": "koṇṭāṭa",
+      "nativeText": "Find one word or phrase that naturally travels with \"கொண்டாட\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "koṇṭāṭa",
+      "exampleTarget": "நீங்கள் எப்படி பொங்கல் கொண்டாடுகிறீர்கள்?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “How do you celebrate Pongal?”",
+      "korean": "கொண்டாட",
+      "english": "Find one word or phrase that naturally travels with \"கொண்டாட\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "நீங்கள் எப்படி பொங்கல் கொண்டாடுகிறீர்கள்?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “How do you celebrate Pongal?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "கொண்டாட",
+      "romanization": "koṇṭāṭa",
+      "nativeText": "Listen for \"கொண்டாட\" inside \"நீங்கள் எப்படி பொங்கல் கொண்டாடுகிறீர்கள்?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "koṇṭāṭa",
+      "exampleTarget": "நீங்கள் எப்படி பொங்கல் கொண்டாடுகிறீர்கள்?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How do you celebrate Pongal?”",
+      "korean": "கொண்டாட",
+      "english": "Listen for \"கொண்டாட\" inside \"நீங்கள் எப்படி பொங்கல் கொண்டாடுகிறீர்கள்?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "நீங்கள் எப்படி பொங்கல் கொண்டாடுகிறீர்கள்?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How do you celebrate Pongal?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "கொண்டாட",
+      "romanization": "koṇṭāṭa",
+      "nativeText": "Write \"கொண்டாட\" again without looking, then compare the exact written form against \"நீங்கள் எப்படி பொங்கல் கொண்டாடுகிறீர்கள்?\" before moving on.",
+      "pronunciation": "koṇṭāṭa",
+      "exampleTarget": "நீங்கள் எப்படி பொங்கல் கொண்டாடுகிறீர்கள்?",
+      "exampleNative": "Use the written model as the final correctness check: “How do you celebrate Pongal?”",
+      "korean": "கொண்டாட",
+      "english": "Write \"கொண்டாட\" again without looking, then compare the exact written form against \"நீங்கள் எப்படி பொங்கல் கொண்டாடுகிறீர்கள்?\" before moving on.",
+      "example": "நீங்கள் எப்படி பொங்கல் கொண்டாடுகிறீர்கள்?",
+      "exampleEnglish": "Use the written model as the final correctness check: “How do you celebrate Pongal?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "கொண்டாட",
+      "romanization": "koṇṭāṭa",
+      "nativeText": "Check whether \"கொண்டாட\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How do you celebrate Pongal?”",
+      "pronunciation": "koṇṭāṭa",
+      "exampleTarget": "நீங்கள் எப்படி பொங்கல் கொண்டாடுகிறீர்கள்?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “How do you celebrate Pongal?”",
+      "korean": "கொண்டாட",
+      "english": "Check whether \"கொண்டாட\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How do you celebrate Pongal?”",
+      "example": "நீங்கள் எப்படி பொங்கல் கொண்டாடுகிறீர்கள்?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “How do you celebrate Pongal?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "இனிய பொங்கல் நல்வாழ்த்துகள்",
+      "romanization": "iniya poṅkal nalvāḻttukaḷ",
+      "nativeText": "“Happy Pongal wishes.” A holiday greeting formula.",
+      "pronunciation": "iniya poṅkal nalvāḻttukaḷ",
+      "exampleTarget": "இனிய பொங்கல் நல்வாழ்த்துகள்!",
+      "exampleNative": "“Happy Pongal!”",
+      "korean": "இனிய பொங்கல் நல்வாழ்த்துகள்",
+      "english": "“Happy Pongal wishes.” A holiday greeting formula.",
+      "example": "இனிய பொங்கல் நல்வாழ்த்துகள்!",
+      "exampleEnglish": "“Happy Pongal!”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "இனிய பொங்கல் நல்வாழ்த்துகள்!",
+      "romanization": "iniya poṅkal nalvāḻttukaḷ",
+      "nativeText": "Model use for \"இனிய பொங்கல் நல்வாழ்த்துகள்!\": “Happy Pongal!”",
+      "pronunciation": "iniya poṅkal nalvāḻttukaḷ",
+      "exampleTarget": "இனிய பொங்கல் நல்வாழ்த்துகள்!",
+      "exampleNative": "“Happy Pongal!”",
+      "korean": "இனிய பொங்கல் நல்வாழ்த்துகள்!",
+      "english": "Model use for \"இனிய பொங்கல் நல்வாழ்த்துகள்!\": “Happy Pongal!”",
+      "example": "இனிய பொங்கல் நல்வாழ்த்துகள்!",
+      "exampleEnglish": "“Happy Pongal!”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "இனிய பொங்கல் நல்வாழ்த்துகள்",
+      "romanization": "iniya poṅkal nalvāḻttukaḷ",
+      "nativeText": "Usage focus for \"இனிய பொங்கல் நல்வாழ்த்துகள்\": “Happy Pongal wishes.” A holiday greeting formula.",
+      "pronunciation": "iniya poṅkal nalvāḻttukaḷ",
+      "exampleTarget": "இனிய பொங்கல் நல்வாழ்த்துகள்!",
+      "exampleNative": "Notice what the form is doing here: “Happy Pongal!”",
+      "korean": "இனிய பொங்கல் நல்வாழ்த்துகள்",
+      "english": "Usage focus for \"இனிய பொங்கல் நல்வாழ்த்துகள்\": “Happy Pongal wishes.” A holiday greeting formula.",
+      "example": "இனிய பொங்கல் நல்வாழ்த்துகள்!",
+      "exampleEnglish": "Notice what the form is doing here: “Happy Pongal!”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "இனிய பொங்கல் நல்வாழ்த்துகள்",
+      "romanization": "iniya poṅkal nalvāḻttukaḷ",
+      "nativeText": "Contrast check for \"இனிய பொங்கல் நல்வாழ்த்துகள்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "iniya poṅkal nalvāḻttukaḷ",
+      "exampleTarget": "இனிய பொங்கல் நல்வாழ்த்துகள்!",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Happy Pongal!”",
+      "korean": "இனிய பொங்கல் நல்வாழ்த்துகள்",
+      "english": "Contrast check for \"இனிய பொங்கல் நல்வாழ்த்துகள்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "இனிய பொங்கல் நல்வாழ்த்துகள்!",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Happy Pongal!”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "இனிய பொங்கல் நல்வாழ்த்துகள்",
+      "romanization": "iniya poṅkal nalvāḻttukaḷ",
+      "nativeText": "Recall \"இனிய பொங்கல் நல்வாழ்த்துகள்\" from memory, then explain what would change if a nearby alternative replaced it in \"இனிய பொங்கல் நல்வாழ்த்துகள்!\".",
+      "pronunciation": "iniya poṅkal nalvāḻttukaḷ",
+      "exampleTarget": "இனிய பொங்கல் நல்வாழ்த்துகள்!",
+      "exampleNative": "Self-check against the model before moving on: “Happy Pongal!”",
+      "korean": "இனிய பொங்கல் நல்வாழ்த்துகள்",
+      "english": "Recall \"இனிய பொங்கல் நல்வாழ்த்துகள்\" from memory, then explain what would change if a nearby alternative replaced it in \"இனிய பொங்கல் நல்வாழ்த்துகள்!\".",
+      "example": "இனிய பொங்கல் நல்வாழ்த்துகள்!",
+      "exampleEnglish": "Self-check against the model before moving on: “Happy Pongal!”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "இனிய பொங்கல் நல்வாழ்த்துகள்",
+      "romanization": "iniya poṅkal nalvāḻttukaḷ",
+      "nativeText": "Repair \"இனிய பொங்கல் நல்வாழ்த்துகள்\" inside \"இனிய பொங்கல் நல்வாழ்த்துகள்!\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Happy Pongal wishes.” A holiday greeting formula.",
+      "pronunciation": "iniya poṅkal nalvāḻttukaḷ",
+      "exampleTarget": "இனிய பொங்கல் நல்வாழ்த்துகள்!",
+      "exampleNative": "Use the model as the repair target: “Happy Pongal!”",
+      "korean": "இனிய பொங்கல் நல்வாழ்த்துகள்",
+      "english": "Repair \"இனிய பொங்கல் நல்வாழ்த்துகள்\" inside \"இனிய பொங்கல் நல்வாழ்த்துகள்!\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Happy Pongal wishes.” A holiday greeting formula.",
+      "example": "இனிய பொங்கல் நல்வாழ்த்துகள்!",
+      "exampleEnglish": "Use the model as the repair target: “Happy Pongal!”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "இனிய பொங்கல் நல்வாழ்த்துகள்",
+      "romanization": "iniya poṅkal nalvāḻttukaḷ",
+      "nativeText": "Transfer \"இனிய பொங்கல் நல்வாழ்த்துகள்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இனிய பொங்கல் நல்வாழ்த்துகள்!\".",
+      "pronunciation": "iniya poṅkal nalvāḻttukaḷ",
+      "exampleTarget": "இனிய பொங்கல் நல்வாழ்த்துகள்!",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Happy Pongal!”",
+      "korean": "இனிய பொங்கல் நல்வாழ்த்துகள்",
+      "english": "Transfer \"இனிய பொங்கல் நல்வாழ்த்துகள்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இனிய பொங்கல் நல்வாழ்த்துகள்!\".",
+      "example": "இனிய பொங்கல் நல்வாழ்த்துகள்!",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Happy Pongal!”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "இனிய பொங்கல் நல்வாழ்த்துகள்",
+      "romanization": "iniya poṅkal nalvāḻttukaḷ",
+      "nativeText": "Find one word or phrase that naturally travels with \"இனிய பொங்கல் நல்வாழ்த்துகள்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "iniya poṅkal nalvāḻttukaḷ",
+      "exampleTarget": "இனிய பொங்கல் நல்வாழ்த்துகள்!",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Happy Pongal!”",
+      "korean": "இனிய பொங்கல் நல்வாழ்த்துகள்",
+      "english": "Find one word or phrase that naturally travels with \"இனிய பொங்கல் நல்வாழ்த்துகள்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "இனிய பொங்கல் நல்வாழ்த்துகள்!",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Happy Pongal!”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "இனிய பொங்கல் நல்வாழ்த்துகள்",
+      "romanization": "iniya poṅkal nalvāḻttukaḷ",
+      "nativeText": "Listen for \"இனிய பொங்கல் நல்வாழ்த்துகள்\" inside \"இனிய பொங்கல் நல்வாழ்த்துகள்!\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "iniya poṅkal nalvāḻttukaḷ",
+      "exampleTarget": "இனிய பொங்கல் நல்வாழ்த்துகள்!",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Happy Pongal!”",
+      "korean": "இனிய பொங்கல் நல்வாழ்த்துகள்",
+      "english": "Listen for \"இனிய பொங்கல் நல்வாழ்த்துகள்\" inside \"இனிய பொங்கல் நல்வாழ்த்துகள்!\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "இனிய பொங்கல் நல்வாழ்த்துகள்!",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Happy Pongal!”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "இனிய பொங்கல் நல்வாழ்த்துகள்",
+      "romanization": "iniya poṅkal nalvāḻttukaḷ",
+      "nativeText": "Write \"இனிய பொங்கல் நல்வாழ்த்துகள்\" again without looking, then compare the exact written form against \"இனிய பொங்கல் நல்வாழ்த்துகள்!\" before moving on.",
+      "pronunciation": "iniya poṅkal nalvāḻttukaḷ",
+      "exampleTarget": "இனிய பொங்கல் நல்வாழ்த்துகள்!",
+      "exampleNative": "Use the written model as the final correctness check: “Happy Pongal!”",
+      "korean": "இனிய பொங்கல் நல்வாழ்த்துகள்",
+      "english": "Write \"இனிய பொங்கல் நல்வாழ்த்துகள்\" again without looking, then compare the exact written form against \"இனிய பொங்கல் நல்வாழ்த்துகள்!\" before moving on.",
+      "example": "இனிய பொங்கல் நல்வாழ்த்துகள்!",
+      "exampleEnglish": "Use the written model as the final correctness check: “Happy Pongal!”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "இனிய பொங்கல் நல்வாழ்த்துகள்",
+      "romanization": "iniya poṅkal nalvāḻttukaḷ",
+      "nativeText": "Check whether \"இனிய பொங்கல் நல்வாழ்த்துகள்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Happy Pongal!”",
+      "pronunciation": "iniya poṅkal nalvāḻttukaḷ",
+      "exampleTarget": "இனிய பொங்கல் நல்வாழ்த்துகள்!",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Happy Pongal!”",
+      "korean": "இனிய பொங்கல் நல்வாழ்த்துகள்",
+      "english": "Check whether \"இனிய பொங்கல் நல்வாழ்த்துகள்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Happy Pongal!”",
+      "example": "இனிய பொங்கல் நல்வாழ்த்துகள்!",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Happy Pongal!”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "மரபு",
+      "romanization": "marapu",
+      "nativeText": "“Tradition.” A useful bridge noun for cultural explanations.",
+      "pronunciation": "marapu",
+      "exampleTarget": "இது ஒரு முக்கியமான மரபு.",
+      "exampleNative": "“This is an important tradition.”",
+      "korean": "மரபு",
+      "english": "“Tradition.” A useful bridge noun for cultural explanations.",
+      "example": "இது ஒரு முக்கியமான மரபு.",
+      "exampleEnglish": "“This is an important tradition.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "இது ஒரு முக்கியமான மரபு.",
+      "romanization": "marapu",
+      "nativeText": "Model use for \"இது ஒரு முக்கியமான மரபு.\": “This is an important tradition.”",
+      "pronunciation": "marapu",
+      "exampleTarget": "இது ஒரு முக்கியமான மரபு.",
+      "exampleNative": "“This is an important tradition.”",
+      "korean": "இது ஒரு முக்கியமான மரபு.",
+      "english": "Model use for \"இது ஒரு முக்கியமான மரபு.\": “This is an important tradition.”",
+      "example": "இது ஒரு முக்கியமான மரபு.",
+      "exampleEnglish": "“This is an important tradition.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "மரபு",
+      "romanization": "marapu",
+      "nativeText": "Usage focus for \"மரபு\": “Tradition.” A useful bridge noun for cultural explanations.",
+      "pronunciation": "marapu",
+      "exampleTarget": "இது ஒரு முக்கியமான மரபு.",
+      "exampleNative": "Notice what the form is doing here: “This is an important tradition.”",
+      "korean": "மரபு",
+      "english": "Usage focus for \"மரபு\": “Tradition.” A useful bridge noun for cultural explanations.",
+      "example": "இது ஒரு முக்கியமான மரபு.",
+      "exampleEnglish": "Notice what the form is doing here: “This is an important tradition.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "மரபு",
+      "romanization": "marapu",
+      "nativeText": "Contrast check for \"மரபு\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "marapu",
+      "exampleTarget": "இது ஒரு முக்கியமான மரபு.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “This is an important tradition.”",
+      "korean": "மரபு",
+      "english": "Contrast check for \"மரபு\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "இது ஒரு முக்கியமான மரபு.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “This is an important tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "மரபு",
+      "romanization": "marapu",
+      "nativeText": "Recall \"மரபு\" from memory, then explain what would change if a nearby alternative replaced it in \"இது ஒரு முக்கியமான மரபு.\".",
+      "pronunciation": "marapu",
+      "exampleTarget": "இது ஒரு முக்கியமான மரபு.",
+      "exampleNative": "Self-check against the model before moving on: “This is an important tradition.”",
+      "korean": "மரபு",
+      "english": "Recall \"மரபு\" from memory, then explain what would change if a nearby alternative replaced it in \"இது ஒரு முக்கியமான மரபு.\".",
+      "example": "இது ஒரு முக்கியமான மரபு.",
+      "exampleEnglish": "Self-check against the model before moving on: “This is an important tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "மரபு",
+      "romanization": "marapu",
+      "nativeText": "Repair \"மரபு\" inside \"இது ஒரு முக்கியமான மரபு.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Tradition.” A useful bridge noun for cultural explanations.",
+      "pronunciation": "marapu",
+      "exampleTarget": "இது ஒரு முக்கியமான மரபு.",
+      "exampleNative": "Use the model as the repair target: “This is an important tradition.”",
+      "korean": "மரபு",
+      "english": "Repair \"மரபு\" inside \"இது ஒரு முக்கியமான மரபு.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Tradition.” A useful bridge noun for cultural explanations.",
+      "example": "இது ஒரு முக்கியமான மரபு.",
+      "exampleEnglish": "Use the model as the repair target: “This is an important tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "மரபு",
+      "romanization": "marapu",
+      "nativeText": "Transfer \"மரபு\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இது ஒரு முக்கியமான மரபு.\".",
+      "pronunciation": "marapu",
+      "exampleTarget": "இது ஒரு முக்கியமான மரபு.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “This is an important tradition.”",
+      "korean": "மரபு",
+      "english": "Transfer \"மரபு\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இது ஒரு முக்கியமான மரபு.\".",
+      "example": "இது ஒரு முக்கியமான மரபு.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “This is an important tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "மரபு",
+      "romanization": "marapu",
+      "nativeText": "Find one word or phrase that naturally travels with \"மரபு\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "marapu",
+      "exampleTarget": "இது ஒரு முக்கியமான மரபு.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “This is an important tradition.”",
+      "korean": "மரபு",
+      "english": "Find one word or phrase that naturally travels with \"மரபு\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "இது ஒரு முக்கியமான மரபு.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “This is an important tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "மரபு",
+      "romanization": "marapu",
+      "nativeText": "Listen for \"மரபு\" inside \"இது ஒரு முக்கியமான மரபு.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "marapu",
+      "exampleTarget": "இது ஒரு முக்கியமான மரபு.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “This is an important tradition.”",
+      "korean": "மரபு",
+      "english": "Listen for \"மரபு\" inside \"இது ஒரு முக்கியமான மரபு.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "இது ஒரு முக்கியமான மரபு.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “This is an important tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "மரபு",
+      "romanization": "marapu",
+      "nativeText": "Write \"மரபு\" again without looking, then compare the exact written form against \"இது ஒரு முக்கியமான மரபு.\" before moving on.",
+      "pronunciation": "marapu",
+      "exampleTarget": "இது ஒரு முக்கியமான மரபு.",
+      "exampleNative": "Use the written model as the final correctness check: “This is an important tradition.”",
+      "korean": "மரபு",
+      "english": "Write \"மரபு\" again without looking, then compare the exact written form against \"இது ஒரு முக்கியமான மரபு.\" before moving on.",
+      "example": "இது ஒரு முக்கியமான மரபு.",
+      "exampleEnglish": "Use the written model as the final correctness check: “This is an important tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit19culturalholidays-vocabulary-1",
+        "ta-level1unit19culturalholidays-vocabulary-2",
+        "ta-level1unit19culturalholidays-grammar-1",
+        "ta-level1unit19culturalholidays-grammar-2",
+        "ta-level1unit19culturalholidays-reading",
+        "ta-level1unit19culturalholidays-listening",
+        "ta-level1unit19culturalholidays-writing",
+        "ta-level1unit19culturalholidays-task"
+      ],
+      "targetText": "மரபு",
+      "romanization": "marapu",
+      "nativeText": "Check whether \"மரபு\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “This is an important tradition.”",
+      "pronunciation": "marapu",
+      "exampleTarget": "இது ஒரு முக்கியமான மரபு.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “This is an important tradition.”",
+      "korean": "மரபு",
+      "english": "Check whether \"மரபு\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “This is an important tradition.”",
+      "example": "இது ஒரு முக்கியமான மரபு.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “This is an important tradition.”"
+    }
+  ],
+  "targetLang": "ta",
+  "nativeLang": "en",
+  "track": "textbook"
+};

@@ -968,7 +968,9 @@
     "practiceEverywhereAria": "Sanayin ang item na ito sa ibang lugar",
     "practiceEverywhere": "Sanayin ito kahit saan",
     "saveReply": "I-save ang tugon",
-    "selfTestReason": "Na-save mula sa klase para sa isang mabilis na self-test."
+    "selfTestReason": "Na-save mula sa klase para sa isang mabilis na self-test.",
+    "hideOutline": "Itago ang balangkas",
+    "showOutline": "Ipakita ang balangkas"
   },
   "classList": {
     "heroAriaLabel": "Klase",
@@ -994,7 +996,7 @@
     "guidedTutor": "May gabay na tutor",
     "startClass": "Simulan ang klase",
     "classFallback": "Klase",
-    "loadError": "Hindi ma-load ang mga aralin sa klase. Siguraduhin na ang backend ay tumatakbo at seeded.",
+    "loadError": "Hindi namin ma-load ang iyong mga aralin sa ngayon. Pakisuri ang iyong koneksyon at subukang muli.",
     "tracks": {
       "foundationTitle": "Level {{level}} - Foundation",
       "foundationSubtitle": "Magsimula dito sa sound at writing system para sa {{language}}.",
@@ -1009,7 +1011,10 @@
     },
     "titlePrefix": {
       "unit": "Level {{level}} · Unit {{unit}}: {{title}}"
-    }
+    },
+    "retry": "Subukan muli",
+    "progressAriaLabel": "Pag-unlad ng klase",
+    "progressCaption": "{{percent}}% kumpleto · {{completed}} ng {{total}} item"
   },
   "contextPractice": {
     "title": "Mga aral na nabuo sa paligid mo",
@@ -1092,7 +1097,9 @@
     "recapWentWell": "Ano ang naging maayos",
     "recapUsefulPhrases": "Mga kapaki-pakinabang na parirala",
     "recapReview": "Susunod na suriin",
-    "recapReviewFallback": "I-save ang isang parirala at muling gamitin ito sa ibang practice mode."
+    "recapReviewFallback": "I-save ang isang parirala at muling gamitin ito sa ibang practice mode.",
+    "hideSetup": "Itago ang setup",
+    "showSetup": "Ipakita ang setup"
   },
   "exerciseHub": {
     "ariaLabel": "Mag-ehersisyo",
@@ -1187,7 +1194,9 @@
       "default": "{{index}}. {{char}}: kopyahin ang hugis, pagkatapos ay isulat ito mula sa memorya."
     },
     "savedReason": "Na-save mula sa pagsasanay sa pagsulat para sa isa pang pass.",
-    "selfTestReason": "Na-save mula sa pagsasanay sa pagsulat para sa isang mabilis na pagsubok sa sarili."
+    "selfTestReason": "Na-save mula sa pagsasanay sa pagsulat para sa isang mabilis na pagsubok sa sarili.",
+    "hideNotebook": "Itago ang notebook",
+    "showNotebook": "Ipakita ang kuwaderno"
   },
   "institution": {
     "kicker": "Institusyon",

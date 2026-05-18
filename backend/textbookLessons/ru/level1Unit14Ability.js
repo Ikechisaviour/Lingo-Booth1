@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('ru', {
-  slug: 'ru-l1u14',
-  title: 'Level 1 · Unit 14: Уметь и мочь — Ability and Permission',
-  category: 'daily-life',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Separate learned skill from situational ability and permission.',
-  vocabularyGoal: 'Use skill, permission, and obligation language.',
-  grammarGoal: 'Use `уметь` for learned skills and `мочь` for possibility or permission.',
-  speakingGoal: 'Say what you know how to do, ask permission, and state one obligation.',
-  task: 'Handle three everyday ability and permission questions.',
-  expressionPractice: [
-    practice('stating-skill', 'Stating skill', 'Use `я умею`.'),
-    practice('asking-permission', 'Asking permission', 'Use `можно ...?`.'),
-    practice('stating-obligation', 'Stating obligation', 'Use `нужно` or `надо`.'),
+module.exports = {
+  "title": "Level 1 · Unit 14: Уметь и мочь — Ability and Permission",
+  "category": "daily-life",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ru-level1unit14ability-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Separate learned skill from situational ability and permission."
+      ],
+      "task": "Handle three everyday ability and permission questions."
+    },
+    {
+      "id": "ru-level1unit14ability-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ru-level1unit14ability-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 14: Уметь и мочь — Ability and Permission with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ru-level1unit14ability-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 14: Уметь и мочь — Ability and Permission sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ru-level1unit14ability-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Separate learned skill from situational ability and permission."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ru-level1unit14ability-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 14: Уметь и мочь — Ability and Permission with one nearby Russian form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ru-level1unit14ability-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ru-level1unit14ability-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ru-level1unit14ability-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ru-level1unit14ability-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ru-level1unit14ability-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Handle three everyday ability and permission questions."
+      ],
+      "task": "Handle three everyday ability and permission questions."
+    }
   ],
-  relatedPools: ['topic-ability', 'topic-classroom'],
-  items: [
-    item('я умею', 'ya umeyu', '“I know how to.” Use this for learned skills.', 'Я умею плавать.', '“I know how to swim.”'),
-    item('я не умею', 'ya ne umeyu', '“I do not know how to.” Honest and useful for beginners.', 'Я не умею играть на гитаре.', '“I do not know how to play guitar.”'),
-    item('я могу', 'ya mogu', '“I can.” This often means situational possibility rather than learned skill.', 'Я могу прийти вечером.', '“I can come in the evening.”'),
-    item('можно?', 'mozhno', '“May I / is it allowed?” A compact permission question.', 'Можно войти?', '“May I come in?”'),
-    item('нельзя', 'nelzya', '“Not allowed / impossible.” Very common on signs and in rules.', 'Здесь нельзя курить.', '“Smoking is not allowed here.”'),
-    item('мне нужно', 'mne nuzhno', '“I need to.” A useful impersonal necessity frame.', 'Мне нужно больше практиковаться.', '“I need to practice more.”'),
-    item('надо', 'nado', '“Need to / must.” Slightly more colloquial and direct than `нужно` in many uses.', 'Надо взять паспорт.', '“You need to take a passport.”'),
-    item('получается', 'poluchayetsya', '“It is working out / I am managing.” A gentle way to talk about progress in a skill.', 'У меня уже получается читать по-русски.', '“I am already managing to read in Russian.”'),
+  "expressionPractice": [
+    {
+      "id": "stating-skill",
+      "label": "Stating skill",
+      "goal": "Use `я умею`."
+    },
+    {
+      "id": "asking-permission",
+      "label": "Asking permission",
+      "goal": "Use `можно ...?`."
+    },
+    {
+      "id": "stating-obligation",
+      "label": "Stating obligation",
+      "goal": "Use `нужно` or `надо`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-ability",
+    "topic-classroom"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit14ability-orientation"
+      ],
+      "targetText": "цель урока",
+      "romanization": "",
+      "nativeText": "Separate learned skill from situational ability and permission.",
+      "pronunciation": "",
+      "exampleTarget": "цель урока",
+      "exampleNative": "The whole lesson is built toward this outcome: Handle three everyday ability and permission questions.",
+      "korean": "цель урока",
+      "english": "Separate learned skill from situational ability and permission.",
+      "example": "цель урока",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Handle three everyday ability and permission questions."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ru-level1unit14ability-pronunciation"
+      ],
+      "targetText": "проверка произношения",
+      "romanization": "",
+      "nativeText": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Я умею плавать.\".",
+      "pronunciation": "",
+      "exampleTarget": "Я умею плавать.",
+      "exampleNative": "“I know how to swim.”",
+      "korean": "проверка произношения",
+      "english": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Я умею плавать.\".",
+      "example": "Я умею плавать.",
+      "exampleEnglish": "“I know how to swim.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1"
+      ],
+      "targetText": "я умею",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 14: Уметь и мочь — Ability and Permission with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Я умею плавать.",
+      "exampleNative": "“I know how to swim.”",
+      "korean": "я умею",
+      "english": "Use the key language of Level 1 · Unit 14: Уметь и мочь — Ability and Permission with the register and setting that the lesson requires.",
+      "example": "Я умею плавать.",
+      "exampleEnglish": "“I know how to swim.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-2"
+      ],
+      "targetText": "я не умею",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 14: Уметь и мочь — Ability and Permission sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Я не умею играть на гитаре.",
+      "exampleNative": "“I do not know how to play guitar.”",
+      "korean": "я не умею",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 14: Уметь и мочь — Ability and Permission sound precise rather than merely understandable.",
+      "example": "Я не умею играть на гитаре.",
+      "exampleEnglish": "“I do not know how to play guitar.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ru-level1unit14ability-grammar-1"
+      ],
+      "targetText": "я умею",
+      "romanization": "",
+      "nativeText": "Separate learned skill from situational ability and permission.",
+      "pronunciation": "",
+      "exampleTarget": "Я умею плавать.",
+      "exampleNative": "“I know how to swim.”",
+      "korean": "я умею",
+      "english": "Separate learned skill from situational ability and permission.",
+      "example": "Я умею плавать.",
+      "exampleEnglish": "“I know how to swim.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ru-level1unit14ability-grammar-2"
+      ],
+      "targetText": "я не умею",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 14: Уметь и мочь — Ability and Permission with one nearby Russian form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Я не умею играть на гитаре.",
+      "exampleNative": "“I do not know how to play guitar.”",
+      "korean": "я не умею",
+      "english": "Contrast the main pattern in Level 1 · Unit 14: Уметь и мочь — Ability and Permission with one nearby Russian form so the learner can avoid literal translation.",
+      "example": "Я не умею играть на гитаре.",
+      "exampleEnglish": "“I do not know how to play guitar.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ru-level1unit14ability-reading"
+      ],
+      "targetText": "модель чтения",
+      "romanization": "",
+      "nativeText": "Read \"У меня уже получается читать по-русски.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "У меня уже получается читать по-русски.",
+      "exampleNative": "“I am already managing to read in Russian.”",
+      "korean": "модель чтения",
+      "english": "Read \"У меня уже получается читать по-русски.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "У меня уже получается читать по-русски.",
+      "exampleEnglish": "“I am already managing to read in Russian.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit14ability-listening"
+      ],
+      "targetText": "модель диалога",
+      "romanization": "",
+      "nativeText": "Hear \"У меня уже получается читать по-русски.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "У меня уже получается читать по-русски.",
+      "exampleNative": "“I am already managing to read in Russian.”",
+      "korean": "модель диалога",
+      "english": "Hear \"У меня уже получается читать по-русски.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "У меня уже получается читать по-русски.",
+      "exampleEnglish": "“I am already managing to read in Russian.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ru-level1unit14ability-writing"
+      ],
+      "targetText": "письменная практика",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Я умею плавать.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Я умею плавать.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "письменная практика",
+      "english": "Write your own version after studying \"Я умею плавать.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Я умею плавать.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ru-level1unit14ability-culture"
+      ],
+      "targetText": "употребление и контекст",
+      "romanization": "",
+      "nativeText": "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Я не умею играть на гитаре.",
+      "exampleNative": "“I do not know how to play guitar.”",
+      "korean": "употребление и контекст",
+      "english": "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used.",
+      "example": "Я не умею играть на гитаре.",
+      "exampleEnglish": "“I do not know how to play guitar.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "итоговое задание",
+      "romanization": "",
+      "nativeText": "Handle three everyday ability and permission questions.",
+      "pronunciation": "",
+      "exampleTarget": "У меня уже получается читать по-русски.",
+      "exampleNative": "Handle three everyday ability and permission questions.",
+      "korean": "итоговое задание",
+      "english": "Handle three everyday ability and permission questions.",
+      "example": "У меня уже получается читать по-русски.",
+      "exampleEnglish": "Handle three everyday ability and permission questions."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit14ability-grammar-2"
+      ],
+      "targetText": "частая ошибка",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around case, aspect, motion verbs, and stress-sensitive forms. Begin by checking \"Я не умею играть на гитаре.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Я не умею играть на гитаре.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “I do not know how to play guitar.”",
+      "korean": "частая ошибка",
+      "english": "Watch for literal-translation mistakes around case, aspect, motion verbs, and stress-sensitive forms. Begin by checking \"Я не умею играть на гитаре.\" against the model.",
+      "example": "Я не умею играть на гитаре.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “I do not know how to play guitar.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-culture"
+      ],
+      "targetText": "регистр",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for ты, вы, a service register, or a more formal written choice. Compare the social fit of \"Я умею плавать.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Я умею плавать.",
+      "exampleNative": "“I know how to swim.”",
+      "korean": "регистр",
+      "english": "Check whether the setting calls for ты, вы, a service register, or a more formal written choice. Compare the social fit of \"Я умею плавать.\" before reusing it elsewhere.",
+      "example": "Я умею плавать.",
+      "exampleEnglish": "“I know how to swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "беглость",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Russian message rather than as separate translated fragments. Aim to carry \"У меня уже получается читать по-русски.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "У меня уже получается читать по-русски.",
+      "exampleNative": "“I am already managing to read in Russian.”",
+      "korean": "беглость",
+      "english": "Say the idea as one connected Russian message rather than as separate translated fragments. Aim to carry \"У меня уже получается читать по-русски.\" as one thought.",
+      "example": "У меня уже получается читать по-русски.",
+      "exampleEnglish": "“I am already managing to read in Russian.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "перенос",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Я умею плавать.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Я умею плавать.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "перенос",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Я умею плавать.\" and move it into your own life.",
+      "example": "Я умею плавать.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-grammar-1"
+      ],
+      "targetText": "воспроизведение",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"я умею\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "я умею",
+      "exampleNative": "“I know how to.” Use this for learned skills.",
+      "korean": "воспроизведение",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"я умею\" before looking back.",
+      "example": "я умею",
+      "exampleEnglish": "“I know how to.” Use this for learned skills."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-writing"
+      ],
+      "targetText": "расширение",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"У меня уже получается читать по-русски.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "У меня уже получается читать по-русски.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "расширение",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"У меня уже получается читать по-русски.\" rather than restarting from a blank sentence.",
+      "example": "У меня уже получается читать по-русски.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading"
+      ],
+      "targetText": "сравнение",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 14: Уметь и мочь — Ability and Permission with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Я не умею играть на гитаре.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Я не умею играть на гитаре.",
+      "exampleNative": "“I do not know how to play guitar.”",
+      "korean": "сравнение",
+      "english": "Compare the central form in Level 1 · Unit 14: Уметь и мочь — Ability and Permission with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Я не умею играть на гитаре.\" as the comparison line.",
+      "example": "Я не умею играть на гитаре.",
+      "exampleEnglish": "“I do not know how to play guitar.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ru-level1unit14ability-pronunciation"
+      ],
+      "targetText": "исправление произношения",
+      "romanization": "",
+      "nativeText": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Я умею плавать.\".",
+      "pronunciation": "",
+      "exampleTarget": "Я умею плавать.",
+      "exampleNative": "“I know how to swim.”",
+      "korean": "исправление произношения",
+      "english": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Я умею плавать.\".",
+      "example": "Я умею плавать.",
+      "exampleEnglish": "“I know how to swim.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "вариация диалога",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"У меня уже получается читать по-русски.\".",
+      "pronunciation": "",
+      "exampleTarget": "У меня уже получается читать по-русски.",
+      "exampleNative": "“I am already managing to read in Russian.”",
+      "korean": "вариация диалога",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"У меня уже получается читать по-русски.\".",
+      "example": "У меня уже получается читать по-русски.",
+      "exampleEnglish": "“I am already managing to read in Russian.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-writing"
+      ],
+      "targetText": "построение предложения",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Я умею плавать.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Я умею плавать.",
+      "exampleNative": "“I know how to swim.”",
+      "korean": "построение предложения",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Я умею плавать.\" one layer at a time.",
+      "example": "Я умею плавать.",
+      "exampleEnglish": "“I know how to swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-2"
+      ],
+      "targetText": "быстрая проверка",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Я не умею играть на гитаре.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Я не умею играть на гитаре.",
+      "exampleNative": "“I do not know how to play guitar.”",
+      "korean": "быстрая проверка",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Я не умею играть на гитаре.\" as the deciding example.",
+      "example": "Я не умею играть на гитаре.",
+      "exampleEnglish": "“I do not know how to play guitar.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit14ability-culture",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "рефлексия",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"У меня уже получается читать по-русски.\".",
+      "pronunciation": "",
+      "exampleTarget": "У меня уже получается читать по-русски.",
+      "exampleNative": "“I am already managing to read in Russian.”",
+      "korean": "рефлексия",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"У меня уже получается читать по-русски.\".",
+      "example": "У меня уже получается читать по-русски.",
+      "exampleEnglish": "“I am already managing to read in Russian.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "я умею",
+      "romanization": "ya umeyu",
+      "nativeText": "“I know how to.” Use this for learned skills.",
+      "pronunciation": "ya umeyu",
+      "exampleTarget": "Я умею плавать.",
+      "exampleNative": "“I know how to swim.”",
+      "korean": "я умею",
+      "english": "“I know how to.” Use this for learned skills.",
+      "example": "Я умею плавать.",
+      "exampleEnglish": "“I know how to swim.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "Я умею плавать.",
+      "romanization": "ya umeyu",
+      "nativeText": "Model use for \"Я умею плавать.\": “I know how to swim.”",
+      "pronunciation": "ya umeyu",
+      "exampleTarget": "Я умею плавать.",
+      "exampleNative": "“I know how to swim.”",
+      "korean": "Я умею плавать.",
+      "english": "Model use for \"Я умею плавать.\": “I know how to swim.”",
+      "example": "Я умею плавать.",
+      "exampleEnglish": "“I know how to swim.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "я умею",
+      "romanization": "ya umeyu",
+      "nativeText": "Usage focus for \"я умею\": Use the key language of Level 1 · Unit 14: Уметь и мочь — Ability and Permission with the register and setting that the lesson requires.",
+      "pronunciation": "ya umeyu",
+      "exampleTarget": "Я умею плавать.",
+      "exampleNative": "Notice what the form is doing here: “I know how to swim.”",
+      "korean": "я умею",
+      "english": "Usage focus for \"я умею\": Use the key language of Level 1 · Unit 14: Уметь и мочь — Ability and Permission with the register and setting that the lesson requires.",
+      "example": "Я умею плавать.",
+      "exampleEnglish": "Notice what the form is doing here: “I know how to swim.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "я умею",
+      "romanization": "ya umeyu",
+      "nativeText": "Contrast check for \"я умею\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ya umeyu",
+      "exampleTarget": "Я умею плавать.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I know how to swim.”",
+      "korean": "я умею",
+      "english": "Contrast check for \"я умею\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Я умею плавать.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I know how to swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "я умею",
+      "romanization": "ya umeyu",
+      "nativeText": "Recall \"я умею\" from memory, then explain what would change if a nearby alternative replaced it in \"Я умею плавать.\".",
+      "pronunciation": "ya umeyu",
+      "exampleTarget": "Я умею плавать.",
+      "exampleNative": "Self-check against the model before moving on: “I know how to swim.”",
+      "korean": "я умею",
+      "english": "Recall \"я умею\" from memory, then explain what would change if a nearby alternative replaced it in \"Я умею плавать.\".",
+      "example": "Я умею плавать.",
+      "exampleEnglish": "Self-check against the model before moving on: “I know how to swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "я умею",
+      "romanization": "ya umeyu",
+      "nativeText": "Repair \"я умею\" inside \"Я умею плавать.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 14: Уметь и мочь — Ability and Permission with the register and setting that the lesson requires.",
+      "pronunciation": "ya umeyu",
+      "exampleTarget": "Я умею плавать.",
+      "exampleNative": "Use the model as the repair target: “I know how to swim.”",
+      "korean": "я умею",
+      "english": "Repair \"я умею\" inside \"Я умею плавать.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 14: Уметь и мочь — Ability and Permission with the register and setting that the lesson requires.",
+      "example": "Я умею плавать.",
+      "exampleEnglish": "Use the model as the repair target: “I know how to swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "я умею",
+      "romanization": "ya umeyu",
+      "nativeText": "Transfer \"я умею\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я умею плавать.\".",
+      "pronunciation": "ya umeyu",
+      "exampleTarget": "Я умею плавать.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I know how to swim.”",
+      "korean": "я умею",
+      "english": "Transfer \"я умею\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я умею плавать.\".",
+      "example": "Я умею плавать.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I know how to swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "я умею",
+      "romanization": "ya umeyu",
+      "nativeText": "Find one word or phrase that naturally travels with \"я умею\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ya umeyu",
+      "exampleTarget": "Я умею плавать.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I know how to swim.”",
+      "korean": "я умею",
+      "english": "Find one word or phrase that naturally travels with \"я умею\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Я умею плавать.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I know how to swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "я умею",
+      "romanization": "ya umeyu",
+      "nativeText": "Listen for \"я умею\" inside \"Я умею плавать.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ya umeyu",
+      "exampleTarget": "Я умею плавать.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I know how to swim.”",
+      "korean": "я умею",
+      "english": "Listen for \"я умею\" inside \"Я умею плавать.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Я умею плавать.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I know how to swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "я умею",
+      "romanization": "ya umeyu",
+      "nativeText": "Write \"я умею\" again without looking, then compare the exact written form against \"Я умею плавать.\" before moving on.",
+      "pronunciation": "ya umeyu",
+      "exampleTarget": "Я умею плавать.",
+      "exampleNative": "Use the written model as the final correctness check: “I know how to swim.”",
+      "korean": "я умею",
+      "english": "Write \"я умею\" again without looking, then compare the exact written form against \"Я умею плавать.\" before moving on.",
+      "example": "Я умею плавать.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I know how to swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "я умею",
+      "romanization": "ya umeyu",
+      "nativeText": "Check whether \"я умею\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I know how to swim.”",
+      "pronunciation": "ya umeyu",
+      "exampleTarget": "Я умею плавать.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I know how to swim.”",
+      "korean": "я умею",
+      "english": "Check whether \"я умею\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I know how to swim.”",
+      "example": "Я умею плавать.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I know how to swim.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "я не умею",
+      "romanization": "ya ne umeyu",
+      "nativeText": "“I do not know how to.” Honest and useful for beginners.",
+      "pronunciation": "ya ne umeyu",
+      "exampleTarget": "Я не умею играть на гитаре.",
+      "exampleNative": "“I do not know how to play guitar.”",
+      "korean": "я не умею",
+      "english": "“I do not know how to.” Honest and useful for beginners.",
+      "example": "Я не умею играть на гитаре.",
+      "exampleEnglish": "“I do not know how to play guitar.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "Я не умею играть на гитаре.",
+      "romanization": "ya ne umeyu",
+      "nativeText": "Model use for \"Я не умею играть на гитаре.\": “I do not know how to play guitar.”",
+      "pronunciation": "ya ne umeyu",
+      "exampleTarget": "Я не умею играть на гитаре.",
+      "exampleNative": "“I do not know how to play guitar.”",
+      "korean": "Я не умею играть на гитаре.",
+      "english": "Model use for \"Я не умею играть на гитаре.\": “I do not know how to play guitar.”",
+      "example": "Я не умею играть на гитаре.",
+      "exampleEnglish": "“I do not know how to play guitar.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "я не умею",
+      "romanization": "ya ne umeyu",
+      "nativeText": "Usage focus for \"я не умею\": Distinguish the nearby wording choices that make Level 1 · Unit 14: Уметь и мочь — Ability and Permission sound precise rather than merely understandable.",
+      "pronunciation": "ya ne umeyu",
+      "exampleTarget": "Я не умею играть на гитаре.",
+      "exampleNative": "Notice what the form is doing here: “I do not know how to play guitar.”",
+      "korean": "я не умею",
+      "english": "Usage focus for \"я не умею\": Distinguish the nearby wording choices that make Level 1 · Unit 14: Уметь и мочь — Ability and Permission sound precise rather than merely understandable.",
+      "example": "Я не умею играть на гитаре.",
+      "exampleEnglish": "Notice what the form is doing here: “I do not know how to play guitar.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "я не умею",
+      "romanization": "ya ne umeyu",
+      "nativeText": "Contrast check for \"я не умею\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ya ne umeyu",
+      "exampleTarget": "Я не умею играть на гитаре.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I do not know how to play guitar.”",
+      "korean": "я не умею",
+      "english": "Contrast check for \"я не умею\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Я не умею играть на гитаре.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I do not know how to play guitar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "я не умею",
+      "romanization": "ya ne umeyu",
+      "nativeText": "Recall \"я не умею\" from memory, then explain what would change if a nearby alternative replaced it in \"Я не умею играть на гитаре.\".",
+      "pronunciation": "ya ne umeyu",
+      "exampleTarget": "Я не умею играть на гитаре.",
+      "exampleNative": "Self-check against the model before moving on: “I do not know how to play guitar.”",
+      "korean": "я не умею",
+      "english": "Recall \"я не умею\" from memory, then explain what would change if a nearby alternative replaced it in \"Я не умею играть на гитаре.\".",
+      "example": "Я не умею играть на гитаре.",
+      "exampleEnglish": "Self-check against the model before moving on: “I do not know how to play guitar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "я не умею",
+      "romanization": "ya ne umeyu",
+      "nativeText": "Repair \"я не умею\" inside \"Я не умею играть на гитаре.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 14: Уметь и мочь — Ability and Permission sound precise rather than merely understandable.",
+      "pronunciation": "ya ne umeyu",
+      "exampleTarget": "Я не умею играть на гитаре.",
+      "exampleNative": "Use the model as the repair target: “I do not know how to play guitar.”",
+      "korean": "я не умею",
+      "english": "Repair \"я не умею\" inside \"Я не умею играть на гитаре.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 14: Уметь и мочь — Ability and Permission sound precise rather than merely understandable.",
+      "example": "Я не умею играть на гитаре.",
+      "exampleEnglish": "Use the model as the repair target: “I do not know how to play guitar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "я не умею",
+      "romanization": "ya ne umeyu",
+      "nativeText": "Transfer \"я не умею\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я не умею играть на гитаре.\".",
+      "pronunciation": "ya ne umeyu",
+      "exampleTarget": "Я не умею играть на гитаре.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I do not know how to play guitar.”",
+      "korean": "я не умею",
+      "english": "Transfer \"я не умею\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я не умею играть на гитаре.\".",
+      "example": "Я не умею играть на гитаре.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I do not know how to play guitar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "я не умею",
+      "romanization": "ya ne umeyu",
+      "nativeText": "Find one word or phrase that naturally travels with \"я не умею\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ya ne umeyu",
+      "exampleTarget": "Я не умею играть на гитаре.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I do not know how to play guitar.”",
+      "korean": "я не умею",
+      "english": "Find one word or phrase that naturally travels with \"я не умею\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Я не умею играть на гитаре.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I do not know how to play guitar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "я не умею",
+      "romanization": "ya ne umeyu",
+      "nativeText": "Listen for \"я не умею\" inside \"Я не умею играть на гитаре.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ya ne umeyu",
+      "exampleTarget": "Я не умею играть на гитаре.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I do not know how to play guitar.”",
+      "korean": "я не умею",
+      "english": "Listen for \"я не умею\" inside \"Я не умею играть на гитаре.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Я не умею играть на гитаре.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I do not know how to play guitar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "я не умею",
+      "romanization": "ya ne umeyu",
+      "nativeText": "Write \"я не умею\" again without looking, then compare the exact written form against \"Я не умею играть на гитаре.\" before moving on.",
+      "pronunciation": "ya ne umeyu",
+      "exampleTarget": "Я не умею играть на гитаре.",
+      "exampleNative": "Use the written model as the final correctness check: “I do not know how to play guitar.”",
+      "korean": "я не умею",
+      "english": "Write \"я не умею\" again without looking, then compare the exact written form against \"Я не умею играть на гитаре.\" before moving on.",
+      "example": "Я не умею играть на гитаре.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I do not know how to play guitar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "я не умею",
+      "romanization": "ya ne umeyu",
+      "nativeText": "Check whether \"я не умею\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I do not know how to play guitar.”",
+      "pronunciation": "ya ne umeyu",
+      "exampleTarget": "Я не умею играть на гитаре.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I do not know how to play guitar.”",
+      "korean": "я не умею",
+      "english": "Check whether \"я не умею\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I do not know how to play guitar.”",
+      "example": "Я не умею играть на гитаре.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I do not know how to play guitar.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "я могу",
+      "romanization": "ya mogu",
+      "nativeText": "“I can.” This often means situational possibility rather than learned skill.",
+      "pronunciation": "ya mogu",
+      "exampleTarget": "Я могу прийти вечером.",
+      "exampleNative": "“I can come in the evening.”",
+      "korean": "я могу",
+      "english": "“I can.” This often means situational possibility rather than learned skill.",
+      "example": "Я могу прийти вечером.",
+      "exampleEnglish": "“I can come in the evening.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "Я могу прийти вечером.",
+      "romanization": "ya mogu",
+      "nativeText": "Model use for \"Я могу прийти вечером.\": “I can come in the evening.”",
+      "pronunciation": "ya mogu",
+      "exampleTarget": "Я могу прийти вечером.",
+      "exampleNative": "“I can come in the evening.”",
+      "korean": "Я могу прийти вечером.",
+      "english": "Model use for \"Я могу прийти вечером.\": “I can come in the evening.”",
+      "example": "Я могу прийти вечером.",
+      "exampleEnglish": "“I can come in the evening.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "я могу",
+      "romanization": "ya mogu",
+      "nativeText": "Usage focus for \"я могу\": “I can.” This often means situational possibility rather than learned skill.",
+      "pronunciation": "ya mogu",
+      "exampleTarget": "Я могу прийти вечером.",
+      "exampleNative": "Notice what the form is doing here: “I can come in the evening.”",
+      "korean": "я могу",
+      "english": "Usage focus for \"я могу\": “I can.” This often means situational possibility rather than learned skill.",
+      "example": "Я могу прийти вечером.",
+      "exampleEnglish": "Notice what the form is doing here: “I can come in the evening.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "я могу",
+      "romanization": "ya mogu",
+      "nativeText": "Contrast check for \"я могу\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ya mogu",
+      "exampleTarget": "Я могу прийти вечером.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I can come in the evening.”",
+      "korean": "я могу",
+      "english": "Contrast check for \"я могу\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Я могу прийти вечером.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I can come in the evening.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "я могу",
+      "romanization": "ya mogu",
+      "nativeText": "Recall \"я могу\" from memory, then explain what would change if a nearby alternative replaced it in \"Я могу прийти вечером.\".",
+      "pronunciation": "ya mogu",
+      "exampleTarget": "Я могу прийти вечером.",
+      "exampleNative": "Self-check against the model before moving on: “I can come in the evening.”",
+      "korean": "я могу",
+      "english": "Recall \"я могу\" from memory, then explain what would change if a nearby alternative replaced it in \"Я могу прийти вечером.\".",
+      "example": "Я могу прийти вечером.",
+      "exampleEnglish": "Self-check against the model before moving on: “I can come in the evening.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "я могу",
+      "romanization": "ya mogu",
+      "nativeText": "Repair \"я могу\" inside \"Я могу прийти вечером.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I can.” This often means situational possibility rather than learned skill.",
+      "pronunciation": "ya mogu",
+      "exampleTarget": "Я могу прийти вечером.",
+      "exampleNative": "Use the model as the repair target: “I can come in the evening.”",
+      "korean": "я могу",
+      "english": "Repair \"я могу\" inside \"Я могу прийти вечером.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I can.” This often means situational possibility rather than learned skill.",
+      "example": "Я могу прийти вечером.",
+      "exampleEnglish": "Use the model as the repair target: “I can come in the evening.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "я могу",
+      "romanization": "ya mogu",
+      "nativeText": "Transfer \"я могу\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я могу прийти вечером.\".",
+      "pronunciation": "ya mogu",
+      "exampleTarget": "Я могу прийти вечером.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I can come in the evening.”",
+      "korean": "я могу",
+      "english": "Transfer \"я могу\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я могу прийти вечером.\".",
+      "example": "Я могу прийти вечером.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I can come in the evening.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "я могу",
+      "romanization": "ya mogu",
+      "nativeText": "Find one word or phrase that naturally travels with \"я могу\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ya mogu",
+      "exampleTarget": "Я могу прийти вечером.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I can come in the evening.”",
+      "korean": "я могу",
+      "english": "Find one word or phrase that naturally travels with \"я могу\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Я могу прийти вечером.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I can come in the evening.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "я могу",
+      "romanization": "ya mogu",
+      "nativeText": "Listen for \"я могу\" inside \"Я могу прийти вечером.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ya mogu",
+      "exampleTarget": "Я могу прийти вечером.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I can come in the evening.”",
+      "korean": "я могу",
+      "english": "Listen for \"я могу\" inside \"Я могу прийти вечером.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Я могу прийти вечером.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I can come in the evening.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "я могу",
+      "romanization": "ya mogu",
+      "nativeText": "Write \"я могу\" again without looking, then compare the exact written form against \"Я могу прийти вечером.\" before moving on.",
+      "pronunciation": "ya mogu",
+      "exampleTarget": "Я могу прийти вечером.",
+      "exampleNative": "Use the written model as the final correctness check: “I can come in the evening.”",
+      "korean": "я могу",
+      "english": "Write \"я могу\" again without looking, then compare the exact written form against \"Я могу прийти вечером.\" before moving on.",
+      "example": "Я могу прийти вечером.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I can come in the evening.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "я могу",
+      "romanization": "ya mogu",
+      "nativeText": "Check whether \"я могу\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I can come in the evening.”",
+      "pronunciation": "ya mogu",
+      "exampleTarget": "Я могу прийти вечером.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I can come in the evening.”",
+      "korean": "я могу",
+      "english": "Check whether \"я могу\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I can come in the evening.”",
+      "example": "Я могу прийти вечером.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I can come in the evening.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "можно?",
+      "romanization": "mozhno",
+      "nativeText": "“May I / is it allowed?” A compact permission question.",
+      "pronunciation": "mozhno",
+      "exampleTarget": "Можно войти?",
+      "exampleNative": "“May I come in?”",
+      "korean": "можно?",
+      "english": "“May I / is it allowed?” A compact permission question.",
+      "example": "Можно войти?",
+      "exampleEnglish": "“May I come in?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "Можно войти?",
+      "romanization": "mozhno",
+      "nativeText": "Model use for \"Можно войти?\": “May I come in?”",
+      "pronunciation": "mozhno",
+      "exampleTarget": "Можно войти?",
+      "exampleNative": "“May I come in?”",
+      "korean": "Можно войти?",
+      "english": "Model use for \"Можно войти?\": “May I come in?”",
+      "example": "Можно войти?",
+      "exampleEnglish": "“May I come in?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "можно?",
+      "romanization": "mozhno",
+      "nativeText": "Usage focus for \"можно?\": “May I / is it allowed?” A compact permission question.",
+      "pronunciation": "mozhno",
+      "exampleTarget": "Можно войти?",
+      "exampleNative": "Notice what the form is doing here: “May I come in?”",
+      "korean": "можно?",
+      "english": "Usage focus for \"можно?\": “May I / is it allowed?” A compact permission question.",
+      "example": "Можно войти?",
+      "exampleEnglish": "Notice what the form is doing here: “May I come in?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "можно?",
+      "romanization": "mozhno",
+      "nativeText": "Contrast check for \"можно?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "mozhno",
+      "exampleTarget": "Можно войти?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I come in?”",
+      "korean": "можно?",
+      "english": "Contrast check for \"можно?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Можно войти?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I come in?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "можно?",
+      "romanization": "mozhno",
+      "nativeText": "Recall \"можно?\" from memory, then explain what would change if a nearby alternative replaced it in \"Можно войти?\".",
+      "pronunciation": "mozhno",
+      "exampleTarget": "Можно войти?",
+      "exampleNative": "Self-check against the model before moving on: “May I come in?”",
+      "korean": "можно?",
+      "english": "Recall \"можно?\" from memory, then explain what would change if a nearby alternative replaced it in \"Можно войти?\".",
+      "example": "Можно войти?",
+      "exampleEnglish": "Self-check against the model before moving on: “May I come in?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "можно?",
+      "romanization": "mozhno",
+      "nativeText": "Repair \"можно?\" inside \"Можно войти?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “May I / is it allowed?” A compact permission question.",
+      "pronunciation": "mozhno",
+      "exampleTarget": "Можно войти?",
+      "exampleNative": "Use the model as the repair target: “May I come in?”",
+      "korean": "можно?",
+      "english": "Repair \"можно?\" inside \"Можно войти?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “May I / is it allowed?” A compact permission question.",
+      "example": "Можно войти?",
+      "exampleEnglish": "Use the model as the repair target: “May I come in?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "можно?",
+      "romanization": "mozhno",
+      "nativeText": "Transfer \"можно?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Можно войти?\".",
+      "pronunciation": "mozhno",
+      "exampleTarget": "Можно войти?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I come in?”",
+      "korean": "можно?",
+      "english": "Transfer \"можно?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Можно войти?\".",
+      "example": "Можно войти?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I come in?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "можно?",
+      "romanization": "mozhno",
+      "nativeText": "Find one word or phrase that naturally travels with \"можно?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "mozhno",
+      "exampleTarget": "Можно войти?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “May I come in?”",
+      "korean": "можно?",
+      "english": "Find one word or phrase that naturally travels with \"можно?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Можно войти?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “May I come in?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "можно?",
+      "romanization": "mozhno",
+      "nativeText": "Listen for \"можно?\" inside \"Можно войти?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "mozhno",
+      "exampleTarget": "Можно войти?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I come in?”",
+      "korean": "можно?",
+      "english": "Listen for \"можно?\" inside \"Можно войти?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Можно войти?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I come in?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "можно?",
+      "romanization": "mozhno",
+      "nativeText": "Write \"можно?\" again without looking, then compare the exact written form against \"Можно войти?\" before moving on.",
+      "pronunciation": "mozhno",
+      "exampleTarget": "Можно войти?",
+      "exampleNative": "Use the written model as the final correctness check: “May I come in?”",
+      "korean": "можно?",
+      "english": "Write \"можно?\" again without looking, then compare the exact written form against \"Можно войти?\" before moving on.",
+      "example": "Можно войти?",
+      "exampleEnglish": "Use the written model as the final correctness check: “May I come in?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "можно?",
+      "romanization": "mozhno",
+      "nativeText": "Check whether \"можно?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I come in?”",
+      "pronunciation": "mozhno",
+      "exampleTarget": "Можно войти?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “May I come in?”",
+      "korean": "можно?",
+      "english": "Check whether \"можно?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I come in?”",
+      "example": "Можно войти?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “May I come in?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "нельзя",
+      "romanization": "nelzya",
+      "nativeText": "“Not allowed / impossible.” Very common on signs and in rules.",
+      "pronunciation": "nelzya",
+      "exampleTarget": "Здесь нельзя курить.",
+      "exampleNative": "“Smoking is not allowed here.”",
+      "korean": "нельзя",
+      "english": "“Not allowed / impossible.” Very common on signs and in rules.",
+      "example": "Здесь нельзя курить.",
+      "exampleEnglish": "“Smoking is not allowed here.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "Здесь нельзя курить.",
+      "romanization": "nelzya",
+      "nativeText": "Model use for \"Здесь нельзя курить.\": “Smoking is not allowed here.”",
+      "pronunciation": "nelzya",
+      "exampleTarget": "Здесь нельзя курить.",
+      "exampleNative": "“Smoking is not allowed here.”",
+      "korean": "Здесь нельзя курить.",
+      "english": "Model use for \"Здесь нельзя курить.\": “Smoking is not allowed here.”",
+      "example": "Здесь нельзя курить.",
+      "exampleEnglish": "“Smoking is not allowed here.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "нельзя",
+      "romanization": "nelzya",
+      "nativeText": "Usage focus for \"нельзя\": “Not allowed / impossible.” Very common on signs and in rules.",
+      "pronunciation": "nelzya",
+      "exampleTarget": "Здесь нельзя курить.",
+      "exampleNative": "Notice what the form is doing here: “Smoking is not allowed here.”",
+      "korean": "нельзя",
+      "english": "Usage focus for \"нельзя\": “Not allowed / impossible.” Very common on signs and in rules.",
+      "example": "Здесь нельзя курить.",
+      "exampleEnglish": "Notice what the form is doing here: “Smoking is not allowed here.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "нельзя",
+      "romanization": "nelzya",
+      "nativeText": "Contrast check for \"нельзя\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "nelzya",
+      "exampleTarget": "Здесь нельзя курить.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Smoking is not allowed here.”",
+      "korean": "нельзя",
+      "english": "Contrast check for \"нельзя\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Здесь нельзя курить.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Smoking is not allowed here.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "нельзя",
+      "romanization": "nelzya",
+      "nativeText": "Recall \"нельзя\" from memory, then explain what would change if a nearby alternative replaced it in \"Здесь нельзя курить.\".",
+      "pronunciation": "nelzya",
+      "exampleTarget": "Здесь нельзя курить.",
+      "exampleNative": "Self-check against the model before moving on: “Smoking is not allowed here.”",
+      "korean": "нельзя",
+      "english": "Recall \"нельзя\" from memory, then explain what would change if a nearby alternative replaced it in \"Здесь нельзя курить.\".",
+      "example": "Здесь нельзя курить.",
+      "exampleEnglish": "Self-check against the model before moving on: “Smoking is not allowed here.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "нельзя",
+      "romanization": "nelzya",
+      "nativeText": "Repair \"нельзя\" inside \"Здесь нельзя курить.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Not allowed / impossible.” Very common on signs and in rules.",
+      "pronunciation": "nelzya",
+      "exampleTarget": "Здесь нельзя курить.",
+      "exampleNative": "Use the model as the repair target: “Smoking is not allowed here.”",
+      "korean": "нельзя",
+      "english": "Repair \"нельзя\" inside \"Здесь нельзя курить.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Not allowed / impossible.” Very common on signs and in rules.",
+      "example": "Здесь нельзя курить.",
+      "exampleEnglish": "Use the model as the repair target: “Smoking is not allowed here.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "нельзя",
+      "romanization": "nelzya",
+      "nativeText": "Transfer \"нельзя\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Здесь нельзя курить.\".",
+      "pronunciation": "nelzya",
+      "exampleTarget": "Здесь нельзя курить.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Smoking is not allowed here.”",
+      "korean": "нельзя",
+      "english": "Transfer \"нельзя\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Здесь нельзя курить.\".",
+      "example": "Здесь нельзя курить.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Smoking is not allowed here.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "нельзя",
+      "romanization": "nelzya",
+      "nativeText": "Find one word or phrase that naturally travels with \"нельзя\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "nelzya",
+      "exampleTarget": "Здесь нельзя курить.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Smoking is not allowed here.”",
+      "korean": "нельзя",
+      "english": "Find one word or phrase that naturally travels with \"нельзя\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Здесь нельзя курить.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Smoking is not allowed here.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "нельзя",
+      "romanization": "nelzya",
+      "nativeText": "Listen for \"нельзя\" inside \"Здесь нельзя курить.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "nelzya",
+      "exampleTarget": "Здесь нельзя курить.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Smoking is not allowed here.”",
+      "korean": "нельзя",
+      "english": "Listen for \"нельзя\" inside \"Здесь нельзя курить.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Здесь нельзя курить.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Smoking is not allowed here.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "нельзя",
+      "romanization": "nelzya",
+      "nativeText": "Write \"нельзя\" again without looking, then compare the exact written form against \"Здесь нельзя курить.\" before moving on.",
+      "pronunciation": "nelzya",
+      "exampleTarget": "Здесь нельзя курить.",
+      "exampleNative": "Use the written model as the final correctness check: “Smoking is not allowed here.”",
+      "korean": "нельзя",
+      "english": "Write \"нельзя\" again without looking, then compare the exact written form against \"Здесь нельзя курить.\" before moving on.",
+      "example": "Здесь нельзя курить.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Smoking is not allowed here.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "нельзя",
+      "romanization": "nelzya",
+      "nativeText": "Check whether \"нельзя\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Smoking is not allowed here.”",
+      "pronunciation": "nelzya",
+      "exampleTarget": "Здесь нельзя курить.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Smoking is not allowed here.”",
+      "korean": "нельзя",
+      "english": "Check whether \"нельзя\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Smoking is not allowed here.”",
+      "example": "Здесь нельзя курить.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Smoking is not allowed here.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "мне нужно",
+      "romanization": "mne nuzhno",
+      "nativeText": "“I need to.” A useful impersonal necessity frame.",
+      "pronunciation": "mne nuzhno",
+      "exampleTarget": "Мне нужно больше практиковаться.",
+      "exampleNative": "“I need to practice more.”",
+      "korean": "мне нужно",
+      "english": "“I need to.” A useful impersonal necessity frame.",
+      "example": "Мне нужно больше практиковаться.",
+      "exampleEnglish": "“I need to practice more.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "Мне нужно больше практиковаться.",
+      "romanization": "mne nuzhno",
+      "nativeText": "Model use for \"Мне нужно больше практиковаться.\": “I need to practice more.”",
+      "pronunciation": "mne nuzhno",
+      "exampleTarget": "Мне нужно больше практиковаться.",
+      "exampleNative": "“I need to practice more.”",
+      "korean": "Мне нужно больше практиковаться.",
+      "english": "Model use for \"Мне нужно больше практиковаться.\": “I need to practice more.”",
+      "example": "Мне нужно больше практиковаться.",
+      "exampleEnglish": "“I need to practice more.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "мне нужно",
+      "romanization": "mne nuzhno",
+      "nativeText": "Usage focus for \"мне нужно\": “I need to.” A useful impersonal necessity frame.",
+      "pronunciation": "mne nuzhno",
+      "exampleTarget": "Мне нужно больше практиковаться.",
+      "exampleNative": "Notice what the form is doing here: “I need to practice more.”",
+      "korean": "мне нужно",
+      "english": "Usage focus for \"мне нужно\": “I need to.” A useful impersonal necessity frame.",
+      "example": "Мне нужно больше практиковаться.",
+      "exampleEnglish": "Notice what the form is doing here: “I need to practice more.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "мне нужно",
+      "romanization": "mne nuzhno",
+      "nativeText": "Contrast check for \"мне нужно\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "mne nuzhno",
+      "exampleTarget": "Мне нужно больше практиковаться.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I need to practice more.”",
+      "korean": "мне нужно",
+      "english": "Contrast check for \"мне нужно\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Мне нужно больше практиковаться.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I need to practice more.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "мне нужно",
+      "romanization": "mne nuzhno",
+      "nativeText": "Recall \"мне нужно\" from memory, then explain what would change if a nearby alternative replaced it in \"Мне нужно больше практиковаться.\".",
+      "pronunciation": "mne nuzhno",
+      "exampleTarget": "Мне нужно больше практиковаться.",
+      "exampleNative": "Self-check against the model before moving on: “I need to practice more.”",
+      "korean": "мне нужно",
+      "english": "Recall \"мне нужно\" from memory, then explain what would change if a nearby alternative replaced it in \"Мне нужно больше практиковаться.\".",
+      "example": "Мне нужно больше практиковаться.",
+      "exampleEnglish": "Self-check against the model before moving on: “I need to practice more.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "мне нужно",
+      "romanization": "mne nuzhno",
+      "nativeText": "Repair \"мне нужно\" inside \"Мне нужно больше практиковаться.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I need to.” A useful impersonal necessity frame.",
+      "pronunciation": "mne nuzhno",
+      "exampleTarget": "Мне нужно больше практиковаться.",
+      "exampleNative": "Use the model as the repair target: “I need to practice more.”",
+      "korean": "мне нужно",
+      "english": "Repair \"мне нужно\" inside \"Мне нужно больше практиковаться.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I need to.” A useful impersonal necessity frame.",
+      "example": "Мне нужно больше практиковаться.",
+      "exampleEnglish": "Use the model as the repair target: “I need to practice more.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "мне нужно",
+      "romanization": "mne nuzhno",
+      "nativeText": "Transfer \"мне нужно\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Мне нужно больше практиковаться.\".",
+      "pronunciation": "mne nuzhno",
+      "exampleTarget": "Мне нужно больше практиковаться.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I need to practice more.”",
+      "korean": "мне нужно",
+      "english": "Transfer \"мне нужно\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Мне нужно больше практиковаться.\".",
+      "example": "Мне нужно больше практиковаться.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I need to practice more.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "мне нужно",
+      "romanization": "mne nuzhno",
+      "nativeText": "Find one word or phrase that naturally travels with \"мне нужно\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "mne nuzhno",
+      "exampleTarget": "Мне нужно больше практиковаться.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I need to practice more.”",
+      "korean": "мне нужно",
+      "english": "Find one word or phrase that naturally travels with \"мне нужно\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Мне нужно больше практиковаться.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I need to practice more.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "мне нужно",
+      "romanization": "mne nuzhno",
+      "nativeText": "Listen for \"мне нужно\" inside \"Мне нужно больше практиковаться.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "mne nuzhno",
+      "exampleTarget": "Мне нужно больше практиковаться.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I need to practice more.”",
+      "korean": "мне нужно",
+      "english": "Listen for \"мне нужно\" inside \"Мне нужно больше практиковаться.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Мне нужно больше практиковаться.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I need to practice more.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "мне нужно",
+      "romanization": "mne nuzhno",
+      "nativeText": "Write \"мне нужно\" again without looking, then compare the exact written form against \"Мне нужно больше практиковаться.\" before moving on.",
+      "pronunciation": "mne nuzhno",
+      "exampleTarget": "Мне нужно больше практиковаться.",
+      "exampleNative": "Use the written model as the final correctness check: “I need to practice more.”",
+      "korean": "мне нужно",
+      "english": "Write \"мне нужно\" again without looking, then compare the exact written form against \"Мне нужно больше практиковаться.\" before moving on.",
+      "example": "Мне нужно больше практиковаться.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I need to practice more.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "мне нужно",
+      "romanization": "mne nuzhno",
+      "nativeText": "Check whether \"мне нужно\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I need to practice more.”",
+      "pronunciation": "mne nuzhno",
+      "exampleTarget": "Мне нужно больше практиковаться.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I need to practice more.”",
+      "korean": "мне нужно",
+      "english": "Check whether \"мне нужно\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I need to practice more.”",
+      "example": "Мне нужно больше практиковаться.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I need to practice more.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "надо",
+      "romanization": "nado",
+      "nativeText": "“Need to / must.” Slightly more colloquial and direct than `нужно` in many uses.",
+      "pronunciation": "nado",
+      "exampleTarget": "Надо взять паспорт.",
+      "exampleNative": "“You need to take a passport.”",
+      "korean": "надо",
+      "english": "“Need to / must.” Slightly more colloquial and direct than `нужно` in many uses.",
+      "example": "Надо взять паспорт.",
+      "exampleEnglish": "“You need to take a passport.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "Надо взять паспорт.",
+      "romanization": "nado",
+      "nativeText": "Model use for \"Надо взять паспорт.\": “You need to take a passport.”",
+      "pronunciation": "nado",
+      "exampleTarget": "Надо взять паспорт.",
+      "exampleNative": "“You need to take a passport.”",
+      "korean": "Надо взять паспорт.",
+      "english": "Model use for \"Надо взять паспорт.\": “You need to take a passport.”",
+      "example": "Надо взять паспорт.",
+      "exampleEnglish": "“You need to take a passport.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "надо",
+      "romanization": "nado",
+      "nativeText": "Usage focus for \"надо\": “Need to / must.” Slightly more colloquial and direct than `нужно` in many uses.",
+      "pronunciation": "nado",
+      "exampleTarget": "Надо взять паспорт.",
+      "exampleNative": "Notice what the form is doing here: “You need to take a passport.”",
+      "korean": "надо",
+      "english": "Usage focus for \"надо\": “Need to / must.” Slightly more colloquial and direct than `нужно` in many uses.",
+      "example": "Надо взять паспорт.",
+      "exampleEnglish": "Notice what the form is doing here: “You need to take a passport.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "надо",
+      "romanization": "nado",
+      "nativeText": "Contrast check for \"надо\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "nado",
+      "exampleTarget": "Надо взять паспорт.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “You need to take a passport.”",
+      "korean": "надо",
+      "english": "Contrast check for \"надо\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Надо взять паспорт.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “You need to take a passport.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "надо",
+      "romanization": "nado",
+      "nativeText": "Recall \"надо\" from memory, then explain what would change if a nearby alternative replaced it in \"Надо взять паспорт.\".",
+      "pronunciation": "nado",
+      "exampleTarget": "Надо взять паспорт.",
+      "exampleNative": "Self-check against the model before moving on: “You need to take a passport.”",
+      "korean": "надо",
+      "english": "Recall \"надо\" from memory, then explain what would change if a nearby alternative replaced it in \"Надо взять паспорт.\".",
+      "example": "Надо взять паспорт.",
+      "exampleEnglish": "Self-check against the model before moving on: “You need to take a passport.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "надо",
+      "romanization": "nado",
+      "nativeText": "Repair \"надо\" inside \"Надо взять паспорт.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Need to / must.” Slightly more colloquial and direct than `нужно` in many uses.",
+      "pronunciation": "nado",
+      "exampleTarget": "Надо взять паспорт.",
+      "exampleNative": "Use the model as the repair target: “You need to take a passport.”",
+      "korean": "надо",
+      "english": "Repair \"надо\" inside \"Надо взять паспорт.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Need to / must.” Slightly more colloquial and direct than `нужно` in many uses.",
+      "example": "Надо взять паспорт.",
+      "exampleEnglish": "Use the model as the repair target: “You need to take a passport.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "надо",
+      "romanization": "nado",
+      "nativeText": "Transfer \"надо\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Надо взять паспорт.\".",
+      "pronunciation": "nado",
+      "exampleTarget": "Надо взять паспорт.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “You need to take a passport.”",
+      "korean": "надо",
+      "english": "Transfer \"надо\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Надо взять паспорт.\".",
+      "example": "Надо взять паспорт.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “You need to take a passport.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "надо",
+      "romanization": "nado",
+      "nativeText": "Find one word or phrase that naturally travels with \"надо\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "nado",
+      "exampleTarget": "Надо взять паспорт.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “You need to take a passport.”",
+      "korean": "надо",
+      "english": "Find one word or phrase that naturally travels with \"надо\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Надо взять паспорт.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “You need to take a passport.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "надо",
+      "romanization": "nado",
+      "nativeText": "Listen for \"надо\" inside \"Надо взять паспорт.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "nado",
+      "exampleTarget": "Надо взять паспорт.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “You need to take a passport.”",
+      "korean": "надо",
+      "english": "Listen for \"надо\" inside \"Надо взять паспорт.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Надо взять паспорт.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “You need to take a passport.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "надо",
+      "romanization": "nado",
+      "nativeText": "Write \"надо\" again without looking, then compare the exact written form against \"Надо взять паспорт.\" before moving on.",
+      "pronunciation": "nado",
+      "exampleTarget": "Надо взять паспорт.",
+      "exampleNative": "Use the written model as the final correctness check: “You need to take a passport.”",
+      "korean": "надо",
+      "english": "Write \"надо\" again without looking, then compare the exact written form against \"Надо взять паспорт.\" before moving on.",
+      "example": "Надо взять паспорт.",
+      "exampleEnglish": "Use the written model as the final correctness check: “You need to take a passport.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "надо",
+      "romanization": "nado",
+      "nativeText": "Check whether \"надо\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “You need to take a passport.”",
+      "pronunciation": "nado",
+      "exampleTarget": "Надо взять паспорт.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “You need to take a passport.”",
+      "korean": "надо",
+      "english": "Check whether \"надо\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “You need to take a passport.”",
+      "example": "Надо взять паспорт.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “You need to take a passport.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "получается",
+      "romanization": "poluchayetsya",
+      "nativeText": "“It is working out / I am managing.” A gentle way to talk about progress in a skill.",
+      "pronunciation": "poluchayetsya",
+      "exampleTarget": "У меня уже получается читать по-русски.",
+      "exampleNative": "“I am already managing to read in Russian.”",
+      "korean": "получается",
+      "english": "“It is working out / I am managing.” A gentle way to talk about progress in a skill.",
+      "example": "У меня уже получается читать по-русски.",
+      "exampleEnglish": "“I am already managing to read in Russian.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "У меня уже получается читать по-русски.",
+      "romanization": "poluchayetsya",
+      "nativeText": "Model use for \"У меня уже получается читать по-русски.\": “I am already managing to read in Russian.”",
+      "pronunciation": "poluchayetsya",
+      "exampleTarget": "У меня уже получается читать по-русски.",
+      "exampleNative": "“I am already managing to read in Russian.”",
+      "korean": "У меня уже получается читать по-русски.",
+      "english": "Model use for \"У меня уже получается читать по-русски.\": “I am already managing to read in Russian.”",
+      "example": "У меня уже получается читать по-русски.",
+      "exampleEnglish": "“I am already managing to read in Russian.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "получается",
+      "romanization": "poluchayetsya",
+      "nativeText": "Usage focus for \"получается\": “It is working out / I am managing.” A gentle way to talk about progress in a skill.",
+      "pronunciation": "poluchayetsya",
+      "exampleTarget": "У меня уже получается читать по-русски.",
+      "exampleNative": "Notice what the form is doing here: “I am already managing to read in Russian.”",
+      "korean": "получается",
+      "english": "Usage focus for \"получается\": “It is working out / I am managing.” A gentle way to talk about progress in a skill.",
+      "example": "У меня уже получается читать по-русски.",
+      "exampleEnglish": "Notice what the form is doing here: “I am already managing to read in Russian.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "получается",
+      "romanization": "poluchayetsya",
+      "nativeText": "Contrast check for \"получается\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "poluchayetsya",
+      "exampleTarget": "У меня уже получается читать по-русски.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am already managing to read in Russian.”",
+      "korean": "получается",
+      "english": "Contrast check for \"получается\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "У меня уже получается читать по-русски.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am already managing to read in Russian.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "получается",
+      "romanization": "poluchayetsya",
+      "nativeText": "Recall \"получается\" from memory, then explain what would change if a nearby alternative replaced it in \"У меня уже получается читать по-русски.\".",
+      "pronunciation": "poluchayetsya",
+      "exampleTarget": "У меня уже получается читать по-русски.",
+      "exampleNative": "Self-check against the model before moving on: “I am already managing to read in Russian.”",
+      "korean": "получается",
+      "english": "Recall \"получается\" from memory, then explain what would change if a nearby alternative replaced it in \"У меня уже получается читать по-русски.\".",
+      "example": "У меня уже получается читать по-русски.",
+      "exampleEnglish": "Self-check against the model before moving on: “I am already managing to read in Russian.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "получается",
+      "romanization": "poluchayetsya",
+      "nativeText": "Repair \"получается\" inside \"У меня уже получается читать по-русски.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “It is working out / I am managing.” A gentle way to talk about progress in a skill.",
+      "pronunciation": "poluchayetsya",
+      "exampleTarget": "У меня уже получается читать по-русски.",
+      "exampleNative": "Use the model as the repair target: “I am already managing to read in Russian.”",
+      "korean": "получается",
+      "english": "Repair \"получается\" inside \"У меня уже получается читать по-русски.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “It is working out / I am managing.” A gentle way to talk about progress in a skill.",
+      "example": "У меня уже получается читать по-русски.",
+      "exampleEnglish": "Use the model as the repair target: “I am already managing to read in Russian.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "получается",
+      "romanization": "poluchayetsya",
+      "nativeText": "Transfer \"получается\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"У меня уже получается читать по-русски.\".",
+      "pronunciation": "poluchayetsya",
+      "exampleTarget": "У меня уже получается читать по-русски.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am already managing to read in Russian.”",
+      "korean": "получается",
+      "english": "Transfer \"получается\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"У меня уже получается читать по-русски.\".",
+      "example": "У меня уже получается читать по-русски.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am already managing to read in Russian.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "получается",
+      "romanization": "poluchayetsya",
+      "nativeText": "Find one word or phrase that naturally travels with \"получается\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "poluchayetsya",
+      "exampleTarget": "У меня уже получается читать по-русски.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I am already managing to read in Russian.”",
+      "korean": "получается",
+      "english": "Find one word or phrase that naturally travels with \"получается\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "У меня уже получается читать по-русски.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I am already managing to read in Russian.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "получается",
+      "romanization": "poluchayetsya",
+      "nativeText": "Listen for \"получается\" inside \"У меня уже получается читать по-русски.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "poluchayetsya",
+      "exampleTarget": "У меня уже получается читать по-русски.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am already managing to read in Russian.”",
+      "korean": "получается",
+      "english": "Listen for \"получается\" inside \"У меня уже получается читать по-русски.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "У меня уже получается читать по-русски.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am already managing to read in Russian.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "получается",
+      "romanization": "poluchayetsya",
+      "nativeText": "Write \"получается\" again without looking, then compare the exact written form against \"У меня уже получается читать по-русски.\" before moving on.",
+      "pronunciation": "poluchayetsya",
+      "exampleTarget": "У меня уже получается читать по-русски.",
+      "exampleNative": "Use the written model as the final correctness check: “I am already managing to read in Russian.”",
+      "korean": "получается",
+      "english": "Write \"получается\" again without looking, then compare the exact written form against \"У меня уже получается читать по-русски.\" before moving on.",
+      "example": "У меня уже получается читать по-русски.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I am already managing to read in Russian.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit14ability-vocabulary-1",
+        "ru-level1unit14ability-vocabulary-2",
+        "ru-level1unit14ability-grammar-1",
+        "ru-level1unit14ability-grammar-2",
+        "ru-level1unit14ability-reading",
+        "ru-level1unit14ability-listening",
+        "ru-level1unit14ability-writing",
+        "ru-level1unit14ability-task"
+      ],
+      "targetText": "получается",
+      "romanization": "poluchayetsya",
+      "nativeText": "Check whether \"получается\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am already managing to read in Russian.”",
+      "pronunciation": "poluchayetsya",
+      "exampleTarget": "У меня уже получается читать по-русски.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I am already managing to read in Russian.”",
+      "korean": "получается",
+      "english": "Check whether \"получается\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am already managing to read in Russian.”",
+      "example": "У меня уже получается читать по-русски.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I am already managing to read in Russian.”"
+    }
+  ],
+  "targetLang": "ru",
+  "nativeLang": "en",
+  "track": "textbook"
+};

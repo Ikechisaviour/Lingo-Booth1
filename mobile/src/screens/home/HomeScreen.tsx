@@ -411,6 +411,19 @@ const HomeScreen: React.FC = () => {
               <Text style={styles.quickArrow}>›</Text>
             </TouchableOpacity>
           )}
+
+          <TouchableOpacity
+            style={[styles.quickAction, { borderLeftColor: colors.warning }]}
+            onPress={() => navigation.navigate('Contact')}
+            activeOpacity={0.7}
+          >
+            <Text style={styles.quickIcon}>💬</Text>
+            <View style={styles.quickTextCol}>
+              <Text style={styles.quickTitle}>{t('contact.navLabel', 'Contact')}</Text>
+              <Text style={styles.quickDesc}>{t('home.contactDesc', 'Questions, feedback, or a problem to report')}</Text>
+            </View>
+            <Text style={styles.quickArrow}>›</Text>
+          </TouchableOpacity>
         </View>
 
         {!isGuest && learningHub && (

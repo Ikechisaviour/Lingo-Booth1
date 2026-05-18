@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('tr', {
-  slug: 'tr-l1u19',
-  title: 'Level 1 · Unit 19: Bayramlar ve Gelenekler — Cultural Holidays',
-  category: 'culture',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Talk about Turkish holidays, greetings, and family customs.',
-  vocabularyGoal: 'Use holiday, family, greeting, and tradition words.',
-  grammarGoal: 'Use present habituals and future forms to describe customs and plans.',
-  speakingGoal: 'Describe one holiday, say what people usually do, and give an appropriate greeting.',
-  task: 'Explain one Turkish holiday to a visitor.',
-  expressionPractice: [
-    practice('naming-holiday', 'Naming holiday', 'Introduce one celebration clearly.'),
-    practice('describing-custom', 'Describing custom', 'Use one repeated action.'),
-    practice('giving-greeting', 'Giving greeting', 'Use the formula that fits the occasion.'),
+module.exports = {
+  "title": "Level 1 · Unit 19: Bayramlar ve Gelenekler — Cultural Holidays",
+  "category": "culture",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "tr-level1unit19culturalholidays-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Talk about Turkish holidays, greetings, and family customs."
+      ],
+      "task": "Explain one Turkish holiday to a visitor."
+    },
+    {
+      "id": "tr-level1unit19culturalholidays-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "tr-level1unit19culturalholidays-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 19: Bayramlar ve Gelenekler — Cultural Holidays with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "tr-level1unit19culturalholidays-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 19: Bayramlar ve Gelenekler — Cultural Holidays sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "tr-level1unit19culturalholidays-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Talk about Turkish holidays, greetings, and family customs."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "tr-level1unit19culturalholidays-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 19: Bayramlar ve Gelenekler — Cultural Holidays with one nearby Turkish form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "tr-level1unit19culturalholidays-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "tr-level1unit19culturalholidays-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "tr-level1unit19culturalholidays-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "tr-level1unit19culturalholidays-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "tr-level1unit19culturalholidays-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Explain one Turkish holiday to a visitor."
+      ],
+      "task": "Explain one Turkish holiday to a visitor."
+    }
   ],
-  relatedPools: ['topic-culture', 'topic-family'],
-  items: [
-    item('Ramazan Bayramı', 'ra-ma-ZAN bay-ra-MI', 'The holiday after Ramadan, centered on visits, sweets, and family greetings.', 'Ramazan Bayramı’nda ailemizi ziyaret ederiz.', '“During Ramadan Bayram, we visit our family.”'),
-    item('Kurban Bayramı', 'kur-BAN bay-ra-MI', 'The Festival of Sacrifice, another major religious holiday in Turkey.', 'Kurban Bayramı dört gün sürer.', '“Kurban Bayram lasts four days.”'),
-    item('Cumhuriyet Bayramı', 'cum-hu-ri-YET bay-ra-MI', 'Republic Day on October 29, marking the founding of the Turkish Republic.', 'Cumhuriyet Bayramı yirmi dokuz Ekim’dedir.', '“Republic Day is on October twenty-ninth.”'),
-    item('bayramlaşmak', 'bay-ram-laş-MAK', '“To exchange holiday greetings.” A culture-specific verb showing how productive Turkish derivation is.', 'Bayramda büyüklerle bayramlaşırız.', '“On the holiday, we exchange greetings with elders.”'),
-    item('ziyaret etmek', 'zi-ya-RET et-MEK', '“To visit.” Especially common in holiday family routines.', 'Akrabaları ziyaret ederiz.', '“We visit relatives.”'),
-    item('Bayramınız kutlu olsun', 'bay-ra-MI-nız kut-LU ol-SUN', '“Happy holiday.” A polite greeting formula.', 'Bayramınız kutlu olsun!', '“Happy holiday!”'),
-    item('gelenek', 'ge-le-NEK', '“Tradition.” A useful bridge noun for cultural explanation.', 'Bu önemli bir gelenek.', '“This is an important tradition.”'),
-    item('aile büyükleri', 'a-i-LE bü-yük-LE-ri', '“Family elders.” Turkish holiday customs often center on visiting and honoring them.', 'Bayramda aile büyüklerini ziyaret ederiz.', '“On holidays we visit the family elders.”'),
+  "expressionPractice": [
+    {
+      "id": "naming-holiday",
+      "label": "Naming holiday",
+      "goal": "Introduce one celebration clearly."
+    },
+    {
+      "id": "describing-custom",
+      "label": "Describing custom",
+      "goal": "Use one repeated action."
+    },
+    {
+      "id": "giving-greeting",
+      "label": "Giving greeting",
+      "goal": "Use the formula that fits the occasion."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-culture",
+    "topic-family"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-orientation"
+      ],
+      "targetText": "ders hedefi",
+      "romanization": "",
+      "nativeText": "Talk about Turkish holidays, greetings, and family customs.",
+      "pronunciation": "",
+      "exampleTarget": "ders hedefi",
+      "exampleNative": "The whole lesson is built toward this outcome: Explain one Turkish holiday to a visitor.",
+      "korean": "ders hedefi",
+      "english": "Talk about Turkish holidays, greetings, and family customs.",
+      "example": "ders hedefi",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Explain one Turkish holiday to a visitor."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-pronunciation"
+      ],
+      "targetText": "ses kontrolü",
+      "romanization": "",
+      "nativeText": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Ramazan Bayramı’nda ailemizi ziyaret ederiz.\".",
+      "pronunciation": "",
+      "exampleTarget": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "exampleNative": "“During Ramadan Bayram, we visit our family.”",
+      "korean": "ses kontrolü",
+      "english": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Ramazan Bayramı’nda ailemizi ziyaret ederiz.\".",
+      "example": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "exampleEnglish": "“During Ramadan Bayram, we visit our family.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1"
+      ],
+      "targetText": "Ramazan Bayramı",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 19: Bayramlar ve Gelenekler — Cultural Holidays with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "exampleNative": "“During Ramadan Bayram, we visit our family.”",
+      "korean": "Ramazan Bayramı",
+      "english": "Use the key language of Level 1 · Unit 19: Bayramlar ve Gelenekler — Cultural Holidays with the register and setting that the lesson requires.",
+      "example": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "exampleEnglish": "“During Ramadan Bayram, we visit our family.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-2"
+      ],
+      "targetText": "Kurban Bayramı",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 19: Bayramlar ve Gelenekler — Cultural Holidays sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Kurban Bayramı dört gün sürer.",
+      "exampleNative": "“Kurban Bayram lasts four days.”",
+      "korean": "Kurban Bayramı",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 19: Bayramlar ve Gelenekler — Cultural Holidays sound precise rather than merely understandable.",
+      "example": "Kurban Bayramı dört gün sürer.",
+      "exampleEnglish": "“Kurban Bayram lasts four days.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-grammar-1"
+      ],
+      "targetText": "Ramazan Bayramı",
+      "romanization": "",
+      "nativeText": "Talk about Turkish holidays, greetings, and family customs.",
+      "pronunciation": "",
+      "exampleTarget": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "exampleNative": "“During Ramadan Bayram, we visit our family.”",
+      "korean": "Ramazan Bayramı",
+      "english": "Talk about Turkish holidays, greetings, and family customs.",
+      "example": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "exampleEnglish": "“During Ramadan Bayram, we visit our family.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-grammar-2"
+      ],
+      "targetText": "Kurban Bayramı",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 19: Bayramlar ve Gelenekler — Cultural Holidays with one nearby Turkish form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Kurban Bayramı dört gün sürer.",
+      "exampleNative": "“Kurban Bayram lasts four days.”",
+      "korean": "Kurban Bayramı",
+      "english": "Contrast the main pattern in Level 1 · Unit 19: Bayramlar ve Gelenekler — Cultural Holidays with one nearby Turkish form so the learner can avoid literal translation.",
+      "example": "Kurban Bayramı dört gün sürer.",
+      "exampleEnglish": "“Kurban Bayram lasts four days.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-reading"
+      ],
+      "targetText": "okuma modeli",
+      "romanization": "",
+      "nativeText": "Read \"Bayramda aile büyüklerini ziyaret ederiz.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Bayramda aile büyüklerini ziyaret ederiz.",
+      "exampleNative": "“On holidays we visit the family elders.”",
+      "korean": "okuma modeli",
+      "english": "Read \"Bayramda aile büyüklerini ziyaret ederiz.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Bayramda aile büyüklerini ziyaret ederiz.",
+      "exampleEnglish": "“On holidays we visit the family elders.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-listening"
+      ],
+      "targetText": "diyalog modeli",
+      "romanization": "",
+      "nativeText": "Hear \"Bayramda aile büyüklerini ziyaret ederiz.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Bayramda aile büyüklerini ziyaret ederiz.",
+      "exampleNative": "“On holidays we visit the family elders.”",
+      "korean": "diyalog modeli",
+      "english": "Hear \"Bayramda aile büyüklerini ziyaret ederiz.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Bayramda aile büyüklerini ziyaret ederiz.",
+      "exampleEnglish": "“On holidays we visit the family elders.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-writing"
+      ],
+      "targetText": "yazma alıştırması",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Ramazan Bayramı’nda ailemizi ziyaret ederiz.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "yazma alıştırması",
+      "english": "Write your own version after studying \"Ramazan Bayramı’nda ailemizi ziyaret ederiz.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-culture"
+      ],
+      "targetText": "kullanım ve bağlam",
+      "romanization": "",
+      "nativeText": "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Kurban Bayramı dört gün sürer.",
+      "exampleNative": "“Kurban Bayram lasts four days.”",
+      "korean": "kullanım ve bağlam",
+      "english": "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used.",
+      "example": "Kurban Bayramı dört gün sürer.",
+      "exampleEnglish": "“Kurban Bayram lasts four days.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "son görev",
+      "romanization": "",
+      "nativeText": "Explain one Turkish holiday to a visitor.",
+      "pronunciation": "",
+      "exampleTarget": "Bayramda aile büyüklerini ziyaret ederiz.",
+      "exampleNative": "Explain one Turkish holiday to a visitor.",
+      "korean": "son görev",
+      "english": "Explain one Turkish holiday to a visitor.",
+      "example": "Bayramda aile büyüklerini ziyaret ederiz.",
+      "exampleEnglish": "Explain one Turkish holiday to a visitor."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-grammar-2"
+      ],
+      "targetText": "yaygın hata",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around suffix chains, vowel harmony, evidentiality, and word order. Begin by checking \"Kurban Bayramı dört gün sürer.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Kurban Bayramı dört gün sürer.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “Kurban Bayram lasts four days.”",
+      "korean": "yaygın hata",
+      "english": "Watch for literal-translation mistakes around suffix chains, vowel harmony, evidentiality, and word order. Begin by checking \"Kurban Bayramı dört gün sürer.\" against the model.",
+      "example": "Kurban Bayramı dört gün sürer.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “Kurban Bayram lasts four days.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-culture"
+      ],
+      "targetText": "üslup",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for sen, siz, a service tone, or a more formal wording before selecting the final form. Compare the social fit of \"Ramazan Bayramı’nda ailemizi ziyaret ederiz.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "exampleNative": "“During Ramadan Bayram, we visit our family.”",
+      "korean": "üslup",
+      "english": "Check whether the setting calls for sen, siz, a service tone, or a more formal wording before selecting the final form. Compare the social fit of \"Ramazan Bayramı’nda ailemizi ziyaret ederiz.\" before reusing it elsewhere.",
+      "example": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "exampleEnglish": "“During Ramadan Bayram, we visit our family.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "akıcılık",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Turkish message rather than as separate translated fragments. Aim to carry \"Bayramda aile büyüklerini ziyaret ederiz.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Bayramda aile büyüklerini ziyaret ederiz.",
+      "exampleNative": "“On holidays we visit the family elders.”",
+      "korean": "akıcılık",
+      "english": "Say the idea as one connected Turkish message rather than as separate translated fragments. Aim to carry \"Bayramda aile büyüklerini ziyaret ederiz.\" as one thought.",
+      "example": "Bayramda aile büyüklerini ziyaret ederiz.",
+      "exampleEnglish": "“On holidays we visit the family elders.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "uygulama",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Ramazan Bayramı’nda ailemizi ziyaret ederiz.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "uygulama",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Ramazan Bayramı’nda ailemizi ziyaret ederiz.\" and move it into your own life.",
+      "example": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-grammar-1"
+      ],
+      "targetText": "hatırlama",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"Ramazan Bayramı\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "Ramazan Bayramı",
+      "exampleNative": "The holiday after Ramadan, centered on visits, sweets, and family greetings.",
+      "korean": "hatırlama",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"Ramazan Bayramı\" before looking back.",
+      "example": "Ramazan Bayramı",
+      "exampleEnglish": "The holiday after Ramadan, centered on visits, sweets, and family greetings."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-writing"
+      ],
+      "targetText": "genişletme",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Bayramda aile büyüklerini ziyaret ederiz.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Bayramda aile büyüklerini ziyaret ederiz.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "genişletme",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Bayramda aile büyüklerini ziyaret ederiz.\" rather than restarting from a blank sentence.",
+      "example": "Bayramda aile büyüklerini ziyaret ederiz.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading"
+      ],
+      "targetText": "karşılaştırma",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 19: Bayramlar ve Gelenekler — Cultural Holidays with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Kurban Bayramı dört gün sürer.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Kurban Bayramı dört gün sürer.",
+      "exampleNative": "“Kurban Bayram lasts four days.”",
+      "korean": "karşılaştırma",
+      "english": "Compare the central form in Level 1 · Unit 19: Bayramlar ve Gelenekler — Cultural Holidays with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Kurban Bayramı dört gün sürer.\" as the comparison line.",
+      "example": "Kurban Bayramı dört gün sürer.",
+      "exampleEnglish": "“Kurban Bayram lasts four days.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-pronunciation"
+      ],
+      "targetText": "telaffuz düzeltme",
+      "romanization": "",
+      "nativeText": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Ramazan Bayramı’nda ailemizi ziyaret ederiz.\".",
+      "pronunciation": "",
+      "exampleTarget": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "exampleNative": "“During Ramadan Bayram, we visit our family.”",
+      "korean": "telaffuz düzeltme",
+      "english": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Ramazan Bayramı’nda ailemizi ziyaret ederiz.\".",
+      "example": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "exampleEnglish": "“During Ramadan Bayram, we visit our family.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "diyalog varyasyonu",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Bayramda aile büyüklerini ziyaret ederiz.\".",
+      "pronunciation": "",
+      "exampleTarget": "Bayramda aile büyüklerini ziyaret ederiz.",
+      "exampleNative": "“On holidays we visit the family elders.”",
+      "korean": "diyalog varyasyonu",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Bayramda aile büyüklerini ziyaret ederiz.\".",
+      "example": "Bayramda aile büyüklerini ziyaret ederiz.",
+      "exampleEnglish": "“On holidays we visit the family elders.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-writing"
+      ],
+      "targetText": "cümle kurma",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Ramazan Bayramı’nda ailemizi ziyaret ederiz.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "exampleNative": "“During Ramadan Bayram, we visit our family.”",
+      "korean": "cümle kurma",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Ramazan Bayramı’nda ailemizi ziyaret ederiz.\" one layer at a time.",
+      "example": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "exampleEnglish": "“During Ramadan Bayram, we visit our family.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-2"
+      ],
+      "targetText": "hızlı kontrol",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Kurban Bayramı dört gün sürer.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Kurban Bayramı dört gün sürer.",
+      "exampleNative": "“Kurban Bayram lasts four days.”",
+      "korean": "hızlı kontrol",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Kurban Bayramı dört gün sürer.\" as the deciding example.",
+      "example": "Kurban Bayramı dört gün sürer.",
+      "exampleEnglish": "“Kurban Bayram lasts four days.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-culture",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "değerlendirme",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Bayramda aile büyüklerini ziyaret ederiz.\".",
+      "pronunciation": "",
+      "exampleTarget": "Bayramda aile büyüklerini ziyaret ederiz.",
+      "exampleNative": "“On holidays we visit the family elders.”",
+      "korean": "değerlendirme",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Bayramda aile büyüklerini ziyaret ederiz.\".",
+      "example": "Bayramda aile büyüklerini ziyaret ederiz.",
+      "exampleEnglish": "“On holidays we visit the family elders.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Ramazan Bayramı",
+      "romanization": "ra-ma-ZAN bay-ra-MI",
+      "nativeText": "The holiday after Ramadan, centered on visits, sweets, and family greetings.",
+      "pronunciation": "ra-ma-ZAN bay-ra-MI",
+      "exampleTarget": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "exampleNative": "“During Ramadan Bayram, we visit our family.”",
+      "korean": "Ramazan Bayramı",
+      "english": "The holiday after Ramadan, centered on visits, sweets, and family greetings.",
+      "example": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "exampleEnglish": "“During Ramadan Bayram, we visit our family.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "romanization": "ra-ma-ZAN bay-ra-MI",
+      "nativeText": "Model use for \"Ramazan Bayramı’nda ailemizi ziyaret ederiz.\": “During Ramadan Bayram, we visit our family.”",
+      "pronunciation": "ra-ma-ZAN bay-ra-MI",
+      "exampleTarget": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "exampleNative": "“During Ramadan Bayram, we visit our family.”",
+      "korean": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "english": "Model use for \"Ramazan Bayramı’nda ailemizi ziyaret ederiz.\": “During Ramadan Bayram, we visit our family.”",
+      "example": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "exampleEnglish": "“During Ramadan Bayram, we visit our family.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Ramazan Bayramı",
+      "romanization": "ra-ma-ZAN bay-ra-MI",
+      "nativeText": "Usage focus for \"Ramazan Bayramı\": Use the key language of Level 1 · Unit 19: Bayramlar ve Gelenekler — Cultural Holidays with the register and setting that the lesson requires.",
+      "pronunciation": "ra-ma-ZAN bay-ra-MI",
+      "exampleTarget": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "exampleNative": "Notice what the form is doing here: “During Ramadan Bayram, we visit our family.”",
+      "korean": "Ramazan Bayramı",
+      "english": "Usage focus for \"Ramazan Bayramı\": Use the key language of Level 1 · Unit 19: Bayramlar ve Gelenekler — Cultural Holidays with the register and setting that the lesson requires.",
+      "example": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "exampleEnglish": "Notice what the form is doing here: “During Ramadan Bayram, we visit our family.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Ramazan Bayramı",
+      "romanization": "ra-ma-ZAN bay-ra-MI",
+      "nativeText": "Contrast check for \"Ramazan Bayramı\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ra-ma-ZAN bay-ra-MI",
+      "exampleTarget": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “During Ramadan Bayram, we visit our family.”",
+      "korean": "Ramazan Bayramı",
+      "english": "Contrast check for \"Ramazan Bayramı\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “During Ramadan Bayram, we visit our family.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Ramazan Bayramı",
+      "romanization": "ra-ma-ZAN bay-ra-MI",
+      "nativeText": "Recall \"Ramazan Bayramı\" from memory, then explain what would change if a nearby alternative replaced it in \"Ramazan Bayramı’nda ailemizi ziyaret ederiz.\".",
+      "pronunciation": "ra-ma-ZAN bay-ra-MI",
+      "exampleTarget": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "exampleNative": "Self-check against the model before moving on: “During Ramadan Bayram, we visit our family.”",
+      "korean": "Ramazan Bayramı",
+      "english": "Recall \"Ramazan Bayramı\" from memory, then explain what would change if a nearby alternative replaced it in \"Ramazan Bayramı’nda ailemizi ziyaret ederiz.\".",
+      "example": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "exampleEnglish": "Self-check against the model before moving on: “During Ramadan Bayram, we visit our family.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Ramazan Bayramı",
+      "romanization": "ra-ma-ZAN bay-ra-MI",
+      "nativeText": "Repair \"Ramazan Bayramı\" inside \"Ramazan Bayramı’nda ailemizi ziyaret ederiz.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 19: Bayramlar ve Gelenekler — Cultural Holidays with the register and setting that the lesson requires.",
+      "pronunciation": "ra-ma-ZAN bay-ra-MI",
+      "exampleTarget": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "exampleNative": "Use the model as the repair target: “During Ramadan Bayram, we visit our family.”",
+      "korean": "Ramazan Bayramı",
+      "english": "Repair \"Ramazan Bayramı\" inside \"Ramazan Bayramı’nda ailemizi ziyaret ederiz.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 19: Bayramlar ve Gelenekler — Cultural Holidays with the register and setting that the lesson requires.",
+      "example": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "exampleEnglish": "Use the model as the repair target: “During Ramadan Bayram, we visit our family.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Ramazan Bayramı",
+      "romanization": "ra-ma-ZAN bay-ra-MI",
+      "nativeText": "Transfer \"Ramazan Bayramı\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ramazan Bayramı’nda ailemizi ziyaret ederiz.\".",
+      "pronunciation": "ra-ma-ZAN bay-ra-MI",
+      "exampleTarget": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “During Ramadan Bayram, we visit our family.”",
+      "korean": "Ramazan Bayramı",
+      "english": "Transfer \"Ramazan Bayramı\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ramazan Bayramı’nda ailemizi ziyaret ederiz.\".",
+      "example": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “During Ramadan Bayram, we visit our family.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Ramazan Bayramı",
+      "romanization": "ra-ma-ZAN bay-ra-MI",
+      "nativeText": "Find one word or phrase that naturally travels with \"Ramazan Bayramı\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ra-ma-ZAN bay-ra-MI",
+      "exampleTarget": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “During Ramadan Bayram, we visit our family.”",
+      "korean": "Ramazan Bayramı",
+      "english": "Find one word or phrase that naturally travels with \"Ramazan Bayramı\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “During Ramadan Bayram, we visit our family.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Ramazan Bayramı",
+      "romanization": "ra-ma-ZAN bay-ra-MI",
+      "nativeText": "Listen for \"Ramazan Bayramı\" inside \"Ramazan Bayramı’nda ailemizi ziyaret ederiz.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ra-ma-ZAN bay-ra-MI",
+      "exampleTarget": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “During Ramadan Bayram, we visit our family.”",
+      "korean": "Ramazan Bayramı",
+      "english": "Listen for \"Ramazan Bayramı\" inside \"Ramazan Bayramı’nda ailemizi ziyaret ederiz.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “During Ramadan Bayram, we visit our family.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Ramazan Bayramı",
+      "romanization": "ra-ma-ZAN bay-ra-MI",
+      "nativeText": "Write \"Ramazan Bayramı\" again without looking, then compare the exact written form against \"Ramazan Bayramı’nda ailemizi ziyaret ederiz.\" before moving on.",
+      "pronunciation": "ra-ma-ZAN bay-ra-MI",
+      "exampleTarget": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "exampleNative": "Use the written model as the final correctness check: “During Ramadan Bayram, we visit our family.”",
+      "korean": "Ramazan Bayramı",
+      "english": "Write \"Ramazan Bayramı\" again without looking, then compare the exact written form against \"Ramazan Bayramı’nda ailemizi ziyaret ederiz.\" before moving on.",
+      "example": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "exampleEnglish": "Use the written model as the final correctness check: “During Ramadan Bayram, we visit our family.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Ramazan Bayramı",
+      "romanization": "ra-ma-ZAN bay-ra-MI",
+      "nativeText": "Check whether \"Ramazan Bayramı\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “During Ramadan Bayram, we visit our family.”",
+      "pronunciation": "ra-ma-ZAN bay-ra-MI",
+      "exampleTarget": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “During Ramadan Bayram, we visit our family.”",
+      "korean": "Ramazan Bayramı",
+      "english": "Check whether \"Ramazan Bayramı\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “During Ramadan Bayram, we visit our family.”",
+      "example": "Ramazan Bayramı’nda ailemizi ziyaret ederiz.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “During Ramadan Bayram, we visit our family.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Kurban Bayramı",
+      "romanization": "kur-BAN bay-ra-MI",
+      "nativeText": "The Festival of Sacrifice, another major religious holiday in Turkey.",
+      "pronunciation": "kur-BAN bay-ra-MI",
+      "exampleTarget": "Kurban Bayramı dört gün sürer.",
+      "exampleNative": "“Kurban Bayram lasts four days.”",
+      "korean": "Kurban Bayramı",
+      "english": "The Festival of Sacrifice, another major religious holiday in Turkey.",
+      "example": "Kurban Bayramı dört gün sürer.",
+      "exampleEnglish": "“Kurban Bayram lasts four days.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Kurban Bayramı dört gün sürer.",
+      "romanization": "kur-BAN bay-ra-MI",
+      "nativeText": "Model use for \"Kurban Bayramı dört gün sürer.\": “Kurban Bayram lasts four days.”",
+      "pronunciation": "kur-BAN bay-ra-MI",
+      "exampleTarget": "Kurban Bayramı dört gün sürer.",
+      "exampleNative": "“Kurban Bayram lasts four days.”",
+      "korean": "Kurban Bayramı dört gün sürer.",
+      "english": "Model use for \"Kurban Bayramı dört gün sürer.\": “Kurban Bayram lasts four days.”",
+      "example": "Kurban Bayramı dört gün sürer.",
+      "exampleEnglish": "“Kurban Bayram lasts four days.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Kurban Bayramı",
+      "romanization": "kur-BAN bay-ra-MI",
+      "nativeText": "Usage focus for \"Kurban Bayramı\": Distinguish the nearby wording choices that make Level 1 · Unit 19: Bayramlar ve Gelenekler — Cultural Holidays sound precise rather than merely understandable.",
+      "pronunciation": "kur-BAN bay-ra-MI",
+      "exampleTarget": "Kurban Bayramı dört gün sürer.",
+      "exampleNative": "Notice what the form is doing here: “Kurban Bayram lasts four days.”",
+      "korean": "Kurban Bayramı",
+      "english": "Usage focus for \"Kurban Bayramı\": Distinguish the nearby wording choices that make Level 1 · Unit 19: Bayramlar ve Gelenekler — Cultural Holidays sound precise rather than merely understandable.",
+      "example": "Kurban Bayramı dört gün sürer.",
+      "exampleEnglish": "Notice what the form is doing here: “Kurban Bayram lasts four days.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Kurban Bayramı",
+      "romanization": "kur-BAN bay-ra-MI",
+      "nativeText": "Contrast check for \"Kurban Bayramı\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kur-BAN bay-ra-MI",
+      "exampleTarget": "Kurban Bayramı dört gün sürer.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Kurban Bayram lasts four days.”",
+      "korean": "Kurban Bayramı",
+      "english": "Contrast check for \"Kurban Bayramı\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Kurban Bayramı dört gün sürer.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Kurban Bayram lasts four days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Kurban Bayramı",
+      "romanization": "kur-BAN bay-ra-MI",
+      "nativeText": "Recall \"Kurban Bayramı\" from memory, then explain what would change if a nearby alternative replaced it in \"Kurban Bayramı dört gün sürer.\".",
+      "pronunciation": "kur-BAN bay-ra-MI",
+      "exampleTarget": "Kurban Bayramı dört gün sürer.",
+      "exampleNative": "Self-check against the model before moving on: “Kurban Bayram lasts four days.”",
+      "korean": "Kurban Bayramı",
+      "english": "Recall \"Kurban Bayramı\" from memory, then explain what would change if a nearby alternative replaced it in \"Kurban Bayramı dört gün sürer.\".",
+      "example": "Kurban Bayramı dört gün sürer.",
+      "exampleEnglish": "Self-check against the model before moving on: “Kurban Bayram lasts four days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Kurban Bayramı",
+      "romanization": "kur-BAN bay-ra-MI",
+      "nativeText": "Repair \"Kurban Bayramı\" inside \"Kurban Bayramı dört gün sürer.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 19: Bayramlar ve Gelenekler — Cultural Holidays sound precise rather than merely understandable.",
+      "pronunciation": "kur-BAN bay-ra-MI",
+      "exampleTarget": "Kurban Bayramı dört gün sürer.",
+      "exampleNative": "Use the model as the repair target: “Kurban Bayram lasts four days.”",
+      "korean": "Kurban Bayramı",
+      "english": "Repair \"Kurban Bayramı\" inside \"Kurban Bayramı dört gün sürer.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 19: Bayramlar ve Gelenekler — Cultural Holidays sound precise rather than merely understandable.",
+      "example": "Kurban Bayramı dört gün sürer.",
+      "exampleEnglish": "Use the model as the repair target: “Kurban Bayram lasts four days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Kurban Bayramı",
+      "romanization": "kur-BAN bay-ra-MI",
+      "nativeText": "Transfer \"Kurban Bayramı\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Kurban Bayramı dört gün sürer.\".",
+      "pronunciation": "kur-BAN bay-ra-MI",
+      "exampleTarget": "Kurban Bayramı dört gün sürer.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Kurban Bayram lasts four days.”",
+      "korean": "Kurban Bayramı",
+      "english": "Transfer \"Kurban Bayramı\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Kurban Bayramı dört gün sürer.\".",
+      "example": "Kurban Bayramı dört gün sürer.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Kurban Bayram lasts four days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Kurban Bayramı",
+      "romanization": "kur-BAN bay-ra-MI",
+      "nativeText": "Find one word or phrase that naturally travels with \"Kurban Bayramı\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kur-BAN bay-ra-MI",
+      "exampleTarget": "Kurban Bayramı dört gün sürer.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Kurban Bayram lasts four days.”",
+      "korean": "Kurban Bayramı",
+      "english": "Find one word or phrase that naturally travels with \"Kurban Bayramı\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Kurban Bayramı dört gün sürer.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Kurban Bayram lasts four days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Kurban Bayramı",
+      "romanization": "kur-BAN bay-ra-MI",
+      "nativeText": "Listen for \"Kurban Bayramı\" inside \"Kurban Bayramı dört gün sürer.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kur-BAN bay-ra-MI",
+      "exampleTarget": "Kurban Bayramı dört gün sürer.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Kurban Bayram lasts four days.”",
+      "korean": "Kurban Bayramı",
+      "english": "Listen for \"Kurban Bayramı\" inside \"Kurban Bayramı dört gün sürer.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Kurban Bayramı dört gün sürer.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Kurban Bayram lasts four days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Kurban Bayramı",
+      "romanization": "kur-BAN bay-ra-MI",
+      "nativeText": "Write \"Kurban Bayramı\" again without looking, then compare the exact written form against \"Kurban Bayramı dört gün sürer.\" before moving on.",
+      "pronunciation": "kur-BAN bay-ra-MI",
+      "exampleTarget": "Kurban Bayramı dört gün sürer.",
+      "exampleNative": "Use the written model as the final correctness check: “Kurban Bayram lasts four days.”",
+      "korean": "Kurban Bayramı",
+      "english": "Write \"Kurban Bayramı\" again without looking, then compare the exact written form against \"Kurban Bayramı dört gün sürer.\" before moving on.",
+      "example": "Kurban Bayramı dört gün sürer.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Kurban Bayram lasts four days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Kurban Bayramı",
+      "romanization": "kur-BAN bay-ra-MI",
+      "nativeText": "Check whether \"Kurban Bayramı\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Kurban Bayram lasts four days.”",
+      "pronunciation": "kur-BAN bay-ra-MI",
+      "exampleTarget": "Kurban Bayramı dört gün sürer.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Kurban Bayram lasts four days.”",
+      "korean": "Kurban Bayramı",
+      "english": "Check whether \"Kurban Bayramı\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Kurban Bayram lasts four days.”",
+      "example": "Kurban Bayramı dört gün sürer.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Kurban Bayram lasts four days.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Cumhuriyet Bayramı",
+      "romanization": "cum-hu-ri-YET bay-ra-MI",
+      "nativeText": "Republic Day on October 29, marking the founding of the Turkish Republic.",
+      "pronunciation": "cum-hu-ri-YET bay-ra-MI",
+      "exampleTarget": "Cumhuriyet Bayramı yirmi dokuz Ekim’dedir.",
+      "exampleNative": "“Republic Day is on October twenty-ninth.”",
+      "korean": "Cumhuriyet Bayramı",
+      "english": "Republic Day on October 29, marking the founding of the Turkish Republic.",
+      "example": "Cumhuriyet Bayramı yirmi dokuz Ekim’dedir.",
+      "exampleEnglish": "“Republic Day is on October twenty-ninth.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Cumhuriyet Bayramı yirmi dokuz Ekim’dedir.",
+      "romanization": "cum-hu-ri-YET bay-ra-MI",
+      "nativeText": "Model use for \"Cumhuriyet Bayramı yirmi dokuz Ekim’dedir.\": “Republic Day is on October twenty-ninth.”",
+      "pronunciation": "cum-hu-ri-YET bay-ra-MI",
+      "exampleTarget": "Cumhuriyet Bayramı yirmi dokuz Ekim’dedir.",
+      "exampleNative": "“Republic Day is on October twenty-ninth.”",
+      "korean": "Cumhuriyet Bayramı yirmi dokuz Ekim’dedir.",
+      "english": "Model use for \"Cumhuriyet Bayramı yirmi dokuz Ekim’dedir.\": “Republic Day is on October twenty-ninth.”",
+      "example": "Cumhuriyet Bayramı yirmi dokuz Ekim’dedir.",
+      "exampleEnglish": "“Republic Day is on October twenty-ninth.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Cumhuriyet Bayramı",
+      "romanization": "cum-hu-ri-YET bay-ra-MI",
+      "nativeText": "Usage focus for \"Cumhuriyet Bayramı\": Republic Day on October 29, marking the founding of the Turkish Republic.",
+      "pronunciation": "cum-hu-ri-YET bay-ra-MI",
+      "exampleTarget": "Cumhuriyet Bayramı yirmi dokuz Ekim’dedir.",
+      "exampleNative": "Notice what the form is doing here: “Republic Day is on October twenty-ninth.”",
+      "korean": "Cumhuriyet Bayramı",
+      "english": "Usage focus for \"Cumhuriyet Bayramı\": Republic Day on October 29, marking the founding of the Turkish Republic.",
+      "example": "Cumhuriyet Bayramı yirmi dokuz Ekim’dedir.",
+      "exampleEnglish": "Notice what the form is doing here: “Republic Day is on October twenty-ninth.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Cumhuriyet Bayramı",
+      "romanization": "cum-hu-ri-YET bay-ra-MI",
+      "nativeText": "Contrast check for \"Cumhuriyet Bayramı\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "cum-hu-ri-YET bay-ra-MI",
+      "exampleTarget": "Cumhuriyet Bayramı yirmi dokuz Ekim’dedir.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Republic Day is on October twenty-ninth.”",
+      "korean": "Cumhuriyet Bayramı",
+      "english": "Contrast check for \"Cumhuriyet Bayramı\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Cumhuriyet Bayramı yirmi dokuz Ekim’dedir.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Republic Day is on October twenty-ninth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Cumhuriyet Bayramı",
+      "romanization": "cum-hu-ri-YET bay-ra-MI",
+      "nativeText": "Recall \"Cumhuriyet Bayramı\" from memory, then explain what would change if a nearby alternative replaced it in \"Cumhuriyet Bayramı yirmi dokuz Ekim’dedir.\".",
+      "pronunciation": "cum-hu-ri-YET bay-ra-MI",
+      "exampleTarget": "Cumhuriyet Bayramı yirmi dokuz Ekim’dedir.",
+      "exampleNative": "Self-check against the model before moving on: “Republic Day is on October twenty-ninth.”",
+      "korean": "Cumhuriyet Bayramı",
+      "english": "Recall \"Cumhuriyet Bayramı\" from memory, then explain what would change if a nearby alternative replaced it in \"Cumhuriyet Bayramı yirmi dokuz Ekim’dedir.\".",
+      "example": "Cumhuriyet Bayramı yirmi dokuz Ekim’dedir.",
+      "exampleEnglish": "Self-check against the model before moving on: “Republic Day is on October twenty-ninth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Cumhuriyet Bayramı",
+      "romanization": "cum-hu-ri-YET bay-ra-MI",
+      "nativeText": "Repair \"Cumhuriyet Bayramı\" inside \"Cumhuriyet Bayramı yirmi dokuz Ekim’dedir.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Republic Day on October 29, marking the founding of the Turkish Republic.",
+      "pronunciation": "cum-hu-ri-YET bay-ra-MI",
+      "exampleTarget": "Cumhuriyet Bayramı yirmi dokuz Ekim’dedir.",
+      "exampleNative": "Use the model as the repair target: “Republic Day is on October twenty-ninth.”",
+      "korean": "Cumhuriyet Bayramı",
+      "english": "Repair \"Cumhuriyet Bayramı\" inside \"Cumhuriyet Bayramı yirmi dokuz Ekim’dedir.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Republic Day on October 29, marking the founding of the Turkish Republic.",
+      "example": "Cumhuriyet Bayramı yirmi dokuz Ekim’dedir.",
+      "exampleEnglish": "Use the model as the repair target: “Republic Day is on October twenty-ninth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Cumhuriyet Bayramı",
+      "romanization": "cum-hu-ri-YET bay-ra-MI",
+      "nativeText": "Transfer \"Cumhuriyet Bayramı\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Cumhuriyet Bayramı yirmi dokuz Ekim’dedir.\".",
+      "pronunciation": "cum-hu-ri-YET bay-ra-MI",
+      "exampleTarget": "Cumhuriyet Bayramı yirmi dokuz Ekim’dedir.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Republic Day is on October twenty-ninth.”",
+      "korean": "Cumhuriyet Bayramı",
+      "english": "Transfer \"Cumhuriyet Bayramı\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Cumhuriyet Bayramı yirmi dokuz Ekim’dedir.\".",
+      "example": "Cumhuriyet Bayramı yirmi dokuz Ekim’dedir.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Republic Day is on October twenty-ninth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Cumhuriyet Bayramı",
+      "romanization": "cum-hu-ri-YET bay-ra-MI",
+      "nativeText": "Find one word or phrase that naturally travels with \"Cumhuriyet Bayramı\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "cum-hu-ri-YET bay-ra-MI",
+      "exampleTarget": "Cumhuriyet Bayramı yirmi dokuz Ekim’dedir.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Republic Day is on October twenty-ninth.”",
+      "korean": "Cumhuriyet Bayramı",
+      "english": "Find one word or phrase that naturally travels with \"Cumhuriyet Bayramı\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Cumhuriyet Bayramı yirmi dokuz Ekim’dedir.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Republic Day is on October twenty-ninth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Cumhuriyet Bayramı",
+      "romanization": "cum-hu-ri-YET bay-ra-MI",
+      "nativeText": "Listen for \"Cumhuriyet Bayramı\" inside \"Cumhuriyet Bayramı yirmi dokuz Ekim’dedir.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "cum-hu-ri-YET bay-ra-MI",
+      "exampleTarget": "Cumhuriyet Bayramı yirmi dokuz Ekim’dedir.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Republic Day is on October twenty-ninth.”",
+      "korean": "Cumhuriyet Bayramı",
+      "english": "Listen for \"Cumhuriyet Bayramı\" inside \"Cumhuriyet Bayramı yirmi dokuz Ekim’dedir.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Cumhuriyet Bayramı yirmi dokuz Ekim’dedir.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Republic Day is on October twenty-ninth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Cumhuriyet Bayramı",
+      "romanization": "cum-hu-ri-YET bay-ra-MI",
+      "nativeText": "Write \"Cumhuriyet Bayramı\" again without looking, then compare the exact written form against \"Cumhuriyet Bayramı yirmi dokuz Ekim’dedir.\" before moving on.",
+      "pronunciation": "cum-hu-ri-YET bay-ra-MI",
+      "exampleTarget": "Cumhuriyet Bayramı yirmi dokuz Ekim’dedir.",
+      "exampleNative": "Use the written model as the final correctness check: “Republic Day is on October twenty-ninth.”",
+      "korean": "Cumhuriyet Bayramı",
+      "english": "Write \"Cumhuriyet Bayramı\" again without looking, then compare the exact written form against \"Cumhuriyet Bayramı yirmi dokuz Ekim’dedir.\" before moving on.",
+      "example": "Cumhuriyet Bayramı yirmi dokuz Ekim’dedir.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Republic Day is on October twenty-ninth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Cumhuriyet Bayramı",
+      "romanization": "cum-hu-ri-YET bay-ra-MI",
+      "nativeText": "Check whether \"Cumhuriyet Bayramı\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Republic Day is on October twenty-ninth.”",
+      "pronunciation": "cum-hu-ri-YET bay-ra-MI",
+      "exampleTarget": "Cumhuriyet Bayramı yirmi dokuz Ekim’dedir.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Republic Day is on October twenty-ninth.”",
+      "korean": "Cumhuriyet Bayramı",
+      "english": "Check whether \"Cumhuriyet Bayramı\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Republic Day is on October twenty-ninth.”",
+      "example": "Cumhuriyet Bayramı yirmi dokuz Ekim’dedir.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Republic Day is on October twenty-ninth.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "bayramlaşmak",
+      "romanization": "bay-ram-laş-MAK",
+      "nativeText": "“To exchange holiday greetings.” A culture-specific verb showing how productive Turkish derivation is.",
+      "pronunciation": "bay-ram-laş-MAK",
+      "exampleTarget": "Bayramda büyüklerle bayramlaşırız.",
+      "exampleNative": "“On the holiday, we exchange greetings with elders.”",
+      "korean": "bayramlaşmak",
+      "english": "“To exchange holiday greetings.” A culture-specific verb showing how productive Turkish derivation is.",
+      "example": "Bayramda büyüklerle bayramlaşırız.",
+      "exampleEnglish": "“On the holiday, we exchange greetings with elders.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Bayramda büyüklerle bayramlaşırız.",
+      "romanization": "bay-ram-laş-MAK",
+      "nativeText": "Model use for \"Bayramda büyüklerle bayramlaşırız.\": “On the holiday, we exchange greetings with elders.”",
+      "pronunciation": "bay-ram-laş-MAK",
+      "exampleTarget": "Bayramda büyüklerle bayramlaşırız.",
+      "exampleNative": "“On the holiday, we exchange greetings with elders.”",
+      "korean": "Bayramda büyüklerle bayramlaşırız.",
+      "english": "Model use for \"Bayramda büyüklerle bayramlaşırız.\": “On the holiday, we exchange greetings with elders.”",
+      "example": "Bayramda büyüklerle bayramlaşırız.",
+      "exampleEnglish": "“On the holiday, we exchange greetings with elders.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "bayramlaşmak",
+      "romanization": "bay-ram-laş-MAK",
+      "nativeText": "Usage focus for \"bayramlaşmak\": “To exchange holiday greetings.” A culture-specific verb showing how productive Turkish derivation is.",
+      "pronunciation": "bay-ram-laş-MAK",
+      "exampleTarget": "Bayramda büyüklerle bayramlaşırız.",
+      "exampleNative": "Notice what the form is doing here: “On the holiday, we exchange greetings with elders.”",
+      "korean": "bayramlaşmak",
+      "english": "Usage focus for \"bayramlaşmak\": “To exchange holiday greetings.” A culture-specific verb showing how productive Turkish derivation is.",
+      "example": "Bayramda büyüklerle bayramlaşırız.",
+      "exampleEnglish": "Notice what the form is doing here: “On the holiday, we exchange greetings with elders.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "bayramlaşmak",
+      "romanization": "bay-ram-laş-MAK",
+      "nativeText": "Contrast check for \"bayramlaşmak\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "bay-ram-laş-MAK",
+      "exampleTarget": "Bayramda büyüklerle bayramlaşırız.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “On the holiday, we exchange greetings with elders.”",
+      "korean": "bayramlaşmak",
+      "english": "Contrast check for \"bayramlaşmak\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Bayramda büyüklerle bayramlaşırız.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “On the holiday, we exchange greetings with elders.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "bayramlaşmak",
+      "romanization": "bay-ram-laş-MAK",
+      "nativeText": "Recall \"bayramlaşmak\" from memory, then explain what would change if a nearby alternative replaced it in \"Bayramda büyüklerle bayramlaşırız.\".",
+      "pronunciation": "bay-ram-laş-MAK",
+      "exampleTarget": "Bayramda büyüklerle bayramlaşırız.",
+      "exampleNative": "Self-check against the model before moving on: “On the holiday, we exchange greetings with elders.”",
+      "korean": "bayramlaşmak",
+      "english": "Recall \"bayramlaşmak\" from memory, then explain what would change if a nearby alternative replaced it in \"Bayramda büyüklerle bayramlaşırız.\".",
+      "example": "Bayramda büyüklerle bayramlaşırız.",
+      "exampleEnglish": "Self-check against the model before moving on: “On the holiday, we exchange greetings with elders.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "bayramlaşmak",
+      "romanization": "bay-ram-laş-MAK",
+      "nativeText": "Repair \"bayramlaşmak\" inside \"Bayramda büyüklerle bayramlaşırız.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To exchange holiday greetings.” A culture-specific verb showing how productive Turkish derivation is.",
+      "pronunciation": "bay-ram-laş-MAK",
+      "exampleTarget": "Bayramda büyüklerle bayramlaşırız.",
+      "exampleNative": "Use the model as the repair target: “On the holiday, we exchange greetings with elders.”",
+      "korean": "bayramlaşmak",
+      "english": "Repair \"bayramlaşmak\" inside \"Bayramda büyüklerle bayramlaşırız.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To exchange holiday greetings.” A culture-specific verb showing how productive Turkish derivation is.",
+      "example": "Bayramda büyüklerle bayramlaşırız.",
+      "exampleEnglish": "Use the model as the repair target: “On the holiday, we exchange greetings with elders.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "bayramlaşmak",
+      "romanization": "bay-ram-laş-MAK",
+      "nativeText": "Transfer \"bayramlaşmak\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bayramda büyüklerle bayramlaşırız.\".",
+      "pronunciation": "bay-ram-laş-MAK",
+      "exampleTarget": "Bayramda büyüklerle bayramlaşırız.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “On the holiday, we exchange greetings with elders.”",
+      "korean": "bayramlaşmak",
+      "english": "Transfer \"bayramlaşmak\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bayramda büyüklerle bayramlaşırız.\".",
+      "example": "Bayramda büyüklerle bayramlaşırız.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “On the holiday, we exchange greetings with elders.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "bayramlaşmak",
+      "romanization": "bay-ram-laş-MAK",
+      "nativeText": "Find one word or phrase that naturally travels with \"bayramlaşmak\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "bay-ram-laş-MAK",
+      "exampleTarget": "Bayramda büyüklerle bayramlaşırız.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “On the holiday, we exchange greetings with elders.”",
+      "korean": "bayramlaşmak",
+      "english": "Find one word or phrase that naturally travels with \"bayramlaşmak\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Bayramda büyüklerle bayramlaşırız.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “On the holiday, we exchange greetings with elders.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "bayramlaşmak",
+      "romanization": "bay-ram-laş-MAK",
+      "nativeText": "Listen for \"bayramlaşmak\" inside \"Bayramda büyüklerle bayramlaşırız.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "bay-ram-laş-MAK",
+      "exampleTarget": "Bayramda büyüklerle bayramlaşırız.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “On the holiday, we exchange greetings with elders.”",
+      "korean": "bayramlaşmak",
+      "english": "Listen for \"bayramlaşmak\" inside \"Bayramda büyüklerle bayramlaşırız.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Bayramda büyüklerle bayramlaşırız.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “On the holiday, we exchange greetings with elders.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "bayramlaşmak",
+      "romanization": "bay-ram-laş-MAK",
+      "nativeText": "Write \"bayramlaşmak\" again without looking, then compare the exact written form against \"Bayramda büyüklerle bayramlaşırız.\" before moving on.",
+      "pronunciation": "bay-ram-laş-MAK",
+      "exampleTarget": "Bayramda büyüklerle bayramlaşırız.",
+      "exampleNative": "Use the written model as the final correctness check: “On the holiday, we exchange greetings with elders.”",
+      "korean": "bayramlaşmak",
+      "english": "Write \"bayramlaşmak\" again without looking, then compare the exact written form against \"Bayramda büyüklerle bayramlaşırız.\" before moving on.",
+      "example": "Bayramda büyüklerle bayramlaşırız.",
+      "exampleEnglish": "Use the written model as the final correctness check: “On the holiday, we exchange greetings with elders.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "bayramlaşmak",
+      "romanization": "bay-ram-laş-MAK",
+      "nativeText": "Check whether \"bayramlaşmak\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “On the holiday, we exchange greetings with elders.”",
+      "pronunciation": "bay-ram-laş-MAK",
+      "exampleTarget": "Bayramda büyüklerle bayramlaşırız.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “On the holiday, we exchange greetings with elders.”",
+      "korean": "bayramlaşmak",
+      "english": "Check whether \"bayramlaşmak\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “On the holiday, we exchange greetings with elders.”",
+      "example": "Bayramda büyüklerle bayramlaşırız.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “On the holiday, we exchange greetings with elders.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "ziyaret etmek",
+      "romanization": "zi-ya-RET et-MEK",
+      "nativeText": "“To visit.” Especially common in holiday family routines.",
+      "pronunciation": "zi-ya-RET et-MEK",
+      "exampleTarget": "Akrabaları ziyaret ederiz.",
+      "exampleNative": "“We visit relatives.”",
+      "korean": "ziyaret etmek",
+      "english": "“To visit.” Especially common in holiday family routines.",
+      "example": "Akrabaları ziyaret ederiz.",
+      "exampleEnglish": "“We visit relatives.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Akrabaları ziyaret ederiz.",
+      "romanization": "zi-ya-RET et-MEK",
+      "nativeText": "Model use for \"Akrabaları ziyaret ederiz.\": “We visit relatives.”",
+      "pronunciation": "zi-ya-RET et-MEK",
+      "exampleTarget": "Akrabaları ziyaret ederiz.",
+      "exampleNative": "“We visit relatives.”",
+      "korean": "Akrabaları ziyaret ederiz.",
+      "english": "Model use for \"Akrabaları ziyaret ederiz.\": “We visit relatives.”",
+      "example": "Akrabaları ziyaret ederiz.",
+      "exampleEnglish": "“We visit relatives.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "ziyaret etmek",
+      "romanization": "zi-ya-RET et-MEK",
+      "nativeText": "Usage focus for \"ziyaret etmek\": “To visit.” Especially common in holiday family routines.",
+      "pronunciation": "zi-ya-RET et-MEK",
+      "exampleTarget": "Akrabaları ziyaret ederiz.",
+      "exampleNative": "Notice what the form is doing here: “We visit relatives.”",
+      "korean": "ziyaret etmek",
+      "english": "Usage focus for \"ziyaret etmek\": “To visit.” Especially common in holiday family routines.",
+      "example": "Akrabaları ziyaret ederiz.",
+      "exampleEnglish": "Notice what the form is doing here: “We visit relatives.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "ziyaret etmek",
+      "romanization": "zi-ya-RET et-MEK",
+      "nativeText": "Contrast check for \"ziyaret etmek\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "zi-ya-RET et-MEK",
+      "exampleTarget": "Akrabaları ziyaret ederiz.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “We visit relatives.”",
+      "korean": "ziyaret etmek",
+      "english": "Contrast check for \"ziyaret etmek\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Akrabaları ziyaret ederiz.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “We visit relatives.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "ziyaret etmek",
+      "romanization": "zi-ya-RET et-MEK",
+      "nativeText": "Recall \"ziyaret etmek\" from memory, then explain what would change if a nearby alternative replaced it in \"Akrabaları ziyaret ederiz.\".",
+      "pronunciation": "zi-ya-RET et-MEK",
+      "exampleTarget": "Akrabaları ziyaret ederiz.",
+      "exampleNative": "Self-check against the model before moving on: “We visit relatives.”",
+      "korean": "ziyaret etmek",
+      "english": "Recall \"ziyaret etmek\" from memory, then explain what would change if a nearby alternative replaced it in \"Akrabaları ziyaret ederiz.\".",
+      "example": "Akrabaları ziyaret ederiz.",
+      "exampleEnglish": "Self-check against the model before moving on: “We visit relatives.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "ziyaret etmek",
+      "romanization": "zi-ya-RET et-MEK",
+      "nativeText": "Repair \"ziyaret etmek\" inside \"Akrabaları ziyaret ederiz.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To visit.” Especially common in holiday family routines.",
+      "pronunciation": "zi-ya-RET et-MEK",
+      "exampleTarget": "Akrabaları ziyaret ederiz.",
+      "exampleNative": "Use the model as the repair target: “We visit relatives.”",
+      "korean": "ziyaret etmek",
+      "english": "Repair \"ziyaret etmek\" inside \"Akrabaları ziyaret ederiz.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To visit.” Especially common in holiday family routines.",
+      "example": "Akrabaları ziyaret ederiz.",
+      "exampleEnglish": "Use the model as the repair target: “We visit relatives.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "ziyaret etmek",
+      "romanization": "zi-ya-RET et-MEK",
+      "nativeText": "Transfer \"ziyaret etmek\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Akrabaları ziyaret ederiz.\".",
+      "pronunciation": "zi-ya-RET et-MEK",
+      "exampleTarget": "Akrabaları ziyaret ederiz.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “We visit relatives.”",
+      "korean": "ziyaret etmek",
+      "english": "Transfer \"ziyaret etmek\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Akrabaları ziyaret ederiz.\".",
+      "example": "Akrabaları ziyaret ederiz.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “We visit relatives.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "ziyaret etmek",
+      "romanization": "zi-ya-RET et-MEK",
+      "nativeText": "Find one word or phrase that naturally travels with \"ziyaret etmek\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "zi-ya-RET et-MEK",
+      "exampleTarget": "Akrabaları ziyaret ederiz.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “We visit relatives.”",
+      "korean": "ziyaret etmek",
+      "english": "Find one word or phrase that naturally travels with \"ziyaret etmek\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Akrabaları ziyaret ederiz.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “We visit relatives.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "ziyaret etmek",
+      "romanization": "zi-ya-RET et-MEK",
+      "nativeText": "Listen for \"ziyaret etmek\" inside \"Akrabaları ziyaret ederiz.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "zi-ya-RET et-MEK",
+      "exampleTarget": "Akrabaları ziyaret ederiz.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “We visit relatives.”",
+      "korean": "ziyaret etmek",
+      "english": "Listen for \"ziyaret etmek\" inside \"Akrabaları ziyaret ederiz.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Akrabaları ziyaret ederiz.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “We visit relatives.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "ziyaret etmek",
+      "romanization": "zi-ya-RET et-MEK",
+      "nativeText": "Write \"ziyaret etmek\" again without looking, then compare the exact written form against \"Akrabaları ziyaret ederiz.\" before moving on.",
+      "pronunciation": "zi-ya-RET et-MEK",
+      "exampleTarget": "Akrabaları ziyaret ederiz.",
+      "exampleNative": "Use the written model as the final correctness check: “We visit relatives.”",
+      "korean": "ziyaret etmek",
+      "english": "Write \"ziyaret etmek\" again without looking, then compare the exact written form against \"Akrabaları ziyaret ederiz.\" before moving on.",
+      "example": "Akrabaları ziyaret ederiz.",
+      "exampleEnglish": "Use the written model as the final correctness check: “We visit relatives.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "ziyaret etmek",
+      "romanization": "zi-ya-RET et-MEK",
+      "nativeText": "Check whether \"ziyaret etmek\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “We visit relatives.”",
+      "pronunciation": "zi-ya-RET et-MEK",
+      "exampleTarget": "Akrabaları ziyaret ederiz.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “We visit relatives.”",
+      "korean": "ziyaret etmek",
+      "english": "Check whether \"ziyaret etmek\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “We visit relatives.”",
+      "example": "Akrabaları ziyaret ederiz.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “We visit relatives.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Bayramınız kutlu olsun",
+      "romanization": "bay-ra-MI-nız kut-LU ol-SUN",
+      "nativeText": "“Happy holiday.” A polite greeting formula.",
+      "pronunciation": "bay-ra-MI-nız kut-LU ol-SUN",
+      "exampleTarget": "Bayramınız kutlu olsun!",
+      "exampleNative": "“Happy holiday!”",
+      "korean": "Bayramınız kutlu olsun",
+      "english": "“Happy holiday.” A polite greeting formula.",
+      "example": "Bayramınız kutlu olsun!",
+      "exampleEnglish": "“Happy holiday!”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Bayramınız kutlu olsun!",
+      "romanization": "bay-ra-MI-nız kut-LU ol-SUN",
+      "nativeText": "Model use for \"Bayramınız kutlu olsun!\": “Happy holiday!”",
+      "pronunciation": "bay-ra-MI-nız kut-LU ol-SUN",
+      "exampleTarget": "Bayramınız kutlu olsun!",
+      "exampleNative": "“Happy holiday!”",
+      "korean": "Bayramınız kutlu olsun!",
+      "english": "Model use for \"Bayramınız kutlu olsun!\": “Happy holiday!”",
+      "example": "Bayramınız kutlu olsun!",
+      "exampleEnglish": "“Happy holiday!”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Bayramınız kutlu olsun",
+      "romanization": "bay-ra-MI-nız kut-LU ol-SUN",
+      "nativeText": "Usage focus for \"Bayramınız kutlu olsun\": “Happy holiday.” A polite greeting formula.",
+      "pronunciation": "bay-ra-MI-nız kut-LU ol-SUN",
+      "exampleTarget": "Bayramınız kutlu olsun!",
+      "exampleNative": "Notice what the form is doing here: “Happy holiday!”",
+      "korean": "Bayramınız kutlu olsun",
+      "english": "Usage focus for \"Bayramınız kutlu olsun\": “Happy holiday.” A polite greeting formula.",
+      "example": "Bayramınız kutlu olsun!",
+      "exampleEnglish": "Notice what the form is doing here: “Happy holiday!”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Bayramınız kutlu olsun",
+      "romanization": "bay-ra-MI-nız kut-LU ol-SUN",
+      "nativeText": "Contrast check for \"Bayramınız kutlu olsun\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "bay-ra-MI-nız kut-LU ol-SUN",
+      "exampleTarget": "Bayramınız kutlu olsun!",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Happy holiday!”",
+      "korean": "Bayramınız kutlu olsun",
+      "english": "Contrast check for \"Bayramınız kutlu olsun\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Bayramınız kutlu olsun!",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Happy holiday!”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Bayramınız kutlu olsun",
+      "romanization": "bay-ra-MI-nız kut-LU ol-SUN",
+      "nativeText": "Recall \"Bayramınız kutlu olsun\" from memory, then explain what would change if a nearby alternative replaced it in \"Bayramınız kutlu olsun!\".",
+      "pronunciation": "bay-ra-MI-nız kut-LU ol-SUN",
+      "exampleTarget": "Bayramınız kutlu olsun!",
+      "exampleNative": "Self-check against the model before moving on: “Happy holiday!”",
+      "korean": "Bayramınız kutlu olsun",
+      "english": "Recall \"Bayramınız kutlu olsun\" from memory, then explain what would change if a nearby alternative replaced it in \"Bayramınız kutlu olsun!\".",
+      "example": "Bayramınız kutlu olsun!",
+      "exampleEnglish": "Self-check against the model before moving on: “Happy holiday!”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Bayramınız kutlu olsun",
+      "romanization": "bay-ra-MI-nız kut-LU ol-SUN",
+      "nativeText": "Repair \"Bayramınız kutlu olsun\" inside \"Bayramınız kutlu olsun!\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Happy holiday.” A polite greeting formula.",
+      "pronunciation": "bay-ra-MI-nız kut-LU ol-SUN",
+      "exampleTarget": "Bayramınız kutlu olsun!",
+      "exampleNative": "Use the model as the repair target: “Happy holiday!”",
+      "korean": "Bayramınız kutlu olsun",
+      "english": "Repair \"Bayramınız kutlu olsun\" inside \"Bayramınız kutlu olsun!\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Happy holiday.” A polite greeting formula.",
+      "example": "Bayramınız kutlu olsun!",
+      "exampleEnglish": "Use the model as the repair target: “Happy holiday!”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Bayramınız kutlu olsun",
+      "romanization": "bay-ra-MI-nız kut-LU ol-SUN",
+      "nativeText": "Transfer \"Bayramınız kutlu olsun\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bayramınız kutlu olsun!\".",
+      "pronunciation": "bay-ra-MI-nız kut-LU ol-SUN",
+      "exampleTarget": "Bayramınız kutlu olsun!",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Happy holiday!”",
+      "korean": "Bayramınız kutlu olsun",
+      "english": "Transfer \"Bayramınız kutlu olsun\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bayramınız kutlu olsun!\".",
+      "example": "Bayramınız kutlu olsun!",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Happy holiday!”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Bayramınız kutlu olsun",
+      "romanization": "bay-ra-MI-nız kut-LU ol-SUN",
+      "nativeText": "Find one word or phrase that naturally travels with \"Bayramınız kutlu olsun\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "bay-ra-MI-nız kut-LU ol-SUN",
+      "exampleTarget": "Bayramınız kutlu olsun!",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Happy holiday!”",
+      "korean": "Bayramınız kutlu olsun",
+      "english": "Find one word or phrase that naturally travels with \"Bayramınız kutlu olsun\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Bayramınız kutlu olsun!",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Happy holiday!”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Bayramınız kutlu olsun",
+      "romanization": "bay-ra-MI-nız kut-LU ol-SUN",
+      "nativeText": "Listen for \"Bayramınız kutlu olsun\" inside \"Bayramınız kutlu olsun!\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "bay-ra-MI-nız kut-LU ol-SUN",
+      "exampleTarget": "Bayramınız kutlu olsun!",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Happy holiday!”",
+      "korean": "Bayramınız kutlu olsun",
+      "english": "Listen for \"Bayramınız kutlu olsun\" inside \"Bayramınız kutlu olsun!\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Bayramınız kutlu olsun!",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Happy holiday!”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Bayramınız kutlu olsun",
+      "romanization": "bay-ra-MI-nız kut-LU ol-SUN",
+      "nativeText": "Write \"Bayramınız kutlu olsun\" again without looking, then compare the exact written form against \"Bayramınız kutlu olsun!\" before moving on.",
+      "pronunciation": "bay-ra-MI-nız kut-LU ol-SUN",
+      "exampleTarget": "Bayramınız kutlu olsun!",
+      "exampleNative": "Use the written model as the final correctness check: “Happy holiday!”",
+      "korean": "Bayramınız kutlu olsun",
+      "english": "Write \"Bayramınız kutlu olsun\" again without looking, then compare the exact written form against \"Bayramınız kutlu olsun!\" before moving on.",
+      "example": "Bayramınız kutlu olsun!",
+      "exampleEnglish": "Use the written model as the final correctness check: “Happy holiday!”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Bayramınız kutlu olsun",
+      "romanization": "bay-ra-MI-nız kut-LU ol-SUN",
+      "nativeText": "Check whether \"Bayramınız kutlu olsun\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Happy holiday!”",
+      "pronunciation": "bay-ra-MI-nız kut-LU ol-SUN",
+      "exampleTarget": "Bayramınız kutlu olsun!",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Happy holiday!”",
+      "korean": "Bayramınız kutlu olsun",
+      "english": "Check whether \"Bayramınız kutlu olsun\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Happy holiday!”",
+      "example": "Bayramınız kutlu olsun!",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Happy holiday!”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "gelenek",
+      "romanization": "ge-le-NEK",
+      "nativeText": "“Tradition.” A useful bridge noun for cultural explanation.",
+      "pronunciation": "ge-le-NEK",
+      "exampleTarget": "Bu önemli bir gelenek.",
+      "exampleNative": "“This is an important tradition.”",
+      "korean": "gelenek",
+      "english": "“Tradition.” A useful bridge noun for cultural explanation.",
+      "example": "Bu önemli bir gelenek.",
+      "exampleEnglish": "“This is an important tradition.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Bu önemli bir gelenek.",
+      "romanization": "ge-le-NEK",
+      "nativeText": "Model use for \"Bu önemli bir gelenek.\": “This is an important tradition.”",
+      "pronunciation": "ge-le-NEK",
+      "exampleTarget": "Bu önemli bir gelenek.",
+      "exampleNative": "“This is an important tradition.”",
+      "korean": "Bu önemli bir gelenek.",
+      "english": "Model use for \"Bu önemli bir gelenek.\": “This is an important tradition.”",
+      "example": "Bu önemli bir gelenek.",
+      "exampleEnglish": "“This is an important tradition.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "gelenek",
+      "romanization": "ge-le-NEK",
+      "nativeText": "Usage focus for \"gelenek\": “Tradition.” A useful bridge noun for cultural explanation.",
+      "pronunciation": "ge-le-NEK",
+      "exampleTarget": "Bu önemli bir gelenek.",
+      "exampleNative": "Notice what the form is doing here: “This is an important tradition.”",
+      "korean": "gelenek",
+      "english": "Usage focus for \"gelenek\": “Tradition.” A useful bridge noun for cultural explanation.",
+      "example": "Bu önemli bir gelenek.",
+      "exampleEnglish": "Notice what the form is doing here: “This is an important tradition.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "gelenek",
+      "romanization": "ge-le-NEK",
+      "nativeText": "Contrast check for \"gelenek\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ge-le-NEK",
+      "exampleTarget": "Bu önemli bir gelenek.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “This is an important tradition.”",
+      "korean": "gelenek",
+      "english": "Contrast check for \"gelenek\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Bu önemli bir gelenek.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “This is an important tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "gelenek",
+      "romanization": "ge-le-NEK",
+      "nativeText": "Recall \"gelenek\" from memory, then explain what would change if a nearby alternative replaced it in \"Bu önemli bir gelenek.\".",
+      "pronunciation": "ge-le-NEK",
+      "exampleTarget": "Bu önemli bir gelenek.",
+      "exampleNative": "Self-check against the model before moving on: “This is an important tradition.”",
+      "korean": "gelenek",
+      "english": "Recall \"gelenek\" from memory, then explain what would change if a nearby alternative replaced it in \"Bu önemli bir gelenek.\".",
+      "example": "Bu önemli bir gelenek.",
+      "exampleEnglish": "Self-check against the model before moving on: “This is an important tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "gelenek",
+      "romanization": "ge-le-NEK",
+      "nativeText": "Repair \"gelenek\" inside \"Bu önemli bir gelenek.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Tradition.” A useful bridge noun for cultural explanation.",
+      "pronunciation": "ge-le-NEK",
+      "exampleTarget": "Bu önemli bir gelenek.",
+      "exampleNative": "Use the model as the repair target: “This is an important tradition.”",
+      "korean": "gelenek",
+      "english": "Repair \"gelenek\" inside \"Bu önemli bir gelenek.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Tradition.” A useful bridge noun for cultural explanation.",
+      "example": "Bu önemli bir gelenek.",
+      "exampleEnglish": "Use the model as the repair target: “This is an important tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "gelenek",
+      "romanization": "ge-le-NEK",
+      "nativeText": "Transfer \"gelenek\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bu önemli bir gelenek.\".",
+      "pronunciation": "ge-le-NEK",
+      "exampleTarget": "Bu önemli bir gelenek.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “This is an important tradition.”",
+      "korean": "gelenek",
+      "english": "Transfer \"gelenek\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bu önemli bir gelenek.\".",
+      "example": "Bu önemli bir gelenek.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “This is an important tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "gelenek",
+      "romanization": "ge-le-NEK",
+      "nativeText": "Find one word or phrase that naturally travels with \"gelenek\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ge-le-NEK",
+      "exampleTarget": "Bu önemli bir gelenek.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “This is an important tradition.”",
+      "korean": "gelenek",
+      "english": "Find one word or phrase that naturally travels with \"gelenek\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Bu önemli bir gelenek.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “This is an important tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "gelenek",
+      "romanization": "ge-le-NEK",
+      "nativeText": "Listen for \"gelenek\" inside \"Bu önemli bir gelenek.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ge-le-NEK",
+      "exampleTarget": "Bu önemli bir gelenek.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “This is an important tradition.”",
+      "korean": "gelenek",
+      "english": "Listen for \"gelenek\" inside \"Bu önemli bir gelenek.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Bu önemli bir gelenek.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “This is an important tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "gelenek",
+      "romanization": "ge-le-NEK",
+      "nativeText": "Write \"gelenek\" again without looking, then compare the exact written form against \"Bu önemli bir gelenek.\" before moving on.",
+      "pronunciation": "ge-le-NEK",
+      "exampleTarget": "Bu önemli bir gelenek.",
+      "exampleNative": "Use the written model as the final correctness check: “This is an important tradition.”",
+      "korean": "gelenek",
+      "english": "Write \"gelenek\" again without looking, then compare the exact written form against \"Bu önemli bir gelenek.\" before moving on.",
+      "example": "Bu önemli bir gelenek.",
+      "exampleEnglish": "Use the written model as the final correctness check: “This is an important tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "gelenek",
+      "romanization": "ge-le-NEK",
+      "nativeText": "Check whether \"gelenek\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “This is an important tradition.”",
+      "pronunciation": "ge-le-NEK",
+      "exampleTarget": "Bu önemli bir gelenek.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “This is an important tradition.”",
+      "korean": "gelenek",
+      "english": "Check whether \"gelenek\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “This is an important tradition.”",
+      "example": "Bu önemli bir gelenek.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “This is an important tradition.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "aile büyükleri",
+      "romanization": "a-i-LE bü-yük-LE-ri",
+      "nativeText": "“Family elders.” Turkish holiday customs often center on visiting and honoring them.",
+      "pronunciation": "a-i-LE bü-yük-LE-ri",
+      "exampleTarget": "Bayramda aile büyüklerini ziyaret ederiz.",
+      "exampleNative": "“On holidays we visit the family elders.”",
+      "korean": "aile büyükleri",
+      "english": "“Family elders.” Turkish holiday customs often center on visiting and honoring them.",
+      "example": "Bayramda aile büyüklerini ziyaret ederiz.",
+      "exampleEnglish": "“On holidays we visit the family elders.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Bayramda aile büyüklerini ziyaret ederiz.",
+      "romanization": "a-i-LE bü-yük-LE-ri",
+      "nativeText": "Model use for \"Bayramda aile büyüklerini ziyaret ederiz.\": “On holidays we visit the family elders.”",
+      "pronunciation": "a-i-LE bü-yük-LE-ri",
+      "exampleTarget": "Bayramda aile büyüklerini ziyaret ederiz.",
+      "exampleNative": "“On holidays we visit the family elders.”",
+      "korean": "Bayramda aile büyüklerini ziyaret ederiz.",
+      "english": "Model use for \"Bayramda aile büyüklerini ziyaret ederiz.\": “On holidays we visit the family elders.”",
+      "example": "Bayramda aile büyüklerini ziyaret ederiz.",
+      "exampleEnglish": "“On holidays we visit the family elders.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "aile büyükleri",
+      "romanization": "a-i-LE bü-yük-LE-ri",
+      "nativeText": "Usage focus for \"aile büyükleri\": “Family elders.” Turkish holiday customs often center on visiting and honoring them.",
+      "pronunciation": "a-i-LE bü-yük-LE-ri",
+      "exampleTarget": "Bayramda aile büyüklerini ziyaret ederiz.",
+      "exampleNative": "Notice what the form is doing here: “On holidays we visit the family elders.”",
+      "korean": "aile büyükleri",
+      "english": "Usage focus for \"aile büyükleri\": “Family elders.” Turkish holiday customs often center on visiting and honoring them.",
+      "example": "Bayramda aile büyüklerini ziyaret ederiz.",
+      "exampleEnglish": "Notice what the form is doing here: “On holidays we visit the family elders.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "aile büyükleri",
+      "romanization": "a-i-LE bü-yük-LE-ri",
+      "nativeText": "Contrast check for \"aile büyükleri\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "a-i-LE bü-yük-LE-ri",
+      "exampleTarget": "Bayramda aile büyüklerini ziyaret ederiz.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “On holidays we visit the family elders.”",
+      "korean": "aile büyükleri",
+      "english": "Contrast check for \"aile büyükleri\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Bayramda aile büyüklerini ziyaret ederiz.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “On holidays we visit the family elders.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "aile büyükleri",
+      "romanization": "a-i-LE bü-yük-LE-ri",
+      "nativeText": "Recall \"aile büyükleri\" from memory, then explain what would change if a nearby alternative replaced it in \"Bayramda aile büyüklerini ziyaret ederiz.\".",
+      "pronunciation": "a-i-LE bü-yük-LE-ri",
+      "exampleTarget": "Bayramda aile büyüklerini ziyaret ederiz.",
+      "exampleNative": "Self-check against the model before moving on: “On holidays we visit the family elders.”",
+      "korean": "aile büyükleri",
+      "english": "Recall \"aile büyükleri\" from memory, then explain what would change if a nearby alternative replaced it in \"Bayramda aile büyüklerini ziyaret ederiz.\".",
+      "example": "Bayramda aile büyüklerini ziyaret ederiz.",
+      "exampleEnglish": "Self-check against the model before moving on: “On holidays we visit the family elders.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "aile büyükleri",
+      "romanization": "a-i-LE bü-yük-LE-ri",
+      "nativeText": "Repair \"aile büyükleri\" inside \"Bayramda aile büyüklerini ziyaret ederiz.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Family elders.” Turkish holiday customs often center on visiting and honoring them.",
+      "pronunciation": "a-i-LE bü-yük-LE-ri",
+      "exampleTarget": "Bayramda aile büyüklerini ziyaret ederiz.",
+      "exampleNative": "Use the model as the repair target: “On holidays we visit the family elders.”",
+      "korean": "aile büyükleri",
+      "english": "Repair \"aile büyükleri\" inside \"Bayramda aile büyüklerini ziyaret ederiz.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Family elders.” Turkish holiday customs often center on visiting and honoring them.",
+      "example": "Bayramda aile büyüklerini ziyaret ederiz.",
+      "exampleEnglish": "Use the model as the repair target: “On holidays we visit the family elders.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "aile büyükleri",
+      "romanization": "a-i-LE bü-yük-LE-ri",
+      "nativeText": "Transfer \"aile büyükleri\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bayramda aile büyüklerini ziyaret ederiz.\".",
+      "pronunciation": "a-i-LE bü-yük-LE-ri",
+      "exampleTarget": "Bayramda aile büyüklerini ziyaret ederiz.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “On holidays we visit the family elders.”",
+      "korean": "aile büyükleri",
+      "english": "Transfer \"aile büyükleri\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bayramda aile büyüklerini ziyaret ederiz.\".",
+      "example": "Bayramda aile büyüklerini ziyaret ederiz.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “On holidays we visit the family elders.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "aile büyükleri",
+      "romanization": "a-i-LE bü-yük-LE-ri",
+      "nativeText": "Find one word or phrase that naturally travels with \"aile büyükleri\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "a-i-LE bü-yük-LE-ri",
+      "exampleTarget": "Bayramda aile büyüklerini ziyaret ederiz.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “On holidays we visit the family elders.”",
+      "korean": "aile büyükleri",
+      "english": "Find one word or phrase that naturally travels with \"aile büyükleri\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Bayramda aile büyüklerini ziyaret ederiz.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “On holidays we visit the family elders.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "aile büyükleri",
+      "romanization": "a-i-LE bü-yük-LE-ri",
+      "nativeText": "Listen for \"aile büyükleri\" inside \"Bayramda aile büyüklerini ziyaret ederiz.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "a-i-LE bü-yük-LE-ri",
+      "exampleTarget": "Bayramda aile büyüklerini ziyaret ederiz.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “On holidays we visit the family elders.”",
+      "korean": "aile büyükleri",
+      "english": "Listen for \"aile büyükleri\" inside \"Bayramda aile büyüklerini ziyaret ederiz.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Bayramda aile büyüklerini ziyaret ederiz.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “On holidays we visit the family elders.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "aile büyükleri",
+      "romanization": "a-i-LE bü-yük-LE-ri",
+      "nativeText": "Write \"aile büyükleri\" again without looking, then compare the exact written form against \"Bayramda aile büyüklerini ziyaret ederiz.\" before moving on.",
+      "pronunciation": "a-i-LE bü-yük-LE-ri",
+      "exampleTarget": "Bayramda aile büyüklerini ziyaret ederiz.",
+      "exampleNative": "Use the written model as the final correctness check: “On holidays we visit the family elders.”",
+      "korean": "aile büyükleri",
+      "english": "Write \"aile büyükleri\" again without looking, then compare the exact written form against \"Bayramda aile büyüklerini ziyaret ederiz.\" before moving on.",
+      "example": "Bayramda aile büyüklerini ziyaret ederiz.",
+      "exampleEnglish": "Use the written model as the final correctness check: “On holidays we visit the family elders.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit19culturalholidays-vocabulary-1",
+        "tr-level1unit19culturalholidays-vocabulary-2",
+        "tr-level1unit19culturalholidays-grammar-1",
+        "tr-level1unit19culturalholidays-grammar-2",
+        "tr-level1unit19culturalholidays-reading",
+        "tr-level1unit19culturalholidays-listening",
+        "tr-level1unit19culturalholidays-writing",
+        "tr-level1unit19culturalholidays-task"
+      ],
+      "targetText": "aile büyükleri",
+      "romanization": "a-i-LE bü-yük-LE-ri",
+      "nativeText": "Check whether \"aile büyükleri\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “On holidays we visit the family elders.”",
+      "pronunciation": "a-i-LE bü-yük-LE-ri",
+      "exampleTarget": "Bayramda aile büyüklerini ziyaret ederiz.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “On holidays we visit the family elders.”",
+      "korean": "aile büyükleri",
+      "english": "Check whether \"aile büyükleri\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “On holidays we visit the family elders.”",
+      "example": "Bayramda aile büyüklerini ziyaret ederiz.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “On holidays we visit the family elders.”"
+    }
+  ],
+  "targetLang": "tr",
+  "nativeLang": "en",
+  "track": "textbook"
+};

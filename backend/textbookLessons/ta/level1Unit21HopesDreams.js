@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('ta', {
-  slug: 'ta-l1u21',
-  title: 'Level 1 · Unit 21: நம்பிக்கைகள் மற்றும் கனவுகள் — Hopes and Dreams',
-  category: 'future',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Talk about future plans, hopes, and longer-term dreams.',
-  vocabularyGoal: 'Use future, study, work, travel, and aspiration vocabulary.',
-  grammarGoal: 'Use desire with `விரும்புகிறேன்`, future forms, and hope expressions.',
-  speakingGoal: 'Describe one realistic plan and one longer dream with a reason.',
-  task: 'Give a short future-self introduction.',
-  expressionPractice: [
-    practice('stating-desire', 'Stating desire', 'Use `விரும்புகிறேன்`.'),
-    practice('stating-plan', 'Stating plan', 'Use one future form.'),
-    practice('stating-hope', 'Stating hope', 'Use `நம்புகிறேன்`.'),
+module.exports = {
+  "title": "Level 1 · Unit 21: நம்பிக்கைகள் மற்றும் கனவுகள் — Hopes and Dreams",
+  "category": "future",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ta-level1unit21hopesdreams-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Talk about future plans, hopes, and longer-term dreams."
+      ],
+      "task": "Give a short future-self introduction."
+    },
+    {
+      "id": "ta-level1unit21hopesdreams-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ta-level1unit21hopesdreams-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 21: நம்பிக்கைகள் மற்றும் கனவுகள் — Hopes and Dreams with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ta-level1unit21hopesdreams-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 21: நம்பிக்கைகள் மற்றும் கனவுகள் — Hopes and Dreams sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ta-level1unit21hopesdreams-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Talk about future plans, hopes, and longer-term dreams."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ta-level1unit21hopesdreams-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 21: நம்பிக்கைகள் மற்றும் கனவுகள் — Hopes and Dreams with one nearby Tamil form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ta-level1unit21hopesdreams-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ta-level1unit21hopesdreams-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ta-level1unit21hopesdreams-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ta-level1unit21hopesdreams-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ta-level1unit21hopesdreams-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Give a short future-self introduction."
+      ],
+      "task": "Give a short future-self introduction."
+    }
   ],
-  relatedPools: ['topic-future', 'topic-goals'],
-  items: [
-    item('எதிர்காலம்', 'etirkālam', '“Future.” A central abstract noun for plans and goals.', 'என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.', '“I think about my future.”'),
-    item('கனவு', 'kaṉavu', '“Dream.” It can be literal or aspirational.', 'என் கனவு மருத்துவராக ஆகுவது.', '“My dream is to become a doctor.”'),
-    item('விரும்புகிறேன்', 'virumpukiṟēṉ', '“I want / wish.” A useful desire verb.', 'நான் தமிழ் நன்றாக கற்க விரும்புகிறேன்.', '“I want to learn Tamil well.”'),
-    item('படிப்பேன்', 'paṭippēṉ', '“I will study.” A first-person future form.', 'நான் பொறியியல் படிப்பேன்.', '“I will study engineering.”'),
-    item('நம்புகிறேன்', 'nampukiṟēṉ', '“I hope / believe.” Context gives the hopeful reading.', 'ஒருநாள் சென்னை செல்ல நம்புகிறேன்.', '“I hope to go to Chennai one day.”'),
-    item('ஆக', 'āka', '“To become.” Useful in career dreams.', 'நான் ஆசிரியராக ஆக விரும்புகிறேன்.', '“I want to become a teacher.”'),
-    item('வாய்ப்பு இருந்தால்', 'vāyppu iruntāl', '“If there is an opportunity.” A natural condition around future plans.', 'வாய்ப்பு இருந்தால் வெளிநாட்டில் வேலை செய்வேன்.', '“If there is an opportunity, I will work abroad.”'),
-    item('ஒருநாள்', 'orunāḷ', '“One day.” A simple phrase for distant hopes.', 'ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.', '“One day I want to write a book.”'),
+  "expressionPractice": [
+    {
+      "id": "stating-desire",
+      "label": "Stating desire",
+      "goal": "Use `விரும்புகிறேன்`."
+    },
+    {
+      "id": "stating-plan",
+      "label": "Stating plan",
+      "goal": "Use one future form."
+    },
+    {
+      "id": "stating-hope",
+      "label": "Stating hope",
+      "goal": "Use `நம்புகிறேன்`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-future",
+    "topic-goals"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-orientation"
+      ],
+      "targetText": "பாட இலக்கு",
+      "romanization": "",
+      "nativeText": "Talk about future plans, hopes, and longer-term dreams.",
+      "pronunciation": "",
+      "exampleTarget": "பாட இலக்கு",
+      "exampleNative": "The whole lesson is built toward this outcome: Give a short future-self introduction.",
+      "korean": "பாட இலக்கு",
+      "english": "Talk about future plans, hopes, and longer-term dreams.",
+      "example": "பாட இலக்கு",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Give a short future-self introduction."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-pronunciation"
+      ],
+      "targetText": "ஒலி சரிபார்ப்பு",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.\".",
+      "pronunciation": "",
+      "exampleTarget": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "exampleNative": "“I think about my future.”",
+      "korean": "ஒலி சரிபார்ப்பு",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.\".",
+      "example": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "exampleEnglish": "“I think about my future.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1"
+      ],
+      "targetText": "எதிர்காலம்",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 21: நம்பிக்கைகள் மற்றும் கனவுகள் — Hopes and Dreams with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "exampleNative": "“I think about my future.”",
+      "korean": "எதிர்காலம்",
+      "english": "Use the key language of Level 1 · Unit 21: நம்பிக்கைகள் மற்றும் கனவுகள் — Hopes and Dreams with the register and setting that the lesson requires.",
+      "example": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "exampleEnglish": "“I think about my future.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-2"
+      ],
+      "targetText": "கனவு",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 21: நம்பிக்கைகள் மற்றும் கனவுகள் — Hopes and Dreams sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "என் கனவு மருத்துவராக ஆகுவது.",
+      "exampleNative": "“My dream is to become a doctor.”",
+      "korean": "கனவு",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 21: நம்பிக்கைகள் மற்றும் கனவுகள் — Hopes and Dreams sound precise rather than merely understandable.",
+      "example": "என் கனவு மருத்துவராக ஆகுவது.",
+      "exampleEnglish": "“My dream is to become a doctor.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-grammar-1"
+      ],
+      "targetText": "எதிர்காலம்",
+      "romanization": "",
+      "nativeText": "Talk about future plans, hopes, and longer-term dreams.",
+      "pronunciation": "",
+      "exampleTarget": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "exampleNative": "“I think about my future.”",
+      "korean": "எதிர்காலம்",
+      "english": "Talk about future plans, hopes, and longer-term dreams.",
+      "example": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "exampleEnglish": "“I think about my future.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-grammar-2"
+      ],
+      "targetText": "கனவு",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 21: நம்பிக்கைகள் மற்றும் கனவுகள் — Hopes and Dreams with one nearby Tamil form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "என் கனவு மருத்துவராக ஆகுவது.",
+      "exampleNative": "“My dream is to become a doctor.”",
+      "korean": "கனவு",
+      "english": "Contrast the main pattern in Level 1 · Unit 21: நம்பிக்கைகள் மற்றும் கனவுகள் — Hopes and Dreams with one nearby Tamil form so the learner can avoid literal translation.",
+      "example": "என் கனவு மருத்துவராக ஆகுவது.",
+      "exampleEnglish": "“My dream is to become a doctor.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-reading"
+      ],
+      "targetText": "வாசிப்பு மாதிரி",
+      "romanization": "",
+      "nativeText": "Read \"ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.",
+      "exampleNative": "“One day I want to write a book.”",
+      "korean": "வாசிப்பு மாதிரி",
+      "english": "Read \"ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.",
+      "exampleEnglish": "“One day I want to write a book.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-listening"
+      ],
+      "targetText": "உரையாடல் மாதிரி",
+      "romanization": "",
+      "nativeText": "Hear \"ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.",
+      "exampleNative": "“One day I want to write a book.”",
+      "korean": "உரையாடல் மாதிரி",
+      "english": "Hear \"ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.",
+      "exampleEnglish": "“One day I want to write a book.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-writing"
+      ],
+      "targetText": "எழுத்துப் பயிற்சி",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "எழுத்துப் பயிற்சி",
+      "english": "Write your own version after studying \"என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-culture"
+      ],
+      "targetText": "பயன்பாடும் சூழலும்",
+      "romanization": "",
+      "nativeText": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "என் கனவு மருத்துவராக ஆகுவது.",
+      "exampleNative": "“My dream is to become a doctor.”",
+      "korean": "பயன்பாடும் சூழலும்",
+      "english": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used.",
+      "example": "என் கனவு மருத்துவராக ஆகுவது.",
+      "exampleEnglish": "“My dream is to become a doctor.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "இறுதி செயல்",
+      "romanization": "",
+      "nativeText": "Give a short future-self introduction.",
+      "pronunciation": "",
+      "exampleTarget": "ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.",
+      "exampleNative": "Give a short future-self introduction.",
+      "korean": "இறுதி செயல்",
+      "english": "Give a short future-self introduction.",
+      "example": "ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.",
+      "exampleEnglish": "Give a short future-self introduction."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-grammar-2"
+      ],
+      "targetText": "பொதுவான பிழை",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"என் கனவு மருத்துவராக ஆகுவது.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "என் கனவு மருத்துவராக ஆகுவது.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “My dream is to become a doctor.”",
+      "korean": "பொதுவான பிழை",
+      "english": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"என் கனவு மருத்துவராக ஆகுவது.\" against the model.",
+      "example": "என் கனவு மருத்துவராக ஆகுவது.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-culture"
+      ],
+      "targetText": "மொழிநடை",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "exampleNative": "“I think about my future.”",
+      "korean": "மொழிநடை",
+      "english": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.\" before reusing it elsewhere.",
+      "example": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "exampleEnglish": "“I think about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "சரளம்",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.",
+      "exampleNative": "“One day I want to write a book.”",
+      "korean": "சரளம்",
+      "english": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.\" as one thought.",
+      "example": "ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.",
+      "exampleEnglish": "“One day I want to write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "பயன்பாடு",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "பயன்பாடு",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.\" and move it into your own life.",
+      "example": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-grammar-1"
+      ],
+      "targetText": "நினைவூட்டல்",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"எதிர்காலம்\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "எதிர்காலம்",
+      "exampleNative": "“Future.” A central abstract noun for plans and goals.",
+      "korean": "நினைவூட்டல்",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"எதிர்காலம்\" before looking back.",
+      "example": "எதிர்காலம்",
+      "exampleEnglish": "“Future.” A central abstract noun for plans and goals."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-writing"
+      ],
+      "targetText": "விரிவாக்கம்",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "விரிவாக்கம்",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.\" rather than restarting from a blank sentence.",
+      "example": "ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading"
+      ],
+      "targetText": "ஒப்பீடு",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 21: நம்பிக்கைகள் மற்றும் கனவுகள் — Hopes and Dreams with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"என் கனவு மருத்துவராக ஆகுவது.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "என் கனவு மருத்துவராக ஆகுவது.",
+      "exampleNative": "“My dream is to become a doctor.”",
+      "korean": "ஒப்பீடு",
+      "english": "Compare the central form in Level 1 · Unit 21: நம்பிக்கைகள் மற்றும் கனவுகள் — Hopes and Dreams with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"என் கனவு மருத்துவராக ஆகுவது.\" as the comparison line.",
+      "example": "என் கனவு மருத்துவராக ஆகுவது.",
+      "exampleEnglish": "“My dream is to become a doctor.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-pronunciation"
+      ],
+      "targetText": "உச்சரிப்பு திருத்தம்",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.\".",
+      "pronunciation": "",
+      "exampleTarget": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "exampleNative": "“I think about my future.”",
+      "korean": "உச்சரிப்பு திருத்தம்",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.\".",
+      "example": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "exampleEnglish": "“I think about my future.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "உரையாடல் மாற்றம்",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.\".",
+      "pronunciation": "",
+      "exampleTarget": "ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.",
+      "exampleNative": "“One day I want to write a book.”",
+      "korean": "உரையாடல் மாற்றம்",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.\".",
+      "example": "ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.",
+      "exampleEnglish": "“One day I want to write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-writing"
+      ],
+      "targetText": "வாக்கிய கட்டமைப்பு",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "exampleNative": "“I think about my future.”",
+      "korean": "வாக்கிய கட்டமைப்பு",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.\" one layer at a time.",
+      "example": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "exampleEnglish": "“I think about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-2"
+      ],
+      "targetText": "விரைவு சோதனை",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"என் கனவு மருத்துவராக ஆகுவது.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "என் கனவு மருத்துவராக ஆகுவது.",
+      "exampleNative": "“My dream is to become a doctor.”",
+      "korean": "விரைவு சோதனை",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"என் கனவு மருத்துவராக ஆகுவது.\" as the deciding example.",
+      "example": "என் கனவு மருத்துவராக ஆகுவது.",
+      "exampleEnglish": "“My dream is to become a doctor.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-culture",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "மீள்பார்வு",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.\".",
+      "pronunciation": "",
+      "exampleTarget": "ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.",
+      "exampleNative": "“One day I want to write a book.”",
+      "korean": "மீள்பார்வு",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.\".",
+      "example": "ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.",
+      "exampleEnglish": "“One day I want to write a book.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "எதிர்காலம்",
+      "romanization": "etirkālam",
+      "nativeText": "“Future.” A central abstract noun for plans and goals.",
+      "pronunciation": "etirkālam",
+      "exampleTarget": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "exampleNative": "“I think about my future.”",
+      "korean": "எதிர்காலம்",
+      "english": "“Future.” A central abstract noun for plans and goals.",
+      "example": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "exampleEnglish": "“I think about my future.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "romanization": "etirkālam",
+      "nativeText": "Model use for \"என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.\": “I think about my future.”",
+      "pronunciation": "etirkālam",
+      "exampleTarget": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "exampleNative": "“I think about my future.”",
+      "korean": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "english": "Model use for \"என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.\": “I think about my future.”",
+      "example": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "exampleEnglish": "“I think about my future.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "எதிர்காலம்",
+      "romanization": "etirkālam",
+      "nativeText": "Usage focus for \"எதிர்காலம்\": Use the key language of Level 1 · Unit 21: நம்பிக்கைகள் மற்றும் கனவுகள் — Hopes and Dreams with the register and setting that the lesson requires.",
+      "pronunciation": "etirkālam",
+      "exampleTarget": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "exampleNative": "Notice what the form is doing here: “I think about my future.”",
+      "korean": "எதிர்காலம்",
+      "english": "Usage focus for \"எதிர்காலம்\": Use the key language of Level 1 · Unit 21: நம்பிக்கைகள் மற்றும் கனவுகள் — Hopes and Dreams with the register and setting that the lesson requires.",
+      "example": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "exampleEnglish": "Notice what the form is doing here: “I think about my future.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "எதிர்காலம்",
+      "romanization": "etirkālam",
+      "nativeText": "Contrast check for \"எதிர்காலம்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "etirkālam",
+      "exampleTarget": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I think about my future.”",
+      "korean": "எதிர்காலம்",
+      "english": "Contrast check for \"எதிர்காலம்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I think about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "எதிர்காலம்",
+      "romanization": "etirkālam",
+      "nativeText": "Recall \"எதிர்காலம்\" from memory, then explain what would change if a nearby alternative replaced it in \"என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.\".",
+      "pronunciation": "etirkālam",
+      "exampleTarget": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "exampleNative": "Self-check against the model before moving on: “I think about my future.”",
+      "korean": "எதிர்காலம்",
+      "english": "Recall \"எதிர்காலம்\" from memory, then explain what would change if a nearby alternative replaced it in \"என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.\".",
+      "example": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "exampleEnglish": "Self-check against the model before moving on: “I think about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "எதிர்காலம்",
+      "romanization": "etirkālam",
+      "nativeText": "Repair \"எதிர்காலம்\" inside \"என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 21: நம்பிக்கைகள் மற்றும் கனவுகள் — Hopes and Dreams with the register and setting that the lesson requires.",
+      "pronunciation": "etirkālam",
+      "exampleTarget": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "exampleNative": "Use the model as the repair target: “I think about my future.”",
+      "korean": "எதிர்காலம்",
+      "english": "Repair \"எதிர்காலம்\" inside \"என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 21: நம்பிக்கைகள் மற்றும் கனவுகள் — Hopes and Dreams with the register and setting that the lesson requires.",
+      "example": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "exampleEnglish": "Use the model as the repair target: “I think about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "எதிர்காலம்",
+      "romanization": "etirkālam",
+      "nativeText": "Transfer \"எதிர்காலம்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.\".",
+      "pronunciation": "etirkālam",
+      "exampleTarget": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I think about my future.”",
+      "korean": "எதிர்காலம்",
+      "english": "Transfer \"எதிர்காலம்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.\".",
+      "example": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I think about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "எதிர்காலம்",
+      "romanization": "etirkālam",
+      "nativeText": "Find one word or phrase that naturally travels with \"எதிர்காலம்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "etirkālam",
+      "exampleTarget": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I think about my future.”",
+      "korean": "எதிர்காலம்",
+      "english": "Find one word or phrase that naturally travels with \"எதிர்காலம்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I think about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "எதிர்காலம்",
+      "romanization": "etirkālam",
+      "nativeText": "Listen for \"எதிர்காலம்\" inside \"என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "etirkālam",
+      "exampleTarget": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I think about my future.”",
+      "korean": "எதிர்காலம்",
+      "english": "Listen for \"எதிர்காலம்\" inside \"என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I think about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "எதிர்காலம்",
+      "romanization": "etirkālam",
+      "nativeText": "Write \"எதிர்காலம்\" again without looking, then compare the exact written form against \"என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.\" before moving on.",
+      "pronunciation": "etirkālam",
+      "exampleTarget": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "exampleNative": "Use the written model as the final correctness check: “I think about my future.”",
+      "korean": "எதிர்காலம்",
+      "english": "Write \"எதிர்காலம்\" again without looking, then compare the exact written form against \"என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.\" before moving on.",
+      "example": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I think about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "எதிர்காலம்",
+      "romanization": "etirkālam",
+      "nativeText": "Check whether \"எதிர்காலம்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I think about my future.”",
+      "pronunciation": "etirkālam",
+      "exampleTarget": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I think about my future.”",
+      "korean": "எதிர்காலம்",
+      "english": "Check whether \"எதிர்காலம்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I think about my future.”",
+      "example": "என் எதிர்காலத்தைப் பற்றி நினைக்கிறேன்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I think about my future.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "கனவு",
+      "romanization": "kaṉavu",
+      "nativeText": "“Dream.” It can be literal or aspirational.",
+      "pronunciation": "kaṉavu",
+      "exampleTarget": "என் கனவு மருத்துவராக ஆகுவது.",
+      "exampleNative": "“My dream is to become a doctor.”",
+      "korean": "கனவு",
+      "english": "“Dream.” It can be literal or aspirational.",
+      "example": "என் கனவு மருத்துவராக ஆகுவது.",
+      "exampleEnglish": "“My dream is to become a doctor.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "என் கனவு மருத்துவராக ஆகுவது.",
+      "romanization": "kaṉavu",
+      "nativeText": "Model use for \"என் கனவு மருத்துவராக ஆகுவது.\": “My dream is to become a doctor.”",
+      "pronunciation": "kaṉavu",
+      "exampleTarget": "என் கனவு மருத்துவராக ஆகுவது.",
+      "exampleNative": "“My dream is to become a doctor.”",
+      "korean": "என் கனவு மருத்துவராக ஆகுவது.",
+      "english": "Model use for \"என் கனவு மருத்துவராக ஆகுவது.\": “My dream is to become a doctor.”",
+      "example": "என் கனவு மருத்துவராக ஆகுவது.",
+      "exampleEnglish": "“My dream is to become a doctor.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "கனவு",
+      "romanization": "kaṉavu",
+      "nativeText": "Usage focus for \"கனவு\": Distinguish the nearby wording choices that make Level 1 · Unit 21: நம்பிக்கைகள் மற்றும் கனவுகள் — Hopes and Dreams sound precise rather than merely understandable.",
+      "pronunciation": "kaṉavu",
+      "exampleTarget": "என் கனவு மருத்துவராக ஆகுவது.",
+      "exampleNative": "Notice what the form is doing here: “My dream is to become a doctor.”",
+      "korean": "கனவு",
+      "english": "Usage focus for \"கனவு\": Distinguish the nearby wording choices that make Level 1 · Unit 21: நம்பிக்கைகள் மற்றும் கனவுகள் — Hopes and Dreams sound precise rather than merely understandable.",
+      "example": "என் கனவு மருத்துவராக ஆகுவது.",
+      "exampleEnglish": "Notice what the form is doing here: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "கனவு",
+      "romanization": "kaṉavu",
+      "nativeText": "Contrast check for \"கனவு\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kaṉavu",
+      "exampleTarget": "என் கனவு மருத்துவராக ஆகுவது.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My dream is to become a doctor.”",
+      "korean": "கனவு",
+      "english": "Contrast check for \"கனவு\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "என் கனவு மருத்துவராக ஆகுவது.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "கனவு",
+      "romanization": "kaṉavu",
+      "nativeText": "Recall \"கனவு\" from memory, then explain what would change if a nearby alternative replaced it in \"என் கனவு மருத்துவராக ஆகுவது.\".",
+      "pronunciation": "kaṉavu",
+      "exampleTarget": "என் கனவு மருத்துவராக ஆகுவது.",
+      "exampleNative": "Self-check against the model before moving on: “My dream is to become a doctor.”",
+      "korean": "கனவு",
+      "english": "Recall \"கனவு\" from memory, then explain what would change if a nearby alternative replaced it in \"என் கனவு மருத்துவராக ஆகுவது.\".",
+      "example": "என் கனவு மருத்துவராக ஆகுவது.",
+      "exampleEnglish": "Self-check against the model before moving on: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "கனவு",
+      "romanization": "kaṉavu",
+      "nativeText": "Repair \"கனவு\" inside \"என் கனவு மருத்துவராக ஆகுவது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 21: நம்பிக்கைகள் மற்றும் கனவுகள் — Hopes and Dreams sound precise rather than merely understandable.",
+      "pronunciation": "kaṉavu",
+      "exampleTarget": "என் கனவு மருத்துவராக ஆகுவது.",
+      "exampleNative": "Use the model as the repair target: “My dream is to become a doctor.”",
+      "korean": "கனவு",
+      "english": "Repair \"கனவு\" inside \"என் கனவு மருத்துவராக ஆகுவது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 21: நம்பிக்கைகள் மற்றும் கனவுகள் — Hopes and Dreams sound precise rather than merely understandable.",
+      "example": "என் கனவு மருத்துவராக ஆகுவது.",
+      "exampleEnglish": "Use the model as the repair target: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "கனவு",
+      "romanization": "kaṉavu",
+      "nativeText": "Transfer \"கனவு\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"என் கனவு மருத்துவராக ஆகுவது.\".",
+      "pronunciation": "kaṉavu",
+      "exampleTarget": "என் கனவு மருத்துவராக ஆகுவது.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “My dream is to become a doctor.”",
+      "korean": "கனவு",
+      "english": "Transfer \"கனவு\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"என் கனவு மருத்துவராக ஆகுவது.\".",
+      "example": "என் கனவு மருத்துவராக ஆகுவது.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "கனவு",
+      "romanization": "kaṉavu",
+      "nativeText": "Find one word or phrase that naturally travels with \"கனவு\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kaṉavu",
+      "exampleTarget": "என் கனவு மருத்துவராக ஆகுவது.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “My dream is to become a doctor.”",
+      "korean": "கனவு",
+      "english": "Find one word or phrase that naturally travels with \"கனவு\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "என் கனவு மருத்துவராக ஆகுவது.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "கனவு",
+      "romanization": "kaṉavu",
+      "nativeText": "Listen for \"கனவு\" inside \"என் கனவு மருத்துவராக ஆகுவது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kaṉavu",
+      "exampleTarget": "என் கனவு மருத்துவராக ஆகுவது.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My dream is to become a doctor.”",
+      "korean": "கனவு",
+      "english": "Listen for \"கனவு\" inside \"என் கனவு மருத்துவராக ஆகுவது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "என் கனவு மருத்துவராக ஆகுவது.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "கனவு",
+      "romanization": "kaṉavu",
+      "nativeText": "Write \"கனவு\" again without looking, then compare the exact written form against \"என் கனவு மருத்துவராக ஆகுவது.\" before moving on.",
+      "pronunciation": "kaṉavu",
+      "exampleTarget": "என் கனவு மருத்துவராக ஆகுவது.",
+      "exampleNative": "Use the written model as the final correctness check: “My dream is to become a doctor.”",
+      "korean": "கனவு",
+      "english": "Write \"கனவு\" again without looking, then compare the exact written form against \"என் கனவு மருத்துவராக ஆகுவது.\" before moving on.",
+      "example": "என் கனவு மருத்துவராக ஆகுவது.",
+      "exampleEnglish": "Use the written model as the final correctness check: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "கனவு",
+      "romanization": "kaṉavu",
+      "nativeText": "Check whether \"கனவு\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My dream is to become a doctor.”",
+      "pronunciation": "kaṉavu",
+      "exampleTarget": "என் கனவு மருத்துவராக ஆகுவது.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “My dream is to become a doctor.”",
+      "korean": "கனவு",
+      "english": "Check whether \"கனவு\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My dream is to become a doctor.”",
+      "example": "என் கனவு மருத்துவராக ஆகுவது.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "விரும்புகிறேன்",
+      "romanization": "virumpukiṟēṉ",
+      "nativeText": "“I want / wish.” A useful desire verb.",
+      "pronunciation": "virumpukiṟēṉ",
+      "exampleTarget": "நான் தமிழ் நன்றாக கற்க விரும்புகிறேன்.",
+      "exampleNative": "“I want to learn Tamil well.”",
+      "korean": "விரும்புகிறேன்",
+      "english": "“I want / wish.” A useful desire verb.",
+      "example": "நான் தமிழ் நன்றாக கற்க விரும்புகிறேன்.",
+      "exampleEnglish": "“I want to learn Tamil well.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "நான் தமிழ் நன்றாக கற்க விரும்புகிறேன்.",
+      "romanization": "virumpukiṟēṉ",
+      "nativeText": "Model use for \"நான் தமிழ் நன்றாக கற்க விரும்புகிறேன்.\": “I want to learn Tamil well.”",
+      "pronunciation": "virumpukiṟēṉ",
+      "exampleTarget": "நான் தமிழ் நன்றாக கற்க விரும்புகிறேன்.",
+      "exampleNative": "“I want to learn Tamil well.”",
+      "korean": "நான் தமிழ் நன்றாக கற்க விரும்புகிறேன்.",
+      "english": "Model use for \"நான் தமிழ் நன்றாக கற்க விரும்புகிறேன்.\": “I want to learn Tamil well.”",
+      "example": "நான் தமிழ் நன்றாக கற்க விரும்புகிறேன்.",
+      "exampleEnglish": "“I want to learn Tamil well.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "விரும்புகிறேன்",
+      "romanization": "virumpukiṟēṉ",
+      "nativeText": "Usage focus for \"விரும்புகிறேன்\": “I want / wish.” A useful desire verb.",
+      "pronunciation": "virumpukiṟēṉ",
+      "exampleTarget": "நான் தமிழ் நன்றாக கற்க விரும்புகிறேன்.",
+      "exampleNative": "Notice what the form is doing here: “I want to learn Tamil well.”",
+      "korean": "விரும்புகிறேன்",
+      "english": "Usage focus for \"விரும்புகிறேன்\": “I want / wish.” A useful desire verb.",
+      "example": "நான் தமிழ் நன்றாக கற்க விரும்புகிறேன்.",
+      "exampleEnglish": "Notice what the form is doing here: “I want to learn Tamil well.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "விரும்புகிறேன்",
+      "romanization": "virumpukiṟēṉ",
+      "nativeText": "Contrast check for \"விரும்புகிறேன்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "virumpukiṟēṉ",
+      "exampleTarget": "நான் தமிழ் நன்றாக கற்க விரும்புகிறேன்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to learn Tamil well.”",
+      "korean": "விரும்புகிறேன்",
+      "english": "Contrast check for \"விரும்புகிறேன்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "நான் தமிழ் நன்றாக கற்க விரும்புகிறேன்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to learn Tamil well.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "விரும்புகிறேன்",
+      "romanization": "virumpukiṟēṉ",
+      "nativeText": "Recall \"விரும்புகிறேன்\" from memory, then explain what would change if a nearby alternative replaced it in \"நான் தமிழ் நன்றாக கற்க விரும்புகிறேன்.\".",
+      "pronunciation": "virumpukiṟēṉ",
+      "exampleTarget": "நான் தமிழ் நன்றாக கற்க விரும்புகிறேன்.",
+      "exampleNative": "Self-check against the model before moving on: “I want to learn Tamil well.”",
+      "korean": "விரும்புகிறேன்",
+      "english": "Recall \"விரும்புகிறேன்\" from memory, then explain what would change if a nearby alternative replaced it in \"நான் தமிழ் நன்றாக கற்க விரும்புகிறேன்.\".",
+      "example": "நான் தமிழ் நன்றாக கற்க விரும்புகிறேன்.",
+      "exampleEnglish": "Self-check against the model before moving on: “I want to learn Tamil well.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "விரும்புகிறேன்",
+      "romanization": "virumpukiṟēṉ",
+      "nativeText": "Repair \"விரும்புகிறேன்\" inside \"நான் தமிழ் நன்றாக கற்க விரும்புகிறேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I want / wish.” A useful desire verb.",
+      "pronunciation": "virumpukiṟēṉ",
+      "exampleTarget": "நான் தமிழ் நன்றாக கற்க விரும்புகிறேன்.",
+      "exampleNative": "Use the model as the repair target: “I want to learn Tamil well.”",
+      "korean": "விரும்புகிறேன்",
+      "english": "Repair \"விரும்புகிறேன்\" inside \"நான் தமிழ் நன்றாக கற்க விரும்புகிறேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I want / wish.” A useful desire verb.",
+      "example": "நான் தமிழ் நன்றாக கற்க விரும்புகிறேன்.",
+      "exampleEnglish": "Use the model as the repair target: “I want to learn Tamil well.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "விரும்புகிறேன்",
+      "romanization": "virumpukiṟēṉ",
+      "nativeText": "Transfer \"விரும்புகிறேன்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நான் தமிழ் நன்றாக கற்க விரும்புகிறேன்.\".",
+      "pronunciation": "virumpukiṟēṉ",
+      "exampleTarget": "நான் தமிழ் நன்றாக கற்க விரும்புகிறேன்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to learn Tamil well.”",
+      "korean": "விரும்புகிறேன்",
+      "english": "Transfer \"விரும்புகிறேன்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நான் தமிழ் நன்றாக கற்க விரும்புகிறேன்.\".",
+      "example": "நான் தமிழ் நன்றாக கற்க விரும்புகிறேன்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to learn Tamil well.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "விரும்புகிறேன்",
+      "romanization": "virumpukiṟēṉ",
+      "nativeText": "Find one word or phrase that naturally travels with \"விரும்புகிறேன்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "virumpukiṟēṉ",
+      "exampleTarget": "நான் தமிழ் நன்றாக கற்க விரும்புகிறேன்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want to learn Tamil well.”",
+      "korean": "விரும்புகிறேன்",
+      "english": "Find one word or phrase that naturally travels with \"விரும்புகிறேன்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "நான் தமிழ் நன்றாக கற்க விரும்புகிறேன்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want to learn Tamil well.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "விரும்புகிறேன்",
+      "romanization": "virumpukiṟēṉ",
+      "nativeText": "Listen for \"விரும்புகிறேன்\" inside \"நான் தமிழ் நன்றாக கற்க விரும்புகிறேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "virumpukiṟēṉ",
+      "exampleTarget": "நான் தமிழ் நன்றாக கற்க விரும்புகிறேன்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to learn Tamil well.”",
+      "korean": "விரும்புகிறேன்",
+      "english": "Listen for \"விரும்புகிறேன்\" inside \"நான் தமிழ் நன்றாக கற்க விரும்புகிறேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "நான் தமிழ் நன்றாக கற்க விரும்புகிறேன்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to learn Tamil well.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "விரும்புகிறேன்",
+      "romanization": "virumpukiṟēṉ",
+      "nativeText": "Write \"விரும்புகிறேன்\" again without looking, then compare the exact written form against \"நான் தமிழ் நன்றாக கற்க விரும்புகிறேன்.\" before moving on.",
+      "pronunciation": "virumpukiṟēṉ",
+      "exampleTarget": "நான் தமிழ் நன்றாக கற்க விரும்புகிறேன்.",
+      "exampleNative": "Use the written model as the final correctness check: “I want to learn Tamil well.”",
+      "korean": "விரும்புகிறேன்",
+      "english": "Write \"விரும்புகிறேன்\" again without looking, then compare the exact written form against \"நான் தமிழ் நன்றாக கற்க விரும்புகிறேன்.\" before moving on.",
+      "example": "நான் தமிழ் நன்றாக கற்க விரும்புகிறேன்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want to learn Tamil well.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "விரும்புகிறேன்",
+      "romanization": "virumpukiṟēṉ",
+      "nativeText": "Check whether \"விரும்புகிறேன்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to learn Tamil well.”",
+      "pronunciation": "virumpukiṟēṉ",
+      "exampleTarget": "நான் தமிழ் நன்றாக கற்க விரும்புகிறேன்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want to learn Tamil well.”",
+      "korean": "விரும்புகிறேன்",
+      "english": "Check whether \"விரும்புகிறேன்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to learn Tamil well.”",
+      "example": "நான் தமிழ் நன்றாக கற்க விரும்புகிறேன்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want to learn Tamil well.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "படிப்பேன்",
+      "romanization": "paṭippēṉ",
+      "nativeText": "“I will study.” A first-person future form.",
+      "pronunciation": "paṭippēṉ",
+      "exampleTarget": "நான் பொறியியல் படிப்பேன்.",
+      "exampleNative": "“I will study engineering.”",
+      "korean": "படிப்பேன்",
+      "english": "“I will study.” A first-person future form.",
+      "example": "நான் பொறியியல் படிப்பேன்.",
+      "exampleEnglish": "“I will study engineering.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "நான் பொறியியல் படிப்பேன்.",
+      "romanization": "paṭippēṉ",
+      "nativeText": "Model use for \"நான் பொறியியல் படிப்பேன்.\": “I will study engineering.”",
+      "pronunciation": "paṭippēṉ",
+      "exampleTarget": "நான் பொறியியல் படிப்பேன்.",
+      "exampleNative": "“I will study engineering.”",
+      "korean": "நான் பொறியியல் படிப்பேன்.",
+      "english": "Model use for \"நான் பொறியியல் படிப்பேன்.\": “I will study engineering.”",
+      "example": "நான் பொறியியல் படிப்பேன்.",
+      "exampleEnglish": "“I will study engineering.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "படிப்பேன்",
+      "romanization": "paṭippēṉ",
+      "nativeText": "Usage focus for \"படிப்பேன்\": “I will study.” A first-person future form.",
+      "pronunciation": "paṭippēṉ",
+      "exampleTarget": "நான் பொறியியல் படிப்பேன்.",
+      "exampleNative": "Notice what the form is doing here: “I will study engineering.”",
+      "korean": "படிப்பேன்",
+      "english": "Usage focus for \"படிப்பேன்\": “I will study.” A first-person future form.",
+      "example": "நான் பொறியியல் படிப்பேன்.",
+      "exampleEnglish": "Notice what the form is doing here: “I will study engineering.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "படிப்பேன்",
+      "romanization": "paṭippēṉ",
+      "nativeText": "Contrast check for \"படிப்பேன்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "paṭippēṉ",
+      "exampleTarget": "நான் பொறியியல் படிப்பேன்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I will study engineering.”",
+      "korean": "படிப்பேன்",
+      "english": "Contrast check for \"படிப்பேன்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "நான் பொறியியல் படிப்பேன்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I will study engineering.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "படிப்பேன்",
+      "romanization": "paṭippēṉ",
+      "nativeText": "Recall \"படிப்பேன்\" from memory, then explain what would change if a nearby alternative replaced it in \"நான் பொறியியல் படிப்பேன்.\".",
+      "pronunciation": "paṭippēṉ",
+      "exampleTarget": "நான் பொறியியல் படிப்பேன்.",
+      "exampleNative": "Self-check against the model before moving on: “I will study engineering.”",
+      "korean": "படிப்பேன்",
+      "english": "Recall \"படிப்பேன்\" from memory, then explain what would change if a nearby alternative replaced it in \"நான் பொறியியல் படிப்பேன்.\".",
+      "example": "நான் பொறியியல் படிப்பேன்.",
+      "exampleEnglish": "Self-check against the model before moving on: “I will study engineering.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "படிப்பேன்",
+      "romanization": "paṭippēṉ",
+      "nativeText": "Repair \"படிப்பேன்\" inside \"நான் பொறியியல் படிப்பேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I will study.” A first-person future form.",
+      "pronunciation": "paṭippēṉ",
+      "exampleTarget": "நான் பொறியியல் படிப்பேன்.",
+      "exampleNative": "Use the model as the repair target: “I will study engineering.”",
+      "korean": "படிப்பேன்",
+      "english": "Repair \"படிப்பேன்\" inside \"நான் பொறியியல் படிப்பேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I will study.” A first-person future form.",
+      "example": "நான் பொறியியல் படிப்பேன்.",
+      "exampleEnglish": "Use the model as the repair target: “I will study engineering.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "படிப்பேன்",
+      "romanization": "paṭippēṉ",
+      "nativeText": "Transfer \"படிப்பேன்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நான் பொறியியல் படிப்பேன்.\".",
+      "pronunciation": "paṭippēṉ",
+      "exampleTarget": "நான் பொறியியல் படிப்பேன்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I will study engineering.”",
+      "korean": "படிப்பேன்",
+      "english": "Transfer \"படிப்பேன்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நான் பொறியியல் படிப்பேன்.\".",
+      "example": "நான் பொறியியல் படிப்பேன்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I will study engineering.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "படிப்பேன்",
+      "romanization": "paṭippēṉ",
+      "nativeText": "Find one word or phrase that naturally travels with \"படிப்பேன்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "paṭippēṉ",
+      "exampleTarget": "நான் பொறியியல் படிப்பேன்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I will study engineering.”",
+      "korean": "படிப்பேன்",
+      "english": "Find one word or phrase that naturally travels with \"படிப்பேன்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "நான் பொறியியல் படிப்பேன்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I will study engineering.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "படிப்பேன்",
+      "romanization": "paṭippēṉ",
+      "nativeText": "Listen for \"படிப்பேன்\" inside \"நான் பொறியியல் படிப்பேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "paṭippēṉ",
+      "exampleTarget": "நான் பொறியியல் படிப்பேன்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I will study engineering.”",
+      "korean": "படிப்பேன்",
+      "english": "Listen for \"படிப்பேன்\" inside \"நான் பொறியியல் படிப்பேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "நான் பொறியியல் படிப்பேன்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I will study engineering.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "படிப்பேன்",
+      "romanization": "paṭippēṉ",
+      "nativeText": "Write \"படிப்பேன்\" again without looking, then compare the exact written form against \"நான் பொறியியல் படிப்பேன்.\" before moving on.",
+      "pronunciation": "paṭippēṉ",
+      "exampleTarget": "நான் பொறியியல் படிப்பேன்.",
+      "exampleNative": "Use the written model as the final correctness check: “I will study engineering.”",
+      "korean": "படிப்பேன்",
+      "english": "Write \"படிப்பேன்\" again without looking, then compare the exact written form against \"நான் பொறியியல் படிப்பேன்.\" before moving on.",
+      "example": "நான் பொறியியல் படிப்பேன்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I will study engineering.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "படிப்பேன்",
+      "romanization": "paṭippēṉ",
+      "nativeText": "Check whether \"படிப்பேன்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I will study engineering.”",
+      "pronunciation": "paṭippēṉ",
+      "exampleTarget": "நான் பொறியியல் படிப்பேன்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I will study engineering.”",
+      "korean": "படிப்பேன்",
+      "english": "Check whether \"படிப்பேன்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I will study engineering.”",
+      "example": "நான் பொறியியல் படிப்பேன்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I will study engineering.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "நம்புகிறேன்",
+      "romanization": "nampukiṟēṉ",
+      "nativeText": "“I hope / believe.” Context gives the hopeful reading.",
+      "pronunciation": "nampukiṟēṉ",
+      "exampleTarget": "ஒருநாள் சென்னை செல்ல நம்புகிறேன்.",
+      "exampleNative": "“I hope to go to Chennai one day.”",
+      "korean": "நம்புகிறேன்",
+      "english": "“I hope / believe.” Context gives the hopeful reading.",
+      "example": "ஒருநாள் சென்னை செல்ல நம்புகிறேன்.",
+      "exampleEnglish": "“I hope to go to Chennai one day.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ஒருநாள் சென்னை செல்ல நம்புகிறேன்.",
+      "romanization": "nampukiṟēṉ",
+      "nativeText": "Model use for \"ஒருநாள் சென்னை செல்ல நம்புகிறேன்.\": “I hope to go to Chennai one day.”",
+      "pronunciation": "nampukiṟēṉ",
+      "exampleTarget": "ஒருநாள் சென்னை செல்ல நம்புகிறேன்.",
+      "exampleNative": "“I hope to go to Chennai one day.”",
+      "korean": "ஒருநாள் சென்னை செல்ல நம்புகிறேன்.",
+      "english": "Model use for \"ஒருநாள் சென்னை செல்ல நம்புகிறேன்.\": “I hope to go to Chennai one day.”",
+      "example": "ஒருநாள் சென்னை செல்ல நம்புகிறேன்.",
+      "exampleEnglish": "“I hope to go to Chennai one day.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "நம்புகிறேன்",
+      "romanization": "nampukiṟēṉ",
+      "nativeText": "Usage focus for \"நம்புகிறேன்\": “I hope / believe.” Context gives the hopeful reading.",
+      "pronunciation": "nampukiṟēṉ",
+      "exampleTarget": "ஒருநாள் சென்னை செல்ல நம்புகிறேன்.",
+      "exampleNative": "Notice what the form is doing here: “I hope to go to Chennai one day.”",
+      "korean": "நம்புகிறேன்",
+      "english": "Usage focus for \"நம்புகிறேன்\": “I hope / believe.” Context gives the hopeful reading.",
+      "example": "ஒருநாள் சென்னை செல்ல நம்புகிறேன்.",
+      "exampleEnglish": "Notice what the form is doing here: “I hope to go to Chennai one day.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "நம்புகிறேன்",
+      "romanization": "nampukiṟēṉ",
+      "nativeText": "Contrast check for \"நம்புகிறேன்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "nampukiṟēṉ",
+      "exampleTarget": "ஒருநாள் சென்னை செல்ல நம்புகிறேன்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I hope to go to Chennai one day.”",
+      "korean": "நம்புகிறேன்",
+      "english": "Contrast check for \"நம்புகிறேன்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "ஒருநாள் சென்னை செல்ல நம்புகிறேன்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I hope to go to Chennai one day.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "நம்புகிறேன்",
+      "romanization": "nampukiṟēṉ",
+      "nativeText": "Recall \"நம்புகிறேன்\" from memory, then explain what would change if a nearby alternative replaced it in \"ஒருநாள் சென்னை செல்ல நம்புகிறேன்.\".",
+      "pronunciation": "nampukiṟēṉ",
+      "exampleTarget": "ஒருநாள் சென்னை செல்ல நம்புகிறேன்.",
+      "exampleNative": "Self-check against the model before moving on: “I hope to go to Chennai one day.”",
+      "korean": "நம்புகிறேன்",
+      "english": "Recall \"நம்புகிறேன்\" from memory, then explain what would change if a nearby alternative replaced it in \"ஒருநாள் சென்னை செல்ல நம்புகிறேன்.\".",
+      "example": "ஒருநாள் சென்னை செல்ல நம்புகிறேன்.",
+      "exampleEnglish": "Self-check against the model before moving on: “I hope to go to Chennai one day.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "நம்புகிறேன்",
+      "romanization": "nampukiṟēṉ",
+      "nativeText": "Repair \"நம்புகிறேன்\" inside \"ஒருநாள் சென்னை செல்ல நம்புகிறேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I hope / believe.” Context gives the hopeful reading.",
+      "pronunciation": "nampukiṟēṉ",
+      "exampleTarget": "ஒருநாள் சென்னை செல்ல நம்புகிறேன்.",
+      "exampleNative": "Use the model as the repair target: “I hope to go to Chennai one day.”",
+      "korean": "நம்புகிறேன்",
+      "english": "Repair \"நம்புகிறேன்\" inside \"ஒருநாள் சென்னை செல்ல நம்புகிறேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I hope / believe.” Context gives the hopeful reading.",
+      "example": "ஒருநாள் சென்னை செல்ல நம்புகிறேன்.",
+      "exampleEnglish": "Use the model as the repair target: “I hope to go to Chennai one day.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "நம்புகிறேன்",
+      "romanization": "nampukiṟēṉ",
+      "nativeText": "Transfer \"நம்புகிறேன்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ஒருநாள் சென்னை செல்ல நம்புகிறேன்.\".",
+      "pronunciation": "nampukiṟēṉ",
+      "exampleTarget": "ஒருநாள் சென்னை செல்ல நம்புகிறேன்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I hope to go to Chennai one day.”",
+      "korean": "நம்புகிறேன்",
+      "english": "Transfer \"நம்புகிறேன்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ஒருநாள் சென்னை செல்ல நம்புகிறேன்.\".",
+      "example": "ஒருநாள் சென்னை செல்ல நம்புகிறேன்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I hope to go to Chennai one day.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "நம்புகிறேன்",
+      "romanization": "nampukiṟēṉ",
+      "nativeText": "Find one word or phrase that naturally travels with \"நம்புகிறேன்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "nampukiṟēṉ",
+      "exampleTarget": "ஒருநாள் சென்னை செல்ல நம்புகிறேன்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I hope to go to Chennai one day.”",
+      "korean": "நம்புகிறேன்",
+      "english": "Find one word or phrase that naturally travels with \"நம்புகிறேன்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "ஒருநாள் சென்னை செல்ல நம்புகிறேன்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I hope to go to Chennai one day.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "நம்புகிறேன்",
+      "romanization": "nampukiṟēṉ",
+      "nativeText": "Listen for \"நம்புகிறேன்\" inside \"ஒருநாள் சென்னை செல்ல நம்புகிறேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "nampukiṟēṉ",
+      "exampleTarget": "ஒருநாள் சென்னை செல்ல நம்புகிறேன்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I hope to go to Chennai one day.”",
+      "korean": "நம்புகிறேன்",
+      "english": "Listen for \"நம்புகிறேன்\" inside \"ஒருநாள் சென்னை செல்ல நம்புகிறேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "ஒருநாள் சென்னை செல்ல நம்புகிறேன்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I hope to go to Chennai one day.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "நம்புகிறேன்",
+      "romanization": "nampukiṟēṉ",
+      "nativeText": "Write \"நம்புகிறேன்\" again without looking, then compare the exact written form against \"ஒருநாள் சென்னை செல்ல நம்புகிறேன்.\" before moving on.",
+      "pronunciation": "nampukiṟēṉ",
+      "exampleTarget": "ஒருநாள் சென்னை செல்ல நம்புகிறேன்.",
+      "exampleNative": "Use the written model as the final correctness check: “I hope to go to Chennai one day.”",
+      "korean": "நம்புகிறேன்",
+      "english": "Write \"நம்புகிறேன்\" again without looking, then compare the exact written form against \"ஒருநாள் சென்னை செல்ல நம்புகிறேன்.\" before moving on.",
+      "example": "ஒருநாள் சென்னை செல்ல நம்புகிறேன்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I hope to go to Chennai one day.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "நம்புகிறேன்",
+      "romanization": "nampukiṟēṉ",
+      "nativeText": "Check whether \"நம்புகிறேன்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I hope to go to Chennai one day.”",
+      "pronunciation": "nampukiṟēṉ",
+      "exampleTarget": "ஒருநாள் சென்னை செல்ல நம்புகிறேன்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I hope to go to Chennai one day.”",
+      "korean": "நம்புகிறேன்",
+      "english": "Check whether \"நம்புகிறேன்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I hope to go to Chennai one day.”",
+      "example": "ஒருநாள் சென்னை செல்ல நம்புகிறேன்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I hope to go to Chennai one day.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ஆக",
+      "romanization": "āka",
+      "nativeText": "“To become.” Useful in career dreams.",
+      "pronunciation": "āka",
+      "exampleTarget": "நான் ஆசிரியராக ஆக விரும்புகிறேன்.",
+      "exampleNative": "“I want to become a teacher.”",
+      "korean": "ஆக",
+      "english": "“To become.” Useful in career dreams.",
+      "example": "நான் ஆசிரியராக ஆக விரும்புகிறேன்.",
+      "exampleEnglish": "“I want to become a teacher.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "நான் ஆசிரியராக ஆக விரும்புகிறேன்.",
+      "romanization": "āka",
+      "nativeText": "Model use for \"நான் ஆசிரியராக ஆக விரும்புகிறேன்.\": “I want to become a teacher.”",
+      "pronunciation": "āka",
+      "exampleTarget": "நான் ஆசிரியராக ஆக விரும்புகிறேன்.",
+      "exampleNative": "“I want to become a teacher.”",
+      "korean": "நான் ஆசிரியராக ஆக விரும்புகிறேன்.",
+      "english": "Model use for \"நான் ஆசிரியராக ஆக விரும்புகிறேன்.\": “I want to become a teacher.”",
+      "example": "நான் ஆசிரியராக ஆக விரும்புகிறேன்.",
+      "exampleEnglish": "“I want to become a teacher.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ஆக",
+      "romanization": "āka",
+      "nativeText": "Usage focus for \"ஆக\": “To become.” Useful in career dreams.",
+      "pronunciation": "āka",
+      "exampleTarget": "நான் ஆசிரியராக ஆக விரும்புகிறேன்.",
+      "exampleNative": "Notice what the form is doing here: “I want to become a teacher.”",
+      "korean": "ஆக",
+      "english": "Usage focus for \"ஆக\": “To become.” Useful in career dreams.",
+      "example": "நான் ஆசிரியராக ஆக விரும்புகிறேன்.",
+      "exampleEnglish": "Notice what the form is doing here: “I want to become a teacher.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ஆக",
+      "romanization": "āka",
+      "nativeText": "Contrast check for \"ஆக\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "āka",
+      "exampleTarget": "நான் ஆசிரியராக ஆக விரும்புகிறேன்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to become a teacher.”",
+      "korean": "ஆக",
+      "english": "Contrast check for \"ஆக\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "நான் ஆசிரியராக ஆக விரும்புகிறேன்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to become a teacher.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ஆக",
+      "romanization": "āka",
+      "nativeText": "Recall \"ஆக\" from memory, then explain what would change if a nearby alternative replaced it in \"நான் ஆசிரியராக ஆக விரும்புகிறேன்.\".",
+      "pronunciation": "āka",
+      "exampleTarget": "நான் ஆசிரியராக ஆக விரும்புகிறேன்.",
+      "exampleNative": "Self-check against the model before moving on: “I want to become a teacher.”",
+      "korean": "ஆக",
+      "english": "Recall \"ஆக\" from memory, then explain what would change if a nearby alternative replaced it in \"நான் ஆசிரியராக ஆக விரும்புகிறேன்.\".",
+      "example": "நான் ஆசிரியராக ஆக விரும்புகிறேன்.",
+      "exampleEnglish": "Self-check against the model before moving on: “I want to become a teacher.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ஆக",
+      "romanization": "āka",
+      "nativeText": "Repair \"ஆக\" inside \"நான் ஆசிரியராக ஆக விரும்புகிறேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To become.” Useful in career dreams.",
+      "pronunciation": "āka",
+      "exampleTarget": "நான் ஆசிரியராக ஆக விரும்புகிறேன்.",
+      "exampleNative": "Use the model as the repair target: “I want to become a teacher.”",
+      "korean": "ஆக",
+      "english": "Repair \"ஆக\" inside \"நான் ஆசிரியராக ஆக விரும்புகிறேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To become.” Useful in career dreams.",
+      "example": "நான் ஆசிரியராக ஆக விரும்புகிறேன்.",
+      "exampleEnglish": "Use the model as the repair target: “I want to become a teacher.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ஆக",
+      "romanization": "āka",
+      "nativeText": "Transfer \"ஆக\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நான் ஆசிரியராக ஆக விரும்புகிறேன்.\".",
+      "pronunciation": "āka",
+      "exampleTarget": "நான் ஆசிரியராக ஆக விரும்புகிறேன்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to become a teacher.”",
+      "korean": "ஆக",
+      "english": "Transfer \"ஆக\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நான் ஆசிரியராக ஆக விரும்புகிறேன்.\".",
+      "example": "நான் ஆசிரியராக ஆக விரும்புகிறேன்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to become a teacher.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ஆக",
+      "romanization": "āka",
+      "nativeText": "Find one word or phrase that naturally travels with \"ஆக\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "āka",
+      "exampleTarget": "நான் ஆசிரியராக ஆக விரும்புகிறேன்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want to become a teacher.”",
+      "korean": "ஆக",
+      "english": "Find one word or phrase that naturally travels with \"ஆக\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "நான் ஆசிரியராக ஆக விரும்புகிறேன்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want to become a teacher.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ஆக",
+      "romanization": "āka",
+      "nativeText": "Listen for \"ஆக\" inside \"நான் ஆசிரியராக ஆக விரும்புகிறேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "āka",
+      "exampleTarget": "நான் ஆசிரியராக ஆக விரும்புகிறேன்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to become a teacher.”",
+      "korean": "ஆக",
+      "english": "Listen for \"ஆக\" inside \"நான் ஆசிரியராக ஆக விரும்புகிறேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "நான் ஆசிரியராக ஆக விரும்புகிறேன்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to become a teacher.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ஆக",
+      "romanization": "āka",
+      "nativeText": "Write \"ஆக\" again without looking, then compare the exact written form against \"நான் ஆசிரியராக ஆக விரும்புகிறேன்.\" before moving on.",
+      "pronunciation": "āka",
+      "exampleTarget": "நான் ஆசிரியராக ஆக விரும்புகிறேன்.",
+      "exampleNative": "Use the written model as the final correctness check: “I want to become a teacher.”",
+      "korean": "ஆக",
+      "english": "Write \"ஆக\" again without looking, then compare the exact written form against \"நான் ஆசிரியராக ஆக விரும்புகிறேன்.\" before moving on.",
+      "example": "நான் ஆசிரியராக ஆக விரும்புகிறேன்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want to become a teacher.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ஆக",
+      "romanization": "āka",
+      "nativeText": "Check whether \"ஆக\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to become a teacher.”",
+      "pronunciation": "āka",
+      "exampleTarget": "நான் ஆசிரியராக ஆக விரும்புகிறேன்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want to become a teacher.”",
+      "korean": "ஆக",
+      "english": "Check whether \"ஆக\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to become a teacher.”",
+      "example": "நான் ஆசிரியராக ஆக விரும்புகிறேன்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want to become a teacher.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "வாய்ப்பு இருந்தால்",
+      "romanization": "vāyppu iruntāl",
+      "nativeText": "“If there is an opportunity.” A natural condition around future plans.",
+      "pronunciation": "vāyppu iruntāl",
+      "exampleTarget": "வாய்ப்பு இருந்தால் வெளிநாட்டில் வேலை செய்வேன்.",
+      "exampleNative": "“If there is an opportunity, I will work abroad.”",
+      "korean": "வாய்ப்பு இருந்தால்",
+      "english": "“If there is an opportunity.” A natural condition around future plans.",
+      "example": "வாய்ப்பு இருந்தால் வெளிநாட்டில் வேலை செய்வேன்.",
+      "exampleEnglish": "“If there is an opportunity, I will work abroad.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "வாய்ப்பு இருந்தால் வெளிநாட்டில் வேலை செய்வேன்.",
+      "romanization": "vāyppu iruntāl",
+      "nativeText": "Model use for \"வாய்ப்பு இருந்தால் வெளிநாட்டில் வேலை செய்வேன்.\": “If there is an opportunity, I will work abroad.”",
+      "pronunciation": "vāyppu iruntāl",
+      "exampleTarget": "வாய்ப்பு இருந்தால் வெளிநாட்டில் வேலை செய்வேன்.",
+      "exampleNative": "“If there is an opportunity, I will work abroad.”",
+      "korean": "வாய்ப்பு இருந்தால் வெளிநாட்டில் வேலை செய்வேன்.",
+      "english": "Model use for \"வாய்ப்பு இருந்தால் வெளிநாட்டில் வேலை செய்வேன்.\": “If there is an opportunity, I will work abroad.”",
+      "example": "வாய்ப்பு இருந்தால் வெளிநாட்டில் வேலை செய்வேன்.",
+      "exampleEnglish": "“If there is an opportunity, I will work abroad.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "வாய்ப்பு இருந்தால்",
+      "romanization": "vāyppu iruntāl",
+      "nativeText": "Usage focus for \"வாய்ப்பு இருந்தால்\": “If there is an opportunity.” A natural condition around future plans.",
+      "pronunciation": "vāyppu iruntāl",
+      "exampleTarget": "வாய்ப்பு இருந்தால் வெளிநாட்டில் வேலை செய்வேன்.",
+      "exampleNative": "Notice what the form is doing here: “If there is an opportunity, I will work abroad.”",
+      "korean": "வாய்ப்பு இருந்தால்",
+      "english": "Usage focus for \"வாய்ப்பு இருந்தால்\": “If there is an opportunity.” A natural condition around future plans.",
+      "example": "வாய்ப்பு இருந்தால் வெளிநாட்டில் வேலை செய்வேன்.",
+      "exampleEnglish": "Notice what the form is doing here: “If there is an opportunity, I will work abroad.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "வாய்ப்பு இருந்தால்",
+      "romanization": "vāyppu iruntāl",
+      "nativeText": "Contrast check for \"வாய்ப்பு இருந்தால்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "vāyppu iruntāl",
+      "exampleTarget": "வாய்ப்பு இருந்தால் வெளிநாட்டில் வேலை செய்வேன்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “If there is an opportunity, I will work abroad.”",
+      "korean": "வாய்ப்பு இருந்தால்",
+      "english": "Contrast check for \"வாய்ப்பு இருந்தால்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "வாய்ப்பு இருந்தால் வெளிநாட்டில் வேலை செய்வேன்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “If there is an opportunity, I will work abroad.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "வாய்ப்பு இருந்தால்",
+      "romanization": "vāyppu iruntāl",
+      "nativeText": "Recall \"வாய்ப்பு இருந்தால்\" from memory, then explain what would change if a nearby alternative replaced it in \"வாய்ப்பு இருந்தால் வெளிநாட்டில் வேலை செய்வேன்.\".",
+      "pronunciation": "vāyppu iruntāl",
+      "exampleTarget": "வாய்ப்பு இருந்தால் வெளிநாட்டில் வேலை செய்வேன்.",
+      "exampleNative": "Self-check against the model before moving on: “If there is an opportunity, I will work abroad.”",
+      "korean": "வாய்ப்பு இருந்தால்",
+      "english": "Recall \"வாய்ப்பு இருந்தால்\" from memory, then explain what would change if a nearby alternative replaced it in \"வாய்ப்பு இருந்தால் வெளிநாட்டில் வேலை செய்வேன்.\".",
+      "example": "வாய்ப்பு இருந்தால் வெளிநாட்டில் வேலை செய்வேன்.",
+      "exampleEnglish": "Self-check against the model before moving on: “If there is an opportunity, I will work abroad.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "வாய்ப்பு இருந்தால்",
+      "romanization": "vāyppu iruntāl",
+      "nativeText": "Repair \"வாய்ப்பு இருந்தால்\" inside \"வாய்ப்பு இருந்தால் வெளிநாட்டில் வேலை செய்வேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “If there is an opportunity.” A natural condition around future plans.",
+      "pronunciation": "vāyppu iruntāl",
+      "exampleTarget": "வாய்ப்பு இருந்தால் வெளிநாட்டில் வேலை செய்வேன்.",
+      "exampleNative": "Use the model as the repair target: “If there is an opportunity, I will work abroad.”",
+      "korean": "வாய்ப்பு இருந்தால்",
+      "english": "Repair \"வாய்ப்பு இருந்தால்\" inside \"வாய்ப்பு இருந்தால் வெளிநாட்டில் வேலை செய்வேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “If there is an opportunity.” A natural condition around future plans.",
+      "example": "வாய்ப்பு இருந்தால் வெளிநாட்டில் வேலை செய்வேன்.",
+      "exampleEnglish": "Use the model as the repair target: “If there is an opportunity, I will work abroad.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "வாய்ப்பு இருந்தால்",
+      "romanization": "vāyppu iruntāl",
+      "nativeText": "Transfer \"வாய்ப்பு இருந்தால்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"வாய்ப்பு இருந்தால் வெளிநாட்டில் வேலை செய்வேன்.\".",
+      "pronunciation": "vāyppu iruntāl",
+      "exampleTarget": "வாய்ப்பு இருந்தால் வெளிநாட்டில் வேலை செய்வேன்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “If there is an opportunity, I will work abroad.”",
+      "korean": "வாய்ப்பு இருந்தால்",
+      "english": "Transfer \"வாய்ப்பு இருந்தால்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"வாய்ப்பு இருந்தால் வெளிநாட்டில் வேலை செய்வேன்.\".",
+      "example": "வாய்ப்பு இருந்தால் வெளிநாட்டில் வேலை செய்வேன்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “If there is an opportunity, I will work abroad.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "வாய்ப்பு இருந்தால்",
+      "romanization": "vāyppu iruntāl",
+      "nativeText": "Find one word or phrase that naturally travels with \"வாய்ப்பு இருந்தால்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "vāyppu iruntāl",
+      "exampleTarget": "வாய்ப்பு இருந்தால் வெளிநாட்டில் வேலை செய்வேன்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “If there is an opportunity, I will work abroad.”",
+      "korean": "வாய்ப்பு இருந்தால்",
+      "english": "Find one word or phrase that naturally travels with \"வாய்ப்பு இருந்தால்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "வாய்ப்பு இருந்தால் வெளிநாட்டில் வேலை செய்வேன்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “If there is an opportunity, I will work abroad.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "வாய்ப்பு இருந்தால்",
+      "romanization": "vāyppu iruntāl",
+      "nativeText": "Listen for \"வாய்ப்பு இருந்தால்\" inside \"வாய்ப்பு இருந்தால் வெளிநாட்டில் வேலை செய்வேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "vāyppu iruntāl",
+      "exampleTarget": "வாய்ப்பு இருந்தால் வெளிநாட்டில் வேலை செய்வேன்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “If there is an opportunity, I will work abroad.”",
+      "korean": "வாய்ப்பு இருந்தால்",
+      "english": "Listen for \"வாய்ப்பு இருந்தால்\" inside \"வாய்ப்பு இருந்தால் வெளிநாட்டில் வேலை செய்வேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "வாய்ப்பு இருந்தால் வெளிநாட்டில் வேலை செய்வேன்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “If there is an opportunity, I will work abroad.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "வாய்ப்பு இருந்தால்",
+      "romanization": "vāyppu iruntāl",
+      "nativeText": "Write \"வாய்ப்பு இருந்தால்\" again without looking, then compare the exact written form against \"வாய்ப்பு இருந்தால் வெளிநாட்டில் வேலை செய்வேன்.\" before moving on.",
+      "pronunciation": "vāyppu iruntāl",
+      "exampleTarget": "வாய்ப்பு இருந்தால் வெளிநாட்டில் வேலை செய்வேன்.",
+      "exampleNative": "Use the written model as the final correctness check: “If there is an opportunity, I will work abroad.”",
+      "korean": "வாய்ப்பு இருந்தால்",
+      "english": "Write \"வாய்ப்பு இருந்தால்\" again without looking, then compare the exact written form against \"வாய்ப்பு இருந்தால் வெளிநாட்டில் வேலை செய்வேன்.\" before moving on.",
+      "example": "வாய்ப்பு இருந்தால் வெளிநாட்டில் வேலை செய்வேன்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “If there is an opportunity, I will work abroad.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "வாய்ப்பு இருந்தால்",
+      "romanization": "vāyppu iruntāl",
+      "nativeText": "Check whether \"வாய்ப்பு இருந்தால்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “If there is an opportunity, I will work abroad.”",
+      "pronunciation": "vāyppu iruntāl",
+      "exampleTarget": "வாய்ப்பு இருந்தால் வெளிநாட்டில் வேலை செய்வேன்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “If there is an opportunity, I will work abroad.”",
+      "korean": "வாய்ப்பு இருந்தால்",
+      "english": "Check whether \"வாய்ப்பு இருந்தால்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “If there is an opportunity, I will work abroad.”",
+      "example": "வாய்ப்பு இருந்தால் வெளிநாட்டில் வேலை செய்வேன்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “If there is an opportunity, I will work abroad.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ஒருநாள்",
+      "romanization": "orunāḷ",
+      "nativeText": "“One day.” A simple phrase for distant hopes.",
+      "pronunciation": "orunāḷ",
+      "exampleTarget": "ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.",
+      "exampleNative": "“One day I want to write a book.”",
+      "korean": "ஒருநாள்",
+      "english": "“One day.” A simple phrase for distant hopes.",
+      "example": "ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.",
+      "exampleEnglish": "“One day I want to write a book.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.",
+      "romanization": "orunāḷ",
+      "nativeText": "Model use for \"ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.\": “One day I want to write a book.”",
+      "pronunciation": "orunāḷ",
+      "exampleTarget": "ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.",
+      "exampleNative": "“One day I want to write a book.”",
+      "korean": "ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.",
+      "english": "Model use for \"ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.\": “One day I want to write a book.”",
+      "example": "ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.",
+      "exampleEnglish": "“One day I want to write a book.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ஒருநாள்",
+      "romanization": "orunāḷ",
+      "nativeText": "Usage focus for \"ஒருநாள்\": “One day.” A simple phrase for distant hopes.",
+      "pronunciation": "orunāḷ",
+      "exampleTarget": "ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.",
+      "exampleNative": "Notice what the form is doing here: “One day I want to write a book.”",
+      "korean": "ஒருநாள்",
+      "english": "Usage focus for \"ஒருநாள்\": “One day.” A simple phrase for distant hopes.",
+      "example": "ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.",
+      "exampleEnglish": "Notice what the form is doing here: “One day I want to write a book.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ஒருநாள்",
+      "romanization": "orunāḷ",
+      "nativeText": "Contrast check for \"ஒருநாள்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "orunāḷ",
+      "exampleTarget": "ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “One day I want to write a book.”",
+      "korean": "ஒருநாள்",
+      "english": "Contrast check for \"ஒருநாள்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “One day I want to write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ஒருநாள்",
+      "romanization": "orunāḷ",
+      "nativeText": "Recall \"ஒருநாள்\" from memory, then explain what would change if a nearby alternative replaced it in \"ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.\".",
+      "pronunciation": "orunāḷ",
+      "exampleTarget": "ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.",
+      "exampleNative": "Self-check against the model before moving on: “One day I want to write a book.”",
+      "korean": "ஒருநாள்",
+      "english": "Recall \"ஒருநாள்\" from memory, then explain what would change if a nearby alternative replaced it in \"ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.\".",
+      "example": "ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.",
+      "exampleEnglish": "Self-check against the model before moving on: “One day I want to write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ஒருநாள்",
+      "romanization": "orunāḷ",
+      "nativeText": "Repair \"ஒருநாள்\" inside \"ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “One day.” A simple phrase for distant hopes.",
+      "pronunciation": "orunāḷ",
+      "exampleTarget": "ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.",
+      "exampleNative": "Use the model as the repair target: “One day I want to write a book.”",
+      "korean": "ஒருநாள்",
+      "english": "Repair \"ஒருநாள்\" inside \"ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “One day.” A simple phrase for distant hopes.",
+      "example": "ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.",
+      "exampleEnglish": "Use the model as the repair target: “One day I want to write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ஒருநாள்",
+      "romanization": "orunāḷ",
+      "nativeText": "Transfer \"ஒருநாள்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.\".",
+      "pronunciation": "orunāḷ",
+      "exampleTarget": "ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “One day I want to write a book.”",
+      "korean": "ஒருநாள்",
+      "english": "Transfer \"ஒருநாள்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.\".",
+      "example": "ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “One day I want to write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ஒருநாள்",
+      "romanization": "orunāḷ",
+      "nativeText": "Find one word or phrase that naturally travels with \"ஒருநாள்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "orunāḷ",
+      "exampleTarget": "ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “One day I want to write a book.”",
+      "korean": "ஒருநாள்",
+      "english": "Find one word or phrase that naturally travels with \"ஒருநாள்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “One day I want to write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ஒருநாள்",
+      "romanization": "orunāḷ",
+      "nativeText": "Listen for \"ஒருநாள்\" inside \"ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "orunāḷ",
+      "exampleTarget": "ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “One day I want to write a book.”",
+      "korean": "ஒருநாள்",
+      "english": "Listen for \"ஒருநாள்\" inside \"ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “One day I want to write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ஒருநாள்",
+      "romanization": "orunāḷ",
+      "nativeText": "Write \"ஒருநாள்\" again without looking, then compare the exact written form against \"ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.\" before moving on.",
+      "pronunciation": "orunāḷ",
+      "exampleTarget": "ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.",
+      "exampleNative": "Use the written model as the final correctness check: “One day I want to write a book.”",
+      "korean": "ஒருநாள்",
+      "english": "Write \"ஒருநாள்\" again without looking, then compare the exact written form against \"ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.\" before moving on.",
+      "example": "ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “One day I want to write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit21hopesdreams-vocabulary-1",
+        "ta-level1unit21hopesdreams-vocabulary-2",
+        "ta-level1unit21hopesdreams-grammar-1",
+        "ta-level1unit21hopesdreams-grammar-2",
+        "ta-level1unit21hopesdreams-reading",
+        "ta-level1unit21hopesdreams-listening",
+        "ta-level1unit21hopesdreams-writing",
+        "ta-level1unit21hopesdreams-task"
+      ],
+      "targetText": "ஒருநாள்",
+      "romanization": "orunāḷ",
+      "nativeText": "Check whether \"ஒருநாள்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “One day I want to write a book.”",
+      "pronunciation": "orunāḷ",
+      "exampleTarget": "ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “One day I want to write a book.”",
+      "korean": "ஒருநாள்",
+      "english": "Check whether \"ஒருநாள்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “One day I want to write a book.”",
+      "example": "ஒருநாள் ஒரு புத்தகம் எழுத விரும்புகிறேன்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “One day I want to write a book.”"
+    }
+  ],
+  "targetLang": "ta",
+  "nativeLang": "en",
+  "track": "textbook"
+};

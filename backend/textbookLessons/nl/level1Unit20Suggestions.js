@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('nl', {
-  slug: 'nl-l1u20',
-  title: 'Level 1 · Unit 20: Suggesties en Plannen — Suggestions and Plans',
-  category: 'planning',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Make friendly suggestions, respond to them, and settle on a plan.',
-  vocabularyGoal: 'Use suggestion, plan, and response phrases.',
-  grammarGoal: 'Use `zullen we`, `laten we`, and soft refusal structures.',
-  speakingGoal: 'Suggest one activity, respond to one suggestion, and agree on a plan.',
-  task: 'Plan a simple weekend outing.',
-  expressionPractice: [
-    practice('making-suggestion', 'Making suggestion', 'Use `zullen we` or `laten we`.'),
-    practice('accepting', 'Accepting suggestion', 'Use one positive response plus detail.'),
-    practice('declining-softly', 'Declining softly', 'Give a reason and another option.'),
+module.exports = {
+  "title": "Level 1 · Unit 20: Suggesties en Plannen — Suggestions and Plans",
+  "category": "planning",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "nl-level1unit20suggestions-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Make friendly suggestions, respond to them, and settle on a plan."
+      ],
+      "task": "Plan a simple weekend outing."
+    },
+    {
+      "id": "nl-level1unit20suggestions-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "nl-level1unit20suggestions-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 20: Suggesties en Plannen — Suggestions and Plans with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "nl-level1unit20suggestions-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 20: Suggesties en Plannen — Suggestions and Plans sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "nl-level1unit20suggestions-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Make friendly suggestions, respond to them, and settle on a plan."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "nl-level1unit20suggestions-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 20: Suggesties en Plannen — Suggestions and Plans with one nearby Dutch form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "nl-level1unit20suggestions-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "nl-level1unit20suggestions-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "nl-level1unit20suggestions-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "nl-level1unit20suggestions-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "nl-level1unit20suggestions-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Plan a simple weekend outing."
+      ],
+      "task": "Plan a simple weekend outing."
+    }
   ],
-  relatedPools: ['topic-planning', 'topic-leisure'],
-  items: [
-    item('zullen we ...?', 'ZUL-len və', '“Shall we ...?” A natural suggestion frame.', 'Zullen we koffie drinken na de les?', '“Shall we drink coffee after class?”'),
-    item('laten we ...', 'LAH-ten və', '“Let’s ...” A slightly more directive suggestion frame.', 'Laten we zaterdag naar het museum gaan.', '“Let’s go to the museum on Saturday.”'),
-    item('goed idee', 'khoot ee-DAY', '“Good idea.” A quick positive response.', 'Dat is een goed idee.', '“That is a good idea.”'),
-    item('afgesproken', 'AF-khə-sproh-khen', '“Agreed.” A natural plan-closing word.', 'Prima, afgesproken.', '“Great, agreed.”'),
-    item('sorry, ik kan niet', 'SOR-ree ik kan neet', '“Sorry, I cannot.” A polite refusal start.', 'Sorry, ik kan zaterdag niet.', '“Sorry, I cannot on Saturday.”'),
-    item('misschien', 'mis-SKHEEN', '“Maybe.” Useful when the speaker is uncertain.', 'Misschien is zondag beter.', '“Maybe Sunday is better.”'),
-    item('beter', 'BAY-ter', '“Better.” A practical comparison word in planning.', 'We kunnen beter vroeg vertrekken.', '“We had better leave early.”'),
-    item('dan', 'dan', '“Then / in that case.” It helps the plan pivot after new information.', 'Dan spreken we om zes uur af.', '“Then we will meet at six.”'),
+  "expressionPractice": [
+    {
+      "id": "making-suggestion",
+      "label": "Making suggestion",
+      "goal": "Use `zullen we` or `laten we`."
+    },
+    {
+      "id": "accepting",
+      "label": "Accepting suggestion",
+      "goal": "Use one positive response plus detail."
+    },
+    {
+      "id": "declining-softly",
+      "label": "Declining softly",
+      "goal": "Give a reason and another option."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-planning",
+    "topic-leisure"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit20suggestions-orientation"
+      ],
+      "targetText": "lesdoel",
+      "romanization": "",
+      "nativeText": "Make friendly suggestions, respond to them, and settle on a plan.",
+      "pronunciation": "",
+      "exampleTarget": "lesdoel",
+      "exampleNative": "The whole lesson is built toward this outcome: Plan a simple weekend outing.",
+      "korean": "lesdoel",
+      "english": "Make friendly suggestions, respond to them, and settle on a plan.",
+      "example": "lesdoel",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Plan a simple weekend outing."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "nl-level1unit20suggestions-pronunciation"
+      ],
+      "targetText": "klankcontrole",
+      "romanization": "",
+      "nativeText": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Zullen we koffie drinken na de les?\".",
+      "pronunciation": "",
+      "exampleTarget": "Zullen we koffie drinken na de les?",
+      "exampleNative": "“Shall we drink coffee after class?”",
+      "korean": "klankcontrole",
+      "english": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Zullen we koffie drinken na de les?\".",
+      "example": "Zullen we koffie drinken na de les?",
+      "exampleEnglish": "“Shall we drink coffee after class?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1"
+      ],
+      "targetText": "zullen we ...?",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 20: Suggesties en Plannen — Suggestions and Plans with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Zullen we koffie drinken na de les?",
+      "exampleNative": "“Shall we drink coffee after class?”",
+      "korean": "zullen we ...?",
+      "english": "Use the key language of Level 1 · Unit 20: Suggesties en Plannen — Suggestions and Plans with the register and setting that the lesson requires.",
+      "example": "Zullen we koffie drinken na de les?",
+      "exampleEnglish": "“Shall we drink coffee after class?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-2"
+      ],
+      "targetText": "laten we ...",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 20: Suggesties en Plannen — Suggestions and Plans sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Laten we zaterdag naar het museum gaan.",
+      "exampleNative": "“Let’s go to the museum on Saturday.”",
+      "korean": "laten we ...",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 20: Suggesties en Plannen — Suggestions and Plans sound precise rather than merely understandable.",
+      "example": "Laten we zaterdag naar het museum gaan.",
+      "exampleEnglish": "“Let’s go to the museum on Saturday.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "nl-level1unit20suggestions-grammar-1"
+      ],
+      "targetText": "zullen we ...?",
+      "romanization": "",
+      "nativeText": "Make friendly suggestions, respond to them, and settle on a plan.",
+      "pronunciation": "",
+      "exampleTarget": "Zullen we koffie drinken na de les?",
+      "exampleNative": "“Shall we drink coffee after class?”",
+      "korean": "zullen we ...?",
+      "english": "Make friendly suggestions, respond to them, and settle on a plan.",
+      "example": "Zullen we koffie drinken na de les?",
+      "exampleEnglish": "“Shall we drink coffee after class?”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "nl-level1unit20suggestions-grammar-2"
+      ],
+      "targetText": "laten we ...",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 20: Suggesties en Plannen — Suggestions and Plans with one nearby Dutch form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Laten we zaterdag naar het museum gaan.",
+      "exampleNative": "“Let’s go to the museum on Saturday.”",
+      "korean": "laten we ...",
+      "english": "Contrast the main pattern in Level 1 · Unit 20: Suggesties en Plannen — Suggestions and Plans with one nearby Dutch form so the learner can avoid literal translation.",
+      "example": "Laten we zaterdag naar het museum gaan.",
+      "exampleEnglish": "“Let’s go to the museum on Saturday.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "nl-level1unit20suggestions-reading"
+      ],
+      "targetText": "leesmodel",
+      "romanization": "",
+      "nativeText": "Read \"Dan spreken we om zes uur af.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Dan spreken we om zes uur af.",
+      "exampleNative": "“Then we will meet at six.”",
+      "korean": "leesmodel",
+      "english": "Read \"Dan spreken we om zes uur af.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Dan spreken we om zes uur af.",
+      "exampleEnglish": "“Then we will meet at six.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit20suggestions-listening"
+      ],
+      "targetText": "dialoogmodel",
+      "romanization": "",
+      "nativeText": "Hear \"Dan spreken we om zes uur af.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Dan spreken we om zes uur af.",
+      "exampleNative": "“Then we will meet at six.”",
+      "korean": "dialoogmodel",
+      "english": "Hear \"Dan spreken we om zes uur af.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Dan spreken we om zes uur af.",
+      "exampleEnglish": "“Then we will meet at six.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "nl-level1unit20suggestions-writing"
+      ],
+      "targetText": "schrijfoefening",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Zullen we koffie drinken na de les?\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Zullen we koffie drinken na de les?",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "schrijfoefening",
+      "english": "Write your own version after studying \"Zullen we koffie drinken na de les?\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Zullen we koffie drinken na de les?",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "nl-level1unit20suggestions-culture"
+      ],
+      "targetText": "gebruik en context",
+      "romanization": "",
+      "nativeText": "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Laten we zaterdag naar het museum gaan.",
+      "exampleNative": "“Let’s go to the museum on Saturday.”",
+      "korean": "gebruik en context",
+      "english": "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used.",
+      "example": "Laten we zaterdag naar het museum gaan.",
+      "exampleEnglish": "“Let’s go to the museum on Saturday.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "eindtaak",
+      "romanization": "",
+      "nativeText": "Plan a simple weekend outing.",
+      "pronunciation": "",
+      "exampleTarget": "Dan spreken we om zes uur af.",
+      "exampleNative": "Plan a simple weekend outing.",
+      "korean": "eindtaak",
+      "english": "Plan a simple weekend outing.",
+      "example": "Dan spreken we om zes uur af.",
+      "exampleEnglish": "Plan a simple weekend outing."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit20suggestions-grammar-2"
+      ],
+      "targetText": "veelgemaakte fout",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around verb-second order, separable verbs, pronouns, and article choice. Begin by checking \"Laten we zaterdag naar het museum gaan.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Laten we zaterdag naar het museum gaan.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “Let’s go to the museum on Saturday.”",
+      "korean": "veelgemaakte fout",
+      "english": "Watch for literal-translation mistakes around verb-second order, separable verbs, pronouns, and article choice. Begin by checking \"Laten we zaterdag naar het museum gaan.\" against the model.",
+      "example": "Laten we zaterdag naar het museum gaan.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “Let’s go to the museum on Saturday.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-culture"
+      ],
+      "targetText": "register",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for jij, u, a service register, or a more relaxed everyday choice before selecting the final wording. Compare the social fit of \"Zullen we koffie drinken na de les?\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Zullen we koffie drinken na de les?",
+      "exampleNative": "“Shall we drink coffee after class?”",
+      "korean": "register",
+      "english": "Check whether the setting calls for jij, u, a service register, or a more relaxed everyday choice before selecting the final wording. Compare the social fit of \"Zullen we koffie drinken na de les?\" before reusing it elsewhere.",
+      "example": "Zullen we koffie drinken na de les?",
+      "exampleEnglish": "“Shall we drink coffee after class?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "vloeiendheid",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Dutch message rather than as separate translated fragments. Aim to carry \"Dan spreken we om zes uur af.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Dan spreken we om zes uur af.",
+      "exampleNative": "“Then we will meet at six.”",
+      "korean": "vloeiendheid",
+      "english": "Say the idea as one connected Dutch message rather than as separate translated fragments. Aim to carry \"Dan spreken we om zes uur af.\" as one thought.",
+      "example": "Dan spreken we om zes uur af.",
+      "exampleEnglish": "“Then we will meet at six.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "toepassing",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Zullen we koffie drinken na de les?\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Zullen we koffie drinken na de les?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "toepassing",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Zullen we koffie drinken na de les?\" and move it into your own life.",
+      "example": "Zullen we koffie drinken na de les?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-grammar-1"
+      ],
+      "targetText": "actief ophalen",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"zullen we ...?\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "zullen we ...?",
+      "exampleNative": "“Shall we ...?” A natural suggestion frame.",
+      "korean": "actief ophalen",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"zullen we ...?\" before looking back.",
+      "example": "zullen we ...?",
+      "exampleEnglish": "“Shall we ...?” A natural suggestion frame."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-writing"
+      ],
+      "targetText": "uitbreiding",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Dan spreken we om zes uur af.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Dan spreken we om zes uur af.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "uitbreiding",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Dan spreken we om zes uur af.\" rather than restarting from a blank sentence.",
+      "example": "Dan spreken we om zes uur af.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading"
+      ],
+      "targetText": "vergelijking",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 20: Suggesties en Plannen — Suggestions and Plans with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Laten we zaterdag naar het museum gaan.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Laten we zaterdag naar het museum gaan.",
+      "exampleNative": "“Let’s go to the museum on Saturday.”",
+      "korean": "vergelijking",
+      "english": "Compare the central form in Level 1 · Unit 20: Suggesties en Plannen — Suggestions and Plans with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Laten we zaterdag naar het museum gaan.\" as the comparison line.",
+      "example": "Laten we zaterdag naar het museum gaan.",
+      "exampleEnglish": "“Let’s go to the museum on Saturday.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "nl-level1unit20suggestions-pronunciation"
+      ],
+      "targetText": "uitspraakcorrectie",
+      "romanization": "",
+      "nativeText": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Zullen we koffie drinken na de les?\".",
+      "pronunciation": "",
+      "exampleTarget": "Zullen we koffie drinken na de les?",
+      "exampleNative": "“Shall we drink coffee after class?”",
+      "korean": "uitspraakcorrectie",
+      "english": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Zullen we koffie drinken na de les?\".",
+      "example": "Zullen we koffie drinken na de les?",
+      "exampleEnglish": "“Shall we drink coffee after class?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "dialoogvariatie",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Dan spreken we om zes uur af.\".",
+      "pronunciation": "",
+      "exampleTarget": "Dan spreken we om zes uur af.",
+      "exampleNative": "“Then we will meet at six.”",
+      "korean": "dialoogvariatie",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Dan spreken we om zes uur af.\".",
+      "example": "Dan spreken we om zes uur af.",
+      "exampleEnglish": "“Then we will meet at six.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-writing"
+      ],
+      "targetText": "zinsbouw",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Zullen we koffie drinken na de les?\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Zullen we koffie drinken na de les?",
+      "exampleNative": "“Shall we drink coffee after class?”",
+      "korean": "zinsbouw",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Zullen we koffie drinken na de les?\" one layer at a time.",
+      "example": "Zullen we koffie drinken na de les?",
+      "exampleEnglish": "“Shall we drink coffee after class?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-2"
+      ],
+      "targetText": "snelle check",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Laten we zaterdag naar het museum gaan.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Laten we zaterdag naar het museum gaan.",
+      "exampleNative": "“Let’s go to the museum on Saturday.”",
+      "korean": "snelle check",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Laten we zaterdag naar het museum gaan.\" as the deciding example.",
+      "example": "Laten we zaterdag naar het museum gaan.",
+      "exampleEnglish": "“Let’s go to the museum on Saturday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit20suggestions-culture",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "terugblik",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Dan spreken we om zes uur af.\".",
+      "pronunciation": "",
+      "exampleTarget": "Dan spreken we om zes uur af.",
+      "exampleNative": "“Then we will meet at six.”",
+      "korean": "terugblik",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Dan spreken we om zes uur af.\".",
+      "example": "Dan spreken we om zes uur af.",
+      "exampleEnglish": "“Then we will meet at six.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "zullen we ...?",
+      "romanization": "ZUL-len və",
+      "nativeText": "“Shall we ...?” A natural suggestion frame.",
+      "pronunciation": "ZUL-len və",
+      "exampleTarget": "Zullen we koffie drinken na de les?",
+      "exampleNative": "“Shall we drink coffee after class?”",
+      "korean": "zullen we ...?",
+      "english": "“Shall we ...?” A natural suggestion frame.",
+      "example": "Zullen we koffie drinken na de les?",
+      "exampleEnglish": "“Shall we drink coffee after class?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "Zullen we koffie drinken na de les?",
+      "romanization": "ZUL-len və",
+      "nativeText": "Model use for \"Zullen we koffie drinken na de les?\": “Shall we drink coffee after class?”",
+      "pronunciation": "ZUL-len və",
+      "exampleTarget": "Zullen we koffie drinken na de les?",
+      "exampleNative": "“Shall we drink coffee after class?”",
+      "korean": "Zullen we koffie drinken na de les?",
+      "english": "Model use for \"Zullen we koffie drinken na de les?\": “Shall we drink coffee after class?”",
+      "example": "Zullen we koffie drinken na de les?",
+      "exampleEnglish": "“Shall we drink coffee after class?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "zullen we ...?",
+      "romanization": "ZUL-len və",
+      "nativeText": "Usage focus for \"zullen we ...?\": Use the key language of Level 1 · Unit 20: Suggesties en Plannen — Suggestions and Plans with the register and setting that the lesson requires.",
+      "pronunciation": "ZUL-len və",
+      "exampleTarget": "Zullen we koffie drinken na de les?",
+      "exampleNative": "Notice what the form is doing here: “Shall we drink coffee after class?”",
+      "korean": "zullen we ...?",
+      "english": "Usage focus for \"zullen we ...?\": Use the key language of Level 1 · Unit 20: Suggesties en Plannen — Suggestions and Plans with the register and setting that the lesson requires.",
+      "example": "Zullen we koffie drinken na de les?",
+      "exampleEnglish": "Notice what the form is doing here: “Shall we drink coffee after class?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "zullen we ...?",
+      "romanization": "ZUL-len və",
+      "nativeText": "Contrast check for \"zullen we ...?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ZUL-len və",
+      "exampleTarget": "Zullen we koffie drinken na de les?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Shall we drink coffee after class?”",
+      "korean": "zullen we ...?",
+      "english": "Contrast check for \"zullen we ...?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Zullen we koffie drinken na de les?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Shall we drink coffee after class?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "zullen we ...?",
+      "romanization": "ZUL-len və",
+      "nativeText": "Recall \"zullen we ...?\" from memory, then explain what would change if a nearby alternative replaced it in \"Zullen we koffie drinken na de les?\".",
+      "pronunciation": "ZUL-len və",
+      "exampleTarget": "Zullen we koffie drinken na de les?",
+      "exampleNative": "Self-check against the model before moving on: “Shall we drink coffee after class?”",
+      "korean": "zullen we ...?",
+      "english": "Recall \"zullen we ...?\" from memory, then explain what would change if a nearby alternative replaced it in \"Zullen we koffie drinken na de les?\".",
+      "example": "Zullen we koffie drinken na de les?",
+      "exampleEnglish": "Self-check against the model before moving on: “Shall we drink coffee after class?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "zullen we ...?",
+      "romanization": "ZUL-len və",
+      "nativeText": "Repair \"zullen we ...?\" inside \"Zullen we koffie drinken na de les?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 20: Suggesties en Plannen — Suggestions and Plans with the register and setting that the lesson requires.",
+      "pronunciation": "ZUL-len və",
+      "exampleTarget": "Zullen we koffie drinken na de les?",
+      "exampleNative": "Use the model as the repair target: “Shall we drink coffee after class?”",
+      "korean": "zullen we ...?",
+      "english": "Repair \"zullen we ...?\" inside \"Zullen we koffie drinken na de les?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 20: Suggesties en Plannen — Suggestions and Plans with the register and setting that the lesson requires.",
+      "example": "Zullen we koffie drinken na de les?",
+      "exampleEnglish": "Use the model as the repair target: “Shall we drink coffee after class?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "zullen we ...?",
+      "romanization": "ZUL-len və",
+      "nativeText": "Transfer \"zullen we ...?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Zullen we koffie drinken na de les?\".",
+      "pronunciation": "ZUL-len və",
+      "exampleTarget": "Zullen we koffie drinken na de les?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Shall we drink coffee after class?”",
+      "korean": "zullen we ...?",
+      "english": "Transfer \"zullen we ...?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Zullen we koffie drinken na de les?\".",
+      "example": "Zullen we koffie drinken na de les?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Shall we drink coffee after class?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "zullen we ...?",
+      "romanization": "ZUL-len və",
+      "nativeText": "Find one word or phrase that naturally travels with \"zullen we ...?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ZUL-len və",
+      "exampleTarget": "Zullen we koffie drinken na de les?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Shall we drink coffee after class?”",
+      "korean": "zullen we ...?",
+      "english": "Find one word or phrase that naturally travels with \"zullen we ...?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Zullen we koffie drinken na de les?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Shall we drink coffee after class?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "zullen we ...?",
+      "romanization": "ZUL-len və",
+      "nativeText": "Listen for \"zullen we ...?\" inside \"Zullen we koffie drinken na de les?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ZUL-len və",
+      "exampleTarget": "Zullen we koffie drinken na de les?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Shall we drink coffee after class?”",
+      "korean": "zullen we ...?",
+      "english": "Listen for \"zullen we ...?\" inside \"Zullen we koffie drinken na de les?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Zullen we koffie drinken na de les?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Shall we drink coffee after class?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "zullen we ...?",
+      "romanization": "ZUL-len və",
+      "nativeText": "Write \"zullen we ...?\" again without looking, then compare the exact written form against \"Zullen we koffie drinken na de les?\" before moving on.",
+      "pronunciation": "ZUL-len və",
+      "exampleTarget": "Zullen we koffie drinken na de les?",
+      "exampleNative": "Use the written model as the final correctness check: “Shall we drink coffee after class?”",
+      "korean": "zullen we ...?",
+      "english": "Write \"zullen we ...?\" again without looking, then compare the exact written form against \"Zullen we koffie drinken na de les?\" before moving on.",
+      "example": "Zullen we koffie drinken na de les?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Shall we drink coffee after class?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "zullen we ...?",
+      "romanization": "ZUL-len və",
+      "nativeText": "Check whether \"zullen we ...?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Shall we drink coffee after class?”",
+      "pronunciation": "ZUL-len və",
+      "exampleTarget": "Zullen we koffie drinken na de les?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Shall we drink coffee after class?”",
+      "korean": "zullen we ...?",
+      "english": "Check whether \"zullen we ...?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Shall we drink coffee after class?”",
+      "example": "Zullen we koffie drinken na de les?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Shall we drink coffee after class?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "laten we ...",
+      "romanization": "LAH-ten və",
+      "nativeText": "“Let’s ...” A slightly more directive suggestion frame.",
+      "pronunciation": "LAH-ten və",
+      "exampleTarget": "Laten we zaterdag naar het museum gaan.",
+      "exampleNative": "“Let’s go to the museum on Saturday.”",
+      "korean": "laten we ...",
+      "english": "“Let’s ...” A slightly more directive suggestion frame.",
+      "example": "Laten we zaterdag naar het museum gaan.",
+      "exampleEnglish": "“Let’s go to the museum on Saturday.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "Laten we zaterdag naar het museum gaan.",
+      "romanization": "LAH-ten və",
+      "nativeText": "Model use for \"Laten we zaterdag naar het museum gaan.\": “Let’s go to the museum on Saturday.”",
+      "pronunciation": "LAH-ten və",
+      "exampleTarget": "Laten we zaterdag naar het museum gaan.",
+      "exampleNative": "“Let’s go to the museum on Saturday.”",
+      "korean": "Laten we zaterdag naar het museum gaan.",
+      "english": "Model use for \"Laten we zaterdag naar het museum gaan.\": “Let’s go to the museum on Saturday.”",
+      "example": "Laten we zaterdag naar het museum gaan.",
+      "exampleEnglish": "“Let’s go to the museum on Saturday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "laten we ...",
+      "romanization": "LAH-ten və",
+      "nativeText": "Usage focus for \"laten we ...\": Distinguish the nearby wording choices that make Level 1 · Unit 20: Suggesties en Plannen — Suggestions and Plans sound precise rather than merely understandable.",
+      "pronunciation": "LAH-ten və",
+      "exampleTarget": "Laten we zaterdag naar het museum gaan.",
+      "exampleNative": "Notice what the form is doing here: “Let’s go to the museum on Saturday.”",
+      "korean": "laten we ...",
+      "english": "Usage focus for \"laten we ...\": Distinguish the nearby wording choices that make Level 1 · Unit 20: Suggesties en Plannen — Suggestions and Plans sound precise rather than merely understandable.",
+      "example": "Laten we zaterdag naar het museum gaan.",
+      "exampleEnglish": "Notice what the form is doing here: “Let’s go to the museum on Saturday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "laten we ...",
+      "romanization": "LAH-ten və",
+      "nativeText": "Contrast check for \"laten we ...\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "LAH-ten və",
+      "exampleTarget": "Laten we zaterdag naar het museum gaan.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Let’s go to the museum on Saturday.”",
+      "korean": "laten we ...",
+      "english": "Contrast check for \"laten we ...\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Laten we zaterdag naar het museum gaan.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Let’s go to the museum on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "laten we ...",
+      "romanization": "LAH-ten və",
+      "nativeText": "Recall \"laten we ...\" from memory, then explain what would change if a nearby alternative replaced it in \"Laten we zaterdag naar het museum gaan.\".",
+      "pronunciation": "LAH-ten və",
+      "exampleTarget": "Laten we zaterdag naar het museum gaan.",
+      "exampleNative": "Self-check against the model before moving on: “Let’s go to the museum on Saturday.”",
+      "korean": "laten we ...",
+      "english": "Recall \"laten we ...\" from memory, then explain what would change if a nearby alternative replaced it in \"Laten we zaterdag naar het museum gaan.\".",
+      "example": "Laten we zaterdag naar het museum gaan.",
+      "exampleEnglish": "Self-check against the model before moving on: “Let’s go to the museum on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "laten we ...",
+      "romanization": "LAH-ten və",
+      "nativeText": "Repair \"laten we ...\" inside \"Laten we zaterdag naar het museum gaan.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 20: Suggesties en Plannen — Suggestions and Plans sound precise rather than merely understandable.",
+      "pronunciation": "LAH-ten və",
+      "exampleTarget": "Laten we zaterdag naar het museum gaan.",
+      "exampleNative": "Use the model as the repair target: “Let’s go to the museum on Saturday.”",
+      "korean": "laten we ...",
+      "english": "Repair \"laten we ...\" inside \"Laten we zaterdag naar het museum gaan.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 20: Suggesties en Plannen — Suggestions and Plans sound precise rather than merely understandable.",
+      "example": "Laten we zaterdag naar het museum gaan.",
+      "exampleEnglish": "Use the model as the repair target: “Let’s go to the museum on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "laten we ...",
+      "romanization": "LAH-ten və",
+      "nativeText": "Transfer \"laten we ...\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Laten we zaterdag naar het museum gaan.\".",
+      "pronunciation": "LAH-ten və",
+      "exampleTarget": "Laten we zaterdag naar het museum gaan.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Let’s go to the museum on Saturday.”",
+      "korean": "laten we ...",
+      "english": "Transfer \"laten we ...\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Laten we zaterdag naar het museum gaan.\".",
+      "example": "Laten we zaterdag naar het museum gaan.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Let’s go to the museum on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "laten we ...",
+      "romanization": "LAH-ten və",
+      "nativeText": "Find one word or phrase that naturally travels with \"laten we ...\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "LAH-ten və",
+      "exampleTarget": "Laten we zaterdag naar het museum gaan.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Let’s go to the museum on Saturday.”",
+      "korean": "laten we ...",
+      "english": "Find one word or phrase that naturally travels with \"laten we ...\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Laten we zaterdag naar het museum gaan.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Let’s go to the museum on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "laten we ...",
+      "romanization": "LAH-ten və",
+      "nativeText": "Listen for \"laten we ...\" inside \"Laten we zaterdag naar het museum gaan.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "LAH-ten və",
+      "exampleTarget": "Laten we zaterdag naar het museum gaan.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Let’s go to the museum on Saturday.”",
+      "korean": "laten we ...",
+      "english": "Listen for \"laten we ...\" inside \"Laten we zaterdag naar het museum gaan.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Laten we zaterdag naar het museum gaan.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Let’s go to the museum on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "laten we ...",
+      "romanization": "LAH-ten və",
+      "nativeText": "Write \"laten we ...\" again without looking, then compare the exact written form against \"Laten we zaterdag naar het museum gaan.\" before moving on.",
+      "pronunciation": "LAH-ten və",
+      "exampleTarget": "Laten we zaterdag naar het museum gaan.",
+      "exampleNative": "Use the written model as the final correctness check: “Let’s go to the museum on Saturday.”",
+      "korean": "laten we ...",
+      "english": "Write \"laten we ...\" again without looking, then compare the exact written form against \"Laten we zaterdag naar het museum gaan.\" before moving on.",
+      "example": "Laten we zaterdag naar het museum gaan.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Let’s go to the museum on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "laten we ...",
+      "romanization": "LAH-ten və",
+      "nativeText": "Check whether \"laten we ...\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Let’s go to the museum on Saturday.”",
+      "pronunciation": "LAH-ten və",
+      "exampleTarget": "Laten we zaterdag naar het museum gaan.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Let’s go to the museum on Saturday.”",
+      "korean": "laten we ...",
+      "english": "Check whether \"laten we ...\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Let’s go to the museum on Saturday.”",
+      "example": "Laten we zaterdag naar het museum gaan.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Let’s go to the museum on Saturday.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "goed idee",
+      "romanization": "khoot ee-DAY",
+      "nativeText": "“Good idea.” A quick positive response.",
+      "pronunciation": "khoot ee-DAY",
+      "exampleTarget": "Dat is een goed idee.",
+      "exampleNative": "“That is a good idea.”",
+      "korean": "goed idee",
+      "english": "“Good idea.” A quick positive response.",
+      "example": "Dat is een goed idee.",
+      "exampleEnglish": "“That is a good idea.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "Dat is een goed idee.",
+      "romanization": "khoot ee-DAY",
+      "nativeText": "Model use for \"Dat is een goed idee.\": “That is a good idea.”",
+      "pronunciation": "khoot ee-DAY",
+      "exampleTarget": "Dat is een goed idee.",
+      "exampleNative": "“That is a good idea.”",
+      "korean": "Dat is een goed idee.",
+      "english": "Model use for \"Dat is een goed idee.\": “That is a good idea.”",
+      "example": "Dat is een goed idee.",
+      "exampleEnglish": "“That is a good idea.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "goed idee",
+      "romanization": "khoot ee-DAY",
+      "nativeText": "Usage focus for \"goed idee\": “Good idea.” A quick positive response.",
+      "pronunciation": "khoot ee-DAY",
+      "exampleTarget": "Dat is een goed idee.",
+      "exampleNative": "Notice what the form is doing here: “That is a good idea.”",
+      "korean": "goed idee",
+      "english": "Usage focus for \"goed idee\": “Good idea.” A quick positive response.",
+      "example": "Dat is een goed idee.",
+      "exampleEnglish": "Notice what the form is doing here: “That is a good idea.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "goed idee",
+      "romanization": "khoot ee-DAY",
+      "nativeText": "Contrast check for \"goed idee\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "khoot ee-DAY",
+      "exampleTarget": "Dat is een goed idee.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “That is a good idea.”",
+      "korean": "goed idee",
+      "english": "Contrast check for \"goed idee\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Dat is een goed idee.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “That is a good idea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "goed idee",
+      "romanization": "khoot ee-DAY",
+      "nativeText": "Recall \"goed idee\" from memory, then explain what would change if a nearby alternative replaced it in \"Dat is een goed idee.\".",
+      "pronunciation": "khoot ee-DAY",
+      "exampleTarget": "Dat is een goed idee.",
+      "exampleNative": "Self-check against the model before moving on: “That is a good idea.”",
+      "korean": "goed idee",
+      "english": "Recall \"goed idee\" from memory, then explain what would change if a nearby alternative replaced it in \"Dat is een goed idee.\".",
+      "example": "Dat is een goed idee.",
+      "exampleEnglish": "Self-check against the model before moving on: “That is a good idea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "goed idee",
+      "romanization": "khoot ee-DAY",
+      "nativeText": "Repair \"goed idee\" inside \"Dat is een goed idee.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Good idea.” A quick positive response.",
+      "pronunciation": "khoot ee-DAY",
+      "exampleTarget": "Dat is een goed idee.",
+      "exampleNative": "Use the model as the repair target: “That is a good idea.”",
+      "korean": "goed idee",
+      "english": "Repair \"goed idee\" inside \"Dat is een goed idee.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Good idea.” A quick positive response.",
+      "example": "Dat is een goed idee.",
+      "exampleEnglish": "Use the model as the repair target: “That is a good idea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "goed idee",
+      "romanization": "khoot ee-DAY",
+      "nativeText": "Transfer \"goed idee\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Dat is een goed idee.\".",
+      "pronunciation": "khoot ee-DAY",
+      "exampleTarget": "Dat is een goed idee.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “That is a good idea.”",
+      "korean": "goed idee",
+      "english": "Transfer \"goed idee\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Dat is een goed idee.\".",
+      "example": "Dat is een goed idee.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “That is a good idea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "goed idee",
+      "romanization": "khoot ee-DAY",
+      "nativeText": "Find one word or phrase that naturally travels with \"goed idee\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "khoot ee-DAY",
+      "exampleTarget": "Dat is een goed idee.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “That is a good idea.”",
+      "korean": "goed idee",
+      "english": "Find one word or phrase that naturally travels with \"goed idee\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Dat is een goed idee.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “That is a good idea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "goed idee",
+      "romanization": "khoot ee-DAY",
+      "nativeText": "Listen for \"goed idee\" inside \"Dat is een goed idee.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "khoot ee-DAY",
+      "exampleTarget": "Dat is een goed idee.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “That is a good idea.”",
+      "korean": "goed idee",
+      "english": "Listen for \"goed idee\" inside \"Dat is een goed idee.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Dat is een goed idee.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “That is a good idea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "goed idee",
+      "romanization": "khoot ee-DAY",
+      "nativeText": "Write \"goed idee\" again without looking, then compare the exact written form against \"Dat is een goed idee.\" before moving on.",
+      "pronunciation": "khoot ee-DAY",
+      "exampleTarget": "Dat is een goed idee.",
+      "exampleNative": "Use the written model as the final correctness check: “That is a good idea.”",
+      "korean": "goed idee",
+      "english": "Write \"goed idee\" again without looking, then compare the exact written form against \"Dat is een goed idee.\" before moving on.",
+      "example": "Dat is een goed idee.",
+      "exampleEnglish": "Use the written model as the final correctness check: “That is a good idea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "goed idee",
+      "romanization": "khoot ee-DAY",
+      "nativeText": "Check whether \"goed idee\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “That is a good idea.”",
+      "pronunciation": "khoot ee-DAY",
+      "exampleTarget": "Dat is een goed idee.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “That is a good idea.”",
+      "korean": "goed idee",
+      "english": "Check whether \"goed idee\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “That is a good idea.”",
+      "example": "Dat is een goed idee.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “That is a good idea.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "afgesproken",
+      "romanization": "AF-khə-sproh-khen",
+      "nativeText": "“Agreed.” A natural plan-closing word.",
+      "pronunciation": "AF-khə-sproh-khen",
+      "exampleTarget": "Prima, afgesproken.",
+      "exampleNative": "“Great, agreed.”",
+      "korean": "afgesproken",
+      "english": "“Agreed.” A natural plan-closing word.",
+      "example": "Prima, afgesproken.",
+      "exampleEnglish": "“Great, agreed.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "Prima, afgesproken.",
+      "romanization": "AF-khə-sproh-khen",
+      "nativeText": "Model use for \"Prima, afgesproken.\": “Great, agreed.”",
+      "pronunciation": "AF-khə-sproh-khen",
+      "exampleTarget": "Prima, afgesproken.",
+      "exampleNative": "“Great, agreed.”",
+      "korean": "Prima, afgesproken.",
+      "english": "Model use for \"Prima, afgesproken.\": “Great, agreed.”",
+      "example": "Prima, afgesproken.",
+      "exampleEnglish": "“Great, agreed.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "afgesproken",
+      "romanization": "AF-khə-sproh-khen",
+      "nativeText": "Usage focus for \"afgesproken\": “Agreed.” A natural plan-closing word.",
+      "pronunciation": "AF-khə-sproh-khen",
+      "exampleTarget": "Prima, afgesproken.",
+      "exampleNative": "Notice what the form is doing here: “Great, agreed.”",
+      "korean": "afgesproken",
+      "english": "Usage focus for \"afgesproken\": “Agreed.” A natural plan-closing word.",
+      "example": "Prima, afgesproken.",
+      "exampleEnglish": "Notice what the form is doing here: “Great, agreed.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "afgesproken",
+      "romanization": "AF-khə-sproh-khen",
+      "nativeText": "Contrast check for \"afgesproken\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "AF-khə-sproh-khen",
+      "exampleTarget": "Prima, afgesproken.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Great, agreed.”",
+      "korean": "afgesproken",
+      "english": "Contrast check for \"afgesproken\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Prima, afgesproken.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Great, agreed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "afgesproken",
+      "romanization": "AF-khə-sproh-khen",
+      "nativeText": "Recall \"afgesproken\" from memory, then explain what would change if a nearby alternative replaced it in \"Prima, afgesproken.\".",
+      "pronunciation": "AF-khə-sproh-khen",
+      "exampleTarget": "Prima, afgesproken.",
+      "exampleNative": "Self-check against the model before moving on: “Great, agreed.”",
+      "korean": "afgesproken",
+      "english": "Recall \"afgesproken\" from memory, then explain what would change if a nearby alternative replaced it in \"Prima, afgesproken.\".",
+      "example": "Prima, afgesproken.",
+      "exampleEnglish": "Self-check against the model before moving on: “Great, agreed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "afgesproken",
+      "romanization": "AF-khə-sproh-khen",
+      "nativeText": "Repair \"afgesproken\" inside \"Prima, afgesproken.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Agreed.” A natural plan-closing word.",
+      "pronunciation": "AF-khə-sproh-khen",
+      "exampleTarget": "Prima, afgesproken.",
+      "exampleNative": "Use the model as the repair target: “Great, agreed.”",
+      "korean": "afgesproken",
+      "english": "Repair \"afgesproken\" inside \"Prima, afgesproken.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Agreed.” A natural plan-closing word.",
+      "example": "Prima, afgesproken.",
+      "exampleEnglish": "Use the model as the repair target: “Great, agreed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "afgesproken",
+      "romanization": "AF-khə-sproh-khen",
+      "nativeText": "Transfer \"afgesproken\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Prima, afgesproken.\".",
+      "pronunciation": "AF-khə-sproh-khen",
+      "exampleTarget": "Prima, afgesproken.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Great, agreed.”",
+      "korean": "afgesproken",
+      "english": "Transfer \"afgesproken\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Prima, afgesproken.\".",
+      "example": "Prima, afgesproken.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Great, agreed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "afgesproken",
+      "romanization": "AF-khə-sproh-khen",
+      "nativeText": "Find one word or phrase that naturally travels with \"afgesproken\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "AF-khə-sproh-khen",
+      "exampleTarget": "Prima, afgesproken.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Great, agreed.”",
+      "korean": "afgesproken",
+      "english": "Find one word or phrase that naturally travels with \"afgesproken\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Prima, afgesproken.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Great, agreed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "afgesproken",
+      "romanization": "AF-khə-sproh-khen",
+      "nativeText": "Listen for \"afgesproken\" inside \"Prima, afgesproken.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "AF-khə-sproh-khen",
+      "exampleTarget": "Prima, afgesproken.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Great, agreed.”",
+      "korean": "afgesproken",
+      "english": "Listen for \"afgesproken\" inside \"Prima, afgesproken.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Prima, afgesproken.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Great, agreed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "afgesproken",
+      "romanization": "AF-khə-sproh-khen",
+      "nativeText": "Write \"afgesproken\" again without looking, then compare the exact written form against \"Prima, afgesproken.\" before moving on.",
+      "pronunciation": "AF-khə-sproh-khen",
+      "exampleTarget": "Prima, afgesproken.",
+      "exampleNative": "Use the written model as the final correctness check: “Great, agreed.”",
+      "korean": "afgesproken",
+      "english": "Write \"afgesproken\" again without looking, then compare the exact written form against \"Prima, afgesproken.\" before moving on.",
+      "example": "Prima, afgesproken.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Great, agreed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "afgesproken",
+      "romanization": "AF-khə-sproh-khen",
+      "nativeText": "Check whether \"afgesproken\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Great, agreed.”",
+      "pronunciation": "AF-khə-sproh-khen",
+      "exampleTarget": "Prima, afgesproken.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Great, agreed.”",
+      "korean": "afgesproken",
+      "english": "Check whether \"afgesproken\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Great, agreed.”",
+      "example": "Prima, afgesproken.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Great, agreed.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "sorry, ik kan niet",
+      "romanization": "SOR-ree ik kan neet",
+      "nativeText": "“Sorry, I cannot.” A polite refusal start.",
+      "pronunciation": "SOR-ree ik kan neet",
+      "exampleTarget": "Sorry, ik kan zaterdag niet.",
+      "exampleNative": "“Sorry, I cannot on Saturday.”",
+      "korean": "sorry, ik kan niet",
+      "english": "“Sorry, I cannot.” A polite refusal start.",
+      "example": "Sorry, ik kan zaterdag niet.",
+      "exampleEnglish": "“Sorry, I cannot on Saturday.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "Sorry, ik kan zaterdag niet.",
+      "romanization": "SOR-ree ik kan neet",
+      "nativeText": "Model use for \"Sorry, ik kan zaterdag niet.\": “Sorry, I cannot on Saturday.”",
+      "pronunciation": "SOR-ree ik kan neet",
+      "exampleTarget": "Sorry, ik kan zaterdag niet.",
+      "exampleNative": "“Sorry, I cannot on Saturday.”",
+      "korean": "Sorry, ik kan zaterdag niet.",
+      "english": "Model use for \"Sorry, ik kan zaterdag niet.\": “Sorry, I cannot on Saturday.”",
+      "example": "Sorry, ik kan zaterdag niet.",
+      "exampleEnglish": "“Sorry, I cannot on Saturday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "sorry, ik kan niet",
+      "romanization": "SOR-ree ik kan neet",
+      "nativeText": "Usage focus for \"sorry, ik kan niet\": “Sorry, I cannot.” A polite refusal start.",
+      "pronunciation": "SOR-ree ik kan neet",
+      "exampleTarget": "Sorry, ik kan zaterdag niet.",
+      "exampleNative": "Notice what the form is doing here: “Sorry, I cannot on Saturday.”",
+      "korean": "sorry, ik kan niet",
+      "english": "Usage focus for \"sorry, ik kan niet\": “Sorry, I cannot.” A polite refusal start.",
+      "example": "Sorry, ik kan zaterdag niet.",
+      "exampleEnglish": "Notice what the form is doing here: “Sorry, I cannot on Saturday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "sorry, ik kan niet",
+      "romanization": "SOR-ree ik kan neet",
+      "nativeText": "Contrast check for \"sorry, ik kan niet\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "SOR-ree ik kan neet",
+      "exampleTarget": "Sorry, ik kan zaterdag niet.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Sorry, I cannot on Saturday.”",
+      "korean": "sorry, ik kan niet",
+      "english": "Contrast check for \"sorry, ik kan niet\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Sorry, ik kan zaterdag niet.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Sorry, I cannot on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "sorry, ik kan niet",
+      "romanization": "SOR-ree ik kan neet",
+      "nativeText": "Recall \"sorry, ik kan niet\" from memory, then explain what would change if a nearby alternative replaced it in \"Sorry, ik kan zaterdag niet.\".",
+      "pronunciation": "SOR-ree ik kan neet",
+      "exampleTarget": "Sorry, ik kan zaterdag niet.",
+      "exampleNative": "Self-check against the model before moving on: “Sorry, I cannot on Saturday.”",
+      "korean": "sorry, ik kan niet",
+      "english": "Recall \"sorry, ik kan niet\" from memory, then explain what would change if a nearby alternative replaced it in \"Sorry, ik kan zaterdag niet.\".",
+      "example": "Sorry, ik kan zaterdag niet.",
+      "exampleEnglish": "Self-check against the model before moving on: “Sorry, I cannot on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "sorry, ik kan niet",
+      "romanization": "SOR-ree ik kan neet",
+      "nativeText": "Repair \"sorry, ik kan niet\" inside \"Sorry, ik kan zaterdag niet.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Sorry, I cannot.” A polite refusal start.",
+      "pronunciation": "SOR-ree ik kan neet",
+      "exampleTarget": "Sorry, ik kan zaterdag niet.",
+      "exampleNative": "Use the model as the repair target: “Sorry, I cannot on Saturday.”",
+      "korean": "sorry, ik kan niet",
+      "english": "Repair \"sorry, ik kan niet\" inside \"Sorry, ik kan zaterdag niet.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Sorry, I cannot.” A polite refusal start.",
+      "example": "Sorry, ik kan zaterdag niet.",
+      "exampleEnglish": "Use the model as the repair target: “Sorry, I cannot on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "sorry, ik kan niet",
+      "romanization": "SOR-ree ik kan neet",
+      "nativeText": "Transfer \"sorry, ik kan niet\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Sorry, ik kan zaterdag niet.\".",
+      "pronunciation": "SOR-ree ik kan neet",
+      "exampleTarget": "Sorry, ik kan zaterdag niet.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Sorry, I cannot on Saturday.”",
+      "korean": "sorry, ik kan niet",
+      "english": "Transfer \"sorry, ik kan niet\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Sorry, ik kan zaterdag niet.\".",
+      "example": "Sorry, ik kan zaterdag niet.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Sorry, I cannot on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "sorry, ik kan niet",
+      "romanization": "SOR-ree ik kan neet",
+      "nativeText": "Find one word or phrase that naturally travels with \"sorry, ik kan niet\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "SOR-ree ik kan neet",
+      "exampleTarget": "Sorry, ik kan zaterdag niet.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Sorry, I cannot on Saturday.”",
+      "korean": "sorry, ik kan niet",
+      "english": "Find one word or phrase that naturally travels with \"sorry, ik kan niet\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Sorry, ik kan zaterdag niet.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Sorry, I cannot on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "sorry, ik kan niet",
+      "romanization": "SOR-ree ik kan neet",
+      "nativeText": "Listen for \"sorry, ik kan niet\" inside \"Sorry, ik kan zaterdag niet.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "SOR-ree ik kan neet",
+      "exampleTarget": "Sorry, ik kan zaterdag niet.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Sorry, I cannot on Saturday.”",
+      "korean": "sorry, ik kan niet",
+      "english": "Listen for \"sorry, ik kan niet\" inside \"Sorry, ik kan zaterdag niet.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Sorry, ik kan zaterdag niet.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Sorry, I cannot on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "sorry, ik kan niet",
+      "romanization": "SOR-ree ik kan neet",
+      "nativeText": "Write \"sorry, ik kan niet\" again without looking, then compare the exact written form against \"Sorry, ik kan zaterdag niet.\" before moving on.",
+      "pronunciation": "SOR-ree ik kan neet",
+      "exampleTarget": "Sorry, ik kan zaterdag niet.",
+      "exampleNative": "Use the written model as the final correctness check: “Sorry, I cannot on Saturday.”",
+      "korean": "sorry, ik kan niet",
+      "english": "Write \"sorry, ik kan niet\" again without looking, then compare the exact written form against \"Sorry, ik kan zaterdag niet.\" before moving on.",
+      "example": "Sorry, ik kan zaterdag niet.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Sorry, I cannot on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "sorry, ik kan niet",
+      "romanization": "SOR-ree ik kan neet",
+      "nativeText": "Check whether \"sorry, ik kan niet\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Sorry, I cannot on Saturday.”",
+      "pronunciation": "SOR-ree ik kan neet",
+      "exampleTarget": "Sorry, ik kan zaterdag niet.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Sorry, I cannot on Saturday.”",
+      "korean": "sorry, ik kan niet",
+      "english": "Check whether \"sorry, ik kan niet\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Sorry, I cannot on Saturday.”",
+      "example": "Sorry, ik kan zaterdag niet.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Sorry, I cannot on Saturday.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "misschien",
+      "romanization": "mis-SKHEEN",
+      "nativeText": "“Maybe.” Useful when the speaker is uncertain.",
+      "pronunciation": "mis-SKHEEN",
+      "exampleTarget": "Misschien is zondag beter.",
+      "exampleNative": "“Maybe Sunday is better.”",
+      "korean": "misschien",
+      "english": "“Maybe.” Useful when the speaker is uncertain.",
+      "example": "Misschien is zondag beter.",
+      "exampleEnglish": "“Maybe Sunday is better.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "Misschien is zondag beter.",
+      "romanization": "mis-SKHEEN",
+      "nativeText": "Model use for \"Misschien is zondag beter.\": “Maybe Sunday is better.”",
+      "pronunciation": "mis-SKHEEN",
+      "exampleTarget": "Misschien is zondag beter.",
+      "exampleNative": "“Maybe Sunday is better.”",
+      "korean": "Misschien is zondag beter.",
+      "english": "Model use for \"Misschien is zondag beter.\": “Maybe Sunday is better.”",
+      "example": "Misschien is zondag beter.",
+      "exampleEnglish": "“Maybe Sunday is better.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "misschien",
+      "romanization": "mis-SKHEEN",
+      "nativeText": "Usage focus for \"misschien\": “Maybe.” Useful when the speaker is uncertain.",
+      "pronunciation": "mis-SKHEEN",
+      "exampleTarget": "Misschien is zondag beter.",
+      "exampleNative": "Notice what the form is doing here: “Maybe Sunday is better.”",
+      "korean": "misschien",
+      "english": "Usage focus for \"misschien\": “Maybe.” Useful when the speaker is uncertain.",
+      "example": "Misschien is zondag beter.",
+      "exampleEnglish": "Notice what the form is doing here: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "misschien",
+      "romanization": "mis-SKHEEN",
+      "nativeText": "Contrast check for \"misschien\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "mis-SKHEEN",
+      "exampleTarget": "Misschien is zondag beter.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Maybe Sunday is better.”",
+      "korean": "misschien",
+      "english": "Contrast check for \"misschien\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Misschien is zondag beter.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "misschien",
+      "romanization": "mis-SKHEEN",
+      "nativeText": "Recall \"misschien\" from memory, then explain what would change if a nearby alternative replaced it in \"Misschien is zondag beter.\".",
+      "pronunciation": "mis-SKHEEN",
+      "exampleTarget": "Misschien is zondag beter.",
+      "exampleNative": "Self-check against the model before moving on: “Maybe Sunday is better.”",
+      "korean": "misschien",
+      "english": "Recall \"misschien\" from memory, then explain what would change if a nearby alternative replaced it in \"Misschien is zondag beter.\".",
+      "example": "Misschien is zondag beter.",
+      "exampleEnglish": "Self-check against the model before moving on: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "misschien",
+      "romanization": "mis-SKHEEN",
+      "nativeText": "Repair \"misschien\" inside \"Misschien is zondag beter.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Maybe.” Useful when the speaker is uncertain.",
+      "pronunciation": "mis-SKHEEN",
+      "exampleTarget": "Misschien is zondag beter.",
+      "exampleNative": "Use the model as the repair target: “Maybe Sunday is better.”",
+      "korean": "misschien",
+      "english": "Repair \"misschien\" inside \"Misschien is zondag beter.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Maybe.” Useful when the speaker is uncertain.",
+      "example": "Misschien is zondag beter.",
+      "exampleEnglish": "Use the model as the repair target: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "misschien",
+      "romanization": "mis-SKHEEN",
+      "nativeText": "Transfer \"misschien\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Misschien is zondag beter.\".",
+      "pronunciation": "mis-SKHEEN",
+      "exampleTarget": "Misschien is zondag beter.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Maybe Sunday is better.”",
+      "korean": "misschien",
+      "english": "Transfer \"misschien\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Misschien is zondag beter.\".",
+      "example": "Misschien is zondag beter.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "misschien",
+      "romanization": "mis-SKHEEN",
+      "nativeText": "Find one word or phrase that naturally travels with \"misschien\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "mis-SKHEEN",
+      "exampleTarget": "Misschien is zondag beter.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Maybe Sunday is better.”",
+      "korean": "misschien",
+      "english": "Find one word or phrase that naturally travels with \"misschien\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Misschien is zondag beter.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "misschien",
+      "romanization": "mis-SKHEEN",
+      "nativeText": "Listen for \"misschien\" inside \"Misschien is zondag beter.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "mis-SKHEEN",
+      "exampleTarget": "Misschien is zondag beter.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Maybe Sunday is better.”",
+      "korean": "misschien",
+      "english": "Listen for \"misschien\" inside \"Misschien is zondag beter.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Misschien is zondag beter.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "misschien",
+      "romanization": "mis-SKHEEN",
+      "nativeText": "Write \"misschien\" again without looking, then compare the exact written form against \"Misschien is zondag beter.\" before moving on.",
+      "pronunciation": "mis-SKHEEN",
+      "exampleTarget": "Misschien is zondag beter.",
+      "exampleNative": "Use the written model as the final correctness check: “Maybe Sunday is better.”",
+      "korean": "misschien",
+      "english": "Write \"misschien\" again without looking, then compare the exact written form against \"Misschien is zondag beter.\" before moving on.",
+      "example": "Misschien is zondag beter.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "misschien",
+      "romanization": "mis-SKHEEN",
+      "nativeText": "Check whether \"misschien\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Maybe Sunday is better.”",
+      "pronunciation": "mis-SKHEEN",
+      "exampleTarget": "Misschien is zondag beter.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Maybe Sunday is better.”",
+      "korean": "misschien",
+      "english": "Check whether \"misschien\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Maybe Sunday is better.”",
+      "example": "Misschien is zondag beter.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "beter",
+      "romanization": "BAY-ter",
+      "nativeText": "“Better.” A practical comparison word in planning.",
+      "pronunciation": "BAY-ter",
+      "exampleTarget": "We kunnen beter vroeg vertrekken.",
+      "exampleNative": "“We had better leave early.”",
+      "korean": "beter",
+      "english": "“Better.” A practical comparison word in planning.",
+      "example": "We kunnen beter vroeg vertrekken.",
+      "exampleEnglish": "“We had better leave early.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "We kunnen beter vroeg vertrekken.",
+      "romanization": "BAY-ter",
+      "nativeText": "Model use for \"We kunnen beter vroeg vertrekken.\": “We had better leave early.”",
+      "pronunciation": "BAY-ter",
+      "exampleTarget": "We kunnen beter vroeg vertrekken.",
+      "exampleNative": "“We had better leave early.”",
+      "korean": "We kunnen beter vroeg vertrekken.",
+      "english": "Model use for \"We kunnen beter vroeg vertrekken.\": “We had better leave early.”",
+      "example": "We kunnen beter vroeg vertrekken.",
+      "exampleEnglish": "“We had better leave early.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "beter",
+      "romanization": "BAY-ter",
+      "nativeText": "Usage focus for \"beter\": “Better.” A practical comparison word in planning.",
+      "pronunciation": "BAY-ter",
+      "exampleTarget": "We kunnen beter vroeg vertrekken.",
+      "exampleNative": "Notice what the form is doing here: “We had better leave early.”",
+      "korean": "beter",
+      "english": "Usage focus for \"beter\": “Better.” A practical comparison word in planning.",
+      "example": "We kunnen beter vroeg vertrekken.",
+      "exampleEnglish": "Notice what the form is doing here: “We had better leave early.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "beter",
+      "romanization": "BAY-ter",
+      "nativeText": "Contrast check for \"beter\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "BAY-ter",
+      "exampleTarget": "We kunnen beter vroeg vertrekken.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “We had better leave early.”",
+      "korean": "beter",
+      "english": "Contrast check for \"beter\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "We kunnen beter vroeg vertrekken.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “We had better leave early.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "beter",
+      "romanization": "BAY-ter",
+      "nativeText": "Recall \"beter\" from memory, then explain what would change if a nearby alternative replaced it in \"We kunnen beter vroeg vertrekken.\".",
+      "pronunciation": "BAY-ter",
+      "exampleTarget": "We kunnen beter vroeg vertrekken.",
+      "exampleNative": "Self-check against the model before moving on: “We had better leave early.”",
+      "korean": "beter",
+      "english": "Recall \"beter\" from memory, then explain what would change if a nearby alternative replaced it in \"We kunnen beter vroeg vertrekken.\".",
+      "example": "We kunnen beter vroeg vertrekken.",
+      "exampleEnglish": "Self-check against the model before moving on: “We had better leave early.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "beter",
+      "romanization": "BAY-ter",
+      "nativeText": "Repair \"beter\" inside \"We kunnen beter vroeg vertrekken.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Better.” A practical comparison word in planning.",
+      "pronunciation": "BAY-ter",
+      "exampleTarget": "We kunnen beter vroeg vertrekken.",
+      "exampleNative": "Use the model as the repair target: “We had better leave early.”",
+      "korean": "beter",
+      "english": "Repair \"beter\" inside \"We kunnen beter vroeg vertrekken.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Better.” A practical comparison word in planning.",
+      "example": "We kunnen beter vroeg vertrekken.",
+      "exampleEnglish": "Use the model as the repair target: “We had better leave early.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "beter",
+      "romanization": "BAY-ter",
+      "nativeText": "Transfer \"beter\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"We kunnen beter vroeg vertrekken.\".",
+      "pronunciation": "BAY-ter",
+      "exampleTarget": "We kunnen beter vroeg vertrekken.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “We had better leave early.”",
+      "korean": "beter",
+      "english": "Transfer \"beter\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"We kunnen beter vroeg vertrekken.\".",
+      "example": "We kunnen beter vroeg vertrekken.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “We had better leave early.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "beter",
+      "romanization": "BAY-ter",
+      "nativeText": "Find one word or phrase that naturally travels with \"beter\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "BAY-ter",
+      "exampleTarget": "We kunnen beter vroeg vertrekken.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “We had better leave early.”",
+      "korean": "beter",
+      "english": "Find one word or phrase that naturally travels with \"beter\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "We kunnen beter vroeg vertrekken.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “We had better leave early.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "beter",
+      "romanization": "BAY-ter",
+      "nativeText": "Listen for \"beter\" inside \"We kunnen beter vroeg vertrekken.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "BAY-ter",
+      "exampleTarget": "We kunnen beter vroeg vertrekken.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “We had better leave early.”",
+      "korean": "beter",
+      "english": "Listen for \"beter\" inside \"We kunnen beter vroeg vertrekken.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "We kunnen beter vroeg vertrekken.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “We had better leave early.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "beter",
+      "romanization": "BAY-ter",
+      "nativeText": "Write \"beter\" again without looking, then compare the exact written form against \"We kunnen beter vroeg vertrekken.\" before moving on.",
+      "pronunciation": "BAY-ter",
+      "exampleTarget": "We kunnen beter vroeg vertrekken.",
+      "exampleNative": "Use the written model as the final correctness check: “We had better leave early.”",
+      "korean": "beter",
+      "english": "Write \"beter\" again without looking, then compare the exact written form against \"We kunnen beter vroeg vertrekken.\" before moving on.",
+      "example": "We kunnen beter vroeg vertrekken.",
+      "exampleEnglish": "Use the written model as the final correctness check: “We had better leave early.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "beter",
+      "romanization": "BAY-ter",
+      "nativeText": "Check whether \"beter\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “We had better leave early.”",
+      "pronunciation": "BAY-ter",
+      "exampleTarget": "We kunnen beter vroeg vertrekken.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “We had better leave early.”",
+      "korean": "beter",
+      "english": "Check whether \"beter\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “We had better leave early.”",
+      "example": "We kunnen beter vroeg vertrekken.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “We had better leave early.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "dan",
+      "romanization": "dan",
+      "nativeText": "“Then / in that case.” It helps the plan pivot after new information.",
+      "pronunciation": "dan",
+      "exampleTarget": "Dan spreken we om zes uur af.",
+      "exampleNative": "“Then we will meet at six.”",
+      "korean": "dan",
+      "english": "“Then / in that case.” It helps the plan pivot after new information.",
+      "example": "Dan spreken we om zes uur af.",
+      "exampleEnglish": "“Then we will meet at six.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "Dan spreken we om zes uur af.",
+      "romanization": "dan",
+      "nativeText": "Model use for \"Dan spreken we om zes uur af.\": “Then we will meet at six.”",
+      "pronunciation": "dan",
+      "exampleTarget": "Dan spreken we om zes uur af.",
+      "exampleNative": "“Then we will meet at six.”",
+      "korean": "Dan spreken we om zes uur af.",
+      "english": "Model use for \"Dan spreken we om zes uur af.\": “Then we will meet at six.”",
+      "example": "Dan spreken we om zes uur af.",
+      "exampleEnglish": "“Then we will meet at six.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "dan",
+      "romanization": "dan",
+      "nativeText": "Usage focus for \"dan\": “Then / in that case.” It helps the plan pivot after new information.",
+      "pronunciation": "dan",
+      "exampleTarget": "Dan spreken we om zes uur af.",
+      "exampleNative": "Notice what the form is doing here: “Then we will meet at six.”",
+      "korean": "dan",
+      "english": "Usage focus for \"dan\": “Then / in that case.” It helps the plan pivot after new information.",
+      "example": "Dan spreken we om zes uur af.",
+      "exampleEnglish": "Notice what the form is doing here: “Then we will meet at six.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "dan",
+      "romanization": "dan",
+      "nativeText": "Contrast check for \"dan\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "dan",
+      "exampleTarget": "Dan spreken we om zes uur af.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Then we will meet at six.”",
+      "korean": "dan",
+      "english": "Contrast check for \"dan\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Dan spreken we om zes uur af.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Then we will meet at six.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "dan",
+      "romanization": "dan",
+      "nativeText": "Recall \"dan\" from memory, then explain what would change if a nearby alternative replaced it in \"Dan spreken we om zes uur af.\".",
+      "pronunciation": "dan",
+      "exampleTarget": "Dan spreken we om zes uur af.",
+      "exampleNative": "Self-check against the model before moving on: “Then we will meet at six.”",
+      "korean": "dan",
+      "english": "Recall \"dan\" from memory, then explain what would change if a nearby alternative replaced it in \"Dan spreken we om zes uur af.\".",
+      "example": "Dan spreken we om zes uur af.",
+      "exampleEnglish": "Self-check against the model before moving on: “Then we will meet at six.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "dan",
+      "romanization": "dan",
+      "nativeText": "Repair \"dan\" inside \"Dan spreken we om zes uur af.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Then / in that case.” It helps the plan pivot after new information.",
+      "pronunciation": "dan",
+      "exampleTarget": "Dan spreken we om zes uur af.",
+      "exampleNative": "Use the model as the repair target: “Then we will meet at six.”",
+      "korean": "dan",
+      "english": "Repair \"dan\" inside \"Dan spreken we om zes uur af.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Then / in that case.” It helps the plan pivot after new information.",
+      "example": "Dan spreken we om zes uur af.",
+      "exampleEnglish": "Use the model as the repair target: “Then we will meet at six.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "dan",
+      "romanization": "dan",
+      "nativeText": "Transfer \"dan\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Dan spreken we om zes uur af.\".",
+      "pronunciation": "dan",
+      "exampleTarget": "Dan spreken we om zes uur af.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Then we will meet at six.”",
+      "korean": "dan",
+      "english": "Transfer \"dan\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Dan spreken we om zes uur af.\".",
+      "example": "Dan spreken we om zes uur af.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Then we will meet at six.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "dan",
+      "romanization": "dan",
+      "nativeText": "Find one word or phrase that naturally travels with \"dan\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "dan",
+      "exampleTarget": "Dan spreken we om zes uur af.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Then we will meet at six.”",
+      "korean": "dan",
+      "english": "Find one word or phrase that naturally travels with \"dan\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Dan spreken we om zes uur af.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Then we will meet at six.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "dan",
+      "romanization": "dan",
+      "nativeText": "Listen for \"dan\" inside \"Dan spreken we om zes uur af.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "dan",
+      "exampleTarget": "Dan spreken we om zes uur af.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Then we will meet at six.”",
+      "korean": "dan",
+      "english": "Listen for \"dan\" inside \"Dan spreken we om zes uur af.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Dan spreken we om zes uur af.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Then we will meet at six.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "dan",
+      "romanization": "dan",
+      "nativeText": "Write \"dan\" again without looking, then compare the exact written form against \"Dan spreken we om zes uur af.\" before moving on.",
+      "pronunciation": "dan",
+      "exampleTarget": "Dan spreken we om zes uur af.",
+      "exampleNative": "Use the written model as the final correctness check: “Then we will meet at six.”",
+      "korean": "dan",
+      "english": "Write \"dan\" again without looking, then compare the exact written form against \"Dan spreken we om zes uur af.\" before moving on.",
+      "example": "Dan spreken we om zes uur af.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Then we will meet at six.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit20suggestions-vocabulary-1",
+        "nl-level1unit20suggestions-vocabulary-2",
+        "nl-level1unit20suggestions-grammar-1",
+        "nl-level1unit20suggestions-grammar-2",
+        "nl-level1unit20suggestions-reading",
+        "nl-level1unit20suggestions-listening",
+        "nl-level1unit20suggestions-writing",
+        "nl-level1unit20suggestions-task"
+      ],
+      "targetText": "dan",
+      "romanization": "dan",
+      "nativeText": "Check whether \"dan\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Then we will meet at six.”",
+      "pronunciation": "dan",
+      "exampleTarget": "Dan spreken we om zes uur af.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Then we will meet at six.”",
+      "korean": "dan",
+      "english": "Check whether \"dan\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Then we will meet at six.”",
+      "example": "Dan spreken we om zes uur af.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Then we will meet at six.”"
+    }
+  ],
+  "targetLang": "nl",
+  "nativeLang": "en",
+  "track": "textbook"
+};

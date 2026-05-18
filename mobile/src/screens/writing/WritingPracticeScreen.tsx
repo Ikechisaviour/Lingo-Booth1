@@ -285,6 +285,8 @@ const WritingPracticeScreen: React.FC = () => {
   const [customNative, setCustomNative] = useState('');
   const [review, setReview] = useState({ shape: false, spacing: false, memory: false });
   const [answerVisible, setAnswerVisible] = useState(false);
+  const [notebookOpen, setNotebookOpen] = useState(false);
+  const [addPanelOpen, setAddPanelOpen] = useState(false);
   const seededTarget = compact(route.params?.savedText, 180);
   const seededNative = compact(route.params?.nativeText, 180);
 
@@ -536,6 +538,16 @@ const WritingPracticeScreen: React.FC = () => {
         </View>
       </View>
 
+      <View style={styles.panelToggleRow}>
+        <Button mode={notebookOpen ? 'contained' : 'outlined'} compact onPress={() => setNotebookOpen((open) => !open)}>
+          {notebookOpen ? t('writing.hideNotebook', 'Hide notebook') : t('writing.showNotebook', 'Show notebook')}
+        </Button>
+        <Button mode={addPanelOpen ? 'contained' : 'outlined'} compact onPress={() => setAddPanelOpen((open) => !open)}>
+          {addPanelOpen ? t('writing.hideAddPanel', 'Hide add panel') : t('writing.addYourOwn', 'Add your own')}
+        </Button>
+      </View>
+
+      {notebookOpen && (
       <View style={styles.panel}>
         <Text style={styles.panelTitle}>{t('writing.notebook', 'Notebook')}</Text>
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.chipRow}>
@@ -568,13 +580,16 @@ const WritingPracticeScreen: React.FC = () => {
           {filteredItems.length === 0 && <Text style={styles.emptyText}>{t('writing.empty', 'No items in this source yet.')}</Text>}
         </ScrollView>
       </View>
+      )}
 
+      {addPanelOpen && (
       <View style={styles.panel}>
         <Text style={styles.panelTitle}>{t('writing.addYourOwn', 'Add your own')}</Text>
         <TextInput mode="outlined" value={customTarget} onChangeText={setCustomTarget} placeholder={t('writing.customTargetPlaceholder', 'Target word or sentence')} style={styles.input} />
         <TextInput mode="outlined" value={customNative} onChangeText={setCustomNative} placeholder={t('writing.customNativePlaceholder', 'Meaning or note')} style={styles.input} />
         <Button mode="contained" icon="plus" onPress={addPersonalItem} style={styles.actionButton}>{t('writing.addToNotebook', 'Add to notebook')}</Button>
       </View>
+      )}
 
       <View style={styles.panel}>
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.modeRail}>
@@ -725,6 +740,12 @@ const createStyles = (colors: AppColors) => StyleSheet.create({
   },
   countNumber: { color: colors.primary, fontSize: 22, fontWeight: '900' },
   countLabel: { color: colors.primary, fontSize: 11, fontWeight: '800' },
+  panelToggleRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+    marginBottom: 12,
+  },
   panel: {
     padding: 14,
     borderRadius: 8,

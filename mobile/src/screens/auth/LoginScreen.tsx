@@ -307,6 +307,16 @@ const LoginScreen: React.FC = () => {
                 {t('login.signUpHere')}
               </Text>
             </View>
+
+            <View style={styles.supportRow}>
+              <Text style={styles.supportLink} onPress={() => navigation.navigate('Pricing')}>
+                {t('navbar.plans', 'Plans')}
+              </Text>
+              <Text style={styles.supportSeparator}>·</Text>
+              <Text style={styles.supportLink} onPress={() => navigation.navigate('Contact')}>
+                {t('contact.navLabel', 'Contact')}
+              </Text>
+            </View>
           </View>
         </ScrollView>
       </View>
@@ -451,6 +461,22 @@ const styles = StyleSheet.create({
     color: colors.primary,
     fontSize: 14,
     fontWeight: '600',
+  },
+  supportRow: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 10,
+    marginTop: 14,
+  },
+  supportLink: {
+    color: colors.textSecondary,
+    fontSize: 13,
+    fontWeight: '600',
+  },
+  supportSeparator: {
+    color: colors.textMuted,
+    fontSize: 13,
   },
   errorText: { fontSize: 14 },
   suspendedBox: {

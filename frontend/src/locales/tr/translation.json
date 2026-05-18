@@ -968,7 +968,9 @@
     "practiceEverywhereAria": "Bu öğeyi başka bir yerde uygulayın",
     "practiceEverywhere": "Bunu her yerde uygulayın",
     "saveReply": "Yanıtı kaydet",
-    "selfTestReason": "Hızlı bir kendi kendine test için sınıftan kaydedildi."
+    "selfTestReason": "Hızlı bir kendi kendine test için sınıftan kaydedildi.",
+    "hideOutline": "Taslağı gizle",
+    "showOutline": "Taslağı göster"
   },
   "classList": {
     "heroAriaLabel": "Sınıf",
@@ -1009,7 +1011,10 @@
     },
     "titlePrefix": {
       "unit": "Seviye {{level}} · Birim {{unit}}: {{title}}"
-    }
+    },
+    "retry": "Tekrar deneyin",
+    "progressAriaLabel": "Sınıf ilerlemesi",
+    "progressCaption": "{{percent}}% tamamlandı · {{completed}} / {{total}} öğe"
   },
   "contextPractice": {
     "title": "Etrafınızda şekillenen dersler",
@@ -1092,7 +1097,9 @@
     "recapWentWell": "Neler iyi gitti",
     "recapUsefulPhrases": "Yararlı ifadeler",
     "recapReview": "Sonrakini incele",
-    "recapReviewFallback": "Bir cümleyi kaydedin ve başka bir pratik modunda yeniden kullanın."
+    "recapReviewFallback": "Bir cümleyi kaydedin ve başka bir pratik modunda yeniden kullanın.",
+    "hideSetup": "Kurulumu gizle",
+    "showSetup": "Kurulumu göster"
   },
   "exerciseHub": {
     "ariaLabel": "Egzersiz yapmak",
@@ -1187,7 +1194,9 @@
       "default": "{{index}}. {{char}}: şekli kopyalayın, ardından bellekten yazın."
     },
     "savedReason": "Başka bir geçiş için yazma alıştırmasından kurtarıldım.",
-    "selfTestReason": "Hızlı bir kendi kendine test için yazma alıştırmasından kurtarıldı."
+    "selfTestReason": "Hızlı bir kendi kendine test için yazma alıştırmasından kurtarıldı.",
+    "hideNotebook": "Not defterini gizle",
+    "showNotebook": "Not defterini göster"
   },
   "institution": {
     "kicker": "Kurum",

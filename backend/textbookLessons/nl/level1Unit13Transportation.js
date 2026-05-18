@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('nl', {
-  slug: 'nl-l1u13',
-  title: 'Level 1 · Unit 13: Vervoer — Transportation',
-  category: 'travel',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Use Dutch transport language for bikes, trains, buses, and travel time.',
-  vocabularyGoal: 'Use vehicle, station, ticket, and route words.',
-  grammarGoal: 'Use `met` for means, separable verbs such as `instappen/uitstappen`, and travel-time questions.',
-  speakingGoal: 'Ask how to go somewhere, choose transport, and ask how long it takes.',
-  task: 'Plan a trip from campus to the city center.',
-  expressionPractice: [
-    practice('choosing-transport', 'Choosing transport', 'Use `met de fiets/trein/bus`.'),
-    practice('asking-route', 'Asking route', 'Use one route question.'),
-    practice('asking-duration', 'Asking duration', 'Use `hoe lang duurt het?`.'),
+module.exports = {
+  "title": "Level 1 · Unit 13: Vervoer — Transportation",
+  "category": "travel",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "nl-level1unit13transportation-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Use Dutch transport language for bikes, trains, buses, and travel time."
+      ],
+      "task": "Plan a trip from campus to the city center."
+    },
+    {
+      "id": "nl-level1unit13transportation-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "nl-level1unit13transportation-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 13: Vervoer — Transportation with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "nl-level1unit13transportation-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 13: Vervoer — Transportation sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "nl-level1unit13transportation-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Use Dutch transport language for bikes, trains, buses, and travel time."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "nl-level1unit13transportation-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 13: Vervoer — Transportation with one nearby Dutch form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "nl-level1unit13transportation-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "nl-level1unit13transportation-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "nl-level1unit13transportation-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "nl-level1unit13transportation-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "nl-level1unit13transportation-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Plan a trip from campus to the city center."
+      ],
+      "task": "Plan a trip from campus to the city center."
+    }
   ],
-  relatedPools: ['topic-travel', 'topic-city'],
-  items: [
-    item('met de fiets', 'met də FEETS', '“By bike.” In Dutch life this is often the default transport answer.', 'Ik ga met de fiets naar school.', '“I go to school by bike.”'),
-    item('de trein', 'də treyn', '“The train.” A core intercity transport noun.', 'De trein vertrekt om acht uur.', '“The train leaves at eight.”'),
-    item('de tram', 'də tram', '“The tram.” Especially useful in Dutch cities.', 'De tram stopt voor het museum.', '“The tram stops in front of the museum.”'),
-    item('de halte', 'də HAL-tə', '“The stop.” Used for bus and tram stops.', 'De bushalte is dichtbij.', '“The bus stop is nearby.”'),
-    item('instappen / uitstappen', 'IN-stap-pen / OYT-stap-pen', '“Get on / get off.” Separable verbs that are common in transport announcements.', 'Ik stap bij het station uit.', '“I get off at the station.”'),
-    item('een kaartje', 'ən KAHRT-yə', '“A ticket.” The diminutive form is the everyday word.', 'Ik koop een kaartje naar Utrecht.', '“I buy a ticket to Utrecht.”'),
-    item('hoe kom ik in het centrum?', 'hoo kom ik in hət SEN-trum', '“How do I get downtown?” A practical route question.', 'Hoe kom ik in het centrum?', '“How do I get downtown?”'),
-    item('hoe lang duurt het?', 'hoo lang dyrt hət', '“How long does it take?” A complete travel-duration question.', 'Hoe lang duurt het naar Schiphol?', '“How long does it take to Schiphol?”'),
+  "expressionPractice": [
+    {
+      "id": "choosing-transport",
+      "label": "Choosing transport",
+      "goal": "Use `met de fiets/trein/bus`."
+    },
+    {
+      "id": "asking-route",
+      "label": "Asking route",
+      "goal": "Use one route question."
+    },
+    {
+      "id": "asking-duration",
+      "label": "Asking duration",
+      "goal": "Use `hoe lang duurt het?`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-travel",
+    "topic-city"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit13transportation-orientation"
+      ],
+      "targetText": "lesdoel",
+      "romanization": "",
+      "nativeText": "Use Dutch transport language for bikes, trains, buses, and travel time.",
+      "pronunciation": "",
+      "exampleTarget": "lesdoel",
+      "exampleNative": "The whole lesson is built toward this outcome: Plan a trip from campus to the city center.",
+      "korean": "lesdoel",
+      "english": "Use Dutch transport language for bikes, trains, buses, and travel time.",
+      "example": "lesdoel",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Plan a trip from campus to the city center."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "nl-level1unit13transportation-pronunciation"
+      ],
+      "targetText": "klankcontrole",
+      "romanization": "",
+      "nativeText": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Ik ga met de fiets naar school.\".",
+      "pronunciation": "",
+      "exampleTarget": "Ik ga met de fiets naar school.",
+      "exampleNative": "“I go to school by bike.”",
+      "korean": "klankcontrole",
+      "english": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Ik ga met de fiets naar school.\".",
+      "example": "Ik ga met de fiets naar school.",
+      "exampleEnglish": "“I go to school by bike.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1"
+      ],
+      "targetText": "met de fiets",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 13: Vervoer — Transportation with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Ik ga met de fiets naar school.",
+      "exampleNative": "“I go to school by bike.”",
+      "korean": "met de fiets",
+      "english": "Use the key language of Level 1 · Unit 13: Vervoer — Transportation with the register and setting that the lesson requires.",
+      "example": "Ik ga met de fiets naar school.",
+      "exampleEnglish": "“I go to school by bike.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-2"
+      ],
+      "targetText": "de trein",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 13: Vervoer — Transportation sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "De trein vertrekt om acht uur.",
+      "exampleNative": "“The train leaves at eight.”",
+      "korean": "de trein",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 13: Vervoer — Transportation sound precise rather than merely understandable.",
+      "example": "De trein vertrekt om acht uur.",
+      "exampleEnglish": "“The train leaves at eight.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "nl-level1unit13transportation-grammar-1"
+      ],
+      "targetText": "met de fiets",
+      "romanization": "",
+      "nativeText": "Use Dutch transport language for bikes, trains, buses, and travel time.",
+      "pronunciation": "",
+      "exampleTarget": "Ik ga met de fiets naar school.",
+      "exampleNative": "“I go to school by bike.”",
+      "korean": "met de fiets",
+      "english": "Use Dutch transport language for bikes, trains, buses, and travel time.",
+      "example": "Ik ga met de fiets naar school.",
+      "exampleEnglish": "“I go to school by bike.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "nl-level1unit13transportation-grammar-2"
+      ],
+      "targetText": "de trein",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 13: Vervoer — Transportation with one nearby Dutch form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "De trein vertrekt om acht uur.",
+      "exampleNative": "“The train leaves at eight.”",
+      "korean": "de trein",
+      "english": "Contrast the main pattern in Level 1 · Unit 13: Vervoer — Transportation with one nearby Dutch form so the learner can avoid literal translation.",
+      "example": "De trein vertrekt om acht uur.",
+      "exampleEnglish": "“The train leaves at eight.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "nl-level1unit13transportation-reading"
+      ],
+      "targetText": "leesmodel",
+      "romanization": "",
+      "nativeText": "Read \"Hoe lang duurt het naar Schiphol?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Hoe lang duurt het naar Schiphol?",
+      "exampleNative": "“How long does it take to Schiphol?”",
+      "korean": "leesmodel",
+      "english": "Read \"Hoe lang duurt het naar Schiphol?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Hoe lang duurt het naar Schiphol?",
+      "exampleEnglish": "“How long does it take to Schiphol?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit13transportation-listening"
+      ],
+      "targetText": "dialoogmodel",
+      "romanization": "",
+      "nativeText": "Hear \"Hoe lang duurt het naar Schiphol?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Hoe lang duurt het naar Schiphol?",
+      "exampleNative": "“How long does it take to Schiphol?”",
+      "korean": "dialoogmodel",
+      "english": "Hear \"Hoe lang duurt het naar Schiphol?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Hoe lang duurt het naar Schiphol?",
+      "exampleEnglish": "“How long does it take to Schiphol?”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "nl-level1unit13transportation-writing"
+      ],
+      "targetText": "schrijfoefening",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Ik ga met de fiets naar school.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Ik ga met de fiets naar school.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "schrijfoefening",
+      "english": "Write your own version after studying \"Ik ga met de fiets naar school.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Ik ga met de fiets naar school.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "nl-level1unit13transportation-culture"
+      ],
+      "targetText": "gebruik en context",
+      "romanization": "",
+      "nativeText": "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "De trein vertrekt om acht uur.",
+      "exampleNative": "“The train leaves at eight.”",
+      "korean": "gebruik en context",
+      "english": "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used.",
+      "example": "De trein vertrekt om acht uur.",
+      "exampleEnglish": "“The train leaves at eight.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "eindtaak",
+      "romanization": "",
+      "nativeText": "Plan a trip from campus to the city center.",
+      "pronunciation": "",
+      "exampleTarget": "Hoe lang duurt het naar Schiphol?",
+      "exampleNative": "Plan a trip from campus to the city center.",
+      "korean": "eindtaak",
+      "english": "Plan a trip from campus to the city center.",
+      "example": "Hoe lang duurt het naar Schiphol?",
+      "exampleEnglish": "Plan a trip from campus to the city center."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit13transportation-grammar-2"
+      ],
+      "targetText": "veelgemaakte fout",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around verb-second order, separable verbs, pronouns, and article choice. Begin by checking \"De trein vertrekt om acht uur.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "De trein vertrekt om acht uur.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “The train leaves at eight.”",
+      "korean": "veelgemaakte fout",
+      "english": "Watch for literal-translation mistakes around verb-second order, separable verbs, pronouns, and article choice. Begin by checking \"De trein vertrekt om acht uur.\" against the model.",
+      "example": "De trein vertrekt om acht uur.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “The train leaves at eight.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-culture"
+      ],
+      "targetText": "register",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for jij, u, a service register, or a more relaxed everyday choice before selecting the final wording. Compare the social fit of \"Ik ga met de fiets naar school.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Ik ga met de fiets naar school.",
+      "exampleNative": "“I go to school by bike.”",
+      "korean": "register",
+      "english": "Check whether the setting calls for jij, u, a service register, or a more relaxed everyday choice before selecting the final wording. Compare the social fit of \"Ik ga met de fiets naar school.\" before reusing it elsewhere.",
+      "example": "Ik ga met de fiets naar school.",
+      "exampleEnglish": "“I go to school by bike.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "vloeiendheid",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Dutch message rather than as separate translated fragments. Aim to carry \"Hoe lang duurt het naar Schiphol?\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Hoe lang duurt het naar Schiphol?",
+      "exampleNative": "“How long does it take to Schiphol?”",
+      "korean": "vloeiendheid",
+      "english": "Say the idea as one connected Dutch message rather than as separate translated fragments. Aim to carry \"Hoe lang duurt het naar Schiphol?\" as one thought.",
+      "example": "Hoe lang duurt het naar Schiphol?",
+      "exampleEnglish": "“How long does it take to Schiphol?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "toepassing",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Ik ga met de fiets naar school.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Ik ga met de fiets naar school.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "toepassing",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Ik ga met de fiets naar school.\" and move it into your own life.",
+      "example": "Ik ga met de fiets naar school.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-grammar-1"
+      ],
+      "targetText": "actief ophalen",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"met de fiets\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "met de fiets",
+      "exampleNative": "“By bike.” In Dutch life this is often the default transport answer.",
+      "korean": "actief ophalen",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"met de fiets\" before looking back.",
+      "example": "met de fiets",
+      "exampleEnglish": "“By bike.” In Dutch life this is often the default transport answer."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-writing"
+      ],
+      "targetText": "uitbreiding",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Hoe lang duurt het naar Schiphol?\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Hoe lang duurt het naar Schiphol?",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "uitbreiding",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Hoe lang duurt het naar Schiphol?\" rather than restarting from a blank sentence.",
+      "example": "Hoe lang duurt het naar Schiphol?",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading"
+      ],
+      "targetText": "vergelijking",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 13: Vervoer — Transportation with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"De trein vertrekt om acht uur.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "De trein vertrekt om acht uur.",
+      "exampleNative": "“The train leaves at eight.”",
+      "korean": "vergelijking",
+      "english": "Compare the central form in Level 1 · Unit 13: Vervoer — Transportation with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"De trein vertrekt om acht uur.\" as the comparison line.",
+      "example": "De trein vertrekt om acht uur.",
+      "exampleEnglish": "“The train leaves at eight.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "nl-level1unit13transportation-pronunciation"
+      ],
+      "targetText": "uitspraakcorrectie",
+      "romanization": "",
+      "nativeText": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Ik ga met de fiets naar school.\".",
+      "pronunciation": "",
+      "exampleTarget": "Ik ga met de fiets naar school.",
+      "exampleNative": "“I go to school by bike.”",
+      "korean": "uitspraakcorrectie",
+      "english": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Ik ga met de fiets naar school.\".",
+      "example": "Ik ga met de fiets naar school.",
+      "exampleEnglish": "“I go to school by bike.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "dialoogvariatie",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Hoe lang duurt het naar Schiphol?\".",
+      "pronunciation": "",
+      "exampleTarget": "Hoe lang duurt het naar Schiphol?",
+      "exampleNative": "“How long does it take to Schiphol?”",
+      "korean": "dialoogvariatie",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Hoe lang duurt het naar Schiphol?\".",
+      "example": "Hoe lang duurt het naar Schiphol?",
+      "exampleEnglish": "“How long does it take to Schiphol?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-writing"
+      ],
+      "targetText": "zinsbouw",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Ik ga met de fiets naar school.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Ik ga met de fiets naar school.",
+      "exampleNative": "“I go to school by bike.”",
+      "korean": "zinsbouw",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Ik ga met de fiets naar school.\" one layer at a time.",
+      "example": "Ik ga met de fiets naar school.",
+      "exampleEnglish": "“I go to school by bike.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-2"
+      ],
+      "targetText": "snelle check",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"De trein vertrekt om acht uur.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "De trein vertrekt om acht uur.",
+      "exampleNative": "“The train leaves at eight.”",
+      "korean": "snelle check",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"De trein vertrekt om acht uur.\" as the deciding example.",
+      "example": "De trein vertrekt om acht uur.",
+      "exampleEnglish": "“The train leaves at eight.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit13transportation-culture",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "terugblik",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Hoe lang duurt het naar Schiphol?\".",
+      "pronunciation": "",
+      "exampleTarget": "Hoe lang duurt het naar Schiphol?",
+      "exampleNative": "“How long does it take to Schiphol?”",
+      "korean": "terugblik",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Hoe lang duurt het naar Schiphol?\".",
+      "example": "Hoe lang duurt het naar Schiphol?",
+      "exampleEnglish": "“How long does it take to Schiphol?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "met de fiets",
+      "romanization": "met də FEETS",
+      "nativeText": "“By bike.” In Dutch life this is often the default transport answer.",
+      "pronunciation": "met də FEETS",
+      "exampleTarget": "Ik ga met de fiets naar school.",
+      "exampleNative": "“I go to school by bike.”",
+      "korean": "met de fiets",
+      "english": "“By bike.” In Dutch life this is often the default transport answer.",
+      "example": "Ik ga met de fiets naar school.",
+      "exampleEnglish": "“I go to school by bike.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "Ik ga met de fiets naar school.",
+      "romanization": "met də FEETS",
+      "nativeText": "Model use for \"Ik ga met de fiets naar school.\": “I go to school by bike.”",
+      "pronunciation": "met də FEETS",
+      "exampleTarget": "Ik ga met de fiets naar school.",
+      "exampleNative": "“I go to school by bike.”",
+      "korean": "Ik ga met de fiets naar school.",
+      "english": "Model use for \"Ik ga met de fiets naar school.\": “I go to school by bike.”",
+      "example": "Ik ga met de fiets naar school.",
+      "exampleEnglish": "“I go to school by bike.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "met de fiets",
+      "romanization": "met də FEETS",
+      "nativeText": "Usage focus for \"met de fiets\": Use the key language of Level 1 · Unit 13: Vervoer — Transportation with the register and setting that the lesson requires.",
+      "pronunciation": "met də FEETS",
+      "exampleTarget": "Ik ga met de fiets naar school.",
+      "exampleNative": "Notice what the form is doing here: “I go to school by bike.”",
+      "korean": "met de fiets",
+      "english": "Usage focus for \"met de fiets\": Use the key language of Level 1 · Unit 13: Vervoer — Transportation with the register and setting that the lesson requires.",
+      "example": "Ik ga met de fiets naar school.",
+      "exampleEnglish": "Notice what the form is doing here: “I go to school by bike.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "met de fiets",
+      "romanization": "met də FEETS",
+      "nativeText": "Contrast check for \"met de fiets\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "met də FEETS",
+      "exampleTarget": "Ik ga met de fiets naar school.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I go to school by bike.”",
+      "korean": "met de fiets",
+      "english": "Contrast check for \"met de fiets\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik ga met de fiets naar school.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I go to school by bike.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "met de fiets",
+      "romanization": "met də FEETS",
+      "nativeText": "Recall \"met de fiets\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik ga met de fiets naar school.\".",
+      "pronunciation": "met də FEETS",
+      "exampleTarget": "Ik ga met de fiets naar school.",
+      "exampleNative": "Self-check against the model before moving on: “I go to school by bike.”",
+      "korean": "met de fiets",
+      "english": "Recall \"met de fiets\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik ga met de fiets naar school.\".",
+      "example": "Ik ga met de fiets naar school.",
+      "exampleEnglish": "Self-check against the model before moving on: “I go to school by bike.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "met de fiets",
+      "romanization": "met də FEETS",
+      "nativeText": "Repair \"met de fiets\" inside \"Ik ga met de fiets naar school.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 13: Vervoer — Transportation with the register and setting that the lesson requires.",
+      "pronunciation": "met də FEETS",
+      "exampleTarget": "Ik ga met de fiets naar school.",
+      "exampleNative": "Use the model as the repair target: “I go to school by bike.”",
+      "korean": "met de fiets",
+      "english": "Repair \"met de fiets\" inside \"Ik ga met de fiets naar school.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 13: Vervoer — Transportation with the register and setting that the lesson requires.",
+      "example": "Ik ga met de fiets naar school.",
+      "exampleEnglish": "Use the model as the repair target: “I go to school by bike.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "met de fiets",
+      "romanization": "met də FEETS",
+      "nativeText": "Transfer \"met de fiets\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik ga met de fiets naar school.\".",
+      "pronunciation": "met də FEETS",
+      "exampleTarget": "Ik ga met de fiets naar school.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I go to school by bike.”",
+      "korean": "met de fiets",
+      "english": "Transfer \"met de fiets\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik ga met de fiets naar school.\".",
+      "example": "Ik ga met de fiets naar school.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I go to school by bike.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "met de fiets",
+      "romanization": "met də FEETS",
+      "nativeText": "Find one word or phrase that naturally travels with \"met de fiets\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "met də FEETS",
+      "exampleTarget": "Ik ga met de fiets naar school.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I go to school by bike.”",
+      "korean": "met de fiets",
+      "english": "Find one word or phrase that naturally travels with \"met de fiets\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik ga met de fiets naar school.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I go to school by bike.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "met de fiets",
+      "romanization": "met də FEETS",
+      "nativeText": "Listen for \"met de fiets\" inside \"Ik ga met de fiets naar school.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "met də FEETS",
+      "exampleTarget": "Ik ga met de fiets naar school.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I go to school by bike.”",
+      "korean": "met de fiets",
+      "english": "Listen for \"met de fiets\" inside \"Ik ga met de fiets naar school.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik ga met de fiets naar school.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I go to school by bike.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "met de fiets",
+      "romanization": "met də FEETS",
+      "nativeText": "Write \"met de fiets\" again without looking, then compare the exact written form against \"Ik ga met de fiets naar school.\" before moving on.",
+      "pronunciation": "met də FEETS",
+      "exampleTarget": "Ik ga met de fiets naar school.",
+      "exampleNative": "Use the written model as the final correctness check: “I go to school by bike.”",
+      "korean": "met de fiets",
+      "english": "Write \"met de fiets\" again without looking, then compare the exact written form against \"Ik ga met de fiets naar school.\" before moving on.",
+      "example": "Ik ga met de fiets naar school.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I go to school by bike.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "met de fiets",
+      "romanization": "met də FEETS",
+      "nativeText": "Check whether \"met de fiets\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I go to school by bike.”",
+      "pronunciation": "met də FEETS",
+      "exampleTarget": "Ik ga met de fiets naar school.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I go to school by bike.”",
+      "korean": "met de fiets",
+      "english": "Check whether \"met de fiets\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I go to school by bike.”",
+      "example": "Ik ga met de fiets naar school.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I go to school by bike.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "de trein",
+      "romanization": "də treyn",
+      "nativeText": "“The train.” A core intercity transport noun.",
+      "pronunciation": "də treyn",
+      "exampleTarget": "De trein vertrekt om acht uur.",
+      "exampleNative": "“The train leaves at eight.”",
+      "korean": "de trein",
+      "english": "“The train.” A core intercity transport noun.",
+      "example": "De trein vertrekt om acht uur.",
+      "exampleEnglish": "“The train leaves at eight.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "De trein vertrekt om acht uur.",
+      "romanization": "də treyn",
+      "nativeText": "Model use for \"De trein vertrekt om acht uur.\": “The train leaves at eight.”",
+      "pronunciation": "də treyn",
+      "exampleTarget": "De trein vertrekt om acht uur.",
+      "exampleNative": "“The train leaves at eight.”",
+      "korean": "De trein vertrekt om acht uur.",
+      "english": "Model use for \"De trein vertrekt om acht uur.\": “The train leaves at eight.”",
+      "example": "De trein vertrekt om acht uur.",
+      "exampleEnglish": "“The train leaves at eight.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "de trein",
+      "romanization": "də treyn",
+      "nativeText": "Usage focus for \"de trein\": Distinguish the nearby wording choices that make Level 1 · Unit 13: Vervoer — Transportation sound precise rather than merely understandable.",
+      "pronunciation": "də treyn",
+      "exampleTarget": "De trein vertrekt om acht uur.",
+      "exampleNative": "Notice what the form is doing here: “The train leaves at eight.”",
+      "korean": "de trein",
+      "english": "Usage focus for \"de trein\": Distinguish the nearby wording choices that make Level 1 · Unit 13: Vervoer — Transportation sound precise rather than merely understandable.",
+      "example": "De trein vertrekt om acht uur.",
+      "exampleEnglish": "Notice what the form is doing here: “The train leaves at eight.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "de trein",
+      "romanization": "də treyn",
+      "nativeText": "Contrast check for \"de trein\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "də treyn",
+      "exampleTarget": "De trein vertrekt om acht uur.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The train leaves at eight.”",
+      "korean": "de trein",
+      "english": "Contrast check for \"de trein\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "De trein vertrekt om acht uur.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The train leaves at eight.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "de trein",
+      "romanization": "də treyn",
+      "nativeText": "Recall \"de trein\" from memory, then explain what would change if a nearby alternative replaced it in \"De trein vertrekt om acht uur.\".",
+      "pronunciation": "də treyn",
+      "exampleTarget": "De trein vertrekt om acht uur.",
+      "exampleNative": "Self-check against the model before moving on: “The train leaves at eight.”",
+      "korean": "de trein",
+      "english": "Recall \"de trein\" from memory, then explain what would change if a nearby alternative replaced it in \"De trein vertrekt om acht uur.\".",
+      "example": "De trein vertrekt om acht uur.",
+      "exampleEnglish": "Self-check against the model before moving on: “The train leaves at eight.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "de trein",
+      "romanization": "də treyn",
+      "nativeText": "Repair \"de trein\" inside \"De trein vertrekt om acht uur.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 13: Vervoer — Transportation sound precise rather than merely understandable.",
+      "pronunciation": "də treyn",
+      "exampleTarget": "De trein vertrekt om acht uur.",
+      "exampleNative": "Use the model as the repair target: “The train leaves at eight.”",
+      "korean": "de trein",
+      "english": "Repair \"de trein\" inside \"De trein vertrekt om acht uur.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 13: Vervoer — Transportation sound precise rather than merely understandable.",
+      "example": "De trein vertrekt om acht uur.",
+      "exampleEnglish": "Use the model as the repair target: “The train leaves at eight.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "de trein",
+      "romanization": "də treyn",
+      "nativeText": "Transfer \"de trein\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"De trein vertrekt om acht uur.\".",
+      "pronunciation": "də treyn",
+      "exampleTarget": "De trein vertrekt om acht uur.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The train leaves at eight.”",
+      "korean": "de trein",
+      "english": "Transfer \"de trein\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"De trein vertrekt om acht uur.\".",
+      "example": "De trein vertrekt om acht uur.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The train leaves at eight.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "de trein",
+      "romanization": "də treyn",
+      "nativeText": "Find one word or phrase that naturally travels with \"de trein\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "də treyn",
+      "exampleTarget": "De trein vertrekt om acht uur.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The train leaves at eight.”",
+      "korean": "de trein",
+      "english": "Find one word or phrase that naturally travels with \"de trein\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "De trein vertrekt om acht uur.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The train leaves at eight.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "de trein",
+      "romanization": "də treyn",
+      "nativeText": "Listen for \"de trein\" inside \"De trein vertrekt om acht uur.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "də treyn",
+      "exampleTarget": "De trein vertrekt om acht uur.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The train leaves at eight.”",
+      "korean": "de trein",
+      "english": "Listen for \"de trein\" inside \"De trein vertrekt om acht uur.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "De trein vertrekt om acht uur.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The train leaves at eight.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "de trein",
+      "romanization": "də treyn",
+      "nativeText": "Write \"de trein\" again without looking, then compare the exact written form against \"De trein vertrekt om acht uur.\" before moving on.",
+      "pronunciation": "də treyn",
+      "exampleTarget": "De trein vertrekt om acht uur.",
+      "exampleNative": "Use the written model as the final correctness check: “The train leaves at eight.”",
+      "korean": "de trein",
+      "english": "Write \"de trein\" again without looking, then compare the exact written form against \"De trein vertrekt om acht uur.\" before moving on.",
+      "example": "De trein vertrekt om acht uur.",
+      "exampleEnglish": "Use the written model as the final correctness check: “The train leaves at eight.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "de trein",
+      "romanization": "də treyn",
+      "nativeText": "Check whether \"de trein\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The train leaves at eight.”",
+      "pronunciation": "də treyn",
+      "exampleTarget": "De trein vertrekt om acht uur.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The train leaves at eight.”",
+      "korean": "de trein",
+      "english": "Check whether \"de trein\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The train leaves at eight.”",
+      "example": "De trein vertrekt om acht uur.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The train leaves at eight.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "de tram",
+      "romanization": "də tram",
+      "nativeText": "“The tram.” Especially useful in Dutch cities.",
+      "pronunciation": "də tram",
+      "exampleTarget": "De tram stopt voor het museum.",
+      "exampleNative": "“The tram stops in front of the museum.”",
+      "korean": "de tram",
+      "english": "“The tram.” Especially useful in Dutch cities.",
+      "example": "De tram stopt voor het museum.",
+      "exampleEnglish": "“The tram stops in front of the museum.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "De tram stopt voor het museum.",
+      "romanization": "də tram",
+      "nativeText": "Model use for \"De tram stopt voor het museum.\": “The tram stops in front of the museum.”",
+      "pronunciation": "də tram",
+      "exampleTarget": "De tram stopt voor het museum.",
+      "exampleNative": "“The tram stops in front of the museum.”",
+      "korean": "De tram stopt voor het museum.",
+      "english": "Model use for \"De tram stopt voor het museum.\": “The tram stops in front of the museum.”",
+      "example": "De tram stopt voor het museum.",
+      "exampleEnglish": "“The tram stops in front of the museum.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "de tram",
+      "romanization": "də tram",
+      "nativeText": "Usage focus for \"de tram\": “The tram.” Especially useful in Dutch cities.",
+      "pronunciation": "də tram",
+      "exampleTarget": "De tram stopt voor het museum.",
+      "exampleNative": "Notice what the form is doing here: “The tram stops in front of the museum.”",
+      "korean": "de tram",
+      "english": "Usage focus for \"de tram\": “The tram.” Especially useful in Dutch cities.",
+      "example": "De tram stopt voor het museum.",
+      "exampleEnglish": "Notice what the form is doing here: “The tram stops in front of the museum.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "de tram",
+      "romanization": "də tram",
+      "nativeText": "Contrast check for \"de tram\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "də tram",
+      "exampleTarget": "De tram stopt voor het museum.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The tram stops in front of the museum.”",
+      "korean": "de tram",
+      "english": "Contrast check for \"de tram\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "De tram stopt voor het museum.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The tram stops in front of the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "de tram",
+      "romanization": "də tram",
+      "nativeText": "Recall \"de tram\" from memory, then explain what would change if a nearby alternative replaced it in \"De tram stopt voor het museum.\".",
+      "pronunciation": "də tram",
+      "exampleTarget": "De tram stopt voor het museum.",
+      "exampleNative": "Self-check against the model before moving on: “The tram stops in front of the museum.”",
+      "korean": "de tram",
+      "english": "Recall \"de tram\" from memory, then explain what would change if a nearby alternative replaced it in \"De tram stopt voor het museum.\".",
+      "example": "De tram stopt voor het museum.",
+      "exampleEnglish": "Self-check against the model before moving on: “The tram stops in front of the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "de tram",
+      "romanization": "də tram",
+      "nativeText": "Repair \"de tram\" inside \"De tram stopt voor het museum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “The tram.” Especially useful in Dutch cities.",
+      "pronunciation": "də tram",
+      "exampleTarget": "De tram stopt voor het museum.",
+      "exampleNative": "Use the model as the repair target: “The tram stops in front of the museum.”",
+      "korean": "de tram",
+      "english": "Repair \"de tram\" inside \"De tram stopt voor het museum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “The tram.” Especially useful in Dutch cities.",
+      "example": "De tram stopt voor het museum.",
+      "exampleEnglish": "Use the model as the repair target: “The tram stops in front of the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "de tram",
+      "romanization": "də tram",
+      "nativeText": "Transfer \"de tram\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"De tram stopt voor het museum.\".",
+      "pronunciation": "də tram",
+      "exampleTarget": "De tram stopt voor het museum.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The tram stops in front of the museum.”",
+      "korean": "de tram",
+      "english": "Transfer \"de tram\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"De tram stopt voor het museum.\".",
+      "example": "De tram stopt voor het museum.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The tram stops in front of the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "de tram",
+      "romanization": "də tram",
+      "nativeText": "Find one word or phrase that naturally travels with \"de tram\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "də tram",
+      "exampleTarget": "De tram stopt voor het museum.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The tram stops in front of the museum.”",
+      "korean": "de tram",
+      "english": "Find one word or phrase that naturally travels with \"de tram\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "De tram stopt voor het museum.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The tram stops in front of the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "de tram",
+      "romanization": "də tram",
+      "nativeText": "Listen for \"de tram\" inside \"De tram stopt voor het museum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "də tram",
+      "exampleTarget": "De tram stopt voor het museum.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The tram stops in front of the museum.”",
+      "korean": "de tram",
+      "english": "Listen for \"de tram\" inside \"De tram stopt voor het museum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "De tram stopt voor het museum.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The tram stops in front of the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "de tram",
+      "romanization": "də tram",
+      "nativeText": "Write \"de tram\" again without looking, then compare the exact written form against \"De tram stopt voor het museum.\" before moving on.",
+      "pronunciation": "də tram",
+      "exampleTarget": "De tram stopt voor het museum.",
+      "exampleNative": "Use the written model as the final correctness check: “The tram stops in front of the museum.”",
+      "korean": "de tram",
+      "english": "Write \"de tram\" again without looking, then compare the exact written form against \"De tram stopt voor het museum.\" before moving on.",
+      "example": "De tram stopt voor het museum.",
+      "exampleEnglish": "Use the written model as the final correctness check: “The tram stops in front of the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "de tram",
+      "romanization": "də tram",
+      "nativeText": "Check whether \"de tram\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The tram stops in front of the museum.”",
+      "pronunciation": "də tram",
+      "exampleTarget": "De tram stopt voor het museum.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The tram stops in front of the museum.”",
+      "korean": "de tram",
+      "english": "Check whether \"de tram\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The tram stops in front of the museum.”",
+      "example": "De tram stopt voor het museum.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The tram stops in front of the museum.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "de halte",
+      "romanization": "də HAL-tə",
+      "nativeText": "“The stop.” Used for bus and tram stops.",
+      "pronunciation": "də HAL-tə",
+      "exampleTarget": "De bushalte is dichtbij.",
+      "exampleNative": "“The bus stop is nearby.”",
+      "korean": "de halte",
+      "english": "“The stop.” Used for bus and tram stops.",
+      "example": "De bushalte is dichtbij.",
+      "exampleEnglish": "“The bus stop is nearby.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "De bushalte is dichtbij.",
+      "romanization": "də HAL-tə",
+      "nativeText": "Model use for \"De bushalte is dichtbij.\": “The bus stop is nearby.”",
+      "pronunciation": "də HAL-tə",
+      "exampleTarget": "De bushalte is dichtbij.",
+      "exampleNative": "“The bus stop is nearby.”",
+      "korean": "De bushalte is dichtbij.",
+      "english": "Model use for \"De bushalte is dichtbij.\": “The bus stop is nearby.”",
+      "example": "De bushalte is dichtbij.",
+      "exampleEnglish": "“The bus stop is nearby.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "de halte",
+      "romanization": "də HAL-tə",
+      "nativeText": "Usage focus for \"de halte\": “The stop.” Used for bus and tram stops.",
+      "pronunciation": "də HAL-tə",
+      "exampleTarget": "De bushalte is dichtbij.",
+      "exampleNative": "Notice what the form is doing here: “The bus stop is nearby.”",
+      "korean": "de halte",
+      "english": "Usage focus for \"de halte\": “The stop.” Used for bus and tram stops.",
+      "example": "De bushalte is dichtbij.",
+      "exampleEnglish": "Notice what the form is doing here: “The bus stop is nearby.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "de halte",
+      "romanization": "də HAL-tə",
+      "nativeText": "Contrast check for \"de halte\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "də HAL-tə",
+      "exampleTarget": "De bushalte is dichtbij.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The bus stop is nearby.”",
+      "korean": "de halte",
+      "english": "Contrast check for \"de halte\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "De bushalte is dichtbij.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The bus stop is nearby.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "de halte",
+      "romanization": "də HAL-tə",
+      "nativeText": "Recall \"de halte\" from memory, then explain what would change if a nearby alternative replaced it in \"De bushalte is dichtbij.\".",
+      "pronunciation": "də HAL-tə",
+      "exampleTarget": "De bushalte is dichtbij.",
+      "exampleNative": "Self-check against the model before moving on: “The bus stop is nearby.”",
+      "korean": "de halte",
+      "english": "Recall \"de halte\" from memory, then explain what would change if a nearby alternative replaced it in \"De bushalte is dichtbij.\".",
+      "example": "De bushalte is dichtbij.",
+      "exampleEnglish": "Self-check against the model before moving on: “The bus stop is nearby.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "de halte",
+      "romanization": "də HAL-tə",
+      "nativeText": "Repair \"de halte\" inside \"De bushalte is dichtbij.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “The stop.” Used for bus and tram stops.",
+      "pronunciation": "də HAL-tə",
+      "exampleTarget": "De bushalte is dichtbij.",
+      "exampleNative": "Use the model as the repair target: “The bus stop is nearby.”",
+      "korean": "de halte",
+      "english": "Repair \"de halte\" inside \"De bushalte is dichtbij.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “The stop.” Used for bus and tram stops.",
+      "example": "De bushalte is dichtbij.",
+      "exampleEnglish": "Use the model as the repair target: “The bus stop is nearby.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "de halte",
+      "romanization": "də HAL-tə",
+      "nativeText": "Transfer \"de halte\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"De bushalte is dichtbij.\".",
+      "pronunciation": "də HAL-tə",
+      "exampleTarget": "De bushalte is dichtbij.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The bus stop is nearby.”",
+      "korean": "de halte",
+      "english": "Transfer \"de halte\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"De bushalte is dichtbij.\".",
+      "example": "De bushalte is dichtbij.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The bus stop is nearby.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "de halte",
+      "romanization": "də HAL-tə",
+      "nativeText": "Find one word or phrase that naturally travels with \"de halte\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "də HAL-tə",
+      "exampleTarget": "De bushalte is dichtbij.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The bus stop is nearby.”",
+      "korean": "de halte",
+      "english": "Find one word or phrase that naturally travels with \"de halte\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "De bushalte is dichtbij.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The bus stop is nearby.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "de halte",
+      "romanization": "də HAL-tə",
+      "nativeText": "Listen for \"de halte\" inside \"De bushalte is dichtbij.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "də HAL-tə",
+      "exampleTarget": "De bushalte is dichtbij.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The bus stop is nearby.”",
+      "korean": "de halte",
+      "english": "Listen for \"de halte\" inside \"De bushalte is dichtbij.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "De bushalte is dichtbij.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The bus stop is nearby.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "de halte",
+      "romanization": "də HAL-tə",
+      "nativeText": "Write \"de halte\" again without looking, then compare the exact written form against \"De bushalte is dichtbij.\" before moving on.",
+      "pronunciation": "də HAL-tə",
+      "exampleTarget": "De bushalte is dichtbij.",
+      "exampleNative": "Use the written model as the final correctness check: “The bus stop is nearby.”",
+      "korean": "de halte",
+      "english": "Write \"de halte\" again without looking, then compare the exact written form against \"De bushalte is dichtbij.\" before moving on.",
+      "example": "De bushalte is dichtbij.",
+      "exampleEnglish": "Use the written model as the final correctness check: “The bus stop is nearby.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "de halte",
+      "romanization": "də HAL-tə",
+      "nativeText": "Check whether \"de halte\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The bus stop is nearby.”",
+      "pronunciation": "də HAL-tə",
+      "exampleTarget": "De bushalte is dichtbij.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The bus stop is nearby.”",
+      "korean": "de halte",
+      "english": "Check whether \"de halte\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The bus stop is nearby.”",
+      "example": "De bushalte is dichtbij.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The bus stop is nearby.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "instappen / uitstappen",
+      "romanization": "IN-stap-pen / OYT-stap-pen",
+      "nativeText": "“Get on / get off.” Separable verbs that are common in transport announcements.",
+      "pronunciation": "IN-stap-pen / OYT-stap-pen",
+      "exampleTarget": "Ik stap bij het station uit.",
+      "exampleNative": "“I get off at the station.”",
+      "korean": "instappen / uitstappen",
+      "english": "“Get on / get off.” Separable verbs that are common in transport announcements.",
+      "example": "Ik stap bij het station uit.",
+      "exampleEnglish": "“I get off at the station.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "Ik stap bij het station uit.",
+      "romanization": "IN-stap-pen / OYT-stap-pen",
+      "nativeText": "Model use for \"Ik stap bij het station uit.\": “I get off at the station.”",
+      "pronunciation": "IN-stap-pen / OYT-stap-pen",
+      "exampleTarget": "Ik stap bij het station uit.",
+      "exampleNative": "“I get off at the station.”",
+      "korean": "Ik stap bij het station uit.",
+      "english": "Model use for \"Ik stap bij het station uit.\": “I get off at the station.”",
+      "example": "Ik stap bij het station uit.",
+      "exampleEnglish": "“I get off at the station.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "instappen / uitstappen",
+      "romanization": "IN-stap-pen / OYT-stap-pen",
+      "nativeText": "Usage focus for \"instappen / uitstappen\": “Get on / get off.” Separable verbs that are common in transport announcements.",
+      "pronunciation": "IN-stap-pen / OYT-stap-pen",
+      "exampleTarget": "Ik stap bij het station uit.",
+      "exampleNative": "Notice what the form is doing here: “I get off at the station.”",
+      "korean": "instappen / uitstappen",
+      "english": "Usage focus for \"instappen / uitstappen\": “Get on / get off.” Separable verbs that are common in transport announcements.",
+      "example": "Ik stap bij het station uit.",
+      "exampleEnglish": "Notice what the form is doing here: “I get off at the station.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "instappen / uitstappen",
+      "romanization": "IN-stap-pen / OYT-stap-pen",
+      "nativeText": "Contrast check for \"instappen / uitstappen\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "IN-stap-pen / OYT-stap-pen",
+      "exampleTarget": "Ik stap bij het station uit.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I get off at the station.”",
+      "korean": "instappen / uitstappen",
+      "english": "Contrast check for \"instappen / uitstappen\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik stap bij het station uit.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I get off at the station.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "instappen / uitstappen",
+      "romanization": "IN-stap-pen / OYT-stap-pen",
+      "nativeText": "Recall \"instappen / uitstappen\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik stap bij het station uit.\".",
+      "pronunciation": "IN-stap-pen / OYT-stap-pen",
+      "exampleTarget": "Ik stap bij het station uit.",
+      "exampleNative": "Self-check against the model before moving on: “I get off at the station.”",
+      "korean": "instappen / uitstappen",
+      "english": "Recall \"instappen / uitstappen\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik stap bij het station uit.\".",
+      "example": "Ik stap bij het station uit.",
+      "exampleEnglish": "Self-check against the model before moving on: “I get off at the station.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "instappen / uitstappen",
+      "romanization": "IN-stap-pen / OYT-stap-pen",
+      "nativeText": "Repair \"instappen / uitstappen\" inside \"Ik stap bij het station uit.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Get on / get off.” Separable verbs that are common in transport announcements.",
+      "pronunciation": "IN-stap-pen / OYT-stap-pen",
+      "exampleTarget": "Ik stap bij het station uit.",
+      "exampleNative": "Use the model as the repair target: “I get off at the station.”",
+      "korean": "instappen / uitstappen",
+      "english": "Repair \"instappen / uitstappen\" inside \"Ik stap bij het station uit.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Get on / get off.” Separable verbs that are common in transport announcements.",
+      "example": "Ik stap bij het station uit.",
+      "exampleEnglish": "Use the model as the repair target: “I get off at the station.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "instappen / uitstappen",
+      "romanization": "IN-stap-pen / OYT-stap-pen",
+      "nativeText": "Transfer \"instappen / uitstappen\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik stap bij het station uit.\".",
+      "pronunciation": "IN-stap-pen / OYT-stap-pen",
+      "exampleTarget": "Ik stap bij het station uit.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I get off at the station.”",
+      "korean": "instappen / uitstappen",
+      "english": "Transfer \"instappen / uitstappen\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik stap bij het station uit.\".",
+      "example": "Ik stap bij het station uit.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I get off at the station.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "instappen / uitstappen",
+      "romanization": "IN-stap-pen / OYT-stap-pen",
+      "nativeText": "Find one word or phrase that naturally travels with \"instappen / uitstappen\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "IN-stap-pen / OYT-stap-pen",
+      "exampleTarget": "Ik stap bij het station uit.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I get off at the station.”",
+      "korean": "instappen / uitstappen",
+      "english": "Find one word or phrase that naturally travels with \"instappen / uitstappen\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik stap bij het station uit.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I get off at the station.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "instappen / uitstappen",
+      "romanization": "IN-stap-pen / OYT-stap-pen",
+      "nativeText": "Listen for \"instappen / uitstappen\" inside \"Ik stap bij het station uit.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "IN-stap-pen / OYT-stap-pen",
+      "exampleTarget": "Ik stap bij het station uit.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I get off at the station.”",
+      "korean": "instappen / uitstappen",
+      "english": "Listen for \"instappen / uitstappen\" inside \"Ik stap bij het station uit.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik stap bij het station uit.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I get off at the station.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "instappen / uitstappen",
+      "romanization": "IN-stap-pen / OYT-stap-pen",
+      "nativeText": "Write \"instappen / uitstappen\" again without looking, then compare the exact written form against \"Ik stap bij het station uit.\" before moving on.",
+      "pronunciation": "IN-stap-pen / OYT-stap-pen",
+      "exampleTarget": "Ik stap bij het station uit.",
+      "exampleNative": "Use the written model as the final correctness check: “I get off at the station.”",
+      "korean": "instappen / uitstappen",
+      "english": "Write \"instappen / uitstappen\" again without looking, then compare the exact written form against \"Ik stap bij het station uit.\" before moving on.",
+      "example": "Ik stap bij het station uit.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I get off at the station.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "instappen / uitstappen",
+      "romanization": "IN-stap-pen / OYT-stap-pen",
+      "nativeText": "Check whether \"instappen / uitstappen\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I get off at the station.”",
+      "pronunciation": "IN-stap-pen / OYT-stap-pen",
+      "exampleTarget": "Ik stap bij het station uit.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I get off at the station.”",
+      "korean": "instappen / uitstappen",
+      "english": "Check whether \"instappen / uitstappen\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I get off at the station.”",
+      "example": "Ik stap bij het station uit.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I get off at the station.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "een kaartje",
+      "romanization": "ən KAHRT-yə",
+      "nativeText": "“A ticket.” The diminutive form is the everyday word.",
+      "pronunciation": "ən KAHRT-yə",
+      "exampleTarget": "Ik koop een kaartje naar Utrecht.",
+      "exampleNative": "“I buy a ticket to Utrecht.”",
+      "korean": "een kaartje",
+      "english": "“A ticket.” The diminutive form is the everyday word.",
+      "example": "Ik koop een kaartje naar Utrecht.",
+      "exampleEnglish": "“I buy a ticket to Utrecht.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "Ik koop een kaartje naar Utrecht.",
+      "romanization": "ən KAHRT-yə",
+      "nativeText": "Model use for \"Ik koop een kaartje naar Utrecht.\": “I buy a ticket to Utrecht.”",
+      "pronunciation": "ən KAHRT-yə",
+      "exampleTarget": "Ik koop een kaartje naar Utrecht.",
+      "exampleNative": "“I buy a ticket to Utrecht.”",
+      "korean": "Ik koop een kaartje naar Utrecht.",
+      "english": "Model use for \"Ik koop een kaartje naar Utrecht.\": “I buy a ticket to Utrecht.”",
+      "example": "Ik koop een kaartje naar Utrecht.",
+      "exampleEnglish": "“I buy a ticket to Utrecht.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "een kaartje",
+      "romanization": "ən KAHRT-yə",
+      "nativeText": "Usage focus for \"een kaartje\": “A ticket.” The diminutive form is the everyday word.",
+      "pronunciation": "ən KAHRT-yə",
+      "exampleTarget": "Ik koop een kaartje naar Utrecht.",
+      "exampleNative": "Notice what the form is doing here: “I buy a ticket to Utrecht.”",
+      "korean": "een kaartje",
+      "english": "Usage focus for \"een kaartje\": “A ticket.” The diminutive form is the everyday word.",
+      "example": "Ik koop een kaartje naar Utrecht.",
+      "exampleEnglish": "Notice what the form is doing here: “I buy a ticket to Utrecht.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "een kaartje",
+      "romanization": "ən KAHRT-yə",
+      "nativeText": "Contrast check for \"een kaartje\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ən KAHRT-yə",
+      "exampleTarget": "Ik koop een kaartje naar Utrecht.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I buy a ticket to Utrecht.”",
+      "korean": "een kaartje",
+      "english": "Contrast check for \"een kaartje\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik koop een kaartje naar Utrecht.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I buy a ticket to Utrecht.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "een kaartje",
+      "romanization": "ən KAHRT-yə",
+      "nativeText": "Recall \"een kaartje\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik koop een kaartje naar Utrecht.\".",
+      "pronunciation": "ən KAHRT-yə",
+      "exampleTarget": "Ik koop een kaartje naar Utrecht.",
+      "exampleNative": "Self-check against the model before moving on: “I buy a ticket to Utrecht.”",
+      "korean": "een kaartje",
+      "english": "Recall \"een kaartje\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik koop een kaartje naar Utrecht.\".",
+      "example": "Ik koop een kaartje naar Utrecht.",
+      "exampleEnglish": "Self-check against the model before moving on: “I buy a ticket to Utrecht.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "een kaartje",
+      "romanization": "ən KAHRT-yə",
+      "nativeText": "Repair \"een kaartje\" inside \"Ik koop een kaartje naar Utrecht.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “A ticket.” The diminutive form is the everyday word.",
+      "pronunciation": "ən KAHRT-yə",
+      "exampleTarget": "Ik koop een kaartje naar Utrecht.",
+      "exampleNative": "Use the model as the repair target: “I buy a ticket to Utrecht.”",
+      "korean": "een kaartje",
+      "english": "Repair \"een kaartje\" inside \"Ik koop een kaartje naar Utrecht.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “A ticket.” The diminutive form is the everyday word.",
+      "example": "Ik koop een kaartje naar Utrecht.",
+      "exampleEnglish": "Use the model as the repair target: “I buy a ticket to Utrecht.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "een kaartje",
+      "romanization": "ən KAHRT-yə",
+      "nativeText": "Transfer \"een kaartje\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik koop een kaartje naar Utrecht.\".",
+      "pronunciation": "ən KAHRT-yə",
+      "exampleTarget": "Ik koop een kaartje naar Utrecht.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I buy a ticket to Utrecht.”",
+      "korean": "een kaartje",
+      "english": "Transfer \"een kaartje\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik koop een kaartje naar Utrecht.\".",
+      "example": "Ik koop een kaartje naar Utrecht.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I buy a ticket to Utrecht.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "een kaartje",
+      "romanization": "ən KAHRT-yə",
+      "nativeText": "Find one word or phrase that naturally travels with \"een kaartje\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ən KAHRT-yə",
+      "exampleTarget": "Ik koop een kaartje naar Utrecht.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I buy a ticket to Utrecht.”",
+      "korean": "een kaartje",
+      "english": "Find one word or phrase that naturally travels with \"een kaartje\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik koop een kaartje naar Utrecht.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I buy a ticket to Utrecht.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "een kaartje",
+      "romanization": "ən KAHRT-yə",
+      "nativeText": "Listen for \"een kaartje\" inside \"Ik koop een kaartje naar Utrecht.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ən KAHRT-yə",
+      "exampleTarget": "Ik koop een kaartje naar Utrecht.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I buy a ticket to Utrecht.”",
+      "korean": "een kaartje",
+      "english": "Listen for \"een kaartje\" inside \"Ik koop een kaartje naar Utrecht.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik koop een kaartje naar Utrecht.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I buy a ticket to Utrecht.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "een kaartje",
+      "romanization": "ən KAHRT-yə",
+      "nativeText": "Write \"een kaartje\" again without looking, then compare the exact written form against \"Ik koop een kaartje naar Utrecht.\" before moving on.",
+      "pronunciation": "ən KAHRT-yə",
+      "exampleTarget": "Ik koop een kaartje naar Utrecht.",
+      "exampleNative": "Use the written model as the final correctness check: “I buy a ticket to Utrecht.”",
+      "korean": "een kaartje",
+      "english": "Write \"een kaartje\" again without looking, then compare the exact written form against \"Ik koop een kaartje naar Utrecht.\" before moving on.",
+      "example": "Ik koop een kaartje naar Utrecht.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I buy a ticket to Utrecht.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "een kaartje",
+      "romanization": "ən KAHRT-yə",
+      "nativeText": "Check whether \"een kaartje\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I buy a ticket to Utrecht.”",
+      "pronunciation": "ən KAHRT-yə",
+      "exampleTarget": "Ik koop een kaartje naar Utrecht.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I buy a ticket to Utrecht.”",
+      "korean": "een kaartje",
+      "english": "Check whether \"een kaartje\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I buy a ticket to Utrecht.”",
+      "example": "Ik koop een kaartje naar Utrecht.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I buy a ticket to Utrecht.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "hoe kom ik in het centrum?",
+      "romanization": "hoo kom ik in hət SEN-trum",
+      "nativeText": "“How do I get downtown?” A practical route question.",
+      "pronunciation": "hoo kom ik in hət SEN-trum",
+      "exampleTarget": "Hoe kom ik in het centrum?",
+      "exampleNative": "“How do I get downtown?”",
+      "korean": "hoe kom ik in het centrum?",
+      "english": "“How do I get downtown?” A practical route question.",
+      "example": "Hoe kom ik in het centrum?",
+      "exampleEnglish": "“How do I get downtown?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "Hoe kom ik in het centrum?",
+      "romanization": "hoo kom ik in hət SEN-trum",
+      "nativeText": "Model use for \"Hoe kom ik in het centrum?\": “How do I get downtown?”",
+      "pronunciation": "hoo kom ik in hət SEN-trum",
+      "exampleTarget": "Hoe kom ik in het centrum?",
+      "exampleNative": "“How do I get downtown?”",
+      "korean": "Hoe kom ik in het centrum?",
+      "english": "Model use for \"Hoe kom ik in het centrum?\": “How do I get downtown?”",
+      "example": "Hoe kom ik in het centrum?",
+      "exampleEnglish": "“How do I get downtown?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "hoe kom ik in het centrum?",
+      "romanization": "hoo kom ik in hət SEN-trum",
+      "nativeText": "Usage focus for \"hoe kom ik in het centrum?\": “How do I get downtown?” A practical route question.",
+      "pronunciation": "hoo kom ik in hət SEN-trum",
+      "exampleTarget": "Hoe kom ik in het centrum?",
+      "exampleNative": "Notice what the form is doing here: “How do I get downtown?”",
+      "korean": "hoe kom ik in het centrum?",
+      "english": "Usage focus for \"hoe kom ik in het centrum?\": “How do I get downtown?” A practical route question.",
+      "example": "Hoe kom ik in het centrum?",
+      "exampleEnglish": "Notice what the form is doing here: “How do I get downtown?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "hoe kom ik in het centrum?",
+      "romanization": "hoo kom ik in hət SEN-trum",
+      "nativeText": "Contrast check for \"hoe kom ik in het centrum?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "hoo kom ik in hət SEN-trum",
+      "exampleTarget": "Hoe kom ik in het centrum?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How do I get downtown?”",
+      "korean": "hoe kom ik in het centrum?",
+      "english": "Contrast check for \"hoe kom ik in het centrum?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Hoe kom ik in het centrum?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How do I get downtown?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "hoe kom ik in het centrum?",
+      "romanization": "hoo kom ik in hət SEN-trum",
+      "nativeText": "Recall \"hoe kom ik in het centrum?\" from memory, then explain what would change if a nearby alternative replaced it in \"Hoe kom ik in het centrum?\".",
+      "pronunciation": "hoo kom ik in hət SEN-trum",
+      "exampleTarget": "Hoe kom ik in het centrum?",
+      "exampleNative": "Self-check against the model before moving on: “How do I get downtown?”",
+      "korean": "hoe kom ik in het centrum?",
+      "english": "Recall \"hoe kom ik in het centrum?\" from memory, then explain what would change if a nearby alternative replaced it in \"Hoe kom ik in het centrum?\".",
+      "example": "Hoe kom ik in het centrum?",
+      "exampleEnglish": "Self-check against the model before moving on: “How do I get downtown?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "hoe kom ik in het centrum?",
+      "romanization": "hoo kom ik in hət SEN-trum",
+      "nativeText": "Repair \"hoe kom ik in het centrum?\" inside \"Hoe kom ik in het centrum?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “How do I get downtown?” A practical route question.",
+      "pronunciation": "hoo kom ik in hət SEN-trum",
+      "exampleTarget": "Hoe kom ik in het centrum?",
+      "exampleNative": "Use the model as the repair target: “How do I get downtown?”",
+      "korean": "hoe kom ik in het centrum?",
+      "english": "Repair \"hoe kom ik in het centrum?\" inside \"Hoe kom ik in het centrum?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “How do I get downtown?” A practical route question.",
+      "example": "Hoe kom ik in het centrum?",
+      "exampleEnglish": "Use the model as the repair target: “How do I get downtown?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "hoe kom ik in het centrum?",
+      "romanization": "hoo kom ik in hət SEN-trum",
+      "nativeText": "Transfer \"hoe kom ik in het centrum?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Hoe kom ik in het centrum?\".",
+      "pronunciation": "hoo kom ik in hət SEN-trum",
+      "exampleTarget": "Hoe kom ik in het centrum?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “How do I get downtown?”",
+      "korean": "hoe kom ik in het centrum?",
+      "english": "Transfer \"hoe kom ik in het centrum?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Hoe kom ik in het centrum?\".",
+      "example": "Hoe kom ik in het centrum?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “How do I get downtown?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "hoe kom ik in het centrum?",
+      "romanization": "hoo kom ik in hət SEN-trum",
+      "nativeText": "Find one word or phrase that naturally travels with \"hoe kom ik in het centrum?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "hoo kom ik in hət SEN-trum",
+      "exampleTarget": "Hoe kom ik in het centrum?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “How do I get downtown?”",
+      "korean": "hoe kom ik in het centrum?",
+      "english": "Find one word or phrase that naturally travels with \"hoe kom ik in het centrum?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Hoe kom ik in het centrum?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “How do I get downtown?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "hoe kom ik in het centrum?",
+      "romanization": "hoo kom ik in hət SEN-trum",
+      "nativeText": "Listen for \"hoe kom ik in het centrum?\" inside \"Hoe kom ik in het centrum?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "hoo kom ik in hət SEN-trum",
+      "exampleTarget": "Hoe kom ik in het centrum?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How do I get downtown?”",
+      "korean": "hoe kom ik in het centrum?",
+      "english": "Listen for \"hoe kom ik in het centrum?\" inside \"Hoe kom ik in het centrum?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Hoe kom ik in het centrum?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How do I get downtown?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "hoe kom ik in het centrum?",
+      "romanization": "hoo kom ik in hət SEN-trum",
+      "nativeText": "Write \"hoe kom ik in het centrum?\" again without looking, then compare the exact written form against \"Hoe kom ik in het centrum?\" before moving on.",
+      "pronunciation": "hoo kom ik in hət SEN-trum",
+      "exampleTarget": "Hoe kom ik in het centrum?",
+      "exampleNative": "Use the written model as the final correctness check: “How do I get downtown?”",
+      "korean": "hoe kom ik in het centrum?",
+      "english": "Write \"hoe kom ik in het centrum?\" again without looking, then compare the exact written form against \"Hoe kom ik in het centrum?\" before moving on.",
+      "example": "Hoe kom ik in het centrum?",
+      "exampleEnglish": "Use the written model as the final correctness check: “How do I get downtown?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "hoe kom ik in het centrum?",
+      "romanization": "hoo kom ik in hət SEN-trum",
+      "nativeText": "Check whether \"hoe kom ik in het centrum?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How do I get downtown?”",
+      "pronunciation": "hoo kom ik in hət SEN-trum",
+      "exampleTarget": "Hoe kom ik in het centrum?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “How do I get downtown?”",
+      "korean": "hoe kom ik in het centrum?",
+      "english": "Check whether \"hoe kom ik in het centrum?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How do I get downtown?”",
+      "example": "Hoe kom ik in het centrum?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “How do I get downtown?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "hoe lang duurt het?",
+      "romanization": "hoo lang dyrt hət",
+      "nativeText": "“How long does it take?” A complete travel-duration question.",
+      "pronunciation": "hoo lang dyrt hət",
+      "exampleTarget": "Hoe lang duurt het naar Schiphol?",
+      "exampleNative": "“How long does it take to Schiphol?”",
+      "korean": "hoe lang duurt het?",
+      "english": "“How long does it take?” A complete travel-duration question.",
+      "example": "Hoe lang duurt het naar Schiphol?",
+      "exampleEnglish": "“How long does it take to Schiphol?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "Hoe lang duurt het naar Schiphol?",
+      "romanization": "hoo lang dyrt hət",
+      "nativeText": "Model use for \"Hoe lang duurt het naar Schiphol?\": “How long does it take to Schiphol?”",
+      "pronunciation": "hoo lang dyrt hət",
+      "exampleTarget": "Hoe lang duurt het naar Schiphol?",
+      "exampleNative": "“How long does it take to Schiphol?”",
+      "korean": "Hoe lang duurt het naar Schiphol?",
+      "english": "Model use for \"Hoe lang duurt het naar Schiphol?\": “How long does it take to Schiphol?”",
+      "example": "Hoe lang duurt het naar Schiphol?",
+      "exampleEnglish": "“How long does it take to Schiphol?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "hoe lang duurt het?",
+      "romanization": "hoo lang dyrt hət",
+      "nativeText": "Usage focus for \"hoe lang duurt het?\": “How long does it take?” A complete travel-duration question.",
+      "pronunciation": "hoo lang dyrt hət",
+      "exampleTarget": "Hoe lang duurt het naar Schiphol?",
+      "exampleNative": "Notice what the form is doing here: “How long does it take to Schiphol?”",
+      "korean": "hoe lang duurt het?",
+      "english": "Usage focus for \"hoe lang duurt het?\": “How long does it take?” A complete travel-duration question.",
+      "example": "Hoe lang duurt het naar Schiphol?",
+      "exampleEnglish": "Notice what the form is doing here: “How long does it take to Schiphol?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "hoe lang duurt het?",
+      "romanization": "hoo lang dyrt hət",
+      "nativeText": "Contrast check for \"hoe lang duurt het?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "hoo lang dyrt hət",
+      "exampleTarget": "Hoe lang duurt het naar Schiphol?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How long does it take to Schiphol?”",
+      "korean": "hoe lang duurt het?",
+      "english": "Contrast check for \"hoe lang duurt het?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Hoe lang duurt het naar Schiphol?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How long does it take to Schiphol?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "hoe lang duurt het?",
+      "romanization": "hoo lang dyrt hət",
+      "nativeText": "Recall \"hoe lang duurt het?\" from memory, then explain what would change if a nearby alternative replaced it in \"Hoe lang duurt het naar Schiphol?\".",
+      "pronunciation": "hoo lang dyrt hət",
+      "exampleTarget": "Hoe lang duurt het naar Schiphol?",
+      "exampleNative": "Self-check against the model before moving on: “How long does it take to Schiphol?”",
+      "korean": "hoe lang duurt het?",
+      "english": "Recall \"hoe lang duurt het?\" from memory, then explain what would change if a nearby alternative replaced it in \"Hoe lang duurt het naar Schiphol?\".",
+      "example": "Hoe lang duurt het naar Schiphol?",
+      "exampleEnglish": "Self-check against the model before moving on: “How long does it take to Schiphol?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "hoe lang duurt het?",
+      "romanization": "hoo lang dyrt hət",
+      "nativeText": "Repair \"hoe lang duurt het?\" inside \"Hoe lang duurt het naar Schiphol?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “How long does it take?” A complete travel-duration question.",
+      "pronunciation": "hoo lang dyrt hət",
+      "exampleTarget": "Hoe lang duurt het naar Schiphol?",
+      "exampleNative": "Use the model as the repair target: “How long does it take to Schiphol?”",
+      "korean": "hoe lang duurt het?",
+      "english": "Repair \"hoe lang duurt het?\" inside \"Hoe lang duurt het naar Schiphol?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “How long does it take?” A complete travel-duration question.",
+      "example": "Hoe lang duurt het naar Schiphol?",
+      "exampleEnglish": "Use the model as the repair target: “How long does it take to Schiphol?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "hoe lang duurt het?",
+      "romanization": "hoo lang dyrt hət",
+      "nativeText": "Transfer \"hoe lang duurt het?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Hoe lang duurt het naar Schiphol?\".",
+      "pronunciation": "hoo lang dyrt hət",
+      "exampleTarget": "Hoe lang duurt het naar Schiphol?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “How long does it take to Schiphol?”",
+      "korean": "hoe lang duurt het?",
+      "english": "Transfer \"hoe lang duurt het?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Hoe lang duurt het naar Schiphol?\".",
+      "example": "Hoe lang duurt het naar Schiphol?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “How long does it take to Schiphol?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "hoe lang duurt het?",
+      "romanization": "hoo lang dyrt hət",
+      "nativeText": "Find one word or phrase that naturally travels with \"hoe lang duurt het?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "hoo lang dyrt hət",
+      "exampleTarget": "Hoe lang duurt het naar Schiphol?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “How long does it take to Schiphol?”",
+      "korean": "hoe lang duurt het?",
+      "english": "Find one word or phrase that naturally travels with \"hoe lang duurt het?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Hoe lang duurt het naar Schiphol?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “How long does it take to Schiphol?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "hoe lang duurt het?",
+      "romanization": "hoo lang dyrt hət",
+      "nativeText": "Listen for \"hoe lang duurt het?\" inside \"Hoe lang duurt het naar Schiphol?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "hoo lang dyrt hət",
+      "exampleTarget": "Hoe lang duurt het naar Schiphol?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How long does it take to Schiphol?”",
+      "korean": "hoe lang duurt het?",
+      "english": "Listen for \"hoe lang duurt het?\" inside \"Hoe lang duurt het naar Schiphol?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Hoe lang duurt het naar Schiphol?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How long does it take to Schiphol?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "hoe lang duurt het?",
+      "romanization": "hoo lang dyrt hət",
+      "nativeText": "Write \"hoe lang duurt het?\" again without looking, then compare the exact written form against \"Hoe lang duurt het naar Schiphol?\" before moving on.",
+      "pronunciation": "hoo lang dyrt hət",
+      "exampleTarget": "Hoe lang duurt het naar Schiphol?",
+      "exampleNative": "Use the written model as the final correctness check: “How long does it take to Schiphol?”",
+      "korean": "hoe lang duurt het?",
+      "english": "Write \"hoe lang duurt het?\" again without looking, then compare the exact written form against \"Hoe lang duurt het naar Schiphol?\" before moving on.",
+      "example": "Hoe lang duurt het naar Schiphol?",
+      "exampleEnglish": "Use the written model as the final correctness check: “How long does it take to Schiphol?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit13transportation-vocabulary-1",
+        "nl-level1unit13transportation-vocabulary-2",
+        "nl-level1unit13transportation-grammar-1",
+        "nl-level1unit13transportation-grammar-2",
+        "nl-level1unit13transportation-reading",
+        "nl-level1unit13transportation-listening",
+        "nl-level1unit13transportation-writing",
+        "nl-level1unit13transportation-task"
+      ],
+      "targetText": "hoe lang duurt het?",
+      "romanization": "hoo lang dyrt hət",
+      "nativeText": "Check whether \"hoe lang duurt het?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How long does it take to Schiphol?”",
+      "pronunciation": "hoo lang dyrt hət",
+      "exampleTarget": "Hoe lang duurt het naar Schiphol?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “How long does it take to Schiphol?”",
+      "korean": "hoe lang duurt het?",
+      "english": "Check whether \"hoe lang duurt het?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How long does it take to Schiphol?”",
+      "example": "Hoe lang duurt het naar Schiphol?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “How long does it take to Schiphol?”"
+    }
+  ],
+  "targetLang": "nl",
+  "nativeLang": "en",
+  "track": "textbook"
+};

@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('ru', {
-  slug: 'ru-l1u10',
-  title: 'Level 1 · Unit 10: Погода и предпочтения — Weather and Preferences',
-  category: 'daily-life',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Describe weather and say what you like or prefer.',
-  vocabularyGoal: 'Use weather words, seasons, and preference language.',
-  grammarGoal: 'Use impersonal weather expressions and `мне нравится` with singular or plural things.',
-  speakingGoal: 'Describe today’s weather and compare two simple preferences.',
-  task: 'Choose a weekend plan based on the weather.',
-  expressionPractice: [
-    practice('describing-weather', 'Describing weather', 'Use one impersonal weather phrase.'),
-    practice('stating-like', 'Stating like', 'Use `мне нравится` correctly.'),
-    practice('stating-preference', 'Stating preference', 'Use `я больше люблю`.'),
+module.exports = {
+  "title": "Level 1 · Unit 10: Погода и предпочтения — Weather and Preferences",
+  "category": "daily-life",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ru-level1unit10weatherpreferences-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Describe weather and say what you like or prefer."
+      ],
+      "task": "Choose a weekend plan based on the weather."
+    },
+    {
+      "id": "ru-level1unit10weatherpreferences-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ru-level1unit10weatherpreferences-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 10: Погода и предпочтения — Weather and Preferences with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ru-level1unit10weatherpreferences-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 10: Погода и предпочтения — Weather and Preferences sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ru-level1unit10weatherpreferences-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Describe weather and say what you like or prefer."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ru-level1unit10weatherpreferences-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 10: Погода и предпочтения — Weather and Preferences with one nearby Russian form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ru-level1unit10weatherpreferences-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ru-level1unit10weatherpreferences-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ru-level1unit10weatherpreferences-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ru-level1unit10weatherpreferences-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ru-level1unit10weatherpreferences-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Choose a weekend plan based on the weather."
+      ],
+      "task": "Choose a weekend plan based on the weather."
+    }
   ],
-  relatedPools: ['topic-weather', 'topic-preferences'],
-  items: [
-    item('сегодня холодно', 'segodnya kholodno', '“Today it is cold.” Russian weather often uses impersonal adverbs, not a dummy subject.', 'Сегодня очень холодно.', '“Today it is very cold.”'),
-    item('идёт дождь', 'idyot dozhd', '“It is raining.” Literally “rain is going.”', 'Сейчас идёт дождь.', '“It is raining now.”'),
-    item('снег', 'sneg', '“Snow.” It is central in Russian weather talk and has final devoicing in pronunciation.', 'Зимой часто идёт снег.', '“In winter it often snows.”'),
-    item('лето / зима', 'leto / zima', '“Summer / winter.” Seasons are common comparison anchors.', 'Я люблю лето, но не люблю зиму.', '“I like summer, but I do not like winter.”'),
-    item('мне нравится', 'mne nravitsya', '“I like.” The thing liked is the grammatical subject, so singular/plural matters.', 'Мне нравится тёплая погода.', '“I like warm weather.”'),
-    item('мне нравятся', 'mne nravyatsya', 'Plural “I like.” Use it when the thing liked is plural.', 'Мне нравятся длинные вечера летом.', '“I like long summer evenings.”'),
-    item('я больше люблю', 'ya bolshe lyublyu', '“I prefer / I like more.” A direct comparison frame.', 'Я больше люблю весну, чем осень.', '“I prefer spring to autumn.”'),
-    item('потому что', 'potomu chto', '“Because.” It turns a preference into a fuller answer.', 'Я люблю весну, потому что тепло.', '“I like spring because it is warm.”'),
+  "expressionPractice": [
+    {
+      "id": "describing-weather",
+      "label": "Describing weather",
+      "goal": "Use one impersonal weather phrase."
+    },
+    {
+      "id": "stating-like",
+      "label": "Stating like",
+      "goal": "Use `мне нравится` correctly."
+    },
+    {
+      "id": "stating-preference",
+      "label": "Stating preference",
+      "goal": "Use `я больше люблю`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-weather",
+    "topic-preferences"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-orientation"
+      ],
+      "targetText": "цель урока",
+      "romanization": "",
+      "nativeText": "Describe weather and say what you like or prefer.",
+      "pronunciation": "",
+      "exampleTarget": "цель урока",
+      "exampleNative": "The whole lesson is built toward this outcome: Choose a weekend plan based on the weather.",
+      "korean": "цель урока",
+      "english": "Describe weather and say what you like or prefer.",
+      "example": "цель урока",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Choose a weekend plan based on the weather."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-pronunciation"
+      ],
+      "targetText": "проверка произношения",
+      "romanization": "",
+      "nativeText": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Сегодня очень холодно.\".",
+      "pronunciation": "",
+      "exampleTarget": "Сегодня очень холодно.",
+      "exampleNative": "“Today it is very cold.”",
+      "korean": "проверка произношения",
+      "english": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Сегодня очень холодно.\".",
+      "example": "Сегодня очень холодно.",
+      "exampleEnglish": "“Today it is very cold.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1"
+      ],
+      "targetText": "сегодня холодно",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 10: Погода и предпочтения — Weather and Preferences with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Сегодня очень холодно.",
+      "exampleNative": "“Today it is very cold.”",
+      "korean": "сегодня холодно",
+      "english": "Use the key language of Level 1 · Unit 10: Погода и предпочтения — Weather and Preferences with the register and setting that the lesson requires.",
+      "example": "Сегодня очень холодно.",
+      "exampleEnglish": "“Today it is very cold.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-2"
+      ],
+      "targetText": "идёт дождь",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 10: Погода и предпочтения — Weather and Preferences sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Сейчас идёт дождь.",
+      "exampleNative": "“It is raining now.”",
+      "korean": "идёт дождь",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 10: Погода и предпочтения — Weather and Preferences sound precise rather than merely understandable.",
+      "example": "Сейчас идёт дождь.",
+      "exampleEnglish": "“It is raining now.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-grammar-1"
+      ],
+      "targetText": "сегодня холодно",
+      "romanization": "",
+      "nativeText": "Describe weather and say what you like or prefer.",
+      "pronunciation": "",
+      "exampleTarget": "Сегодня очень холодно.",
+      "exampleNative": "“Today it is very cold.”",
+      "korean": "сегодня холодно",
+      "english": "Describe weather and say what you like or prefer.",
+      "example": "Сегодня очень холодно.",
+      "exampleEnglish": "“Today it is very cold.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-grammar-2"
+      ],
+      "targetText": "идёт дождь",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 10: Погода и предпочтения — Weather and Preferences with one nearby Russian form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Сейчас идёт дождь.",
+      "exampleNative": "“It is raining now.”",
+      "korean": "идёт дождь",
+      "english": "Contrast the main pattern in Level 1 · Unit 10: Погода и предпочтения — Weather and Preferences with one nearby Russian form so the learner can avoid literal translation.",
+      "example": "Сейчас идёт дождь.",
+      "exampleEnglish": "“It is raining now.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-reading"
+      ],
+      "targetText": "модель чтения",
+      "romanization": "",
+      "nativeText": "Read \"Я люблю весну, потому что тепло.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Я люблю весну, потому что тепло.",
+      "exampleNative": "“I like spring because it is warm.”",
+      "korean": "модель чтения",
+      "english": "Read \"Я люблю весну, потому что тепло.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Я люблю весну, потому что тепло.",
+      "exampleEnglish": "“I like spring because it is warm.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-listening"
+      ],
+      "targetText": "модель диалога",
+      "romanization": "",
+      "nativeText": "Hear \"Я люблю весну, потому что тепло.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Я люблю весну, потому что тепло.",
+      "exampleNative": "“I like spring because it is warm.”",
+      "korean": "модель диалога",
+      "english": "Hear \"Я люблю весну, потому что тепло.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Я люблю весну, потому что тепло.",
+      "exampleEnglish": "“I like spring because it is warm.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-writing"
+      ],
+      "targetText": "письменная практика",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Сегодня очень холодно.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Сегодня очень холодно.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "письменная практика",
+      "english": "Write your own version after studying \"Сегодня очень холодно.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Сегодня очень холодно.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-culture"
+      ],
+      "targetText": "употребление и контекст",
+      "romanization": "",
+      "nativeText": "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Сейчас идёт дождь.",
+      "exampleNative": "“It is raining now.”",
+      "korean": "употребление и контекст",
+      "english": "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used.",
+      "example": "Сейчас идёт дождь.",
+      "exampleEnglish": "“It is raining now.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "итоговое задание",
+      "romanization": "",
+      "nativeText": "Choose a weekend plan based on the weather.",
+      "pronunciation": "",
+      "exampleTarget": "Я люблю весну, потому что тепло.",
+      "exampleNative": "Choose a weekend plan based on the weather.",
+      "korean": "итоговое задание",
+      "english": "Choose a weekend plan based on the weather.",
+      "example": "Я люблю весну, потому что тепло.",
+      "exampleEnglish": "Choose a weekend plan based on the weather."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-grammar-2"
+      ],
+      "targetText": "частая ошибка",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around case, aspect, motion verbs, and stress-sensitive forms. Begin by checking \"Сейчас идёт дождь.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Сейчас идёт дождь.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “It is raining now.”",
+      "korean": "частая ошибка",
+      "english": "Watch for literal-translation mistakes around case, aspect, motion verbs, and stress-sensitive forms. Begin by checking \"Сейчас идёт дождь.\" against the model.",
+      "example": "Сейчас идёт дождь.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “It is raining now.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-culture"
+      ],
+      "targetText": "регистр",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for ты, вы, a service register, or a more formal written choice. Compare the social fit of \"Сегодня очень холодно.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Сегодня очень холодно.",
+      "exampleNative": "“Today it is very cold.”",
+      "korean": "регистр",
+      "english": "Check whether the setting calls for ты, вы, a service register, or a more formal written choice. Compare the social fit of \"Сегодня очень холодно.\" before reusing it elsewhere.",
+      "example": "Сегодня очень холодно.",
+      "exampleEnglish": "“Today it is very cold.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "беглость",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Russian message rather than as separate translated fragments. Aim to carry \"Я люблю весну, потому что тепло.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Я люблю весну, потому что тепло.",
+      "exampleNative": "“I like spring because it is warm.”",
+      "korean": "беглость",
+      "english": "Say the idea as one connected Russian message rather than as separate translated fragments. Aim to carry \"Я люблю весну, потому что тепло.\" as one thought.",
+      "example": "Я люблю весну, потому что тепло.",
+      "exampleEnglish": "“I like spring because it is warm.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "перенос",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Сегодня очень холодно.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Сегодня очень холодно.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "перенос",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Сегодня очень холодно.\" and move it into your own life.",
+      "example": "Сегодня очень холодно.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-grammar-1"
+      ],
+      "targetText": "воспроизведение",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"сегодня холодно\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "сегодня холодно",
+      "exampleNative": "“Today it is cold.” Russian weather often uses impersonal adverbs, not a dummy subject.",
+      "korean": "воспроизведение",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"сегодня холодно\" before looking back.",
+      "example": "сегодня холодно",
+      "exampleEnglish": "“Today it is cold.” Russian weather often uses impersonal adverbs, not a dummy subject."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-writing"
+      ],
+      "targetText": "расширение",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Я люблю весну, потому что тепло.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Я люблю весну, потому что тепло.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "расширение",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Я люблю весну, потому что тепло.\" rather than restarting from a blank sentence.",
+      "example": "Я люблю весну, потому что тепло.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading"
+      ],
+      "targetText": "сравнение",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 10: Погода и предпочтения — Weather and Preferences with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Сейчас идёт дождь.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Сейчас идёт дождь.",
+      "exampleNative": "“It is raining now.”",
+      "korean": "сравнение",
+      "english": "Compare the central form in Level 1 · Unit 10: Погода и предпочтения — Weather and Preferences with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Сейчас идёт дождь.\" as the comparison line.",
+      "example": "Сейчас идёт дождь.",
+      "exampleEnglish": "“It is raining now.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-pronunciation"
+      ],
+      "targetText": "исправление произношения",
+      "romanization": "",
+      "nativeText": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Сегодня очень холодно.\".",
+      "pronunciation": "",
+      "exampleTarget": "Сегодня очень холодно.",
+      "exampleNative": "“Today it is very cold.”",
+      "korean": "исправление произношения",
+      "english": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Сегодня очень холодно.\".",
+      "example": "Сегодня очень холодно.",
+      "exampleEnglish": "“Today it is very cold.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "вариация диалога",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Я люблю весну, потому что тепло.\".",
+      "pronunciation": "",
+      "exampleTarget": "Я люблю весну, потому что тепло.",
+      "exampleNative": "“I like spring because it is warm.”",
+      "korean": "вариация диалога",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Я люблю весну, потому что тепло.\".",
+      "example": "Я люблю весну, потому что тепло.",
+      "exampleEnglish": "“I like spring because it is warm.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-writing"
+      ],
+      "targetText": "построение предложения",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Сегодня очень холодно.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Сегодня очень холодно.",
+      "exampleNative": "“Today it is very cold.”",
+      "korean": "построение предложения",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Сегодня очень холодно.\" one layer at a time.",
+      "example": "Сегодня очень холодно.",
+      "exampleEnglish": "“Today it is very cold.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-2"
+      ],
+      "targetText": "быстрая проверка",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Сейчас идёт дождь.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Сейчас идёт дождь.",
+      "exampleNative": "“It is raining now.”",
+      "korean": "быстрая проверка",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Сейчас идёт дождь.\" as the deciding example.",
+      "example": "Сейчас идёт дождь.",
+      "exampleEnglish": "“It is raining now.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-culture",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "рефлексия",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Я люблю весну, потому что тепло.\".",
+      "pronunciation": "",
+      "exampleTarget": "Я люблю весну, потому что тепло.",
+      "exampleNative": "“I like spring because it is warm.”",
+      "korean": "рефлексия",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Я люблю весну, потому что тепло.\".",
+      "example": "Я люблю весну, потому что тепло.",
+      "exampleEnglish": "“I like spring because it is warm.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "сегодня холодно",
+      "romanization": "segodnya kholodno",
+      "nativeText": "“Today it is cold.” Russian weather often uses impersonal adverbs, not a dummy subject.",
+      "pronunciation": "segodnya kholodno",
+      "exampleTarget": "Сегодня очень холодно.",
+      "exampleNative": "“Today it is very cold.”",
+      "korean": "сегодня холодно",
+      "english": "“Today it is cold.” Russian weather often uses impersonal adverbs, not a dummy subject.",
+      "example": "Сегодня очень холодно.",
+      "exampleEnglish": "“Today it is very cold.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "Сегодня очень холодно.",
+      "romanization": "segodnya kholodno",
+      "nativeText": "Model use for \"Сегодня очень холодно.\": “Today it is very cold.”",
+      "pronunciation": "segodnya kholodno",
+      "exampleTarget": "Сегодня очень холодно.",
+      "exampleNative": "“Today it is very cold.”",
+      "korean": "Сегодня очень холодно.",
+      "english": "Model use for \"Сегодня очень холодно.\": “Today it is very cold.”",
+      "example": "Сегодня очень холодно.",
+      "exampleEnglish": "“Today it is very cold.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "сегодня холодно",
+      "romanization": "segodnya kholodno",
+      "nativeText": "Usage focus for \"сегодня холодно\": Use the key language of Level 1 · Unit 10: Погода и предпочтения — Weather and Preferences with the register and setting that the lesson requires.",
+      "pronunciation": "segodnya kholodno",
+      "exampleTarget": "Сегодня очень холодно.",
+      "exampleNative": "Notice what the form is doing here: “Today it is very cold.”",
+      "korean": "сегодня холодно",
+      "english": "Usage focus for \"сегодня холодно\": Use the key language of Level 1 · Unit 10: Погода и предпочтения — Weather and Preferences with the register and setting that the lesson requires.",
+      "example": "Сегодня очень холодно.",
+      "exampleEnglish": "Notice what the form is doing here: “Today it is very cold.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "сегодня холодно",
+      "romanization": "segodnya kholodno",
+      "nativeText": "Contrast check for \"сегодня холодно\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "segodnya kholodno",
+      "exampleTarget": "Сегодня очень холодно.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Today it is very cold.”",
+      "korean": "сегодня холодно",
+      "english": "Contrast check for \"сегодня холодно\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Сегодня очень холодно.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Today it is very cold.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "сегодня холодно",
+      "romanization": "segodnya kholodno",
+      "nativeText": "Recall \"сегодня холодно\" from memory, then explain what would change if a nearby alternative replaced it in \"Сегодня очень холодно.\".",
+      "pronunciation": "segodnya kholodno",
+      "exampleTarget": "Сегодня очень холодно.",
+      "exampleNative": "Self-check against the model before moving on: “Today it is very cold.”",
+      "korean": "сегодня холодно",
+      "english": "Recall \"сегодня холодно\" from memory, then explain what would change if a nearby alternative replaced it in \"Сегодня очень холодно.\".",
+      "example": "Сегодня очень холодно.",
+      "exampleEnglish": "Self-check against the model before moving on: “Today it is very cold.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "сегодня холодно",
+      "romanization": "segodnya kholodno",
+      "nativeText": "Repair \"сегодня холодно\" inside \"Сегодня очень холодно.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 10: Погода и предпочтения — Weather and Preferences with the register and setting that the lesson requires.",
+      "pronunciation": "segodnya kholodno",
+      "exampleTarget": "Сегодня очень холодно.",
+      "exampleNative": "Use the model as the repair target: “Today it is very cold.”",
+      "korean": "сегодня холодно",
+      "english": "Repair \"сегодня холодно\" inside \"Сегодня очень холодно.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 10: Погода и предпочтения — Weather and Preferences with the register and setting that the lesson requires.",
+      "example": "Сегодня очень холодно.",
+      "exampleEnglish": "Use the model as the repair target: “Today it is very cold.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "сегодня холодно",
+      "romanization": "segodnya kholodno",
+      "nativeText": "Transfer \"сегодня холодно\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Сегодня очень холодно.\".",
+      "pronunciation": "segodnya kholodno",
+      "exampleTarget": "Сегодня очень холодно.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Today it is very cold.”",
+      "korean": "сегодня холодно",
+      "english": "Transfer \"сегодня холодно\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Сегодня очень холодно.\".",
+      "example": "Сегодня очень холодно.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Today it is very cold.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "сегодня холодно",
+      "romanization": "segodnya kholodno",
+      "nativeText": "Find one word or phrase that naturally travels with \"сегодня холодно\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "segodnya kholodno",
+      "exampleTarget": "Сегодня очень холодно.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Today it is very cold.”",
+      "korean": "сегодня холодно",
+      "english": "Find one word or phrase that naturally travels with \"сегодня холодно\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Сегодня очень холодно.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Today it is very cold.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "сегодня холодно",
+      "romanization": "segodnya kholodno",
+      "nativeText": "Listen for \"сегодня холодно\" inside \"Сегодня очень холодно.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "segodnya kholodno",
+      "exampleTarget": "Сегодня очень холодно.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Today it is very cold.”",
+      "korean": "сегодня холодно",
+      "english": "Listen for \"сегодня холодно\" inside \"Сегодня очень холодно.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Сегодня очень холодно.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Today it is very cold.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "сегодня холодно",
+      "romanization": "segodnya kholodno",
+      "nativeText": "Write \"сегодня холодно\" again without looking, then compare the exact written form against \"Сегодня очень холодно.\" before moving on.",
+      "pronunciation": "segodnya kholodno",
+      "exampleTarget": "Сегодня очень холодно.",
+      "exampleNative": "Use the written model as the final correctness check: “Today it is very cold.”",
+      "korean": "сегодня холодно",
+      "english": "Write \"сегодня холодно\" again without looking, then compare the exact written form against \"Сегодня очень холодно.\" before moving on.",
+      "example": "Сегодня очень холодно.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Today it is very cold.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "сегодня холодно",
+      "romanization": "segodnya kholodno",
+      "nativeText": "Check whether \"сегодня холодно\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Today it is very cold.”",
+      "pronunciation": "segodnya kholodno",
+      "exampleTarget": "Сегодня очень холодно.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Today it is very cold.”",
+      "korean": "сегодня холодно",
+      "english": "Check whether \"сегодня холодно\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Today it is very cold.”",
+      "example": "Сегодня очень холодно.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Today it is very cold.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "идёт дождь",
+      "romanization": "idyot dozhd",
+      "nativeText": "“It is raining.” Literally “rain is going.”",
+      "pronunciation": "idyot dozhd",
+      "exampleTarget": "Сейчас идёт дождь.",
+      "exampleNative": "“It is raining now.”",
+      "korean": "идёт дождь",
+      "english": "“It is raining.” Literally “rain is going.”",
+      "example": "Сейчас идёт дождь.",
+      "exampleEnglish": "“It is raining now.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "Сейчас идёт дождь.",
+      "romanization": "idyot dozhd",
+      "nativeText": "Model use for \"Сейчас идёт дождь.\": “It is raining now.”",
+      "pronunciation": "idyot dozhd",
+      "exampleTarget": "Сейчас идёт дождь.",
+      "exampleNative": "“It is raining now.”",
+      "korean": "Сейчас идёт дождь.",
+      "english": "Model use for \"Сейчас идёт дождь.\": “It is raining now.”",
+      "example": "Сейчас идёт дождь.",
+      "exampleEnglish": "“It is raining now.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "идёт дождь",
+      "romanization": "idyot dozhd",
+      "nativeText": "Usage focus for \"идёт дождь\": Distinguish the nearby wording choices that make Level 1 · Unit 10: Погода и предпочтения — Weather and Preferences sound precise rather than merely understandable.",
+      "pronunciation": "idyot dozhd",
+      "exampleTarget": "Сейчас идёт дождь.",
+      "exampleNative": "Notice what the form is doing here: “It is raining now.”",
+      "korean": "идёт дождь",
+      "english": "Usage focus for \"идёт дождь\": Distinguish the nearby wording choices that make Level 1 · Unit 10: Погода и предпочтения — Weather and Preferences sound precise rather than merely understandable.",
+      "example": "Сейчас идёт дождь.",
+      "exampleEnglish": "Notice what the form is doing here: “It is raining now.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "идёт дождь",
+      "romanization": "idyot dozhd",
+      "nativeText": "Contrast check for \"идёт дождь\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "idyot dozhd",
+      "exampleTarget": "Сейчас идёт дождь.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “It is raining now.”",
+      "korean": "идёт дождь",
+      "english": "Contrast check for \"идёт дождь\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Сейчас идёт дождь.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “It is raining now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "идёт дождь",
+      "romanization": "idyot dozhd",
+      "nativeText": "Recall \"идёт дождь\" from memory, then explain what would change if a nearby alternative replaced it in \"Сейчас идёт дождь.\".",
+      "pronunciation": "idyot dozhd",
+      "exampleTarget": "Сейчас идёт дождь.",
+      "exampleNative": "Self-check against the model before moving on: “It is raining now.”",
+      "korean": "идёт дождь",
+      "english": "Recall \"идёт дождь\" from memory, then explain what would change if a nearby alternative replaced it in \"Сейчас идёт дождь.\".",
+      "example": "Сейчас идёт дождь.",
+      "exampleEnglish": "Self-check against the model before moving on: “It is raining now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "идёт дождь",
+      "romanization": "idyot dozhd",
+      "nativeText": "Repair \"идёт дождь\" inside \"Сейчас идёт дождь.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 10: Погода и предпочтения — Weather and Preferences sound precise rather than merely understandable.",
+      "pronunciation": "idyot dozhd",
+      "exampleTarget": "Сейчас идёт дождь.",
+      "exampleNative": "Use the model as the repair target: “It is raining now.”",
+      "korean": "идёт дождь",
+      "english": "Repair \"идёт дождь\" inside \"Сейчас идёт дождь.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 10: Погода и предпочтения — Weather and Preferences sound precise rather than merely understandable.",
+      "example": "Сейчас идёт дождь.",
+      "exampleEnglish": "Use the model as the repair target: “It is raining now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "идёт дождь",
+      "romanization": "idyot dozhd",
+      "nativeText": "Transfer \"идёт дождь\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Сейчас идёт дождь.\".",
+      "pronunciation": "idyot dozhd",
+      "exampleTarget": "Сейчас идёт дождь.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “It is raining now.”",
+      "korean": "идёт дождь",
+      "english": "Transfer \"идёт дождь\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Сейчас идёт дождь.\".",
+      "example": "Сейчас идёт дождь.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “It is raining now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "идёт дождь",
+      "romanization": "idyot dozhd",
+      "nativeText": "Find one word or phrase that naturally travels with \"идёт дождь\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "idyot dozhd",
+      "exampleTarget": "Сейчас идёт дождь.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “It is raining now.”",
+      "korean": "идёт дождь",
+      "english": "Find one word or phrase that naturally travels with \"идёт дождь\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Сейчас идёт дождь.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “It is raining now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "идёт дождь",
+      "romanization": "idyot dozhd",
+      "nativeText": "Listen for \"идёт дождь\" inside \"Сейчас идёт дождь.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "idyot dozhd",
+      "exampleTarget": "Сейчас идёт дождь.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “It is raining now.”",
+      "korean": "идёт дождь",
+      "english": "Listen for \"идёт дождь\" inside \"Сейчас идёт дождь.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Сейчас идёт дождь.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “It is raining now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "идёт дождь",
+      "romanization": "idyot dozhd",
+      "nativeText": "Write \"идёт дождь\" again without looking, then compare the exact written form against \"Сейчас идёт дождь.\" before moving on.",
+      "pronunciation": "idyot dozhd",
+      "exampleTarget": "Сейчас идёт дождь.",
+      "exampleNative": "Use the written model as the final correctness check: “It is raining now.”",
+      "korean": "идёт дождь",
+      "english": "Write \"идёт дождь\" again without looking, then compare the exact written form against \"Сейчас идёт дождь.\" before moving on.",
+      "example": "Сейчас идёт дождь.",
+      "exampleEnglish": "Use the written model as the final correctness check: “It is raining now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "идёт дождь",
+      "romanization": "idyot dozhd",
+      "nativeText": "Check whether \"идёт дождь\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “It is raining now.”",
+      "pronunciation": "idyot dozhd",
+      "exampleTarget": "Сейчас идёт дождь.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “It is raining now.”",
+      "korean": "идёт дождь",
+      "english": "Check whether \"идёт дождь\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “It is raining now.”",
+      "example": "Сейчас идёт дождь.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “It is raining now.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "снег",
+      "romanization": "sneg",
+      "nativeText": "“Snow.” It is central in Russian weather talk and has final devoicing in pronunciation.",
+      "pronunciation": "sneg",
+      "exampleTarget": "Зимой часто идёт снег.",
+      "exampleNative": "“In winter it often snows.”",
+      "korean": "снег",
+      "english": "“Snow.” It is central in Russian weather talk and has final devoicing in pronunciation.",
+      "example": "Зимой часто идёт снег.",
+      "exampleEnglish": "“In winter it often snows.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "Зимой часто идёт снег.",
+      "romanization": "sneg",
+      "nativeText": "Model use for \"Зимой часто идёт снег.\": “In winter it often snows.”",
+      "pronunciation": "sneg",
+      "exampleTarget": "Зимой часто идёт снег.",
+      "exampleNative": "“In winter it often snows.”",
+      "korean": "Зимой часто идёт снег.",
+      "english": "Model use for \"Зимой часто идёт снег.\": “In winter it often snows.”",
+      "example": "Зимой часто идёт снег.",
+      "exampleEnglish": "“In winter it often snows.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "снег",
+      "romanization": "sneg",
+      "nativeText": "Usage focus for \"снег\": “Snow.” It is central in Russian weather talk and has final devoicing in pronunciation.",
+      "pronunciation": "sneg",
+      "exampleTarget": "Зимой часто идёт снег.",
+      "exampleNative": "Notice what the form is doing here: “In winter it often snows.”",
+      "korean": "снег",
+      "english": "Usage focus for \"снег\": “Snow.” It is central in Russian weather talk and has final devoicing in pronunciation.",
+      "example": "Зимой часто идёт снег.",
+      "exampleEnglish": "Notice what the form is doing here: “In winter it often snows.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "снег",
+      "romanization": "sneg",
+      "nativeText": "Contrast check for \"снег\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "sneg",
+      "exampleTarget": "Зимой часто идёт снег.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “In winter it often snows.”",
+      "korean": "снег",
+      "english": "Contrast check for \"снег\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Зимой часто идёт снег.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “In winter it often snows.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "снег",
+      "romanization": "sneg",
+      "nativeText": "Recall \"снег\" from memory, then explain what would change if a nearby alternative replaced it in \"Зимой часто идёт снег.\".",
+      "pronunciation": "sneg",
+      "exampleTarget": "Зимой часто идёт снег.",
+      "exampleNative": "Self-check against the model before moving on: “In winter it often snows.”",
+      "korean": "снег",
+      "english": "Recall \"снег\" from memory, then explain what would change if a nearby alternative replaced it in \"Зимой часто идёт снег.\".",
+      "example": "Зимой часто идёт снег.",
+      "exampleEnglish": "Self-check against the model before moving on: “In winter it often snows.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "снег",
+      "romanization": "sneg",
+      "nativeText": "Repair \"снег\" inside \"Зимой часто идёт снег.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Snow.” It is central in Russian weather talk and has final devoicing in pronunciation.",
+      "pronunciation": "sneg",
+      "exampleTarget": "Зимой часто идёт снег.",
+      "exampleNative": "Use the model as the repair target: “In winter it often snows.”",
+      "korean": "снег",
+      "english": "Repair \"снег\" inside \"Зимой часто идёт снег.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Snow.” It is central in Russian weather talk and has final devoicing in pronunciation.",
+      "example": "Зимой часто идёт снег.",
+      "exampleEnglish": "Use the model as the repair target: “In winter it often snows.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "снег",
+      "romanization": "sneg",
+      "nativeText": "Transfer \"снег\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Зимой часто идёт снег.\".",
+      "pronunciation": "sneg",
+      "exampleTarget": "Зимой часто идёт снег.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “In winter it often snows.”",
+      "korean": "снег",
+      "english": "Transfer \"снег\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Зимой часто идёт снег.\".",
+      "example": "Зимой часто идёт снег.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “In winter it often snows.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "снег",
+      "romanization": "sneg",
+      "nativeText": "Find one word or phrase that naturally travels with \"снег\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "sneg",
+      "exampleTarget": "Зимой часто идёт снег.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “In winter it often snows.”",
+      "korean": "снег",
+      "english": "Find one word or phrase that naturally travels with \"снег\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Зимой часто идёт снег.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “In winter it often snows.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "снег",
+      "romanization": "sneg",
+      "nativeText": "Listen for \"снег\" inside \"Зимой часто идёт снег.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "sneg",
+      "exampleTarget": "Зимой часто идёт снег.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “In winter it often snows.”",
+      "korean": "снег",
+      "english": "Listen for \"снег\" inside \"Зимой часто идёт снег.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Зимой часто идёт снег.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “In winter it often snows.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "снег",
+      "romanization": "sneg",
+      "nativeText": "Write \"снег\" again without looking, then compare the exact written form against \"Зимой часто идёт снег.\" before moving on.",
+      "pronunciation": "sneg",
+      "exampleTarget": "Зимой часто идёт снег.",
+      "exampleNative": "Use the written model as the final correctness check: “In winter it often snows.”",
+      "korean": "снег",
+      "english": "Write \"снег\" again without looking, then compare the exact written form against \"Зимой часто идёт снег.\" before moving on.",
+      "example": "Зимой часто идёт снег.",
+      "exampleEnglish": "Use the written model as the final correctness check: “In winter it often snows.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "снег",
+      "romanization": "sneg",
+      "nativeText": "Check whether \"снег\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “In winter it often snows.”",
+      "pronunciation": "sneg",
+      "exampleTarget": "Зимой часто идёт снег.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “In winter it often snows.”",
+      "korean": "снег",
+      "english": "Check whether \"снег\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “In winter it often snows.”",
+      "example": "Зимой часто идёт снег.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “In winter it often snows.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "лето / зима",
+      "romanization": "leto / zima",
+      "nativeText": "“Summer / winter.” Seasons are common comparison anchors.",
+      "pronunciation": "leto / zima",
+      "exampleTarget": "Я люблю лето, но не люблю зиму.",
+      "exampleNative": "“I like summer, but I do not like winter.”",
+      "korean": "лето / зима",
+      "english": "“Summer / winter.” Seasons are common comparison anchors.",
+      "example": "Я люблю лето, но не люблю зиму.",
+      "exampleEnglish": "“I like summer, but I do not like winter.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "Я люблю лето, но не люблю зиму.",
+      "romanization": "leto / zima",
+      "nativeText": "Model use for \"Я люблю лето, но не люблю зиму.\": “I like summer, but I do not like winter.”",
+      "pronunciation": "leto / zima",
+      "exampleTarget": "Я люблю лето, но не люблю зиму.",
+      "exampleNative": "“I like summer, but I do not like winter.”",
+      "korean": "Я люблю лето, но не люблю зиму.",
+      "english": "Model use for \"Я люблю лето, но не люблю зиму.\": “I like summer, but I do not like winter.”",
+      "example": "Я люблю лето, но не люблю зиму.",
+      "exampleEnglish": "“I like summer, but I do not like winter.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "лето / зима",
+      "romanization": "leto / zima",
+      "nativeText": "Usage focus for \"лето / зима\": “Summer / winter.” Seasons are common comparison anchors.",
+      "pronunciation": "leto / zima",
+      "exampleTarget": "Я люблю лето, но не люблю зиму.",
+      "exampleNative": "Notice what the form is doing here: “I like summer, but I do not like winter.”",
+      "korean": "лето / зима",
+      "english": "Usage focus for \"лето / зима\": “Summer / winter.” Seasons are common comparison anchors.",
+      "example": "Я люблю лето, но не люблю зиму.",
+      "exampleEnglish": "Notice what the form is doing here: “I like summer, but I do not like winter.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "лето / зима",
+      "romanization": "leto / zima",
+      "nativeText": "Contrast check for \"лето / зима\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "leto / zima",
+      "exampleTarget": "Я люблю лето, но не люблю зиму.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like summer, but I do not like winter.”",
+      "korean": "лето / зима",
+      "english": "Contrast check for \"лето / зима\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Я люблю лето, но не люблю зиму.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like summer, but I do not like winter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "лето / зима",
+      "romanization": "leto / zima",
+      "nativeText": "Recall \"лето / зима\" from memory, then explain what would change if a nearby alternative replaced it in \"Я люблю лето, но не люблю зиму.\".",
+      "pronunciation": "leto / zima",
+      "exampleTarget": "Я люблю лето, но не люблю зиму.",
+      "exampleNative": "Self-check against the model before moving on: “I like summer, but I do not like winter.”",
+      "korean": "лето / зима",
+      "english": "Recall \"лето / зима\" from memory, then explain what would change if a nearby alternative replaced it in \"Я люблю лето, но не люблю зиму.\".",
+      "example": "Я люблю лето, но не люблю зиму.",
+      "exampleEnglish": "Self-check against the model before moving on: “I like summer, but I do not like winter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "лето / зима",
+      "romanization": "leto / zima",
+      "nativeText": "Repair \"лето / зима\" inside \"Я люблю лето, но не люблю зиму.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Summer / winter.” Seasons are common comparison anchors.",
+      "pronunciation": "leto / zima",
+      "exampleTarget": "Я люблю лето, но не люблю зиму.",
+      "exampleNative": "Use the model as the repair target: “I like summer, but I do not like winter.”",
+      "korean": "лето / зима",
+      "english": "Repair \"лето / зима\" inside \"Я люблю лето, но не люблю зиму.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Summer / winter.” Seasons are common comparison anchors.",
+      "example": "Я люблю лето, но не люблю зиму.",
+      "exampleEnglish": "Use the model as the repair target: “I like summer, but I do not like winter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "лето / зима",
+      "romanization": "leto / zima",
+      "nativeText": "Transfer \"лето / зима\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я люблю лето, но не люблю зиму.\".",
+      "pronunciation": "leto / zima",
+      "exampleTarget": "Я люблю лето, но не люблю зиму.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like summer, but I do not like winter.”",
+      "korean": "лето / зима",
+      "english": "Transfer \"лето / зима\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я люблю лето, но не люблю зиму.\".",
+      "example": "Я люблю лето, но не люблю зиму.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like summer, but I do not like winter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "лето / зима",
+      "romanization": "leto / zima",
+      "nativeText": "Find one word or phrase that naturally travels with \"лето / зима\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "leto / zima",
+      "exampleTarget": "Я люблю лето, но не люблю зиму.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I like summer, but I do not like winter.”",
+      "korean": "лето / зима",
+      "english": "Find one word or phrase that naturally travels with \"лето / зима\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Я люблю лето, но не люблю зиму.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I like summer, but I do not like winter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "лето / зима",
+      "romanization": "leto / zima",
+      "nativeText": "Listen for \"лето / зима\" inside \"Я люблю лето, но не люблю зиму.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "leto / zima",
+      "exampleTarget": "Я люблю лето, но не люблю зиму.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like summer, but I do not like winter.”",
+      "korean": "лето / зима",
+      "english": "Listen for \"лето / зима\" inside \"Я люблю лето, но не люблю зиму.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Я люблю лето, но не люблю зиму.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like summer, but I do not like winter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "лето / зима",
+      "romanization": "leto / zima",
+      "nativeText": "Write \"лето / зима\" again without looking, then compare the exact written form against \"Я люблю лето, но не люблю зиму.\" before moving on.",
+      "pronunciation": "leto / zima",
+      "exampleTarget": "Я люблю лето, но не люблю зиму.",
+      "exampleNative": "Use the written model as the final correctness check: “I like summer, but I do not like winter.”",
+      "korean": "лето / зима",
+      "english": "Write \"лето / зима\" again without looking, then compare the exact written form against \"Я люблю лето, но не люблю зиму.\" before moving on.",
+      "example": "Я люблю лето, но не люблю зиму.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I like summer, but I do not like winter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "лето / зима",
+      "romanization": "leto / zima",
+      "nativeText": "Check whether \"лето / зима\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like summer, but I do not like winter.”",
+      "pronunciation": "leto / zima",
+      "exampleTarget": "Я люблю лето, но не люблю зиму.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I like summer, but I do not like winter.”",
+      "korean": "лето / зима",
+      "english": "Check whether \"лето / зима\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like summer, but I do not like winter.”",
+      "example": "Я люблю лето, но не люблю зиму.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I like summer, but I do not like winter.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "мне нравится",
+      "romanization": "mne nravitsya",
+      "nativeText": "“I like.” The thing liked is the grammatical subject, so singular/plural matters.",
+      "pronunciation": "mne nravitsya",
+      "exampleTarget": "Мне нравится тёплая погода.",
+      "exampleNative": "“I like warm weather.”",
+      "korean": "мне нравится",
+      "english": "“I like.” The thing liked is the grammatical subject, so singular/plural matters.",
+      "example": "Мне нравится тёплая погода.",
+      "exampleEnglish": "“I like warm weather.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "Мне нравится тёплая погода.",
+      "romanization": "mne nravitsya",
+      "nativeText": "Model use for \"Мне нравится тёплая погода.\": “I like warm weather.”",
+      "pronunciation": "mne nravitsya",
+      "exampleTarget": "Мне нравится тёплая погода.",
+      "exampleNative": "“I like warm weather.”",
+      "korean": "Мне нравится тёплая погода.",
+      "english": "Model use for \"Мне нравится тёплая погода.\": “I like warm weather.”",
+      "example": "Мне нравится тёплая погода.",
+      "exampleEnglish": "“I like warm weather.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "мне нравится",
+      "romanization": "mne nravitsya",
+      "nativeText": "Usage focus for \"мне нравится\": “I like.” The thing liked is the grammatical subject, so singular/plural matters.",
+      "pronunciation": "mne nravitsya",
+      "exampleTarget": "Мне нравится тёплая погода.",
+      "exampleNative": "Notice what the form is doing here: “I like warm weather.”",
+      "korean": "мне нравится",
+      "english": "Usage focus for \"мне нравится\": “I like.” The thing liked is the grammatical subject, so singular/plural matters.",
+      "example": "Мне нравится тёплая погода.",
+      "exampleEnglish": "Notice what the form is doing here: “I like warm weather.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "мне нравится",
+      "romanization": "mne nravitsya",
+      "nativeText": "Contrast check for \"мне нравится\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "mne nravitsya",
+      "exampleTarget": "Мне нравится тёплая погода.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like warm weather.”",
+      "korean": "мне нравится",
+      "english": "Contrast check for \"мне нравится\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Мне нравится тёплая погода.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like warm weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "мне нравится",
+      "romanization": "mne nravitsya",
+      "nativeText": "Recall \"мне нравится\" from memory, then explain what would change if a nearby alternative replaced it in \"Мне нравится тёплая погода.\".",
+      "pronunciation": "mne nravitsya",
+      "exampleTarget": "Мне нравится тёплая погода.",
+      "exampleNative": "Self-check against the model before moving on: “I like warm weather.”",
+      "korean": "мне нравится",
+      "english": "Recall \"мне нравится\" from memory, then explain what would change if a nearby alternative replaced it in \"Мне нравится тёплая погода.\".",
+      "example": "Мне нравится тёплая погода.",
+      "exampleEnglish": "Self-check against the model before moving on: “I like warm weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "мне нравится",
+      "romanization": "mne nravitsya",
+      "nativeText": "Repair \"мне нравится\" inside \"Мне нравится тёплая погода.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I like.” The thing liked is the grammatical subject, so singular/plural matters.",
+      "pronunciation": "mne nravitsya",
+      "exampleTarget": "Мне нравится тёплая погода.",
+      "exampleNative": "Use the model as the repair target: “I like warm weather.”",
+      "korean": "мне нравится",
+      "english": "Repair \"мне нравится\" inside \"Мне нравится тёплая погода.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I like.” The thing liked is the grammatical subject, so singular/plural matters.",
+      "example": "Мне нравится тёплая погода.",
+      "exampleEnglish": "Use the model as the repair target: “I like warm weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "мне нравится",
+      "romanization": "mne nravitsya",
+      "nativeText": "Transfer \"мне нравится\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Мне нравится тёплая погода.\".",
+      "pronunciation": "mne nravitsya",
+      "exampleTarget": "Мне нравится тёплая погода.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like warm weather.”",
+      "korean": "мне нравится",
+      "english": "Transfer \"мне нравится\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Мне нравится тёплая погода.\".",
+      "example": "Мне нравится тёплая погода.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like warm weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "мне нравится",
+      "romanization": "mne nravitsya",
+      "nativeText": "Find one word or phrase that naturally travels with \"мне нравится\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "mne nravitsya",
+      "exampleTarget": "Мне нравится тёплая погода.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I like warm weather.”",
+      "korean": "мне нравится",
+      "english": "Find one word or phrase that naturally travels with \"мне нравится\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Мне нравится тёплая погода.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I like warm weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "мне нравится",
+      "romanization": "mne nravitsya",
+      "nativeText": "Listen for \"мне нравится\" inside \"Мне нравится тёплая погода.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "mne nravitsya",
+      "exampleTarget": "Мне нравится тёплая погода.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like warm weather.”",
+      "korean": "мне нравится",
+      "english": "Listen for \"мне нравится\" inside \"Мне нравится тёплая погода.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Мне нравится тёплая погода.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like warm weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "мне нравится",
+      "romanization": "mne nravitsya",
+      "nativeText": "Write \"мне нравится\" again without looking, then compare the exact written form against \"Мне нравится тёплая погода.\" before moving on.",
+      "pronunciation": "mne nravitsya",
+      "exampleTarget": "Мне нравится тёплая погода.",
+      "exampleNative": "Use the written model as the final correctness check: “I like warm weather.”",
+      "korean": "мне нравится",
+      "english": "Write \"мне нравится\" again without looking, then compare the exact written form against \"Мне нравится тёплая погода.\" before moving on.",
+      "example": "Мне нравится тёплая погода.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I like warm weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "мне нравится",
+      "romanization": "mne nravitsya",
+      "nativeText": "Check whether \"мне нравится\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like warm weather.”",
+      "pronunciation": "mne nravitsya",
+      "exampleTarget": "Мне нравится тёплая погода.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I like warm weather.”",
+      "korean": "мне нравится",
+      "english": "Check whether \"мне нравится\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like warm weather.”",
+      "example": "Мне нравится тёплая погода.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I like warm weather.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "мне нравятся",
+      "romanization": "mne nravyatsya",
+      "nativeText": "Plural “I like.” Use it when the thing liked is plural.",
+      "pronunciation": "mne nravyatsya",
+      "exampleTarget": "Мне нравятся длинные вечера летом.",
+      "exampleNative": "“I like long summer evenings.”",
+      "korean": "мне нравятся",
+      "english": "Plural “I like.” Use it when the thing liked is plural.",
+      "example": "Мне нравятся длинные вечера летом.",
+      "exampleEnglish": "“I like long summer evenings.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "Мне нравятся длинные вечера летом.",
+      "romanization": "mne nravyatsya",
+      "nativeText": "Model use for \"Мне нравятся длинные вечера летом.\": “I like long summer evenings.”",
+      "pronunciation": "mne nravyatsya",
+      "exampleTarget": "Мне нравятся длинные вечера летом.",
+      "exampleNative": "“I like long summer evenings.”",
+      "korean": "Мне нравятся длинные вечера летом.",
+      "english": "Model use for \"Мне нравятся длинные вечера летом.\": “I like long summer evenings.”",
+      "example": "Мне нравятся длинные вечера летом.",
+      "exampleEnglish": "“I like long summer evenings.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "мне нравятся",
+      "romanization": "mne nravyatsya",
+      "nativeText": "Usage focus for \"мне нравятся\": Plural “I like.” Use it when the thing liked is plural.",
+      "pronunciation": "mne nravyatsya",
+      "exampleTarget": "Мне нравятся длинные вечера летом.",
+      "exampleNative": "Notice what the form is doing here: “I like long summer evenings.”",
+      "korean": "мне нравятся",
+      "english": "Usage focus for \"мне нравятся\": Plural “I like.” Use it when the thing liked is plural.",
+      "example": "Мне нравятся длинные вечера летом.",
+      "exampleEnglish": "Notice what the form is doing here: “I like long summer evenings.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "мне нравятся",
+      "romanization": "mne nravyatsya",
+      "nativeText": "Contrast check for \"мне нравятся\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "mne nravyatsya",
+      "exampleTarget": "Мне нравятся длинные вечера летом.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like long summer evenings.”",
+      "korean": "мне нравятся",
+      "english": "Contrast check for \"мне нравятся\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Мне нравятся длинные вечера летом.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like long summer evenings.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "мне нравятся",
+      "romanization": "mne nravyatsya",
+      "nativeText": "Recall \"мне нравятся\" from memory, then explain what would change if a nearby alternative replaced it in \"Мне нравятся длинные вечера летом.\".",
+      "pronunciation": "mne nravyatsya",
+      "exampleTarget": "Мне нравятся длинные вечера летом.",
+      "exampleNative": "Self-check against the model before moving on: “I like long summer evenings.”",
+      "korean": "мне нравятся",
+      "english": "Recall \"мне нравятся\" from memory, then explain what would change if a nearby alternative replaced it in \"Мне нравятся длинные вечера летом.\".",
+      "example": "Мне нравятся длинные вечера летом.",
+      "exampleEnglish": "Self-check against the model before moving on: “I like long summer evenings.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "мне нравятся",
+      "romanization": "mne nravyatsya",
+      "nativeText": "Repair \"мне нравятся\" inside \"Мне нравятся длинные вечера летом.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Plural “I like.” Use it when the thing liked is plural.",
+      "pronunciation": "mne nravyatsya",
+      "exampleTarget": "Мне нравятся длинные вечера летом.",
+      "exampleNative": "Use the model as the repair target: “I like long summer evenings.”",
+      "korean": "мне нравятся",
+      "english": "Repair \"мне нравятся\" inside \"Мне нравятся длинные вечера летом.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Plural “I like.” Use it when the thing liked is plural.",
+      "example": "Мне нравятся длинные вечера летом.",
+      "exampleEnglish": "Use the model as the repair target: “I like long summer evenings.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "мне нравятся",
+      "romanization": "mne nravyatsya",
+      "nativeText": "Transfer \"мне нравятся\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Мне нравятся длинные вечера летом.\".",
+      "pronunciation": "mne nravyatsya",
+      "exampleTarget": "Мне нравятся длинные вечера летом.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like long summer evenings.”",
+      "korean": "мне нравятся",
+      "english": "Transfer \"мне нравятся\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Мне нравятся длинные вечера летом.\".",
+      "example": "Мне нравятся длинные вечера летом.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like long summer evenings.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "мне нравятся",
+      "romanization": "mne nravyatsya",
+      "nativeText": "Find one word or phrase that naturally travels with \"мне нравятся\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "mne nravyatsya",
+      "exampleTarget": "Мне нравятся длинные вечера летом.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I like long summer evenings.”",
+      "korean": "мне нравятся",
+      "english": "Find one word or phrase that naturally travels with \"мне нравятся\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Мне нравятся длинные вечера летом.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I like long summer evenings.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "мне нравятся",
+      "romanization": "mne nravyatsya",
+      "nativeText": "Listen for \"мне нравятся\" inside \"Мне нравятся длинные вечера летом.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "mne nravyatsya",
+      "exampleTarget": "Мне нравятся длинные вечера летом.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like long summer evenings.”",
+      "korean": "мне нравятся",
+      "english": "Listen for \"мне нравятся\" inside \"Мне нравятся длинные вечера летом.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Мне нравятся длинные вечера летом.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like long summer evenings.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "мне нравятся",
+      "romanization": "mne nravyatsya",
+      "nativeText": "Write \"мне нравятся\" again without looking, then compare the exact written form against \"Мне нравятся длинные вечера летом.\" before moving on.",
+      "pronunciation": "mne nravyatsya",
+      "exampleTarget": "Мне нравятся длинные вечера летом.",
+      "exampleNative": "Use the written model as the final correctness check: “I like long summer evenings.”",
+      "korean": "мне нравятся",
+      "english": "Write \"мне нравятся\" again without looking, then compare the exact written form against \"Мне нравятся длинные вечера летом.\" before moving on.",
+      "example": "Мне нравятся длинные вечера летом.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I like long summer evenings.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "мне нравятся",
+      "romanization": "mne nravyatsya",
+      "nativeText": "Check whether \"мне нравятся\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like long summer evenings.”",
+      "pronunciation": "mne nravyatsya",
+      "exampleTarget": "Мне нравятся длинные вечера летом.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I like long summer evenings.”",
+      "korean": "мне нравятся",
+      "english": "Check whether \"мне нравятся\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like long summer evenings.”",
+      "example": "Мне нравятся длинные вечера летом.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I like long summer evenings.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "я больше люблю",
+      "romanization": "ya bolshe lyublyu",
+      "nativeText": "“I prefer / I like more.” A direct comparison frame.",
+      "pronunciation": "ya bolshe lyublyu",
+      "exampleTarget": "Я больше люблю весну, чем осень.",
+      "exampleNative": "“I prefer spring to autumn.”",
+      "korean": "я больше люблю",
+      "english": "“I prefer / I like more.” A direct comparison frame.",
+      "example": "Я больше люблю весну, чем осень.",
+      "exampleEnglish": "“I prefer spring to autumn.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "Я больше люблю весну, чем осень.",
+      "romanization": "ya bolshe lyublyu",
+      "nativeText": "Model use for \"Я больше люблю весну, чем осень.\": “I prefer spring to autumn.”",
+      "pronunciation": "ya bolshe lyublyu",
+      "exampleTarget": "Я больше люблю весну, чем осень.",
+      "exampleNative": "“I prefer spring to autumn.”",
+      "korean": "Я больше люблю весну, чем осень.",
+      "english": "Model use for \"Я больше люблю весну, чем осень.\": “I prefer spring to autumn.”",
+      "example": "Я больше люблю весну, чем осень.",
+      "exampleEnglish": "“I prefer spring to autumn.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "я больше люблю",
+      "romanization": "ya bolshe lyublyu",
+      "nativeText": "Usage focus for \"я больше люблю\": “I prefer / I like more.” A direct comparison frame.",
+      "pronunciation": "ya bolshe lyublyu",
+      "exampleTarget": "Я больше люблю весну, чем осень.",
+      "exampleNative": "Notice what the form is doing here: “I prefer spring to autumn.”",
+      "korean": "я больше люблю",
+      "english": "Usage focus for \"я больше люблю\": “I prefer / I like more.” A direct comparison frame.",
+      "example": "Я больше люблю весну, чем осень.",
+      "exampleEnglish": "Notice what the form is doing here: “I prefer spring to autumn.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "я больше люблю",
+      "romanization": "ya bolshe lyublyu",
+      "nativeText": "Contrast check for \"я больше люблю\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ya bolshe lyublyu",
+      "exampleTarget": "Я больше люблю весну, чем осень.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I prefer spring to autumn.”",
+      "korean": "я больше люблю",
+      "english": "Contrast check for \"я больше люблю\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Я больше люблю весну, чем осень.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I prefer spring to autumn.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "я больше люблю",
+      "romanization": "ya bolshe lyublyu",
+      "nativeText": "Recall \"я больше люблю\" from memory, then explain what would change if a nearby alternative replaced it in \"Я больше люблю весну, чем осень.\".",
+      "pronunciation": "ya bolshe lyublyu",
+      "exampleTarget": "Я больше люблю весну, чем осень.",
+      "exampleNative": "Self-check against the model before moving on: “I prefer spring to autumn.”",
+      "korean": "я больше люблю",
+      "english": "Recall \"я больше люблю\" from memory, then explain what would change if a nearby alternative replaced it in \"Я больше люблю весну, чем осень.\".",
+      "example": "Я больше люблю весну, чем осень.",
+      "exampleEnglish": "Self-check against the model before moving on: “I prefer spring to autumn.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "я больше люблю",
+      "romanization": "ya bolshe lyublyu",
+      "nativeText": "Repair \"я больше люблю\" inside \"Я больше люблю весну, чем осень.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I prefer / I like more.” A direct comparison frame.",
+      "pronunciation": "ya bolshe lyublyu",
+      "exampleTarget": "Я больше люблю весну, чем осень.",
+      "exampleNative": "Use the model as the repair target: “I prefer spring to autumn.”",
+      "korean": "я больше люблю",
+      "english": "Repair \"я больше люблю\" inside \"Я больше люблю весну, чем осень.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I prefer / I like more.” A direct comparison frame.",
+      "example": "Я больше люблю весну, чем осень.",
+      "exampleEnglish": "Use the model as the repair target: “I prefer spring to autumn.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "я больше люблю",
+      "romanization": "ya bolshe lyublyu",
+      "nativeText": "Transfer \"я больше люблю\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я больше люблю весну, чем осень.\".",
+      "pronunciation": "ya bolshe lyublyu",
+      "exampleTarget": "Я больше люблю весну, чем осень.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I prefer spring to autumn.”",
+      "korean": "я больше люблю",
+      "english": "Transfer \"я больше люблю\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я больше люблю весну, чем осень.\".",
+      "example": "Я больше люблю весну, чем осень.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I prefer spring to autumn.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "я больше люблю",
+      "romanization": "ya bolshe lyublyu",
+      "nativeText": "Find one word or phrase that naturally travels with \"я больше люблю\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ya bolshe lyublyu",
+      "exampleTarget": "Я больше люблю весну, чем осень.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I prefer spring to autumn.”",
+      "korean": "я больше люблю",
+      "english": "Find one word or phrase that naturally travels with \"я больше люблю\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Я больше люблю весну, чем осень.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I prefer spring to autumn.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "я больше люблю",
+      "romanization": "ya bolshe lyublyu",
+      "nativeText": "Listen for \"я больше люблю\" inside \"Я больше люблю весну, чем осень.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ya bolshe lyublyu",
+      "exampleTarget": "Я больше люблю весну, чем осень.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I prefer spring to autumn.”",
+      "korean": "я больше люблю",
+      "english": "Listen for \"я больше люблю\" inside \"Я больше люблю весну, чем осень.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Я больше люблю весну, чем осень.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I prefer spring to autumn.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "я больше люблю",
+      "romanization": "ya bolshe lyublyu",
+      "nativeText": "Write \"я больше люблю\" again without looking, then compare the exact written form against \"Я больше люблю весну, чем осень.\" before moving on.",
+      "pronunciation": "ya bolshe lyublyu",
+      "exampleTarget": "Я больше люблю весну, чем осень.",
+      "exampleNative": "Use the written model as the final correctness check: “I prefer spring to autumn.”",
+      "korean": "я больше люблю",
+      "english": "Write \"я больше люблю\" again without looking, then compare the exact written form against \"Я больше люблю весну, чем осень.\" before moving on.",
+      "example": "Я больше люблю весну, чем осень.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I prefer spring to autumn.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "я больше люблю",
+      "romanization": "ya bolshe lyublyu",
+      "nativeText": "Check whether \"я больше люблю\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I prefer spring to autumn.”",
+      "pronunciation": "ya bolshe lyublyu",
+      "exampleTarget": "Я больше люблю весну, чем осень.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I prefer spring to autumn.”",
+      "korean": "я больше люблю",
+      "english": "Check whether \"я больше люблю\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I prefer spring to autumn.”",
+      "example": "Я больше люблю весну, чем осень.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I prefer spring to autumn.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "потому что",
+      "romanization": "potomu chto",
+      "nativeText": "“Because.” It turns a preference into a fuller answer.",
+      "pronunciation": "potomu chto",
+      "exampleTarget": "Я люблю весну, потому что тепло.",
+      "exampleNative": "“I like spring because it is warm.”",
+      "korean": "потому что",
+      "english": "“Because.” It turns a preference into a fuller answer.",
+      "example": "Я люблю весну, потому что тепло.",
+      "exampleEnglish": "“I like spring because it is warm.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "Я люблю весну, потому что тепло.",
+      "romanization": "potomu chto",
+      "nativeText": "Model use for \"Я люблю весну, потому что тепло.\": “I like spring because it is warm.”",
+      "pronunciation": "potomu chto",
+      "exampleTarget": "Я люблю весну, потому что тепло.",
+      "exampleNative": "“I like spring because it is warm.”",
+      "korean": "Я люблю весну, потому что тепло.",
+      "english": "Model use for \"Я люблю весну, потому что тепло.\": “I like spring because it is warm.”",
+      "example": "Я люблю весну, потому что тепло.",
+      "exampleEnglish": "“I like spring because it is warm.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "потому что",
+      "romanization": "potomu chto",
+      "nativeText": "Usage focus for \"потому что\": “Because.” It turns a preference into a fuller answer.",
+      "pronunciation": "potomu chto",
+      "exampleTarget": "Я люблю весну, потому что тепло.",
+      "exampleNative": "Notice what the form is doing here: “I like spring because it is warm.”",
+      "korean": "потому что",
+      "english": "Usage focus for \"потому что\": “Because.” It turns a preference into a fuller answer.",
+      "example": "Я люблю весну, потому что тепло.",
+      "exampleEnglish": "Notice what the form is doing here: “I like spring because it is warm.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "потому что",
+      "romanization": "potomu chto",
+      "nativeText": "Contrast check for \"потому что\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "potomu chto",
+      "exampleTarget": "Я люблю весну, потому что тепло.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like spring because it is warm.”",
+      "korean": "потому что",
+      "english": "Contrast check for \"потому что\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Я люблю весну, потому что тепло.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like spring because it is warm.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "потому что",
+      "romanization": "potomu chto",
+      "nativeText": "Recall \"потому что\" from memory, then explain what would change if a nearby alternative replaced it in \"Я люблю весну, потому что тепло.\".",
+      "pronunciation": "potomu chto",
+      "exampleTarget": "Я люблю весну, потому что тепло.",
+      "exampleNative": "Self-check against the model before moving on: “I like spring because it is warm.”",
+      "korean": "потому что",
+      "english": "Recall \"потому что\" from memory, then explain what would change if a nearby alternative replaced it in \"Я люблю весну, потому что тепло.\".",
+      "example": "Я люблю весну, потому что тепло.",
+      "exampleEnglish": "Self-check against the model before moving on: “I like spring because it is warm.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "потому что",
+      "romanization": "potomu chto",
+      "nativeText": "Repair \"потому что\" inside \"Я люблю весну, потому что тепло.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Because.” It turns a preference into a fuller answer.",
+      "pronunciation": "potomu chto",
+      "exampleTarget": "Я люблю весну, потому что тепло.",
+      "exampleNative": "Use the model as the repair target: “I like spring because it is warm.”",
+      "korean": "потому что",
+      "english": "Repair \"потому что\" inside \"Я люблю весну, потому что тепло.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Because.” It turns a preference into a fuller answer.",
+      "example": "Я люблю весну, потому что тепло.",
+      "exampleEnglish": "Use the model as the repair target: “I like spring because it is warm.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "потому что",
+      "romanization": "potomu chto",
+      "nativeText": "Transfer \"потому что\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я люблю весну, потому что тепло.\".",
+      "pronunciation": "potomu chto",
+      "exampleTarget": "Я люблю весну, потому что тепло.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like spring because it is warm.”",
+      "korean": "потому что",
+      "english": "Transfer \"потому что\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я люблю весну, потому что тепло.\".",
+      "example": "Я люблю весну, потому что тепло.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like spring because it is warm.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "потому что",
+      "romanization": "potomu chto",
+      "nativeText": "Find one word or phrase that naturally travels with \"потому что\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "potomu chto",
+      "exampleTarget": "Я люблю весну, потому что тепло.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I like spring because it is warm.”",
+      "korean": "потому что",
+      "english": "Find one word or phrase that naturally travels with \"потому что\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Я люблю весну, потому что тепло.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I like spring because it is warm.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "потому что",
+      "romanization": "potomu chto",
+      "nativeText": "Listen for \"потому что\" inside \"Я люблю весну, потому что тепло.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "potomu chto",
+      "exampleTarget": "Я люблю весну, потому что тепло.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like spring because it is warm.”",
+      "korean": "потому что",
+      "english": "Listen for \"потому что\" inside \"Я люблю весну, потому что тепло.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Я люблю весну, потому что тепло.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like spring because it is warm.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "потому что",
+      "romanization": "potomu chto",
+      "nativeText": "Write \"потому что\" again without looking, then compare the exact written form against \"Я люблю весну, потому что тепло.\" before moving on.",
+      "pronunciation": "potomu chto",
+      "exampleTarget": "Я люблю весну, потому что тепло.",
+      "exampleNative": "Use the written model as the final correctness check: “I like spring because it is warm.”",
+      "korean": "потому что",
+      "english": "Write \"потому что\" again without looking, then compare the exact written form against \"Я люблю весну, потому что тепло.\" before moving on.",
+      "example": "Я люблю весну, потому что тепло.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I like spring because it is warm.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit10weatherpreferences-vocabulary-1",
+        "ru-level1unit10weatherpreferences-vocabulary-2",
+        "ru-level1unit10weatherpreferences-grammar-1",
+        "ru-level1unit10weatherpreferences-grammar-2",
+        "ru-level1unit10weatherpreferences-reading",
+        "ru-level1unit10weatherpreferences-listening",
+        "ru-level1unit10weatherpreferences-writing",
+        "ru-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "потому что",
+      "romanization": "potomu chto",
+      "nativeText": "Check whether \"потому что\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like spring because it is warm.”",
+      "pronunciation": "potomu chto",
+      "exampleTarget": "Я люблю весну, потому что тепло.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I like spring because it is warm.”",
+      "korean": "потому что",
+      "english": "Check whether \"потому что\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like spring because it is warm.”",
+      "example": "Я люблю весну, потому что тепло.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I like spring because it is warm.”"
+    }
+  ],
+  "targetLang": "ru",
+  "nativeLang": "en",
+  "track": "textbook"
+};

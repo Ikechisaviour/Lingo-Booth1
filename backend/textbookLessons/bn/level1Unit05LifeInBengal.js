@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('bn', {
-  slug: 'bn-l1u5',
-  title: 'Level 1 · Unit 5: বাংলার জীবন — Life in Bengal',
-  category: 'culture',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Describe everyday Bengali life through food, family, language, and city culture.',
-  vocabularyGoal: 'Use food, family, city, and culture words tied to Bengali daily life.',
-  grammarGoal: 'Notice classifiers, honorific choices, and that Bengali has no grammatical gender agreement in verbs.',
-  speakingGoal: 'Describe one feature of Bengali daily life and compare it with your own.',
-  task: 'Introduce daily life in Bengal to a visiting friend.',
-  expressionPractice: [
-    practice('describing-place', 'Describing place', 'Use one city or culture noun.'),
-    practice('describing-routine', 'Describing routine', 'Use one food or family expression.'),
-    practice('noticing-respect', 'Noticing respect', 'Choose one appropriate pronoun.'),
+module.exports = {
+  "title": "Level 1 · Unit 5: বাংলার জীবন — Life in Bengal",
+  "category": "culture",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "bn-level1unit05lifeinbengal-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Describe everyday Bengali life through food, family, language, and city culture."
+      ],
+      "task": "Introduce daily life in Bengal to a visiting friend."
+    },
+    {
+      "id": "bn-level1unit05lifeinbengal-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "bn-level1unit05lifeinbengal-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 5: বাংলার জীবন — Life in Bengal with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "bn-level1unit05lifeinbengal-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 5: বাংলার জীবন — Life in Bengal sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "bn-level1unit05lifeinbengal-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Describe everyday Bengali life through food, family, language, and city culture."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "bn-level1unit05lifeinbengal-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 5: বাংলার জীবন — Life in Bengal with one nearby Bengali form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "bn-level1unit05lifeinbengal-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "bn-level1unit05lifeinbengal-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "bn-level1unit05lifeinbengal-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "bn-level1unit05lifeinbengal-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "bn-level1unit05lifeinbengal-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Introduce daily life in Bengal to a visiting friend."
+      ],
+      "task": "Introduce daily life in Bengal to a visiting friend."
+    }
   ],
-  relatedPools: ['topic-culture', 'topic-city'],
-  items: [
-    item('বাংলা', 'bangla', '“Bengali / Bangla.” It names both the language and a cultural identity.', 'আমি বাংলা শিখছি।', '“I am learning Bengali.”'),
-    item('ঢাকা', 'dhaka', '“Dhaka.” The Bangladeshi capital is a practical city anchor for the curriculum.', 'ঢাকা খুব ব্যস্ত শহর।', '“Dhaka is a very busy city.”'),
-    item('কলকাতা', 'kolkata', '“Kolkata.” A major Bengali-speaking cultural center in India.', 'কলকাতা বইয়ের জন্য বিখ্যাত।', '“Kolkata is famous for books.”'),
-    item('ভাত', 'bhat', '“Rice.” A central everyday food noun in Bengali life.', 'অনেক মানুষ প্রতিদিন ভাত খান।', '“Many people eat rice every day.”'),
-    item('মাছ', 'machh', '“Fish.” Fish-and-rice is one of the best-known Bengali food pairings.', 'ভাত আর মাছ জনপ্রিয় খাবার।', '“Rice and fish are popular foods.”'),
-    item('পরিবার', 'poribar', '“Family.” A high-value culture and daily-life noun.', 'আমার পরিবার ঢাকায় থাকে।', '“My family lives in Dhaka.”'),
-    item('আপনি / তুমি', 'apni / tumi', 'Respectful “you” / familiar “you.” Social distance matters much more than English translation suggests.', 'আপনি কেমন আছেন? / তুমি কেমন আছ?', '“How are you?” respectful / familiar.'),
-    item('একটা বই', 'ekta boi', '“One book.” The classifier `-টা` is a very visible Bengali pattern learners should notice early.', 'আমার একটা বই আছে।', '“I have one book.”'),
+  "expressionPractice": [
+    {
+      "id": "describing-place",
+      "label": "Describing place",
+      "goal": "Use one city or culture noun."
+    },
+    {
+      "id": "describing-routine",
+      "label": "Describing routine",
+      "goal": "Use one food or family expression."
+    },
+    {
+      "id": "noticing-respect",
+      "label": "Noticing respect",
+      "goal": "Choose one appropriate pronoun."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-culture",
+    "topic-city"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-orientation"
+      ],
+      "targetText": "পাঠের লক্ষ্য",
+      "romanization": "",
+      "nativeText": "Describe everyday Bengali life through food, family, language, and city culture.",
+      "pronunciation": "",
+      "exampleTarget": "পাঠের লক্ষ্য",
+      "exampleNative": "The whole lesson is built toward this outcome: Introduce daily life in Bengal to a visiting friend.",
+      "korean": "পাঠের লক্ষ্য",
+      "english": "Describe everyday Bengali life through food, family, language, and city culture.",
+      "example": "পাঠের লক্ষ্য",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Introduce daily life in Bengal to a visiting friend."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-pronunciation"
+      ],
+      "targetText": "উচ্চারণ পরীক্ষা",
+      "romanization": "",
+      "nativeText": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আমি বাংলা শিখছি।\".",
+      "pronunciation": "",
+      "exampleTarget": "আমি বাংলা শিখছি।",
+      "exampleNative": "“I am learning Bengali.”",
+      "korean": "উচ্চারণ পরীক্ষা",
+      "english": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আমি বাংলা শিখছি।\".",
+      "example": "আমি বাংলা শিখছি।",
+      "exampleEnglish": "“I am learning Bengali.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1"
+      ],
+      "targetText": "বাংলা",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 5: বাংলার জীবন — Life in Bengal with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "আমি বাংলা শিখছি।",
+      "exampleNative": "“I am learning Bengali.”",
+      "korean": "বাংলা",
+      "english": "Use the key language of Level 1 · Unit 5: বাংলার জীবন — Life in Bengal with the register and setting that the lesson requires.",
+      "example": "আমি বাংলা শিখছি।",
+      "exampleEnglish": "“I am learning Bengali.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-2"
+      ],
+      "targetText": "ঢাকা",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 5: বাংলার জীবন — Life in Bengal sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "ঢাকা খুব ব্যস্ত শহর।",
+      "exampleNative": "“Dhaka is a very busy city.”",
+      "korean": "ঢাকা",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 5: বাংলার জীবন — Life in Bengal sound precise rather than merely understandable.",
+      "example": "ঢাকা খুব ব্যস্ত শহর।",
+      "exampleEnglish": "“Dhaka is a very busy city.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-grammar-1"
+      ],
+      "targetText": "বাংলা",
+      "romanization": "",
+      "nativeText": "Describe everyday Bengali life through food, family, language, and city culture.",
+      "pronunciation": "",
+      "exampleTarget": "আমি বাংলা শিখছি।",
+      "exampleNative": "“I am learning Bengali.”",
+      "korean": "বাংলা",
+      "english": "Describe everyday Bengali life through food, family, language, and city culture.",
+      "example": "আমি বাংলা শিখছি।",
+      "exampleEnglish": "“I am learning Bengali.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-grammar-2"
+      ],
+      "targetText": "ঢাকা",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 5: বাংলার জীবন — Life in Bengal with one nearby Bengali form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "ঢাকা খুব ব্যস্ত শহর।",
+      "exampleNative": "“Dhaka is a very busy city.”",
+      "korean": "ঢাকা",
+      "english": "Contrast the main pattern in Level 1 · Unit 5: বাংলার জীবন — Life in Bengal with one nearby Bengali form so the learner can avoid literal translation.",
+      "example": "ঢাকা খুব ব্যস্ত শহর।",
+      "exampleEnglish": "“Dhaka is a very busy city.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-reading"
+      ],
+      "targetText": "পাঠ মডেল",
+      "romanization": "",
+      "nativeText": "Read \"আমার একটা বই আছে।\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "আমার একটা বই আছে।",
+      "exampleNative": "“I have one book.”",
+      "korean": "পাঠ মডেল",
+      "english": "Read \"আমার একটা বই আছে।\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "আমার একটা বই আছে।",
+      "exampleEnglish": "“I have one book.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-listening"
+      ],
+      "targetText": "সংলাপ মডেল",
+      "romanization": "",
+      "nativeText": "Hear \"আমার একটা বই আছে।\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "আমার একটা বই আছে।",
+      "exampleNative": "“I have one book.”",
+      "korean": "সংলাপ মডেল",
+      "english": "Hear \"আমার একটা বই আছে।\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "আমার একটা বই আছে।",
+      "exampleEnglish": "“I have one book.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-writing"
+      ],
+      "targetText": "লেখার অনুশীলন",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"আমি বাংলা শিখছি।\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "আমি বাংলা শিখছি।",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "লেখার অনুশীলন",
+      "english": "Write your own version after studying \"আমি বাংলা শিখছি।\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "আমি বাংলা শিখছি।",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-culture"
+      ],
+      "targetText": "ব্যবহার ও প্রসঙ্গ",
+      "romanization": "",
+      "nativeText": "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "ঢাকা খুব ব্যস্ত শহর।",
+      "exampleNative": "“Dhaka is a very busy city.”",
+      "korean": "ব্যবহার ও প্রসঙ্গ",
+      "english": "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used.",
+      "example": "ঢাকা খুব ব্যস্ত শহর।",
+      "exampleEnglish": "“Dhaka is a very busy city.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "চূড়ান্ত কাজ",
+      "romanization": "",
+      "nativeText": "Introduce daily life in Bengal to a visiting friend.",
+      "pronunciation": "",
+      "exampleTarget": "আমার একটা বই আছে।",
+      "exampleNative": "Introduce daily life in Bengal to a visiting friend.",
+      "korean": "চূড়ান্ত কাজ",
+      "english": "Introduce daily life in Bengal to a visiting friend.",
+      "example": "আমার একটা বই আছে।",
+      "exampleEnglish": "Introduce daily life in Bengal to a visiting friend."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-grammar-2"
+      ],
+      "targetText": "সাধারণ ভুল",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around pronoun levels, verb agreement, case markers, and register. Begin by checking \"ঢাকা খুব ব্যস্ত শহর।\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "ঢাকা খুব ব্যস্ত শহর।",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “Dhaka is a very busy city.”",
+      "korean": "সাধারণ ভুল",
+      "english": "Watch for literal-translation mistakes around pronoun levels, verb agreement, case markers, and register. Begin by checking \"ঢাকা খুব ব্যস্ত শহর।\" against the model.",
+      "example": "ঢাকা খুব ব্যস্ত শহর।",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “Dhaka is a very busy city.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-culture"
+      ],
+      "targetText": "রেজিস্টার",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for familiar, respectful, or formal Bengali before selecting pronouns and verb endings. Compare the social fit of \"আমি বাংলা শিখছি।\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "আমি বাংলা শিখছি।",
+      "exampleNative": "“I am learning Bengali.”",
+      "korean": "রেজিস্টার",
+      "english": "Check whether the setting calls for familiar, respectful, or formal Bengali before selecting pronouns and verb endings. Compare the social fit of \"আমি বাংলা শিখছি।\" before reusing it elsewhere.",
+      "example": "আমি বাংলা শিখছি।",
+      "exampleEnglish": "“I am learning Bengali.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "সাবলীলতা",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Bengali message rather than as separate translated fragments. Aim to carry \"আমার একটা বই আছে।\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "আমার একটা বই আছে।",
+      "exampleNative": "“I have one book.”",
+      "korean": "সাবলীলতা",
+      "english": "Say the idea as one connected Bengali message rather than as separate translated fragments. Aim to carry \"আমার একটা বই আছে।\" as one thought.",
+      "example": "আমার একটা বই আছে।",
+      "exampleEnglish": "“I have one book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "প্রয়োগ",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"আমি বাংলা শিখছি।\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "আমি বাংলা শিখছি।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "প্রয়োগ",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"আমি বাংলা শিখছি।\" and move it into your own life.",
+      "example": "আমি বাংলা শিখছি।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-grammar-1"
+      ],
+      "targetText": "স্মরণ",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"বাংলা\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "বাংলা",
+      "exampleNative": "“Bengali / Bangla.” It names both the language and a cultural identity.",
+      "korean": "স্মরণ",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"বাংলা\" before looking back.",
+      "example": "বাংলা",
+      "exampleEnglish": "“Bengali / Bangla.” It names both the language and a cultural identity."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-writing"
+      ],
+      "targetText": "বিস্তার",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"আমার একটা বই আছে।\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "আমার একটা বই আছে।",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "বিস্তার",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"আমার একটা বই আছে।\" rather than restarting from a blank sentence.",
+      "example": "আমার একটা বই আছে।",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading"
+      ],
+      "targetText": "তুলনা",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 5: বাংলার জীবন — Life in Bengal with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"ঢাকা খুব ব্যস্ত শহর।\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "ঢাকা খুব ব্যস্ত শহর।",
+      "exampleNative": "“Dhaka is a very busy city.”",
+      "korean": "তুলনা",
+      "english": "Compare the central form in Level 1 · Unit 5: বাংলার জীবন — Life in Bengal with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"ঢাকা খুব ব্যস্ত শহর।\" as the comparison line.",
+      "example": "ঢাকা খুব ব্যস্ত শহর।",
+      "exampleEnglish": "“Dhaka is a very busy city.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-pronunciation"
+      ],
+      "targetText": "উচ্চারণ সংশোধন",
+      "romanization": "",
+      "nativeText": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আমি বাংলা শিখছি।\".",
+      "pronunciation": "",
+      "exampleTarget": "আমি বাংলা শিখছি।",
+      "exampleNative": "“I am learning Bengali.”",
+      "korean": "উচ্চারণ সংশোধন",
+      "english": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আমি বাংলা শিখছি।\".",
+      "example": "আমি বাংলা শিখছি।",
+      "exampleEnglish": "“I am learning Bengali.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "সংলাপ পরিবর্তন",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"আমার একটা বই আছে।\".",
+      "pronunciation": "",
+      "exampleTarget": "আমার একটা বই আছে।",
+      "exampleNative": "“I have one book.”",
+      "korean": "সংলাপ পরিবর্তন",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"আমার একটা বই আছে।\".",
+      "example": "আমার একটা বই আছে।",
+      "exampleEnglish": "“I have one book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-writing"
+      ],
+      "targetText": "বাক্য গঠন",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"আমি বাংলা শিখছি।\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "আমি বাংলা শিখছি।",
+      "exampleNative": "“I am learning Bengali.”",
+      "korean": "বাক্য গঠন",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"আমি বাংলা শিখছি।\" one layer at a time.",
+      "example": "আমি বাংলা শিখছি।",
+      "exampleEnglish": "“I am learning Bengali.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-2"
+      ],
+      "targetText": "দ্রুত পরীক্ষা",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"ঢাকা খুব ব্যস্ত শহর।\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "ঢাকা খুব ব্যস্ত শহর।",
+      "exampleNative": "“Dhaka is a very busy city.”",
+      "korean": "দ্রুত পরীক্ষা",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"ঢাকা খুব ব্যস্ত শহর।\" as the deciding example.",
+      "example": "ঢাকা খুব ব্যস্ত শহর।",
+      "exampleEnglish": "“Dhaka is a very busy city.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-culture",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "পুনরালোচনা",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"আমার একটা বই আছে।\".",
+      "pronunciation": "",
+      "exampleTarget": "আমার একটা বই আছে।",
+      "exampleNative": "“I have one book.”",
+      "korean": "পুনরালোচনা",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"আমার একটা বই আছে।\".",
+      "example": "আমার একটা বই আছে।",
+      "exampleEnglish": "“I have one book.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "বাংলা",
+      "romanization": "bangla",
+      "nativeText": "“Bengali / Bangla.” It names both the language and a cultural identity.",
+      "pronunciation": "bangla",
+      "exampleTarget": "আমি বাংলা শিখছি।",
+      "exampleNative": "“I am learning Bengali.”",
+      "korean": "বাংলা",
+      "english": "“Bengali / Bangla.” It names both the language and a cultural identity.",
+      "example": "আমি বাংলা শিখছি।",
+      "exampleEnglish": "“I am learning Bengali.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "আমি বাংলা শিখছি।",
+      "romanization": "bangla",
+      "nativeText": "Model use for \"আমি বাংলা শিখছি।\": “I am learning Bengali.”",
+      "pronunciation": "bangla",
+      "exampleTarget": "আমি বাংলা শিখছি।",
+      "exampleNative": "“I am learning Bengali.”",
+      "korean": "আমি বাংলা শিখছি।",
+      "english": "Model use for \"আমি বাংলা শিখছি।\": “I am learning Bengali.”",
+      "example": "আমি বাংলা শিখছি।",
+      "exampleEnglish": "“I am learning Bengali.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "বাংলা",
+      "romanization": "bangla",
+      "nativeText": "Usage focus for \"বাংলা\": Use the key language of Level 1 · Unit 5: বাংলার জীবন — Life in Bengal with the register and setting that the lesson requires.",
+      "pronunciation": "bangla",
+      "exampleTarget": "আমি বাংলা শিখছি।",
+      "exampleNative": "Notice what the form is doing here: “I am learning Bengali.”",
+      "korean": "বাংলা",
+      "english": "Usage focus for \"বাংলা\": Use the key language of Level 1 · Unit 5: বাংলার জীবন — Life in Bengal with the register and setting that the lesson requires.",
+      "example": "আমি বাংলা শিখছি।",
+      "exampleEnglish": "Notice what the form is doing here: “I am learning Bengali.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "বাংলা",
+      "romanization": "bangla",
+      "nativeText": "Contrast check for \"বাংলা\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "bangla",
+      "exampleTarget": "আমি বাংলা শিখছি।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am learning Bengali.”",
+      "korean": "বাংলা",
+      "english": "Contrast check for \"বাংলা\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আমি বাংলা শিখছি।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am learning Bengali.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "বাংলা",
+      "romanization": "bangla",
+      "nativeText": "Recall \"বাংলা\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি বাংলা শিখছি।\".",
+      "pronunciation": "bangla",
+      "exampleTarget": "আমি বাংলা শিখছি।",
+      "exampleNative": "Self-check against the model before moving on: “I am learning Bengali.”",
+      "korean": "বাংলা",
+      "english": "Recall \"বাংলা\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি বাংলা শিখছি।\".",
+      "example": "আমি বাংলা শিখছি।",
+      "exampleEnglish": "Self-check against the model before moving on: “I am learning Bengali.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "বাংলা",
+      "romanization": "bangla",
+      "nativeText": "Repair \"বাংলা\" inside \"আমি বাংলা শিখছি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 5: বাংলার জীবন — Life in Bengal with the register and setting that the lesson requires.",
+      "pronunciation": "bangla",
+      "exampleTarget": "আমি বাংলা শিখছি।",
+      "exampleNative": "Use the model as the repair target: “I am learning Bengali.”",
+      "korean": "বাংলা",
+      "english": "Repair \"বাংলা\" inside \"আমি বাংলা শিখছি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 5: বাংলার জীবন — Life in Bengal with the register and setting that the lesson requires.",
+      "example": "আমি বাংলা শিখছি।",
+      "exampleEnglish": "Use the model as the repair target: “I am learning Bengali.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "বাংলা",
+      "romanization": "bangla",
+      "nativeText": "Transfer \"বাংলা\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি বাংলা শিখছি।\".",
+      "pronunciation": "bangla",
+      "exampleTarget": "আমি বাংলা শিখছি।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am learning Bengali.”",
+      "korean": "বাংলা",
+      "english": "Transfer \"বাংলা\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি বাংলা শিখছি।\".",
+      "example": "আমি বাংলা শিখছি।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am learning Bengali.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "বাংলা",
+      "romanization": "bangla",
+      "nativeText": "Find one word or phrase that naturally travels with \"বাংলা\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "bangla",
+      "exampleTarget": "আমি বাংলা শিখছি।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I am learning Bengali.”",
+      "korean": "বাংলা",
+      "english": "Find one word or phrase that naturally travels with \"বাংলা\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আমি বাংলা শিখছি।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I am learning Bengali.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "বাংলা",
+      "romanization": "bangla",
+      "nativeText": "Listen for \"বাংলা\" inside \"আমি বাংলা শিখছি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "bangla",
+      "exampleTarget": "আমি বাংলা শিখছি।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am learning Bengali.”",
+      "korean": "বাংলা",
+      "english": "Listen for \"বাংলা\" inside \"আমি বাংলা শিখছি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আমি বাংলা শিখছি।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am learning Bengali.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "বাংলা",
+      "romanization": "bangla",
+      "nativeText": "Write \"বাংলা\" again without looking, then compare the exact written form against \"আমি বাংলা শিখছি।\" before moving on.",
+      "pronunciation": "bangla",
+      "exampleTarget": "আমি বাংলা শিখছি।",
+      "exampleNative": "Use the written model as the final correctness check: “I am learning Bengali.”",
+      "korean": "বাংলা",
+      "english": "Write \"বাংলা\" again without looking, then compare the exact written form against \"আমি বাংলা শিখছি।\" before moving on.",
+      "example": "আমি বাংলা শিখছি।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I am learning Bengali.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "বাংলা",
+      "romanization": "bangla",
+      "nativeText": "Check whether \"বাংলা\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am learning Bengali.”",
+      "pronunciation": "bangla",
+      "exampleTarget": "আমি বাংলা শিখছি।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I am learning Bengali.”",
+      "korean": "বাংলা",
+      "english": "Check whether \"বাংলা\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am learning Bengali.”",
+      "example": "আমি বাংলা শিখছি।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I am learning Bengali.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "ঢাকা",
+      "romanization": "dhaka",
+      "nativeText": "“Dhaka.” The Bangladeshi capital is a practical city anchor for the curriculum.",
+      "pronunciation": "dhaka",
+      "exampleTarget": "ঢাকা খুব ব্যস্ত শহর।",
+      "exampleNative": "“Dhaka is a very busy city.”",
+      "korean": "ঢাকা",
+      "english": "“Dhaka.” The Bangladeshi capital is a practical city anchor for the curriculum.",
+      "example": "ঢাকা খুব ব্যস্ত শহর।",
+      "exampleEnglish": "“Dhaka is a very busy city.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "ঢাকা খুব ব্যস্ত শহর।",
+      "romanization": "dhaka",
+      "nativeText": "Model use for \"ঢাকা খুব ব্যস্ত শহর।\": “Dhaka is a very busy city.”",
+      "pronunciation": "dhaka",
+      "exampleTarget": "ঢাকা খুব ব্যস্ত শহর।",
+      "exampleNative": "“Dhaka is a very busy city.”",
+      "korean": "ঢাকা খুব ব্যস্ত শহর।",
+      "english": "Model use for \"ঢাকা খুব ব্যস্ত শহর।\": “Dhaka is a very busy city.”",
+      "example": "ঢাকা খুব ব্যস্ত শহর।",
+      "exampleEnglish": "“Dhaka is a very busy city.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "ঢাকা",
+      "romanization": "dhaka",
+      "nativeText": "Usage focus for \"ঢাকা\": Distinguish the nearby wording choices that make Level 1 · Unit 5: বাংলার জীবন — Life in Bengal sound precise rather than merely understandable.",
+      "pronunciation": "dhaka",
+      "exampleTarget": "ঢাকা খুব ব্যস্ত শহর।",
+      "exampleNative": "Notice what the form is doing here: “Dhaka is a very busy city.”",
+      "korean": "ঢাকা",
+      "english": "Usage focus for \"ঢাকা\": Distinguish the nearby wording choices that make Level 1 · Unit 5: বাংলার জীবন — Life in Bengal sound precise rather than merely understandable.",
+      "example": "ঢাকা খুব ব্যস্ত শহর।",
+      "exampleEnglish": "Notice what the form is doing here: “Dhaka is a very busy city.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "ঢাকা",
+      "romanization": "dhaka",
+      "nativeText": "Contrast check for \"ঢাকা\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "dhaka",
+      "exampleTarget": "ঢাকা খুব ব্যস্ত শহর।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Dhaka is a very busy city.”",
+      "korean": "ঢাকা",
+      "english": "Contrast check for \"ঢাকা\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "ঢাকা খুব ব্যস্ত শহর।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Dhaka is a very busy city.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "ঢাকা",
+      "romanization": "dhaka",
+      "nativeText": "Recall \"ঢাকা\" from memory, then explain what would change if a nearby alternative replaced it in \"ঢাকা খুব ব্যস্ত শহর।\".",
+      "pronunciation": "dhaka",
+      "exampleTarget": "ঢাকা খুব ব্যস্ত শহর।",
+      "exampleNative": "Self-check against the model before moving on: “Dhaka is a very busy city.”",
+      "korean": "ঢাকা",
+      "english": "Recall \"ঢাকা\" from memory, then explain what would change if a nearby alternative replaced it in \"ঢাকা খুব ব্যস্ত শহর।\".",
+      "example": "ঢাকা খুব ব্যস্ত শহর।",
+      "exampleEnglish": "Self-check against the model before moving on: “Dhaka is a very busy city.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "ঢাকা",
+      "romanization": "dhaka",
+      "nativeText": "Repair \"ঢাকা\" inside \"ঢাকা খুব ব্যস্ত শহর।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 5: বাংলার জীবন — Life in Bengal sound precise rather than merely understandable.",
+      "pronunciation": "dhaka",
+      "exampleTarget": "ঢাকা খুব ব্যস্ত শহর।",
+      "exampleNative": "Use the model as the repair target: “Dhaka is a very busy city.”",
+      "korean": "ঢাকা",
+      "english": "Repair \"ঢাকা\" inside \"ঢাকা খুব ব্যস্ত শহর।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 5: বাংলার জীবন — Life in Bengal sound precise rather than merely understandable.",
+      "example": "ঢাকা খুব ব্যস্ত শহর।",
+      "exampleEnglish": "Use the model as the repair target: “Dhaka is a very busy city.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "ঢাকা",
+      "romanization": "dhaka",
+      "nativeText": "Transfer \"ঢাকা\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ঢাকা খুব ব্যস্ত শহর।\".",
+      "pronunciation": "dhaka",
+      "exampleTarget": "ঢাকা খুব ব্যস্ত শহর।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Dhaka is a very busy city.”",
+      "korean": "ঢাকা",
+      "english": "Transfer \"ঢাকা\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ঢাকা খুব ব্যস্ত শহর।\".",
+      "example": "ঢাকা খুব ব্যস্ত শহর।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Dhaka is a very busy city.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "ঢাকা",
+      "romanization": "dhaka",
+      "nativeText": "Find one word or phrase that naturally travels with \"ঢাকা\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "dhaka",
+      "exampleTarget": "ঢাকা খুব ব্যস্ত শহর।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Dhaka is a very busy city.”",
+      "korean": "ঢাকা",
+      "english": "Find one word or phrase that naturally travels with \"ঢাকা\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "ঢাকা খুব ব্যস্ত শহর।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Dhaka is a very busy city.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "ঢাকা",
+      "romanization": "dhaka",
+      "nativeText": "Listen for \"ঢাকা\" inside \"ঢাকা খুব ব্যস্ত শহর।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "dhaka",
+      "exampleTarget": "ঢাকা খুব ব্যস্ত শহর।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Dhaka is a very busy city.”",
+      "korean": "ঢাকা",
+      "english": "Listen for \"ঢাকা\" inside \"ঢাকা খুব ব্যস্ত শহর।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "ঢাকা খুব ব্যস্ত শহর।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Dhaka is a very busy city.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "ঢাকা",
+      "romanization": "dhaka",
+      "nativeText": "Write \"ঢাকা\" again without looking, then compare the exact written form against \"ঢাকা খুব ব্যস্ত শহর।\" before moving on.",
+      "pronunciation": "dhaka",
+      "exampleTarget": "ঢাকা খুব ব্যস্ত শহর।",
+      "exampleNative": "Use the written model as the final correctness check: “Dhaka is a very busy city.”",
+      "korean": "ঢাকা",
+      "english": "Write \"ঢাকা\" again without looking, then compare the exact written form against \"ঢাকা খুব ব্যস্ত শহর।\" before moving on.",
+      "example": "ঢাকা খুব ব্যস্ত শহর।",
+      "exampleEnglish": "Use the written model as the final correctness check: “Dhaka is a very busy city.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "ঢাকা",
+      "romanization": "dhaka",
+      "nativeText": "Check whether \"ঢাকা\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Dhaka is a very busy city.”",
+      "pronunciation": "dhaka",
+      "exampleTarget": "ঢাকা খুব ব্যস্ত শহর।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Dhaka is a very busy city.”",
+      "korean": "ঢাকা",
+      "english": "Check whether \"ঢাকা\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Dhaka is a very busy city.”",
+      "example": "ঢাকা খুব ব্যস্ত শহর।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Dhaka is a very busy city.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "কলকাতা",
+      "romanization": "kolkata",
+      "nativeText": "“Kolkata.” A major Bengali-speaking cultural center in India.",
+      "pronunciation": "kolkata",
+      "exampleTarget": "কলকাতা বইয়ের জন্য বিখ্যাত।",
+      "exampleNative": "“Kolkata is famous for books.”",
+      "korean": "কলকাতা",
+      "english": "“Kolkata.” A major Bengali-speaking cultural center in India.",
+      "example": "কলকাতা বইয়ের জন্য বিখ্যাত।",
+      "exampleEnglish": "“Kolkata is famous for books.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "কলকাতা বইয়ের জন্য বিখ্যাত।",
+      "romanization": "kolkata",
+      "nativeText": "Model use for \"কলকাতা বইয়ের জন্য বিখ্যাত।\": “Kolkata is famous for books.”",
+      "pronunciation": "kolkata",
+      "exampleTarget": "কলকাতা বইয়ের জন্য বিখ্যাত।",
+      "exampleNative": "“Kolkata is famous for books.”",
+      "korean": "কলকাতা বইয়ের জন্য বিখ্যাত।",
+      "english": "Model use for \"কলকাতা বইয়ের জন্য বিখ্যাত।\": “Kolkata is famous for books.”",
+      "example": "কলকাতা বইয়ের জন্য বিখ্যাত।",
+      "exampleEnglish": "“Kolkata is famous for books.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "কলকাতা",
+      "romanization": "kolkata",
+      "nativeText": "Usage focus for \"কলকাতা\": “Kolkata.” A major Bengali-speaking cultural center in India.",
+      "pronunciation": "kolkata",
+      "exampleTarget": "কলকাতা বইয়ের জন্য বিখ্যাত।",
+      "exampleNative": "Notice what the form is doing here: “Kolkata is famous for books.”",
+      "korean": "কলকাতা",
+      "english": "Usage focus for \"কলকাতা\": “Kolkata.” A major Bengali-speaking cultural center in India.",
+      "example": "কলকাতা বইয়ের জন্য বিখ্যাত।",
+      "exampleEnglish": "Notice what the form is doing here: “Kolkata is famous for books.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "কলকাতা",
+      "romanization": "kolkata",
+      "nativeText": "Contrast check for \"কলকাতা\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kolkata",
+      "exampleTarget": "কলকাতা বইয়ের জন্য বিখ্যাত।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Kolkata is famous for books.”",
+      "korean": "কলকাতা",
+      "english": "Contrast check for \"কলকাতা\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "কলকাতা বইয়ের জন্য বিখ্যাত।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Kolkata is famous for books.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "কলকাতা",
+      "romanization": "kolkata",
+      "nativeText": "Recall \"কলকাতা\" from memory, then explain what would change if a nearby alternative replaced it in \"কলকাতা বইয়ের জন্য বিখ্যাত।\".",
+      "pronunciation": "kolkata",
+      "exampleTarget": "কলকাতা বইয়ের জন্য বিখ্যাত।",
+      "exampleNative": "Self-check against the model before moving on: “Kolkata is famous for books.”",
+      "korean": "কলকাতা",
+      "english": "Recall \"কলকাতা\" from memory, then explain what would change if a nearby alternative replaced it in \"কলকাতা বইয়ের জন্য বিখ্যাত।\".",
+      "example": "কলকাতা বইয়ের জন্য বিখ্যাত।",
+      "exampleEnglish": "Self-check against the model before moving on: “Kolkata is famous for books.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "কলকাতা",
+      "romanization": "kolkata",
+      "nativeText": "Repair \"কলকাতা\" inside \"কলকাতা বইয়ের জন্য বিখ্যাত।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Kolkata.” A major Bengali-speaking cultural center in India.",
+      "pronunciation": "kolkata",
+      "exampleTarget": "কলকাতা বইয়ের জন্য বিখ্যাত।",
+      "exampleNative": "Use the model as the repair target: “Kolkata is famous for books.”",
+      "korean": "কলকাতা",
+      "english": "Repair \"কলকাতা\" inside \"কলকাতা বইয়ের জন্য বিখ্যাত।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Kolkata.” A major Bengali-speaking cultural center in India.",
+      "example": "কলকাতা বইয়ের জন্য বিখ্যাত।",
+      "exampleEnglish": "Use the model as the repair target: “Kolkata is famous for books.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "কলকাতা",
+      "romanization": "kolkata",
+      "nativeText": "Transfer \"কলকাতা\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"কলকাতা বইয়ের জন্য বিখ্যাত।\".",
+      "pronunciation": "kolkata",
+      "exampleTarget": "কলকাতা বইয়ের জন্য বিখ্যাত।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Kolkata is famous for books.”",
+      "korean": "কলকাতা",
+      "english": "Transfer \"কলকাতা\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"কলকাতা বইয়ের জন্য বিখ্যাত।\".",
+      "example": "কলকাতা বইয়ের জন্য বিখ্যাত।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Kolkata is famous for books.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "কলকাতা",
+      "romanization": "kolkata",
+      "nativeText": "Find one word or phrase that naturally travels with \"কলকাতা\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kolkata",
+      "exampleTarget": "কলকাতা বইয়ের জন্য বিখ্যাত।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Kolkata is famous for books.”",
+      "korean": "কলকাতা",
+      "english": "Find one word or phrase that naturally travels with \"কলকাতা\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "কলকাতা বইয়ের জন্য বিখ্যাত।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Kolkata is famous for books.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "কলকাতা",
+      "romanization": "kolkata",
+      "nativeText": "Listen for \"কলকাতা\" inside \"কলকাতা বইয়ের জন্য বিখ্যাত।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kolkata",
+      "exampleTarget": "কলকাতা বইয়ের জন্য বিখ্যাত।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Kolkata is famous for books.”",
+      "korean": "কলকাতা",
+      "english": "Listen for \"কলকাতা\" inside \"কলকাতা বইয়ের জন্য বিখ্যাত।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "কলকাতা বইয়ের জন্য বিখ্যাত।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Kolkata is famous for books.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "কলকাতা",
+      "romanization": "kolkata",
+      "nativeText": "Write \"কলকাতা\" again without looking, then compare the exact written form against \"কলকাতা বইয়ের জন্য বিখ্যাত।\" before moving on.",
+      "pronunciation": "kolkata",
+      "exampleTarget": "কলকাতা বইয়ের জন্য বিখ্যাত।",
+      "exampleNative": "Use the written model as the final correctness check: “Kolkata is famous for books.”",
+      "korean": "কলকাতা",
+      "english": "Write \"কলকাতা\" again without looking, then compare the exact written form against \"কলকাতা বইয়ের জন্য বিখ্যাত।\" before moving on.",
+      "example": "কলকাতা বইয়ের জন্য বিখ্যাত।",
+      "exampleEnglish": "Use the written model as the final correctness check: “Kolkata is famous for books.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "কলকাতা",
+      "romanization": "kolkata",
+      "nativeText": "Check whether \"কলকাতা\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Kolkata is famous for books.”",
+      "pronunciation": "kolkata",
+      "exampleTarget": "কলকাতা বইয়ের জন্য বিখ্যাত।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Kolkata is famous for books.”",
+      "korean": "কলকাতা",
+      "english": "Check whether \"কলকাতা\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Kolkata is famous for books.”",
+      "example": "কলকাতা বইয়ের জন্য বিখ্যাত।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Kolkata is famous for books.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "ভাত",
+      "romanization": "bhat",
+      "nativeText": "“Rice.” A central everyday food noun in Bengali life.",
+      "pronunciation": "bhat",
+      "exampleTarget": "অনেক মানুষ প্রতিদিন ভাত খান।",
+      "exampleNative": "“Many people eat rice every day.”",
+      "korean": "ভাত",
+      "english": "“Rice.” A central everyday food noun in Bengali life.",
+      "example": "অনেক মানুষ প্রতিদিন ভাত খান।",
+      "exampleEnglish": "“Many people eat rice every day.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "অনেক মানুষ প্রতিদিন ভাত খান।",
+      "romanization": "bhat",
+      "nativeText": "Model use for \"অনেক মানুষ প্রতিদিন ভাত খান।\": “Many people eat rice every day.”",
+      "pronunciation": "bhat",
+      "exampleTarget": "অনেক মানুষ প্রতিদিন ভাত খান।",
+      "exampleNative": "“Many people eat rice every day.”",
+      "korean": "অনেক মানুষ প্রতিদিন ভাত খান।",
+      "english": "Model use for \"অনেক মানুষ প্রতিদিন ভাত খান।\": “Many people eat rice every day.”",
+      "example": "অনেক মানুষ প্রতিদিন ভাত খান।",
+      "exampleEnglish": "“Many people eat rice every day.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "ভাত",
+      "romanization": "bhat",
+      "nativeText": "Usage focus for \"ভাত\": “Rice.” A central everyday food noun in Bengali life.",
+      "pronunciation": "bhat",
+      "exampleTarget": "অনেক মানুষ প্রতিদিন ভাত খান।",
+      "exampleNative": "Notice what the form is doing here: “Many people eat rice every day.”",
+      "korean": "ভাত",
+      "english": "Usage focus for \"ভাত\": “Rice.” A central everyday food noun in Bengali life.",
+      "example": "অনেক মানুষ প্রতিদিন ভাত খান।",
+      "exampleEnglish": "Notice what the form is doing here: “Many people eat rice every day.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "ভাত",
+      "romanization": "bhat",
+      "nativeText": "Contrast check for \"ভাত\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "bhat",
+      "exampleTarget": "অনেক মানুষ প্রতিদিন ভাত খান।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Many people eat rice every day.”",
+      "korean": "ভাত",
+      "english": "Contrast check for \"ভাত\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "অনেক মানুষ প্রতিদিন ভাত খান।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Many people eat rice every day.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "ভাত",
+      "romanization": "bhat",
+      "nativeText": "Recall \"ভাত\" from memory, then explain what would change if a nearby alternative replaced it in \"অনেক মানুষ প্রতিদিন ভাত খান।\".",
+      "pronunciation": "bhat",
+      "exampleTarget": "অনেক মানুষ প্রতিদিন ভাত খান।",
+      "exampleNative": "Self-check against the model before moving on: “Many people eat rice every day.”",
+      "korean": "ভাত",
+      "english": "Recall \"ভাত\" from memory, then explain what would change if a nearby alternative replaced it in \"অনেক মানুষ প্রতিদিন ভাত খান।\".",
+      "example": "অনেক মানুষ প্রতিদিন ভাত খান।",
+      "exampleEnglish": "Self-check against the model before moving on: “Many people eat rice every day.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "ভাত",
+      "romanization": "bhat",
+      "nativeText": "Repair \"ভাত\" inside \"অনেক মানুষ প্রতিদিন ভাত খান।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Rice.” A central everyday food noun in Bengali life.",
+      "pronunciation": "bhat",
+      "exampleTarget": "অনেক মানুষ প্রতিদিন ভাত খান।",
+      "exampleNative": "Use the model as the repair target: “Many people eat rice every day.”",
+      "korean": "ভাত",
+      "english": "Repair \"ভাত\" inside \"অনেক মানুষ প্রতিদিন ভাত খান।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Rice.” A central everyday food noun in Bengali life.",
+      "example": "অনেক মানুষ প্রতিদিন ভাত খান।",
+      "exampleEnglish": "Use the model as the repair target: “Many people eat rice every day.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "ভাত",
+      "romanization": "bhat",
+      "nativeText": "Transfer \"ভাত\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"অনেক মানুষ প্রতিদিন ভাত খান।\".",
+      "pronunciation": "bhat",
+      "exampleTarget": "অনেক মানুষ প্রতিদিন ভাত খান।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Many people eat rice every day.”",
+      "korean": "ভাত",
+      "english": "Transfer \"ভাত\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"অনেক মানুষ প্রতিদিন ভাত খান।\".",
+      "example": "অনেক মানুষ প্রতিদিন ভাত খান।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Many people eat rice every day.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "ভাত",
+      "romanization": "bhat",
+      "nativeText": "Find one word or phrase that naturally travels with \"ভাত\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "bhat",
+      "exampleTarget": "অনেক মানুষ প্রতিদিন ভাত খান।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Many people eat rice every day.”",
+      "korean": "ভাত",
+      "english": "Find one word or phrase that naturally travels with \"ভাত\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "অনেক মানুষ প্রতিদিন ভাত খান।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Many people eat rice every day.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "ভাত",
+      "romanization": "bhat",
+      "nativeText": "Listen for \"ভাত\" inside \"অনেক মানুষ প্রতিদিন ভাত খান।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "bhat",
+      "exampleTarget": "অনেক মানুষ প্রতিদিন ভাত খান।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Many people eat rice every day.”",
+      "korean": "ভাত",
+      "english": "Listen for \"ভাত\" inside \"অনেক মানুষ প্রতিদিন ভাত খান।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "অনেক মানুষ প্রতিদিন ভাত খান।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Many people eat rice every day.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "ভাত",
+      "romanization": "bhat",
+      "nativeText": "Write \"ভাত\" again without looking, then compare the exact written form against \"অনেক মানুষ প্রতিদিন ভাত খান।\" before moving on.",
+      "pronunciation": "bhat",
+      "exampleTarget": "অনেক মানুষ প্রতিদিন ভাত খান।",
+      "exampleNative": "Use the written model as the final correctness check: “Many people eat rice every day.”",
+      "korean": "ভাত",
+      "english": "Write \"ভাত\" again without looking, then compare the exact written form against \"অনেক মানুষ প্রতিদিন ভাত খান।\" before moving on.",
+      "example": "অনেক মানুষ প্রতিদিন ভাত খান।",
+      "exampleEnglish": "Use the written model as the final correctness check: “Many people eat rice every day.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "ভাত",
+      "romanization": "bhat",
+      "nativeText": "Check whether \"ভাত\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Many people eat rice every day.”",
+      "pronunciation": "bhat",
+      "exampleTarget": "অনেক মানুষ প্রতিদিন ভাত খান।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Many people eat rice every day.”",
+      "korean": "ভাত",
+      "english": "Check whether \"ভাত\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Many people eat rice every day.”",
+      "example": "অনেক মানুষ প্রতিদিন ভাত খান।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Many people eat rice every day.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "মাছ",
+      "romanization": "machh",
+      "nativeText": "“Fish.” Fish-and-rice is one of the best-known Bengali food pairings.",
+      "pronunciation": "machh",
+      "exampleTarget": "ভাত আর মাছ জনপ্রিয় খাবার।",
+      "exampleNative": "“Rice and fish are popular foods.”",
+      "korean": "মাছ",
+      "english": "“Fish.” Fish-and-rice is one of the best-known Bengali food pairings.",
+      "example": "ভাত আর মাছ জনপ্রিয় খাবার।",
+      "exampleEnglish": "“Rice and fish are popular foods.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "ভাত আর মাছ জনপ্রিয় খাবার।",
+      "romanization": "machh",
+      "nativeText": "Model use for \"ভাত আর মাছ জনপ্রিয় খাবার।\": “Rice and fish are popular foods.”",
+      "pronunciation": "machh",
+      "exampleTarget": "ভাত আর মাছ জনপ্রিয় খাবার।",
+      "exampleNative": "“Rice and fish are popular foods.”",
+      "korean": "ভাত আর মাছ জনপ্রিয় খাবার।",
+      "english": "Model use for \"ভাত আর মাছ জনপ্রিয় খাবার।\": “Rice and fish are popular foods.”",
+      "example": "ভাত আর মাছ জনপ্রিয় খাবার।",
+      "exampleEnglish": "“Rice and fish are popular foods.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "মাছ",
+      "romanization": "machh",
+      "nativeText": "Usage focus for \"মাছ\": “Fish.” Fish-and-rice is one of the best-known Bengali food pairings.",
+      "pronunciation": "machh",
+      "exampleTarget": "ভাত আর মাছ জনপ্রিয় খাবার।",
+      "exampleNative": "Notice what the form is doing here: “Rice and fish are popular foods.”",
+      "korean": "মাছ",
+      "english": "Usage focus for \"মাছ\": “Fish.” Fish-and-rice is one of the best-known Bengali food pairings.",
+      "example": "ভাত আর মাছ জনপ্রিয় খাবার।",
+      "exampleEnglish": "Notice what the form is doing here: “Rice and fish are popular foods.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "মাছ",
+      "romanization": "machh",
+      "nativeText": "Contrast check for \"মাছ\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "machh",
+      "exampleTarget": "ভাত আর মাছ জনপ্রিয় খাবার।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Rice and fish are popular foods.”",
+      "korean": "মাছ",
+      "english": "Contrast check for \"মাছ\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "ভাত আর মাছ জনপ্রিয় খাবার।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Rice and fish are popular foods.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "মাছ",
+      "romanization": "machh",
+      "nativeText": "Recall \"মাছ\" from memory, then explain what would change if a nearby alternative replaced it in \"ভাত আর মাছ জনপ্রিয় খাবার।\".",
+      "pronunciation": "machh",
+      "exampleTarget": "ভাত আর মাছ জনপ্রিয় খাবার।",
+      "exampleNative": "Self-check against the model before moving on: “Rice and fish are popular foods.”",
+      "korean": "মাছ",
+      "english": "Recall \"মাছ\" from memory, then explain what would change if a nearby alternative replaced it in \"ভাত আর মাছ জনপ্রিয় খাবার।\".",
+      "example": "ভাত আর মাছ জনপ্রিয় খাবার।",
+      "exampleEnglish": "Self-check against the model before moving on: “Rice and fish are popular foods.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "মাছ",
+      "romanization": "machh",
+      "nativeText": "Repair \"মাছ\" inside \"ভাত আর মাছ জনপ্রিয় খাবার।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Fish.” Fish-and-rice is one of the best-known Bengali food pairings.",
+      "pronunciation": "machh",
+      "exampleTarget": "ভাত আর মাছ জনপ্রিয় খাবার।",
+      "exampleNative": "Use the model as the repair target: “Rice and fish are popular foods.”",
+      "korean": "মাছ",
+      "english": "Repair \"মাছ\" inside \"ভাত আর মাছ জনপ্রিয় খাবার।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Fish.” Fish-and-rice is one of the best-known Bengali food pairings.",
+      "example": "ভাত আর মাছ জনপ্রিয় খাবার।",
+      "exampleEnglish": "Use the model as the repair target: “Rice and fish are popular foods.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "মাছ",
+      "romanization": "machh",
+      "nativeText": "Transfer \"মাছ\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ভাত আর মাছ জনপ্রিয় খাবার।\".",
+      "pronunciation": "machh",
+      "exampleTarget": "ভাত আর মাছ জনপ্রিয় খাবার।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Rice and fish are popular foods.”",
+      "korean": "মাছ",
+      "english": "Transfer \"মাছ\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ভাত আর মাছ জনপ্রিয় খাবার।\".",
+      "example": "ভাত আর মাছ জনপ্রিয় খাবার।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Rice and fish are popular foods.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "মাছ",
+      "romanization": "machh",
+      "nativeText": "Find one word or phrase that naturally travels with \"মাছ\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "machh",
+      "exampleTarget": "ভাত আর মাছ জনপ্রিয় খাবার।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Rice and fish are popular foods.”",
+      "korean": "মাছ",
+      "english": "Find one word or phrase that naturally travels with \"মাছ\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "ভাত আর মাছ জনপ্রিয় খাবার।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Rice and fish are popular foods.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "মাছ",
+      "romanization": "machh",
+      "nativeText": "Listen for \"মাছ\" inside \"ভাত আর মাছ জনপ্রিয় খাবার।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "machh",
+      "exampleTarget": "ভাত আর মাছ জনপ্রিয় খাবার।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Rice and fish are popular foods.”",
+      "korean": "মাছ",
+      "english": "Listen for \"মাছ\" inside \"ভাত আর মাছ জনপ্রিয় খাবার।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "ভাত আর মাছ জনপ্রিয় খাবার।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Rice and fish are popular foods.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "মাছ",
+      "romanization": "machh",
+      "nativeText": "Write \"মাছ\" again without looking, then compare the exact written form against \"ভাত আর মাছ জনপ্রিয় খাবার।\" before moving on.",
+      "pronunciation": "machh",
+      "exampleTarget": "ভাত আর মাছ জনপ্রিয় খাবার।",
+      "exampleNative": "Use the written model as the final correctness check: “Rice and fish are popular foods.”",
+      "korean": "মাছ",
+      "english": "Write \"মাছ\" again without looking, then compare the exact written form against \"ভাত আর মাছ জনপ্রিয় খাবার।\" before moving on.",
+      "example": "ভাত আর মাছ জনপ্রিয় খাবার।",
+      "exampleEnglish": "Use the written model as the final correctness check: “Rice and fish are popular foods.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "মাছ",
+      "romanization": "machh",
+      "nativeText": "Check whether \"মাছ\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Rice and fish are popular foods.”",
+      "pronunciation": "machh",
+      "exampleTarget": "ভাত আর মাছ জনপ্রিয় খাবার।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Rice and fish are popular foods.”",
+      "korean": "মাছ",
+      "english": "Check whether \"মাছ\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Rice and fish are popular foods.”",
+      "example": "ভাত আর মাছ জনপ্রিয় খাবার।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Rice and fish are popular foods.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "পরিবার",
+      "romanization": "poribar",
+      "nativeText": "“Family.” A high-value culture and daily-life noun.",
+      "pronunciation": "poribar",
+      "exampleTarget": "আমার পরিবার ঢাকায় থাকে।",
+      "exampleNative": "“My family lives in Dhaka.”",
+      "korean": "পরিবার",
+      "english": "“Family.” A high-value culture and daily-life noun.",
+      "example": "আমার পরিবার ঢাকায় থাকে।",
+      "exampleEnglish": "“My family lives in Dhaka.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "আমার পরিবার ঢাকায় থাকে।",
+      "romanization": "poribar",
+      "nativeText": "Model use for \"আমার পরিবার ঢাকায় থাকে।\": “My family lives in Dhaka.”",
+      "pronunciation": "poribar",
+      "exampleTarget": "আমার পরিবার ঢাকায় থাকে।",
+      "exampleNative": "“My family lives in Dhaka.”",
+      "korean": "আমার পরিবার ঢাকায় থাকে।",
+      "english": "Model use for \"আমার পরিবার ঢাকায় থাকে।\": “My family lives in Dhaka.”",
+      "example": "আমার পরিবার ঢাকায় থাকে।",
+      "exampleEnglish": "“My family lives in Dhaka.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "পরিবার",
+      "romanization": "poribar",
+      "nativeText": "Usage focus for \"পরিবার\": “Family.” A high-value culture and daily-life noun.",
+      "pronunciation": "poribar",
+      "exampleTarget": "আমার পরিবার ঢাকায় থাকে।",
+      "exampleNative": "Notice what the form is doing here: “My family lives in Dhaka.”",
+      "korean": "পরিবার",
+      "english": "Usage focus for \"পরিবার\": “Family.” A high-value culture and daily-life noun.",
+      "example": "আমার পরিবার ঢাকায় থাকে।",
+      "exampleEnglish": "Notice what the form is doing here: “My family lives in Dhaka.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "পরিবার",
+      "romanization": "poribar",
+      "nativeText": "Contrast check for \"পরিবার\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "poribar",
+      "exampleTarget": "আমার পরিবার ঢাকায় থাকে।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My family lives in Dhaka.”",
+      "korean": "পরিবার",
+      "english": "Contrast check for \"পরিবার\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আমার পরিবার ঢাকায় থাকে।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My family lives in Dhaka.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "পরিবার",
+      "romanization": "poribar",
+      "nativeText": "Recall \"পরিবার\" from memory, then explain what would change if a nearby alternative replaced it in \"আমার পরিবার ঢাকায় থাকে।\".",
+      "pronunciation": "poribar",
+      "exampleTarget": "আমার পরিবার ঢাকায় থাকে।",
+      "exampleNative": "Self-check against the model before moving on: “My family lives in Dhaka.”",
+      "korean": "পরিবার",
+      "english": "Recall \"পরিবার\" from memory, then explain what would change if a nearby alternative replaced it in \"আমার পরিবার ঢাকায় থাকে।\".",
+      "example": "আমার পরিবার ঢাকায় থাকে।",
+      "exampleEnglish": "Self-check against the model before moving on: “My family lives in Dhaka.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "পরিবার",
+      "romanization": "poribar",
+      "nativeText": "Repair \"পরিবার\" inside \"আমার পরিবার ঢাকায় থাকে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Family.” A high-value culture and daily-life noun.",
+      "pronunciation": "poribar",
+      "exampleTarget": "আমার পরিবার ঢাকায় থাকে।",
+      "exampleNative": "Use the model as the repair target: “My family lives in Dhaka.”",
+      "korean": "পরিবার",
+      "english": "Repair \"পরিবার\" inside \"আমার পরিবার ঢাকায় থাকে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Family.” A high-value culture and daily-life noun.",
+      "example": "আমার পরিবার ঢাকায় থাকে।",
+      "exampleEnglish": "Use the model as the repair target: “My family lives in Dhaka.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "পরিবার",
+      "romanization": "poribar",
+      "nativeText": "Transfer \"পরিবার\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমার পরিবার ঢাকায় থাকে।\".",
+      "pronunciation": "poribar",
+      "exampleTarget": "আমার পরিবার ঢাকায় থাকে।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “My family lives in Dhaka.”",
+      "korean": "পরিবার",
+      "english": "Transfer \"পরিবার\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমার পরিবার ঢাকায় থাকে।\".",
+      "example": "আমার পরিবার ঢাকায় থাকে।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “My family lives in Dhaka.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "পরিবার",
+      "romanization": "poribar",
+      "nativeText": "Find one word or phrase that naturally travels with \"পরিবার\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "poribar",
+      "exampleTarget": "আমার পরিবার ঢাকায় থাকে।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “My family lives in Dhaka.”",
+      "korean": "পরিবার",
+      "english": "Find one word or phrase that naturally travels with \"পরিবার\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আমার পরিবার ঢাকায় থাকে।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “My family lives in Dhaka.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "পরিবার",
+      "romanization": "poribar",
+      "nativeText": "Listen for \"পরিবার\" inside \"আমার পরিবার ঢাকায় থাকে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "poribar",
+      "exampleTarget": "আমার পরিবার ঢাকায় থাকে।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My family lives in Dhaka.”",
+      "korean": "পরিবার",
+      "english": "Listen for \"পরিবার\" inside \"আমার পরিবার ঢাকায় থাকে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আমার পরিবার ঢাকায় থাকে।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My family lives in Dhaka.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "পরিবার",
+      "romanization": "poribar",
+      "nativeText": "Write \"পরিবার\" again without looking, then compare the exact written form against \"আমার পরিবার ঢাকায় থাকে।\" before moving on.",
+      "pronunciation": "poribar",
+      "exampleTarget": "আমার পরিবার ঢাকায় থাকে।",
+      "exampleNative": "Use the written model as the final correctness check: “My family lives in Dhaka.”",
+      "korean": "পরিবার",
+      "english": "Write \"পরিবার\" again without looking, then compare the exact written form against \"আমার পরিবার ঢাকায় থাকে।\" before moving on.",
+      "example": "আমার পরিবার ঢাকায় থাকে।",
+      "exampleEnglish": "Use the written model as the final correctness check: “My family lives in Dhaka.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "পরিবার",
+      "romanization": "poribar",
+      "nativeText": "Check whether \"পরিবার\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My family lives in Dhaka.”",
+      "pronunciation": "poribar",
+      "exampleTarget": "আমার পরিবার ঢাকায় থাকে।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “My family lives in Dhaka.”",
+      "korean": "পরিবার",
+      "english": "Check whether \"পরিবার\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My family lives in Dhaka.”",
+      "example": "আমার পরিবার ঢাকায় থাকে।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “My family lives in Dhaka.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "আপনি / তুমি",
+      "romanization": "apni / tumi",
+      "nativeText": "Respectful “you” / familiar “you.” Social distance matters much more than English translation suggests.",
+      "pronunciation": "apni / tumi",
+      "exampleTarget": "আপনি কেমন আছেন? / তুমি কেমন আছ?",
+      "exampleNative": "“How are you?” respectful / familiar.",
+      "korean": "আপনি / তুমি",
+      "english": "Respectful “you” / familiar “you.” Social distance matters much more than English translation suggests.",
+      "example": "আপনি কেমন আছেন? / তুমি কেমন আছ?",
+      "exampleEnglish": "“How are you?” respectful / familiar."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "আপনি কেমন আছেন? / তুমি কেমন আছ?",
+      "romanization": "apni / tumi",
+      "nativeText": "Model use for \"আপনি কেমন আছেন? / তুমি কেমন আছ?\": “How are you?” respectful / familiar.",
+      "pronunciation": "apni / tumi",
+      "exampleTarget": "আপনি কেমন আছেন? / তুমি কেমন আছ?",
+      "exampleNative": "“How are you?” respectful / familiar.",
+      "korean": "আপনি কেমন আছেন? / তুমি কেমন আছ?",
+      "english": "Model use for \"আপনি কেমন আছেন? / তুমি কেমন আছ?\": “How are you?” respectful / familiar.",
+      "example": "আপনি কেমন আছেন? / তুমি কেমন আছ?",
+      "exampleEnglish": "“How are you?” respectful / familiar."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "আপনি / তুমি",
+      "romanization": "apni / tumi",
+      "nativeText": "Usage focus for \"আপনি / তুমি\": Respectful “you” / familiar “you.” Social distance matters much more than English translation suggests.",
+      "pronunciation": "apni / tumi",
+      "exampleTarget": "আপনি কেমন আছেন? / তুমি কেমন আছ?",
+      "exampleNative": "Notice what the form is doing here: “How are you?” respectful / familiar.",
+      "korean": "আপনি / তুমি",
+      "english": "Usage focus for \"আপনি / তুমি\": Respectful “you” / familiar “you.” Social distance matters much more than English translation suggests.",
+      "example": "আপনি কেমন আছেন? / তুমি কেমন আছ?",
+      "exampleEnglish": "Notice what the form is doing here: “How are you?” respectful / familiar."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "আপনি / তুমি",
+      "romanization": "apni / tumi",
+      "nativeText": "Contrast check for \"আপনি / তুমি\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "apni / tumi",
+      "exampleTarget": "আপনি কেমন আছেন? / তুমি কেমন আছ?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How are you?” respectful / familiar.",
+      "korean": "আপনি / তুমি",
+      "english": "Contrast check for \"আপনি / তুমি\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আপনি কেমন আছেন? / তুমি কেমন আছ?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How are you?” respectful / familiar."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "আপনি / তুমি",
+      "romanization": "apni / tumi",
+      "nativeText": "Recall \"আপনি / তুমি\" from memory, then explain what would change if a nearby alternative replaced it in \"আপনি কেমন আছেন? / তুমি কেমন আছ?\".",
+      "pronunciation": "apni / tumi",
+      "exampleTarget": "আপনি কেমন আছেন? / তুমি কেমন আছ?",
+      "exampleNative": "Self-check against the model before moving on: “How are you?” respectful / familiar.",
+      "korean": "আপনি / তুমি",
+      "english": "Recall \"আপনি / তুমি\" from memory, then explain what would change if a nearby alternative replaced it in \"আপনি কেমন আছেন? / তুমি কেমন আছ?\".",
+      "example": "আপনি কেমন আছেন? / তুমি কেমন আছ?",
+      "exampleEnglish": "Self-check against the model before moving on: “How are you?” respectful / familiar."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "আপনি / তুমি",
+      "romanization": "apni / tumi",
+      "nativeText": "Repair \"আপনি / তুমি\" inside \"আপনি কেমন আছেন? / তুমি কেমন আছ?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Respectful “you” / familiar “you.” Social distance matters much more than English translation suggests.",
+      "pronunciation": "apni / tumi",
+      "exampleTarget": "আপনি কেমন আছেন? / তুমি কেমন আছ?",
+      "exampleNative": "Use the model as the repair target: “How are you?” respectful / familiar.",
+      "korean": "আপনি / তুমি",
+      "english": "Repair \"আপনি / তুমি\" inside \"আপনি কেমন আছেন? / তুমি কেমন আছ?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Respectful “you” / familiar “you.” Social distance matters much more than English translation suggests.",
+      "example": "আপনি কেমন আছেন? / তুমি কেমন আছ?",
+      "exampleEnglish": "Use the model as the repair target: “How are you?” respectful / familiar."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "আপনি / তুমি",
+      "romanization": "apni / tumi",
+      "nativeText": "Transfer \"আপনি / তুমি\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আপনি কেমন আছেন? / তুমি কেমন আছ?\".",
+      "pronunciation": "apni / tumi",
+      "exampleTarget": "আপনি কেমন আছেন? / তুমি কেমন আছ?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “How are you?” respectful / familiar.",
+      "korean": "আপনি / তুমি",
+      "english": "Transfer \"আপনি / তুমি\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আপনি কেমন আছেন? / তুমি কেমন আছ?\".",
+      "example": "আপনি কেমন আছেন? / তুমি কেমন আছ?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “How are you?” respectful / familiar."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "আপনি / তুমি",
+      "romanization": "apni / tumi",
+      "nativeText": "Find one word or phrase that naturally travels with \"আপনি / তুমি\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "apni / tumi",
+      "exampleTarget": "আপনি কেমন আছেন? / তুমি কেমন আছ?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “How are you?” respectful / familiar.",
+      "korean": "আপনি / তুমি",
+      "english": "Find one word or phrase that naturally travels with \"আপনি / তুমি\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আপনি কেমন আছেন? / তুমি কেমন আছ?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “How are you?” respectful / familiar."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "আপনি / তুমি",
+      "romanization": "apni / tumi",
+      "nativeText": "Listen for \"আপনি / তুমি\" inside \"আপনি কেমন আছেন? / তুমি কেমন আছ?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "apni / tumi",
+      "exampleTarget": "আপনি কেমন আছেন? / তুমি কেমন আছ?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How are you?” respectful / familiar.",
+      "korean": "আপনি / তুমি",
+      "english": "Listen for \"আপনি / তুমি\" inside \"আপনি কেমন আছেন? / তুমি কেমন আছ?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আপনি কেমন আছেন? / তুমি কেমন আছ?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How are you?” respectful / familiar."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "আপনি / তুমি",
+      "romanization": "apni / tumi",
+      "nativeText": "Write \"আপনি / তুমি\" again without looking, then compare the exact written form against \"আপনি কেমন আছেন? / তুমি কেমন আছ?\" before moving on.",
+      "pronunciation": "apni / tumi",
+      "exampleTarget": "আপনি কেমন আছেন? / তুমি কেমন আছ?",
+      "exampleNative": "Use the written model as the final correctness check: “How are you?” respectful / familiar.",
+      "korean": "আপনি / তুমি",
+      "english": "Write \"আপনি / তুমি\" again without looking, then compare the exact written form against \"আপনি কেমন আছেন? / তুমি কেমন আছ?\" before moving on.",
+      "example": "আপনি কেমন আছেন? / তুমি কেমন আছ?",
+      "exampleEnglish": "Use the written model as the final correctness check: “How are you?” respectful / familiar."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "আপনি / তুমি",
+      "romanization": "apni / tumi",
+      "nativeText": "Check whether \"আপনি / তুমি\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How are you?” respectful / familiar.",
+      "pronunciation": "apni / tumi",
+      "exampleTarget": "আপনি কেমন আছেন? / তুমি কেমন আছ?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “How are you?” respectful / familiar.",
+      "korean": "আপনি / তুমি",
+      "english": "Check whether \"আপনি / তুমি\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How are you?” respectful / familiar.",
+      "example": "আপনি কেমন আছেন? / তুমি কেমন আছ?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “How are you?” respectful / familiar."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "একটা বই",
+      "romanization": "ekta boi",
+      "nativeText": "“One book.” The classifier `-টা` is a very visible Bengali pattern learners should notice early.",
+      "pronunciation": "ekta boi",
+      "exampleTarget": "আমার একটা বই আছে।",
+      "exampleNative": "“I have one book.”",
+      "korean": "একটা বই",
+      "english": "“One book.” The classifier `-টা` is a very visible Bengali pattern learners should notice early.",
+      "example": "আমার একটা বই আছে।",
+      "exampleEnglish": "“I have one book.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "আমার একটা বই আছে।",
+      "romanization": "ekta boi",
+      "nativeText": "Model use for \"আমার একটা বই আছে।\": “I have one book.”",
+      "pronunciation": "ekta boi",
+      "exampleTarget": "আমার একটা বই আছে।",
+      "exampleNative": "“I have one book.”",
+      "korean": "আমার একটা বই আছে।",
+      "english": "Model use for \"আমার একটা বই আছে।\": “I have one book.”",
+      "example": "আমার একটা বই আছে।",
+      "exampleEnglish": "“I have one book.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "একটা বই",
+      "romanization": "ekta boi",
+      "nativeText": "Usage focus for \"একটা বই\": “One book.” The classifier `-টা` is a very visible Bengali pattern learners should notice early.",
+      "pronunciation": "ekta boi",
+      "exampleTarget": "আমার একটা বই আছে।",
+      "exampleNative": "Notice what the form is doing here: “I have one book.”",
+      "korean": "একটা বই",
+      "english": "Usage focus for \"একটা বই\": “One book.” The classifier `-টা` is a very visible Bengali pattern learners should notice early.",
+      "example": "আমার একটা বই আছে।",
+      "exampleEnglish": "Notice what the form is doing here: “I have one book.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "একটা বই",
+      "romanization": "ekta boi",
+      "nativeText": "Contrast check for \"একটা বই\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ekta boi",
+      "exampleTarget": "আমার একটা বই আছে।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have one book.”",
+      "korean": "একটা বই",
+      "english": "Contrast check for \"একটা বই\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আমার একটা বই আছে।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have one book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "একটা বই",
+      "romanization": "ekta boi",
+      "nativeText": "Recall \"একটা বই\" from memory, then explain what would change if a nearby alternative replaced it in \"আমার একটা বই আছে।\".",
+      "pronunciation": "ekta boi",
+      "exampleTarget": "আমার একটা বই আছে।",
+      "exampleNative": "Self-check against the model before moving on: “I have one book.”",
+      "korean": "একটা বই",
+      "english": "Recall \"একটা বই\" from memory, then explain what would change if a nearby alternative replaced it in \"আমার একটা বই আছে।\".",
+      "example": "আমার একটা বই আছে।",
+      "exampleEnglish": "Self-check against the model before moving on: “I have one book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "একটা বই",
+      "romanization": "ekta boi",
+      "nativeText": "Repair \"একটা বই\" inside \"আমার একটা বই আছে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “One book.” The classifier `-টা` is a very visible Bengali pattern learners should notice early.",
+      "pronunciation": "ekta boi",
+      "exampleTarget": "আমার একটা বই আছে।",
+      "exampleNative": "Use the model as the repair target: “I have one book.”",
+      "korean": "একটা বই",
+      "english": "Repair \"একটা বই\" inside \"আমার একটা বই আছে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “One book.” The classifier `-টা` is a very visible Bengali pattern learners should notice early.",
+      "example": "আমার একটা বই আছে।",
+      "exampleEnglish": "Use the model as the repair target: “I have one book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "একটা বই",
+      "romanization": "ekta boi",
+      "nativeText": "Transfer \"একটা বই\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমার একটা বই আছে।\".",
+      "pronunciation": "ekta boi",
+      "exampleTarget": "আমার একটা বই আছে।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have one book.”",
+      "korean": "একটা বই",
+      "english": "Transfer \"একটা বই\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমার একটা বই আছে।\".",
+      "example": "আমার একটা বই আছে।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have one book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "একটা বই",
+      "romanization": "ekta boi",
+      "nativeText": "Find one word or phrase that naturally travels with \"একটা বই\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ekta boi",
+      "exampleTarget": "আমার একটা বই আছে।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I have one book.”",
+      "korean": "একটা বই",
+      "english": "Find one word or phrase that naturally travels with \"একটা বই\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আমার একটা বই আছে।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I have one book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "একটা বই",
+      "romanization": "ekta boi",
+      "nativeText": "Listen for \"একটা বই\" inside \"আমার একটা বই আছে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ekta boi",
+      "exampleTarget": "আমার একটা বই আছে।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have one book.”",
+      "korean": "একটা বই",
+      "english": "Listen for \"একটা বই\" inside \"আমার একটা বই আছে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আমার একটা বই আছে।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have one book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "একটা বই",
+      "romanization": "ekta boi",
+      "nativeText": "Write \"একটা বই\" again without looking, then compare the exact written form against \"আমার একটা বই আছে।\" before moving on.",
+      "pronunciation": "ekta boi",
+      "exampleTarget": "আমার একটা বই আছে।",
+      "exampleNative": "Use the written model as the final correctness check: “I have one book.”",
+      "korean": "একটা বই",
+      "english": "Write \"একটা বই\" again without looking, then compare the exact written form against \"আমার একটা বই আছে।\" before moving on.",
+      "example": "আমার একটা বই আছে।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I have one book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit05lifeinbengal-vocabulary-1",
+        "bn-level1unit05lifeinbengal-vocabulary-2",
+        "bn-level1unit05lifeinbengal-grammar-1",
+        "bn-level1unit05lifeinbengal-grammar-2",
+        "bn-level1unit05lifeinbengal-reading",
+        "bn-level1unit05lifeinbengal-listening",
+        "bn-level1unit05lifeinbengal-writing",
+        "bn-level1unit05lifeinbengal-task"
+      ],
+      "targetText": "একটা বই",
+      "romanization": "ekta boi",
+      "nativeText": "Check whether \"একটা বই\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have one book.”",
+      "pronunciation": "ekta boi",
+      "exampleTarget": "আমার একটা বই আছে।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I have one book.”",
+      "korean": "একটা বই",
+      "english": "Check whether \"একটা বই\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have one book.”",
+      "example": "আমার একটা বই আছে।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I have one book.”"
+    }
+  ],
+  "targetLang": "bn",
+  "nativeLang": "en",
+  "track": "textbook"
+};

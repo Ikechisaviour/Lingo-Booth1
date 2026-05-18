@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('tr', {
-  slug: 'tr-l1u13',
-  title: 'Level 1 · Unit 13: Ulaşım — Transportation',
-  category: 'travel',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Use transport language for buses, metro, ferries, and travel time.',
-  vocabularyGoal: 'Use vehicle, stop, ticket, and route words.',
-  grammarGoal: 'Use `ile/-la/-le` for means and destination case endings in practical travel sentences.',
-  speakingGoal: 'Ask how to go somewhere, choose a transport mode, and ask how long it takes.',
-  task: 'Plan a trip from campus to the city center.',
-  expressionPractice: [
-    practice('choosing-transport', 'Choosing transport', 'Use one vehicle with `-la/-le`.'),
-    practice('asking-route', 'Asking route', 'Use one route question.'),
-    practice('asking-duration', 'Asking duration', 'Use `ne kadar sürer?`.'),
+module.exports = {
+  "title": "Level 1 · Unit 13: Ulaşım — Transportation",
+  "category": "travel",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "tr-level1unit13transportation-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Use transport language for buses, metro, ferries, and travel time."
+      ],
+      "task": "Plan a trip from campus to the city center."
+    },
+    {
+      "id": "tr-level1unit13transportation-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "tr-level1unit13transportation-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 13: Ulaşım — Transportation with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "tr-level1unit13transportation-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 13: Ulaşım — Transportation sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "tr-level1unit13transportation-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Use transport language for buses, metro, ferries, and travel time."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "tr-level1unit13transportation-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 13: Ulaşım — Transportation with one nearby Turkish form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "tr-level1unit13transportation-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "tr-level1unit13transportation-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "tr-level1unit13transportation-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "tr-level1unit13transportation-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "tr-level1unit13transportation-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Plan a trip from campus to the city center."
+      ],
+      "task": "Plan a trip from campus to the city center."
+    }
   ],
-  relatedPools: ['topic-travel', 'topic-city'],
-  items: [
-    item('otobüsle gidiyorum', 'o-to-BÜS-le gi-di-YO-rum', '“I am going by bus.” The instrument suffix attaches directly to the vehicle.', 'Okula otobüsle gidiyorum.', '“I go to school by bus.”'),
-    item('metro', 'MET-ro', '“Metro.” A central city transport word in Istanbul and Ankara.', 'Metro hızlı ve rahat.', '“The metro is fast and comfortable.”'),
-    item('vapur', 'va-PUR', '“Ferry.” Especially important in Istanbul daily life across the Bosphorus.', 'Beşiktaş’a vapurla gidiyorum.', '“I am going to Beşiktaş by ferry.”'),
-    item('durak', 'du-RAK', '“Stop.” Used for buses and similar transport.', 'Otobüs durağı burada.', '“The bus stop is here.”'),
-    item('istasyon', 'is-tas-YON', '“Station.” Used for metro and trains.', 'Bir sonraki istasyonda iniyorum.', '“I get off at the next station.”'),
-    item('bilet', 'bi-LET', '“Ticket.” Practical across transport and events.', 'Bir bilet istiyorum.', '“I want one ticket.”'),
-    item('... nasıl giderim?', 'na-SIL gi-de-RİM', '“How do I get to ...?” A destination phrase plus travel question.', 'Taksim’e nasıl giderim?', '“How do I get to Taksim?”'),
-    item('ne kadar sürer?', 'ne ka-DAR sü-RER', '“How long does it take?” A complete useful duration question.', 'Havaalanına gitmek ne kadar sürer?', '“How long does it take to go to the airport?”'),
+  "expressionPractice": [
+    {
+      "id": "choosing-transport",
+      "label": "Choosing transport",
+      "goal": "Use one vehicle with `-la/-le`."
+    },
+    {
+      "id": "asking-route",
+      "label": "Asking route",
+      "goal": "Use one route question."
+    },
+    {
+      "id": "asking-duration",
+      "label": "Asking duration",
+      "goal": "Use `ne kadar sürer?`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-travel",
+    "topic-city"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit13transportation-orientation"
+      ],
+      "targetText": "ders hedefi",
+      "romanization": "",
+      "nativeText": "Use transport language for buses, metro, ferries, and travel time.",
+      "pronunciation": "",
+      "exampleTarget": "ders hedefi",
+      "exampleNative": "The whole lesson is built toward this outcome: Plan a trip from campus to the city center.",
+      "korean": "ders hedefi",
+      "english": "Use transport language for buses, metro, ferries, and travel time.",
+      "example": "ders hedefi",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Plan a trip from campus to the city center."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "tr-level1unit13transportation-pronunciation"
+      ],
+      "targetText": "ses kontrolü",
+      "romanization": "",
+      "nativeText": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Okula otobüsle gidiyorum.\".",
+      "pronunciation": "",
+      "exampleTarget": "Okula otobüsle gidiyorum.",
+      "exampleNative": "“I go to school by bus.”",
+      "korean": "ses kontrolü",
+      "english": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Okula otobüsle gidiyorum.\".",
+      "example": "Okula otobüsle gidiyorum.",
+      "exampleEnglish": "“I go to school by bus.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1"
+      ],
+      "targetText": "otobüsle gidiyorum",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 13: Ulaşım — Transportation with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Okula otobüsle gidiyorum.",
+      "exampleNative": "“I go to school by bus.”",
+      "korean": "otobüsle gidiyorum",
+      "english": "Use the key language of Level 1 · Unit 13: Ulaşım — Transportation with the register and setting that the lesson requires.",
+      "example": "Okula otobüsle gidiyorum.",
+      "exampleEnglish": "“I go to school by bus.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-2"
+      ],
+      "targetText": "metro",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 13: Ulaşım — Transportation sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Metro hızlı ve rahat.",
+      "exampleNative": "“The metro is fast and comfortable.”",
+      "korean": "metro",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 13: Ulaşım — Transportation sound precise rather than merely understandable.",
+      "example": "Metro hızlı ve rahat.",
+      "exampleEnglish": "“The metro is fast and comfortable.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "tr-level1unit13transportation-grammar-1"
+      ],
+      "targetText": "otobüsle gidiyorum",
+      "romanization": "",
+      "nativeText": "Use transport language for buses, metro, ferries, and travel time.",
+      "pronunciation": "",
+      "exampleTarget": "Okula otobüsle gidiyorum.",
+      "exampleNative": "“I go to school by bus.”",
+      "korean": "otobüsle gidiyorum",
+      "english": "Use transport language for buses, metro, ferries, and travel time.",
+      "example": "Okula otobüsle gidiyorum.",
+      "exampleEnglish": "“I go to school by bus.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "tr-level1unit13transportation-grammar-2"
+      ],
+      "targetText": "metro",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 13: Ulaşım — Transportation with one nearby Turkish form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Metro hızlı ve rahat.",
+      "exampleNative": "“The metro is fast and comfortable.”",
+      "korean": "metro",
+      "english": "Contrast the main pattern in Level 1 · Unit 13: Ulaşım — Transportation with one nearby Turkish form so the learner can avoid literal translation.",
+      "example": "Metro hızlı ve rahat.",
+      "exampleEnglish": "“The metro is fast and comfortable.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "tr-level1unit13transportation-reading"
+      ],
+      "targetText": "okuma modeli",
+      "romanization": "",
+      "nativeText": "Read \"Havaalanına gitmek ne kadar sürer?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Havaalanına gitmek ne kadar sürer?",
+      "exampleNative": "“How long does it take to go to the airport?”",
+      "korean": "okuma modeli",
+      "english": "Read \"Havaalanına gitmek ne kadar sürer?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Havaalanına gitmek ne kadar sürer?",
+      "exampleEnglish": "“How long does it take to go to the airport?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit13transportation-listening"
+      ],
+      "targetText": "diyalog modeli",
+      "romanization": "",
+      "nativeText": "Hear \"Havaalanına gitmek ne kadar sürer?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Havaalanına gitmek ne kadar sürer?",
+      "exampleNative": "“How long does it take to go to the airport?”",
+      "korean": "diyalog modeli",
+      "english": "Hear \"Havaalanına gitmek ne kadar sürer?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Havaalanına gitmek ne kadar sürer?",
+      "exampleEnglish": "“How long does it take to go to the airport?”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "tr-level1unit13transportation-writing"
+      ],
+      "targetText": "yazma alıştırması",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Okula otobüsle gidiyorum.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Okula otobüsle gidiyorum.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "yazma alıştırması",
+      "english": "Write your own version after studying \"Okula otobüsle gidiyorum.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Okula otobüsle gidiyorum.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "tr-level1unit13transportation-culture"
+      ],
+      "targetText": "kullanım ve bağlam",
+      "romanization": "",
+      "nativeText": "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Metro hızlı ve rahat.",
+      "exampleNative": "“The metro is fast and comfortable.”",
+      "korean": "kullanım ve bağlam",
+      "english": "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used.",
+      "example": "Metro hızlı ve rahat.",
+      "exampleEnglish": "“The metro is fast and comfortable.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "son görev",
+      "romanization": "",
+      "nativeText": "Plan a trip from campus to the city center.",
+      "pronunciation": "",
+      "exampleTarget": "Havaalanına gitmek ne kadar sürer?",
+      "exampleNative": "Plan a trip from campus to the city center.",
+      "korean": "son görev",
+      "english": "Plan a trip from campus to the city center.",
+      "example": "Havaalanına gitmek ne kadar sürer?",
+      "exampleEnglish": "Plan a trip from campus to the city center."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit13transportation-grammar-2"
+      ],
+      "targetText": "yaygın hata",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around suffix chains, vowel harmony, evidentiality, and word order. Begin by checking \"Metro hızlı ve rahat.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Metro hızlı ve rahat.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “The metro is fast and comfortable.”",
+      "korean": "yaygın hata",
+      "english": "Watch for literal-translation mistakes around suffix chains, vowel harmony, evidentiality, and word order. Begin by checking \"Metro hızlı ve rahat.\" against the model.",
+      "example": "Metro hızlı ve rahat.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “The metro is fast and comfortable.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-culture"
+      ],
+      "targetText": "üslup",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for sen, siz, a service tone, or a more formal wording before selecting the final form. Compare the social fit of \"Okula otobüsle gidiyorum.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Okula otobüsle gidiyorum.",
+      "exampleNative": "“I go to school by bus.”",
+      "korean": "üslup",
+      "english": "Check whether the setting calls for sen, siz, a service tone, or a more formal wording before selecting the final form. Compare the social fit of \"Okula otobüsle gidiyorum.\" before reusing it elsewhere.",
+      "example": "Okula otobüsle gidiyorum.",
+      "exampleEnglish": "“I go to school by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "akıcılık",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Turkish message rather than as separate translated fragments. Aim to carry \"Havaalanına gitmek ne kadar sürer?\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Havaalanına gitmek ne kadar sürer?",
+      "exampleNative": "“How long does it take to go to the airport?”",
+      "korean": "akıcılık",
+      "english": "Say the idea as one connected Turkish message rather than as separate translated fragments. Aim to carry \"Havaalanına gitmek ne kadar sürer?\" as one thought.",
+      "example": "Havaalanına gitmek ne kadar sürer?",
+      "exampleEnglish": "“How long does it take to go to the airport?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "uygulama",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Okula otobüsle gidiyorum.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Okula otobüsle gidiyorum.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "uygulama",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Okula otobüsle gidiyorum.\" and move it into your own life.",
+      "example": "Okula otobüsle gidiyorum.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-grammar-1"
+      ],
+      "targetText": "hatırlama",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"otobüsle gidiyorum\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "otobüsle gidiyorum",
+      "exampleNative": "“I am going by bus.” The instrument suffix attaches directly to the vehicle.",
+      "korean": "hatırlama",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"otobüsle gidiyorum\" before looking back.",
+      "example": "otobüsle gidiyorum",
+      "exampleEnglish": "“I am going by bus.” The instrument suffix attaches directly to the vehicle."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-writing"
+      ],
+      "targetText": "genişletme",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Havaalanına gitmek ne kadar sürer?\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Havaalanına gitmek ne kadar sürer?",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "genişletme",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Havaalanına gitmek ne kadar sürer?\" rather than restarting from a blank sentence.",
+      "example": "Havaalanına gitmek ne kadar sürer?",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading"
+      ],
+      "targetText": "karşılaştırma",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 13: Ulaşım — Transportation with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Metro hızlı ve rahat.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Metro hızlı ve rahat.",
+      "exampleNative": "“The metro is fast and comfortable.”",
+      "korean": "karşılaştırma",
+      "english": "Compare the central form in Level 1 · Unit 13: Ulaşım — Transportation with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Metro hızlı ve rahat.\" as the comparison line.",
+      "example": "Metro hızlı ve rahat.",
+      "exampleEnglish": "“The metro is fast and comfortable.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "tr-level1unit13transportation-pronunciation"
+      ],
+      "targetText": "telaffuz düzeltme",
+      "romanization": "",
+      "nativeText": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Okula otobüsle gidiyorum.\".",
+      "pronunciation": "",
+      "exampleTarget": "Okula otobüsle gidiyorum.",
+      "exampleNative": "“I go to school by bus.”",
+      "korean": "telaffuz düzeltme",
+      "english": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Okula otobüsle gidiyorum.\".",
+      "example": "Okula otobüsle gidiyorum.",
+      "exampleEnglish": "“I go to school by bus.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "diyalog varyasyonu",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Havaalanına gitmek ne kadar sürer?\".",
+      "pronunciation": "",
+      "exampleTarget": "Havaalanına gitmek ne kadar sürer?",
+      "exampleNative": "“How long does it take to go to the airport?”",
+      "korean": "diyalog varyasyonu",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Havaalanına gitmek ne kadar sürer?\".",
+      "example": "Havaalanına gitmek ne kadar sürer?",
+      "exampleEnglish": "“How long does it take to go to the airport?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-writing"
+      ],
+      "targetText": "cümle kurma",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Okula otobüsle gidiyorum.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Okula otobüsle gidiyorum.",
+      "exampleNative": "“I go to school by bus.”",
+      "korean": "cümle kurma",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Okula otobüsle gidiyorum.\" one layer at a time.",
+      "example": "Okula otobüsle gidiyorum.",
+      "exampleEnglish": "“I go to school by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-2"
+      ],
+      "targetText": "hızlı kontrol",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Metro hızlı ve rahat.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Metro hızlı ve rahat.",
+      "exampleNative": "“The metro is fast and comfortable.”",
+      "korean": "hızlı kontrol",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Metro hızlı ve rahat.\" as the deciding example.",
+      "example": "Metro hızlı ve rahat.",
+      "exampleEnglish": "“The metro is fast and comfortable.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit13transportation-culture",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "değerlendirme",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Havaalanına gitmek ne kadar sürer?\".",
+      "pronunciation": "",
+      "exampleTarget": "Havaalanına gitmek ne kadar sürer?",
+      "exampleNative": "“How long does it take to go to the airport?”",
+      "korean": "değerlendirme",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Havaalanına gitmek ne kadar sürer?\".",
+      "example": "Havaalanına gitmek ne kadar sürer?",
+      "exampleEnglish": "“How long does it take to go to the airport?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "otobüsle gidiyorum",
+      "romanization": "o-to-BÜS-le gi-di-YO-rum",
+      "nativeText": "“I am going by bus.” The instrument suffix attaches directly to the vehicle.",
+      "pronunciation": "o-to-BÜS-le gi-di-YO-rum",
+      "exampleTarget": "Okula otobüsle gidiyorum.",
+      "exampleNative": "“I go to school by bus.”",
+      "korean": "otobüsle gidiyorum",
+      "english": "“I am going by bus.” The instrument suffix attaches directly to the vehicle.",
+      "example": "Okula otobüsle gidiyorum.",
+      "exampleEnglish": "“I go to school by bus.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "Okula otobüsle gidiyorum.",
+      "romanization": "o-to-BÜS-le gi-di-YO-rum",
+      "nativeText": "Model use for \"Okula otobüsle gidiyorum.\": “I go to school by bus.”",
+      "pronunciation": "o-to-BÜS-le gi-di-YO-rum",
+      "exampleTarget": "Okula otobüsle gidiyorum.",
+      "exampleNative": "“I go to school by bus.”",
+      "korean": "Okula otobüsle gidiyorum.",
+      "english": "Model use for \"Okula otobüsle gidiyorum.\": “I go to school by bus.”",
+      "example": "Okula otobüsle gidiyorum.",
+      "exampleEnglish": "“I go to school by bus.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "otobüsle gidiyorum",
+      "romanization": "o-to-BÜS-le gi-di-YO-rum",
+      "nativeText": "Usage focus for \"otobüsle gidiyorum\": Use the key language of Level 1 · Unit 13: Ulaşım — Transportation with the register and setting that the lesson requires.",
+      "pronunciation": "o-to-BÜS-le gi-di-YO-rum",
+      "exampleTarget": "Okula otobüsle gidiyorum.",
+      "exampleNative": "Notice what the form is doing here: “I go to school by bus.”",
+      "korean": "otobüsle gidiyorum",
+      "english": "Usage focus for \"otobüsle gidiyorum\": Use the key language of Level 1 · Unit 13: Ulaşım — Transportation with the register and setting that the lesson requires.",
+      "example": "Okula otobüsle gidiyorum.",
+      "exampleEnglish": "Notice what the form is doing here: “I go to school by bus.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "otobüsle gidiyorum",
+      "romanization": "o-to-BÜS-le gi-di-YO-rum",
+      "nativeText": "Contrast check for \"otobüsle gidiyorum\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "o-to-BÜS-le gi-di-YO-rum",
+      "exampleTarget": "Okula otobüsle gidiyorum.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I go to school by bus.”",
+      "korean": "otobüsle gidiyorum",
+      "english": "Contrast check for \"otobüsle gidiyorum\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Okula otobüsle gidiyorum.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I go to school by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "otobüsle gidiyorum",
+      "romanization": "o-to-BÜS-le gi-di-YO-rum",
+      "nativeText": "Recall \"otobüsle gidiyorum\" from memory, then explain what would change if a nearby alternative replaced it in \"Okula otobüsle gidiyorum.\".",
+      "pronunciation": "o-to-BÜS-le gi-di-YO-rum",
+      "exampleTarget": "Okula otobüsle gidiyorum.",
+      "exampleNative": "Self-check against the model before moving on: “I go to school by bus.”",
+      "korean": "otobüsle gidiyorum",
+      "english": "Recall \"otobüsle gidiyorum\" from memory, then explain what would change if a nearby alternative replaced it in \"Okula otobüsle gidiyorum.\".",
+      "example": "Okula otobüsle gidiyorum.",
+      "exampleEnglish": "Self-check against the model before moving on: “I go to school by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "otobüsle gidiyorum",
+      "romanization": "o-to-BÜS-le gi-di-YO-rum",
+      "nativeText": "Repair \"otobüsle gidiyorum\" inside \"Okula otobüsle gidiyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 13: Ulaşım — Transportation with the register and setting that the lesson requires.",
+      "pronunciation": "o-to-BÜS-le gi-di-YO-rum",
+      "exampleTarget": "Okula otobüsle gidiyorum.",
+      "exampleNative": "Use the model as the repair target: “I go to school by bus.”",
+      "korean": "otobüsle gidiyorum",
+      "english": "Repair \"otobüsle gidiyorum\" inside \"Okula otobüsle gidiyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 13: Ulaşım — Transportation with the register and setting that the lesson requires.",
+      "example": "Okula otobüsle gidiyorum.",
+      "exampleEnglish": "Use the model as the repair target: “I go to school by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "otobüsle gidiyorum",
+      "romanization": "o-to-BÜS-le gi-di-YO-rum",
+      "nativeText": "Transfer \"otobüsle gidiyorum\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Okula otobüsle gidiyorum.\".",
+      "pronunciation": "o-to-BÜS-le gi-di-YO-rum",
+      "exampleTarget": "Okula otobüsle gidiyorum.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I go to school by bus.”",
+      "korean": "otobüsle gidiyorum",
+      "english": "Transfer \"otobüsle gidiyorum\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Okula otobüsle gidiyorum.\".",
+      "example": "Okula otobüsle gidiyorum.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I go to school by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "otobüsle gidiyorum",
+      "romanization": "o-to-BÜS-le gi-di-YO-rum",
+      "nativeText": "Find one word or phrase that naturally travels with \"otobüsle gidiyorum\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "o-to-BÜS-le gi-di-YO-rum",
+      "exampleTarget": "Okula otobüsle gidiyorum.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I go to school by bus.”",
+      "korean": "otobüsle gidiyorum",
+      "english": "Find one word or phrase that naturally travels with \"otobüsle gidiyorum\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Okula otobüsle gidiyorum.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I go to school by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "otobüsle gidiyorum",
+      "romanization": "o-to-BÜS-le gi-di-YO-rum",
+      "nativeText": "Listen for \"otobüsle gidiyorum\" inside \"Okula otobüsle gidiyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "o-to-BÜS-le gi-di-YO-rum",
+      "exampleTarget": "Okula otobüsle gidiyorum.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I go to school by bus.”",
+      "korean": "otobüsle gidiyorum",
+      "english": "Listen for \"otobüsle gidiyorum\" inside \"Okula otobüsle gidiyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Okula otobüsle gidiyorum.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I go to school by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "otobüsle gidiyorum",
+      "romanization": "o-to-BÜS-le gi-di-YO-rum",
+      "nativeText": "Write \"otobüsle gidiyorum\" again without looking, then compare the exact written form against \"Okula otobüsle gidiyorum.\" before moving on.",
+      "pronunciation": "o-to-BÜS-le gi-di-YO-rum",
+      "exampleTarget": "Okula otobüsle gidiyorum.",
+      "exampleNative": "Use the written model as the final correctness check: “I go to school by bus.”",
+      "korean": "otobüsle gidiyorum",
+      "english": "Write \"otobüsle gidiyorum\" again without looking, then compare the exact written form against \"Okula otobüsle gidiyorum.\" before moving on.",
+      "example": "Okula otobüsle gidiyorum.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I go to school by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "otobüsle gidiyorum",
+      "romanization": "o-to-BÜS-le gi-di-YO-rum",
+      "nativeText": "Check whether \"otobüsle gidiyorum\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I go to school by bus.”",
+      "pronunciation": "o-to-BÜS-le gi-di-YO-rum",
+      "exampleTarget": "Okula otobüsle gidiyorum.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I go to school by bus.”",
+      "korean": "otobüsle gidiyorum",
+      "english": "Check whether \"otobüsle gidiyorum\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I go to school by bus.”",
+      "example": "Okula otobüsle gidiyorum.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I go to school by bus.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "metro",
+      "romanization": "MET-ro",
+      "nativeText": "“Metro.” A central city transport word in Istanbul and Ankara.",
+      "pronunciation": "MET-ro",
+      "exampleTarget": "Metro hızlı ve rahat.",
+      "exampleNative": "“The metro is fast and comfortable.”",
+      "korean": "metro",
+      "english": "“Metro.” A central city transport word in Istanbul and Ankara.",
+      "example": "Metro hızlı ve rahat.",
+      "exampleEnglish": "“The metro is fast and comfortable.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "Metro hızlı ve rahat.",
+      "romanization": "MET-ro",
+      "nativeText": "Model use for \"Metro hızlı ve rahat.\": “The metro is fast and comfortable.”",
+      "pronunciation": "MET-ro",
+      "exampleTarget": "Metro hızlı ve rahat.",
+      "exampleNative": "“The metro is fast and comfortable.”",
+      "korean": "Metro hızlı ve rahat.",
+      "english": "Model use for \"Metro hızlı ve rahat.\": “The metro is fast and comfortable.”",
+      "example": "Metro hızlı ve rahat.",
+      "exampleEnglish": "“The metro is fast and comfortable.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "metro",
+      "romanization": "MET-ro",
+      "nativeText": "Usage focus for \"metro\": Distinguish the nearby wording choices that make Level 1 · Unit 13: Ulaşım — Transportation sound precise rather than merely understandable.",
+      "pronunciation": "MET-ro",
+      "exampleTarget": "Metro hızlı ve rahat.",
+      "exampleNative": "Notice what the form is doing here: “The metro is fast and comfortable.”",
+      "korean": "metro",
+      "english": "Usage focus for \"metro\": Distinguish the nearby wording choices that make Level 1 · Unit 13: Ulaşım — Transportation sound precise rather than merely understandable.",
+      "example": "Metro hızlı ve rahat.",
+      "exampleEnglish": "Notice what the form is doing here: “The metro is fast and comfortable.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "metro",
+      "romanization": "MET-ro",
+      "nativeText": "Contrast check for \"metro\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "MET-ro",
+      "exampleTarget": "Metro hızlı ve rahat.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The metro is fast and comfortable.”",
+      "korean": "metro",
+      "english": "Contrast check for \"metro\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Metro hızlı ve rahat.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The metro is fast and comfortable.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "metro",
+      "romanization": "MET-ro",
+      "nativeText": "Recall \"metro\" from memory, then explain what would change if a nearby alternative replaced it in \"Metro hızlı ve rahat.\".",
+      "pronunciation": "MET-ro",
+      "exampleTarget": "Metro hızlı ve rahat.",
+      "exampleNative": "Self-check against the model before moving on: “The metro is fast and comfortable.”",
+      "korean": "metro",
+      "english": "Recall \"metro\" from memory, then explain what would change if a nearby alternative replaced it in \"Metro hızlı ve rahat.\".",
+      "example": "Metro hızlı ve rahat.",
+      "exampleEnglish": "Self-check against the model before moving on: “The metro is fast and comfortable.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "metro",
+      "romanization": "MET-ro",
+      "nativeText": "Repair \"metro\" inside \"Metro hızlı ve rahat.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 13: Ulaşım — Transportation sound precise rather than merely understandable.",
+      "pronunciation": "MET-ro",
+      "exampleTarget": "Metro hızlı ve rahat.",
+      "exampleNative": "Use the model as the repair target: “The metro is fast and comfortable.”",
+      "korean": "metro",
+      "english": "Repair \"metro\" inside \"Metro hızlı ve rahat.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 13: Ulaşım — Transportation sound precise rather than merely understandable.",
+      "example": "Metro hızlı ve rahat.",
+      "exampleEnglish": "Use the model as the repair target: “The metro is fast and comfortable.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "metro",
+      "romanization": "MET-ro",
+      "nativeText": "Transfer \"metro\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Metro hızlı ve rahat.\".",
+      "pronunciation": "MET-ro",
+      "exampleTarget": "Metro hızlı ve rahat.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The metro is fast and comfortable.”",
+      "korean": "metro",
+      "english": "Transfer \"metro\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Metro hızlı ve rahat.\".",
+      "example": "Metro hızlı ve rahat.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The metro is fast and comfortable.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "metro",
+      "romanization": "MET-ro",
+      "nativeText": "Find one word or phrase that naturally travels with \"metro\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "MET-ro",
+      "exampleTarget": "Metro hızlı ve rahat.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The metro is fast and comfortable.”",
+      "korean": "metro",
+      "english": "Find one word or phrase that naturally travels with \"metro\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Metro hızlı ve rahat.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The metro is fast and comfortable.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "metro",
+      "romanization": "MET-ro",
+      "nativeText": "Listen for \"metro\" inside \"Metro hızlı ve rahat.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "MET-ro",
+      "exampleTarget": "Metro hızlı ve rahat.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The metro is fast and comfortable.”",
+      "korean": "metro",
+      "english": "Listen for \"metro\" inside \"Metro hızlı ve rahat.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Metro hızlı ve rahat.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The metro is fast and comfortable.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "metro",
+      "romanization": "MET-ro",
+      "nativeText": "Write \"metro\" again without looking, then compare the exact written form against \"Metro hızlı ve rahat.\" before moving on.",
+      "pronunciation": "MET-ro",
+      "exampleTarget": "Metro hızlı ve rahat.",
+      "exampleNative": "Use the written model as the final correctness check: “The metro is fast and comfortable.”",
+      "korean": "metro",
+      "english": "Write \"metro\" again without looking, then compare the exact written form against \"Metro hızlı ve rahat.\" before moving on.",
+      "example": "Metro hızlı ve rahat.",
+      "exampleEnglish": "Use the written model as the final correctness check: “The metro is fast and comfortable.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "metro",
+      "romanization": "MET-ro",
+      "nativeText": "Check whether \"metro\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The metro is fast and comfortable.”",
+      "pronunciation": "MET-ro",
+      "exampleTarget": "Metro hızlı ve rahat.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The metro is fast and comfortable.”",
+      "korean": "metro",
+      "english": "Check whether \"metro\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The metro is fast and comfortable.”",
+      "example": "Metro hızlı ve rahat.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The metro is fast and comfortable.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "vapur",
+      "romanization": "va-PUR",
+      "nativeText": "“Ferry.” Especially important in Istanbul daily life across the Bosphorus.",
+      "pronunciation": "va-PUR",
+      "exampleTarget": "Beşiktaş’a vapurla gidiyorum.",
+      "exampleNative": "“I am going to Beşiktaş by ferry.”",
+      "korean": "vapur",
+      "english": "“Ferry.” Especially important in Istanbul daily life across the Bosphorus.",
+      "example": "Beşiktaş’a vapurla gidiyorum.",
+      "exampleEnglish": "“I am going to Beşiktaş by ferry.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "Beşiktaş’a vapurla gidiyorum.",
+      "romanization": "va-PUR",
+      "nativeText": "Model use for \"Beşiktaş’a vapurla gidiyorum.\": “I am going to Beşiktaş by ferry.”",
+      "pronunciation": "va-PUR",
+      "exampleTarget": "Beşiktaş’a vapurla gidiyorum.",
+      "exampleNative": "“I am going to Beşiktaş by ferry.”",
+      "korean": "Beşiktaş’a vapurla gidiyorum.",
+      "english": "Model use for \"Beşiktaş’a vapurla gidiyorum.\": “I am going to Beşiktaş by ferry.”",
+      "example": "Beşiktaş’a vapurla gidiyorum.",
+      "exampleEnglish": "“I am going to Beşiktaş by ferry.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "vapur",
+      "romanization": "va-PUR",
+      "nativeText": "Usage focus for \"vapur\": “Ferry.” Especially important in Istanbul daily life across the Bosphorus.",
+      "pronunciation": "va-PUR",
+      "exampleTarget": "Beşiktaş’a vapurla gidiyorum.",
+      "exampleNative": "Notice what the form is doing here: “I am going to Beşiktaş by ferry.”",
+      "korean": "vapur",
+      "english": "Usage focus for \"vapur\": “Ferry.” Especially important in Istanbul daily life across the Bosphorus.",
+      "example": "Beşiktaş’a vapurla gidiyorum.",
+      "exampleEnglish": "Notice what the form is doing here: “I am going to Beşiktaş by ferry.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "vapur",
+      "romanization": "va-PUR",
+      "nativeText": "Contrast check for \"vapur\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "va-PUR",
+      "exampleTarget": "Beşiktaş’a vapurla gidiyorum.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am going to Beşiktaş by ferry.”",
+      "korean": "vapur",
+      "english": "Contrast check for \"vapur\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Beşiktaş’a vapurla gidiyorum.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am going to Beşiktaş by ferry.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "vapur",
+      "romanization": "va-PUR",
+      "nativeText": "Recall \"vapur\" from memory, then explain what would change if a nearby alternative replaced it in \"Beşiktaş’a vapurla gidiyorum.\".",
+      "pronunciation": "va-PUR",
+      "exampleTarget": "Beşiktaş’a vapurla gidiyorum.",
+      "exampleNative": "Self-check against the model before moving on: “I am going to Beşiktaş by ferry.”",
+      "korean": "vapur",
+      "english": "Recall \"vapur\" from memory, then explain what would change if a nearby alternative replaced it in \"Beşiktaş’a vapurla gidiyorum.\".",
+      "example": "Beşiktaş’a vapurla gidiyorum.",
+      "exampleEnglish": "Self-check against the model before moving on: “I am going to Beşiktaş by ferry.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "vapur",
+      "romanization": "va-PUR",
+      "nativeText": "Repair \"vapur\" inside \"Beşiktaş’a vapurla gidiyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Ferry.” Especially important in Istanbul daily life across the Bosphorus.",
+      "pronunciation": "va-PUR",
+      "exampleTarget": "Beşiktaş’a vapurla gidiyorum.",
+      "exampleNative": "Use the model as the repair target: “I am going to Beşiktaş by ferry.”",
+      "korean": "vapur",
+      "english": "Repair \"vapur\" inside \"Beşiktaş’a vapurla gidiyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Ferry.” Especially important in Istanbul daily life across the Bosphorus.",
+      "example": "Beşiktaş’a vapurla gidiyorum.",
+      "exampleEnglish": "Use the model as the repair target: “I am going to Beşiktaş by ferry.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "vapur",
+      "romanization": "va-PUR",
+      "nativeText": "Transfer \"vapur\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Beşiktaş’a vapurla gidiyorum.\".",
+      "pronunciation": "va-PUR",
+      "exampleTarget": "Beşiktaş’a vapurla gidiyorum.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am going to Beşiktaş by ferry.”",
+      "korean": "vapur",
+      "english": "Transfer \"vapur\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Beşiktaş’a vapurla gidiyorum.\".",
+      "example": "Beşiktaş’a vapurla gidiyorum.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am going to Beşiktaş by ferry.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "vapur",
+      "romanization": "va-PUR",
+      "nativeText": "Find one word or phrase that naturally travels with \"vapur\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "va-PUR",
+      "exampleTarget": "Beşiktaş’a vapurla gidiyorum.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I am going to Beşiktaş by ferry.”",
+      "korean": "vapur",
+      "english": "Find one word or phrase that naturally travels with \"vapur\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Beşiktaş’a vapurla gidiyorum.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I am going to Beşiktaş by ferry.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "vapur",
+      "romanization": "va-PUR",
+      "nativeText": "Listen for \"vapur\" inside \"Beşiktaş’a vapurla gidiyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "va-PUR",
+      "exampleTarget": "Beşiktaş’a vapurla gidiyorum.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am going to Beşiktaş by ferry.”",
+      "korean": "vapur",
+      "english": "Listen for \"vapur\" inside \"Beşiktaş’a vapurla gidiyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Beşiktaş’a vapurla gidiyorum.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am going to Beşiktaş by ferry.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "vapur",
+      "romanization": "va-PUR",
+      "nativeText": "Write \"vapur\" again without looking, then compare the exact written form against \"Beşiktaş’a vapurla gidiyorum.\" before moving on.",
+      "pronunciation": "va-PUR",
+      "exampleTarget": "Beşiktaş’a vapurla gidiyorum.",
+      "exampleNative": "Use the written model as the final correctness check: “I am going to Beşiktaş by ferry.”",
+      "korean": "vapur",
+      "english": "Write \"vapur\" again without looking, then compare the exact written form against \"Beşiktaş’a vapurla gidiyorum.\" before moving on.",
+      "example": "Beşiktaş’a vapurla gidiyorum.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I am going to Beşiktaş by ferry.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "vapur",
+      "romanization": "va-PUR",
+      "nativeText": "Check whether \"vapur\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am going to Beşiktaş by ferry.”",
+      "pronunciation": "va-PUR",
+      "exampleTarget": "Beşiktaş’a vapurla gidiyorum.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I am going to Beşiktaş by ferry.”",
+      "korean": "vapur",
+      "english": "Check whether \"vapur\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am going to Beşiktaş by ferry.”",
+      "example": "Beşiktaş’a vapurla gidiyorum.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I am going to Beşiktaş by ferry.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "durak",
+      "romanization": "du-RAK",
+      "nativeText": "“Stop.” Used for buses and similar transport.",
+      "pronunciation": "du-RAK",
+      "exampleTarget": "Otobüs durağı burada.",
+      "exampleNative": "“The bus stop is here.”",
+      "korean": "durak",
+      "english": "“Stop.” Used for buses and similar transport.",
+      "example": "Otobüs durağı burada.",
+      "exampleEnglish": "“The bus stop is here.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "Otobüs durağı burada.",
+      "romanization": "du-RAK",
+      "nativeText": "Model use for \"Otobüs durağı burada.\": “The bus stop is here.”",
+      "pronunciation": "du-RAK",
+      "exampleTarget": "Otobüs durağı burada.",
+      "exampleNative": "“The bus stop is here.”",
+      "korean": "Otobüs durağı burada.",
+      "english": "Model use for \"Otobüs durağı burada.\": “The bus stop is here.”",
+      "example": "Otobüs durağı burada.",
+      "exampleEnglish": "“The bus stop is here.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "durak",
+      "romanization": "du-RAK",
+      "nativeText": "Usage focus for \"durak\": “Stop.” Used for buses and similar transport.",
+      "pronunciation": "du-RAK",
+      "exampleTarget": "Otobüs durağı burada.",
+      "exampleNative": "Notice what the form is doing here: “The bus stop is here.”",
+      "korean": "durak",
+      "english": "Usage focus for \"durak\": “Stop.” Used for buses and similar transport.",
+      "example": "Otobüs durağı burada.",
+      "exampleEnglish": "Notice what the form is doing here: “The bus stop is here.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "durak",
+      "romanization": "du-RAK",
+      "nativeText": "Contrast check for \"durak\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "du-RAK",
+      "exampleTarget": "Otobüs durağı burada.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The bus stop is here.”",
+      "korean": "durak",
+      "english": "Contrast check for \"durak\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Otobüs durağı burada.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The bus stop is here.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "durak",
+      "romanization": "du-RAK",
+      "nativeText": "Recall \"durak\" from memory, then explain what would change if a nearby alternative replaced it in \"Otobüs durağı burada.\".",
+      "pronunciation": "du-RAK",
+      "exampleTarget": "Otobüs durağı burada.",
+      "exampleNative": "Self-check against the model before moving on: “The bus stop is here.”",
+      "korean": "durak",
+      "english": "Recall \"durak\" from memory, then explain what would change if a nearby alternative replaced it in \"Otobüs durağı burada.\".",
+      "example": "Otobüs durağı burada.",
+      "exampleEnglish": "Self-check against the model before moving on: “The bus stop is here.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "durak",
+      "romanization": "du-RAK",
+      "nativeText": "Repair \"durak\" inside \"Otobüs durağı burada.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Stop.” Used for buses and similar transport.",
+      "pronunciation": "du-RAK",
+      "exampleTarget": "Otobüs durağı burada.",
+      "exampleNative": "Use the model as the repair target: “The bus stop is here.”",
+      "korean": "durak",
+      "english": "Repair \"durak\" inside \"Otobüs durağı burada.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Stop.” Used for buses and similar transport.",
+      "example": "Otobüs durağı burada.",
+      "exampleEnglish": "Use the model as the repair target: “The bus stop is here.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "durak",
+      "romanization": "du-RAK",
+      "nativeText": "Transfer \"durak\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Otobüs durağı burada.\".",
+      "pronunciation": "du-RAK",
+      "exampleTarget": "Otobüs durağı burada.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The bus stop is here.”",
+      "korean": "durak",
+      "english": "Transfer \"durak\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Otobüs durağı burada.\".",
+      "example": "Otobüs durağı burada.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The bus stop is here.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "durak",
+      "romanization": "du-RAK",
+      "nativeText": "Find one word or phrase that naturally travels with \"durak\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "du-RAK",
+      "exampleTarget": "Otobüs durağı burada.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The bus stop is here.”",
+      "korean": "durak",
+      "english": "Find one word or phrase that naturally travels with \"durak\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Otobüs durağı burada.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The bus stop is here.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "durak",
+      "romanization": "du-RAK",
+      "nativeText": "Listen for \"durak\" inside \"Otobüs durağı burada.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "du-RAK",
+      "exampleTarget": "Otobüs durağı burada.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The bus stop is here.”",
+      "korean": "durak",
+      "english": "Listen for \"durak\" inside \"Otobüs durağı burada.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Otobüs durağı burada.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The bus stop is here.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "durak",
+      "romanization": "du-RAK",
+      "nativeText": "Write \"durak\" again without looking, then compare the exact written form against \"Otobüs durağı burada.\" before moving on.",
+      "pronunciation": "du-RAK",
+      "exampleTarget": "Otobüs durağı burada.",
+      "exampleNative": "Use the written model as the final correctness check: “The bus stop is here.”",
+      "korean": "durak",
+      "english": "Write \"durak\" again without looking, then compare the exact written form against \"Otobüs durağı burada.\" before moving on.",
+      "example": "Otobüs durağı burada.",
+      "exampleEnglish": "Use the written model as the final correctness check: “The bus stop is here.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "durak",
+      "romanization": "du-RAK",
+      "nativeText": "Check whether \"durak\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The bus stop is here.”",
+      "pronunciation": "du-RAK",
+      "exampleTarget": "Otobüs durağı burada.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The bus stop is here.”",
+      "korean": "durak",
+      "english": "Check whether \"durak\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The bus stop is here.”",
+      "example": "Otobüs durağı burada.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The bus stop is here.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "istasyon",
+      "romanization": "is-tas-YON",
+      "nativeText": "“Station.” Used for metro and trains.",
+      "pronunciation": "is-tas-YON",
+      "exampleTarget": "Bir sonraki istasyonda iniyorum.",
+      "exampleNative": "“I get off at the next station.”",
+      "korean": "istasyon",
+      "english": "“Station.” Used for metro and trains.",
+      "example": "Bir sonraki istasyonda iniyorum.",
+      "exampleEnglish": "“I get off at the next station.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "Bir sonraki istasyonda iniyorum.",
+      "romanization": "is-tas-YON",
+      "nativeText": "Model use for \"Bir sonraki istasyonda iniyorum.\": “I get off at the next station.”",
+      "pronunciation": "is-tas-YON",
+      "exampleTarget": "Bir sonraki istasyonda iniyorum.",
+      "exampleNative": "“I get off at the next station.”",
+      "korean": "Bir sonraki istasyonda iniyorum.",
+      "english": "Model use for \"Bir sonraki istasyonda iniyorum.\": “I get off at the next station.”",
+      "example": "Bir sonraki istasyonda iniyorum.",
+      "exampleEnglish": "“I get off at the next station.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "istasyon",
+      "romanization": "is-tas-YON",
+      "nativeText": "Usage focus for \"istasyon\": “Station.” Used for metro and trains.",
+      "pronunciation": "is-tas-YON",
+      "exampleTarget": "Bir sonraki istasyonda iniyorum.",
+      "exampleNative": "Notice what the form is doing here: “I get off at the next station.”",
+      "korean": "istasyon",
+      "english": "Usage focus for \"istasyon\": “Station.” Used for metro and trains.",
+      "example": "Bir sonraki istasyonda iniyorum.",
+      "exampleEnglish": "Notice what the form is doing here: “I get off at the next station.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "istasyon",
+      "romanization": "is-tas-YON",
+      "nativeText": "Contrast check for \"istasyon\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "is-tas-YON",
+      "exampleTarget": "Bir sonraki istasyonda iniyorum.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I get off at the next station.”",
+      "korean": "istasyon",
+      "english": "Contrast check for \"istasyon\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Bir sonraki istasyonda iniyorum.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I get off at the next station.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "istasyon",
+      "romanization": "is-tas-YON",
+      "nativeText": "Recall \"istasyon\" from memory, then explain what would change if a nearby alternative replaced it in \"Bir sonraki istasyonda iniyorum.\".",
+      "pronunciation": "is-tas-YON",
+      "exampleTarget": "Bir sonraki istasyonda iniyorum.",
+      "exampleNative": "Self-check against the model before moving on: “I get off at the next station.”",
+      "korean": "istasyon",
+      "english": "Recall \"istasyon\" from memory, then explain what would change if a nearby alternative replaced it in \"Bir sonraki istasyonda iniyorum.\".",
+      "example": "Bir sonraki istasyonda iniyorum.",
+      "exampleEnglish": "Self-check against the model before moving on: “I get off at the next station.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "istasyon",
+      "romanization": "is-tas-YON",
+      "nativeText": "Repair \"istasyon\" inside \"Bir sonraki istasyonda iniyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Station.” Used for metro and trains.",
+      "pronunciation": "is-tas-YON",
+      "exampleTarget": "Bir sonraki istasyonda iniyorum.",
+      "exampleNative": "Use the model as the repair target: “I get off at the next station.”",
+      "korean": "istasyon",
+      "english": "Repair \"istasyon\" inside \"Bir sonraki istasyonda iniyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Station.” Used for metro and trains.",
+      "example": "Bir sonraki istasyonda iniyorum.",
+      "exampleEnglish": "Use the model as the repair target: “I get off at the next station.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "istasyon",
+      "romanization": "is-tas-YON",
+      "nativeText": "Transfer \"istasyon\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bir sonraki istasyonda iniyorum.\".",
+      "pronunciation": "is-tas-YON",
+      "exampleTarget": "Bir sonraki istasyonda iniyorum.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I get off at the next station.”",
+      "korean": "istasyon",
+      "english": "Transfer \"istasyon\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bir sonraki istasyonda iniyorum.\".",
+      "example": "Bir sonraki istasyonda iniyorum.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I get off at the next station.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "istasyon",
+      "romanization": "is-tas-YON",
+      "nativeText": "Find one word or phrase that naturally travels with \"istasyon\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "is-tas-YON",
+      "exampleTarget": "Bir sonraki istasyonda iniyorum.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I get off at the next station.”",
+      "korean": "istasyon",
+      "english": "Find one word or phrase that naturally travels with \"istasyon\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Bir sonraki istasyonda iniyorum.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I get off at the next station.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "istasyon",
+      "romanization": "is-tas-YON",
+      "nativeText": "Listen for \"istasyon\" inside \"Bir sonraki istasyonda iniyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "is-tas-YON",
+      "exampleTarget": "Bir sonraki istasyonda iniyorum.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I get off at the next station.”",
+      "korean": "istasyon",
+      "english": "Listen for \"istasyon\" inside \"Bir sonraki istasyonda iniyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Bir sonraki istasyonda iniyorum.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I get off at the next station.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "istasyon",
+      "romanization": "is-tas-YON",
+      "nativeText": "Write \"istasyon\" again without looking, then compare the exact written form against \"Bir sonraki istasyonda iniyorum.\" before moving on.",
+      "pronunciation": "is-tas-YON",
+      "exampleTarget": "Bir sonraki istasyonda iniyorum.",
+      "exampleNative": "Use the written model as the final correctness check: “I get off at the next station.”",
+      "korean": "istasyon",
+      "english": "Write \"istasyon\" again without looking, then compare the exact written form against \"Bir sonraki istasyonda iniyorum.\" before moving on.",
+      "example": "Bir sonraki istasyonda iniyorum.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I get off at the next station.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "istasyon",
+      "romanization": "is-tas-YON",
+      "nativeText": "Check whether \"istasyon\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I get off at the next station.”",
+      "pronunciation": "is-tas-YON",
+      "exampleTarget": "Bir sonraki istasyonda iniyorum.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I get off at the next station.”",
+      "korean": "istasyon",
+      "english": "Check whether \"istasyon\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I get off at the next station.”",
+      "example": "Bir sonraki istasyonda iniyorum.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I get off at the next station.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "bilet",
+      "romanization": "bi-LET",
+      "nativeText": "“Ticket.” Practical across transport and events.",
+      "pronunciation": "bi-LET",
+      "exampleTarget": "Bir bilet istiyorum.",
+      "exampleNative": "“I want one ticket.”",
+      "korean": "bilet",
+      "english": "“Ticket.” Practical across transport and events.",
+      "example": "Bir bilet istiyorum.",
+      "exampleEnglish": "“I want one ticket.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "Bir bilet istiyorum.",
+      "romanization": "bi-LET",
+      "nativeText": "Model use for \"Bir bilet istiyorum.\": “I want one ticket.”",
+      "pronunciation": "bi-LET",
+      "exampleTarget": "Bir bilet istiyorum.",
+      "exampleNative": "“I want one ticket.”",
+      "korean": "Bir bilet istiyorum.",
+      "english": "Model use for \"Bir bilet istiyorum.\": “I want one ticket.”",
+      "example": "Bir bilet istiyorum.",
+      "exampleEnglish": "“I want one ticket.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "bilet",
+      "romanization": "bi-LET",
+      "nativeText": "Usage focus for \"bilet\": “Ticket.” Practical across transport and events.",
+      "pronunciation": "bi-LET",
+      "exampleTarget": "Bir bilet istiyorum.",
+      "exampleNative": "Notice what the form is doing here: “I want one ticket.”",
+      "korean": "bilet",
+      "english": "Usage focus for \"bilet\": “Ticket.” Practical across transport and events.",
+      "example": "Bir bilet istiyorum.",
+      "exampleEnglish": "Notice what the form is doing here: “I want one ticket.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "bilet",
+      "romanization": "bi-LET",
+      "nativeText": "Contrast check for \"bilet\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "bi-LET",
+      "exampleTarget": "Bir bilet istiyorum.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want one ticket.”",
+      "korean": "bilet",
+      "english": "Contrast check for \"bilet\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Bir bilet istiyorum.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want one ticket.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "bilet",
+      "romanization": "bi-LET",
+      "nativeText": "Recall \"bilet\" from memory, then explain what would change if a nearby alternative replaced it in \"Bir bilet istiyorum.\".",
+      "pronunciation": "bi-LET",
+      "exampleTarget": "Bir bilet istiyorum.",
+      "exampleNative": "Self-check against the model before moving on: “I want one ticket.”",
+      "korean": "bilet",
+      "english": "Recall \"bilet\" from memory, then explain what would change if a nearby alternative replaced it in \"Bir bilet istiyorum.\".",
+      "example": "Bir bilet istiyorum.",
+      "exampleEnglish": "Self-check against the model before moving on: “I want one ticket.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "bilet",
+      "romanization": "bi-LET",
+      "nativeText": "Repair \"bilet\" inside \"Bir bilet istiyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Ticket.” Practical across transport and events.",
+      "pronunciation": "bi-LET",
+      "exampleTarget": "Bir bilet istiyorum.",
+      "exampleNative": "Use the model as the repair target: “I want one ticket.”",
+      "korean": "bilet",
+      "english": "Repair \"bilet\" inside \"Bir bilet istiyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Ticket.” Practical across transport and events.",
+      "example": "Bir bilet istiyorum.",
+      "exampleEnglish": "Use the model as the repair target: “I want one ticket.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "bilet",
+      "romanization": "bi-LET",
+      "nativeText": "Transfer \"bilet\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bir bilet istiyorum.\".",
+      "pronunciation": "bi-LET",
+      "exampleTarget": "Bir bilet istiyorum.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want one ticket.”",
+      "korean": "bilet",
+      "english": "Transfer \"bilet\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bir bilet istiyorum.\".",
+      "example": "Bir bilet istiyorum.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want one ticket.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "bilet",
+      "romanization": "bi-LET",
+      "nativeText": "Find one word or phrase that naturally travels with \"bilet\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "bi-LET",
+      "exampleTarget": "Bir bilet istiyorum.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want one ticket.”",
+      "korean": "bilet",
+      "english": "Find one word or phrase that naturally travels with \"bilet\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Bir bilet istiyorum.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want one ticket.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "bilet",
+      "romanization": "bi-LET",
+      "nativeText": "Listen for \"bilet\" inside \"Bir bilet istiyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "bi-LET",
+      "exampleTarget": "Bir bilet istiyorum.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want one ticket.”",
+      "korean": "bilet",
+      "english": "Listen for \"bilet\" inside \"Bir bilet istiyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Bir bilet istiyorum.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want one ticket.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "bilet",
+      "romanization": "bi-LET",
+      "nativeText": "Write \"bilet\" again without looking, then compare the exact written form against \"Bir bilet istiyorum.\" before moving on.",
+      "pronunciation": "bi-LET",
+      "exampleTarget": "Bir bilet istiyorum.",
+      "exampleNative": "Use the written model as the final correctness check: “I want one ticket.”",
+      "korean": "bilet",
+      "english": "Write \"bilet\" again without looking, then compare the exact written form against \"Bir bilet istiyorum.\" before moving on.",
+      "example": "Bir bilet istiyorum.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want one ticket.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "bilet",
+      "romanization": "bi-LET",
+      "nativeText": "Check whether \"bilet\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want one ticket.”",
+      "pronunciation": "bi-LET",
+      "exampleTarget": "Bir bilet istiyorum.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want one ticket.”",
+      "korean": "bilet",
+      "english": "Check whether \"bilet\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want one ticket.”",
+      "example": "Bir bilet istiyorum.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want one ticket.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "... nasıl giderim?",
+      "romanization": "na-SIL gi-de-RİM",
+      "nativeText": "“How do I get to ...?” A destination phrase plus travel question.",
+      "pronunciation": "na-SIL gi-de-RİM",
+      "exampleTarget": "Taksim’e nasıl giderim?",
+      "exampleNative": "“How do I get to Taksim?”",
+      "korean": "... nasıl giderim?",
+      "english": "“How do I get to ...?” A destination phrase plus travel question.",
+      "example": "Taksim’e nasıl giderim?",
+      "exampleEnglish": "“How do I get to Taksim?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "Taksim’e nasıl giderim?",
+      "romanization": "na-SIL gi-de-RİM",
+      "nativeText": "Model use for \"Taksim’e nasıl giderim?\": “How do I get to Taksim?”",
+      "pronunciation": "na-SIL gi-de-RİM",
+      "exampleTarget": "Taksim’e nasıl giderim?",
+      "exampleNative": "“How do I get to Taksim?”",
+      "korean": "Taksim’e nasıl giderim?",
+      "english": "Model use for \"Taksim’e nasıl giderim?\": “How do I get to Taksim?”",
+      "example": "Taksim’e nasıl giderim?",
+      "exampleEnglish": "“How do I get to Taksim?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "... nasıl giderim?",
+      "romanization": "na-SIL gi-de-RİM",
+      "nativeText": "Usage focus for \"... nasıl giderim?\": “How do I get to ...?” A destination phrase plus travel question.",
+      "pronunciation": "na-SIL gi-de-RİM",
+      "exampleTarget": "Taksim’e nasıl giderim?",
+      "exampleNative": "Notice what the form is doing here: “How do I get to Taksim?”",
+      "korean": "... nasıl giderim?",
+      "english": "Usage focus for \"... nasıl giderim?\": “How do I get to ...?” A destination phrase plus travel question.",
+      "example": "Taksim’e nasıl giderim?",
+      "exampleEnglish": "Notice what the form is doing here: “How do I get to Taksim?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "... nasıl giderim?",
+      "romanization": "na-SIL gi-de-RİM",
+      "nativeText": "Contrast check for \"... nasıl giderim?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "na-SIL gi-de-RİM",
+      "exampleTarget": "Taksim’e nasıl giderim?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How do I get to Taksim?”",
+      "korean": "... nasıl giderim?",
+      "english": "Contrast check for \"... nasıl giderim?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Taksim’e nasıl giderim?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How do I get to Taksim?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "... nasıl giderim?",
+      "romanization": "na-SIL gi-de-RİM",
+      "nativeText": "Recall \"... nasıl giderim?\" from memory, then explain what would change if a nearby alternative replaced it in \"Taksim’e nasıl giderim?\".",
+      "pronunciation": "na-SIL gi-de-RİM",
+      "exampleTarget": "Taksim’e nasıl giderim?",
+      "exampleNative": "Self-check against the model before moving on: “How do I get to Taksim?”",
+      "korean": "... nasıl giderim?",
+      "english": "Recall \"... nasıl giderim?\" from memory, then explain what would change if a nearby alternative replaced it in \"Taksim’e nasıl giderim?\".",
+      "example": "Taksim’e nasıl giderim?",
+      "exampleEnglish": "Self-check against the model before moving on: “How do I get to Taksim?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "... nasıl giderim?",
+      "romanization": "na-SIL gi-de-RİM",
+      "nativeText": "Repair \"... nasıl giderim?\" inside \"Taksim’e nasıl giderim?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “How do I get to ...?” A destination phrase plus travel question.",
+      "pronunciation": "na-SIL gi-de-RİM",
+      "exampleTarget": "Taksim’e nasıl giderim?",
+      "exampleNative": "Use the model as the repair target: “How do I get to Taksim?”",
+      "korean": "... nasıl giderim?",
+      "english": "Repair \"... nasıl giderim?\" inside \"Taksim’e nasıl giderim?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “How do I get to ...?” A destination phrase plus travel question.",
+      "example": "Taksim’e nasıl giderim?",
+      "exampleEnglish": "Use the model as the repair target: “How do I get to Taksim?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "... nasıl giderim?",
+      "romanization": "na-SIL gi-de-RİM",
+      "nativeText": "Transfer \"... nasıl giderim?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Taksim’e nasıl giderim?\".",
+      "pronunciation": "na-SIL gi-de-RİM",
+      "exampleTarget": "Taksim’e nasıl giderim?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “How do I get to Taksim?”",
+      "korean": "... nasıl giderim?",
+      "english": "Transfer \"... nasıl giderim?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Taksim’e nasıl giderim?\".",
+      "example": "Taksim’e nasıl giderim?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “How do I get to Taksim?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "... nasıl giderim?",
+      "romanization": "na-SIL gi-de-RİM",
+      "nativeText": "Find one word or phrase that naturally travels with \"... nasıl giderim?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "na-SIL gi-de-RİM",
+      "exampleTarget": "Taksim’e nasıl giderim?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “How do I get to Taksim?”",
+      "korean": "... nasıl giderim?",
+      "english": "Find one word or phrase that naturally travels with \"... nasıl giderim?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Taksim’e nasıl giderim?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “How do I get to Taksim?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "... nasıl giderim?",
+      "romanization": "na-SIL gi-de-RİM",
+      "nativeText": "Listen for \"... nasıl giderim?\" inside \"Taksim’e nasıl giderim?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "na-SIL gi-de-RİM",
+      "exampleTarget": "Taksim’e nasıl giderim?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How do I get to Taksim?”",
+      "korean": "... nasıl giderim?",
+      "english": "Listen for \"... nasıl giderim?\" inside \"Taksim’e nasıl giderim?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Taksim’e nasıl giderim?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How do I get to Taksim?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "... nasıl giderim?",
+      "romanization": "na-SIL gi-de-RİM",
+      "nativeText": "Write \"... nasıl giderim?\" again without looking, then compare the exact written form against \"Taksim’e nasıl giderim?\" before moving on.",
+      "pronunciation": "na-SIL gi-de-RİM",
+      "exampleTarget": "Taksim’e nasıl giderim?",
+      "exampleNative": "Use the written model as the final correctness check: “How do I get to Taksim?”",
+      "korean": "... nasıl giderim?",
+      "english": "Write \"... nasıl giderim?\" again without looking, then compare the exact written form against \"Taksim’e nasıl giderim?\" before moving on.",
+      "example": "Taksim’e nasıl giderim?",
+      "exampleEnglish": "Use the written model as the final correctness check: “How do I get to Taksim?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "... nasıl giderim?",
+      "romanization": "na-SIL gi-de-RİM",
+      "nativeText": "Check whether \"... nasıl giderim?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How do I get to Taksim?”",
+      "pronunciation": "na-SIL gi-de-RİM",
+      "exampleTarget": "Taksim’e nasıl giderim?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “How do I get to Taksim?”",
+      "korean": "... nasıl giderim?",
+      "english": "Check whether \"... nasıl giderim?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How do I get to Taksim?”",
+      "example": "Taksim’e nasıl giderim?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “How do I get to Taksim?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "ne kadar sürer?",
+      "romanization": "ne ka-DAR sü-RER",
+      "nativeText": "“How long does it take?” A complete useful duration question.",
+      "pronunciation": "ne ka-DAR sü-RER",
+      "exampleTarget": "Havaalanına gitmek ne kadar sürer?",
+      "exampleNative": "“How long does it take to go to the airport?”",
+      "korean": "ne kadar sürer?",
+      "english": "“How long does it take?” A complete useful duration question.",
+      "example": "Havaalanına gitmek ne kadar sürer?",
+      "exampleEnglish": "“How long does it take to go to the airport?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "Havaalanına gitmek ne kadar sürer?",
+      "romanization": "ne ka-DAR sü-RER",
+      "nativeText": "Model use for \"Havaalanına gitmek ne kadar sürer?\": “How long does it take to go to the airport?”",
+      "pronunciation": "ne ka-DAR sü-RER",
+      "exampleTarget": "Havaalanına gitmek ne kadar sürer?",
+      "exampleNative": "“How long does it take to go to the airport?”",
+      "korean": "Havaalanına gitmek ne kadar sürer?",
+      "english": "Model use for \"Havaalanına gitmek ne kadar sürer?\": “How long does it take to go to the airport?”",
+      "example": "Havaalanına gitmek ne kadar sürer?",
+      "exampleEnglish": "“How long does it take to go to the airport?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "ne kadar sürer?",
+      "romanization": "ne ka-DAR sü-RER",
+      "nativeText": "Usage focus for \"ne kadar sürer?\": “How long does it take?” A complete useful duration question.",
+      "pronunciation": "ne ka-DAR sü-RER",
+      "exampleTarget": "Havaalanına gitmek ne kadar sürer?",
+      "exampleNative": "Notice what the form is doing here: “How long does it take to go to the airport?”",
+      "korean": "ne kadar sürer?",
+      "english": "Usage focus for \"ne kadar sürer?\": “How long does it take?” A complete useful duration question.",
+      "example": "Havaalanına gitmek ne kadar sürer?",
+      "exampleEnglish": "Notice what the form is doing here: “How long does it take to go to the airport?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "ne kadar sürer?",
+      "romanization": "ne ka-DAR sü-RER",
+      "nativeText": "Contrast check for \"ne kadar sürer?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ne ka-DAR sü-RER",
+      "exampleTarget": "Havaalanına gitmek ne kadar sürer?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How long does it take to go to the airport?”",
+      "korean": "ne kadar sürer?",
+      "english": "Contrast check for \"ne kadar sürer?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Havaalanına gitmek ne kadar sürer?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How long does it take to go to the airport?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "ne kadar sürer?",
+      "romanization": "ne ka-DAR sü-RER",
+      "nativeText": "Recall \"ne kadar sürer?\" from memory, then explain what would change if a nearby alternative replaced it in \"Havaalanına gitmek ne kadar sürer?\".",
+      "pronunciation": "ne ka-DAR sü-RER",
+      "exampleTarget": "Havaalanına gitmek ne kadar sürer?",
+      "exampleNative": "Self-check against the model before moving on: “How long does it take to go to the airport?”",
+      "korean": "ne kadar sürer?",
+      "english": "Recall \"ne kadar sürer?\" from memory, then explain what would change if a nearby alternative replaced it in \"Havaalanına gitmek ne kadar sürer?\".",
+      "example": "Havaalanına gitmek ne kadar sürer?",
+      "exampleEnglish": "Self-check against the model before moving on: “How long does it take to go to the airport?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "ne kadar sürer?",
+      "romanization": "ne ka-DAR sü-RER",
+      "nativeText": "Repair \"ne kadar sürer?\" inside \"Havaalanına gitmek ne kadar sürer?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “How long does it take?” A complete useful duration question.",
+      "pronunciation": "ne ka-DAR sü-RER",
+      "exampleTarget": "Havaalanına gitmek ne kadar sürer?",
+      "exampleNative": "Use the model as the repair target: “How long does it take to go to the airport?”",
+      "korean": "ne kadar sürer?",
+      "english": "Repair \"ne kadar sürer?\" inside \"Havaalanına gitmek ne kadar sürer?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “How long does it take?” A complete useful duration question.",
+      "example": "Havaalanına gitmek ne kadar sürer?",
+      "exampleEnglish": "Use the model as the repair target: “How long does it take to go to the airport?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "ne kadar sürer?",
+      "romanization": "ne ka-DAR sü-RER",
+      "nativeText": "Transfer \"ne kadar sürer?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Havaalanına gitmek ne kadar sürer?\".",
+      "pronunciation": "ne ka-DAR sü-RER",
+      "exampleTarget": "Havaalanına gitmek ne kadar sürer?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “How long does it take to go to the airport?”",
+      "korean": "ne kadar sürer?",
+      "english": "Transfer \"ne kadar sürer?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Havaalanına gitmek ne kadar sürer?\".",
+      "example": "Havaalanına gitmek ne kadar sürer?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “How long does it take to go to the airport?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "ne kadar sürer?",
+      "romanization": "ne ka-DAR sü-RER",
+      "nativeText": "Find one word or phrase that naturally travels with \"ne kadar sürer?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ne ka-DAR sü-RER",
+      "exampleTarget": "Havaalanına gitmek ne kadar sürer?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “How long does it take to go to the airport?”",
+      "korean": "ne kadar sürer?",
+      "english": "Find one word or phrase that naturally travels with \"ne kadar sürer?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Havaalanına gitmek ne kadar sürer?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “How long does it take to go to the airport?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "ne kadar sürer?",
+      "romanization": "ne ka-DAR sü-RER",
+      "nativeText": "Listen for \"ne kadar sürer?\" inside \"Havaalanına gitmek ne kadar sürer?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ne ka-DAR sü-RER",
+      "exampleTarget": "Havaalanına gitmek ne kadar sürer?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How long does it take to go to the airport?”",
+      "korean": "ne kadar sürer?",
+      "english": "Listen for \"ne kadar sürer?\" inside \"Havaalanına gitmek ne kadar sürer?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Havaalanına gitmek ne kadar sürer?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How long does it take to go to the airport?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "ne kadar sürer?",
+      "romanization": "ne ka-DAR sü-RER",
+      "nativeText": "Write \"ne kadar sürer?\" again without looking, then compare the exact written form against \"Havaalanına gitmek ne kadar sürer?\" before moving on.",
+      "pronunciation": "ne ka-DAR sü-RER",
+      "exampleTarget": "Havaalanına gitmek ne kadar sürer?",
+      "exampleNative": "Use the written model as the final correctness check: “How long does it take to go to the airport?”",
+      "korean": "ne kadar sürer?",
+      "english": "Write \"ne kadar sürer?\" again without looking, then compare the exact written form against \"Havaalanına gitmek ne kadar sürer?\" before moving on.",
+      "example": "Havaalanına gitmek ne kadar sürer?",
+      "exampleEnglish": "Use the written model as the final correctness check: “How long does it take to go to the airport?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit13transportation-vocabulary-1",
+        "tr-level1unit13transportation-vocabulary-2",
+        "tr-level1unit13transportation-grammar-1",
+        "tr-level1unit13transportation-grammar-2",
+        "tr-level1unit13transportation-reading",
+        "tr-level1unit13transportation-listening",
+        "tr-level1unit13transportation-writing",
+        "tr-level1unit13transportation-task"
+      ],
+      "targetText": "ne kadar sürer?",
+      "romanization": "ne ka-DAR sü-RER",
+      "nativeText": "Check whether \"ne kadar sürer?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How long does it take to go to the airport?”",
+      "pronunciation": "ne ka-DAR sü-RER",
+      "exampleTarget": "Havaalanına gitmek ne kadar sürer?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “How long does it take to go to the airport?”",
+      "korean": "ne kadar sürer?",
+      "english": "Check whether \"ne kadar sürer?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How long does it take to go to the airport?”",
+      "example": "Havaalanına gitmek ne kadar sürer?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “How long does it take to go to the airport?”"
+    }
+  ],
+  "targetLang": "tr",
+  "nativeLang": "en",
+  "track": "textbook"
+};

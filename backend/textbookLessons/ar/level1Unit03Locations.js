@@ -1,142 +1,2650 @@
-// Level 1 Unit 3 — Locations & Places (Modern Standard Arabic)
-// Functions: prepositions of place, naming buildings, asking where, locating self.
-// Anchor: King Saud University campus and surrounding Riyadh neighborhood.
-
-const createContentItem = (target, romanization, note, type = 'word', example = '', exampleNote = '', breakdown = null, activityIds = []) => ({
-  type, activityIds, targetText: target, romanization, nativeText: note, pronunciation: romanization,
-  exampleTarget: example || target, exampleNative: exampleNote || note,
-  korean: target, english: note, example: example || target, exampleEnglish: exampleNote || note,
-  ...(breakdown ? { breakdown: breakdown.map(b => ({ target: b.target, native: b.note, korean: b.target, english: b.note })) } : {}),
-});
-
-const ACT = {
-  orientation: 'ar-l1u3-orientation',
-  pronunciation: 'ar-l1u3-pronunciation',
-  vocabPlaces: 'ar-l1u3-vocab-places',
-  vocabPrepositions: 'ar-l1u3-vocab-prepositions',
-  grammarPrepCase: 'ar-l1u3-grammar-prep-case',
-  grammarIdafa: 'ar-l1u3-grammar-idafa',
-  grammarQuestionAyna: 'ar-l1u3-grammar-question-ayna',
-  reading: 'ar-l1u3-reading',
-  listening: 'ar-l1u3-listening',
-  writing: 'ar-l1u3-writing',
-  culture: 'ar-l1u3-culture',
-  task: 'ar-l1u3-task',
-};
-
-const activities = [
-  { id: ACT.orientation, section: 'Orientation', title: 'What you will be able to do',
-    goals: [
-      'Name 15+ buildings and public places in MSA — university, library, mosque, market, hospital, post office, café.',
-      'Use the eight core prepositions of place (في، على، تحت، فوق، أمام، خلف، بجانب، بين) to describe location.',
-      'Ask and answer أين … ؟ ("Where is …?") with proper case marking on the noun after a preposition.',
-    ],
-    task: 'Picture walking through the King Saud University campus and orienting yourself; by the end of this lesson you can ask for directions and locate any building.',
-  },
-  { id: ACT.pronunciation, section: 'Pronunciation', title: 'Sound traps in this lesson',
-    goals: [
-      'Distinguish مَكْتَب maktab (office/desk) from مَكْتَبَة maktaba (library) — same root, different patterns, different gender.',
-      'Pronounce جامعة jāmiʿa with clear ع mid-word — not just a glide.',
-      'Apply sun-letter assimilation in الشارع ash-shāriʿ (the street) — ش doubled.',
-    ],
-    task: 'Read each pair side by side and identify root + pattern.',
-  },
-  { id: ACT.vocabPlaces, section: 'Vocabulary I', title: 'Buildings and public places', goals: ['Memorize 15 public-place nouns with their plurals.', 'Pay attention to the مَفْعَلَة (maktaba, maṭbakha) place-noun pattern.'], task: 'Walk through your mental map and name every place using الـ + noun.' },
-  { id: ACT.vocabPrepositions, section: 'Vocabulary II', title: 'Prepositions of place', goals: ['Master 8 spatial prepositions and the case they require (always genitive/jarr).', 'Combine each preposition with a definite noun.'], task: 'Describe the position of 6 objects relative to the table using prepositions.' },
-  { id: ACT.grammarPrepCase, section: 'Grammar I', title: 'Prepositions and the genitive case (al-jarr)', goals: ['Apply the genitive case ـِ on any noun after a preposition.', 'Recognize the three cases (raf\', naṣb, jarr) in nominal sentences with prepositions.'], task: 'Take 5 nouns; combine each with في and mark the correct case ending.' },
-  { id: ACT.grammarIdafa, section: 'Grammar II', title: 'The إضافة construct (possessive chain)', goals: ['Form a basic إضافة: noun + noun = "X of Y" with NO الـ on the first noun.', 'Read multi-noun chains like باب الفصل ("door of the classroom") and جامعة الملك سعود ("University of King Saud").', 'Understand that the SECOND noun of an إضافة takes the genitive case.'], task: 'Build 5 إضافة chains naming "the X of the Y" using campus locations.' },
-  { id: ACT.grammarQuestionAyna, section: 'Grammar III', title: 'أين and the from/to prepositions', goals: ['Use أين ayna "where" + nominal sentence with no copula.', 'Distinguish من ayna "from where" and إلى ayna "to where".'], task: 'Ask and answer 4 location questions about familiar places.' },
-  { id: ACT.reading, section: 'Reading', title: 'A campus walk', goals: ['Read a paragraph describing a walk across King Saud University campus.', 'Identify each preposition and case marking.'], task: 'Read aloud and answer 4 location questions.' },
-  { id: ACT.listening, section: 'Listening', title: 'Asking for directions', goals: ['Follow a 5-turn directions exchange.', 'Reproduce the exchange with a different destination.'], task: 'Listen to a directions dialogue and act it out.' },
-  { id: ACT.writing, section: 'Writing', title: 'Describe your campus', goals: ['Write 5 sentences placing buildings relative to one another using prepositions.', 'Use at least two إضافة chains.'], task: 'Write a 5-sentence description of your real or imagined campus.' },
-  { id: ACT.culture, section: 'Culture', title: 'Mosques, souqs, and shared public space', goals: ['Understand the central role of the mosque (المسجد) and the souq (السوق) as community anchors in Arab cities.', 'Use the term حي ḥayy (neighborhood/quarter) for residential areas.'], task: 'Map the cultural anchor points around a typical Arab neighborhood.' },
-  { id: ACT.task, section: 'Task', title: 'Asking directions on campus', goals: ['Combine prepositions, إضافة, and questions in a 6-turn directions dialogue.'], task: 'Roleplay asking a stranger for the library at King Saud University.' },
-];
-
-const lesson = {
-  title: 'Level 1 · Unit 3: أين أنت؟ — Locations and Places',
-  category: 'directions', difficulty: 'beginner',
-  targetLang: 'ar', nativeLang: 'en', track: 'textbook', lessonType: 'thematic',
-  activities,
-  expressionPractice: [
-    { id: 'naming-places', label: 'Naming places', goal: 'Identify 15 public buildings with correct article and gender.' },
-    { id: 'describing-location', label: 'Describing location', goal: 'Use prepositions + definite noun to place objects in space.' },
-    { id: 'asking-directions', label: 'Asking directions', goal: 'Use أين, من أين, إلى أين to navigate a campus.' },
+module.exports = {
+  "title": "Level 1 · Unit 3: أين أنت؟ — Locations and Places",
+  "category": "directions",
+  "difficulty": "beginner",
+  "targetLang": "ar",
+  "nativeLang": "en",
+  "track": "textbook",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ar-level1unit03locations-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Name 15+ buildings and public places in MSA — university, library, mosque, market, hospital, post office, café."
+      ],
+      "task": "Roleplay asking a stranger for the library at King Saud University."
+    },
+    {
+      "id": "ar-level1unit03locations-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep emphatics, pharyngeals, vowel length, and sun-letter assimilation distinct enough that Modern Standard Arabic stays intelligible."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ar-level1unit03locations-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 3: أين أنت؟ — Locations and Places with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ar-level1unit03locations-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 3: أين أنت؟ — Locations and Places sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ar-level1unit03locations-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Name 15+ buildings and public places in MSA — university, library, mosque, market, hospital, post office, café."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ar-level1unit03locations-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 3: أين أنت؟ — Locations and Places with one nearby Arabic form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ar-level1unit03locations-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ar-level1unit03locations-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ar-level1unit03locations-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ar-level1unit03locations-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the formal-register, regional, or courtesy choice that changes how this Arabic is used in real interaction."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ar-level1unit03locations-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Roleplay asking a stranger for the library at King Saud University."
+      ],
+      "task": "Roleplay asking a stranger for the library at King Saud University."
+    }
   ],
-  relatedPools: ['topic-city', 'topic-school'],
-  content: [
-    createContentItem('جامعة', 'jāmiʿa', 'University (F, ends in ـة). Plural جامعات jāmiʿāt. Pattern فَاعِلَة. Root ج م ع "gathering".', 'word', 'جامعة الملك سعود في الرياض.', '"King Saud University is in Riyadh." — إضافة construction.', null, [ACT.vocabPlaces]),
-    createContentItem('مدرسة', 'madrasa', 'School (F). Plural مدارس madāris. Place-noun pattern مَفْعَلَة from root د ر س.', 'word', 'المدرسة قريبة من البيت.', '"The school is near the house."', null, [ACT.vocabPlaces]),
-    createContentItem('مكتبة', 'maktaba', 'Library or bookstore (F). Plural مكتبات maktabāt. Place-noun pattern مَفْعَلَة from root ك ت ب.', 'word', 'المكتبة في الطابق الثاني.', '"The library is on the second floor."', null, [ACT.vocabPlaces]),
-    createContentItem('مكتب', 'maktab', 'Office or desk (M). Plural مكاتب makātib. Place-noun pattern مَفْعَل from root ك ت ب.', 'word', 'مكتب الأستاذ على اليمين.', '"The professor\'s office is on the right."', null, [ACT.vocabPlaces]),
-    createContentItem('مسجد', 'masjid', 'Mosque (M). Plural مساجد masājid. Place-noun pattern مَفْعِل from root س ج د "prostrating".', 'word', 'المسجد بجانب الجامعة.', '"The mosque is next to the university."', null, [ACT.vocabPlaces]),
-    createContentItem('مستشفى', 'mustashfā', 'Hospital (M, but ends in ـى so looks feminine — it is masculine). Plural مستشفيات mustashfayāt. Form X passive participle.', 'word', 'المستشفى الجامعي قريب.', '"The university hospital is close."', null, [ACT.vocabPlaces]),
-    createContentItem('سوق', 'sūq', 'Market or souq (M, can be F regionally). Plural أسواق aswāq. The traditional Arab market.', 'word', 'السوق مزدحم اليوم.', '"The market is crowded today."', null, [ACT.vocabPlaces]),
-    createContentItem('مطعم', 'maṭʿam', 'Restaurant (M). Plural مطاعم maṭāʿim. Place-noun pattern مَفْعَل from root ط ع م "tasting/food".', 'word', 'المطعم في الطابق الأرضي.', '"The restaurant is on the ground floor."', null, [ACT.vocabPlaces]),
-    createContentItem('مقهى', 'maqhā', 'Café (M, ends in ـى). Plural مقاهٍ maqāhin. From قَهْوَة "coffee".', 'word', 'نلتقي في المقهى.', '"We meet at the café."', null, [ACT.vocabPlaces]),
-    createContentItem('بنك', 'bank', 'Bank (M). Plural بنوك bunūk. Loanword.', 'word', 'البنك مفتوح صباحًا.', '"The bank is open in the morning."', null, [ACT.vocabPlaces]),
-    createContentItem('مكتب البريد', 'maktab al-barīd', '"Post office" — an إضافة: مكتب "office" + البريد "the mail". The first noun lacks الـ.', 'word', 'مكتب البريد بعيد قليلًا.', '"The post office is a bit far."', null, [ACT.vocabPlaces]),
-    createContentItem('شارع', 'shāriʿ', 'Street (M). Plural شوارع shawāriʿ. The pharyngeal ع at the end.', 'word', 'الشارع طويل وواسع.', '"The street is long and wide."', null, [ACT.vocabPlaces]),
-    createContentItem('ميدان', 'maydān', 'Square or plaza (M). Plural ميادين mayādīn. Common in city names (Maydan at-Tahrir = Tahrir Square).', 'word', 'ميدان التحرير في القاهرة.', '"Tahrir Square is in Cairo."', null, [ACT.vocabPlaces]),
-    createContentItem('حي', 'ḥayy', 'Neighborhood or quarter (M). Plural أحياء aḥyāʾ. The pharyngeal ح at the start.', 'word', 'الحي الجديد جميل.', '"The new neighborhood is beautiful."', null, [ACT.vocabPlaces]),
-    createContentItem('بيت', 'bayt', 'House or home (M). Plural بيوت buyūt. Pattern فَيْل.', 'word', 'بيتي بعيد من الجامعة.', '"My house is far from the university."', null, [ACT.vocabPlaces]),
-    createContentItem('شقة', 'shaqqa', 'Apartment (F). Plural شقق shuqaq. Shadda on ق — held twice.', 'word', 'الشقة في الطابق الخامس.', '"The apartment is on the fifth floor."', null, [ACT.vocabPlaces]),
-
-    // Prepositions
-    createContentItem('في', 'fī', 'Preposition "in / inside / at". Always followed by a noun in the genitive case (ـِ).', 'sentence', 'الكتاب في الحقيبةِ.', '"The book is in the bag." — note kasra on الحقيبة (genitive).', null, [ACT.vocabPrepositions]),
-    createContentItem('على', 'ʿalā', 'Preposition "on / upon / above-touching". The pharyngeal ع at the start. Always genitive after.', 'sentence', 'القلم على الطاولةِ.', '"The pen is on the table."', null, [ACT.vocabPrepositions]),
-    createContentItem('تحت', 'taḥt', 'Preposition "under / beneath". The pharyngeal ح in the middle.', 'sentence', 'الحقيبة تحت الكرسيِّ.', '"The bag is under the chair."', null, [ACT.vocabPrepositions]),
-    createContentItem('فوق', 'fawqa', 'Preposition "above / over (not touching)". Distinguishes from على (touching).', 'sentence', 'الصورة فوق الباب.', '"The picture is above the door."', null, [ACT.vocabPrepositions]),
-    createContentItem('أمام', 'amām(a)', 'Preposition "in front of". The opposite of خلف.', 'sentence', 'السبورة أمام الطلابِ.', '"The blackboard is in front of the students."', null, [ACT.vocabPrepositions]),
-    createContentItem('خلف', 'khalfa', 'Preposition "behind". Synonym ورا warā in colloquial.', 'sentence', 'الحديقة خلف البيتِ.', '"The garden is behind the house."', null, [ACT.vocabPrepositions]),
-    createContentItem('بجانب', 'bi-jānib', 'Preposition "next to / beside". Literally "by the side of". Synonym قرب qurb (near).', 'sentence', 'المسجد بجانب الجامعةِ.', '"The mosque is next to the university."', null, [ACT.vocabPrepositions]),
-    createContentItem('بين', 'bayna', 'Preposition "between / among". Takes a pair: بين X و Y.', 'sentence', 'البنك بين المكتبةِ والمستشفى.', '"The bank is between the library and the hospital."', null, [ACT.vocabPrepositions]),
-    createContentItem('قرب / قريب من', 'qurba / qarīb min', '"Near / close to". قرب is a preposition; قريب من is adj + preposition.', 'sentence', 'المقهى قريب من الجامعة.', '"The café is close to the university."', null, [ACT.vocabPrepositions]),
-    createContentItem('بعيد عن', 'baʿīd ʿan', '"Far from". Adj + preposition عن "from". The pharyngeal ع twice in this phrase.', 'sentence', 'بيتي بعيد عن العمل.', '"My house is far from work."', null, [ACT.vocabPrepositions]),
-    createContentItem('من / إلى', 'min / ilā', 'Directional prepositions: "from" / "to". Critical for motion: أذهب من البيت إلى الجامعة.', 'sentence', 'أمشي من البيتِ إلى الجامعةِ.', '"I walk from the house to the university."', null, [ACT.vocabPrepositions]),
-
-    // Grammar
-    createContentItem('حالة الجر', 'ḥālat al-jarr', 'The genitive case (al-jarr) — marked by kasra ـِ (definite) or tanwin al-kasr ـٍ (indefinite). Required on any noun after a preposition OR as the second noun of an إضافة.', 'sentence', 'في الجامعةِ (def, kasra) · في جامعةٍ (indef, tanwin kasr)', 'In rapid speech the case marking is often dropped; in MSA writing it is required.', [
-      { target: 'after في، على، إلى، من …', note: 'all prepositions trigger genitive on following noun' },
-      { target: 'second noun of إضافة', note: 'in noun + noun construct, the second noun is genitive' },
-    ], [ACT.grammarPrepCase]),
-    createContentItem('الإضافة', 'al-iḍāfa', 'The "annexation" construct — Arabic\'s way of expressing "X of Y / Y\'s X". Two adjacent nouns with NO الـ on the first and the second in the genitive case.', 'sentence', 'كتاب الطالبِ kitāb aṭ-ṭālib ("the student\'s book")\nباب الفصلِ bāb al-faṣl ("the door of the classroom")\nجامعة الملكِ سعودٍ jāmiʿat al-Malik Suʿūd ("University of King Saud")', 'A chain can have 3+ nouns: only the LAST gets الـ; intermediate nouns lack it and the whole chain reads from left as possessor → possessee.', [
-      { target: 'first noun (مضاف)', note: 'no الـ; takes the case required by the larger sentence' },
-      { target: 'second noun (مضاف إليه)', note: 'genitive case; can have الـ or be indefinite' },
-      { target: 'definiteness', note: 'definiteness of the whole chain comes from the LAST noun' },
-    ], [ACT.grammarIdafa]),
-    createContentItem('أين / من أين / إلى أين', 'ayna / min ayna / ilā ayna', 'Three location questions: "where?", "from where?", "to where?". أين takes the case required by the sentence; the prepositions من and إلى add motion direction.', 'sentence', 'أين الكتاب؟ — في المكتبة.\nمن أين أنت؟ — من مصر.\nإلى أين تذهب؟ — إلى الجامعة.', 'All three appear constantly in directions and travel conversations.', null, [ACT.grammarQuestionAyna]),
-
-    // Reading
-    createContentItem('في الجامعة', 'fī l-jāmiʿa', 'A paragraph describing a walk across King Saud University campus, exercising all the prepositions and إضافة patterns from this unit.', 'sentence', 'أنا في جامعة الملك سعود. الجامعة كبيرة جدًا. مكتبة الجامعة بجانب كلية الهندسة. أمام المكتبة حديقة جميلة، وخلف المكتبة مسجد كبير. المقهى بين كلية الطب وكلية العلوم. أحب أن أمشي في الجامعة بين المحاضرات.', 'Translation: "I am at King Saud University. The university is very big. The university library is next to the College of Engineering. In front of the library is a beautiful garden, and behind the library is a big mosque. The café is between the College of Medicine and the College of Sciences. I love to walk in the university between lectures."', [
-      { target: 'جامعة الملك سعود', note: 'three-noun إضافة: jaamiʿat + al-Malik + Suʿuud' },
-      { target: 'بين الكليتين', note: 'بين with two definite nouns connected by و' },
-      { target: 'بين المحاضرات', note: '"between the lectures" — time-sense of بين' },
-    ], [ACT.reading]),
-
-    // Listening
-    createContentItem('سؤال عن الطريق', 'suʾāl ʿan aṭ-ṭarīq', 'A 5-turn directions exchange. The asker is lost; the responder gives a precise route using prepositions.', 'conversation', 'الزائر: عفوًا، أين مكتبة الجامعة، من فضلك؟\nالطالب: المكتبة قريبة. اذهب مستقيمًا إلى الميدان.\nالزائر: ثم؟\nالطالب: ثم اتجه يسارًا. ستجد المكتبة بجانب مسجد الجامعة.\nالزائر: شكرًا جزيلًا.\nالطالب: عفوًا.', 'مستقيم mustaqīm "straight"; يسارًا yasāran "leftward"; ستجد sa-tajid "you will find" (future prefix سـ).', [
-      { target: 'اذهب مستقيمًا', note: 'imperative "go" + adverb "straight"' },
-      { target: 'اتجه يسارًا / يمينًا', note: '"turn left / right" — common direction commands' },
-      { target: 'ستجد sa-tajid', note: 'future of "you find" — سـ + present' },
-    ], [ACT.listening]),
-
-    // Writing
-    createContentItem('قالب الكتابة', 'qālab al-kitāba', 'Template: 5 sentences placing buildings using prepositions. Use at least two إضافة chains.', 'sentence', 'مثال: بيتي قريب من جامعة الملك سعود. خلف بيتي حديقة كبيرة. بجانب الحديقة مسجد. أمام المسجد سوق صغير. في السوق مقهى رائع.', 'Translation: "My house is close to King Saud University. Behind my house is a big garden. Next to the garden is a mosque. In front of the mosque is a small market. In the market is a wonderful café."', null, [ACT.writing]),
-
-    // Culture
-    createContentItem('المسجد والسوق', 'al-masjid wa-s-sūq', 'In traditional Arab urbanism, the mosque (المسجد) and the souq (السوق) are the twin anchors of community life. The mosque sets the daily rhythm (5 prayers); the souq is the social and economic heart. Modern cities like Riyadh and Cairo retain this pattern even alongside malls (مول mawl).', 'sentence', 'المسجد والسوق هما قلب الحي.', '"The mosque and the souq are the heart of the neighborhood."', [
-      { target: 'المسجد', note: 'community anchor; the call to prayer (الأذان) marks the rhythm of the day' },
-      { target: 'السوق', note: 'traditional market; bargaining (المساومة) is expected' },
-      { target: 'المول / المركز التجاري', note: 'modern shopping mall; coexists with the souq in big cities' },
-    ], [ACT.culture]),
-
-    // Task
-    createContentItem('المهمة — السؤال عن الطريق في الجامعة', 'al-mahamma — as-suʾāl ʿan aṭ-ṭarīq fī l-jāmiʿa', '6-turn dialogue: ask a stranger on King Saud University campus for the library. Use prepositions, إضافة, and polite question forms.', 'conversation', 'أنت: عفوًا، يا أخي، أين [destination]، من فضلك؟\nالغريب: [response with directions]\nأنت: [thank, clarify with another preposition question]\nالغريب: [further direction]\nأنت: شكرًا جزيلًا، يا أخي.\nالغريب: عفوًا، مع السلامة.', 'يا أخي / يا أختي — friendly vocative for a stranger your age ("my brother / my sister").', [
-      { target: 'يا أخي / يا أختي', note: 'friendly stranger-vocative; same age peer' },
-      { target: 'هل من الممكن أن …؟', note: 'polite request opener "is it possible that …?"' },
-    ], [ACT.task]),
+  "expressionPractice": [
+    {
+      "id": "naming-places",
+      "label": "Naming places",
+      "goal": "Identify 15 public buildings with correct article and gender."
+    },
+    {
+      "id": "describing-location",
+      "label": "Describing location",
+      "goal": "Use prepositions + definite noun to place objects in space."
+    },
+    {
+      "id": "asking-directions",
+      "label": "Asking directions",
+      "goal": "Use أين, من أين, إلى أين to navigate a campus."
+    }
   ],
+  "relatedPools": [
+    "topic-city",
+    "topic-school"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit03locations-orientation"
+      ],
+      "targetText": "هدف الدرس",
+      "romanization": "",
+      "nativeText": "Name 15+ buildings and public places in MSA — university, library, mosque, market, hospital, post office, café.",
+      "pronunciation": "",
+      "exampleTarget": "هدف الدرس",
+      "exampleNative": "The whole lesson is built toward this outcome: Roleplay asking a stranger for the library at King Saud University.",
+      "korean": "هدف الدرس",
+      "english": "Name 15+ buildings and public places in MSA — university, library, mosque, market, hospital, post office, café.",
+      "example": "هدف الدرس",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Roleplay asking a stranger for the library at King Saud University."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ar-level1unit03locations-pronunciation"
+      ],
+      "targetText": "فحص النطق",
+      "romanization": "",
+      "nativeText": "Keep emphatics, pharyngeals, vowel length, and sun-letter assimilation distinct enough that Modern Standard Arabic stays intelligible. In this lesson, listen especially while saying \"جامعة الملك سعود في الرياض.\".",
+      "pronunciation": "",
+      "exampleTarget": "جامعة الملك سعود في الرياض.",
+      "exampleNative": "\"King Saud University is in Riyadh.\" — إضافة construction.",
+      "korean": "فحص النطق",
+      "english": "Keep emphatics, pharyngeals, vowel length, and sun-letter assimilation distinct enough that Modern Standard Arabic stays intelligible. In this lesson, listen especially while saying \"جامعة الملك سعود في الرياض.\".",
+      "example": "جامعة الملك سعود في الرياض.",
+      "exampleEnglish": "\"King Saud University is in Riyadh.\" — إضافة construction."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1"
+      ],
+      "targetText": "جامعة",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 3: أين أنت؟ — Locations and Places with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "جامعة الملك سعود في الرياض.",
+      "exampleNative": "\"King Saud University is in Riyadh.\" — إضافة construction.",
+      "korean": "جامعة",
+      "english": "Use the key language of Level 1 · Unit 3: أين أنت؟ — Locations and Places with the register and setting that the lesson requires.",
+      "example": "جامعة الملك سعود في الرياض.",
+      "exampleEnglish": "\"King Saud University is in Riyadh.\" — إضافة construction."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-2"
+      ],
+      "targetText": "مدرسة",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 3: أين أنت؟ — Locations and Places sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "المدرسة قريبة من البيت.",
+      "exampleNative": "\"The school is near the house.\"",
+      "korean": "مدرسة",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 3: أين أنت؟ — Locations and Places sound precise rather than merely understandable.",
+      "example": "المدرسة قريبة من البيت.",
+      "exampleEnglish": "\"The school is near the house.\""
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ar-level1unit03locations-grammar-1"
+      ],
+      "targetText": "جامعة",
+      "romanization": "",
+      "nativeText": "Name 15+ buildings and public places in MSA — university, library, mosque, market, hospital, post office, café.",
+      "pronunciation": "",
+      "exampleTarget": "جامعة الملك سعود في الرياض.",
+      "exampleNative": "\"King Saud University is in Riyadh.\" — إضافة construction.",
+      "korean": "جامعة",
+      "english": "Name 15+ buildings and public places in MSA — university, library, mosque, market, hospital, post office, café.",
+      "example": "جامعة الملك سعود في الرياض.",
+      "exampleEnglish": "\"King Saud University is in Riyadh.\" — إضافة construction."
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ar-level1unit03locations-grammar-2"
+      ],
+      "targetText": "مدرسة",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 3: أين أنت؟ — Locations and Places with one nearby Arabic form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "المدرسة قريبة من البيت.",
+      "exampleNative": "\"The school is near the house.\"",
+      "korean": "مدرسة",
+      "english": "Contrast the main pattern in Level 1 · Unit 3: أين أنت؟ — Locations and Places with one nearby Arabic form so the learner can avoid literal translation.",
+      "example": "المدرسة قريبة من البيت.",
+      "exampleEnglish": "\"The school is near the house.\""
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ar-level1unit03locations-reading"
+      ],
+      "targetText": "نموذج قراءة",
+      "romanization": "",
+      "nativeText": "Read the connected model for نموذج قراءة as one message. Notice how \"المسجد والسوق هما قلب الحي.\" lets the lesson vocabulary and grammar work together instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "المسجد والسوق هما قلب الحي.",
+      "exampleNative": "\"The mosque and the souq are the heart of the neighborhood.\"",
+      "korean": "نموذج قراءة",
+      "english": "Read the connected model for نموذج قراءة as one message. Notice how \"المسجد والسوق هما قلب الحي.\" lets the lesson vocabulary and grammar work together instead of appearing as isolated flashcards.",
+      "example": "المسجد والسوق هما قلب الحي.",
+      "exampleEnglish": "\"The mosque and the souq are the heart of the neighborhood.\""
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ar-level1unit03locations-listening"
+      ],
+      "targetText": "نموذج حوار",
+      "romanization": "",
+      "nativeText": "Hear \"المسجد والسوق هما قلب الحي.\" as interaction, not as a sentence list. The listening goal is to follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "المسجد والسوق هما قلب الحي.",
+      "exampleNative": "\"The mosque and the souq are the heart of the neighborhood.\"",
+      "korean": "نموذج حوار",
+      "english": "Hear \"المسجد والسوق هما قلب الحي.\" as interaction, not as a sentence list. The listening goal is to follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "المسجد والسوق هما قلب الحي.",
+      "exampleEnglish": "\"The mosque and the souq are the heart of the neighborhood.\""
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ar-level1unit03locations-writing"
+      ],
+      "targetText": "تدريب كتابي",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"جامعة الملك سعود في الرياض.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "جامعة الملك سعود في الرياض.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "تدريب كتابي",
+      "english": "Write your own version after studying \"جامعة الملك سعود في الرياض.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "جامعة الملك سعود في الرياض.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ar-level1unit03locations-culture"
+      ],
+      "targetText": "الاستخدام والسياق",
+      "romanization": "",
+      "nativeText": "Notice the formal-register, regional, or courtesy choice that changes how this Arabic is used in real interaction. Use \"المدرسة قريبة من البيت.\" as the social comparison point for this lesson.",
+      "pronunciation": "",
+      "exampleTarget": "المدرسة قريبة من البيت.",
+      "exampleNative": "\"The school is near the house.\"",
+      "korean": "الاستخدام والسياق",
+      "english": "Notice the formal-register, regional, or courtesy choice that changes how this Arabic is used in real interaction. Use \"المدرسة قريبة من البيت.\" as the social comparison point for this lesson.",
+      "example": "المدرسة قريبة من البيت.",
+      "exampleEnglish": "\"The school is near the house.\""
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "المهمة النهائية",
+      "romanization": "",
+      "nativeText": "Roleplay asking a stranger for the library at King Saud University.",
+      "pronunciation": "",
+      "exampleTarget": "المسجد والسوق هما قلب الحي.",
+      "exampleNative": "Roleplay asking a stranger for the library at King Saud University.",
+      "korean": "المهمة النهائية",
+      "english": "Roleplay asking a stranger for the library at King Saud University.",
+      "example": "المسجد والسوق هما قلب الحي.",
+      "exampleEnglish": "Roleplay asking a stranger for the library at King Saud University."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit03locations-grammar-2"
+      ],
+      "targetText": "خطأ شائع",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around root-and-pattern forms, agreement, case-sensitive endings, and register that another language may leave implicit. Begin by checking \"المدرسة قريبة من البيت.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "المدرسة قريبة من البيت.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: \"The school is near the house.\"",
+      "korean": "خطأ شائع",
+      "english": "Watch for literal-translation mistakes around root-and-pattern forms, agreement, case-sensitive endings, and register that another language may leave implicit. Begin by checking \"المدرسة قريبة من البيت.\" against the model.",
+      "example": "المدرسة قريبة من البيت.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: \"The school is near the house.\""
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-culture"
+      ],
+      "targetText": "السجل",
+      "romanization": "",
+      "nativeText": "Check whether the situation calls for Modern Standard Arabic, a formal phrase, or a spoken-dialect note before choosing the final wording. Compare the social fit of \"جامعة الملك سعود في الرياض.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "جامعة الملك سعود في الرياض.",
+      "exampleNative": "\"King Saud University is in Riyadh.\" — إضافة construction.",
+      "korean": "السجل",
+      "english": "Check whether the situation calls for Modern Standard Arabic, a formal phrase, or a spoken-dialect note before choosing the final wording. Compare the social fit of \"جامعة الملك سعود في الرياض.\" before reusing it elsewhere.",
+      "example": "جامعة الملك سعود في الرياض.",
+      "exampleEnglish": "\"King Saud University is in Riyadh.\" — إضافة construction."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "الطلاقة",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Arabic message rather than as separate translated fragments. Aim to carry \"المسجد والسوق هما قلب الحي.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "المسجد والسوق هما قلب الحي.",
+      "exampleNative": "\"The mosque and the souq are the heart of the neighborhood.\"",
+      "korean": "الطلاقة",
+      "english": "Say the idea as one connected Arabic message rather than as separate translated fragments. Aim to carry \"المسجد والسوق هما قلب الحي.\" as one thought.",
+      "example": "المسجد والسوق هما قلب الحي.",
+      "exampleEnglish": "\"The mosque and the souq are the heart of the neighborhood.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "التطبيق",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"جامعة الملك سعود في الرياض.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "جامعة الملك سعود في الرياض.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "التطبيق",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"جامعة الملك سعود في الرياض.\" and move it into your own life.",
+      "example": "جامعة الملك سعود في الرياض.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-grammar-1"
+      ],
+      "targetText": "الاسترجاع",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"جامعة\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "جامعة",
+      "exampleNative": "University (F, ends in ـة). Plural جامعات jāmiʿāt. Pattern فَاعِلَة. Root ج م ع \"gathering\".",
+      "korean": "الاسترجاع",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"جامعة\" before looking back.",
+      "example": "جامعة",
+      "exampleEnglish": "University (F, ends in ـة). Plural جامعات jāmiʿāt. Pattern فَاعِلَة. Root ج م ع \"gathering\"."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-writing"
+      ],
+      "targetText": "التوسيع",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"المسجد والسوق هما قلب الحي.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "المسجد والسوق هما قلب الحي.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "التوسيع",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"المسجد والسوق هما قلب الحي.\" rather than restarting from a blank sentence.",
+      "example": "المسجد والسوق هما قلب الحي.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading"
+      ],
+      "targetText": "المقارنة",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 3: أين أنت؟ — Locations and Places with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"المدرسة قريبة من البيت.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "المدرسة قريبة من البيت.",
+      "exampleNative": "\"The school is near the house.\"",
+      "korean": "المقارنة",
+      "english": "Compare the central form in Level 1 · Unit 3: أين أنت؟ — Locations and Places with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"المدرسة قريبة من البيت.\" as the comparison line.",
+      "example": "المدرسة قريبة من البيت.",
+      "exampleEnglish": "\"The school is near the house.\""
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ar-level1unit03locations-pronunciation"
+      ],
+      "targetText": "تصحيح النطق",
+      "romanization": "",
+      "nativeText": "Keep emphatics, pharyngeals, vowel length, and sun-letter assimilation distinct enough that Modern Standard Arabic stays intelligible. Use \"جامعة الملك سعود في الرياض.\" as the repair line.",
+      "pronunciation": "",
+      "exampleTarget": "جامعة الملك سعود في الرياض.",
+      "exampleNative": "\"King Saud University is in Riyadh.\" — إضافة construction.",
+      "korean": "تصحيح النطق",
+      "english": "Keep emphatics, pharyngeals, vowel length, and sun-letter assimilation distinct enough that Modern Standard Arabic stays intelligible. Use \"جامعة الملك سعود في الرياض.\" as the repair line.",
+      "example": "جامعة الملك سعود في الرياض.",
+      "exampleEnglish": "\"King Saud University is in Riyadh.\" — إضافة construction."
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "تنويع الحوار",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"المسجد والسوق هما قلب الحي.\".",
+      "pronunciation": "",
+      "exampleTarget": "المسجد والسوق هما قلب الحي.",
+      "exampleNative": "\"The mosque and the souq are the heart of the neighborhood.\"",
+      "korean": "تنويع الحوار",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"المسجد والسوق هما قلب الحي.\".",
+      "example": "المسجد والسوق هما قلب الحي.",
+      "exampleEnglish": "\"The mosque and the souq are the heart of the neighborhood.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-writing"
+      ],
+      "targetText": "بناء الجملة",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"جامعة الملك سعود في الرياض.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "جامعة الملك سعود في الرياض.",
+      "exampleNative": "\"King Saud University is in Riyadh.\" — إضافة construction.",
+      "korean": "بناء الجملة",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"جامعة الملك سعود في الرياض.\" one layer at a time.",
+      "example": "جامعة الملك سعود في الرياض.",
+      "exampleEnglish": "\"King Saud University is in Riyadh.\" — إضافة construction."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-2"
+      ],
+      "targetText": "اختبار سريع",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"المدرسة قريبة من البيت.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "المدرسة قريبة من البيت.",
+      "exampleNative": "\"The school is near the house.\"",
+      "korean": "اختبار سريع",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"المدرسة قريبة من البيت.\" as the deciding example.",
+      "example": "المدرسة قريبة من البيت.",
+      "exampleEnglish": "\"The school is near the house.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit03locations-culture",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مراجعة",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"المسجد والسوق هما قلب الحي.\".",
+      "pronunciation": "",
+      "exampleTarget": "المسجد والسوق هما قلب الحي.",
+      "exampleNative": "\"The mosque and the souq are the heart of the neighborhood.\"",
+      "korean": "مراجعة",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"المسجد والسوق هما قلب الحي.\".",
+      "example": "المسجد والسوق هما قلب الحي.",
+      "exampleEnglish": "\"The mosque and the souq are the heart of the neighborhood.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "جامعة",
+      "romanization": "jāmiʿa",
+      "nativeText": "University (F, ends in ـة). Plural جامعات jāmiʿāt. Pattern فَاعِلَة. Root ج م ع \"gathering\".",
+      "pronunciation": "jāmiʿa",
+      "exampleTarget": "جامعة الملك سعود في الرياض.",
+      "exampleNative": "\"King Saud University is in Riyadh.\" — إضافة construction.",
+      "korean": "جامعة",
+      "english": "University (F, ends in ـة). Plural جامعات jāmiʿāt. Pattern فَاعِلَة. Root ج م ع \"gathering\".",
+      "example": "جامعة الملك سعود في الرياض.",
+      "exampleEnglish": "\"King Saud University is in Riyadh.\" — إضافة construction."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مدرسة",
+      "romanization": "madrasa",
+      "nativeText": "School (F). Plural مدارس madāris. Place-noun pattern مَفْعَلَة from root د ر س.",
+      "pronunciation": "madrasa",
+      "exampleTarget": "المدرسة قريبة من البيت.",
+      "exampleNative": "\"The school is near the house.\"",
+      "korean": "مدرسة",
+      "english": "School (F). Plural مدارس madāris. Place-noun pattern مَفْعَلَة from root د ر س.",
+      "example": "المدرسة قريبة من البيت.",
+      "exampleEnglish": "\"The school is near the house.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مكتبة",
+      "romanization": "maktaba",
+      "nativeText": "Library or bookstore (F). Plural مكتبات maktabāt. Place-noun pattern مَفْعَلَة from root ك ت ب.",
+      "pronunciation": "maktaba",
+      "exampleTarget": "المكتبة في الطابق الثاني.",
+      "exampleNative": "\"The library is on the second floor.\"",
+      "korean": "مكتبة",
+      "english": "Library or bookstore (F). Plural مكتبات maktabāt. Place-noun pattern مَفْعَلَة from root ك ت ب.",
+      "example": "المكتبة في الطابق الثاني.",
+      "exampleEnglish": "\"The library is on the second floor.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مكتب",
+      "romanization": "maktab",
+      "nativeText": "Office or desk (M). Plural مكاتب makātib. Place-noun pattern مَفْعَل from root ك ت ب.",
+      "pronunciation": "maktab",
+      "exampleTarget": "مكتب الأستاذ على اليمين.",
+      "exampleNative": "\"The professor's office is on the right.\"",
+      "korean": "مكتب",
+      "english": "Office or desk (M). Plural مكاتب makātib. Place-noun pattern مَفْعَل from root ك ت ب.",
+      "example": "مكتب الأستاذ على اليمين.",
+      "exampleEnglish": "\"The professor's office is on the right.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مسجد",
+      "romanization": "masjid",
+      "nativeText": "Mosque (M). Plural مساجد masājid. Place-noun pattern مَفْعِل from root س ج د \"prostrating\".",
+      "pronunciation": "masjid",
+      "exampleTarget": "المسجد بجانب الجامعة.",
+      "exampleNative": "\"The mosque is next to the university.\"",
+      "korean": "مسجد",
+      "english": "Mosque (M). Plural مساجد masājid. Place-noun pattern مَفْعِل from root س ج د \"prostrating\".",
+      "example": "المسجد بجانب الجامعة.",
+      "exampleEnglish": "\"The mosque is next to the university.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مستشفى",
+      "romanization": "mustashfā",
+      "nativeText": "Hospital (M, but ends in ـى so looks feminine — it is masculine). Plural مستشفيات mustashfayāt. Form X passive participle.",
+      "pronunciation": "mustashfā",
+      "exampleTarget": "المستشفى الجامعي قريب.",
+      "exampleNative": "\"The university hospital is close.\"",
+      "korean": "مستشفى",
+      "english": "Hospital (M, but ends in ـى so looks feminine — it is masculine). Plural مستشفيات mustashfayāt. Form X passive participle.",
+      "example": "المستشفى الجامعي قريب.",
+      "exampleEnglish": "\"The university hospital is close.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "سوق",
+      "romanization": "sūq",
+      "nativeText": "Market or souq (M, can be F regionally). Plural أسواق aswāq. The traditional Arab market.",
+      "pronunciation": "sūq",
+      "exampleTarget": "السوق مزدحم اليوم.",
+      "exampleNative": "\"The market is crowded today.\"",
+      "korean": "سوق",
+      "english": "Market or souq (M, can be F regionally). Plural أسواق aswāq. The traditional Arab market.",
+      "example": "السوق مزدحم اليوم.",
+      "exampleEnglish": "\"The market is crowded today.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مطعم",
+      "romanization": "maṭʿam",
+      "nativeText": "Restaurant (M). Plural مطاعم maṭāʿim. Place-noun pattern مَفْعَل from root ط ع م \"tasting/food\".",
+      "pronunciation": "maṭʿam",
+      "exampleTarget": "المطعم في الطابق الأرضي.",
+      "exampleNative": "\"The restaurant is on the ground floor.\"",
+      "korean": "مطعم",
+      "english": "Restaurant (M). Plural مطاعم maṭāʿim. Place-noun pattern مَفْعَل from root ط ع م \"tasting/food\".",
+      "example": "المطعم في الطابق الأرضي.",
+      "exampleEnglish": "\"The restaurant is on the ground floor.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مقهى",
+      "romanization": "maqhā",
+      "nativeText": "Café (M, ends in ـى). Plural مقاهٍ maqāhin. From قَهْوَة \"coffee\".",
+      "pronunciation": "maqhā",
+      "exampleTarget": "نلتقي في المقهى.",
+      "exampleNative": "\"We meet at the café.\"",
+      "korean": "مقهى",
+      "english": "Café (M, ends in ـى). Plural مقاهٍ maqāhin. From قَهْوَة \"coffee\".",
+      "example": "نلتقي في المقهى.",
+      "exampleEnglish": "\"We meet at the café.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "بنك",
+      "romanization": "bank",
+      "nativeText": "Bank (M). Plural بنوك bunūk. Loanword.",
+      "pronunciation": "bank",
+      "exampleTarget": "البنك مفتوح صباحًا.",
+      "exampleNative": "\"The bank is open in the morning.\"",
+      "korean": "بنك",
+      "english": "Bank (M). Plural بنوك bunūk. Loanword.",
+      "example": "البنك مفتوح صباحًا.",
+      "exampleEnglish": "\"The bank is open in the morning.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مكتب البريد",
+      "romanization": "maktab al-barīd",
+      "nativeText": "\"Post office\" — an إضافة: مكتب \"office\" + البريد \"the mail\". The first noun lacks الـ.",
+      "pronunciation": "maktab al-barīd",
+      "exampleTarget": "مكتب البريد بعيد قليلًا.",
+      "exampleNative": "\"The post office is a bit far.\"",
+      "korean": "مكتب البريد",
+      "english": "\"Post office\" — an إضافة: مكتب \"office\" + البريد \"the mail\". The first noun lacks الـ.",
+      "example": "مكتب البريد بعيد قليلًا.",
+      "exampleEnglish": "\"The post office is a bit far.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "شارع",
+      "romanization": "shāriʿ",
+      "nativeText": "Street (M). Plural شوارع shawāriʿ. The pharyngeal ع at the end.",
+      "pronunciation": "shāriʿ",
+      "exampleTarget": "الشارع طويل وواسع.",
+      "exampleNative": "\"The street is long and wide.\"",
+      "korean": "شارع",
+      "english": "Street (M). Plural شوارع shawāriʿ. The pharyngeal ع at the end.",
+      "example": "الشارع طويل وواسع.",
+      "exampleEnglish": "\"The street is long and wide.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "ميدان",
+      "romanization": "maydān",
+      "nativeText": "Square or plaza (M). Plural ميادين mayādīn. Common in city names (Maydan at-Tahrir = Tahrir Square).",
+      "pronunciation": "maydān",
+      "exampleTarget": "ميدان التحرير في القاهرة.",
+      "exampleNative": "\"Tahrir Square is in Cairo.\"",
+      "korean": "ميدان",
+      "english": "Square or plaza (M). Plural ميادين mayādīn. Common in city names (Maydan at-Tahrir = Tahrir Square).",
+      "example": "ميدان التحرير في القاهرة.",
+      "exampleEnglish": "\"Tahrir Square is in Cairo.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "حي",
+      "romanization": "ḥayy",
+      "nativeText": "Neighborhood or quarter (M). Plural أحياء aḥyāʾ. The pharyngeal ح at the start.",
+      "pronunciation": "ḥayy",
+      "exampleTarget": "الحي الجديد جميل.",
+      "exampleNative": "\"The new neighborhood is beautiful.\"",
+      "korean": "حي",
+      "english": "Neighborhood or quarter (M). Plural أحياء aḥyāʾ. The pharyngeal ح at the start.",
+      "example": "الحي الجديد جميل.",
+      "exampleEnglish": "\"The new neighborhood is beautiful.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "بيت",
+      "romanization": "bayt",
+      "nativeText": "House or home (M). Plural بيوت buyūt. Pattern فَيْل.",
+      "pronunciation": "bayt",
+      "exampleTarget": "بيتي بعيد من الجامعة.",
+      "exampleNative": "\"My house is far from the university.\"",
+      "korean": "بيت",
+      "english": "House or home (M). Plural بيوت buyūt. Pattern فَيْل.",
+      "example": "بيتي بعيد من الجامعة.",
+      "exampleEnglish": "\"My house is far from the university.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "شقة",
+      "romanization": "shaqqa",
+      "nativeText": "Apartment (F). Plural شقق shuqaq. Shadda on ق — held twice.",
+      "pronunciation": "shaqqa",
+      "exampleTarget": "الشقة في الطابق الخامس.",
+      "exampleNative": "\"The apartment is on the fifth floor.\"",
+      "korean": "شقة",
+      "english": "Apartment (F). Plural شقق shuqaq. Shadda on ق — held twice.",
+      "example": "الشقة في الطابق الخامس.",
+      "exampleEnglish": "\"The apartment is on the fifth floor.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "في",
+      "romanization": "fī",
+      "nativeText": "Preposition \"in / inside / at\". Always followed by a noun in the genitive case (ـِ).",
+      "pronunciation": "fī",
+      "exampleTarget": "الكتاب في الحقيبةِ.",
+      "exampleNative": "\"The book is in the bag.\" — note kasra on الحقيبة (genitive).",
+      "korean": "في",
+      "english": "Preposition \"in / inside / at\". Always followed by a noun in the genitive case (ـِ).",
+      "example": "الكتاب في الحقيبةِ.",
+      "exampleEnglish": "\"The book is in the bag.\" — note kasra on الحقيبة (genitive)."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "على",
+      "romanization": "ʿalā",
+      "nativeText": "Preposition \"on / upon / above-touching\". The pharyngeal ع at the start. Always genitive after.",
+      "pronunciation": "ʿalā",
+      "exampleTarget": "القلم على الطاولةِ.",
+      "exampleNative": "\"The pen is on the table.\"",
+      "korean": "على",
+      "english": "Preposition \"on / upon / above-touching\". The pharyngeal ع at the start. Always genitive after.",
+      "example": "القلم على الطاولةِ.",
+      "exampleEnglish": "\"The pen is on the table.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "تحت",
+      "romanization": "taḥt",
+      "nativeText": "Preposition \"under / beneath\". The pharyngeal ح in the middle.",
+      "pronunciation": "taḥt",
+      "exampleTarget": "الحقيبة تحت الكرسيِّ.",
+      "exampleNative": "\"The bag is under the chair.\"",
+      "korean": "تحت",
+      "english": "Preposition \"under / beneath\". The pharyngeal ح in the middle.",
+      "example": "الحقيبة تحت الكرسيِّ.",
+      "exampleEnglish": "\"The bag is under the chair.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "فوق",
+      "romanization": "fawqa",
+      "nativeText": "Preposition \"above / over (not touching)\". Distinguishes from على (touching).",
+      "pronunciation": "fawqa",
+      "exampleTarget": "الصورة فوق الباب.",
+      "exampleNative": "\"The picture is above the door.\"",
+      "korean": "فوق",
+      "english": "Preposition \"above / over (not touching)\". Distinguishes from على (touching).",
+      "example": "الصورة فوق الباب.",
+      "exampleEnglish": "\"The picture is above the door.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "أمام",
+      "romanization": "amām(a)",
+      "nativeText": "Preposition \"in front of\". The opposite of خلف.",
+      "pronunciation": "amām(a)",
+      "exampleTarget": "السبورة أمام الطلابِ.",
+      "exampleNative": "\"The blackboard is in front of the students.\"",
+      "korean": "أمام",
+      "english": "Preposition \"in front of\". The opposite of خلف.",
+      "example": "السبورة أمام الطلابِ.",
+      "exampleEnglish": "\"The blackboard is in front of the students.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "خلف",
+      "romanization": "khalfa",
+      "nativeText": "Preposition \"behind\". Synonym ورا warā in colloquial.",
+      "pronunciation": "khalfa",
+      "exampleTarget": "الحديقة خلف البيتِ.",
+      "exampleNative": "\"The garden is behind the house.\"",
+      "korean": "خلف",
+      "english": "Preposition \"behind\". Synonym ورا warā in colloquial.",
+      "example": "الحديقة خلف البيتِ.",
+      "exampleEnglish": "\"The garden is behind the house.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "بجانب",
+      "romanization": "bi-jānib",
+      "nativeText": "Preposition \"next to / beside\". Literally \"by the side of\". Synonym قرب qurb (near).",
+      "pronunciation": "bi-jānib",
+      "exampleTarget": "المسجد بجانب الجامعةِ.",
+      "exampleNative": "\"The mosque is next to the university.\"",
+      "korean": "بجانب",
+      "english": "Preposition \"next to / beside\". Literally \"by the side of\". Synonym قرب qurb (near).",
+      "example": "المسجد بجانب الجامعةِ.",
+      "exampleEnglish": "\"The mosque is next to the university.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "بين",
+      "romanization": "bayna",
+      "nativeText": "Preposition \"between / among\". Takes a pair: بين X و Y.",
+      "pronunciation": "bayna",
+      "exampleTarget": "البنك بين المكتبةِ والمستشفى.",
+      "exampleNative": "\"The bank is between the library and the hospital.\"",
+      "korean": "بين",
+      "english": "Preposition \"between / among\". Takes a pair: بين X و Y.",
+      "example": "البنك بين المكتبةِ والمستشفى.",
+      "exampleEnglish": "\"The bank is between the library and the hospital.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "قرب / قريب من",
+      "romanization": "qurba / qarīb min",
+      "nativeText": "\"Near / close to\". قرب is a preposition; قريب من is adj + preposition.",
+      "pronunciation": "qurba / qarīb min",
+      "exampleTarget": "المقهى قريب من الجامعة.",
+      "exampleNative": "\"The café is close to the university.\"",
+      "korean": "قرب / قريب من",
+      "english": "\"Near / close to\". قرب is a preposition; قريب من is adj + preposition.",
+      "example": "المقهى قريب من الجامعة.",
+      "exampleEnglish": "\"The café is close to the university.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "بعيد عن",
+      "romanization": "baʿīd ʿan",
+      "nativeText": "\"Far from\". Adj + preposition عن \"from\". The pharyngeal ع twice in this phrase.",
+      "pronunciation": "baʿīd ʿan",
+      "exampleTarget": "بيتي بعيد عن العمل.",
+      "exampleNative": "\"My house is far from work.\"",
+      "korean": "بعيد عن",
+      "english": "\"Far from\". Adj + preposition عن \"from\". The pharyngeal ع twice in this phrase.",
+      "example": "بيتي بعيد عن العمل.",
+      "exampleEnglish": "\"My house is far from work.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "من / إلى",
+      "romanization": "min / ilā",
+      "nativeText": "Directional prepositions: \"from\" / \"to\". Critical for motion: أذهب من البيت إلى الجامعة.",
+      "pronunciation": "min / ilā",
+      "exampleTarget": "أمشي من البيتِ إلى الجامعةِ.",
+      "exampleNative": "\"I walk from the house to the university.\"",
+      "korean": "من / إلى",
+      "english": "Directional prepositions: \"from\" / \"to\". Critical for motion: أذهب من البيت إلى الجامعة.",
+      "example": "أمشي من البيتِ إلى الجامعةِ.",
+      "exampleEnglish": "\"I walk from the house to the university.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "حالة الجر",
+      "romanization": "ḥālat al-jarr",
+      "nativeText": "The genitive case (al-jarr) — marked by kasra ـِ (definite) or tanwin al-kasr ـٍ (indefinite). Required on any noun after a preposition OR as the second noun of an إضافة.",
+      "pronunciation": "ḥālat al-jarr",
+      "exampleTarget": "في الجامعةِ (def, kasra) · في جامعةٍ (indef, tanwin kasr)",
+      "exampleNative": "In rapid speech the case marking is often dropped; in MSA writing it is required.",
+      "korean": "حالة الجر",
+      "english": "The genitive case (al-jarr) — marked by kasra ـِ (definite) or tanwin al-kasr ـٍ (indefinite). Required on any noun after a preposition OR as the second noun of an إضافة.",
+      "example": "في الجامعةِ (def, kasra) · في جامعةٍ (indef, tanwin kasr)",
+      "exampleEnglish": "In rapid speech the case marking is often dropped; in MSA writing it is required."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "الإضافة",
+      "romanization": "al-iḍāfa",
+      "nativeText": "The \"annexation\" construct — Arabic's way of expressing \"X of Y / Y's X\". Two adjacent nouns with NO الـ on the first and the second in the genitive case.",
+      "pronunciation": "al-iḍāfa",
+      "exampleTarget": "كتاب الطالبِ kitāb aṭ-ṭālib (\"the student's book\")\nباب الفصلِ bāb al-faṣl (\"the door of the classroom\")\nجامعة الملكِ سعودٍ jāmiʿat al-Malik Suʿūd (\"University of King Saud\")",
+      "exampleNative": "A chain can have 3+ nouns: only the LAST gets الـ; intermediate nouns lack it and the whole chain reads from left as possessor → possessee.",
+      "korean": "الإضافة",
+      "english": "The \"annexation\" construct — Arabic's way of expressing \"X of Y / Y's X\". Two adjacent nouns with NO الـ on the first and the second in the genitive case.",
+      "example": "كتاب الطالبِ kitāb aṭ-ṭālib (\"the student's book\")\nباب الفصلِ bāb al-faṣl (\"the door of the classroom\")\nجامعة الملكِ سعودٍ jāmiʿat al-Malik Suʿūd (\"University of King Saud\")",
+      "exampleEnglish": "A chain can have 3+ nouns: only the LAST gets الـ; intermediate nouns lack it and the whole chain reads from left as possessor → possessee."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "أين / من أين / إلى أين",
+      "romanization": "ayna / min ayna / ilā ayna",
+      "nativeText": "Three location questions: \"where?\", \"from where?\", \"to where?\". أين takes the case required by the sentence; the prepositions من and إلى add motion direction.",
+      "pronunciation": "ayna / min ayna / ilā ayna",
+      "exampleTarget": "أين الكتاب؟ — في المكتبة.\nمن أين أنت؟ — من مصر.\nإلى أين تذهب؟ — إلى الجامعة.",
+      "exampleNative": "All three appear constantly in directions and travel conversations.",
+      "korean": "أين / من أين / إلى أين",
+      "english": "Three location questions: \"where?\", \"from where?\", \"to where?\". أين takes the case required by the sentence; the prepositions من and إلى add motion direction.",
+      "example": "أين الكتاب؟ — في المكتبة.\nمن أين أنت؟ — من مصر.\nإلى أين تذهب؟ — إلى الجامعة.",
+      "exampleEnglish": "All three appear constantly in directions and travel conversations."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "في الجامعة",
+      "romanization": "fī l-jāmiʿa",
+      "nativeText": "A paragraph describing a walk across King Saud University campus, exercising all the prepositions and إضافة patterns from this unit.",
+      "pronunciation": "fī l-jāmiʿa",
+      "exampleTarget": "أنا في جامعة الملك سعود. الجامعة كبيرة جدًا. مكتبة الجامعة بجانب كلية الهندسة. أمام المكتبة حديقة جميلة، وخلف المكتبة مسجد كبير. المقهى بين كلية الطب وكلية العلوم. أحب أن أمشي في الجامعة بين المحاضرات.",
+      "exampleNative": "Translation: \"I am at King Saud University. The university is very big. The university library is next to the College of Engineering. In front of the library is a beautiful garden, and behind the library is a big mosque. The café is between the College of Medicine and the College of Sciences. I love to walk in the university between lectures.\"",
+      "korean": "في الجامعة",
+      "english": "A paragraph describing a walk across King Saud University campus, exercising all the prepositions and إضافة patterns from this unit.",
+      "example": "أنا في جامعة الملك سعود. الجامعة كبيرة جدًا. مكتبة الجامعة بجانب كلية الهندسة. أمام المكتبة حديقة جميلة، وخلف المكتبة مسجد كبير. المقهى بين كلية الطب وكلية العلوم. أحب أن أمشي في الجامعة بين المحاضرات.",
+      "exampleEnglish": "Translation: \"I am at King Saud University. The university is very big. The university library is next to the College of Engineering. In front of the library is a beautiful garden, and behind the library is a big mosque. The café is between the College of Medicine and the College of Sciences. I love to walk in the university between lectures.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "قالب الكتابة",
+      "romanization": "qālab al-kitāba",
+      "nativeText": "Template: 5 sentences placing buildings using prepositions. Use at least two إضافة chains.",
+      "pronunciation": "qālab al-kitāba",
+      "exampleTarget": "مثال: بيتي قريب من جامعة الملك سعود. خلف بيتي حديقة كبيرة. بجانب الحديقة مسجد. أمام المسجد سوق صغير. في السوق مقهى رائع.",
+      "exampleNative": "Translation: \"My house is close to King Saud University. Behind my house is a big garden. Next to the garden is a mosque. In front of the mosque is a small market. In the market is a wonderful café.\"",
+      "korean": "قالب الكتابة",
+      "english": "Template: 5 sentences placing buildings using prepositions. Use at least two إضافة chains.",
+      "example": "مثال: بيتي قريب من جامعة الملك سعود. خلف بيتي حديقة كبيرة. بجانب الحديقة مسجد. أمام المسجد سوق صغير. في السوق مقهى رائع.",
+      "exampleEnglish": "Translation: \"My house is close to King Saud University. Behind my house is a big garden. Next to the garden is a mosque. In front of the mosque is a small market. In the market is a wonderful café.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "المسجد والسوق",
+      "romanization": "al-masjid wa-s-sūq",
+      "nativeText": "In traditional Arab urbanism, the mosque (المسجد) and the souq (السوق) are the twin anchors of community life. The mosque sets the daily rhythm (5 prayers); the souq is the social and economic heart. Modern cities like Riyadh and Cairo retain this pattern even alongside malls (مول mawl).",
+      "pronunciation": "al-masjid wa-s-sūq",
+      "exampleTarget": "المسجد والسوق هما قلب الحي.",
+      "exampleNative": "\"The mosque and the souq are the heart of the neighborhood.\"",
+      "korean": "المسجد والسوق",
+      "english": "In traditional Arab urbanism, the mosque (المسجد) and the souq (السوق) are the twin anchors of community life. The mosque sets the daily rhythm (5 prayers); the souq is the social and economic heart. Modern cities like Riyadh and Cairo retain this pattern even alongside malls (مول mawl).",
+      "example": "المسجد والسوق هما قلب الحي.",
+      "exampleEnglish": "\"The mosque and the souq are the heart of the neighborhood.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "جامعة الملك سعود في الرياض.",
+      "romanization": "jāmiʿa",
+      "nativeText": "Model use for \"جامعة\": University (F, ends in ـة). Plural جامعات jāmiʿāt. Pattern فَاعِلَة. Root ج م ع \"gathering\".",
+      "pronunciation": "jāmiʿa",
+      "exampleTarget": "جامعة الملك سعود في الرياض.",
+      "exampleNative": "\"King Saud University is in Riyadh.\" — إضافة construction.",
+      "korean": "جامعة الملك سعود في الرياض.",
+      "english": "Model use for \"جامعة\": University (F, ends in ـة). Plural جامعات jāmiʿāt. Pattern فَاعِلَة. Root ج م ع \"gathering\".",
+      "example": "جامعة الملك سعود في الرياض.",
+      "exampleEnglish": "\"King Saud University is in Riyadh.\" — إضافة construction."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "جامعة",
+      "romanization": "jāmiʿa",
+      "nativeText": "Usage focus for \"جامعة\": University (F, ends in ـة). Plural جامعات jāmiʿāt. Pattern فَاعِلَة. Root ج م ع \"gathering\".",
+      "pronunciation": "jāmiʿa",
+      "exampleTarget": "جامعة الملك سعود في الرياض.",
+      "exampleNative": "Notice what the form is doing here: \"King Saud University is in Riyadh.\" — إضافة construction.",
+      "korean": "جامعة",
+      "english": "Usage focus for \"جامعة\": University (F, ends in ـة). Plural جامعات jāmiʿāt. Pattern فَاعِلَة. Root ج م ع \"gathering\".",
+      "example": "جامعة الملك سعود في الرياض.",
+      "exampleEnglish": "Notice what the form is doing here: \"King Saud University is in Riyadh.\" — إضافة construction."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "جامعة",
+      "romanization": "jāmiʿa",
+      "nativeText": "Contrast check for \"جامعة\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "jāmiʿa",
+      "exampleTarget": "جامعة الملك سعود في الرياض.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"King Saud University is in Riyadh.\" — إضافة construction.",
+      "korean": "جامعة",
+      "english": "Contrast check for \"جامعة\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "جامعة الملك سعود في الرياض.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"King Saud University is in Riyadh.\" — إضافة construction."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "جامعة",
+      "romanization": "jāmiʿa",
+      "nativeText": "Recall \"جامعة\" from memory, then explain what would change if a nearby alternative replaced it in \"جامعة الملك سعود في الرياض.\".",
+      "pronunciation": "jāmiʿa",
+      "exampleTarget": "جامعة الملك سعود في الرياض.",
+      "exampleNative": "Self-check against the model before moving on: \"King Saud University is in Riyadh.\" — إضافة construction.",
+      "korean": "جامعة",
+      "english": "Recall \"جامعة\" from memory, then explain what would change if a nearby alternative replaced it in \"جامعة الملك سعود في الرياض.\".",
+      "example": "جامعة الملك سعود في الرياض.",
+      "exampleEnglish": "Self-check against the model before moving on: \"King Saud University is in Riyadh.\" — إضافة construction."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "جامعة",
+      "romanization": "jāmiʿa",
+      "nativeText": "Repair \"جامعة\" inside \"جامعة الملك سعود في الرياض.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: University (F, ends in ـة). Plural جامعات jāmiʿāt. Pattern فَاعِلَة. Root ج م ع \"gathering\".",
+      "pronunciation": "jāmiʿa",
+      "exampleTarget": "جامعة الملك سعود في الرياض.",
+      "exampleNative": "Use the model as the repair target: \"King Saud University is in Riyadh.\" — إضافة construction.",
+      "korean": "جامعة",
+      "english": "Repair \"جامعة\" inside \"جامعة الملك سعود في الرياض.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: University (F, ends in ـة). Plural جامعات jāmiʿāt. Pattern فَاعِلَة. Root ج م ع \"gathering\".",
+      "example": "جامعة الملك سعود في الرياض.",
+      "exampleEnglish": "Use the model as the repair target: \"King Saud University is in Riyadh.\" — إضافة construction."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "جامعة",
+      "romanization": "jāmiʿa",
+      "nativeText": "Transfer \"جامعة\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"جامعة الملك سعود في الرياض.\".",
+      "pronunciation": "jāmiʿa",
+      "exampleTarget": "جامعة الملك سعود في الرياض.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: \"King Saud University is in Riyadh.\" — إضافة construction.",
+      "korean": "جامعة",
+      "english": "Transfer \"جامعة\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"جامعة الملك سعود في الرياض.\".",
+      "example": "جامعة الملك سعود في الرياض.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: \"King Saud University is in Riyadh.\" — إضافة construction."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "جامعة",
+      "romanization": "jāmiʿa",
+      "nativeText": "Find one word or phrase that naturally travels with \"جامعة\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "jāmiʿa",
+      "exampleTarget": "جامعة الملك سعود في الرياض.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: \"King Saud University is in Riyadh.\" — إضافة construction.",
+      "korean": "جامعة",
+      "english": "Find one word or phrase that naturally travels with \"جامعة\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "جامعة الملك سعود في الرياض.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: \"King Saud University is in Riyadh.\" — إضافة construction."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "جامعة",
+      "romanization": "jāmiʿa",
+      "nativeText": "Listen for \"جامعة\" inside \"جامعة الملك سعود في الرياض.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "jāmiʿa",
+      "exampleTarget": "جامعة الملك سعود في الرياض.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"King Saud University is in Riyadh.\" — إضافة construction.",
+      "korean": "جامعة",
+      "english": "Listen for \"جامعة\" inside \"جامعة الملك سعود في الرياض.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "جامعة الملك سعود في الرياض.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"King Saud University is in Riyadh.\" — إضافة construction."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "جامعة",
+      "romanization": "jāmiʿa",
+      "nativeText": "Write \"جامعة\" again without looking, then compare the exact written form against \"جامعة الملك سعود في الرياض.\" before moving on.",
+      "pronunciation": "jāmiʿa",
+      "exampleTarget": "جامعة الملك سعود في الرياض.",
+      "exampleNative": "Use the written model as the final correctness check: \"King Saud University is in Riyadh.\" — إضافة construction.",
+      "korean": "جامعة",
+      "english": "Write \"جامعة\" again without looking, then compare the exact written form against \"جامعة الملك سعود في الرياض.\" before moving on.",
+      "example": "جامعة الملك سعود في الرياض.",
+      "exampleEnglish": "Use the written model as the final correctness check: \"King Saud University is in Riyadh.\" — إضافة construction."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "جامعة",
+      "romanization": "jāmiʿa",
+      "nativeText": "Check whether \"جامعة\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"King Saud University is in Riyadh.\" — إضافة construction.",
+      "pronunciation": "jāmiʿa",
+      "exampleTarget": "جامعة الملك سعود في الرياض.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: \"King Saud University is in Riyadh.\" — إضافة construction.",
+      "korean": "جامعة",
+      "english": "Check whether \"جامعة\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"King Saud University is in Riyadh.\" — إضافة construction.",
+      "example": "جامعة الملك سعود في الرياض.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: \"King Saud University is in Riyadh.\" — إضافة construction."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "المدرسة قريبة من البيت.",
+      "romanization": "madrasa",
+      "nativeText": "Model use for \"مدرسة\": School (F). Plural مدارس madāris. Place-noun pattern مَفْعَلَة from root د ر س.",
+      "pronunciation": "madrasa",
+      "exampleTarget": "المدرسة قريبة من البيت.",
+      "exampleNative": "\"The school is near the house.\"",
+      "korean": "المدرسة قريبة من البيت.",
+      "english": "Model use for \"مدرسة\": School (F). Plural مدارس madāris. Place-noun pattern مَفْعَلَة from root د ر س.",
+      "example": "المدرسة قريبة من البيت.",
+      "exampleEnglish": "\"The school is near the house.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مدرسة",
+      "romanization": "madrasa",
+      "nativeText": "Usage focus for \"مدرسة\": School (F). Plural مدارس madāris. Place-noun pattern مَفْعَلَة from root د ر س.",
+      "pronunciation": "madrasa",
+      "exampleTarget": "المدرسة قريبة من البيت.",
+      "exampleNative": "Notice what the form is doing here: \"The school is near the house.\"",
+      "korean": "مدرسة",
+      "english": "Usage focus for \"مدرسة\": School (F). Plural مدارس madāris. Place-noun pattern مَفْعَلَة from root د ر س.",
+      "example": "المدرسة قريبة من البيت.",
+      "exampleEnglish": "Notice what the form is doing here: \"The school is near the house.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مدرسة",
+      "romanization": "madrasa",
+      "nativeText": "Contrast check for \"مدرسة\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "madrasa",
+      "exampleTarget": "المدرسة قريبة من البيت.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"The school is near the house.\"",
+      "korean": "مدرسة",
+      "english": "Contrast check for \"مدرسة\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "المدرسة قريبة من البيت.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"The school is near the house.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مدرسة",
+      "romanization": "madrasa",
+      "nativeText": "Recall \"مدرسة\" from memory, then explain what would change if a nearby alternative replaced it in \"المدرسة قريبة من البيت.\".",
+      "pronunciation": "madrasa",
+      "exampleTarget": "المدرسة قريبة من البيت.",
+      "exampleNative": "Self-check against the model before moving on: \"The school is near the house.\"",
+      "korean": "مدرسة",
+      "english": "Recall \"مدرسة\" from memory, then explain what would change if a nearby alternative replaced it in \"المدرسة قريبة من البيت.\".",
+      "example": "المدرسة قريبة من البيت.",
+      "exampleEnglish": "Self-check against the model before moving on: \"The school is near the house.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مدرسة",
+      "romanization": "madrasa",
+      "nativeText": "Repair \"مدرسة\" inside \"المدرسة قريبة من البيت.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: School (F). Plural مدارس madāris. Place-noun pattern مَفْعَلَة from root د ر س.",
+      "pronunciation": "madrasa",
+      "exampleTarget": "المدرسة قريبة من البيت.",
+      "exampleNative": "Use the model as the repair target: \"The school is near the house.\"",
+      "korean": "مدرسة",
+      "english": "Repair \"مدرسة\" inside \"المدرسة قريبة من البيت.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: School (F). Plural مدارس madāris. Place-noun pattern مَفْعَلَة from root د ر س.",
+      "example": "المدرسة قريبة من البيت.",
+      "exampleEnglish": "Use the model as the repair target: \"The school is near the house.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مدرسة",
+      "romanization": "madrasa",
+      "nativeText": "Transfer \"مدرسة\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"المدرسة قريبة من البيت.\".",
+      "pronunciation": "madrasa",
+      "exampleTarget": "المدرسة قريبة من البيت.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: \"The school is near the house.\"",
+      "korean": "مدرسة",
+      "english": "Transfer \"مدرسة\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"المدرسة قريبة من البيت.\".",
+      "example": "المدرسة قريبة من البيت.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: \"The school is near the house.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مدرسة",
+      "romanization": "madrasa",
+      "nativeText": "Find one word or phrase that naturally travels with \"مدرسة\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "madrasa",
+      "exampleTarget": "المدرسة قريبة من البيت.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: \"The school is near the house.\"",
+      "korean": "مدرسة",
+      "english": "Find one word or phrase that naturally travels with \"مدرسة\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "المدرسة قريبة من البيت.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: \"The school is near the house.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مدرسة",
+      "romanization": "madrasa",
+      "nativeText": "Listen for \"مدرسة\" inside \"المدرسة قريبة من البيت.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "madrasa",
+      "exampleTarget": "المدرسة قريبة من البيت.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"The school is near the house.\"",
+      "korean": "مدرسة",
+      "english": "Listen for \"مدرسة\" inside \"المدرسة قريبة من البيت.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "المدرسة قريبة من البيت.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"The school is near the house.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مدرسة",
+      "romanization": "madrasa",
+      "nativeText": "Write \"مدرسة\" again without looking, then compare the exact written form against \"المدرسة قريبة من البيت.\" before moving on.",
+      "pronunciation": "madrasa",
+      "exampleTarget": "المدرسة قريبة من البيت.",
+      "exampleNative": "Use the written model as the final correctness check: \"The school is near the house.\"",
+      "korean": "مدرسة",
+      "english": "Write \"مدرسة\" again without looking, then compare the exact written form against \"المدرسة قريبة من البيت.\" before moving on.",
+      "example": "المدرسة قريبة من البيت.",
+      "exampleEnglish": "Use the written model as the final correctness check: \"The school is near the house.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مدرسة",
+      "romanization": "madrasa",
+      "nativeText": "Check whether \"مدرسة\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"The school is near the house.\"",
+      "pronunciation": "madrasa",
+      "exampleTarget": "المدرسة قريبة من البيت.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: \"The school is near the house.\"",
+      "korean": "مدرسة",
+      "english": "Check whether \"مدرسة\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"The school is near the house.\"",
+      "example": "المدرسة قريبة من البيت.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: \"The school is near the house.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "المكتبة في الطابق الثاني.",
+      "romanization": "maktaba",
+      "nativeText": "Model use for \"مكتبة\": Library or bookstore (F). Plural مكتبات maktabāt. Place-noun pattern مَفْعَلَة from root ك ت ب.",
+      "pronunciation": "maktaba",
+      "exampleTarget": "المكتبة في الطابق الثاني.",
+      "exampleNative": "\"The library is on the second floor.\"",
+      "korean": "المكتبة في الطابق الثاني.",
+      "english": "Model use for \"مكتبة\": Library or bookstore (F). Plural مكتبات maktabāt. Place-noun pattern مَفْعَلَة from root ك ت ب.",
+      "example": "المكتبة في الطابق الثاني.",
+      "exampleEnglish": "\"The library is on the second floor.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مكتبة",
+      "romanization": "maktaba",
+      "nativeText": "Usage focus for \"مكتبة\": Library or bookstore (F). Plural مكتبات maktabāt. Place-noun pattern مَفْعَلَة from root ك ت ب.",
+      "pronunciation": "maktaba",
+      "exampleTarget": "المكتبة في الطابق الثاني.",
+      "exampleNative": "Notice what the form is doing here: \"The library is on the second floor.\"",
+      "korean": "مكتبة",
+      "english": "Usage focus for \"مكتبة\": Library or bookstore (F). Plural مكتبات maktabāt. Place-noun pattern مَفْعَلَة from root ك ت ب.",
+      "example": "المكتبة في الطابق الثاني.",
+      "exampleEnglish": "Notice what the form is doing here: \"The library is on the second floor.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مكتبة",
+      "romanization": "maktaba",
+      "nativeText": "Contrast check for \"مكتبة\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "maktaba",
+      "exampleTarget": "المكتبة في الطابق الثاني.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"The library is on the second floor.\"",
+      "korean": "مكتبة",
+      "english": "Contrast check for \"مكتبة\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "المكتبة في الطابق الثاني.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"The library is on the second floor.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مكتبة",
+      "romanization": "maktaba",
+      "nativeText": "Recall \"مكتبة\" from memory, then explain what would change if a nearby alternative replaced it in \"المكتبة في الطابق الثاني.\".",
+      "pronunciation": "maktaba",
+      "exampleTarget": "المكتبة في الطابق الثاني.",
+      "exampleNative": "Self-check against the model before moving on: \"The library is on the second floor.\"",
+      "korean": "مكتبة",
+      "english": "Recall \"مكتبة\" from memory, then explain what would change if a nearby alternative replaced it in \"المكتبة في الطابق الثاني.\".",
+      "example": "المكتبة في الطابق الثاني.",
+      "exampleEnglish": "Self-check against the model before moving on: \"The library is on the second floor.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مكتبة",
+      "romanization": "maktaba",
+      "nativeText": "Repair \"مكتبة\" inside \"المكتبة في الطابق الثاني.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Library or bookstore (F). Plural مكتبات maktabāt. Place-noun pattern مَفْعَلَة from root ك ت ب.",
+      "pronunciation": "maktaba",
+      "exampleTarget": "المكتبة في الطابق الثاني.",
+      "exampleNative": "Use the model as the repair target: \"The library is on the second floor.\"",
+      "korean": "مكتبة",
+      "english": "Repair \"مكتبة\" inside \"المكتبة في الطابق الثاني.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Library or bookstore (F). Plural مكتبات maktabāt. Place-noun pattern مَفْعَلَة from root ك ت ب.",
+      "example": "المكتبة في الطابق الثاني.",
+      "exampleEnglish": "Use the model as the repair target: \"The library is on the second floor.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مكتبة",
+      "romanization": "maktaba",
+      "nativeText": "Transfer \"مكتبة\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"المكتبة في الطابق الثاني.\".",
+      "pronunciation": "maktaba",
+      "exampleTarget": "المكتبة في الطابق الثاني.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: \"The library is on the second floor.\"",
+      "korean": "مكتبة",
+      "english": "Transfer \"مكتبة\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"المكتبة في الطابق الثاني.\".",
+      "example": "المكتبة في الطابق الثاني.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: \"The library is on the second floor.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مكتبة",
+      "romanization": "maktaba",
+      "nativeText": "Find one word or phrase that naturally travels with \"مكتبة\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "maktaba",
+      "exampleTarget": "المكتبة في الطابق الثاني.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: \"The library is on the second floor.\"",
+      "korean": "مكتبة",
+      "english": "Find one word or phrase that naturally travels with \"مكتبة\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "المكتبة في الطابق الثاني.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: \"The library is on the second floor.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مكتبة",
+      "romanization": "maktaba",
+      "nativeText": "Listen for \"مكتبة\" inside \"المكتبة في الطابق الثاني.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "maktaba",
+      "exampleTarget": "المكتبة في الطابق الثاني.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"The library is on the second floor.\"",
+      "korean": "مكتبة",
+      "english": "Listen for \"مكتبة\" inside \"المكتبة في الطابق الثاني.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "المكتبة في الطابق الثاني.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"The library is on the second floor.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مكتبة",
+      "romanization": "maktaba",
+      "nativeText": "Write \"مكتبة\" again without looking, then compare the exact written form against \"المكتبة في الطابق الثاني.\" before moving on.",
+      "pronunciation": "maktaba",
+      "exampleTarget": "المكتبة في الطابق الثاني.",
+      "exampleNative": "Use the written model as the final correctness check: \"The library is on the second floor.\"",
+      "korean": "مكتبة",
+      "english": "Write \"مكتبة\" again without looking, then compare the exact written form against \"المكتبة في الطابق الثاني.\" before moving on.",
+      "example": "المكتبة في الطابق الثاني.",
+      "exampleEnglish": "Use the written model as the final correctness check: \"The library is on the second floor.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مكتبة",
+      "romanization": "maktaba",
+      "nativeText": "Check whether \"مكتبة\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"The library is on the second floor.\"",
+      "pronunciation": "maktaba",
+      "exampleTarget": "المكتبة في الطابق الثاني.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: \"The library is on the second floor.\"",
+      "korean": "مكتبة",
+      "english": "Check whether \"مكتبة\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"The library is on the second floor.\"",
+      "example": "المكتبة في الطابق الثاني.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: \"The library is on the second floor.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مكتب الأستاذ على اليمين.",
+      "romanization": "maktab",
+      "nativeText": "Model use for \"مكتب\": Office or desk (M). Plural مكاتب makātib. Place-noun pattern مَفْعَل from root ك ت ب.",
+      "pronunciation": "maktab",
+      "exampleTarget": "مكتب الأستاذ على اليمين.",
+      "exampleNative": "\"The professor's office is on the right.\"",
+      "korean": "مكتب الأستاذ على اليمين.",
+      "english": "Model use for \"مكتب\": Office or desk (M). Plural مكاتب makātib. Place-noun pattern مَفْعَل from root ك ت ب.",
+      "example": "مكتب الأستاذ على اليمين.",
+      "exampleEnglish": "\"The professor's office is on the right.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مكتب",
+      "romanization": "maktab",
+      "nativeText": "Usage focus for \"مكتب\": Office or desk (M). Plural مكاتب makātib. Place-noun pattern مَفْعَل from root ك ت ب.",
+      "pronunciation": "maktab",
+      "exampleTarget": "مكتب الأستاذ على اليمين.",
+      "exampleNative": "Notice what the form is doing here: \"The professor's office is on the right.\"",
+      "korean": "مكتب",
+      "english": "Usage focus for \"مكتب\": Office or desk (M). Plural مكاتب makātib. Place-noun pattern مَفْعَل from root ك ت ب.",
+      "example": "مكتب الأستاذ على اليمين.",
+      "exampleEnglish": "Notice what the form is doing here: \"The professor's office is on the right.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مكتب",
+      "romanization": "maktab",
+      "nativeText": "Contrast check for \"مكتب\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "maktab",
+      "exampleTarget": "مكتب الأستاذ على اليمين.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"The professor's office is on the right.\"",
+      "korean": "مكتب",
+      "english": "Contrast check for \"مكتب\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "مكتب الأستاذ على اليمين.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"The professor's office is on the right.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مكتب",
+      "romanization": "maktab",
+      "nativeText": "Recall \"مكتب\" from memory, then explain what would change if a nearby alternative replaced it in \"مكتب الأستاذ على اليمين.\".",
+      "pronunciation": "maktab",
+      "exampleTarget": "مكتب الأستاذ على اليمين.",
+      "exampleNative": "Self-check against the model before moving on: \"The professor's office is on the right.\"",
+      "korean": "مكتب",
+      "english": "Recall \"مكتب\" from memory, then explain what would change if a nearby alternative replaced it in \"مكتب الأستاذ على اليمين.\".",
+      "example": "مكتب الأستاذ على اليمين.",
+      "exampleEnglish": "Self-check against the model before moving on: \"The professor's office is on the right.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مكتب",
+      "romanization": "maktab",
+      "nativeText": "Repair \"مكتب\" inside \"مكتب الأستاذ على اليمين.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Office or desk (M). Plural مكاتب makātib. Place-noun pattern مَفْعَل from root ك ت ب.",
+      "pronunciation": "maktab",
+      "exampleTarget": "مكتب الأستاذ على اليمين.",
+      "exampleNative": "Use the model as the repair target: \"The professor's office is on the right.\"",
+      "korean": "مكتب",
+      "english": "Repair \"مكتب\" inside \"مكتب الأستاذ على اليمين.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Office or desk (M). Plural مكاتب makātib. Place-noun pattern مَفْعَل from root ك ت ب.",
+      "example": "مكتب الأستاذ على اليمين.",
+      "exampleEnglish": "Use the model as the repair target: \"The professor's office is on the right.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مكتب",
+      "romanization": "maktab",
+      "nativeText": "Transfer \"مكتب\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"مكتب الأستاذ على اليمين.\".",
+      "pronunciation": "maktab",
+      "exampleTarget": "مكتب الأستاذ على اليمين.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: \"The professor's office is on the right.\"",
+      "korean": "مكتب",
+      "english": "Transfer \"مكتب\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"مكتب الأستاذ على اليمين.\".",
+      "example": "مكتب الأستاذ على اليمين.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: \"The professor's office is on the right.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مكتب",
+      "romanization": "maktab",
+      "nativeText": "Find one word or phrase that naturally travels with \"مكتب\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "maktab",
+      "exampleTarget": "مكتب الأستاذ على اليمين.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: \"The professor's office is on the right.\"",
+      "korean": "مكتب",
+      "english": "Find one word or phrase that naturally travels with \"مكتب\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "مكتب الأستاذ على اليمين.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: \"The professor's office is on the right.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مكتب",
+      "romanization": "maktab",
+      "nativeText": "Listen for \"مكتب\" inside \"مكتب الأستاذ على اليمين.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "maktab",
+      "exampleTarget": "مكتب الأستاذ على اليمين.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"The professor's office is on the right.\"",
+      "korean": "مكتب",
+      "english": "Listen for \"مكتب\" inside \"مكتب الأستاذ على اليمين.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "مكتب الأستاذ على اليمين.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"The professor's office is on the right.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مكتب",
+      "romanization": "maktab",
+      "nativeText": "Write \"مكتب\" again without looking, then compare the exact written form against \"مكتب الأستاذ على اليمين.\" before moving on.",
+      "pronunciation": "maktab",
+      "exampleTarget": "مكتب الأستاذ على اليمين.",
+      "exampleNative": "Use the written model as the final correctness check: \"The professor's office is on the right.\"",
+      "korean": "مكتب",
+      "english": "Write \"مكتب\" again without looking, then compare the exact written form against \"مكتب الأستاذ على اليمين.\" before moving on.",
+      "example": "مكتب الأستاذ على اليمين.",
+      "exampleEnglish": "Use the written model as the final correctness check: \"The professor's office is on the right.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مكتب",
+      "romanization": "maktab",
+      "nativeText": "Check whether \"مكتب\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"The professor's office is on the right.\"",
+      "pronunciation": "maktab",
+      "exampleTarget": "مكتب الأستاذ على اليمين.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: \"The professor's office is on the right.\"",
+      "korean": "مكتب",
+      "english": "Check whether \"مكتب\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"The professor's office is on the right.\"",
+      "example": "مكتب الأستاذ على اليمين.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: \"The professor's office is on the right.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "المسجد بجانب الجامعة.",
+      "romanization": "masjid",
+      "nativeText": "Model use for \"مسجد\": Mosque (M). Plural مساجد masājid. Place-noun pattern مَفْعِل from root س ج د \"prostrating\".",
+      "pronunciation": "masjid",
+      "exampleTarget": "المسجد بجانب الجامعة.",
+      "exampleNative": "\"The mosque is next to the university.\"",
+      "korean": "المسجد بجانب الجامعة.",
+      "english": "Model use for \"مسجد\": Mosque (M). Plural مساجد masājid. Place-noun pattern مَفْعِل from root س ج د \"prostrating\".",
+      "example": "المسجد بجانب الجامعة.",
+      "exampleEnglish": "\"The mosque is next to the university.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مسجد",
+      "romanization": "masjid",
+      "nativeText": "Usage focus for \"مسجد\": Mosque (M). Plural مساجد masājid. Place-noun pattern مَفْعِل from root س ج د \"prostrating\".",
+      "pronunciation": "masjid",
+      "exampleTarget": "المسجد بجانب الجامعة.",
+      "exampleNative": "Notice what the form is doing here: \"The mosque is next to the university.\"",
+      "korean": "مسجد",
+      "english": "Usage focus for \"مسجد\": Mosque (M). Plural مساجد masājid. Place-noun pattern مَفْعِل from root س ج د \"prostrating\".",
+      "example": "المسجد بجانب الجامعة.",
+      "exampleEnglish": "Notice what the form is doing here: \"The mosque is next to the university.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مسجد",
+      "romanization": "masjid",
+      "nativeText": "Contrast check for \"مسجد\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "masjid",
+      "exampleTarget": "المسجد بجانب الجامعة.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"The mosque is next to the university.\"",
+      "korean": "مسجد",
+      "english": "Contrast check for \"مسجد\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "المسجد بجانب الجامعة.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"The mosque is next to the university.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مسجد",
+      "romanization": "masjid",
+      "nativeText": "Recall \"مسجد\" from memory, then explain what would change if a nearby alternative replaced it in \"المسجد بجانب الجامعة.\".",
+      "pronunciation": "masjid",
+      "exampleTarget": "المسجد بجانب الجامعة.",
+      "exampleNative": "Self-check against the model before moving on: \"The mosque is next to the university.\"",
+      "korean": "مسجد",
+      "english": "Recall \"مسجد\" from memory, then explain what would change if a nearby alternative replaced it in \"المسجد بجانب الجامعة.\".",
+      "example": "المسجد بجانب الجامعة.",
+      "exampleEnglish": "Self-check against the model before moving on: \"The mosque is next to the university.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مسجد",
+      "romanization": "masjid",
+      "nativeText": "Repair \"مسجد\" inside \"المسجد بجانب الجامعة.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Mosque (M). Plural مساجد masājid. Place-noun pattern مَفْعِل from root س ج د \"prostrating\".",
+      "pronunciation": "masjid",
+      "exampleTarget": "المسجد بجانب الجامعة.",
+      "exampleNative": "Use the model as the repair target: \"The mosque is next to the university.\"",
+      "korean": "مسجد",
+      "english": "Repair \"مسجد\" inside \"المسجد بجانب الجامعة.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Mosque (M). Plural مساجد masājid. Place-noun pattern مَفْعِل from root س ج د \"prostrating\".",
+      "example": "المسجد بجانب الجامعة.",
+      "exampleEnglish": "Use the model as the repair target: \"The mosque is next to the university.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مسجد",
+      "romanization": "masjid",
+      "nativeText": "Transfer \"مسجد\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"المسجد بجانب الجامعة.\".",
+      "pronunciation": "masjid",
+      "exampleTarget": "المسجد بجانب الجامعة.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: \"The mosque is next to the university.\"",
+      "korean": "مسجد",
+      "english": "Transfer \"مسجد\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"المسجد بجانب الجامعة.\".",
+      "example": "المسجد بجانب الجامعة.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: \"The mosque is next to the university.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مسجد",
+      "romanization": "masjid",
+      "nativeText": "Find one word or phrase that naturally travels with \"مسجد\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "masjid",
+      "exampleTarget": "المسجد بجانب الجامعة.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: \"The mosque is next to the university.\"",
+      "korean": "مسجد",
+      "english": "Find one word or phrase that naturally travels with \"مسجد\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "المسجد بجانب الجامعة.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: \"The mosque is next to the university.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مسجد",
+      "romanization": "masjid",
+      "nativeText": "Listen for \"مسجد\" inside \"المسجد بجانب الجامعة.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "masjid",
+      "exampleTarget": "المسجد بجانب الجامعة.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"The mosque is next to the university.\"",
+      "korean": "مسجد",
+      "english": "Listen for \"مسجد\" inside \"المسجد بجانب الجامعة.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "المسجد بجانب الجامعة.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"The mosque is next to the university.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مسجد",
+      "romanization": "masjid",
+      "nativeText": "Write \"مسجد\" again without looking, then compare the exact written form against \"المسجد بجانب الجامعة.\" before moving on.",
+      "pronunciation": "masjid",
+      "exampleTarget": "المسجد بجانب الجامعة.",
+      "exampleNative": "Use the written model as the final correctness check: \"The mosque is next to the university.\"",
+      "korean": "مسجد",
+      "english": "Write \"مسجد\" again without looking, then compare the exact written form against \"المسجد بجانب الجامعة.\" before moving on.",
+      "example": "المسجد بجانب الجامعة.",
+      "exampleEnglish": "Use the written model as the final correctness check: \"The mosque is next to the university.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مسجد",
+      "romanization": "masjid",
+      "nativeText": "Check whether \"مسجد\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"The mosque is next to the university.\"",
+      "pronunciation": "masjid",
+      "exampleTarget": "المسجد بجانب الجامعة.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: \"The mosque is next to the university.\"",
+      "korean": "مسجد",
+      "english": "Check whether \"مسجد\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"The mosque is next to the university.\"",
+      "example": "المسجد بجانب الجامعة.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: \"The mosque is next to the university.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "المستشفى الجامعي قريب.",
+      "romanization": "mustashfā",
+      "nativeText": "Model use for \"مستشفى\": Hospital (M, but ends in ـى so looks feminine — it is masculine). Plural مستشفيات mustashfayāt. Form X passive participle.",
+      "pronunciation": "mustashfā",
+      "exampleTarget": "المستشفى الجامعي قريب.",
+      "exampleNative": "\"The university hospital is close.\"",
+      "korean": "المستشفى الجامعي قريب.",
+      "english": "Model use for \"مستشفى\": Hospital (M, but ends in ـى so looks feminine — it is masculine). Plural مستشفيات mustashfayāt. Form X passive participle.",
+      "example": "المستشفى الجامعي قريب.",
+      "exampleEnglish": "\"The university hospital is close.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مستشفى",
+      "romanization": "mustashfā",
+      "nativeText": "Usage focus for \"مستشفى\": Hospital (M, but ends in ـى so looks feminine — it is masculine). Plural مستشفيات mustashfayāt. Form X passive participle.",
+      "pronunciation": "mustashfā",
+      "exampleTarget": "المستشفى الجامعي قريب.",
+      "exampleNative": "Notice what the form is doing here: \"The university hospital is close.\"",
+      "korean": "مستشفى",
+      "english": "Usage focus for \"مستشفى\": Hospital (M, but ends in ـى so looks feminine — it is masculine). Plural مستشفيات mustashfayāt. Form X passive participle.",
+      "example": "المستشفى الجامعي قريب.",
+      "exampleEnglish": "Notice what the form is doing here: \"The university hospital is close.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مستشفى",
+      "romanization": "mustashfā",
+      "nativeText": "Contrast check for \"مستشفى\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "mustashfā",
+      "exampleTarget": "المستشفى الجامعي قريب.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"The university hospital is close.\"",
+      "korean": "مستشفى",
+      "english": "Contrast check for \"مستشفى\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "المستشفى الجامعي قريب.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"The university hospital is close.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مستشفى",
+      "romanization": "mustashfā",
+      "nativeText": "Recall \"مستشفى\" from memory, then explain what would change if a nearby alternative replaced it in \"المستشفى الجامعي قريب.\".",
+      "pronunciation": "mustashfā",
+      "exampleTarget": "المستشفى الجامعي قريب.",
+      "exampleNative": "Self-check against the model before moving on: \"The university hospital is close.\"",
+      "korean": "مستشفى",
+      "english": "Recall \"مستشفى\" from memory, then explain what would change if a nearby alternative replaced it in \"المستشفى الجامعي قريب.\".",
+      "example": "المستشفى الجامعي قريب.",
+      "exampleEnglish": "Self-check against the model before moving on: \"The university hospital is close.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مستشفى",
+      "romanization": "mustashfā",
+      "nativeText": "Repair \"مستشفى\" inside \"المستشفى الجامعي قريب.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Hospital (M, but ends in ـى so looks feminine — it is masculine). Plural مستشفيات mustashfayāt. Form X passive participle.",
+      "pronunciation": "mustashfā",
+      "exampleTarget": "المستشفى الجامعي قريب.",
+      "exampleNative": "Use the model as the repair target: \"The university hospital is close.\"",
+      "korean": "مستشفى",
+      "english": "Repair \"مستشفى\" inside \"المستشفى الجامعي قريب.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Hospital (M, but ends in ـى so looks feminine — it is masculine). Plural مستشفيات mustashfayāt. Form X passive participle.",
+      "example": "المستشفى الجامعي قريب.",
+      "exampleEnglish": "Use the model as the repair target: \"The university hospital is close.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مستشفى",
+      "romanization": "mustashfā",
+      "nativeText": "Transfer \"مستشفى\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"المستشفى الجامعي قريب.\".",
+      "pronunciation": "mustashfā",
+      "exampleTarget": "المستشفى الجامعي قريب.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: \"The university hospital is close.\"",
+      "korean": "مستشفى",
+      "english": "Transfer \"مستشفى\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"المستشفى الجامعي قريب.\".",
+      "example": "المستشفى الجامعي قريب.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: \"The university hospital is close.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مستشفى",
+      "romanization": "mustashfā",
+      "nativeText": "Find one word or phrase that naturally travels with \"مستشفى\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "mustashfā",
+      "exampleTarget": "المستشفى الجامعي قريب.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: \"The university hospital is close.\"",
+      "korean": "مستشفى",
+      "english": "Find one word or phrase that naturally travels with \"مستشفى\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "المستشفى الجامعي قريب.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: \"The university hospital is close.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مستشفى",
+      "romanization": "mustashfā",
+      "nativeText": "Listen for \"مستشفى\" inside \"المستشفى الجامعي قريب.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "mustashfā",
+      "exampleTarget": "المستشفى الجامعي قريب.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"The university hospital is close.\"",
+      "korean": "مستشفى",
+      "english": "Listen for \"مستشفى\" inside \"المستشفى الجامعي قريب.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "المستشفى الجامعي قريب.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"The university hospital is close.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مستشفى",
+      "romanization": "mustashfā",
+      "nativeText": "Write \"مستشفى\" again without looking, then compare the exact written form against \"المستشفى الجامعي قريب.\" before moving on.",
+      "pronunciation": "mustashfā",
+      "exampleTarget": "المستشفى الجامعي قريب.",
+      "exampleNative": "Use the written model as the final correctness check: \"The university hospital is close.\"",
+      "korean": "مستشفى",
+      "english": "Write \"مستشفى\" again without looking, then compare the exact written form against \"المستشفى الجامعي قريب.\" before moving on.",
+      "example": "المستشفى الجامعي قريب.",
+      "exampleEnglish": "Use the written model as the final correctness check: \"The university hospital is close.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit03locations-vocabulary-1",
+        "ar-level1unit03locations-vocabulary-2",
+        "ar-level1unit03locations-grammar-1",
+        "ar-level1unit03locations-grammar-2",
+        "ar-level1unit03locations-reading",
+        "ar-level1unit03locations-listening",
+        "ar-level1unit03locations-writing",
+        "ar-level1unit03locations-task"
+      ],
+      "targetText": "مستشفى",
+      "romanization": "mustashfā",
+      "nativeText": "Check whether \"مستشفى\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"The university hospital is close.\"",
+      "pronunciation": "mustashfā",
+      "exampleTarget": "المستشفى الجامعي قريب.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: \"The university hospital is close.\"",
+      "korean": "مستشفى",
+      "english": "Check whether \"مستشفى\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"The university hospital is close.\"",
+      "example": "المستشفى الجامعي قريب.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: \"The university hospital is close.\""
+    }
+  ]
 };
-
-module.exports = lesson;

@@ -23,7 +23,8 @@
     "saving": "सहेजा जा रहा है...",
     "search": "खोज",
     "notSet": "सेट नहीं",
-    "all": "सभी"
+    "all": "सभी",
+    "reset": "रीसेट करें"
   },
   "languages": {
     "en": "अंग्रेज़ी",
@@ -218,7 +219,8 @@
       "fri": "एफ",
       "sat": "एस",
       "sun": "एस"
-    }
+    },
+    "contactDesc": "प्रश्न, प्रतिक्रिया, या रिपोर्ट करने योग्य कोई समस्या"
   },
   "lessons": {
     "title": "{{language}} पाठ",
@@ -738,7 +740,102 @@
     "modeBreakdown": "अध्ययन मोड",
     "searchUsers": "उपयोगकर्ता खोजें...",
     "all": "सभी",
-    "demo": "डेमो"
+    "demo": "डेमो",
+    "failures": "विफलताओं",
+    "messages": "संदेशों",
+    "userFailures": "उपयोगकर्ता-पक्ष विफलताएँ",
+    "openFailures": "{{count}} खुली विफलताएँ",
+    "criticalFailures": "{{count}} गंभीर",
+    "clearing": "समाशोधन...",
+    "loadingFailures": "लोडिंग विफलताएँ...",
+    "noOpenFailures": "कोई खुली उपयोगकर्ता-पक्ष विफलता नहीं।",
+    "acknowledge": "स्वीकार करना",
+    "page": "पेज",
+    "device": "उपकरण",
+    "languagePair": "भाषा युग्म",
+    "clientStatus": "ग्राहक",
+    "pageOf": "पेज {{page}} का {{total}}",
+    "guestUser": "अतिथि उपयोक्ता",
+    "unknownUser": "अज्ञात उपयोगकर्ता",
+    "unknown": "अज्ञात",
+    "clearFailuresTitle": "खुली विफलताओं को साफ़ करें?",
+    "clearFailuresBody": "सभी {{count}} खुली विफलताओं को स्वीकृत के रूप में चिह्नित करें?",
+    "contactMessages": "संपर्क संदेश",
+    "unreadMessages": "{{count}} अपठित संदेश",
+    "allMessages": "सभी संदेश",
+    "registeredUsers": "पंजीकृत उपयोगकर्ता",
+    "guestUsers": "अतिथि उपयोगकर्ता",
+    "loadingMessages": "संदेश लोड हो रहे हैं...",
+    "noUnreadMessages": "कोई अपठित संपर्क संदेश नहीं.",
+    "registeredUser": "पंजीकृत उपयोगकर्ता",
+    "contactMessage": "संपर्क संदेश",
+    "markRead": "पढ़ा हुआ चिह्नित करें",
+    "name": "नाम",
+    "accountTier": "खाता स्तर",
+    "clearMessagesTitle": "अपठित संदेश साफ़ करें?",
+    "clearMessagesBody": "सभी {{count}} अपठित संपर्क संदेशों को पढ़ा गया के रूप में चिह्नित करें?",
+    "demoDifficulty": {
+      "beginner": "शुरुआती",
+      "balanced": "संतुलित",
+      "natural": "प्राकृतिक",
+      "challenge": "चुनौती"
+    },
+    "demoScenarios": {
+      "friendlyChat": "मैत्रीपूर्ण बातचीत",
+      "cafeWorker": "एक कैफे कर्मचारी से बात हो रही है",
+      "taxiDriver": "टैक्सी ड्राइवर से मदद माँगना",
+      "meetingNew": "किसी नये व्यक्ति से मुलाकात होगी"
+    },
+    "demoReplyPlaceholder": "अभ्यास भागीदार की प्रतिक्रिया यहां दिखाई देगी.",
+    "demoTipPlaceholder": "किसी भी चयनित भाषा में पूछें. आप विषय बदल सकते हैं, अर्थ पूछ सकते हैं, या आसान शब्दों का अनुरोध कर सकते हैं।",
+    "promoteConfirmShort": "{{username}} को एडमिन बनाएं?",
+    "promote": "पदोन्नति करना",
+    "deleteUserTitle": "उपयोगकर्ता हटाएँ",
+    "deleteUserConfirmShort": "{{username}} को स्थायी रूप से हटाएं? इसे असंपादित नहीं किया जा सकता है।",
+    "demoReset": "बातचीत रीसेट.",
+    "demoNoReply": "कोई उत्तर नहीं लौटाया गया.",
+    "demoNoCoachingNote": "कोई कोचिंग नोट नहीं.",
+    "demoResponseFailed": "इस बार मैं जवाब नहीं दे सका. कृपया पुन: प्रयास करें।",
+    "demoConnectionIssue": "कनेक्शन समस्या. थोड़ी देर में पुनः प्रयास करें.",
+    "tapForDetails": "विवरण के लिए टैप करें",
+    "activeWeek": "सक्रिय 7डी",
+    "countries": "देशों",
+    "conversion": "परिवर्तन",
+    "engagement": "सगाई",
+    "totalCardsStudied": "कुल कार्डों का अध्ययन किया गया",
+    "totalAudioPlays": "कुल ऑडियो प्ले",
+    "lessonsViewed": "पाठ देखे गए",
+    "topLanguagePairs": "शीर्ष भाषा युग्म",
+    "sessionsCount": "{{count}} सत्र",
+    "deviceBreakdown": "डिवाइस का टूटना",
+    "recentSessions": "हाल के सत्र ({{count}})",
+    "cardsStudiedCount": "{{count}} कार्ड",
+    "pageNumber": "पेज {{page}}",
+    "noGuestData": "कोई अतिथि डेटा उपलब्ध नहीं है",
+    "loadData": "डेटा लोड करें",
+    "speakingDemo": "बोलने का डेमो",
+    "demoIntro": "केवल व्यवस्थापक वार्तालाप पूर्वावलोकन. यह ऑडियो या शिक्षार्थी प्रगति को सहेजता नहीं है।",
+    "scenario": "परिदृश्य",
+    "customScenario": "कस्टम परिदृश्य",
+    "learningLanguage": "भाषा सीखना",
+    "nativeLanguage": "मूल भाषा",
+    "listenFor": "के लिए सुनो",
+    "difficulty": "कठिनाई",
+    "learnerTurnInput": "शिक्षार्थी ने जो कहा उसे टाइप या पेस्ट करें",
+    "interrupt": "रुकावट डालना",
+    "conversationState": "वार्तालाप अवस्था",
+    "lastLearnerTurn": "अंतिम शिक्षार्थी बारी",
+    "noTurnSentYet": "अभी तक कोई बारी नहीं भेजी गई.",
+    "practicePartnerResponse": "भागीदार प्रतिक्रिया का अभ्यास करें",
+    "coachNote": "कोच नोट",
+    "userDetails": "उपयोगकर्ता विवरण",
+    "totalXp": "कुल एक्सपी",
+    "studyMode": "अध्ययन मोड",
+    "languages": "बोली",
+    "loginCount": "लॉगिन गिनती",
+    "memberSince": "से सदस्य",
+    "suspendReasonLabel": "कारण निलंबित करें",
+    "userDetailsLoadFailed": "उपयोगकर्ता विवरण लोड नहीं किया जा सका"
   },
   "pricing": {
     "kicker": "योजनाओं",
@@ -820,7 +917,9 @@
     "discountCode": "डिस्काउंट कोड",
     "discountPlaceholder": "वैकल्पिक कोड",
     "discountUnavailable": "वह डिस्काउंट कोड इस योजना के लिए उपलब्ध नहीं है।",
-    "automaticDiscountApplied": "{{discount}} की स्वचालित छूट लागू"
+    "automaticDiscountApplied": "{{discount}} की स्वचालित छूट लागू",
+    "signInToChooseTitle": "जारी रखने के लिए एक खाता बनाएँ",
+    "signInToChooseBody": "सशुल्क योजना चुनने से पहले एक खाता बनाएं या साइन इन करें ताकि आपकी पहुंच आपसे जुड़ी रह सके।"
   },
   "billing": {
     "kicker": "बिलिंग",
@@ -975,7 +1074,8 @@
     },
     "titlePrefix": {
       "unit": "स्तर {{level}} · इकाई {{unit}}: {{title}}"
-    }
+    },
+    "retry": "पुनः प्रयास करें"
   },
   "classLesson": {
     "loading": "कक्षा पाठ लोड हो रहा है...",
@@ -1114,7 +1214,10 @@
     "saveReply": "उत्तर सहेजें",
     "saveExample": "उदाहरण सहेजें",
     "practiceEverywhere": "इसका अभ्यास हर जगह करें",
-    "selfTestReason": "त्वरित आत्म-परीक्षण के लिए कक्षा से बचाया गया।"
+    "selfTestReason": "त्वरित आत्म-परीक्षण के लिए कक्षा से बचाया गया।",
+    "previous": "पहले का",
+    "lessonGuide": "पाठ मार्गदर्शिका",
+    "activityXOfY": "गतिविधि {{current}} की {{total}}"
   },
   "exercise": {
     "kicker": "व्यायाम",
@@ -1182,7 +1285,8 @@
     "recapUsefulPhrases": "उपयोगी वाक्यांश",
     "recapReview": "आगे समीक्षा करें",
     "recapReviewFallback": "एक वाक्यांश सहेजें और इसे दूसरे अभ्यास मोड में पुन: उपयोग करें।",
-    "practiceLabel": "बातचीत अभ्यास"
+    "practiceLabel": "बातचीत अभ्यास",
+    "practiceSetup": "सेटअप का अभ्यास करें"
   },
   "context": {
     "backToProfile": "प्रोफ़ाइल पर वापस जाएँ",
@@ -1304,7 +1408,10 @@
       "memory": "स्मृति से"
     },
     "savedReason": "दूसरे पास के लिए लेखन अभ्यास से बचाया गया।",
-    "selfTestReason": "त्वरित आत्म-परीक्षण के लिए लेखन अभ्यास से बचाया गया।"
+    "selfTestReason": "त्वरित आत्म-परीक्षण के लिए लेखन अभ्यास से बचाया गया।",
+    "hideNotebook": "नोटबुक छिपाएँ",
+    "showNotebook": "नोटबुक दिखाएँ",
+    "hideAddPanel": "ऐड पैनल छुपाएं"
   },
   "certificates": {
     "kicker": "प्रमाणपत्र",
@@ -1472,5 +1579,44 @@
     "firstThreeDayReviewBody": "आपने कल जो देखा उस पर एक बार लौटें ताकि पहली चीजें चिपकनी शुरू हो जाएं।",
     "firstThreeDaySpeakBody": "बोलने की छोटी बारी का उपयोग करें ताकि भाषा पृष्ठ को जल्दी छोड़ दे।",
     "firstThreeDayLearnBody": "एक छोटे निर्देशित पाठ से शुरुआत करें ताकि जोड़ी के पास एक स्पष्ट प्रारंभिक बिंदु हो।"
+  },
+  "resetPassword": {
+    "title": "पासवर्ड रीसेट करें",
+    "subtitle": "अपना नया पासवर्ड दर्ज करें।",
+    "error": "पासवर्ड रीसेट करने में विफल। कृपया पुनः प्रयास करें।",
+    "invalidLink": "यह रीसेट लिंक अमान्य है या समाप्त हो गया है।",
+    "noToken": "रीसेट टोकन गायब है। कृपया एक नया लिंक अनुरोध करें।",
+    "requestNew": "नया लिंक अनुरोध करें",
+    "success": "आपका पासवर्ड सफलतापूर्वक रीसेट हो गया।",
+    "goToLogin": "लॉगिन पर जाएं",
+    "newPasswordPlaceholder": "नया पासवर्ड",
+    "resetButton": "पासवर्ड रीसेट करें",
+    "failed": "पासवर्ड रीसेट नहीं किया जा सका. कृपया पुन: प्रयास करें।",
+    "kicker": "पासवर्ड रीसेट",
+    "missingToken": "यह रीसेट लिंक गुम या अमान्य है.",
+    "newPassword": "नया पासवर्ड",
+    "confirmPassword": "पासवर्ड की पुष्टि कीजिये",
+    "submit": "पासवर्ड रीसेट"
+  },
+  "contact": {
+    "navLabel": "संपर्क",
+    "kicker": "हमसे संपर्क करें",
+    "title": "अपनी ज़रूरत के बारे में हमें बताएं",
+    "subtitle": "प्रश्न भेजें, समस्या रिपोर्ट करें, या प्रतिक्रिया साझा करें। हम आपके संदेश की समीक्षा करेंगे और जरूरत पड़ने पर जवाब देंगे।",
+    "infoTitle": "हम सुन रहे हैं",
+    "infoText": "इस फॉर्म के संदेश उपलब्ध होने पर खाते के संदर्भ के साथ सुरक्षित रूप से सहेजे जाते हैं, ताकि हम समझ सकें कि क्या हुआ और तेजी से मदद कर सकें।",
+    "name": "नाम",
+    "namePlaceholder": "आपका नाम",
+    "email": "ईमेल",
+    "emailPlaceholder": "you@example.com",
+    "subject": "विषय",
+    "subjectPlaceholder": "इसके बारे में क्या है?",
+    "message": "संदेश",
+    "messagePlaceholder": "यहां अपना संदेश लिखें...",
+    "send": "मेसेज भेजें",
+    "success": "धन्यवाद। आपका संदेश प्राप्त हो गया है.",
+    "error": "हम अभी आपका संदेश नहीं भेज सके. कृपया पुन: प्रयास करें।",
+    "companyTrap": "कंपनी",
+    "profileHint": "इस डिवाइस से प्रश्न भेजें, समस्या रिपोर्ट करें या फीडबैक साझा करें।"
   }
 }

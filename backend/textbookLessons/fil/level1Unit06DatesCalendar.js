@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('fil', {
-  slug: 'fil-l1u6',
-  title: 'Level 1 · Unit 6: Petsa at Kalendaryo — Dates and the Calendar',
-  category: 'time',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Talk about weekdays, dates, birthdays, and simple calendar plans.',
-  vocabularyGoal: 'Use weekday, month, birthday, and appointment vocabulary.',
-  grammarGoal: 'Use `sa` for days and dates, and ordinal forms such as `ika-`.',
-  speakingGoal: 'Say today’s date and arrange one simple meeting.',
-  task: 'Tell the date, your birthday, and one plan for next week.',
-  expressionPractice: [
-    practice('saying-date', 'Saying date', 'Use a weekday and calendar date.'),
-    practice('asking-birthday', 'Asking birthday', 'Use `Kailan ang kaarawan mo?`.'),
-    practice('making-plan', 'Making plan', 'Use `sa` with a future date.'),
+module.exports = {
+  "title": "Level 1 · Unit 6: Petsa at Kalendaryo — Dates and the Calendar",
+  "category": "time",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "fil-level1unit06datescalendar-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Talk about weekdays, dates, birthdays, and simple calendar plans."
+      ],
+      "task": "Tell the date, your birthday, and one plan for next week."
+    },
+    {
+      "id": "fil-level1unit06datescalendar-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Filipino stress, glottal stops, borrowed-word rhythm, and affix boundaries clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "fil-level1unit06datescalendar-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 6: Petsa at Kalendaryo — Dates and the Calendar with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "fil-level1unit06datescalendar-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 6: Petsa at Kalendaryo — Dates and the Calendar sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "fil-level1unit06datescalendar-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Talk about weekdays, dates, birthdays, and simple calendar plans."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "fil-level1unit06datescalendar-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 6: Petsa at Kalendaryo — Dates and the Calendar with one nearby Filipino form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "fil-level1unit06datescalendar-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "fil-level1unit06datescalendar-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "fil-level1unit06datescalendar-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "fil-level1unit06datescalendar-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the politeness, kinship, or multilingual context that changes how this Filipino is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "fil-level1unit06datescalendar-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Tell the date, your birthday, and one plan for next week."
+      ],
+      "task": "Tell the date, your birthday, and one plan for next week."
+    }
   ],
-  relatedPools: ['topic-time', 'topic-plans'],
-  items: [
-    item('Lunes / Martes / Miyerkules', 'lunes / martes / miyerkules', 'Weekday names used in ordinary scheduling.', 'May klase ako sa Lunes.', '“I have class on Monday.”'),
-    item('Enero / Pebrero / Marso', 'enero / pebrero / marso', 'Month names with familiar Spanish roots but Filipino spelling.', 'Ang kaarawan ko ay sa Marso.', '“My birthday is in March.”'),
-    item('ika-lima', 'ika-lima', '“Fifth.” `ika-` forms ordinals in a very visible way.', 'Ngayon ay ika-lima ng Mayo.', '“Today is the fifth of May.”'),
-    item('Kailan?', 'kailan?', '“When?”', 'Kailan ang pulong?', '“When is the meeting?”'),
-    item('kaarawan', 'kaarawan', '“Birthday.”', 'Kailan ang kaarawan mo?', '“When is your birthday?”'),
-    item('sa susunod na linggo', 'sa susunod na linggo', '“Next week.”', 'May pagsusulit sa susunod na linggo.', '“There is a test next week.”'),
-    item('araw', 'araw', '“Day” and also “sun,” a useful polysemous word.', 'Anong araw ngayon?', '“What day is it today?”'),
-    item('petsa', 'petsa', '“Date.”', 'Ano ang petsa ngayon?', '“What is today’s date?”'),
+  "expressionPractice": [
+    {
+      "id": "saying-date",
+      "label": "Saying date",
+      "goal": "Use a weekday and calendar date."
+    },
+    {
+      "id": "asking-birthday",
+      "label": "Asking birthday",
+      "goal": "Use `Kailan ang kaarawan mo?`."
+    },
+    {
+      "id": "making-plan",
+      "label": "Making plan",
+      "goal": "Use `sa` with a future date."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-time",
+    "topic-plans"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit06datescalendar-orientation"
+      ],
+      "targetText": "layunin ng aralin",
+      "romanization": "",
+      "nativeText": "Talk about weekdays, dates, birthdays, and simple calendar plans.",
+      "pronunciation": "",
+      "exampleTarget": "layunin ng aralin",
+      "exampleNative": "The whole lesson is built toward this outcome: Tell the date, your birthday, and one plan for next week.",
+      "korean": "layunin ng aralin",
+      "english": "Talk about weekdays, dates, birthdays, and simple calendar plans.",
+      "example": "layunin ng aralin",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Tell the date, your birthday, and one plan for next week."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "fil-level1unit06datescalendar-pronunciation"
+      ],
+      "targetText": "suri sa bigkas",
+      "romanization": "",
+      "nativeText": "Keep Filipino stress, glottal stops, borrowed-word rhythm, and affix boundaries clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"May klase ako sa Lunes.\".",
+      "pronunciation": "",
+      "exampleTarget": "May klase ako sa Lunes.",
+      "exampleNative": "“I have class on Monday.”",
+      "korean": "suri sa bigkas",
+      "english": "Keep Filipino stress, glottal stops, borrowed-word rhythm, and affix boundaries clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"May klase ako sa Lunes.\".",
+      "example": "May klase ako sa Lunes.",
+      "exampleEnglish": "“I have class on Monday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1"
+      ],
+      "targetText": "Lunes / Martes / Miyerkules",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 6: Petsa at Kalendaryo — Dates and the Calendar with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "May klase ako sa Lunes.",
+      "exampleNative": "“I have class on Monday.”",
+      "korean": "Lunes / Martes / Miyerkules",
+      "english": "Use the key language of Level 1 · Unit 6: Petsa at Kalendaryo — Dates and the Calendar with the register and setting that the lesson requires.",
+      "example": "May klase ako sa Lunes.",
+      "exampleEnglish": "“I have class on Monday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-2"
+      ],
+      "targetText": "Enero / Pebrero / Marso",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 6: Petsa at Kalendaryo — Dates and the Calendar sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Ang kaarawan ko ay sa Marso.",
+      "exampleNative": "“My birthday is in March.”",
+      "korean": "Enero / Pebrero / Marso",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 6: Petsa at Kalendaryo — Dates and the Calendar sound precise rather than merely understandable.",
+      "example": "Ang kaarawan ko ay sa Marso.",
+      "exampleEnglish": "“My birthday is in March.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "fil-level1unit06datescalendar-grammar-1"
+      ],
+      "targetText": "Lunes / Martes / Miyerkules",
+      "romanization": "",
+      "nativeText": "Talk about weekdays, dates, birthdays, and simple calendar plans.",
+      "pronunciation": "",
+      "exampleTarget": "May klase ako sa Lunes.",
+      "exampleNative": "“I have class on Monday.”",
+      "korean": "Lunes / Martes / Miyerkules",
+      "english": "Talk about weekdays, dates, birthdays, and simple calendar plans.",
+      "example": "May klase ako sa Lunes.",
+      "exampleEnglish": "“I have class on Monday.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "fil-level1unit06datescalendar-grammar-2"
+      ],
+      "targetText": "Enero / Pebrero / Marso",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 6: Petsa at Kalendaryo — Dates and the Calendar with one nearby Filipino form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Ang kaarawan ko ay sa Marso.",
+      "exampleNative": "“My birthday is in March.”",
+      "korean": "Enero / Pebrero / Marso",
+      "english": "Contrast the main pattern in Level 1 · Unit 6: Petsa at Kalendaryo — Dates and the Calendar with one nearby Filipino form so the learner can avoid literal translation.",
+      "example": "Ang kaarawan ko ay sa Marso.",
+      "exampleEnglish": "“My birthday is in March.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "fil-level1unit06datescalendar-reading"
+      ],
+      "targetText": "halimbawang basa",
+      "romanization": "",
+      "nativeText": "Read \"Ano ang petsa ngayon?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Ano ang petsa ngayon?",
+      "exampleNative": "“What is today’s date?”",
+      "korean": "halimbawang basa",
+      "english": "Read \"Ano ang petsa ngayon?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Ano ang petsa ngayon?",
+      "exampleEnglish": "“What is today’s date?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "fil-level1unit06datescalendar-listening"
+      ],
+      "targetText": "halimbawang usapan",
+      "romanization": "",
+      "nativeText": "Hear \"Ano ang petsa ngayon?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Ano ang petsa ngayon?",
+      "exampleNative": "“What is today’s date?”",
+      "korean": "halimbawang usapan",
+      "english": "Hear \"Ano ang petsa ngayon?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Ano ang petsa ngayon?",
+      "exampleEnglish": "“What is today’s date?”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "fil-level1unit06datescalendar-writing"
+      ],
+      "targetText": "gabay sa pagsulat",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"May klase ako sa Lunes.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "May klase ako sa Lunes.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "gabay sa pagsulat",
+      "english": "Write your own version after studying \"May klase ako sa Lunes.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "May klase ako sa Lunes.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "fil-level1unit06datescalendar-culture"
+      ],
+      "targetText": "gamit at konteksto",
+      "romanization": "",
+      "nativeText": "Notice the politeness, kinship, or multilingual context that changes how this Filipino is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Ang kaarawan ko ay sa Marso.",
+      "exampleNative": "“My birthday is in March.”",
+      "korean": "gamit at konteksto",
+      "english": "Notice the politeness, kinship, or multilingual context that changes how this Filipino is naturally used.",
+      "example": "Ang kaarawan ko ay sa Marso.",
+      "exampleEnglish": "“My birthday is in March.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "pangwakas na gawain",
+      "romanization": "",
+      "nativeText": "Tell the date, your birthday, and one plan for next week.",
+      "pronunciation": "",
+      "exampleTarget": "Ano ang petsa ngayon?",
+      "exampleNative": "Tell the date, your birthday, and one plan for next week.",
+      "korean": "pangwakas na gawain",
+      "english": "Tell the date, your birthday, and one plan for next week.",
+      "example": "Ano ang petsa ngayon?",
+      "exampleEnglish": "Tell the date, your birthday, and one plan for next week."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit06datescalendar-grammar-2"
+      ],
+      "targetText": "karaniwang pagkakamali",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around focus marking, affixes, particles, and word order. Begin by checking \"Ang kaarawan ko ay sa Marso.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Ang kaarawan ko ay sa Marso.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “My birthday is in March.”",
+      "korean": "karaniwang pagkakamali",
+      "english": "Watch for literal-translation mistakes around focus marking, affixes, particles, and word order. Begin by checking \"Ang kaarawan ko ay sa Marso.\" against the model.",
+      "example": "Ang kaarawan ko ay sa Marso.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “My birthday is in March.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-culture"
+      ],
+      "targetText": "antas ng pananalita",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for neutral Filipino, a respectful tone, or a more conversational mixed-register choice. Compare the social fit of \"May klase ako sa Lunes.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "May klase ako sa Lunes.",
+      "exampleNative": "“I have class on Monday.”",
+      "korean": "antas ng pananalita",
+      "english": "Check whether the setting calls for neutral Filipino, a respectful tone, or a more conversational mixed-register choice. Compare the social fit of \"May klase ako sa Lunes.\" before reusing it elsewhere.",
+      "example": "May klase ako sa Lunes.",
+      "exampleEnglish": "“I have class on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "daloy",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Filipino message rather than as separate translated fragments. Aim to carry \"Ano ang petsa ngayon?\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Ano ang petsa ngayon?",
+      "exampleNative": "“What is today’s date?”",
+      "korean": "daloy",
+      "english": "Say the idea as one connected Filipino message rather than as separate translated fragments. Aim to carry \"Ano ang petsa ngayon?\" as one thought.",
+      "example": "Ano ang petsa ngayon?",
+      "exampleEnglish": "“What is today’s date?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "paglalapat",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"May klase ako sa Lunes.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "May klase ako sa Lunes.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "paglalapat",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"May klase ako sa Lunes.\" and move it into your own life.",
+      "example": "May klase ako sa Lunes.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-grammar-1"
+      ],
+      "targetText": "paggunita",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"Lunes / Martes / Miyerkules\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "Lunes / Martes / Miyerkules",
+      "exampleNative": "Weekday names used in ordinary scheduling.",
+      "korean": "paggunita",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"Lunes / Martes / Miyerkules\" before looking back.",
+      "example": "Lunes / Martes / Miyerkules",
+      "exampleEnglish": "Weekday names used in ordinary scheduling."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-writing"
+      ],
+      "targetText": "pagpapalawak",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Ano ang petsa ngayon?\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Ano ang petsa ngayon?",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "pagpapalawak",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Ano ang petsa ngayon?\" rather than restarting from a blank sentence.",
+      "example": "Ano ang petsa ngayon?",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading"
+      ],
+      "targetText": "paghahambing",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 6: Petsa at Kalendaryo — Dates and the Calendar with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Ang kaarawan ko ay sa Marso.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Ang kaarawan ko ay sa Marso.",
+      "exampleNative": "“My birthday is in March.”",
+      "korean": "paghahambing",
+      "english": "Compare the central form in Level 1 · Unit 6: Petsa at Kalendaryo — Dates and the Calendar with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Ang kaarawan ko ay sa Marso.\" as the comparison line.",
+      "example": "Ang kaarawan ko ay sa Marso.",
+      "exampleEnglish": "“My birthday is in March.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "fil-level1unit06datescalendar-pronunciation"
+      ],
+      "targetText": "ayos-bigkas",
+      "romanization": "",
+      "nativeText": "Keep Filipino stress, glottal stops, borrowed-word rhythm, and affix boundaries clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"May klase ako sa Lunes.\".",
+      "pronunciation": "",
+      "exampleTarget": "May klase ako sa Lunes.",
+      "exampleNative": "“I have class on Monday.”",
+      "korean": "ayos-bigkas",
+      "english": "Keep Filipino stress, glottal stops, borrowed-word rhythm, and affix boundaries clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"May klase ako sa Lunes.\".",
+      "example": "May klase ako sa Lunes.",
+      "exampleEnglish": "“I have class on Monday.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "pagbabago ng usapan",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Ano ang petsa ngayon?\".",
+      "pronunciation": "",
+      "exampleTarget": "Ano ang petsa ngayon?",
+      "exampleNative": "“What is today’s date?”",
+      "korean": "pagbabago ng usapan",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Ano ang petsa ngayon?\".",
+      "example": "Ano ang petsa ngayon?",
+      "exampleEnglish": "“What is today’s date?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-writing"
+      ],
+      "targetText": "pagbuo ng pangungusap",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"May klase ako sa Lunes.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "May klase ako sa Lunes.",
+      "exampleNative": "“I have class on Monday.”",
+      "korean": "pagbuo ng pangungusap",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"May klase ako sa Lunes.\" one layer at a time.",
+      "example": "May klase ako sa Lunes.",
+      "exampleEnglish": "“I have class on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-2"
+      ],
+      "targetText": "mabilisang suri",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Ang kaarawan ko ay sa Marso.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Ang kaarawan ko ay sa Marso.",
+      "exampleNative": "“My birthday is in March.”",
+      "korean": "mabilisang suri",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Ang kaarawan ko ay sa Marso.\" as the deciding example.",
+      "example": "Ang kaarawan ko ay sa Marso.",
+      "exampleEnglish": "“My birthday is in March.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit06datescalendar-culture",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "pagmumuni",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Ano ang petsa ngayon?\".",
+      "pronunciation": "",
+      "exampleTarget": "Ano ang petsa ngayon?",
+      "exampleNative": "“What is today’s date?”",
+      "korean": "pagmumuni",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Ano ang petsa ngayon?\".",
+      "example": "Ano ang petsa ngayon?",
+      "exampleEnglish": "“What is today’s date?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "Lunes / Martes / Miyerkules",
+      "romanization": "lunes / martes / miyerkules",
+      "nativeText": "Weekday names used in ordinary scheduling.",
+      "pronunciation": "lunes / martes / miyerkules",
+      "exampleTarget": "May klase ako sa Lunes.",
+      "exampleNative": "“I have class on Monday.”",
+      "korean": "Lunes / Martes / Miyerkules",
+      "english": "Weekday names used in ordinary scheduling.",
+      "example": "May klase ako sa Lunes.",
+      "exampleEnglish": "“I have class on Monday.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "May klase ako sa Lunes.",
+      "romanization": "lunes / martes / miyerkules",
+      "nativeText": "Model use for \"May klase ako sa Lunes.\": “I have class on Monday.”",
+      "pronunciation": "lunes / martes / miyerkules",
+      "exampleTarget": "May klase ako sa Lunes.",
+      "exampleNative": "“I have class on Monday.”",
+      "korean": "May klase ako sa Lunes.",
+      "english": "Model use for \"May klase ako sa Lunes.\": “I have class on Monday.”",
+      "example": "May klase ako sa Lunes.",
+      "exampleEnglish": "“I have class on Monday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "Lunes / Martes / Miyerkules",
+      "romanization": "lunes / martes / miyerkules",
+      "nativeText": "Usage focus for \"Lunes / Martes / Miyerkules\": Use the key language of Level 1 · Unit 6: Petsa at Kalendaryo — Dates and the Calendar with the register and setting that the lesson requires.",
+      "pronunciation": "lunes / martes / miyerkules",
+      "exampleTarget": "May klase ako sa Lunes.",
+      "exampleNative": "Notice what the form is doing here: “I have class on Monday.”",
+      "korean": "Lunes / Martes / Miyerkules",
+      "english": "Usage focus for \"Lunes / Martes / Miyerkules\": Use the key language of Level 1 · Unit 6: Petsa at Kalendaryo — Dates and the Calendar with the register and setting that the lesson requires.",
+      "example": "May klase ako sa Lunes.",
+      "exampleEnglish": "Notice what the form is doing here: “I have class on Monday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "Lunes / Martes / Miyerkules",
+      "romanization": "lunes / martes / miyerkules",
+      "nativeText": "Contrast check for \"Lunes / Martes / Miyerkules\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "lunes / martes / miyerkules",
+      "exampleTarget": "May klase ako sa Lunes.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have class on Monday.”",
+      "korean": "Lunes / Martes / Miyerkules",
+      "english": "Contrast check for \"Lunes / Martes / Miyerkules\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "May klase ako sa Lunes.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have class on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "Lunes / Martes / Miyerkules",
+      "romanization": "lunes / martes / miyerkules",
+      "nativeText": "Recall \"Lunes / Martes / Miyerkules\" from memory, then explain what would change if a nearby alternative replaced it in \"May klase ako sa Lunes.\".",
+      "pronunciation": "lunes / martes / miyerkules",
+      "exampleTarget": "May klase ako sa Lunes.",
+      "exampleNative": "Self-check against the model before moving on: “I have class on Monday.”",
+      "korean": "Lunes / Martes / Miyerkules",
+      "english": "Recall \"Lunes / Martes / Miyerkules\" from memory, then explain what would change if a nearby alternative replaced it in \"May klase ako sa Lunes.\".",
+      "example": "May klase ako sa Lunes.",
+      "exampleEnglish": "Self-check against the model before moving on: “I have class on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "Lunes / Martes / Miyerkules",
+      "romanization": "lunes / martes / miyerkules",
+      "nativeText": "Repair \"Lunes / Martes / Miyerkules\" inside \"May klase ako sa Lunes.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 6: Petsa at Kalendaryo — Dates and the Calendar with the register and setting that the lesson requires.",
+      "pronunciation": "lunes / martes / miyerkules",
+      "exampleTarget": "May klase ako sa Lunes.",
+      "exampleNative": "Use the model as the repair target: “I have class on Monday.”",
+      "korean": "Lunes / Martes / Miyerkules",
+      "english": "Repair \"Lunes / Martes / Miyerkules\" inside \"May klase ako sa Lunes.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 6: Petsa at Kalendaryo — Dates and the Calendar with the register and setting that the lesson requires.",
+      "example": "May klase ako sa Lunes.",
+      "exampleEnglish": "Use the model as the repair target: “I have class on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "Lunes / Martes / Miyerkules",
+      "romanization": "lunes / martes / miyerkules",
+      "nativeText": "Transfer \"Lunes / Martes / Miyerkules\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"May klase ako sa Lunes.\".",
+      "pronunciation": "lunes / martes / miyerkules",
+      "exampleTarget": "May klase ako sa Lunes.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have class on Monday.”",
+      "korean": "Lunes / Martes / Miyerkules",
+      "english": "Transfer \"Lunes / Martes / Miyerkules\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"May klase ako sa Lunes.\".",
+      "example": "May klase ako sa Lunes.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have class on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "Lunes / Martes / Miyerkules",
+      "romanization": "lunes / martes / miyerkules",
+      "nativeText": "Find one word or phrase that naturally travels with \"Lunes / Martes / Miyerkules\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "lunes / martes / miyerkules",
+      "exampleTarget": "May klase ako sa Lunes.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I have class on Monday.”",
+      "korean": "Lunes / Martes / Miyerkules",
+      "english": "Find one word or phrase that naturally travels with \"Lunes / Martes / Miyerkules\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "May klase ako sa Lunes.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I have class on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "Lunes / Martes / Miyerkules",
+      "romanization": "lunes / martes / miyerkules",
+      "nativeText": "Listen for \"Lunes / Martes / Miyerkules\" inside \"May klase ako sa Lunes.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "lunes / martes / miyerkules",
+      "exampleTarget": "May klase ako sa Lunes.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have class on Monday.”",
+      "korean": "Lunes / Martes / Miyerkules",
+      "english": "Listen for \"Lunes / Martes / Miyerkules\" inside \"May klase ako sa Lunes.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "May klase ako sa Lunes.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have class on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "Lunes / Martes / Miyerkules",
+      "romanization": "lunes / martes / miyerkules",
+      "nativeText": "Write \"Lunes / Martes / Miyerkules\" again without looking, then compare the exact written form against \"May klase ako sa Lunes.\" before moving on.",
+      "pronunciation": "lunes / martes / miyerkules",
+      "exampleTarget": "May klase ako sa Lunes.",
+      "exampleNative": "Use the written model as the final correctness check: “I have class on Monday.”",
+      "korean": "Lunes / Martes / Miyerkules",
+      "english": "Write \"Lunes / Martes / Miyerkules\" again without looking, then compare the exact written form against \"May klase ako sa Lunes.\" before moving on.",
+      "example": "May klase ako sa Lunes.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I have class on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "Lunes / Martes / Miyerkules",
+      "romanization": "lunes / martes / miyerkules",
+      "nativeText": "Check whether \"Lunes / Martes / Miyerkules\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have class on Monday.”",
+      "pronunciation": "lunes / martes / miyerkules",
+      "exampleTarget": "May klase ako sa Lunes.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I have class on Monday.”",
+      "korean": "Lunes / Martes / Miyerkules",
+      "english": "Check whether \"Lunes / Martes / Miyerkules\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have class on Monday.”",
+      "example": "May klase ako sa Lunes.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I have class on Monday.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "Enero / Pebrero / Marso",
+      "romanization": "enero / pebrero / marso",
+      "nativeText": "Month names with familiar Spanish roots but Filipino spelling.",
+      "pronunciation": "enero / pebrero / marso",
+      "exampleTarget": "Ang kaarawan ko ay sa Marso.",
+      "exampleNative": "“My birthday is in March.”",
+      "korean": "Enero / Pebrero / Marso",
+      "english": "Month names with familiar Spanish roots but Filipino spelling.",
+      "example": "Ang kaarawan ko ay sa Marso.",
+      "exampleEnglish": "“My birthday is in March.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "Ang kaarawan ko ay sa Marso.",
+      "romanization": "enero / pebrero / marso",
+      "nativeText": "Model use for \"Ang kaarawan ko ay sa Marso.\": “My birthday is in March.”",
+      "pronunciation": "enero / pebrero / marso",
+      "exampleTarget": "Ang kaarawan ko ay sa Marso.",
+      "exampleNative": "“My birthday is in March.”",
+      "korean": "Ang kaarawan ko ay sa Marso.",
+      "english": "Model use for \"Ang kaarawan ko ay sa Marso.\": “My birthday is in March.”",
+      "example": "Ang kaarawan ko ay sa Marso.",
+      "exampleEnglish": "“My birthday is in March.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "Enero / Pebrero / Marso",
+      "romanization": "enero / pebrero / marso",
+      "nativeText": "Usage focus for \"Enero / Pebrero / Marso\": Distinguish the nearby wording choices that make Level 1 · Unit 6: Petsa at Kalendaryo — Dates and the Calendar sound precise rather than merely understandable.",
+      "pronunciation": "enero / pebrero / marso",
+      "exampleTarget": "Ang kaarawan ko ay sa Marso.",
+      "exampleNative": "Notice what the form is doing here: “My birthday is in March.”",
+      "korean": "Enero / Pebrero / Marso",
+      "english": "Usage focus for \"Enero / Pebrero / Marso\": Distinguish the nearby wording choices that make Level 1 · Unit 6: Petsa at Kalendaryo — Dates and the Calendar sound precise rather than merely understandable.",
+      "example": "Ang kaarawan ko ay sa Marso.",
+      "exampleEnglish": "Notice what the form is doing here: “My birthday is in March.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "Enero / Pebrero / Marso",
+      "romanization": "enero / pebrero / marso",
+      "nativeText": "Contrast check for \"Enero / Pebrero / Marso\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "enero / pebrero / marso",
+      "exampleTarget": "Ang kaarawan ko ay sa Marso.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My birthday is in March.”",
+      "korean": "Enero / Pebrero / Marso",
+      "english": "Contrast check for \"Enero / Pebrero / Marso\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ang kaarawan ko ay sa Marso.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My birthday is in March.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "Enero / Pebrero / Marso",
+      "romanization": "enero / pebrero / marso",
+      "nativeText": "Recall \"Enero / Pebrero / Marso\" from memory, then explain what would change if a nearby alternative replaced it in \"Ang kaarawan ko ay sa Marso.\".",
+      "pronunciation": "enero / pebrero / marso",
+      "exampleTarget": "Ang kaarawan ko ay sa Marso.",
+      "exampleNative": "Self-check against the model before moving on: “My birthday is in March.”",
+      "korean": "Enero / Pebrero / Marso",
+      "english": "Recall \"Enero / Pebrero / Marso\" from memory, then explain what would change if a nearby alternative replaced it in \"Ang kaarawan ko ay sa Marso.\".",
+      "example": "Ang kaarawan ko ay sa Marso.",
+      "exampleEnglish": "Self-check against the model before moving on: “My birthday is in March.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "Enero / Pebrero / Marso",
+      "romanization": "enero / pebrero / marso",
+      "nativeText": "Repair \"Enero / Pebrero / Marso\" inside \"Ang kaarawan ko ay sa Marso.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 6: Petsa at Kalendaryo — Dates and the Calendar sound precise rather than merely understandable.",
+      "pronunciation": "enero / pebrero / marso",
+      "exampleTarget": "Ang kaarawan ko ay sa Marso.",
+      "exampleNative": "Use the model as the repair target: “My birthday is in March.”",
+      "korean": "Enero / Pebrero / Marso",
+      "english": "Repair \"Enero / Pebrero / Marso\" inside \"Ang kaarawan ko ay sa Marso.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 6: Petsa at Kalendaryo — Dates and the Calendar sound precise rather than merely understandable.",
+      "example": "Ang kaarawan ko ay sa Marso.",
+      "exampleEnglish": "Use the model as the repair target: “My birthday is in March.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "Enero / Pebrero / Marso",
+      "romanization": "enero / pebrero / marso",
+      "nativeText": "Transfer \"Enero / Pebrero / Marso\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ang kaarawan ko ay sa Marso.\".",
+      "pronunciation": "enero / pebrero / marso",
+      "exampleTarget": "Ang kaarawan ko ay sa Marso.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “My birthday is in March.”",
+      "korean": "Enero / Pebrero / Marso",
+      "english": "Transfer \"Enero / Pebrero / Marso\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ang kaarawan ko ay sa Marso.\".",
+      "example": "Ang kaarawan ko ay sa Marso.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “My birthday is in March.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "Enero / Pebrero / Marso",
+      "romanization": "enero / pebrero / marso",
+      "nativeText": "Find one word or phrase that naturally travels with \"Enero / Pebrero / Marso\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "enero / pebrero / marso",
+      "exampleTarget": "Ang kaarawan ko ay sa Marso.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “My birthday is in March.”",
+      "korean": "Enero / Pebrero / Marso",
+      "english": "Find one word or phrase that naturally travels with \"Enero / Pebrero / Marso\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ang kaarawan ko ay sa Marso.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “My birthday is in March.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "Enero / Pebrero / Marso",
+      "romanization": "enero / pebrero / marso",
+      "nativeText": "Listen for \"Enero / Pebrero / Marso\" inside \"Ang kaarawan ko ay sa Marso.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "enero / pebrero / marso",
+      "exampleTarget": "Ang kaarawan ko ay sa Marso.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My birthday is in March.”",
+      "korean": "Enero / Pebrero / Marso",
+      "english": "Listen for \"Enero / Pebrero / Marso\" inside \"Ang kaarawan ko ay sa Marso.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ang kaarawan ko ay sa Marso.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My birthday is in March.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "Enero / Pebrero / Marso",
+      "romanization": "enero / pebrero / marso",
+      "nativeText": "Write \"Enero / Pebrero / Marso\" again without looking, then compare the exact written form against \"Ang kaarawan ko ay sa Marso.\" before moving on.",
+      "pronunciation": "enero / pebrero / marso",
+      "exampleTarget": "Ang kaarawan ko ay sa Marso.",
+      "exampleNative": "Use the written model as the final correctness check: “My birthday is in March.”",
+      "korean": "Enero / Pebrero / Marso",
+      "english": "Write \"Enero / Pebrero / Marso\" again without looking, then compare the exact written form against \"Ang kaarawan ko ay sa Marso.\" before moving on.",
+      "example": "Ang kaarawan ko ay sa Marso.",
+      "exampleEnglish": "Use the written model as the final correctness check: “My birthday is in March.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "Enero / Pebrero / Marso",
+      "romanization": "enero / pebrero / marso",
+      "nativeText": "Check whether \"Enero / Pebrero / Marso\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My birthday is in March.”",
+      "pronunciation": "enero / pebrero / marso",
+      "exampleTarget": "Ang kaarawan ko ay sa Marso.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “My birthday is in March.”",
+      "korean": "Enero / Pebrero / Marso",
+      "english": "Check whether \"Enero / Pebrero / Marso\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My birthday is in March.”",
+      "example": "Ang kaarawan ko ay sa Marso.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “My birthday is in March.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "ika-lima",
+      "romanization": "ika-lima",
+      "nativeText": "“Fifth.” `ika-` forms ordinals in a very visible way.",
+      "pronunciation": "ika-lima",
+      "exampleTarget": "Ngayon ay ika-lima ng Mayo.",
+      "exampleNative": "“Today is the fifth of May.”",
+      "korean": "ika-lima",
+      "english": "“Fifth.” `ika-` forms ordinals in a very visible way.",
+      "example": "Ngayon ay ika-lima ng Mayo.",
+      "exampleEnglish": "“Today is the fifth of May.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "Ngayon ay ika-lima ng Mayo.",
+      "romanization": "ika-lima",
+      "nativeText": "Model use for \"Ngayon ay ika-lima ng Mayo.\": “Today is the fifth of May.”",
+      "pronunciation": "ika-lima",
+      "exampleTarget": "Ngayon ay ika-lima ng Mayo.",
+      "exampleNative": "“Today is the fifth of May.”",
+      "korean": "Ngayon ay ika-lima ng Mayo.",
+      "english": "Model use for \"Ngayon ay ika-lima ng Mayo.\": “Today is the fifth of May.”",
+      "example": "Ngayon ay ika-lima ng Mayo.",
+      "exampleEnglish": "“Today is the fifth of May.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "ika-lima",
+      "romanization": "ika-lima",
+      "nativeText": "Usage focus for \"ika-lima\": “Fifth.” `ika-` forms ordinals in a very visible way.",
+      "pronunciation": "ika-lima",
+      "exampleTarget": "Ngayon ay ika-lima ng Mayo.",
+      "exampleNative": "Notice what the form is doing here: “Today is the fifth of May.”",
+      "korean": "ika-lima",
+      "english": "Usage focus for \"ika-lima\": “Fifth.” `ika-` forms ordinals in a very visible way.",
+      "example": "Ngayon ay ika-lima ng Mayo.",
+      "exampleEnglish": "Notice what the form is doing here: “Today is the fifth of May.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "ika-lima",
+      "romanization": "ika-lima",
+      "nativeText": "Contrast check for \"ika-lima\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ika-lima",
+      "exampleTarget": "Ngayon ay ika-lima ng Mayo.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Today is the fifth of May.”",
+      "korean": "ika-lima",
+      "english": "Contrast check for \"ika-lima\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ngayon ay ika-lima ng Mayo.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Today is the fifth of May.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "ika-lima",
+      "romanization": "ika-lima",
+      "nativeText": "Recall \"ika-lima\" from memory, then explain what would change if a nearby alternative replaced it in \"Ngayon ay ika-lima ng Mayo.\".",
+      "pronunciation": "ika-lima",
+      "exampleTarget": "Ngayon ay ika-lima ng Mayo.",
+      "exampleNative": "Self-check against the model before moving on: “Today is the fifth of May.”",
+      "korean": "ika-lima",
+      "english": "Recall \"ika-lima\" from memory, then explain what would change if a nearby alternative replaced it in \"Ngayon ay ika-lima ng Mayo.\".",
+      "example": "Ngayon ay ika-lima ng Mayo.",
+      "exampleEnglish": "Self-check against the model before moving on: “Today is the fifth of May.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "ika-lima",
+      "romanization": "ika-lima",
+      "nativeText": "Repair \"ika-lima\" inside \"Ngayon ay ika-lima ng Mayo.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Fifth.” `ika-` forms ordinals in a very visible way.",
+      "pronunciation": "ika-lima",
+      "exampleTarget": "Ngayon ay ika-lima ng Mayo.",
+      "exampleNative": "Use the model as the repair target: “Today is the fifth of May.”",
+      "korean": "ika-lima",
+      "english": "Repair \"ika-lima\" inside \"Ngayon ay ika-lima ng Mayo.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Fifth.” `ika-` forms ordinals in a very visible way.",
+      "example": "Ngayon ay ika-lima ng Mayo.",
+      "exampleEnglish": "Use the model as the repair target: “Today is the fifth of May.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "ika-lima",
+      "romanization": "ika-lima",
+      "nativeText": "Transfer \"ika-lima\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ngayon ay ika-lima ng Mayo.\".",
+      "pronunciation": "ika-lima",
+      "exampleTarget": "Ngayon ay ika-lima ng Mayo.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Today is the fifth of May.”",
+      "korean": "ika-lima",
+      "english": "Transfer \"ika-lima\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ngayon ay ika-lima ng Mayo.\".",
+      "example": "Ngayon ay ika-lima ng Mayo.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Today is the fifth of May.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "ika-lima",
+      "romanization": "ika-lima",
+      "nativeText": "Find one word or phrase that naturally travels with \"ika-lima\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ika-lima",
+      "exampleTarget": "Ngayon ay ika-lima ng Mayo.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Today is the fifth of May.”",
+      "korean": "ika-lima",
+      "english": "Find one word or phrase that naturally travels with \"ika-lima\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ngayon ay ika-lima ng Mayo.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Today is the fifth of May.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "ika-lima",
+      "romanization": "ika-lima",
+      "nativeText": "Listen for \"ika-lima\" inside \"Ngayon ay ika-lima ng Mayo.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ika-lima",
+      "exampleTarget": "Ngayon ay ika-lima ng Mayo.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Today is the fifth of May.”",
+      "korean": "ika-lima",
+      "english": "Listen for \"ika-lima\" inside \"Ngayon ay ika-lima ng Mayo.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ngayon ay ika-lima ng Mayo.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Today is the fifth of May.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "ika-lima",
+      "romanization": "ika-lima",
+      "nativeText": "Write \"ika-lima\" again without looking, then compare the exact written form against \"Ngayon ay ika-lima ng Mayo.\" before moving on.",
+      "pronunciation": "ika-lima",
+      "exampleTarget": "Ngayon ay ika-lima ng Mayo.",
+      "exampleNative": "Use the written model as the final correctness check: “Today is the fifth of May.”",
+      "korean": "ika-lima",
+      "english": "Write \"ika-lima\" again without looking, then compare the exact written form against \"Ngayon ay ika-lima ng Mayo.\" before moving on.",
+      "example": "Ngayon ay ika-lima ng Mayo.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Today is the fifth of May.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "ika-lima",
+      "romanization": "ika-lima",
+      "nativeText": "Check whether \"ika-lima\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Today is the fifth of May.”",
+      "pronunciation": "ika-lima",
+      "exampleTarget": "Ngayon ay ika-lima ng Mayo.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Today is the fifth of May.”",
+      "korean": "ika-lima",
+      "english": "Check whether \"ika-lima\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Today is the fifth of May.”",
+      "example": "Ngayon ay ika-lima ng Mayo.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Today is the fifth of May.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "Kailan?",
+      "romanization": "kailan?",
+      "nativeText": "“When?”",
+      "pronunciation": "kailan?",
+      "exampleTarget": "Kailan ang pulong?",
+      "exampleNative": "“When is the meeting?”",
+      "korean": "Kailan?",
+      "english": "“When?”",
+      "example": "Kailan ang pulong?",
+      "exampleEnglish": "“When is the meeting?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "Kailan ang pulong?",
+      "romanization": "kailan?",
+      "nativeText": "Model use for \"Kailan ang pulong?\": “When is the meeting?”",
+      "pronunciation": "kailan?",
+      "exampleTarget": "Kailan ang pulong?",
+      "exampleNative": "“When is the meeting?”",
+      "korean": "Kailan ang pulong?",
+      "english": "Model use for \"Kailan ang pulong?\": “When is the meeting?”",
+      "example": "Kailan ang pulong?",
+      "exampleEnglish": "“When is the meeting?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "Kailan?",
+      "romanization": "kailan?",
+      "nativeText": "Usage focus for \"Kailan?\": “When?”",
+      "pronunciation": "kailan?",
+      "exampleTarget": "Kailan ang pulong?",
+      "exampleNative": "Notice what the form is doing here: “When is the meeting?”",
+      "korean": "Kailan?",
+      "english": "Usage focus for \"Kailan?\": “When?”",
+      "example": "Kailan ang pulong?",
+      "exampleEnglish": "Notice what the form is doing here: “When is the meeting?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "Kailan?",
+      "romanization": "kailan?",
+      "nativeText": "Contrast check for \"Kailan?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kailan?",
+      "exampleTarget": "Kailan ang pulong?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “When is the meeting?”",
+      "korean": "Kailan?",
+      "english": "Contrast check for \"Kailan?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Kailan ang pulong?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “When is the meeting?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "Kailan?",
+      "romanization": "kailan?",
+      "nativeText": "Recall \"Kailan?\" from memory, then explain what would change if a nearby alternative replaced it in \"Kailan ang pulong?\".",
+      "pronunciation": "kailan?",
+      "exampleTarget": "Kailan ang pulong?",
+      "exampleNative": "Self-check against the model before moving on: “When is the meeting?”",
+      "korean": "Kailan?",
+      "english": "Recall \"Kailan?\" from memory, then explain what would change if a nearby alternative replaced it in \"Kailan ang pulong?\".",
+      "example": "Kailan ang pulong?",
+      "exampleEnglish": "Self-check against the model before moving on: “When is the meeting?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "Kailan?",
+      "romanization": "kailan?",
+      "nativeText": "Repair \"Kailan?\" inside \"Kailan ang pulong?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “When?”",
+      "pronunciation": "kailan?",
+      "exampleTarget": "Kailan ang pulong?",
+      "exampleNative": "Use the model as the repair target: “When is the meeting?”",
+      "korean": "Kailan?",
+      "english": "Repair \"Kailan?\" inside \"Kailan ang pulong?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “When?”",
+      "example": "Kailan ang pulong?",
+      "exampleEnglish": "Use the model as the repair target: “When is the meeting?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "Kailan?",
+      "romanization": "kailan?",
+      "nativeText": "Transfer \"Kailan?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Kailan ang pulong?\".",
+      "pronunciation": "kailan?",
+      "exampleTarget": "Kailan ang pulong?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “When is the meeting?”",
+      "korean": "Kailan?",
+      "english": "Transfer \"Kailan?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Kailan ang pulong?\".",
+      "example": "Kailan ang pulong?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “When is the meeting?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "Kailan?",
+      "romanization": "kailan?",
+      "nativeText": "Find one word or phrase that naturally travels with \"Kailan?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kailan?",
+      "exampleTarget": "Kailan ang pulong?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “When is the meeting?”",
+      "korean": "Kailan?",
+      "english": "Find one word or phrase that naturally travels with \"Kailan?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Kailan ang pulong?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “When is the meeting?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "Kailan?",
+      "romanization": "kailan?",
+      "nativeText": "Listen for \"Kailan?\" inside \"Kailan ang pulong?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kailan?",
+      "exampleTarget": "Kailan ang pulong?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “When is the meeting?”",
+      "korean": "Kailan?",
+      "english": "Listen for \"Kailan?\" inside \"Kailan ang pulong?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Kailan ang pulong?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “When is the meeting?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "Kailan?",
+      "romanization": "kailan?",
+      "nativeText": "Write \"Kailan?\" again without looking, then compare the exact written form against \"Kailan ang pulong?\" before moving on.",
+      "pronunciation": "kailan?",
+      "exampleTarget": "Kailan ang pulong?",
+      "exampleNative": "Use the written model as the final correctness check: “When is the meeting?”",
+      "korean": "Kailan?",
+      "english": "Write \"Kailan?\" again without looking, then compare the exact written form against \"Kailan ang pulong?\" before moving on.",
+      "example": "Kailan ang pulong?",
+      "exampleEnglish": "Use the written model as the final correctness check: “When is the meeting?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "Kailan?",
+      "romanization": "kailan?",
+      "nativeText": "Check whether \"Kailan?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “When is the meeting?”",
+      "pronunciation": "kailan?",
+      "exampleTarget": "Kailan ang pulong?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “When is the meeting?”",
+      "korean": "Kailan?",
+      "english": "Check whether \"Kailan?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “When is the meeting?”",
+      "example": "Kailan ang pulong?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “When is the meeting?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "kaarawan",
+      "romanization": "kaarawan",
+      "nativeText": "“Birthday.”",
+      "pronunciation": "kaarawan",
+      "exampleTarget": "Kailan ang kaarawan mo?",
+      "exampleNative": "“When is your birthday?”",
+      "korean": "kaarawan",
+      "english": "“Birthday.”",
+      "example": "Kailan ang kaarawan mo?",
+      "exampleEnglish": "“When is your birthday?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "Kailan ang kaarawan mo?",
+      "romanization": "kaarawan",
+      "nativeText": "Model use for \"Kailan ang kaarawan mo?\": “When is your birthday?”",
+      "pronunciation": "kaarawan",
+      "exampleTarget": "Kailan ang kaarawan mo?",
+      "exampleNative": "“When is your birthday?”",
+      "korean": "Kailan ang kaarawan mo?",
+      "english": "Model use for \"Kailan ang kaarawan mo?\": “When is your birthday?”",
+      "example": "Kailan ang kaarawan mo?",
+      "exampleEnglish": "“When is your birthday?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "kaarawan",
+      "romanization": "kaarawan",
+      "nativeText": "Usage focus for \"kaarawan\": “Birthday.”",
+      "pronunciation": "kaarawan",
+      "exampleTarget": "Kailan ang kaarawan mo?",
+      "exampleNative": "Notice what the form is doing here: “When is your birthday?”",
+      "korean": "kaarawan",
+      "english": "Usage focus for \"kaarawan\": “Birthday.”",
+      "example": "Kailan ang kaarawan mo?",
+      "exampleEnglish": "Notice what the form is doing here: “When is your birthday?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "kaarawan",
+      "romanization": "kaarawan",
+      "nativeText": "Contrast check for \"kaarawan\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kaarawan",
+      "exampleTarget": "Kailan ang kaarawan mo?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “When is your birthday?”",
+      "korean": "kaarawan",
+      "english": "Contrast check for \"kaarawan\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Kailan ang kaarawan mo?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “When is your birthday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "kaarawan",
+      "romanization": "kaarawan",
+      "nativeText": "Recall \"kaarawan\" from memory, then explain what would change if a nearby alternative replaced it in \"Kailan ang kaarawan mo?\".",
+      "pronunciation": "kaarawan",
+      "exampleTarget": "Kailan ang kaarawan mo?",
+      "exampleNative": "Self-check against the model before moving on: “When is your birthday?”",
+      "korean": "kaarawan",
+      "english": "Recall \"kaarawan\" from memory, then explain what would change if a nearby alternative replaced it in \"Kailan ang kaarawan mo?\".",
+      "example": "Kailan ang kaarawan mo?",
+      "exampleEnglish": "Self-check against the model before moving on: “When is your birthday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "kaarawan",
+      "romanization": "kaarawan",
+      "nativeText": "Repair \"kaarawan\" inside \"Kailan ang kaarawan mo?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Birthday.”",
+      "pronunciation": "kaarawan",
+      "exampleTarget": "Kailan ang kaarawan mo?",
+      "exampleNative": "Use the model as the repair target: “When is your birthday?”",
+      "korean": "kaarawan",
+      "english": "Repair \"kaarawan\" inside \"Kailan ang kaarawan mo?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Birthday.”",
+      "example": "Kailan ang kaarawan mo?",
+      "exampleEnglish": "Use the model as the repair target: “When is your birthday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "kaarawan",
+      "romanization": "kaarawan",
+      "nativeText": "Transfer \"kaarawan\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Kailan ang kaarawan mo?\".",
+      "pronunciation": "kaarawan",
+      "exampleTarget": "Kailan ang kaarawan mo?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “When is your birthday?”",
+      "korean": "kaarawan",
+      "english": "Transfer \"kaarawan\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Kailan ang kaarawan mo?\".",
+      "example": "Kailan ang kaarawan mo?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “When is your birthday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "kaarawan",
+      "romanization": "kaarawan",
+      "nativeText": "Find one word or phrase that naturally travels with \"kaarawan\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kaarawan",
+      "exampleTarget": "Kailan ang kaarawan mo?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “When is your birthday?”",
+      "korean": "kaarawan",
+      "english": "Find one word or phrase that naturally travels with \"kaarawan\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Kailan ang kaarawan mo?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “When is your birthday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "kaarawan",
+      "romanization": "kaarawan",
+      "nativeText": "Listen for \"kaarawan\" inside \"Kailan ang kaarawan mo?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kaarawan",
+      "exampleTarget": "Kailan ang kaarawan mo?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “When is your birthday?”",
+      "korean": "kaarawan",
+      "english": "Listen for \"kaarawan\" inside \"Kailan ang kaarawan mo?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Kailan ang kaarawan mo?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “When is your birthday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "kaarawan",
+      "romanization": "kaarawan",
+      "nativeText": "Write \"kaarawan\" again without looking, then compare the exact written form against \"Kailan ang kaarawan mo?\" before moving on.",
+      "pronunciation": "kaarawan",
+      "exampleTarget": "Kailan ang kaarawan mo?",
+      "exampleNative": "Use the written model as the final correctness check: “When is your birthday?”",
+      "korean": "kaarawan",
+      "english": "Write \"kaarawan\" again without looking, then compare the exact written form against \"Kailan ang kaarawan mo?\" before moving on.",
+      "example": "Kailan ang kaarawan mo?",
+      "exampleEnglish": "Use the written model as the final correctness check: “When is your birthday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "kaarawan",
+      "romanization": "kaarawan",
+      "nativeText": "Check whether \"kaarawan\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “When is your birthday?”",
+      "pronunciation": "kaarawan",
+      "exampleTarget": "Kailan ang kaarawan mo?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “When is your birthday?”",
+      "korean": "kaarawan",
+      "english": "Check whether \"kaarawan\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “When is your birthday?”",
+      "example": "Kailan ang kaarawan mo?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “When is your birthday?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "sa susunod na linggo",
+      "romanization": "sa susunod na linggo",
+      "nativeText": "“Next week.”",
+      "pronunciation": "sa susunod na linggo",
+      "exampleTarget": "May pagsusulit sa susunod na linggo.",
+      "exampleNative": "“There is a test next week.”",
+      "korean": "sa susunod na linggo",
+      "english": "“Next week.”",
+      "example": "May pagsusulit sa susunod na linggo.",
+      "exampleEnglish": "“There is a test next week.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "May pagsusulit sa susunod na linggo.",
+      "romanization": "sa susunod na linggo",
+      "nativeText": "Model use for \"May pagsusulit sa susunod na linggo.\": “There is a test next week.”",
+      "pronunciation": "sa susunod na linggo",
+      "exampleTarget": "May pagsusulit sa susunod na linggo.",
+      "exampleNative": "“There is a test next week.”",
+      "korean": "May pagsusulit sa susunod na linggo.",
+      "english": "Model use for \"May pagsusulit sa susunod na linggo.\": “There is a test next week.”",
+      "example": "May pagsusulit sa susunod na linggo.",
+      "exampleEnglish": "“There is a test next week.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "sa susunod na linggo",
+      "romanization": "sa susunod na linggo",
+      "nativeText": "Usage focus for \"sa susunod na linggo\": “Next week.”",
+      "pronunciation": "sa susunod na linggo",
+      "exampleTarget": "May pagsusulit sa susunod na linggo.",
+      "exampleNative": "Notice what the form is doing here: “There is a test next week.”",
+      "korean": "sa susunod na linggo",
+      "english": "Usage focus for \"sa susunod na linggo\": “Next week.”",
+      "example": "May pagsusulit sa susunod na linggo.",
+      "exampleEnglish": "Notice what the form is doing here: “There is a test next week.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "sa susunod na linggo",
+      "romanization": "sa susunod na linggo",
+      "nativeText": "Contrast check for \"sa susunod na linggo\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "sa susunod na linggo",
+      "exampleTarget": "May pagsusulit sa susunod na linggo.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “There is a test next week.”",
+      "korean": "sa susunod na linggo",
+      "english": "Contrast check for \"sa susunod na linggo\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "May pagsusulit sa susunod na linggo.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “There is a test next week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "sa susunod na linggo",
+      "romanization": "sa susunod na linggo",
+      "nativeText": "Recall \"sa susunod na linggo\" from memory, then explain what would change if a nearby alternative replaced it in \"May pagsusulit sa susunod na linggo.\".",
+      "pronunciation": "sa susunod na linggo",
+      "exampleTarget": "May pagsusulit sa susunod na linggo.",
+      "exampleNative": "Self-check against the model before moving on: “There is a test next week.”",
+      "korean": "sa susunod na linggo",
+      "english": "Recall \"sa susunod na linggo\" from memory, then explain what would change if a nearby alternative replaced it in \"May pagsusulit sa susunod na linggo.\".",
+      "example": "May pagsusulit sa susunod na linggo.",
+      "exampleEnglish": "Self-check against the model before moving on: “There is a test next week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "sa susunod na linggo",
+      "romanization": "sa susunod na linggo",
+      "nativeText": "Repair \"sa susunod na linggo\" inside \"May pagsusulit sa susunod na linggo.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Next week.”",
+      "pronunciation": "sa susunod na linggo",
+      "exampleTarget": "May pagsusulit sa susunod na linggo.",
+      "exampleNative": "Use the model as the repair target: “There is a test next week.”",
+      "korean": "sa susunod na linggo",
+      "english": "Repair \"sa susunod na linggo\" inside \"May pagsusulit sa susunod na linggo.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Next week.”",
+      "example": "May pagsusulit sa susunod na linggo.",
+      "exampleEnglish": "Use the model as the repair target: “There is a test next week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "sa susunod na linggo",
+      "romanization": "sa susunod na linggo",
+      "nativeText": "Transfer \"sa susunod na linggo\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"May pagsusulit sa susunod na linggo.\".",
+      "pronunciation": "sa susunod na linggo",
+      "exampleTarget": "May pagsusulit sa susunod na linggo.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “There is a test next week.”",
+      "korean": "sa susunod na linggo",
+      "english": "Transfer \"sa susunod na linggo\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"May pagsusulit sa susunod na linggo.\".",
+      "example": "May pagsusulit sa susunod na linggo.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “There is a test next week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "sa susunod na linggo",
+      "romanization": "sa susunod na linggo",
+      "nativeText": "Find one word or phrase that naturally travels with \"sa susunod na linggo\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "sa susunod na linggo",
+      "exampleTarget": "May pagsusulit sa susunod na linggo.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “There is a test next week.”",
+      "korean": "sa susunod na linggo",
+      "english": "Find one word or phrase that naturally travels with \"sa susunod na linggo\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "May pagsusulit sa susunod na linggo.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “There is a test next week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "sa susunod na linggo",
+      "romanization": "sa susunod na linggo",
+      "nativeText": "Listen for \"sa susunod na linggo\" inside \"May pagsusulit sa susunod na linggo.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "sa susunod na linggo",
+      "exampleTarget": "May pagsusulit sa susunod na linggo.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “There is a test next week.”",
+      "korean": "sa susunod na linggo",
+      "english": "Listen for \"sa susunod na linggo\" inside \"May pagsusulit sa susunod na linggo.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "May pagsusulit sa susunod na linggo.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “There is a test next week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "sa susunod na linggo",
+      "romanization": "sa susunod na linggo",
+      "nativeText": "Write \"sa susunod na linggo\" again without looking, then compare the exact written form against \"May pagsusulit sa susunod na linggo.\" before moving on.",
+      "pronunciation": "sa susunod na linggo",
+      "exampleTarget": "May pagsusulit sa susunod na linggo.",
+      "exampleNative": "Use the written model as the final correctness check: “There is a test next week.”",
+      "korean": "sa susunod na linggo",
+      "english": "Write \"sa susunod na linggo\" again without looking, then compare the exact written form against \"May pagsusulit sa susunod na linggo.\" before moving on.",
+      "example": "May pagsusulit sa susunod na linggo.",
+      "exampleEnglish": "Use the written model as the final correctness check: “There is a test next week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "sa susunod na linggo",
+      "romanization": "sa susunod na linggo",
+      "nativeText": "Check whether \"sa susunod na linggo\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “There is a test next week.”",
+      "pronunciation": "sa susunod na linggo",
+      "exampleTarget": "May pagsusulit sa susunod na linggo.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “There is a test next week.”",
+      "korean": "sa susunod na linggo",
+      "english": "Check whether \"sa susunod na linggo\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “There is a test next week.”",
+      "example": "May pagsusulit sa susunod na linggo.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “There is a test next week.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "araw",
+      "romanization": "araw",
+      "nativeText": "“Day” and also “sun,” a useful polysemous word.",
+      "pronunciation": "araw",
+      "exampleTarget": "Anong araw ngayon?",
+      "exampleNative": "“What day is it today?”",
+      "korean": "araw",
+      "english": "“Day” and also “sun,” a useful polysemous word.",
+      "example": "Anong araw ngayon?",
+      "exampleEnglish": "“What day is it today?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "Anong araw ngayon?",
+      "romanization": "araw",
+      "nativeText": "Model use for \"Anong araw ngayon?\": “What day is it today?”",
+      "pronunciation": "araw",
+      "exampleTarget": "Anong araw ngayon?",
+      "exampleNative": "“What day is it today?”",
+      "korean": "Anong araw ngayon?",
+      "english": "Model use for \"Anong araw ngayon?\": “What day is it today?”",
+      "example": "Anong araw ngayon?",
+      "exampleEnglish": "“What day is it today?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "araw",
+      "romanization": "araw",
+      "nativeText": "Usage focus for \"araw\": “Day” and also “sun,” a useful polysemous word.",
+      "pronunciation": "araw",
+      "exampleTarget": "Anong araw ngayon?",
+      "exampleNative": "Notice what the form is doing here: “What day is it today?”",
+      "korean": "araw",
+      "english": "Usage focus for \"araw\": “Day” and also “sun,” a useful polysemous word.",
+      "example": "Anong araw ngayon?",
+      "exampleEnglish": "Notice what the form is doing here: “What day is it today?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "araw",
+      "romanization": "araw",
+      "nativeText": "Contrast check for \"araw\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "araw",
+      "exampleTarget": "Anong araw ngayon?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What day is it today?”",
+      "korean": "araw",
+      "english": "Contrast check for \"araw\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Anong araw ngayon?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What day is it today?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "araw",
+      "romanization": "araw",
+      "nativeText": "Recall \"araw\" from memory, then explain what would change if a nearby alternative replaced it in \"Anong araw ngayon?\".",
+      "pronunciation": "araw",
+      "exampleTarget": "Anong araw ngayon?",
+      "exampleNative": "Self-check against the model before moving on: “What day is it today?”",
+      "korean": "araw",
+      "english": "Recall \"araw\" from memory, then explain what would change if a nearby alternative replaced it in \"Anong araw ngayon?\".",
+      "example": "Anong araw ngayon?",
+      "exampleEnglish": "Self-check against the model before moving on: “What day is it today?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "araw",
+      "romanization": "araw",
+      "nativeText": "Repair \"araw\" inside \"Anong araw ngayon?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Day” and also “sun,” a useful polysemous word.",
+      "pronunciation": "araw",
+      "exampleTarget": "Anong araw ngayon?",
+      "exampleNative": "Use the model as the repair target: “What day is it today?”",
+      "korean": "araw",
+      "english": "Repair \"araw\" inside \"Anong araw ngayon?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Day” and also “sun,” a useful polysemous word.",
+      "example": "Anong araw ngayon?",
+      "exampleEnglish": "Use the model as the repair target: “What day is it today?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "araw",
+      "romanization": "araw",
+      "nativeText": "Transfer \"araw\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Anong araw ngayon?\".",
+      "pronunciation": "araw",
+      "exampleTarget": "Anong araw ngayon?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “What day is it today?”",
+      "korean": "araw",
+      "english": "Transfer \"araw\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Anong araw ngayon?\".",
+      "example": "Anong araw ngayon?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “What day is it today?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "araw",
+      "romanization": "araw",
+      "nativeText": "Find one word or phrase that naturally travels with \"araw\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "araw",
+      "exampleTarget": "Anong araw ngayon?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “What day is it today?”",
+      "korean": "araw",
+      "english": "Find one word or phrase that naturally travels with \"araw\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Anong araw ngayon?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “What day is it today?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "araw",
+      "romanization": "araw",
+      "nativeText": "Listen for \"araw\" inside \"Anong araw ngayon?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "araw",
+      "exampleTarget": "Anong araw ngayon?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What day is it today?”",
+      "korean": "araw",
+      "english": "Listen for \"araw\" inside \"Anong araw ngayon?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Anong araw ngayon?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What day is it today?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "araw",
+      "romanization": "araw",
+      "nativeText": "Write \"araw\" again without looking, then compare the exact written form against \"Anong araw ngayon?\" before moving on.",
+      "pronunciation": "araw",
+      "exampleTarget": "Anong araw ngayon?",
+      "exampleNative": "Use the written model as the final correctness check: “What day is it today?”",
+      "korean": "araw",
+      "english": "Write \"araw\" again without looking, then compare the exact written form against \"Anong araw ngayon?\" before moving on.",
+      "example": "Anong araw ngayon?",
+      "exampleEnglish": "Use the written model as the final correctness check: “What day is it today?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "araw",
+      "romanization": "araw",
+      "nativeText": "Check whether \"araw\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What day is it today?”",
+      "pronunciation": "araw",
+      "exampleTarget": "Anong araw ngayon?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “What day is it today?”",
+      "korean": "araw",
+      "english": "Check whether \"araw\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What day is it today?”",
+      "example": "Anong araw ngayon?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “What day is it today?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "petsa",
+      "romanization": "petsa",
+      "nativeText": "“Date.”",
+      "pronunciation": "petsa",
+      "exampleTarget": "Ano ang petsa ngayon?",
+      "exampleNative": "“What is today’s date?”",
+      "korean": "petsa",
+      "english": "“Date.”",
+      "example": "Ano ang petsa ngayon?",
+      "exampleEnglish": "“What is today’s date?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "Ano ang petsa ngayon?",
+      "romanization": "petsa",
+      "nativeText": "Model use for \"Ano ang petsa ngayon?\": “What is today’s date?”",
+      "pronunciation": "petsa",
+      "exampleTarget": "Ano ang petsa ngayon?",
+      "exampleNative": "“What is today’s date?”",
+      "korean": "Ano ang petsa ngayon?",
+      "english": "Model use for \"Ano ang petsa ngayon?\": “What is today’s date?”",
+      "example": "Ano ang petsa ngayon?",
+      "exampleEnglish": "“What is today’s date?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "petsa",
+      "romanization": "petsa",
+      "nativeText": "Usage focus for \"petsa\": “Date.”",
+      "pronunciation": "petsa",
+      "exampleTarget": "Ano ang petsa ngayon?",
+      "exampleNative": "Notice what the form is doing here: “What is today’s date?”",
+      "korean": "petsa",
+      "english": "Usage focus for \"petsa\": “Date.”",
+      "example": "Ano ang petsa ngayon?",
+      "exampleEnglish": "Notice what the form is doing here: “What is today’s date?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "petsa",
+      "romanization": "petsa",
+      "nativeText": "Contrast check for \"petsa\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "petsa",
+      "exampleTarget": "Ano ang petsa ngayon?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What is today’s date?”",
+      "korean": "petsa",
+      "english": "Contrast check for \"petsa\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ano ang petsa ngayon?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What is today’s date?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "petsa",
+      "romanization": "petsa",
+      "nativeText": "Recall \"petsa\" from memory, then explain what would change if a nearby alternative replaced it in \"Ano ang petsa ngayon?\".",
+      "pronunciation": "petsa",
+      "exampleTarget": "Ano ang petsa ngayon?",
+      "exampleNative": "Self-check against the model before moving on: “What is today’s date?”",
+      "korean": "petsa",
+      "english": "Recall \"petsa\" from memory, then explain what would change if a nearby alternative replaced it in \"Ano ang petsa ngayon?\".",
+      "example": "Ano ang petsa ngayon?",
+      "exampleEnglish": "Self-check against the model before moving on: “What is today’s date?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "petsa",
+      "romanization": "petsa",
+      "nativeText": "Repair \"petsa\" inside \"Ano ang petsa ngayon?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Date.”",
+      "pronunciation": "petsa",
+      "exampleTarget": "Ano ang petsa ngayon?",
+      "exampleNative": "Use the model as the repair target: “What is today’s date?”",
+      "korean": "petsa",
+      "english": "Repair \"petsa\" inside \"Ano ang petsa ngayon?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Date.”",
+      "example": "Ano ang petsa ngayon?",
+      "exampleEnglish": "Use the model as the repair target: “What is today’s date?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "petsa",
+      "romanization": "petsa",
+      "nativeText": "Transfer \"petsa\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ano ang petsa ngayon?\".",
+      "pronunciation": "petsa",
+      "exampleTarget": "Ano ang petsa ngayon?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “What is today’s date?”",
+      "korean": "petsa",
+      "english": "Transfer \"petsa\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ano ang petsa ngayon?\".",
+      "example": "Ano ang petsa ngayon?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “What is today’s date?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "petsa",
+      "romanization": "petsa",
+      "nativeText": "Find one word or phrase that naturally travels with \"petsa\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "petsa",
+      "exampleTarget": "Ano ang petsa ngayon?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “What is today’s date?”",
+      "korean": "petsa",
+      "english": "Find one word or phrase that naturally travels with \"petsa\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ano ang petsa ngayon?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “What is today’s date?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "petsa",
+      "romanization": "petsa",
+      "nativeText": "Listen for \"petsa\" inside \"Ano ang petsa ngayon?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "petsa",
+      "exampleTarget": "Ano ang petsa ngayon?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What is today’s date?”",
+      "korean": "petsa",
+      "english": "Listen for \"petsa\" inside \"Ano ang petsa ngayon?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ano ang petsa ngayon?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What is today’s date?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "petsa",
+      "romanization": "petsa",
+      "nativeText": "Write \"petsa\" again without looking, then compare the exact written form against \"Ano ang petsa ngayon?\" before moving on.",
+      "pronunciation": "petsa",
+      "exampleTarget": "Ano ang petsa ngayon?",
+      "exampleNative": "Use the written model as the final correctness check: “What is today’s date?”",
+      "korean": "petsa",
+      "english": "Write \"petsa\" again without looking, then compare the exact written form against \"Ano ang petsa ngayon?\" before moving on.",
+      "example": "Ano ang petsa ngayon?",
+      "exampleEnglish": "Use the written model as the final correctness check: “What is today’s date?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit06datescalendar-vocabulary-1",
+        "fil-level1unit06datescalendar-vocabulary-2",
+        "fil-level1unit06datescalendar-grammar-1",
+        "fil-level1unit06datescalendar-grammar-2",
+        "fil-level1unit06datescalendar-reading",
+        "fil-level1unit06datescalendar-listening",
+        "fil-level1unit06datescalendar-writing",
+        "fil-level1unit06datescalendar-task"
+      ],
+      "targetText": "petsa",
+      "romanization": "petsa",
+      "nativeText": "Check whether \"petsa\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What is today’s date?”",
+      "pronunciation": "petsa",
+      "exampleTarget": "Ano ang petsa ngayon?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “What is today’s date?”",
+      "korean": "petsa",
+      "english": "Check whether \"petsa\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What is today’s date?”",
+      "example": "Ano ang petsa ngayon?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “What is today’s date?”"
+    }
+  ],
+  "targetLang": "fil",
+  "nativeLang": "en",
+  "track": "textbook"
+};

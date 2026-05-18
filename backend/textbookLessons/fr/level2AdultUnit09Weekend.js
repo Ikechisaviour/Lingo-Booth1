@@ -148,12 +148,12 @@ module.exports = {
       ],
       "targetText": "controle des sons",
       "romanization": "",
-      "nativeText": "Keep French liaison, mute letters, vowel quality, and phrase rhythm clear enough that the sentence remains easy to follow.",
+      "nativeText": "Keep French liaison, mute letters, vowel quality, and phrase rhythm clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Plans du week-end\".",
       "pronunciation": "",
       "exampleTarget": "Plans du week-end",
       "exampleNative": "Read the model with French phrase rhythm, liaison where appropriate, and no extra sounded final consonants.",
       "korean": "controle des sons",
-      "english": "Keep French liaison, mute letters, vowel quality, and phrase rhythm clear enough that the sentence remains easy to follow.",
+      "english": "Keep French liaison, mute letters, vowel quality, and phrase rhythm clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Plans du week-end\".",
       "example": "Plans du week-end",
       "exampleEnglish": "Read the model with French phrase rhythm, liaison where appropriate, and no extra sounded final consonants."
     },
@@ -167,27 +167,27 @@ module.exports = {
       "nativeText": "Use the key language of Adult Unit 9: Plans du week-end with the register and setting that the lesson requires.",
       "pronunciation": "",
       "exampleTarget": "Plans du week-end",
-      "exampleNative": "Topic anchor.",
+      "exampleNative": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation.",
       "korean": "Plans du week-end",
       "english": "Use the key language of Adult Unit 9: Plans du week-end with the register and setting that the lesson requires.",
       "example": "Plans du week-end",
-      "exampleEnglish": "Topic anchor."
+      "exampleEnglish": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation."
     },
     {
       "type": "note",
       "activityIds": [
         "fr-level2adultunit09weekend-vocabulary-2"
       ],
-      "targetText": "A: Pouvez-vous m’aider ?\nB: Bien sûr.",
+      "targetText": "Plans du week-end",
       "romanization": "",
       "nativeText": "Distinguish the nearby wording choices that make Adult Unit 9: Plans du week-end sound precise rather than merely understandable.",
       "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
-      "exampleNative": "The learner practices functional adult language.",
-      "korean": "A: Pouvez-vous m’aider ?\nB: Bien sûr.",
+      "exampleTarget": "Plans du week-end",
+      "exampleNative": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation.",
+      "korean": "Plans du week-end",
       "english": "Distinguish the nearby wording choices that make Adult Unit 9: Plans du week-end sound precise rather than merely understandable.",
-      "example": "Adapt the request to the unit topic.",
-      "exampleEnglish": "The learner practices functional adult language."
+      "example": "Plans du week-end",
+      "exampleEnglish": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation."
     },
     {
       "type": "grammar",
@@ -199,27 +199,27 @@ module.exports = {
       "nativeText": "Handle this adult-life situation politely and clearly.",
       "pronunciation": "",
       "exampleTarget": "Plans du week-end",
-      "exampleNative": "Topic anchor.",
+      "exampleNative": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation.",
       "korean": "Plans du week-end",
       "english": "Handle this adult-life situation politely and clearly.",
       "example": "Plans du week-end",
-      "exampleEnglish": "Topic anchor."
+      "exampleEnglish": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation."
     },
     {
       "type": "grammar",
       "activityIds": [
         "fr-level2adultunit09weekend-grammar-2"
       ],
-      "targetText": "A: Pouvez-vous m’aider ?\nB: Bien sûr.",
+      "targetText": "Plans du week-end",
       "romanization": "",
       "nativeText": "Contrast the main pattern in Adult Unit 9: Plans du week-end with one common alternative so the learner can avoid literal translation.",
       "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
-      "exampleNative": "The learner practices functional adult language.",
-      "korean": "A: Pouvez-vous m’aider ?\nB: Bien sûr.",
+      "exampleTarget": "Plans du week-end",
+      "exampleNative": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation.",
+      "korean": "Plans du week-end",
       "english": "Contrast the main pattern in Adult Unit 9: Plans du week-end with one common alternative so the learner can avoid literal translation.",
-      "example": "Adapt the request to the unit topic.",
-      "exampleEnglish": "The learner practices functional adult language."
+      "example": "Plans du week-end",
+      "exampleEnglish": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation."
     },
     {
       "type": "reading",
@@ -228,14 +228,14 @@ module.exports = {
       ],
       "targetText": "lecture modele",
       "romanization": "",
-      "nativeText": "Read this connected model as one piece, then identify how the lesson vocabulary and grammar cooperate inside it.",
+      "nativeText": "Read the connected model for lecture modele as one message. Notice how \"Plans du week-end\" lets the lesson vocabulary and grammar work together instead of appearing as isolated flashcards.",
       "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
-      "exampleNative": "The learner practices functional adult language.",
+      "exampleTarget": "Plans du week-end",
+      "exampleNative": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation.",
       "korean": "lecture modele",
-      "english": "Read this connected model as one piece, then identify how the lesson vocabulary and grammar cooperate inside it.",
-      "example": "Adapt the request to the unit topic.",
-      "exampleEnglish": "The learner practices functional adult language."
+      "english": "Read the connected model for lecture modele as one message. Notice how \"Plans du week-end\" lets the lesson vocabulary and grammar work together instead of appearing as isolated flashcards.",
+      "example": "Plans du week-end",
+      "exampleEnglish": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation."
     },
     {
       "type": "conversation",
@@ -244,14 +244,14 @@ module.exports = {
       ],
       "targetText": "dialogue modele",
       "romanization": "",
-      "nativeText": "This short exchange is meant to sound like real interaction rather than a list of isolated sentences.",
+      "nativeText": "Hear \"Plans du week-end\" as interaction, not as a sentence list. The listening goal is to follow the exchange while keeping the lesson's register and grammar intact.",
       "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
-      "exampleNative": "The learner practices functional adult language.",
+      "exampleTarget": "Plans du week-end",
+      "exampleNative": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation.",
       "korean": "dialogue modele",
-      "english": "This short exchange is meant to sound like real interaction rather than a list of isolated sentences.",
-      "example": "Adapt the request to the unit topic.",
-      "exampleEnglish": "The learner practices functional adult language."
+      "english": "Hear \"Plans du week-end\" as interaction, not as a sentence list. The listening goal is to follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Plans du week-end",
+      "exampleEnglish": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation."
     },
     {
       "type": "writing",
@@ -260,12 +260,12 @@ module.exports = {
       ],
       "targetText": "ecriture guidee",
       "romanization": "",
-      "nativeText": "Use the lesson pattern in your own writing so the form becomes available outside the model sentence.",
+      "nativeText": "Write your own version after studying \"Plans du week-end\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
       "pronunciation": "",
       "exampleTarget": "Plans du week-end",
       "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
       "korean": "ecriture guidee",
-      "english": "Use the lesson pattern in your own writing so the form becomes available outside the model sentence.",
+      "english": "Write your own version after studying \"Plans du week-end\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
       "example": "Plans du week-end",
       "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
     },
@@ -276,13 +276,13 @@ module.exports = {
       ],
       "targetText": "usage et contexte",
       "romanization": "",
-      "nativeText": "Notice the register, interactional, or cultural choice that affects how this French is actually used in daily life.",
+      "nativeText": "Notice the register, interactional, or cultural choice that affects how this French is actually used in daily life. Use \"Plans du week-end\" as the social comparison point for this lesson.",
       "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
+      "exampleTarget": "Plans du week-end",
       "exampleNative": "French depends heavily on register and connected speech; the lesson keeps both visible instead of teaching words in isolation.",
       "korean": "usage et contexte",
-      "english": "Notice the register, interactional, or cultural choice that affects how this French is actually used in daily life.",
-      "example": "Adapt the request to the unit topic.",
+      "english": "Notice the register, interactional, or cultural choice that affects how this French is actually used in daily life. Use \"Plans du week-end\" as the social comparison point for this lesson.",
+      "example": "Plans du week-end",
       "exampleEnglish": "French depends heavily on register and connected speech; the lesson keeps both visible instead of teaching words in isolation."
     },
     {
@@ -294,11 +294,11 @@ module.exports = {
       "romanization": "",
       "nativeText": "Complete one realistic exchange with clear French.",
       "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
+      "exampleTarget": "Plans du week-end",
       "exampleNative": "Complete one realistic exchange with clear French.",
       "korean": "tache finale",
       "english": "Complete one realistic exchange with clear French.",
-      "example": "Adapt the request to the unit topic.",
+      "example": "Plans du week-end",
       "exampleEnglish": "Complete one realistic exchange with clear French."
     },
     {
@@ -308,14 +308,14 @@ module.exports = {
       ],
       "targetText": "erreur fréquente",
       "romanization": "",
-      "nativeText": "Watch for the literal-translation mistake most likely in Adult Unit 9: Plans du week-end; French often signals meaning through articles, pronoun order, agreement, or connected speech that another language may leave implicit.",
+      "nativeText": "Watch for the literal-translation mistake most likely in Adult Unit 9: Plans du week-end; French often signals meaning through articles, pronoun order, agreement, or connected speech that another language may leave implicit. Begin by checking \"Plans du week-end\" against the model.",
       "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
-      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: The learner practices functional adult language.",
+      "exampleTarget": "Plans du week-end",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation.",
       "korean": "erreur fréquente",
-      "english": "Watch for the literal-translation mistake most likely in Adult Unit 9: Plans du week-end; French often signals meaning through articles, pronoun order, agreement, or connected speech that another language may leave implicit.",
-      "example": "Adapt the request to the unit topic.",
-      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: The learner practices functional adult language."
+      "english": "Watch for the literal-translation mistake most likely in Adult Unit 9: Plans du week-end; French often signals meaning through articles, pronoun order, agreement, or connected speech that another language may leave implicit. Begin by checking \"Plans du week-end\" against the model.",
+      "example": "Plans du week-end",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation."
     },
     {
       "type": "culture",
@@ -325,32 +325,31 @@ module.exports = {
       ],
       "targetText": "registre",
       "romanization": "",
-      "nativeText": "Check whether the situation calls for familiar, polite, service, or written-register French before choosing the final wording.",
+      "nativeText": "Check whether the situation calls for familiar, polite, service, or written-register French before choosing the final wording. Compare the social fit of \"Plans du week-end\" before reusing it elsewhere.",
       "pronunciation": "",
       "exampleTarget": "Plans du week-end",
-      "exampleNative": "Topic anchor.",
+      "exampleNative": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation.",
       "korean": "registre",
-      "english": "Check whether the situation calls for familiar, polite, service, or written-register French before choosing the final wording.",
+      "english": "Check whether the situation calls for familiar, polite, service, or written-register French before choosing the final wording. Compare the social fit of \"Plans du week-end\" before reusing it elsewhere.",
       "example": "Plans du week-end",
-      "exampleEnglish": "Topic anchor."
+      "exampleEnglish": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation."
     },
     {
       "type": "practice",
       "activityIds": [
         "fr-level2adultunit09weekend-listening",
-        null,
         "fr-level2adultunit09weekend-task"
       ],
       "targetText": "fluidité",
       "romanization": "",
-      "nativeText": "Say the idea as one connected message rather than as separate translated fragments.",
+      "nativeText": "Say the idea as one connected message rather than as separate translated fragments. Aim to carry \"Plans du week-end\" as one thought.",
       "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
-      "exampleNative": "The learner practices functional adult language.",
+      "exampleTarget": "Plans du week-end",
+      "exampleNative": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation.",
       "korean": "fluidité",
-      "english": "Say the idea as one connected message rather than as separate translated fragments.",
-      "example": "Adapt the request to the unit topic.",
-      "exampleEnglish": "The learner practices functional adult language."
+      "english": "Say the idea as one connected message rather than as separate translated fragments. Aim to carry \"Plans du week-end\" as one thought.",
+      "example": "Plans du week-end",
+      "exampleEnglish": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation."
     },
     {
       "type": "practice",
@@ -360,12 +359,12 @@ module.exports = {
       ],
       "targetText": "transfert",
       "romanization": "",
-      "nativeText": "Move the lesson pattern from the model into a new personal situation while keeping its grammatical job intact.",
+      "nativeText": "Move the lesson pattern from the model into a new personal situation while keeping its grammatical job intact. Start from \"Plans du week-end\" and move it into your own life.",
       "pronunciation": "",
       "exampleTarget": "Plans du week-end",
       "exampleNative": "The learner should be able to leave the model behind without losing the form.",
       "korean": "transfert",
-      "english": "Move the lesson pattern from the model into a new personal situation while keeping its grammatical job intact.",
+      "english": "Move the lesson pattern from the model into a new personal situation while keeping its grammatical job intact. Start from \"Plans du week-end\" and move it into your own life.",
       "example": "Plans du week-end",
       "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
     },
@@ -377,12 +376,12 @@ module.exports = {
       ],
       "targetText": "rappel actif",
       "romanization": "",
-      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins.",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"Plans du week-end\" before looking back.",
       "pronunciation": "",
       "exampleTarget": "Plans du week-end",
       "exampleNative": "Practical adult-life French with clear service or workplace use.",
       "korean": "rappel actif",
-      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins.",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"Plans du week-end\" before looking back.",
       "example": "Plans du week-end",
       "exampleEnglish": "Practical adult-life French with clear service or workplace use."
     },
@@ -394,14 +393,115 @@ module.exports = {
       ],
       "targetText": "extension",
       "romanization": "",
-      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line.",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Plans du week-end\" rather than restarting from a blank sentence.",
       "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
+      "exampleTarget": "Plans du week-end",
       "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
       "korean": "extension",
-      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line.",
-      "example": "Adapt the request to the unit topic.",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Plans du week-end\" rather than restarting from a blank sentence.",
+      "example": "Plans du week-end",
       "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fr-level2adultunit09weekend-grammar-2",
+        "fr-level2adultunit09weekend-reading"
+      ],
+      "targetText": "contraste",
+      "romanization": "",
+      "nativeText": "Compare the central form in Adult Unit 9: Plans du week-end with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Plans du week-end\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Plans du week-end",
+      "exampleNative": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation.",
+      "korean": "contraste",
+      "english": "Compare the central form in Adult Unit 9: Plans du week-end with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Plans du week-end\" as the comparison line.",
+      "example": "Plans du week-end",
+      "exampleEnglish": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "fr-level2adultunit09weekend-pronunciation"
+      ],
+      "targetText": "réparation sonore",
+      "romanization": "",
+      "nativeText": "Repair the one liaison, vowel, final consonant, or rhythm detail most likely to blur this French lesson in fast speech. Use \"Plans du week-end\" as the repair line.",
+      "pronunciation": "",
+      "exampleTarget": "Plans du week-end",
+      "exampleNative": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation.",
+      "korean": "réparation sonore",
+      "english": "Repair the one liaison, vowel, final consonant, or rhythm detail most likely to blur this French lesson in fast speech. Use \"Plans du week-end\" as the repair line.",
+      "example": "Plans du week-end",
+      "exampleEnglish": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation."
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "fr-level2adultunit09weekend-listening",
+        "fr-level2adultunit09weekend-task"
+      ],
+      "targetText": "variation du dialogue",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Plans du week-end\".",
+      "pronunciation": "",
+      "exampleTarget": "Plans du week-end",
+      "exampleNative": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation.",
+      "korean": "variation du dialogue",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Plans du week-end\".",
+      "example": "Plans du week-end",
+      "exampleEnglish": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fr-level2adultunit09weekend-grammar-1",
+        "fr-level2adultunit09weekend-writing"
+      ],
+      "targetText": "construction de phrase",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, then grammar carrier, then the detail that makes it personal. Rebuild \"Plans du week-end\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Plans du week-end",
+      "exampleNative": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation.",
+      "korean": "construction de phrase",
+      "english": "Build the sentence in layers: anchor phrase first, then grammar carrier, then the detail that makes it personal. Rebuild \"Plans du week-end\" one layer at a time.",
+      "example": "Plans du week-end",
+      "exampleEnglish": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fr-level2adultunit09weekend-vocabulary-2",
+        "fr-level2adultunit09weekend-grammar-2"
+      ],
+      "targetText": "vérification rapide",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Plans du week-end\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Plans du week-end",
+      "exampleNative": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation.",
+      "korean": "vérification rapide",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Plans du week-end\" as the deciding example.",
+      "example": "Plans du week-end",
+      "exampleEnglish": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fr-level2adultunit09weekend-culture",
+        "fr-level2adultunit09weekend-task"
+      ],
+      "targetText": "réflexion",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Plans du week-end\".",
+      "pronunciation": "",
+      "exampleTarget": "Plans du week-end",
+      "exampleNative": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation.",
+      "korean": "réflexion",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Plans du week-end\".",
+      "example": "Plans du week-end",
+      "exampleEnglish": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation."
     },
     {
       "type": "word",
@@ -420,11 +520,11 @@ module.exports = {
       "nativeText": "Practical adult-life French with clear service or workplace use.",
       "pronunciation": "",
       "exampleTarget": "Plans du week-end",
-      "exampleNative": "Topic anchor.",
+      "exampleNative": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation.",
       "korean": "Plans du week-end",
       "english": "Practical adult-life French with clear service or workplace use.",
       "example": "Plans du week-end",
-      "exampleEnglish": "Topic anchor."
+      "exampleEnglish": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation."
     },
     {
       "type": "sentence",
@@ -440,14 +540,14 @@ module.exports = {
       ],
       "targetText": "Plans du week-end",
       "romanization": "",
-      "nativeText": "Model use: Practical adult-life French with clear service or workplace use.",
+      "nativeText": "Model use for \"Plans du week-end\": Practical adult-life French with clear service or workplace use.",
       "pronunciation": "",
       "exampleTarget": "Plans du week-end",
-      "exampleNative": "Topic anchor.",
+      "exampleNative": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation.",
       "korean": "Plans du week-end",
-      "english": "Model use: Practical adult-life French with clear service or workplace use.",
+      "english": "Model use for \"Plans du week-end\": Practical adult-life French with clear service or workplace use.",
       "example": "Plans du week-end",
-      "exampleEnglish": "Topic anchor."
+      "exampleEnglish": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation."
     },
     {
       "type": "note",
@@ -463,14 +563,14 @@ module.exports = {
       ],
       "targetText": "Plans du week-end",
       "romanization": "",
-      "nativeText": "Usage focus: Practical adult-life French with clear service or workplace use.",
+      "nativeText": "Usage focus for \"Plans du week-end\": Practical adult-life French with clear service or workplace use.",
       "pronunciation": "",
       "exampleTarget": "Plans du week-end",
-      "exampleNative": "Notice what the form is doing here: Topic anchor.",
+      "exampleNative": "Notice what the form is doing here: Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation.",
       "korean": "Plans du week-end",
-      "english": "Usage focus: Practical adult-life French with clear service or workplace use.",
+      "english": "Usage focus for \"Plans du week-end\": Practical adult-life French with clear service or workplace use.",
       "example": "Plans du week-end",
-      "exampleEnglish": "Notice what the form is doing here: Topic anchor."
+      "exampleEnglish": "Notice what the form is doing here: Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation."
     },
     {
       "type": "note",
@@ -486,14 +586,14 @@ module.exports = {
       ],
       "targetText": "Plans du week-end",
       "romanization": "",
-      "nativeText": "Contrast check: use this form when the meaning and setting match this lesson, not merely because it resembles a word-for-word translation.",
+      "nativeText": "Contrast check for \"Plans du week-end\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
       "pronunciation": "",
       "exampleTarget": "Plans du week-end",
-      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: Topic anchor.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation.",
       "korean": "Plans du week-end",
-      "english": "Contrast check: use this form when the meaning and setting match this lesson, not merely because it resembles a word-for-word translation.",
+      "english": "Contrast check for \"Plans du week-end\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
       "example": "Plans du week-end",
-      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: Topic anchor."
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation."
     },
     {
       "type": "practice",
@@ -509,14 +609,14 @@ module.exports = {
       ],
       "targetText": "Plans du week-end",
       "romanization": "",
-      "nativeText": "Recall prompt: say the form from memory, then explain what would change if you replaced it with a nearby alternative.",
+      "nativeText": "Recall \"Plans du week-end\" from memory, then explain what would change if a nearby alternative replaced it in \"Plans du week-end\".",
       "pronunciation": "",
       "exampleTarget": "Plans du week-end",
-      "exampleNative": "Self-check against the model before moving on: Topic anchor.",
+      "exampleNative": "Self-check against the model before moving on: Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation.",
       "korean": "Plans du week-end",
-      "english": "Recall prompt: say the form from memory, then explain what would change if you replaced it with a nearby alternative.",
+      "english": "Recall \"Plans du week-end\" from memory, then explain what would change if a nearby alternative replaced it in \"Plans du week-end\".",
       "example": "Plans du week-end",
-      "exampleEnglish": "Self-check against the model before moving on: Topic anchor."
+      "exampleEnglish": "Self-check against the model before moving on: Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation."
     },
     {
       "type": "practice",
@@ -532,14 +632,14 @@ module.exports = {
       ],
       "targetText": "Plans du week-end",
       "romanization": "",
-      "nativeText": "Repair prompt: if this sentence sounds translated rather than natural, return to the register, agreement, tense, or word-order clue highlighted in the note.",
+      "nativeText": "Repair \"Plans du week-end\" inside \"Plans du week-end\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Practical adult-life French with clear service or workplace use.",
       "pronunciation": "",
       "exampleTarget": "Plans du week-end",
-      "exampleNative": "Use the model as the repair target: Topic anchor.",
+      "exampleNative": "Use the model as the repair target: Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation.",
       "korean": "Plans du week-end",
-      "english": "Repair prompt: if this sentence sounds translated rather than natural, return to the register, agreement, tense, or word-order clue highlighted in the note.",
+      "english": "Repair \"Plans du week-end\" inside \"Plans du week-end\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Practical adult-life French with clear service or workplace use.",
       "example": "Plans du week-end",
-      "exampleEnglish": "Use the model as the repair target: Topic anchor."
+      "exampleEnglish": "Use the model as the repair target: Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation."
     },
     {
       "type": "practice",
@@ -555,106 +655,14 @@ module.exports = {
       ],
       "targetText": "Plans du week-end",
       "romanization": "",
-      "nativeText": "Transfer prompt: move this form into a new personal sentence while preserving the same grammatical job and social tone.",
+      "nativeText": "Transfer \"Plans du week-end\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Plans du week-end\".",
       "pronunciation": "",
       "exampleTarget": "Plans du week-end",
-      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: Topic anchor.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation.",
       "korean": "Plans du week-end",
-      "english": "Transfer prompt: move this form into a new personal sentence while preserving the same grammatical job and social tone.",
+      "english": "Transfer \"Plans du week-end\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Plans du week-end\".",
       "example": "Plans du week-end",
-      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: Topic anchor."
-    },
-    {
-      "type": "conversation",
-      "activityIds": [
-        "fr-level2adultunit09weekend-vocabulary-1",
-        "fr-level2adultunit09weekend-vocabulary-2",
-        "fr-level2adultunit09weekend-grammar-1",
-        "fr-level2adultunit09weekend-grammar-2",
-        "fr-level2adultunit09weekend-reading",
-        "fr-level2adultunit09weekend-listening",
-        "fr-level2adultunit09weekend-writing",
-        "fr-level2adultunit09weekend-task"
-      ],
-      "targetText": "A: Pouvez-vous m’aider ?\nB: Bien sûr.",
-      "romanization": "",
-      "nativeText": "A polite practical exchange.",
-      "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
-      "exampleNative": "The learner practices functional adult language.",
-      "korean": "A: Pouvez-vous m’aider ?\nB: Bien sûr.",
-      "english": "A polite practical exchange.",
-      "example": "Adapt the request to the unit topic.",
-      "exampleEnglish": "The learner practices functional adult language."
-    },
-    {
-      "type": "sentence",
-      "activityIds": [
-        "fr-level2adultunit09weekend-vocabulary-1",
-        "fr-level2adultunit09weekend-vocabulary-2",
-        "fr-level2adultunit09weekend-grammar-1",
-        "fr-level2adultunit09weekend-grammar-2",
-        "fr-level2adultunit09weekend-reading",
-        "fr-level2adultunit09weekend-listening",
-        "fr-level2adultunit09weekend-writing",
-        "fr-level2adultunit09weekend-task"
-      ],
-      "targetText": "Adapt the request to the unit topic.",
-      "romanization": "",
-      "nativeText": "Model use: A polite practical exchange.",
-      "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
-      "exampleNative": "The learner practices functional adult language.",
-      "korean": "Adapt the request to the unit topic.",
-      "english": "Model use: A polite practical exchange.",
-      "example": "Adapt the request to the unit topic.",
-      "exampleEnglish": "The learner practices functional adult language."
-    },
-    {
-      "type": "note",
-      "activityIds": [
-        "fr-level2adultunit09weekend-vocabulary-1",
-        "fr-level2adultunit09weekend-vocabulary-2",
-        "fr-level2adultunit09weekend-grammar-1",
-        "fr-level2adultunit09weekend-grammar-2",
-        "fr-level2adultunit09weekend-reading",
-        "fr-level2adultunit09weekend-listening",
-        "fr-level2adultunit09weekend-writing",
-        "fr-level2adultunit09weekend-task"
-      ],
-      "targetText": "A: Pouvez-vous m’aider ?\nB: Bien sûr.",
-      "romanization": "",
-      "nativeText": "Usage focus: A polite practical exchange.",
-      "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
-      "exampleNative": "Notice what the form is doing here: The learner practices functional adult language.",
-      "korean": "A: Pouvez-vous m’aider ?\nB: Bien sûr.",
-      "english": "Usage focus: A polite practical exchange.",
-      "example": "Adapt the request to the unit topic.",
-      "exampleEnglish": "Notice what the form is doing here: The learner practices functional adult language."
-    },
-    {
-      "type": "note",
-      "activityIds": [
-        "fr-level2adultunit09weekend-vocabulary-1",
-        "fr-level2adultunit09weekend-vocabulary-2",
-        "fr-level2adultunit09weekend-grammar-1",
-        "fr-level2adultunit09weekend-grammar-2",
-        "fr-level2adultunit09weekend-reading",
-        "fr-level2adultunit09weekend-listening",
-        "fr-level2adultunit09weekend-writing",
-        "fr-level2adultunit09weekend-task"
-      ],
-      "targetText": "A: Pouvez-vous m’aider ?\nB: Bien sûr.",
-      "romanization": "",
-      "nativeText": "Contrast check: use this form when the meaning and setting match this lesson, not merely because it resembles a word-for-word translation.",
-      "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
-      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: The learner practices functional adult language.",
-      "korean": "A: Pouvez-vous m’aider ?\nB: Bien sûr.",
-      "english": "Contrast check: use this form when the meaning and setting match this lesson, not merely because it resembles a word-for-word translation.",
-      "example": "Adapt the request to the unit topic.",
-      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: The learner practices functional adult language."
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation."
     },
     {
       "type": "practice",
@@ -668,16 +676,16 @@ module.exports = {
         "fr-level2adultunit09weekend-writing",
         "fr-level2adultunit09weekend-task"
       ],
-      "targetText": "A: Pouvez-vous m’aider ?\nB: Bien sûr.",
+      "targetText": "Plans du week-end",
       "romanization": "",
-      "nativeText": "Recall prompt: say the form from memory, then explain what would change if you replaced it with a nearby alternative.",
+      "nativeText": "Find one word or phrase that naturally travels with \"Plans du week-end\" in this setting so it becomes usable language, not a stranded flashcard.",
       "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
-      "exampleNative": "Self-check against the model before moving on: The learner practices functional adult language.",
-      "korean": "A: Pouvez-vous m’aider ?\nB: Bien sûr.",
-      "english": "Recall prompt: say the form from memory, then explain what would change if you replaced it with a nearby alternative.",
-      "example": "Adapt the request to the unit topic.",
-      "exampleEnglish": "Self-check against the model before moving on: The learner practices functional adult language."
+      "exampleTarget": "Plans du week-end",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation.",
+      "korean": "Plans du week-end",
+      "english": "Find one word or phrase that naturally travels with \"Plans du week-end\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Plans du week-end",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation."
     },
     {
       "type": "practice",
@@ -691,16 +699,16 @@ module.exports = {
         "fr-level2adultunit09weekend-writing",
         "fr-level2adultunit09weekend-task"
       ],
-      "targetText": "A: Pouvez-vous m’aider ?\nB: Bien sûr.",
+      "targetText": "Plans du week-end",
       "romanization": "",
-      "nativeText": "Repair prompt: if this sentence sounds translated rather than natural, return to the register, agreement, tense, or word-order clue highlighted in the note.",
+      "nativeText": "Listen for \"Plans du week-end\" inside \"Plans du week-end\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
       "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
-      "exampleNative": "Use the model as the repair target: The learner practices functional adult language.",
-      "korean": "A: Pouvez-vous m’aider ?\nB: Bien sûr.",
-      "english": "Repair prompt: if this sentence sounds translated rather than natural, return to the register, agreement, tense, or word-order clue highlighted in the note.",
-      "example": "Adapt the request to the unit topic.",
-      "exampleEnglish": "Use the model as the repair target: The learner practices functional adult language."
+      "exampleTarget": "Plans du week-end",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation.",
+      "korean": "Plans du week-end",
+      "english": "Listen for \"Plans du week-end\" inside \"Plans du week-end\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Plans du week-end",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation."
     },
     {
       "type": "practice",
@@ -714,16 +722,39 @@ module.exports = {
         "fr-level2adultunit09weekend-writing",
         "fr-level2adultunit09weekend-task"
       ],
-      "targetText": "A: Pouvez-vous m’aider ?\nB: Bien sûr.",
+      "targetText": "Plans du week-end",
       "romanization": "",
-      "nativeText": "Transfer prompt: move this form into a new personal sentence while preserving the same grammatical job and social tone.",
+      "nativeText": "Write \"Plans du week-end\" again without looking, then compare the exact written form against \"Plans du week-end\" before moving on.",
       "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
-      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: The learner practices functional adult language.",
-      "korean": "A: Pouvez-vous m’aider ?\nB: Bien sûr.",
-      "english": "Transfer prompt: move this form into a new personal sentence while preserving the same grammatical job and social tone.",
-      "example": "Adapt the request to the unit topic.",
-      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: The learner practices functional adult language."
+      "exampleTarget": "Plans du week-end",
+      "exampleNative": "Use the written model as the final correctness check: Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation.",
+      "korean": "Plans du week-end",
+      "english": "Write \"Plans du week-end\" again without looking, then compare the exact written form against \"Plans du week-end\" before moving on.",
+      "example": "Plans du week-end",
+      "exampleEnglish": "Use the written model as the final correctness check: Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fr-level2adultunit09weekend-vocabulary-1",
+        "fr-level2adultunit09weekend-vocabulary-2",
+        "fr-level2adultunit09weekend-grammar-1",
+        "fr-level2adultunit09weekend-grammar-2",
+        "fr-level2adultunit09weekend-reading",
+        "fr-level2adultunit09weekend-listening",
+        "fr-level2adultunit09weekend-writing",
+        "fr-level2adultunit09weekend-task"
+      ],
+      "targetText": "Plans du week-end",
+      "romanization": "",
+      "nativeText": "Check whether \"Plans du week-end\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation.",
+      "pronunciation": "",
+      "exampleTarget": "Plans du week-end",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation.",
+      "korean": "Plans du week-end",
+      "english": "Check whether \"Plans du week-end\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation.",
+      "example": "Plans du week-end",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation."
     },
     {
       "type": "note",
@@ -735,11 +766,11 @@ module.exports = {
       "nativeText": "Compare the central form in Adult Unit 9: Plans du week-end with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here.",
       "pronunciation": "",
       "exampleTarget": "Plans du week-end",
-      "exampleNative": "Read the model with French phrase rhythm, liaison where appropriate, and no extra sounded final consonants.",
+      "exampleNative": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation.",
       "korean": "contraste",
       "english": "Compare the central form in Adult Unit 9: Plans du week-end with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here.",
       "example": "Plans du week-end",
-      "exampleEnglish": "Read the model with French phrase rhythm, liaison where appropriate, and no extra sounded final consonants."
+      "exampleEnglish": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation."
     },
     {
       "type": "pronunciation",
@@ -750,12 +781,12 @@ module.exports = {
       "romanization": "",
       "nativeText": "Repair the one liaison, vowel, final consonant, or rhythm detail most likely to blur this French lesson in fast speech.",
       "pronunciation": "",
-      "exampleTarget": "Complete one realistic exchange with clear French.",
-      "exampleNative": "The whole lesson is built toward this outcome: Complete one realistic exchange with clear French.",
+      "exampleTarget": "Plans du week-end",
+      "exampleNative": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation.",
       "korean": "réparation sonore",
       "english": "Repair the one liaison, vowel, final consonant, or rhythm detail most likely to blur this French lesson in fast speech.",
-      "example": "Complete one realistic exchange with clear French.",
-      "exampleEnglish": "The whole lesson is built toward this outcome: Complete one realistic exchange with clear French."
+      "example": "Plans du week-end",
+      "exampleEnglish": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation."
     },
     {
       "type": "conversation",
@@ -767,12 +798,12 @@ module.exports = {
       "romanization": "",
       "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural.",
       "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
-      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: The learner practices functional adult language.",
+      "exampleTarget": "Plans du week-end",
+      "exampleNative": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation.",
       "korean": "variation du dialogue",
       "english": "Change one participant, one setting, and one detail while keeping the lesson form natural.",
-      "example": "Adapt the request to the unit topic.",
-      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: The learner practices functional adult language."
+      "example": "Plans du week-end",
+      "exampleEnglish": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation."
     },
     {
       "type": "practice",
@@ -784,12 +815,12 @@ module.exports = {
       "romanization": "",
       "nativeText": "Build the sentence in layers: anchor phrase first, then grammar carrier, then the detail that makes it personal.",
       "pronunciation": "",
-      "exampleTarget": "Complete one realistic exchange with clear French.",
-      "exampleNative": "The whole lesson is built toward this outcome: Complete one realistic exchange with clear French.",
+      "exampleTarget": "Plans du week-end",
+      "exampleNative": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation.",
       "korean": "construction de phrase",
       "english": "Build the sentence in layers: anchor phrase first, then grammar carrier, then the detail that makes it personal.",
-      "example": "Complete one realistic exchange with clear French.",
-      "exampleEnglish": "The whole lesson is built toward this outcome: Complete one realistic exchange with clear French."
+      "example": "Plans du week-end",
+      "exampleEnglish": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation."
     },
     {
       "type": "practice",
@@ -802,11 +833,11 @@ module.exports = {
       "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision.",
       "pronunciation": "",
       "exampleTarget": "Plans du week-end",
-      "exampleNative": "Read the model with French phrase rhythm, liaison where appropriate, and no extra sounded final consonants.",
+      "exampleNative": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation.",
       "korean": "vérification rapide",
       "english": "Choose the better of two nearby forms and say aloud what clue made the decision.",
       "example": "Plans du week-end",
-      "exampleEnglish": "Read the model with French phrase rhythm, liaison where appropriate, and no extra sounded final consonants."
+      "exampleEnglish": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation."
     },
     {
       "type": "note",
@@ -818,12 +849,12 @@ module.exports = {
       "romanization": "",
       "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored.",
       "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
-      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: The learner practices functional adult language.",
+      "exampleTarget": "Plans du week-end",
+      "exampleNative": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation.",
       "korean": "réflexion",
       "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored.",
-      "example": "Adapt the request to the unit topic.",
-      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: The learner practices functional adult language."
+      "example": "Plans du week-end",
+      "exampleEnglish": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation."
     },
     {
       "type": "practice",
@@ -833,13 +864,13 @@ module.exports = {
       ],
       "targetText": "écoute ciblée",
       "romanization": "",
-      "nativeText": "Listen for the exact syllable, ending, article, or pronoun that changes the meaning of the model.",
+      "nativeText": "Listen inside \"Plans du week-end\" for the syllable, ending, article, or pronoun that changes the meaning of the model.",
       "pronunciation": "",
-      "exampleTarget": "Complete one realistic exchange with clear French.",
+      "exampleTarget": "Plans du week-end",
       "exampleNative": "Read the model with French phrase rhythm, liaison where appropriate, and no extra sounded final consonants.",
       "korean": "écoute ciblée",
-      "english": "Listen for the exact syllable, ending, article, or pronoun that changes the meaning of the model.",
-      "example": "Complete one realistic exchange with clear French.",
+      "english": "Listen inside \"Plans du week-end\" for the syllable, ending, article, or pronoun that changes the meaning of the model.",
+      "example": "Plans du week-end",
       "exampleEnglish": "Read the model with French phrase rhythm, liaison where appropriate, and no extra sounded final consonants."
     },
     {
@@ -850,14 +881,14 @@ module.exports = {
       ],
       "targetText": "réponse courte",
       "romanization": "",
-      "nativeText": "Answer once with the shortest correct form, then answer again with one useful extension.",
+      "nativeText": "Answer first with the shortest correct form that still fits \"Plans du week-end\", then add one useful extension.",
       "pronunciation": "",
-      "exampleTarget": "Complete one realistic exchange with clear French.",
-      "exampleNative": "The whole lesson is built toward this outcome: Complete one realistic exchange with clear French.",
+      "exampleTarget": "Plans du week-end",
+      "exampleNative": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation.",
       "korean": "réponse courte",
-      "english": "Answer once with the shortest correct form, then answer again with one useful extension.",
-      "example": "Complete one realistic exchange with clear French.",
-      "exampleEnglish": "The whole lesson is built toward this outcome: Complete one realistic exchange with clear French."
+      "english": "Answer first with the shortest correct form that still fits \"Plans du week-end\", then add one useful extension.",
+      "example": "Plans du week-end",
+      "exampleEnglish": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation."
     },
     {
       "type": "practice",
@@ -867,13 +898,13 @@ module.exports = {
       ],
       "targetText": "réponse développée",
       "romanization": "",
-      "nativeText": "Turn the model into a fuller answer by adding cause, time, or contrast without changing the core grammar.",
+      "nativeText": "Turn \"Plans du week-end\" into a fuller answer by adding cause, time, or contrast without changing the core grammar.",
       "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
+      "exampleTarget": "Plans du week-end",
       "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
       "korean": "réponse développée",
-      "english": "Turn the model into a fuller answer by adding cause, time, or contrast without changing the core grammar.",
-      "example": "Adapt the request to the unit topic.",
+      "english": "Turn \"Plans du week-end\" into a fuller answer by adding cause, time, or contrast without changing the core grammar.",
+      "example": "Plans du week-end",
       "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
     },
     {
@@ -883,14 +914,14 @@ module.exports = {
       ],
       "targetText": "paire minimale",
       "romanization": "",
-      "nativeText": "Contrast the lesson form with the nearest form a learner might confuse it with and explain what changes.",
+      "nativeText": "Compare \"Plans du week-end\" with the nearest form a learner might confuse it with and explain what changes.",
       "pronunciation": "",
       "exampleTarget": "Plans du week-end",
-      "exampleNative": "Read the model with French phrase rhythm, liaison where appropriate, and no extra sounded final consonants.",
+      "exampleNative": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation.",
       "korean": "paire minimale",
-      "english": "Contrast the lesson form with the nearest form a learner might confuse it with and explain what changes.",
+      "english": "Compare \"Plans du week-end\" with the nearest form a learner might confuse it with and explain what changes.",
       "example": "Plans du week-end",
-      "exampleEnglish": "Read the model with French phrase rhythm, liaison where appropriate, and no extra sounded final consonants."
+      "exampleEnglish": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation."
     },
     {
       "type": "writing",
@@ -899,13 +930,13 @@ module.exports = {
       ],
       "targetText": "révision écrite",
       "romanization": "",
-      "nativeText": "Copy the target sentence once, then rewrite it from memory with attention to accents, agreement, and pronoun placement.",
+      "nativeText": "Copy \"Plans du week-end\" once, then rewrite it from memory with attention to accents, agreement, and pronoun placement.",
       "pronunciation": "",
-      "exampleTarget": "Complete one realistic exchange with clear French.",
+      "exampleTarget": "Plans du week-end",
       "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
       "korean": "révision écrite",
-      "english": "Copy the target sentence once, then rewrite it from memory with attention to accents, agreement, and pronoun placement.",
-      "example": "Complete one realistic exchange with clear French.",
+      "english": "Copy \"Plans du week-end\" once, then rewrite it from memory with attention to accents, agreement, and pronoun placement.",
+      "example": "Plans du week-end",
       "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
     },
     {
@@ -915,13 +946,13 @@ module.exports = {
       ],
       "targetText": "nouvelle scène",
       "romanization": "",
-      "nativeText": "Move the lesson language into a new setting so the learner proves transfer rather than repetition.",
+      "nativeText": "Move \"Plans du week-end\" into a new setting so the learner proves transfer rather than repetition.",
       "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
+      "exampleTarget": "Plans du week-end",
       "exampleNative": "Complete one realistic exchange with clear French.",
       "korean": "nouvelle scène",
-      "english": "Move the lesson language into a new setting so the learner proves transfer rather than repetition.",
-      "example": "Adapt the request to the unit topic.",
+      "english": "Move \"Plans du week-end\" into a new setting so the learner proves transfer rather than repetition.",
+      "example": "Plans du week-end",
       "exampleEnglish": "Complete one realistic exchange with clear French."
     },
     {
@@ -931,14 +962,14 @@ module.exports = {
       ],
       "targetText": "auto-correction",
       "romanization": "",
-      "nativeText": "Name one error you might make in this lesson and repair it before looking back at the model.",
+      "nativeText": "Name one error you might make while producing \"Plans du week-end\", then repair it before looking back at the model.",
       "pronunciation": "",
       "exampleTarget": "Plans du week-end",
-      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: Read the model with French phrase rhythm, liaison where appropriate, and no extra sounded final consonants.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation.",
       "korean": "auto-correction",
-      "english": "Name one error you might make in this lesson and repair it before looking back at the model.",
+      "english": "Name one error you might make while producing \"Plans du week-end\", then repair it before looking back at the model.",
       "example": "Plans du week-end",
-      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: Read the model with French phrase rhythm, liaison where appropriate, and no extra sounded final consonants."
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation."
     },
     {
       "type": "practice",
@@ -948,14 +979,14 @@ module.exports = {
       ],
       "targetText": "sortie orale",
       "romanization": "",
-      "nativeText": "Speak for twenty seconds using at least two lesson forms in one connected answer.",
+      "nativeText": "Speak for twenty seconds by linking at least two lesson forms around \"Plans du week-end\" in one connected answer.",
       "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
-      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: The learner practices functional adult language.",
+      "exampleTarget": "Plans du week-end",
+      "exampleNative": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation.",
       "korean": "sortie orale",
-      "english": "Speak for twenty seconds using at least two lesson forms in one connected answer.",
-      "example": "Adapt the request to the unit topic.",
-      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: The learner practices functional adult language."
+      "english": "Speak for twenty seconds by linking at least two lesson forms around \"Plans du week-end\" in one connected answer.",
+      "example": "Plans du week-end",
+      "exampleEnglish": "Make and revise weekend plans naturally, including availability, preferences, and gentle negotiation."
     }
   ],
   "targetLang": "fr",

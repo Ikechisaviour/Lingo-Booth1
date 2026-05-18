@@ -1,120 +1,2880 @@
-// Level 1 Unit 6 — Dates & Calendar (Bahasa Melayu)
-// Functions: days of the week, months, dates, year, age, birthdays.
-
-const createContentItem = (target, pinyin, note, type = 'word', example = '', exampleNote = '', breakdown = null, activityIds = []) => ({
-  type, activityIds, targetText: target, romanization: pinyin, nativeText: note, pronunciation: pinyin,
-  exampleTarget: example || target, exampleNative: exampleNote || note,
-  korean: target, english: note, example: example || target, exampleEnglish: exampleNote || note,
-  ...(breakdown ? { breakdown: breakdown.map(b => ({ target: b.target, native: b.note, korean: b.target, english: b.note })) } : {}),
-});
-
-const ACT = {
-  orientation: 'ms-l1u6-orientation', pronunciation: 'ms-l1u6-pronunciation',
-  vocabularyDays: 'ms-l1u6-vocab-days', vocabularyMonths: 'ms-l1u6-vocab-months',
-  vocabularyNumbers: 'ms-l1u6-vocab-numbers', grammarDateFormat: 'ms-l1u6-grammar-date-format',
-  grammarAge: 'ms-l1u6-grammar-age', grammarRelativeTime: 'ms-l1u6-grammar-relative-time',
-  reading: 'ms-l1u6-reading', listening: 'ms-l1u6-listening',
-  writing: 'ms-l1u6-writing', culture: 'ms-l1u6-culture', task: 'ms-l1u6-task',
-};
-
-const activities = [
-  { id: ACT.orientation, section: 'Orientation', title: 'What you will be able to do', goals: ['State the date in BM using day, date, month, year.', 'Say your age and birthday.', 'Talk about national holidays and academic semester dates at UM.'], task: 'Picture filling out a UM form that asks "Tarikh lahir?" By the end of this lesson you will give the date confidently.' },
-  { id: ACT.pronunciation, section: 'Pronunciation', title: 'Days, months, numbers', goals: ['Pronounce Arabic-origin day names (Ahad, Isnin, Selasa, Rabu, Khamis, Jumaat, Sabtu).', 'Pronounce English-origin month names (Januari, Februari) and the Malay-Arabic Bulan Sya\'aban / Ramadan if relevant.'], task: 'Read each calendar word aloud.' },
-  { id: ACT.vocabularyDays, section: 'Vocabulary I', title: 'Days of the week', goals: ['Memorize seven days: Ahad, Isnin, Selasa, Rabu, Khamis, Jumaat, Sabtu.', 'Note that the BM week starts MONDAY in everyday usage, but the days themselves are numbered from SUNDAY (Ahad = "one") to Saturday in Arabic-origin etymology.'], task: 'Say what day it is today and yesterday/tomorrow.' },
-  { id: ACT.vocabularyMonths, section: 'Vocabulary II', title: 'Months', goals: ['Memorize the 12 months (Januari, Februari, Mac, April, Mei, Jun, Julai, Ogos, September, Oktober, November, Disember). Note Malaysian spelling differences from ID.'], task: 'Say your birth month.' },
-  { id: ACT.vocabularyNumbers, section: 'Vocabulary III', title: 'Numbers 1-100 + years', goals: ['Master numbers 1-100 needed for dates: 1 satu, 2 dua, ... 11 sebelas, 12 dua belas, 20 dua puluh, 21 dua puluh satu, 100 seratus.', 'State years: 2026 = dua ribu dua puluh enam.'], task: 'Count to 30 and say five years.' },
-  { id: ACT.grammarDateFormat, section: 'Grammar I', title: 'BM date format: day-date-month-year', goals: ['Use the BM date order: "Hari Khamis, 17 Mei 2026". Note: date BEFORE month (DD/MM/YYYY), opposite of US.'], task: 'Write today and three other dates.' },
-  { id: ACT.grammarAge, section: 'Grammar II', title: 'Saying your age', goals: ['Use "Umur saya ___ tahun" or "Saya berumur ___ tahun" to state age.'], task: 'State your age and a friend\'s.' },
-  { id: ACT.grammarRelativeTime, section: 'Grammar III', title: 'Relative time: hari ini, semalam, esok', goals: ['Use HARI INI (today), SEMALAM (yesterday), ESOK (tomorrow), LUSA (day after tomorrow), KELMARIN (two days ago).'], task: 'Compare what you did across days.' },
-  { id: ACT.reading, section: 'Reading', title: 'UM academic calendar', goals: ['Read a calendar excerpt and identify semester dates.'], task: 'Read and answer.' },
-  { id: ACT.listening, section: 'Listening', title: 'Planning a birthday party', goals: ['Follow a dialogue planning a birthday gathering.'], task: 'Perform the dialogue.' },
-  { id: ACT.writing, section: 'Writing', title: 'Write your important dates', goals: ['Write 5 sentences about your birthday and family member birthdays.'], task: 'Write and read aloud.' },
-  { id: ACT.culture, section: 'Culture', title: 'Two calendars: Gregorian + Hijri', goals: ['Recognize that Malaysia uses the Gregorian calendar officially, but the Hijri (Islamic lunar) calendar determines Ramadan, Hari Raya, Maulidur Rasul, and other Muslim holidays.', 'Recognize the Lunar (Chinese) calendar for CNY and the Tamil calendar for Hindu festivals.'], task: 'Map three festivals to their calendar systems.' },
-  { id: ACT.task, section: 'Task', title: 'Make plans', goals: ['Roleplay planning a meet-up next week with a Malaysian friend.'], task: 'Roleplay 5 turns.' },
-];
-
-const lesson = {
-  title: 'Level 1 · Unit 6: Tarikh dan Kalendar — Dates and Calendar',
-  category: 'time',
-  difficulty: 'beginner', targetLang: 'ms', nativeLang: 'en', track: 'textbook', lessonType: 'thematic',
-  activities,
-  expressionPractice: [
-    { id: 'stating-dates', label: 'Stating dates', goal: 'Say today, yesterday, tomorrow, and any date.' },
-    { id: 'stating-age', label: 'Stating age', goal: 'Use "umur saya" or "saya berumur".' },
-    { id: 'planning-events', label: 'Planning events', goal: 'Schedule an activity for a specific day.' },
+module.exports = {
+  "title": "Level 1 · Unit 6: Tarikh dan Kalendar — Dates and Calendar",
+  "category": "time",
+  "difficulty": "beginner",
+  "targetLang": "ms",
+  "nativeLang": "en",
+  "track": "textbook",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ms-level1unit06datescalendar-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "State the date in BM using day, date, month, year."
+      ],
+      "task": "Roleplay 5 turns."
+    },
+    {
+      "id": "ms-level1unit06datescalendar-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Malay vowels, syllable rhythm, and borrowed-word pronunciation clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ms-level1unit06datescalendar-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 6: Tarikh dan Kalendar — Dates and Calendar with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ms-level1unit06datescalendar-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 6: Tarikh dan Kalendar — Dates and Calendar sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ms-level1unit06datescalendar-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "State the date in BM using day, date, month, year."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ms-level1unit06datescalendar-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 6: Tarikh dan Kalendar — Dates and Calendar with one nearby Malay form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ms-level1unit06datescalendar-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ms-level1unit06datescalendar-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ms-level1unit06datescalendar-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ms-level1unit06datescalendar-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the social setting, multilingual context, or politeness choice that changes how this Malay is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ms-level1unit06datescalendar-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Roleplay 5 turns."
+      ],
+      "task": "Roleplay 5 turns."
+    }
   ],
-  relatedPools: ['topic-time', 'topic-daily-life'],
-  content: [
-    createContentItem('tarikh', 'ta.riʔ', 'DATE — Arabic-origin. "Tarikh hari ini" = today\'s date.', 'word', 'Tarikh lahir saya 5 Mei.', '"My birthdate is 5 May".', null, [ACT.orientation]),
-    createContentItem('kalendar', 'ka.len.dar', 'CALENDAR — English loan. Also called "takwim" in formal Arabic-derived register.', 'word', 'Sila tanda dalam kalendar.', '"Please mark in the calendar".', null, [ACT.orientation]),
-
-    createContentItem('Ahad', 'a.had', 'SUNDAY. Arabic "first day" (yaum al-ahad). The first day in the Arabic week numbering.', 'word', 'Hari Ahad saya rehat di rumah.', '"On Sunday I rest at home".', null, [ACT.vocabularyDays]),
-    createContentItem('Isnin', 'is.nin', 'MONDAY. Arabic "second day" (yaum al-ithnayn). The start of the working week in modern MY usage.', 'word', 'Saya benci hari Isnin.', '"I hate Mondays".', null, [ACT.vocabularyDays]),
-    createContentItem('Selasa', 'sə.la.sa', 'TUESDAY. Arabic "third day".', 'word', 'Mesyuarat hari Selasa pagi.', '"Meeting Tuesday morning".', null, [ACT.vocabularyDays]),
-    createContentItem('Rabu', 'ra.bu', 'WEDNESDAY. Arabic "fourth day".', 'word', 'Hari Rabu hari pertengahan minggu.', '"Wednesday is mid-week".', null, [ACT.vocabularyDays]),
-    createContentItem('Khamis', 'xa.mis', 'THURSDAY. Arabic "fifth day". Some Malay-Muslims read Surah Yasin on Khamis night.', 'word', 'Malam Khamis di masjid kampung.', '"Thursday night at the village mosque" — religious gathering.', null, [ACT.vocabularyDays]),
-    createContentItem('Jumaat', 'dʒu.ma.at', 'FRIDAY. Arabic "gathering day" (yaum al-jumu\'ah). The Friday prayer (solat Jumaat) is obligatory for Muslim men. Friday afternoons are quieter — many shops close briefly.', 'word', 'Solat Jumaat di Masjid Negara.', '"Friday prayer at the National Mosque".', null, [ACT.vocabularyDays]),
-    createContentItem('Sabtu', 'sab.tu', 'SATURDAY. Arabic "sabbath day" (yaum al-sabt).', 'word', 'Sabtu dan Ahad ialah hujung minggu.', '"Saturday and Sunday are the weekend".', null, [ACT.vocabularyDays]),
-    createContentItem('Note: Kelantan/Terengganu weekend', 'kə.lan.tan/tə.rəŋ.ga.nu', 'In Kelantan, Terengganu, Kedah, and Johor, the weekend is FRIDAY-SATURDAY (because Friday is the Muslim prayer day). The rest of Malaysia uses SAT-SUN.', 'word', 'Di Kelantan, hujung minggu hari Jumaat dan Sabtu.', '"In Kelantan, the weekend is Friday and Saturday".', null, [ACT.vocabularyDays]),
-
-    // Months
-    createContentItem('Januari', 'dʒa.nu.a.ri', 'January. Malay month names follow familiar international forms, but they are still used with `bulan` in natural calendar talk.', 'word', 'Tahun bermula pada bulan Januari.', '"The year starts in January" uses `bulan Januari`, the ordinary month phrase learners will hear in schedules.', null, [ACT.vocabularyMonths]),
-    createContentItem('Februari', 'fe.bru.a.ri', 'FEBRUARY. Often Chinese New Year falls in this month.', 'word', 'Tahun Baru Cina selalunya pada bulan Februari.', '"CNY is usually in February".', null, [ACT.vocabularyMonths]),
-    createContentItem('Mac', 'matʃ', 'MARCH. MY spelling is "Mac" (3-letter), ID is "Maret".', 'word', 'Cuti sekolah pertama pada bulan Mac.', '"First school break in March".', null, [ACT.vocabularyMonths]),
-    createContentItem('April', 'ap.ril', 'April. A short international loan that appears unchanged in Malaysian calendars, school notices, and appointment dates.', 'word', 'Cuaca panas pada April.', '"Hot weather in April" gives a compact model for month-based weather talk.', null, [ACT.vocabularyMonths]),
-    createContentItem('Mei', 'mei', 'MAY. Hari Pekerja (Labour Day) is May 1, public holiday.', 'word', 'Hari Pekerja pada 1 Mei.', '"Labour Day on May 1".', null, [ACT.vocabularyMonths]),
-    createContentItem('Jun', 'dʒun', 'JUNE. Mid-year school break.', 'word', 'Cuti pertengahan tahun pada bulan Jun.', '"Mid-year break in June".', null, [ACT.vocabularyMonths]),
-    createContentItem('Julai', 'dʒu.lai', 'July. Malaysian spelling uses `Julai`, a useful contrast with English spelling even though the month is easy to recognize.', 'word', 'Bulan Julai panas dan kering.', '"July is hot and dry" links the month to a natural seasonal description.', null, [ACT.vocabularyMonths]),
-    createContentItem('Ogos', 'o.gos', 'AUGUST. MY spelling — ID uses "Agustus". Hari Merdeka August 31.', 'word', 'Hari Merdeka pada 31 Ogos.', '"Independence Day on 31 August".', null, [ACT.vocabularyMonths]),
-    createContentItem('September', 'sep.tem.ber', 'SEPTEMBER. Hari Malaysia September 16.', 'word', 'Hari Malaysia pada 16 September.', '"Malaysia Day on 16 September".', null, [ACT.vocabularyMonths]),
-    createContentItem('Oktober', 'ok.to.ber', 'OCTOBER. UM Sem 1 usually starts.', 'word', 'Semester baru bermula Oktober.', '"New semester starts October".', null, [ACT.vocabularyMonths]),
-    createContentItem('November', 'no.vem.ber', 'NOVEMBER. Deepavali often falls.', 'word', 'Deepavali biasanya pada November.', '"Deepavali usually in November".', null, [ACT.vocabularyMonths]),
-    createContentItem('Disember', 'di.sem.ber', 'DECEMBER. MY spelling — ID uses "Desember". Christmas season.', 'word', 'Krismas pada 25 Disember.', '"Christmas on 25 December".', null, [ACT.vocabularyMonths]),
-
-    // Numbers
-    createContentItem('satu, dua, tiga', 'sa.tu, du.a, ti.ga', '1, 2, 3 — the most basic. "Satu" can become "se-" prefix in compounds: seratus (one hundred), seribu (one thousand).', 'word', '1 satu, 2 dua, 3 tiga, 4 empat, 5 lima', 'First five numbers.', null, [ACT.vocabularyNumbers]),
-    createContentItem('enam, tujuh, lapan, sembilan, sepuluh', 'ə.nam, tu.dʒuh, la.pan, səm.bi.lan, sə.pu.luh', '6-10. Note: MY uses "lapan" (8), ID uses "delapan".', 'word', '6 enam, 7 tujuh, 8 lapan, 9 sembilan, 10 sepuluh', 'Numbers 6-10.', null, [ACT.vocabularyNumbers]),
-    createContentItem('sebelas, dua belas, ... dua puluh', 'sə.bə.las, du.a bə.las, ... du.a pu.luh', '11-20. 11 = sebelas (special form), 12-19 = X belas, 20 = dua puluh.', 'word', '11 sebelas, 12 dua belas, 13 tiga belas, 20 dua puluh, 21 dua puluh satu', 'Numbers 11-21.', null, [ACT.vocabularyNumbers]),
-    createContentItem('puluh, ratus, ribu', 'pu.luh, ra.tus, ri.bu', 'Tens, hundreds, thousands. 100 = seratus, 1000 = seribu, 2026 = dua ribu dua puluh enam.', 'word', 'Tahun 2026 = dua ribu dua puluh enam.', '"Year 2026".', null, [ACT.vocabularyNumbers]),
-
-    // Grammar — date format
-    createContentItem('format tarikh', 'for.mat ta.riʔ', 'BM DATE: "Hari [day], [date] [month] [year]". Example: "Hari Khamis, 17 Mei 2026".', 'sentence', 'Hari Khamis, 17 Mei 2026.', 'Standard full date format in formal writing.', [
-      { target: 'Hari + day', note: 'day of the week comes first' },
-      { target: 'date number', note: 'date as a cardinal number — no ordinal -nd/-th' },
-      { target: 'month name', note: 'month in capital initial' },
-      { target: 'year', note: 'year as cardinal number' },
-    ], [ACT.grammarDateFormat]),
-    createContentItem('tarikh ringkas', 'ta.riʔ riŋ.kas', 'Short format: DD/MM/YYYY or DD-MM-YYYY. 17/5/2026 = 17 Mei 2026.', 'sentence', '17/5/2026 = 17 Mei 2026.', 'Numeric and written forms.', null, [ACT.grammarDateFormat]),
-
-    // Age
-    createContentItem('umur', 'u.mur', 'AGE. "Umur saya 25 tahun" = "My age is 25 years".', 'sentence', 'Umur saya 21 tahun.', '"My age is 21".', null, [ACT.grammarAge]),
-    createContentItem('berumur', 'bə.ru.mur', 'BE … AGE. ber- + umur. "Saya berumur 25 tahun" = "I am 25 years old".', 'sentence', 'Saya berumur 21 tahun.', '"I am 21 years old".', null, [ACT.grammarAge]),
-    createContentItem('Tarikh lahir / hari lahir', 'ta.riʔ la.hir / ha.ri la.hir', 'BIRTHDATE / BIRTHDAY. "Tarikh lahir" is the calendar date; "hari lahir" is the celebration.', 'sentence', 'Tarikh lahir saya 5 Mei. Hari lahir saya esok!', '"My birthdate is May 5. My birthday is tomorrow!".', null, [ACT.grammarAge]),
-
-    // Relative time
-    createContentItem('hari ini, semalam, esok', 'ha.ri i.ni, sə.ma.lam, e.soʔ', 'TODAY, YESTERDAY, TOMORROW. Core relative time markers.', 'sentence', 'Hari ini Selasa. Semalam Isnin. Esok Rabu.', '"Today Tuesday. Yesterday Monday. Tomorrow Wednesday".', null, [ACT.grammarRelativeTime]),
-    createContentItem('lusa, kelmarin', 'lu.sa, kəl.ma.rin', 'DAY AFTER TOMORROW / DAY BEFORE YESTERDAY.', 'sentence', 'Lusa hari Khamis. Kelmarin hari Ahad.', '"Day after tomorrow is Thursday. Day before yesterday was Sunday".', null, [ACT.grammarRelativeTime]),
-    createContentItem('minggu lepas, minggu depan', 'miŋ.gu lə.pas, miŋ.gu də.pan', 'LAST WEEK, NEXT WEEK. Also "bulan lepas/depan", "tahun lepas/depan".', 'sentence', 'Minggu lepas saya ke Penang. Minggu depan ke Sabah.', '"Last week I went to Penang. Next week to Sabah".', null, [ACT.grammarRelativeTime]),
-
-    // Reading
-    createContentItem('Kalendar akademik UM', 'ka.len.dar a.ka.de.miʔ u.em', 'A UM academic calendar excerpt.', 'sentence', 'Semester 1 sesi 2025/2026 bermula pada hari Isnin, 13 Oktober 2025. Cuti pertengahan semester dari 22 hingga 30 November 2025. Peperiksaan akhir bermula pada 19 Januari 2026 hingga 6 Februari 2026. Semester 2 bermula pada 16 Mac 2026.', 'A typical UM calendar paragraph.', null, [ACT.reading]),
-    createContentItem('Soalan kefahaman', 'so.a.lan kə.fa.ha.man', 'Calendar questions that require the learner to recover start dates, duration, and semester sequence from a real-looking academic schedule.', 'sentence', 'Q1: Bila Semester 1 bermula? Q2: Berapa lama cuti pertengahan? Q3: Bila peperiksaan akhir? Q4: Bila Semester 2?', 'Use full date phrases in the answers so the reading reinforces `bila`, month names, and academic-calendar vocabulary together.', null, [ACT.reading]),
-
-    // Listening
-    createContentItem('Dialog: rancang hari lahir', 'di.a.log: ran.tʃaŋ ha.ri la.hir', 'Two friends planning a birthday party.', 'sentence', 'Sarah: Aiman, hari lahir awak bila?\nAiman: 17 Mei. Dua minggu lagi.\nSarah: Wah, kita kena rancang sesuatu! Hari Sabtu boleh?\nAiman: Boleh. Sabtu 16 Mei. Datang ke rumah saya di Bangsar pukul 7 malam.\nSarah: Setuju! Saya akan beli kek.', '5-turn dialogue using dates, days, times.', null, [ACT.listening]),
-
-    // Writing
-    createContentItem('Tulis tarikh penting', 'tu.lis ta.riʔ pən.tiŋ', '5-sentence template for important dates.', 'sentence', 'Template: Hari lahir saya ___. Saya berumur ___ tahun. Hari lahir ibu saya ___ dan ayah saya ___. Hari kemerdekaan negara saya ialah ___.', 'Combine all date vocabulary.', null, [ACT.writing]),
-
-    // Culture
-    createContentItem('Kalendar Hijriah', 'ka.len.dar hid.ʒri.ah', 'Islamic lunar calendar — determines Ramadan, Hari Raya Aidilfitri (1 Syawal), Aidiladha (10 Zulhijjah), Maulidur Rasul (12 Rabiulawal), Awal Muharram (Islamic New Year).', 'sentence', 'Ramadan bulan ke-9 dalam kalendar Hijriah.', '"Ramadan is the 9th month in the Hijri calendar".', null, [ACT.culture]),
-    createContentItem('Kalendar Cina', 'ka.len.dar tʃi.na', 'Chinese lunar calendar — determines Tahun Baru Cina (1st day of 1st lunar month), Mid-Autumn Festival, Cheng Beng.', 'sentence', 'Tahun Baru Cina mengikut kalendar lunar Cina.', '"CNY follows the Chinese lunar calendar".', null, [ACT.culture]),
-    createContentItem('Kalendar Tamil', 'ka.len.dar ta.mil', 'Tamil/Hindu calendar — determines Deepavali, Thaipusam, Ponggal.', 'sentence', 'Thaipusam pada bulan Tamil Thai.', '"Thaipusam is in the Tamil month of Thai".', null, [ACT.culture]),
-    createContentItem('Empat sistem hidup berdampingan', 'əm.pat sis.tem hi.dup bər.dam.pi.ŋan', 'Malaysians live with FOUR calendars simultaneously: Gregorian (official), Hijri (Muslim), Chinese (CNY), Tamil (Hindu). Public-holiday gazettes track all four.', 'sentence', 'Rakyat Malaysia menggunakan empat sistem kalendar.', '"Malaysians use four calendar systems".', null, [ACT.culture]),
-
-    // Task
-    createContentItem('Tugasan: rancang pertemuan', 'tu.ga.san: ran.tʃaŋ pər.tə.mu.an', 'Roleplay planning a meet-up next week.', 'sentence', 'Scene: Awak nak jumpa kawan minggu depan untuk kopi.', 'Use day, date, time vocabulary.', null, [ACT.task]),
+  "expressionPractice": [
+    {
+      "id": "stating-dates",
+      "label": "Stating dates",
+      "goal": "Say today, yesterday, tomorrow, and any date."
+    },
+    {
+      "id": "stating-age",
+      "label": "Stating age",
+      "goal": "Use \"umur saya\" or \"saya berumur\"."
+    },
+    {
+      "id": "planning-events",
+      "label": "Planning events",
+      "goal": "Schedule an activity for a specific day."
+    }
   ],
+  "relatedPools": [
+    "topic-time",
+    "topic-daily-life"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ms-level1unit06datescalendar-orientation"
+      ],
+      "targetText": "matlamat pelajaran",
+      "romanization": "",
+      "nativeText": "State the date in BM using day, date, month, year.",
+      "pronunciation": "",
+      "exampleTarget": "matlamat pelajaran",
+      "exampleNative": "The whole lesson is built toward this outcome: Roleplay 5 turns.",
+      "korean": "matlamat pelajaran",
+      "english": "State the date in BM using day, date, month, year.",
+      "example": "matlamat pelajaran",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Roleplay 5 turns."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ms-level1unit06datescalendar-pronunciation"
+      ],
+      "targetText": "semakan bunyi",
+      "romanization": "",
+      "nativeText": "Keep Malay vowels, syllable rhythm, and borrowed-word pronunciation clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Tarikh lahir saya 5 Mei.\".",
+      "pronunciation": "",
+      "exampleTarget": "Tarikh lahir saya 5 Mei.",
+      "exampleNative": "\"My birthdate is 5 May\".",
+      "korean": "semakan bunyi",
+      "english": "Keep Malay vowels, syllable rhythm, and borrowed-word pronunciation clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Tarikh lahir saya 5 Mei.\".",
+      "example": "Tarikh lahir saya 5 Mei.",
+      "exampleEnglish": "\"My birthdate is 5 May\"."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1"
+      ],
+      "targetText": "tarikh",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 6: Tarikh dan Kalendar — Dates and Calendar with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Tarikh lahir saya 5 Mei.",
+      "exampleNative": "\"My birthdate is 5 May\".",
+      "korean": "tarikh",
+      "english": "Use the key language of Level 1 · Unit 6: Tarikh dan Kalendar — Dates and Calendar with the register and setting that the lesson requires.",
+      "example": "Tarikh lahir saya 5 Mei.",
+      "exampleEnglish": "\"My birthdate is 5 May\"."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-2"
+      ],
+      "targetText": "kalendar",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 6: Tarikh dan Kalendar — Dates and Calendar sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Sila tanda dalam kalendar.",
+      "exampleNative": "\"Please mark in the calendar\".",
+      "korean": "kalendar",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 6: Tarikh dan Kalendar — Dates and Calendar sound precise rather than merely understandable.",
+      "example": "Sila tanda dalam kalendar.",
+      "exampleEnglish": "\"Please mark in the calendar\"."
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ms-level1unit06datescalendar-grammar-1"
+      ],
+      "targetText": "tarikh",
+      "romanization": "",
+      "nativeText": "State the date in BM using day, date, month, year.",
+      "pronunciation": "",
+      "exampleTarget": "Tarikh lahir saya 5 Mei.",
+      "exampleNative": "\"My birthdate is 5 May\".",
+      "korean": "tarikh",
+      "english": "State the date in BM using day, date, month, year.",
+      "example": "Tarikh lahir saya 5 Mei.",
+      "exampleEnglish": "\"My birthdate is 5 May\"."
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ms-level1unit06datescalendar-grammar-2"
+      ],
+      "targetText": "kalendar",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 6: Tarikh dan Kalendar — Dates and Calendar with one nearby Malay form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Sila tanda dalam kalendar.",
+      "exampleNative": "\"Please mark in the calendar\".",
+      "korean": "kalendar",
+      "english": "Contrast the main pattern in Level 1 · Unit 6: Tarikh dan Kalendar — Dates and Calendar with one nearby Malay form so the learner can avoid literal translation.",
+      "example": "Sila tanda dalam kalendar.",
+      "exampleEnglish": "\"Please mark in the calendar\"."
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ms-level1unit06datescalendar-reading"
+      ],
+      "targetText": "model bacaan",
+      "romanization": "",
+      "nativeText": "Read the connected model for model bacaan as one message. Notice how \"Scene: Awak nak jumpa kawan minggu depan untuk kopi.\" lets the lesson vocabulary and grammar work together instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Scene: Awak nak jumpa kawan minggu depan untuk kopi.",
+      "exampleNative": "Use day, date, time vocabulary.",
+      "korean": "model bacaan",
+      "english": "Read the connected model for model bacaan as one message. Notice how \"Scene: Awak nak jumpa kawan minggu depan untuk kopi.\" lets the lesson vocabulary and grammar work together instead of appearing as isolated flashcards.",
+      "example": "Scene: Awak nak jumpa kawan minggu depan untuk kopi.",
+      "exampleEnglish": "Use day, date, time vocabulary."
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ms-level1unit06datescalendar-listening"
+      ],
+      "targetText": "model dialog",
+      "romanization": "",
+      "nativeText": "Hear \"Scene: Awak nak jumpa kawan minggu depan untuk kopi.\" as interaction, not as a sentence list. The listening goal is to follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Scene: Awak nak jumpa kawan minggu depan untuk kopi.",
+      "exampleNative": "Use day, date, time vocabulary.",
+      "korean": "model dialog",
+      "english": "Hear \"Scene: Awak nak jumpa kawan minggu depan untuk kopi.\" as interaction, not as a sentence list. The listening goal is to follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Scene: Awak nak jumpa kawan minggu depan untuk kopi.",
+      "exampleEnglish": "Use day, date, time vocabulary."
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ms-level1unit06datescalendar-writing"
+      ],
+      "targetText": "latihan menulis",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Tarikh lahir saya 5 Mei.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Tarikh lahir saya 5 Mei.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "latihan menulis",
+      "english": "Write your own version after studying \"Tarikh lahir saya 5 Mei.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Tarikh lahir saya 5 Mei.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ms-level1unit06datescalendar-culture"
+      ],
+      "targetText": "penggunaan dan konteks",
+      "romanization": "",
+      "nativeText": "Notice the social setting, multilingual context, or politeness choice that changes how this Malay is naturally used. Use \"Sila tanda dalam kalendar.\" as the social comparison point for this lesson.",
+      "pronunciation": "",
+      "exampleTarget": "Sila tanda dalam kalendar.",
+      "exampleNative": "\"Please mark in the calendar\".",
+      "korean": "penggunaan dan konteks",
+      "english": "Notice the social setting, multilingual context, or politeness choice that changes how this Malay is naturally used. Use \"Sila tanda dalam kalendar.\" as the social comparison point for this lesson.",
+      "example": "Sila tanda dalam kalendar.",
+      "exampleEnglish": "\"Please mark in the calendar\"."
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "tugasan akhir",
+      "romanization": "",
+      "nativeText": "Roleplay 5 turns.",
+      "pronunciation": "",
+      "exampleTarget": "Scene: Awak nak jumpa kawan minggu depan untuk kopi.",
+      "exampleNative": "Roleplay 5 turns.",
+      "korean": "tugasan akhir",
+      "english": "Roleplay 5 turns.",
+      "example": "Scene: Awak nak jumpa kawan minggu depan untuk kopi.",
+      "exampleEnglish": "Roleplay 5 turns."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ms-level1unit06datescalendar-grammar-2"
+      ],
+      "targetText": "kesilapan biasa",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around word order, particles, classifiers, and polite forms that make a sentence understandable but not yet natural. Begin by checking \"Sila tanda dalam kalendar.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Sila tanda dalam kalendar.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: \"Please mark in the calendar\".",
+      "korean": "kesilapan biasa",
+      "english": "Watch for literal-translation mistakes around word order, particles, classifiers, and polite forms that make a sentence understandable but not yet natural. Begin by checking \"Sila tanda dalam kalendar.\" against the model.",
+      "example": "Sila tanda dalam kalendar.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: \"Please mark in the calendar\"."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-culture"
+      ],
+      "targetText": "laras bahasa",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for neutral standard Malay, a polite service tone, or a more relaxed everyday choice before selecting the final wording. Compare the social fit of \"Tarikh lahir saya 5 Mei.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Tarikh lahir saya 5 Mei.",
+      "exampleNative": "\"My birthdate is 5 May\".",
+      "korean": "laras bahasa",
+      "english": "Check whether the setting calls for neutral standard Malay, a polite service tone, or a more relaxed everyday choice before selecting the final wording. Compare the social fit of \"Tarikh lahir saya 5 Mei.\" before reusing it elsewhere.",
+      "example": "Tarikh lahir saya 5 Mei.",
+      "exampleEnglish": "\"My birthdate is 5 May\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "kelancaran",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Malay message rather than as separate translated fragments. Aim to carry \"Scene: Awak nak jumpa kawan minggu depan untuk kopi.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Scene: Awak nak jumpa kawan minggu depan untuk kopi.",
+      "exampleNative": "Use day, date, time vocabulary.",
+      "korean": "kelancaran",
+      "english": "Say the idea as one connected Malay message rather than as separate translated fragments. Aim to carry \"Scene: Awak nak jumpa kawan minggu depan untuk kopi.\" as one thought.",
+      "example": "Scene: Awak nak jumpa kawan minggu depan untuk kopi.",
+      "exampleEnglish": "Use day, date, time vocabulary."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "aplikasi",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Tarikh lahir saya 5 Mei.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Tarikh lahir saya 5 Mei.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "aplikasi",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Tarikh lahir saya 5 Mei.\" and move it into your own life.",
+      "example": "Tarikh lahir saya 5 Mei.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-grammar-1"
+      ],
+      "targetText": "ingat semula",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"tarikh\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "tarikh",
+      "exampleNative": "DATE — Arabic-origin. \"Tarikh hari ini\" = today's date.",
+      "korean": "ingat semula",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"tarikh\" before looking back.",
+      "example": "tarikh",
+      "exampleEnglish": "DATE — Arabic-origin. \"Tarikh hari ini\" = today's date."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-writing"
+      ],
+      "targetText": "pengembangan",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Scene: Awak nak jumpa kawan minggu depan untuk kopi.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Scene: Awak nak jumpa kawan minggu depan untuk kopi.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "pengembangan",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Scene: Awak nak jumpa kawan minggu depan untuk kopi.\" rather than restarting from a blank sentence.",
+      "example": "Scene: Awak nak jumpa kawan minggu depan untuk kopi.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading"
+      ],
+      "targetText": "perbandingan",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 6: Tarikh dan Kalendar — Dates and Calendar with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Sila tanda dalam kalendar.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Sila tanda dalam kalendar.",
+      "exampleNative": "\"Please mark in the calendar\".",
+      "korean": "perbandingan",
+      "english": "Compare the central form in Level 1 · Unit 6: Tarikh dan Kalendar — Dates and Calendar with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Sila tanda dalam kalendar.\" as the comparison line.",
+      "example": "Sila tanda dalam kalendar.",
+      "exampleEnglish": "\"Please mark in the calendar\"."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ms-level1unit06datescalendar-pronunciation"
+      ],
+      "targetText": "pembaikan sebutan",
+      "romanization": "",
+      "nativeText": "Keep Malay vowels, syllable rhythm, and borrowed-word pronunciation clear enough that the sentence remains easy to follow. Use \"Tarikh lahir saya 5 Mei.\" as the repair line.",
+      "pronunciation": "",
+      "exampleTarget": "Tarikh lahir saya 5 Mei.",
+      "exampleNative": "\"My birthdate is 5 May\".",
+      "korean": "pembaikan sebutan",
+      "english": "Keep Malay vowels, syllable rhythm, and borrowed-word pronunciation clear enough that the sentence remains easy to follow. Use \"Tarikh lahir saya 5 Mei.\" as the repair line.",
+      "example": "Tarikh lahir saya 5 Mei.",
+      "exampleEnglish": "\"My birthdate is 5 May\"."
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "variasi dialog",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Scene: Awak nak jumpa kawan minggu depan untuk kopi.\".",
+      "pronunciation": "",
+      "exampleTarget": "Scene: Awak nak jumpa kawan minggu depan untuk kopi.",
+      "exampleNative": "Use day, date, time vocabulary.",
+      "korean": "variasi dialog",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Scene: Awak nak jumpa kawan minggu depan untuk kopi.\".",
+      "example": "Scene: Awak nak jumpa kawan minggu depan untuk kopi.",
+      "exampleEnglish": "Use day, date, time vocabulary."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-writing"
+      ],
+      "targetText": "bina ayat",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Tarikh lahir saya 5 Mei.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Tarikh lahir saya 5 Mei.",
+      "exampleNative": "\"My birthdate is 5 May\".",
+      "korean": "bina ayat",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Tarikh lahir saya 5 Mei.\" one layer at a time.",
+      "example": "Tarikh lahir saya 5 Mei.",
+      "exampleEnglish": "\"My birthdate is 5 May\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-2"
+      ],
+      "targetText": "semakan pantas",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Sila tanda dalam kalendar.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Sila tanda dalam kalendar.",
+      "exampleNative": "\"Please mark in the calendar\".",
+      "korean": "semakan pantas",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Sila tanda dalam kalendar.\" as the deciding example.",
+      "example": "Sila tanda dalam kalendar.",
+      "exampleEnglish": "\"Please mark in the calendar\"."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ms-level1unit06datescalendar-culture",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "renungan",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Scene: Awak nak jumpa kawan minggu depan untuk kopi.\".",
+      "pronunciation": "",
+      "exampleTarget": "Scene: Awak nak jumpa kawan minggu depan untuk kopi.",
+      "exampleNative": "Use day, date, time vocabulary.",
+      "korean": "renungan",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Scene: Awak nak jumpa kawan minggu depan untuk kopi.\".",
+      "example": "Scene: Awak nak jumpa kawan minggu depan untuk kopi.",
+      "exampleEnglish": "Use day, date, time vocabulary."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "tarikh",
+      "romanization": "ta.riʔ",
+      "nativeText": "DATE — Arabic-origin. \"Tarikh hari ini\" = today's date.",
+      "pronunciation": "ta.riʔ",
+      "exampleTarget": "Tarikh lahir saya 5 Mei.",
+      "exampleNative": "\"My birthdate is 5 May\".",
+      "korean": "tarikh",
+      "english": "DATE — Arabic-origin. \"Tarikh hari ini\" = today's date.",
+      "example": "Tarikh lahir saya 5 Mei.",
+      "exampleEnglish": "\"My birthdate is 5 May\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "kalendar",
+      "romanization": "ka.len.dar",
+      "nativeText": "CALENDAR — English loan. Also called \"takwim\" in formal Arabic-derived register.",
+      "pronunciation": "ka.len.dar",
+      "exampleTarget": "Sila tanda dalam kalendar.",
+      "exampleNative": "\"Please mark in the calendar\".",
+      "korean": "kalendar",
+      "english": "CALENDAR — English loan. Also called \"takwim\" in formal Arabic-derived register.",
+      "example": "Sila tanda dalam kalendar.",
+      "exampleEnglish": "\"Please mark in the calendar\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Ahad",
+      "romanization": "a.had",
+      "nativeText": "SUNDAY. Arabic \"first day\" (yaum al-ahad). The first day in the Arabic week numbering.",
+      "pronunciation": "a.had",
+      "exampleTarget": "Hari Ahad saya rehat di rumah.",
+      "exampleNative": "\"On Sunday I rest at home\".",
+      "korean": "Ahad",
+      "english": "SUNDAY. Arabic \"first day\" (yaum al-ahad). The first day in the Arabic week numbering.",
+      "example": "Hari Ahad saya rehat di rumah.",
+      "exampleEnglish": "\"On Sunday I rest at home\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Isnin",
+      "romanization": "is.nin",
+      "nativeText": "MONDAY. Arabic \"second day\" (yaum al-ithnayn). The start of the working week in modern MY usage.",
+      "pronunciation": "is.nin",
+      "exampleTarget": "Saya benci hari Isnin.",
+      "exampleNative": "\"I hate Mondays\".",
+      "korean": "Isnin",
+      "english": "MONDAY. Arabic \"second day\" (yaum al-ithnayn). The start of the working week in modern MY usage.",
+      "example": "Saya benci hari Isnin.",
+      "exampleEnglish": "\"I hate Mondays\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Selasa",
+      "romanization": "sə.la.sa",
+      "nativeText": "TUESDAY. Arabic \"third day\".",
+      "pronunciation": "sə.la.sa",
+      "exampleTarget": "Mesyuarat hari Selasa pagi.",
+      "exampleNative": "\"Meeting Tuesday morning\".",
+      "korean": "Selasa",
+      "english": "TUESDAY. Arabic \"third day\".",
+      "example": "Mesyuarat hari Selasa pagi.",
+      "exampleEnglish": "\"Meeting Tuesday morning\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Rabu",
+      "romanization": "ra.bu",
+      "nativeText": "WEDNESDAY. Arabic \"fourth day\".",
+      "pronunciation": "ra.bu",
+      "exampleTarget": "Hari Rabu hari pertengahan minggu.",
+      "exampleNative": "\"Wednesday is mid-week\".",
+      "korean": "Rabu",
+      "english": "WEDNESDAY. Arabic \"fourth day\".",
+      "example": "Hari Rabu hari pertengahan minggu.",
+      "exampleEnglish": "\"Wednesday is mid-week\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Khamis",
+      "romanization": "xa.mis",
+      "nativeText": "THURSDAY. Arabic \"fifth day\". Some Malay-Muslims read Surah Yasin on Khamis night.",
+      "pronunciation": "xa.mis",
+      "exampleTarget": "Malam Khamis di masjid kampung.",
+      "exampleNative": "\"Thursday night at the village mosque\" — religious gathering.",
+      "korean": "Khamis",
+      "english": "THURSDAY. Arabic \"fifth day\". Some Malay-Muslims read Surah Yasin on Khamis night.",
+      "example": "Malam Khamis di masjid kampung.",
+      "exampleEnglish": "\"Thursday night at the village mosque\" — religious gathering."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Jumaat",
+      "romanization": "dʒu.ma.at",
+      "nativeText": "FRIDAY. Arabic \"gathering day\" (yaum al-jumu'ah). The Friday prayer (solat Jumaat) is obligatory for Muslim men. Friday afternoons are quieter — many shops close briefly.",
+      "pronunciation": "dʒu.ma.at",
+      "exampleTarget": "Solat Jumaat di Masjid Negara.",
+      "exampleNative": "\"Friday prayer at the National Mosque\".",
+      "korean": "Jumaat",
+      "english": "FRIDAY. Arabic \"gathering day\" (yaum al-jumu'ah). The Friday prayer (solat Jumaat) is obligatory for Muslim men. Friday afternoons are quieter — many shops close briefly.",
+      "example": "Solat Jumaat di Masjid Negara.",
+      "exampleEnglish": "\"Friday prayer at the National Mosque\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Sabtu",
+      "romanization": "sab.tu",
+      "nativeText": "SATURDAY. Arabic \"sabbath day\" (yaum al-sabt).",
+      "pronunciation": "sab.tu",
+      "exampleTarget": "Sabtu dan Ahad ialah hujung minggu.",
+      "exampleNative": "\"Saturday and Sunday are the weekend\".",
+      "korean": "Sabtu",
+      "english": "SATURDAY. Arabic \"sabbath day\" (yaum al-sabt).",
+      "example": "Sabtu dan Ahad ialah hujung minggu.",
+      "exampleEnglish": "\"Saturday and Sunday are the weekend\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Note: Kelantan/Terengganu weekend",
+      "romanization": "kə.lan.tan/tə.rəŋ.ga.nu",
+      "nativeText": "In Kelantan, Terengganu, Kedah, and Johor, the weekend is FRIDAY-SATURDAY (because Friday is the Muslim prayer day). The rest of Malaysia uses SAT-SUN.",
+      "pronunciation": "kə.lan.tan/tə.rəŋ.ga.nu",
+      "exampleTarget": "Di Kelantan, hujung minggu hari Jumaat dan Sabtu.",
+      "exampleNative": "\"In Kelantan, the weekend is Friday and Saturday\".",
+      "korean": "Note: Kelantan/Terengganu weekend",
+      "english": "In Kelantan, Terengganu, Kedah, and Johor, the weekend is FRIDAY-SATURDAY (because Friday is the Muslim prayer day). The rest of Malaysia uses SAT-SUN.",
+      "example": "Di Kelantan, hujung minggu hari Jumaat dan Sabtu.",
+      "exampleEnglish": "\"In Kelantan, the weekend is Friday and Saturday\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Januari",
+      "romanization": "dʒa.nu.a.ri",
+      "nativeText": "January. Malay month names follow familiar international forms, but they are still used with `bulan` in natural calendar talk.",
+      "pronunciation": "dʒa.nu.a.ri",
+      "exampleTarget": "Tahun bermula pada bulan Januari.",
+      "exampleNative": "\"The year starts in January\" uses `bulan Januari`, the ordinary month phrase learners will hear in schedules.",
+      "korean": "Januari",
+      "english": "January. Malay month names follow familiar international forms, but they are still used with `bulan` in natural calendar talk.",
+      "example": "Tahun bermula pada bulan Januari.",
+      "exampleEnglish": "\"The year starts in January\" uses `bulan Januari`, the ordinary month phrase learners will hear in schedules."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Februari",
+      "romanization": "fe.bru.a.ri",
+      "nativeText": "FEBRUARY. Often Chinese New Year falls in this month.",
+      "pronunciation": "fe.bru.a.ri",
+      "exampleTarget": "Tahun Baru Cina selalunya pada bulan Februari.",
+      "exampleNative": "\"CNY is usually in February\".",
+      "korean": "Februari",
+      "english": "FEBRUARY. Often Chinese New Year falls in this month.",
+      "example": "Tahun Baru Cina selalunya pada bulan Februari.",
+      "exampleEnglish": "\"CNY is usually in February\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Mac",
+      "romanization": "matʃ",
+      "nativeText": "MARCH. MY spelling is \"Mac\" (3-letter), ID is \"Maret\".",
+      "pronunciation": "matʃ",
+      "exampleTarget": "Cuti sekolah pertama pada bulan Mac.",
+      "exampleNative": "\"First school break in March\".",
+      "korean": "Mac",
+      "english": "MARCH. MY spelling is \"Mac\" (3-letter), ID is \"Maret\".",
+      "example": "Cuti sekolah pertama pada bulan Mac.",
+      "exampleEnglish": "\"First school break in March\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "April",
+      "romanization": "ap.ril",
+      "nativeText": "April. A short international loan that appears unchanged in Malaysian calendars, school notices, and appointment dates.",
+      "pronunciation": "ap.ril",
+      "exampleTarget": "Cuaca panas pada April.",
+      "exampleNative": "\"Hot weather in April\" gives a compact model for month-based weather talk.",
+      "korean": "April",
+      "english": "April. A short international loan that appears unchanged in Malaysian calendars, school notices, and appointment dates.",
+      "example": "Cuaca panas pada April.",
+      "exampleEnglish": "\"Hot weather in April\" gives a compact model for month-based weather talk."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Mei",
+      "romanization": "mei",
+      "nativeText": "MAY. Hari Pekerja (Labour Day) is May 1, public holiday.",
+      "pronunciation": "mei",
+      "exampleTarget": "Hari Pekerja pada 1 Mei.",
+      "exampleNative": "\"Labour Day on May 1\".",
+      "korean": "Mei",
+      "english": "MAY. Hari Pekerja (Labour Day) is May 1, public holiday.",
+      "example": "Hari Pekerja pada 1 Mei.",
+      "exampleEnglish": "\"Labour Day on May 1\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Jun",
+      "romanization": "dʒun",
+      "nativeText": "JUNE. Mid-year school break.",
+      "pronunciation": "dʒun",
+      "exampleTarget": "Cuti pertengahan tahun pada bulan Jun.",
+      "exampleNative": "\"Mid-year break in June\".",
+      "korean": "Jun",
+      "english": "JUNE. Mid-year school break.",
+      "example": "Cuti pertengahan tahun pada bulan Jun.",
+      "exampleEnglish": "\"Mid-year break in June\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Julai",
+      "romanization": "dʒu.lai",
+      "nativeText": "July. Malaysian spelling uses `Julai`, a useful contrast with English spelling even though the month is easy to recognize.",
+      "pronunciation": "dʒu.lai",
+      "exampleTarget": "Bulan Julai panas dan kering.",
+      "exampleNative": "\"July is hot and dry\" links the month to a natural seasonal description.",
+      "korean": "Julai",
+      "english": "July. Malaysian spelling uses `Julai`, a useful contrast with English spelling even though the month is easy to recognize.",
+      "example": "Bulan Julai panas dan kering.",
+      "exampleEnglish": "\"July is hot and dry\" links the month to a natural seasonal description."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Ogos",
+      "romanization": "o.gos",
+      "nativeText": "AUGUST. MY spelling — ID uses \"Agustus\". Hari Merdeka August 31.",
+      "pronunciation": "o.gos",
+      "exampleTarget": "Hari Merdeka pada 31 Ogos.",
+      "exampleNative": "\"Independence Day on 31 August\".",
+      "korean": "Ogos",
+      "english": "AUGUST. MY spelling — ID uses \"Agustus\". Hari Merdeka August 31.",
+      "example": "Hari Merdeka pada 31 Ogos.",
+      "exampleEnglish": "\"Independence Day on 31 August\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "September",
+      "romanization": "sep.tem.ber",
+      "nativeText": "SEPTEMBER. Hari Malaysia September 16.",
+      "pronunciation": "sep.tem.ber",
+      "exampleTarget": "Hari Malaysia pada 16 September.",
+      "exampleNative": "\"Malaysia Day on 16 September\".",
+      "korean": "September",
+      "english": "SEPTEMBER. Hari Malaysia September 16.",
+      "example": "Hari Malaysia pada 16 September.",
+      "exampleEnglish": "\"Malaysia Day on 16 September\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Oktober",
+      "romanization": "ok.to.ber",
+      "nativeText": "OCTOBER. UM Sem 1 usually starts.",
+      "pronunciation": "ok.to.ber",
+      "exampleTarget": "Semester baru bermula Oktober.",
+      "exampleNative": "\"New semester starts October\".",
+      "korean": "Oktober",
+      "english": "OCTOBER. UM Sem 1 usually starts.",
+      "example": "Semester baru bermula Oktober.",
+      "exampleEnglish": "\"New semester starts October\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "November",
+      "romanization": "no.vem.ber",
+      "nativeText": "NOVEMBER. Deepavali often falls.",
+      "pronunciation": "no.vem.ber",
+      "exampleTarget": "Deepavali biasanya pada November.",
+      "exampleNative": "\"Deepavali usually in November\".",
+      "korean": "November",
+      "english": "NOVEMBER. Deepavali often falls.",
+      "example": "Deepavali biasanya pada November.",
+      "exampleEnglish": "\"Deepavali usually in November\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Disember",
+      "romanization": "di.sem.ber",
+      "nativeText": "DECEMBER. MY spelling — ID uses \"Desember\". Christmas season.",
+      "pronunciation": "di.sem.ber",
+      "exampleTarget": "Krismas pada 25 Disember.",
+      "exampleNative": "\"Christmas on 25 December\".",
+      "korean": "Disember",
+      "english": "DECEMBER. MY spelling — ID uses \"Desember\". Christmas season.",
+      "example": "Krismas pada 25 Disember.",
+      "exampleEnglish": "\"Christmas on 25 December\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "satu, dua, tiga",
+      "romanization": "sa.tu, du.a, ti.ga",
+      "nativeText": "1, 2, 3 — the most basic. \"Satu\" can become \"se-\" prefix in compounds: seratus (one hundred), seribu (one thousand).",
+      "pronunciation": "sa.tu, du.a, ti.ga",
+      "exampleTarget": "1 satu, 2 dua, 3 tiga, 4 empat, 5 lima",
+      "exampleNative": "First five numbers.",
+      "korean": "satu, dua, tiga",
+      "english": "1, 2, 3 — the most basic. \"Satu\" can become \"se-\" prefix in compounds: seratus (one hundred), seribu (one thousand).",
+      "example": "1 satu, 2 dua, 3 tiga, 4 empat, 5 lima",
+      "exampleEnglish": "First five numbers."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "enam, tujuh, lapan, sembilan, sepuluh",
+      "romanization": "ə.nam, tu.dʒuh, la.pan, səm.bi.lan, sə.pu.luh",
+      "nativeText": "6-10. Note: MY uses \"lapan\" (8), ID uses \"delapan\".",
+      "pronunciation": "ə.nam, tu.dʒuh, la.pan, səm.bi.lan, sə.pu.luh",
+      "exampleTarget": "6 enam, 7 tujuh, 8 lapan, 9 sembilan, 10 sepuluh",
+      "exampleNative": "Numbers 6-10.",
+      "korean": "enam, tujuh, lapan, sembilan, sepuluh",
+      "english": "6-10. Note: MY uses \"lapan\" (8), ID uses \"delapan\".",
+      "example": "6 enam, 7 tujuh, 8 lapan, 9 sembilan, 10 sepuluh",
+      "exampleEnglish": "Numbers 6-10."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "sebelas, dua belas, ... dua puluh",
+      "romanization": "sə.bə.las, du.a bə.las, ... du.a pu.luh",
+      "nativeText": "11-20. 11 = sebelas (special form), 12-19 = X belas, 20 = dua puluh.",
+      "pronunciation": "sə.bə.las, du.a bə.las, ... du.a pu.luh",
+      "exampleTarget": "11 sebelas, 12 dua belas, 13 tiga belas, 20 dua puluh, 21 dua puluh satu",
+      "exampleNative": "Numbers 11-21.",
+      "korean": "sebelas, dua belas, ... dua puluh",
+      "english": "11-20. 11 = sebelas (special form), 12-19 = X belas, 20 = dua puluh.",
+      "example": "11 sebelas, 12 dua belas, 13 tiga belas, 20 dua puluh, 21 dua puluh satu",
+      "exampleEnglish": "Numbers 11-21."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "puluh, ratus, ribu",
+      "romanization": "pu.luh, ra.tus, ri.bu",
+      "nativeText": "Tens, hundreds, thousands. 100 = seratus, 1000 = seribu, 2026 = dua ribu dua puluh enam.",
+      "pronunciation": "pu.luh, ra.tus, ri.bu",
+      "exampleTarget": "Tahun 2026 = dua ribu dua puluh enam.",
+      "exampleNative": "\"Year 2026\".",
+      "korean": "puluh, ratus, ribu",
+      "english": "Tens, hundreds, thousands. 100 = seratus, 1000 = seribu, 2026 = dua ribu dua puluh enam.",
+      "example": "Tahun 2026 = dua ribu dua puluh enam.",
+      "exampleEnglish": "\"Year 2026\"."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "format tarikh",
+      "romanization": "for.mat ta.riʔ",
+      "nativeText": "BM DATE: \"Hari [day], [date] [month] [year]\". Example: \"Hari Khamis, 17 Mei 2026\".",
+      "pronunciation": "for.mat ta.riʔ",
+      "exampleTarget": "Hari Khamis, 17 Mei 2026.",
+      "exampleNative": "Standard full date format in formal writing.",
+      "korean": "format tarikh",
+      "english": "BM DATE: \"Hari [day], [date] [month] [year]\". Example: \"Hari Khamis, 17 Mei 2026\".",
+      "example": "Hari Khamis, 17 Mei 2026.",
+      "exampleEnglish": "Standard full date format in formal writing."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "tarikh ringkas",
+      "romanization": "ta.riʔ riŋ.kas",
+      "nativeText": "Short format: DD/MM/YYYY or DD-MM-YYYY. 17/5/2026 = 17 Mei 2026.",
+      "pronunciation": "ta.riʔ riŋ.kas",
+      "exampleTarget": "17/5/2026 = 17 Mei 2026.",
+      "exampleNative": "Numeric and written forms.",
+      "korean": "tarikh ringkas",
+      "english": "Short format: DD/MM/YYYY or DD-MM-YYYY. 17/5/2026 = 17 Mei 2026.",
+      "example": "17/5/2026 = 17 Mei 2026.",
+      "exampleEnglish": "Numeric and written forms."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "umur",
+      "romanization": "u.mur",
+      "nativeText": "AGE. \"Umur saya 25 tahun\" = \"My age is 25 years\".",
+      "pronunciation": "u.mur",
+      "exampleTarget": "Umur saya 21 tahun.",
+      "exampleNative": "\"My age is 21\".",
+      "korean": "umur",
+      "english": "AGE. \"Umur saya 25 tahun\" = \"My age is 25 years\".",
+      "example": "Umur saya 21 tahun.",
+      "exampleEnglish": "\"My age is 21\"."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "berumur",
+      "romanization": "bə.ru.mur",
+      "nativeText": "BE … AGE. ber- + umur. \"Saya berumur 25 tahun\" = \"I am 25 years old\".",
+      "pronunciation": "bə.ru.mur",
+      "exampleTarget": "Saya berumur 21 tahun.",
+      "exampleNative": "\"I am 21 years old\".",
+      "korean": "berumur",
+      "english": "BE … AGE. ber- + umur. \"Saya berumur 25 tahun\" = \"I am 25 years old\".",
+      "example": "Saya berumur 21 tahun.",
+      "exampleEnglish": "\"I am 21 years old\"."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Tarikh lahir / hari lahir",
+      "romanization": "ta.riʔ la.hir / ha.ri la.hir",
+      "nativeText": "BIRTHDATE / BIRTHDAY. \"Tarikh lahir\" is the calendar date; \"hari lahir\" is the celebration.",
+      "pronunciation": "ta.riʔ la.hir / ha.ri la.hir",
+      "exampleTarget": "Tarikh lahir saya 5 Mei. Hari lahir saya esok!",
+      "exampleNative": "\"My birthdate is May 5. My birthday is tomorrow!\".",
+      "korean": "Tarikh lahir / hari lahir",
+      "english": "BIRTHDATE / BIRTHDAY. \"Tarikh lahir\" is the calendar date; \"hari lahir\" is the celebration.",
+      "example": "Tarikh lahir saya 5 Mei. Hari lahir saya esok!",
+      "exampleEnglish": "\"My birthdate is May 5. My birthday is tomorrow!\"."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "hari ini, semalam, esok",
+      "romanization": "ha.ri i.ni, sə.ma.lam, e.soʔ",
+      "nativeText": "TODAY, YESTERDAY, TOMORROW. Core relative time markers.",
+      "pronunciation": "ha.ri i.ni, sə.ma.lam, e.soʔ",
+      "exampleTarget": "Hari ini Selasa. Semalam Isnin. Esok Rabu.",
+      "exampleNative": "\"Today Tuesday. Yesterday Monday. Tomorrow Wednesday\".",
+      "korean": "hari ini, semalam, esok",
+      "english": "TODAY, YESTERDAY, TOMORROW. Core relative time markers.",
+      "example": "Hari ini Selasa. Semalam Isnin. Esok Rabu.",
+      "exampleEnglish": "\"Today Tuesday. Yesterday Monday. Tomorrow Wednesday\"."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "lusa, kelmarin",
+      "romanization": "lu.sa, kəl.ma.rin",
+      "nativeText": "DAY AFTER TOMORROW / DAY BEFORE YESTERDAY.",
+      "pronunciation": "lu.sa, kəl.ma.rin",
+      "exampleTarget": "Lusa hari Khamis. Kelmarin hari Ahad.",
+      "exampleNative": "\"Day after tomorrow is Thursday. Day before yesterday was Sunday\".",
+      "korean": "lusa, kelmarin",
+      "english": "DAY AFTER TOMORROW / DAY BEFORE YESTERDAY.",
+      "example": "Lusa hari Khamis. Kelmarin hari Ahad.",
+      "exampleEnglish": "\"Day after tomorrow is Thursday. Day before yesterday was Sunday\"."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "minggu lepas, minggu depan",
+      "romanization": "miŋ.gu lə.pas, miŋ.gu də.pan",
+      "nativeText": "LAST WEEK, NEXT WEEK. Also \"bulan lepas/depan\", \"tahun lepas/depan\".",
+      "pronunciation": "miŋ.gu lə.pas, miŋ.gu də.pan",
+      "exampleTarget": "Minggu lepas saya ke Penang. Minggu depan ke Sabah.",
+      "exampleNative": "\"Last week I went to Penang. Next week to Sabah\".",
+      "korean": "minggu lepas, minggu depan",
+      "english": "LAST WEEK, NEXT WEEK. Also \"bulan lepas/depan\", \"tahun lepas/depan\".",
+      "example": "Minggu lepas saya ke Penang. Minggu depan ke Sabah.",
+      "exampleEnglish": "\"Last week I went to Penang. Next week to Sabah\"."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Kalendar akademik UM",
+      "romanization": "ka.len.dar a.ka.de.miʔ u.em",
+      "nativeText": "A UM academic calendar excerpt.",
+      "pronunciation": "ka.len.dar a.ka.de.miʔ u.em",
+      "exampleTarget": "Semester 1 sesi 2025/2026 bermula pada hari Isnin, 13 Oktober 2025. Cuti pertengahan semester dari 22 hingga 30 November 2025. Peperiksaan akhir bermula pada 19 Januari 2026 hingga 6 Februari 2026. Semester 2 bermula pada 16 Mac 2026.",
+      "exampleNative": "A typical UM calendar paragraph.",
+      "korean": "Kalendar akademik UM",
+      "english": "A UM academic calendar excerpt.",
+      "example": "Semester 1 sesi 2025/2026 bermula pada hari Isnin, 13 Oktober 2025. Cuti pertengahan semester dari 22 hingga 30 November 2025. Peperiksaan akhir bermula pada 19 Januari 2026 hingga 6 Februari 2026. Semester 2 bermula pada 16 Mac 2026.",
+      "exampleEnglish": "A typical UM calendar paragraph."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Soalan kefahaman",
+      "romanization": "so.a.lan kə.fa.ha.man",
+      "nativeText": "Calendar questions that require the learner to recover start dates, duration, and semester sequence from a real-looking academic schedule.",
+      "pronunciation": "so.a.lan kə.fa.ha.man",
+      "exampleTarget": "Q1: Bila Semester 1 bermula? Q2: Berapa lama cuti pertengahan? Q3: Bila peperiksaan akhir? Q4: Bila Semester 2?",
+      "exampleNative": "Use full date phrases in the answers so the reading reinforces `bila`, month names, and academic-calendar vocabulary together.",
+      "korean": "Soalan kefahaman",
+      "english": "Calendar questions that require the learner to recover start dates, duration, and semester sequence from a real-looking academic schedule.",
+      "example": "Q1: Bila Semester 1 bermula? Q2: Berapa lama cuti pertengahan? Q3: Bila peperiksaan akhir? Q4: Bila Semester 2?",
+      "exampleEnglish": "Use full date phrases in the answers so the reading reinforces `bila`, month names, and academic-calendar vocabulary together."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Dialog: rancang hari lahir",
+      "romanization": "di.a.log: ran.tʃaŋ ha.ri la.hir",
+      "nativeText": "Two friends planning a birthday party.",
+      "pronunciation": "di.a.log: ran.tʃaŋ ha.ri la.hir",
+      "exampleTarget": "Sarah: Aiman, hari lahir awak bila?\nAiman: 17 Mei. Dua minggu lagi.\nSarah: Wah, kita kena rancang sesuatu! Hari Sabtu boleh?\nAiman: Boleh. Sabtu 16 Mei. Datang ke rumah saya di Bangsar pukul 7 malam.\nSarah: Setuju! Saya akan beli kek.",
+      "exampleNative": "5-turn dialogue using dates, days, times.",
+      "korean": "Dialog: rancang hari lahir",
+      "english": "Two friends planning a birthday party.",
+      "example": "Sarah: Aiman, hari lahir awak bila?\nAiman: 17 Mei. Dua minggu lagi.\nSarah: Wah, kita kena rancang sesuatu! Hari Sabtu boleh?\nAiman: Boleh. Sabtu 16 Mei. Datang ke rumah saya di Bangsar pukul 7 malam.\nSarah: Setuju! Saya akan beli kek.",
+      "exampleEnglish": "5-turn dialogue using dates, days, times."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Tulis tarikh penting",
+      "romanization": "tu.lis ta.riʔ pən.tiŋ",
+      "nativeText": "5-sentence template for important dates.",
+      "pronunciation": "tu.lis ta.riʔ pən.tiŋ",
+      "exampleTarget": "Template: Hari lahir saya ___. Saya berumur ___ tahun. Hari lahir ibu saya ___ dan ayah saya ___. Hari kemerdekaan negara saya ialah ___.",
+      "exampleNative": "Combine all date vocabulary.",
+      "korean": "Tulis tarikh penting",
+      "english": "5-sentence template for important dates.",
+      "example": "Template: Hari lahir saya ___. Saya berumur ___ tahun. Hari lahir ibu saya ___ dan ayah saya ___. Hari kemerdekaan negara saya ialah ___.",
+      "exampleEnglish": "Combine all date vocabulary."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Kalendar Hijriah",
+      "romanization": "ka.len.dar hid.ʒri.ah",
+      "nativeText": "Islamic lunar calendar — determines Ramadan, Hari Raya Aidilfitri (1 Syawal), Aidiladha (10 Zulhijjah), Maulidur Rasul (12 Rabiulawal), Awal Muharram (Islamic New Year).",
+      "pronunciation": "ka.len.dar hid.ʒri.ah",
+      "exampleTarget": "Ramadan bulan ke-9 dalam kalendar Hijriah.",
+      "exampleNative": "\"Ramadan is the 9th month in the Hijri calendar\".",
+      "korean": "Kalendar Hijriah",
+      "english": "Islamic lunar calendar — determines Ramadan, Hari Raya Aidilfitri (1 Syawal), Aidiladha (10 Zulhijjah), Maulidur Rasul (12 Rabiulawal), Awal Muharram (Islamic New Year).",
+      "example": "Ramadan bulan ke-9 dalam kalendar Hijriah.",
+      "exampleEnglish": "\"Ramadan is the 9th month in the Hijri calendar\"."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Kalendar Cina",
+      "romanization": "ka.len.dar tʃi.na",
+      "nativeText": "Chinese lunar calendar — determines Tahun Baru Cina (1st day of 1st lunar month), Mid-Autumn Festival, Cheng Beng.",
+      "pronunciation": "ka.len.dar tʃi.na",
+      "exampleTarget": "Tahun Baru Cina mengikut kalendar lunar Cina.",
+      "exampleNative": "\"CNY follows the Chinese lunar calendar\".",
+      "korean": "Kalendar Cina",
+      "english": "Chinese lunar calendar — determines Tahun Baru Cina (1st day of 1st lunar month), Mid-Autumn Festival, Cheng Beng.",
+      "example": "Tahun Baru Cina mengikut kalendar lunar Cina.",
+      "exampleEnglish": "\"CNY follows the Chinese lunar calendar\"."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Kalendar Tamil",
+      "romanization": "ka.len.dar ta.mil",
+      "nativeText": "Tamil/Hindu calendar — determines Deepavali, Thaipusam, Ponggal.",
+      "pronunciation": "ka.len.dar ta.mil",
+      "exampleTarget": "Thaipusam pada bulan Tamil Thai.",
+      "exampleNative": "\"Thaipusam is in the Tamil month of Thai\".",
+      "korean": "Kalendar Tamil",
+      "english": "Tamil/Hindu calendar — determines Deepavali, Thaipusam, Ponggal.",
+      "example": "Thaipusam pada bulan Tamil Thai.",
+      "exampleEnglish": "\"Thaipusam is in the Tamil month of Thai\"."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Empat sistem hidup berdampingan",
+      "romanization": "əm.pat sis.tem hi.dup bər.dam.pi.ŋan",
+      "nativeText": "Malaysians live with FOUR calendars simultaneously: Gregorian (official), Hijri (Muslim), Chinese (CNY), Tamil (Hindu). Public-holiday gazettes track all four.",
+      "pronunciation": "əm.pat sis.tem hi.dup bər.dam.pi.ŋan",
+      "exampleTarget": "Rakyat Malaysia menggunakan empat sistem kalendar.",
+      "exampleNative": "\"Malaysians use four calendar systems\".",
+      "korean": "Empat sistem hidup berdampingan",
+      "english": "Malaysians live with FOUR calendars simultaneously: Gregorian (official), Hijri (Muslim), Chinese (CNY), Tamil (Hindu). Public-holiday gazettes track all four.",
+      "example": "Rakyat Malaysia menggunakan empat sistem kalendar.",
+      "exampleEnglish": "\"Malaysians use four calendar systems\"."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Tugasan: rancang pertemuan",
+      "romanization": "tu.ga.san: ran.tʃaŋ pər.tə.mu.an",
+      "nativeText": "Roleplay planning a meet-up next week.",
+      "pronunciation": "tu.ga.san: ran.tʃaŋ pər.tə.mu.an",
+      "exampleTarget": "Scene: Awak nak jumpa kawan minggu depan untuk kopi.",
+      "exampleNative": "Use day, date, time vocabulary.",
+      "korean": "Tugasan: rancang pertemuan",
+      "english": "Roleplay planning a meet-up next week.",
+      "example": "Scene: Awak nak jumpa kawan minggu depan untuk kopi.",
+      "exampleEnglish": "Use day, date, time vocabulary."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Tarikh lahir saya 5 Mei.",
+      "romanization": "ta.riʔ",
+      "nativeText": "Model use for \"tarikh\": DATE — Arabic-origin. \"Tarikh hari ini\" = today's date.",
+      "pronunciation": "ta.riʔ",
+      "exampleTarget": "Tarikh lahir saya 5 Mei.",
+      "exampleNative": "\"My birthdate is 5 May\".",
+      "korean": "Tarikh lahir saya 5 Mei.",
+      "english": "Model use for \"tarikh\": DATE — Arabic-origin. \"Tarikh hari ini\" = today's date.",
+      "example": "Tarikh lahir saya 5 Mei.",
+      "exampleEnglish": "\"My birthdate is 5 May\"."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "tarikh",
+      "romanization": "ta.riʔ",
+      "nativeText": "Usage focus for \"tarikh\": DATE — Arabic-origin. \"Tarikh hari ini\" = today's date.",
+      "pronunciation": "ta.riʔ",
+      "exampleTarget": "Tarikh lahir saya 5 Mei.",
+      "exampleNative": "Notice what the form is doing here: \"My birthdate is 5 May\".",
+      "korean": "tarikh",
+      "english": "Usage focus for \"tarikh\": DATE — Arabic-origin. \"Tarikh hari ini\" = today's date.",
+      "example": "Tarikh lahir saya 5 Mei.",
+      "exampleEnglish": "Notice what the form is doing here: \"My birthdate is 5 May\"."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "tarikh",
+      "romanization": "ta.riʔ",
+      "nativeText": "Contrast check for \"tarikh\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ta.riʔ",
+      "exampleTarget": "Tarikh lahir saya 5 Mei.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"My birthdate is 5 May\".",
+      "korean": "tarikh",
+      "english": "Contrast check for \"tarikh\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Tarikh lahir saya 5 Mei.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"My birthdate is 5 May\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "tarikh",
+      "romanization": "ta.riʔ",
+      "nativeText": "Recall \"tarikh\" from memory, then explain what would change if a nearby alternative replaced it in \"Tarikh lahir saya 5 Mei.\".",
+      "pronunciation": "ta.riʔ",
+      "exampleTarget": "Tarikh lahir saya 5 Mei.",
+      "exampleNative": "Self-check against the model before moving on: \"My birthdate is 5 May\".",
+      "korean": "tarikh",
+      "english": "Recall \"tarikh\" from memory, then explain what would change if a nearby alternative replaced it in \"Tarikh lahir saya 5 Mei.\".",
+      "example": "Tarikh lahir saya 5 Mei.",
+      "exampleEnglish": "Self-check against the model before moving on: \"My birthdate is 5 May\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "tarikh",
+      "romanization": "ta.riʔ",
+      "nativeText": "Repair \"tarikh\" inside \"Tarikh lahir saya 5 Mei.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: DATE — Arabic-origin. \"Tarikh hari ini\" = today's date.",
+      "pronunciation": "ta.riʔ",
+      "exampleTarget": "Tarikh lahir saya 5 Mei.",
+      "exampleNative": "Use the model as the repair target: \"My birthdate is 5 May\".",
+      "korean": "tarikh",
+      "english": "Repair \"tarikh\" inside \"Tarikh lahir saya 5 Mei.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: DATE — Arabic-origin. \"Tarikh hari ini\" = today's date.",
+      "example": "Tarikh lahir saya 5 Mei.",
+      "exampleEnglish": "Use the model as the repair target: \"My birthdate is 5 May\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "tarikh",
+      "romanization": "ta.riʔ",
+      "nativeText": "Transfer \"tarikh\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Tarikh lahir saya 5 Mei.\".",
+      "pronunciation": "ta.riʔ",
+      "exampleTarget": "Tarikh lahir saya 5 Mei.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: \"My birthdate is 5 May\".",
+      "korean": "tarikh",
+      "english": "Transfer \"tarikh\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Tarikh lahir saya 5 Mei.\".",
+      "example": "Tarikh lahir saya 5 Mei.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: \"My birthdate is 5 May\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "tarikh",
+      "romanization": "ta.riʔ",
+      "nativeText": "Find one word or phrase that naturally travels with \"tarikh\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ta.riʔ",
+      "exampleTarget": "Tarikh lahir saya 5 Mei.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: \"My birthdate is 5 May\".",
+      "korean": "tarikh",
+      "english": "Find one word or phrase that naturally travels with \"tarikh\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Tarikh lahir saya 5 Mei.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: \"My birthdate is 5 May\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "tarikh",
+      "romanization": "ta.riʔ",
+      "nativeText": "Listen for \"tarikh\" inside \"Tarikh lahir saya 5 Mei.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ta.riʔ",
+      "exampleTarget": "Tarikh lahir saya 5 Mei.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"My birthdate is 5 May\".",
+      "korean": "tarikh",
+      "english": "Listen for \"tarikh\" inside \"Tarikh lahir saya 5 Mei.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Tarikh lahir saya 5 Mei.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"My birthdate is 5 May\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "tarikh",
+      "romanization": "ta.riʔ",
+      "nativeText": "Write \"tarikh\" again without looking, then compare the exact written form against \"Tarikh lahir saya 5 Mei.\" before moving on.",
+      "pronunciation": "ta.riʔ",
+      "exampleTarget": "Tarikh lahir saya 5 Mei.",
+      "exampleNative": "Use the written model as the final correctness check: \"My birthdate is 5 May\".",
+      "korean": "tarikh",
+      "english": "Write \"tarikh\" again without looking, then compare the exact written form against \"Tarikh lahir saya 5 Mei.\" before moving on.",
+      "example": "Tarikh lahir saya 5 Mei.",
+      "exampleEnglish": "Use the written model as the final correctness check: \"My birthdate is 5 May\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "tarikh",
+      "romanization": "ta.riʔ",
+      "nativeText": "Check whether \"tarikh\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"My birthdate is 5 May\".",
+      "pronunciation": "ta.riʔ",
+      "exampleTarget": "Tarikh lahir saya 5 Mei.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: \"My birthdate is 5 May\".",
+      "korean": "tarikh",
+      "english": "Check whether \"tarikh\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"My birthdate is 5 May\".",
+      "example": "Tarikh lahir saya 5 Mei.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: \"My birthdate is 5 May\"."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Sila tanda dalam kalendar.",
+      "romanization": "ka.len.dar",
+      "nativeText": "Model use for \"kalendar\": CALENDAR — English loan. Also called \"takwim\" in formal Arabic-derived register.",
+      "pronunciation": "ka.len.dar",
+      "exampleTarget": "Sila tanda dalam kalendar.",
+      "exampleNative": "\"Please mark in the calendar\".",
+      "korean": "Sila tanda dalam kalendar.",
+      "english": "Model use for \"kalendar\": CALENDAR — English loan. Also called \"takwim\" in formal Arabic-derived register.",
+      "example": "Sila tanda dalam kalendar.",
+      "exampleEnglish": "\"Please mark in the calendar\"."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "kalendar",
+      "romanization": "ka.len.dar",
+      "nativeText": "Usage focus for \"kalendar\": CALENDAR — English loan. Also called \"takwim\" in formal Arabic-derived register.",
+      "pronunciation": "ka.len.dar",
+      "exampleTarget": "Sila tanda dalam kalendar.",
+      "exampleNative": "Notice what the form is doing here: \"Please mark in the calendar\".",
+      "korean": "kalendar",
+      "english": "Usage focus for \"kalendar\": CALENDAR — English loan. Also called \"takwim\" in formal Arabic-derived register.",
+      "example": "Sila tanda dalam kalendar.",
+      "exampleEnglish": "Notice what the form is doing here: \"Please mark in the calendar\"."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "kalendar",
+      "romanization": "ka.len.dar",
+      "nativeText": "Contrast check for \"kalendar\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ka.len.dar",
+      "exampleTarget": "Sila tanda dalam kalendar.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"Please mark in the calendar\".",
+      "korean": "kalendar",
+      "english": "Contrast check for \"kalendar\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Sila tanda dalam kalendar.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"Please mark in the calendar\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "kalendar",
+      "romanization": "ka.len.dar",
+      "nativeText": "Recall \"kalendar\" from memory, then explain what would change if a nearby alternative replaced it in \"Sila tanda dalam kalendar.\".",
+      "pronunciation": "ka.len.dar",
+      "exampleTarget": "Sila tanda dalam kalendar.",
+      "exampleNative": "Self-check against the model before moving on: \"Please mark in the calendar\".",
+      "korean": "kalendar",
+      "english": "Recall \"kalendar\" from memory, then explain what would change if a nearby alternative replaced it in \"Sila tanda dalam kalendar.\".",
+      "example": "Sila tanda dalam kalendar.",
+      "exampleEnglish": "Self-check against the model before moving on: \"Please mark in the calendar\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "kalendar",
+      "romanization": "ka.len.dar",
+      "nativeText": "Repair \"kalendar\" inside \"Sila tanda dalam kalendar.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: CALENDAR — English loan. Also called \"takwim\" in formal Arabic-derived register.",
+      "pronunciation": "ka.len.dar",
+      "exampleTarget": "Sila tanda dalam kalendar.",
+      "exampleNative": "Use the model as the repair target: \"Please mark in the calendar\".",
+      "korean": "kalendar",
+      "english": "Repair \"kalendar\" inside \"Sila tanda dalam kalendar.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: CALENDAR — English loan. Also called \"takwim\" in formal Arabic-derived register.",
+      "example": "Sila tanda dalam kalendar.",
+      "exampleEnglish": "Use the model as the repair target: \"Please mark in the calendar\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "kalendar",
+      "romanization": "ka.len.dar",
+      "nativeText": "Transfer \"kalendar\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Sila tanda dalam kalendar.\".",
+      "pronunciation": "ka.len.dar",
+      "exampleTarget": "Sila tanda dalam kalendar.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: \"Please mark in the calendar\".",
+      "korean": "kalendar",
+      "english": "Transfer \"kalendar\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Sila tanda dalam kalendar.\".",
+      "example": "Sila tanda dalam kalendar.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: \"Please mark in the calendar\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "kalendar",
+      "romanization": "ka.len.dar",
+      "nativeText": "Find one word or phrase that naturally travels with \"kalendar\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ka.len.dar",
+      "exampleTarget": "Sila tanda dalam kalendar.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: \"Please mark in the calendar\".",
+      "korean": "kalendar",
+      "english": "Find one word or phrase that naturally travels with \"kalendar\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Sila tanda dalam kalendar.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: \"Please mark in the calendar\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "kalendar",
+      "romanization": "ka.len.dar",
+      "nativeText": "Listen for \"kalendar\" inside \"Sila tanda dalam kalendar.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ka.len.dar",
+      "exampleTarget": "Sila tanda dalam kalendar.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"Please mark in the calendar\".",
+      "korean": "kalendar",
+      "english": "Listen for \"kalendar\" inside \"Sila tanda dalam kalendar.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Sila tanda dalam kalendar.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"Please mark in the calendar\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "kalendar",
+      "romanization": "ka.len.dar",
+      "nativeText": "Write \"kalendar\" again without looking, then compare the exact written form against \"Sila tanda dalam kalendar.\" before moving on.",
+      "pronunciation": "ka.len.dar",
+      "exampleTarget": "Sila tanda dalam kalendar.",
+      "exampleNative": "Use the written model as the final correctness check: \"Please mark in the calendar\".",
+      "korean": "kalendar",
+      "english": "Write \"kalendar\" again without looking, then compare the exact written form against \"Sila tanda dalam kalendar.\" before moving on.",
+      "example": "Sila tanda dalam kalendar.",
+      "exampleEnglish": "Use the written model as the final correctness check: \"Please mark in the calendar\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "kalendar",
+      "romanization": "ka.len.dar",
+      "nativeText": "Check whether \"kalendar\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"Please mark in the calendar\".",
+      "pronunciation": "ka.len.dar",
+      "exampleTarget": "Sila tanda dalam kalendar.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: \"Please mark in the calendar\".",
+      "korean": "kalendar",
+      "english": "Check whether \"kalendar\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"Please mark in the calendar\".",
+      "example": "Sila tanda dalam kalendar.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: \"Please mark in the calendar\"."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Hari Ahad saya rehat di rumah.",
+      "romanization": "a.had",
+      "nativeText": "Model use for \"Ahad\": SUNDAY. Arabic \"first day\" (yaum al-ahad). The first day in the Arabic week numbering.",
+      "pronunciation": "a.had",
+      "exampleTarget": "Hari Ahad saya rehat di rumah.",
+      "exampleNative": "\"On Sunday I rest at home\".",
+      "korean": "Hari Ahad saya rehat di rumah.",
+      "english": "Model use for \"Ahad\": SUNDAY. Arabic \"first day\" (yaum al-ahad). The first day in the Arabic week numbering.",
+      "example": "Hari Ahad saya rehat di rumah.",
+      "exampleEnglish": "\"On Sunday I rest at home\"."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Ahad",
+      "romanization": "a.had",
+      "nativeText": "Usage focus for \"Ahad\": SUNDAY. Arabic \"first day\" (yaum al-ahad). The first day in the Arabic week numbering.",
+      "pronunciation": "a.had",
+      "exampleTarget": "Hari Ahad saya rehat di rumah.",
+      "exampleNative": "Notice what the form is doing here: \"On Sunday I rest at home\".",
+      "korean": "Ahad",
+      "english": "Usage focus for \"Ahad\": SUNDAY. Arabic \"first day\" (yaum al-ahad). The first day in the Arabic week numbering.",
+      "example": "Hari Ahad saya rehat di rumah.",
+      "exampleEnglish": "Notice what the form is doing here: \"On Sunday I rest at home\"."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Ahad",
+      "romanization": "a.had",
+      "nativeText": "Contrast check for \"Ahad\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "a.had",
+      "exampleTarget": "Hari Ahad saya rehat di rumah.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"On Sunday I rest at home\".",
+      "korean": "Ahad",
+      "english": "Contrast check for \"Ahad\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Hari Ahad saya rehat di rumah.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"On Sunday I rest at home\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Ahad",
+      "romanization": "a.had",
+      "nativeText": "Recall \"Ahad\" from memory, then explain what would change if a nearby alternative replaced it in \"Hari Ahad saya rehat di rumah.\".",
+      "pronunciation": "a.had",
+      "exampleTarget": "Hari Ahad saya rehat di rumah.",
+      "exampleNative": "Self-check against the model before moving on: \"On Sunday I rest at home\".",
+      "korean": "Ahad",
+      "english": "Recall \"Ahad\" from memory, then explain what would change if a nearby alternative replaced it in \"Hari Ahad saya rehat di rumah.\".",
+      "example": "Hari Ahad saya rehat di rumah.",
+      "exampleEnglish": "Self-check against the model before moving on: \"On Sunday I rest at home\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Ahad",
+      "romanization": "a.had",
+      "nativeText": "Repair \"Ahad\" inside \"Hari Ahad saya rehat di rumah.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: SUNDAY. Arabic \"first day\" (yaum al-ahad). The first day in the Arabic week numbering.",
+      "pronunciation": "a.had",
+      "exampleTarget": "Hari Ahad saya rehat di rumah.",
+      "exampleNative": "Use the model as the repair target: \"On Sunday I rest at home\".",
+      "korean": "Ahad",
+      "english": "Repair \"Ahad\" inside \"Hari Ahad saya rehat di rumah.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: SUNDAY. Arabic \"first day\" (yaum al-ahad). The first day in the Arabic week numbering.",
+      "example": "Hari Ahad saya rehat di rumah.",
+      "exampleEnglish": "Use the model as the repair target: \"On Sunday I rest at home\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Ahad",
+      "romanization": "a.had",
+      "nativeText": "Transfer \"Ahad\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Hari Ahad saya rehat di rumah.\".",
+      "pronunciation": "a.had",
+      "exampleTarget": "Hari Ahad saya rehat di rumah.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: \"On Sunday I rest at home\".",
+      "korean": "Ahad",
+      "english": "Transfer \"Ahad\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Hari Ahad saya rehat di rumah.\".",
+      "example": "Hari Ahad saya rehat di rumah.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: \"On Sunday I rest at home\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Ahad",
+      "romanization": "a.had",
+      "nativeText": "Find one word or phrase that naturally travels with \"Ahad\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "a.had",
+      "exampleTarget": "Hari Ahad saya rehat di rumah.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: \"On Sunday I rest at home\".",
+      "korean": "Ahad",
+      "english": "Find one word or phrase that naturally travels with \"Ahad\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Hari Ahad saya rehat di rumah.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: \"On Sunday I rest at home\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Ahad",
+      "romanization": "a.had",
+      "nativeText": "Listen for \"Ahad\" inside \"Hari Ahad saya rehat di rumah.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "a.had",
+      "exampleTarget": "Hari Ahad saya rehat di rumah.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"On Sunday I rest at home\".",
+      "korean": "Ahad",
+      "english": "Listen for \"Ahad\" inside \"Hari Ahad saya rehat di rumah.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Hari Ahad saya rehat di rumah.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"On Sunday I rest at home\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Ahad",
+      "romanization": "a.had",
+      "nativeText": "Write \"Ahad\" again without looking, then compare the exact written form against \"Hari Ahad saya rehat di rumah.\" before moving on.",
+      "pronunciation": "a.had",
+      "exampleTarget": "Hari Ahad saya rehat di rumah.",
+      "exampleNative": "Use the written model as the final correctness check: \"On Sunday I rest at home\".",
+      "korean": "Ahad",
+      "english": "Write \"Ahad\" again without looking, then compare the exact written form against \"Hari Ahad saya rehat di rumah.\" before moving on.",
+      "example": "Hari Ahad saya rehat di rumah.",
+      "exampleEnglish": "Use the written model as the final correctness check: \"On Sunday I rest at home\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Ahad",
+      "romanization": "a.had",
+      "nativeText": "Check whether \"Ahad\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"On Sunday I rest at home\".",
+      "pronunciation": "a.had",
+      "exampleTarget": "Hari Ahad saya rehat di rumah.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: \"On Sunday I rest at home\".",
+      "korean": "Ahad",
+      "english": "Check whether \"Ahad\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"On Sunday I rest at home\".",
+      "example": "Hari Ahad saya rehat di rumah.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: \"On Sunday I rest at home\"."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Saya benci hari Isnin.",
+      "romanization": "is.nin",
+      "nativeText": "Model use for \"Isnin\": MONDAY. Arabic \"second day\" (yaum al-ithnayn). The start of the working week in modern MY usage.",
+      "pronunciation": "is.nin",
+      "exampleTarget": "Saya benci hari Isnin.",
+      "exampleNative": "\"I hate Mondays\".",
+      "korean": "Saya benci hari Isnin.",
+      "english": "Model use for \"Isnin\": MONDAY. Arabic \"second day\" (yaum al-ithnayn). The start of the working week in modern MY usage.",
+      "example": "Saya benci hari Isnin.",
+      "exampleEnglish": "\"I hate Mondays\"."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Isnin",
+      "romanization": "is.nin",
+      "nativeText": "Usage focus for \"Isnin\": MONDAY. Arabic \"second day\" (yaum al-ithnayn). The start of the working week in modern MY usage.",
+      "pronunciation": "is.nin",
+      "exampleTarget": "Saya benci hari Isnin.",
+      "exampleNative": "Notice what the form is doing here: \"I hate Mondays\".",
+      "korean": "Isnin",
+      "english": "Usage focus for \"Isnin\": MONDAY. Arabic \"second day\" (yaum al-ithnayn). The start of the working week in modern MY usage.",
+      "example": "Saya benci hari Isnin.",
+      "exampleEnglish": "Notice what the form is doing here: \"I hate Mondays\"."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Isnin",
+      "romanization": "is.nin",
+      "nativeText": "Contrast check for \"Isnin\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "is.nin",
+      "exampleTarget": "Saya benci hari Isnin.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"I hate Mondays\".",
+      "korean": "Isnin",
+      "english": "Contrast check for \"Isnin\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Saya benci hari Isnin.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"I hate Mondays\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Isnin",
+      "romanization": "is.nin",
+      "nativeText": "Recall \"Isnin\" from memory, then explain what would change if a nearby alternative replaced it in \"Saya benci hari Isnin.\".",
+      "pronunciation": "is.nin",
+      "exampleTarget": "Saya benci hari Isnin.",
+      "exampleNative": "Self-check against the model before moving on: \"I hate Mondays\".",
+      "korean": "Isnin",
+      "english": "Recall \"Isnin\" from memory, then explain what would change if a nearby alternative replaced it in \"Saya benci hari Isnin.\".",
+      "example": "Saya benci hari Isnin.",
+      "exampleEnglish": "Self-check against the model before moving on: \"I hate Mondays\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Isnin",
+      "romanization": "is.nin",
+      "nativeText": "Repair \"Isnin\" inside \"Saya benci hari Isnin.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: MONDAY. Arabic \"second day\" (yaum al-ithnayn). The start of the working week in modern MY usage.",
+      "pronunciation": "is.nin",
+      "exampleTarget": "Saya benci hari Isnin.",
+      "exampleNative": "Use the model as the repair target: \"I hate Mondays\".",
+      "korean": "Isnin",
+      "english": "Repair \"Isnin\" inside \"Saya benci hari Isnin.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: MONDAY. Arabic \"second day\" (yaum al-ithnayn). The start of the working week in modern MY usage.",
+      "example": "Saya benci hari Isnin.",
+      "exampleEnglish": "Use the model as the repair target: \"I hate Mondays\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Isnin",
+      "romanization": "is.nin",
+      "nativeText": "Transfer \"Isnin\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Saya benci hari Isnin.\".",
+      "pronunciation": "is.nin",
+      "exampleTarget": "Saya benci hari Isnin.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: \"I hate Mondays\".",
+      "korean": "Isnin",
+      "english": "Transfer \"Isnin\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Saya benci hari Isnin.\".",
+      "example": "Saya benci hari Isnin.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: \"I hate Mondays\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Isnin",
+      "romanization": "is.nin",
+      "nativeText": "Find one word or phrase that naturally travels with \"Isnin\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "is.nin",
+      "exampleTarget": "Saya benci hari Isnin.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: \"I hate Mondays\".",
+      "korean": "Isnin",
+      "english": "Find one word or phrase that naturally travels with \"Isnin\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Saya benci hari Isnin.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: \"I hate Mondays\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Isnin",
+      "romanization": "is.nin",
+      "nativeText": "Listen for \"Isnin\" inside \"Saya benci hari Isnin.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "is.nin",
+      "exampleTarget": "Saya benci hari Isnin.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"I hate Mondays\".",
+      "korean": "Isnin",
+      "english": "Listen for \"Isnin\" inside \"Saya benci hari Isnin.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Saya benci hari Isnin.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"I hate Mondays\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Isnin",
+      "romanization": "is.nin",
+      "nativeText": "Write \"Isnin\" again without looking, then compare the exact written form against \"Saya benci hari Isnin.\" before moving on.",
+      "pronunciation": "is.nin",
+      "exampleTarget": "Saya benci hari Isnin.",
+      "exampleNative": "Use the written model as the final correctness check: \"I hate Mondays\".",
+      "korean": "Isnin",
+      "english": "Write \"Isnin\" again without looking, then compare the exact written form against \"Saya benci hari Isnin.\" before moving on.",
+      "example": "Saya benci hari Isnin.",
+      "exampleEnglish": "Use the written model as the final correctness check: \"I hate Mondays\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Isnin",
+      "romanization": "is.nin",
+      "nativeText": "Check whether \"Isnin\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"I hate Mondays\".",
+      "pronunciation": "is.nin",
+      "exampleTarget": "Saya benci hari Isnin.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: \"I hate Mondays\".",
+      "korean": "Isnin",
+      "english": "Check whether \"Isnin\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"I hate Mondays\".",
+      "example": "Saya benci hari Isnin.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: \"I hate Mondays\"."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Mesyuarat hari Selasa pagi.",
+      "romanization": "sə.la.sa",
+      "nativeText": "Model use for \"Selasa\": TUESDAY. Arabic \"third day\".",
+      "pronunciation": "sə.la.sa",
+      "exampleTarget": "Mesyuarat hari Selasa pagi.",
+      "exampleNative": "\"Meeting Tuesday morning\".",
+      "korean": "Mesyuarat hari Selasa pagi.",
+      "english": "Model use for \"Selasa\": TUESDAY. Arabic \"third day\".",
+      "example": "Mesyuarat hari Selasa pagi.",
+      "exampleEnglish": "\"Meeting Tuesday morning\"."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Selasa",
+      "romanization": "sə.la.sa",
+      "nativeText": "Usage focus for \"Selasa\": TUESDAY. Arabic \"third day\".",
+      "pronunciation": "sə.la.sa",
+      "exampleTarget": "Mesyuarat hari Selasa pagi.",
+      "exampleNative": "Notice what the form is doing here: \"Meeting Tuesday morning\".",
+      "korean": "Selasa",
+      "english": "Usage focus for \"Selasa\": TUESDAY. Arabic \"third day\".",
+      "example": "Mesyuarat hari Selasa pagi.",
+      "exampleEnglish": "Notice what the form is doing here: \"Meeting Tuesday morning\"."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Selasa",
+      "romanization": "sə.la.sa",
+      "nativeText": "Contrast check for \"Selasa\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "sə.la.sa",
+      "exampleTarget": "Mesyuarat hari Selasa pagi.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"Meeting Tuesday morning\".",
+      "korean": "Selasa",
+      "english": "Contrast check for \"Selasa\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Mesyuarat hari Selasa pagi.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"Meeting Tuesday morning\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Selasa",
+      "romanization": "sə.la.sa",
+      "nativeText": "Recall \"Selasa\" from memory, then explain what would change if a nearby alternative replaced it in \"Mesyuarat hari Selasa pagi.\".",
+      "pronunciation": "sə.la.sa",
+      "exampleTarget": "Mesyuarat hari Selasa pagi.",
+      "exampleNative": "Self-check against the model before moving on: \"Meeting Tuesday morning\".",
+      "korean": "Selasa",
+      "english": "Recall \"Selasa\" from memory, then explain what would change if a nearby alternative replaced it in \"Mesyuarat hari Selasa pagi.\".",
+      "example": "Mesyuarat hari Selasa pagi.",
+      "exampleEnglish": "Self-check against the model before moving on: \"Meeting Tuesday morning\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Selasa",
+      "romanization": "sə.la.sa",
+      "nativeText": "Repair \"Selasa\" inside \"Mesyuarat hari Selasa pagi.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: TUESDAY. Arabic \"third day\".",
+      "pronunciation": "sə.la.sa",
+      "exampleTarget": "Mesyuarat hari Selasa pagi.",
+      "exampleNative": "Use the model as the repair target: \"Meeting Tuesday morning\".",
+      "korean": "Selasa",
+      "english": "Repair \"Selasa\" inside \"Mesyuarat hari Selasa pagi.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: TUESDAY. Arabic \"third day\".",
+      "example": "Mesyuarat hari Selasa pagi.",
+      "exampleEnglish": "Use the model as the repair target: \"Meeting Tuesday morning\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Selasa",
+      "romanization": "sə.la.sa",
+      "nativeText": "Transfer \"Selasa\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Mesyuarat hari Selasa pagi.\".",
+      "pronunciation": "sə.la.sa",
+      "exampleTarget": "Mesyuarat hari Selasa pagi.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: \"Meeting Tuesday morning\".",
+      "korean": "Selasa",
+      "english": "Transfer \"Selasa\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Mesyuarat hari Selasa pagi.\".",
+      "example": "Mesyuarat hari Selasa pagi.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: \"Meeting Tuesday morning\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Selasa",
+      "romanization": "sə.la.sa",
+      "nativeText": "Find one word or phrase that naturally travels with \"Selasa\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "sə.la.sa",
+      "exampleTarget": "Mesyuarat hari Selasa pagi.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: \"Meeting Tuesday morning\".",
+      "korean": "Selasa",
+      "english": "Find one word or phrase that naturally travels with \"Selasa\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Mesyuarat hari Selasa pagi.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: \"Meeting Tuesday morning\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Selasa",
+      "romanization": "sə.la.sa",
+      "nativeText": "Listen for \"Selasa\" inside \"Mesyuarat hari Selasa pagi.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "sə.la.sa",
+      "exampleTarget": "Mesyuarat hari Selasa pagi.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"Meeting Tuesday morning\".",
+      "korean": "Selasa",
+      "english": "Listen for \"Selasa\" inside \"Mesyuarat hari Selasa pagi.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Mesyuarat hari Selasa pagi.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"Meeting Tuesday morning\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Selasa",
+      "romanization": "sə.la.sa",
+      "nativeText": "Write \"Selasa\" again without looking, then compare the exact written form against \"Mesyuarat hari Selasa pagi.\" before moving on.",
+      "pronunciation": "sə.la.sa",
+      "exampleTarget": "Mesyuarat hari Selasa pagi.",
+      "exampleNative": "Use the written model as the final correctness check: \"Meeting Tuesday morning\".",
+      "korean": "Selasa",
+      "english": "Write \"Selasa\" again without looking, then compare the exact written form against \"Mesyuarat hari Selasa pagi.\" before moving on.",
+      "example": "Mesyuarat hari Selasa pagi.",
+      "exampleEnglish": "Use the written model as the final correctness check: \"Meeting Tuesday morning\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Selasa",
+      "romanization": "sə.la.sa",
+      "nativeText": "Check whether \"Selasa\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"Meeting Tuesday morning\".",
+      "pronunciation": "sə.la.sa",
+      "exampleTarget": "Mesyuarat hari Selasa pagi.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: \"Meeting Tuesday morning\".",
+      "korean": "Selasa",
+      "english": "Check whether \"Selasa\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"Meeting Tuesday morning\".",
+      "example": "Mesyuarat hari Selasa pagi.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: \"Meeting Tuesday morning\"."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Hari Rabu hari pertengahan minggu.",
+      "romanization": "ra.bu",
+      "nativeText": "Model use for \"Rabu\": WEDNESDAY. Arabic \"fourth day\".",
+      "pronunciation": "ra.bu",
+      "exampleTarget": "Hari Rabu hari pertengahan minggu.",
+      "exampleNative": "\"Wednesday is mid-week\".",
+      "korean": "Hari Rabu hari pertengahan minggu.",
+      "english": "Model use for \"Rabu\": WEDNESDAY. Arabic \"fourth day\".",
+      "example": "Hari Rabu hari pertengahan minggu.",
+      "exampleEnglish": "\"Wednesday is mid-week\"."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Rabu",
+      "romanization": "ra.bu",
+      "nativeText": "Usage focus for \"Rabu\": WEDNESDAY. Arabic \"fourth day\".",
+      "pronunciation": "ra.bu",
+      "exampleTarget": "Hari Rabu hari pertengahan minggu.",
+      "exampleNative": "Notice what the form is doing here: \"Wednesday is mid-week\".",
+      "korean": "Rabu",
+      "english": "Usage focus for \"Rabu\": WEDNESDAY. Arabic \"fourth day\".",
+      "example": "Hari Rabu hari pertengahan minggu.",
+      "exampleEnglish": "Notice what the form is doing here: \"Wednesday is mid-week\"."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Rabu",
+      "romanization": "ra.bu",
+      "nativeText": "Contrast check for \"Rabu\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ra.bu",
+      "exampleTarget": "Hari Rabu hari pertengahan minggu.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"Wednesday is mid-week\".",
+      "korean": "Rabu",
+      "english": "Contrast check for \"Rabu\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Hari Rabu hari pertengahan minggu.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"Wednesday is mid-week\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Rabu",
+      "romanization": "ra.bu",
+      "nativeText": "Recall \"Rabu\" from memory, then explain what would change if a nearby alternative replaced it in \"Hari Rabu hari pertengahan minggu.\".",
+      "pronunciation": "ra.bu",
+      "exampleTarget": "Hari Rabu hari pertengahan minggu.",
+      "exampleNative": "Self-check against the model before moving on: \"Wednesday is mid-week\".",
+      "korean": "Rabu",
+      "english": "Recall \"Rabu\" from memory, then explain what would change if a nearby alternative replaced it in \"Hari Rabu hari pertengahan minggu.\".",
+      "example": "Hari Rabu hari pertengahan minggu.",
+      "exampleEnglish": "Self-check against the model before moving on: \"Wednesday is mid-week\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Rabu",
+      "romanization": "ra.bu",
+      "nativeText": "Repair \"Rabu\" inside \"Hari Rabu hari pertengahan minggu.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: WEDNESDAY. Arabic \"fourth day\".",
+      "pronunciation": "ra.bu",
+      "exampleTarget": "Hari Rabu hari pertengahan minggu.",
+      "exampleNative": "Use the model as the repair target: \"Wednesday is mid-week\".",
+      "korean": "Rabu",
+      "english": "Repair \"Rabu\" inside \"Hari Rabu hari pertengahan minggu.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: WEDNESDAY. Arabic \"fourth day\".",
+      "example": "Hari Rabu hari pertengahan minggu.",
+      "exampleEnglish": "Use the model as the repair target: \"Wednesday is mid-week\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Rabu",
+      "romanization": "ra.bu",
+      "nativeText": "Transfer \"Rabu\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Hari Rabu hari pertengahan minggu.\".",
+      "pronunciation": "ra.bu",
+      "exampleTarget": "Hari Rabu hari pertengahan minggu.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: \"Wednesday is mid-week\".",
+      "korean": "Rabu",
+      "english": "Transfer \"Rabu\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Hari Rabu hari pertengahan minggu.\".",
+      "example": "Hari Rabu hari pertengahan minggu.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: \"Wednesday is mid-week\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Rabu",
+      "romanization": "ra.bu",
+      "nativeText": "Find one word or phrase that naturally travels with \"Rabu\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ra.bu",
+      "exampleTarget": "Hari Rabu hari pertengahan minggu.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: \"Wednesday is mid-week\".",
+      "korean": "Rabu",
+      "english": "Find one word or phrase that naturally travels with \"Rabu\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Hari Rabu hari pertengahan minggu.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: \"Wednesday is mid-week\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Rabu",
+      "romanization": "ra.bu",
+      "nativeText": "Listen for \"Rabu\" inside \"Hari Rabu hari pertengahan minggu.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ra.bu",
+      "exampleTarget": "Hari Rabu hari pertengahan minggu.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"Wednesday is mid-week\".",
+      "korean": "Rabu",
+      "english": "Listen for \"Rabu\" inside \"Hari Rabu hari pertengahan minggu.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Hari Rabu hari pertengahan minggu.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"Wednesday is mid-week\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Rabu",
+      "romanization": "ra.bu",
+      "nativeText": "Write \"Rabu\" again without looking, then compare the exact written form against \"Hari Rabu hari pertengahan minggu.\" before moving on.",
+      "pronunciation": "ra.bu",
+      "exampleTarget": "Hari Rabu hari pertengahan minggu.",
+      "exampleNative": "Use the written model as the final correctness check: \"Wednesday is mid-week\".",
+      "korean": "Rabu",
+      "english": "Write \"Rabu\" again without looking, then compare the exact written form against \"Hari Rabu hari pertengahan minggu.\" before moving on.",
+      "example": "Hari Rabu hari pertengahan minggu.",
+      "exampleEnglish": "Use the written model as the final correctness check: \"Wednesday is mid-week\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit06datescalendar-vocabulary-1",
+        "ms-level1unit06datescalendar-vocabulary-2",
+        "ms-level1unit06datescalendar-grammar-1",
+        "ms-level1unit06datescalendar-grammar-2",
+        "ms-level1unit06datescalendar-reading",
+        "ms-level1unit06datescalendar-listening",
+        "ms-level1unit06datescalendar-writing",
+        "ms-level1unit06datescalendar-task"
+      ],
+      "targetText": "Rabu",
+      "romanization": "ra.bu",
+      "nativeText": "Check whether \"Rabu\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"Wednesday is mid-week\".",
+      "pronunciation": "ra.bu",
+      "exampleTarget": "Hari Rabu hari pertengahan minggu.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: \"Wednesday is mid-week\".",
+      "korean": "Rabu",
+      "english": "Check whether \"Rabu\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"Wednesday is mid-week\".",
+      "example": "Hari Rabu hari pertengahan minggu.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: \"Wednesday is mid-week\"."
+    }
+  ]
 };
-
-module.exports = lesson;

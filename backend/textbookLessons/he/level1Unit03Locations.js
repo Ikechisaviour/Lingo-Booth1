@@ -1,109 +1,2673 @@
-// Level 1 Unit 3 — Locations & Existence (Modern Hebrew)
-// Functions: saying where things are, using prepositions of place,
-// asking and answering "where is...?", existence yesh/ein.
-
-const createContentItem = (target, translit, note, type = 'word', example = '', exampleNote = '', breakdown = null, activityIds = []) => ({
-  type, activityIds, targetText: target, romanization: translit, nativeText: note, pronunciation: translit,
-  exampleTarget: example || target, exampleNative: exampleNote || note,
-  korean: target, english: note, example: example || target, exampleEnglish: exampleNote || note,
-  ...(breakdown ? { breakdown: breakdown.map(b => ({ target: b.target, native: b.note, korean: b.target, english: b.note })) } : {}),
-});
-
-const ACT = {
-  orientation: 'he-l1u3-orientation', pronunciation: 'he-l1u3-pronunciation',
-  vocabPlaces: 'he-l1u3-vocab-places', vocabPrepositions: 'he-l1u3-vocab-prepositions',
-  grammarYesh: 'he-l1u3-grammar-yesh', grammarLocative: 'he-l1u3-grammar-locative',
-  grammarQuestionEifo: 'he-l1u3-grammar-question-eifo',
-  reading: 'he-l1u3-reading', listening: 'he-l1u3-listening', writing: 'he-l1u3-writing',
-  culture: 'he-l1u3-culture', task: 'he-l1u3-task',
-};
-
-const activities = [
-  { id: ACT.orientation, section: 'Orientation', title: 'What you will be able to do', goals: ['Name 12 places in a typical Israeli city (cafe, bus stop, post office, market).', 'Use prepositions of place to say where something is.', 'Use יש (yesh) and אין (ein) to describe what exists or doesn\'t in a location.'], task: 'By the end you should describe your apartment, your university, and your neighborhood in Hebrew.' },
-  { id: ACT.pronunciation, section: 'Pronunciation', title: 'Prepositions and reduced vowels', goals: ['Reduce ב- (be-, in) and ל- (le-, to) to schwa in casual speech.', 'Pronounce the merged ב + ה- → בַּ (ba-) and ל + ה- → לַ (la-) when defining.', 'Apply chet correctly in חדר (cheder, room), חוף (chof, beach), and חוץ (chutz, outside).'], task: 'Read the prepositional pairs aloud, contrasting indefinite be-/le- with definite ba-/la-.' },
-  { id: ACT.vocabPlaces, section: 'Vocabulary I', title: 'Places in a city', goals: ['Memorize 12 places with their gender.', 'Use each place in a "where is...?" question.'], task: 'Identify each place type and say one sentence about where it is in your city.' },
-  { id: ACT.vocabPrepositions, section: 'Vocabulary II', title: 'Prepositions of place', goals: ['Use על (al, on), ב- (be-, in), ליד (lyad, next to), מתחת ל- (mitachat le-, under), מעל (me\'al, above), מאחורי (me-achorei, behind), לפני (lifnei, in front of).', 'Combine prepositions with possessive endings: לידי (lyadi, next to me), בו (bo, in him/it).'], task: 'Describe the location of 8 objects in a room using different prepositions.' },
-  { id: ACT.grammarYesh, section: 'Grammar I', title: 'יש and אין — Existence', goals: ['Use יש (yesh, "there is") to assert existence: יש קפה בשולחן (yesh kafe ba-shulchan, "there\'s coffee on the table").', 'Use אין (ein, "there is not") to negate existence: אין זמן (ein zman, "there\'s no time").', 'Apply the same pattern for possession: יש לי (yesh li, "I have"), אין לי (ein li, "I don\'t have").'], task: 'Write 6 sentences with yesh/ein covering both existence and possession.' },
-  { id: ACT.grammarLocative, section: 'Grammar II', title: 'Locative ב- and ל-', goals: ['Use ב- (be-) for "in/at" stationary location: בבית (ba-bayit, at home), באוניברסיטה (ba-universita, at the university).', 'Use ל- (le-) for "to" direction: לבית (la-bayit, to home), לאוניברסיטה (la-universita, to the university).', 'Apply the merger with definite: be + ha → ba (בַּ); le + ha → la (לַ).'], task: 'Convert 5 indefinite location phrases (in a house) to definite (in the house).' },
-  { id: ACT.grammarQuestionEifo, section: 'Grammar III', title: 'Asking איפה / לאן / מאיפה', goals: ['Use איפה (eifo, where) for stationary location: איפה הספר? (eifo ha-sefer?).', 'Use לאן (le\'an, to where) for direction toward: לאן אתה הולך? (le\'an ata holech?).', 'Use מאיפה (me\'efo, from where) for origin: מאיפה את? (me\'efo at?).'], task: 'Ask the AI tutor three location questions using each of the three forms.' },
-  { id: ACT.reading, section: 'Reading and Speaking', title: 'A walk through Jerusalem', goals: ['Read a paragraph describing a walk from Hebrew University down to the Old City.', 'Identify all location markers and prepositions.'], task: 'Read aloud once, then answer five questions about the route.' },
-  { id: ACT.listening, section: 'Listening and Speaking', title: 'Asking for directions', goals: ['Follow a dialogue where a tourist asks for directions to the Western Wall.', 'Reproduce the conversation substituting your own location.'], task: 'Listen and answer the locals\' clarifying questions.' },
-  { id: ACT.writing, section: 'Writing', title: 'Describe your neighborhood', goals: ['Write 5 sentences about places near your home.', 'Use at least three prepositions and three definite/indefinite contrasts.'], task: 'Compose your neighborhood description.' },
-  { id: ACT.culture, section: 'Culture Note', title: 'Israeli geography in conversation', goals: ['Recognize the three major Israeli cities: Jerusalem (capital), Tel Aviv (commercial/cultural), Haifa (port/tech).', 'Understand the casual division of Israel into "tzafon" (north), "merkaz" (center), "darom" (south).'], task: 'Place five Israeli cities on a mental map using north/center/south.' },
-  { id: ACT.task, section: 'Task', title: 'Finding your way at Hebrew University', goals: ['Combine location vocabulary, yesh/ein, and prepositions in a wayfinding scene.', 'Ask the AI tutor where three specific places are on the Mount Scopus campus.'], task: 'Roleplay arriving at Hebrew University and asking another student for directions to the library, the cafeteria, and your seminar room.' },
-];
-
-const lesson = {
-  title: 'Level 1 · Unit 3: איפה? — Locations and Existence',
-  category: 'locations', difficulty: 'beginner', targetLang: 'he', nativeLang: 'en', track: 'textbook', lessonType: 'thematic',
-  activities,
-  expressionPractice: [
-    { id: 'asking-where', label: 'Asking where', goal: 'Use eifo/le\'an/me\'efo correctly for stationary, direction, and origin questions.' },
-    { id: 'describing-location', label: 'Describing location', goal: 'Use prepositions and yesh/ein to describe what is where.' },
-    { id: 'giving-directions', label: 'Giving directions', goal: 'Direct someone to a nearby place using basic prepositions and verbs of motion.' },
+module.exports = {
+  "title": "Level 1 · Unit 3: איפה? — Locations and Existence",
+  "category": "locations",
+  "difficulty": "beginner",
+  "targetLang": "he",
+  "nativeLang": "en",
+  "track": "textbook",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "he-level1unit03locations-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Name 12 places in a typical Israeli city (cafe, bus stop, post office, market)."
+      ],
+      "task": "Roleplay arriving at Hebrew University and asking another student for directions to the library, the cafeteria, and your seminar room."
+    },
+    {
+      "id": "he-level1unit03locations-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Hebrew gutturals, stress, begadkefat contrasts, and reduced-vowel patterns clear enough that the sentence remains easy to parse."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "he-level1unit03locations-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 3: איפה? — Locations and Existence with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "he-level1unit03locations-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 3: איפה? — Locations and Existence sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "he-level1unit03locations-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Name 12 places in a typical Israeli city (cafe, bus stop, post office, market)."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "he-level1unit03locations-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 3: איפה? — Locations and Existence with one nearby Hebrew form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "he-level1unit03locations-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "he-level1unit03locations-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "he-level1unit03locations-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "he-level1unit03locations-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the social, religious, or regional cue that changes how this Hebrew is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "he-level1unit03locations-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Roleplay arriving at Hebrew University and asking another student for directions to the library, the cafeteria, and your seminar room."
+      ],
+      "task": "Roleplay arriving at Hebrew University and asking another student for directions to the library, the cafeteria, and your seminar room."
+    }
   ],
-  relatedPools: ['topic-places', 'topic-geography'],
-  content: [
-    createContentItem('איפה אנחנו?', 'eifo anachnu?', 'A simple location question: "where are we?" — uses the basic question word איפה for stationary location. The grammar will spread to all locational expressions: at home, in the library, next to the table.', 'word', 'איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — "Where are we?" "In the classroom."', 'איפה specifically asks about stationary location; for direction-to use לאן.', null, [ACT.orientation]),
-    createContentItem('בבית', 'ba-bayit', 'In the house / at home. The classic example of ב + ה merging to בַּ (ba-). Bayit = "house"; ha-bayit = "the house"; ba-bayit = "in/at the house" (with the definite article absorbed).', 'word', 'אני בבית. — ani ba-bayit — "I am at home."', 'Israelis use ba-bayit as "at home" without needing a possessive — context implies "my home".', null, [ACT.pronunciation]),
-    createContentItem('בכיתה', 'ba-kita', 'In the classroom. Same pattern: be + ha + kita → ba-kita. The classroom is feminine, but the contraction is the same as for masculine nouns.', 'word', 'אני בכיתה ומחכה. — ani ba-kita u-mechake — "I am in the classroom and waiting."', 'The merger be + ha → ba is one of the first contractions Hebrew learners master; identical pattern with le + ha → la.', null, [ACT.pronunciation]),
-    createContentItem('חדר', 'cheder (CHE-der)', 'Room. Masculine segolate noun (mil\'el stress). Plural: חדרים (chadarim, with vowel shift). The initial chet /kh/ is throat-back.', 'word', 'החדר שלי קטן. — ha-cheder sheli katan — "My room is small."', 'Same root ח-ד-ר gives the verb לחדור (lachdor, to penetrate).', null, [ACT.pronunciation]),
-    createContentItem('בית', 'bayit', 'House, home. Masculine. Plural: בתים (batim, irregular).', 'word', 'הבית שלנו בתל אביב. — ha-bayit shelanu be-tel aviv — "Our house is in Tel Aviv."', 'The construct form בית (beit) appears in many compounds: בית ספר (beit sefer, school), בית קפה (beit kafe, cafe).', null, [ACT.vocabPlaces]),
-    createContentItem('אוניברסיטה', 'universita', 'University. Feminine. Borrowed; mil\'ra. The Hebrew University = האוניברסיטה העברית.', 'word', 'אני באוניברסיטה. — ani ba-universita — "I am at the university."', 'Each Israeli university has a nickname: האוניברסיטה (the university — typically refers to Hebrew U), הטכניון (Technion), אוני׳ת״א (Tel Aviv U).', null, [ACT.vocabPlaces]),
-    createContentItem('ספריה', 'sifriya', 'Library. Feminine. From the root ס-פ-ר (book, write).', 'word', 'הספריה פתוחה עד עשר. — ha-sifriya ptucha ad eser — "The library is open until ten."', 'The National Library of Israel (הספרייה הלאומית) is on the Givat Ram campus of Hebrew U.', null, [ACT.vocabPlaces]),
-    createContentItem('בית קפה', 'beit kafe', 'Cafe. Construct phrase: literally "house of coffee". Masculine (matching beit).', 'word', 'נפגש בבית קפה. — nipagesh be-veit kafe — "Let\'s meet at a cafe."', 'Israeli cafe culture is intense; cafes are workplaces, meeting spots, and social hubs.', null, [ACT.vocabPlaces]),
-    createContentItem('מסעדה', 'mis\'ada', 'Restaurant. Feminine. From the root ס-ע-ד (to dine, support).', 'word', 'יש מסעדה טובה ליד. — yesh mis\'ada tova le-yad — "There\'s a good restaurant nearby."', 'Israeli mis\'adot range from upscale Tel Aviv chef restaurants to neighborhood hummus joints.', null, [ACT.vocabPlaces]),
-    createContentItem('שוק', 'shuk', 'Market. Masculine. Plural: שווקים (shvakim).', 'word', 'הולכים לשוק? — holchim la-shuk? — "Going to the market?"', 'Famous markets: שוק מחנה יהודה (Mahane Yehuda, Jerusalem), שוק הכרמל (HaCarmel, Tel Aviv).', null, [ACT.vocabPlaces]),
-    createContentItem('דואר', 'do\'ar', 'Post office. Masculine.', 'word', 'אני צריך לדואר. — ani tzarich la-do\'ar — "I need to go to the post office."', 'Israel Post (דואר ישראל) handles mail, packages, and some banking services.', null, [ACT.vocabPlaces]),
-    createContentItem('בנק', 'bank', 'Bank. Masculine. Borrowed.', 'word', 'הבנק סגור. — ha-bank sagur — "The bank is closed."', 'Israeli banks: בנק לאומי (Leumi), בנק הפועלים (Hapoalim), בנק דיסקונט (Discount). Hours typically 8:30–13:30 weekdays.', null, [ACT.vocabPlaces]),
-    createContentItem('בית חולים', 'beit cholim', 'Hospital. Construct: "house of sick people". Masculine.', 'word', 'הדרדה ההדסה. — beit cholim Hadassah — "Hadassah Hospital."', 'Hadassah Medical Center is affiliated with Hebrew University; one of Israel\'s top hospitals.', null, [ACT.vocabPlaces]),
-    createContentItem('חוף', 'chof', 'Beach, shore. Masculine. Plural: חופים (chofim). Initial chet /kh/.', 'word', 'אני אוהבת את החוף בתל אביב. — ani ohevet et ha-chof be-tel aviv — "I love the beach in Tel Aviv."', 'Tel Aviv\'s Mediterranean coast is famous; the beaches stretch from Jaffa to Herzliya.', null, [ACT.vocabPlaces]),
-    createContentItem('תחנת אוטובוס', 'tachanat otobus', 'Bus stop. Construct: "station of bus". Feminine (tachana).', 'word', 'תחנת האוטובוס בפינה. — tachanat ha-otobus ba-pina — "The bus stop is at the corner."', 'Egged is the main Israeli bus company; Dan operates in the Tel Aviv metro area.', null, [ACT.vocabPlaces]),
-    createContentItem('פארק', 'park', 'Park. Masculine. Borrowed.', 'word', 'נלך לפארק. — nelech la-park — "Let\'s go to the park."', 'Famous parks: Gan Sacher (Jerusalem), HaYarkon (Tel Aviv), HaAyalon (Ramat Gan).', null, [ACT.vocabPlaces]),
-    createContentItem('רחוב', 'rechov', 'Street. Masculine. Plural: רחובות (rechovot).', 'word', 'אני גר ברחוב יפו. — ani gar bi-rechov Yafo — "I live on Jaffa Street."', 'Israeli streets are often named after biblical figures, prime ministers, and historical events.', null, [ACT.vocabPlaces]),
-
-    createContentItem('על', 'al', 'Preposition "on". Used for surface placement. Combined with possessive endings: עליי (alai, on me), עליך (alecha, on you-m).', 'sentence', 'הספר על השולחן. — ha-sefer al ha-shulchan — "The book is on the table."', 'Also used metaphorically: לדבר על (ledaber al, "to talk about"), חבל על (chaval al, "shame about").', null, [ACT.vocabPrepositions]),
-    createContentItem('ב-', 'be- / ba-', 'Preposition "in/at". Attaches directly to the noun. ב + indef = be-; ב + ha- (definite) = ba-.', 'sentence', 'בבית — ba-bayit — "in/at the house"\nבכיתה — ba-kita — "in/at the classroom"', 'The most common Hebrew preposition; covers both stationary location and time (בבוקר, ba-boker, "in the morning").', null, [ACT.vocabPrepositions]),
-    createContentItem('ל-', 'le- / la-', 'Preposition "to/for". Attaches directly. le- (indef) → la- (with definite article).', 'sentence', 'לבית — la-bayit — "to/for the house"\nאני הולך לאוניברסיטה — ani holech la-universita — "I\'m going to the university"', 'Also used as the infinitive prefix: ללכת (lalechet, to walk), לאכול (le\'echol, to eat).', null, [ACT.vocabPrepositions]),
-    createContentItem('ליד', 'lyad', 'Next to, beside. Compound from ל + יד ("to + hand"). Combined: לידי (lyadi, next to me).', 'sentence', 'הוא יושב לידי. — hu yoshev lyadi — "He sits next to me."', 'The pictorial origin (lyad = "to-hand") is still felt in some idioms.', null, [ACT.vocabPrepositions]),
-    createContentItem('מתחת ל-', 'mitachat le-', 'Under. Two-part preposition: מתחת + ל-.', 'sentence', 'התיק מתחת לשולחן. — ha-tik mitachat la-shulchan — "The bag is under the table."', 'The opposite of mitachat is מעל (me\'al, above).', null, [ACT.vocabPrepositions]),
-    createContentItem('מעל', 'me\'al', 'Above, over. Often paired with ל- when followed by an object: מעל ל-.', 'sentence', 'המנורה מעל השולחן. — ha-menorah me\'al ha-shulchan — "The lamp is above the table."', 'Also used metaphorically: מעל ומעבר (me\'al u-me\'ever, "above and beyond").', null, [ACT.vocabPrepositions]),
-    createContentItem('מאחורי', 'me-achorei', 'Behind. Compound from "from + back of".', 'sentence', 'החתול מאחורי הכיסא. — ha-chatul me-achorei ha-kise — "The cat is behind the chair."', 'The pair me-achorei (behind) / lifnei (in front of) is the basic spatial axis.', null, [ACT.vocabPrepositions]),
-    createContentItem('לפני', 'lifnei', 'In front of, before (time). Same word for spatial "in front of" and temporal "before".', 'sentence', 'יש מכונית לפני הבית. — yesh mechonit lifnei ha-bayit — "There\'s a car in front of the house."\nלפני השיעור. — lifnei ha-shiur — "Before the lesson."', 'The dual meaning (space + time) is parallel to English "before".', null, [ACT.vocabPrepositions]),
-
-    createContentItem('יש', 'yesh', 'There is / there are — the universal existence marker. Same form regardless of number or gender of the noun. Often combined with locational phrases.', 'sentence', 'יש קפה במטבח. — yesh kafe ba-mitbach — "There\'s coffee in the kitchen."\nיש לי שאלה. — yesh li she\'ela — "I have a question" (literally "there is to me a question")', 'Possession in Hebrew uses yesh + ל- (to) + person: yesh li (I have), yesh lecha (you-m have), yesh lah (she has).', null, [ACT.grammarYesh]),
-    createContentItem('אין', 'ein', 'There is not / there are not — the negation of yesh. Same usage pattern; combined with ל- for "don\'t have".', 'sentence', 'אין מים. — ein mayim — "There is no water."\nאין לי כסף. — ein li kesef — "I have no money."', 'The pair yesh/ein is one of the most-used Hebrew constructions; you\'ll hear it dozens of times a day.', null, [ACT.grammarYesh]),
-    createContentItem('יש ל- + person', 'yesh le- + person', 'Possession construction: "there is to X" = "X has". Combines yesh + ל- + suffix. Singular: yesh li (I have), yesh lecha/lach (you-m/f have), yesh lo (he has), yesh la (she has). Plural: yesh lanu (we have), yesh lachem/lachen (you-pl m/f), yesh lahem/lahen (they-m/f).', 'sentence', 'יש לי חבר בישראל. — yesh li chaver be-yisrael — "I have a friend in Israel."', 'Hebrew has no "to have" verb in present; yesh + ל- carries the meaning instead.', [
-      { target: 'יש לי yesh li', note: '"I have"; possessive suffix -i = "me"' },
-      { target: 'יש לך yesh lecha/lach', note: '"you-m/f have"' },
-      { target: 'יש לו / לה yesh lo / la', note: '"he/she has"' },
-    ], [ACT.grammarYesh]),
-
-    createContentItem('איפה', 'eifo', 'Where (stationary). The basic location question word. Always used for asking where something is, not where it\'s going.', 'sentence', 'איפה הספריה? — eifo ha-sifriya? — "Where is the library?"\nאיפה אתה? — eifo ata? — "Where are you?"', 'For "where to/from", use לאן/מאיפה respectively.', null, [ACT.grammarQuestionEifo]),
-    createContentItem('לאן', 'le\'an', 'Where to (direction). Used when asking the destination of motion.', 'sentence', 'לאן אתה הולך? — le\'an ata holech? — "Where are you going?"', 'Often paired with verbs of motion: ללכת (lalechet, to walk/go), לנסוע (linso\'a, to travel).', null, [ACT.grammarQuestionEifo]),
-    createContentItem('מאיפה', 'me\'efo', 'Where from (origin). Used for asking the source of motion or where someone comes from.', 'sentence', 'מאיפה אתה? — me\'efo ata? — "Where are you from?"', 'The most common follow-up after a name introduction; Israelis almost always ask this within the first 30 seconds.', null, [ACT.grammarQuestionEifo]),
-
-    createContentItem('מהאוניברסיטה לעיר העתיקה', 'me-ha-universita la-ir ha-atika', 'A walk from Hebrew University Mount Scopus down to Jerusalem\'s Old City. Read the paragraph and trace the route.', 'sentence', 'אני סטודנט באוניברסיטה העברית, בקמפוס הר הצופים. מהקמפוס אני יורד ברגל לעיר העתיקה. לפני העיר העתיקה יש שער שכם. אחרי השער, יש שווקים, רחובות צרים, וכנסיות. בסוף אני מגיע לכותל המערבי. ליד הכותל יש כיכר גדולה. שם אני יושב על ספסל ושותה מים.', 'Translation: "I am a student at Hebrew University, on the Mount Scopus campus. From the campus I walk down to the Old City. Before the Old City there is Damascus Gate. After the gate there are markets, narrow streets, and churches. At the end I arrive at the Western Wall. Next to the Wall there is a big plaza. There I sit on a bench and drink water."', [
-      { target: 'הר הצופים har ha-tzofim', note: '"Mount Scopus"; Hebrew U\'s historic campus, overlooking the Old City' },
-      { target: 'שער שכם sha\'ar shchem', note: 'Damascus Gate; the main northern entrance to the Old City' },
-      { target: 'הכותל המערבי ha-kotel ha-ma\'aravi', note: 'the Western Wall (Wailing Wall); Judaism\'s holiest accessible site' },
-      { target: 'ברגל ba-regel', note: '"by foot, walking"; literally "in the foot"' },
-    ], [ACT.reading]),
-
-    createContentItem('בקשת הנחיות', 'bakashat hanchayot', 'A tourist asks an Israeli for directions to the Western Wall. The dialogue shows direction-asking and basic location-giving.', 'conversation', 'תייר: סליחה, איפה הכותל המערבי?\nישראלי: הכותל בעיר העתיקה.\nתייר: זה רחוק?\nישראלי: לא, כעשר דקות ברגל. אתה הולך ישר, ואז שמאלה.\nתייר: ישר ואז שמאלה?\nישראלי: כן. אחרי השוק, יש כיכר. שם הכותל.\nתייר: תודה רבה!\nישראלי: בבקשה. בהצלחה!', 'Note the Israeli\'s use of compass directions (ישר ישר shamala) and the casual "bakacha / bevakasha" closing.', [
-      { target: 'ישר yashar', note: 'straight ahead' },
-      { target: 'שמאלה smola', note: 'to the left; -a suffix = directional ("toward")' },
-      { target: 'ימינה yamina', note: 'to the right' },
-      { target: 'בהצלחה behatzlacha', note: '"good luck / all the best"; standard farewell after giving help' },
-    ], [ACT.listening]),
-
-    createContentItem('תרגיל כתיבה', 'targil ktiva', 'Write 5 sentences about places near your home. Use at least three prepositions and three definite/indefinite contrasts.', 'sentence', 'דוגמה: אני גר בירושלים, ברחוב הנביאים. ליד הבית שלי יש בית קפה ובית מרקחת. מאחורי הבית יש פארק קטן. אני אוהב לקרוא בפארק. הספריה לא רחוקה מהבית.', 'Translation: "I live in Jerusalem, on the Street of Prophets. Next to my house there is a cafe and pharmacy. Behind the house there is a small park. I love reading in the park. The library is not far from the house."', null, [ACT.writing]),
-
-    createContentItem('שלוש ערים', 'shalosh arim', 'Israel\'s three major cities: ירושלים (Jerusalem, capital, religious/political center), תל אביב (Tel Aviv, commercial/cultural capital), חיפה (Haifa, port/tech city, Israel\'s "San Francisco"). Each has distinct cultural personalities.', 'sentence', 'ירושלים זה הבירה. תל אביב זה המרכז העסקי. חיפה זה הצפון.', 'Israelis say "Yerushalayim mit\'paleget, Tel Aviv mit\'havelet, Cheifa ovedet" — "Jerusalem prays, Tel Aviv plays, Haifa works."', null, [ACT.culture]),
-    createContentItem('צפון מרכז דרום', 'tzafon merkaz darom', 'Casual geographical division of Israel: tzafon (north — Haifa, Galilee), merkaz (center — Tel Aviv, Jerusalem, Sharon plain), darom (south — Be\'er Sheva, Negev, Eilat). Israelis routinely orient by these labels.', 'sentence', 'אני גרה בדרום, בבאר שבע. — ani gara ba-darom, be-Be\'er Sheva — "I live in the south, in Be\'er Sheva."', 'Each region has distinct character: north is greener, center is densest, south is desert.', null, [ACT.culture]),
-
-    createContentItem('משימה: מציאת דרך בקמפוס', 'mesima: metzi\'at derech ba-kampus', 'Roleplay arriving at Hebrew University Mount Scopus campus and asking a student for directions to three places: the library, the cafeteria, and your seminar room. Use eifo, ba-, prepositions of place, and yesh/ein.', 'conversation', '[Mount Scopus campus, first day]\nאתה: סליחה, איפה הספריה?\nסטודנט: הספריה בבניין הראשי, בקומה השנייה.\nאתה: ואיפה הקפיטריה?\nסטודנט: יש קפיטריה לפני הספריה, ועוד אחת מאחורי הבניין.\nאתה: יש לך מפה?\nסטודנט: אין לי, אבל יש מפה ליד הכניסה.\nאתה: תודה!\nסטודנט: בבקשה. בהצלחה!', 'Six-turn exchange; the AI tutor will respond to your phrasing and adapt directions to the campus layout.', null, [ACT.task]),
+  "expressionPractice": [
+    {
+      "id": "asking-where",
+      "label": "Asking where",
+      "goal": "Use eifo/le'an/me'efo correctly for stationary, direction, and origin questions."
+    },
+    {
+      "id": "describing-location",
+      "label": "Describing location",
+      "goal": "Use prepositions and yesh/ein to describe what is where."
+    },
+    {
+      "id": "giving-directions",
+      "label": "Giving directions",
+      "goal": "Direct someone to a nearby place using basic prepositions and verbs of motion."
+    }
   ],
+  "relatedPools": [
+    "topic-places",
+    "topic-geography"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "he-level1unit03locations-orientation"
+      ],
+      "targetText": "מטרת השיעור",
+      "romanization": "",
+      "nativeText": "Name 12 places in a typical Israeli city (cafe, bus stop, post office, market).",
+      "pronunciation": "",
+      "exampleTarget": "מטרת השיעור",
+      "exampleNative": "The whole lesson is built toward this outcome: Roleplay arriving at Hebrew University and asking another student for directions to the library, the cafeteria, and your seminar room.",
+      "korean": "מטרת השיעור",
+      "english": "Name 12 places in a typical Israeli city (cafe, bus stop, post office, market).",
+      "example": "מטרת השיעור",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Roleplay arriving at Hebrew University and asking another student for directions to the library, the cafeteria, and your seminar room."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "he-level1unit03locations-pronunciation"
+      ],
+      "targetText": "בדיקת הגייה",
+      "romanization": "",
+      "nativeText": "Keep Hebrew gutturals, stress, begadkefat contrasts, and reduced-vowel patterns clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"\".",
+      "pronunciation": "",
+      "exampleTarget": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "exampleNative": "איפה specifically asks about stationary location; for direction-to use לאן.",
+      "korean": "בדיקת הגייה",
+      "english": "Keep Hebrew gutturals, stress, begadkefat contrasts, and reduced-vowel patterns clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"\".",
+      "example": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "exampleEnglish": "איפה specifically asks about stationary location; for direction-to use לאן."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1"
+      ],
+      "targetText": "איפה אנחנו?",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 3: איפה? — Locations and Existence with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "exampleNative": "איפה specifically asks about stationary location; for direction-to use לאן.",
+      "korean": "איפה אנחנו?",
+      "english": "Use the key language of Level 1 · Unit 3: איפה? — Locations and Existence with the register and setting that the lesson requires.",
+      "example": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "exampleEnglish": "איפה specifically asks about stationary location; for direction-to use לאן."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-2"
+      ],
+      "targetText": "בבית",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 3: איפה? — Locations and Existence sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "אני בבית. — ani ba-bayit — \"I am at home.\"",
+      "exampleNative": "Israelis use ba-bayit as \"at home\" without needing a possessive — context implies \"my home\".",
+      "korean": "בבית",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 3: איפה? — Locations and Existence sound precise rather than merely understandable.",
+      "example": "אני בבית. — ani ba-bayit — \"I am at home.\"",
+      "exampleEnglish": "Israelis use ba-bayit as \"at home\" without needing a possessive — context implies \"my home\"."
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "he-level1unit03locations-grammar-1"
+      ],
+      "targetText": "איפה אנחנו?",
+      "romanization": "",
+      "nativeText": "Name 12 places in a typical Israeli city (cafe, bus stop, post office, market).",
+      "pronunciation": "",
+      "exampleTarget": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "exampleNative": "איפה specifically asks about stationary location; for direction-to use לאן.",
+      "korean": "איפה אנחנו?",
+      "english": "Name 12 places in a typical Israeli city (cafe, bus stop, post office, market).",
+      "example": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "exampleEnglish": "איפה specifically asks about stationary location; for direction-to use לאן."
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "he-level1unit03locations-grammar-2"
+      ],
+      "targetText": "בבית",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 3: איפה? — Locations and Existence with one nearby Hebrew form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "אני בבית. — ani ba-bayit — \"I am at home.\"",
+      "exampleNative": "Israelis use ba-bayit as \"at home\" without needing a possessive — context implies \"my home\".",
+      "korean": "בבית",
+      "english": "Contrast the main pattern in Level 1 · Unit 3: איפה? — Locations and Existence with one nearby Hebrew form so the learner can avoid literal translation.",
+      "example": "אני בבית. — ani ba-bayit — \"I am at home.\"",
+      "exampleEnglish": "Israelis use ba-bayit as \"at home\" without needing a possessive — context implies \"my home\"."
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "he-level1unit03locations-reading"
+      ],
+      "targetText": "מודל קריאה",
+      "romanization": "",
+      "nativeText": "Read the connected model for מודל קריאה as one message. Notice how \"אני גרה בדרום, בבאר שבע. — ani gara ba-darom, be-Be'er Sheva — \"I live in the south, in Be'er Sheva.\"\" lets the lesson vocabulary and grammar work together instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "אני גרה בדרום, בבאר שבע. — ani gara ba-darom, be-Be'er Sheva — \"I live in the south, in Be'er Sheva.\"",
+      "exampleNative": "Each region has distinct character: north is greener, center is densest, south is desert.",
+      "korean": "מודל קריאה",
+      "english": "Read the connected model for מודל קריאה as one message. Notice how \"אני גרה בדרום, בבאר שבע. — ani gara ba-darom, be-Be'er Sheva — \"I live in the south, in Be'er Sheva.\"\" lets the lesson vocabulary and grammar work together instead of appearing as isolated flashcards.",
+      "example": "אני גרה בדרום, בבאר שבע. — ani gara ba-darom, be-Be'er Sheva — \"I live in the south, in Be'er Sheva.\"",
+      "exampleEnglish": "Each region has distinct character: north is greener, center is densest, south is desert."
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "he-level1unit03locations-listening"
+      ],
+      "targetText": "מודל שיחה",
+      "romanization": "",
+      "nativeText": "Hear \"אני גרה בדרום, בבאר שבע. — ani gara ba-darom, be-Be'er Sheva — \"I live in the south, in Be'er Sheva.\"\" as interaction, not as a sentence list. The listening goal is to follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "אני גרה בדרום, בבאר שבע. — ani gara ba-darom, be-Be'er Sheva — \"I live in the south, in Be'er Sheva.\"",
+      "exampleNative": "Each region has distinct character: north is greener, center is densest, south is desert.",
+      "korean": "מודל שיחה",
+      "english": "Hear \"אני גרה בדרום, בבאר שבע. — ani gara ba-darom, be-Be'er Sheva — \"I live in the south, in Be'er Sheva.\"\" as interaction, not as a sentence list. The listening goal is to follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "אני גרה בדרום, בבאר שבע. — ani gara ba-darom, be-Be'er Sheva — \"I live in the south, in Be'er Sheva.\"",
+      "exampleEnglish": "Each region has distinct character: north is greener, center is densest, south is desert."
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "he-level1unit03locations-writing"
+      ],
+      "targetText": "תרגול כתיבה",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "תרגול כתיבה",
+      "english": "Write your own version after studying \"איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "he-level1unit03locations-culture"
+      ],
+      "targetText": "שימוש והקשר",
+      "romanization": "",
+      "nativeText": "Notice the social, religious, or regional cue that changes how this Hebrew is naturally used. Use \"אני בבית. — ani ba-bayit — \"I am at home.\"\" as the social comparison point for this lesson.",
+      "pronunciation": "",
+      "exampleTarget": "אני בבית. — ani ba-bayit — \"I am at home.\"",
+      "exampleNative": "Israelis use ba-bayit as \"at home\" without needing a possessive — context implies \"my home\".",
+      "korean": "שימוש והקשר",
+      "english": "Notice the social, religious, or regional cue that changes how this Hebrew is naturally used. Use \"אני בבית. — ani ba-bayit — \"I am at home.\"\" as the social comparison point for this lesson.",
+      "example": "אני בבית. — ani ba-bayit — \"I am at home.\"",
+      "exampleEnglish": "Israelis use ba-bayit as \"at home\" without needing a possessive — context implies \"my home\"."
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "משימה מסכמת",
+      "romanization": "",
+      "nativeText": "Roleplay arriving at Hebrew University and asking another student for directions to the library, the cafeteria, and your seminar room.",
+      "pronunciation": "",
+      "exampleTarget": "אני גרה בדרום, בבאר שבע. — ani gara ba-darom, be-Be'er Sheva — \"I live in the south, in Be'er Sheva.\"",
+      "exampleNative": "Roleplay arriving at Hebrew University and asking another student for directions to the library, the cafeteria, and your seminar room.",
+      "korean": "משימה מסכמת",
+      "english": "Roleplay arriving at Hebrew University and asking another student for directions to the library, the cafeteria, and your seminar room.",
+      "example": "אני גרה בדרום, בבאר שבע. — ani gara ba-darom, be-Be'er Sheva — \"I live in the south, in Be'er Sheva.\"",
+      "exampleEnglish": "Roleplay arriving at Hebrew University and asking another student for directions to the library, the cafeteria, and your seminar room."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "he-level1unit03locations-grammar-2"
+      ],
+      "targetText": "טעות נפוצה",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around gender agreement, root patterns, construct phrases, and direct-object marking. Begin by checking \"אני בבית. — ani ba-bayit — \"I am at home.\"\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "אני בבית. — ani ba-bayit — \"I am at home.\"",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: Israelis use ba-bayit as \"at home\" without needing a possessive — context implies \"my home\".",
+      "korean": "טעות נפוצה",
+      "english": "Watch for literal-translation mistakes around gender agreement, root patterns, construct phrases, and direct-object marking. Begin by checking \"אני בבית. — ani ba-bayit — \"I am at home.\"\" against the model.",
+      "example": "אני בבית. — ani ba-bayit — \"I am at home.\"",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: Israelis use ba-bayit as \"at home\" without needing a possessive — context implies \"my home\"."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-culture"
+      ],
+      "targetText": "משלב",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for everyday spoken Hebrew, a polite service tone, or a more formal written choice. Compare the social fit of \"איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "exampleNative": "איפה specifically asks about stationary location; for direction-to use לאן.",
+      "korean": "משלב",
+      "english": "Check whether the setting calls for everyday spoken Hebrew, a polite service tone, or a more formal written choice. Compare the social fit of \"איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"\" before reusing it elsewhere.",
+      "example": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "exampleEnglish": "איפה specifically asks about stationary location; for direction-to use לאן."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "שטף",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Hebrew message rather than as separate translated fragments. Aim to carry \"אני גרה בדרום, בבאר שבע. — ani gara ba-darom, be-Be'er Sheva — \"I live in the south, in Be'er Sheva.\"\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "אני גרה בדרום, בבאר שבע. — ani gara ba-darom, be-Be'er Sheva — \"I live in the south, in Be'er Sheva.\"",
+      "exampleNative": "Each region has distinct character: north is greener, center is densest, south is desert.",
+      "korean": "שטף",
+      "english": "Say the idea as one connected Hebrew message rather than as separate translated fragments. Aim to carry \"אני גרה בדרום, בבאר שבע. — ani gara ba-darom, be-Be'er Sheva — \"I live in the south, in Be'er Sheva.\"\" as one thought.",
+      "example": "אני גרה בדרום, בבאר שבע. — ani gara ba-darom, be-Be'er Sheva — \"I live in the south, in Be'er Sheva.\"",
+      "exampleEnglish": "Each region has distinct character: north is greener, center is densest, south is desert."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "יישום",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "יישום",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"\" and move it into your own life.",
+      "example": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-grammar-1"
+      ],
+      "targetText": "שליפה",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"איפה אנחנו?\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "איפה אנחנו?",
+      "exampleNative": "A simple location question: \"where are we?\" — uses the basic question word איפה for stationary location. The grammar will spread to all locational expressions: at home, in the library, next to the table.",
+      "korean": "שליפה",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"איפה אנחנו?\" before looking back.",
+      "example": "איפה אנחנו?",
+      "exampleEnglish": "A simple location question: \"where are we?\" — uses the basic question word איפה for stationary location. The grammar will spread to all locational expressions: at home, in the library, next to the table."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-writing"
+      ],
+      "targetText": "הרחבה",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"אני גרה בדרום, בבאר שבע. — ani gara ba-darom, be-Be'er Sheva — \"I live in the south, in Be'er Sheva.\"\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "אני גרה בדרום, בבאר שבע. — ani gara ba-darom, be-Be'er Sheva — \"I live in the south, in Be'er Sheva.\"",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "הרחבה",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"אני גרה בדרום, בבאר שבע. — ani gara ba-darom, be-Be'er Sheva — \"I live in the south, in Be'er Sheva.\"\" rather than restarting from a blank sentence.",
+      "example": "אני גרה בדרום, בבאר שבע. — ani gara ba-darom, be-Be'er Sheva — \"I live in the south, in Be'er Sheva.\"",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading"
+      ],
+      "targetText": "השוואה",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 3: איפה? — Locations and Existence with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"אני בבית. — ani ba-bayit — \"I am at home.\"\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "אני בבית. — ani ba-bayit — \"I am at home.\"",
+      "exampleNative": "Israelis use ba-bayit as \"at home\" without needing a possessive — context implies \"my home\".",
+      "korean": "השוואה",
+      "english": "Compare the central form in Level 1 · Unit 3: איפה? — Locations and Existence with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"אני בבית. — ani ba-bayit — \"I am at home.\"\" as the comparison line.",
+      "example": "אני בבית. — ani ba-bayit — \"I am at home.\"",
+      "exampleEnglish": "Israelis use ba-bayit as \"at home\" without needing a possessive — context implies \"my home\"."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "he-level1unit03locations-pronunciation"
+      ],
+      "targetText": "תיקון הגייה",
+      "romanization": "",
+      "nativeText": "Keep Hebrew gutturals, stress, begadkefat contrasts, and reduced-vowel patterns clear enough that the sentence remains easy to parse. Use \"איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"\" as the repair line.",
+      "pronunciation": "",
+      "exampleTarget": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "exampleNative": "איפה specifically asks about stationary location; for direction-to use לאן.",
+      "korean": "תיקון הגייה",
+      "english": "Keep Hebrew gutturals, stress, begadkefat contrasts, and reduced-vowel patterns clear enough that the sentence remains easy to parse. Use \"איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"\" as the repair line.",
+      "example": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "exampleEnglish": "איפה specifically asks about stationary location; for direction-to use לאן."
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "וריאציית שיחה",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"אני גרה בדרום, בבאר שבע. — ani gara ba-darom, be-Be'er Sheva — \"I live in the south, in Be'er Sheva.\"\".",
+      "pronunciation": "",
+      "exampleTarget": "אני גרה בדרום, בבאר שבע. — ani gara ba-darom, be-Be'er Sheva — \"I live in the south, in Be'er Sheva.\"",
+      "exampleNative": "Each region has distinct character: north is greener, center is densest, south is desert.",
+      "korean": "וריאציית שיחה",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"אני גרה בדרום, בבאר שבע. — ani gara ba-darom, be-Be'er Sheva — \"I live in the south, in Be'er Sheva.\"\".",
+      "example": "אני גרה בדרום, בבאר שבע. — ani gara ba-darom, be-Be'er Sheva — \"I live in the south, in Be'er Sheva.\"",
+      "exampleEnglish": "Each region has distinct character: north is greener, center is densest, south is desert."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-writing"
+      ],
+      "targetText": "בניית משפט",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "exampleNative": "איפה specifically asks about stationary location; for direction-to use לאן.",
+      "korean": "בניית משפט",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"\" one layer at a time.",
+      "example": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "exampleEnglish": "איפה specifically asks about stationary location; for direction-to use לאן."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-2"
+      ],
+      "targetText": "בדיקה מהירה",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"אני בבית. — ani ba-bayit — \"I am at home.\"\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "אני בבית. — ani ba-bayit — \"I am at home.\"",
+      "exampleNative": "Israelis use ba-bayit as \"at home\" without needing a possessive — context implies \"my home\".",
+      "korean": "בדיקה מהירה",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"אני בבית. — ani ba-bayit — \"I am at home.\"\" as the deciding example.",
+      "example": "אני בבית. — ani ba-bayit — \"I am at home.\"",
+      "exampleEnglish": "Israelis use ba-bayit as \"at home\" without needing a possessive — context implies \"my home\"."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "he-level1unit03locations-culture",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "סיכום",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"אני גרה בדרום, בבאר שבע. — ani gara ba-darom, be-Be'er Sheva — \"I live in the south, in Be'er Sheva.\"\".",
+      "pronunciation": "",
+      "exampleTarget": "אני גרה בדרום, בבאר שבע. — ani gara ba-darom, be-Be'er Sheva — \"I live in the south, in Be'er Sheva.\"",
+      "exampleNative": "Each region has distinct character: north is greener, center is densest, south is desert.",
+      "korean": "סיכום",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"אני גרה בדרום, בבאר שבע. — ani gara ba-darom, be-Be'er Sheva — \"I live in the south, in Be'er Sheva.\"\".",
+      "example": "אני גרה בדרום, בבאר שבע. — ani gara ba-darom, be-Be'er Sheva — \"I live in the south, in Be'er Sheva.\"",
+      "exampleEnglish": "Each region has distinct character: north is greener, center is densest, south is desert."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "איפה אנחנו?",
+      "romanization": "eifo anachnu?",
+      "nativeText": "A simple location question: \"where are we?\" — uses the basic question word איפה for stationary location. The grammar will spread to all locational expressions: at home, in the library, next to the table.",
+      "pronunciation": "eifo anachnu?",
+      "exampleTarget": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "exampleNative": "איפה specifically asks about stationary location; for direction-to use לאן.",
+      "korean": "איפה אנחנו?",
+      "english": "A simple location question: \"where are we?\" — uses the basic question word איפה for stationary location. The grammar will spread to all locational expressions: at home, in the library, next to the table.",
+      "example": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "exampleEnglish": "איפה specifically asks about stationary location; for direction-to use לאן."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "בבית",
+      "romanization": "ba-bayit",
+      "nativeText": "In the house / at home. The classic example of ב + ה merging to בַּ (ba-). Bayit = \"house\"; ha-bayit = \"the house\"; ba-bayit = \"in/at the house\" (with the definite article absorbed).",
+      "pronunciation": "ba-bayit",
+      "exampleTarget": "אני בבית. — ani ba-bayit — \"I am at home.\"",
+      "exampleNative": "Israelis use ba-bayit as \"at home\" without needing a possessive — context implies \"my home\".",
+      "korean": "בבית",
+      "english": "In the house / at home. The classic example of ב + ה merging to בַּ (ba-). Bayit = \"house\"; ha-bayit = \"the house\"; ba-bayit = \"in/at the house\" (with the definite article absorbed).",
+      "example": "אני בבית. — ani ba-bayit — \"I am at home.\"",
+      "exampleEnglish": "Israelis use ba-bayit as \"at home\" without needing a possessive — context implies \"my home\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "בכיתה",
+      "romanization": "ba-kita",
+      "nativeText": "In the classroom. Same pattern: be + ha + kita → ba-kita. The classroom is feminine, but the contraction is the same as for masculine nouns.",
+      "pronunciation": "ba-kita",
+      "exampleTarget": "אני בכיתה ומחכה. — ani ba-kita u-mechake — \"I am in the classroom and waiting.\"",
+      "exampleNative": "The merger be + ha → ba is one of the first contractions Hebrew learners master; identical pattern with le + ha → la.",
+      "korean": "בכיתה",
+      "english": "In the classroom. Same pattern: be + ha + kita → ba-kita. The classroom is feminine, but the contraction is the same as for masculine nouns.",
+      "example": "אני בכיתה ומחכה. — ani ba-kita u-mechake — \"I am in the classroom and waiting.\"",
+      "exampleEnglish": "The merger be + ha → ba is one of the first contractions Hebrew learners master; identical pattern with le + ha → la."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "חדר",
+      "romanization": "cheder (CHE-der)",
+      "nativeText": "Room. Masculine segolate noun (mil'el stress). Plural: חדרים (chadarim, with vowel shift). The initial chet /kh/ is throat-back.",
+      "pronunciation": "cheder (CHE-der)",
+      "exampleTarget": "החדר שלי קטן. — ha-cheder sheli katan — \"My room is small.\"",
+      "exampleNative": "Same root ח-ד-ר gives the verb לחדור (lachdor, to penetrate).",
+      "korean": "חדר",
+      "english": "Room. Masculine segolate noun (mil'el stress). Plural: חדרים (chadarim, with vowel shift). The initial chet /kh/ is throat-back.",
+      "example": "החדר שלי קטן. — ha-cheder sheli katan — \"My room is small.\"",
+      "exampleEnglish": "Same root ח-ד-ר gives the verb לחדור (lachdor, to penetrate)."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "בית",
+      "romanization": "bayit",
+      "nativeText": "House, home. Masculine. Plural: בתים (batim, irregular).",
+      "pronunciation": "bayit",
+      "exampleTarget": "הבית שלנו בתל אביב. — ha-bayit shelanu be-tel aviv — \"Our house is in Tel Aviv.\"",
+      "exampleNative": "The construct form בית (beit) appears in many compounds: בית ספר (beit sefer, school), בית קפה (beit kafe, cafe).",
+      "korean": "בית",
+      "english": "House, home. Masculine. Plural: בתים (batim, irregular).",
+      "example": "הבית שלנו בתל אביב. — ha-bayit shelanu be-tel aviv — \"Our house is in Tel Aviv.\"",
+      "exampleEnglish": "The construct form בית (beit) appears in many compounds: בית ספר (beit sefer, school), בית קפה (beit kafe, cafe)."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "אוניברסיטה",
+      "romanization": "universita",
+      "nativeText": "University. Feminine. Borrowed; mil'ra. The Hebrew University = האוניברסיטה העברית.",
+      "pronunciation": "universita",
+      "exampleTarget": "אני באוניברסיטה. — ani ba-universita — \"I am at the university.\"",
+      "exampleNative": "Each Israeli university has a nickname: האוניברסיטה (the university — typically refers to Hebrew U), הטכניון (Technion), אוני׳ת״א (Tel Aviv U).",
+      "korean": "אוניברסיטה",
+      "english": "University. Feminine. Borrowed; mil'ra. The Hebrew University = האוניברסיטה העברית.",
+      "example": "אני באוניברסיטה. — ani ba-universita — \"I am at the university.\"",
+      "exampleEnglish": "Each Israeli university has a nickname: האוניברסיטה (the university — typically refers to Hebrew U), הטכניון (Technion), אוני׳ת״א (Tel Aviv U)."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "ספריה",
+      "romanization": "sifriya",
+      "nativeText": "Library. Feminine. From the root ס-פ-ר (book, write).",
+      "pronunciation": "sifriya",
+      "exampleTarget": "הספריה פתוחה עד עשר. — ha-sifriya ptucha ad eser — \"The library is open until ten.\"",
+      "exampleNative": "The National Library of Israel (הספרייה הלאומית) is on the Givat Ram campus of Hebrew U.",
+      "korean": "ספריה",
+      "english": "Library. Feminine. From the root ס-פ-ר (book, write).",
+      "example": "הספריה פתוחה עד עשר. — ha-sifriya ptucha ad eser — \"The library is open until ten.\"",
+      "exampleEnglish": "The National Library of Israel (הספרייה הלאומית) is on the Givat Ram campus of Hebrew U."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "בית קפה",
+      "romanization": "beit kafe",
+      "nativeText": "Cafe. Construct phrase: literally \"house of coffee\". Masculine (matching beit).",
+      "pronunciation": "beit kafe",
+      "exampleTarget": "נפגש בבית קפה. — nipagesh be-veit kafe — \"Let's meet at a cafe.\"",
+      "exampleNative": "Israeli cafe culture is intense; cafes are workplaces, meeting spots, and social hubs.",
+      "korean": "בית קפה",
+      "english": "Cafe. Construct phrase: literally \"house of coffee\". Masculine (matching beit).",
+      "example": "נפגש בבית קפה. — nipagesh be-veit kafe — \"Let's meet at a cafe.\"",
+      "exampleEnglish": "Israeli cafe culture is intense; cafes are workplaces, meeting spots, and social hubs."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "מסעדה",
+      "romanization": "mis'ada",
+      "nativeText": "Restaurant. Feminine. From the root ס-ע-ד (to dine, support).",
+      "pronunciation": "mis'ada",
+      "exampleTarget": "יש מסעדה טובה ליד. — yesh mis'ada tova le-yad — \"There's a good restaurant nearby.\"",
+      "exampleNative": "Israeli mis'adot range from upscale Tel Aviv chef restaurants to neighborhood hummus joints.",
+      "korean": "מסעדה",
+      "english": "Restaurant. Feminine. From the root ס-ע-ד (to dine, support).",
+      "example": "יש מסעדה טובה ליד. — yesh mis'ada tova le-yad — \"There's a good restaurant nearby.\"",
+      "exampleEnglish": "Israeli mis'adot range from upscale Tel Aviv chef restaurants to neighborhood hummus joints."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "שוק",
+      "romanization": "shuk",
+      "nativeText": "Market. Masculine. Plural: שווקים (shvakim).",
+      "pronunciation": "shuk",
+      "exampleTarget": "הולכים לשוק? — holchim la-shuk? — \"Going to the market?\"",
+      "exampleNative": "Famous markets: שוק מחנה יהודה (Mahane Yehuda, Jerusalem), שוק הכרמל (HaCarmel, Tel Aviv).",
+      "korean": "שוק",
+      "english": "Market. Masculine. Plural: שווקים (shvakim).",
+      "example": "הולכים לשוק? — holchim la-shuk? — \"Going to the market?\"",
+      "exampleEnglish": "Famous markets: שוק מחנה יהודה (Mahane Yehuda, Jerusalem), שוק הכרמל (HaCarmel, Tel Aviv)."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "דואר",
+      "romanization": "do'ar",
+      "nativeText": "Post office. Masculine.",
+      "pronunciation": "do'ar",
+      "exampleTarget": "אני צריך לדואר. — ani tzarich la-do'ar — \"I need to go to the post office.\"",
+      "exampleNative": "Israel Post (דואר ישראל) handles mail, packages, and some banking services.",
+      "korean": "דואר",
+      "english": "Post office. Masculine.",
+      "example": "אני צריך לדואר. — ani tzarich la-do'ar — \"I need to go to the post office.\"",
+      "exampleEnglish": "Israel Post (דואר ישראל) handles mail, packages, and some banking services."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "בנק",
+      "romanization": "bank",
+      "nativeText": "Bank. Masculine. Borrowed.",
+      "pronunciation": "bank",
+      "exampleTarget": "הבנק סגור. — ha-bank sagur — \"The bank is closed.\"",
+      "exampleNative": "Israeli banks: בנק לאומי (Leumi), בנק הפועלים (Hapoalim), בנק דיסקונט (Discount). Hours typically 8:30–13:30 weekdays.",
+      "korean": "בנק",
+      "english": "Bank. Masculine. Borrowed.",
+      "example": "הבנק סגור. — ha-bank sagur — \"The bank is closed.\"",
+      "exampleEnglish": "Israeli banks: בנק לאומי (Leumi), בנק הפועלים (Hapoalim), בנק דיסקונט (Discount). Hours typically 8:30–13:30 weekdays."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "בית חולים",
+      "romanization": "beit cholim",
+      "nativeText": "Hospital. Construct: \"house of sick people\". Masculine.",
+      "pronunciation": "beit cholim",
+      "exampleTarget": "הדרדה ההדסה. — beit cholim Hadassah — \"Hadassah Hospital.\"",
+      "exampleNative": "Hadassah Medical Center is affiliated with Hebrew University; one of Israel's top hospitals.",
+      "korean": "בית חולים",
+      "english": "Hospital. Construct: \"house of sick people\". Masculine.",
+      "example": "הדרדה ההדסה. — beit cholim Hadassah — \"Hadassah Hospital.\"",
+      "exampleEnglish": "Hadassah Medical Center is affiliated with Hebrew University; one of Israel's top hospitals."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "חוף",
+      "romanization": "chof",
+      "nativeText": "Beach, shore. Masculine. Plural: חופים (chofim). Initial chet /kh/.",
+      "pronunciation": "chof",
+      "exampleTarget": "אני אוהבת את החוף בתל אביב. — ani ohevet et ha-chof be-tel aviv — \"I love the beach in Tel Aviv.\"",
+      "exampleNative": "Tel Aviv's Mediterranean coast is famous; the beaches stretch from Jaffa to Herzliya.",
+      "korean": "חוף",
+      "english": "Beach, shore. Masculine. Plural: חופים (chofim). Initial chet /kh/.",
+      "example": "אני אוהבת את החוף בתל אביב. — ani ohevet et ha-chof be-tel aviv — \"I love the beach in Tel Aviv.\"",
+      "exampleEnglish": "Tel Aviv's Mediterranean coast is famous; the beaches stretch from Jaffa to Herzliya."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "תחנת אוטובוס",
+      "romanization": "tachanat otobus",
+      "nativeText": "Bus stop. Construct: \"station of bus\". Feminine (tachana).",
+      "pronunciation": "tachanat otobus",
+      "exampleTarget": "תחנת האוטובוס בפינה. — tachanat ha-otobus ba-pina — \"The bus stop is at the corner.\"",
+      "exampleNative": "Egged is the main Israeli bus company; Dan operates in the Tel Aviv metro area.",
+      "korean": "תחנת אוטובוס",
+      "english": "Bus stop. Construct: \"station of bus\". Feminine (tachana).",
+      "example": "תחנת האוטובוס בפינה. — tachanat ha-otobus ba-pina — \"The bus stop is at the corner.\"",
+      "exampleEnglish": "Egged is the main Israeli bus company; Dan operates in the Tel Aviv metro area."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "פארק",
+      "romanization": "park",
+      "nativeText": "Park. Masculine. Borrowed.",
+      "pronunciation": "park",
+      "exampleTarget": "נלך לפארק. — nelech la-park — \"Let's go to the park.\"",
+      "exampleNative": "Famous parks: Gan Sacher (Jerusalem), HaYarkon (Tel Aviv), HaAyalon (Ramat Gan).",
+      "korean": "פארק",
+      "english": "Park. Masculine. Borrowed.",
+      "example": "נלך לפארק. — nelech la-park — \"Let's go to the park.\"",
+      "exampleEnglish": "Famous parks: Gan Sacher (Jerusalem), HaYarkon (Tel Aviv), HaAyalon (Ramat Gan)."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "רחוב",
+      "romanization": "rechov",
+      "nativeText": "Street. Masculine. Plural: רחובות (rechovot).",
+      "pronunciation": "rechov",
+      "exampleTarget": "אני גר ברחוב יפו. — ani gar bi-rechov Yafo — \"I live on Jaffa Street.\"",
+      "exampleNative": "Israeli streets are often named after biblical figures, prime ministers, and historical events.",
+      "korean": "רחוב",
+      "english": "Street. Masculine. Plural: רחובות (rechovot).",
+      "example": "אני גר ברחוב יפו. — ani gar bi-rechov Yafo — \"I live on Jaffa Street.\"",
+      "exampleEnglish": "Israeli streets are often named after biblical figures, prime ministers, and historical events."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "על",
+      "romanization": "al",
+      "nativeText": "Preposition \"on\". Used for surface placement. Combined with possessive endings: עליי (alai, on me), עליך (alecha, on you-m).",
+      "pronunciation": "al",
+      "exampleTarget": "הספר על השולחן. — ha-sefer al ha-shulchan — \"The book is on the table.\"",
+      "exampleNative": "Also used metaphorically: לדבר על (ledaber al, \"to talk about\"), חבל על (chaval al, \"shame about\").",
+      "korean": "על",
+      "english": "Preposition \"on\". Used for surface placement. Combined with possessive endings: עליי (alai, on me), עליך (alecha, on you-m).",
+      "example": "הספר על השולחן. — ha-sefer al ha-shulchan — \"The book is on the table.\"",
+      "exampleEnglish": "Also used metaphorically: לדבר על (ledaber al, \"to talk about\"), חבל על (chaval al, \"shame about\")."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "ב-",
+      "romanization": "be- / ba-",
+      "nativeText": "Preposition \"in/at\". Attaches directly to the noun. ב + indef = be-; ב + ha- (definite) = ba-.",
+      "pronunciation": "be- / ba-",
+      "exampleTarget": "בבית — ba-bayit — \"in/at the house\"\nבכיתה — ba-kita — \"in/at the classroom\"",
+      "exampleNative": "The most common Hebrew preposition; covers both stationary location and time (בבוקר, ba-boker, \"in the morning\").",
+      "korean": "ב-",
+      "english": "Preposition \"in/at\". Attaches directly to the noun. ב + indef = be-; ב + ha- (definite) = ba-.",
+      "example": "בבית — ba-bayit — \"in/at the house\"\nבכיתה — ba-kita — \"in/at the classroom\"",
+      "exampleEnglish": "The most common Hebrew preposition; covers both stationary location and time (בבוקר, ba-boker, \"in the morning\")."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "ל-",
+      "romanization": "le- / la-",
+      "nativeText": "Preposition \"to/for\". Attaches directly. le- (indef) → la- (with definite article).",
+      "pronunciation": "le- / la-",
+      "exampleTarget": "לבית — la-bayit — \"to/for the house\"\nאני הולך לאוניברסיטה — ani holech la-universita — \"I'm going to the university\"",
+      "exampleNative": "Also used as the infinitive prefix: ללכת (lalechet, to walk), לאכול (le'echol, to eat).",
+      "korean": "ל-",
+      "english": "Preposition \"to/for\". Attaches directly. le- (indef) → la- (with definite article).",
+      "example": "לבית — la-bayit — \"to/for the house\"\nאני הולך לאוניברסיטה — ani holech la-universita — \"I'm going to the university\"",
+      "exampleEnglish": "Also used as the infinitive prefix: ללכת (lalechet, to walk), לאכול (le'echol, to eat)."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "ליד",
+      "romanization": "lyad",
+      "nativeText": "Next to, beside. Compound from ל + יד (\"to + hand\"). Combined: לידי (lyadi, next to me).",
+      "pronunciation": "lyad",
+      "exampleTarget": "הוא יושב לידי. — hu yoshev lyadi — \"He sits next to me.\"",
+      "exampleNative": "The pictorial origin (lyad = \"to-hand\") is still felt in some idioms.",
+      "korean": "ליד",
+      "english": "Next to, beside. Compound from ל + יד (\"to + hand\"). Combined: לידי (lyadi, next to me).",
+      "example": "הוא יושב לידי. — hu yoshev lyadi — \"He sits next to me.\"",
+      "exampleEnglish": "The pictorial origin (lyad = \"to-hand\") is still felt in some idioms."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "מתחת ל-",
+      "romanization": "mitachat le-",
+      "nativeText": "Under. Two-part preposition: מתחת + ל-.",
+      "pronunciation": "mitachat le-",
+      "exampleTarget": "התיק מתחת לשולחן. — ha-tik mitachat la-shulchan — \"The bag is under the table.\"",
+      "exampleNative": "The opposite of mitachat is מעל (me'al, above).",
+      "korean": "מתחת ל-",
+      "english": "Under. Two-part preposition: מתחת + ל-.",
+      "example": "התיק מתחת לשולחן. — ha-tik mitachat la-shulchan — \"The bag is under the table.\"",
+      "exampleEnglish": "The opposite of mitachat is מעל (me'al, above)."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "מעל",
+      "romanization": "me'al",
+      "nativeText": "Above, over. Often paired with ל- when followed by an object: מעל ל-.",
+      "pronunciation": "me'al",
+      "exampleTarget": "המנורה מעל השולחן. — ha-menorah me'al ha-shulchan — \"The lamp is above the table.\"",
+      "exampleNative": "Also used metaphorically: מעל ומעבר (me'al u-me'ever, \"above and beyond\").",
+      "korean": "מעל",
+      "english": "Above, over. Often paired with ל- when followed by an object: מעל ל-.",
+      "example": "המנורה מעל השולחן. — ha-menorah me'al ha-shulchan — \"The lamp is above the table.\"",
+      "exampleEnglish": "Also used metaphorically: מעל ומעבר (me'al u-me'ever, \"above and beyond\")."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "מאחורי",
+      "romanization": "me-achorei",
+      "nativeText": "Behind. Compound from \"from + back of\".",
+      "pronunciation": "me-achorei",
+      "exampleTarget": "החתול מאחורי הכיסא. — ha-chatul me-achorei ha-kise — \"The cat is behind the chair.\"",
+      "exampleNative": "The pair me-achorei (behind) / lifnei (in front of) is the basic spatial axis.",
+      "korean": "מאחורי",
+      "english": "Behind. Compound from \"from + back of\".",
+      "example": "החתול מאחורי הכיסא. — ha-chatul me-achorei ha-kise — \"The cat is behind the chair.\"",
+      "exampleEnglish": "The pair me-achorei (behind) / lifnei (in front of) is the basic spatial axis."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "לפני",
+      "romanization": "lifnei",
+      "nativeText": "In front of, before (time). Same word for spatial \"in front of\" and temporal \"before\".",
+      "pronunciation": "lifnei",
+      "exampleTarget": "יש מכונית לפני הבית. — yesh mechonit lifnei ha-bayit — \"There's a car in front of the house.\"\nלפני השיעור. — lifnei ha-shiur — \"Before the lesson.\"",
+      "exampleNative": "The dual meaning (space + time) is parallel to English \"before\".",
+      "korean": "לפני",
+      "english": "In front of, before (time). Same word for spatial \"in front of\" and temporal \"before\".",
+      "example": "יש מכונית לפני הבית. — yesh mechonit lifnei ha-bayit — \"There's a car in front of the house.\"\nלפני השיעור. — lifnei ha-shiur — \"Before the lesson.\"",
+      "exampleEnglish": "The dual meaning (space + time) is parallel to English \"before\"."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "יש",
+      "romanization": "yesh",
+      "nativeText": "There is / there are — the universal existence marker. Same form regardless of number or gender of the noun. Often combined with locational phrases.",
+      "pronunciation": "yesh",
+      "exampleTarget": "יש קפה במטבח. — yesh kafe ba-mitbach — \"There's coffee in the kitchen.\"\nיש לי שאלה. — yesh li she'ela — \"I have a question\" (literally \"there is to me a question\")",
+      "exampleNative": "Possession in Hebrew uses yesh + ל- (to) + person: yesh li (I have), yesh lecha (you-m have), yesh lah (she has).",
+      "korean": "יש",
+      "english": "There is / there are — the universal existence marker. Same form regardless of number or gender of the noun. Often combined with locational phrases.",
+      "example": "יש קפה במטבח. — yesh kafe ba-mitbach — \"There's coffee in the kitchen.\"\nיש לי שאלה. — yesh li she'ela — \"I have a question\" (literally \"there is to me a question\")",
+      "exampleEnglish": "Possession in Hebrew uses yesh + ל- (to) + person: yesh li (I have), yesh lecha (you-m have), yesh lah (she has)."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "אין",
+      "romanization": "ein",
+      "nativeText": "There is not / there are not — the negation of yesh. Same usage pattern; combined with ל- for \"don't have\".",
+      "pronunciation": "ein",
+      "exampleTarget": "אין מים. — ein mayim — \"There is no water.\"\nאין לי כסף. — ein li kesef — \"I have no money.\"",
+      "exampleNative": "The pair yesh/ein is one of the most-used Hebrew constructions; you'll hear it dozens of times a day.",
+      "korean": "אין",
+      "english": "There is not / there are not — the negation of yesh. Same usage pattern; combined with ל- for \"don't have\".",
+      "example": "אין מים. — ein mayim — \"There is no water.\"\nאין לי כסף. — ein li kesef — \"I have no money.\"",
+      "exampleEnglish": "The pair yesh/ein is one of the most-used Hebrew constructions; you'll hear it dozens of times a day."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "יש ל- + person",
+      "romanization": "yesh le- + person",
+      "nativeText": "Possession construction: \"there is to X\" = \"X has\". Combines yesh + ל- + suffix. Singular: yesh li (I have), yesh lecha/lach (you-m/f have), yesh lo (he has), yesh la (she has). Plural: yesh lanu (we have), yesh lachem/lachen (you-pl m/f), yesh lahem/lahen (they-m/f).",
+      "pronunciation": "yesh le- + person",
+      "exampleTarget": "יש לי חבר בישראל. — yesh li chaver be-yisrael — \"I have a friend in Israel.\"",
+      "exampleNative": "Hebrew has no \"to have\" verb in present; yesh + ל- carries the meaning instead.",
+      "korean": "יש ל- + person",
+      "english": "Possession construction: \"there is to X\" = \"X has\". Combines yesh + ל- + suffix. Singular: yesh li (I have), yesh lecha/lach (you-m/f have), yesh lo (he has), yesh la (she has). Plural: yesh lanu (we have), yesh lachem/lachen (you-pl m/f), yesh lahem/lahen (they-m/f).",
+      "example": "יש לי חבר בישראל. — yesh li chaver be-yisrael — \"I have a friend in Israel.\"",
+      "exampleEnglish": "Hebrew has no \"to have\" verb in present; yesh + ל- carries the meaning instead."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "איפה",
+      "romanization": "eifo",
+      "nativeText": "Where (stationary). The basic location question word. Always used for asking where something is, not where it's going.",
+      "pronunciation": "eifo",
+      "exampleTarget": "איפה הספריה? — eifo ha-sifriya? — \"Where is the library?\"\nאיפה אתה? — eifo ata? — \"Where are you?\"",
+      "exampleNative": "For \"where to/from\", use לאן/מאיפה respectively.",
+      "korean": "איפה",
+      "english": "Where (stationary). The basic location question word. Always used for asking where something is, not where it's going.",
+      "example": "איפה הספריה? — eifo ha-sifriya? — \"Where is the library?\"\nאיפה אתה? — eifo ata? — \"Where are you?\"",
+      "exampleEnglish": "For \"where to/from\", use לאן/מאיפה respectively."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "לאן",
+      "romanization": "le'an",
+      "nativeText": "Where to (direction). Used when asking the destination of motion.",
+      "pronunciation": "le'an",
+      "exampleTarget": "לאן אתה הולך? — le'an ata holech? — \"Where are you going?\"",
+      "exampleNative": "Often paired with verbs of motion: ללכת (lalechet, to walk/go), לנסוע (linso'a, to travel).",
+      "korean": "לאן",
+      "english": "Where to (direction). Used when asking the destination of motion.",
+      "example": "לאן אתה הולך? — le'an ata holech? — \"Where are you going?\"",
+      "exampleEnglish": "Often paired with verbs of motion: ללכת (lalechet, to walk/go), לנסוע (linso'a, to travel)."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "מאיפה",
+      "romanization": "me'efo",
+      "nativeText": "Where from (origin). Used for asking the source of motion or where someone comes from.",
+      "pronunciation": "me'efo",
+      "exampleTarget": "מאיפה אתה? — me'efo ata? — \"Where are you from?\"",
+      "exampleNative": "The most common follow-up after a name introduction; Israelis almost always ask this within the first 30 seconds.",
+      "korean": "מאיפה",
+      "english": "Where from (origin). Used for asking the source of motion or where someone comes from.",
+      "example": "מאיפה אתה? — me'efo ata? — \"Where are you from?\"",
+      "exampleEnglish": "The most common follow-up after a name introduction; Israelis almost always ask this within the first 30 seconds."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "מהאוניברסיטה לעיר העתיקה",
+      "romanization": "me-ha-universita la-ir ha-atika",
+      "nativeText": "A walk from Hebrew University Mount Scopus down to Jerusalem's Old City. Read the paragraph and trace the route.",
+      "pronunciation": "me-ha-universita la-ir ha-atika",
+      "exampleTarget": "אני סטודנט באוניברסיטה העברית, בקמפוס הר הצופים. מהקמפוס אני יורד ברגל לעיר העתיקה. לפני העיר העתיקה יש שער שכם. אחרי השער, יש שווקים, רחובות צרים, וכנסיות. בסוף אני מגיע לכותל המערבי. ליד הכותל יש כיכר גדולה. שם אני יושב על ספסל ושותה מים.",
+      "exampleNative": "Translation: \"I am a student at Hebrew University, on the Mount Scopus campus. From the campus I walk down to the Old City. Before the Old City there is Damascus Gate. After the gate there are markets, narrow streets, and churches. At the end I arrive at the Western Wall. Next to the Wall there is a big plaza. There I sit on a bench and drink water.\"",
+      "korean": "מהאוניברסיטה לעיר העתיקה",
+      "english": "A walk from Hebrew University Mount Scopus down to Jerusalem's Old City. Read the paragraph and trace the route.",
+      "example": "אני סטודנט באוניברסיטה העברית, בקמפוס הר הצופים. מהקמפוס אני יורד ברגל לעיר העתיקה. לפני העיר העתיקה יש שער שכם. אחרי השער, יש שווקים, רחובות צרים, וכנסיות. בסוף אני מגיע לכותל המערבי. ליד הכותל יש כיכר גדולה. שם אני יושב על ספסל ושותה מים.",
+      "exampleEnglish": "Translation: \"I am a student at Hebrew University, on the Mount Scopus campus. From the campus I walk down to the Old City. Before the Old City there is Damascus Gate. After the gate there are markets, narrow streets, and churches. At the end I arrive at the Western Wall. Next to the Wall there is a big plaza. There I sit on a bench and drink water.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "שלוש ערים",
+      "romanization": "shalosh arim",
+      "nativeText": "Israel's three major cities: ירושלים (Jerusalem, capital, religious/political center), תל אביב (Tel Aviv, commercial/cultural capital), חיפה (Haifa, port/tech city, Israel's \"San Francisco\"). Each has distinct cultural personalities.",
+      "pronunciation": "shalosh arim",
+      "exampleTarget": "ירושלים זה הבירה. תל אביב זה המרכז העסקי. חיפה זה הצפון.",
+      "exampleNative": "Israelis say \"Yerushalayim mit'paleget, Tel Aviv mit'havelet, Cheifa ovedet\" — \"Jerusalem prays, Tel Aviv plays, Haifa works.\"",
+      "korean": "שלוש ערים",
+      "english": "Israel's three major cities: ירושלים (Jerusalem, capital, religious/political center), תל אביב (Tel Aviv, commercial/cultural capital), חיפה (Haifa, port/tech city, Israel's \"San Francisco\"). Each has distinct cultural personalities.",
+      "example": "ירושלים זה הבירה. תל אביב זה המרכז העסקי. חיפה זה הצפון.",
+      "exampleEnglish": "Israelis say \"Yerushalayim mit'paleget, Tel Aviv mit'havelet, Cheifa ovedet\" — \"Jerusalem prays, Tel Aviv plays, Haifa works.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "צפון מרכז דרום",
+      "romanization": "tzafon merkaz darom",
+      "nativeText": "Casual geographical division of Israel: tzafon (north — Haifa, Galilee), merkaz (center — Tel Aviv, Jerusalem, Sharon plain), darom (south — Be'er Sheva, Negev, Eilat). Israelis routinely orient by these labels.",
+      "pronunciation": "tzafon merkaz darom",
+      "exampleTarget": "אני גרה בדרום, בבאר שבע. — ani gara ba-darom, be-Be'er Sheva — \"I live in the south, in Be'er Sheva.\"",
+      "exampleNative": "Each region has distinct character: north is greener, center is densest, south is desert.",
+      "korean": "צפון מרכז דרום",
+      "english": "Casual geographical division of Israel: tzafon (north — Haifa, Galilee), merkaz (center — Tel Aviv, Jerusalem, Sharon plain), darom (south — Be'er Sheva, Negev, Eilat). Israelis routinely orient by these labels.",
+      "example": "אני גרה בדרום, בבאר שבע. — ani gara ba-darom, be-Be'er Sheva — \"I live in the south, in Be'er Sheva.\"",
+      "exampleEnglish": "Each region has distinct character: north is greener, center is densest, south is desert."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "romanization": "eifo anachnu?",
+      "nativeText": "Model use for \"איפה אנחנו?\": A simple location question: \"where are we?\" — uses the basic question word איפה for stationary location. The grammar will spread to all locational expressions: at home, in the library, next to the table.",
+      "pronunciation": "eifo anachnu?",
+      "exampleTarget": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "exampleNative": "איפה specifically asks about stationary location; for direction-to use לאן.",
+      "korean": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "english": "Model use for \"איפה אנחנו?\": A simple location question: \"where are we?\" — uses the basic question word איפה for stationary location. The grammar will spread to all locational expressions: at home, in the library, next to the table.",
+      "example": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "exampleEnglish": "איפה specifically asks about stationary location; for direction-to use לאן."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "איפה אנחנו?",
+      "romanization": "eifo anachnu?",
+      "nativeText": "Usage focus for \"איפה אנחנו?\": A simple location question: \"where are we?\" — uses the basic question word איפה for stationary location. The grammar will spread to all locational expressions: at home, in the library, next to the table.",
+      "pronunciation": "eifo anachnu?",
+      "exampleTarget": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "exampleNative": "Notice what the form is doing here: איפה specifically asks about stationary location; for direction-to use לאן.",
+      "korean": "איפה אנחנו?",
+      "english": "Usage focus for \"איפה אנחנו?\": A simple location question: \"where are we?\" — uses the basic question word איפה for stationary location. The grammar will spread to all locational expressions: at home, in the library, next to the table.",
+      "example": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "exampleEnglish": "Notice what the form is doing here: איפה specifically asks about stationary location; for direction-to use לאן."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "איפה אנחנו?",
+      "romanization": "eifo anachnu?",
+      "nativeText": "Contrast check for \"איפה אנחנו?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "eifo anachnu?",
+      "exampleTarget": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: איפה specifically asks about stationary location; for direction-to use לאן.",
+      "korean": "איפה אנחנו?",
+      "english": "Contrast check for \"איפה אנחנו?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: איפה specifically asks about stationary location; for direction-to use לאן."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "איפה אנחנו?",
+      "romanization": "eifo anachnu?",
+      "nativeText": "Recall \"איפה אנחנו?\" from memory, then explain what would change if a nearby alternative replaced it in \"איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"\".",
+      "pronunciation": "eifo anachnu?",
+      "exampleTarget": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "exampleNative": "Self-check against the model before moving on: איפה specifically asks about stationary location; for direction-to use לאן.",
+      "korean": "איפה אנחנו?",
+      "english": "Recall \"איפה אנחנו?\" from memory, then explain what would change if a nearby alternative replaced it in \"איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"\".",
+      "example": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "exampleEnglish": "Self-check against the model before moving on: איפה specifically asks about stationary location; for direction-to use לאן."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "איפה אנחנו?",
+      "romanization": "eifo anachnu?",
+      "nativeText": "Repair \"איפה אנחנו?\" inside \"איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: A simple location question: \"where are we?\" — uses the basic question word איפה for stationary location. The grammar will spread to all locational expressions: at home, in the library, next to the table.",
+      "pronunciation": "eifo anachnu?",
+      "exampleTarget": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "exampleNative": "Use the model as the repair target: איפה specifically asks about stationary location; for direction-to use לאן.",
+      "korean": "איפה אנחנו?",
+      "english": "Repair \"איפה אנחנו?\" inside \"איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: A simple location question: \"where are we?\" — uses the basic question word איפה for stationary location. The grammar will spread to all locational expressions: at home, in the library, next to the table.",
+      "example": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "exampleEnglish": "Use the model as the repair target: איפה specifically asks about stationary location; for direction-to use לאן."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "איפה אנחנו?",
+      "romanization": "eifo anachnu?",
+      "nativeText": "Transfer \"איפה אנחנו?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"\".",
+      "pronunciation": "eifo anachnu?",
+      "exampleTarget": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: איפה specifically asks about stationary location; for direction-to use לאן.",
+      "korean": "איפה אנחנו?",
+      "english": "Transfer \"איפה אנחנו?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"\".",
+      "example": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: איפה specifically asks about stationary location; for direction-to use לאן."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "איפה אנחנו?",
+      "romanization": "eifo anachnu?",
+      "nativeText": "Find one word or phrase that naturally travels with \"איפה אנחנו?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "eifo anachnu?",
+      "exampleTarget": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: איפה specifically asks about stationary location; for direction-to use לאן.",
+      "korean": "איפה אנחנו?",
+      "english": "Find one word or phrase that naturally travels with \"איפה אנחנו?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: איפה specifically asks about stationary location; for direction-to use לאן."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "איפה אנחנו?",
+      "romanization": "eifo anachnu?",
+      "nativeText": "Listen for \"איפה אנחנו?\" inside \"איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "eifo anachnu?",
+      "exampleTarget": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: איפה specifically asks about stationary location; for direction-to use לאן.",
+      "korean": "איפה אנחנו?",
+      "english": "Listen for \"איפה אנחנו?\" inside \"איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: איפה specifically asks about stationary location; for direction-to use לאן."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "איפה אנחנו?",
+      "romanization": "eifo anachnu?",
+      "nativeText": "Write \"איפה אנחנו?\" again without looking, then compare the exact written form against \"איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"\" before moving on.",
+      "pronunciation": "eifo anachnu?",
+      "exampleTarget": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "exampleNative": "Use the written model as the final correctness check: איפה specifically asks about stationary location; for direction-to use לאן.",
+      "korean": "איפה אנחנו?",
+      "english": "Write \"איפה אנחנו?\" again without looking, then compare the exact written form against \"איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"\" before moving on.",
+      "example": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "exampleEnglish": "Use the written model as the final correctness check: איפה specifically asks about stationary location; for direction-to use לאן."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "איפה אנחנו?",
+      "romanization": "eifo anachnu?",
+      "nativeText": "Check whether \"איפה אנחנו?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: איפה specifically asks about stationary location; for direction-to use לאן.",
+      "pronunciation": "eifo anachnu?",
+      "exampleTarget": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: איפה specifically asks about stationary location; for direction-to use לאן.",
+      "korean": "איפה אנחנו?",
+      "english": "Check whether \"איפה אנחנו?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: איפה specifically asks about stationary location; for direction-to use לאן.",
+      "example": "איפה אנחנו? — בכיתה. — eifo anachnu? — ba-kita — \"Where are we?\" \"In the classroom.\"",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: איפה specifically asks about stationary location; for direction-to use לאן."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "אני בבית. — ani ba-bayit — \"I am at home.\"",
+      "romanization": "ba-bayit",
+      "nativeText": "Model use for \"בבית\": In the house / at home. The classic example of ב + ה merging to בַּ (ba-). Bayit = \"house\"; ha-bayit = \"the house\"; ba-bayit = \"in/at the house\" (with the definite article absorbed).",
+      "pronunciation": "ba-bayit",
+      "exampleTarget": "אני בבית. — ani ba-bayit — \"I am at home.\"",
+      "exampleNative": "Israelis use ba-bayit as \"at home\" without needing a possessive — context implies \"my home\".",
+      "korean": "אני בבית. — ani ba-bayit — \"I am at home.\"",
+      "english": "Model use for \"בבית\": In the house / at home. The classic example of ב + ה merging to בַּ (ba-). Bayit = \"house\"; ha-bayit = \"the house\"; ba-bayit = \"in/at the house\" (with the definite article absorbed).",
+      "example": "אני בבית. — ani ba-bayit — \"I am at home.\"",
+      "exampleEnglish": "Israelis use ba-bayit as \"at home\" without needing a possessive — context implies \"my home\"."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "בבית",
+      "romanization": "ba-bayit",
+      "nativeText": "Usage focus for \"בבית\": In the house / at home. The classic example of ב + ה merging to בַּ (ba-). Bayit = \"house\"; ha-bayit = \"the house\"; ba-bayit = \"in/at the house\" (with the definite article absorbed).",
+      "pronunciation": "ba-bayit",
+      "exampleTarget": "אני בבית. — ani ba-bayit — \"I am at home.\"",
+      "exampleNative": "Notice what the form is doing here: Israelis use ba-bayit as \"at home\" without needing a possessive — context implies \"my home\".",
+      "korean": "בבית",
+      "english": "Usage focus for \"בבית\": In the house / at home. The classic example of ב + ה merging to בַּ (ba-). Bayit = \"house\"; ha-bayit = \"the house\"; ba-bayit = \"in/at the house\" (with the definite article absorbed).",
+      "example": "אני בבית. — ani ba-bayit — \"I am at home.\"",
+      "exampleEnglish": "Notice what the form is doing here: Israelis use ba-bayit as \"at home\" without needing a possessive — context implies \"my home\"."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "בבית",
+      "romanization": "ba-bayit",
+      "nativeText": "Contrast check for \"בבית\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ba-bayit",
+      "exampleTarget": "אני בבית. — ani ba-bayit — \"I am at home.\"",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: Israelis use ba-bayit as \"at home\" without needing a possessive — context implies \"my home\".",
+      "korean": "בבית",
+      "english": "Contrast check for \"בבית\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "אני בבית. — ani ba-bayit — \"I am at home.\"",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: Israelis use ba-bayit as \"at home\" without needing a possessive — context implies \"my home\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "בבית",
+      "romanization": "ba-bayit",
+      "nativeText": "Recall \"בבית\" from memory, then explain what would change if a nearby alternative replaced it in \"אני בבית. — ani ba-bayit — \"I am at home.\"\".",
+      "pronunciation": "ba-bayit",
+      "exampleTarget": "אני בבית. — ani ba-bayit — \"I am at home.\"",
+      "exampleNative": "Self-check against the model before moving on: Israelis use ba-bayit as \"at home\" without needing a possessive — context implies \"my home\".",
+      "korean": "בבית",
+      "english": "Recall \"בבית\" from memory, then explain what would change if a nearby alternative replaced it in \"אני בבית. — ani ba-bayit — \"I am at home.\"\".",
+      "example": "אני בבית. — ani ba-bayit — \"I am at home.\"",
+      "exampleEnglish": "Self-check against the model before moving on: Israelis use ba-bayit as \"at home\" without needing a possessive — context implies \"my home\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "בבית",
+      "romanization": "ba-bayit",
+      "nativeText": "Repair \"בבית\" inside \"אני בבית. — ani ba-bayit — \"I am at home.\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: In the house / at home. The classic example of ב + ה merging to בַּ (ba-). Bayit = \"house\"; ha-bayit = \"the house\"; ba-bayit = \"in/at the house\" (with the definite article absorbed).",
+      "pronunciation": "ba-bayit",
+      "exampleTarget": "אני בבית. — ani ba-bayit — \"I am at home.\"",
+      "exampleNative": "Use the model as the repair target: Israelis use ba-bayit as \"at home\" without needing a possessive — context implies \"my home\".",
+      "korean": "בבית",
+      "english": "Repair \"בבית\" inside \"אני בבית. — ani ba-bayit — \"I am at home.\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: In the house / at home. The classic example of ב + ה merging to בַּ (ba-). Bayit = \"house\"; ha-bayit = \"the house\"; ba-bayit = \"in/at the house\" (with the definite article absorbed).",
+      "example": "אני בבית. — ani ba-bayit — \"I am at home.\"",
+      "exampleEnglish": "Use the model as the repair target: Israelis use ba-bayit as \"at home\" without needing a possessive — context implies \"my home\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "בבית",
+      "romanization": "ba-bayit",
+      "nativeText": "Transfer \"בבית\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"אני בבית. — ani ba-bayit — \"I am at home.\"\".",
+      "pronunciation": "ba-bayit",
+      "exampleTarget": "אני בבית. — ani ba-bayit — \"I am at home.\"",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: Israelis use ba-bayit as \"at home\" without needing a possessive — context implies \"my home\".",
+      "korean": "בבית",
+      "english": "Transfer \"בבית\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"אני בבית. — ani ba-bayit — \"I am at home.\"\".",
+      "example": "אני בבית. — ani ba-bayit — \"I am at home.\"",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: Israelis use ba-bayit as \"at home\" without needing a possessive — context implies \"my home\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "בבית",
+      "romanization": "ba-bayit",
+      "nativeText": "Find one word or phrase that naturally travels with \"בבית\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ba-bayit",
+      "exampleTarget": "אני בבית. — ani ba-bayit — \"I am at home.\"",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: Israelis use ba-bayit as \"at home\" without needing a possessive — context implies \"my home\".",
+      "korean": "בבית",
+      "english": "Find one word or phrase that naturally travels with \"בבית\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "אני בבית. — ani ba-bayit — \"I am at home.\"",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: Israelis use ba-bayit as \"at home\" without needing a possessive — context implies \"my home\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "בבית",
+      "romanization": "ba-bayit",
+      "nativeText": "Listen for \"בבית\" inside \"אני בבית. — ani ba-bayit — \"I am at home.\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ba-bayit",
+      "exampleTarget": "אני בבית. — ani ba-bayit — \"I am at home.\"",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Israelis use ba-bayit as \"at home\" without needing a possessive — context implies \"my home\".",
+      "korean": "בבית",
+      "english": "Listen for \"בבית\" inside \"אני בבית. — ani ba-bayit — \"I am at home.\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "אני בבית. — ani ba-bayit — \"I am at home.\"",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Israelis use ba-bayit as \"at home\" without needing a possessive — context implies \"my home\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "בבית",
+      "romanization": "ba-bayit",
+      "nativeText": "Write \"בבית\" again without looking, then compare the exact written form against \"אני בבית. — ani ba-bayit — \"I am at home.\"\" before moving on.",
+      "pronunciation": "ba-bayit",
+      "exampleTarget": "אני בבית. — ani ba-bayit — \"I am at home.\"",
+      "exampleNative": "Use the written model as the final correctness check: Israelis use ba-bayit as \"at home\" without needing a possessive — context implies \"my home\".",
+      "korean": "בבית",
+      "english": "Write \"בבית\" again without looking, then compare the exact written form against \"אני בבית. — ani ba-bayit — \"I am at home.\"\" before moving on.",
+      "example": "אני בבית. — ani ba-bayit — \"I am at home.\"",
+      "exampleEnglish": "Use the written model as the final correctness check: Israelis use ba-bayit as \"at home\" without needing a possessive — context implies \"my home\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "בבית",
+      "romanization": "ba-bayit",
+      "nativeText": "Check whether \"בבית\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Israelis use ba-bayit as \"at home\" without needing a possessive — context implies \"my home\".",
+      "pronunciation": "ba-bayit",
+      "exampleTarget": "אני בבית. — ani ba-bayit — \"I am at home.\"",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: Israelis use ba-bayit as \"at home\" without needing a possessive — context implies \"my home\".",
+      "korean": "בבית",
+      "english": "Check whether \"בבית\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Israelis use ba-bayit as \"at home\" without needing a possessive — context implies \"my home\".",
+      "example": "אני בבית. — ani ba-bayit — \"I am at home.\"",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: Israelis use ba-bayit as \"at home\" without needing a possessive — context implies \"my home\"."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "אני בכיתה ומחכה. — ani ba-kita u-mechake — \"I am in the classroom and waiting.\"",
+      "romanization": "ba-kita",
+      "nativeText": "Model use for \"בכיתה\": In the classroom. Same pattern: be + ha + kita → ba-kita. The classroom is feminine, but the contraction is the same as for masculine nouns.",
+      "pronunciation": "ba-kita",
+      "exampleTarget": "אני בכיתה ומחכה. — ani ba-kita u-mechake — \"I am in the classroom and waiting.\"",
+      "exampleNative": "The merger be + ha → ba is one of the first contractions Hebrew learners master; identical pattern with le + ha → la.",
+      "korean": "אני בכיתה ומחכה. — ani ba-kita u-mechake — \"I am in the classroom and waiting.\"",
+      "english": "Model use for \"בכיתה\": In the classroom. Same pattern: be + ha + kita → ba-kita. The classroom is feminine, but the contraction is the same as for masculine nouns.",
+      "example": "אני בכיתה ומחכה. — ani ba-kita u-mechake — \"I am in the classroom and waiting.\"",
+      "exampleEnglish": "The merger be + ha → ba is one of the first contractions Hebrew learners master; identical pattern with le + ha → la."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "בכיתה",
+      "romanization": "ba-kita",
+      "nativeText": "Usage focus for \"בכיתה\": In the classroom. Same pattern: be + ha + kita → ba-kita. The classroom is feminine, but the contraction is the same as for masculine nouns.",
+      "pronunciation": "ba-kita",
+      "exampleTarget": "אני בכיתה ומחכה. — ani ba-kita u-mechake — \"I am in the classroom and waiting.\"",
+      "exampleNative": "Notice what the form is doing here: The merger be + ha → ba is one of the first contractions Hebrew learners master; identical pattern with le + ha → la.",
+      "korean": "בכיתה",
+      "english": "Usage focus for \"בכיתה\": In the classroom. Same pattern: be + ha + kita → ba-kita. The classroom is feminine, but the contraction is the same as for masculine nouns.",
+      "example": "אני בכיתה ומחכה. — ani ba-kita u-mechake — \"I am in the classroom and waiting.\"",
+      "exampleEnglish": "Notice what the form is doing here: The merger be + ha → ba is one of the first contractions Hebrew learners master; identical pattern with le + ha → la."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "בכיתה",
+      "romanization": "ba-kita",
+      "nativeText": "Contrast check for \"בכיתה\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ba-kita",
+      "exampleTarget": "אני בכיתה ומחכה. — ani ba-kita u-mechake — \"I am in the classroom and waiting.\"",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: The merger be + ha → ba is one of the first contractions Hebrew learners master; identical pattern with le + ha → la.",
+      "korean": "בכיתה",
+      "english": "Contrast check for \"בכיתה\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "אני בכיתה ומחכה. — ani ba-kita u-mechake — \"I am in the classroom and waiting.\"",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: The merger be + ha → ba is one of the first contractions Hebrew learners master; identical pattern with le + ha → la."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "בכיתה",
+      "romanization": "ba-kita",
+      "nativeText": "Recall \"בכיתה\" from memory, then explain what would change if a nearby alternative replaced it in \"אני בכיתה ומחכה. — ani ba-kita u-mechake — \"I am in the classroom and waiting.\"\".",
+      "pronunciation": "ba-kita",
+      "exampleTarget": "אני בכיתה ומחכה. — ani ba-kita u-mechake — \"I am in the classroom and waiting.\"",
+      "exampleNative": "Self-check against the model before moving on: The merger be + ha → ba is one of the first contractions Hebrew learners master; identical pattern with le + ha → la.",
+      "korean": "בכיתה",
+      "english": "Recall \"בכיתה\" from memory, then explain what would change if a nearby alternative replaced it in \"אני בכיתה ומחכה. — ani ba-kita u-mechake — \"I am in the classroom and waiting.\"\".",
+      "example": "אני בכיתה ומחכה. — ani ba-kita u-mechake — \"I am in the classroom and waiting.\"",
+      "exampleEnglish": "Self-check against the model before moving on: The merger be + ha → ba is one of the first contractions Hebrew learners master; identical pattern with le + ha → la."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "בכיתה",
+      "romanization": "ba-kita",
+      "nativeText": "Repair \"בכיתה\" inside \"אני בכיתה ומחכה. — ani ba-kita u-mechake — \"I am in the classroom and waiting.\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: In the classroom. Same pattern: be + ha + kita → ba-kita. The classroom is feminine, but the contraction is the same as for masculine nouns.",
+      "pronunciation": "ba-kita",
+      "exampleTarget": "אני בכיתה ומחכה. — ani ba-kita u-mechake — \"I am in the classroom and waiting.\"",
+      "exampleNative": "Use the model as the repair target: The merger be + ha → ba is one of the first contractions Hebrew learners master; identical pattern with le + ha → la.",
+      "korean": "בכיתה",
+      "english": "Repair \"בכיתה\" inside \"אני בכיתה ומחכה. — ani ba-kita u-mechake — \"I am in the classroom and waiting.\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: In the classroom. Same pattern: be + ha + kita → ba-kita. The classroom is feminine, but the contraction is the same as for masculine nouns.",
+      "example": "אני בכיתה ומחכה. — ani ba-kita u-mechake — \"I am in the classroom and waiting.\"",
+      "exampleEnglish": "Use the model as the repair target: The merger be + ha → ba is one of the first contractions Hebrew learners master; identical pattern with le + ha → la."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "בכיתה",
+      "romanization": "ba-kita",
+      "nativeText": "Transfer \"בכיתה\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"אני בכיתה ומחכה. — ani ba-kita u-mechake — \"I am in the classroom and waiting.\"\".",
+      "pronunciation": "ba-kita",
+      "exampleTarget": "אני בכיתה ומחכה. — ani ba-kita u-mechake — \"I am in the classroom and waiting.\"",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: The merger be + ha → ba is one of the first contractions Hebrew learners master; identical pattern with le + ha → la.",
+      "korean": "בכיתה",
+      "english": "Transfer \"בכיתה\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"אני בכיתה ומחכה. — ani ba-kita u-mechake — \"I am in the classroom and waiting.\"\".",
+      "example": "אני בכיתה ומחכה. — ani ba-kita u-mechake — \"I am in the classroom and waiting.\"",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: The merger be + ha → ba is one of the first contractions Hebrew learners master; identical pattern with le + ha → la."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "בכיתה",
+      "romanization": "ba-kita",
+      "nativeText": "Find one word or phrase that naturally travels with \"בכיתה\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ba-kita",
+      "exampleTarget": "אני בכיתה ומחכה. — ani ba-kita u-mechake — \"I am in the classroom and waiting.\"",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: The merger be + ha → ba is one of the first contractions Hebrew learners master; identical pattern with le + ha → la.",
+      "korean": "בכיתה",
+      "english": "Find one word or phrase that naturally travels with \"בכיתה\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "אני בכיתה ומחכה. — ani ba-kita u-mechake — \"I am in the classroom and waiting.\"",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: The merger be + ha → ba is one of the first contractions Hebrew learners master; identical pattern with le + ha → la."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "בכיתה",
+      "romanization": "ba-kita",
+      "nativeText": "Listen for \"בכיתה\" inside \"אני בכיתה ומחכה. — ani ba-kita u-mechake — \"I am in the classroom and waiting.\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ba-kita",
+      "exampleTarget": "אני בכיתה ומחכה. — ani ba-kita u-mechake — \"I am in the classroom and waiting.\"",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: The merger be + ha → ba is one of the first contractions Hebrew learners master; identical pattern with le + ha → la.",
+      "korean": "בכיתה",
+      "english": "Listen for \"בכיתה\" inside \"אני בכיתה ומחכה. — ani ba-kita u-mechake — \"I am in the classroom and waiting.\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "אני בכיתה ומחכה. — ani ba-kita u-mechake — \"I am in the classroom and waiting.\"",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: The merger be + ha → ba is one of the first contractions Hebrew learners master; identical pattern with le + ha → la."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "בכיתה",
+      "romanization": "ba-kita",
+      "nativeText": "Write \"בכיתה\" again without looking, then compare the exact written form against \"אני בכיתה ומחכה. — ani ba-kita u-mechake — \"I am in the classroom and waiting.\"\" before moving on.",
+      "pronunciation": "ba-kita",
+      "exampleTarget": "אני בכיתה ומחכה. — ani ba-kita u-mechake — \"I am in the classroom and waiting.\"",
+      "exampleNative": "Use the written model as the final correctness check: The merger be + ha → ba is one of the first contractions Hebrew learners master; identical pattern with le + ha → la.",
+      "korean": "בכיתה",
+      "english": "Write \"בכיתה\" again without looking, then compare the exact written form against \"אני בכיתה ומחכה. — ani ba-kita u-mechake — \"I am in the classroom and waiting.\"\" before moving on.",
+      "example": "אני בכיתה ומחכה. — ani ba-kita u-mechake — \"I am in the classroom and waiting.\"",
+      "exampleEnglish": "Use the written model as the final correctness check: The merger be + ha → ba is one of the first contractions Hebrew learners master; identical pattern with le + ha → la."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "בכיתה",
+      "romanization": "ba-kita",
+      "nativeText": "Check whether \"בכיתה\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The merger be + ha → ba is one of the first contractions Hebrew learners master; identical pattern with le + ha → la.",
+      "pronunciation": "ba-kita",
+      "exampleTarget": "אני בכיתה ומחכה. — ani ba-kita u-mechake — \"I am in the classroom and waiting.\"",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: The merger be + ha → ba is one of the first contractions Hebrew learners master; identical pattern with le + ha → la.",
+      "korean": "בכיתה",
+      "english": "Check whether \"בכיתה\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The merger be + ha → ba is one of the first contractions Hebrew learners master; identical pattern with le + ha → la.",
+      "example": "אני בכיתה ומחכה. — ani ba-kita u-mechake — \"I am in the classroom and waiting.\"",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: The merger be + ha → ba is one of the first contractions Hebrew learners master; identical pattern with le + ha → la."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "החדר שלי קטן. — ha-cheder sheli katan — \"My room is small.\"",
+      "romanization": "cheder (CHE-der)",
+      "nativeText": "Model use for \"חדר\": Room. Masculine segolate noun (mil'el stress). Plural: חדרים (chadarim, with vowel shift). The initial chet /kh/ is throat-back.",
+      "pronunciation": "cheder (CHE-der)",
+      "exampleTarget": "החדר שלי קטן. — ha-cheder sheli katan — \"My room is small.\"",
+      "exampleNative": "Same root ח-ד-ר gives the verb לחדור (lachdor, to penetrate).",
+      "korean": "החדר שלי קטן. — ha-cheder sheli katan — \"My room is small.\"",
+      "english": "Model use for \"חדר\": Room. Masculine segolate noun (mil'el stress). Plural: חדרים (chadarim, with vowel shift). The initial chet /kh/ is throat-back.",
+      "example": "החדר שלי קטן. — ha-cheder sheli katan — \"My room is small.\"",
+      "exampleEnglish": "Same root ח-ד-ר gives the verb לחדור (lachdor, to penetrate)."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "חדר",
+      "romanization": "cheder (CHE-der)",
+      "nativeText": "Usage focus for \"חדר\": Room. Masculine segolate noun (mil'el stress). Plural: חדרים (chadarim, with vowel shift). The initial chet /kh/ is throat-back.",
+      "pronunciation": "cheder (CHE-der)",
+      "exampleTarget": "החדר שלי קטן. — ha-cheder sheli katan — \"My room is small.\"",
+      "exampleNative": "Notice what the form is doing here: Same root ח-ד-ר gives the verb לחדור (lachdor, to penetrate).",
+      "korean": "חדר",
+      "english": "Usage focus for \"חדר\": Room. Masculine segolate noun (mil'el stress). Plural: חדרים (chadarim, with vowel shift). The initial chet /kh/ is throat-back.",
+      "example": "החדר שלי קטן. — ha-cheder sheli katan — \"My room is small.\"",
+      "exampleEnglish": "Notice what the form is doing here: Same root ח-ד-ר gives the verb לחדור (lachdor, to penetrate)."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "חדר",
+      "romanization": "cheder (CHE-der)",
+      "nativeText": "Contrast check for \"חדר\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "cheder (CHE-der)",
+      "exampleTarget": "החדר שלי קטן. — ha-cheder sheli katan — \"My room is small.\"",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: Same root ח-ד-ר gives the verb לחדור (lachdor, to penetrate).",
+      "korean": "חדר",
+      "english": "Contrast check for \"חדר\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "החדר שלי קטן. — ha-cheder sheli katan — \"My room is small.\"",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: Same root ח-ד-ר gives the verb לחדור (lachdor, to penetrate)."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "חדר",
+      "romanization": "cheder (CHE-der)",
+      "nativeText": "Recall \"חדר\" from memory, then explain what would change if a nearby alternative replaced it in \"החדר שלי קטן. — ha-cheder sheli katan — \"My room is small.\"\".",
+      "pronunciation": "cheder (CHE-der)",
+      "exampleTarget": "החדר שלי קטן. — ha-cheder sheli katan — \"My room is small.\"",
+      "exampleNative": "Self-check against the model before moving on: Same root ח-ד-ר gives the verb לחדור (lachdor, to penetrate).",
+      "korean": "חדר",
+      "english": "Recall \"חדר\" from memory, then explain what would change if a nearby alternative replaced it in \"החדר שלי קטן. — ha-cheder sheli katan — \"My room is small.\"\".",
+      "example": "החדר שלי קטן. — ha-cheder sheli katan — \"My room is small.\"",
+      "exampleEnglish": "Self-check against the model before moving on: Same root ח-ד-ר gives the verb לחדור (lachdor, to penetrate)."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "חדר",
+      "romanization": "cheder (CHE-der)",
+      "nativeText": "Repair \"חדר\" inside \"החדר שלי קטן. — ha-cheder sheli katan — \"My room is small.\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Room. Masculine segolate noun (mil'el stress). Plural: חדרים (chadarim, with vowel shift). The initial chet /kh/ is throat-back.",
+      "pronunciation": "cheder (CHE-der)",
+      "exampleTarget": "החדר שלי קטן. — ha-cheder sheli katan — \"My room is small.\"",
+      "exampleNative": "Use the model as the repair target: Same root ח-ד-ר gives the verb לחדור (lachdor, to penetrate).",
+      "korean": "חדר",
+      "english": "Repair \"חדר\" inside \"החדר שלי קטן. — ha-cheder sheli katan — \"My room is small.\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Room. Masculine segolate noun (mil'el stress). Plural: חדרים (chadarim, with vowel shift). The initial chet /kh/ is throat-back.",
+      "example": "החדר שלי קטן. — ha-cheder sheli katan — \"My room is small.\"",
+      "exampleEnglish": "Use the model as the repair target: Same root ח-ד-ר gives the verb לחדור (lachdor, to penetrate)."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "חדר",
+      "romanization": "cheder (CHE-der)",
+      "nativeText": "Transfer \"חדר\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"החדר שלי קטן. — ha-cheder sheli katan — \"My room is small.\"\".",
+      "pronunciation": "cheder (CHE-der)",
+      "exampleTarget": "החדר שלי קטן. — ha-cheder sheli katan — \"My room is small.\"",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: Same root ח-ד-ר gives the verb לחדור (lachdor, to penetrate).",
+      "korean": "חדר",
+      "english": "Transfer \"חדר\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"החדר שלי קטן. — ha-cheder sheli katan — \"My room is small.\"\".",
+      "example": "החדר שלי קטן. — ha-cheder sheli katan — \"My room is small.\"",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: Same root ח-ד-ר gives the verb לחדור (lachdor, to penetrate)."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "חדר",
+      "romanization": "cheder (CHE-der)",
+      "nativeText": "Find one word or phrase that naturally travels with \"חדר\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "cheder (CHE-der)",
+      "exampleTarget": "החדר שלי קטן. — ha-cheder sheli katan — \"My room is small.\"",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: Same root ח-ד-ר gives the verb לחדור (lachdor, to penetrate).",
+      "korean": "חדר",
+      "english": "Find one word or phrase that naturally travels with \"חדר\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "החדר שלי קטן. — ha-cheder sheli katan — \"My room is small.\"",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: Same root ח-ד-ר gives the verb לחדור (lachdor, to penetrate)."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "חדר",
+      "romanization": "cheder (CHE-der)",
+      "nativeText": "Listen for \"חדר\" inside \"החדר שלי קטן. — ha-cheder sheli katan — \"My room is small.\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "cheder (CHE-der)",
+      "exampleTarget": "החדר שלי קטן. — ha-cheder sheli katan — \"My room is small.\"",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Same root ח-ד-ר gives the verb לחדור (lachdor, to penetrate).",
+      "korean": "חדר",
+      "english": "Listen for \"חדר\" inside \"החדר שלי קטן. — ha-cheder sheli katan — \"My room is small.\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "החדר שלי קטן. — ha-cheder sheli katan — \"My room is small.\"",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Same root ח-ד-ר gives the verb לחדור (lachdor, to penetrate)."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "חדר",
+      "romanization": "cheder (CHE-der)",
+      "nativeText": "Write \"חדר\" again without looking, then compare the exact written form against \"החדר שלי קטן. — ha-cheder sheli katan — \"My room is small.\"\" before moving on.",
+      "pronunciation": "cheder (CHE-der)",
+      "exampleTarget": "החדר שלי קטן. — ha-cheder sheli katan — \"My room is small.\"",
+      "exampleNative": "Use the written model as the final correctness check: Same root ח-ד-ר gives the verb לחדור (lachdor, to penetrate).",
+      "korean": "חדר",
+      "english": "Write \"חדר\" again without looking, then compare the exact written form against \"החדר שלי קטן. — ha-cheder sheli katan — \"My room is small.\"\" before moving on.",
+      "example": "החדר שלי קטן. — ha-cheder sheli katan — \"My room is small.\"",
+      "exampleEnglish": "Use the written model as the final correctness check: Same root ח-ד-ר gives the verb לחדור (lachdor, to penetrate)."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "חדר",
+      "romanization": "cheder (CHE-der)",
+      "nativeText": "Check whether \"חדר\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Same root ח-ד-ר gives the verb לחדור (lachdor, to penetrate).",
+      "pronunciation": "cheder (CHE-der)",
+      "exampleTarget": "החדר שלי קטן. — ha-cheder sheli katan — \"My room is small.\"",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: Same root ח-ד-ר gives the verb לחדור (lachdor, to penetrate).",
+      "korean": "חדר",
+      "english": "Check whether \"חדר\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Same root ח-ד-ר gives the verb לחדור (lachdor, to penetrate).",
+      "example": "החדר שלי קטן. — ha-cheder sheli katan — \"My room is small.\"",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: Same root ח-ד-ר gives the verb לחדור (lachdor, to penetrate)."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "הבית שלנו בתל אביב. — ha-bayit shelanu be-tel aviv — \"Our house is in Tel Aviv.\"",
+      "romanization": "bayit",
+      "nativeText": "Model use for \"בית\": House, home. Masculine. Plural: בתים (batim, irregular).",
+      "pronunciation": "bayit",
+      "exampleTarget": "הבית שלנו בתל אביב. — ha-bayit shelanu be-tel aviv — \"Our house is in Tel Aviv.\"",
+      "exampleNative": "The construct form בית (beit) appears in many compounds: בית ספר (beit sefer, school), בית קפה (beit kafe, cafe).",
+      "korean": "הבית שלנו בתל אביב. — ha-bayit shelanu be-tel aviv — \"Our house is in Tel Aviv.\"",
+      "english": "Model use for \"בית\": House, home. Masculine. Plural: בתים (batim, irregular).",
+      "example": "הבית שלנו בתל אביב. — ha-bayit shelanu be-tel aviv — \"Our house is in Tel Aviv.\"",
+      "exampleEnglish": "The construct form בית (beit) appears in many compounds: בית ספר (beit sefer, school), בית קפה (beit kafe, cafe)."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "בית",
+      "romanization": "bayit",
+      "nativeText": "Usage focus for \"בית\": House, home. Masculine. Plural: בתים (batim, irregular).",
+      "pronunciation": "bayit",
+      "exampleTarget": "הבית שלנו בתל אביב. — ha-bayit shelanu be-tel aviv — \"Our house is in Tel Aviv.\"",
+      "exampleNative": "Notice what the form is doing here: The construct form בית (beit) appears in many compounds: בית ספר (beit sefer, school), בית קפה (beit kafe, cafe).",
+      "korean": "בית",
+      "english": "Usage focus for \"בית\": House, home. Masculine. Plural: בתים (batim, irregular).",
+      "example": "הבית שלנו בתל אביב. — ha-bayit shelanu be-tel aviv — \"Our house is in Tel Aviv.\"",
+      "exampleEnglish": "Notice what the form is doing here: The construct form בית (beit) appears in many compounds: בית ספר (beit sefer, school), בית קפה (beit kafe, cafe)."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "בית",
+      "romanization": "bayit",
+      "nativeText": "Contrast check for \"בית\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "bayit",
+      "exampleTarget": "הבית שלנו בתל אביב. — ha-bayit shelanu be-tel aviv — \"Our house is in Tel Aviv.\"",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: The construct form בית (beit) appears in many compounds: בית ספר (beit sefer, school), בית קפה (beit kafe, cafe).",
+      "korean": "בית",
+      "english": "Contrast check for \"בית\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "הבית שלנו בתל אביב. — ha-bayit shelanu be-tel aviv — \"Our house is in Tel Aviv.\"",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: The construct form בית (beit) appears in many compounds: בית ספר (beit sefer, school), בית קפה (beit kafe, cafe)."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "בית",
+      "romanization": "bayit",
+      "nativeText": "Recall \"בית\" from memory, then explain what would change if a nearby alternative replaced it in \"הבית שלנו בתל אביב. — ha-bayit shelanu be-tel aviv — \"Our house is in Tel Aviv.\"\".",
+      "pronunciation": "bayit",
+      "exampleTarget": "הבית שלנו בתל אביב. — ha-bayit shelanu be-tel aviv — \"Our house is in Tel Aviv.\"",
+      "exampleNative": "Self-check against the model before moving on: The construct form בית (beit) appears in many compounds: בית ספר (beit sefer, school), בית קפה (beit kafe, cafe).",
+      "korean": "בית",
+      "english": "Recall \"בית\" from memory, then explain what would change if a nearby alternative replaced it in \"הבית שלנו בתל אביב. — ha-bayit shelanu be-tel aviv — \"Our house is in Tel Aviv.\"\".",
+      "example": "הבית שלנו בתל אביב. — ha-bayit shelanu be-tel aviv — \"Our house is in Tel Aviv.\"",
+      "exampleEnglish": "Self-check against the model before moving on: The construct form בית (beit) appears in many compounds: בית ספר (beit sefer, school), בית קפה (beit kafe, cafe)."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "בית",
+      "romanization": "bayit",
+      "nativeText": "Repair \"בית\" inside \"הבית שלנו בתל אביב. — ha-bayit shelanu be-tel aviv — \"Our house is in Tel Aviv.\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: House, home. Masculine. Plural: בתים (batim, irregular).",
+      "pronunciation": "bayit",
+      "exampleTarget": "הבית שלנו בתל אביב. — ha-bayit shelanu be-tel aviv — \"Our house is in Tel Aviv.\"",
+      "exampleNative": "Use the model as the repair target: The construct form בית (beit) appears in many compounds: בית ספר (beit sefer, school), בית קפה (beit kafe, cafe).",
+      "korean": "בית",
+      "english": "Repair \"בית\" inside \"הבית שלנו בתל אביב. — ha-bayit shelanu be-tel aviv — \"Our house is in Tel Aviv.\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: House, home. Masculine. Plural: בתים (batim, irregular).",
+      "example": "הבית שלנו בתל אביב. — ha-bayit shelanu be-tel aviv — \"Our house is in Tel Aviv.\"",
+      "exampleEnglish": "Use the model as the repair target: The construct form בית (beit) appears in many compounds: בית ספר (beit sefer, school), בית קפה (beit kafe, cafe)."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "בית",
+      "romanization": "bayit",
+      "nativeText": "Transfer \"בית\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"הבית שלנו בתל אביב. — ha-bayit shelanu be-tel aviv — \"Our house is in Tel Aviv.\"\".",
+      "pronunciation": "bayit",
+      "exampleTarget": "הבית שלנו בתל אביב. — ha-bayit shelanu be-tel aviv — \"Our house is in Tel Aviv.\"",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: The construct form בית (beit) appears in many compounds: בית ספר (beit sefer, school), בית קפה (beit kafe, cafe).",
+      "korean": "בית",
+      "english": "Transfer \"בית\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"הבית שלנו בתל אביב. — ha-bayit shelanu be-tel aviv — \"Our house is in Tel Aviv.\"\".",
+      "example": "הבית שלנו בתל אביב. — ha-bayit shelanu be-tel aviv — \"Our house is in Tel Aviv.\"",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: The construct form בית (beit) appears in many compounds: בית ספר (beit sefer, school), בית קפה (beit kafe, cafe)."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "בית",
+      "romanization": "bayit",
+      "nativeText": "Find one word or phrase that naturally travels with \"בית\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "bayit",
+      "exampleTarget": "הבית שלנו בתל אביב. — ha-bayit shelanu be-tel aviv — \"Our house is in Tel Aviv.\"",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: The construct form בית (beit) appears in many compounds: בית ספר (beit sefer, school), בית קפה (beit kafe, cafe).",
+      "korean": "בית",
+      "english": "Find one word or phrase that naturally travels with \"בית\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "הבית שלנו בתל אביב. — ha-bayit shelanu be-tel aviv — \"Our house is in Tel Aviv.\"",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: The construct form בית (beit) appears in many compounds: בית ספר (beit sefer, school), בית קפה (beit kafe, cafe)."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "בית",
+      "romanization": "bayit",
+      "nativeText": "Listen for \"בית\" inside \"הבית שלנו בתל אביב. — ha-bayit shelanu be-tel aviv — \"Our house is in Tel Aviv.\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "bayit",
+      "exampleTarget": "הבית שלנו בתל אביב. — ha-bayit shelanu be-tel aviv — \"Our house is in Tel Aviv.\"",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: The construct form בית (beit) appears in many compounds: בית ספר (beit sefer, school), בית קפה (beit kafe, cafe).",
+      "korean": "בית",
+      "english": "Listen for \"בית\" inside \"הבית שלנו בתל אביב. — ha-bayit shelanu be-tel aviv — \"Our house is in Tel Aviv.\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "הבית שלנו בתל אביב. — ha-bayit shelanu be-tel aviv — \"Our house is in Tel Aviv.\"",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: The construct form בית (beit) appears in many compounds: בית ספר (beit sefer, school), בית קפה (beit kafe, cafe)."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "בית",
+      "romanization": "bayit",
+      "nativeText": "Write \"בית\" again without looking, then compare the exact written form against \"הבית שלנו בתל אביב. — ha-bayit shelanu be-tel aviv — \"Our house is in Tel Aviv.\"\" before moving on.",
+      "pronunciation": "bayit",
+      "exampleTarget": "הבית שלנו בתל אביב. — ha-bayit shelanu be-tel aviv — \"Our house is in Tel Aviv.\"",
+      "exampleNative": "Use the written model as the final correctness check: The construct form בית (beit) appears in many compounds: בית ספר (beit sefer, school), בית קפה (beit kafe, cafe).",
+      "korean": "בית",
+      "english": "Write \"בית\" again without looking, then compare the exact written form against \"הבית שלנו בתל אביב. — ha-bayit shelanu be-tel aviv — \"Our house is in Tel Aviv.\"\" before moving on.",
+      "example": "הבית שלנו בתל אביב. — ha-bayit shelanu be-tel aviv — \"Our house is in Tel Aviv.\"",
+      "exampleEnglish": "Use the written model as the final correctness check: The construct form בית (beit) appears in many compounds: בית ספר (beit sefer, school), בית קפה (beit kafe, cafe)."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "בית",
+      "romanization": "bayit",
+      "nativeText": "Check whether \"בית\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The construct form בית (beit) appears in many compounds: בית ספר (beit sefer, school), בית קפה (beit kafe, cafe).",
+      "pronunciation": "bayit",
+      "exampleTarget": "הבית שלנו בתל אביב. — ha-bayit shelanu be-tel aviv — \"Our house is in Tel Aviv.\"",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: The construct form בית (beit) appears in many compounds: בית ספר (beit sefer, school), בית קפה (beit kafe, cafe).",
+      "korean": "בית",
+      "english": "Check whether \"בית\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The construct form בית (beit) appears in many compounds: בית ספר (beit sefer, school), בית קפה (beit kafe, cafe).",
+      "example": "הבית שלנו בתל אביב. — ha-bayit shelanu be-tel aviv — \"Our house is in Tel Aviv.\"",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: The construct form בית (beit) appears in many compounds: בית ספר (beit sefer, school), בית קפה (beit kafe, cafe)."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "אני באוניברסיטה. — ani ba-universita — \"I am at the university.\"",
+      "romanization": "universita",
+      "nativeText": "Model use for \"אוניברסיטה\": University. Feminine. Borrowed; mil'ra. The Hebrew University = האוניברסיטה העברית.",
+      "pronunciation": "universita",
+      "exampleTarget": "אני באוניברסיטה. — ani ba-universita — \"I am at the university.\"",
+      "exampleNative": "Each Israeli university has a nickname: האוניברסיטה (the university — typically refers to Hebrew U), הטכניון (Technion), אוני׳ת״א (Tel Aviv U).",
+      "korean": "אני באוניברסיטה. — ani ba-universita — \"I am at the university.\"",
+      "english": "Model use for \"אוניברסיטה\": University. Feminine. Borrowed; mil'ra. The Hebrew University = האוניברסיטה העברית.",
+      "example": "אני באוניברסיטה. — ani ba-universita — \"I am at the university.\"",
+      "exampleEnglish": "Each Israeli university has a nickname: האוניברסיטה (the university — typically refers to Hebrew U), הטכניון (Technion), אוני׳ת״א (Tel Aviv U)."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "אוניברסיטה",
+      "romanization": "universita",
+      "nativeText": "Usage focus for \"אוניברסיטה\": University. Feminine. Borrowed; mil'ra. The Hebrew University = האוניברסיטה העברית.",
+      "pronunciation": "universita",
+      "exampleTarget": "אני באוניברסיטה. — ani ba-universita — \"I am at the university.\"",
+      "exampleNative": "Notice what the form is doing here: Each Israeli university has a nickname: האוניברסיטה (the university — typically refers to Hebrew U), הטכניון (Technion), אוני׳ת״א (Tel Aviv U).",
+      "korean": "אוניברסיטה",
+      "english": "Usage focus for \"אוניברסיטה\": University. Feminine. Borrowed; mil'ra. The Hebrew University = האוניברסיטה העברית.",
+      "example": "אני באוניברסיטה. — ani ba-universita — \"I am at the university.\"",
+      "exampleEnglish": "Notice what the form is doing here: Each Israeli university has a nickname: האוניברסיטה (the university — typically refers to Hebrew U), הטכניון (Technion), אוני׳ת״א (Tel Aviv U)."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "אוניברסיטה",
+      "romanization": "universita",
+      "nativeText": "Contrast check for \"אוניברסיטה\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "universita",
+      "exampleTarget": "אני באוניברסיטה. — ani ba-universita — \"I am at the university.\"",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: Each Israeli university has a nickname: האוניברסיטה (the university — typically refers to Hebrew U), הטכניון (Technion), אוני׳ת״א (Tel Aviv U).",
+      "korean": "אוניברסיטה",
+      "english": "Contrast check for \"אוניברסיטה\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "אני באוניברסיטה. — ani ba-universita — \"I am at the university.\"",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: Each Israeli university has a nickname: האוניברסיטה (the university — typically refers to Hebrew U), הטכניון (Technion), אוני׳ת״א (Tel Aviv U)."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "אוניברסיטה",
+      "romanization": "universita",
+      "nativeText": "Recall \"אוניברסיטה\" from memory, then explain what would change if a nearby alternative replaced it in \"אני באוניברסיטה. — ani ba-universita — \"I am at the university.\"\".",
+      "pronunciation": "universita",
+      "exampleTarget": "אני באוניברסיטה. — ani ba-universita — \"I am at the university.\"",
+      "exampleNative": "Self-check against the model before moving on: Each Israeli university has a nickname: האוניברסיטה (the university — typically refers to Hebrew U), הטכניון (Technion), אוני׳ת״א (Tel Aviv U).",
+      "korean": "אוניברסיטה",
+      "english": "Recall \"אוניברסיטה\" from memory, then explain what would change if a nearby alternative replaced it in \"אני באוניברסיטה. — ani ba-universita — \"I am at the university.\"\".",
+      "example": "אני באוניברסיטה. — ani ba-universita — \"I am at the university.\"",
+      "exampleEnglish": "Self-check against the model before moving on: Each Israeli university has a nickname: האוניברסיטה (the university — typically refers to Hebrew U), הטכניון (Technion), אוני׳ת״א (Tel Aviv U)."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "אוניברסיטה",
+      "romanization": "universita",
+      "nativeText": "Repair \"אוניברסיטה\" inside \"אני באוניברסיטה. — ani ba-universita — \"I am at the university.\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: University. Feminine. Borrowed; mil'ra. The Hebrew University = האוניברסיטה העברית.",
+      "pronunciation": "universita",
+      "exampleTarget": "אני באוניברסיטה. — ani ba-universita — \"I am at the university.\"",
+      "exampleNative": "Use the model as the repair target: Each Israeli university has a nickname: האוניברסיטה (the university — typically refers to Hebrew U), הטכניון (Technion), אוני׳ת״א (Tel Aviv U).",
+      "korean": "אוניברסיטה",
+      "english": "Repair \"אוניברסיטה\" inside \"אני באוניברסיטה. — ani ba-universita — \"I am at the university.\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: University. Feminine. Borrowed; mil'ra. The Hebrew University = האוניברסיטה העברית.",
+      "example": "אני באוניברסיטה. — ani ba-universita — \"I am at the university.\"",
+      "exampleEnglish": "Use the model as the repair target: Each Israeli university has a nickname: האוניברסיטה (the university — typically refers to Hebrew U), הטכניון (Technion), אוני׳ת״א (Tel Aviv U)."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "אוניברסיטה",
+      "romanization": "universita",
+      "nativeText": "Transfer \"אוניברסיטה\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"אני באוניברסיטה. — ani ba-universita — \"I am at the university.\"\".",
+      "pronunciation": "universita",
+      "exampleTarget": "אני באוניברסיטה. — ani ba-universita — \"I am at the university.\"",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: Each Israeli university has a nickname: האוניברסיטה (the university — typically refers to Hebrew U), הטכניון (Technion), אוני׳ת״א (Tel Aviv U).",
+      "korean": "אוניברסיטה",
+      "english": "Transfer \"אוניברסיטה\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"אני באוניברסיטה. — ani ba-universita — \"I am at the university.\"\".",
+      "example": "אני באוניברסיטה. — ani ba-universita — \"I am at the university.\"",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: Each Israeli university has a nickname: האוניברסיטה (the university — typically refers to Hebrew U), הטכניון (Technion), אוני׳ת״א (Tel Aviv U)."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "אוניברסיטה",
+      "romanization": "universita",
+      "nativeText": "Find one word or phrase that naturally travels with \"אוניברסיטה\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "universita",
+      "exampleTarget": "אני באוניברסיטה. — ani ba-universita — \"I am at the university.\"",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: Each Israeli university has a nickname: האוניברסיטה (the university — typically refers to Hebrew U), הטכניון (Technion), אוני׳ת״א (Tel Aviv U).",
+      "korean": "אוניברסיטה",
+      "english": "Find one word or phrase that naturally travels with \"אוניברסיטה\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "אני באוניברסיטה. — ani ba-universita — \"I am at the university.\"",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: Each Israeli university has a nickname: האוניברסיטה (the university — typically refers to Hebrew U), הטכניון (Technion), אוני׳ת״א (Tel Aviv U)."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "אוניברסיטה",
+      "romanization": "universita",
+      "nativeText": "Listen for \"אוניברסיטה\" inside \"אני באוניברסיטה. — ani ba-universita — \"I am at the university.\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "universita",
+      "exampleTarget": "אני באוניברסיטה. — ani ba-universita — \"I am at the university.\"",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Each Israeli university has a nickname: האוניברסיטה (the university — typically refers to Hebrew U), הטכניון (Technion), אוני׳ת״א (Tel Aviv U).",
+      "korean": "אוניברסיטה",
+      "english": "Listen for \"אוניברסיטה\" inside \"אני באוניברסיטה. — ani ba-universita — \"I am at the university.\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "אני באוניברסיטה. — ani ba-universita — \"I am at the university.\"",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Each Israeli university has a nickname: האוניברסיטה (the university — typically refers to Hebrew U), הטכניון (Technion), אוני׳ת״א (Tel Aviv U)."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "אוניברסיטה",
+      "romanization": "universita",
+      "nativeText": "Write \"אוניברסיטה\" again without looking, then compare the exact written form against \"אני באוניברסיטה. — ani ba-universita — \"I am at the university.\"\" before moving on.",
+      "pronunciation": "universita",
+      "exampleTarget": "אני באוניברסיטה. — ani ba-universita — \"I am at the university.\"",
+      "exampleNative": "Use the written model as the final correctness check: Each Israeli university has a nickname: האוניברסיטה (the university — typically refers to Hebrew U), הטכניון (Technion), אוני׳ת״א (Tel Aviv U).",
+      "korean": "אוניברסיטה",
+      "english": "Write \"אוניברסיטה\" again without looking, then compare the exact written form against \"אני באוניברסיטה. — ani ba-universita — \"I am at the university.\"\" before moving on.",
+      "example": "אני באוניברסיטה. — ani ba-universita — \"I am at the university.\"",
+      "exampleEnglish": "Use the written model as the final correctness check: Each Israeli university has a nickname: האוניברסיטה (the university — typically refers to Hebrew U), הטכניון (Technion), אוני׳ת״א (Tel Aviv U)."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit03locations-vocabulary-1",
+        "he-level1unit03locations-vocabulary-2",
+        "he-level1unit03locations-grammar-1",
+        "he-level1unit03locations-grammar-2",
+        "he-level1unit03locations-reading",
+        "he-level1unit03locations-listening",
+        "he-level1unit03locations-writing",
+        "he-level1unit03locations-task"
+      ],
+      "targetText": "אוניברסיטה",
+      "romanization": "universita",
+      "nativeText": "Check whether \"אוניברסיטה\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Each Israeli university has a nickname: האוניברסיטה (the university — typically refers to Hebrew U), הטכניון (Technion), אוני׳ת״א (Tel Aviv U).",
+      "pronunciation": "universita",
+      "exampleTarget": "אני באוניברסיטה. — ani ba-universita — \"I am at the university.\"",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: Each Israeli university has a nickname: האוניברסיטה (the university — typically refers to Hebrew U), הטכניון (Technion), אוני׳ת״א (Tel Aviv U).",
+      "korean": "אוניברסיטה",
+      "english": "Check whether \"אוניברסיטה\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Each Israeli university has a nickname: האוניברסיטה (the university — typically refers to Hebrew U), הטכניון (Technion), אוני׳ת״א (Tel Aviv U).",
+      "example": "אני באוניברסיטה. — ani ba-universita — \"I am at the university.\"",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: Each Israeli university has a nickname: האוניברסיטה (the university — typically refers to Hebrew U), הטכניון (Technion), אוני׳ת״א (Tel Aviv U)."
+    }
+  ]
 };
-
-module.exports = lesson;

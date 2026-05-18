@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('bn', {
-  slug: 'bn-l1u12',
-  title: 'Level 1 · Unit 12: গতকাল কী করলেন? — Past Activities',
-  category: 'daily-life',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Talk about completed past activities with Bengali past forms.',
-  vocabularyGoal: 'Use past-time markers and everyday activity verbs.',
-  grammarGoal: 'Use past forms such as `গেছি`, `খেয়েছি`, `পড়েছি`, and notice that verbs do not change for speaker gender.',
-  speakingGoal: 'Say what you did yesterday and ask someone else one past question.',
-  task: 'Give a short update about yesterday.',
-  expressionPractice: [
-    practice('stating-past', 'Stating past action', 'Use one completed past form.'),
-    practice('sequencing', 'Sequencing', 'Use `তারপর`.'),
-    practice('asking-past', 'Asking about past', 'Use `গতকাল কী করলেন?`.'),
+module.exports = {
+  "title": "Level 1 · Unit 12: গতকাল কী করলেন? — Past Activities",
+  "category": "daily-life",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "bn-level1unit12pastactivities-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Talk about completed past activities with Bengali past forms."
+      ],
+      "task": "Give a short update about yesterday."
+    },
+    {
+      "id": "bn-level1unit12pastactivities-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "bn-level1unit12pastactivities-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 12: গতকাল কী করলেন? — Past Activities with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "bn-level1unit12pastactivities-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 12: গতকাল কী করলেন? — Past Activities sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "bn-level1unit12pastactivities-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Talk about completed past activities with Bengali past forms."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "bn-level1unit12pastactivities-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 12: গতকাল কী করলেন? — Past Activities with one nearby Bengali form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "bn-level1unit12pastactivities-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "bn-level1unit12pastactivities-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "bn-level1unit12pastactivities-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "bn-level1unit12pastactivities-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "bn-level1unit12pastactivities-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Give a short update about yesterday."
+      ],
+      "task": "Give a short update about yesterday."
+    }
   ],
-  relatedPools: ['topic-routines', 'topic-time'],
-  items: [
-    item('গেছি', 'gechhi', '“I have gone / went.” A common completed form.', 'গতকাল বাজারে গেছি।', '“Yesterday I went to the market.”'),
-    item('খেয়েছি', 'kheyechhi', '“I ate / have eaten.” A high-frequency completed form.', 'সকালে নাশতা খেয়েছি।', '“I ate breakfast in the morning.”'),
-    item('পড়েছি', 'poṛechhi', '“I studied / have read.” Context selects the English translation.', 'গতরাতে আমি পড়েছি।', '“Last night I studied.”'),
-    item('দেখেছি', 'dekhechhi', '“I saw / watched.” Useful for leisure narratives.', 'আমি একটা সিনেমা দেখেছি।', '“I watched a film.”'),
-    item('তারপর', 'tarpor', '“Then / after that.” A simple sequence connector.', 'তারপর বাড়ি ফিরেছি।', '“Then I returned home.”'),
-    item('গত সপ্তাহে', 'goto shoptah-e', '“Last week.” A common past-time phrase.', 'গত সপ্তাহে আমরা জাদুঘরে গেছি।', '“Last week we went to the museum.”'),
-    item('গতকাল কী করলেন?', 'gotokal ki korlen', '“What did you do yesterday?” Respectful question form.', 'গতকাল কী করলেন?', '“What did you do yesterday?”'),
-    item('ইতিমধ্যে', 'itimoddhe', '“Already.” Useful with completed actions.', 'আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।', '“I have already eaten lunch.”'),
+  "expressionPractice": [
+    {
+      "id": "stating-past",
+      "label": "Stating past action",
+      "goal": "Use one completed past form."
+    },
+    {
+      "id": "sequencing",
+      "label": "Sequencing",
+      "goal": "Use `তারপর`."
+    },
+    {
+      "id": "asking-past",
+      "label": "Asking about past",
+      "goal": "Use `গতকাল কী করলেন?`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-routines",
+    "topic-time"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit12pastactivities-orientation"
+      ],
+      "targetText": "পাঠের লক্ষ্য",
+      "romanization": "",
+      "nativeText": "Talk about completed past activities with Bengali past forms.",
+      "pronunciation": "",
+      "exampleTarget": "পাঠের লক্ষ্য",
+      "exampleNative": "The whole lesson is built toward this outcome: Give a short update about yesterday.",
+      "korean": "পাঠের লক্ষ্য",
+      "english": "Talk about completed past activities with Bengali past forms.",
+      "example": "পাঠের লক্ষ্য",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Give a short update about yesterday."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "bn-level1unit12pastactivities-pronunciation"
+      ],
+      "targetText": "উচ্চারণ পরীক্ষা",
+      "romanization": "",
+      "nativeText": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"গতকাল বাজারে গেছি।\".",
+      "pronunciation": "",
+      "exampleTarget": "গতকাল বাজারে গেছি।",
+      "exampleNative": "“Yesterday I went to the market.”",
+      "korean": "উচ্চারণ পরীক্ষা",
+      "english": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"গতকাল বাজারে গেছি।\".",
+      "example": "গতকাল বাজারে গেছি।",
+      "exampleEnglish": "“Yesterday I went to the market.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1"
+      ],
+      "targetText": "গেছি",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 12: গতকাল কী করলেন? — Past Activities with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "গতকাল বাজারে গেছি।",
+      "exampleNative": "“Yesterday I went to the market.”",
+      "korean": "গেছি",
+      "english": "Use the key language of Level 1 · Unit 12: গতকাল কী করলেন? — Past Activities with the register and setting that the lesson requires.",
+      "example": "গতকাল বাজারে গেছি।",
+      "exampleEnglish": "“Yesterday I went to the market.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-2"
+      ],
+      "targetText": "খেয়েছি",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 12: গতকাল কী করলেন? — Past Activities sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "সকালে নাশতা খেয়েছি।",
+      "exampleNative": "“I ate breakfast in the morning.”",
+      "korean": "খেয়েছি",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 12: গতকাল কী করলেন? — Past Activities sound precise rather than merely understandable.",
+      "example": "সকালে নাশতা খেয়েছি।",
+      "exampleEnglish": "“I ate breakfast in the morning.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "bn-level1unit12pastactivities-grammar-1"
+      ],
+      "targetText": "গেছি",
+      "romanization": "",
+      "nativeText": "Talk about completed past activities with Bengali past forms.",
+      "pronunciation": "",
+      "exampleTarget": "গতকাল বাজারে গেছি।",
+      "exampleNative": "“Yesterday I went to the market.”",
+      "korean": "গেছি",
+      "english": "Talk about completed past activities with Bengali past forms.",
+      "example": "গতকাল বাজারে গেছি।",
+      "exampleEnglish": "“Yesterday I went to the market.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "bn-level1unit12pastactivities-grammar-2"
+      ],
+      "targetText": "খেয়েছি",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 12: গতকাল কী করলেন? — Past Activities with one nearby Bengali form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "সকালে নাশতা খেয়েছি।",
+      "exampleNative": "“I ate breakfast in the morning.”",
+      "korean": "খেয়েছি",
+      "english": "Contrast the main pattern in Level 1 · Unit 12: গতকাল কী করলেন? — Past Activities with one nearby Bengali form so the learner can avoid literal translation.",
+      "example": "সকালে নাশতা খেয়েছি।",
+      "exampleEnglish": "“I ate breakfast in the morning.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "bn-level1unit12pastactivities-reading"
+      ],
+      "targetText": "পাঠ মডেল",
+      "romanization": "",
+      "nativeText": "Read \"আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।",
+      "exampleNative": "“I have already eaten lunch.”",
+      "korean": "পাঠ মডেল",
+      "english": "Read \"আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।",
+      "exampleEnglish": "“I have already eaten lunch.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit12pastactivities-listening"
+      ],
+      "targetText": "সংলাপ মডেল",
+      "romanization": "",
+      "nativeText": "Hear \"আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।",
+      "exampleNative": "“I have already eaten lunch.”",
+      "korean": "সংলাপ মডেল",
+      "english": "Hear \"আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।",
+      "exampleEnglish": "“I have already eaten lunch.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "bn-level1unit12pastactivities-writing"
+      ],
+      "targetText": "লেখার অনুশীলন",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"গতকাল বাজারে গেছি।\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "গতকাল বাজারে গেছি।",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "লেখার অনুশীলন",
+      "english": "Write your own version after studying \"গতকাল বাজারে গেছি।\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "গতকাল বাজারে গেছি।",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "bn-level1unit12pastactivities-culture"
+      ],
+      "targetText": "ব্যবহার ও প্রসঙ্গ",
+      "romanization": "",
+      "nativeText": "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "সকালে নাশতা খেয়েছি।",
+      "exampleNative": "“I ate breakfast in the morning.”",
+      "korean": "ব্যবহার ও প্রসঙ্গ",
+      "english": "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used.",
+      "example": "সকালে নাশতা খেয়েছি।",
+      "exampleEnglish": "“I ate breakfast in the morning.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "চূড়ান্ত কাজ",
+      "romanization": "",
+      "nativeText": "Give a short update about yesterday.",
+      "pronunciation": "",
+      "exampleTarget": "আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।",
+      "exampleNative": "Give a short update about yesterday.",
+      "korean": "চূড়ান্ত কাজ",
+      "english": "Give a short update about yesterday.",
+      "example": "আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।",
+      "exampleEnglish": "Give a short update about yesterday."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit12pastactivities-grammar-2"
+      ],
+      "targetText": "সাধারণ ভুল",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around pronoun levels, verb agreement, case markers, and register. Begin by checking \"সকালে নাশতা খেয়েছি।\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "সকালে নাশতা খেয়েছি।",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “I ate breakfast in the morning.”",
+      "korean": "সাধারণ ভুল",
+      "english": "Watch for literal-translation mistakes around pronoun levels, verb agreement, case markers, and register. Begin by checking \"সকালে নাশতা খেয়েছি।\" against the model.",
+      "example": "সকালে নাশতা খেয়েছি।",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “I ate breakfast in the morning.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-culture"
+      ],
+      "targetText": "রেজিস্টার",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for familiar, respectful, or formal Bengali before selecting pronouns and verb endings. Compare the social fit of \"গতকাল বাজারে গেছি।\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "গতকাল বাজারে গেছি।",
+      "exampleNative": "“Yesterday I went to the market.”",
+      "korean": "রেজিস্টার",
+      "english": "Check whether the setting calls for familiar, respectful, or formal Bengali before selecting pronouns and verb endings. Compare the social fit of \"গতকাল বাজারে গেছি।\" before reusing it elsewhere.",
+      "example": "গতকাল বাজারে গেছি।",
+      "exampleEnglish": "“Yesterday I went to the market.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "সাবলীলতা",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Bengali message rather than as separate translated fragments. Aim to carry \"আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।",
+      "exampleNative": "“I have already eaten lunch.”",
+      "korean": "সাবলীলতা",
+      "english": "Say the idea as one connected Bengali message rather than as separate translated fragments. Aim to carry \"আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।\" as one thought.",
+      "example": "আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।",
+      "exampleEnglish": "“I have already eaten lunch.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "প্রয়োগ",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"গতকাল বাজারে গেছি।\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "গতকাল বাজারে গেছি।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "প্রয়োগ",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"গতকাল বাজারে গেছি।\" and move it into your own life.",
+      "example": "গতকাল বাজারে গেছি।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-grammar-1"
+      ],
+      "targetText": "স্মরণ",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"গেছি\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "গেছি",
+      "exampleNative": "“I have gone / went.” A common completed form.",
+      "korean": "স্মরণ",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"গেছি\" before looking back.",
+      "example": "গেছি",
+      "exampleEnglish": "“I have gone / went.” A common completed form."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-writing"
+      ],
+      "targetText": "বিস্তার",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "বিস্তার",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।\" rather than restarting from a blank sentence.",
+      "example": "আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading"
+      ],
+      "targetText": "তুলনা",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 12: গতকাল কী করলেন? — Past Activities with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"সকালে নাশতা খেয়েছি।\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "সকালে নাশতা খেয়েছি।",
+      "exampleNative": "“I ate breakfast in the morning.”",
+      "korean": "তুলনা",
+      "english": "Compare the central form in Level 1 · Unit 12: গতকাল কী করলেন? — Past Activities with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"সকালে নাশতা খেয়েছি।\" as the comparison line.",
+      "example": "সকালে নাশতা খেয়েছি।",
+      "exampleEnglish": "“I ate breakfast in the morning.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "bn-level1unit12pastactivities-pronunciation"
+      ],
+      "targetText": "উচ্চারণ সংশোধন",
+      "romanization": "",
+      "nativeText": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"গতকাল বাজারে গেছি।\".",
+      "pronunciation": "",
+      "exampleTarget": "গতকাল বাজারে গেছি।",
+      "exampleNative": "“Yesterday I went to the market.”",
+      "korean": "উচ্চারণ সংশোধন",
+      "english": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"গতকাল বাজারে গেছি।\".",
+      "example": "গতকাল বাজারে গেছি।",
+      "exampleEnglish": "“Yesterday I went to the market.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "সংলাপ পরিবর্তন",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।\".",
+      "pronunciation": "",
+      "exampleTarget": "আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।",
+      "exampleNative": "“I have already eaten lunch.”",
+      "korean": "সংলাপ পরিবর্তন",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।\".",
+      "example": "আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।",
+      "exampleEnglish": "“I have already eaten lunch.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-writing"
+      ],
+      "targetText": "বাক্য গঠন",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"গতকাল বাজারে গেছি।\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "গতকাল বাজারে গেছি।",
+      "exampleNative": "“Yesterday I went to the market.”",
+      "korean": "বাক্য গঠন",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"গতকাল বাজারে গেছি।\" one layer at a time.",
+      "example": "গতকাল বাজারে গেছি।",
+      "exampleEnglish": "“Yesterday I went to the market.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-2"
+      ],
+      "targetText": "দ্রুত পরীক্ষা",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"সকালে নাশতা খেয়েছি।\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "সকালে নাশতা খেয়েছি।",
+      "exampleNative": "“I ate breakfast in the morning.”",
+      "korean": "দ্রুত পরীক্ষা",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"সকালে নাশতা খেয়েছি।\" as the deciding example.",
+      "example": "সকালে নাশতা খেয়েছি।",
+      "exampleEnglish": "“I ate breakfast in the morning.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit12pastactivities-culture",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "পুনরালোচনা",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।\".",
+      "pronunciation": "",
+      "exampleTarget": "আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।",
+      "exampleNative": "“I have already eaten lunch.”",
+      "korean": "পুনরালোচনা",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।\".",
+      "example": "আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।",
+      "exampleEnglish": "“I have already eaten lunch.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "গেছি",
+      "romanization": "gechhi",
+      "nativeText": "“I have gone / went.” A common completed form.",
+      "pronunciation": "gechhi",
+      "exampleTarget": "গতকাল বাজারে গেছি।",
+      "exampleNative": "“Yesterday I went to the market.”",
+      "korean": "গেছি",
+      "english": "“I have gone / went.” A common completed form.",
+      "example": "গতকাল বাজারে গেছি।",
+      "exampleEnglish": "“Yesterday I went to the market.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "গতকাল বাজারে গেছি।",
+      "romanization": "gechhi",
+      "nativeText": "Model use for \"গতকাল বাজারে গেছি।\": “Yesterday I went to the market.”",
+      "pronunciation": "gechhi",
+      "exampleTarget": "গতকাল বাজারে গেছি।",
+      "exampleNative": "“Yesterday I went to the market.”",
+      "korean": "গতকাল বাজারে গেছি।",
+      "english": "Model use for \"গতকাল বাজারে গেছি।\": “Yesterday I went to the market.”",
+      "example": "গতকাল বাজারে গেছি।",
+      "exampleEnglish": "“Yesterday I went to the market.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "গেছি",
+      "romanization": "gechhi",
+      "nativeText": "Usage focus for \"গেছি\": Use the key language of Level 1 · Unit 12: গতকাল কী করলেন? — Past Activities with the register and setting that the lesson requires.",
+      "pronunciation": "gechhi",
+      "exampleTarget": "গতকাল বাজারে গেছি।",
+      "exampleNative": "Notice what the form is doing here: “Yesterday I went to the market.”",
+      "korean": "গেছি",
+      "english": "Usage focus for \"গেছি\": Use the key language of Level 1 · Unit 12: গতকাল কী করলেন? — Past Activities with the register and setting that the lesson requires.",
+      "example": "গতকাল বাজারে গেছি।",
+      "exampleEnglish": "Notice what the form is doing here: “Yesterday I went to the market.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "গেছি",
+      "romanization": "gechhi",
+      "nativeText": "Contrast check for \"গেছি\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "gechhi",
+      "exampleTarget": "গতকাল বাজারে গেছি।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Yesterday I went to the market.”",
+      "korean": "গেছি",
+      "english": "Contrast check for \"গেছি\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "গতকাল বাজারে গেছি।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Yesterday I went to the market.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "গেছি",
+      "romanization": "gechhi",
+      "nativeText": "Recall \"গেছি\" from memory, then explain what would change if a nearby alternative replaced it in \"গতকাল বাজারে গেছি।\".",
+      "pronunciation": "gechhi",
+      "exampleTarget": "গতকাল বাজারে গেছি।",
+      "exampleNative": "Self-check against the model before moving on: “Yesterday I went to the market.”",
+      "korean": "গেছি",
+      "english": "Recall \"গেছি\" from memory, then explain what would change if a nearby alternative replaced it in \"গতকাল বাজারে গেছি।\".",
+      "example": "গতকাল বাজারে গেছি।",
+      "exampleEnglish": "Self-check against the model before moving on: “Yesterday I went to the market.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "গেছি",
+      "romanization": "gechhi",
+      "nativeText": "Repair \"গেছি\" inside \"গতকাল বাজারে গেছি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 12: গতকাল কী করলেন? — Past Activities with the register and setting that the lesson requires.",
+      "pronunciation": "gechhi",
+      "exampleTarget": "গতকাল বাজারে গেছি।",
+      "exampleNative": "Use the model as the repair target: “Yesterday I went to the market.”",
+      "korean": "গেছি",
+      "english": "Repair \"গেছি\" inside \"গতকাল বাজারে গেছি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 12: গতকাল কী করলেন? — Past Activities with the register and setting that the lesson requires.",
+      "example": "গতকাল বাজারে গেছি।",
+      "exampleEnglish": "Use the model as the repair target: “Yesterday I went to the market.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "গেছি",
+      "romanization": "gechhi",
+      "nativeText": "Transfer \"গেছি\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"গতকাল বাজারে গেছি।\".",
+      "pronunciation": "gechhi",
+      "exampleTarget": "গতকাল বাজারে গেছি।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Yesterday I went to the market.”",
+      "korean": "গেছি",
+      "english": "Transfer \"গেছি\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"গতকাল বাজারে গেছি।\".",
+      "example": "গতকাল বাজারে গেছি।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Yesterday I went to the market.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "গেছি",
+      "romanization": "gechhi",
+      "nativeText": "Find one word or phrase that naturally travels with \"গেছি\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "gechhi",
+      "exampleTarget": "গতকাল বাজারে গেছি।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Yesterday I went to the market.”",
+      "korean": "গেছি",
+      "english": "Find one word or phrase that naturally travels with \"গেছি\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "গতকাল বাজারে গেছি।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Yesterday I went to the market.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "গেছি",
+      "romanization": "gechhi",
+      "nativeText": "Listen for \"গেছি\" inside \"গতকাল বাজারে গেছি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "gechhi",
+      "exampleTarget": "গতকাল বাজারে গেছি।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Yesterday I went to the market.”",
+      "korean": "গেছি",
+      "english": "Listen for \"গেছি\" inside \"গতকাল বাজারে গেছি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "গতকাল বাজারে গেছি।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Yesterday I went to the market.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "গেছি",
+      "romanization": "gechhi",
+      "nativeText": "Write \"গেছি\" again without looking, then compare the exact written form against \"গতকাল বাজারে গেছি।\" before moving on.",
+      "pronunciation": "gechhi",
+      "exampleTarget": "গতকাল বাজারে গেছি।",
+      "exampleNative": "Use the written model as the final correctness check: “Yesterday I went to the market.”",
+      "korean": "গেছি",
+      "english": "Write \"গেছি\" again without looking, then compare the exact written form against \"গতকাল বাজারে গেছি।\" before moving on.",
+      "example": "গতকাল বাজারে গেছি।",
+      "exampleEnglish": "Use the written model as the final correctness check: “Yesterday I went to the market.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "গেছি",
+      "romanization": "gechhi",
+      "nativeText": "Check whether \"গেছি\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Yesterday I went to the market.”",
+      "pronunciation": "gechhi",
+      "exampleTarget": "গতকাল বাজারে গেছি।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Yesterday I went to the market.”",
+      "korean": "গেছি",
+      "english": "Check whether \"গেছি\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Yesterday I went to the market.”",
+      "example": "গতকাল বাজারে গেছি।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Yesterday I went to the market.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "খেয়েছি",
+      "romanization": "kheyechhi",
+      "nativeText": "“I ate / have eaten.” A high-frequency completed form.",
+      "pronunciation": "kheyechhi",
+      "exampleTarget": "সকালে নাশতা খেয়েছি।",
+      "exampleNative": "“I ate breakfast in the morning.”",
+      "korean": "খেয়েছি",
+      "english": "“I ate / have eaten.” A high-frequency completed form.",
+      "example": "সকালে নাশতা খেয়েছি।",
+      "exampleEnglish": "“I ate breakfast in the morning.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "সকালে নাশতা খেয়েছি।",
+      "romanization": "kheyechhi",
+      "nativeText": "Model use for \"সকালে নাশতা খেয়েছি।\": “I ate breakfast in the morning.”",
+      "pronunciation": "kheyechhi",
+      "exampleTarget": "সকালে নাশতা খেয়েছি।",
+      "exampleNative": "“I ate breakfast in the morning.”",
+      "korean": "সকালে নাশতা খেয়েছি।",
+      "english": "Model use for \"সকালে নাশতা খেয়েছি।\": “I ate breakfast in the morning.”",
+      "example": "সকালে নাশতা খেয়েছি।",
+      "exampleEnglish": "“I ate breakfast in the morning.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "খেয়েছি",
+      "romanization": "kheyechhi",
+      "nativeText": "Usage focus for \"খেয়েছি\": Distinguish the nearby wording choices that make Level 1 · Unit 12: গতকাল কী করলেন? — Past Activities sound precise rather than merely understandable.",
+      "pronunciation": "kheyechhi",
+      "exampleTarget": "সকালে নাশতা খেয়েছি।",
+      "exampleNative": "Notice what the form is doing here: “I ate breakfast in the morning.”",
+      "korean": "খেয়েছি",
+      "english": "Usage focus for \"খেয়েছি\": Distinguish the nearby wording choices that make Level 1 · Unit 12: গতকাল কী করলেন? — Past Activities sound precise rather than merely understandable.",
+      "example": "সকালে নাশতা খেয়েছি।",
+      "exampleEnglish": "Notice what the form is doing here: “I ate breakfast in the morning.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "খেয়েছি",
+      "romanization": "kheyechhi",
+      "nativeText": "Contrast check for \"খেয়েছি\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kheyechhi",
+      "exampleTarget": "সকালে নাশতা খেয়েছি।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I ate breakfast in the morning.”",
+      "korean": "খেয়েছি",
+      "english": "Contrast check for \"খেয়েছি\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "সকালে নাশতা খেয়েছি।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I ate breakfast in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "খেয়েছি",
+      "romanization": "kheyechhi",
+      "nativeText": "Recall \"খেয়েছি\" from memory, then explain what would change if a nearby alternative replaced it in \"সকালে নাশতা খেয়েছি।\".",
+      "pronunciation": "kheyechhi",
+      "exampleTarget": "সকালে নাশতা খেয়েছি।",
+      "exampleNative": "Self-check against the model before moving on: “I ate breakfast in the morning.”",
+      "korean": "খেয়েছি",
+      "english": "Recall \"খেয়েছি\" from memory, then explain what would change if a nearby alternative replaced it in \"সকালে নাশতা খেয়েছি।\".",
+      "example": "সকালে নাশতা খেয়েছি।",
+      "exampleEnglish": "Self-check against the model before moving on: “I ate breakfast in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "খেয়েছি",
+      "romanization": "kheyechhi",
+      "nativeText": "Repair \"খেয়েছি\" inside \"সকালে নাশতা খেয়েছি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 12: গতকাল কী করলেন? — Past Activities sound precise rather than merely understandable.",
+      "pronunciation": "kheyechhi",
+      "exampleTarget": "সকালে নাশতা খেয়েছি।",
+      "exampleNative": "Use the model as the repair target: “I ate breakfast in the morning.”",
+      "korean": "খেয়েছি",
+      "english": "Repair \"খেয়েছি\" inside \"সকালে নাশতা খেয়েছি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 12: গতকাল কী করলেন? — Past Activities sound precise rather than merely understandable.",
+      "example": "সকালে নাশতা খেয়েছি।",
+      "exampleEnglish": "Use the model as the repair target: “I ate breakfast in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "খেয়েছি",
+      "romanization": "kheyechhi",
+      "nativeText": "Transfer \"খেয়েছি\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"সকালে নাশতা খেয়েছি।\".",
+      "pronunciation": "kheyechhi",
+      "exampleTarget": "সকালে নাশতা খেয়েছি।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I ate breakfast in the morning.”",
+      "korean": "খেয়েছি",
+      "english": "Transfer \"খেয়েছি\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"সকালে নাশতা খেয়েছি।\".",
+      "example": "সকালে নাশতা খেয়েছি।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I ate breakfast in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "খেয়েছি",
+      "romanization": "kheyechhi",
+      "nativeText": "Find one word or phrase that naturally travels with \"খেয়েছি\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kheyechhi",
+      "exampleTarget": "সকালে নাশতা খেয়েছি।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I ate breakfast in the morning.”",
+      "korean": "খেয়েছি",
+      "english": "Find one word or phrase that naturally travels with \"খেয়েছি\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "সকালে নাশতা খেয়েছি।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I ate breakfast in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "খেয়েছি",
+      "romanization": "kheyechhi",
+      "nativeText": "Listen for \"খেয়েছি\" inside \"সকালে নাশতা খেয়েছি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kheyechhi",
+      "exampleTarget": "সকালে নাশতা খেয়েছি।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I ate breakfast in the morning.”",
+      "korean": "খেয়েছি",
+      "english": "Listen for \"খেয়েছি\" inside \"সকালে নাশতা খেয়েছি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "সকালে নাশতা খেয়েছি।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I ate breakfast in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "খেয়েছি",
+      "romanization": "kheyechhi",
+      "nativeText": "Write \"খেয়েছি\" again without looking, then compare the exact written form against \"সকালে নাশতা খেয়েছি।\" before moving on.",
+      "pronunciation": "kheyechhi",
+      "exampleTarget": "সকালে নাশতা খেয়েছি।",
+      "exampleNative": "Use the written model as the final correctness check: “I ate breakfast in the morning.”",
+      "korean": "খেয়েছি",
+      "english": "Write \"খেয়েছি\" again without looking, then compare the exact written form against \"সকালে নাশতা খেয়েছি।\" before moving on.",
+      "example": "সকালে নাশতা খেয়েছি।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I ate breakfast in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "খেয়েছি",
+      "romanization": "kheyechhi",
+      "nativeText": "Check whether \"খেয়েছি\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I ate breakfast in the morning.”",
+      "pronunciation": "kheyechhi",
+      "exampleTarget": "সকালে নাশতা খেয়েছি।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I ate breakfast in the morning.”",
+      "korean": "খেয়েছি",
+      "english": "Check whether \"খেয়েছি\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I ate breakfast in the morning.”",
+      "example": "সকালে নাশতা খেয়েছি।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I ate breakfast in the morning.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "পড়েছি",
+      "romanization": "poṛechhi",
+      "nativeText": "“I studied / have read.” Context selects the English translation.",
+      "pronunciation": "poṛechhi",
+      "exampleTarget": "গতরাতে আমি পড়েছি।",
+      "exampleNative": "“Last night I studied.”",
+      "korean": "পড়েছি",
+      "english": "“I studied / have read.” Context selects the English translation.",
+      "example": "গতরাতে আমি পড়েছি।",
+      "exampleEnglish": "“Last night I studied.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "গতরাতে আমি পড়েছি।",
+      "romanization": "poṛechhi",
+      "nativeText": "Model use for \"গতরাতে আমি পড়েছি।\": “Last night I studied.”",
+      "pronunciation": "poṛechhi",
+      "exampleTarget": "গতরাতে আমি পড়েছি।",
+      "exampleNative": "“Last night I studied.”",
+      "korean": "গতরাতে আমি পড়েছি।",
+      "english": "Model use for \"গতরাতে আমি পড়েছি।\": “Last night I studied.”",
+      "example": "গতরাতে আমি পড়েছি।",
+      "exampleEnglish": "“Last night I studied.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "পড়েছি",
+      "romanization": "poṛechhi",
+      "nativeText": "Usage focus for \"পড়েছি\": “I studied / have read.” Context selects the English translation.",
+      "pronunciation": "poṛechhi",
+      "exampleTarget": "গতরাতে আমি পড়েছি।",
+      "exampleNative": "Notice what the form is doing here: “Last night I studied.”",
+      "korean": "পড়েছি",
+      "english": "Usage focus for \"পড়েছি\": “I studied / have read.” Context selects the English translation.",
+      "example": "গতরাতে আমি পড়েছি।",
+      "exampleEnglish": "Notice what the form is doing here: “Last night I studied.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "পড়েছি",
+      "romanization": "poṛechhi",
+      "nativeText": "Contrast check for \"পড়েছি\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "poṛechhi",
+      "exampleTarget": "গতরাতে আমি পড়েছি।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Last night I studied.”",
+      "korean": "পড়েছি",
+      "english": "Contrast check for \"পড়েছি\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "গতরাতে আমি পড়েছি।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Last night I studied.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "পড়েছি",
+      "romanization": "poṛechhi",
+      "nativeText": "Recall \"পড়েছি\" from memory, then explain what would change if a nearby alternative replaced it in \"গতরাতে আমি পড়েছি।\".",
+      "pronunciation": "poṛechhi",
+      "exampleTarget": "গতরাতে আমি পড়েছি।",
+      "exampleNative": "Self-check against the model before moving on: “Last night I studied.”",
+      "korean": "পড়েছি",
+      "english": "Recall \"পড়েছি\" from memory, then explain what would change if a nearby alternative replaced it in \"গতরাতে আমি পড়েছি।\".",
+      "example": "গতরাতে আমি পড়েছি।",
+      "exampleEnglish": "Self-check against the model before moving on: “Last night I studied.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "পড়েছি",
+      "romanization": "poṛechhi",
+      "nativeText": "Repair \"পড়েছি\" inside \"গতরাতে আমি পড়েছি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I studied / have read.” Context selects the English translation.",
+      "pronunciation": "poṛechhi",
+      "exampleTarget": "গতরাতে আমি পড়েছি।",
+      "exampleNative": "Use the model as the repair target: “Last night I studied.”",
+      "korean": "পড়েছি",
+      "english": "Repair \"পড়েছি\" inside \"গতরাতে আমি পড়েছি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I studied / have read.” Context selects the English translation.",
+      "example": "গতরাতে আমি পড়েছি।",
+      "exampleEnglish": "Use the model as the repair target: “Last night I studied.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "পড়েছি",
+      "romanization": "poṛechhi",
+      "nativeText": "Transfer \"পড়েছি\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"গতরাতে আমি পড়েছি।\".",
+      "pronunciation": "poṛechhi",
+      "exampleTarget": "গতরাতে আমি পড়েছি।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Last night I studied.”",
+      "korean": "পড়েছি",
+      "english": "Transfer \"পড়েছি\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"গতরাতে আমি পড়েছি।\".",
+      "example": "গতরাতে আমি পড়েছি।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Last night I studied.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "পড়েছি",
+      "romanization": "poṛechhi",
+      "nativeText": "Find one word or phrase that naturally travels with \"পড়েছি\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "poṛechhi",
+      "exampleTarget": "গতরাতে আমি পড়েছি।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Last night I studied.”",
+      "korean": "পড়েছি",
+      "english": "Find one word or phrase that naturally travels with \"পড়েছি\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "গতরাতে আমি পড়েছি।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Last night I studied.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "পড়েছি",
+      "romanization": "poṛechhi",
+      "nativeText": "Listen for \"পড়েছি\" inside \"গতরাতে আমি পড়েছি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "poṛechhi",
+      "exampleTarget": "গতরাতে আমি পড়েছি।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Last night I studied.”",
+      "korean": "পড়েছি",
+      "english": "Listen for \"পড়েছি\" inside \"গতরাতে আমি পড়েছি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "গতরাতে আমি পড়েছি।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Last night I studied.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "পড়েছি",
+      "romanization": "poṛechhi",
+      "nativeText": "Write \"পড়েছি\" again without looking, then compare the exact written form against \"গতরাতে আমি পড়েছি।\" before moving on.",
+      "pronunciation": "poṛechhi",
+      "exampleTarget": "গতরাতে আমি পড়েছি।",
+      "exampleNative": "Use the written model as the final correctness check: “Last night I studied.”",
+      "korean": "পড়েছি",
+      "english": "Write \"পড়েছি\" again without looking, then compare the exact written form against \"গতরাতে আমি পড়েছি।\" before moving on.",
+      "example": "গতরাতে আমি পড়েছি।",
+      "exampleEnglish": "Use the written model as the final correctness check: “Last night I studied.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "পড়েছি",
+      "romanization": "poṛechhi",
+      "nativeText": "Check whether \"পড়েছি\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Last night I studied.”",
+      "pronunciation": "poṛechhi",
+      "exampleTarget": "গতরাতে আমি পড়েছি।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Last night I studied.”",
+      "korean": "পড়েছি",
+      "english": "Check whether \"পড়েছি\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Last night I studied.”",
+      "example": "গতরাতে আমি পড়েছি।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Last night I studied.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "দেখেছি",
+      "romanization": "dekhechhi",
+      "nativeText": "“I saw / watched.” Useful for leisure narratives.",
+      "pronunciation": "dekhechhi",
+      "exampleTarget": "আমি একটা সিনেমা দেখেছি।",
+      "exampleNative": "“I watched a film.”",
+      "korean": "দেখেছি",
+      "english": "“I saw / watched.” Useful for leisure narratives.",
+      "example": "আমি একটা সিনেমা দেখেছি।",
+      "exampleEnglish": "“I watched a film.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "আমি একটা সিনেমা দেখেছি।",
+      "romanization": "dekhechhi",
+      "nativeText": "Model use for \"আমি একটা সিনেমা দেখেছি।\": “I watched a film.”",
+      "pronunciation": "dekhechhi",
+      "exampleTarget": "আমি একটা সিনেমা দেখেছি।",
+      "exampleNative": "“I watched a film.”",
+      "korean": "আমি একটা সিনেমা দেখেছি।",
+      "english": "Model use for \"আমি একটা সিনেমা দেখেছি।\": “I watched a film.”",
+      "example": "আমি একটা সিনেমা দেখেছি।",
+      "exampleEnglish": "“I watched a film.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "দেখেছি",
+      "romanization": "dekhechhi",
+      "nativeText": "Usage focus for \"দেখেছি\": “I saw / watched.” Useful for leisure narratives.",
+      "pronunciation": "dekhechhi",
+      "exampleTarget": "আমি একটা সিনেমা দেখেছি।",
+      "exampleNative": "Notice what the form is doing here: “I watched a film.”",
+      "korean": "দেখেছি",
+      "english": "Usage focus for \"দেখেছি\": “I saw / watched.” Useful for leisure narratives.",
+      "example": "আমি একটা সিনেমা দেখেছি।",
+      "exampleEnglish": "Notice what the form is doing here: “I watched a film.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "দেখেছি",
+      "romanization": "dekhechhi",
+      "nativeText": "Contrast check for \"দেখেছি\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "dekhechhi",
+      "exampleTarget": "আমি একটা সিনেমা দেখেছি।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I watched a film.”",
+      "korean": "দেখেছি",
+      "english": "Contrast check for \"দেখেছি\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আমি একটা সিনেমা দেখেছি।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I watched a film.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "দেখেছি",
+      "romanization": "dekhechhi",
+      "nativeText": "Recall \"দেখেছি\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি একটা সিনেমা দেখেছি।\".",
+      "pronunciation": "dekhechhi",
+      "exampleTarget": "আমি একটা সিনেমা দেখেছি।",
+      "exampleNative": "Self-check against the model before moving on: “I watched a film.”",
+      "korean": "দেখেছি",
+      "english": "Recall \"দেখেছি\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি একটা সিনেমা দেখেছি।\".",
+      "example": "আমি একটা সিনেমা দেখেছি।",
+      "exampleEnglish": "Self-check against the model before moving on: “I watched a film.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "দেখেছি",
+      "romanization": "dekhechhi",
+      "nativeText": "Repair \"দেখেছি\" inside \"আমি একটা সিনেমা দেখেছি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I saw / watched.” Useful for leisure narratives.",
+      "pronunciation": "dekhechhi",
+      "exampleTarget": "আমি একটা সিনেমা দেখেছি।",
+      "exampleNative": "Use the model as the repair target: “I watched a film.”",
+      "korean": "দেখেছি",
+      "english": "Repair \"দেখেছি\" inside \"আমি একটা সিনেমা দেখেছি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I saw / watched.” Useful for leisure narratives.",
+      "example": "আমি একটা সিনেমা দেখেছি।",
+      "exampleEnglish": "Use the model as the repair target: “I watched a film.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "দেখেছি",
+      "romanization": "dekhechhi",
+      "nativeText": "Transfer \"দেখেছি\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি একটা সিনেমা দেখেছি।\".",
+      "pronunciation": "dekhechhi",
+      "exampleTarget": "আমি একটা সিনেমা দেখেছি।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I watched a film.”",
+      "korean": "দেখেছি",
+      "english": "Transfer \"দেখেছি\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি একটা সিনেমা দেখেছি।\".",
+      "example": "আমি একটা সিনেমা দেখেছি।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I watched a film.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "দেখেছি",
+      "romanization": "dekhechhi",
+      "nativeText": "Find one word or phrase that naturally travels with \"দেখেছি\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "dekhechhi",
+      "exampleTarget": "আমি একটা সিনেমা দেখেছি।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I watched a film.”",
+      "korean": "দেখেছি",
+      "english": "Find one word or phrase that naturally travels with \"দেখেছি\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আমি একটা সিনেমা দেখেছি।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I watched a film.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "দেখেছি",
+      "romanization": "dekhechhi",
+      "nativeText": "Listen for \"দেখেছি\" inside \"আমি একটা সিনেমা দেখেছি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "dekhechhi",
+      "exampleTarget": "আমি একটা সিনেমা দেখেছি।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I watched a film.”",
+      "korean": "দেখেছি",
+      "english": "Listen for \"দেখেছি\" inside \"আমি একটা সিনেমা দেখেছি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আমি একটা সিনেমা দেখেছি।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I watched a film.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "দেখেছি",
+      "romanization": "dekhechhi",
+      "nativeText": "Write \"দেখেছি\" again without looking, then compare the exact written form against \"আমি একটা সিনেমা দেখেছি।\" before moving on.",
+      "pronunciation": "dekhechhi",
+      "exampleTarget": "আমি একটা সিনেমা দেখেছি।",
+      "exampleNative": "Use the written model as the final correctness check: “I watched a film.”",
+      "korean": "দেখেছি",
+      "english": "Write \"দেখেছি\" again without looking, then compare the exact written form against \"আমি একটা সিনেমা দেখেছি।\" before moving on.",
+      "example": "আমি একটা সিনেমা দেখেছি।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I watched a film.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "দেখেছি",
+      "romanization": "dekhechhi",
+      "nativeText": "Check whether \"দেখেছি\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I watched a film.”",
+      "pronunciation": "dekhechhi",
+      "exampleTarget": "আমি একটা সিনেমা দেখেছি।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I watched a film.”",
+      "korean": "দেখেছি",
+      "english": "Check whether \"দেখেছি\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I watched a film.”",
+      "example": "আমি একটা সিনেমা দেখেছি।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I watched a film.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "তারপর",
+      "romanization": "tarpor",
+      "nativeText": "“Then / after that.” A simple sequence connector.",
+      "pronunciation": "tarpor",
+      "exampleTarget": "তারপর বাড়ি ফিরেছি।",
+      "exampleNative": "“Then I returned home.”",
+      "korean": "তারপর",
+      "english": "“Then / after that.” A simple sequence connector.",
+      "example": "তারপর বাড়ি ফিরেছি।",
+      "exampleEnglish": "“Then I returned home.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "তারপর বাড়ি ফিরেছি।",
+      "romanization": "tarpor",
+      "nativeText": "Model use for \"তারপর বাড়ি ফিরেছি।\": “Then I returned home.”",
+      "pronunciation": "tarpor",
+      "exampleTarget": "তারপর বাড়ি ফিরেছি।",
+      "exampleNative": "“Then I returned home.”",
+      "korean": "তারপর বাড়ি ফিরেছি।",
+      "english": "Model use for \"তারপর বাড়ি ফিরেছি।\": “Then I returned home.”",
+      "example": "তারপর বাড়ি ফিরেছি।",
+      "exampleEnglish": "“Then I returned home.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "তারপর",
+      "romanization": "tarpor",
+      "nativeText": "Usage focus for \"তারপর\": “Then / after that.” A simple sequence connector.",
+      "pronunciation": "tarpor",
+      "exampleTarget": "তারপর বাড়ি ফিরেছি।",
+      "exampleNative": "Notice what the form is doing here: “Then I returned home.”",
+      "korean": "তারপর",
+      "english": "Usage focus for \"তারপর\": “Then / after that.” A simple sequence connector.",
+      "example": "তারপর বাড়ি ফিরেছি।",
+      "exampleEnglish": "Notice what the form is doing here: “Then I returned home.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "তারপর",
+      "romanization": "tarpor",
+      "nativeText": "Contrast check for \"তারপর\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "tarpor",
+      "exampleTarget": "তারপর বাড়ি ফিরেছি।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Then I returned home.”",
+      "korean": "তারপর",
+      "english": "Contrast check for \"তারপর\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "তারপর বাড়ি ফিরেছি।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Then I returned home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "তারপর",
+      "romanization": "tarpor",
+      "nativeText": "Recall \"তারপর\" from memory, then explain what would change if a nearby alternative replaced it in \"তারপর বাড়ি ফিরেছি।\".",
+      "pronunciation": "tarpor",
+      "exampleTarget": "তারপর বাড়ি ফিরেছি।",
+      "exampleNative": "Self-check against the model before moving on: “Then I returned home.”",
+      "korean": "তারপর",
+      "english": "Recall \"তারপর\" from memory, then explain what would change if a nearby alternative replaced it in \"তারপর বাড়ি ফিরেছি।\".",
+      "example": "তারপর বাড়ি ফিরেছি।",
+      "exampleEnglish": "Self-check against the model before moving on: “Then I returned home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "তারপর",
+      "romanization": "tarpor",
+      "nativeText": "Repair \"তারপর\" inside \"তারপর বাড়ি ফিরেছি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Then / after that.” A simple sequence connector.",
+      "pronunciation": "tarpor",
+      "exampleTarget": "তারপর বাড়ি ফিরেছি।",
+      "exampleNative": "Use the model as the repair target: “Then I returned home.”",
+      "korean": "তারপর",
+      "english": "Repair \"তারপর\" inside \"তারপর বাড়ি ফিরেছি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Then / after that.” A simple sequence connector.",
+      "example": "তারপর বাড়ি ফিরেছি।",
+      "exampleEnglish": "Use the model as the repair target: “Then I returned home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "তারপর",
+      "romanization": "tarpor",
+      "nativeText": "Transfer \"তারপর\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"তারপর বাড়ি ফিরেছি।\".",
+      "pronunciation": "tarpor",
+      "exampleTarget": "তারপর বাড়ি ফিরেছি।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Then I returned home.”",
+      "korean": "তারপর",
+      "english": "Transfer \"তারপর\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"তারপর বাড়ি ফিরেছি।\".",
+      "example": "তারপর বাড়ি ফিরেছি।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Then I returned home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "তারপর",
+      "romanization": "tarpor",
+      "nativeText": "Find one word or phrase that naturally travels with \"তারপর\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "tarpor",
+      "exampleTarget": "তারপর বাড়ি ফিরেছি।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Then I returned home.”",
+      "korean": "তারপর",
+      "english": "Find one word or phrase that naturally travels with \"তারপর\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "তারপর বাড়ি ফিরেছি।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Then I returned home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "তারপর",
+      "romanization": "tarpor",
+      "nativeText": "Listen for \"তারপর\" inside \"তারপর বাড়ি ফিরেছি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "tarpor",
+      "exampleTarget": "তারপর বাড়ি ফিরেছি।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Then I returned home.”",
+      "korean": "তারপর",
+      "english": "Listen for \"তারপর\" inside \"তারপর বাড়ি ফিরেছি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "তারপর বাড়ি ফিরেছি।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Then I returned home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "তারপর",
+      "romanization": "tarpor",
+      "nativeText": "Write \"তারপর\" again without looking, then compare the exact written form against \"তারপর বাড়ি ফিরেছি।\" before moving on.",
+      "pronunciation": "tarpor",
+      "exampleTarget": "তারপর বাড়ি ফিরেছি।",
+      "exampleNative": "Use the written model as the final correctness check: “Then I returned home.”",
+      "korean": "তারপর",
+      "english": "Write \"তারপর\" again without looking, then compare the exact written form against \"তারপর বাড়ি ফিরেছি।\" before moving on.",
+      "example": "তারপর বাড়ি ফিরেছি।",
+      "exampleEnglish": "Use the written model as the final correctness check: “Then I returned home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "তারপর",
+      "romanization": "tarpor",
+      "nativeText": "Check whether \"তারপর\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Then I returned home.”",
+      "pronunciation": "tarpor",
+      "exampleTarget": "তারপর বাড়ি ফিরেছি।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Then I returned home.”",
+      "korean": "তারপর",
+      "english": "Check whether \"তারপর\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Then I returned home.”",
+      "example": "তারপর বাড়ি ফিরেছি।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Then I returned home.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "গত সপ্তাহে",
+      "romanization": "goto shoptah-e",
+      "nativeText": "“Last week.” A common past-time phrase.",
+      "pronunciation": "goto shoptah-e",
+      "exampleTarget": "গত সপ্তাহে আমরা জাদুঘরে গেছি।",
+      "exampleNative": "“Last week we went to the museum.”",
+      "korean": "গত সপ্তাহে",
+      "english": "“Last week.” A common past-time phrase.",
+      "example": "গত সপ্তাহে আমরা জাদুঘরে গেছি।",
+      "exampleEnglish": "“Last week we went to the museum.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "গত সপ্তাহে আমরা জাদুঘরে গেছি।",
+      "romanization": "goto shoptah-e",
+      "nativeText": "Model use for \"গত সপ্তাহে আমরা জাদুঘরে গেছি।\": “Last week we went to the museum.”",
+      "pronunciation": "goto shoptah-e",
+      "exampleTarget": "গত সপ্তাহে আমরা জাদুঘরে গেছি।",
+      "exampleNative": "“Last week we went to the museum.”",
+      "korean": "গত সপ্তাহে আমরা জাদুঘরে গেছি।",
+      "english": "Model use for \"গত সপ্তাহে আমরা জাদুঘরে গেছি।\": “Last week we went to the museum.”",
+      "example": "গত সপ্তাহে আমরা জাদুঘরে গেছি।",
+      "exampleEnglish": "“Last week we went to the museum.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "গত সপ্তাহে",
+      "romanization": "goto shoptah-e",
+      "nativeText": "Usage focus for \"গত সপ্তাহে\": “Last week.” A common past-time phrase.",
+      "pronunciation": "goto shoptah-e",
+      "exampleTarget": "গত সপ্তাহে আমরা জাদুঘরে গেছি।",
+      "exampleNative": "Notice what the form is doing here: “Last week we went to the museum.”",
+      "korean": "গত সপ্তাহে",
+      "english": "Usage focus for \"গত সপ্তাহে\": “Last week.” A common past-time phrase.",
+      "example": "গত সপ্তাহে আমরা জাদুঘরে গেছি।",
+      "exampleEnglish": "Notice what the form is doing here: “Last week we went to the museum.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "গত সপ্তাহে",
+      "romanization": "goto shoptah-e",
+      "nativeText": "Contrast check for \"গত সপ্তাহে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "goto shoptah-e",
+      "exampleTarget": "গত সপ্তাহে আমরা জাদুঘরে গেছি।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Last week we went to the museum.”",
+      "korean": "গত সপ্তাহে",
+      "english": "Contrast check for \"গত সপ্তাহে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "গত সপ্তাহে আমরা জাদুঘরে গেছি।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Last week we went to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "গত সপ্তাহে",
+      "romanization": "goto shoptah-e",
+      "nativeText": "Recall \"গত সপ্তাহে\" from memory, then explain what would change if a nearby alternative replaced it in \"গত সপ্তাহে আমরা জাদুঘরে গেছি।\".",
+      "pronunciation": "goto shoptah-e",
+      "exampleTarget": "গত সপ্তাহে আমরা জাদুঘরে গেছি।",
+      "exampleNative": "Self-check against the model before moving on: “Last week we went to the museum.”",
+      "korean": "গত সপ্তাহে",
+      "english": "Recall \"গত সপ্তাহে\" from memory, then explain what would change if a nearby alternative replaced it in \"গত সপ্তাহে আমরা জাদুঘরে গেছি।\".",
+      "example": "গত সপ্তাহে আমরা জাদুঘরে গেছি।",
+      "exampleEnglish": "Self-check against the model before moving on: “Last week we went to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "গত সপ্তাহে",
+      "romanization": "goto shoptah-e",
+      "nativeText": "Repair \"গত সপ্তাহে\" inside \"গত সপ্তাহে আমরা জাদুঘরে গেছি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Last week.” A common past-time phrase.",
+      "pronunciation": "goto shoptah-e",
+      "exampleTarget": "গত সপ্তাহে আমরা জাদুঘরে গেছি।",
+      "exampleNative": "Use the model as the repair target: “Last week we went to the museum.”",
+      "korean": "গত সপ্তাহে",
+      "english": "Repair \"গত সপ্তাহে\" inside \"গত সপ্তাহে আমরা জাদুঘরে গেছি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Last week.” A common past-time phrase.",
+      "example": "গত সপ্তাহে আমরা জাদুঘরে গেছি।",
+      "exampleEnglish": "Use the model as the repair target: “Last week we went to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "গত সপ্তাহে",
+      "romanization": "goto shoptah-e",
+      "nativeText": "Transfer \"গত সপ্তাহে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"গত সপ্তাহে আমরা জাদুঘরে গেছি।\".",
+      "pronunciation": "goto shoptah-e",
+      "exampleTarget": "গত সপ্তাহে আমরা জাদুঘরে গেছি।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Last week we went to the museum.”",
+      "korean": "গত সপ্তাহে",
+      "english": "Transfer \"গত সপ্তাহে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"গত সপ্তাহে আমরা জাদুঘরে গেছি।\".",
+      "example": "গত সপ্তাহে আমরা জাদুঘরে গেছি।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Last week we went to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "গত সপ্তাহে",
+      "romanization": "goto shoptah-e",
+      "nativeText": "Find one word or phrase that naturally travels with \"গত সপ্তাহে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "goto shoptah-e",
+      "exampleTarget": "গত সপ্তাহে আমরা জাদুঘরে গেছি।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Last week we went to the museum.”",
+      "korean": "গত সপ্তাহে",
+      "english": "Find one word or phrase that naturally travels with \"গত সপ্তাহে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "গত সপ্তাহে আমরা জাদুঘরে গেছি।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Last week we went to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "গত সপ্তাহে",
+      "romanization": "goto shoptah-e",
+      "nativeText": "Listen for \"গত সপ্তাহে\" inside \"গত সপ্তাহে আমরা জাদুঘরে গেছি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "goto shoptah-e",
+      "exampleTarget": "গত সপ্তাহে আমরা জাদুঘরে গেছি।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Last week we went to the museum.”",
+      "korean": "গত সপ্তাহে",
+      "english": "Listen for \"গত সপ্তাহে\" inside \"গত সপ্তাহে আমরা জাদুঘরে গেছি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "গত সপ্তাহে আমরা জাদুঘরে গেছি।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Last week we went to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "গত সপ্তাহে",
+      "romanization": "goto shoptah-e",
+      "nativeText": "Write \"গত সপ্তাহে\" again without looking, then compare the exact written form against \"গত সপ্তাহে আমরা জাদুঘরে গেছি।\" before moving on.",
+      "pronunciation": "goto shoptah-e",
+      "exampleTarget": "গত সপ্তাহে আমরা জাদুঘরে গেছি।",
+      "exampleNative": "Use the written model as the final correctness check: “Last week we went to the museum.”",
+      "korean": "গত সপ্তাহে",
+      "english": "Write \"গত সপ্তাহে\" again without looking, then compare the exact written form against \"গত সপ্তাহে আমরা জাদুঘরে গেছি।\" before moving on.",
+      "example": "গত সপ্তাহে আমরা জাদুঘরে গেছি।",
+      "exampleEnglish": "Use the written model as the final correctness check: “Last week we went to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "গত সপ্তাহে",
+      "romanization": "goto shoptah-e",
+      "nativeText": "Check whether \"গত সপ্তাহে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Last week we went to the museum.”",
+      "pronunciation": "goto shoptah-e",
+      "exampleTarget": "গত সপ্তাহে আমরা জাদুঘরে গেছি।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Last week we went to the museum.”",
+      "korean": "গত সপ্তাহে",
+      "english": "Check whether \"গত সপ্তাহে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Last week we went to the museum.”",
+      "example": "গত সপ্তাহে আমরা জাদুঘরে গেছি।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Last week we went to the museum.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "গতকাল কী করলেন?",
+      "romanization": "gotokal ki korlen",
+      "nativeText": "“What did you do yesterday?” Respectful question form.",
+      "pronunciation": "gotokal ki korlen",
+      "exampleTarget": "গতকাল কী করলেন?",
+      "exampleNative": "“What did you do yesterday?”",
+      "korean": "গতকাল কী করলেন?",
+      "english": "“What did you do yesterday?” Respectful question form.",
+      "example": "গতকাল কী করলেন?",
+      "exampleEnglish": "“What did you do yesterday?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "গতকাল কী করলেন?",
+      "romanization": "gotokal ki korlen",
+      "nativeText": "Model use for \"গতকাল কী করলেন?\": “What did you do yesterday?” Respectful question form.",
+      "pronunciation": "gotokal ki korlen",
+      "exampleTarget": "গতকাল কী করলেন?",
+      "exampleNative": "“What did you do yesterday?”",
+      "korean": "গতকাল কী করলেন?",
+      "english": "Model use for \"গতকাল কী করলেন?\": “What did you do yesterday?” Respectful question form.",
+      "example": "গতকাল কী করলেন?",
+      "exampleEnglish": "“What did you do yesterday?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "গতকাল কী করলেন?",
+      "romanization": "gotokal ki korlen",
+      "nativeText": "Usage focus for \"গতকাল কী করলেন?\": “What did you do yesterday?” Respectful question form.",
+      "pronunciation": "gotokal ki korlen",
+      "exampleTarget": "গতকাল কী করলেন?",
+      "exampleNative": "Notice what the form is doing here: “What did you do yesterday?”",
+      "korean": "গতকাল কী করলেন?",
+      "english": "Usage focus for \"গতকাল কী করলেন?\": “What did you do yesterday?” Respectful question form.",
+      "example": "গতকাল কী করলেন?",
+      "exampleEnglish": "Notice what the form is doing here: “What did you do yesterday?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "গতকাল কী করলেন?",
+      "romanization": "gotokal ki korlen",
+      "nativeText": "Contrast check for \"গতকাল কী করলেন?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "gotokal ki korlen",
+      "exampleTarget": "গতকাল কী করলেন?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What did you do yesterday?”",
+      "korean": "গতকাল কী করলেন?",
+      "english": "Contrast check for \"গতকাল কী করলেন?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "গতকাল কী করলেন?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What did you do yesterday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "গতকাল কী করলেন?",
+      "romanization": "gotokal ki korlen",
+      "nativeText": "Recall \"গতকাল কী করলেন?\" from memory, then explain what would change if a nearby alternative replaced it in \"গতকাল কী করলেন?\".",
+      "pronunciation": "gotokal ki korlen",
+      "exampleTarget": "গতকাল কী করলেন?",
+      "exampleNative": "Self-check against the model before moving on: “What did you do yesterday?”",
+      "korean": "গতকাল কী করলেন?",
+      "english": "Recall \"গতকাল কী করলেন?\" from memory, then explain what would change if a nearby alternative replaced it in \"গতকাল কী করলেন?\".",
+      "example": "গতকাল কী করলেন?",
+      "exampleEnglish": "Self-check against the model before moving on: “What did you do yesterday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "গতকাল কী করলেন?",
+      "romanization": "gotokal ki korlen",
+      "nativeText": "Repair \"গতকাল কী করলেন?\" inside \"গতকাল কী করলেন?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “What did you do yesterday?” Respectful question form.",
+      "pronunciation": "gotokal ki korlen",
+      "exampleTarget": "গতকাল কী করলেন?",
+      "exampleNative": "Use the model as the repair target: “What did you do yesterday?”",
+      "korean": "গতকাল কী করলেন?",
+      "english": "Repair \"গতকাল কী করলেন?\" inside \"গতকাল কী করলেন?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “What did you do yesterday?” Respectful question form.",
+      "example": "গতকাল কী করলেন?",
+      "exampleEnglish": "Use the model as the repair target: “What did you do yesterday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "গতকাল কী করলেন?",
+      "romanization": "gotokal ki korlen",
+      "nativeText": "Transfer \"গতকাল কী করলেন?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"গতকাল কী করলেন?\".",
+      "pronunciation": "gotokal ki korlen",
+      "exampleTarget": "গতকাল কী করলেন?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “What did you do yesterday?”",
+      "korean": "গতকাল কী করলেন?",
+      "english": "Transfer \"গতকাল কী করলেন?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"গতকাল কী করলেন?\".",
+      "example": "গতকাল কী করলেন?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “What did you do yesterday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "গতকাল কী করলেন?",
+      "romanization": "gotokal ki korlen",
+      "nativeText": "Find one word or phrase that naturally travels with \"গতকাল কী করলেন?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "gotokal ki korlen",
+      "exampleTarget": "গতকাল কী করলেন?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “What did you do yesterday?”",
+      "korean": "গতকাল কী করলেন?",
+      "english": "Find one word or phrase that naturally travels with \"গতকাল কী করলেন?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "গতকাল কী করলেন?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “What did you do yesterday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "গতকাল কী করলেন?",
+      "romanization": "gotokal ki korlen",
+      "nativeText": "Listen for \"গতকাল কী করলেন?\" inside \"গতকাল কী করলেন?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "gotokal ki korlen",
+      "exampleTarget": "গতকাল কী করলেন?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What did you do yesterday?”",
+      "korean": "গতকাল কী করলেন?",
+      "english": "Listen for \"গতকাল কী করলেন?\" inside \"গতকাল কী করলেন?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "গতকাল কী করলেন?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What did you do yesterday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "গতকাল কী করলেন?",
+      "romanization": "gotokal ki korlen",
+      "nativeText": "Write \"গতকাল কী করলেন?\" again without looking, then compare the exact written form against \"গতকাল কী করলেন?\" before moving on.",
+      "pronunciation": "gotokal ki korlen",
+      "exampleTarget": "গতকাল কী করলেন?",
+      "exampleNative": "Use the written model as the final correctness check: “What did you do yesterday?”",
+      "korean": "গতকাল কী করলেন?",
+      "english": "Write \"গতকাল কী করলেন?\" again without looking, then compare the exact written form against \"গতকাল কী করলেন?\" before moving on.",
+      "example": "গতকাল কী করলেন?",
+      "exampleEnglish": "Use the written model as the final correctness check: “What did you do yesterday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "গতকাল কী করলেন?",
+      "romanization": "gotokal ki korlen",
+      "nativeText": "Check whether \"গতকাল কী করলেন?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What did you do yesterday?”",
+      "pronunciation": "gotokal ki korlen",
+      "exampleTarget": "গতকাল কী করলেন?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “What did you do yesterday?”",
+      "korean": "গতকাল কী করলেন?",
+      "english": "Check whether \"গতকাল কী করলেন?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What did you do yesterday?”",
+      "example": "গতকাল কী করলেন?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “What did you do yesterday?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "ইতিমধ্যে",
+      "romanization": "itimoddhe",
+      "nativeText": "“Already.” Useful with completed actions.",
+      "pronunciation": "itimoddhe",
+      "exampleTarget": "আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।",
+      "exampleNative": "“I have already eaten lunch.”",
+      "korean": "ইতিমধ্যে",
+      "english": "“Already.” Useful with completed actions.",
+      "example": "আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।",
+      "exampleEnglish": "“I have already eaten lunch.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।",
+      "romanization": "itimoddhe",
+      "nativeText": "Model use for \"আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।\": “I have already eaten lunch.”",
+      "pronunciation": "itimoddhe",
+      "exampleTarget": "আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।",
+      "exampleNative": "“I have already eaten lunch.”",
+      "korean": "আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।",
+      "english": "Model use for \"আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।\": “I have already eaten lunch.”",
+      "example": "আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।",
+      "exampleEnglish": "“I have already eaten lunch.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "ইতিমধ্যে",
+      "romanization": "itimoddhe",
+      "nativeText": "Usage focus for \"ইতিমধ্যে\": “Already.” Useful with completed actions.",
+      "pronunciation": "itimoddhe",
+      "exampleTarget": "আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।",
+      "exampleNative": "Notice what the form is doing here: “I have already eaten lunch.”",
+      "korean": "ইতিমধ্যে",
+      "english": "Usage focus for \"ইতিমধ্যে\": “Already.” Useful with completed actions.",
+      "example": "আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।",
+      "exampleEnglish": "Notice what the form is doing here: “I have already eaten lunch.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "ইতিমধ্যে",
+      "romanization": "itimoddhe",
+      "nativeText": "Contrast check for \"ইতিমধ্যে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "itimoddhe",
+      "exampleTarget": "আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have already eaten lunch.”",
+      "korean": "ইতিমধ্যে",
+      "english": "Contrast check for \"ইতিমধ্যে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have already eaten lunch.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "ইতিমধ্যে",
+      "romanization": "itimoddhe",
+      "nativeText": "Recall \"ইতিমধ্যে\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।\".",
+      "pronunciation": "itimoddhe",
+      "exampleTarget": "আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।",
+      "exampleNative": "Self-check against the model before moving on: “I have already eaten lunch.”",
+      "korean": "ইতিমধ্যে",
+      "english": "Recall \"ইতিমধ্যে\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।\".",
+      "example": "আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।",
+      "exampleEnglish": "Self-check against the model before moving on: “I have already eaten lunch.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "ইতিমধ্যে",
+      "romanization": "itimoddhe",
+      "nativeText": "Repair \"ইতিমধ্যে\" inside \"আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Already.” Useful with completed actions.",
+      "pronunciation": "itimoddhe",
+      "exampleTarget": "আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।",
+      "exampleNative": "Use the model as the repair target: “I have already eaten lunch.”",
+      "korean": "ইতিমধ্যে",
+      "english": "Repair \"ইতিমধ্যে\" inside \"আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Already.” Useful with completed actions.",
+      "example": "আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।",
+      "exampleEnglish": "Use the model as the repair target: “I have already eaten lunch.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "ইতিমধ্যে",
+      "romanization": "itimoddhe",
+      "nativeText": "Transfer \"ইতিমধ্যে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।\".",
+      "pronunciation": "itimoddhe",
+      "exampleTarget": "আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have already eaten lunch.”",
+      "korean": "ইতিমধ্যে",
+      "english": "Transfer \"ইতিমধ্যে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।\".",
+      "example": "আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have already eaten lunch.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "ইতিমধ্যে",
+      "romanization": "itimoddhe",
+      "nativeText": "Find one word or phrase that naturally travels with \"ইতিমধ্যে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "itimoddhe",
+      "exampleTarget": "আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I have already eaten lunch.”",
+      "korean": "ইতিমধ্যে",
+      "english": "Find one word or phrase that naturally travels with \"ইতিমধ্যে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I have already eaten lunch.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "ইতিমধ্যে",
+      "romanization": "itimoddhe",
+      "nativeText": "Listen for \"ইতিমধ্যে\" inside \"আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "itimoddhe",
+      "exampleTarget": "আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have already eaten lunch.”",
+      "korean": "ইতিমধ্যে",
+      "english": "Listen for \"ইতিমধ্যে\" inside \"আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have already eaten lunch.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "ইতিমধ্যে",
+      "romanization": "itimoddhe",
+      "nativeText": "Write \"ইতিমধ্যে\" again without looking, then compare the exact written form against \"আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।\" before moving on.",
+      "pronunciation": "itimoddhe",
+      "exampleTarget": "আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।",
+      "exampleNative": "Use the written model as the final correctness check: “I have already eaten lunch.”",
+      "korean": "ইতিমধ্যে",
+      "english": "Write \"ইতিমধ্যে\" again without looking, then compare the exact written form against \"আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।\" before moving on.",
+      "example": "আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I have already eaten lunch.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit12pastactivities-vocabulary-1",
+        "bn-level1unit12pastactivities-vocabulary-2",
+        "bn-level1unit12pastactivities-grammar-1",
+        "bn-level1unit12pastactivities-grammar-2",
+        "bn-level1unit12pastactivities-reading",
+        "bn-level1unit12pastactivities-listening",
+        "bn-level1unit12pastactivities-writing",
+        "bn-level1unit12pastactivities-task"
+      ],
+      "targetText": "ইতিমধ্যে",
+      "romanization": "itimoddhe",
+      "nativeText": "Check whether \"ইতিমধ্যে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have already eaten lunch.”",
+      "pronunciation": "itimoddhe",
+      "exampleTarget": "আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I have already eaten lunch.”",
+      "korean": "ইতিমধ্যে",
+      "english": "Check whether \"ইতিমধ্যে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have already eaten lunch.”",
+      "example": "আমি ইতিমধ্যে দুপুরের খাবার খেয়েছি।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I have already eaten lunch.”"
+    }
+  ],
+  "targetLang": "bn",
+  "nativeLang": "en",
+  "track": "textbook"
+};

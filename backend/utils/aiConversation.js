@@ -266,6 +266,14 @@ function normalizeLatinText(text) {
     .trim();
 }
 
+function normalizeStudyText(text) {
+  return String(text || '')
+    .normalize('NFKC')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .toLowerCase();
+}
+
 function detectLatinLanguage(text) {
   const normalized = normalizeLatinText(text);
   if (!normalized) return '';
@@ -817,6 +825,8 @@ function buildClassLessonDisplayParts(transcript = '', targetLanguage = 'ko', na
   const title = String(action.activityTitle || action.activitySection || 'this item').trim();
   const itemType = String(action.itemType || '').trim().toLowerCase();
   const verb = String(action.action || '').trim().toLowerCase();
+  const hasDistinctExampleTarget = !!exampleTarget
+    && normalizeStudyText(exampleTarget) !== normalizeStudyText(target);
 
   // Three actions, three shapes. Falls through to "teach" for unknown verbs so
   // older / unrecognized callers still get a sensible turn.
@@ -901,7 +911,7 @@ function buildClassLessonDisplayParts(transcript = '', targetLanguage = 'ko', na
     const targetPart = pushTarget(target);
     pushPronunciationGuides(targetPart?.speaker);
     pushNative(native, { speaker: targetPart?.speaker });
-    if (exampleTarget || exampleNative) {
+    if (hasDistinctExampleTarget) {
       pushMeta(phrases.exampleHeader, 'example');
       const exampleTargetPart = pushTarget(exampleTarget, { section: 'example' });
       pushNative(exampleNative, { speaker: exampleTargetPart?.speaker, section: 'example' });
@@ -917,7 +927,7 @@ function buildClassLessonDisplayParts(transcript = '', targetLanguage = 'ko', na
     pushPronunciationGuides(targetPart?.speaker);
   }
   pushNative(native, { speaker: targetPart?.speaker });
-  if (exampleTarget || exampleNative) {
+  if (hasDistinctExampleTarget) {
     pushMeta(phrases.exampleHeader, 'example');
     const exampleTargetPart = pushTarget(exampleTarget, { section: 'example' });
     pushNative(exampleNative, { speaker: exampleTargetPart?.speaker, section: 'example' });
@@ -1080,10 +1090,52 @@ async function buildClassLessonFallbackResult({
 } = {}) {
   const safeClassAction = sanitizeClassAction(classAction);
   const phrases = await getLocalizedFallbackPhrases(nativeLanguage);
-  const displayParts = buildClassLessonDisplayParts(transcript, targetLanguage, nativeLanguage, safeClassAction, phrases);
-  const reply = displayParts.length
+  let displayParts = buildClassLessonDisplayParts(transcript, targetLanguage, nativeLanguage, safeClassAction, phrases);
+  let reply = displayParts.length
     ? displayPartsToReply(displayParts)
     : buildClassLessonActionFallback(transcript, targetLanguage, nativeLanguage, lessonBrief, safeClassAction, phrases);
+
+  if (!reply && lessonBrief?.items?.length) {
+    const selectedIndex = Number(memory?.lessonProgress?.itemIndex);
+    const currentItem = lessonBrief.items.find((item) => Number(item?.globalIndex) === selectedIndex)
+      || lessonBrief.items[0];
+    let localizedNative = currentItem?.native || '';
+    let localizedExampleNative = currentItem?.exampleNative || '';
+
+    if (currentItem && normalizeLanguageCode(nativeLanguage) !== 'en') {
+      const sourceTexts = [localizedNative, localizedExampleNative].filter(Boolean);
+      if (sourceTexts.length) {
+        try {
+          const translated = await batchTranslateRaw(sourceTexts, 'en', nativeLanguage);
+          let cursor = 0;
+          if (localizedNative) {
+            localizedNative = translated[cursor]?.failed ? '' : (translated[cursor]?.text || '');
+            cursor += 1;
+          }
+          if (localizedExampleNative) {
+            localizedExampleNative = translated[cursor]?.failed ? '' : (translated[cursor]?.text || '');
+          }
+        } catch (_) {
+          localizedNative = '';
+          localizedExampleNative = '';
+        }
+      }
+    }
+
+    displayParts = buildClassLessonDisplayParts('', targetLanguage, nativeLanguage, {
+      action: 'explain_selected_item',
+      target: currentItem?.target || '',
+      native: localizedNative,
+      exampleTarget: currentItem?.exampleTarget || '',
+      exampleNative: localizedExampleNative,
+      romanization: currentItem?.romanization || '',
+      officialPronunciation: currentItem?.officialPronunciation || '',
+      learnerPronunciation: currentItem?.learnerPronunciation || '',
+      itemType: currentItem?.type || '',
+      activityTitle: lessonBrief?.activeActivity?.title || lessonBrief?.activeActivity?.section || lessonBrief?.title || '',
+    }, phrases);
+    reply = displayPartsToReply(displayParts);
+  }
 
   if (!reply) return null;
 
@@ -1672,8 +1724,18 @@ async function callAIConversation({
     : learnerRequestedNativeFirstOrder(transcript, safeTargetLanguage, safeNativeLanguage);
   const requestedPhrase = isClassLessonAction ? '' : extractRequestedPhrase(transcript);
   const model = process.env.DEEPSEEK_CONVERSATION_MODEL || process.env.DEEPSEEK_MODEL || 'deepseek-v4-flash';
+  const isClassLessonTurn = !!lessonBrief;
   const safeCustomRoleplay = sanitizeCustomRoleplay(customRoleplay || memory?.customRoleplay);
-  const roleState = safeCustomRoleplay
+  const roleState = isClassLessonTurn
+    ? {
+      scenarioKey: 'classLesson',
+      learnerRoleKey: 'learner',
+      partnerRoleKey: 'tutor',
+      learnerRole: 'learner',
+      partnerRole: 'tutor',
+      roleSwitchRequested: false,
+    }
+    : safeCustomRoleplay
     ? {
       scenarioKey: 'custom',
       learnerRoleKey: 'customLearner',
@@ -1698,16 +1760,25 @@ async function callAIConversation({
   const teachingDirectives = teachingDirectivesFor(lessonBrief);
 
   const systemPrompt = [
-    `You are the speaking conversation partner for ${productContext}.`,
+    isClassLessonTurn
+      ? `You are the tutor for ${productContext} class lessons.`
+      : `You are the speaking conversation partner for ${productContext}.`,
     ...teachingDirectives,
-    'Run a live language-learning roleplay, not a fixed database exercise.',
-    'Act like a flexible conversation partner or friend, not a pronunciation drill coach.',
-    'Stay inside the named scenario and follow the assigned learnerRole and conversationPartnerRole.',
-    'For custom roleplays, use customRoleplay.title, customRoleplay.situation, and customRoleplay.goal as the scenario source of truth.',
-    'You are always the conversationPartnerRole. The learner is always learnerRole.',
-    'If the learner asks to switch to a valid role in the scenario, accept the role switch, update memory.roleState, and continue as the new conversationPartnerRole.',
-    'Do not say "repeat after me", do not ask the learner to repeat a phrase, and do not loop the same prompt.',
-    'Each reply must advance the discussion with one natural, short response or question.',
+    ...(isClassLessonTurn ? [
+      'Teach from lessonBrief and the learner\'s current progress. Answer learner questions as a tutor, not as a roleplay character.',
+      'Stay inside the active lesson unless the learner asks a short side question; then answer briefly and return to the lesson.',
+      'Do not invent cafe, hotel, travel, or other roleplay framing for class lessons unless the authored lesson itself contains that activity.',
+      'Each reply should move the lesson forward with one clear explanation, check, or next step.',
+    ] : [
+      'Run a live language-learning roleplay, not a fixed database exercise.',
+      'Act like a flexible conversation partner or friend, not a pronunciation drill coach.',
+      'Stay inside the named scenario and follow the assigned learnerRole and conversationPartnerRole.',
+      'For custom roleplays, use customRoleplay.title, customRoleplay.situation, and customRoleplay.goal as the scenario source of truth.',
+      'You are always the conversationPartnerRole. The learner is always learnerRole.',
+      'If the learner asks to switch to a valid role in the scenario, accept the role switch, update memory.roleState, and continue as the new conversationPartnerRole.',
+      'Do not say "repeat after me", do not ask the learner to repeat a phrase, and do not loop the same prompt.',
+      'Each reply must advance the discussion with one natural, short response or question.',
+    ]),
     'Remember concrete facts from conversationMemory and conversationSummary, such as orders, sizes, destinations, names, prices, and waiting times.',
     'If the learner asks what they ordered or what was already decided, answer from conversationMemory and conversationSummary.',
     'The selected language pair is nativeLanguage and targetLanguage only. If the learner uses a different language, politely ask them to continue in the selected pair and do not answer the off-pair content.',
@@ -1834,7 +1905,7 @@ async function callAIConversation({
   const promptEstimate = messages.reduce((sum, message) => sum + estimateTextTokens(message.content), 0);
   const content = data.choices?.[0]?.message?.content || '{}';
   const parsed = parseAIJsonContent(content);
-  const classActionPhrases = isClassLessonAction
+  const classActionPhrases = isClassLessonAction || isClassLessonTurn
     ? await getLocalizedFallbackPhrases(safeNativeLanguage)
     : null;
   const deterministicDisplayParts = isClassLessonAction
@@ -1864,11 +1935,51 @@ async function callAIConversation({
   const displayParts = deterministicDisplayParts.length ? deterministicDisplayParts : parsedDisplayParts;
 
   const sanitizedReply = sanitizeAIReply(parsed.reply);
+  const currentBriefItem = lessonBrief?.items?.find((item) => (
+    Number(item?.globalIndex) === Number(memory?.lessonProgress?.itemIndex)
+  )) || lessonBrief?.items?.[0] || null;
+  let localizedFallbackNative = currentBriefItem?.native || '';
+  let localizedFallbackExampleNative = currentBriefItem?.exampleNative || '';
+  if (isClassLessonTurn && currentBriefItem && safeNativeLanguage !== 'en') {
+    const sourceTexts = [localizedFallbackNative, localizedFallbackExampleNative].filter(Boolean);
+    if (sourceTexts.length) {
+      try {
+        const translated = await batchTranslateRaw(sourceTexts, 'en', safeNativeLanguage);
+        let cursor = 0;
+        if (localizedFallbackNative) {
+          localizedFallbackNative = translated[cursor]?.failed ? '' : (translated[cursor]?.text || '');
+          cursor += 1;
+        }
+        if (localizedFallbackExampleNative) {
+          localizedFallbackExampleNative = translated[cursor]?.failed ? '' : (translated[cursor]?.text || '');
+        }
+      } catch (_) {
+        localizedFallbackNative = '';
+        localizedFallbackExampleNative = '';
+      }
+    }
+  }
+  const freeTurnFallbackParts = isClassLessonTurn && currentBriefItem
+    ? buildClassLessonDisplayParts('', safeTargetLanguage, safeNativeLanguage, {
+      action: 'explain_selected_item',
+      target: currentBriefItem.target,
+      native: localizedFallbackNative,
+      exampleTarget: currentBriefItem.exampleTarget,
+      exampleNative: localizedFallbackExampleNative,
+      romanization: currentBriefItem.romanization,
+      officialPronunciation: currentBriefItem.officialPronunciation,
+      learnerPronunciation: currentBriefItem.learnerPronunciation,
+      itemType: currentBriefItem.type,
+      activityTitle: lessonBrief?.activeActivity?.title || lessonBrief?.activeActivity?.section || lessonBrief?.title || '',
+    }, classActionPhrases)
+    : [];
   const visibleReply = displayParts.length && isClassLessonAction
     ? displayPartsToReply(displayParts)
     : (
       sanitizedReply === FORMATTING_FALLBACK_REPLY && isClassLessonAction
         ? buildClassLessonActionFallback(transcript, safeTargetLanguage, safeNativeLanguage, lessonBrief, safeClassAction, classActionPhrases) || sanitizedReply
+        : sanitizedReply === FORMATTING_FALLBACK_REPLY && freeTurnFallbackParts.length
+          ? displayPartsToReply(freeTurnFallbackParts)
         : sanitizedReply
     );
   const reply = enforceTextLanguagePair(
@@ -1880,6 +1991,8 @@ async function callAIConversation({
   const parsedLanguage = normalizeLanguageCode(String(parsed.expectedLanguage || '').slice(0, 20));
   const speechParts = displayParts.length && isClassLessonAction
     ? speechPartsFromDisplayParts(displayParts)
+    : sanitizedReply === FORMATTING_FALLBACK_REPLY && freeTurnFallbackParts.length
+      ? speechPartsFromDisplayParts(freeTurnFallbackParts)
     : repairSpeechPartsForPair(
       Array.isArray(parsed.speechParts) ? parsed.speechParts : [],
       reply,

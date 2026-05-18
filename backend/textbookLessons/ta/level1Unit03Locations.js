@@ -1,124 +1,2839 @@
-// Level 1 Unit 3 — Locations & Directions (Tamil)
-// Functions: asking and giving directions in Chennai, location words, the
-// eight-case system surface (locative -il, dative -ukku, ablative -iliruntu),
-// pointing landmarks at Anna University, IIT Madras, Marina Beach.
-
-const createContentItem = (target, romanization, note, type = 'word', example = '', exampleNote = '', breakdown = null, activityIds = []) => ({
-  type, activityIds, targetText: target, romanization, nativeText: note, pronunciation: romanization,
-  exampleTarget: example || target, exampleNative: exampleNote || note,
-  korean: target, english: note, example: example || target, exampleEnglish: exampleNote || note,
-  ...(breakdown ? { breakdown: breakdown.map(b => ({ target: b.target, native: b.note, korean: b.target, english: b.note })) } : {}),
-});
-
-const ACT = {
-  orientation: 'ta-l1u3-orientation',
-  pronunciation: 'ta-l1u3-pronunciation',
-  vocabularyPlaces: 'ta-l1u3-vocab-places',
-  vocabularyPositions: 'ta-l1u3-vocab-positions',
-  grammarLocativeDative: 'ta-l1u3-grammar-loc-dat',
-  grammarAblative: 'ta-l1u3-grammar-ablative',
-  grammarDirections: 'ta-l1u3-grammar-directions',
-  reading: 'ta-l1u3-reading',
-  listening: 'ta-l1u3-listening',
-  writing: 'ta-l1u3-writing',
-  culture: 'ta-l1u3-culture',
-  task: 'ta-l1u3-task',
-};
-
-const activities = [
-  { id: ACT.orientation, section: 'Orientation', title: 'What you will be able to do', goals: ['Ask "where is X?" in Chennai using எங்கே? and answer with location + locative.', 'Give simple directions using left/right/straight + go-verb in imperative.', 'Distinguish three of the eight Tamil cases: locative -il (at), dative -ukku (to), ablative -iliruntu (from).'], task: 'Picture yourself lost near Anna University looking for Marina Beach — by the end of this lesson you can ask, understand, and give directions in Tamil.' },
-  { id: ACT.pronunciation, section: 'Pronunciation', title: 'Sound traps in directions', goals: ['Distinguish locative -இல் -il (alveolar) from -உள் -uḷ (retroflex) — different morphemes, different meanings.', 'Pronounce வலது valatu (right) and இடது iṭatu (left) with crisp final -tu, not -du.', 'Geminate kk in -ukku dative; never voice to -ugu.'], task: 'Drill the case-suffix pairs and direction words until automatic.' },
-  { id: ACT.vocabularyPlaces, section: 'Vocabulary I', title: 'Places in Chennai', goals: ['Memorize 15+ public places: vīṭu (house), kaṭai (shop), maruttuvamaṉai (hospital), pēruntu nilaiyam (bus station), railvē nilaiyam (railway station).', 'Recognize Chennai landmarks: Marīṉā kaṭaṟkarai (Marina Beach), Aṇṇā nakar (Anna Nagar), T. Nakar.'], task: 'Map five places you know in your city to their Tamil equivalents.' },
-  { id: ACT.vocabularyPositions, section: 'Vocabulary II', title: 'Position words', goals: ['Memorize 10 position words: mēlē (above), kīḻē (below), uḷḷē (inside), veḷiyē (outside), pakkam (beside), eti (opposite), muṉṉālē (in front), piṉṉālē (behind), maṉaiyilē (in the corner), naṭuvilē (in the middle).'], task: 'Describe the position of three classroom objects using these words.' },
-  { id: ACT.grammarLocativeDative, section: 'Grammar I', title: 'Locative -il and Dative -ukku', goals: ['Use locative -இல் (-il) for "at, in, on" — STATIC location.', 'Use dative -உக்கு (-ukku) for "to, for" — DIRECTIONAL goal. நான் கடைக்கு போகிறேன் = "I go TO the shop"; நான் கடையில் இருக்கிறேன் = "I am AT the shop".'], task: 'Construct three -il sentences and three -ukku sentences distinguishing being-there from going-there.' },
-  { id: ACT.grammarAblative, section: 'Grammar II', title: 'Ablative -iliruntu', goals: ['Form ablative ("from") by stacking locative + iruntu: -இல் + இருந்து = -இலிருந்து -iliruntu. நான் சென்னையிலிருந்து வருகிறேன் "I come from Chennai".', 'Recognize the pattern as agglutinative suffix-stacking — the heart of Tamil grammar.'], task: 'Form ablative for five place names and use each in a sentence.' },
-  { id: ACT.grammarDirections, section: 'Grammar III', title: 'Direction verbs and imperatives', goals: ['Use polite imperative -உங்கள் -uṅkaḷ on the verb stem: pō → pōṅkaḷ (please go), tirumpu → tirumpuṅkaḷ (please turn).', 'Form direction phrases: vala-pakkam (rightward), iṭa-pakkam (leftward), nēr-āka (straight).'], task: 'Give a three-step direction to a place in your neighborhood using polite imperative.' },
-  { id: ACT.reading, section: 'Reading and Speaking', title: 'Directions from Anna University to Marina Beach', goals: ['Read aloud a 4-sentence direction-giving paragraph.', 'Answer comprehension questions about which way to turn at which landmark.'], task: 'Read the paragraph and trace the route on an imagined map.' },
-  { id: ACT.listening, section: 'Listening and Speaking', title: 'Asking a stranger', goals: ['Follow a polite stranger-direction-asking exchange.', 'Reproduce with your own destination.'], task: 'Read along and perform with substitutions.' },
-  { id: ACT.writing, section: 'Writing', title: 'Write directions home', goals: ['Write 4-5 sentences giving directions from Anna U to your hostel.', 'Use locative, dative, ablative, and polite imperative at least once each.'], task: 'Compose and read aloud.' },
-  { id: ACT.culture, section: 'Culture Note', title: 'Chennai geography and navigation', goals: ['Know the famous Chennai districts: T. Nagar (shopping), Mylapore (temple/tradition), Anna Nagar (residential), Adyar (Anna U area), Marina Beach (the iconic 13-km beach).', 'Understand that Chennai uses hub-and-landmark navigation more than street numbers — "near Loyola College", "opposite Bessy" is normal.'], task: 'Pick three Chennai landmarks; describe how you would direct a visitor using them.' },
-  { id: ACT.task, section: 'Task', title: 'Lost in Chennai', goals: ['Combine all skills in a single direction-asking-and-following scene.'], task: 'Roleplay being lost near Marina Beach with the AI tutor as a helpful stranger.' },
-];
-
-const lesson = {
-  title: 'Level 1 · Unit 3: எங்கே? — Locations and Directions',
-  category: 'locations', difficulty: 'beginner', targetLang: 'ta', nativeLang: 'en',
-  track: 'textbook', lessonType: 'thematic', activities,
-  expressionPractice: [
-    { id: 'asking-where', label: 'Asking where', goal: 'Use எங்கே? + place-noun to ask location.' },
-    { id: 'giving-direction', label: 'Giving direction', goal: 'Combine direction words + polite imperative for 2-3 step instructions.' },
-    { id: 'three-cases', label: 'Three-case practice', goal: 'Pick locative vs dative vs ablative based on at/to/from semantics.' },
-    { id: 'chennai-landmarks', label: 'Chennai landmarks', goal: 'Reference Marina Beach, Anna Nagar, T. Nagar, IIT Madras correctly.' },
+module.exports = {
+  "title": "Level 1 · Unit 3: எங்கே? — Locations and Directions",
+  "category": "locations",
+  "difficulty": "beginner",
+  "targetLang": "ta",
+  "nativeLang": "en",
+  "track": "textbook",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ta-level1unit03locations-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Ask \"where is X?\" in Chennai using எங்கே? and answer with location + locative."
+      ],
+      "task": "Roleplay being lost near Marina Beach with the AI tutor as a helpful stranger."
+    },
+    {
+      "id": "ta-level1unit03locations-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ta-level1unit03locations-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 3: எங்கே? — Locations and Directions with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ta-level1unit03locations-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 3: எங்கே? — Locations and Directions sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ta-level1unit03locations-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Ask \"where is X?\" in Chennai using எங்கே? and answer with location + locative."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ta-level1unit03locations-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 3: எங்கே? — Locations and Directions with one nearby Tamil form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ta-level1unit03locations-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ta-level1unit03locations-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ta-level1unit03locations-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ta-level1unit03locations-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ta-level1unit03locations-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Roleplay being lost near Marina Beach with the AI tutor as a helpful stranger."
+      ],
+      "task": "Roleplay being lost near Marina Beach with the AI tutor as a helpful stranger."
+    }
   ],
-  relatedPools: ['topic-locations', 'topic-city'],
-  content: [
-    createContentItem('இடம் & திசை', 'iṭam & ticai', 'By the end of this lesson you can navigate Chennai in Tamil — ask "where is X?", give and follow directions, and distinguish "at" / "to" / "from" using the right case suffix.', 'word', 'Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)', 'These case suffixes appear in every later unit — this lesson plants them deep.', null, [ACT.orientation]),
-    createContentItem('சூழல்', 'cūḻal', 'You leave Anna University after class and want to reach Marina Beach. You ask a kindly Chennai uncle for directions. Cover all three cases in his answer.', 'word', 'மாமா: "இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்."', 'Standard Chennai-uncle direction style: location ablative + go-verb + turn-direction + landmark.', null, [ACT.orientation]),
-
-    // Pronunciation
-    createContentItem('-இல் vs -உள்', '-il vs -uḷ', 'Two locative-like suffixes with DIFFERENT roles. -இல் (-il, alveolar l) = "at/in" — the standard locative. -உள் (-uḷ, retroflex ḷ) = "inside, within" — more emphatic enclosure. Confusing them is a Tamil-learner mistake.', 'word', 'வீட்டில் (in/at the house) vs வீட்டுள்ளே (inside the house, intensified)', 'Mixing the two is a fingerprint of a learner — natives produce them automatically.', null, [ACT.pronunciation]),
-    createContentItem('-உக்கு dative', '-ukku dative', 'Dative case suffix -உக்கு (-ukku). Geminate kk is voiceless because doubled. Marks goal/direction/recipient.', 'word', 'கடைக்கு போகிறேன். kaṭaikku pōkiṟēṉ. "I go to the shop."', 'Voicing the kk to /gg/ is a non-native error; keep it crisp /kk/.', null, [ACT.pronunciation]),
-    createContentItem('வலது / இடது', 'valatu / iṭatu', 'Right / left. Final -tu (dental t, voiceless because adjacent to vowel and word-final). The cluster ṭa in iṭatu is retroflex.', 'word', 'வலது பக்கம் திரும்புங்கள். valatu pakkam tirumpuṅkaḷ. "Please turn right."', 'pakkam = side; valatu/iṭatu pakkam = right/left side.', null, [ACT.pronunciation]),
-
-    // Vocab I
-    createContentItem('வீடு', 'vīṭu', 'House. Retroflex ṭ + final -u. Locative form: வீட்டில் vīṭṭil (with euphonic gemination).', 'word', 'என் வீடு அண்ணா நகர். eṉ vīṭu Aṇṇā Nakar. "My house is in Anna Nagar."', 'Anna Nagar is a major residential Chennai neighborhood; named after the same Annadurai.', null, [ACT.vocabularyPlaces]),
-    createContentItem('கடை', 'kaṭai', 'Shop / store. Retroflex ṭ. Common compound: மளிகைக் கடை maḷikai-k kaṭai = grocery shop.', 'word', 'நான் கடைக்கு போகிறேன். nāṉ kaṭaikku pōkiṟēṉ. "I am going to the shop."', 'Dative -kku marks the goal of motion; kaṭai + kku = kaṭai-kku.', null, [ACT.vocabularyPlaces]),
-    createContentItem('மருத்துவமனை', 'maruttuvamaṉai', 'Hospital. Compound: maruttuvam (medicine) + maṉai (place/house). Centhamizh-style coinage; in casual speech, "hospital" (English) is also common.', 'word', 'அவரை மருத்துவமனைக்கு கூட்டிச் செல்லுங்கள்.', '"Please take him/her to the hospital."', null, [ACT.vocabularyPlaces]),
-    createContentItem('பேருந்து நிலையம்', 'pēruntu nilaiyam', 'Bus station. Compound: pēruntu "bus" (lit. "great vehicle") + nilaiyam "station/standing place". Chennai\'s major bus terminus is CMBT — Chennai Mofussil Bus Terminus.', 'word', 'CMBT பேருந்து நிலையம் எங்கே? CMBT pēruntu nilaiyam eṅkē?', '"Where is the CMBT bus station?"', null, [ACT.vocabularyPlaces]),
-    createContentItem('ரயில் நிலையம்', 'rayil nilaiyam', 'Railway station. English loan rayil + Tamil nilaiyam. Chennai Central (சென்னை சென்ட்ரல்) is the iconic landmark; also Egmore.', 'word', 'சென்னை சென்ட்ரலுக்கு எப்படி போவது?', '"How does one go to Chennai Central?" -uku dative on a place name.', null, [ACT.vocabularyPlaces]),
-    createContentItem('கடற்கரை', 'kaṭaṟkarai', 'Beach / shore. Centhamizh: kaṭal (sea) + karai (shore). Marina Beach (மரீனா கடற்கரை) is the 13-km signature Chennai landmark.', 'word', 'மரீனா கடற்கரைக்கு போகலாம்.', '"Let\'s go to Marina Beach." -lām is the "let\'s/may" suffix.', null, [ACT.vocabularyPlaces]),
-    createContentItem('கோயில்', 'kōyil', 'Temple. Long ō + alveolar y + alveolar l. Mylapore (மயிலாப்பூர்) in central Chennai is famous for the Kapaleeswarar Temple (கபாலீஸ்வரர் கோயில்).', 'word', 'நாங்கள் கபாலீஸ்வரர் கோயிலுக்கு போகிறோம்.', '"We are going to Kapaleeswarar Temple."', null, [ACT.vocabularyPlaces]),
-    createContentItem('உணவகம்', 'uṇavakam', 'Restaurant. Compound: uṇavu (food) + akam (interior/place). Casual term is "hotel" (English; in Tamil Nadu, "hotel" often means restaurant).', 'word', 'இந்த உணவகத்தில் சாதம் நல்லாயிருக்கிறது.', '"In this restaurant, the rice is good." Note "hotel" colloquially = restaurant in TN English.', null, [ACT.vocabularyPlaces]),
-    createContentItem('நூலகம்', 'nūlakam', 'Library. Compound: nūl (book/thread/text) + akam (place). Anna University has the prestigious Anna Centenary Library.', 'word', 'நூலகத்தில் அமைதியாக இருக்க வேண்டும்.', '"In the library one must be silent."', null, [ACT.vocabularyPlaces]),
-    createContentItem('பூங்கா', 'pūṅkā', 'Park / garden. Compound: pū (flower) + ṅkā (place suffix). Semmozhi Poonga (செம்மொழிப் பூங்கா) in Chennai is a famous botanical garden.', 'word', 'நாங்கள் பூங்காவில் நடக்கப் போனோம்.', '"We went to walk in the park."', null, [ACT.vocabularyPlaces]),
-    createContentItem('வங்கி', 'vaṅki', 'Bank. The cluster ṅk shows the natural nasal-place assimilation that runs through Tamil. State Bank of India (SBI) is universally referenced.', 'word', 'வங்கியில் இன்று கூட்டம் அதிகம்.', '"At the bank today there is a big crowd."', null, [ACT.vocabularyPlaces]),
-    createContentItem('அண்ணா நகர்', 'aṇṇā nakar', 'Anna Nagar — a major residential neighborhood in west Chennai, named for C.N. Annadurai. Grid-planned, upscale, full of restaurants and the famous Tower Park.', 'word', 'நான் அண்ணா நகரில் வசிக்கிறேன். nāṉ Aṇṇā Nakaril vacikkiṟēṉ.', '"I live in Anna Nagar." vaci = "to dwell, live"; vacikkiṟēṉ = "I live".', null, [ACT.vocabularyPlaces]),
-    createContentItem('டி. நகர்', 'ṭi. nakar', 'T. Nagar (Thyagaraya Nagar) — Chennai\'s shopping mecca. Ranganathan Street is the most crowded shopping street in India.', 'word', 'டி. நகரில் கூட்டம் மிக அதிகம்.', '"In T. Nagar there is a huge crowd."', null, [ACT.vocabularyPlaces]),
-    createContentItem('மயிலாப்பூர்', 'mayilāppūr', 'Mylapore — the traditional heart of Chennai; home to the Kapaleeswarar Temple, the famous tank, and traditional Tamil Brahmin culture. Bharatanatyam and Carnatic music thrive here.', 'word', 'மயிலாப்பூர் சென்னையின் கலாச்சார மையம்.', '"Mylapore is Chennai\'s cultural center."', null, [ACT.vocabularyPlaces]),
-    createContentItem('அடையார்', 'aṭaiyār', 'Adyar — the neighborhood housing Anna University, IIT Madras, Theosophical Society, and Adyar river. The "campus belt" of Chennai.', 'word', 'அடையாறில் ஐ.ஐ.டி மற்றும் அண்ணா பல்கலைக்கழகம்.', '"In Adyar are IIT and Anna University."', null, [ACT.vocabularyPlaces]),
-    createContentItem('IIT மெட்ராஸ்', 'IIT meṭrās', 'Indian Institute of Technology Madras — the premier engineering institute in India, located in a 600-acre forested campus next to Anna University in Adyar. Deer roam the campus.', 'word', 'IIT மெட்ராஸ் காட்டுக்கு பெயர்போனது.', '"IIT Madras is famous for its forest." kāṭu = forest; -ukku peyar-pōṉatu = "is famous for".', null, [ACT.vocabularyPlaces]),
-
-    // Vocab II: positions
-    createContentItem('மேலே', 'mēlē', 'Above / on top. The -ē vowel-final is the locative/adverbial. Pair: mēlē/kīḻē (above/below).', 'word', 'புத்தகம் மேசை மேலே.', '"The book is on/above the table."', null, [ACT.vocabularyPositions]),
-    createContentItem('கீழே', 'kīḻē', 'Below / under. Note ழ (retroflex approximant).', 'word', 'பை மேசை கீழே. pai mēcai kīḻē.', '"The bag is under the table."', null, [ACT.vocabularyPositions]),
-    createContentItem('உள்ளே', 'uḷḷē', 'Inside. Retroflex ḷ + -ē locative.', 'word', 'புத்தகம் பைக்குள்ளே.', '"The book is inside the bag." pai-kku-ḷ-ḷē = bag-inside.', null, [ACT.vocabularyPositions]),
-    createContentItem('வெளியே', 'veḷiyē', 'Outside. A practical spatial word that commonly follows a genitive or dative-linked noun when locating people or animals beyond a boundary.', 'word', 'நாய் வீட்டுக்கு வெளியே.', '"The dog is outside the house" shows the location phrase after the house noun.', null, [ACT.vocabularyPositions]),
-    createContentItem('பக்கம்', 'pakkam', 'Beside / side. Used with vala- (right) and iṭa- (left) for direction phrases.', 'word', 'என் பக்கம் வா.', '"Come to my side / near me." vā = come (intimate imperative).', null, [ACT.vocabularyPositions]),
-    createContentItem('எதிரே', 'etirē', 'Opposite / facing.', 'word', 'பேருந்து நிலையம் கடைக்கு எதிரே.', '"The bus station is opposite the shop."', null, [ACT.vocabularyPositions]),
-    createContentItem('முன்னாலே', 'muṉṉālē', 'In front of. Geminate ṉṉ.', 'word', 'வாசலின் முன்னாலே நில்.', '"Stand in front of the door."', null, [ACT.vocabularyPositions]),
-    createContentItem('பின்னாலே', 'piṉṉālē', 'Behind. Geminate ṉṉ.', 'word', 'பின்னாலே ஒரு பூங்கா இருக்கிறது.', '"Behind, there is a park."', null, [ACT.vocabularyPositions]),
-    createContentItem('நடுவிலே', 'naṭuvilē', 'In the middle. The ending carries locative meaning, so the phrase is useful for describing classrooms, streets, and seating arrangements.', 'word', 'வகுப்பின் நடுவிலே ஆசிரியர் நிற்கிறார்.', '"In the middle of the class, the teacher stands" gives a common classroom scene.', null, [ACT.vocabularyPositions]),
-    createContentItem('மூலையிலே', 'mūlaiyilē', 'In the corner. A high-value room-description word, especially when learners start locating furniture and objects.', 'word', 'மூலையிலே ஒரு கடிகாரம்.', '"In the corner is a clock" keeps the spatial phrase tied to a visible object.', null, [ACT.vocabularyPositions]),
-
-    // Grammar I
-    createContentItem('-இல் locative', '-il locative', 'STATIC location. Marks "at, in, on" — where something IS. நான் வீட்டில் இருக்கிறேன் = "I am at home". Always with iru ("be located"), never with pō ("go").', 'sentence', 'நான் சென்னையில் இருக்கிறேன். (loc, static)\nநான் சென்னைக்கு போகிறேன். (dat, motion-to)', 'Each case has its own verb-class affinity; pairing the wrong case + verb yields nonsense.', [{ target: '-il + iru', note: 'static location ("is at")' }, { target: '-il + nikar', note: 'event happens at location ("happens at")' }], [ACT.grammarLocativeDative]),
-    createContentItem('-உக்கு dative', '-ukku dative', 'GOAL of motion or recipient. Marks "to (a place), to (a person), for (purpose)". நான் கடைக்கு போகிறேன் = "I go TO the shop"; எனக்கு புத்தகம் கொடு = "give me a book / a book TO me".', 'sentence', 'கடைக்கு போகிறேன் (motion-to)\nஎனக்கு கொடு (recipient)\nநன்றிக்கு (for thanks)', 'Dative is the workhorse case — appears in motion, possession ("X has Y" = "Y-nom Y X-dat iru-kkiṟatu"), and many idioms.', [{ target: 'consonant + ukku', note: 'pal-ukku, kaṭai-kku' }, { target: 'vowel + kku', note: 'after -i / -ai: kaṭai-kku, peṇṇukku' }, { target: 'special: enakku, unakku', note: 'pronouns get fused dative: nāṉ → enakku, nī → unakku, avar → avarukku' }], [ACT.grammarLocativeDative]),
-    createContentItem('Possession with dative', 'possession dative', 'Tamil HAS-construction uses dative: "X has Y" = "X-dat Y iru-kkiṟatu". எனக்கு புத்தகம் இருக்கிறது eṉakku puttakam irukkiṟatu = "I have a book" (literally "to-me book is").', 'sentence', 'எனக்கு இரண்டு தம்பிகள் இருக்கிறார்கள். eṉakku iraṇṭu tampikaḷ irukkiṟārkaḷ. "I have two younger brothers."', 'Same iru verb, agreed with the POSSESSED noun (not the possessor); animate possession uses honor-marked agreement.', null, [ACT.grammarLocativeDative]),
-
-    // Grammar II
-    createContentItem('-இலிருந்து ablative', '-iliruntu ablative', 'Marks "from" (source of motion). Formed by STACKING two suffixes: locative -il + iruntu (perfective past of iru = "having been"). The compound means "having been at X, [now moving]".', 'sentence', 'நான் சென்னையிலிருந்து கோவைக்கு பயணம் செய்தேன்.', '"I traveled from Chennai to Coimbatore." -iliruntu source + -ukku goal in the same sentence.', [{ target: '-il + -iruntu', note: 'literal: "having been at"; functional: "from"' }, { target: 'pronoun form', note: 'eṉṉiliruntu = "from me"; ivariliruntu = "from him/her hon"' }], [ACT.grammarAblative]),
-    createContentItem('Agglutinative stacking', 'agglutinative stacking', 'Tamil is famously agglutinative: suffixes stack on a noun stem to express what English uses prepositions for. Example: vīṭu (house) + kaḷ (plural) + il (loc) + iruntu (abl) = vīṭukaḷiliruntu "from the houses".', 'sentence', 'வீடு + கள் + இல் + இருந்து = வீடுகளிலிருந்து', 'Each suffix adds one layer of meaning; the order is fixed (number → case → postposition).', [{ target: 'order', note: 'stem → plural → case → postposition' }, { target: 'predictable', note: 'once you learn the layers, you can decode any noun form' }], [ACT.grammarAblative]),
-
-    // Grammar III
-    createContentItem('Polite imperative -உங்கள்', '-uṅkaḷ polite', 'Polite/plural imperative formed by adding -உங்கள் (-uṅkaḷ) to the verb stem. பார் pār (look-intimate) → பாருங்கள் pāruṅkaḷ (please look). The intimate imperative is the bare stem.', 'sentence', 'வா (come, intimate) → வாருங்கள் (please come)\nகேள் (listen) → கேளுங்கள் (please listen)\nபோ (go) → போங்கள் (please go)', 'Mismatched register (using intimate vā with a stranger) sounds rude; using polite vāruṅkaḷ with a child sounds stiff.', null, [ACT.grammarDirections]),
-    createContentItem('Direction phrases', 'direction phrases', 'வலது பக்கம் valatu pakkam = right side; இடது பக்கம் iṭatu pakkam = left side; நேராக nērāka = straight; திரும்புங்கள் tirumpuṅkaḷ = please turn. Stack these for multi-step directions.', 'sentence', 'நேராக போய், வலது பக்கம் திரும்புங்கள்.', '"Go straight, then turn right."', null, [ACT.grammarDirections]),
-
-    // Reading
-    createContentItem('வழிவகை', 'vaḻivakai', 'A 4-sentence direction paragraph from Anna University to Marina Beach. Apply locative/dative/ablative + imperative.', 'sentence', 'அண்ணா பல்கலைக்கழகத்திலிருந்து மரீனா கடற்கரைக்கு இப்படி போங்கள். வாயிலில் இருந்து நேராக போய் சர்தார் பட்டேல் சாலையில் கிழக்கு பக்கம் திரும்புங்கள். கூட்டுச் சாலை வரும்வரை சுமார் 4 கி.மீ. நேராக போங்கள். அங்கே மரீனா கடற்கரை இருக்கிறது.', 'Translation: "From Anna University to Marina Beach, go like this. From the gate, go straight and turn east on Sardar Patel Road. Go straight about 4 km until you reach the junction. There, Marina Beach is."', [{ target: 'அண்ணா பல்கலைக்கழகத்திலிருந்து', note: 'University-loc-from = "from Anna U" — ablative stack' }, { target: 'மரீனா கடற்கரைக்கு', note: 'Marina Beach-dat = "to Marina Beach"' }, { target: 'திரும்புங்கள்', note: 'polite imperative "please turn"' }, { target: 'வரும்வரை', note: '"until coming" — durative phrase' }], [ACT.reading]),
-
-    // Listening
-    createContentItem('அந்நியர் உரையாடல்', 'aṉṉiyar uraiyāṭal', 'Polite stranger-direction-asking exchange.', 'conversation', 'நீ: மன்னிக்கவும், ஐயா. மரீனா கடற்கரைக்கு எப்படி போவது?\nமாமா: ஓ! இங்கிருந்து நேராக போய், கடற்கரை சாலையில் வலது பக்கம் திரும்புங்கள். மூன்று கி.மீ. போனால் கடற்கரை வந்துவிடும்.\nநீ: மிக்க நன்றி, ஐயா!\nமாமா: பரவாயில்லை, தம்பி.', 'Standard polite exchange; mAamA (uncle) addresses you as "thambi" (younger brother), a warm Tamil informality.', [{ target: 'எப்படி போவது? eppaṭi pōvatu?', note: '"how to go?" — verbal-noun question' }, { target: 'வந்துவிடும்', note: '"will come / will arrive" — completive aspect' }, { target: 'தம்பி tampi', note: '"younger brother" — affectionate address from older male to younger male' }], [ACT.listening]),
-
-    // Writing
-    createContentItem('வழிக் குறிப்பு', 'vaḻik kuṟippu', 'Write 4-5 sentences giving directions from Anna University to your hostel using locative, dative, ablative, and polite imperative.', 'sentence', 'மாதிரி: அண்ணா பல்கலைக்கழக வாயிலில் இருந்து நேராக 200 மீட்டர் போய், இடது பக்கம் திரும்புங்கள். அங்கே ஒரு கடை. கடைக்கு பின்னாலே என் விடுதி இருக்கிறது.', 'Translation: "From the Anna University gate, go straight 200 meters and turn left. There is a shop there. Behind the shop is my hostel."', null, [ACT.writing]),
-
-    // Culture
-    createContentItem('சென்னை நிலவெளி', 'ceṉṉai nilaveḷi', 'Chennai geography: T. Nagar (shopping), Mylapore (temple/tradition), Anna Nagar (residential), Adyar (Anna U / IIT belt), Marina (the 13-km beach), Besant Nagar / Bessy (Elliot\'s Beach), Velachery (newer suburb).', 'sentence', 'டி. நகர் கடை, மயிலாப்பூர் கோயில், மரீனா கடற்கரை, அடையார் கல்லூரி — சென்னையின் நான்கு முகங்கள்.', '"T. Nagar shopping, Mylapore temple, Marina beach, Adyar college — the four faces of Chennai."', null, [ACT.culture]),
-    createContentItem('இடம் சார்ந்த வழிகாட்டுதல்', 'iṭam cārnta vaḻikāṭṭutal', 'Chennai navigation uses LANDMARKS not street numbers: "near Loyola College", "opposite Bessy beach", "next to Cake World". A learner who tries to use numerical addresses will be looked at strangely.', 'sentence', 'லயோலா கல்லூரிக்கு பக்கத்தில் என் வீடு.', '"Near Loyola College is my house" — landmark-based locating.', null, [ACT.culture]),
-
-    // Task
-    createContentItem('பணி: மரீனாவில் தொலைந்து', 'paṇi: marīnāvil tolaintu', 'Lost near Marina Beach — ask a Chennai uncle for directions back to Anna University. The AI tutor will play the uncle.', 'conversation', 'நீ: [மன்னிக்கவும் + அண்ணா பல்கலைக்கழகத்துக்கு எப்படி போவது?]\nமாமா: [direction 1]\nநீ: [confirm + ask follow-up]\nமாமா: [direction 2]\nநீ: [நன்றி]', '6-turn exchange using all three cases and polite imperative.', [{ target: 'opening', note: 'மன்னிக்கவும் + dative-place + எப்படி போவது?' }, { target: 'confirmation', note: 'சரி, புரிந்தது. + ablative-loc-question' }, { target: 'closing', note: 'மிக்க நன்றி, ஐயா/மாமா' }], [ACT.task]),
+  "expressionPractice": [
+    {
+      "id": "asking-where",
+      "label": "Asking where",
+      "goal": "Use எங்கே? + place-noun to ask location."
+    },
+    {
+      "id": "giving-direction",
+      "label": "Giving direction",
+      "goal": "Combine direction words + polite imperative for 2-3 step instructions."
+    },
+    {
+      "id": "three-cases",
+      "label": "Three-case practice",
+      "goal": "Pick locative vs dative vs ablative based on at/to/from semantics."
+    },
+    {
+      "id": "chennai-landmarks",
+      "label": "Chennai landmarks",
+      "goal": "Reference Marina Beach, Anna Nagar, T. Nagar, IIT Madras correctly."
+    }
   ],
+  "relatedPools": [
+    "topic-locations",
+    "topic-city"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit03locations-orientation"
+      ],
+      "targetText": "பாட இலக்கு",
+      "romanization": "",
+      "nativeText": "Ask \"where is X?\" in Chennai using எங்கே? and answer with location + locative.",
+      "pronunciation": "",
+      "exampleTarget": "பாட இலக்கு",
+      "exampleNative": "The whole lesson is built toward this outcome: Roleplay being lost near Marina Beach with the AI tutor as a helpful stranger.",
+      "korean": "பாட இலக்கு",
+      "english": "Ask \"where is X?\" in Chennai using எங்கே? and answer with location + locative.",
+      "example": "பாட இலக்கு",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Roleplay being lost near Marina Beach with the AI tutor as a helpful stranger."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1unit03locations-pronunciation"
+      ],
+      "targetText": "ஒலி சரிபார்ப்பு",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)\".",
+      "pronunciation": "",
+      "exampleTarget": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "exampleNative": "These case suffixes appear in every later unit — this lesson plants them deep.",
+      "korean": "ஒலி சரிபார்ப்பு",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)\".",
+      "example": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "exampleEnglish": "These case suffixes appear in every later unit — this lesson plants them deep."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1"
+      ],
+      "targetText": "இடம் & திசை",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 3: எங்கே? — Locations and Directions with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "exampleNative": "These case suffixes appear in every later unit — this lesson plants them deep.",
+      "korean": "இடம் & திசை",
+      "english": "Use the key language of Level 1 · Unit 3: எங்கே? — Locations and Directions with the register and setting that the lesson requires.",
+      "example": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "exampleEnglish": "These case suffixes appear in every later unit — this lesson plants them deep."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-2"
+      ],
+      "targetText": "சூழல்",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 3: எங்கே? — Locations and Directions sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"",
+      "exampleNative": "Standard Chennai-uncle direction style: location ablative + go-verb + turn-direction + landmark.",
+      "korean": "சூழல்",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 3: எங்கே? — Locations and Directions sound precise rather than merely understandable.",
+      "example": "மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"",
+      "exampleEnglish": "Standard Chennai-uncle direction style: location ablative + go-verb + turn-direction + landmark."
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1unit03locations-grammar-1"
+      ],
+      "targetText": "இடம் & திசை",
+      "romanization": "",
+      "nativeText": "Ask \"where is X?\" in Chennai using எங்கே? and answer with location + locative.",
+      "pronunciation": "",
+      "exampleTarget": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "exampleNative": "These case suffixes appear in every later unit — this lesson plants them deep.",
+      "korean": "இடம் & திசை",
+      "english": "Ask \"where is X?\" in Chennai using எங்கே? and answer with location + locative.",
+      "example": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "exampleEnglish": "These case suffixes appear in every later unit — this lesson plants them deep."
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1unit03locations-grammar-2"
+      ],
+      "targetText": "சூழல்",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 3: எங்கே? — Locations and Directions with one nearby Tamil form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"",
+      "exampleNative": "Standard Chennai-uncle direction style: location ablative + go-verb + turn-direction + landmark.",
+      "korean": "சூழல்",
+      "english": "Contrast the main pattern in Level 1 · Unit 3: எங்கே? — Locations and Directions with one nearby Tamil form so the learner can avoid literal translation.",
+      "example": "மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"",
+      "exampleEnglish": "Standard Chennai-uncle direction style: location ablative + go-verb + turn-direction + landmark."
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ta-level1unit03locations-reading"
+      ],
+      "targetText": "வாசிப்பு மாதிரி",
+      "romanization": "",
+      "nativeText": "Read the connected model for வாசிப்பு மாதிரி as one message. Notice how \"லயோலா கல்லூரிக்கு பக்கத்தில் என் வீடு.\" lets the lesson vocabulary and grammar work together instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "லயோலா கல்லூரிக்கு பக்கத்தில் என் வீடு.",
+      "exampleNative": "\"Near Loyola College is my house\" — landmark-based locating.",
+      "korean": "வாசிப்பு மாதிரி",
+      "english": "Read the connected model for வாசிப்பு மாதிரி as one message. Notice how \"லயோலா கல்லூரிக்கு பக்கத்தில் என் வீடு.\" lets the lesson vocabulary and grammar work together instead of appearing as isolated flashcards.",
+      "example": "லயோலா கல்லூரிக்கு பக்கத்தில் என் வீடு.",
+      "exampleEnglish": "\"Near Loyola College is my house\" — landmark-based locating."
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit03locations-listening"
+      ],
+      "targetText": "உரையாடல் மாதிரி",
+      "romanization": "",
+      "nativeText": "Hear \"லயோலா கல்லூரிக்கு பக்கத்தில் என் வீடு.\" as interaction, not as a sentence list. The listening goal is to follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "லயோலா கல்லூரிக்கு பக்கத்தில் என் வீடு.",
+      "exampleNative": "\"Near Loyola College is my house\" — landmark-based locating.",
+      "korean": "உரையாடல் மாதிரி",
+      "english": "Hear \"லயோலா கல்லூரிக்கு பக்கத்தில் என் வீடு.\" as interaction, not as a sentence list. The listening goal is to follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "லயோலா கல்லூரிக்கு பக்கத்தில் என் வீடு.",
+      "exampleEnglish": "\"Near Loyola College is my house\" — landmark-based locating."
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ta-level1unit03locations-writing"
+      ],
+      "targetText": "எழுத்துப் பயிற்சி",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "எழுத்துப் பயிற்சி",
+      "english": "Write your own version after studying \"Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1unit03locations-culture"
+      ],
+      "targetText": "பயன்பாடும் சூழலும்",
+      "romanization": "",
+      "nativeText": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used. Use \"மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"\" as the social comparison point for this lesson.",
+      "pronunciation": "",
+      "exampleTarget": "மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"",
+      "exampleNative": "Standard Chennai-uncle direction style: location ablative + go-verb + turn-direction + landmark.",
+      "korean": "பயன்பாடும் சூழலும்",
+      "english": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used. Use \"மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"\" as the social comparison point for this lesson.",
+      "example": "மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"",
+      "exampleEnglish": "Standard Chennai-uncle direction style: location ablative + go-verb + turn-direction + landmark."
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "இறுதி செயல்",
+      "romanization": "",
+      "nativeText": "Roleplay being lost near Marina Beach with the AI tutor as a helpful stranger.",
+      "pronunciation": "",
+      "exampleTarget": "லயோலா கல்லூரிக்கு பக்கத்தில் என் வீடு.",
+      "exampleNative": "Roleplay being lost near Marina Beach with the AI tutor as a helpful stranger.",
+      "korean": "இறுதி செயல்",
+      "english": "Roleplay being lost near Marina Beach with the AI tutor as a helpful stranger.",
+      "example": "லயோலா கல்லூரிக்கு பக்கத்தில் என் வீடு.",
+      "exampleEnglish": "Roleplay being lost near Marina Beach with the AI tutor as a helpful stranger."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit03locations-grammar-2"
+      ],
+      "targetText": "பொதுவான பிழை",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: Standard Chennai-uncle direction style: location ablative + go-verb + turn-direction + landmark.",
+      "korean": "பொதுவான பிழை",
+      "english": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"\" against the model.",
+      "example": "மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: Standard Chennai-uncle direction style: location ablative + go-verb + turn-direction + landmark."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-culture"
+      ],
+      "targetText": "மொழிநடை",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "exampleNative": "These case suffixes appear in every later unit — this lesson plants them deep.",
+      "korean": "மொழிநடை",
+      "english": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)\" before reusing it elsewhere.",
+      "example": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "exampleEnglish": "These case suffixes appear in every later unit — this lesson plants them deep."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "சரளம்",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"லயோலா கல்லூரிக்கு பக்கத்தில் என் வீடு.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "லயோலா கல்லூரிக்கு பக்கத்தில் என் வீடு.",
+      "exampleNative": "\"Near Loyola College is my house\" — landmark-based locating.",
+      "korean": "சரளம்",
+      "english": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"லயோலா கல்லூரிக்கு பக்கத்தில் என் வீடு.\" as one thought.",
+      "example": "லயோலா கல்லூரிக்கு பக்கத்தில் என் வீடு.",
+      "exampleEnglish": "\"Near Loyola College is my house\" — landmark-based locating."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "பயன்பாடு",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "பயன்பாடு",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)\" and move it into your own life.",
+      "example": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-grammar-1"
+      ],
+      "targetText": "நினைவூட்டல்",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"இடம் & திசை\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "இடம் & திசை",
+      "exampleNative": "By the end of this lesson you can navigate Chennai in Tamil — ask \"where is X?\", give and follow directions, and distinguish \"at\" / \"to\" / \"from\" using the right case suffix.",
+      "korean": "நினைவூட்டல்",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"இடம் & திசை\" before looking back.",
+      "example": "இடம் & திசை",
+      "exampleEnglish": "By the end of this lesson you can navigate Chennai in Tamil — ask \"where is X?\", give and follow directions, and distinguish \"at\" / \"to\" / \"from\" using the right case suffix."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-writing"
+      ],
+      "targetText": "விரிவாக்கம்",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"லயோலா கல்லூரிக்கு பக்கத்தில் என் வீடு.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "லயோலா கல்லூரிக்கு பக்கத்தில் என் வீடு.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "விரிவாக்கம்",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"லயோலா கல்லூரிக்கு பக்கத்தில் என் வீடு.\" rather than restarting from a blank sentence.",
+      "example": "லயோலா கல்லூரிக்கு பக்கத்தில் என் வீடு.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading"
+      ],
+      "targetText": "ஒப்பீடு",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 3: எங்கே? — Locations and Directions with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"",
+      "exampleNative": "Standard Chennai-uncle direction style: location ablative + go-verb + turn-direction + landmark.",
+      "korean": "ஒப்பீடு",
+      "english": "Compare the central form in Level 1 · Unit 3: எங்கே? — Locations and Directions with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"\" as the comparison line.",
+      "example": "மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"",
+      "exampleEnglish": "Standard Chennai-uncle direction style: location ablative + go-verb + turn-direction + landmark."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1unit03locations-pronunciation"
+      ],
+      "targetText": "உச்சரிப்பு திருத்தம்",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. Use \"Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)\" as the repair line.",
+      "pronunciation": "",
+      "exampleTarget": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "exampleNative": "These case suffixes appear in every later unit — this lesson plants them deep.",
+      "korean": "உச்சரிப்பு திருத்தம்",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. Use \"Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)\" as the repair line.",
+      "example": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "exampleEnglish": "These case suffixes appear in every later unit — this lesson plants them deep."
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "உரையாடல் மாற்றம்",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"லயோலா கல்லூரிக்கு பக்கத்தில் என் வீடு.\".",
+      "pronunciation": "",
+      "exampleTarget": "லயோலா கல்லூரிக்கு பக்கத்தில் என் வீடு.",
+      "exampleNative": "\"Near Loyola College is my house\" — landmark-based locating.",
+      "korean": "உரையாடல் மாற்றம்",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"லயோலா கல்லூரிக்கு பக்கத்தில் என் வீடு.\".",
+      "example": "லயோலா கல்லூரிக்கு பக்கத்தில் என் வீடு.",
+      "exampleEnglish": "\"Near Loyola College is my house\" — landmark-based locating."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-writing"
+      ],
+      "targetText": "வாக்கிய கட்டமைப்பு",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "exampleNative": "These case suffixes appear in every later unit — this lesson plants them deep.",
+      "korean": "வாக்கிய கட்டமைப்பு",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)\" one layer at a time.",
+      "example": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "exampleEnglish": "These case suffixes appear in every later unit — this lesson plants them deep."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-2"
+      ],
+      "targetText": "விரைவு சோதனை",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"",
+      "exampleNative": "Standard Chennai-uncle direction style: location ablative + go-verb + turn-direction + landmark.",
+      "korean": "விரைவு சோதனை",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"\" as the deciding example.",
+      "example": "மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"",
+      "exampleEnglish": "Standard Chennai-uncle direction style: location ablative + go-verb + turn-direction + landmark."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit03locations-culture",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "மீள்பார்வு",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"லயோலா கல்லூரிக்கு பக்கத்தில் என் வீடு.\".",
+      "pronunciation": "",
+      "exampleTarget": "லயோலா கல்லூரிக்கு பக்கத்தில் என் வீடு.",
+      "exampleNative": "\"Near Loyola College is my house\" — landmark-based locating.",
+      "korean": "மீள்பார்வு",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"லயோலா கல்லூரிக்கு பக்கத்தில் என் வீடு.\".",
+      "example": "லயோலா கல்லூரிக்கு பக்கத்தில் என் வீடு.",
+      "exampleEnglish": "\"Near Loyola College is my house\" — landmark-based locating."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "இடம் & திசை",
+      "romanization": "iṭam & ticai",
+      "nativeText": "By the end of this lesson you can navigate Chennai in Tamil — ask \"where is X?\", give and follow directions, and distinguish \"at\" / \"to\" / \"from\" using the right case suffix.",
+      "pronunciation": "iṭam & ticai",
+      "exampleTarget": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "exampleNative": "These case suffixes appear in every later unit — this lesson plants them deep.",
+      "korean": "இடம் & திசை",
+      "english": "By the end of this lesson you can navigate Chennai in Tamil — ask \"where is X?\", give and follow directions, and distinguish \"at\" / \"to\" / \"from\" using the right case suffix.",
+      "example": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "exampleEnglish": "These case suffixes appear in every later unit — this lesson plants them deep."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "சூழல்",
+      "romanization": "cūḻal",
+      "nativeText": "You leave Anna University after class and want to reach Marina Beach. You ask a kindly Chennai uncle for directions. Cover all three cases in his answer.",
+      "pronunciation": "cūḻal",
+      "exampleTarget": "மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"",
+      "exampleNative": "Standard Chennai-uncle direction style: location ablative + go-verb + turn-direction + landmark.",
+      "korean": "சூழல்",
+      "english": "You leave Anna University after class and want to reach Marina Beach. You ask a kindly Chennai uncle for directions. Cover all three cases in his answer.",
+      "example": "மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"",
+      "exampleEnglish": "Standard Chennai-uncle direction style: location ablative + go-verb + turn-direction + landmark."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "-இல் vs -உள்",
+      "romanization": "-il vs -uḷ",
+      "nativeText": "Two locative-like suffixes with DIFFERENT roles. -இல் (-il, alveolar l) = \"at/in\" — the standard locative. -உள் (-uḷ, retroflex ḷ) = \"inside, within\" — more emphatic enclosure. Confusing them is a Tamil-learner mistake.",
+      "pronunciation": "-il vs -uḷ",
+      "exampleTarget": "வீட்டில் (in/at the house) vs வீட்டுள்ளே (inside the house, intensified)",
+      "exampleNative": "Mixing the two is a fingerprint of a learner — natives produce them automatically.",
+      "korean": "-இல் vs -உள்",
+      "english": "Two locative-like suffixes with DIFFERENT roles. -இல் (-il, alveolar l) = \"at/in\" — the standard locative. -உள் (-uḷ, retroflex ḷ) = \"inside, within\" — more emphatic enclosure. Confusing them is a Tamil-learner mistake.",
+      "example": "வீட்டில் (in/at the house) vs வீட்டுள்ளே (inside the house, intensified)",
+      "exampleEnglish": "Mixing the two is a fingerprint of a learner — natives produce them automatically."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "-உக்கு dative",
+      "romanization": "-ukku dative",
+      "nativeText": "Dative case suffix -உக்கு (-ukku). Geminate kk is voiceless because doubled. Marks goal/direction/recipient.",
+      "pronunciation": "-ukku dative",
+      "exampleTarget": "கடைக்கு போகிறேன். kaṭaikku pōkiṟēṉ. \"I go to the shop.\"",
+      "exampleNative": "Voicing the kk to /gg/ is a non-native error; keep it crisp /kk/.",
+      "korean": "-உக்கு dative",
+      "english": "Dative case suffix -உக்கு (-ukku). Geminate kk is voiceless because doubled. Marks goal/direction/recipient.",
+      "example": "கடைக்கு போகிறேன். kaṭaikku pōkiṟēṉ. \"I go to the shop.\"",
+      "exampleEnglish": "Voicing the kk to /gg/ is a non-native error; keep it crisp /kk/."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "வலது / இடது",
+      "romanization": "valatu / iṭatu",
+      "nativeText": "Right / left. Final -tu (dental t, voiceless because adjacent to vowel and word-final). The cluster ṭa in iṭatu is retroflex.",
+      "pronunciation": "valatu / iṭatu",
+      "exampleTarget": "வலது பக்கம் திரும்புங்கள். valatu pakkam tirumpuṅkaḷ. \"Please turn right.\"",
+      "exampleNative": "pakkam = side; valatu/iṭatu pakkam = right/left side.",
+      "korean": "வலது / இடது",
+      "english": "Right / left. Final -tu (dental t, voiceless because adjacent to vowel and word-final). The cluster ṭa in iṭatu is retroflex.",
+      "example": "வலது பக்கம் திரும்புங்கள். valatu pakkam tirumpuṅkaḷ. \"Please turn right.\"",
+      "exampleEnglish": "pakkam = side; valatu/iṭatu pakkam = right/left side."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "வீடு",
+      "romanization": "vīṭu",
+      "nativeText": "House. Retroflex ṭ + final -u. Locative form: வீட்டில் vīṭṭil (with euphonic gemination).",
+      "pronunciation": "vīṭu",
+      "exampleTarget": "என் வீடு அண்ணா நகர். eṉ vīṭu Aṇṇā Nakar. \"My house is in Anna Nagar.\"",
+      "exampleNative": "Anna Nagar is a major residential Chennai neighborhood; named after the same Annadurai.",
+      "korean": "வீடு",
+      "english": "House. Retroflex ṭ + final -u. Locative form: வீட்டில் vīṭṭil (with euphonic gemination).",
+      "example": "என் வீடு அண்ணா நகர். eṉ vīṭu Aṇṇā Nakar. \"My house is in Anna Nagar.\"",
+      "exampleEnglish": "Anna Nagar is a major residential Chennai neighborhood; named after the same Annadurai."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "கடை",
+      "romanization": "kaṭai",
+      "nativeText": "Shop / store. Retroflex ṭ. Common compound: மளிகைக் கடை maḷikai-k kaṭai = grocery shop.",
+      "pronunciation": "kaṭai",
+      "exampleTarget": "நான் கடைக்கு போகிறேன். nāṉ kaṭaikku pōkiṟēṉ. \"I am going to the shop.\"",
+      "exampleNative": "Dative -kku marks the goal of motion; kaṭai + kku = kaṭai-kku.",
+      "korean": "கடை",
+      "english": "Shop / store. Retroflex ṭ. Common compound: மளிகைக் கடை maḷikai-k kaṭai = grocery shop.",
+      "example": "நான் கடைக்கு போகிறேன். nāṉ kaṭaikku pōkiṟēṉ. \"I am going to the shop.\"",
+      "exampleEnglish": "Dative -kku marks the goal of motion; kaṭai + kku = kaṭai-kku."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "மருத்துவமனை",
+      "romanization": "maruttuvamaṉai",
+      "nativeText": "Hospital. Compound: maruttuvam (medicine) + maṉai (place/house). Centhamizh-style coinage; in casual speech, \"hospital\" (English) is also common.",
+      "pronunciation": "maruttuvamaṉai",
+      "exampleTarget": "அவரை மருத்துவமனைக்கு கூட்டிச் செல்லுங்கள்.",
+      "exampleNative": "\"Please take him/her to the hospital.\"",
+      "korean": "மருத்துவமனை",
+      "english": "Hospital. Compound: maruttuvam (medicine) + maṉai (place/house). Centhamizh-style coinage; in casual speech, \"hospital\" (English) is also common.",
+      "example": "அவரை மருத்துவமனைக்கு கூட்டிச் செல்லுங்கள்.",
+      "exampleEnglish": "\"Please take him/her to the hospital.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "பேருந்து நிலையம்",
+      "romanization": "pēruntu nilaiyam",
+      "nativeText": "Bus station. Compound: pēruntu \"bus\" (lit. \"great vehicle\") + nilaiyam \"station/standing place\". Chennai's major bus terminus is CMBT — Chennai Mofussil Bus Terminus.",
+      "pronunciation": "pēruntu nilaiyam",
+      "exampleTarget": "CMBT பேருந்து நிலையம் எங்கே? CMBT pēruntu nilaiyam eṅkē?",
+      "exampleNative": "\"Where is the CMBT bus station?\"",
+      "korean": "பேருந்து நிலையம்",
+      "english": "Bus station. Compound: pēruntu \"bus\" (lit. \"great vehicle\") + nilaiyam \"station/standing place\". Chennai's major bus terminus is CMBT — Chennai Mofussil Bus Terminus.",
+      "example": "CMBT பேருந்து நிலையம் எங்கே? CMBT pēruntu nilaiyam eṅkē?",
+      "exampleEnglish": "\"Where is the CMBT bus station?\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "ரயில் நிலையம்",
+      "romanization": "rayil nilaiyam",
+      "nativeText": "Railway station. English loan rayil + Tamil nilaiyam. Chennai Central (சென்னை சென்ட்ரல்) is the iconic landmark; also Egmore.",
+      "pronunciation": "rayil nilaiyam",
+      "exampleTarget": "சென்னை சென்ட்ரலுக்கு எப்படி போவது?",
+      "exampleNative": "\"How does one go to Chennai Central?\" -uku dative on a place name.",
+      "korean": "ரயில் நிலையம்",
+      "english": "Railway station. English loan rayil + Tamil nilaiyam. Chennai Central (சென்னை சென்ட்ரல்) is the iconic landmark; also Egmore.",
+      "example": "சென்னை சென்ட்ரலுக்கு எப்படி போவது?",
+      "exampleEnglish": "\"How does one go to Chennai Central?\" -uku dative on a place name."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "கடற்கரை",
+      "romanization": "kaṭaṟkarai",
+      "nativeText": "Beach / shore. Centhamizh: kaṭal (sea) + karai (shore). Marina Beach (மரீனா கடற்கரை) is the 13-km signature Chennai landmark.",
+      "pronunciation": "kaṭaṟkarai",
+      "exampleTarget": "மரீனா கடற்கரைக்கு போகலாம்.",
+      "exampleNative": "\"Let's go to Marina Beach.\" -lām is the \"let's/may\" suffix.",
+      "korean": "கடற்கரை",
+      "english": "Beach / shore. Centhamizh: kaṭal (sea) + karai (shore). Marina Beach (மரீனா கடற்கரை) is the 13-km signature Chennai landmark.",
+      "example": "மரீனா கடற்கரைக்கு போகலாம்.",
+      "exampleEnglish": "\"Let's go to Marina Beach.\" -lām is the \"let's/may\" suffix."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "கோயில்",
+      "romanization": "kōyil",
+      "nativeText": "Temple. Long ō + alveolar y + alveolar l. Mylapore (மயிலாப்பூர்) in central Chennai is famous for the Kapaleeswarar Temple (கபாலீஸ்வரர் கோயில்).",
+      "pronunciation": "kōyil",
+      "exampleTarget": "நாங்கள் கபாலீஸ்வரர் கோயிலுக்கு போகிறோம்.",
+      "exampleNative": "\"We are going to Kapaleeswarar Temple.\"",
+      "korean": "கோயில்",
+      "english": "Temple. Long ō + alveolar y + alveolar l. Mylapore (மயிலாப்பூர்) in central Chennai is famous for the Kapaleeswarar Temple (கபாலீஸ்வரர் கோயில்).",
+      "example": "நாங்கள் கபாலீஸ்வரர் கோயிலுக்கு போகிறோம்.",
+      "exampleEnglish": "\"We are going to Kapaleeswarar Temple.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "உணவகம்",
+      "romanization": "uṇavakam",
+      "nativeText": "Restaurant. Compound: uṇavu (food) + akam (interior/place). Casual term is \"hotel\" (English; in Tamil Nadu, \"hotel\" often means restaurant).",
+      "pronunciation": "uṇavakam",
+      "exampleTarget": "இந்த உணவகத்தில் சாதம் நல்லாயிருக்கிறது.",
+      "exampleNative": "\"In this restaurant, the rice is good.\" Note \"hotel\" colloquially = restaurant in TN English.",
+      "korean": "உணவகம்",
+      "english": "Restaurant. Compound: uṇavu (food) + akam (interior/place). Casual term is \"hotel\" (English; in Tamil Nadu, \"hotel\" often means restaurant).",
+      "example": "இந்த உணவகத்தில் சாதம் நல்லாயிருக்கிறது.",
+      "exampleEnglish": "\"In this restaurant, the rice is good.\" Note \"hotel\" colloquially = restaurant in TN English."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "நூலகம்",
+      "romanization": "nūlakam",
+      "nativeText": "Library. Compound: nūl (book/thread/text) + akam (place). Anna University has the prestigious Anna Centenary Library.",
+      "pronunciation": "nūlakam",
+      "exampleTarget": "நூலகத்தில் அமைதியாக இருக்க வேண்டும்.",
+      "exampleNative": "\"In the library one must be silent.\"",
+      "korean": "நூலகம்",
+      "english": "Library. Compound: nūl (book/thread/text) + akam (place). Anna University has the prestigious Anna Centenary Library.",
+      "example": "நூலகத்தில் அமைதியாக இருக்க வேண்டும்.",
+      "exampleEnglish": "\"In the library one must be silent.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "பூங்கா",
+      "romanization": "pūṅkā",
+      "nativeText": "Park / garden. Compound: pū (flower) + ṅkā (place suffix). Semmozhi Poonga (செம்மொழிப் பூங்கா) in Chennai is a famous botanical garden.",
+      "pronunciation": "pūṅkā",
+      "exampleTarget": "நாங்கள் பூங்காவில் நடக்கப் போனோம்.",
+      "exampleNative": "\"We went to walk in the park.\"",
+      "korean": "பூங்கா",
+      "english": "Park / garden. Compound: pū (flower) + ṅkā (place suffix). Semmozhi Poonga (செம்மொழிப் பூங்கா) in Chennai is a famous botanical garden.",
+      "example": "நாங்கள் பூங்காவில் நடக்கப் போனோம்.",
+      "exampleEnglish": "\"We went to walk in the park.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "வங்கி",
+      "romanization": "vaṅki",
+      "nativeText": "Bank. The cluster ṅk shows the natural nasal-place assimilation that runs through Tamil. State Bank of India (SBI) is universally referenced.",
+      "pronunciation": "vaṅki",
+      "exampleTarget": "வங்கியில் இன்று கூட்டம் அதிகம்.",
+      "exampleNative": "\"At the bank today there is a big crowd.\"",
+      "korean": "வங்கி",
+      "english": "Bank. The cluster ṅk shows the natural nasal-place assimilation that runs through Tamil. State Bank of India (SBI) is universally referenced.",
+      "example": "வங்கியில் இன்று கூட்டம் அதிகம்.",
+      "exampleEnglish": "\"At the bank today there is a big crowd.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "அண்ணா நகர்",
+      "romanization": "aṇṇā nakar",
+      "nativeText": "Anna Nagar — a major residential neighborhood in west Chennai, named for C.N. Annadurai. Grid-planned, upscale, full of restaurants and the famous Tower Park.",
+      "pronunciation": "aṇṇā nakar",
+      "exampleTarget": "நான் அண்ணா நகரில் வசிக்கிறேன். nāṉ Aṇṇā Nakaril vacikkiṟēṉ.",
+      "exampleNative": "\"I live in Anna Nagar.\" vaci = \"to dwell, live\"; vacikkiṟēṉ = \"I live\".",
+      "korean": "அண்ணா நகர்",
+      "english": "Anna Nagar — a major residential neighborhood in west Chennai, named for C.N. Annadurai. Grid-planned, upscale, full of restaurants and the famous Tower Park.",
+      "example": "நான் அண்ணா நகரில் வசிக்கிறேன். nāṉ Aṇṇā Nakaril vacikkiṟēṉ.",
+      "exampleEnglish": "\"I live in Anna Nagar.\" vaci = \"to dwell, live\"; vacikkiṟēṉ = \"I live\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "டி. நகர்",
+      "romanization": "ṭi. nakar",
+      "nativeText": "T. Nagar (Thyagaraya Nagar) — Chennai's shopping mecca. Ranganathan Street is the most crowded shopping street in India.",
+      "pronunciation": "ṭi. nakar",
+      "exampleTarget": "டி. நகரில் கூட்டம் மிக அதிகம்.",
+      "exampleNative": "\"In T. Nagar there is a huge crowd.\"",
+      "korean": "டி. நகர்",
+      "english": "T. Nagar (Thyagaraya Nagar) — Chennai's shopping mecca. Ranganathan Street is the most crowded shopping street in India.",
+      "example": "டி. நகரில் கூட்டம் மிக அதிகம்.",
+      "exampleEnglish": "\"In T. Nagar there is a huge crowd.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "மயிலாப்பூர்",
+      "romanization": "mayilāppūr",
+      "nativeText": "Mylapore — the traditional heart of Chennai; home to the Kapaleeswarar Temple, the famous tank, and traditional Tamil Brahmin culture. Bharatanatyam and Carnatic music thrive here.",
+      "pronunciation": "mayilāppūr",
+      "exampleTarget": "மயிலாப்பூர் சென்னையின் கலாச்சார மையம்.",
+      "exampleNative": "\"Mylapore is Chennai's cultural center.\"",
+      "korean": "மயிலாப்பூர்",
+      "english": "Mylapore — the traditional heart of Chennai; home to the Kapaleeswarar Temple, the famous tank, and traditional Tamil Brahmin culture. Bharatanatyam and Carnatic music thrive here.",
+      "example": "மயிலாப்பூர் சென்னையின் கலாச்சார மையம்.",
+      "exampleEnglish": "\"Mylapore is Chennai's cultural center.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "அடையார்",
+      "romanization": "aṭaiyār",
+      "nativeText": "Adyar — the neighborhood housing Anna University, IIT Madras, Theosophical Society, and Adyar river. The \"campus belt\" of Chennai.",
+      "pronunciation": "aṭaiyār",
+      "exampleTarget": "அடையாறில் ஐ.ஐ.டி மற்றும் அண்ணா பல்கலைக்கழகம்.",
+      "exampleNative": "\"In Adyar are IIT and Anna University.\"",
+      "korean": "அடையார்",
+      "english": "Adyar — the neighborhood housing Anna University, IIT Madras, Theosophical Society, and Adyar river. The \"campus belt\" of Chennai.",
+      "example": "அடையாறில் ஐ.ஐ.டி மற்றும் அண்ணா பல்கலைக்கழகம்.",
+      "exampleEnglish": "\"In Adyar are IIT and Anna University.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "IIT மெட்ராஸ்",
+      "romanization": "IIT meṭrās",
+      "nativeText": "Indian Institute of Technology Madras — the premier engineering institute in India, located in a 600-acre forested campus next to Anna University in Adyar. Deer roam the campus.",
+      "pronunciation": "IIT meṭrās",
+      "exampleTarget": "IIT மெட்ராஸ் காட்டுக்கு பெயர்போனது.",
+      "exampleNative": "\"IIT Madras is famous for its forest.\" kāṭu = forest; -ukku peyar-pōṉatu = \"is famous for\".",
+      "korean": "IIT மெட்ராஸ்",
+      "english": "Indian Institute of Technology Madras — the premier engineering institute in India, located in a 600-acre forested campus next to Anna University in Adyar. Deer roam the campus.",
+      "example": "IIT மெட்ராஸ் காட்டுக்கு பெயர்போனது.",
+      "exampleEnglish": "\"IIT Madras is famous for its forest.\" kāṭu = forest; -ukku peyar-pōṉatu = \"is famous for\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "மேலே",
+      "romanization": "mēlē",
+      "nativeText": "Above / on top. The -ē vowel-final is the locative/adverbial. Pair: mēlē/kīḻē (above/below).",
+      "pronunciation": "mēlē",
+      "exampleTarget": "புத்தகம் மேசை மேலே.",
+      "exampleNative": "\"The book is on/above the table.\"",
+      "korean": "மேலே",
+      "english": "Above / on top. The -ē vowel-final is the locative/adverbial. Pair: mēlē/kīḻē (above/below).",
+      "example": "புத்தகம் மேசை மேலே.",
+      "exampleEnglish": "\"The book is on/above the table.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "கீழே",
+      "romanization": "kīḻē",
+      "nativeText": "Below / under. Note ழ (retroflex approximant).",
+      "pronunciation": "kīḻē",
+      "exampleTarget": "பை மேசை கீழே. pai mēcai kīḻē.",
+      "exampleNative": "\"The bag is under the table.\"",
+      "korean": "கீழே",
+      "english": "Below / under. Note ழ (retroflex approximant).",
+      "example": "பை மேசை கீழே. pai mēcai kīḻē.",
+      "exampleEnglish": "\"The bag is under the table.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "உள்ளே",
+      "romanization": "uḷḷē",
+      "nativeText": "Inside. Retroflex ḷ + -ē locative.",
+      "pronunciation": "uḷḷē",
+      "exampleTarget": "புத்தகம் பைக்குள்ளே.",
+      "exampleNative": "\"The book is inside the bag.\" pai-kku-ḷ-ḷē = bag-inside.",
+      "korean": "உள்ளே",
+      "english": "Inside. Retroflex ḷ + -ē locative.",
+      "example": "புத்தகம் பைக்குள்ளே.",
+      "exampleEnglish": "\"The book is inside the bag.\" pai-kku-ḷ-ḷē = bag-inside."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "வெளியே",
+      "romanization": "veḷiyē",
+      "nativeText": "Outside. A practical spatial word that commonly follows a genitive or dative-linked noun when locating people or animals beyond a boundary.",
+      "pronunciation": "veḷiyē",
+      "exampleTarget": "நாய் வீட்டுக்கு வெளியே.",
+      "exampleNative": "\"The dog is outside the house\" shows the location phrase after the house noun.",
+      "korean": "வெளியே",
+      "english": "Outside. A practical spatial word that commonly follows a genitive or dative-linked noun when locating people or animals beyond a boundary.",
+      "example": "நாய் வீட்டுக்கு வெளியே.",
+      "exampleEnglish": "\"The dog is outside the house\" shows the location phrase after the house noun."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "பக்கம்",
+      "romanization": "pakkam",
+      "nativeText": "Beside / side. Used with vala- (right) and iṭa- (left) for direction phrases.",
+      "pronunciation": "pakkam",
+      "exampleTarget": "என் பக்கம் வா.",
+      "exampleNative": "\"Come to my side / near me.\" vā = come (intimate imperative).",
+      "korean": "பக்கம்",
+      "english": "Beside / side. Used with vala- (right) and iṭa- (left) for direction phrases.",
+      "example": "என் பக்கம் வா.",
+      "exampleEnglish": "\"Come to my side / near me.\" vā = come (intimate imperative)."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "எதிரே",
+      "romanization": "etirē",
+      "nativeText": "Opposite / facing.",
+      "pronunciation": "etirē",
+      "exampleTarget": "பேருந்து நிலையம் கடைக்கு எதிரே.",
+      "exampleNative": "\"The bus station is opposite the shop.\"",
+      "korean": "எதிரே",
+      "english": "Opposite / facing.",
+      "example": "பேருந்து நிலையம் கடைக்கு எதிரே.",
+      "exampleEnglish": "\"The bus station is opposite the shop.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "முன்னாலே",
+      "romanization": "muṉṉālē",
+      "nativeText": "In front of. Geminate ṉṉ.",
+      "pronunciation": "muṉṉālē",
+      "exampleTarget": "வாசலின் முன்னாலே நில்.",
+      "exampleNative": "\"Stand in front of the door.\"",
+      "korean": "முன்னாலே",
+      "english": "In front of. Geminate ṉṉ.",
+      "example": "வாசலின் முன்னாலே நில்.",
+      "exampleEnglish": "\"Stand in front of the door.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "பின்னாலே",
+      "romanization": "piṉṉālē",
+      "nativeText": "Behind. Geminate ṉṉ.",
+      "pronunciation": "piṉṉālē",
+      "exampleTarget": "பின்னாலே ஒரு பூங்கா இருக்கிறது.",
+      "exampleNative": "\"Behind, there is a park.\"",
+      "korean": "பின்னாலே",
+      "english": "Behind. Geminate ṉṉ.",
+      "example": "பின்னாலே ஒரு பூங்கா இருக்கிறது.",
+      "exampleEnglish": "\"Behind, there is a park.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "நடுவிலே",
+      "romanization": "naṭuvilē",
+      "nativeText": "In the middle. The ending carries locative meaning, so the phrase is useful for describing classrooms, streets, and seating arrangements.",
+      "pronunciation": "naṭuvilē",
+      "exampleTarget": "வகுப்பின் நடுவிலே ஆசிரியர் நிற்கிறார்.",
+      "exampleNative": "\"In the middle of the class, the teacher stands\" gives a common classroom scene.",
+      "korean": "நடுவிலே",
+      "english": "In the middle. The ending carries locative meaning, so the phrase is useful for describing classrooms, streets, and seating arrangements.",
+      "example": "வகுப்பின் நடுவிலே ஆசிரியர் நிற்கிறார்.",
+      "exampleEnglish": "\"In the middle of the class, the teacher stands\" gives a common classroom scene."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "மூலையிலே",
+      "romanization": "mūlaiyilē",
+      "nativeText": "In the corner. A high-value room-description word, especially when learners start locating furniture and objects.",
+      "pronunciation": "mūlaiyilē",
+      "exampleTarget": "மூலையிலே ஒரு கடிகாரம்.",
+      "exampleNative": "\"In the corner is a clock\" keeps the spatial phrase tied to a visible object.",
+      "korean": "மூலையிலே",
+      "english": "In the corner. A high-value room-description word, especially when learners start locating furniture and objects.",
+      "example": "மூலையிலே ஒரு கடிகாரம்.",
+      "exampleEnglish": "\"In the corner is a clock\" keeps the spatial phrase tied to a visible object."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "-இல் locative",
+      "romanization": "-il locative",
+      "nativeText": "STATIC location. Marks \"at, in, on\" — where something IS. நான் வீட்டில் இருக்கிறேன் = \"I am at home\". Always with iru (\"be located\"), never with pō (\"go\").",
+      "pronunciation": "-il locative",
+      "exampleTarget": "நான் சென்னையில் இருக்கிறேன். (loc, static)\nநான் சென்னைக்கு போகிறேன். (dat, motion-to)",
+      "exampleNative": "Each case has its own verb-class affinity; pairing the wrong case + verb yields nonsense.",
+      "korean": "-இல் locative",
+      "english": "STATIC location. Marks \"at, in, on\" — where something IS. நான் வீட்டில் இருக்கிறேன் = \"I am at home\". Always with iru (\"be located\"), never with pō (\"go\").",
+      "example": "நான் சென்னையில் இருக்கிறேன். (loc, static)\nநான் சென்னைக்கு போகிறேன். (dat, motion-to)",
+      "exampleEnglish": "Each case has its own verb-class affinity; pairing the wrong case + verb yields nonsense."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "-உக்கு dative",
+      "romanization": "-ukku dative",
+      "nativeText": "GOAL of motion or recipient. Marks \"to (a place), to (a person), for (purpose)\". நான் கடைக்கு போகிறேன் = \"I go TO the shop\"; எனக்கு புத்தகம் கொடு = \"give me a book / a book TO me\".",
+      "pronunciation": "-ukku dative",
+      "exampleTarget": "கடைக்கு போகிறேன் (motion-to)\nஎனக்கு கொடு (recipient)\nநன்றிக்கு (for thanks)",
+      "exampleNative": "Dative is the workhorse case — appears in motion, possession (\"X has Y\" = \"Y-nom Y X-dat iru-kkiṟatu\"), and many idioms.",
+      "korean": "-உக்கு dative",
+      "english": "GOAL of motion or recipient. Marks \"to (a place), to (a person), for (purpose)\". நான் கடைக்கு போகிறேன் = \"I go TO the shop\"; எனக்கு புத்தகம் கொடு = \"give me a book / a book TO me\".",
+      "example": "கடைக்கு போகிறேன் (motion-to)\nஎனக்கு கொடு (recipient)\nநன்றிக்கு (for thanks)",
+      "exampleEnglish": "Dative is the workhorse case — appears in motion, possession (\"X has Y\" = \"Y-nom Y X-dat iru-kkiṟatu\"), and many idioms."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "எனக்கு ... இருக்கிறது",
+      "romanization": "possession dative",
+      "nativeText": "Tamil HAS-construction uses dative: \"X has Y\" = \"X-dat Y iru-kkiṟatu\". எனக்கு புத்தகம் இருக்கிறது eṉakku puttakam irukkiṟatu = \"I have a book\" (literally \"to-me book is\").",
+      "pronunciation": "possession dative",
+      "exampleTarget": "எனக்கு இரண்டு தம்பிகள் இருக்கிறார்கள். eṉakku iraṇṭu tampikaḷ irukkiṟārkaḷ. \"I have two younger brothers.\"",
+      "exampleNative": "Same iru verb, agreed with the POSSESSED noun (not the possessor); animate possession uses honor-marked agreement.",
+      "korean": "எனக்கு ... இருக்கிறது",
+      "english": "Tamil HAS-construction uses dative: \"X has Y\" = \"X-dat Y iru-kkiṟatu\". எனக்கு புத்தகம் இருக்கிறது eṉakku puttakam irukkiṟatu = \"I have a book\" (literally \"to-me book is\").",
+      "example": "எனக்கு இரண்டு தம்பிகள் இருக்கிறார்கள். eṉakku iraṇṭu tampikaḷ irukkiṟārkaḷ. \"I have two younger brothers.\"",
+      "exampleEnglish": "Same iru verb, agreed with the POSSESSED noun (not the possessor); animate possession uses honor-marked agreement."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "-இலிருந்து ablative",
+      "romanization": "-iliruntu ablative",
+      "nativeText": "Marks \"from\" (source of motion). Formed by STACKING two suffixes: locative -il + iruntu (perfective past of iru = \"having been\"). The compound means \"having been at X, [now moving]\".",
+      "pronunciation": "-iliruntu ablative",
+      "exampleTarget": "நான் சென்னையிலிருந்து கோவைக்கு பயணம் செய்தேன்.",
+      "exampleNative": "\"I traveled from Chennai to Coimbatore.\" -iliruntu source + -ukku goal in the same sentence.",
+      "korean": "-இலிருந்து ablative",
+      "english": "Marks \"from\" (source of motion). Formed by STACKING two suffixes: locative -il + iruntu (perfective past of iru = \"having been\"). The compound means \"having been at X, [now moving]\".",
+      "example": "நான் சென்னையிலிருந்து கோவைக்கு பயணம் செய்தேன்.",
+      "exampleEnglish": "\"I traveled from Chennai to Coimbatore.\" -iliruntu source + -ukku goal in the same sentence."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "வீடுகளிலிருந்து",
+      "romanization": "agglutinative stacking",
+      "nativeText": "Tamil is famously agglutinative: suffixes stack on a noun stem to express what English uses prepositions for. Example: vīṭu (house) + kaḷ (plural) + il (loc) + iruntu (abl) = vīṭukaḷiliruntu \"from the houses\".",
+      "pronunciation": "agglutinative stacking",
+      "exampleTarget": "வீடு + கள் + இல் + இருந்து = வீடுகளிலிருந்து",
+      "exampleNative": "Each suffix adds one layer of meaning; the order is fixed (number → case → postposition).",
+      "korean": "வீடுகளிலிருந்து",
+      "english": "Tamil is famously agglutinative: suffixes stack on a noun stem to express what English uses prepositions for. Example: vīṭu (house) + kaḷ (plural) + il (loc) + iruntu (abl) = vīṭukaḷiliruntu \"from the houses\".",
+      "example": "வீடு + கள் + இல் + இருந்து = வீடுகளிலிருந்து",
+      "exampleEnglish": "Each suffix adds one layer of meaning; the order is fixed (number → case → postposition)."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "Polite imperative -உங்கள்",
+      "romanization": "-uṅkaḷ polite",
+      "nativeText": "Polite/plural imperative formed by adding -உங்கள் (-uṅkaḷ) to the verb stem. பார் pār (look-intimate) → பாருங்கள் pāruṅkaḷ (please look). The intimate imperative is the bare stem.",
+      "pronunciation": "-uṅkaḷ polite",
+      "exampleTarget": "வா (come, intimate) → வாருங்கள் (please come)\nகேள் (listen) → கேளுங்கள் (please listen)\nபோ (go) → போங்கள் (please go)",
+      "exampleNative": "Mismatched register (using intimate vā with a stranger) sounds rude; using polite vāruṅkaḷ with a child sounds stiff.",
+      "korean": "Polite imperative -உங்கள்",
+      "english": "Polite/plural imperative formed by adding -உங்கள் (-uṅkaḷ) to the verb stem. பார் pār (look-intimate) → பாருங்கள் pāruṅkaḷ (please look). The intimate imperative is the bare stem.",
+      "example": "வா (come, intimate) → வாருங்கள் (please come)\nகேள் (listen) → கேளுங்கள் (please listen)\nபோ (go) → போங்கள் (please go)",
+      "exampleEnglish": "Mismatched register (using intimate vā with a stranger) sounds rude; using polite vāruṅkaḷ with a child sounds stiff."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "நேராக / வலது பக்கம் / இடது பக்கம்",
+      "romanization": "direction phrases",
+      "nativeText": "வலது பக்கம் valatu pakkam = right side; இடது பக்கம் iṭatu pakkam = left side; நேராக nērāka = straight; திரும்புங்கள் tirumpuṅkaḷ = please turn. Stack these for multi-step directions.",
+      "pronunciation": "direction phrases",
+      "exampleTarget": "நேராக போய், வலது பக்கம் திரும்புங்கள்.",
+      "exampleNative": "\"Go straight, then turn right.\"",
+      "korean": "நேராக / வலது பக்கம் / இடது பக்கம்",
+      "english": "வலது பக்கம் valatu pakkam = right side; இடது பக்கம் iṭatu pakkam = left side; நேராக nērāka = straight; திரும்புங்கள் tirumpuṅkaḷ = please turn. Stack these for multi-step directions.",
+      "example": "நேராக போய், வலது பக்கம் திரும்புங்கள்.",
+      "exampleEnglish": "\"Go straight, then turn right.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "வழிவகை",
+      "romanization": "vaḻivakai",
+      "nativeText": "A 4-sentence direction paragraph from Anna University to Marina Beach. Apply locative/dative/ablative + imperative.",
+      "pronunciation": "vaḻivakai",
+      "exampleTarget": "அண்ணா பல்கலைக்கழகத்திலிருந்து மரீனா கடற்கரைக்கு இப்படி போங்கள். வாயிலில் இருந்து நேராக போய் சர்தார் பட்டேல் சாலையில் கிழக்கு பக்கம் திரும்புங்கள். கூட்டுச் சாலை வரும்வரை சுமார் 4 கி.மீ. நேராக போங்கள். அங்கே மரீனா கடற்கரை இருக்கிறது.",
+      "exampleNative": "Translation: \"From Anna University to Marina Beach, go like this. From the gate, go straight and turn east on Sardar Patel Road. Go straight about 4 km until you reach the junction. There, Marina Beach is.\"",
+      "korean": "வழிவகை",
+      "english": "A 4-sentence direction paragraph from Anna University to Marina Beach. Apply locative/dative/ablative + imperative.",
+      "example": "அண்ணா பல்கலைக்கழகத்திலிருந்து மரீனா கடற்கரைக்கு இப்படி போங்கள். வாயிலில் இருந்து நேராக போய் சர்தார் பட்டேல் சாலையில் கிழக்கு பக்கம் திரும்புங்கள். கூட்டுச் சாலை வரும்வரை சுமார் 4 கி.மீ. நேராக போங்கள். அங்கே மரீனா கடற்கரை இருக்கிறது.",
+      "exampleEnglish": "Translation: \"From Anna University to Marina Beach, go like this. From the gate, go straight and turn east on Sardar Patel Road. Go straight about 4 km until you reach the junction. There, Marina Beach is.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "சென்னை நிலவெளி",
+      "romanization": "ceṉṉai nilaveḷi",
+      "nativeText": "Chennai geography: T. Nagar (shopping), Mylapore (temple/tradition), Anna Nagar (residential), Adyar (Anna U / IIT belt), Marina (the 13-km beach), Besant Nagar / Bessy (Elliot's Beach), Velachery (newer suburb).",
+      "pronunciation": "ceṉṉai nilaveḷi",
+      "exampleTarget": "டி. நகர் கடை, மயிலாப்பூர் கோயில், மரீனா கடற்கரை, அடையார் கல்லூரி — சென்னையின் நான்கு முகங்கள்.",
+      "exampleNative": "\"T. Nagar shopping, Mylapore temple, Marina beach, Adyar college — the four faces of Chennai.\"",
+      "korean": "சென்னை நிலவெளி",
+      "english": "Chennai geography: T. Nagar (shopping), Mylapore (temple/tradition), Anna Nagar (residential), Adyar (Anna U / IIT belt), Marina (the 13-km beach), Besant Nagar / Bessy (Elliot's Beach), Velachery (newer suburb).",
+      "example": "டி. நகர் கடை, மயிலாப்பூர் கோயில், மரீனா கடற்கரை, அடையார் கல்லூரி — சென்னையின் நான்கு முகங்கள்.",
+      "exampleEnglish": "\"T. Nagar shopping, Mylapore temple, Marina beach, Adyar college — the four faces of Chennai.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "இடம் சார்ந்த வழிகாட்டுதல்",
+      "romanization": "iṭam cārnta vaḻikāṭṭutal",
+      "nativeText": "Chennai navigation uses LANDMARKS not street numbers: \"near Loyola College\", \"opposite Bessy beach\", \"next to Cake World\". A learner who tries to use numerical addresses will be looked at strangely.",
+      "pronunciation": "iṭam cārnta vaḻikāṭṭutal",
+      "exampleTarget": "லயோலா கல்லூரிக்கு பக்கத்தில் என் வீடு.",
+      "exampleNative": "\"Near Loyola College is my house\" — landmark-based locating.",
+      "korean": "இடம் சார்ந்த வழிகாட்டுதல்",
+      "english": "Chennai navigation uses LANDMARKS not street numbers: \"near Loyola College\", \"opposite Bessy beach\", \"next to Cake World\". A learner who tries to use numerical addresses will be looked at strangely.",
+      "example": "லயோலா கல்லூரிக்கு பக்கத்தில் என் வீடு.",
+      "exampleEnglish": "\"Near Loyola College is my house\" — landmark-based locating."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "romanization": "iṭam & ticai",
+      "nativeText": "Model use for \"இடம் & திசை\": By the end of this lesson you can navigate Chennai in Tamil — ask \"where is X?\", give and follow directions, and distinguish \"at\" / \"to\" / \"from\" using the right case suffix.",
+      "pronunciation": "iṭam & ticai",
+      "exampleTarget": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "exampleNative": "These case suffixes appear in every later unit — this lesson plants them deep.",
+      "korean": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "english": "Model use for \"இடம் & திசை\": By the end of this lesson you can navigate Chennai in Tamil — ask \"where is X?\", give and follow directions, and distinguish \"at\" / \"to\" / \"from\" using the right case suffix.",
+      "example": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "exampleEnglish": "These case suffixes appear in every later unit — this lesson plants them deep."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "இடம் & திசை",
+      "romanization": "iṭam & ticai",
+      "nativeText": "Usage focus for \"இடம் & திசை\": By the end of this lesson you can navigate Chennai in Tamil — ask \"where is X?\", give and follow directions, and distinguish \"at\" / \"to\" / \"from\" using the right case suffix.",
+      "pronunciation": "iṭam & ticai",
+      "exampleTarget": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "exampleNative": "Notice what the form is doing here: These case suffixes appear in every later unit — this lesson plants them deep.",
+      "korean": "இடம் & திசை",
+      "english": "Usage focus for \"இடம் & திசை\": By the end of this lesson you can navigate Chennai in Tamil — ask \"where is X?\", give and follow directions, and distinguish \"at\" / \"to\" / \"from\" using the right case suffix.",
+      "example": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "exampleEnglish": "Notice what the form is doing here: These case suffixes appear in every later unit — this lesson plants them deep."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "இடம் & திசை",
+      "romanization": "iṭam & ticai",
+      "nativeText": "Contrast check for \"இடம் & திசை\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "iṭam & ticai",
+      "exampleTarget": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: These case suffixes appear in every later unit — this lesson plants them deep.",
+      "korean": "இடம் & திசை",
+      "english": "Contrast check for \"இடம் & திசை\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: These case suffixes appear in every later unit — this lesson plants them deep."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "இடம் & திசை",
+      "romanization": "iṭam & ticai",
+      "nativeText": "Recall \"இடம் & திசை\" from memory, then explain what would change if a nearby alternative replaced it in \"Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)\".",
+      "pronunciation": "iṭam & ticai",
+      "exampleTarget": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "exampleNative": "Self-check against the model before moving on: These case suffixes appear in every later unit — this lesson plants them deep.",
+      "korean": "இடம் & திசை",
+      "english": "Recall \"இடம் & திசை\" from memory, then explain what would change if a nearby alternative replaced it in \"Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)\".",
+      "example": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "exampleEnglish": "Self-check against the model before moving on: These case suffixes appear in every later unit — this lesson plants them deep."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "இடம் & திசை",
+      "romanization": "iṭam & ticai",
+      "nativeText": "Repair \"இடம் & திசை\" inside \"Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)\" if the sentence starts sounding translated rather than natural. Use the note as the clue: By the end of this lesson you can navigate Chennai in Tamil — ask \"where is X?\", give and follow directions, and distinguish \"at\" / \"to\" / \"from\" using the right case suffix.",
+      "pronunciation": "iṭam & ticai",
+      "exampleTarget": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "exampleNative": "Use the model as the repair target: These case suffixes appear in every later unit — this lesson plants them deep.",
+      "korean": "இடம் & திசை",
+      "english": "Repair \"இடம் & திசை\" inside \"Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)\" if the sentence starts sounding translated rather than natural. Use the note as the clue: By the end of this lesson you can navigate Chennai in Tamil — ask \"where is X?\", give and follow directions, and distinguish \"at\" / \"to\" / \"from\" using the right case suffix.",
+      "example": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "exampleEnglish": "Use the model as the repair target: These case suffixes appear in every later unit — this lesson plants them deep."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "இடம் & திசை",
+      "romanization": "iṭam & ticai",
+      "nativeText": "Transfer \"இடம் & திசை\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)\".",
+      "pronunciation": "iṭam & ticai",
+      "exampleTarget": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: These case suffixes appear in every later unit — this lesson plants them deep.",
+      "korean": "இடம் & திசை",
+      "english": "Transfer \"இடம் & திசை\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)\".",
+      "example": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: These case suffixes appear in every later unit — this lesson plants them deep."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "இடம் & திசை",
+      "romanization": "iṭam & ticai",
+      "nativeText": "Find one word or phrase that naturally travels with \"இடம் & திசை\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "iṭam & ticai",
+      "exampleTarget": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: These case suffixes appear in every later unit — this lesson plants them deep.",
+      "korean": "இடம் & திசை",
+      "english": "Find one word or phrase that naturally travels with \"இடம் & திசை\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: These case suffixes appear in every later unit — this lesson plants them deep."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "இடம் & திசை",
+      "romanization": "iṭam & ticai",
+      "nativeText": "Listen for \"இடம் & திசை\" inside \"Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "iṭam & ticai",
+      "exampleTarget": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: These case suffixes appear in every later unit — this lesson plants them deep.",
+      "korean": "இடம் & திசை",
+      "english": "Listen for \"இடம் & திசை\" inside \"Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: These case suffixes appear in every later unit — this lesson plants them deep."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "இடம் & திசை",
+      "romanization": "iṭam & ticai",
+      "nativeText": "Write \"இடம் & திசை\" again without looking, then compare the exact written form against \"Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)\" before moving on.",
+      "pronunciation": "iṭam & ticai",
+      "exampleTarget": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "exampleNative": "Use the written model as the final correctness check: These case suffixes appear in every later unit — this lesson plants them deep.",
+      "korean": "இடம் & திசை",
+      "english": "Write \"இடம் & திசை\" again without looking, then compare the exact written form against \"Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)\" before moving on.",
+      "example": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "exampleEnglish": "Use the written model as the final correctness check: These case suffixes appear in every later unit — this lesson plants them deep."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "இடம் & திசை",
+      "romanization": "iṭam & ticai",
+      "nativeText": "Check whether \"இடம் & திசை\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: These case suffixes appear in every later unit — this lesson plants them deep.",
+      "pronunciation": "iṭam & ticai",
+      "exampleTarget": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: These case suffixes appear in every later unit — this lesson plants them deep.",
+      "korean": "இடம் & திசை",
+      "english": "Check whether \"இடம் & திசை\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: These case suffixes appear in every later unit — this lesson plants them deep.",
+      "example": "Functional: எங்கே? eṅkē? (where?) · -இல் (at) · -உக்கு (to) · -இலிருந்து (from) · வலது/இடது (right/left)",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: These case suffixes appear in every later unit — this lesson plants them deep."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"",
+      "romanization": "cūḻal",
+      "nativeText": "Model use for \"சூழல்\": You leave Anna University after class and want to reach Marina Beach. You ask a kindly Chennai uncle for directions. Cover all three cases in his answer.",
+      "pronunciation": "cūḻal",
+      "exampleTarget": "மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"",
+      "exampleNative": "Standard Chennai-uncle direction style: location ablative + go-verb + turn-direction + landmark.",
+      "korean": "மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"",
+      "english": "Model use for \"சூழல்\": You leave Anna University after class and want to reach Marina Beach. You ask a kindly Chennai uncle for directions. Cover all three cases in his answer.",
+      "example": "மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"",
+      "exampleEnglish": "Standard Chennai-uncle direction style: location ablative + go-verb + turn-direction + landmark."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "சூழல்",
+      "romanization": "cūḻal",
+      "nativeText": "Usage focus for \"சூழல்\": You leave Anna University after class and want to reach Marina Beach. You ask a kindly Chennai uncle for directions. Cover all three cases in his answer.",
+      "pronunciation": "cūḻal",
+      "exampleTarget": "மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"",
+      "exampleNative": "Notice what the form is doing here: Standard Chennai-uncle direction style: location ablative + go-verb + turn-direction + landmark.",
+      "korean": "சூழல்",
+      "english": "Usage focus for \"சூழல்\": You leave Anna University after class and want to reach Marina Beach. You ask a kindly Chennai uncle for directions. Cover all three cases in his answer.",
+      "example": "மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"",
+      "exampleEnglish": "Notice what the form is doing here: Standard Chennai-uncle direction style: location ablative + go-verb + turn-direction + landmark."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "சூழல்",
+      "romanization": "cūḻal",
+      "nativeText": "Contrast check for \"சூழல்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "cūḻal",
+      "exampleTarget": "மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: Standard Chennai-uncle direction style: location ablative + go-verb + turn-direction + landmark.",
+      "korean": "சூழல்",
+      "english": "Contrast check for \"சூழல்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: Standard Chennai-uncle direction style: location ablative + go-verb + turn-direction + landmark."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "சூழல்",
+      "romanization": "cūḻal",
+      "nativeText": "Recall \"சூழல்\" from memory, then explain what would change if a nearby alternative replaced it in \"மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"\".",
+      "pronunciation": "cūḻal",
+      "exampleTarget": "மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"",
+      "exampleNative": "Self-check against the model before moving on: Standard Chennai-uncle direction style: location ablative + go-verb + turn-direction + landmark.",
+      "korean": "சூழல்",
+      "english": "Recall \"சூழல்\" from memory, then explain what would change if a nearby alternative replaced it in \"மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"\".",
+      "example": "மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"",
+      "exampleEnglish": "Self-check against the model before moving on: Standard Chennai-uncle direction style: location ablative + go-verb + turn-direction + landmark."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "சூழல்",
+      "romanization": "cūḻal",
+      "nativeText": "Repair \"சூழல்\" inside \"மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: You leave Anna University after class and want to reach Marina Beach. You ask a kindly Chennai uncle for directions. Cover all three cases in his answer.",
+      "pronunciation": "cūḻal",
+      "exampleTarget": "மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"",
+      "exampleNative": "Use the model as the repair target: Standard Chennai-uncle direction style: location ablative + go-verb + turn-direction + landmark.",
+      "korean": "சூழல்",
+      "english": "Repair \"சூழல்\" inside \"மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: You leave Anna University after class and want to reach Marina Beach. You ask a kindly Chennai uncle for directions. Cover all three cases in his answer.",
+      "example": "மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"",
+      "exampleEnglish": "Use the model as the repair target: Standard Chennai-uncle direction style: location ablative + go-verb + turn-direction + landmark."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "சூழல்",
+      "romanization": "cūḻal",
+      "nativeText": "Transfer \"சூழல்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"\".",
+      "pronunciation": "cūḻal",
+      "exampleTarget": "மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: Standard Chennai-uncle direction style: location ablative + go-verb + turn-direction + landmark.",
+      "korean": "சூழல்",
+      "english": "Transfer \"சூழல்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"\".",
+      "example": "மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: Standard Chennai-uncle direction style: location ablative + go-verb + turn-direction + landmark."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "சூழல்",
+      "romanization": "cūḻal",
+      "nativeText": "Find one word or phrase that naturally travels with \"சூழல்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "cūḻal",
+      "exampleTarget": "மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: Standard Chennai-uncle direction style: location ablative + go-verb + turn-direction + landmark.",
+      "korean": "சூழல்",
+      "english": "Find one word or phrase that naturally travels with \"சூழல்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: Standard Chennai-uncle direction style: location ablative + go-verb + turn-direction + landmark."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "சூழல்",
+      "romanization": "cūḻal",
+      "nativeText": "Listen for \"சூழல்\" inside \"மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "cūḻal",
+      "exampleTarget": "மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Standard Chennai-uncle direction style: location ablative + go-verb + turn-direction + landmark.",
+      "korean": "சூழல்",
+      "english": "Listen for \"சூழல்\" inside \"மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Standard Chennai-uncle direction style: location ablative + go-verb + turn-direction + landmark."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "சூழல்",
+      "romanization": "cūḻal",
+      "nativeText": "Write \"சூழல்\" again without looking, then compare the exact written form against \"மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"\" before moving on.",
+      "pronunciation": "cūḻal",
+      "exampleTarget": "மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"",
+      "exampleNative": "Use the written model as the final correctness check: Standard Chennai-uncle direction style: location ablative + go-verb + turn-direction + landmark.",
+      "korean": "சூழல்",
+      "english": "Write \"சூழல்\" again without looking, then compare the exact written form against \"மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"\" before moving on.",
+      "example": "மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"",
+      "exampleEnglish": "Use the written model as the final correctness check: Standard Chennai-uncle direction style: location ablative + go-verb + turn-direction + landmark."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "சூழல்",
+      "romanization": "cūḻal",
+      "nativeText": "Check whether \"சூழல்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Standard Chennai-uncle direction style: location ablative + go-verb + turn-direction + landmark.",
+      "pronunciation": "cūḻal",
+      "exampleTarget": "மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: Standard Chennai-uncle direction style: location ablative + go-verb + turn-direction + landmark.",
+      "korean": "சூழல்",
+      "english": "Check whether \"சூழல்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Standard Chennai-uncle direction style: location ablative + go-verb + turn-direction + landmark.",
+      "example": "மாமா: \"இங்கிருந்து நேராக போய் வலது பக்கம் திரும்புங்கள். கடற்கரை அங்கேதான்.\"",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: Standard Chennai-uncle direction style: location ablative + go-verb + turn-direction + landmark."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "வீட்டில் (in/at the house) vs வீட்டுள்ளே (inside the house, intensified)",
+      "romanization": "-il vs -uḷ",
+      "nativeText": "Model use for \"-இல் vs -உள்\": Two locative-like suffixes with DIFFERENT roles. -இல் (-il, alveolar l) = \"at/in\" — the standard locative. -உள் (-uḷ, retroflex ḷ) = \"inside, within\" — more emphatic enclosure. Confusing them is a Tamil-learner mistake.",
+      "pronunciation": "-il vs -uḷ",
+      "exampleTarget": "வீட்டில் (in/at the house) vs வீட்டுள்ளே (inside the house, intensified)",
+      "exampleNative": "Mixing the two is a fingerprint of a learner — natives produce them automatically.",
+      "korean": "வீட்டில் (in/at the house) vs வீட்டுள்ளே (inside the house, intensified)",
+      "english": "Model use for \"-இல் vs -உள்\": Two locative-like suffixes with DIFFERENT roles. -இல் (-il, alveolar l) = \"at/in\" — the standard locative. -உள் (-uḷ, retroflex ḷ) = \"inside, within\" — more emphatic enclosure. Confusing them is a Tamil-learner mistake.",
+      "example": "வீட்டில் (in/at the house) vs வீட்டுள்ளே (inside the house, intensified)",
+      "exampleEnglish": "Mixing the two is a fingerprint of a learner — natives produce them automatically."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "-இல் vs -உள்",
+      "romanization": "-il vs -uḷ",
+      "nativeText": "Usage focus for \"-இல் vs -உள்\": Two locative-like suffixes with DIFFERENT roles. -இல் (-il, alveolar l) = \"at/in\" — the standard locative. -உள் (-uḷ, retroflex ḷ) = \"inside, within\" — more emphatic enclosure. Confusing them is a Tamil-learner mistake.",
+      "pronunciation": "-il vs -uḷ",
+      "exampleTarget": "வீட்டில் (in/at the house) vs வீட்டுள்ளே (inside the house, intensified)",
+      "exampleNative": "Notice what the form is doing here: Mixing the two is a fingerprint of a learner — natives produce them automatically.",
+      "korean": "-இல் vs -உள்",
+      "english": "Usage focus for \"-இல் vs -உள்\": Two locative-like suffixes with DIFFERENT roles. -இல் (-il, alveolar l) = \"at/in\" — the standard locative. -உள் (-uḷ, retroflex ḷ) = \"inside, within\" — more emphatic enclosure. Confusing them is a Tamil-learner mistake.",
+      "example": "வீட்டில் (in/at the house) vs வீட்டுள்ளே (inside the house, intensified)",
+      "exampleEnglish": "Notice what the form is doing here: Mixing the two is a fingerprint of a learner — natives produce them automatically."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "-இல் vs -உள்",
+      "romanization": "-il vs -uḷ",
+      "nativeText": "Contrast check for \"-இல் vs -உள்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "-il vs -uḷ",
+      "exampleTarget": "வீட்டில் (in/at the house) vs வீட்டுள்ளே (inside the house, intensified)",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: Mixing the two is a fingerprint of a learner — natives produce them automatically.",
+      "korean": "-இல் vs -உள்",
+      "english": "Contrast check for \"-இல் vs -உள்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "வீட்டில் (in/at the house) vs வீட்டுள்ளே (inside the house, intensified)",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: Mixing the two is a fingerprint of a learner — natives produce them automatically."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "-இல் vs -உள்",
+      "romanization": "-il vs -uḷ",
+      "nativeText": "Recall \"-இல் vs -உள்\" from memory, then explain what would change if a nearby alternative replaced it in \"வீட்டில் (in/at the house) vs வீட்டுள்ளே (inside the house, intensified)\".",
+      "pronunciation": "-il vs -uḷ",
+      "exampleTarget": "வீட்டில் (in/at the house) vs வீட்டுள்ளே (inside the house, intensified)",
+      "exampleNative": "Self-check against the model before moving on: Mixing the two is a fingerprint of a learner — natives produce them automatically.",
+      "korean": "-இல் vs -உள்",
+      "english": "Recall \"-இல் vs -உள்\" from memory, then explain what would change if a nearby alternative replaced it in \"வீட்டில் (in/at the house) vs வீட்டுள்ளே (inside the house, intensified)\".",
+      "example": "வீட்டில் (in/at the house) vs வீட்டுள்ளே (inside the house, intensified)",
+      "exampleEnglish": "Self-check against the model before moving on: Mixing the two is a fingerprint of a learner — natives produce them automatically."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "-இல் vs -உள்",
+      "romanization": "-il vs -uḷ",
+      "nativeText": "Repair \"-இல் vs -உள்\" inside \"வீட்டில் (in/at the house) vs வீட்டுள்ளே (inside the house, intensified)\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Two locative-like suffixes with DIFFERENT roles. -இல் (-il, alveolar l) = \"at/in\" — the standard locative. -உள் (-uḷ, retroflex ḷ) = \"inside, within\" — more emphatic enclosure. Confusing them is a Tamil-learner mistake.",
+      "pronunciation": "-il vs -uḷ",
+      "exampleTarget": "வீட்டில் (in/at the house) vs வீட்டுள்ளே (inside the house, intensified)",
+      "exampleNative": "Use the model as the repair target: Mixing the two is a fingerprint of a learner — natives produce them automatically.",
+      "korean": "-இல் vs -உள்",
+      "english": "Repair \"-இல் vs -உள்\" inside \"வீட்டில் (in/at the house) vs வீட்டுள்ளே (inside the house, intensified)\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Two locative-like suffixes with DIFFERENT roles. -இல் (-il, alveolar l) = \"at/in\" — the standard locative. -உள் (-uḷ, retroflex ḷ) = \"inside, within\" — more emphatic enclosure. Confusing them is a Tamil-learner mistake.",
+      "example": "வீட்டில் (in/at the house) vs வீட்டுள்ளே (inside the house, intensified)",
+      "exampleEnglish": "Use the model as the repair target: Mixing the two is a fingerprint of a learner — natives produce them automatically."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "-இல் vs -உள்",
+      "romanization": "-il vs -uḷ",
+      "nativeText": "Transfer \"-இல் vs -உள்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"வீட்டில் (in/at the house) vs வீட்டுள்ளே (inside the house, intensified)\".",
+      "pronunciation": "-il vs -uḷ",
+      "exampleTarget": "வீட்டில் (in/at the house) vs வீட்டுள்ளே (inside the house, intensified)",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: Mixing the two is a fingerprint of a learner — natives produce them automatically.",
+      "korean": "-இல் vs -உள்",
+      "english": "Transfer \"-இல் vs -உள்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"வீட்டில் (in/at the house) vs வீட்டுள்ளே (inside the house, intensified)\".",
+      "example": "வீட்டில் (in/at the house) vs வீட்டுள்ளே (inside the house, intensified)",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: Mixing the two is a fingerprint of a learner — natives produce them automatically."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "-இல் vs -உள்",
+      "romanization": "-il vs -uḷ",
+      "nativeText": "Find one word or phrase that naturally travels with \"-இல் vs -உள்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "-il vs -uḷ",
+      "exampleTarget": "வீட்டில் (in/at the house) vs வீட்டுள்ளே (inside the house, intensified)",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: Mixing the two is a fingerprint of a learner — natives produce them automatically.",
+      "korean": "-இல் vs -உள்",
+      "english": "Find one word or phrase that naturally travels with \"-இல் vs -உள்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "வீட்டில் (in/at the house) vs வீட்டுள்ளே (inside the house, intensified)",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: Mixing the two is a fingerprint of a learner — natives produce them automatically."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "-இல் vs -உள்",
+      "romanization": "-il vs -uḷ",
+      "nativeText": "Listen for \"-இல் vs -உள்\" inside \"வீட்டில் (in/at the house) vs வீட்டுள்ளே (inside the house, intensified)\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "-il vs -uḷ",
+      "exampleTarget": "வீட்டில் (in/at the house) vs வீட்டுள்ளே (inside the house, intensified)",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Mixing the two is a fingerprint of a learner — natives produce them automatically.",
+      "korean": "-இல் vs -உள்",
+      "english": "Listen for \"-இல் vs -உள்\" inside \"வீட்டில் (in/at the house) vs வீட்டுள்ளே (inside the house, intensified)\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "வீட்டில் (in/at the house) vs வீட்டுள்ளே (inside the house, intensified)",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Mixing the two is a fingerprint of a learner — natives produce them automatically."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "-இல் vs -உள்",
+      "romanization": "-il vs -uḷ",
+      "nativeText": "Write \"-இல் vs -உள்\" again without looking, then compare the exact written form against \"வீட்டில் (in/at the house) vs வீட்டுள்ளே (inside the house, intensified)\" before moving on.",
+      "pronunciation": "-il vs -uḷ",
+      "exampleTarget": "வீட்டில் (in/at the house) vs வீட்டுள்ளே (inside the house, intensified)",
+      "exampleNative": "Use the written model as the final correctness check: Mixing the two is a fingerprint of a learner — natives produce them automatically.",
+      "korean": "-இல் vs -உள்",
+      "english": "Write \"-இல் vs -உள்\" again without looking, then compare the exact written form against \"வீட்டில் (in/at the house) vs வீட்டுள்ளே (inside the house, intensified)\" before moving on.",
+      "example": "வீட்டில் (in/at the house) vs வீட்டுள்ளே (inside the house, intensified)",
+      "exampleEnglish": "Use the written model as the final correctness check: Mixing the two is a fingerprint of a learner — natives produce them automatically."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "-இல் vs -உள்",
+      "romanization": "-il vs -uḷ",
+      "nativeText": "Check whether \"-இல் vs -உள்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Mixing the two is a fingerprint of a learner — natives produce them automatically.",
+      "pronunciation": "-il vs -uḷ",
+      "exampleTarget": "வீட்டில் (in/at the house) vs வீட்டுள்ளே (inside the house, intensified)",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: Mixing the two is a fingerprint of a learner — natives produce them automatically.",
+      "korean": "-இல் vs -உள்",
+      "english": "Check whether \"-இல் vs -உள்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Mixing the two is a fingerprint of a learner — natives produce them automatically.",
+      "example": "வீட்டில் (in/at the house) vs வீட்டுள்ளே (inside the house, intensified)",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: Mixing the two is a fingerprint of a learner — natives produce them automatically."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "கடைக்கு போகிறேன். kaṭaikku pōkiṟēṉ. \"I go to the shop.\"",
+      "romanization": "-ukku dative",
+      "nativeText": "Model use for \"-உக்கு dative\": Dative case suffix -உக்கு (-ukku). Geminate kk is voiceless because doubled. Marks goal/direction/recipient.",
+      "pronunciation": "-ukku dative",
+      "exampleTarget": "கடைக்கு போகிறேன். kaṭaikku pōkiṟēṉ. \"I go to the shop.\"",
+      "exampleNative": "Voicing the kk to /gg/ is a non-native error; keep it crisp /kk/.",
+      "korean": "கடைக்கு போகிறேன். kaṭaikku pōkiṟēṉ. \"I go to the shop.\"",
+      "english": "Model use for \"-உக்கு dative\": Dative case suffix -உக்கு (-ukku). Geminate kk is voiceless because doubled. Marks goal/direction/recipient.",
+      "example": "கடைக்கு போகிறேன். kaṭaikku pōkiṟēṉ. \"I go to the shop.\"",
+      "exampleEnglish": "Voicing the kk to /gg/ is a non-native error; keep it crisp /kk/."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "-உக்கு dative",
+      "romanization": "-ukku dative",
+      "nativeText": "Usage focus for \"-உக்கு dative\": Dative case suffix -உக்கு (-ukku). Geminate kk is voiceless because doubled. Marks goal/direction/recipient.",
+      "pronunciation": "-ukku dative",
+      "exampleTarget": "கடைக்கு போகிறேன். kaṭaikku pōkiṟēṉ. \"I go to the shop.\"",
+      "exampleNative": "Notice what the form is doing here: Voicing the kk to /gg/ is a non-native error; keep it crisp /kk/.",
+      "korean": "-உக்கு dative",
+      "english": "Usage focus for \"-உக்கு dative\": Dative case suffix -உக்கு (-ukku). Geminate kk is voiceless because doubled. Marks goal/direction/recipient.",
+      "example": "கடைக்கு போகிறேன். kaṭaikku pōkiṟēṉ. \"I go to the shop.\"",
+      "exampleEnglish": "Notice what the form is doing here: Voicing the kk to /gg/ is a non-native error; keep it crisp /kk/."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "-உக்கு dative",
+      "romanization": "-ukku dative",
+      "nativeText": "Contrast check for \"-உக்கு dative\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "-ukku dative",
+      "exampleTarget": "கடைக்கு போகிறேன். kaṭaikku pōkiṟēṉ. \"I go to the shop.\"",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: Voicing the kk to /gg/ is a non-native error; keep it crisp /kk/.",
+      "korean": "-உக்கு dative",
+      "english": "Contrast check for \"-உக்கு dative\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "கடைக்கு போகிறேன். kaṭaikku pōkiṟēṉ. \"I go to the shop.\"",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: Voicing the kk to /gg/ is a non-native error; keep it crisp /kk/."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "-உக்கு dative",
+      "romanization": "-ukku dative",
+      "nativeText": "Recall \"-உக்கு dative\" from memory, then explain what would change if a nearby alternative replaced it in \"கடைக்கு போகிறேன். kaṭaikku pōkiṟēṉ. \"I go to the shop.\"\".",
+      "pronunciation": "-ukku dative",
+      "exampleTarget": "கடைக்கு போகிறேன். kaṭaikku pōkiṟēṉ. \"I go to the shop.\"",
+      "exampleNative": "Self-check against the model before moving on: Voicing the kk to /gg/ is a non-native error; keep it crisp /kk/.",
+      "korean": "-உக்கு dative",
+      "english": "Recall \"-உக்கு dative\" from memory, then explain what would change if a nearby alternative replaced it in \"கடைக்கு போகிறேன். kaṭaikku pōkiṟēṉ. \"I go to the shop.\"\".",
+      "example": "கடைக்கு போகிறேன். kaṭaikku pōkiṟēṉ. \"I go to the shop.\"",
+      "exampleEnglish": "Self-check against the model before moving on: Voicing the kk to /gg/ is a non-native error; keep it crisp /kk/."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "-உக்கு dative",
+      "romanization": "-ukku dative",
+      "nativeText": "Repair \"-உக்கு dative\" inside \"கடைக்கு போகிறேன். kaṭaikku pōkiṟēṉ. \"I go to the shop.\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Dative case suffix -உக்கு (-ukku). Geminate kk is voiceless because doubled. Marks goal/direction/recipient.",
+      "pronunciation": "-ukku dative",
+      "exampleTarget": "கடைக்கு போகிறேன். kaṭaikku pōkiṟēṉ. \"I go to the shop.\"",
+      "exampleNative": "Use the model as the repair target: Voicing the kk to /gg/ is a non-native error; keep it crisp /kk/.",
+      "korean": "-உக்கு dative",
+      "english": "Repair \"-உக்கு dative\" inside \"கடைக்கு போகிறேன். kaṭaikku pōkiṟēṉ. \"I go to the shop.\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Dative case suffix -உக்கு (-ukku). Geminate kk is voiceless because doubled. Marks goal/direction/recipient.",
+      "example": "கடைக்கு போகிறேன். kaṭaikku pōkiṟēṉ. \"I go to the shop.\"",
+      "exampleEnglish": "Use the model as the repair target: Voicing the kk to /gg/ is a non-native error; keep it crisp /kk/."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "-உக்கு dative",
+      "romanization": "-ukku dative",
+      "nativeText": "Transfer \"-உக்கு dative\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"கடைக்கு போகிறேன். kaṭaikku pōkiṟēṉ. \"I go to the shop.\"\".",
+      "pronunciation": "-ukku dative",
+      "exampleTarget": "கடைக்கு போகிறேன். kaṭaikku pōkiṟēṉ. \"I go to the shop.\"",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: Voicing the kk to /gg/ is a non-native error; keep it crisp /kk/.",
+      "korean": "-உக்கு dative",
+      "english": "Transfer \"-உக்கு dative\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"கடைக்கு போகிறேன். kaṭaikku pōkiṟēṉ. \"I go to the shop.\"\".",
+      "example": "கடைக்கு போகிறேன். kaṭaikku pōkiṟēṉ. \"I go to the shop.\"",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: Voicing the kk to /gg/ is a non-native error; keep it crisp /kk/."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "-உக்கு dative",
+      "romanization": "-ukku dative",
+      "nativeText": "Find one word or phrase that naturally travels with \"-உக்கு dative\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "-ukku dative",
+      "exampleTarget": "கடைக்கு போகிறேன். kaṭaikku pōkiṟēṉ. \"I go to the shop.\"",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: Voicing the kk to /gg/ is a non-native error; keep it crisp /kk/.",
+      "korean": "-உக்கு dative",
+      "english": "Find one word or phrase that naturally travels with \"-உக்கு dative\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "கடைக்கு போகிறேன். kaṭaikku pōkiṟēṉ. \"I go to the shop.\"",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: Voicing the kk to /gg/ is a non-native error; keep it crisp /kk/."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "-உக்கு dative",
+      "romanization": "-ukku dative",
+      "nativeText": "Listen for \"-உக்கு dative\" inside \"கடைக்கு போகிறேன். kaṭaikku pōkiṟēṉ. \"I go to the shop.\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "-ukku dative",
+      "exampleTarget": "கடைக்கு போகிறேன். kaṭaikku pōkiṟēṉ. \"I go to the shop.\"",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Voicing the kk to /gg/ is a non-native error; keep it crisp /kk/.",
+      "korean": "-உக்கு dative",
+      "english": "Listen for \"-உக்கு dative\" inside \"கடைக்கு போகிறேன். kaṭaikku pōkiṟēṉ. \"I go to the shop.\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "கடைக்கு போகிறேன். kaṭaikku pōkiṟēṉ. \"I go to the shop.\"",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Voicing the kk to /gg/ is a non-native error; keep it crisp /kk/."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "-உக்கு dative",
+      "romanization": "-ukku dative",
+      "nativeText": "Write \"-உக்கு dative\" again without looking, then compare the exact written form against \"கடைக்கு போகிறேன். kaṭaikku pōkiṟēṉ. \"I go to the shop.\"\" before moving on.",
+      "pronunciation": "-ukku dative",
+      "exampleTarget": "கடைக்கு போகிறேன். kaṭaikku pōkiṟēṉ. \"I go to the shop.\"",
+      "exampleNative": "Use the written model as the final correctness check: Voicing the kk to /gg/ is a non-native error; keep it crisp /kk/.",
+      "korean": "-உக்கு dative",
+      "english": "Write \"-உக்கு dative\" again without looking, then compare the exact written form against \"கடைக்கு போகிறேன். kaṭaikku pōkiṟēṉ. \"I go to the shop.\"\" before moving on.",
+      "example": "கடைக்கு போகிறேன். kaṭaikku pōkiṟēṉ. \"I go to the shop.\"",
+      "exampleEnglish": "Use the written model as the final correctness check: Voicing the kk to /gg/ is a non-native error; keep it crisp /kk/."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "-உக்கு dative",
+      "romanization": "-ukku dative",
+      "nativeText": "Check whether \"-உக்கு dative\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Voicing the kk to /gg/ is a non-native error; keep it crisp /kk/.",
+      "pronunciation": "-ukku dative",
+      "exampleTarget": "கடைக்கு போகிறேன். kaṭaikku pōkiṟēṉ. \"I go to the shop.\"",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: Voicing the kk to /gg/ is a non-native error; keep it crisp /kk/.",
+      "korean": "-உக்கு dative",
+      "english": "Check whether \"-உக்கு dative\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Voicing the kk to /gg/ is a non-native error; keep it crisp /kk/.",
+      "example": "கடைக்கு போகிறேன். kaṭaikku pōkiṟēṉ. \"I go to the shop.\"",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: Voicing the kk to /gg/ is a non-native error; keep it crisp /kk/."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "வலது பக்கம் திரும்புங்கள். valatu pakkam tirumpuṅkaḷ. \"Please turn right.\"",
+      "romanization": "valatu / iṭatu",
+      "nativeText": "Model use for \"வலது / இடது\": Right / left. Final -tu (dental t, voiceless because adjacent to vowel and word-final). The cluster ṭa in iṭatu is retroflex.",
+      "pronunciation": "valatu / iṭatu",
+      "exampleTarget": "வலது பக்கம் திரும்புங்கள். valatu pakkam tirumpuṅkaḷ. \"Please turn right.\"",
+      "exampleNative": "pakkam = side; valatu/iṭatu pakkam = right/left side.",
+      "korean": "வலது பக்கம் திரும்புங்கள். valatu pakkam tirumpuṅkaḷ. \"Please turn right.\"",
+      "english": "Model use for \"வலது / இடது\": Right / left. Final -tu (dental t, voiceless because adjacent to vowel and word-final). The cluster ṭa in iṭatu is retroflex.",
+      "example": "வலது பக்கம் திரும்புங்கள். valatu pakkam tirumpuṅkaḷ. \"Please turn right.\"",
+      "exampleEnglish": "pakkam = side; valatu/iṭatu pakkam = right/left side."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "வலது / இடது",
+      "romanization": "valatu / iṭatu",
+      "nativeText": "Usage focus for \"வலது / இடது\": Right / left. Final -tu (dental t, voiceless because adjacent to vowel and word-final). The cluster ṭa in iṭatu is retroflex.",
+      "pronunciation": "valatu / iṭatu",
+      "exampleTarget": "வலது பக்கம் திரும்புங்கள். valatu pakkam tirumpuṅkaḷ. \"Please turn right.\"",
+      "exampleNative": "Notice what the form is doing here: pakkam = side; valatu/iṭatu pakkam = right/left side.",
+      "korean": "வலது / இடது",
+      "english": "Usage focus for \"வலது / இடது\": Right / left. Final -tu (dental t, voiceless because adjacent to vowel and word-final). The cluster ṭa in iṭatu is retroflex.",
+      "example": "வலது பக்கம் திரும்புங்கள். valatu pakkam tirumpuṅkaḷ. \"Please turn right.\"",
+      "exampleEnglish": "Notice what the form is doing here: pakkam = side; valatu/iṭatu pakkam = right/left side."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "வலது / இடது",
+      "romanization": "valatu / iṭatu",
+      "nativeText": "Contrast check for \"வலது / இடது\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "valatu / iṭatu",
+      "exampleTarget": "வலது பக்கம் திரும்புங்கள். valatu pakkam tirumpuṅkaḷ. \"Please turn right.\"",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: pakkam = side; valatu/iṭatu pakkam = right/left side.",
+      "korean": "வலது / இடது",
+      "english": "Contrast check for \"வலது / இடது\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "வலது பக்கம் திரும்புங்கள். valatu pakkam tirumpuṅkaḷ. \"Please turn right.\"",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: pakkam = side; valatu/iṭatu pakkam = right/left side."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "வலது / இடது",
+      "romanization": "valatu / iṭatu",
+      "nativeText": "Recall \"வலது / இடது\" from memory, then explain what would change if a nearby alternative replaced it in \"வலது பக்கம் திரும்புங்கள். valatu pakkam tirumpuṅkaḷ. \"Please turn right.\"\".",
+      "pronunciation": "valatu / iṭatu",
+      "exampleTarget": "வலது பக்கம் திரும்புங்கள். valatu pakkam tirumpuṅkaḷ. \"Please turn right.\"",
+      "exampleNative": "Self-check against the model before moving on: pakkam = side; valatu/iṭatu pakkam = right/left side.",
+      "korean": "வலது / இடது",
+      "english": "Recall \"வலது / இடது\" from memory, then explain what would change if a nearby alternative replaced it in \"வலது பக்கம் திரும்புங்கள். valatu pakkam tirumpuṅkaḷ. \"Please turn right.\"\".",
+      "example": "வலது பக்கம் திரும்புங்கள். valatu pakkam tirumpuṅkaḷ. \"Please turn right.\"",
+      "exampleEnglish": "Self-check against the model before moving on: pakkam = side; valatu/iṭatu pakkam = right/left side."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "வலது / இடது",
+      "romanization": "valatu / iṭatu",
+      "nativeText": "Repair \"வலது / இடது\" inside \"வலது பக்கம் திரும்புங்கள். valatu pakkam tirumpuṅkaḷ. \"Please turn right.\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Right / left. Final -tu (dental t, voiceless because adjacent to vowel and word-final). The cluster ṭa in iṭatu is retroflex.",
+      "pronunciation": "valatu / iṭatu",
+      "exampleTarget": "வலது பக்கம் திரும்புங்கள். valatu pakkam tirumpuṅkaḷ. \"Please turn right.\"",
+      "exampleNative": "Use the model as the repair target: pakkam = side; valatu/iṭatu pakkam = right/left side.",
+      "korean": "வலது / இடது",
+      "english": "Repair \"வலது / இடது\" inside \"வலது பக்கம் திரும்புங்கள். valatu pakkam tirumpuṅkaḷ. \"Please turn right.\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Right / left. Final -tu (dental t, voiceless because adjacent to vowel and word-final). The cluster ṭa in iṭatu is retroflex.",
+      "example": "வலது பக்கம் திரும்புங்கள். valatu pakkam tirumpuṅkaḷ. \"Please turn right.\"",
+      "exampleEnglish": "Use the model as the repair target: pakkam = side; valatu/iṭatu pakkam = right/left side."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "வலது / இடது",
+      "romanization": "valatu / iṭatu",
+      "nativeText": "Transfer \"வலது / இடது\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"வலது பக்கம் திரும்புங்கள். valatu pakkam tirumpuṅkaḷ. \"Please turn right.\"\".",
+      "pronunciation": "valatu / iṭatu",
+      "exampleTarget": "வலது பக்கம் திரும்புங்கள். valatu pakkam tirumpuṅkaḷ. \"Please turn right.\"",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: pakkam = side; valatu/iṭatu pakkam = right/left side.",
+      "korean": "வலது / இடது",
+      "english": "Transfer \"வலது / இடது\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"வலது பக்கம் திரும்புங்கள். valatu pakkam tirumpuṅkaḷ. \"Please turn right.\"\".",
+      "example": "வலது பக்கம் திரும்புங்கள். valatu pakkam tirumpuṅkaḷ. \"Please turn right.\"",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: pakkam = side; valatu/iṭatu pakkam = right/left side."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "வலது / இடது",
+      "romanization": "valatu / iṭatu",
+      "nativeText": "Find one word or phrase that naturally travels with \"வலது / இடது\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "valatu / iṭatu",
+      "exampleTarget": "வலது பக்கம் திரும்புங்கள். valatu pakkam tirumpuṅkaḷ. \"Please turn right.\"",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: pakkam = side; valatu/iṭatu pakkam = right/left side.",
+      "korean": "வலது / இடது",
+      "english": "Find one word or phrase that naturally travels with \"வலது / இடது\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "வலது பக்கம் திரும்புங்கள். valatu pakkam tirumpuṅkaḷ. \"Please turn right.\"",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: pakkam = side; valatu/iṭatu pakkam = right/left side."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "வலது / இடது",
+      "romanization": "valatu / iṭatu",
+      "nativeText": "Listen for \"வலது / இடது\" inside \"வலது பக்கம் திரும்புங்கள். valatu pakkam tirumpuṅkaḷ. \"Please turn right.\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "valatu / iṭatu",
+      "exampleTarget": "வலது பக்கம் திரும்புங்கள். valatu pakkam tirumpuṅkaḷ. \"Please turn right.\"",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: pakkam = side; valatu/iṭatu pakkam = right/left side.",
+      "korean": "வலது / இடது",
+      "english": "Listen for \"வலது / இடது\" inside \"வலது பக்கம் திரும்புங்கள். valatu pakkam tirumpuṅkaḷ. \"Please turn right.\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "வலது பக்கம் திரும்புங்கள். valatu pakkam tirumpuṅkaḷ. \"Please turn right.\"",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: pakkam = side; valatu/iṭatu pakkam = right/left side."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "வலது / இடது",
+      "romanization": "valatu / iṭatu",
+      "nativeText": "Write \"வலது / இடது\" again without looking, then compare the exact written form against \"வலது பக்கம் திரும்புங்கள். valatu pakkam tirumpuṅkaḷ. \"Please turn right.\"\" before moving on.",
+      "pronunciation": "valatu / iṭatu",
+      "exampleTarget": "வலது பக்கம் திரும்புங்கள். valatu pakkam tirumpuṅkaḷ. \"Please turn right.\"",
+      "exampleNative": "Use the written model as the final correctness check: pakkam = side; valatu/iṭatu pakkam = right/left side.",
+      "korean": "வலது / இடது",
+      "english": "Write \"வலது / இடது\" again without looking, then compare the exact written form against \"வலது பக்கம் திரும்புங்கள். valatu pakkam tirumpuṅkaḷ. \"Please turn right.\"\" before moving on.",
+      "example": "வலது பக்கம் திரும்புங்கள். valatu pakkam tirumpuṅkaḷ. \"Please turn right.\"",
+      "exampleEnglish": "Use the written model as the final correctness check: pakkam = side; valatu/iṭatu pakkam = right/left side."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "வலது / இடது",
+      "romanization": "valatu / iṭatu",
+      "nativeText": "Check whether \"வலது / இடது\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: pakkam = side; valatu/iṭatu pakkam = right/left side.",
+      "pronunciation": "valatu / iṭatu",
+      "exampleTarget": "வலது பக்கம் திரும்புங்கள். valatu pakkam tirumpuṅkaḷ. \"Please turn right.\"",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: pakkam = side; valatu/iṭatu pakkam = right/left side.",
+      "korean": "வலது / இடது",
+      "english": "Check whether \"வலது / இடது\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: pakkam = side; valatu/iṭatu pakkam = right/left side.",
+      "example": "வலது பக்கம் திரும்புங்கள். valatu pakkam tirumpuṅkaḷ. \"Please turn right.\"",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: pakkam = side; valatu/iṭatu pakkam = right/left side."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "என் வீடு அண்ணா நகர். eṉ vīṭu Aṇṇā Nakar. \"My house is in Anna Nagar.\"",
+      "romanization": "vīṭu",
+      "nativeText": "Model use for \"வீடு\": House. Retroflex ṭ + final -u. Locative form: வீட்டில் vīṭṭil (with euphonic gemination).",
+      "pronunciation": "vīṭu",
+      "exampleTarget": "என் வீடு அண்ணா நகர். eṉ vīṭu Aṇṇā Nakar. \"My house is in Anna Nagar.\"",
+      "exampleNative": "Anna Nagar is a major residential Chennai neighborhood; named after the same Annadurai.",
+      "korean": "என் வீடு அண்ணா நகர். eṉ vīṭu Aṇṇā Nakar. \"My house is in Anna Nagar.\"",
+      "english": "Model use for \"வீடு\": House. Retroflex ṭ + final -u. Locative form: வீட்டில் vīṭṭil (with euphonic gemination).",
+      "example": "என் வீடு அண்ணா நகர். eṉ vīṭu Aṇṇā Nakar. \"My house is in Anna Nagar.\"",
+      "exampleEnglish": "Anna Nagar is a major residential Chennai neighborhood; named after the same Annadurai."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "வீடு",
+      "romanization": "vīṭu",
+      "nativeText": "Usage focus for \"வீடு\": House. Retroflex ṭ + final -u. Locative form: வீட்டில் vīṭṭil (with euphonic gemination).",
+      "pronunciation": "vīṭu",
+      "exampleTarget": "என் வீடு அண்ணா நகர். eṉ vīṭu Aṇṇā Nakar. \"My house is in Anna Nagar.\"",
+      "exampleNative": "Notice what the form is doing here: Anna Nagar is a major residential Chennai neighborhood; named after the same Annadurai.",
+      "korean": "வீடு",
+      "english": "Usage focus for \"வீடு\": House. Retroflex ṭ + final -u. Locative form: வீட்டில் vīṭṭil (with euphonic gemination).",
+      "example": "என் வீடு அண்ணா நகர். eṉ vīṭu Aṇṇā Nakar. \"My house is in Anna Nagar.\"",
+      "exampleEnglish": "Notice what the form is doing here: Anna Nagar is a major residential Chennai neighborhood; named after the same Annadurai."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "வீடு",
+      "romanization": "vīṭu",
+      "nativeText": "Contrast check for \"வீடு\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "vīṭu",
+      "exampleTarget": "என் வீடு அண்ணா நகர். eṉ vīṭu Aṇṇā Nakar. \"My house is in Anna Nagar.\"",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: Anna Nagar is a major residential Chennai neighborhood; named after the same Annadurai.",
+      "korean": "வீடு",
+      "english": "Contrast check for \"வீடு\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "என் வீடு அண்ணா நகர். eṉ vīṭu Aṇṇā Nakar. \"My house is in Anna Nagar.\"",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: Anna Nagar is a major residential Chennai neighborhood; named after the same Annadurai."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "வீடு",
+      "romanization": "vīṭu",
+      "nativeText": "Recall \"வீடு\" from memory, then explain what would change if a nearby alternative replaced it in \"என் வீடு அண்ணா நகர். eṉ vīṭu Aṇṇā Nakar. \"My house is in Anna Nagar.\"\".",
+      "pronunciation": "vīṭu",
+      "exampleTarget": "என் வீடு அண்ணா நகர். eṉ vīṭu Aṇṇā Nakar. \"My house is in Anna Nagar.\"",
+      "exampleNative": "Self-check against the model before moving on: Anna Nagar is a major residential Chennai neighborhood; named after the same Annadurai.",
+      "korean": "வீடு",
+      "english": "Recall \"வீடு\" from memory, then explain what would change if a nearby alternative replaced it in \"என் வீடு அண்ணா நகர். eṉ vīṭu Aṇṇā Nakar. \"My house is in Anna Nagar.\"\".",
+      "example": "என் வீடு அண்ணா நகர். eṉ vīṭu Aṇṇā Nakar. \"My house is in Anna Nagar.\"",
+      "exampleEnglish": "Self-check against the model before moving on: Anna Nagar is a major residential Chennai neighborhood; named after the same Annadurai."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "வீடு",
+      "romanization": "vīṭu",
+      "nativeText": "Repair \"வீடு\" inside \"என் வீடு அண்ணா நகர். eṉ vīṭu Aṇṇā Nakar. \"My house is in Anna Nagar.\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: House. Retroflex ṭ + final -u. Locative form: வீட்டில் vīṭṭil (with euphonic gemination).",
+      "pronunciation": "vīṭu",
+      "exampleTarget": "என் வீடு அண்ணா நகர். eṉ vīṭu Aṇṇā Nakar. \"My house is in Anna Nagar.\"",
+      "exampleNative": "Use the model as the repair target: Anna Nagar is a major residential Chennai neighborhood; named after the same Annadurai.",
+      "korean": "வீடு",
+      "english": "Repair \"வீடு\" inside \"என் வீடு அண்ணா நகர். eṉ vīṭu Aṇṇā Nakar. \"My house is in Anna Nagar.\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: House. Retroflex ṭ + final -u. Locative form: வீட்டில் vīṭṭil (with euphonic gemination).",
+      "example": "என் வீடு அண்ணா நகர். eṉ vīṭu Aṇṇā Nakar. \"My house is in Anna Nagar.\"",
+      "exampleEnglish": "Use the model as the repair target: Anna Nagar is a major residential Chennai neighborhood; named after the same Annadurai."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "வீடு",
+      "romanization": "vīṭu",
+      "nativeText": "Transfer \"வீடு\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"என் வீடு அண்ணா நகர். eṉ vīṭu Aṇṇā Nakar. \"My house is in Anna Nagar.\"\".",
+      "pronunciation": "vīṭu",
+      "exampleTarget": "என் வீடு அண்ணா நகர். eṉ vīṭu Aṇṇā Nakar. \"My house is in Anna Nagar.\"",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: Anna Nagar is a major residential Chennai neighborhood; named after the same Annadurai.",
+      "korean": "வீடு",
+      "english": "Transfer \"வீடு\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"என் வீடு அண்ணா நகர். eṉ vīṭu Aṇṇā Nakar. \"My house is in Anna Nagar.\"\".",
+      "example": "என் வீடு அண்ணா நகர். eṉ vīṭu Aṇṇā Nakar. \"My house is in Anna Nagar.\"",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: Anna Nagar is a major residential Chennai neighborhood; named after the same Annadurai."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "வீடு",
+      "romanization": "vīṭu",
+      "nativeText": "Find one word or phrase that naturally travels with \"வீடு\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "vīṭu",
+      "exampleTarget": "என் வீடு அண்ணா நகர். eṉ vīṭu Aṇṇā Nakar. \"My house is in Anna Nagar.\"",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: Anna Nagar is a major residential Chennai neighborhood; named after the same Annadurai.",
+      "korean": "வீடு",
+      "english": "Find one word or phrase that naturally travels with \"வீடு\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "என் வீடு அண்ணா நகர். eṉ vīṭu Aṇṇā Nakar. \"My house is in Anna Nagar.\"",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: Anna Nagar is a major residential Chennai neighborhood; named after the same Annadurai."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "வீடு",
+      "romanization": "vīṭu",
+      "nativeText": "Listen for \"வீடு\" inside \"என் வீடு அண்ணா நகர். eṉ vīṭu Aṇṇā Nakar. \"My house is in Anna Nagar.\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "vīṭu",
+      "exampleTarget": "என் வீடு அண்ணா நகர். eṉ vīṭu Aṇṇā Nakar. \"My house is in Anna Nagar.\"",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Anna Nagar is a major residential Chennai neighborhood; named after the same Annadurai.",
+      "korean": "வீடு",
+      "english": "Listen for \"வீடு\" inside \"என் வீடு அண்ணா நகர். eṉ vīṭu Aṇṇā Nakar. \"My house is in Anna Nagar.\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "என் வீடு அண்ணா நகர். eṉ vīṭu Aṇṇā Nakar. \"My house is in Anna Nagar.\"",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Anna Nagar is a major residential Chennai neighborhood; named after the same Annadurai."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "வீடு",
+      "romanization": "vīṭu",
+      "nativeText": "Write \"வீடு\" again without looking, then compare the exact written form against \"என் வீடு அண்ணா நகர். eṉ vīṭu Aṇṇā Nakar. \"My house is in Anna Nagar.\"\" before moving on.",
+      "pronunciation": "vīṭu",
+      "exampleTarget": "என் வீடு அண்ணா நகர். eṉ vīṭu Aṇṇā Nakar. \"My house is in Anna Nagar.\"",
+      "exampleNative": "Use the written model as the final correctness check: Anna Nagar is a major residential Chennai neighborhood; named after the same Annadurai.",
+      "korean": "வீடு",
+      "english": "Write \"வீடு\" again without looking, then compare the exact written form against \"என் வீடு அண்ணா நகர். eṉ vīṭu Aṇṇā Nakar. \"My house is in Anna Nagar.\"\" before moving on.",
+      "example": "என் வீடு அண்ணா நகர். eṉ vīṭu Aṇṇā Nakar. \"My house is in Anna Nagar.\"",
+      "exampleEnglish": "Use the written model as the final correctness check: Anna Nagar is a major residential Chennai neighborhood; named after the same Annadurai."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit03locations-vocabulary-1",
+        "ta-level1unit03locations-vocabulary-2",
+        "ta-level1unit03locations-grammar-1",
+        "ta-level1unit03locations-grammar-2",
+        "ta-level1unit03locations-reading",
+        "ta-level1unit03locations-listening",
+        "ta-level1unit03locations-writing",
+        "ta-level1unit03locations-task"
+      ],
+      "targetText": "வீடு",
+      "romanization": "vīṭu",
+      "nativeText": "Check whether \"வீடு\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Anna Nagar is a major residential Chennai neighborhood; named after the same Annadurai.",
+      "pronunciation": "vīṭu",
+      "exampleTarget": "என் வீடு அண்ணா நகர். eṉ vīṭu Aṇṇā Nakar. \"My house is in Anna Nagar.\"",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: Anna Nagar is a major residential Chennai neighborhood; named after the same Annadurai.",
+      "korean": "வீடு",
+      "english": "Check whether \"வீடு\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Anna Nagar is a major residential Chennai neighborhood; named after the same Annadurai.",
+      "example": "என் வீடு அண்ணா நகர். eṉ vīṭu Aṇṇā Nakar. \"My house is in Anna Nagar.\"",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: Anna Nagar is a major residential Chennai neighborhood; named after the same Annadurai."
+    }
+  ]
 };
-
-module.exports = lesson;

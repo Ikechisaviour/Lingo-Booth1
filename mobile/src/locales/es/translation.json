@@ -23,7 +23,8 @@
     "saving": "Ahorro...",
     "search": "Buscar",
     "notSet": "No establecido",
-    "all": "Toda"
+    "all": "Toda",
+    "reset": "Reiniciar"
   },
   "languages": {
     "en": "Inglés",
@@ -218,7 +219,8 @@
       "fri": "F",
       "sat": "S",
       "sun": "S"
-    }
+    },
+    "contactDesc": "Preguntas, comentarios o un problema que informar"
   },
   "lessons": {
     "title": "{{language}} Lecciones",
@@ -738,7 +740,102 @@
     "modeBreakdown": "Desglose de modos",
     "searchUsers": "Buscar usuarios...",
     "all": "Todos",
-    "demo": "Manifestación"
+    "demo": "Manifestación",
+    "failures": "Fallos",
+    "messages": "Mensajes",
+    "userFailures": "Fallos del lado del usuario",
+    "openFailures": "{{count}} fallas abiertas",
+    "criticalFailures": "{{count}} crítica",
+    "clearing": "Claro...",
+    "loadingFailures": "Fallos al cargar...",
+    "noOpenFailures": "No hay fallas abiertas del lado del usuario.",
+    "acknowledge": "Reconocer",
+    "page": "Página",
+    "device": "Dispositivo",
+    "languagePair": "Par de idiomas",
+    "clientStatus": "Cliente",
+    "pageOf": "Página {{page}} de {{total}}",
+    "guestUser": "Usuario invitada",
+    "unknownUser": "Usuario desconocida",
+    "unknown": "Desconocida",
+    "clearFailuresTitle": "¿Borrar fallos abiertos?",
+    "clearFailuresBody": "¿Marcar todos los fallos abiertos {{count}} como reconocidos?",
+    "contactMessages": "Mensajes de contacto",
+    "unreadMessages": "{{count}} mensajes no leídos",
+    "allMessages": "Todos los mensajes",
+    "registeredUsers": "Usuarios registradas",
+    "guestUsers": "Usuarias invitadas",
+    "loadingMessages": "Cargando mensajes...",
+    "noUnreadMessages": "No hay mensajes de contacto no leídos.",
+    "registeredUser": "Usuario registrada",
+    "contactMessage": "Mensaje de contacto",
+    "markRead": "marcar leído",
+    "name": "Nombre",
+    "accountTier": "Nivel de cuenta",
+    "clearMessagesTitle": "¿Borrar mensajes no leídos?",
+    "clearMessagesBody": "¿Marcar todos los mensajes de contacto {{count}} no leídos como leídos?",
+    "demoDifficulty": {
+      "beginner": "Principiante",
+      "balanced": "Equilibrada",
+      "natural": "Natural",
+      "challenge": "Desafío"
+    },
+    "demoScenarios": {
+      "friendlyChat": "Charla amigable",
+      "cafeWorker": "Hablando con un trabajador de una cafetería",
+      "taxiDriver": "Pedir ayuda a una taxista",
+      "meetingNew": "conocer a alguien nuevo"
+    },
+    "demoReplyPlaceholder": "La respuesta del compañero de práctica aparecerá aquí.",
+    "demoTipPlaceholder": "Pregunte en cualquiera de los idiomas seleccionados. Puede cambiar de tema, preguntar significados o solicitar una redacción más sencilla.",
+    "promoteConfirmShort": "¿Hacer {{username}} una administrador?",
+    "promote": "Promover",
+    "deleteUserTitle": "Eliminar usuario",
+    "deleteUserConfirmShort": "¿Eliminar permanentemente {{username}}? Esto no se puede deshacer.",
+    "demoReset": "Restablecimiento de la conversación.",
+    "demoNoReply": "No hubo respuesta.",
+    "demoNoCoachingNote": "Sin nota de entrenamiento.",
+    "demoResponseFailed": "No pude responder esta vez. Por favor inténtalo de nuevo.",
+    "demoConnectionIssue": "Problema de conexión. Inténtalo de nuevo en un momento.",
+    "tapForDetails": "Toca para más detalles",
+    "activeWeek": "Activo 7d",
+    "countries": "Países",
+    "conversion": "Conversión",
+    "engagement": "Compromiso",
+    "totalCardsStudied": "Total de tarjetas estudiadas",
+    "totalAudioPlays": "Reproducciones de audio totales",
+    "lessonsViewed": "Lecciones vistas",
+    "topLanguagePairs": "Principales pares de idiomas",
+    "sessionsCount": "{{count}} sesiones",
+    "deviceBreakdown": "Avería del dispositivo",
+    "recentSessions": "Sesiones recientes ({{count}})",
+    "cardsStudiedCount": "Tarjetas {{count}}",
+    "pageNumber": "Página {{page}}",
+    "noGuestData": "No hay datos de huéspedes disponibles",
+    "loadData": "Cargar datos",
+    "speakingDemo": "Demostración oral",
+    "demoIntro": "Vista previa de la conversación solo para administradores. No guarda el audio ni el progreso del alumno.",
+    "scenario": "Guión",
+    "customScenario": "Escenario personalizado",
+    "learningLanguage": "Aprender idioma",
+    "nativeLanguage": "Lengua materna",
+    "listenFor": "Escuche",
+    "difficulty": "Dificultad",
+    "learnerTurnInput": "Escriba o pegue lo que dijo el alumno",
+    "interrupt": "Interrumpir",
+    "conversationState": "Estado de conversación",
+    "lastLearnerTurn": "Último turno de alumno",
+    "noTurnSentYet": "Aún no se ha enviado ningún turno.",
+    "practicePartnerResponse": "Respuesta del compañero de práctica",
+    "coachNote": "nota del entrenador",
+    "userDetails": "Detalles del usuario",
+    "totalXp": "XP total",
+    "studyMode": "Modo de estudio",
+    "languages": "Idiomas",
+    "loginCount": "Conteo de inicios de sesión",
+    "memberSince": "Miembro desde",
+    "suspendReasonLabel": "Motivo de suspensión",
+    "userDetailsLoadFailed": "No se pudieron cargar los detalles del usuario"
   },
   "pricing": {
     "kicker": "Planes",
@@ -820,7 +917,9 @@
     "discountCode": "Código de descuento",
     "discountPlaceholder": "código opcional",
     "discountUnavailable": "Ese código de descuento no está disponible para este plan.",
-    "automaticDiscountApplied": "Descuento automático de {{discount}} aplicado"
+    "automaticDiscountApplied": "Descuento automático de {{discount}} aplicado",
+    "signInToChooseTitle": "Crea una cuenta para continuar",
+    "signInToChooseBody": "Cree una cuenta o inicie sesión antes de elegir un plan pago para que se le pueda adjuntar su acceso."
   },
   "billing": {
     "kicker": "Facturación",
@@ -960,7 +1059,7 @@
     "untitled": "Lección sin título",
     "cardStats": "{{vocab}} vocabulario / {{sentences}} ejemplos / {{conversations}} diálogos",
     "classFallback": "Clase",
-    "loadError": "No se pudieron cargar las clases. Asegúrate de que el backend esté funcionando y tenga datos cargados.",
+    "loadError": "No pudimos cargar tus lecciones en este momento. Por favor verifique su conexión e inténtelo nuevamente.",
     "tracks": {
       "foundationTitle": "Nivel {{level}} - Fundamentos",
       "foundationSubtitle": "Empieza aquí con el sistema de sonidos y escritura de {{language}}.",
@@ -975,7 +1074,8 @@
     },
     "titlePrefix": {
       "unit": "Nivel {{level}} · Unidad {{unit}}: {{title}}"
-    }
+    },
+    "retry": "Intentar otra vez"
   },
   "classLesson": {
     "loading": "Cargando lección de clase...",
@@ -1114,7 +1214,10 @@
     "saveReply": "Guardar respuesta",
     "saveExample": "Guardar ejemplo",
     "practiceEverywhere": "Practica esto en todas partes",
-    "selfTestReason": "Guardado de clase para una autoevaluación rápida."
+    "selfTestReason": "Guardado de clase para una autoevaluación rápida.",
+    "previous": "Previa",
+    "lessonGuide": "guía de lecciones",
+    "activityXOfY": "Actividad {{current}} de {{total}}"
   },
   "exercise": {
     "kicker": "Ejercicio",
@@ -1182,7 +1285,8 @@
     "recapUsefulPhrases": "Frases útiles",
     "recapReview": "Revisar siguiente",
     "recapReviewFallback": "Guarda una frase y reutilízala en otro modo de práctica.",
-    "practiceLabel": "Práctica de conversación"
+    "practiceLabel": "Práctica de conversación",
+    "practiceSetup": "Configuración de práctica"
   },
   "context": {
     "backToProfile": "Volver al perfil",
@@ -1304,7 +1408,10 @@
       "memory": "De memoria"
     },
     "savedReason": "Guardado de la práctica de escritura para otro pase.",
-    "selfTestReason": "Guardado de la práctica de escritura para una autoevaluación rápida."
+    "selfTestReason": "Guardado de la práctica de escritura para una autoevaluación rápida.",
+    "hideNotebook": "Ocultar cuaderno",
+    "showNotebook": "Mostrar cuaderno",
+    "hideAddPanel": "Ocultar agregar panel"
   },
   "certificates": {
     "kicker": "Certificado",
@@ -1472,5 +1579,44 @@
     "firstThreeDayReviewBody": "Vuelve una vez a lo que viste ayer para que los primeros elementos empiecen a fijarse.",
     "firstThreeDaySpeakBody": "Utilice un turno de habla breve para que el idioma abandone la página antes.",
     "firstThreeDayLearnBody": "Comience con una pequeña lección guiada para que la pareja tenga un punto de partida claro."
+  },
+  "resetPassword": {
+    "title": "Restablecer contraseña",
+    "subtitle": "Ingresa tu nueva contraseña.",
+    "error": "No se pudo restablecer la contraseña. Inténtalo de nuevo.",
+    "invalidLink": "Este enlace de restablecimiento es inválido o ha expirado.",
+    "noToken": "Falta el token de restablecimiento. Solicita un nuevo enlace.",
+    "requestNew": "Solicitar nuevo enlace",
+    "success": "Tu contraseña se restableció correctamente.",
+    "goToLogin": "Ir al inicio de sesión",
+    "newPasswordPlaceholder": "Nueva contraseña",
+    "resetButton": "Restablecer contraseña",
+    "failed": "No se pudo restablecer la contraseña. Por favor inténtalo de nuevo.",
+    "kicker": "Restablecer contraseña",
+    "missingToken": "Este enlace de restablecimiento falta o no es válido.",
+    "newPassword": "Nueva contraseña",
+    "confirmPassword": "Confirmar Contraseña",
+    "submit": "Restablecer contraseña"
+  },
+  "contact": {
+    "navLabel": "Contacto",
+    "kicker": "Cont?ctanos",
+    "title": "Cu?ntanos qu? necesitas",
+    "subtitle": "Env?a una pregunta, informa de un problema o comparte comentarios. Revisaremos tu mensaje y responderemos cuando sea necesario.",
+    "infoTitle": "Te escuchamos",
+    "infoText": "Los mensajes de este formulario se guardan de forma segura con el contexto de la cuenta cuando est? disponible, para entender mejor lo ocurrido y ayudar m?s r?pido.",
+    "name": "Nombre",
+    "namePlaceholder": "Tu nombre",
+    "email": "Correo electr?nico",
+    "emailPlaceholder": "tu@ejemplo.com",
+    "subject": "Asunto",
+    "subjectPlaceholder": "?De qu? se trata?",
+    "message": "Mensaje",
+    "messagePlaceholder": "Escribe tu mensaje aqu?...",
+    "send": "Enviar mensaje",
+    "success": "Gracias. Hemos recibido tu mensaje.",
+    "error": "No pudimos enviar tu mensaje ahora. Int?ntalo de nuevo.",
+    "companyTrap": "Compañía",
+    "profileHint": "Envíe una pregunta, informe un problema o comparta comentarios desde este dispositivo."
   }
 }

@@ -23,7 +23,8 @@
     "saving": "Économie...",
     "search": "Recherche",
     "notSet": "Non défini",
-    "all": "Toute"
+    "all": "Toute",
+    "reset": "Réinitialiser"
   },
   "languages": {
     "en": "Anglais",
@@ -211,14 +212,15 @@
       "time": "Étudiez pendant {{minutes}} minutes"
     },
     "weekdays": {
-      "mon": "M",
+      "mon": "M.",
       "tue": "T",
       "wed": "W",
       "thu": "T",
       "fri": "F",
       "sat": "S",
       "sun": "S"
-    }
+    },
+    "contactDesc": "Questions, commentaires ou problème à signaler"
   },
   "lessons": {
     "title": "{{language}} Leçons",
@@ -738,7 +740,102 @@
     "modeBreakdown": "Répartition des modes",
     "searchUsers": "Rechercher des utilisateurs...",
     "all": "Tous",
-    "demo": "Démo"
+    "demo": "Démo",
+    "failures": "Échecs",
+    "messages": "Messages",
+    "userFailures": "Pannes côté utilisateur",
+    "openFailures": "{{count}} échecs ouverts",
+    "criticalFailures": "{{count}} critique",
+    "clearing": "Clairière...",
+    "loadingFailures": "Échecs de chargement...",
+    "noOpenFailures": "Aucun échec ouvert côté utilisateur.",
+    "acknowledge": "Reconnaître",
+    "page": "Page",
+    "device": "Appareil",
+    "languagePair": "Paire de langues",
+    "clientStatus": "Cliente",
+    "pageOf": "Page {{page}} de {{total}}",
+    "guestUser": "Utilisateur invité",
+    "unknownUser": "Utilisateur inconnu",
+    "unknown": "Inconnue",
+    "clearFailuresTitle": "Effacer les échecs ouverts ?",
+    "clearFailuresBody": "Marquer tous les échecs ouverts {{count}} comme reconnus ?",
+    "contactMessages": "Messages de contact",
+    "unreadMessages": "{{count}} messages non lus",
+    "allMessages": "Tous les messages",
+    "registeredUsers": "Utilisateurs enregistrés",
+    "guestUsers": "Utilisateurs invités",
+    "loadingMessages": "Chargement des messages...",
+    "noUnreadMessages": "Aucun message de contact non lu.",
+    "registeredUser": "Utilisateur enregistré",
+    "contactMessage": "Message de contact",
+    "markRead": "Marquer comme lu",
+    "name": "Nom",
+    "accountTier": "Niveau de compte",
+    "clearMessagesTitle": "Effacer les messages non lus ?",
+    "clearMessagesBody": "Marquer tous les messages de contact non lus {{count}} comme lus ?",
+    "demoDifficulty": {
+      "beginner": "Débutante",
+      "balanced": "Équilibrée",
+      "natural": "Naturelle",
+      "challenge": "Défi"
+    },
+    "demoScenarios": {
+      "friendlyChat": "Discussion amicale",
+      "cafeWorker": "Parler avec un employé de café",
+      "taxiDriver": "Demander de l'aide à un chauffeur de taxi",
+      "meetingNew": "Rencontrer quelqu'un de nouveau"
+    },
+    "demoReplyPlaceholder": "La réponse du partenaire de pratique apparaîtra ici.",
+    "demoTipPlaceholder": "Demandez dans l’une ou l’autre des langues sélectionnées. Vous pouvez changer de sujet, demander des significations ou demander une formulation plus simple.",
+    "promoteConfirmShort": "Faire de {{username}} un administrateur ?",
+    "promote": "Promouvoir",
+    "deleteUserTitle": "Supprimer un utilisateur",
+    "deleteUserConfirmShort": "Supprimer définitivement {{username}} ? Cela ne peut pas être annulé.",
+    "demoReset": "Conversation réinitialisée.",
+    "demoNoReply": "Aucune réponse n'est revenue.",
+    "demoNoCoachingNote": "Aucune note de coaching.",
+    "demoResponseFailed": "Je n'ai pas pu répondre cette fois. Veuillez réessayer.",
+    "demoConnectionIssue": "Problème de connexion. Réessayez dans un instant.",
+    "tapForDetails": "Appuyez pour plus de détails",
+    "activeWeek": "Actif 7j",
+    "countries": "Pays",
+    "conversion": "Conversion",
+    "engagement": "Fiançailles",
+    "totalCardsStudied": "Total des cartes étudiées",
+    "totalAudioPlays": "Nombre total de lectures audio",
+    "lessonsViewed": "Leçons consultées",
+    "topLanguagePairs": "Meilleures paires de langues",
+    "sessionsCount": "Séances {{count}}",
+    "deviceBreakdown": "Panne de l'appareil",
+    "recentSessions": "Sessions récentes ({{count}})",
+    "cardsStudiedCount": "Cartes {{count}}",
+    "pageNumber": "Page {{page}}",
+    "noGuestData": "Aucune donnée client disponible",
+    "loadData": "Charger des données",
+    "speakingDemo": "Démo parlante",
+    "demoIntro": "Aperçu de la conversation réservé aux administrateurs. Il n'enregistre pas l'audio ni la progression de l'apprenant.",
+    "scenario": "Scénario",
+    "customScenario": "Scénario personnalisé",
+    "learningLanguage": "Apprendre la langue",
+    "nativeLanguage": "Langue maternelle",
+    "listenFor": "Écoutez",
+    "difficulty": "Difficulté",
+    "learnerTurnInput": "Tapez ou collez ce que l'apprenant a dit",
+    "interrupt": "Interrompre",
+    "conversationState": "État de la conversation",
+    "lastLearnerTurn": "Dernier tour de l'apprenant",
+    "noTurnSentYet": "Aucun tour envoyé pour l'instant.",
+    "practicePartnerResponse": "Réponse du partenaire de pratique",
+    "coachNote": "Note de l'entraîneur",
+    "userDetails": "Détails de l'utilisateur",
+    "totalXp": "XP totale",
+    "studyMode": "Mode étude",
+    "languages": "Langues",
+    "loginCount": "Nombre de connexions",
+    "memberSince": "Membre depuis",
+    "suspendReasonLabel": "Motif de la suspension",
+    "userDetailsLoadFailed": "Impossible de charger les détails de l'utilisateur"
   },
   "pricing": {
     "kicker": "Forfaits",
@@ -820,7 +917,9 @@
     "discountCode": "Code de réduction",
     "discountPlaceholder": "Code facultatif",
     "discountUnavailable": "Ce code de réduction n'est pas disponible pour ce plan.",
-    "automaticDiscountApplied": "Réduction automatique de {{discount}} appliquée"
+    "automaticDiscountApplied": "Réduction automatique de {{discount}} appliquée",
+    "signInToChooseTitle": "Créez un compte pour continuer",
+    "signInToChooseBody": "Créez un compte ou connectez-vous avant de choisir un forfait payant afin que votre accès puisse vous être attaché."
   },
   "billing": {
     "kicker": "Facturation",
@@ -960,7 +1059,7 @@
     "untitled": "Leçon sans titre",
     "cardStats": "{{vocab}} vocabulaire / {{sentences}} exemples / {{conversations}} dialogues",
     "classFallback": "Classe",
-    "loadError": "Impossible de charger les leçons du cours. Assurez-vous que le backend est en cours d’exécution et amorcé.",
+    "loadError": "Nous n'avons pas pu charger vos leçons pour le moment. Veuillez vérifier votre connexion et réessayer.",
     "tracks": {
       "foundationTitle": "Niveau {{level}} - Fondation",
       "foundationSubtitle": "Commencez ici avec le système de son et d'écriture pour {{language}}.",
@@ -975,7 +1074,8 @@
     },
     "titlePrefix": {
       "unit": "Niveau {{level}} · Unité {{unit}} : {{title}}"
-    }
+    },
+    "retry": "Essayer à nouveau"
   },
   "classLesson": {
     "loading": "Chargement de la leçon de classe...",
@@ -1114,7 +1214,10 @@
     "saveReply": "Enregistrer la réponse",
     "saveExample": "Enregistrer l'exemple",
     "practiceEverywhere": "Pratiquez-le partout",
-    "selfTestReason": "Enregistré du cours pour un auto-test rapide."
+    "selfTestReason": "Enregistré du cours pour un auto-test rapide.",
+    "previous": "Précédente",
+    "lessonGuide": "Guide de cours",
+    "activityXOfY": "Activité {{current}} de {{total}}"
   },
   "exercise": {
     "kicker": "Exercice",
@@ -1182,7 +1285,8 @@
     "recapUsefulPhrases": "Phrases utiles",
     "recapReview": "Réviser ensuite",
     "recapReviewFallback": "Enregistrez une phrase et réutilisez-la dans un autre mode d'entraînement.",
-    "practiceLabel": "Pratique des conversations"
+    "practiceLabel": "Pratique des conversations",
+    "practiceSetup": "Configuration de la pratique"
   },
   "context": {
     "backToProfile": "Retour au profil",
@@ -1304,7 +1408,10 @@
       "memory": "De mémoire"
     },
     "savedReason": "Sauvé de la pratique d'écriture pour une autre passe.",
-    "selfTestReason": "Enregistré de la pratique d'écriture pour un auto-test rapide."
+    "selfTestReason": "Enregistré de la pratique d'écriture pour un auto-test rapide.",
+    "hideNotebook": "Masquer le carnet",
+    "showNotebook": "Afficher le carnet",
+    "hideAddPanel": "Masquer le panneau d'ajout"
   },
   "certificates": {
     "kicker": "Certificat",
@@ -1472,5 +1579,44 @@
     "firstThreeDayReviewBody": "Revenez une fois à ce que vous avez vu hier pour que les premiers éléments commencent à coller.",
     "firstThreeDaySpeakBody": "Utilisez un tour de parole court pour que la langue quitte la page plus tôt.",
     "firstThreeDayLearnBody": "Commencez par une petite leçon guidée afin que le binôme ait un point de départ clair."
+  },
+  "resetPassword": {
+    "title": "Réinitialiser le mot de passe",
+    "subtitle": "Entrez votre nouveau mot de passe.",
+    "error": "Échec de la réinitialisation du mot de passe. Veuillez réessayer.",
+    "invalidLink": "Ce lien de réinitialisation est invalide ou a expiré.",
+    "noToken": "Jeton de réinitialisation manquant. Veuillez demander un nouveau lien.",
+    "requestNew": "Demander un nouveau lien",
+    "success": "Votre mot de passe a été réinitialisé avec succès.",
+    "goToLogin": "Aller à la connexion",
+    "newPasswordPlaceholder": "Nouveau mot de passe",
+    "resetButton": "Réinitialiser le mot de passe",
+    "failed": "Impossible de réinitialiser le mot de passe. Veuillez réessayer.",
+    "kicker": "Réinitialiser le mot de passe",
+    "missingToken": "Ce lien de réinitialisation est manquant ou invalide.",
+    "newPassword": "Nouveau mot de passe",
+    "confirmPassword": "Confirmez le mot de passe",
+    "submit": "Réinitialiser le mot de passe"
+  },
+  "contact": {
+    "navLabel": "Contact",
+    "kicker": "Nous contacter",
+    "title": "Dites-nous ce dont vous avez besoin",
+    "subtitle": "Envoyez une question, signalez un probl?me ou partagez un avis. Nous examinerons votre message et r?pondrons si n?cessaire.",
+    "infoTitle": "Nous vous ?coutons",
+    "infoText": "Les messages de ce formulaire sont enregistr?s de mani?re s?curis?e avec le contexte du compte lorsqu?il est disponible, afin de mieux comprendre et d?aider plus vite.",
+    "name": "Nom",
+    "namePlaceholder": "Votre nom",
+    "email": "E-mail",
+    "emailPlaceholder": "vous@exemple.com",
+    "subject": "Sujet",
+    "subjectPlaceholder": "De quoi s?agit-il ?",
+    "message": "Message",
+    "messagePlaceholder": "?crivez votre message ici...",
+    "send": "Envoyer le message",
+    "success": "Merci. Votre message a bien ?t? re?u.",
+    "error": "Impossible d?envoyer votre message pour le moment. Veuillez r?essayer.",
+    "companyTrap": "Entreprise",
+    "profileHint": "Envoyez une question, signalez un problème ou partagez des commentaires sur cet appareil."
   }
 }

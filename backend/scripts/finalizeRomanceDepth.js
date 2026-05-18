@@ -2,6 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 const { makeProfile } = require('../textbookLessons/shared/romanceProfiles');
+const { mergeDuplicateContentItems } = require('../textbookLessons/shared/richCurriculumFactory');
 
 const ROOT = path.join(__dirname, '..', 'textbookLessons');
 const LANGS = ['es', 'fr'];
@@ -21,6 +22,26 @@ const create = (target, note, example, exampleNote, type, activityIds) => ({
   exampleEnglish: exampleNote,
 });
 
+const q = (value) => `"${String(value || '').trim()}"`;
+const makeDepthNotes = (profile) => ({
+  listeningCheck: `Listen inside ${q(profile.pronunciationExample)} for the syllable, ending, article, or pronoun that changes the meaning of the model.`,
+  shortAnswer: `Answer first with the shortest correct form that still fits ${q(profile.vocabularyExample)}, then add one useful extension.`,
+  longAnswer: `Turn ${q(profile.extensionExample)} into a fuller answer by adding cause, time, or contrast without changing the core grammar.`,
+  minimalPair: `Compare ${q(profile.secondaryGrammarExample)} with the nearest form a learner might confuse it with and explain what changes.`,
+  rewrite: `Copy ${q(profile.writingExample)} once, then rewrite it from memory with attention to accents, agreement, and pronoun placement.`,
+  newSituation: `Move ${q(profile.taskExample)} into a new setting so the learner proves transfer rather than repetition.`,
+  selfCorrection: `Name one error you might make while producing ${q(profile.errorExample)}, then repair it before looking back at the model.`,
+  oralOutput: `Speak for twenty seconds by linking at least two lesson forms around ${q(profile.fluencyExample)} in one connected answer.`,
+  unitMix: `Combine two reviewed forms inside ${q(profile.extensionExample)} so review means recombination, not simple repetition.`,
+  reviewContrast: `Explain why the two reviewed patterns inside ${q(profile.comparisonExample)} are not interchangeable even when both seem possible at first glance.`,
+  fastRecall: `Recall one form from each reviewed unit before checking ${q(profile.recallExample)} against the model.`,
+  cumulativeScene: `Handle one longer scene around ${q(profile.taskExample)} so vocabulary from several earlier lessons has to work together.`,
+  errorMap: `List the three mistakes most likely to reappear around ${q(profile.errorExample)} and repair each one.`,
+  integratedReading: `Read ${q(profile.readingExample)} as one connected paragraph and mark where each reviewed unit contributes meaning.`,
+  oralSummary: `Summarize the reviewed material aloud by building examples around ${q(profile.fluencyExample)} rather than naming grammar labels only.`,
+  nextStep: `Name the reviewed area still weakest after ${q(profile.reflectionExample)}, then choose the next lesson that will repair it.`,
+});
+
 for (const lang of LANGS) {
   const dir = path.join(ROOT, lang);
   const files = fs.readdirSync(dir).filter((name) => name.endsWith('.js') && name !== 'curriculum.js');
@@ -30,6 +51,7 @@ for (const lang of LANGS) {
     const lesson = require(file);
     const lessonId = name.replace(/\.js$/, '');
     const profile = makeProfile(lang, lessonId, lesson);
+    const notes = makeDepthNotes(profile);
     const ids = lesson.activities.reduce((map, activity) => {
       map[activity.section] = activity.id;
       return map;
@@ -41,28 +63,31 @@ for (const lang of LANGS) {
       create(profile.sentenceBuildingAnchor, profile.sentenceBuildingGoal, profile.sentenceBuildingExample, profile.sentenceBuildingExampleNote, 'practice', [ids['Grammar I'], ids.Writing]),
       create(profile.miniQuizAnchor, profile.miniQuizGoal, profile.miniQuizExample, profile.miniQuizExampleNote, 'practice', [ids['Vocabulary II'], ids['Grammar II']]),
       create(profile.reflectionAnchor, profile.reflectionGoal, profile.reflectionExample, profile.reflectionExampleNote, 'note', [ids['Culture note'] || ids['Culture recap'], ids.Task]),
-      create(lang === 'es' ? 'escucha focalizada' : 'écoute ciblée', 'Listen for the exact syllable, ending, article, or pronoun that changes the meaning of the model.', profile.pronunciationExample, profile.pronunciationExampleNote, 'practice', [ids.Pronunciation, ids['Listening and speaking']]),
-      create(lang === 'es' ? 'respuesta corta' : 'réponse courte', 'Answer once with the shortest correct form, then answer again with one useful extension.', profile.vocabularyExample, profile.vocabularyExampleNote, 'practice', [ids['Vocabulary I'], ids.Task]),
-      create(lang === 'es' ? 'respuesta larga' : 'réponse développée', 'Turn the model into a fuller answer by adding cause, time, or contrast without changing the core grammar.', profile.extensionExample, profile.extensionExampleNote, 'practice', [ids.Writing, ids.Task]),
-      create(lang === 'es' ? 'par mínimo' : 'paire minimale', 'Contrast the lesson form with the nearest form a learner might confuse it with and explain what changes.', profile.secondaryGrammarExample, profile.secondaryGrammarExampleNote, 'practice', [ids['Grammar II']]),
-      create(lang === 'es' ? 'revisión escrita' : 'révision écrite', 'Copy the target sentence once, then rewrite it from memory with attention to accents, agreement, and pronoun placement.', profile.writingExample, profile.writingExampleNote, 'writing', [ids.Writing]),
-      create(lang === 'es' ? 'escena nueva' : 'nouvelle scène', 'Move the lesson language into a new setting so the learner proves transfer rather than repetition.', profile.taskExample, profile.taskExampleNote, 'conversation', [ids.Task]),
-      create(lang === 'es' ? 'autocorrección' : 'auto-correction', 'Name one error you might make in this lesson and repair it before looking back at the model.', profile.errorExample, profile.errorExampleNote, 'practice', [ids['Grammar II']]),
-      create(lang === 'es' ? 'salida oral' : 'sortie orale', 'Speak for twenty seconds using at least two lesson forms in one connected answer.', profile.fluencyExample, profile.fluencyExampleNote, 'practice', [ids['Listening and speaking'], ids.Task]),
+      create(lang === 'es' ? 'escucha focalizada' : 'écoute ciblée', notes.listeningCheck, profile.pronunciationExample, profile.pronunciationExampleNote, 'practice', [ids.Pronunciation, ids['Listening and speaking']]),
+      create(lang === 'es' ? 'respuesta corta' : 'réponse courte', notes.shortAnswer, profile.vocabularyExample, profile.vocabularyExampleNote, 'practice', [ids['Vocabulary I'], ids.Task]),
+      create(lang === 'es' ? 'respuesta larga' : 'réponse développée', notes.longAnswer, profile.extensionExample, profile.extensionExampleNote, 'practice', [ids.Writing, ids.Task]),
+      create(lang === 'es' ? 'par mínimo' : 'paire minimale', notes.minimalPair, profile.secondaryGrammarExample, profile.secondaryGrammarExampleNote, 'practice', [ids['Grammar II']]),
+      create(lang === 'es' ? 'revisión escrita' : 'révision écrite', notes.rewrite, profile.writingExample, profile.writingExampleNote, 'writing', [ids.Writing]),
+      create(lang === 'es' ? 'escena nueva' : 'nouvelle scène', notes.newSituation, profile.taskExample, profile.taskExampleNote, 'conversation', [ids.Task]),
+      create(lang === 'es' ? 'autocorrección' : 'auto-correction', notes.selfCorrection, profile.errorExample, profile.errorExampleNote, 'practice', [ids['Grammar II']]),
+      create(lang === 'es' ? 'salida oral' : 'sortie orale', notes.oralOutput, profile.fluencyExample, profile.fluencyExampleNote, 'practice', [ids['Listening and speaking'], ids.Task]),
     ].filter((entry) => entry.activityIds.every(Boolean));
     if (lesson.lessonType === 'review') {
       additions.push(
-        create(lang === 'es' ? 'mezcla de unidades' : 'mélange des unités', 'Combine forms from two earlier units in one sentence so review means recombination, not simple repetition.', profile.extensionExample, profile.extensionExampleNote, 'practice', [ids['Grammar review I'], ids.Task]),
-        create(lang === 'es' ? 'contraste de revisión' : 'contraste de révision', 'Explain why two earlier patterns are not interchangeable even when both seem possible at first glance.', profile.comparisonExample, profile.comparisonExampleNote, 'practice', [ids['Grammar review II']]),
-        create(lang === 'es' ? 'recuperación rápida' : 'récupération rapide', 'Recall one form from each reviewed unit without looking, then check the model only after retrieval.', profile.recallExample, profile.recallExampleNote, 'practice', [ids['Vocabulary consolidation I']]),
-        create(lang === 'es' ? 'escena acumulativa' : 'scène cumulative', 'Handle one longer scene that forces vocabulary from several previous lessons to appear together.', profile.taskExample, profile.taskExampleNote, 'conversation', [ids.Task]),
-        create(lang === 'es' ? 'mapa de errores' : 'carte des erreurs', 'List the three mistakes most likely to reappear across the reviewed units and repair each one.', profile.errorExample, profile.errorExampleNote, 'practice', [ids['Grammar review I'], ids['Grammar review II']]),
-        create(lang === 'es' ? 'lectura integrada' : 'lecture intégrée', 'Read one connected paragraph and mark where each reviewed unit contributes meaning.', profile.readingExample, profile.readingExampleNote, 'reading', [ids.Reading]),
-        create(lang === 'es' ? 'resumen oral' : 'résumé oral', 'Summarize the reviewed material aloud in one minute using examples rather than naming grammar labels only.', profile.fluencyExample, profile.fluencyExampleNote, 'practice', [ids['Listening and speaking'], ids.Task]),
-        create(lang === 'es' ? 'plan siguiente' : 'prochaine étape', 'Name which reviewed area is still weakest and choose the next lesson that will repair it.', profile.reflectionExample, profile.reflectionExampleNote, 'note', [ids['Culture recap'], ids.Task]),
+        create(lang === 'es' ? 'mezcla de unidades' : 'mélange des unités', notes.unitMix, profile.extensionExample, profile.extensionExampleNote, 'practice', [ids['Grammar review I'], ids.Task]),
+        create(lang === 'es' ? 'contraste de revisión' : 'contraste de révision', notes.reviewContrast, profile.comparisonExample, profile.comparisonExampleNote, 'practice', [ids['Grammar review II']]),
+        create(lang === 'es' ? 'recuperación rápida' : 'récupération rapide', notes.fastRecall, profile.recallExample, profile.recallExampleNote, 'practice', [ids['Vocabulary consolidation I']]),
+        create(lang === 'es' ? 'escena acumulativa' : 'scène cumulative', notes.cumulativeScene, profile.taskExample, profile.taskExampleNote, 'conversation', [ids.Task]),
+        create(lang === 'es' ? 'mapa de errores' : 'carte des erreurs', notes.errorMap, profile.errorExample, profile.errorExampleNote, 'practice', [ids['Grammar review I'], ids['Grammar review II']]),
+        create(lang === 'es' ? 'lectura integrada' : 'lecture intégrée', notes.integratedReading, profile.readingExample, profile.readingExampleNote, 'reading', [ids.Reading]),
+        create(lang === 'es' ? 'resumen oral' : 'résumé oral', notes.oralSummary, profile.fluencyExample, profile.fluencyExampleNote, 'practice', [ids['Listening and speaking'], ids.Task]),
+        create(lang === 'es' ? 'plan siguiente' : 'prochaine étape', notes.nextStep, profile.reflectionExample, profile.reflectionExampleNote, 'note', [ids['Culture recap'], ids.Task]),
       );
     }
-    lesson.content.push(...additions);
+    lesson.content = mergeDuplicateContentItems([
+      ...(lesson.content || []),
+      ...additions,
+    ]);
     fs.writeFileSync(file, `module.exports = ${JSON.stringify(lesson, null, 2)};\n`, 'utf8');
   });
   console.log(`Finalized depth additions for ${lang}.`);

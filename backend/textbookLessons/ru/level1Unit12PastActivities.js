@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('ru', {
-  slug: 'ru-l1u12',
-  title: 'Level 1 · Unit 12: Что вы делали? — Past Activities',
-  category: 'daily-life',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Talk about what happened yesterday using gendered Russian past forms.',
-  vocabularyGoal: 'Use past-time markers and everyday activity verbs.',
-  grammarGoal: 'Use `-л` past forms with masculine, feminine, neuter, and plural agreement.',
-  speakingGoal: 'Say what you did yesterday and ask another person one past question.',
-  task: 'Give a short update about yesterday.',
-  expressionPractice: [
-    practice('stating-past', 'Stating past action', 'Use one correctly gendered past verb.'),
-    practice('sequencing', 'Sequencing', 'Use `потом` or `после этого`.'),
-    practice('asking-past', 'Asking about past', 'Use `что ты делал/делала?`.'),
+module.exports = {
+  "title": "Level 1 · Unit 12: Что вы делали? — Past Activities",
+  "category": "daily-life",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ru-level1unit12pastactivities-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Talk about what happened yesterday using gendered Russian past forms."
+      ],
+      "task": "Give a short update about yesterday."
+    },
+    {
+      "id": "ru-level1unit12pastactivities-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ru-level1unit12pastactivities-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 12: Что вы делали? — Past Activities with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ru-level1unit12pastactivities-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 12: Что вы делали? — Past Activities sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ru-level1unit12pastactivities-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Talk about what happened yesterday using gendered Russian past forms."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ru-level1unit12pastactivities-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 12: Что вы делали? — Past Activities with one nearby Russian form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ru-level1unit12pastactivities-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ru-level1unit12pastactivities-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ru-level1unit12pastactivities-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ru-level1unit12pastactivities-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ru-level1unit12pastactivities-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Give a short update about yesterday."
+      ],
+      "task": "Give a short update about yesterday."
+    }
   ],
-  relatedPools: ['topic-routines', 'topic-time'],
-  items: [
-    item('я был / я была', 'ya byl / ya byla', '“I was” masculine / feminine. Russian past tense agrees with the subject’s gender in singular.', 'Вчера я был дома. / Вчера я была дома.', '“Yesterday I was at home.”'),
-    item('я ходил / я ходила', 'ya khodil / ya khodila', '“I went / used to go on foot” masculine / feminine. Motion verbs begin to matter early.', 'Вчера я ходила в магазин.', '“Yesterday I went to the shop.”'),
-    item('я ел / я ела', 'ya yel / ya yela', '“I ate” masculine / feminine.', 'Утром я ел кашу.', '“In the morning I ate porridge.”'),
-    item('я учился / я училась', 'ya uchilsya / ya uchilas', '“I studied” masculine / feminine. Reflexive verbs keep the gendered past ending before the reflexive part.', 'Вчера я училась в библиотеке.', '“Yesterday I studied in the library.”'),
-    item('потом', 'potom', '“Then / afterwards.” A simple sequence word for beginner narratives.', 'Потом я встретил друга.', '“Then I met a friend.”'),
-    item('после этого', 'posle etogo', '“After that.” Slightly more explicit than `потом`.', 'После этого я пошёл домой.', '“After that I went home.”'),
-    item('на прошлой неделе', 'na proshloy nedele', '“Last week.” A common past-time phrase.', 'На прошлой неделе мы были в музее.', '“Last week we were at the museum.”'),
-    item('что ты делал / делала?', 'chto ty delal / delala', '“What did you do?” The question also reflects the addressee’s gender.', 'Что ты делала вчера?', '“What did you do yesterday?”'),
+  "expressionPractice": [
+    {
+      "id": "stating-past",
+      "label": "Stating past action",
+      "goal": "Use one correctly gendered past verb."
+    },
+    {
+      "id": "sequencing",
+      "label": "Sequencing",
+      "goal": "Use `потом` or `после этого`."
+    },
+    {
+      "id": "asking-past",
+      "label": "Asking about past",
+      "goal": "Use `что ты делал/делала?`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-routines",
+    "topic-time"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit12pastactivities-orientation"
+      ],
+      "targetText": "цель урока",
+      "romanization": "",
+      "nativeText": "Talk about what happened yesterday using gendered Russian past forms.",
+      "pronunciation": "",
+      "exampleTarget": "цель урока",
+      "exampleNative": "The whole lesson is built toward this outcome: Give a short update about yesterday.",
+      "korean": "цель урока",
+      "english": "Talk about what happened yesterday using gendered Russian past forms.",
+      "example": "цель урока",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Give a short update about yesterday."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ru-level1unit12pastactivities-pronunciation"
+      ],
+      "targetText": "проверка произношения",
+      "romanization": "",
+      "nativeText": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Вчера я был дома. / Вчера я была дома.\".",
+      "pronunciation": "",
+      "exampleTarget": "Вчера я был дома. / Вчера я была дома.",
+      "exampleNative": "“Yesterday I was at home.”",
+      "korean": "проверка произношения",
+      "english": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Вчера я был дома. / Вчера я была дома.\".",
+      "example": "Вчера я был дома. / Вчера я была дома.",
+      "exampleEnglish": "“Yesterday I was at home.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1"
+      ],
+      "targetText": "я был / я была",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 12: Что вы делали? — Past Activities with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Вчера я был дома. / Вчера я была дома.",
+      "exampleNative": "“Yesterday I was at home.”",
+      "korean": "я был / я была",
+      "english": "Use the key language of Level 1 · Unit 12: Что вы делали? — Past Activities with the register and setting that the lesson requires.",
+      "example": "Вчера я был дома. / Вчера я была дома.",
+      "exampleEnglish": "“Yesterday I was at home.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-2"
+      ],
+      "targetText": "я ходил / я ходила",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 12: Что вы делали? — Past Activities sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Вчера я ходила в магазин.",
+      "exampleNative": "“Yesterday I went to the shop.”",
+      "korean": "я ходил / я ходила",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 12: Что вы делали? — Past Activities sound precise rather than merely understandable.",
+      "example": "Вчера я ходила в магазин.",
+      "exampleEnglish": "“Yesterday I went to the shop.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ru-level1unit12pastactivities-grammar-1"
+      ],
+      "targetText": "я был / я была",
+      "romanization": "",
+      "nativeText": "Talk about what happened yesterday using gendered Russian past forms.",
+      "pronunciation": "",
+      "exampleTarget": "Вчера я был дома. / Вчера я была дома.",
+      "exampleNative": "“Yesterday I was at home.”",
+      "korean": "я был / я была",
+      "english": "Talk about what happened yesterday using gendered Russian past forms.",
+      "example": "Вчера я был дома. / Вчера я была дома.",
+      "exampleEnglish": "“Yesterday I was at home.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ru-level1unit12pastactivities-grammar-2"
+      ],
+      "targetText": "я ходил / я ходила",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 12: Что вы делали? — Past Activities with one nearby Russian form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Вчера я ходила в магазин.",
+      "exampleNative": "“Yesterday I went to the shop.”",
+      "korean": "я ходил / я ходила",
+      "english": "Contrast the main pattern in Level 1 · Unit 12: Что вы делали? — Past Activities with one nearby Russian form so the learner can avoid literal translation.",
+      "example": "Вчера я ходила в магазин.",
+      "exampleEnglish": "“Yesterday I went to the shop.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ru-level1unit12pastactivities-reading"
+      ],
+      "targetText": "модель чтения",
+      "romanization": "",
+      "nativeText": "Read \"Что ты делала вчера?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Что ты делала вчера?",
+      "exampleNative": "“What did you do yesterday?”",
+      "korean": "модель чтения",
+      "english": "Read \"Что ты делала вчера?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Что ты делала вчера?",
+      "exampleEnglish": "“What did you do yesterday?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit12pastactivities-listening"
+      ],
+      "targetText": "модель диалога",
+      "romanization": "",
+      "nativeText": "Hear \"Что ты делала вчера?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Что ты делала вчера?",
+      "exampleNative": "“What did you do yesterday?”",
+      "korean": "модель диалога",
+      "english": "Hear \"Что ты делала вчера?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Что ты делала вчера?",
+      "exampleEnglish": "“What did you do yesterday?”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ru-level1unit12pastactivities-writing"
+      ],
+      "targetText": "письменная практика",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Вчера я был дома. / Вчера я была дома.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Вчера я был дома. / Вчера я была дома.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "письменная практика",
+      "english": "Write your own version after studying \"Вчера я был дома. / Вчера я была дома.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Вчера я был дома. / Вчера я была дома.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ru-level1unit12pastactivities-culture"
+      ],
+      "targetText": "употребление и контекст",
+      "romanization": "",
+      "nativeText": "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Вчера я ходила в магазин.",
+      "exampleNative": "“Yesterday I went to the shop.”",
+      "korean": "употребление и контекст",
+      "english": "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used.",
+      "example": "Вчера я ходила в магазин.",
+      "exampleEnglish": "“Yesterday I went to the shop.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "итоговое задание",
+      "romanization": "",
+      "nativeText": "Give a short update about yesterday.",
+      "pronunciation": "",
+      "exampleTarget": "Что ты делала вчера?",
+      "exampleNative": "Give a short update about yesterday.",
+      "korean": "итоговое задание",
+      "english": "Give a short update about yesterday.",
+      "example": "Что ты делала вчера?",
+      "exampleEnglish": "Give a short update about yesterday."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit12pastactivities-grammar-2"
+      ],
+      "targetText": "частая ошибка",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around case, aspect, motion verbs, and stress-sensitive forms. Begin by checking \"Вчера я ходила в магазин.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Вчера я ходила в магазин.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “Yesterday I went to the shop.”",
+      "korean": "частая ошибка",
+      "english": "Watch for literal-translation mistakes around case, aspect, motion verbs, and stress-sensitive forms. Begin by checking \"Вчера я ходила в магазин.\" against the model.",
+      "example": "Вчера я ходила в магазин.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “Yesterday I went to the shop.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-culture"
+      ],
+      "targetText": "регистр",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for ты, вы, a service register, or a more formal written choice. Compare the social fit of \"Вчера я был дома. / Вчера я была дома.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Вчера я был дома. / Вчера я была дома.",
+      "exampleNative": "“Yesterday I was at home.”",
+      "korean": "регистр",
+      "english": "Check whether the setting calls for ты, вы, a service register, or a more formal written choice. Compare the social fit of \"Вчера я был дома. / Вчера я была дома.\" before reusing it elsewhere.",
+      "example": "Вчера я был дома. / Вчера я была дома.",
+      "exampleEnglish": "“Yesterday I was at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "беглость",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Russian message rather than as separate translated fragments. Aim to carry \"Что ты делала вчера?\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Что ты делала вчера?",
+      "exampleNative": "“What did you do yesterday?”",
+      "korean": "беглость",
+      "english": "Say the idea as one connected Russian message rather than as separate translated fragments. Aim to carry \"Что ты делала вчера?\" as one thought.",
+      "example": "Что ты делала вчера?",
+      "exampleEnglish": "“What did you do yesterday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "перенос",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Вчера я был дома. / Вчера я была дома.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Вчера я был дома. / Вчера я была дома.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "перенос",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Вчера я был дома. / Вчера я была дома.\" and move it into your own life.",
+      "example": "Вчера я был дома. / Вчера я была дома.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-grammar-1"
+      ],
+      "targetText": "воспроизведение",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"я был / я была\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "я был / я была",
+      "exampleNative": "“I was” masculine / feminine. Russian past tense agrees with the subject’s gender in singular.",
+      "korean": "воспроизведение",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"я был / я была\" before looking back.",
+      "example": "я был / я была",
+      "exampleEnglish": "“I was” masculine / feminine. Russian past tense agrees with the subject’s gender in singular."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-writing"
+      ],
+      "targetText": "расширение",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Что ты делала вчера?\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Что ты делала вчера?",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "расширение",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Что ты делала вчера?\" rather than restarting from a blank sentence.",
+      "example": "Что ты делала вчера?",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading"
+      ],
+      "targetText": "сравнение",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 12: Что вы делали? — Past Activities with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Вчера я ходила в магазин.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Вчера я ходила в магазин.",
+      "exampleNative": "“Yesterday I went to the shop.”",
+      "korean": "сравнение",
+      "english": "Compare the central form in Level 1 · Unit 12: Что вы делали? — Past Activities with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Вчера я ходила в магазин.\" as the comparison line.",
+      "example": "Вчера я ходила в магазин.",
+      "exampleEnglish": "“Yesterday I went to the shop.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ru-level1unit12pastactivities-pronunciation"
+      ],
+      "targetText": "исправление произношения",
+      "romanization": "",
+      "nativeText": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Вчера я был дома. / Вчера я была дома.\".",
+      "pronunciation": "",
+      "exampleTarget": "Вчера я был дома. / Вчера я была дома.",
+      "exampleNative": "“Yesterday I was at home.”",
+      "korean": "исправление произношения",
+      "english": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Вчера я был дома. / Вчера я была дома.\".",
+      "example": "Вчера я был дома. / Вчера я была дома.",
+      "exampleEnglish": "“Yesterday I was at home.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "вариация диалога",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Что ты делала вчера?\".",
+      "pronunciation": "",
+      "exampleTarget": "Что ты делала вчера?",
+      "exampleNative": "“What did you do yesterday?”",
+      "korean": "вариация диалога",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Что ты делала вчера?\".",
+      "example": "Что ты делала вчера?",
+      "exampleEnglish": "“What did you do yesterday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-writing"
+      ],
+      "targetText": "построение предложения",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Вчера я был дома. / Вчера я была дома.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Вчера я был дома. / Вчера я была дома.",
+      "exampleNative": "“Yesterday I was at home.”",
+      "korean": "построение предложения",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Вчера я был дома. / Вчера я была дома.\" one layer at a time.",
+      "example": "Вчера я был дома. / Вчера я была дома.",
+      "exampleEnglish": "“Yesterday I was at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-2"
+      ],
+      "targetText": "быстрая проверка",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Вчера я ходила в магазин.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Вчера я ходила в магазин.",
+      "exampleNative": "“Yesterday I went to the shop.”",
+      "korean": "быстрая проверка",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Вчера я ходила в магазин.\" as the deciding example.",
+      "example": "Вчера я ходила в магазин.",
+      "exampleEnglish": "“Yesterday I went to the shop.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit12pastactivities-culture",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "рефлексия",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Что ты делала вчера?\".",
+      "pronunciation": "",
+      "exampleTarget": "Что ты делала вчера?",
+      "exampleNative": "“What did you do yesterday?”",
+      "korean": "рефлексия",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Что ты делала вчера?\".",
+      "example": "Что ты делала вчера?",
+      "exampleEnglish": "“What did you do yesterday?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я был / я была",
+      "romanization": "ya byl / ya byla",
+      "nativeText": "“I was” masculine / feminine. Russian past tense agrees with the subject’s gender in singular.",
+      "pronunciation": "ya byl / ya byla",
+      "exampleTarget": "Вчера я был дома. / Вчера я была дома.",
+      "exampleNative": "“Yesterday I was at home.”",
+      "korean": "я был / я была",
+      "english": "“I was” masculine / feminine. Russian past tense agrees with the subject’s gender in singular.",
+      "example": "Вчера я был дома. / Вчера я была дома.",
+      "exampleEnglish": "“Yesterday I was at home.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "Вчера я был дома. / Вчера я была дома.",
+      "romanization": "ya byl / ya byla",
+      "nativeText": "Model use for \"Вчера я был дома. / Вчера я была дома.\": “Yesterday I was at home.”",
+      "pronunciation": "ya byl / ya byla",
+      "exampleTarget": "Вчера я был дома. / Вчера я была дома.",
+      "exampleNative": "“Yesterday I was at home.”",
+      "korean": "Вчера я был дома. / Вчера я была дома.",
+      "english": "Model use for \"Вчера я был дома. / Вчера я была дома.\": “Yesterday I was at home.”",
+      "example": "Вчера я был дома. / Вчера я была дома.",
+      "exampleEnglish": "“Yesterday I was at home.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я был / я была",
+      "romanization": "ya byl / ya byla",
+      "nativeText": "Usage focus for \"я был / я была\": Use the key language of Level 1 · Unit 12: Что вы делали? — Past Activities with the register and setting that the lesson requires.",
+      "pronunciation": "ya byl / ya byla",
+      "exampleTarget": "Вчера я был дома. / Вчера я была дома.",
+      "exampleNative": "Notice what the form is doing here: “Yesterday I was at home.”",
+      "korean": "я был / я была",
+      "english": "Usage focus for \"я был / я была\": Use the key language of Level 1 · Unit 12: Что вы делали? — Past Activities with the register and setting that the lesson requires.",
+      "example": "Вчера я был дома. / Вчера я была дома.",
+      "exampleEnglish": "Notice what the form is doing here: “Yesterday I was at home.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я был / я была",
+      "romanization": "ya byl / ya byla",
+      "nativeText": "Contrast check for \"я был / я была\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ya byl / ya byla",
+      "exampleTarget": "Вчера я был дома. / Вчера я была дома.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Yesterday I was at home.”",
+      "korean": "я был / я была",
+      "english": "Contrast check for \"я был / я была\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Вчера я был дома. / Вчера я была дома.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Yesterday I was at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я был / я была",
+      "romanization": "ya byl / ya byla",
+      "nativeText": "Recall \"я был / я была\" from memory, then explain what would change if a nearby alternative replaced it in \"Вчера я был дома. / Вчера я была дома.\".",
+      "pronunciation": "ya byl / ya byla",
+      "exampleTarget": "Вчера я был дома. / Вчера я была дома.",
+      "exampleNative": "Self-check against the model before moving on: “Yesterday I was at home.”",
+      "korean": "я был / я была",
+      "english": "Recall \"я был / я была\" from memory, then explain what would change if a nearby alternative replaced it in \"Вчера я был дома. / Вчера я была дома.\".",
+      "example": "Вчера я был дома. / Вчера я была дома.",
+      "exampleEnglish": "Self-check against the model before moving on: “Yesterday I was at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я был / я была",
+      "romanization": "ya byl / ya byla",
+      "nativeText": "Repair \"я был / я была\" inside \"Вчера я был дома. / Вчера я была дома.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 12: Что вы делали? — Past Activities with the register and setting that the lesson requires.",
+      "pronunciation": "ya byl / ya byla",
+      "exampleTarget": "Вчера я был дома. / Вчера я была дома.",
+      "exampleNative": "Use the model as the repair target: “Yesterday I was at home.”",
+      "korean": "я был / я была",
+      "english": "Repair \"я был / я была\" inside \"Вчера я был дома. / Вчера я была дома.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 12: Что вы делали? — Past Activities with the register and setting that the lesson requires.",
+      "example": "Вчера я был дома. / Вчера я была дома.",
+      "exampleEnglish": "Use the model as the repair target: “Yesterday I was at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я был / я была",
+      "romanization": "ya byl / ya byla",
+      "nativeText": "Transfer \"я был / я была\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Вчера я был дома. / Вчера я была дома.\".",
+      "pronunciation": "ya byl / ya byla",
+      "exampleTarget": "Вчера я был дома. / Вчера я была дома.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Yesterday I was at home.”",
+      "korean": "я был / я была",
+      "english": "Transfer \"я был / я была\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Вчера я был дома. / Вчера я была дома.\".",
+      "example": "Вчера я был дома. / Вчера я была дома.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Yesterday I was at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я был / я была",
+      "romanization": "ya byl / ya byla",
+      "nativeText": "Find one word or phrase that naturally travels with \"я был / я была\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ya byl / ya byla",
+      "exampleTarget": "Вчера я был дома. / Вчера я была дома.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Yesterday I was at home.”",
+      "korean": "я был / я была",
+      "english": "Find one word or phrase that naturally travels with \"я был / я была\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Вчера я был дома. / Вчера я была дома.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Yesterday I was at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я был / я была",
+      "romanization": "ya byl / ya byla",
+      "nativeText": "Listen for \"я был / я была\" inside \"Вчера я был дома. / Вчера я была дома.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ya byl / ya byla",
+      "exampleTarget": "Вчера я был дома. / Вчера я была дома.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Yesterday I was at home.”",
+      "korean": "я был / я была",
+      "english": "Listen for \"я был / я была\" inside \"Вчера я был дома. / Вчера я была дома.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Вчера я был дома. / Вчера я была дома.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Yesterday I was at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я был / я была",
+      "romanization": "ya byl / ya byla",
+      "nativeText": "Write \"я был / я была\" again without looking, then compare the exact written form against \"Вчера я был дома. / Вчера я была дома.\" before moving on.",
+      "pronunciation": "ya byl / ya byla",
+      "exampleTarget": "Вчера я был дома. / Вчера я была дома.",
+      "exampleNative": "Use the written model as the final correctness check: “Yesterday I was at home.”",
+      "korean": "я был / я была",
+      "english": "Write \"я был / я была\" again without looking, then compare the exact written form against \"Вчера я был дома. / Вчера я была дома.\" before moving on.",
+      "example": "Вчера я был дома. / Вчера я была дома.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Yesterday I was at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я был / я была",
+      "romanization": "ya byl / ya byla",
+      "nativeText": "Check whether \"я был / я была\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Yesterday I was at home.”",
+      "pronunciation": "ya byl / ya byla",
+      "exampleTarget": "Вчера я был дома. / Вчера я была дома.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Yesterday I was at home.”",
+      "korean": "я был / я была",
+      "english": "Check whether \"я был / я была\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Yesterday I was at home.”",
+      "example": "Вчера я был дома. / Вчера я была дома.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Yesterday I was at home.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я ходил / я ходила",
+      "romanization": "ya khodil / ya khodila",
+      "nativeText": "“I went / used to go on foot” masculine / feminine. Motion verbs begin to matter early.",
+      "pronunciation": "ya khodil / ya khodila",
+      "exampleTarget": "Вчера я ходила в магазин.",
+      "exampleNative": "“Yesterday I went to the shop.”",
+      "korean": "я ходил / я ходила",
+      "english": "“I went / used to go on foot” masculine / feminine. Motion verbs begin to matter early.",
+      "example": "Вчера я ходила в магазин.",
+      "exampleEnglish": "“Yesterday I went to the shop.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "Вчера я ходила в магазин.",
+      "romanization": "ya khodil / ya khodila",
+      "nativeText": "Model use for \"Вчера я ходила в магазин.\": “Yesterday I went to the shop.”",
+      "pronunciation": "ya khodil / ya khodila",
+      "exampleTarget": "Вчера я ходила в магазин.",
+      "exampleNative": "“Yesterday I went to the shop.”",
+      "korean": "Вчера я ходила в магазин.",
+      "english": "Model use for \"Вчера я ходила в магазин.\": “Yesterday I went to the shop.”",
+      "example": "Вчера я ходила в магазин.",
+      "exampleEnglish": "“Yesterday I went to the shop.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я ходил / я ходила",
+      "romanization": "ya khodil / ya khodila",
+      "nativeText": "Usage focus for \"я ходил / я ходила\": Distinguish the nearby wording choices that make Level 1 · Unit 12: Что вы делали? — Past Activities sound precise rather than merely understandable.",
+      "pronunciation": "ya khodil / ya khodila",
+      "exampleTarget": "Вчера я ходила в магазин.",
+      "exampleNative": "Notice what the form is doing here: “Yesterday I went to the shop.”",
+      "korean": "я ходил / я ходила",
+      "english": "Usage focus for \"я ходил / я ходила\": Distinguish the nearby wording choices that make Level 1 · Unit 12: Что вы делали? — Past Activities sound precise rather than merely understandable.",
+      "example": "Вчера я ходила в магазин.",
+      "exampleEnglish": "Notice what the form is doing here: “Yesterday I went to the shop.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я ходил / я ходила",
+      "romanization": "ya khodil / ya khodila",
+      "nativeText": "Contrast check for \"я ходил / я ходила\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ya khodil / ya khodila",
+      "exampleTarget": "Вчера я ходила в магазин.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Yesterday I went to the shop.”",
+      "korean": "я ходил / я ходила",
+      "english": "Contrast check for \"я ходил / я ходила\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Вчера я ходила в магазин.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Yesterday I went to the shop.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я ходил / я ходила",
+      "romanization": "ya khodil / ya khodila",
+      "nativeText": "Recall \"я ходил / я ходила\" from memory, then explain what would change if a nearby alternative replaced it in \"Вчера я ходила в магазин.\".",
+      "pronunciation": "ya khodil / ya khodila",
+      "exampleTarget": "Вчера я ходила в магазин.",
+      "exampleNative": "Self-check against the model before moving on: “Yesterday I went to the shop.”",
+      "korean": "я ходил / я ходила",
+      "english": "Recall \"я ходил / я ходила\" from memory, then explain what would change if a nearby alternative replaced it in \"Вчера я ходила в магазин.\".",
+      "example": "Вчера я ходила в магазин.",
+      "exampleEnglish": "Self-check against the model before moving on: “Yesterday I went to the shop.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я ходил / я ходила",
+      "romanization": "ya khodil / ya khodila",
+      "nativeText": "Repair \"я ходил / я ходила\" inside \"Вчера я ходила в магазин.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 12: Что вы делали? — Past Activities sound precise rather than merely understandable.",
+      "pronunciation": "ya khodil / ya khodila",
+      "exampleTarget": "Вчера я ходила в магазин.",
+      "exampleNative": "Use the model as the repair target: “Yesterday I went to the shop.”",
+      "korean": "я ходил / я ходила",
+      "english": "Repair \"я ходил / я ходила\" inside \"Вчера я ходила в магазин.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 12: Что вы делали? — Past Activities sound precise rather than merely understandable.",
+      "example": "Вчера я ходила в магазин.",
+      "exampleEnglish": "Use the model as the repair target: “Yesterday I went to the shop.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я ходил / я ходила",
+      "romanization": "ya khodil / ya khodila",
+      "nativeText": "Transfer \"я ходил / я ходила\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Вчера я ходила в магазин.\".",
+      "pronunciation": "ya khodil / ya khodila",
+      "exampleTarget": "Вчера я ходила в магазин.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Yesterday I went to the shop.”",
+      "korean": "я ходил / я ходила",
+      "english": "Transfer \"я ходил / я ходила\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Вчера я ходила в магазин.\".",
+      "example": "Вчера я ходила в магазин.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Yesterday I went to the shop.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я ходил / я ходила",
+      "romanization": "ya khodil / ya khodila",
+      "nativeText": "Find one word or phrase that naturally travels with \"я ходил / я ходила\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ya khodil / ya khodila",
+      "exampleTarget": "Вчера я ходила в магазин.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Yesterday I went to the shop.”",
+      "korean": "я ходил / я ходила",
+      "english": "Find one word or phrase that naturally travels with \"я ходил / я ходила\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Вчера я ходила в магазин.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Yesterday I went to the shop.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я ходил / я ходила",
+      "romanization": "ya khodil / ya khodila",
+      "nativeText": "Listen for \"я ходил / я ходила\" inside \"Вчера я ходила в магазин.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ya khodil / ya khodila",
+      "exampleTarget": "Вчера я ходила в магазин.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Yesterday I went to the shop.”",
+      "korean": "я ходил / я ходила",
+      "english": "Listen for \"я ходил / я ходила\" inside \"Вчера я ходила в магазин.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Вчера я ходила в магазин.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Yesterday I went to the shop.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я ходил / я ходила",
+      "romanization": "ya khodil / ya khodila",
+      "nativeText": "Write \"я ходил / я ходила\" again without looking, then compare the exact written form against \"Вчера я ходила в магазин.\" before moving on.",
+      "pronunciation": "ya khodil / ya khodila",
+      "exampleTarget": "Вчера я ходила в магазин.",
+      "exampleNative": "Use the written model as the final correctness check: “Yesterday I went to the shop.”",
+      "korean": "я ходил / я ходила",
+      "english": "Write \"я ходил / я ходила\" again without looking, then compare the exact written form against \"Вчера я ходила в магазин.\" before moving on.",
+      "example": "Вчера я ходила в магазин.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Yesterday I went to the shop.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я ходил / я ходила",
+      "romanization": "ya khodil / ya khodila",
+      "nativeText": "Check whether \"я ходил / я ходила\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Yesterday I went to the shop.”",
+      "pronunciation": "ya khodil / ya khodila",
+      "exampleTarget": "Вчера я ходила в магазин.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Yesterday I went to the shop.”",
+      "korean": "я ходил / я ходила",
+      "english": "Check whether \"я ходил / я ходила\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Yesterday I went to the shop.”",
+      "example": "Вчера я ходила в магазин.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Yesterday I went to the shop.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я ел / я ела",
+      "romanization": "ya yel / ya yela",
+      "nativeText": "“I ate” masculine / feminine.",
+      "pronunciation": "ya yel / ya yela",
+      "exampleTarget": "Утром я ел кашу.",
+      "exampleNative": "“In the morning I ate porridge.”",
+      "korean": "я ел / я ела",
+      "english": "“I ate” masculine / feminine.",
+      "example": "Утром я ел кашу.",
+      "exampleEnglish": "“In the morning I ate porridge.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "Утром я ел кашу.",
+      "romanization": "ya yel / ya yela",
+      "nativeText": "Model use for \"Утром я ел кашу.\": “In the morning I ate porridge.”",
+      "pronunciation": "ya yel / ya yela",
+      "exampleTarget": "Утром я ел кашу.",
+      "exampleNative": "“In the morning I ate porridge.”",
+      "korean": "Утром я ел кашу.",
+      "english": "Model use for \"Утром я ел кашу.\": “In the morning I ate porridge.”",
+      "example": "Утром я ел кашу.",
+      "exampleEnglish": "“In the morning I ate porridge.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я ел / я ела",
+      "romanization": "ya yel / ya yela",
+      "nativeText": "Usage focus for \"я ел / я ела\": “I ate” masculine / feminine.",
+      "pronunciation": "ya yel / ya yela",
+      "exampleTarget": "Утром я ел кашу.",
+      "exampleNative": "Notice what the form is doing here: “In the morning I ate porridge.”",
+      "korean": "я ел / я ела",
+      "english": "Usage focus for \"я ел / я ела\": “I ate” masculine / feminine.",
+      "example": "Утром я ел кашу.",
+      "exampleEnglish": "Notice what the form is doing here: “In the morning I ate porridge.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я ел / я ела",
+      "romanization": "ya yel / ya yela",
+      "nativeText": "Contrast check for \"я ел / я ела\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ya yel / ya yela",
+      "exampleTarget": "Утром я ел кашу.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “In the morning I ate porridge.”",
+      "korean": "я ел / я ела",
+      "english": "Contrast check for \"я ел / я ела\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Утром я ел кашу.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “In the morning I ate porridge.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я ел / я ела",
+      "romanization": "ya yel / ya yela",
+      "nativeText": "Recall \"я ел / я ела\" from memory, then explain what would change if a nearby alternative replaced it in \"Утром я ел кашу.\".",
+      "pronunciation": "ya yel / ya yela",
+      "exampleTarget": "Утром я ел кашу.",
+      "exampleNative": "Self-check against the model before moving on: “In the morning I ate porridge.”",
+      "korean": "я ел / я ела",
+      "english": "Recall \"я ел / я ела\" from memory, then explain what would change if a nearby alternative replaced it in \"Утром я ел кашу.\".",
+      "example": "Утром я ел кашу.",
+      "exampleEnglish": "Self-check against the model before moving on: “In the morning I ate porridge.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я ел / я ела",
+      "romanization": "ya yel / ya yela",
+      "nativeText": "Repair \"я ел / я ела\" inside \"Утром я ел кашу.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I ate” masculine / feminine.",
+      "pronunciation": "ya yel / ya yela",
+      "exampleTarget": "Утром я ел кашу.",
+      "exampleNative": "Use the model as the repair target: “In the morning I ate porridge.”",
+      "korean": "я ел / я ела",
+      "english": "Repair \"я ел / я ела\" inside \"Утром я ел кашу.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I ate” masculine / feminine.",
+      "example": "Утром я ел кашу.",
+      "exampleEnglish": "Use the model as the repair target: “In the morning I ate porridge.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я ел / я ела",
+      "romanization": "ya yel / ya yela",
+      "nativeText": "Transfer \"я ел / я ела\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Утром я ел кашу.\".",
+      "pronunciation": "ya yel / ya yela",
+      "exampleTarget": "Утром я ел кашу.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “In the morning I ate porridge.”",
+      "korean": "я ел / я ела",
+      "english": "Transfer \"я ел / я ела\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Утром я ел кашу.\".",
+      "example": "Утром я ел кашу.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “In the morning I ate porridge.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я ел / я ела",
+      "romanization": "ya yel / ya yela",
+      "nativeText": "Find one word or phrase that naturally travels with \"я ел / я ела\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ya yel / ya yela",
+      "exampleTarget": "Утром я ел кашу.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “In the morning I ate porridge.”",
+      "korean": "я ел / я ела",
+      "english": "Find one word or phrase that naturally travels with \"я ел / я ела\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Утром я ел кашу.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “In the morning I ate porridge.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я ел / я ела",
+      "romanization": "ya yel / ya yela",
+      "nativeText": "Listen for \"я ел / я ела\" inside \"Утром я ел кашу.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ya yel / ya yela",
+      "exampleTarget": "Утром я ел кашу.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “In the morning I ate porridge.”",
+      "korean": "я ел / я ела",
+      "english": "Listen for \"я ел / я ела\" inside \"Утром я ел кашу.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Утром я ел кашу.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “In the morning I ate porridge.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я ел / я ела",
+      "romanization": "ya yel / ya yela",
+      "nativeText": "Write \"я ел / я ела\" again without looking, then compare the exact written form against \"Утром я ел кашу.\" before moving on.",
+      "pronunciation": "ya yel / ya yela",
+      "exampleTarget": "Утром я ел кашу.",
+      "exampleNative": "Use the written model as the final correctness check: “In the morning I ate porridge.”",
+      "korean": "я ел / я ела",
+      "english": "Write \"я ел / я ела\" again without looking, then compare the exact written form against \"Утром я ел кашу.\" before moving on.",
+      "example": "Утром я ел кашу.",
+      "exampleEnglish": "Use the written model as the final correctness check: “In the morning I ate porridge.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я ел / я ела",
+      "romanization": "ya yel / ya yela",
+      "nativeText": "Check whether \"я ел / я ела\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “In the morning I ate porridge.”",
+      "pronunciation": "ya yel / ya yela",
+      "exampleTarget": "Утром я ел кашу.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “In the morning I ate porridge.”",
+      "korean": "я ел / я ела",
+      "english": "Check whether \"я ел / я ела\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “In the morning I ate porridge.”",
+      "example": "Утром я ел кашу.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “In the morning I ate porridge.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я учился / я училась",
+      "romanization": "ya uchilsya / ya uchilas",
+      "nativeText": "“I studied” masculine / feminine. Reflexive verbs keep the gendered past ending before the reflexive part.",
+      "pronunciation": "ya uchilsya / ya uchilas",
+      "exampleTarget": "Вчера я училась в библиотеке.",
+      "exampleNative": "“Yesterday I studied in the library.”",
+      "korean": "я учился / я училась",
+      "english": "“I studied” masculine / feminine. Reflexive verbs keep the gendered past ending before the reflexive part.",
+      "example": "Вчера я училась в библиотеке.",
+      "exampleEnglish": "“Yesterday I studied in the library.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "Вчера я училась в библиотеке.",
+      "romanization": "ya uchilsya / ya uchilas",
+      "nativeText": "Model use for \"Вчера я училась в библиотеке.\": “Yesterday I studied in the library.”",
+      "pronunciation": "ya uchilsya / ya uchilas",
+      "exampleTarget": "Вчера я училась в библиотеке.",
+      "exampleNative": "“Yesterday I studied in the library.”",
+      "korean": "Вчера я училась в библиотеке.",
+      "english": "Model use for \"Вчера я училась в библиотеке.\": “Yesterday I studied in the library.”",
+      "example": "Вчера я училась в библиотеке.",
+      "exampleEnglish": "“Yesterday I studied in the library.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я учился / я училась",
+      "romanization": "ya uchilsya / ya uchilas",
+      "nativeText": "Usage focus for \"я учился / я училась\": “I studied” masculine / feminine. Reflexive verbs keep the gendered past ending before the reflexive part.",
+      "pronunciation": "ya uchilsya / ya uchilas",
+      "exampleTarget": "Вчера я училась в библиотеке.",
+      "exampleNative": "Notice what the form is doing here: “Yesterday I studied in the library.”",
+      "korean": "я учился / я училась",
+      "english": "Usage focus for \"я учился / я училась\": “I studied” masculine / feminine. Reflexive verbs keep the gendered past ending before the reflexive part.",
+      "example": "Вчера я училась в библиотеке.",
+      "exampleEnglish": "Notice what the form is doing here: “Yesterday I studied in the library.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я учился / я училась",
+      "romanization": "ya uchilsya / ya uchilas",
+      "nativeText": "Contrast check for \"я учился / я училась\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ya uchilsya / ya uchilas",
+      "exampleTarget": "Вчера я училась в библиотеке.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Yesterday I studied in the library.”",
+      "korean": "я учился / я училась",
+      "english": "Contrast check for \"я учился / я училась\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Вчера я училась в библиотеке.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Yesterday I studied in the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я учился / я училась",
+      "romanization": "ya uchilsya / ya uchilas",
+      "nativeText": "Recall \"я учился / я училась\" from memory, then explain what would change if a nearby alternative replaced it in \"Вчера я училась в библиотеке.\".",
+      "pronunciation": "ya uchilsya / ya uchilas",
+      "exampleTarget": "Вчера я училась в библиотеке.",
+      "exampleNative": "Self-check against the model before moving on: “Yesterday I studied in the library.”",
+      "korean": "я учился / я училась",
+      "english": "Recall \"я учился / я училась\" from memory, then explain what would change if a nearby alternative replaced it in \"Вчера я училась в библиотеке.\".",
+      "example": "Вчера я училась в библиотеке.",
+      "exampleEnglish": "Self-check against the model before moving on: “Yesterday I studied in the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я учился / я училась",
+      "romanization": "ya uchilsya / ya uchilas",
+      "nativeText": "Repair \"я учился / я училась\" inside \"Вчера я училась в библиотеке.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I studied” masculine / feminine. Reflexive verbs keep the gendered past ending before the reflexive part.",
+      "pronunciation": "ya uchilsya / ya uchilas",
+      "exampleTarget": "Вчера я училась в библиотеке.",
+      "exampleNative": "Use the model as the repair target: “Yesterday I studied in the library.”",
+      "korean": "я учился / я училась",
+      "english": "Repair \"я учился / я училась\" inside \"Вчера я училась в библиотеке.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I studied” masculine / feminine. Reflexive verbs keep the gendered past ending before the reflexive part.",
+      "example": "Вчера я училась в библиотеке.",
+      "exampleEnglish": "Use the model as the repair target: “Yesterday I studied in the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я учился / я училась",
+      "romanization": "ya uchilsya / ya uchilas",
+      "nativeText": "Transfer \"я учился / я училась\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Вчера я училась в библиотеке.\".",
+      "pronunciation": "ya uchilsya / ya uchilas",
+      "exampleTarget": "Вчера я училась в библиотеке.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Yesterday I studied in the library.”",
+      "korean": "я учился / я училась",
+      "english": "Transfer \"я учился / я училась\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Вчера я училась в библиотеке.\".",
+      "example": "Вчера я училась в библиотеке.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Yesterday I studied in the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я учился / я училась",
+      "romanization": "ya uchilsya / ya uchilas",
+      "nativeText": "Find one word or phrase that naturally travels with \"я учился / я училась\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ya uchilsya / ya uchilas",
+      "exampleTarget": "Вчера я училась в библиотеке.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Yesterday I studied in the library.”",
+      "korean": "я учился / я училась",
+      "english": "Find one word or phrase that naturally travels with \"я учился / я училась\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Вчера я училась в библиотеке.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Yesterday I studied in the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я учился / я училась",
+      "romanization": "ya uchilsya / ya uchilas",
+      "nativeText": "Listen for \"я учился / я училась\" inside \"Вчера я училась в библиотеке.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ya uchilsya / ya uchilas",
+      "exampleTarget": "Вчера я училась в библиотеке.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Yesterday I studied in the library.”",
+      "korean": "я учился / я училась",
+      "english": "Listen for \"я учился / я училась\" inside \"Вчера я училась в библиотеке.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Вчера я училась в библиотеке.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Yesterday I studied in the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я учился / я училась",
+      "romanization": "ya uchilsya / ya uchilas",
+      "nativeText": "Write \"я учился / я училась\" again without looking, then compare the exact written form against \"Вчера я училась в библиотеке.\" before moving on.",
+      "pronunciation": "ya uchilsya / ya uchilas",
+      "exampleTarget": "Вчера я училась в библиотеке.",
+      "exampleNative": "Use the written model as the final correctness check: “Yesterday I studied in the library.”",
+      "korean": "я учился / я училась",
+      "english": "Write \"я учился / я училась\" again without looking, then compare the exact written form against \"Вчера я училась в библиотеке.\" before moving on.",
+      "example": "Вчера я училась в библиотеке.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Yesterday I studied in the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "я учился / я училась",
+      "romanization": "ya uchilsya / ya uchilas",
+      "nativeText": "Check whether \"я учился / я училась\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Yesterday I studied in the library.”",
+      "pronunciation": "ya uchilsya / ya uchilas",
+      "exampleTarget": "Вчера я училась в библиотеке.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Yesterday I studied in the library.”",
+      "korean": "я учился / я училась",
+      "english": "Check whether \"я учился / я училась\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Yesterday I studied in the library.”",
+      "example": "Вчера я училась в библиотеке.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Yesterday I studied in the library.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "потом",
+      "romanization": "potom",
+      "nativeText": "“Then / afterwards.” A simple sequence word for beginner narratives.",
+      "pronunciation": "potom",
+      "exampleTarget": "Потом я встретил друга.",
+      "exampleNative": "“Then I met a friend.”",
+      "korean": "потом",
+      "english": "“Then / afterwards.” A simple sequence word for beginner narratives.",
+      "example": "Потом я встретил друга.",
+      "exampleEnglish": "“Then I met a friend.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "Потом я встретил друга.",
+      "romanization": "potom",
+      "nativeText": "Model use for \"Потом я встретил друга.\": “Then I met a friend.”",
+      "pronunciation": "potom",
+      "exampleTarget": "Потом я встретил друга.",
+      "exampleNative": "“Then I met a friend.”",
+      "korean": "Потом я встретил друга.",
+      "english": "Model use for \"Потом я встретил друга.\": “Then I met a friend.”",
+      "example": "Потом я встретил друга.",
+      "exampleEnglish": "“Then I met a friend.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "потом",
+      "romanization": "potom",
+      "nativeText": "Usage focus for \"потом\": “Then / afterwards.” A simple sequence word for beginner narratives.",
+      "pronunciation": "potom",
+      "exampleTarget": "Потом я встретил друга.",
+      "exampleNative": "Notice what the form is doing here: “Then I met a friend.”",
+      "korean": "потом",
+      "english": "Usage focus for \"потом\": “Then / afterwards.” A simple sequence word for beginner narratives.",
+      "example": "Потом я встретил друга.",
+      "exampleEnglish": "Notice what the form is doing here: “Then I met a friend.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "потом",
+      "romanization": "potom",
+      "nativeText": "Contrast check for \"потом\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "potom",
+      "exampleTarget": "Потом я встретил друга.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Then I met a friend.”",
+      "korean": "потом",
+      "english": "Contrast check for \"потом\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Потом я встретил друга.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Then I met a friend.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "потом",
+      "romanization": "potom",
+      "nativeText": "Recall \"потом\" from memory, then explain what would change if a nearby alternative replaced it in \"Потом я встретил друга.\".",
+      "pronunciation": "potom",
+      "exampleTarget": "Потом я встретил друга.",
+      "exampleNative": "Self-check against the model before moving on: “Then I met a friend.”",
+      "korean": "потом",
+      "english": "Recall \"потом\" from memory, then explain what would change if a nearby alternative replaced it in \"Потом я встретил друга.\".",
+      "example": "Потом я встретил друга.",
+      "exampleEnglish": "Self-check against the model before moving on: “Then I met a friend.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "потом",
+      "romanization": "potom",
+      "nativeText": "Repair \"потом\" inside \"Потом я встретил друга.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Then / afterwards.” A simple sequence word for beginner narratives.",
+      "pronunciation": "potom",
+      "exampleTarget": "Потом я встретил друга.",
+      "exampleNative": "Use the model as the repair target: “Then I met a friend.”",
+      "korean": "потом",
+      "english": "Repair \"потом\" inside \"Потом я встретил друга.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Then / afterwards.” A simple sequence word for beginner narratives.",
+      "example": "Потом я встретил друга.",
+      "exampleEnglish": "Use the model as the repair target: “Then I met a friend.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "потом",
+      "romanization": "potom",
+      "nativeText": "Transfer \"потом\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Потом я встретил друга.\".",
+      "pronunciation": "potom",
+      "exampleTarget": "Потом я встретил друга.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Then I met a friend.”",
+      "korean": "потом",
+      "english": "Transfer \"потом\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Потом я встретил друга.\".",
+      "example": "Потом я встретил друга.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Then I met a friend.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "потом",
+      "romanization": "potom",
+      "nativeText": "Find one word or phrase that naturally travels with \"потом\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "potom",
+      "exampleTarget": "Потом я встретил друга.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Then I met a friend.”",
+      "korean": "потом",
+      "english": "Find one word or phrase that naturally travels with \"потом\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Потом я встретил друга.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Then I met a friend.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "потом",
+      "romanization": "potom",
+      "nativeText": "Listen for \"потом\" inside \"Потом я встретил друга.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "potom",
+      "exampleTarget": "Потом я встретил друга.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Then I met a friend.”",
+      "korean": "потом",
+      "english": "Listen for \"потом\" inside \"Потом я встретил друга.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Потом я встретил друга.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Then I met a friend.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "потом",
+      "romanization": "potom",
+      "nativeText": "Write \"потом\" again without looking, then compare the exact written form against \"Потом я встретил друга.\" before moving on.",
+      "pronunciation": "potom",
+      "exampleTarget": "Потом я встретил друга.",
+      "exampleNative": "Use the written model as the final correctness check: “Then I met a friend.”",
+      "korean": "потом",
+      "english": "Write \"потом\" again without looking, then compare the exact written form against \"Потом я встретил друга.\" before moving on.",
+      "example": "Потом я встретил друга.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Then I met a friend.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "потом",
+      "romanization": "potom",
+      "nativeText": "Check whether \"потом\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Then I met a friend.”",
+      "pronunciation": "potom",
+      "exampleTarget": "Потом я встретил друга.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Then I met a friend.”",
+      "korean": "потом",
+      "english": "Check whether \"потом\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Then I met a friend.”",
+      "example": "Потом я встретил друга.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Then I met a friend.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "после этого",
+      "romanization": "posle etogo",
+      "nativeText": "“After that.” Slightly more explicit than `потом`.",
+      "pronunciation": "posle etogo",
+      "exampleTarget": "После этого я пошёл домой.",
+      "exampleNative": "“After that I went home.”",
+      "korean": "после этого",
+      "english": "“After that.” Slightly more explicit than `потом`.",
+      "example": "После этого я пошёл домой.",
+      "exampleEnglish": "“After that I went home.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "После этого я пошёл домой.",
+      "romanization": "posle etogo",
+      "nativeText": "Model use for \"После этого я пошёл домой.\": “After that I went home.”",
+      "pronunciation": "posle etogo",
+      "exampleTarget": "После этого я пошёл домой.",
+      "exampleNative": "“After that I went home.”",
+      "korean": "После этого я пошёл домой.",
+      "english": "Model use for \"После этого я пошёл домой.\": “After that I went home.”",
+      "example": "После этого я пошёл домой.",
+      "exampleEnglish": "“After that I went home.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "после этого",
+      "romanization": "posle etogo",
+      "nativeText": "Usage focus for \"после этого\": “After that.” Slightly more explicit than `потом`.",
+      "pronunciation": "posle etogo",
+      "exampleTarget": "После этого я пошёл домой.",
+      "exampleNative": "Notice what the form is doing here: “After that I went home.”",
+      "korean": "после этого",
+      "english": "Usage focus for \"после этого\": “After that.” Slightly more explicit than `потом`.",
+      "example": "После этого я пошёл домой.",
+      "exampleEnglish": "Notice what the form is doing here: “After that I went home.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "после этого",
+      "romanization": "posle etogo",
+      "nativeText": "Contrast check for \"после этого\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "posle etogo",
+      "exampleTarget": "После этого я пошёл домой.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “After that I went home.”",
+      "korean": "после этого",
+      "english": "Contrast check for \"после этого\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "После этого я пошёл домой.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “After that I went home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "после этого",
+      "romanization": "posle etogo",
+      "nativeText": "Recall \"после этого\" from memory, then explain what would change if a nearby alternative replaced it in \"После этого я пошёл домой.\".",
+      "pronunciation": "posle etogo",
+      "exampleTarget": "После этого я пошёл домой.",
+      "exampleNative": "Self-check against the model before moving on: “After that I went home.”",
+      "korean": "после этого",
+      "english": "Recall \"после этого\" from memory, then explain what would change if a nearby alternative replaced it in \"После этого я пошёл домой.\".",
+      "example": "После этого я пошёл домой.",
+      "exampleEnglish": "Self-check against the model before moving on: “After that I went home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "после этого",
+      "romanization": "posle etogo",
+      "nativeText": "Repair \"после этого\" inside \"После этого я пошёл домой.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “After that.” Slightly more explicit than `потом`.",
+      "pronunciation": "posle etogo",
+      "exampleTarget": "После этого я пошёл домой.",
+      "exampleNative": "Use the model as the repair target: “After that I went home.”",
+      "korean": "после этого",
+      "english": "Repair \"после этого\" inside \"После этого я пошёл домой.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “After that.” Slightly more explicit than `потом`.",
+      "example": "После этого я пошёл домой.",
+      "exampleEnglish": "Use the model as the repair target: “After that I went home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "после этого",
+      "romanization": "posle etogo",
+      "nativeText": "Transfer \"после этого\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"После этого я пошёл домой.\".",
+      "pronunciation": "posle etogo",
+      "exampleTarget": "После этого я пошёл домой.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “After that I went home.”",
+      "korean": "после этого",
+      "english": "Transfer \"после этого\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"После этого я пошёл домой.\".",
+      "example": "После этого я пошёл домой.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “After that I went home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "после этого",
+      "romanization": "posle etogo",
+      "nativeText": "Find one word or phrase that naturally travels with \"после этого\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "posle etogo",
+      "exampleTarget": "После этого я пошёл домой.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “After that I went home.”",
+      "korean": "после этого",
+      "english": "Find one word or phrase that naturally travels with \"после этого\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "После этого я пошёл домой.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “After that I went home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "после этого",
+      "romanization": "posle etogo",
+      "nativeText": "Listen for \"после этого\" inside \"После этого я пошёл домой.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "posle etogo",
+      "exampleTarget": "После этого я пошёл домой.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “After that I went home.”",
+      "korean": "после этого",
+      "english": "Listen for \"после этого\" inside \"После этого я пошёл домой.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "После этого я пошёл домой.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “After that I went home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "после этого",
+      "romanization": "posle etogo",
+      "nativeText": "Write \"после этого\" again without looking, then compare the exact written form against \"После этого я пошёл домой.\" before moving on.",
+      "pronunciation": "posle etogo",
+      "exampleTarget": "После этого я пошёл домой.",
+      "exampleNative": "Use the written model as the final correctness check: “After that I went home.”",
+      "korean": "после этого",
+      "english": "Write \"после этого\" again without looking, then compare the exact written form against \"После этого я пошёл домой.\" before moving on.",
+      "example": "После этого я пошёл домой.",
+      "exampleEnglish": "Use the written model as the final correctness check: “After that I went home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "после этого",
+      "romanization": "posle etogo",
+      "nativeText": "Check whether \"после этого\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “After that I went home.”",
+      "pronunciation": "posle etogo",
+      "exampleTarget": "После этого я пошёл домой.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “After that I went home.”",
+      "korean": "после этого",
+      "english": "Check whether \"после этого\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “After that I went home.”",
+      "example": "После этого я пошёл домой.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “After that I went home.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "на прошлой неделе",
+      "romanization": "na proshloy nedele",
+      "nativeText": "“Last week.” A common past-time phrase.",
+      "pronunciation": "na proshloy nedele",
+      "exampleTarget": "На прошлой неделе мы были в музее.",
+      "exampleNative": "“Last week we were at the museum.”",
+      "korean": "на прошлой неделе",
+      "english": "“Last week.” A common past-time phrase.",
+      "example": "На прошлой неделе мы были в музее.",
+      "exampleEnglish": "“Last week we were at the museum.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "На прошлой неделе мы были в музее.",
+      "romanization": "na proshloy nedele",
+      "nativeText": "Model use for \"На прошлой неделе мы были в музее.\": “Last week we were at the museum.”",
+      "pronunciation": "na proshloy nedele",
+      "exampleTarget": "На прошлой неделе мы были в музее.",
+      "exampleNative": "“Last week we were at the museum.”",
+      "korean": "На прошлой неделе мы были в музее.",
+      "english": "Model use for \"На прошлой неделе мы были в музее.\": “Last week we were at the museum.”",
+      "example": "На прошлой неделе мы были в музее.",
+      "exampleEnglish": "“Last week we were at the museum.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "на прошлой неделе",
+      "romanization": "na proshloy nedele",
+      "nativeText": "Usage focus for \"на прошлой неделе\": “Last week.” A common past-time phrase.",
+      "pronunciation": "na proshloy nedele",
+      "exampleTarget": "На прошлой неделе мы были в музее.",
+      "exampleNative": "Notice what the form is doing here: “Last week we were at the museum.”",
+      "korean": "на прошлой неделе",
+      "english": "Usage focus for \"на прошлой неделе\": “Last week.” A common past-time phrase.",
+      "example": "На прошлой неделе мы были в музее.",
+      "exampleEnglish": "Notice what the form is doing here: “Last week we were at the museum.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "на прошлой неделе",
+      "romanization": "na proshloy nedele",
+      "nativeText": "Contrast check for \"на прошлой неделе\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "na proshloy nedele",
+      "exampleTarget": "На прошлой неделе мы были в музее.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Last week we were at the museum.”",
+      "korean": "на прошлой неделе",
+      "english": "Contrast check for \"на прошлой неделе\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "На прошлой неделе мы были в музее.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Last week we were at the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "на прошлой неделе",
+      "romanization": "na proshloy nedele",
+      "nativeText": "Recall \"на прошлой неделе\" from memory, then explain what would change if a nearby alternative replaced it in \"На прошлой неделе мы были в музее.\".",
+      "pronunciation": "na proshloy nedele",
+      "exampleTarget": "На прошлой неделе мы были в музее.",
+      "exampleNative": "Self-check against the model before moving on: “Last week we were at the museum.”",
+      "korean": "на прошлой неделе",
+      "english": "Recall \"на прошлой неделе\" from memory, then explain what would change if a nearby alternative replaced it in \"На прошлой неделе мы были в музее.\".",
+      "example": "На прошлой неделе мы были в музее.",
+      "exampleEnglish": "Self-check against the model before moving on: “Last week we were at the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "на прошлой неделе",
+      "romanization": "na proshloy nedele",
+      "nativeText": "Repair \"на прошлой неделе\" inside \"На прошлой неделе мы были в музее.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Last week.” A common past-time phrase.",
+      "pronunciation": "na proshloy nedele",
+      "exampleTarget": "На прошлой неделе мы были в музее.",
+      "exampleNative": "Use the model as the repair target: “Last week we were at the museum.”",
+      "korean": "на прошлой неделе",
+      "english": "Repair \"на прошлой неделе\" inside \"На прошлой неделе мы были в музее.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Last week.” A common past-time phrase.",
+      "example": "На прошлой неделе мы были в музее.",
+      "exampleEnglish": "Use the model as the repair target: “Last week we were at the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "на прошлой неделе",
+      "romanization": "na proshloy nedele",
+      "nativeText": "Transfer \"на прошлой неделе\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"На прошлой неделе мы были в музее.\".",
+      "pronunciation": "na proshloy nedele",
+      "exampleTarget": "На прошлой неделе мы были в музее.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Last week we were at the museum.”",
+      "korean": "на прошлой неделе",
+      "english": "Transfer \"на прошлой неделе\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"На прошлой неделе мы были в музее.\".",
+      "example": "На прошлой неделе мы были в музее.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Last week we were at the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "на прошлой неделе",
+      "romanization": "na proshloy nedele",
+      "nativeText": "Find one word or phrase that naturally travels with \"на прошлой неделе\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "na proshloy nedele",
+      "exampleTarget": "На прошлой неделе мы были в музее.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Last week we were at the museum.”",
+      "korean": "на прошлой неделе",
+      "english": "Find one word or phrase that naturally travels with \"на прошлой неделе\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "На прошлой неделе мы были в музее.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Last week we were at the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "на прошлой неделе",
+      "romanization": "na proshloy nedele",
+      "nativeText": "Listen for \"на прошлой неделе\" inside \"На прошлой неделе мы были в музее.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "na proshloy nedele",
+      "exampleTarget": "На прошлой неделе мы были в музее.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Last week we were at the museum.”",
+      "korean": "на прошлой неделе",
+      "english": "Listen for \"на прошлой неделе\" inside \"На прошлой неделе мы были в музее.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "На прошлой неделе мы были в музее.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Last week we were at the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "на прошлой неделе",
+      "romanization": "na proshloy nedele",
+      "nativeText": "Write \"на прошлой неделе\" again without looking, then compare the exact written form against \"На прошлой неделе мы были в музее.\" before moving on.",
+      "pronunciation": "na proshloy nedele",
+      "exampleTarget": "На прошлой неделе мы были в музее.",
+      "exampleNative": "Use the written model as the final correctness check: “Last week we were at the museum.”",
+      "korean": "на прошлой неделе",
+      "english": "Write \"на прошлой неделе\" again without looking, then compare the exact written form against \"На прошлой неделе мы были в музее.\" before moving on.",
+      "example": "На прошлой неделе мы были в музее.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Last week we were at the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "на прошлой неделе",
+      "romanization": "na proshloy nedele",
+      "nativeText": "Check whether \"на прошлой неделе\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Last week we were at the museum.”",
+      "pronunciation": "na proshloy nedele",
+      "exampleTarget": "На прошлой неделе мы были в музее.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Last week we were at the museum.”",
+      "korean": "на прошлой неделе",
+      "english": "Check whether \"на прошлой неделе\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Last week we were at the museum.”",
+      "example": "На прошлой неделе мы были в музее.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Last week we were at the museum.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "что ты делал / делала?",
+      "romanization": "chto ty delal / delala",
+      "nativeText": "“What did you do?” The question also reflects the addressee’s gender.",
+      "pronunciation": "chto ty delal / delala",
+      "exampleTarget": "Что ты делала вчера?",
+      "exampleNative": "“What did you do yesterday?”",
+      "korean": "что ты делал / делала?",
+      "english": "“What did you do?” The question also reflects the addressee’s gender.",
+      "example": "Что ты делала вчера?",
+      "exampleEnglish": "“What did you do yesterday?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "Что ты делала вчера?",
+      "romanization": "chto ty delal / delala",
+      "nativeText": "Model use for \"Что ты делала вчера?\": “What did you do yesterday?”",
+      "pronunciation": "chto ty delal / delala",
+      "exampleTarget": "Что ты делала вчера?",
+      "exampleNative": "“What did you do yesterday?”",
+      "korean": "Что ты делала вчера?",
+      "english": "Model use for \"Что ты делала вчера?\": “What did you do yesterday?”",
+      "example": "Что ты делала вчера?",
+      "exampleEnglish": "“What did you do yesterday?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "что ты делал / делала?",
+      "romanization": "chto ty delal / delala",
+      "nativeText": "Usage focus for \"что ты делал / делала?\": “What did you do?” The question also reflects the addressee’s gender.",
+      "pronunciation": "chto ty delal / delala",
+      "exampleTarget": "Что ты делала вчера?",
+      "exampleNative": "Notice what the form is doing here: “What did you do yesterday?”",
+      "korean": "что ты делал / делала?",
+      "english": "Usage focus for \"что ты делал / делала?\": “What did you do?” The question also reflects the addressee’s gender.",
+      "example": "Что ты делала вчера?",
+      "exampleEnglish": "Notice what the form is doing here: “What did you do yesterday?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "что ты делал / делала?",
+      "romanization": "chto ty delal / delala",
+      "nativeText": "Contrast check for \"что ты делал / делала?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "chto ty delal / delala",
+      "exampleTarget": "Что ты делала вчера?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What did you do yesterday?”",
+      "korean": "что ты делал / делала?",
+      "english": "Contrast check for \"что ты делал / делала?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Что ты делала вчера?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What did you do yesterday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "что ты делал / делала?",
+      "romanization": "chto ty delal / delala",
+      "nativeText": "Recall \"что ты делал / делала?\" from memory, then explain what would change if a nearby alternative replaced it in \"Что ты делала вчера?\".",
+      "pronunciation": "chto ty delal / delala",
+      "exampleTarget": "Что ты делала вчера?",
+      "exampleNative": "Self-check against the model before moving on: “What did you do yesterday?”",
+      "korean": "что ты делал / делала?",
+      "english": "Recall \"что ты делал / делала?\" from memory, then explain what would change if a nearby alternative replaced it in \"Что ты делала вчера?\".",
+      "example": "Что ты делала вчера?",
+      "exampleEnglish": "Self-check against the model before moving on: “What did you do yesterday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "что ты делал / делала?",
+      "romanization": "chto ty delal / delala",
+      "nativeText": "Repair \"что ты делал / делала?\" inside \"Что ты делала вчера?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “What did you do?” The question also reflects the addressee’s gender.",
+      "pronunciation": "chto ty delal / delala",
+      "exampleTarget": "Что ты делала вчера?",
+      "exampleNative": "Use the model as the repair target: “What did you do yesterday?”",
+      "korean": "что ты делал / делала?",
+      "english": "Repair \"что ты делал / делала?\" inside \"Что ты делала вчера?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “What did you do?” The question also reflects the addressee’s gender.",
+      "example": "Что ты делала вчера?",
+      "exampleEnglish": "Use the model as the repair target: “What did you do yesterday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "что ты делал / делала?",
+      "romanization": "chto ty delal / delala",
+      "nativeText": "Transfer \"что ты делал / делала?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Что ты делала вчера?\".",
+      "pronunciation": "chto ty delal / delala",
+      "exampleTarget": "Что ты делала вчера?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “What did you do yesterday?”",
+      "korean": "что ты делал / делала?",
+      "english": "Transfer \"что ты делал / делала?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Что ты делала вчера?\".",
+      "example": "Что ты делала вчера?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “What did you do yesterday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "что ты делал / делала?",
+      "romanization": "chto ty delal / delala",
+      "nativeText": "Find one word or phrase that naturally travels with \"что ты делал / делала?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "chto ty delal / delala",
+      "exampleTarget": "Что ты делала вчера?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “What did you do yesterday?”",
+      "korean": "что ты делал / делала?",
+      "english": "Find one word or phrase that naturally travels with \"что ты делал / делала?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Что ты делала вчера?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “What did you do yesterday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "что ты делал / делала?",
+      "romanization": "chto ty delal / delala",
+      "nativeText": "Listen for \"что ты делал / делала?\" inside \"Что ты делала вчера?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "chto ty delal / delala",
+      "exampleTarget": "Что ты делала вчера?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What did you do yesterday?”",
+      "korean": "что ты делал / делала?",
+      "english": "Listen for \"что ты делал / делала?\" inside \"Что ты делала вчера?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Что ты делала вчера?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What did you do yesterday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "что ты делал / делала?",
+      "romanization": "chto ty delal / delala",
+      "nativeText": "Write \"что ты делал / делала?\" again without looking, then compare the exact written form against \"Что ты делала вчера?\" before moving on.",
+      "pronunciation": "chto ty delal / delala",
+      "exampleTarget": "Что ты делала вчера?",
+      "exampleNative": "Use the written model as the final correctness check: “What did you do yesterday?”",
+      "korean": "что ты делал / делала?",
+      "english": "Write \"что ты делал / делала?\" again without looking, then compare the exact written form against \"Что ты делала вчера?\" before moving on.",
+      "example": "Что ты делала вчера?",
+      "exampleEnglish": "Use the written model as the final correctness check: “What did you do yesterday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit12pastactivities-vocabulary-1",
+        "ru-level1unit12pastactivities-vocabulary-2",
+        "ru-level1unit12pastactivities-grammar-1",
+        "ru-level1unit12pastactivities-grammar-2",
+        "ru-level1unit12pastactivities-reading",
+        "ru-level1unit12pastactivities-listening",
+        "ru-level1unit12pastactivities-writing",
+        "ru-level1unit12pastactivities-task"
+      ],
+      "targetText": "что ты делал / делала?",
+      "romanization": "chto ty delal / delala",
+      "nativeText": "Check whether \"что ты делал / делала?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What did you do yesterday?”",
+      "pronunciation": "chto ty delal / delala",
+      "exampleTarget": "Что ты делала вчера?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “What did you do yesterday?”",
+      "korean": "что ты делал / делала?",
+      "english": "Check whether \"что ты делал / делала?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What did you do yesterday?”",
+      "example": "Что ты делала вчера?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “What did you do yesterday?”"
+    }
+  ],
+  "targetLang": "ru",
+  "nativeLang": "en",
+  "track": "textbook"
+};

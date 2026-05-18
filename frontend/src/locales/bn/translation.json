@@ -968,7 +968,9 @@
     "practiceEverywhereAria": "এই আইটেমটি অন্য কোথাও অনুশীলন করুন",
     "practiceEverywhere": "এটি সর্বত্র অনুশীলন করুন",
     "saveReply": "উত্তর সংরক্ষণ করুন",
-    "selfTestReason": "একটি দ্রুত স্ব-পরীক্ষার জন্য ক্লাস থেকে সংরক্ষিত."
+    "selfTestReason": "একটি দ্রুত স্ব-পরীক্ষার জন্য ক্লাস থেকে সংরক্ষিত.",
+    "hideOutline": "রূপরেখা লুকান",
+    "showOutline": "রূপরেখা দেখান"
   },
   "classList": {
     "heroAriaLabel": "ক্লাস",
@@ -1009,7 +1011,10 @@
     },
     "titlePrefix": {
       "unit": "স্তর {{level}} · ইউনিট {{unit}}: {{title}}"
-    }
+    },
+    "retry": "আবার চেষ্টা করুন",
+    "progressAriaLabel": "ক্লাসের অগ্রগতি",
+    "progressCaption": "{{percent}}% সম্পূর্ণ · {{total}} আইটেমের {{completed}}"
   },
   "contextPractice": {
     "title": "পাঠ আপনার চারপাশে আকৃতির",
@@ -1092,7 +1097,9 @@
     "recapWentWell": "কি ভাল গেল",
     "recapUsefulPhrases": "দরকারী বাক্যাংশ",
     "recapReview": "পরবর্তী পর্যালোচনা",
-    "recapReviewFallback": "একটি বাক্যাংশ সংরক্ষণ করুন এবং এটি অন্য অনুশীলন মোডে পুনরায় ব্যবহার করুন।"
+    "recapReviewFallback": "একটি বাক্যাংশ সংরক্ষণ করুন এবং এটি অন্য অনুশীলন মোডে পুনরায় ব্যবহার করুন।",
+    "hideSetup": "সেটআপ লুকান",
+    "showSetup": "সেটআপ দেখান"
   },
   "exerciseHub": {
     "ariaLabel": "ব্যায়াম",
@@ -1187,7 +1194,9 @@
       "default": "{{index}} {{char}}: আকৃতিটি অনুলিপি করুন, তারপর মেমরি থেকে লিখুন।"
     },
     "savedReason": "অন্য পাসের জন্য লেখার অনুশীলন থেকে বাঁচানো হয়েছে।",
-    "selfTestReason": "একটি দ্রুত স্ব-পরীক্ষার জন্য লেখার অনুশীলন থেকে সংরক্ষিত।"
+    "selfTestReason": "একটি দ্রুত স্ব-পরীক্ষার জন্য লেখার অনুশীলন থেকে সংরক্ষিত।",
+    "hideNotebook": "নোটবুক লুকান",
+    "showNotebook": "নোটবুক দেখান"
   },
   "institution": {
     "kicker": "প্রতিষ্ঠান",

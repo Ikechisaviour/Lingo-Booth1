@@ -126,7 +126,7 @@ function cleanLatinSpeechChunk(text) {
 function isInlineLatinTerm(text, before, after, scriptLanguage) {
   const cleaned = cleanLatinSpeechChunk(text);
   const wordCount = cleaned.split(/\s+/).filter(Boolean).length;
-  const letterCount = (cleaned.match(/[A-Za-z0-9]/g) || []).length;
+  const letterCount = (cleaned.match(/[A-Za-z\u00c0-\u024f0-9]/g) || []).length;
 
   return wordCount <= 2
     && letterCount <= 24
@@ -158,7 +158,7 @@ export function speechChunksForPart(part = {}, targetLanguage, nativeLanguage, f
   }
 
   const chunks = [];
-  const latinRunPattern = /[A-Za-z][A-Za-z0-9'’]*(?:[-.][A-Za-z0-9'’]+)*(?:\s+[A-Za-z][A-Za-z0-9'’]*(?:[-.][A-Za-z0-9'’]+)*)*/g;
+  const latinRunPattern = /[A-Za-z\u00c0-\u024f][A-Za-z\u00c0-\u024f0-9'’]*(?:[-.][A-Za-z\u00c0-\u024f0-9'’]+)*(?:\s+[A-Za-z\u00c0-\u024f][A-Za-z\u00c0-\u024f0-9'’]*(?:[-.][A-Za-z\u00c0-\u024f0-9'’]+)*)*/g;
   let cursor = 0;
   let match;
 
@@ -185,7 +185,17 @@ export function speechChunksForPart(part = {}, targetLanguage, nativeLanguage, f
   }
 
   pushChunk(scriptLanguage, text.slice(cursor));
-  return chunks.length ? chunks : [basePart];
+  if (!chunks.length) return [basePart];
+
+  return chunks.reduce((merged, chunk) => {
+    const previous = merged[merged.length - 1];
+    if (previous && previous.language === chunk.language) {
+      previous.text = `${previous.text} ${chunk.text}`.replace(/\s+([.,!?;:])/g, '$1').trim();
+      return merged;
+    }
+    merged.push(chunk);
+    return merged;
+  }, []);
 }
 
 function splitMixedLine(line, targetLanguage, nativeLanguage, fallbackLanguage) {

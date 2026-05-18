@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('bn', {
-  slug: 'bn-l1u7',
-  title: 'Level 1 · Unit 7: কোথায় যাচ্ছেন? — Going Places',
-  category: 'travel',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Say where you are, where you are going, and ask for basic directions.',
-  vocabularyGoal: 'Use destinations, route words, and direction phrases.',
-  grammarGoal: 'Use locative `-এ`, destination phrasing, and postpositions for landmarks.',
-  speakingGoal: 'Say where you are, ask how to get somewhere, and give one short route.',
-  task: 'Guide a visitor from campus to a nearby shop.',
-  expressionPractice: [
-    practice('stating-location', 'Stating location', 'Use one locative phrase.'),
-    practice('stating-destination', 'Stating destination', 'Use one destination phrase.'),
-    practice('asking-route', 'Asking route', 'Use `কীভাবে যাব?`.'),
+module.exports = {
+  "title": "Level 1 · Unit 7: কোথায় যাচ্ছেন? — Going Places",
+  "category": "travel",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "bn-level1unit07goingplaces-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Say where you are, where you are going, and ask for basic directions."
+      ],
+      "task": "Guide a visitor from campus to a nearby shop."
+    },
+    {
+      "id": "bn-level1unit07goingplaces-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "bn-level1unit07goingplaces-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 7: কোথায় যাচ্ছেন? — Going Places with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "bn-level1unit07goingplaces-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 7: কোথায় যাচ্ছেন? — Going Places sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "bn-level1unit07goingplaces-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Say where you are, where you are going, and ask for basic directions."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "bn-level1unit07goingplaces-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 7: কোথায় যাচ্ছেন? — Going Places with one nearby Bengali form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "bn-level1unit07goingplaces-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "bn-level1unit07goingplaces-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "bn-level1unit07goingplaces-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "bn-level1unit07goingplaces-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "bn-level1unit07goingplaces-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Guide a visitor from campus to a nearby shop."
+      ],
+      "task": "Guide a visitor from campus to a nearby shop."
+    }
   ],
-  relatedPools: ['topic-travel', 'topic-directions'],
-  items: [
-    item('বিশ্ববিদ্যালয়ে', 'bishwobiddyaloy-e', '“At the university.” The locative ending marks place.', 'আমি বিশ্ববিদ্যালয়ে আছি।', '“I am at the university.”'),
-    item('লাইব্রেরিতে যাচ্ছি', 'laibreri-te jacchhi', '“I am going to the library.” The destination uses a locative-like ending in this practical phrase.', 'ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।', '“After class I am going to the library.”'),
-    item('বাড়ি থেকে', 'bari theke', '“From home.” `থেকে` marks source or origin.', 'আমি বাড়ি থেকে আসছি।', '“I am coming from home.”'),
-    item('বাঁদিকে ঘুরুন', 'bam dike ghurun', '“Turn left.” Respectful imperative form.', 'সিগন্যালে বাঁদিকে ঘুরুন।', '“At the signal, turn left.”'),
-    item('সোজা যান', 'shoja jan', '“Go straight.” A concise polite route instruction.', 'সোজা যান, তারপর ডানদিকে ঘুরুন।', '“Go straight, then turn right.”'),
-    item('কাছে / দূরে', 'kachhe / dure', '“Near / far.” Useful for distance answers.', 'স্টেশন খুব কাছে।', '“The station is very near.”'),
-    item('... কীভাবে যাব?', '... kibhabe jabo', '“How do I go to ...?” A practical route question.', 'হাসপাতালে কীভাবে যাব?', '“How do I go to the hospital?”'),
-    item('পাশে', 'pashe', '“Beside / next to.” A high-frequency landmark postposition.', 'ক্যাফে ব্যাংকের পাশে।', '“The cafe is next to the bank.”'),
+  "expressionPractice": [
+    {
+      "id": "stating-location",
+      "label": "Stating location",
+      "goal": "Use one locative phrase."
+    },
+    {
+      "id": "stating-destination",
+      "label": "Stating destination",
+      "goal": "Use one destination phrase."
+    },
+    {
+      "id": "asking-route",
+      "label": "Asking route",
+      "goal": "Use `কীভাবে যাব?`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-travel",
+    "topic-directions"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit07goingplaces-orientation"
+      ],
+      "targetText": "পাঠের লক্ষ্য",
+      "romanization": "",
+      "nativeText": "Say where you are, where you are going, and ask for basic directions.",
+      "pronunciation": "",
+      "exampleTarget": "পাঠের লক্ষ্য",
+      "exampleNative": "The whole lesson is built toward this outcome: Guide a visitor from campus to a nearby shop.",
+      "korean": "পাঠের লক্ষ্য",
+      "english": "Say where you are, where you are going, and ask for basic directions.",
+      "example": "পাঠের লক্ষ্য",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Guide a visitor from campus to a nearby shop."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "bn-level1unit07goingplaces-pronunciation"
+      ],
+      "targetText": "উচ্চারণ পরীক্ষা",
+      "romanization": "",
+      "nativeText": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আমি বিশ্ববিদ্যালয়ে আছি।\".",
+      "pronunciation": "",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "exampleNative": "“I am at the university.”",
+      "korean": "উচ্চারণ পরীক্ষা",
+      "english": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আমি বিশ্ববিদ্যালয়ে আছি।\".",
+      "example": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "exampleEnglish": "“I am at the university.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1"
+      ],
+      "targetText": "বিশ্ববিদ্যালয়ে",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 7: কোথায় যাচ্ছেন? — Going Places with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "exampleNative": "“I am at the university.”",
+      "korean": "বিশ্ববিদ্যালয়ে",
+      "english": "Use the key language of Level 1 · Unit 7: কোথায় যাচ্ছেন? — Going Places with the register and setting that the lesson requires.",
+      "example": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "exampleEnglish": "“I am at the university.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-2"
+      ],
+      "targetText": "লাইব্রেরিতে যাচ্ছি",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 7: কোথায় যাচ্ছেন? — Going Places sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।",
+      "exampleNative": "“After class I am going to the library.”",
+      "korean": "লাইব্রেরিতে যাচ্ছি",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 7: কোথায় যাচ্ছেন? — Going Places sound precise rather than merely understandable.",
+      "example": "ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।",
+      "exampleEnglish": "“After class I am going to the library.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "bn-level1unit07goingplaces-grammar-1"
+      ],
+      "targetText": "বিশ্ববিদ্যালয়ে",
+      "romanization": "",
+      "nativeText": "Say where you are, where you are going, and ask for basic directions.",
+      "pronunciation": "",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "exampleNative": "“I am at the university.”",
+      "korean": "বিশ্ববিদ্যালয়ে",
+      "english": "Say where you are, where you are going, and ask for basic directions.",
+      "example": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "exampleEnglish": "“I am at the university.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "bn-level1unit07goingplaces-grammar-2"
+      ],
+      "targetText": "লাইব্রেরিতে যাচ্ছি",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 7: কোথায় যাচ্ছেন? — Going Places with one nearby Bengali form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।",
+      "exampleNative": "“After class I am going to the library.”",
+      "korean": "লাইব্রেরিতে যাচ্ছি",
+      "english": "Contrast the main pattern in Level 1 · Unit 7: কোথায় যাচ্ছেন? — Going Places with one nearby Bengali form so the learner can avoid literal translation.",
+      "example": "ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।",
+      "exampleEnglish": "“After class I am going to the library.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "bn-level1unit07goingplaces-reading"
+      ],
+      "targetText": "পাঠ মডেল",
+      "romanization": "",
+      "nativeText": "Read \"ক্যাফে ব্যাংকের পাশে।\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "ক্যাফে ব্যাংকের পাশে।",
+      "exampleNative": "“The cafe is next to the bank.”",
+      "korean": "পাঠ মডেল",
+      "english": "Read \"ক্যাফে ব্যাংকের পাশে।\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "ক্যাফে ব্যাংকের পাশে।",
+      "exampleEnglish": "“The cafe is next to the bank.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit07goingplaces-listening"
+      ],
+      "targetText": "সংলাপ মডেল",
+      "romanization": "",
+      "nativeText": "Hear \"ক্যাফে ব্যাংকের পাশে।\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "ক্যাফে ব্যাংকের পাশে।",
+      "exampleNative": "“The cafe is next to the bank.”",
+      "korean": "সংলাপ মডেল",
+      "english": "Hear \"ক্যাফে ব্যাংকের পাশে।\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "ক্যাফে ব্যাংকের পাশে।",
+      "exampleEnglish": "“The cafe is next to the bank.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "bn-level1unit07goingplaces-writing"
+      ],
+      "targetText": "লেখার অনুশীলন",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"আমি বিশ্ববিদ্যালয়ে আছি।\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "লেখার অনুশীলন",
+      "english": "Write your own version after studying \"আমি বিশ্ববিদ্যালয়ে আছি।\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "bn-level1unit07goingplaces-culture"
+      ],
+      "targetText": "ব্যবহার ও প্রসঙ্গ",
+      "romanization": "",
+      "nativeText": "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।",
+      "exampleNative": "“After class I am going to the library.”",
+      "korean": "ব্যবহার ও প্রসঙ্গ",
+      "english": "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used.",
+      "example": "ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।",
+      "exampleEnglish": "“After class I am going to the library.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "চূড়ান্ত কাজ",
+      "romanization": "",
+      "nativeText": "Guide a visitor from campus to a nearby shop.",
+      "pronunciation": "",
+      "exampleTarget": "ক্যাফে ব্যাংকের পাশে।",
+      "exampleNative": "Guide a visitor from campus to a nearby shop.",
+      "korean": "চূড়ান্ত কাজ",
+      "english": "Guide a visitor from campus to a nearby shop.",
+      "example": "ক্যাফে ব্যাংকের পাশে।",
+      "exampleEnglish": "Guide a visitor from campus to a nearby shop."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit07goingplaces-grammar-2"
+      ],
+      "targetText": "সাধারণ ভুল",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around pronoun levels, verb agreement, case markers, and register. Begin by checking \"ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “After class I am going to the library.”",
+      "korean": "সাধারণ ভুল",
+      "english": "Watch for literal-translation mistakes around pronoun levels, verb agreement, case markers, and register. Begin by checking \"ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।\" against the model.",
+      "example": "ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “After class I am going to the library.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-culture"
+      ],
+      "targetText": "রেজিস্টার",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for familiar, respectful, or formal Bengali before selecting pronouns and verb endings. Compare the social fit of \"আমি বিশ্ববিদ্যালয়ে আছি।\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "exampleNative": "“I am at the university.”",
+      "korean": "রেজিস্টার",
+      "english": "Check whether the setting calls for familiar, respectful, or formal Bengali before selecting pronouns and verb endings. Compare the social fit of \"আমি বিশ্ববিদ্যালয়ে আছি।\" before reusing it elsewhere.",
+      "example": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "exampleEnglish": "“I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "সাবলীলতা",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Bengali message rather than as separate translated fragments. Aim to carry \"ক্যাফে ব্যাংকের পাশে।\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "ক্যাফে ব্যাংকের পাশে।",
+      "exampleNative": "“The cafe is next to the bank.”",
+      "korean": "সাবলীলতা",
+      "english": "Say the idea as one connected Bengali message rather than as separate translated fragments. Aim to carry \"ক্যাফে ব্যাংকের পাশে।\" as one thought.",
+      "example": "ক্যাফে ব্যাংকের পাশে।",
+      "exampleEnglish": "“The cafe is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "প্রয়োগ",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"আমি বিশ্ববিদ্যালয়ে আছি।\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "প্রয়োগ",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"আমি বিশ্ববিদ্যালয়ে আছি।\" and move it into your own life.",
+      "example": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-grammar-1"
+      ],
+      "targetText": "স্মরণ",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"বিশ্ববিদ্যালয়ে\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "বিশ্ববিদ্যালয়ে",
+      "exampleNative": "“At the university.” The locative ending marks place.",
+      "korean": "স্মরণ",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"বিশ্ববিদ্যালয়ে\" before looking back.",
+      "example": "বিশ্ববিদ্যালয়ে",
+      "exampleEnglish": "“At the university.” The locative ending marks place."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-writing"
+      ],
+      "targetText": "বিস্তার",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"ক্যাফে ব্যাংকের পাশে।\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "ক্যাফে ব্যাংকের পাশে।",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "বিস্তার",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"ক্যাফে ব্যাংকের পাশে।\" rather than restarting from a blank sentence.",
+      "example": "ক্যাফে ব্যাংকের পাশে।",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading"
+      ],
+      "targetText": "তুলনা",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 7: কোথায় যাচ্ছেন? — Going Places with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।",
+      "exampleNative": "“After class I am going to the library.”",
+      "korean": "তুলনা",
+      "english": "Compare the central form in Level 1 · Unit 7: কোথায় যাচ্ছেন? — Going Places with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।\" as the comparison line.",
+      "example": "ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।",
+      "exampleEnglish": "“After class I am going to the library.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "bn-level1unit07goingplaces-pronunciation"
+      ],
+      "targetText": "উচ্চারণ সংশোধন",
+      "romanization": "",
+      "nativeText": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আমি বিশ্ববিদ্যালয়ে আছি।\".",
+      "pronunciation": "",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "exampleNative": "“I am at the university.”",
+      "korean": "উচ্চারণ সংশোধন",
+      "english": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আমি বিশ্ববিদ্যালয়ে আছি।\".",
+      "example": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "exampleEnglish": "“I am at the university.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "সংলাপ পরিবর্তন",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"ক্যাফে ব্যাংকের পাশে।\".",
+      "pronunciation": "",
+      "exampleTarget": "ক্যাফে ব্যাংকের পাশে।",
+      "exampleNative": "“The cafe is next to the bank.”",
+      "korean": "সংলাপ পরিবর্তন",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"ক্যাফে ব্যাংকের পাশে।\".",
+      "example": "ক্যাফে ব্যাংকের পাশে।",
+      "exampleEnglish": "“The cafe is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-writing"
+      ],
+      "targetText": "বাক্য গঠন",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"আমি বিশ্ববিদ্যালয়ে আছি।\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "exampleNative": "“I am at the university.”",
+      "korean": "বাক্য গঠন",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"আমি বিশ্ববিদ্যালয়ে আছি।\" one layer at a time.",
+      "example": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "exampleEnglish": "“I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-2"
+      ],
+      "targetText": "দ্রুত পরীক্ষা",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।",
+      "exampleNative": "“After class I am going to the library.”",
+      "korean": "দ্রুত পরীক্ষা",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।\" as the deciding example.",
+      "example": "ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।",
+      "exampleEnglish": "“After class I am going to the library.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit07goingplaces-culture",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "পুনরালোচনা",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"ক্যাফে ব্যাংকের পাশে।\".",
+      "pronunciation": "",
+      "exampleTarget": "ক্যাফে ব্যাংকের পাশে।",
+      "exampleNative": "“The cafe is next to the bank.”",
+      "korean": "পুনরালোচনা",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"ক্যাফে ব্যাংকের পাশে।\".",
+      "example": "ক্যাফে ব্যাংকের পাশে।",
+      "exampleEnglish": "“The cafe is next to the bank.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "বিশ্ববিদ্যালয়ে",
+      "romanization": "bishwobiddyaloy-e",
+      "nativeText": "“At the university.” The locative ending marks place.",
+      "pronunciation": "bishwobiddyaloy-e",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "exampleNative": "“I am at the university.”",
+      "korean": "বিশ্ববিদ্যালয়ে",
+      "english": "“At the university.” The locative ending marks place.",
+      "example": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "exampleEnglish": "“I am at the university.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "romanization": "bishwobiddyaloy-e",
+      "nativeText": "Model use for \"আমি বিশ্ববিদ্যালয়ে আছি।\": “I am at the university.”",
+      "pronunciation": "bishwobiddyaloy-e",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "exampleNative": "“I am at the university.”",
+      "korean": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "english": "Model use for \"আমি বিশ্ববিদ্যালয়ে আছি।\": “I am at the university.”",
+      "example": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "exampleEnglish": "“I am at the university.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "বিশ্ববিদ্যালয়ে",
+      "romanization": "bishwobiddyaloy-e",
+      "nativeText": "Usage focus for \"বিশ্ববিদ্যালয়ে\": Use the key language of Level 1 · Unit 7: কোথায় যাচ্ছেন? — Going Places with the register and setting that the lesson requires.",
+      "pronunciation": "bishwobiddyaloy-e",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "exampleNative": "Notice what the form is doing here: “I am at the university.”",
+      "korean": "বিশ্ববিদ্যালয়ে",
+      "english": "Usage focus for \"বিশ্ববিদ্যালয়ে\": Use the key language of Level 1 · Unit 7: কোথায় যাচ্ছেন? — Going Places with the register and setting that the lesson requires.",
+      "example": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "exampleEnglish": "Notice what the form is doing here: “I am at the university.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "বিশ্ববিদ্যালয়ে",
+      "romanization": "bishwobiddyaloy-e",
+      "nativeText": "Contrast check for \"বিশ্ববিদ্যালয়ে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "bishwobiddyaloy-e",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am at the university.”",
+      "korean": "বিশ্ববিদ্যালয়ে",
+      "english": "Contrast check for \"বিশ্ববিদ্যালয়ে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "বিশ্ববিদ্যালয়ে",
+      "romanization": "bishwobiddyaloy-e",
+      "nativeText": "Recall \"বিশ্ববিদ্যালয়ে\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি বিশ্ববিদ্যালয়ে আছি।\".",
+      "pronunciation": "bishwobiddyaloy-e",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "exampleNative": "Self-check against the model before moving on: “I am at the university.”",
+      "korean": "বিশ্ববিদ্যালয়ে",
+      "english": "Recall \"বিশ্ববিদ্যালয়ে\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি বিশ্ববিদ্যালয়ে আছি।\".",
+      "example": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "exampleEnglish": "Self-check against the model before moving on: “I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "বিশ্ববিদ্যালয়ে",
+      "romanization": "bishwobiddyaloy-e",
+      "nativeText": "Repair \"বিশ্ববিদ্যালয়ে\" inside \"আমি বিশ্ববিদ্যালয়ে আছি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 7: কোথায় যাচ্ছেন? — Going Places with the register and setting that the lesson requires.",
+      "pronunciation": "bishwobiddyaloy-e",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "exampleNative": "Use the model as the repair target: “I am at the university.”",
+      "korean": "বিশ্ববিদ্যালয়ে",
+      "english": "Repair \"বিশ্ববিদ্যালয়ে\" inside \"আমি বিশ্ববিদ্যালয়ে আছি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 7: কোথায় যাচ্ছেন? — Going Places with the register and setting that the lesson requires.",
+      "example": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "exampleEnglish": "Use the model as the repair target: “I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "বিশ্ববিদ্যালয়ে",
+      "romanization": "bishwobiddyaloy-e",
+      "nativeText": "Transfer \"বিশ্ববিদ্যালয়ে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি বিশ্ববিদ্যালয়ে আছি।\".",
+      "pronunciation": "bishwobiddyaloy-e",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am at the university.”",
+      "korean": "বিশ্ববিদ্যালয়ে",
+      "english": "Transfer \"বিশ্ববিদ্যালয়ে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি বিশ্ববিদ্যালয়ে আছি।\".",
+      "example": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "বিশ্ববিদ্যালয়ে",
+      "romanization": "bishwobiddyaloy-e",
+      "nativeText": "Find one word or phrase that naturally travels with \"বিশ্ববিদ্যালয়ে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "bishwobiddyaloy-e",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I am at the university.”",
+      "korean": "বিশ্ববিদ্যালয়ে",
+      "english": "Find one word or phrase that naturally travels with \"বিশ্ববিদ্যালয়ে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "বিশ্ববিদ্যালয়ে",
+      "romanization": "bishwobiddyaloy-e",
+      "nativeText": "Listen for \"বিশ্ববিদ্যালয়ে\" inside \"আমি বিশ্ববিদ্যালয়ে আছি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "bishwobiddyaloy-e",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am at the university.”",
+      "korean": "বিশ্ববিদ্যালয়ে",
+      "english": "Listen for \"বিশ্ববিদ্যালয়ে\" inside \"আমি বিশ্ববিদ্যালয়ে আছি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "বিশ্ববিদ্যালয়ে",
+      "romanization": "bishwobiddyaloy-e",
+      "nativeText": "Write \"বিশ্ববিদ্যালয়ে\" again without looking, then compare the exact written form against \"আমি বিশ্ববিদ্যালয়ে আছি।\" before moving on.",
+      "pronunciation": "bishwobiddyaloy-e",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "exampleNative": "Use the written model as the final correctness check: “I am at the university.”",
+      "korean": "বিশ্ববিদ্যালয়ে",
+      "english": "Write \"বিশ্ববিদ্যালয়ে\" again without looking, then compare the exact written form against \"আমি বিশ্ববিদ্যালয়ে আছি।\" before moving on.",
+      "example": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "বিশ্ববিদ্যালয়ে",
+      "romanization": "bishwobiddyaloy-e",
+      "nativeText": "Check whether \"বিশ্ববিদ্যালয়ে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am at the university.”",
+      "pronunciation": "bishwobiddyaloy-e",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I am at the university.”",
+      "korean": "বিশ্ববিদ্যালয়ে",
+      "english": "Check whether \"বিশ্ববিদ্যালয়ে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am at the university.”",
+      "example": "আমি বিশ্ববিদ্যালয়ে আছি।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I am at the university.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "লাইব্রেরিতে যাচ্ছি",
+      "romanization": "laibreri-te jacchhi",
+      "nativeText": "“I am going to the library.” The destination uses a locative-like ending in this practical phrase.",
+      "pronunciation": "laibreri-te jacchhi",
+      "exampleTarget": "ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।",
+      "exampleNative": "“After class I am going to the library.”",
+      "korean": "লাইব্রেরিতে যাচ্ছি",
+      "english": "“I am going to the library.” The destination uses a locative-like ending in this practical phrase.",
+      "example": "ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।",
+      "exampleEnglish": "“After class I am going to the library.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।",
+      "romanization": "laibreri-te jacchhi",
+      "nativeText": "Model use for \"ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।\": “After class I am going to the library.”",
+      "pronunciation": "laibreri-te jacchhi",
+      "exampleTarget": "ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।",
+      "exampleNative": "“After class I am going to the library.”",
+      "korean": "ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।",
+      "english": "Model use for \"ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।\": “After class I am going to the library.”",
+      "example": "ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।",
+      "exampleEnglish": "“After class I am going to the library.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "লাইব্রেরিতে যাচ্ছি",
+      "romanization": "laibreri-te jacchhi",
+      "nativeText": "Usage focus for \"লাইব্রেরিতে যাচ্ছি\": Distinguish the nearby wording choices that make Level 1 · Unit 7: কোথায় যাচ্ছেন? — Going Places sound precise rather than merely understandable.",
+      "pronunciation": "laibreri-te jacchhi",
+      "exampleTarget": "ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।",
+      "exampleNative": "Notice what the form is doing here: “After class I am going to the library.”",
+      "korean": "লাইব্রেরিতে যাচ্ছি",
+      "english": "Usage focus for \"লাইব্রেরিতে যাচ্ছি\": Distinguish the nearby wording choices that make Level 1 · Unit 7: কোথায় যাচ্ছেন? — Going Places sound precise rather than merely understandable.",
+      "example": "ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।",
+      "exampleEnglish": "Notice what the form is doing here: “After class I am going to the library.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "লাইব্রেরিতে যাচ্ছি",
+      "romanization": "laibreri-te jacchhi",
+      "nativeText": "Contrast check for \"লাইব্রেরিতে যাচ্ছি\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "laibreri-te jacchhi",
+      "exampleTarget": "ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “After class I am going to the library.”",
+      "korean": "লাইব্রেরিতে যাচ্ছি",
+      "english": "Contrast check for \"লাইব্রেরিতে যাচ্ছি\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “After class I am going to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "লাইব্রেরিতে যাচ্ছি",
+      "romanization": "laibreri-te jacchhi",
+      "nativeText": "Recall \"লাইব্রেরিতে যাচ্ছি\" from memory, then explain what would change if a nearby alternative replaced it in \"ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।\".",
+      "pronunciation": "laibreri-te jacchhi",
+      "exampleTarget": "ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।",
+      "exampleNative": "Self-check against the model before moving on: “After class I am going to the library.”",
+      "korean": "লাইব্রেরিতে যাচ্ছি",
+      "english": "Recall \"লাইব্রেরিতে যাচ্ছি\" from memory, then explain what would change if a nearby alternative replaced it in \"ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।\".",
+      "example": "ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।",
+      "exampleEnglish": "Self-check against the model before moving on: “After class I am going to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "লাইব্রেরিতে যাচ্ছি",
+      "romanization": "laibreri-te jacchhi",
+      "nativeText": "Repair \"লাইব্রেরিতে যাচ্ছি\" inside \"ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 7: কোথায় যাচ্ছেন? — Going Places sound precise rather than merely understandable.",
+      "pronunciation": "laibreri-te jacchhi",
+      "exampleTarget": "ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।",
+      "exampleNative": "Use the model as the repair target: “After class I am going to the library.”",
+      "korean": "লাইব্রেরিতে যাচ্ছি",
+      "english": "Repair \"লাইব্রেরিতে যাচ্ছি\" inside \"ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 7: কোথায় যাচ্ছেন? — Going Places sound precise rather than merely understandable.",
+      "example": "ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।",
+      "exampleEnglish": "Use the model as the repair target: “After class I am going to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "লাইব্রেরিতে যাচ্ছি",
+      "romanization": "laibreri-te jacchhi",
+      "nativeText": "Transfer \"লাইব্রেরিতে যাচ্ছি\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।\".",
+      "pronunciation": "laibreri-te jacchhi",
+      "exampleTarget": "ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “After class I am going to the library.”",
+      "korean": "লাইব্রেরিতে যাচ্ছি",
+      "english": "Transfer \"লাইব্রেরিতে যাচ্ছি\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।\".",
+      "example": "ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “After class I am going to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "লাইব্রেরিতে যাচ্ছি",
+      "romanization": "laibreri-te jacchhi",
+      "nativeText": "Find one word or phrase that naturally travels with \"লাইব্রেরিতে যাচ্ছি\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "laibreri-te jacchhi",
+      "exampleTarget": "ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “After class I am going to the library.”",
+      "korean": "লাইব্রেরিতে যাচ্ছি",
+      "english": "Find one word or phrase that naturally travels with \"লাইব্রেরিতে যাচ্ছি\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “After class I am going to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "লাইব্রেরিতে যাচ্ছি",
+      "romanization": "laibreri-te jacchhi",
+      "nativeText": "Listen for \"লাইব্রেরিতে যাচ্ছি\" inside \"ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "laibreri-te jacchhi",
+      "exampleTarget": "ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “After class I am going to the library.”",
+      "korean": "লাইব্রেরিতে যাচ্ছি",
+      "english": "Listen for \"লাইব্রেরিতে যাচ্ছি\" inside \"ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “After class I am going to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "লাইব্রেরিতে যাচ্ছি",
+      "romanization": "laibreri-te jacchhi",
+      "nativeText": "Write \"লাইব্রেরিতে যাচ্ছি\" again without looking, then compare the exact written form against \"ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।\" before moving on.",
+      "pronunciation": "laibreri-te jacchhi",
+      "exampleTarget": "ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।",
+      "exampleNative": "Use the written model as the final correctness check: “After class I am going to the library.”",
+      "korean": "লাইব্রেরিতে যাচ্ছি",
+      "english": "Write \"লাইব্রেরিতে যাচ্ছি\" again without looking, then compare the exact written form against \"ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।\" before moving on.",
+      "example": "ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।",
+      "exampleEnglish": "Use the written model as the final correctness check: “After class I am going to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "লাইব্রেরিতে যাচ্ছি",
+      "romanization": "laibreri-te jacchhi",
+      "nativeText": "Check whether \"লাইব্রেরিতে যাচ্ছি\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “After class I am going to the library.”",
+      "pronunciation": "laibreri-te jacchhi",
+      "exampleTarget": "ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “After class I am going to the library.”",
+      "korean": "লাইব্রেরিতে যাচ্ছি",
+      "english": "Check whether \"লাইব্রেরিতে যাচ্ছি\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “After class I am going to the library.”",
+      "example": "ক্লাসের পরে লাইব্রেরিতে যাচ্ছি।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “After class I am going to the library.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "বাড়ি থেকে",
+      "romanization": "bari theke",
+      "nativeText": "“From home.” `থেকে` marks source or origin.",
+      "pronunciation": "bari theke",
+      "exampleTarget": "আমি বাড়ি থেকে আসছি।",
+      "exampleNative": "“I am coming from home.”",
+      "korean": "বাড়ি থেকে",
+      "english": "“From home.” `থেকে` marks source or origin.",
+      "example": "আমি বাড়ি থেকে আসছি।",
+      "exampleEnglish": "“I am coming from home.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "আমি বাড়ি থেকে আসছি।",
+      "romanization": "bari theke",
+      "nativeText": "Model use for \"আমি বাড়ি থেকে আসছি।\": “I am coming from home.”",
+      "pronunciation": "bari theke",
+      "exampleTarget": "আমি বাড়ি থেকে আসছি।",
+      "exampleNative": "“I am coming from home.”",
+      "korean": "আমি বাড়ি থেকে আসছি।",
+      "english": "Model use for \"আমি বাড়ি থেকে আসছি।\": “I am coming from home.”",
+      "example": "আমি বাড়ি থেকে আসছি।",
+      "exampleEnglish": "“I am coming from home.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "বাড়ি থেকে",
+      "romanization": "bari theke",
+      "nativeText": "Usage focus for \"বাড়ি থেকে\": “From home.” `থেকে` marks source or origin.",
+      "pronunciation": "bari theke",
+      "exampleTarget": "আমি বাড়ি থেকে আসছি।",
+      "exampleNative": "Notice what the form is doing here: “I am coming from home.”",
+      "korean": "বাড়ি থেকে",
+      "english": "Usage focus for \"বাড়ি থেকে\": “From home.” `থেকে` marks source or origin.",
+      "example": "আমি বাড়ি থেকে আসছি।",
+      "exampleEnglish": "Notice what the form is doing here: “I am coming from home.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "বাড়ি থেকে",
+      "romanization": "bari theke",
+      "nativeText": "Contrast check for \"বাড়ি থেকে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "bari theke",
+      "exampleTarget": "আমি বাড়ি থেকে আসছি।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am coming from home.”",
+      "korean": "বাড়ি থেকে",
+      "english": "Contrast check for \"বাড়ি থেকে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আমি বাড়ি থেকে আসছি।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am coming from home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "বাড়ি থেকে",
+      "romanization": "bari theke",
+      "nativeText": "Recall \"বাড়ি থেকে\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি বাড়ি থেকে আসছি।\".",
+      "pronunciation": "bari theke",
+      "exampleTarget": "আমি বাড়ি থেকে আসছি।",
+      "exampleNative": "Self-check against the model before moving on: “I am coming from home.”",
+      "korean": "বাড়ি থেকে",
+      "english": "Recall \"বাড়ি থেকে\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি বাড়ি থেকে আসছি।\".",
+      "example": "আমি বাড়ি থেকে আসছি।",
+      "exampleEnglish": "Self-check against the model before moving on: “I am coming from home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "বাড়ি থেকে",
+      "romanization": "bari theke",
+      "nativeText": "Repair \"বাড়ি থেকে\" inside \"আমি বাড়ি থেকে আসছি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “From home.” `থেকে` marks source or origin.",
+      "pronunciation": "bari theke",
+      "exampleTarget": "আমি বাড়ি থেকে আসছি।",
+      "exampleNative": "Use the model as the repair target: “I am coming from home.”",
+      "korean": "বাড়ি থেকে",
+      "english": "Repair \"বাড়ি থেকে\" inside \"আমি বাড়ি থেকে আসছি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “From home.” `থেকে` marks source or origin.",
+      "example": "আমি বাড়ি থেকে আসছি।",
+      "exampleEnglish": "Use the model as the repair target: “I am coming from home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "বাড়ি থেকে",
+      "romanization": "bari theke",
+      "nativeText": "Transfer \"বাড়ি থেকে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি বাড়ি থেকে আসছি।\".",
+      "pronunciation": "bari theke",
+      "exampleTarget": "আমি বাড়ি থেকে আসছি।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am coming from home.”",
+      "korean": "বাড়ি থেকে",
+      "english": "Transfer \"বাড়ি থেকে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি বাড়ি থেকে আসছি।\".",
+      "example": "আমি বাড়ি থেকে আসছি।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am coming from home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "বাড়ি থেকে",
+      "romanization": "bari theke",
+      "nativeText": "Find one word or phrase that naturally travels with \"বাড়ি থেকে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "bari theke",
+      "exampleTarget": "আমি বাড়ি থেকে আসছি।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I am coming from home.”",
+      "korean": "বাড়ি থেকে",
+      "english": "Find one word or phrase that naturally travels with \"বাড়ি থেকে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আমি বাড়ি থেকে আসছি।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I am coming from home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "বাড়ি থেকে",
+      "romanization": "bari theke",
+      "nativeText": "Listen for \"বাড়ি থেকে\" inside \"আমি বাড়ি থেকে আসছি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "bari theke",
+      "exampleTarget": "আমি বাড়ি থেকে আসছি।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am coming from home.”",
+      "korean": "বাড়ি থেকে",
+      "english": "Listen for \"বাড়ি থেকে\" inside \"আমি বাড়ি থেকে আসছি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আমি বাড়ি থেকে আসছি।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am coming from home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "বাড়ি থেকে",
+      "romanization": "bari theke",
+      "nativeText": "Write \"বাড়ি থেকে\" again without looking, then compare the exact written form against \"আমি বাড়ি থেকে আসছি।\" before moving on.",
+      "pronunciation": "bari theke",
+      "exampleTarget": "আমি বাড়ি থেকে আসছি।",
+      "exampleNative": "Use the written model as the final correctness check: “I am coming from home.”",
+      "korean": "বাড়ি থেকে",
+      "english": "Write \"বাড়ি থেকে\" again without looking, then compare the exact written form against \"আমি বাড়ি থেকে আসছি।\" before moving on.",
+      "example": "আমি বাড়ি থেকে আসছি।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I am coming from home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "বাড়ি থেকে",
+      "romanization": "bari theke",
+      "nativeText": "Check whether \"বাড়ি থেকে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am coming from home.”",
+      "pronunciation": "bari theke",
+      "exampleTarget": "আমি বাড়ি থেকে আসছি।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I am coming from home.”",
+      "korean": "বাড়ি থেকে",
+      "english": "Check whether \"বাড়ি থেকে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am coming from home.”",
+      "example": "আমি বাড়ি থেকে আসছি।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I am coming from home.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "বাঁদিকে ঘুরুন",
+      "romanization": "bam dike ghurun",
+      "nativeText": "“Turn left.” Respectful imperative form.",
+      "pronunciation": "bam dike ghurun",
+      "exampleTarget": "সিগন্যালে বাঁদিকে ঘুরুন।",
+      "exampleNative": "“At the signal, turn left.”",
+      "korean": "বাঁদিকে ঘুরুন",
+      "english": "“Turn left.” Respectful imperative form.",
+      "example": "সিগন্যালে বাঁদিকে ঘুরুন।",
+      "exampleEnglish": "“At the signal, turn left.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "সিগন্যালে বাঁদিকে ঘুরুন।",
+      "romanization": "bam dike ghurun",
+      "nativeText": "Model use for \"সিগন্যালে বাঁদিকে ঘুরুন।\": “At the signal, turn left.”",
+      "pronunciation": "bam dike ghurun",
+      "exampleTarget": "সিগন্যালে বাঁদিকে ঘুরুন।",
+      "exampleNative": "“At the signal, turn left.”",
+      "korean": "সিগন্যালে বাঁদিকে ঘুরুন।",
+      "english": "Model use for \"সিগন্যালে বাঁদিকে ঘুরুন।\": “At the signal, turn left.”",
+      "example": "সিগন্যালে বাঁদিকে ঘুরুন।",
+      "exampleEnglish": "“At the signal, turn left.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "বাঁদিকে ঘুরুন",
+      "romanization": "bam dike ghurun",
+      "nativeText": "Usage focus for \"বাঁদিকে ঘুরুন\": “Turn left.” Respectful imperative form.",
+      "pronunciation": "bam dike ghurun",
+      "exampleTarget": "সিগন্যালে বাঁদিকে ঘুরুন।",
+      "exampleNative": "Notice what the form is doing here: “At the signal, turn left.”",
+      "korean": "বাঁদিকে ঘুরুন",
+      "english": "Usage focus for \"বাঁদিকে ঘুরুন\": “Turn left.” Respectful imperative form.",
+      "example": "সিগন্যালে বাঁদিকে ঘুরুন।",
+      "exampleEnglish": "Notice what the form is doing here: “At the signal, turn left.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "বাঁদিকে ঘুরুন",
+      "romanization": "bam dike ghurun",
+      "nativeText": "Contrast check for \"বাঁদিকে ঘুরুন\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "bam dike ghurun",
+      "exampleTarget": "সিগন্যালে বাঁদিকে ঘুরুন।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “At the signal, turn left.”",
+      "korean": "বাঁদিকে ঘুরুন",
+      "english": "Contrast check for \"বাঁদিকে ঘুরুন\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "সিগন্যালে বাঁদিকে ঘুরুন।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “At the signal, turn left.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "বাঁদিকে ঘুরুন",
+      "romanization": "bam dike ghurun",
+      "nativeText": "Recall \"বাঁদিকে ঘুরুন\" from memory, then explain what would change if a nearby alternative replaced it in \"সিগন্যালে বাঁদিকে ঘুরুন।\".",
+      "pronunciation": "bam dike ghurun",
+      "exampleTarget": "সিগন্যালে বাঁদিকে ঘুরুন।",
+      "exampleNative": "Self-check against the model before moving on: “At the signal, turn left.”",
+      "korean": "বাঁদিকে ঘুরুন",
+      "english": "Recall \"বাঁদিকে ঘুরুন\" from memory, then explain what would change if a nearby alternative replaced it in \"সিগন্যালে বাঁদিকে ঘুরুন।\".",
+      "example": "সিগন্যালে বাঁদিকে ঘুরুন।",
+      "exampleEnglish": "Self-check against the model before moving on: “At the signal, turn left.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "বাঁদিকে ঘুরুন",
+      "romanization": "bam dike ghurun",
+      "nativeText": "Repair \"বাঁদিকে ঘুরুন\" inside \"সিগন্যালে বাঁদিকে ঘুরুন।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Turn left.” Respectful imperative form.",
+      "pronunciation": "bam dike ghurun",
+      "exampleTarget": "সিগন্যালে বাঁদিকে ঘুরুন।",
+      "exampleNative": "Use the model as the repair target: “At the signal, turn left.”",
+      "korean": "বাঁদিকে ঘুরুন",
+      "english": "Repair \"বাঁদিকে ঘুরুন\" inside \"সিগন্যালে বাঁদিকে ঘুরুন।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Turn left.” Respectful imperative form.",
+      "example": "সিগন্যালে বাঁদিকে ঘুরুন।",
+      "exampleEnglish": "Use the model as the repair target: “At the signal, turn left.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "বাঁদিকে ঘুরুন",
+      "romanization": "bam dike ghurun",
+      "nativeText": "Transfer \"বাঁদিকে ঘুরুন\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"সিগন্যালে বাঁদিকে ঘুরুন।\".",
+      "pronunciation": "bam dike ghurun",
+      "exampleTarget": "সিগন্যালে বাঁদিকে ঘুরুন।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “At the signal, turn left.”",
+      "korean": "বাঁদিকে ঘুরুন",
+      "english": "Transfer \"বাঁদিকে ঘুরুন\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"সিগন্যালে বাঁদিকে ঘুরুন।\".",
+      "example": "সিগন্যালে বাঁদিকে ঘুরুন।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “At the signal, turn left.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "বাঁদিকে ঘুরুন",
+      "romanization": "bam dike ghurun",
+      "nativeText": "Find one word or phrase that naturally travels with \"বাঁদিকে ঘুরুন\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "bam dike ghurun",
+      "exampleTarget": "সিগন্যালে বাঁদিকে ঘুরুন।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “At the signal, turn left.”",
+      "korean": "বাঁদিকে ঘুরুন",
+      "english": "Find one word or phrase that naturally travels with \"বাঁদিকে ঘুরুন\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "সিগন্যালে বাঁদিকে ঘুরুন।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “At the signal, turn left.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "বাঁদিকে ঘুরুন",
+      "romanization": "bam dike ghurun",
+      "nativeText": "Listen for \"বাঁদিকে ঘুরুন\" inside \"সিগন্যালে বাঁদিকে ঘুরুন।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "bam dike ghurun",
+      "exampleTarget": "সিগন্যালে বাঁদিকে ঘুরুন।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “At the signal, turn left.”",
+      "korean": "বাঁদিকে ঘুরুন",
+      "english": "Listen for \"বাঁদিকে ঘুরুন\" inside \"সিগন্যালে বাঁদিকে ঘুরুন।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "সিগন্যালে বাঁদিকে ঘুরুন।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “At the signal, turn left.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "বাঁদিকে ঘুরুন",
+      "romanization": "bam dike ghurun",
+      "nativeText": "Write \"বাঁদিকে ঘুরুন\" again without looking, then compare the exact written form against \"সিগন্যালে বাঁদিকে ঘুরুন।\" before moving on.",
+      "pronunciation": "bam dike ghurun",
+      "exampleTarget": "সিগন্যালে বাঁদিকে ঘুরুন।",
+      "exampleNative": "Use the written model as the final correctness check: “At the signal, turn left.”",
+      "korean": "বাঁদিকে ঘুরুন",
+      "english": "Write \"বাঁদিকে ঘুরুন\" again without looking, then compare the exact written form against \"সিগন্যালে বাঁদিকে ঘুরুন।\" before moving on.",
+      "example": "সিগন্যালে বাঁদিকে ঘুরুন।",
+      "exampleEnglish": "Use the written model as the final correctness check: “At the signal, turn left.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "বাঁদিকে ঘুরুন",
+      "romanization": "bam dike ghurun",
+      "nativeText": "Check whether \"বাঁদিকে ঘুরুন\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “At the signal, turn left.”",
+      "pronunciation": "bam dike ghurun",
+      "exampleTarget": "সিগন্যালে বাঁদিকে ঘুরুন।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “At the signal, turn left.”",
+      "korean": "বাঁদিকে ঘুরুন",
+      "english": "Check whether \"বাঁদিকে ঘুরুন\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “At the signal, turn left.”",
+      "example": "সিগন্যালে বাঁদিকে ঘুরুন।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “At the signal, turn left.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "সোজা যান",
+      "romanization": "shoja jan",
+      "nativeText": "“Go straight.” A concise polite route instruction.",
+      "pronunciation": "shoja jan",
+      "exampleTarget": "সোজা যান, তারপর ডানদিকে ঘুরুন।",
+      "exampleNative": "“Go straight, then turn right.”",
+      "korean": "সোজা যান",
+      "english": "“Go straight.” A concise polite route instruction.",
+      "example": "সোজা যান, তারপর ডানদিকে ঘুরুন।",
+      "exampleEnglish": "“Go straight, then turn right.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "সোজা যান, তারপর ডানদিকে ঘুরুন।",
+      "romanization": "shoja jan",
+      "nativeText": "Model use for \"সোজা যান, তারপর ডানদিকে ঘুরুন।\": “Go straight, then turn right.”",
+      "pronunciation": "shoja jan",
+      "exampleTarget": "সোজা যান, তারপর ডানদিকে ঘুরুন।",
+      "exampleNative": "“Go straight, then turn right.”",
+      "korean": "সোজা যান, তারপর ডানদিকে ঘুরুন।",
+      "english": "Model use for \"সোজা যান, তারপর ডানদিকে ঘুরুন।\": “Go straight, then turn right.”",
+      "example": "সোজা যান, তারপর ডানদিকে ঘুরুন।",
+      "exampleEnglish": "“Go straight, then turn right.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "সোজা যান",
+      "romanization": "shoja jan",
+      "nativeText": "Usage focus for \"সোজা যান\": “Go straight.” A concise polite route instruction.",
+      "pronunciation": "shoja jan",
+      "exampleTarget": "সোজা যান, তারপর ডানদিকে ঘুরুন।",
+      "exampleNative": "Notice what the form is doing here: “Go straight, then turn right.”",
+      "korean": "সোজা যান",
+      "english": "Usage focus for \"সোজা যান\": “Go straight.” A concise polite route instruction.",
+      "example": "সোজা যান, তারপর ডানদিকে ঘুরুন।",
+      "exampleEnglish": "Notice what the form is doing here: “Go straight, then turn right.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "সোজা যান",
+      "romanization": "shoja jan",
+      "nativeText": "Contrast check for \"সোজা যান\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "shoja jan",
+      "exampleTarget": "সোজা যান, তারপর ডানদিকে ঘুরুন।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Go straight, then turn right.”",
+      "korean": "সোজা যান",
+      "english": "Contrast check for \"সোজা যান\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "সোজা যান, তারপর ডানদিকে ঘুরুন।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Go straight, then turn right.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "সোজা যান",
+      "romanization": "shoja jan",
+      "nativeText": "Recall \"সোজা যান\" from memory, then explain what would change if a nearby alternative replaced it in \"সোজা যান, তারপর ডানদিকে ঘুরুন।\".",
+      "pronunciation": "shoja jan",
+      "exampleTarget": "সোজা যান, তারপর ডানদিকে ঘুরুন।",
+      "exampleNative": "Self-check against the model before moving on: “Go straight, then turn right.”",
+      "korean": "সোজা যান",
+      "english": "Recall \"সোজা যান\" from memory, then explain what would change if a nearby alternative replaced it in \"সোজা যান, তারপর ডানদিকে ঘুরুন।\".",
+      "example": "সোজা যান, তারপর ডানদিকে ঘুরুন।",
+      "exampleEnglish": "Self-check against the model before moving on: “Go straight, then turn right.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "সোজা যান",
+      "romanization": "shoja jan",
+      "nativeText": "Repair \"সোজা যান\" inside \"সোজা যান, তারপর ডানদিকে ঘুরুন।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Go straight.” A concise polite route instruction.",
+      "pronunciation": "shoja jan",
+      "exampleTarget": "সোজা যান, তারপর ডানদিকে ঘুরুন।",
+      "exampleNative": "Use the model as the repair target: “Go straight, then turn right.”",
+      "korean": "সোজা যান",
+      "english": "Repair \"সোজা যান\" inside \"সোজা যান, তারপর ডানদিকে ঘুরুন।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Go straight.” A concise polite route instruction.",
+      "example": "সোজা যান, তারপর ডানদিকে ঘুরুন।",
+      "exampleEnglish": "Use the model as the repair target: “Go straight, then turn right.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "সোজা যান",
+      "romanization": "shoja jan",
+      "nativeText": "Transfer \"সোজা যান\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"সোজা যান, তারপর ডানদিকে ঘুরুন।\".",
+      "pronunciation": "shoja jan",
+      "exampleTarget": "সোজা যান, তারপর ডানদিকে ঘুরুন।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Go straight, then turn right.”",
+      "korean": "সোজা যান",
+      "english": "Transfer \"সোজা যান\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"সোজা যান, তারপর ডানদিকে ঘুরুন।\".",
+      "example": "সোজা যান, তারপর ডানদিকে ঘুরুন।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Go straight, then turn right.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "সোজা যান",
+      "romanization": "shoja jan",
+      "nativeText": "Find one word or phrase that naturally travels with \"সোজা যান\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "shoja jan",
+      "exampleTarget": "সোজা যান, তারপর ডানদিকে ঘুরুন।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Go straight, then turn right.”",
+      "korean": "সোজা যান",
+      "english": "Find one word or phrase that naturally travels with \"সোজা যান\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "সোজা যান, তারপর ডানদিকে ঘুরুন।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Go straight, then turn right.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "সোজা যান",
+      "romanization": "shoja jan",
+      "nativeText": "Listen for \"সোজা যান\" inside \"সোজা যান, তারপর ডানদিকে ঘুরুন।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "shoja jan",
+      "exampleTarget": "সোজা যান, তারপর ডানদিকে ঘুরুন।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Go straight, then turn right.”",
+      "korean": "সোজা যান",
+      "english": "Listen for \"সোজা যান\" inside \"সোজা যান, তারপর ডানদিকে ঘুরুন।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "সোজা যান, তারপর ডানদিকে ঘুরুন।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Go straight, then turn right.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "সোজা যান",
+      "romanization": "shoja jan",
+      "nativeText": "Write \"সোজা যান\" again without looking, then compare the exact written form against \"সোজা যান, তারপর ডানদিকে ঘুরুন।\" before moving on.",
+      "pronunciation": "shoja jan",
+      "exampleTarget": "সোজা যান, তারপর ডানদিকে ঘুরুন।",
+      "exampleNative": "Use the written model as the final correctness check: “Go straight, then turn right.”",
+      "korean": "সোজা যান",
+      "english": "Write \"সোজা যান\" again without looking, then compare the exact written form against \"সোজা যান, তারপর ডানদিকে ঘুরুন।\" before moving on.",
+      "example": "সোজা যান, তারপর ডানদিকে ঘুরুন।",
+      "exampleEnglish": "Use the written model as the final correctness check: “Go straight, then turn right.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "সোজা যান",
+      "romanization": "shoja jan",
+      "nativeText": "Check whether \"সোজা যান\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Go straight, then turn right.”",
+      "pronunciation": "shoja jan",
+      "exampleTarget": "সোজা যান, তারপর ডানদিকে ঘুরুন।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Go straight, then turn right.”",
+      "korean": "সোজা যান",
+      "english": "Check whether \"সোজা যান\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Go straight, then turn right.”",
+      "example": "সোজা যান, তারপর ডানদিকে ঘুরুন।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Go straight, then turn right.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "কাছে / দূরে",
+      "romanization": "kachhe / dure",
+      "nativeText": "“Near / far.” Useful for distance answers.",
+      "pronunciation": "kachhe / dure",
+      "exampleTarget": "স্টেশন খুব কাছে।",
+      "exampleNative": "“The station is very near.”",
+      "korean": "কাছে / দূরে",
+      "english": "“Near / far.” Useful for distance answers.",
+      "example": "স্টেশন খুব কাছে।",
+      "exampleEnglish": "“The station is very near.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "স্টেশন খুব কাছে।",
+      "romanization": "kachhe / dure",
+      "nativeText": "Model use for \"স্টেশন খুব কাছে।\": “The station is very near.”",
+      "pronunciation": "kachhe / dure",
+      "exampleTarget": "স্টেশন খুব কাছে।",
+      "exampleNative": "“The station is very near.”",
+      "korean": "স্টেশন খুব কাছে।",
+      "english": "Model use for \"স্টেশন খুব কাছে।\": “The station is very near.”",
+      "example": "স্টেশন খুব কাছে।",
+      "exampleEnglish": "“The station is very near.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "কাছে / দূরে",
+      "romanization": "kachhe / dure",
+      "nativeText": "Usage focus for \"কাছে / দূরে\": “Near / far.” Useful for distance answers.",
+      "pronunciation": "kachhe / dure",
+      "exampleTarget": "স্টেশন খুব কাছে।",
+      "exampleNative": "Notice what the form is doing here: “The station is very near.”",
+      "korean": "কাছে / দূরে",
+      "english": "Usage focus for \"কাছে / দূরে\": “Near / far.” Useful for distance answers.",
+      "example": "স্টেশন খুব কাছে।",
+      "exampleEnglish": "Notice what the form is doing here: “The station is very near.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "কাছে / দূরে",
+      "romanization": "kachhe / dure",
+      "nativeText": "Contrast check for \"কাছে / দূরে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kachhe / dure",
+      "exampleTarget": "স্টেশন খুব কাছে।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The station is very near.”",
+      "korean": "কাছে / দূরে",
+      "english": "Contrast check for \"কাছে / দূরে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "স্টেশন খুব কাছে।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The station is very near.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "কাছে / দূরে",
+      "romanization": "kachhe / dure",
+      "nativeText": "Recall \"কাছে / দূরে\" from memory, then explain what would change if a nearby alternative replaced it in \"স্টেশন খুব কাছে।\".",
+      "pronunciation": "kachhe / dure",
+      "exampleTarget": "স্টেশন খুব কাছে।",
+      "exampleNative": "Self-check against the model before moving on: “The station is very near.”",
+      "korean": "কাছে / দূরে",
+      "english": "Recall \"কাছে / দূরে\" from memory, then explain what would change if a nearby alternative replaced it in \"স্টেশন খুব কাছে।\".",
+      "example": "স্টেশন খুব কাছে।",
+      "exampleEnglish": "Self-check against the model before moving on: “The station is very near.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "কাছে / দূরে",
+      "romanization": "kachhe / dure",
+      "nativeText": "Repair \"কাছে / দূরে\" inside \"স্টেশন খুব কাছে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Near / far.” Useful for distance answers.",
+      "pronunciation": "kachhe / dure",
+      "exampleTarget": "স্টেশন খুব কাছে।",
+      "exampleNative": "Use the model as the repair target: “The station is very near.”",
+      "korean": "কাছে / দূরে",
+      "english": "Repair \"কাছে / দূরে\" inside \"স্টেশন খুব কাছে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Near / far.” Useful for distance answers.",
+      "example": "স্টেশন খুব কাছে।",
+      "exampleEnglish": "Use the model as the repair target: “The station is very near.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "কাছে / দূরে",
+      "romanization": "kachhe / dure",
+      "nativeText": "Transfer \"কাছে / দূরে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"স্টেশন খুব কাছে।\".",
+      "pronunciation": "kachhe / dure",
+      "exampleTarget": "স্টেশন খুব কাছে।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The station is very near.”",
+      "korean": "কাছে / দূরে",
+      "english": "Transfer \"কাছে / দূরে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"স্টেশন খুব কাছে।\".",
+      "example": "স্টেশন খুব কাছে।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The station is very near.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "কাছে / দূরে",
+      "romanization": "kachhe / dure",
+      "nativeText": "Find one word or phrase that naturally travels with \"কাছে / দূরে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kachhe / dure",
+      "exampleTarget": "স্টেশন খুব কাছে।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The station is very near.”",
+      "korean": "কাছে / দূরে",
+      "english": "Find one word or phrase that naturally travels with \"কাছে / দূরে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "স্টেশন খুব কাছে।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The station is very near.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "কাছে / দূরে",
+      "romanization": "kachhe / dure",
+      "nativeText": "Listen for \"কাছে / দূরে\" inside \"স্টেশন খুব কাছে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kachhe / dure",
+      "exampleTarget": "স্টেশন খুব কাছে।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The station is very near.”",
+      "korean": "কাছে / দূরে",
+      "english": "Listen for \"কাছে / দূরে\" inside \"স্টেশন খুব কাছে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "স্টেশন খুব কাছে।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The station is very near.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "কাছে / দূরে",
+      "romanization": "kachhe / dure",
+      "nativeText": "Write \"কাছে / দূরে\" again without looking, then compare the exact written form against \"স্টেশন খুব কাছে।\" before moving on.",
+      "pronunciation": "kachhe / dure",
+      "exampleTarget": "স্টেশন খুব কাছে।",
+      "exampleNative": "Use the written model as the final correctness check: “The station is very near.”",
+      "korean": "কাছে / দূরে",
+      "english": "Write \"কাছে / দূরে\" again without looking, then compare the exact written form against \"স্টেশন খুব কাছে।\" before moving on.",
+      "example": "স্টেশন খুব কাছে।",
+      "exampleEnglish": "Use the written model as the final correctness check: “The station is very near.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "কাছে / দূরে",
+      "romanization": "kachhe / dure",
+      "nativeText": "Check whether \"কাছে / দূরে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The station is very near.”",
+      "pronunciation": "kachhe / dure",
+      "exampleTarget": "স্টেশন খুব কাছে।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The station is very near.”",
+      "korean": "কাছে / দূরে",
+      "english": "Check whether \"কাছে / দূরে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The station is very near.”",
+      "example": "স্টেশন খুব কাছে।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The station is very near.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "... কীভাবে যাব?",
+      "romanization": "... kibhabe jabo",
+      "nativeText": "“How do I go to ...?” A practical route question.",
+      "pronunciation": "... kibhabe jabo",
+      "exampleTarget": "হাসপাতালে কীভাবে যাব?",
+      "exampleNative": "“How do I go to the hospital?”",
+      "korean": "... কীভাবে যাব?",
+      "english": "“How do I go to ...?” A practical route question.",
+      "example": "হাসপাতালে কীভাবে যাব?",
+      "exampleEnglish": "“How do I go to the hospital?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "হাসপাতালে কীভাবে যাব?",
+      "romanization": "... kibhabe jabo",
+      "nativeText": "Model use for \"হাসপাতালে কীভাবে যাব?\": “How do I go to the hospital?”",
+      "pronunciation": "... kibhabe jabo",
+      "exampleTarget": "হাসপাতালে কীভাবে যাব?",
+      "exampleNative": "“How do I go to the hospital?”",
+      "korean": "হাসপাতালে কীভাবে যাব?",
+      "english": "Model use for \"হাসপাতালে কীভাবে যাব?\": “How do I go to the hospital?”",
+      "example": "হাসপাতালে কীভাবে যাব?",
+      "exampleEnglish": "“How do I go to the hospital?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "... কীভাবে যাব?",
+      "romanization": "... kibhabe jabo",
+      "nativeText": "Usage focus for \"... কীভাবে যাব?\": “How do I go to ...?” A practical route question.",
+      "pronunciation": "... kibhabe jabo",
+      "exampleTarget": "হাসপাতালে কীভাবে যাব?",
+      "exampleNative": "Notice what the form is doing here: “How do I go to the hospital?”",
+      "korean": "... কীভাবে যাব?",
+      "english": "Usage focus for \"... কীভাবে যাব?\": “How do I go to ...?” A practical route question.",
+      "example": "হাসপাতালে কীভাবে যাব?",
+      "exampleEnglish": "Notice what the form is doing here: “How do I go to the hospital?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "... কীভাবে যাব?",
+      "romanization": "... kibhabe jabo",
+      "nativeText": "Contrast check for \"... কীভাবে যাব?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "... kibhabe jabo",
+      "exampleTarget": "হাসপাতালে কীভাবে যাব?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How do I go to the hospital?”",
+      "korean": "... কীভাবে যাব?",
+      "english": "Contrast check for \"... কীভাবে যাব?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "হাসপাতালে কীভাবে যাব?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How do I go to the hospital?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "... কীভাবে যাব?",
+      "romanization": "... kibhabe jabo",
+      "nativeText": "Recall \"... কীভাবে যাব?\" from memory, then explain what would change if a nearby alternative replaced it in \"হাসপাতালে কীভাবে যাব?\".",
+      "pronunciation": "... kibhabe jabo",
+      "exampleTarget": "হাসপাতালে কীভাবে যাব?",
+      "exampleNative": "Self-check against the model before moving on: “How do I go to the hospital?”",
+      "korean": "... কীভাবে যাব?",
+      "english": "Recall \"... কীভাবে যাব?\" from memory, then explain what would change if a nearby alternative replaced it in \"হাসপাতালে কীভাবে যাব?\".",
+      "example": "হাসপাতালে কীভাবে যাব?",
+      "exampleEnglish": "Self-check against the model before moving on: “How do I go to the hospital?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "... কীভাবে যাব?",
+      "romanization": "... kibhabe jabo",
+      "nativeText": "Repair \"... কীভাবে যাব?\" inside \"হাসপাতালে কীভাবে যাব?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “How do I go to ...?” A practical route question.",
+      "pronunciation": "... kibhabe jabo",
+      "exampleTarget": "হাসপাতালে কীভাবে যাব?",
+      "exampleNative": "Use the model as the repair target: “How do I go to the hospital?”",
+      "korean": "... কীভাবে যাব?",
+      "english": "Repair \"... কীভাবে যাব?\" inside \"হাসপাতালে কীভাবে যাব?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “How do I go to ...?” A practical route question.",
+      "example": "হাসপাতালে কীভাবে যাব?",
+      "exampleEnglish": "Use the model as the repair target: “How do I go to the hospital?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "... কীভাবে যাব?",
+      "romanization": "... kibhabe jabo",
+      "nativeText": "Transfer \"... কীভাবে যাব?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"হাসপাতালে কীভাবে যাব?\".",
+      "pronunciation": "... kibhabe jabo",
+      "exampleTarget": "হাসপাতালে কীভাবে যাব?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “How do I go to the hospital?”",
+      "korean": "... কীভাবে যাব?",
+      "english": "Transfer \"... কীভাবে যাব?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"হাসপাতালে কীভাবে যাব?\".",
+      "example": "হাসপাতালে কীভাবে যাব?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “How do I go to the hospital?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "... কীভাবে যাব?",
+      "romanization": "... kibhabe jabo",
+      "nativeText": "Find one word or phrase that naturally travels with \"... কীভাবে যাব?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "... kibhabe jabo",
+      "exampleTarget": "হাসপাতালে কীভাবে যাব?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “How do I go to the hospital?”",
+      "korean": "... কীভাবে যাব?",
+      "english": "Find one word or phrase that naturally travels with \"... কীভাবে যাব?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "হাসপাতালে কীভাবে যাব?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “How do I go to the hospital?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "... কীভাবে যাব?",
+      "romanization": "... kibhabe jabo",
+      "nativeText": "Listen for \"... কীভাবে যাব?\" inside \"হাসপাতালে কীভাবে যাব?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "... kibhabe jabo",
+      "exampleTarget": "হাসপাতালে কীভাবে যাব?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How do I go to the hospital?”",
+      "korean": "... কীভাবে যাব?",
+      "english": "Listen for \"... কীভাবে যাব?\" inside \"হাসপাতালে কীভাবে যাব?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "হাসপাতালে কীভাবে যাব?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How do I go to the hospital?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "... কীভাবে যাব?",
+      "romanization": "... kibhabe jabo",
+      "nativeText": "Write \"... কীভাবে যাব?\" again without looking, then compare the exact written form against \"হাসপাতালে কীভাবে যাব?\" before moving on.",
+      "pronunciation": "... kibhabe jabo",
+      "exampleTarget": "হাসপাতালে কীভাবে যাব?",
+      "exampleNative": "Use the written model as the final correctness check: “How do I go to the hospital?”",
+      "korean": "... কীভাবে যাব?",
+      "english": "Write \"... কীভাবে যাব?\" again without looking, then compare the exact written form against \"হাসপাতালে কীভাবে যাব?\" before moving on.",
+      "example": "হাসপাতালে কীভাবে যাব?",
+      "exampleEnglish": "Use the written model as the final correctness check: “How do I go to the hospital?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "... কীভাবে যাব?",
+      "romanization": "... kibhabe jabo",
+      "nativeText": "Check whether \"... কীভাবে যাব?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How do I go to the hospital?”",
+      "pronunciation": "... kibhabe jabo",
+      "exampleTarget": "হাসপাতালে কীভাবে যাব?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “How do I go to the hospital?”",
+      "korean": "... কীভাবে যাব?",
+      "english": "Check whether \"... কীভাবে যাব?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How do I go to the hospital?”",
+      "example": "হাসপাতালে কীভাবে যাব?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “How do I go to the hospital?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "পাশে",
+      "romanization": "pashe",
+      "nativeText": "“Beside / next to.” A high-frequency landmark postposition.",
+      "pronunciation": "pashe",
+      "exampleTarget": "ক্যাফে ব্যাংকের পাশে।",
+      "exampleNative": "“The cafe is next to the bank.”",
+      "korean": "পাশে",
+      "english": "“Beside / next to.” A high-frequency landmark postposition.",
+      "example": "ক্যাফে ব্যাংকের পাশে।",
+      "exampleEnglish": "“The cafe is next to the bank.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "ক্যাফে ব্যাংকের পাশে।",
+      "romanization": "pashe",
+      "nativeText": "Model use for \"ক্যাফে ব্যাংকের পাশে।\": “The cafe is next to the bank.”",
+      "pronunciation": "pashe",
+      "exampleTarget": "ক্যাফে ব্যাংকের পাশে।",
+      "exampleNative": "“The cafe is next to the bank.”",
+      "korean": "ক্যাফে ব্যাংকের পাশে।",
+      "english": "Model use for \"ক্যাফে ব্যাংকের পাশে।\": “The cafe is next to the bank.”",
+      "example": "ক্যাফে ব্যাংকের পাশে।",
+      "exampleEnglish": "“The cafe is next to the bank.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "পাশে",
+      "romanization": "pashe",
+      "nativeText": "Usage focus for \"পাশে\": “Beside / next to.” A high-frequency landmark postposition.",
+      "pronunciation": "pashe",
+      "exampleTarget": "ক্যাফে ব্যাংকের পাশে।",
+      "exampleNative": "Notice what the form is doing here: “The cafe is next to the bank.”",
+      "korean": "পাশে",
+      "english": "Usage focus for \"পাশে\": “Beside / next to.” A high-frequency landmark postposition.",
+      "example": "ক্যাফে ব্যাংকের পাশে।",
+      "exampleEnglish": "Notice what the form is doing here: “The cafe is next to the bank.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "পাশে",
+      "romanization": "pashe",
+      "nativeText": "Contrast check for \"পাশে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "pashe",
+      "exampleTarget": "ক্যাফে ব্যাংকের পাশে।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The cafe is next to the bank.”",
+      "korean": "পাশে",
+      "english": "Contrast check for \"পাশে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "ক্যাফে ব্যাংকের পাশে।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The cafe is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "পাশে",
+      "romanization": "pashe",
+      "nativeText": "Recall \"পাশে\" from memory, then explain what would change if a nearby alternative replaced it in \"ক্যাফে ব্যাংকের পাশে।\".",
+      "pronunciation": "pashe",
+      "exampleTarget": "ক্যাফে ব্যাংকের পাশে।",
+      "exampleNative": "Self-check against the model before moving on: “The cafe is next to the bank.”",
+      "korean": "পাশে",
+      "english": "Recall \"পাশে\" from memory, then explain what would change if a nearby alternative replaced it in \"ক্যাফে ব্যাংকের পাশে।\".",
+      "example": "ক্যাফে ব্যাংকের পাশে।",
+      "exampleEnglish": "Self-check against the model before moving on: “The cafe is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "পাশে",
+      "romanization": "pashe",
+      "nativeText": "Repair \"পাশে\" inside \"ক্যাফে ব্যাংকের পাশে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Beside / next to.” A high-frequency landmark postposition.",
+      "pronunciation": "pashe",
+      "exampleTarget": "ক্যাফে ব্যাংকের পাশে।",
+      "exampleNative": "Use the model as the repair target: “The cafe is next to the bank.”",
+      "korean": "পাশে",
+      "english": "Repair \"পাশে\" inside \"ক্যাফে ব্যাংকের পাশে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Beside / next to.” A high-frequency landmark postposition.",
+      "example": "ক্যাফে ব্যাংকের পাশে।",
+      "exampleEnglish": "Use the model as the repair target: “The cafe is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "পাশে",
+      "romanization": "pashe",
+      "nativeText": "Transfer \"পাশে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ক্যাফে ব্যাংকের পাশে।\".",
+      "pronunciation": "pashe",
+      "exampleTarget": "ক্যাফে ব্যাংকের পাশে।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The cafe is next to the bank.”",
+      "korean": "পাশে",
+      "english": "Transfer \"পাশে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ক্যাফে ব্যাংকের পাশে।\".",
+      "example": "ক্যাফে ব্যাংকের পাশে।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The cafe is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "পাশে",
+      "romanization": "pashe",
+      "nativeText": "Find one word or phrase that naturally travels with \"পাশে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "pashe",
+      "exampleTarget": "ক্যাফে ব্যাংকের পাশে।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The cafe is next to the bank.”",
+      "korean": "পাশে",
+      "english": "Find one word or phrase that naturally travels with \"পাশে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "ক্যাফে ব্যাংকের পাশে।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The cafe is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "পাশে",
+      "romanization": "pashe",
+      "nativeText": "Listen for \"পাশে\" inside \"ক্যাফে ব্যাংকের পাশে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "pashe",
+      "exampleTarget": "ক্যাফে ব্যাংকের পাশে।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The cafe is next to the bank.”",
+      "korean": "পাশে",
+      "english": "Listen for \"পাশে\" inside \"ক্যাফে ব্যাংকের পাশে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "ক্যাফে ব্যাংকের পাশে।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The cafe is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "পাশে",
+      "romanization": "pashe",
+      "nativeText": "Write \"পাশে\" again without looking, then compare the exact written form against \"ক্যাফে ব্যাংকের পাশে।\" before moving on.",
+      "pronunciation": "pashe",
+      "exampleTarget": "ক্যাফে ব্যাংকের পাশে।",
+      "exampleNative": "Use the written model as the final correctness check: “The cafe is next to the bank.”",
+      "korean": "পাশে",
+      "english": "Write \"পাশে\" again without looking, then compare the exact written form against \"ক্যাফে ব্যাংকের পাশে।\" before moving on.",
+      "example": "ক্যাফে ব্যাংকের পাশে।",
+      "exampleEnglish": "Use the written model as the final correctness check: “The cafe is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit07goingplaces-vocabulary-1",
+        "bn-level1unit07goingplaces-vocabulary-2",
+        "bn-level1unit07goingplaces-grammar-1",
+        "bn-level1unit07goingplaces-grammar-2",
+        "bn-level1unit07goingplaces-reading",
+        "bn-level1unit07goingplaces-listening",
+        "bn-level1unit07goingplaces-writing",
+        "bn-level1unit07goingplaces-task"
+      ],
+      "targetText": "পাশে",
+      "romanization": "pashe",
+      "nativeText": "Check whether \"পাশে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The cafe is next to the bank.”",
+      "pronunciation": "pashe",
+      "exampleTarget": "ক্যাফে ব্যাংকের পাশে।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The cafe is next to the bank.”",
+      "korean": "পাশে",
+      "english": "Check whether \"পাশে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The cafe is next to the bank.”",
+      "example": "ক্যাফে ব্যাংকের পাশে।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The cafe is next to the bank.”"
+    }
+  ],
+  "targetLang": "bn",
+  "nativeLang": "en",
+  "track": "textbook"
+};

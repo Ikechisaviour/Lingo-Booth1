@@ -23,7 +23,8 @@
     "saving": "Salvando...",
     "search": "Procurar",
     "notSet": "Não definido",
-    "all": "Todos"
+    "all": "Todos",
+    "reset": "Reiniciar"
   },
   "languages": {
     "en": "Inglês",
@@ -218,7 +219,8 @@
       "fri": "F",
       "sat": "S",
       "sun": "S"
-    }
+    },
+    "contactDesc": "Perguntas, comentários ou um problema a ser relatado"
   },
   "lessons": {
     "title": "{{language}} Lições",
@@ -738,7 +740,102 @@
     "modeBreakdown": "Distribuição de modos",
     "searchUsers": "Pesquisar usuários...",
     "all": "Todos",
-    "demo": "Demonstração"
+    "demo": "Demonstração",
+    "failures": "Falhas",
+    "messages": "Mensagens",
+    "userFailures": "Falhas do lado do usuário",
+    "openFailures": "{{count}} falhas abertas",
+    "criticalFailures": "{{count}} crítico",
+    "clearing": "Limpando...",
+    "loadingFailures": "Carregando falhas...",
+    "noOpenFailures": "Nenhuma falha aberta do lado do usuário.",
+    "acknowledge": "Reconhecer",
+    "page": "Página",
+    "device": "Dispositiva",
+    "languagePair": "Par de idiomas",
+    "clientStatus": "Cliente",
+    "pageOf": "Página {{page}} de {{total}}",
+    "guestUser": "Usuário convidado",
+    "unknownUser": "Usuário desconhecido",
+    "unknown": "Desconhecida",
+    "clearFailuresTitle": "Limpar falhas abertas?",
+    "clearFailuresBody": "Marcar todas as falhas abertas {{count}} como reconhecidas?",
+    "contactMessages": "Mensagens de contato",
+    "unreadMessages": "{{count}} mensagens não lidas",
+    "allMessages": "Todas as mensagens",
+    "registeredUsers": "Usuários registrados",
+    "guestUsers": "Usuários convidados",
+    "loadingMessages": "Carregando mensagens...",
+    "noUnreadMessages": "Nenhuma mensagem de contato não lida.",
+    "registeredUser": "Usuário registrado",
+    "contactMessage": "Mensagem de contato",
+    "markRead": "Marcar como lido",
+    "name": "Nome",
+    "accountTier": "Nível da conta",
+    "clearMessagesTitle": "Limpar mensagens não lidas?",
+    "clearMessagesBody": "Marcar todas as mensagens de contato {{count}} não lidas como lidas?",
+    "demoDifficulty": {
+      "beginner": "Novata",
+      "balanced": "Equilibrada",
+      "natural": "Natural",
+      "challenge": "Desafio"
+    },
+    "demoScenarios": {
+      "friendlyChat": "Bate-papo amigável",
+      "cafeWorker": "Conversando com um funcionário do café",
+      "taxiDriver": "Pedindo ajuda a um taxista",
+      "meetingNew": "Conhecendo alguém novo"
+    },
+    "demoReplyPlaceholder": "A resposta do parceiro de prática aparecerá aqui.",
+    "demoTipPlaceholder": "Pergunte em qualquer um dos idiomas selecionados. Você pode mudar de assunto, pedir significados ou solicitar uma redação mais fácil.",
+    "promoteConfirmShort": "Tornar {{username}} um administrador?",
+    "promote": "Promover",
+    "deleteUserTitle": "Excluir usuário",
+    "deleteUserConfirmShort": "Excluir permanentemente {{username}}? Isto não pode ser desfeito.",
+    "demoReset": "Redefinição de conversa.",
+    "demoNoReply": "Nenhuma resposta foi retornada.",
+    "demoNoCoachingNote": "Nenhuma nota de treinamento.",
+    "demoResponseFailed": "Não consegui responder desta vez. Por favor, tente novamente.",
+    "demoConnectionIssue": "Problema de conexão. Tente novamente em alguns instantes.",
+    "tapForDetails": "Toque para detalhes",
+    "activeWeek": "Ativo 7d",
+    "countries": "Países",
+    "conversion": "Conversão",
+    "engagement": "Noivada",
+    "totalCardsStudied": "Total de cartas estudadas",
+    "totalAudioPlays": "Total de reproduções de áudio",
+    "lessonsViewed": "Lições visualizadas",
+    "topLanguagePairs": "Principais pares de idiomas",
+    "sessionsCount": "sessões {{count}}",
+    "deviceBreakdown": "Detalhamento do dispositivo",
+    "recentSessions": "Sessões recentes ({{count}})",
+    "cardsStudiedCount": "cartões {{count}}",
+    "pageNumber": "Página {{page}}",
+    "noGuestData": "Não há dados de hóspedes disponíveis",
+    "loadData": "Carregar dados",
+    "speakingDemo": "Demonstração Falada",
+    "demoIntro": "Visualização de conversa somente para administrador. Ele não salva o áudio ou o progresso do aluno.",
+    "scenario": "Cenário",
+    "customScenario": "Cenário personalizado",
+    "learningLanguage": "Aprendendo idioma",
+    "nativeLanguage": "Língua materna",
+    "listenFor": "Ouça",
+    "difficulty": "Dificuldade",
+    "learnerTurnInput": "Digite ou cole o que o aluno disse",
+    "interrupt": "Interromper",
+    "conversationState": "Estado da conversa",
+    "lastLearnerTurn": "Última vez do aluno",
+    "noTurnSentYet": "Nenhum turno enviado ainda.",
+    "practicePartnerResponse": "Pratique a resposta do parceiro",
+    "coachNote": "Nota do treinador",
+    "userDetails": "Detalhes do usuário",
+    "totalXp": "EXP total",
+    "studyMode": "Modo de estudo",
+    "languages": "Idiomas",
+    "loginCount": "Contagem de logins",
+    "memberSince": "Membro desde",
+    "suspendReasonLabel": "Motivo de suspensão",
+    "userDetailsLoadFailed": "Não foi possível carregar os detalhes do usuário"
   },
   "pricing": {
     "kicker": "Planas",
@@ -820,7 +917,9 @@
     "discountCode": "Código de desconto",
     "discountPlaceholder": "Código opcional",
     "discountUnavailable": "Esse código de desconto não está disponível para este plano.",
-    "automaticDiscountApplied": "Desconto automático de {{discount}} aplicado"
+    "automaticDiscountApplied": "Desconto automático de {{discount}} aplicado",
+    "signInToChooseTitle": "Crie uma conta para continuar",
+    "signInToChooseBody": "Crie uma conta ou faça login antes de escolher um plano pago para que seu acesso possa ser vinculado a você."
   },
   "billing": {
     "kicker": "Cobrança",
@@ -975,7 +1074,8 @@
     },
     "titlePrefix": {
       "unit": "Nível {{level}} · Unidade {{unit}}: {{title}}"
-    }
+    },
+    "retry": "Tente novamente"
   },
   "classLesson": {
     "loading": "Carregando aula...",
@@ -1114,7 +1214,10 @@
     "saveReply": "Salvar resposta",
     "saveExample": "Salvar exemplo",
     "practiceEverywhere": "Pratique isso em qualquer lugar",
-    "selfTestReason": "Salvo da aula para um autoteste rápido."
+    "selfTestReason": "Salvo da aula para um autoteste rápido.",
+    "previous": "Anterior",
+    "lessonGuide": "Guia de aula",
+    "activityXOfY": "Atividade {{current}} de {{total}}"
   },
   "exercise": {
     "kicker": "Exercício",
@@ -1182,7 +1285,8 @@
     "recapUsefulPhrases": "Frases úteis",
     "recapReview": "Revise a seguir",
     "recapReviewFallback": "Salve uma frase e reutilize-a em outro modo de prática.",
-    "practiceLabel": "Prática de conversação"
+    "practiceLabel": "Prática de conversação",
+    "practiceSetup": "Configuração prática"
   },
   "context": {
     "backToProfile": "Voltar ao perfil",
@@ -1304,7 +1408,10 @@
       "memory": "Da memória"
     },
     "savedReason": "Salvo da prática de escrita para outra passagem.",
-    "selfTestReason": "Salvo da prática de redação para um rápido autoteste."
+    "selfTestReason": "Salvo da prática de redação para um rápido autoteste.",
+    "hideNotebook": "Ocultar bloco de notas",
+    "showNotebook": "Mostrar bloco de notas",
+    "hideAddPanel": "Ocultar painel de adição"
   },
   "certificates": {
     "kicker": "Certificado",
@@ -1472,5 +1579,44 @@
     "firstThreeDayReviewBody": "Volte uma vez ao que você viu ontem para que os primeiros itens comecem a aderir.",
     "firstThreeDaySpeakBody": "Use um breve turno de fala para que o idioma saia da página mais cedo.",
     "firstThreeDayLearnBody": "Comece com uma pequena lição guiada para que a dupla tenha um ponto de partida claro."
+  },
+  "resetPassword": {
+    "title": "Redefinir senha",
+    "subtitle": "Digite sua nova senha.",
+    "error": "Falha ao redefinir a senha. Tente novamente.",
+    "invalidLink": "Este link de redefinição é inválido ou expirou.",
+    "noToken": "Token de redefinição ausente. Solicite um novo link.",
+    "requestNew": "Solicitar novo link",
+    "success": "Sua senha foi redefinida com sucesso.",
+    "goToLogin": "Ir para o login",
+    "newPasswordPlaceholder": "Nova senha",
+    "resetButton": "Redefinir senha",
+    "failed": "Não foi possível redefinir a senha. Por favor, tente novamente.",
+    "kicker": "Redefinir senha",
+    "missingToken": "Este link de redefinição está ausente ou é inválido.",
+    "newPassword": "Nova Senha",
+    "confirmPassword": "Confirme sua senha",
+    "submit": "Redefinir senha"
+  },
+  "contact": {
+    "navLabel": "Contato",
+    "kicker": "Fale conosco",
+    "title": "Conte-nos do que voc? precisa",
+    "subtitle": "Envie uma pergunta, relate um problema ou compartilhe feedback. Vamos analisar sua mensagem e responder quando necess?rio.",
+    "infoTitle": "Estamos ouvindo",
+    "infoText": "As mensagens deste formul?rio s?o salvas com seguran?a com o contexto da conta quando dispon?vel, para entendermos melhor e ajudarmos mais r?pido.",
+    "name": "Nome",
+    "namePlaceholder": "Seu nome",
+    "email": "E-mail",
+    "emailPlaceholder": "voce@exemplo.com",
+    "subject": "Assunto",
+    "subjectPlaceholder": "Sobre o que ??",
+    "message": "Mensagem",
+    "messagePlaceholder": "Escreva sua mensagem aqui...",
+    "send": "Enviar mensagem",
+    "success": "Obrigado. Sua mensagem foi recebida.",
+    "error": "N?o foi poss?vel enviar sua mensagem agora. Tente novamente.",
+    "companyTrap": "Empresa",
+    "profileHint": "Envie uma pergunta, relate um problema ou compartilhe comentários sobre este dispositivo."
   }
 }

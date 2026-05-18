@@ -90,6 +90,23 @@
   color: var(--text-secondary);
 }
 
+.class-header-tools {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.class-outline-toggle {
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--text-primary);
+  cursor: pointer;
+  font-weight: 800;
+}
+
 .class-progress {
   display: flex;
   min-width: 92px;
@@ -112,10 +129,14 @@
 
 .class-lesson-shell {
   display: grid;
-  grid-template-columns: 220px minmax(320px, 0.78fr) minmax(520px, 1.35fr);
+  grid-template-columns: minmax(360px, 0.92fr) minmax(560px, 1.45fr);
   height: calc(100% - 104px);
   min-height: 0;
   gap: 12px;
+}
+
+.class-lesson-shell.agenda-open {
+  grid-template-columns: 220px minmax(320px, 0.78fr) minmax(520px, 1.35fr);
 }
 
 .class-lesson-page.has-certificate-banner .class-lesson-shell {
@@ -230,6 +251,10 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
+}
+
+.class-agenda.collapsed {
+  display: none;
 }
 
 .class-agenda-summary {
@@ -1045,6 +1070,12 @@
   }
 
   .class-lesson-shell {
+    grid-template-columns: minmax(0, 0.84fr) minmax(0, 1.16fr);
+    grid-template-rows: minmax(0, 1fr);
+    grid-template-areas: "focus tutor";
+  }
+
+  .class-lesson-shell.agenda-open {
     grid-template-columns: minmax(180px, 220px) minmax(0, 1fr);
     grid-template-rows: minmax(170px, 0.36fr) minmax(0, 0.64fr);
     grid-template-areas:
@@ -1077,10 +1108,16 @@
     grid-template-columns: 1fr;
     grid-template-rows: auto;
     grid-template-areas:
-      "agenda"
       "tutor"
       "focus";
     height: auto;
+  }
+
+  .class-lesson-shell.agenda-open {
+    grid-template-areas:
+      "agenda"
+      "tutor"
+      "focus";
   }
 
   .class-lesson-page.has-certificate-banner .class-lesson-shell {
@@ -1187,6 +1224,10 @@
     align-items: flex-start;
     min-width: 0;
     padding: 10px;
+  }
+
+  .class-header-tools {
+    justify-content: space-between;
   }
 
   .class-certificate-banner {

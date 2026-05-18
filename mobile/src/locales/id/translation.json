@@ -23,7 +23,8 @@
     "saving": "Penghematan...",
     "search": "Mencari",
     "notSet": "Tidak disetel",
-    "all": "Semua"
+    "all": "Semua",
+    "reset": "Mengatur ulang"
   },
   "languages": {
     "en": "Inggris",
@@ -218,7 +219,8 @@
       "fri": "F",
       "sat": "S",
       "sun": "S"
-    }
+    },
+    "contactDesc": "Pertanyaan, masukan, atau masalah untuk dilaporkan"
   },
   "lessons": {
     "title": "Pelajaran {{language}}",
@@ -738,7 +740,102 @@
     "modeBreakdown": "Mode Belajar",
     "searchUsers": "Cari pengguna...",
     "all": "Semua",
-    "demo": "Demo"
+    "demo": "Demo",
+    "failures": "Kegagalan",
+    "messages": "Pesan",
+    "userFailures": "Kegagalan sisi pengguna",
+    "openFailures": "{{count}} kegagalan terbuka",
+    "criticalFailures": "{{count}} kritis",
+    "clearing": "Membersihkan...",
+    "loadingFailures": "Kegagalan memuat...",
+    "noOpenFailures": "Tidak ada kegagalan sisi pengguna yang terbuka.",
+    "acknowledge": "Mengakui",
+    "page": "Halaman",
+    "device": "Perangkat",
+    "languagePair": "Pasangan Bahasa",
+    "clientStatus": "Klien",
+    "pageOf": "Halaman {{page}} dari {{total}}",
+    "guestUser": "Pengguna tamu",
+    "unknownUser": "Pengguna tidak dikenal",
+    "unknown": "Tidak dikenal",
+    "clearFailuresTitle": "Hapus kegagalan terbuka?",
+    "clearFailuresBody": "Tandai semua kegagalan terbuka {{count}} sebagai diakui?",
+    "contactMessages": "Pesan kontak",
+    "unreadMessages": "{{count}} pesan yang belum dibaca",
+    "allMessages": "Semua pesan",
+    "registeredUsers": "Pengguna terdaftar",
+    "guestUsers": "Pengguna tamu",
+    "loadingMessages": "Memuat pesan...",
+    "noUnreadMessages": "Tidak ada pesan kontak yang belum dibaca.",
+    "registeredUser": "Pengguna terdaftar",
+    "contactMessage": "Pesan kontak",
+    "markRead": "Tandai sudah dibaca",
+    "name": "Nama",
+    "accountTier": "Tingkat Akun",
+    "clearMessagesTitle": "Hapus pesan yang belum dibaca?",
+    "clearMessagesBody": "Tandai semua {{count}} pesan kontak yang belum dibaca sebagai sudah dibaca?",
+    "demoDifficulty": {
+      "beginner": "Pemula",
+      "balanced": "Seimbang",
+      "natural": "Alami",
+      "challenge": "Tantangan"
+    },
+    "demoScenarios": {
+      "friendlyChat": "Obrolan ramah",
+      "cafeWorker": "Berbicara dengan seorang pekerja kafe",
+      "taxiDriver": "Meminta bantuan sopir taksi",
+      "meetingNew": "Bertemu seseorang yang baru"
+    },
+    "demoReplyPlaceholder": "Respon rekan latihan akan muncul di sini.",
+    "demoTipPlaceholder": "Tanyakan dalam salah satu bahasa yang dipilih. Anda dapat mengubah topik, menanyakan makna, atau meminta kata-kata yang lebih mudah.",
+    "promoteConfirmShort": "Jadikan {{username}} sebagai admin?",
+    "promote": "Mendorong",
+    "deleteUserTitle": "Hapus Pengguna",
+    "deleteUserConfirmShort": "Hapus {{username}} secara permanen? Hal ini tidak dapat dibatalkan.",
+    "demoReset": "Reset percakapan.",
+    "demoNoReply": "Tidak ada balasan.",
+    "demoNoCoachingNote": "Tidak ada catatan pelatihan.",
+    "demoResponseFailed": "Saya tidak bisa menjawab kali ini. Silakan coba lagi.",
+    "demoConnectionIssue": "Masalah koneksi. Coba lagi sebentar lagi.",
+    "tapForDetails": "Ketuk untuk mengetahui detailnya",
+    "activeWeek": "Aktif 7d",
+    "countries": "Negara",
+    "conversion": "Konversi",
+    "engagement": "Pertunangan",
+    "totalCardsStudied": "Total Kartu yang Dipelajari",
+    "totalAudioPlays": "Total Pemutaran Audio",
+    "lessonsViewed": "Pelajaran Dilihat",
+    "topLanguagePairs": "Pasangan Bahasa Teratas",
+    "sessionsCount": "{{count}} sesi",
+    "deviceBreakdown": "Kerusakan Perangkat",
+    "recentSessions": "Sesi Terkini ({{count}})",
+    "cardsStudiedCount": "{{count}} kartu",
+    "pageNumber": "Halaman {{page}}",
+    "noGuestData": "Tidak ada data tamu yang tersedia",
+    "loadData": "Muat Data",
+    "speakingDemo": "Demo Berbicara",
+    "demoIntro": "Pratinjau percakapan khusus admin. Itu tidak menyimpan audio atau kemajuan pelajar.",
+    "scenario": "Skenario",
+    "customScenario": "Skenario khusus",
+    "learningLanguage": "Belajar bahasa",
+    "nativeLanguage": "Bahasa asli",
+    "listenFor": "Dengarkan",
+    "difficulty": "Kesulitan",
+    "learnerTurnInput": "Ketik atau tempelkan apa yang dikatakan pelajar",
+    "interrupt": "Mengganggu",
+    "conversationState": "Status Percakapan",
+    "lastLearnerTurn": "Giliran pelajar terakhir",
+    "noTurnSentYet": "Belum ada giliran yang dikirim.",
+    "practicePartnerResponse": "Latih respons pasangan",
+    "coachNote": "Catatan pelatih",
+    "userDetails": "Detail Pengguna",
+    "totalXp": "Jumlah XP",
+    "studyMode": "Modus Belajar",
+    "languages": "Bahasa",
+    "loginCount": "Jumlah Masuk",
+    "memberSince": "Anggota Sejak",
+    "suspendReasonLabel": "Alasan Penangguhan",
+    "userDetailsLoadFailed": "Tidak dapat memuat detail pengguna"
   },
   "pricing": {
     "kicker": "Rencana",
@@ -820,7 +917,9 @@
     "discountCode": "Kode diskon",
     "discountPlaceholder": "Kode opsional",
     "discountUnavailable": "Kode diskon tersebut tidak tersedia untuk paket ini.",
-    "automaticDiscountApplied": "Diskon otomatis {{discount}} diterapkan"
+    "automaticDiscountApplied": "Diskon otomatis {{discount}} diterapkan",
+    "signInToChooseTitle": "Buat akun untuk melanjutkan",
+    "signInToChooseBody": "Buat akun atau masuk sebelum memilih paket berbayar sehingga akses Anda dapat dilampirkan ke Anda."
   },
   "billing": {
     "kicker": "Penagihan",
@@ -960,7 +1059,7 @@
     "untitled": "Pelajaran tanpa judul",
     "cardStats": "{{vocab}} kosakata / {{sentences}} contoh / {{conversations}} dialog",
     "classFallback": "Kelas",
-    "loadError": "Tidak dapat memuat pelajaran kelas. Pastikan backend berjalan dan diunggulkan.",
+    "loadError": "Kami tidak dapat memuat pelajaran Anda saat ini. Silakan periksa koneksi Anda dan coba lagi.",
     "tracks": {
       "foundationTitle": "Tingkat {{level}} - Fondasi",
       "foundationSubtitle": "Mulai di sini dengan sistem suara dan penulisan untuk {{language}}.",
@@ -975,7 +1074,8 @@
     },
     "titlePrefix": {
       "unit": "Tingkat {{level}} · Satuan {{unit}}: {{title}}"
-    }
+    },
+    "retry": "Coba lagi"
   },
   "classLesson": {
     "loading": "Memuat pelajaran kelas...",
@@ -1114,7 +1214,10 @@
     "saveReply": "Simpan balasan",
     "saveExample": "Simpan contoh",
     "practiceEverywhere": "Praktekkan ini di mana saja",
-    "selfTestReason": "Disimpan dari kelas untuk tes mandiri cepat."
+    "selfTestReason": "Disimpan dari kelas untuk tes mandiri cepat.",
+    "previous": "Sebelumnya",
+    "lessonGuide": "Panduan pelajaran",
+    "activityXOfY": "Aktivitas {{current}} dari {{total}}"
   },
   "exercise": {
     "kicker": "Latihan",
@@ -1182,7 +1285,8 @@
     "recapUsefulPhrases": "Frase yang berguna",
     "recapReview": "Tinjau selanjutnya",
     "recapReviewFallback": "Simpan satu frasa dan gunakan kembali dalam mode latihan lainnya.",
-    "practiceLabel": "Latihan percakapan"
+    "practiceLabel": "Latihan percakapan",
+    "practiceSetup": "Pengaturan latihan"
   },
   "context": {
     "backToProfile": "Kembali ke Profil",
@@ -1304,7 +1408,10 @@
       "memory": "Dari ingatan"
     },
     "savedReason": "Disimpan dari latihan menulis untuk izin lain.",
-    "selfTestReason": "Disimpan dari latihan menulis untuk tes mandiri cepat."
+    "selfTestReason": "Disimpan dari latihan menulis untuk tes mandiri cepat.",
+    "hideNotebook": "Sembunyikan buku catatan",
+    "showNotebook": "Tunjukkan buku catatan",
+    "hideAddPanel": "Sembunyikan panel tambahan"
   },
   "certificates": {
     "kicker": "Sertifikat",
@@ -1472,5 +1579,44 @@
     "firstThreeDayReviewBody": "Kembalilah sekali ke apa yang Anda lihat kemarin sehingga item pertama mulai melekat.",
     "firstThreeDaySpeakBody": "Gunakan giliran bicara singkat agar bahasa meninggalkan halaman lebih awal.",
     "firstThreeDayLearnBody": "Mulailah dengan satu pelajaran kecil terpandu sehingga pasangan memiliki titik awal yang jelas."
+  },
+  "resetPassword": {
+    "title": "Atur ulang kata sandi",
+    "subtitle": "Masukkan kata sandi baru Anda.",
+    "error": "Gagal mengatur ulang kata sandi. Silakan coba lagi.",
+    "invalidLink": "Tautan pengaturan ulang ini tidak valid atau telah kedaluwarsa.",
+    "noToken": "Token pengaturan ulang tidak ditemukan. Silakan minta tautan baru.",
+    "requestNew": "Minta tautan baru",
+    "success": "Kata sandi Anda berhasil diatur ulang.",
+    "goToLogin": "Ke halaman login",
+    "newPasswordPlaceholder": "Kata sandi baru",
+    "resetButton": "Atur ulang kata sandi",
+    "failed": "Tidak dapat menyetel ulang sandi. Silakan coba lagi.",
+    "kicker": "Setel ulang kata sandi",
+    "missingToken": "Tautan setel ulang ini tidak ada atau tidak valid.",
+    "newPassword": "Kata sandi baru",
+    "confirmPassword": "Konfirmasikan kata sandi",
+    "submit": "Setel ulang kata sandi"
+  },
+  "contact": {
+    "navLabel": "Kontak",
+    "kicker": "Hubungi kami",
+    "title": "Beri tahu kami apa yang Anda butuhkan",
+    "subtitle": "Kirim pertanyaan, laporkan masalah, atau bagikan masukan. Kami akan meninjau pesan Anda dan membalas bila diperlukan.",
+    "infoTitle": "Kami mendengarkan",
+    "infoText": "Pesan dari formulir ini disimpan dengan aman bersama konteks akun jika tersedia, agar kami dapat memahami masalah dan membantu lebih cepat.",
+    "name": "Nama",
+    "namePlaceholder": "Nama Anda",
+    "email": "E-mail",
+    "emailPlaceholder": "anda@contoh.com",
+    "subject": "Subjek",
+    "subjectPlaceholder": "Tentang apa ini?",
+    "message": "Pesan",
+    "messagePlaceholder": "Tulis pesan Anda di sini...",
+    "send": "Kirim pesan",
+    "success": "Terima kasih. Pesan Anda telah diterima.",
+    "error": "Kami belum dapat mengirim pesan Anda sekarang. Coba lagi.",
+    "companyTrap": "Perusahaan",
+    "profileHint": "Kirim pertanyaan, laporkan masalah, atau bagikan masukan dari perangkat ini."
   }
 }

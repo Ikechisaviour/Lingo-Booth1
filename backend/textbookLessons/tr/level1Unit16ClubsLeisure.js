@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('tr', {
-  slug: 'tr-l1u16',
-  title: 'Level 1 · Unit 16: Kulüpler ve Boş Zaman — Clubs and Leisure',
-  category: 'leisure',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Talk about hobbies, clubs, and what you do in your free time.',
-  vocabularyGoal: 'Use hobby words, club words, and frequency expressions.',
-  grammarGoal: 'Use verb nouns in `-mek/-mak`, `seviyorum`, and adverbs such as `sık sık`.',
-  speakingGoal: 'Describe one hobby, ask about another person’s hobby, and recommend a club.',
-  task: 'Introduce your hobby and choose one campus club.',
-  expressionPractice: [
-    practice('stating-hobby', 'Stating hobby', 'Use `... yapmayı seviyorum`.'),
-    practice('frequency', 'Talking frequency', 'Use `sık sık` or `bazen`.'),
-    practice('recommending', 'Recommending club', 'Give one reason with `çünkü`.'),
+module.exports = {
+  "title": "Level 1 · Unit 16: Kulüpler ve Boş Zaman — Clubs and Leisure",
+  "category": "leisure",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "tr-level1unit16clubsleisure-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Talk about hobbies, clubs, and what you do in your free time."
+      ],
+      "task": "Introduce your hobby and choose one campus club."
+    },
+    {
+      "id": "tr-level1unit16clubsleisure-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "tr-level1unit16clubsleisure-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 16: Kulüpler ve Boş Zaman — Clubs and Leisure with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "tr-level1unit16clubsleisure-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 16: Kulüpler ve Boş Zaman — Clubs and Leisure sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "tr-level1unit16clubsleisure-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Talk about hobbies, clubs, and what you do in your free time."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "tr-level1unit16clubsleisure-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 16: Kulüpler ve Boş Zaman — Clubs and Leisure with one nearby Turkish form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "tr-level1unit16clubsleisure-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "tr-level1unit16clubsleisure-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "tr-level1unit16clubsleisure-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "tr-level1unit16clubsleisure-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "tr-level1unit16clubsleisure-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Introduce your hobby and choose one campus club."
+      ],
+      "task": "Introduce your hobby and choose one campus club."
+    }
   ],
-  relatedPools: ['topic-leisure', 'topic-campus'],
-  items: [
-    item('hobi', 'ho-Bİ', '“Hobby.” A common everyday loanword.', 'Hobim fotoğraf çekmek.', '“My hobby is taking photos.”'),
-    item('kulüp', 'ku-LÜP', '“Club.” Useful for campus and social groups.', 'Tiyatro kulübüne katılıyorum.', '“I am joining the theater club.”'),
-    item('kitap okumak', 'ki-TAP o-ku-MAK', '“Reading books.” Infinitive forms often name activities.', 'Kitap okumayı seviyorum.', '“I like reading books.”'),
-    item('gitar çalmak', 'gi-TAR çal-MAK', '“Playing guitar.”', 'O gitar çalmayı seviyor.', '“She likes playing guitar.”'),
-    item('spor yapmak', 'SPOR yap-MAK', '“Doing sports.” Turkish often uses `yapmak` with activity nouns.', 'Hafta sonu spor yapıyorum.', '“I do sports on weekends.”'),
-    item('sık sık', 'SIK SIK', '“Often.” Reduplication intensifies frequency.', 'Sık sık film izliyorum.', '“I often watch films.”'),
-    item('bazen', 'ba-ZEN', '“Sometimes.” Useful for moderate frequency.', 'Bazen evde yemek yapıyorum.', '“Sometimes I cook at home.”'),
-    item('boş zaman', 'BOŞ za-MAN', '“Free time.” A standard frame for hobby questions.', 'Boş zamanında ne yapıyorsun?', '“What do you do in your free time?”'),
+  "expressionPractice": [
+    {
+      "id": "stating-hobby",
+      "label": "Stating hobby",
+      "goal": "Use `... yapmayı seviyorum`."
+    },
+    {
+      "id": "frequency",
+      "label": "Talking frequency",
+      "goal": "Use `sık sık` or `bazen`."
+    },
+    {
+      "id": "recommending",
+      "label": "Recommending club",
+      "goal": "Give one reason with `çünkü`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-leisure",
+    "topic-campus"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-orientation"
+      ],
+      "targetText": "ders hedefi",
+      "romanization": "",
+      "nativeText": "Talk about hobbies, clubs, and what you do in your free time.",
+      "pronunciation": "",
+      "exampleTarget": "ders hedefi",
+      "exampleNative": "The whole lesson is built toward this outcome: Introduce your hobby and choose one campus club.",
+      "korean": "ders hedefi",
+      "english": "Talk about hobbies, clubs, and what you do in your free time.",
+      "example": "ders hedefi",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Introduce your hobby and choose one campus club."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-pronunciation"
+      ],
+      "targetText": "ses kontrolü",
+      "romanization": "",
+      "nativeText": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Hobim fotoğraf çekmek.\".",
+      "pronunciation": "",
+      "exampleTarget": "Hobim fotoğraf çekmek.",
+      "exampleNative": "“My hobby is taking photos.”",
+      "korean": "ses kontrolü",
+      "english": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Hobim fotoğraf çekmek.\".",
+      "example": "Hobim fotoğraf çekmek.",
+      "exampleEnglish": "“My hobby is taking photos.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1"
+      ],
+      "targetText": "hobi",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 16: Kulüpler ve Boş Zaman — Clubs and Leisure with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Hobim fotoğraf çekmek.",
+      "exampleNative": "“My hobby is taking photos.”",
+      "korean": "hobi",
+      "english": "Use the key language of Level 1 · Unit 16: Kulüpler ve Boş Zaman — Clubs and Leisure with the register and setting that the lesson requires.",
+      "example": "Hobim fotoğraf çekmek.",
+      "exampleEnglish": "“My hobby is taking photos.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-2"
+      ],
+      "targetText": "kulüp",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 16: Kulüpler ve Boş Zaman — Clubs and Leisure sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Tiyatro kulübüne katılıyorum.",
+      "exampleNative": "“I am joining the theater club.”",
+      "korean": "kulüp",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 16: Kulüpler ve Boş Zaman — Clubs and Leisure sound precise rather than merely understandable.",
+      "example": "Tiyatro kulübüne katılıyorum.",
+      "exampleEnglish": "“I am joining the theater club.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-grammar-1"
+      ],
+      "targetText": "hobi",
+      "romanization": "",
+      "nativeText": "Talk about hobbies, clubs, and what you do in your free time.",
+      "pronunciation": "",
+      "exampleTarget": "Hobim fotoğraf çekmek.",
+      "exampleNative": "“My hobby is taking photos.”",
+      "korean": "hobi",
+      "english": "Talk about hobbies, clubs, and what you do in your free time.",
+      "example": "Hobim fotoğraf çekmek.",
+      "exampleEnglish": "“My hobby is taking photos.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-grammar-2"
+      ],
+      "targetText": "kulüp",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 16: Kulüpler ve Boş Zaman — Clubs and Leisure with one nearby Turkish form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Tiyatro kulübüne katılıyorum.",
+      "exampleNative": "“I am joining the theater club.”",
+      "korean": "kulüp",
+      "english": "Contrast the main pattern in Level 1 · Unit 16: Kulüpler ve Boş Zaman — Clubs and Leisure with one nearby Turkish form so the learner can avoid literal translation.",
+      "example": "Tiyatro kulübüne katılıyorum.",
+      "exampleEnglish": "“I am joining the theater club.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-reading"
+      ],
+      "targetText": "okuma modeli",
+      "romanization": "",
+      "nativeText": "Read \"Boş zamanında ne yapıyorsun?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Boş zamanında ne yapıyorsun?",
+      "exampleNative": "“What do you do in your free time?”",
+      "korean": "okuma modeli",
+      "english": "Read \"Boş zamanında ne yapıyorsun?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Boş zamanında ne yapıyorsun?",
+      "exampleEnglish": "“What do you do in your free time?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-listening"
+      ],
+      "targetText": "diyalog modeli",
+      "romanization": "",
+      "nativeText": "Hear \"Boş zamanında ne yapıyorsun?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Boş zamanında ne yapıyorsun?",
+      "exampleNative": "“What do you do in your free time?”",
+      "korean": "diyalog modeli",
+      "english": "Hear \"Boş zamanında ne yapıyorsun?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Boş zamanında ne yapıyorsun?",
+      "exampleEnglish": "“What do you do in your free time?”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-writing"
+      ],
+      "targetText": "yazma alıştırması",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Hobim fotoğraf çekmek.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Hobim fotoğraf çekmek.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "yazma alıştırması",
+      "english": "Write your own version after studying \"Hobim fotoğraf çekmek.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Hobim fotoğraf çekmek.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-culture"
+      ],
+      "targetText": "kullanım ve bağlam",
+      "romanization": "",
+      "nativeText": "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Tiyatro kulübüne katılıyorum.",
+      "exampleNative": "“I am joining the theater club.”",
+      "korean": "kullanım ve bağlam",
+      "english": "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used.",
+      "example": "Tiyatro kulübüne katılıyorum.",
+      "exampleEnglish": "“I am joining the theater club.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "son görev",
+      "romanization": "",
+      "nativeText": "Introduce your hobby and choose one campus club.",
+      "pronunciation": "",
+      "exampleTarget": "Boş zamanında ne yapıyorsun?",
+      "exampleNative": "Introduce your hobby and choose one campus club.",
+      "korean": "son görev",
+      "english": "Introduce your hobby and choose one campus club.",
+      "example": "Boş zamanında ne yapıyorsun?",
+      "exampleEnglish": "Introduce your hobby and choose one campus club."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-grammar-2"
+      ],
+      "targetText": "yaygın hata",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around suffix chains, vowel harmony, evidentiality, and word order. Begin by checking \"Tiyatro kulübüne katılıyorum.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Tiyatro kulübüne katılıyorum.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “I am joining the theater club.”",
+      "korean": "yaygın hata",
+      "english": "Watch for literal-translation mistakes around suffix chains, vowel harmony, evidentiality, and word order. Begin by checking \"Tiyatro kulübüne katılıyorum.\" against the model.",
+      "example": "Tiyatro kulübüne katılıyorum.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “I am joining the theater club.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-culture"
+      ],
+      "targetText": "üslup",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for sen, siz, a service tone, or a more formal wording before selecting the final form. Compare the social fit of \"Hobim fotoğraf çekmek.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Hobim fotoğraf çekmek.",
+      "exampleNative": "“My hobby is taking photos.”",
+      "korean": "üslup",
+      "english": "Check whether the setting calls for sen, siz, a service tone, or a more formal wording before selecting the final form. Compare the social fit of \"Hobim fotoğraf çekmek.\" before reusing it elsewhere.",
+      "example": "Hobim fotoğraf çekmek.",
+      "exampleEnglish": "“My hobby is taking photos.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "akıcılık",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Turkish message rather than as separate translated fragments. Aim to carry \"Boş zamanında ne yapıyorsun?\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Boş zamanında ne yapıyorsun?",
+      "exampleNative": "“What do you do in your free time?”",
+      "korean": "akıcılık",
+      "english": "Say the idea as one connected Turkish message rather than as separate translated fragments. Aim to carry \"Boş zamanında ne yapıyorsun?\" as one thought.",
+      "example": "Boş zamanında ne yapıyorsun?",
+      "exampleEnglish": "“What do you do in your free time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "uygulama",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Hobim fotoğraf çekmek.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Hobim fotoğraf çekmek.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "uygulama",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Hobim fotoğraf çekmek.\" and move it into your own life.",
+      "example": "Hobim fotoğraf çekmek.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-grammar-1"
+      ],
+      "targetText": "hatırlama",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"hobi\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "hobi",
+      "exampleNative": "“Hobby.” A common everyday loanword.",
+      "korean": "hatırlama",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"hobi\" before looking back.",
+      "example": "hobi",
+      "exampleEnglish": "“Hobby.” A common everyday loanword."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-writing"
+      ],
+      "targetText": "genişletme",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Boş zamanında ne yapıyorsun?\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Boş zamanında ne yapıyorsun?",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "genişletme",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Boş zamanında ne yapıyorsun?\" rather than restarting from a blank sentence.",
+      "example": "Boş zamanında ne yapıyorsun?",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading"
+      ],
+      "targetText": "karşılaştırma",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 16: Kulüpler ve Boş Zaman — Clubs and Leisure with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Tiyatro kulübüne katılıyorum.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Tiyatro kulübüne katılıyorum.",
+      "exampleNative": "“I am joining the theater club.”",
+      "korean": "karşılaştırma",
+      "english": "Compare the central form in Level 1 · Unit 16: Kulüpler ve Boş Zaman — Clubs and Leisure with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Tiyatro kulübüne katılıyorum.\" as the comparison line.",
+      "example": "Tiyatro kulübüne katılıyorum.",
+      "exampleEnglish": "“I am joining the theater club.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-pronunciation"
+      ],
+      "targetText": "telaffuz düzeltme",
+      "romanization": "",
+      "nativeText": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Hobim fotoğraf çekmek.\".",
+      "pronunciation": "",
+      "exampleTarget": "Hobim fotoğraf çekmek.",
+      "exampleNative": "“My hobby is taking photos.”",
+      "korean": "telaffuz düzeltme",
+      "english": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Hobim fotoğraf çekmek.\".",
+      "example": "Hobim fotoğraf çekmek.",
+      "exampleEnglish": "“My hobby is taking photos.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "diyalog varyasyonu",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Boş zamanında ne yapıyorsun?\".",
+      "pronunciation": "",
+      "exampleTarget": "Boş zamanında ne yapıyorsun?",
+      "exampleNative": "“What do you do in your free time?”",
+      "korean": "diyalog varyasyonu",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Boş zamanında ne yapıyorsun?\".",
+      "example": "Boş zamanında ne yapıyorsun?",
+      "exampleEnglish": "“What do you do in your free time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-writing"
+      ],
+      "targetText": "cümle kurma",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Hobim fotoğraf çekmek.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Hobim fotoğraf çekmek.",
+      "exampleNative": "“My hobby is taking photos.”",
+      "korean": "cümle kurma",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Hobim fotoğraf çekmek.\" one layer at a time.",
+      "example": "Hobim fotoğraf çekmek.",
+      "exampleEnglish": "“My hobby is taking photos.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-2"
+      ],
+      "targetText": "hızlı kontrol",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Tiyatro kulübüne katılıyorum.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Tiyatro kulübüne katılıyorum.",
+      "exampleNative": "“I am joining the theater club.”",
+      "korean": "hızlı kontrol",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Tiyatro kulübüne katılıyorum.\" as the deciding example.",
+      "example": "Tiyatro kulübüne katılıyorum.",
+      "exampleEnglish": "“I am joining the theater club.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-culture",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "değerlendirme",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Boş zamanında ne yapıyorsun?\".",
+      "pronunciation": "",
+      "exampleTarget": "Boş zamanında ne yapıyorsun?",
+      "exampleNative": "“What do you do in your free time?”",
+      "korean": "değerlendirme",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Boş zamanında ne yapıyorsun?\".",
+      "example": "Boş zamanında ne yapıyorsun?",
+      "exampleEnglish": "“What do you do in your free time?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "hobi",
+      "romanization": "ho-Bİ",
+      "nativeText": "“Hobby.” A common everyday loanword.",
+      "pronunciation": "ho-Bİ",
+      "exampleTarget": "Hobim fotoğraf çekmek.",
+      "exampleNative": "“My hobby is taking photos.”",
+      "korean": "hobi",
+      "english": "“Hobby.” A common everyday loanword.",
+      "example": "Hobim fotoğraf çekmek.",
+      "exampleEnglish": "“My hobby is taking photos.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "Hobim fotoğraf çekmek.",
+      "romanization": "ho-Bİ",
+      "nativeText": "Model use for \"Hobim fotoğraf çekmek.\": “My hobby is taking photos.”",
+      "pronunciation": "ho-Bİ",
+      "exampleTarget": "Hobim fotoğraf çekmek.",
+      "exampleNative": "“My hobby is taking photos.”",
+      "korean": "Hobim fotoğraf çekmek.",
+      "english": "Model use for \"Hobim fotoğraf çekmek.\": “My hobby is taking photos.”",
+      "example": "Hobim fotoğraf çekmek.",
+      "exampleEnglish": "“My hobby is taking photos.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "hobi",
+      "romanization": "ho-Bİ",
+      "nativeText": "Usage focus for \"hobi\": Use the key language of Level 1 · Unit 16: Kulüpler ve Boş Zaman — Clubs and Leisure with the register and setting that the lesson requires.",
+      "pronunciation": "ho-Bİ",
+      "exampleTarget": "Hobim fotoğraf çekmek.",
+      "exampleNative": "Notice what the form is doing here: “My hobby is taking photos.”",
+      "korean": "hobi",
+      "english": "Usage focus for \"hobi\": Use the key language of Level 1 · Unit 16: Kulüpler ve Boş Zaman — Clubs and Leisure with the register and setting that the lesson requires.",
+      "example": "Hobim fotoğraf çekmek.",
+      "exampleEnglish": "Notice what the form is doing here: “My hobby is taking photos.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "hobi",
+      "romanization": "ho-Bİ",
+      "nativeText": "Contrast check for \"hobi\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ho-Bİ",
+      "exampleTarget": "Hobim fotoğraf çekmek.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My hobby is taking photos.”",
+      "korean": "hobi",
+      "english": "Contrast check for \"hobi\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Hobim fotoğraf çekmek.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My hobby is taking photos.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "hobi",
+      "romanization": "ho-Bİ",
+      "nativeText": "Recall \"hobi\" from memory, then explain what would change if a nearby alternative replaced it in \"Hobim fotoğraf çekmek.\".",
+      "pronunciation": "ho-Bİ",
+      "exampleTarget": "Hobim fotoğraf çekmek.",
+      "exampleNative": "Self-check against the model before moving on: “My hobby is taking photos.”",
+      "korean": "hobi",
+      "english": "Recall \"hobi\" from memory, then explain what would change if a nearby alternative replaced it in \"Hobim fotoğraf çekmek.\".",
+      "example": "Hobim fotoğraf çekmek.",
+      "exampleEnglish": "Self-check against the model before moving on: “My hobby is taking photos.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "hobi",
+      "romanization": "ho-Bİ",
+      "nativeText": "Repair \"hobi\" inside \"Hobim fotoğraf çekmek.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 16: Kulüpler ve Boş Zaman — Clubs and Leisure with the register and setting that the lesson requires.",
+      "pronunciation": "ho-Bİ",
+      "exampleTarget": "Hobim fotoğraf çekmek.",
+      "exampleNative": "Use the model as the repair target: “My hobby is taking photos.”",
+      "korean": "hobi",
+      "english": "Repair \"hobi\" inside \"Hobim fotoğraf çekmek.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 16: Kulüpler ve Boş Zaman — Clubs and Leisure with the register and setting that the lesson requires.",
+      "example": "Hobim fotoğraf çekmek.",
+      "exampleEnglish": "Use the model as the repair target: “My hobby is taking photos.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "hobi",
+      "romanization": "ho-Bİ",
+      "nativeText": "Transfer \"hobi\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Hobim fotoğraf çekmek.\".",
+      "pronunciation": "ho-Bİ",
+      "exampleTarget": "Hobim fotoğraf çekmek.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “My hobby is taking photos.”",
+      "korean": "hobi",
+      "english": "Transfer \"hobi\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Hobim fotoğraf çekmek.\".",
+      "example": "Hobim fotoğraf çekmek.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “My hobby is taking photos.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "hobi",
+      "romanization": "ho-Bİ",
+      "nativeText": "Find one word or phrase that naturally travels with \"hobi\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ho-Bİ",
+      "exampleTarget": "Hobim fotoğraf çekmek.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “My hobby is taking photos.”",
+      "korean": "hobi",
+      "english": "Find one word or phrase that naturally travels with \"hobi\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Hobim fotoğraf çekmek.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “My hobby is taking photos.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "hobi",
+      "romanization": "ho-Bİ",
+      "nativeText": "Listen for \"hobi\" inside \"Hobim fotoğraf çekmek.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ho-Bİ",
+      "exampleTarget": "Hobim fotoğraf çekmek.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My hobby is taking photos.”",
+      "korean": "hobi",
+      "english": "Listen for \"hobi\" inside \"Hobim fotoğraf çekmek.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Hobim fotoğraf çekmek.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My hobby is taking photos.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "hobi",
+      "romanization": "ho-Bİ",
+      "nativeText": "Write \"hobi\" again without looking, then compare the exact written form against \"Hobim fotoğraf çekmek.\" before moving on.",
+      "pronunciation": "ho-Bİ",
+      "exampleTarget": "Hobim fotoğraf çekmek.",
+      "exampleNative": "Use the written model as the final correctness check: “My hobby is taking photos.”",
+      "korean": "hobi",
+      "english": "Write \"hobi\" again without looking, then compare the exact written form against \"Hobim fotoğraf çekmek.\" before moving on.",
+      "example": "Hobim fotoğraf çekmek.",
+      "exampleEnglish": "Use the written model as the final correctness check: “My hobby is taking photos.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "hobi",
+      "romanization": "ho-Bİ",
+      "nativeText": "Check whether \"hobi\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My hobby is taking photos.”",
+      "pronunciation": "ho-Bİ",
+      "exampleTarget": "Hobim fotoğraf çekmek.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “My hobby is taking photos.”",
+      "korean": "hobi",
+      "english": "Check whether \"hobi\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My hobby is taking photos.”",
+      "example": "Hobim fotoğraf çekmek.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “My hobby is taking photos.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "kulüp",
+      "romanization": "ku-LÜP",
+      "nativeText": "“Club.” Useful for campus and social groups.",
+      "pronunciation": "ku-LÜP",
+      "exampleTarget": "Tiyatro kulübüne katılıyorum.",
+      "exampleNative": "“I am joining the theater club.”",
+      "korean": "kulüp",
+      "english": "“Club.” Useful for campus and social groups.",
+      "example": "Tiyatro kulübüne katılıyorum.",
+      "exampleEnglish": "“I am joining the theater club.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "Tiyatro kulübüne katılıyorum.",
+      "romanization": "ku-LÜP",
+      "nativeText": "Model use for \"Tiyatro kulübüne katılıyorum.\": “I am joining the theater club.”",
+      "pronunciation": "ku-LÜP",
+      "exampleTarget": "Tiyatro kulübüne katılıyorum.",
+      "exampleNative": "“I am joining the theater club.”",
+      "korean": "Tiyatro kulübüne katılıyorum.",
+      "english": "Model use for \"Tiyatro kulübüne katılıyorum.\": “I am joining the theater club.”",
+      "example": "Tiyatro kulübüne katılıyorum.",
+      "exampleEnglish": "“I am joining the theater club.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "kulüp",
+      "romanization": "ku-LÜP",
+      "nativeText": "Usage focus for \"kulüp\": Distinguish the nearby wording choices that make Level 1 · Unit 16: Kulüpler ve Boş Zaman — Clubs and Leisure sound precise rather than merely understandable.",
+      "pronunciation": "ku-LÜP",
+      "exampleTarget": "Tiyatro kulübüne katılıyorum.",
+      "exampleNative": "Notice what the form is doing here: “I am joining the theater club.”",
+      "korean": "kulüp",
+      "english": "Usage focus for \"kulüp\": Distinguish the nearby wording choices that make Level 1 · Unit 16: Kulüpler ve Boş Zaman — Clubs and Leisure sound precise rather than merely understandable.",
+      "example": "Tiyatro kulübüne katılıyorum.",
+      "exampleEnglish": "Notice what the form is doing here: “I am joining the theater club.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "kulüp",
+      "romanization": "ku-LÜP",
+      "nativeText": "Contrast check for \"kulüp\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ku-LÜP",
+      "exampleTarget": "Tiyatro kulübüne katılıyorum.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am joining the theater club.”",
+      "korean": "kulüp",
+      "english": "Contrast check for \"kulüp\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Tiyatro kulübüne katılıyorum.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am joining the theater club.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "kulüp",
+      "romanization": "ku-LÜP",
+      "nativeText": "Recall \"kulüp\" from memory, then explain what would change if a nearby alternative replaced it in \"Tiyatro kulübüne katılıyorum.\".",
+      "pronunciation": "ku-LÜP",
+      "exampleTarget": "Tiyatro kulübüne katılıyorum.",
+      "exampleNative": "Self-check against the model before moving on: “I am joining the theater club.”",
+      "korean": "kulüp",
+      "english": "Recall \"kulüp\" from memory, then explain what would change if a nearby alternative replaced it in \"Tiyatro kulübüne katılıyorum.\".",
+      "example": "Tiyatro kulübüne katılıyorum.",
+      "exampleEnglish": "Self-check against the model before moving on: “I am joining the theater club.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "kulüp",
+      "romanization": "ku-LÜP",
+      "nativeText": "Repair \"kulüp\" inside \"Tiyatro kulübüne katılıyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 16: Kulüpler ve Boş Zaman — Clubs and Leisure sound precise rather than merely understandable.",
+      "pronunciation": "ku-LÜP",
+      "exampleTarget": "Tiyatro kulübüne katılıyorum.",
+      "exampleNative": "Use the model as the repair target: “I am joining the theater club.”",
+      "korean": "kulüp",
+      "english": "Repair \"kulüp\" inside \"Tiyatro kulübüne katılıyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 16: Kulüpler ve Boş Zaman — Clubs and Leisure sound precise rather than merely understandable.",
+      "example": "Tiyatro kulübüne katılıyorum.",
+      "exampleEnglish": "Use the model as the repair target: “I am joining the theater club.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "kulüp",
+      "romanization": "ku-LÜP",
+      "nativeText": "Transfer \"kulüp\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Tiyatro kulübüne katılıyorum.\".",
+      "pronunciation": "ku-LÜP",
+      "exampleTarget": "Tiyatro kulübüne katılıyorum.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am joining the theater club.”",
+      "korean": "kulüp",
+      "english": "Transfer \"kulüp\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Tiyatro kulübüne katılıyorum.\".",
+      "example": "Tiyatro kulübüne katılıyorum.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am joining the theater club.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "kulüp",
+      "romanization": "ku-LÜP",
+      "nativeText": "Find one word or phrase that naturally travels with \"kulüp\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ku-LÜP",
+      "exampleTarget": "Tiyatro kulübüne katılıyorum.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I am joining the theater club.”",
+      "korean": "kulüp",
+      "english": "Find one word or phrase that naturally travels with \"kulüp\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Tiyatro kulübüne katılıyorum.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I am joining the theater club.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "kulüp",
+      "romanization": "ku-LÜP",
+      "nativeText": "Listen for \"kulüp\" inside \"Tiyatro kulübüne katılıyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ku-LÜP",
+      "exampleTarget": "Tiyatro kulübüne katılıyorum.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am joining the theater club.”",
+      "korean": "kulüp",
+      "english": "Listen for \"kulüp\" inside \"Tiyatro kulübüne katılıyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Tiyatro kulübüne katılıyorum.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am joining the theater club.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "kulüp",
+      "romanization": "ku-LÜP",
+      "nativeText": "Write \"kulüp\" again without looking, then compare the exact written form against \"Tiyatro kulübüne katılıyorum.\" before moving on.",
+      "pronunciation": "ku-LÜP",
+      "exampleTarget": "Tiyatro kulübüne katılıyorum.",
+      "exampleNative": "Use the written model as the final correctness check: “I am joining the theater club.”",
+      "korean": "kulüp",
+      "english": "Write \"kulüp\" again without looking, then compare the exact written form against \"Tiyatro kulübüne katılıyorum.\" before moving on.",
+      "example": "Tiyatro kulübüne katılıyorum.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I am joining the theater club.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "kulüp",
+      "romanization": "ku-LÜP",
+      "nativeText": "Check whether \"kulüp\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am joining the theater club.”",
+      "pronunciation": "ku-LÜP",
+      "exampleTarget": "Tiyatro kulübüne katılıyorum.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I am joining the theater club.”",
+      "korean": "kulüp",
+      "english": "Check whether \"kulüp\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am joining the theater club.”",
+      "example": "Tiyatro kulübüne katılıyorum.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I am joining the theater club.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "kitap okumak",
+      "romanization": "ki-TAP o-ku-MAK",
+      "nativeText": "“Reading books.” Infinitive forms often name activities.",
+      "pronunciation": "ki-TAP o-ku-MAK",
+      "exampleTarget": "Kitap okumayı seviyorum.",
+      "exampleNative": "“I like reading books.”",
+      "korean": "kitap okumak",
+      "english": "“Reading books.” Infinitive forms often name activities.",
+      "example": "Kitap okumayı seviyorum.",
+      "exampleEnglish": "“I like reading books.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "Kitap okumayı seviyorum.",
+      "romanization": "ki-TAP o-ku-MAK",
+      "nativeText": "Model use for \"Kitap okumayı seviyorum.\": “I like reading books.”",
+      "pronunciation": "ki-TAP o-ku-MAK",
+      "exampleTarget": "Kitap okumayı seviyorum.",
+      "exampleNative": "“I like reading books.”",
+      "korean": "Kitap okumayı seviyorum.",
+      "english": "Model use for \"Kitap okumayı seviyorum.\": “I like reading books.”",
+      "example": "Kitap okumayı seviyorum.",
+      "exampleEnglish": "“I like reading books.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "kitap okumak",
+      "romanization": "ki-TAP o-ku-MAK",
+      "nativeText": "Usage focus for \"kitap okumak\": “Reading books.” Infinitive forms often name activities.",
+      "pronunciation": "ki-TAP o-ku-MAK",
+      "exampleTarget": "Kitap okumayı seviyorum.",
+      "exampleNative": "Notice what the form is doing here: “I like reading books.”",
+      "korean": "kitap okumak",
+      "english": "Usage focus for \"kitap okumak\": “Reading books.” Infinitive forms often name activities.",
+      "example": "Kitap okumayı seviyorum.",
+      "exampleEnglish": "Notice what the form is doing here: “I like reading books.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "kitap okumak",
+      "romanization": "ki-TAP o-ku-MAK",
+      "nativeText": "Contrast check for \"kitap okumak\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ki-TAP o-ku-MAK",
+      "exampleTarget": "Kitap okumayı seviyorum.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like reading books.”",
+      "korean": "kitap okumak",
+      "english": "Contrast check for \"kitap okumak\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Kitap okumayı seviyorum.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like reading books.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "kitap okumak",
+      "romanization": "ki-TAP o-ku-MAK",
+      "nativeText": "Recall \"kitap okumak\" from memory, then explain what would change if a nearby alternative replaced it in \"Kitap okumayı seviyorum.\".",
+      "pronunciation": "ki-TAP o-ku-MAK",
+      "exampleTarget": "Kitap okumayı seviyorum.",
+      "exampleNative": "Self-check against the model before moving on: “I like reading books.”",
+      "korean": "kitap okumak",
+      "english": "Recall \"kitap okumak\" from memory, then explain what would change if a nearby alternative replaced it in \"Kitap okumayı seviyorum.\".",
+      "example": "Kitap okumayı seviyorum.",
+      "exampleEnglish": "Self-check against the model before moving on: “I like reading books.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "kitap okumak",
+      "romanization": "ki-TAP o-ku-MAK",
+      "nativeText": "Repair \"kitap okumak\" inside \"Kitap okumayı seviyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Reading books.” Infinitive forms often name activities.",
+      "pronunciation": "ki-TAP o-ku-MAK",
+      "exampleTarget": "Kitap okumayı seviyorum.",
+      "exampleNative": "Use the model as the repair target: “I like reading books.”",
+      "korean": "kitap okumak",
+      "english": "Repair \"kitap okumak\" inside \"Kitap okumayı seviyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Reading books.” Infinitive forms often name activities.",
+      "example": "Kitap okumayı seviyorum.",
+      "exampleEnglish": "Use the model as the repair target: “I like reading books.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "kitap okumak",
+      "romanization": "ki-TAP o-ku-MAK",
+      "nativeText": "Transfer \"kitap okumak\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Kitap okumayı seviyorum.\".",
+      "pronunciation": "ki-TAP o-ku-MAK",
+      "exampleTarget": "Kitap okumayı seviyorum.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like reading books.”",
+      "korean": "kitap okumak",
+      "english": "Transfer \"kitap okumak\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Kitap okumayı seviyorum.\".",
+      "example": "Kitap okumayı seviyorum.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like reading books.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "kitap okumak",
+      "romanization": "ki-TAP o-ku-MAK",
+      "nativeText": "Find one word or phrase that naturally travels with \"kitap okumak\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ki-TAP o-ku-MAK",
+      "exampleTarget": "Kitap okumayı seviyorum.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I like reading books.”",
+      "korean": "kitap okumak",
+      "english": "Find one word or phrase that naturally travels with \"kitap okumak\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Kitap okumayı seviyorum.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I like reading books.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "kitap okumak",
+      "romanization": "ki-TAP o-ku-MAK",
+      "nativeText": "Listen for \"kitap okumak\" inside \"Kitap okumayı seviyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ki-TAP o-ku-MAK",
+      "exampleTarget": "Kitap okumayı seviyorum.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like reading books.”",
+      "korean": "kitap okumak",
+      "english": "Listen for \"kitap okumak\" inside \"Kitap okumayı seviyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Kitap okumayı seviyorum.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like reading books.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "kitap okumak",
+      "romanization": "ki-TAP o-ku-MAK",
+      "nativeText": "Write \"kitap okumak\" again without looking, then compare the exact written form against \"Kitap okumayı seviyorum.\" before moving on.",
+      "pronunciation": "ki-TAP o-ku-MAK",
+      "exampleTarget": "Kitap okumayı seviyorum.",
+      "exampleNative": "Use the written model as the final correctness check: “I like reading books.”",
+      "korean": "kitap okumak",
+      "english": "Write \"kitap okumak\" again without looking, then compare the exact written form against \"Kitap okumayı seviyorum.\" before moving on.",
+      "example": "Kitap okumayı seviyorum.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I like reading books.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "kitap okumak",
+      "romanization": "ki-TAP o-ku-MAK",
+      "nativeText": "Check whether \"kitap okumak\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like reading books.”",
+      "pronunciation": "ki-TAP o-ku-MAK",
+      "exampleTarget": "Kitap okumayı seviyorum.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I like reading books.”",
+      "korean": "kitap okumak",
+      "english": "Check whether \"kitap okumak\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like reading books.”",
+      "example": "Kitap okumayı seviyorum.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I like reading books.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "gitar çalmak",
+      "romanization": "gi-TAR çal-MAK",
+      "nativeText": "“Playing guitar.”",
+      "pronunciation": "gi-TAR çal-MAK",
+      "exampleTarget": "O gitar çalmayı seviyor.",
+      "exampleNative": "“She likes playing guitar.”",
+      "korean": "gitar çalmak",
+      "english": "“Playing guitar.”",
+      "example": "O gitar çalmayı seviyor.",
+      "exampleEnglish": "“She likes playing guitar.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "O gitar çalmayı seviyor.",
+      "romanization": "gi-TAR çal-MAK",
+      "nativeText": "Model use for \"O gitar çalmayı seviyor.\": “She likes playing guitar.”",
+      "pronunciation": "gi-TAR çal-MAK",
+      "exampleTarget": "O gitar çalmayı seviyor.",
+      "exampleNative": "“She likes playing guitar.”",
+      "korean": "O gitar çalmayı seviyor.",
+      "english": "Model use for \"O gitar çalmayı seviyor.\": “She likes playing guitar.”",
+      "example": "O gitar çalmayı seviyor.",
+      "exampleEnglish": "“She likes playing guitar.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "gitar çalmak",
+      "romanization": "gi-TAR çal-MAK",
+      "nativeText": "Usage focus for \"gitar çalmak\": “Playing guitar.”",
+      "pronunciation": "gi-TAR çal-MAK",
+      "exampleTarget": "O gitar çalmayı seviyor.",
+      "exampleNative": "Notice what the form is doing here: “She likes playing guitar.”",
+      "korean": "gitar çalmak",
+      "english": "Usage focus for \"gitar çalmak\": “Playing guitar.”",
+      "example": "O gitar çalmayı seviyor.",
+      "exampleEnglish": "Notice what the form is doing here: “She likes playing guitar.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "gitar çalmak",
+      "romanization": "gi-TAR çal-MAK",
+      "nativeText": "Contrast check for \"gitar çalmak\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "gi-TAR çal-MAK",
+      "exampleTarget": "O gitar çalmayı seviyor.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “She likes playing guitar.”",
+      "korean": "gitar çalmak",
+      "english": "Contrast check for \"gitar çalmak\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "O gitar çalmayı seviyor.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “She likes playing guitar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "gitar çalmak",
+      "romanization": "gi-TAR çal-MAK",
+      "nativeText": "Recall \"gitar çalmak\" from memory, then explain what would change if a nearby alternative replaced it in \"O gitar çalmayı seviyor.\".",
+      "pronunciation": "gi-TAR çal-MAK",
+      "exampleTarget": "O gitar çalmayı seviyor.",
+      "exampleNative": "Self-check against the model before moving on: “She likes playing guitar.”",
+      "korean": "gitar çalmak",
+      "english": "Recall \"gitar çalmak\" from memory, then explain what would change if a nearby alternative replaced it in \"O gitar çalmayı seviyor.\".",
+      "example": "O gitar çalmayı seviyor.",
+      "exampleEnglish": "Self-check against the model before moving on: “She likes playing guitar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "gitar çalmak",
+      "romanization": "gi-TAR çal-MAK",
+      "nativeText": "Repair \"gitar çalmak\" inside \"O gitar çalmayı seviyor.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Playing guitar.”",
+      "pronunciation": "gi-TAR çal-MAK",
+      "exampleTarget": "O gitar çalmayı seviyor.",
+      "exampleNative": "Use the model as the repair target: “She likes playing guitar.”",
+      "korean": "gitar çalmak",
+      "english": "Repair \"gitar çalmak\" inside \"O gitar çalmayı seviyor.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Playing guitar.”",
+      "example": "O gitar çalmayı seviyor.",
+      "exampleEnglish": "Use the model as the repair target: “She likes playing guitar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "gitar çalmak",
+      "romanization": "gi-TAR çal-MAK",
+      "nativeText": "Transfer \"gitar çalmak\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"O gitar çalmayı seviyor.\".",
+      "pronunciation": "gi-TAR çal-MAK",
+      "exampleTarget": "O gitar çalmayı seviyor.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “She likes playing guitar.”",
+      "korean": "gitar çalmak",
+      "english": "Transfer \"gitar çalmak\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"O gitar çalmayı seviyor.\".",
+      "example": "O gitar çalmayı seviyor.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “She likes playing guitar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "gitar çalmak",
+      "romanization": "gi-TAR çal-MAK",
+      "nativeText": "Find one word or phrase that naturally travels with \"gitar çalmak\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "gi-TAR çal-MAK",
+      "exampleTarget": "O gitar çalmayı seviyor.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “She likes playing guitar.”",
+      "korean": "gitar çalmak",
+      "english": "Find one word or phrase that naturally travels with \"gitar çalmak\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "O gitar çalmayı seviyor.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “She likes playing guitar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "gitar çalmak",
+      "romanization": "gi-TAR çal-MAK",
+      "nativeText": "Listen for \"gitar çalmak\" inside \"O gitar çalmayı seviyor.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "gi-TAR çal-MAK",
+      "exampleTarget": "O gitar çalmayı seviyor.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “She likes playing guitar.”",
+      "korean": "gitar çalmak",
+      "english": "Listen for \"gitar çalmak\" inside \"O gitar çalmayı seviyor.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "O gitar çalmayı seviyor.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “She likes playing guitar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "gitar çalmak",
+      "romanization": "gi-TAR çal-MAK",
+      "nativeText": "Write \"gitar çalmak\" again without looking, then compare the exact written form against \"O gitar çalmayı seviyor.\" before moving on.",
+      "pronunciation": "gi-TAR çal-MAK",
+      "exampleTarget": "O gitar çalmayı seviyor.",
+      "exampleNative": "Use the written model as the final correctness check: “She likes playing guitar.”",
+      "korean": "gitar çalmak",
+      "english": "Write \"gitar çalmak\" again without looking, then compare the exact written form against \"O gitar çalmayı seviyor.\" before moving on.",
+      "example": "O gitar çalmayı seviyor.",
+      "exampleEnglish": "Use the written model as the final correctness check: “She likes playing guitar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "gitar çalmak",
+      "romanization": "gi-TAR çal-MAK",
+      "nativeText": "Check whether \"gitar çalmak\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “She likes playing guitar.”",
+      "pronunciation": "gi-TAR çal-MAK",
+      "exampleTarget": "O gitar çalmayı seviyor.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “She likes playing guitar.”",
+      "korean": "gitar çalmak",
+      "english": "Check whether \"gitar çalmak\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “She likes playing guitar.”",
+      "example": "O gitar çalmayı seviyor.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “She likes playing guitar.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "spor yapmak",
+      "romanization": "SPOR yap-MAK",
+      "nativeText": "“Doing sports.” Turkish often uses `yapmak` with activity nouns.",
+      "pronunciation": "SPOR yap-MAK",
+      "exampleTarget": "Hafta sonu spor yapıyorum.",
+      "exampleNative": "“I do sports on weekends.”",
+      "korean": "spor yapmak",
+      "english": "“Doing sports.” Turkish often uses `yapmak` with activity nouns.",
+      "example": "Hafta sonu spor yapıyorum.",
+      "exampleEnglish": "“I do sports on weekends.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "Hafta sonu spor yapıyorum.",
+      "romanization": "SPOR yap-MAK",
+      "nativeText": "Model use for \"Hafta sonu spor yapıyorum.\": “I do sports on weekends.”",
+      "pronunciation": "SPOR yap-MAK",
+      "exampleTarget": "Hafta sonu spor yapıyorum.",
+      "exampleNative": "“I do sports on weekends.”",
+      "korean": "Hafta sonu spor yapıyorum.",
+      "english": "Model use for \"Hafta sonu spor yapıyorum.\": “I do sports on weekends.”",
+      "example": "Hafta sonu spor yapıyorum.",
+      "exampleEnglish": "“I do sports on weekends.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "spor yapmak",
+      "romanization": "SPOR yap-MAK",
+      "nativeText": "Usage focus for \"spor yapmak\": “Doing sports.” Turkish often uses `yapmak` with activity nouns.",
+      "pronunciation": "SPOR yap-MAK",
+      "exampleTarget": "Hafta sonu spor yapıyorum.",
+      "exampleNative": "Notice what the form is doing here: “I do sports on weekends.”",
+      "korean": "spor yapmak",
+      "english": "Usage focus for \"spor yapmak\": “Doing sports.” Turkish often uses `yapmak` with activity nouns.",
+      "example": "Hafta sonu spor yapıyorum.",
+      "exampleEnglish": "Notice what the form is doing here: “I do sports on weekends.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "spor yapmak",
+      "romanization": "SPOR yap-MAK",
+      "nativeText": "Contrast check for \"spor yapmak\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "SPOR yap-MAK",
+      "exampleTarget": "Hafta sonu spor yapıyorum.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I do sports on weekends.”",
+      "korean": "spor yapmak",
+      "english": "Contrast check for \"spor yapmak\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Hafta sonu spor yapıyorum.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I do sports on weekends.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "spor yapmak",
+      "romanization": "SPOR yap-MAK",
+      "nativeText": "Recall \"spor yapmak\" from memory, then explain what would change if a nearby alternative replaced it in \"Hafta sonu spor yapıyorum.\".",
+      "pronunciation": "SPOR yap-MAK",
+      "exampleTarget": "Hafta sonu spor yapıyorum.",
+      "exampleNative": "Self-check against the model before moving on: “I do sports on weekends.”",
+      "korean": "spor yapmak",
+      "english": "Recall \"spor yapmak\" from memory, then explain what would change if a nearby alternative replaced it in \"Hafta sonu spor yapıyorum.\".",
+      "example": "Hafta sonu spor yapıyorum.",
+      "exampleEnglish": "Self-check against the model before moving on: “I do sports on weekends.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "spor yapmak",
+      "romanization": "SPOR yap-MAK",
+      "nativeText": "Repair \"spor yapmak\" inside \"Hafta sonu spor yapıyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Doing sports.” Turkish often uses `yapmak` with activity nouns.",
+      "pronunciation": "SPOR yap-MAK",
+      "exampleTarget": "Hafta sonu spor yapıyorum.",
+      "exampleNative": "Use the model as the repair target: “I do sports on weekends.”",
+      "korean": "spor yapmak",
+      "english": "Repair \"spor yapmak\" inside \"Hafta sonu spor yapıyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Doing sports.” Turkish often uses `yapmak` with activity nouns.",
+      "example": "Hafta sonu spor yapıyorum.",
+      "exampleEnglish": "Use the model as the repair target: “I do sports on weekends.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "spor yapmak",
+      "romanization": "SPOR yap-MAK",
+      "nativeText": "Transfer \"spor yapmak\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Hafta sonu spor yapıyorum.\".",
+      "pronunciation": "SPOR yap-MAK",
+      "exampleTarget": "Hafta sonu spor yapıyorum.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I do sports on weekends.”",
+      "korean": "spor yapmak",
+      "english": "Transfer \"spor yapmak\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Hafta sonu spor yapıyorum.\".",
+      "example": "Hafta sonu spor yapıyorum.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I do sports on weekends.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "spor yapmak",
+      "romanization": "SPOR yap-MAK",
+      "nativeText": "Find one word or phrase that naturally travels with \"spor yapmak\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "SPOR yap-MAK",
+      "exampleTarget": "Hafta sonu spor yapıyorum.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I do sports on weekends.”",
+      "korean": "spor yapmak",
+      "english": "Find one word or phrase that naturally travels with \"spor yapmak\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Hafta sonu spor yapıyorum.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I do sports on weekends.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "spor yapmak",
+      "romanization": "SPOR yap-MAK",
+      "nativeText": "Listen for \"spor yapmak\" inside \"Hafta sonu spor yapıyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "SPOR yap-MAK",
+      "exampleTarget": "Hafta sonu spor yapıyorum.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I do sports on weekends.”",
+      "korean": "spor yapmak",
+      "english": "Listen for \"spor yapmak\" inside \"Hafta sonu spor yapıyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Hafta sonu spor yapıyorum.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I do sports on weekends.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "spor yapmak",
+      "romanization": "SPOR yap-MAK",
+      "nativeText": "Write \"spor yapmak\" again without looking, then compare the exact written form against \"Hafta sonu spor yapıyorum.\" before moving on.",
+      "pronunciation": "SPOR yap-MAK",
+      "exampleTarget": "Hafta sonu spor yapıyorum.",
+      "exampleNative": "Use the written model as the final correctness check: “I do sports on weekends.”",
+      "korean": "spor yapmak",
+      "english": "Write \"spor yapmak\" again without looking, then compare the exact written form against \"Hafta sonu spor yapıyorum.\" before moving on.",
+      "example": "Hafta sonu spor yapıyorum.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I do sports on weekends.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "spor yapmak",
+      "romanization": "SPOR yap-MAK",
+      "nativeText": "Check whether \"spor yapmak\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I do sports on weekends.”",
+      "pronunciation": "SPOR yap-MAK",
+      "exampleTarget": "Hafta sonu spor yapıyorum.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I do sports on weekends.”",
+      "korean": "spor yapmak",
+      "english": "Check whether \"spor yapmak\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I do sports on weekends.”",
+      "example": "Hafta sonu spor yapıyorum.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I do sports on weekends.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "sık sık",
+      "romanization": "SIK SIK",
+      "nativeText": "“Often.” Reduplication intensifies frequency.",
+      "pronunciation": "SIK SIK",
+      "exampleTarget": "Sık sık film izliyorum.",
+      "exampleNative": "“I often watch films.”",
+      "korean": "sık sık",
+      "english": "“Often.” Reduplication intensifies frequency.",
+      "example": "Sık sık film izliyorum.",
+      "exampleEnglish": "“I often watch films.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "Sık sık film izliyorum.",
+      "romanization": "SIK SIK",
+      "nativeText": "Model use for \"Sık sık film izliyorum.\": “I often watch films.”",
+      "pronunciation": "SIK SIK",
+      "exampleTarget": "Sık sık film izliyorum.",
+      "exampleNative": "“I often watch films.”",
+      "korean": "Sık sık film izliyorum.",
+      "english": "Model use for \"Sık sık film izliyorum.\": “I often watch films.”",
+      "example": "Sık sık film izliyorum.",
+      "exampleEnglish": "“I often watch films.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "sık sık",
+      "romanization": "SIK SIK",
+      "nativeText": "Usage focus for \"sık sık\": “Often.” Reduplication intensifies frequency.",
+      "pronunciation": "SIK SIK",
+      "exampleTarget": "Sık sık film izliyorum.",
+      "exampleNative": "Notice what the form is doing here: “I often watch films.”",
+      "korean": "sık sık",
+      "english": "Usage focus for \"sık sık\": “Often.” Reduplication intensifies frequency.",
+      "example": "Sık sık film izliyorum.",
+      "exampleEnglish": "Notice what the form is doing here: “I often watch films.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "sık sık",
+      "romanization": "SIK SIK",
+      "nativeText": "Contrast check for \"sık sık\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "SIK SIK",
+      "exampleTarget": "Sık sık film izliyorum.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I often watch films.”",
+      "korean": "sık sık",
+      "english": "Contrast check for \"sık sık\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Sık sık film izliyorum.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I often watch films.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "sık sık",
+      "romanization": "SIK SIK",
+      "nativeText": "Recall \"sık sık\" from memory, then explain what would change if a nearby alternative replaced it in \"Sık sık film izliyorum.\".",
+      "pronunciation": "SIK SIK",
+      "exampleTarget": "Sık sık film izliyorum.",
+      "exampleNative": "Self-check against the model before moving on: “I often watch films.”",
+      "korean": "sık sık",
+      "english": "Recall \"sık sık\" from memory, then explain what would change if a nearby alternative replaced it in \"Sık sık film izliyorum.\".",
+      "example": "Sık sık film izliyorum.",
+      "exampleEnglish": "Self-check against the model before moving on: “I often watch films.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "sık sık",
+      "romanization": "SIK SIK",
+      "nativeText": "Repair \"sık sık\" inside \"Sık sık film izliyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Often.” Reduplication intensifies frequency.",
+      "pronunciation": "SIK SIK",
+      "exampleTarget": "Sık sık film izliyorum.",
+      "exampleNative": "Use the model as the repair target: “I often watch films.”",
+      "korean": "sık sık",
+      "english": "Repair \"sık sık\" inside \"Sık sık film izliyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Often.” Reduplication intensifies frequency.",
+      "example": "Sık sık film izliyorum.",
+      "exampleEnglish": "Use the model as the repair target: “I often watch films.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "sık sık",
+      "romanization": "SIK SIK",
+      "nativeText": "Transfer \"sık sık\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Sık sık film izliyorum.\".",
+      "pronunciation": "SIK SIK",
+      "exampleTarget": "Sık sık film izliyorum.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I often watch films.”",
+      "korean": "sık sık",
+      "english": "Transfer \"sık sık\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Sık sık film izliyorum.\".",
+      "example": "Sık sık film izliyorum.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I often watch films.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "sık sık",
+      "romanization": "SIK SIK",
+      "nativeText": "Find one word or phrase that naturally travels with \"sık sık\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "SIK SIK",
+      "exampleTarget": "Sık sık film izliyorum.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I often watch films.”",
+      "korean": "sık sık",
+      "english": "Find one word or phrase that naturally travels with \"sık sık\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Sık sık film izliyorum.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I often watch films.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "sık sık",
+      "romanization": "SIK SIK",
+      "nativeText": "Listen for \"sık sık\" inside \"Sık sık film izliyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "SIK SIK",
+      "exampleTarget": "Sık sık film izliyorum.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I often watch films.”",
+      "korean": "sık sık",
+      "english": "Listen for \"sık sık\" inside \"Sık sık film izliyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Sık sık film izliyorum.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I often watch films.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "sık sık",
+      "romanization": "SIK SIK",
+      "nativeText": "Write \"sık sık\" again without looking, then compare the exact written form against \"Sık sık film izliyorum.\" before moving on.",
+      "pronunciation": "SIK SIK",
+      "exampleTarget": "Sık sık film izliyorum.",
+      "exampleNative": "Use the written model as the final correctness check: “I often watch films.”",
+      "korean": "sık sık",
+      "english": "Write \"sık sık\" again without looking, then compare the exact written form against \"Sık sık film izliyorum.\" before moving on.",
+      "example": "Sık sık film izliyorum.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I often watch films.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "sık sık",
+      "romanization": "SIK SIK",
+      "nativeText": "Check whether \"sık sık\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I often watch films.”",
+      "pronunciation": "SIK SIK",
+      "exampleTarget": "Sık sık film izliyorum.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I often watch films.”",
+      "korean": "sık sık",
+      "english": "Check whether \"sık sık\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I often watch films.”",
+      "example": "Sık sık film izliyorum.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I often watch films.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "bazen",
+      "romanization": "ba-ZEN",
+      "nativeText": "“Sometimes.” Useful for moderate frequency.",
+      "pronunciation": "ba-ZEN",
+      "exampleTarget": "Bazen evde yemek yapıyorum.",
+      "exampleNative": "“Sometimes I cook at home.”",
+      "korean": "bazen",
+      "english": "“Sometimes.” Useful for moderate frequency.",
+      "example": "Bazen evde yemek yapıyorum.",
+      "exampleEnglish": "“Sometimes I cook at home.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "Bazen evde yemek yapıyorum.",
+      "romanization": "ba-ZEN",
+      "nativeText": "Model use for \"Bazen evde yemek yapıyorum.\": “Sometimes I cook at home.”",
+      "pronunciation": "ba-ZEN",
+      "exampleTarget": "Bazen evde yemek yapıyorum.",
+      "exampleNative": "“Sometimes I cook at home.”",
+      "korean": "Bazen evde yemek yapıyorum.",
+      "english": "Model use for \"Bazen evde yemek yapıyorum.\": “Sometimes I cook at home.”",
+      "example": "Bazen evde yemek yapıyorum.",
+      "exampleEnglish": "“Sometimes I cook at home.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "bazen",
+      "romanization": "ba-ZEN",
+      "nativeText": "Usage focus for \"bazen\": “Sometimes.” Useful for moderate frequency.",
+      "pronunciation": "ba-ZEN",
+      "exampleTarget": "Bazen evde yemek yapıyorum.",
+      "exampleNative": "Notice what the form is doing here: “Sometimes I cook at home.”",
+      "korean": "bazen",
+      "english": "Usage focus for \"bazen\": “Sometimes.” Useful for moderate frequency.",
+      "example": "Bazen evde yemek yapıyorum.",
+      "exampleEnglish": "Notice what the form is doing here: “Sometimes I cook at home.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "bazen",
+      "romanization": "ba-ZEN",
+      "nativeText": "Contrast check for \"bazen\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ba-ZEN",
+      "exampleTarget": "Bazen evde yemek yapıyorum.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Sometimes I cook at home.”",
+      "korean": "bazen",
+      "english": "Contrast check for \"bazen\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Bazen evde yemek yapıyorum.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Sometimes I cook at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "bazen",
+      "romanization": "ba-ZEN",
+      "nativeText": "Recall \"bazen\" from memory, then explain what would change if a nearby alternative replaced it in \"Bazen evde yemek yapıyorum.\".",
+      "pronunciation": "ba-ZEN",
+      "exampleTarget": "Bazen evde yemek yapıyorum.",
+      "exampleNative": "Self-check against the model before moving on: “Sometimes I cook at home.”",
+      "korean": "bazen",
+      "english": "Recall \"bazen\" from memory, then explain what would change if a nearby alternative replaced it in \"Bazen evde yemek yapıyorum.\".",
+      "example": "Bazen evde yemek yapıyorum.",
+      "exampleEnglish": "Self-check against the model before moving on: “Sometimes I cook at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "bazen",
+      "romanization": "ba-ZEN",
+      "nativeText": "Repair \"bazen\" inside \"Bazen evde yemek yapıyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Sometimes.” Useful for moderate frequency.",
+      "pronunciation": "ba-ZEN",
+      "exampleTarget": "Bazen evde yemek yapıyorum.",
+      "exampleNative": "Use the model as the repair target: “Sometimes I cook at home.”",
+      "korean": "bazen",
+      "english": "Repair \"bazen\" inside \"Bazen evde yemek yapıyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Sometimes.” Useful for moderate frequency.",
+      "example": "Bazen evde yemek yapıyorum.",
+      "exampleEnglish": "Use the model as the repair target: “Sometimes I cook at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "bazen",
+      "romanization": "ba-ZEN",
+      "nativeText": "Transfer \"bazen\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bazen evde yemek yapıyorum.\".",
+      "pronunciation": "ba-ZEN",
+      "exampleTarget": "Bazen evde yemek yapıyorum.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Sometimes I cook at home.”",
+      "korean": "bazen",
+      "english": "Transfer \"bazen\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bazen evde yemek yapıyorum.\".",
+      "example": "Bazen evde yemek yapıyorum.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Sometimes I cook at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "bazen",
+      "romanization": "ba-ZEN",
+      "nativeText": "Find one word or phrase that naturally travels with \"bazen\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ba-ZEN",
+      "exampleTarget": "Bazen evde yemek yapıyorum.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Sometimes I cook at home.”",
+      "korean": "bazen",
+      "english": "Find one word or phrase that naturally travels with \"bazen\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Bazen evde yemek yapıyorum.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Sometimes I cook at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "bazen",
+      "romanization": "ba-ZEN",
+      "nativeText": "Listen for \"bazen\" inside \"Bazen evde yemek yapıyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ba-ZEN",
+      "exampleTarget": "Bazen evde yemek yapıyorum.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Sometimes I cook at home.”",
+      "korean": "bazen",
+      "english": "Listen for \"bazen\" inside \"Bazen evde yemek yapıyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Bazen evde yemek yapıyorum.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Sometimes I cook at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "bazen",
+      "romanization": "ba-ZEN",
+      "nativeText": "Write \"bazen\" again without looking, then compare the exact written form against \"Bazen evde yemek yapıyorum.\" before moving on.",
+      "pronunciation": "ba-ZEN",
+      "exampleTarget": "Bazen evde yemek yapıyorum.",
+      "exampleNative": "Use the written model as the final correctness check: “Sometimes I cook at home.”",
+      "korean": "bazen",
+      "english": "Write \"bazen\" again without looking, then compare the exact written form against \"Bazen evde yemek yapıyorum.\" before moving on.",
+      "example": "Bazen evde yemek yapıyorum.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Sometimes I cook at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "bazen",
+      "romanization": "ba-ZEN",
+      "nativeText": "Check whether \"bazen\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Sometimes I cook at home.”",
+      "pronunciation": "ba-ZEN",
+      "exampleTarget": "Bazen evde yemek yapıyorum.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Sometimes I cook at home.”",
+      "korean": "bazen",
+      "english": "Check whether \"bazen\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Sometimes I cook at home.”",
+      "example": "Bazen evde yemek yapıyorum.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Sometimes I cook at home.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "boş zaman",
+      "romanization": "BOŞ za-MAN",
+      "nativeText": "“Free time.” A standard frame for hobby questions.",
+      "pronunciation": "BOŞ za-MAN",
+      "exampleTarget": "Boş zamanında ne yapıyorsun?",
+      "exampleNative": "“What do you do in your free time?”",
+      "korean": "boş zaman",
+      "english": "“Free time.” A standard frame for hobby questions.",
+      "example": "Boş zamanında ne yapıyorsun?",
+      "exampleEnglish": "“What do you do in your free time?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "Boş zamanında ne yapıyorsun?",
+      "romanization": "BOŞ za-MAN",
+      "nativeText": "Model use for \"Boş zamanında ne yapıyorsun?\": “What do you do in your free time?”",
+      "pronunciation": "BOŞ za-MAN",
+      "exampleTarget": "Boş zamanında ne yapıyorsun?",
+      "exampleNative": "“What do you do in your free time?”",
+      "korean": "Boş zamanında ne yapıyorsun?",
+      "english": "Model use for \"Boş zamanında ne yapıyorsun?\": “What do you do in your free time?”",
+      "example": "Boş zamanında ne yapıyorsun?",
+      "exampleEnglish": "“What do you do in your free time?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "boş zaman",
+      "romanization": "BOŞ za-MAN",
+      "nativeText": "Usage focus for \"boş zaman\": “Free time.” A standard frame for hobby questions.",
+      "pronunciation": "BOŞ za-MAN",
+      "exampleTarget": "Boş zamanında ne yapıyorsun?",
+      "exampleNative": "Notice what the form is doing here: “What do you do in your free time?”",
+      "korean": "boş zaman",
+      "english": "Usage focus for \"boş zaman\": “Free time.” A standard frame for hobby questions.",
+      "example": "Boş zamanında ne yapıyorsun?",
+      "exampleEnglish": "Notice what the form is doing here: “What do you do in your free time?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "boş zaman",
+      "romanization": "BOŞ za-MAN",
+      "nativeText": "Contrast check for \"boş zaman\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "BOŞ za-MAN",
+      "exampleTarget": "Boş zamanında ne yapıyorsun?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What do you do in your free time?”",
+      "korean": "boş zaman",
+      "english": "Contrast check for \"boş zaman\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Boş zamanında ne yapıyorsun?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What do you do in your free time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "boş zaman",
+      "romanization": "BOŞ za-MAN",
+      "nativeText": "Recall \"boş zaman\" from memory, then explain what would change if a nearby alternative replaced it in \"Boş zamanında ne yapıyorsun?\".",
+      "pronunciation": "BOŞ za-MAN",
+      "exampleTarget": "Boş zamanında ne yapıyorsun?",
+      "exampleNative": "Self-check against the model before moving on: “What do you do in your free time?”",
+      "korean": "boş zaman",
+      "english": "Recall \"boş zaman\" from memory, then explain what would change if a nearby alternative replaced it in \"Boş zamanında ne yapıyorsun?\".",
+      "example": "Boş zamanında ne yapıyorsun?",
+      "exampleEnglish": "Self-check against the model before moving on: “What do you do in your free time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "boş zaman",
+      "romanization": "BOŞ za-MAN",
+      "nativeText": "Repair \"boş zaman\" inside \"Boş zamanında ne yapıyorsun?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Free time.” A standard frame for hobby questions.",
+      "pronunciation": "BOŞ za-MAN",
+      "exampleTarget": "Boş zamanında ne yapıyorsun?",
+      "exampleNative": "Use the model as the repair target: “What do you do in your free time?”",
+      "korean": "boş zaman",
+      "english": "Repair \"boş zaman\" inside \"Boş zamanında ne yapıyorsun?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Free time.” A standard frame for hobby questions.",
+      "example": "Boş zamanında ne yapıyorsun?",
+      "exampleEnglish": "Use the model as the repair target: “What do you do in your free time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "boş zaman",
+      "romanization": "BOŞ za-MAN",
+      "nativeText": "Transfer \"boş zaman\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Boş zamanında ne yapıyorsun?\".",
+      "pronunciation": "BOŞ za-MAN",
+      "exampleTarget": "Boş zamanında ne yapıyorsun?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “What do you do in your free time?”",
+      "korean": "boş zaman",
+      "english": "Transfer \"boş zaman\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Boş zamanında ne yapıyorsun?\".",
+      "example": "Boş zamanında ne yapıyorsun?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “What do you do in your free time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "boş zaman",
+      "romanization": "BOŞ za-MAN",
+      "nativeText": "Find one word or phrase that naturally travels with \"boş zaman\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "BOŞ za-MAN",
+      "exampleTarget": "Boş zamanında ne yapıyorsun?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “What do you do in your free time?”",
+      "korean": "boş zaman",
+      "english": "Find one word or phrase that naturally travels with \"boş zaman\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Boş zamanında ne yapıyorsun?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “What do you do in your free time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "boş zaman",
+      "romanization": "BOŞ za-MAN",
+      "nativeText": "Listen for \"boş zaman\" inside \"Boş zamanında ne yapıyorsun?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "BOŞ za-MAN",
+      "exampleTarget": "Boş zamanında ne yapıyorsun?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What do you do in your free time?”",
+      "korean": "boş zaman",
+      "english": "Listen for \"boş zaman\" inside \"Boş zamanında ne yapıyorsun?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Boş zamanında ne yapıyorsun?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What do you do in your free time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "boş zaman",
+      "romanization": "BOŞ za-MAN",
+      "nativeText": "Write \"boş zaman\" again without looking, then compare the exact written form against \"Boş zamanında ne yapıyorsun?\" before moving on.",
+      "pronunciation": "BOŞ za-MAN",
+      "exampleTarget": "Boş zamanında ne yapıyorsun?",
+      "exampleNative": "Use the written model as the final correctness check: “What do you do in your free time?”",
+      "korean": "boş zaman",
+      "english": "Write \"boş zaman\" again without looking, then compare the exact written form against \"Boş zamanında ne yapıyorsun?\" before moving on.",
+      "example": "Boş zamanında ne yapıyorsun?",
+      "exampleEnglish": "Use the written model as the final correctness check: “What do you do in your free time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit16clubsleisure-vocabulary-1",
+        "tr-level1unit16clubsleisure-vocabulary-2",
+        "tr-level1unit16clubsleisure-grammar-1",
+        "tr-level1unit16clubsleisure-grammar-2",
+        "tr-level1unit16clubsleisure-reading",
+        "tr-level1unit16clubsleisure-listening",
+        "tr-level1unit16clubsleisure-writing",
+        "tr-level1unit16clubsleisure-task"
+      ],
+      "targetText": "boş zaman",
+      "romanization": "BOŞ za-MAN",
+      "nativeText": "Check whether \"boş zaman\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What do you do in your free time?”",
+      "pronunciation": "BOŞ za-MAN",
+      "exampleTarget": "Boş zamanında ne yapıyorsun?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “What do you do in your free time?”",
+      "korean": "boş zaman",
+      "english": "Check whether \"boş zaman\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What do you do in your free time?”",
+      "example": "Boş zamanında ne yapıyorsun?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “What do you do in your free time?”"
+    }
+  ],
+  "targetLang": "tr",
+  "nativeLang": "en",
+  "track": "textbook"
+};

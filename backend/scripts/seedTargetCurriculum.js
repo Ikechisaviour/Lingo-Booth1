@@ -16,13 +16,23 @@ if (!targetLang) {
 async function seed() {
   try {
     const curriculum = require(`../textbookLessons/${targetLang}/curriculum`);
-    const lessons = Object.values(curriculum);
+    const lessons = Object.entries(curriculum);
     await mongoose.connect(process.env.MONGODB_URI);
     let upserted = 0;
-    for (const lesson of lessons) {
+    for (const [curriculumKey, lesson] of lessons) {
+      const lessonDoc = {
+        ...lesson,
+        curriculumKey,
+      };
       await Lesson.findOneAndReplace(
-        { title: lesson.title, targetLang: lesson.targetLang },
-        lesson,
+        {
+          targetLang: lesson.targetLang,
+          $or: [
+            { curriculumKey },
+            { title: lesson.title },
+          ],
+        },
+        lessonDoc,
         { upsert: true, new: true },
       );
       upserted += 1;

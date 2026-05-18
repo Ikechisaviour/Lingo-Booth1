@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('nl', {
-  slug: 'nl-l1u10',
-  title: 'Level 1 · Unit 10: Weer en Voorkeuren — Weather and Preferences',
-  category: 'daily-life',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Describe weather and say what you like or prefer.',
-  vocabularyGoal: 'Use weather words, seasons, and preference phrases.',
-  grammarGoal: 'Use `ik vind`, `ik houd van`, and `liever` for opinions and preferences.',
-  speakingGoal: 'Describe today’s weather and compare two simple preferences.',
-  task: 'Choose a weekend plan based on the weather.',
-  expressionPractice: [
-    practice('describing-weather', 'Describing weather', 'Use one weather sentence.'),
-    practice('stating-like', 'Stating like', 'Use `ik houd van`.'),
-    practice('stating-preference', 'Stating preference', 'Use `liever`.'),
+module.exports = {
+  "title": "Level 1 · Unit 10: Weer en Voorkeuren — Weather and Preferences",
+  "category": "daily-life",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "nl-level1unit10weatherpreferences-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Describe weather and say what you like or prefer."
+      ],
+      "task": "Choose a weekend plan based on the weather."
+    },
+    {
+      "id": "nl-level1unit10weatherpreferences-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "nl-level1unit10weatherpreferences-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 10: Weer en Voorkeuren — Weather and Preferences with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "nl-level1unit10weatherpreferences-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 10: Weer en Voorkeuren — Weather and Preferences sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "nl-level1unit10weatherpreferences-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Describe weather and say what you like or prefer."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "nl-level1unit10weatherpreferences-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 10: Weer en Voorkeuren — Weather and Preferences with one nearby Dutch form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "nl-level1unit10weatherpreferences-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "nl-level1unit10weatherpreferences-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "nl-level1unit10weatherpreferences-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "nl-level1unit10weatherpreferences-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "nl-level1unit10weatherpreferences-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Choose a weekend plan based on the weather."
+      ],
+      "task": "Choose a weekend plan based on the weather."
+    }
   ],
-  relatedPools: ['topic-weather', 'topic-preferences'],
-  items: [
-    item('het regent', 'hət RAY-ghent', '“It is raining.” Dutch uses a weather subject much like English.', 'Vandaag regent het.', '“Today it is raining.”'),
-    item('het is koud', 'hət is kowt', '“It is cold.” A common weather statement.', 'In de winter is het koud.', '“In winter it is cold.”'),
-    item('de zon schijnt', 'də zon skheynt', '“The sun is shining.” A useful positive weather phrase.', 'Vandaag schijnt de zon.', '“Today the sun is shining.”'),
-    item('zomer / winter', 'ZOH-mer / VIN-ter', '“Summer / winter.” Useful comparison anchors.', 'Ik houd van de zomer.', '“I like summer.”'),
-    item('ik houd van', 'ik howt fan', '“I like / love.” A standard preference frame.', 'Ik houd van warm weer.', '“I like warm weather.”'),
-    item('ik vind ... fijn', 'ik fint ... feyn', '“I find ... nice.” A natural opinion frame.', 'Ik vind herfstweer fijn.', '“I like autumn weather.”'),
-    item('liever', 'LEE-ver', '“Preferably / rather.” It often marks preference without needing a long construction.', 'Ik drink liever thee dan koffie.', '“I prefer drinking tea to coffee.”'),
-    item('omdat', 'om-DAT', '“Because.” It sends the verb to the end in the subordinate clause.', 'Ik houd van de lente omdat het warm wordt.', '“I like spring because it gets warm.”'),
+  "expressionPractice": [
+    {
+      "id": "describing-weather",
+      "label": "Describing weather",
+      "goal": "Use one weather sentence."
+    },
+    {
+      "id": "stating-like",
+      "label": "Stating like",
+      "goal": "Use `ik houd van`."
+    },
+    {
+      "id": "stating-preference",
+      "label": "Stating preference",
+      "goal": "Use `liever`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-weather",
+    "topic-preferences"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-orientation"
+      ],
+      "targetText": "lesdoel",
+      "romanization": "",
+      "nativeText": "Describe weather and say what you like or prefer.",
+      "pronunciation": "",
+      "exampleTarget": "lesdoel",
+      "exampleNative": "The whole lesson is built toward this outcome: Choose a weekend plan based on the weather.",
+      "korean": "lesdoel",
+      "english": "Describe weather and say what you like or prefer.",
+      "example": "lesdoel",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Choose a weekend plan based on the weather."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-pronunciation"
+      ],
+      "targetText": "klankcontrole",
+      "romanization": "",
+      "nativeText": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Vandaag regent het.\".",
+      "pronunciation": "",
+      "exampleTarget": "Vandaag regent het.",
+      "exampleNative": "“Today it is raining.”",
+      "korean": "klankcontrole",
+      "english": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Vandaag regent het.\".",
+      "example": "Vandaag regent het.",
+      "exampleEnglish": "“Today it is raining.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1"
+      ],
+      "targetText": "het regent",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 10: Weer en Voorkeuren — Weather and Preferences with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Vandaag regent het.",
+      "exampleNative": "“Today it is raining.”",
+      "korean": "het regent",
+      "english": "Use the key language of Level 1 · Unit 10: Weer en Voorkeuren — Weather and Preferences with the register and setting that the lesson requires.",
+      "example": "Vandaag regent het.",
+      "exampleEnglish": "“Today it is raining.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-2"
+      ],
+      "targetText": "het is koud",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 10: Weer en Voorkeuren — Weather and Preferences sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "In de winter is het koud.",
+      "exampleNative": "“In winter it is cold.”",
+      "korean": "het is koud",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 10: Weer en Voorkeuren — Weather and Preferences sound precise rather than merely understandable.",
+      "example": "In de winter is het koud.",
+      "exampleEnglish": "“In winter it is cold.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-grammar-1"
+      ],
+      "targetText": "het regent",
+      "romanization": "",
+      "nativeText": "Describe weather and say what you like or prefer.",
+      "pronunciation": "",
+      "exampleTarget": "Vandaag regent het.",
+      "exampleNative": "“Today it is raining.”",
+      "korean": "het regent",
+      "english": "Describe weather and say what you like or prefer.",
+      "example": "Vandaag regent het.",
+      "exampleEnglish": "“Today it is raining.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-grammar-2"
+      ],
+      "targetText": "het is koud",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 10: Weer en Voorkeuren — Weather and Preferences with one nearby Dutch form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "In de winter is het koud.",
+      "exampleNative": "“In winter it is cold.”",
+      "korean": "het is koud",
+      "english": "Contrast the main pattern in Level 1 · Unit 10: Weer en Voorkeuren — Weather and Preferences with one nearby Dutch form so the learner can avoid literal translation.",
+      "example": "In de winter is het koud.",
+      "exampleEnglish": "“In winter it is cold.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-reading"
+      ],
+      "targetText": "leesmodel",
+      "romanization": "",
+      "nativeText": "Read \"Ik houd van de lente omdat het warm wordt.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Ik houd van de lente omdat het warm wordt.",
+      "exampleNative": "“I like spring because it gets warm.”",
+      "korean": "leesmodel",
+      "english": "Read \"Ik houd van de lente omdat het warm wordt.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Ik houd van de lente omdat het warm wordt.",
+      "exampleEnglish": "“I like spring because it gets warm.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-listening"
+      ],
+      "targetText": "dialoogmodel",
+      "romanization": "",
+      "nativeText": "Hear \"Ik houd van de lente omdat het warm wordt.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Ik houd van de lente omdat het warm wordt.",
+      "exampleNative": "“I like spring because it gets warm.”",
+      "korean": "dialoogmodel",
+      "english": "Hear \"Ik houd van de lente omdat het warm wordt.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Ik houd van de lente omdat het warm wordt.",
+      "exampleEnglish": "“I like spring because it gets warm.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-writing"
+      ],
+      "targetText": "schrijfoefening",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Vandaag regent het.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Vandaag regent het.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "schrijfoefening",
+      "english": "Write your own version after studying \"Vandaag regent het.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Vandaag regent het.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-culture"
+      ],
+      "targetText": "gebruik en context",
+      "romanization": "",
+      "nativeText": "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "In de winter is het koud.",
+      "exampleNative": "“In winter it is cold.”",
+      "korean": "gebruik en context",
+      "english": "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used.",
+      "example": "In de winter is het koud.",
+      "exampleEnglish": "“In winter it is cold.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "eindtaak",
+      "romanization": "",
+      "nativeText": "Choose a weekend plan based on the weather.",
+      "pronunciation": "",
+      "exampleTarget": "Ik houd van de lente omdat het warm wordt.",
+      "exampleNative": "Choose a weekend plan based on the weather.",
+      "korean": "eindtaak",
+      "english": "Choose a weekend plan based on the weather.",
+      "example": "Ik houd van de lente omdat het warm wordt.",
+      "exampleEnglish": "Choose a weekend plan based on the weather."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-grammar-2"
+      ],
+      "targetText": "veelgemaakte fout",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around verb-second order, separable verbs, pronouns, and article choice. Begin by checking \"In de winter is het koud.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "In de winter is het koud.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “In winter it is cold.”",
+      "korean": "veelgemaakte fout",
+      "english": "Watch for literal-translation mistakes around verb-second order, separable verbs, pronouns, and article choice. Begin by checking \"In de winter is het koud.\" against the model.",
+      "example": "In de winter is het koud.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “In winter it is cold.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-culture"
+      ],
+      "targetText": "register",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for jij, u, a service register, or a more relaxed everyday choice before selecting the final wording. Compare the social fit of \"Vandaag regent het.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Vandaag regent het.",
+      "exampleNative": "“Today it is raining.”",
+      "korean": "register",
+      "english": "Check whether the setting calls for jij, u, a service register, or a more relaxed everyday choice before selecting the final wording. Compare the social fit of \"Vandaag regent het.\" before reusing it elsewhere.",
+      "example": "Vandaag regent het.",
+      "exampleEnglish": "“Today it is raining.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "vloeiendheid",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Dutch message rather than as separate translated fragments. Aim to carry \"Ik houd van de lente omdat het warm wordt.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Ik houd van de lente omdat het warm wordt.",
+      "exampleNative": "“I like spring because it gets warm.”",
+      "korean": "vloeiendheid",
+      "english": "Say the idea as one connected Dutch message rather than as separate translated fragments. Aim to carry \"Ik houd van de lente omdat het warm wordt.\" as one thought.",
+      "example": "Ik houd van de lente omdat het warm wordt.",
+      "exampleEnglish": "“I like spring because it gets warm.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "toepassing",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Vandaag regent het.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Vandaag regent het.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "toepassing",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Vandaag regent het.\" and move it into your own life.",
+      "example": "Vandaag regent het.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-grammar-1"
+      ],
+      "targetText": "actief ophalen",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"het regent\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "het regent",
+      "exampleNative": "“It is raining.” Dutch uses a weather subject much like English.",
+      "korean": "actief ophalen",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"het regent\" before looking back.",
+      "example": "het regent",
+      "exampleEnglish": "“It is raining.” Dutch uses a weather subject much like English."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-writing"
+      ],
+      "targetText": "uitbreiding",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Ik houd van de lente omdat het warm wordt.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Ik houd van de lente omdat het warm wordt.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "uitbreiding",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Ik houd van de lente omdat het warm wordt.\" rather than restarting from a blank sentence.",
+      "example": "Ik houd van de lente omdat het warm wordt.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading"
+      ],
+      "targetText": "vergelijking",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 10: Weer en Voorkeuren — Weather and Preferences with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"In de winter is het koud.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "In de winter is het koud.",
+      "exampleNative": "“In winter it is cold.”",
+      "korean": "vergelijking",
+      "english": "Compare the central form in Level 1 · Unit 10: Weer en Voorkeuren — Weather and Preferences with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"In de winter is het koud.\" as the comparison line.",
+      "example": "In de winter is het koud.",
+      "exampleEnglish": "“In winter it is cold.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-pronunciation"
+      ],
+      "targetText": "uitspraakcorrectie",
+      "romanization": "",
+      "nativeText": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Vandaag regent het.\".",
+      "pronunciation": "",
+      "exampleTarget": "Vandaag regent het.",
+      "exampleNative": "“Today it is raining.”",
+      "korean": "uitspraakcorrectie",
+      "english": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Vandaag regent het.\".",
+      "example": "Vandaag regent het.",
+      "exampleEnglish": "“Today it is raining.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "dialoogvariatie",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Ik houd van de lente omdat het warm wordt.\".",
+      "pronunciation": "",
+      "exampleTarget": "Ik houd van de lente omdat het warm wordt.",
+      "exampleNative": "“I like spring because it gets warm.”",
+      "korean": "dialoogvariatie",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Ik houd van de lente omdat het warm wordt.\".",
+      "example": "Ik houd van de lente omdat het warm wordt.",
+      "exampleEnglish": "“I like spring because it gets warm.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-writing"
+      ],
+      "targetText": "zinsbouw",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Vandaag regent het.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Vandaag regent het.",
+      "exampleNative": "“Today it is raining.”",
+      "korean": "zinsbouw",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Vandaag regent het.\" one layer at a time.",
+      "example": "Vandaag regent het.",
+      "exampleEnglish": "“Today it is raining.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-2"
+      ],
+      "targetText": "snelle check",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"In de winter is het koud.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "In de winter is het koud.",
+      "exampleNative": "“In winter it is cold.”",
+      "korean": "snelle check",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"In de winter is het koud.\" as the deciding example.",
+      "example": "In de winter is het koud.",
+      "exampleEnglish": "“In winter it is cold.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-culture",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "terugblik",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Ik houd van de lente omdat het warm wordt.\".",
+      "pronunciation": "",
+      "exampleTarget": "Ik houd van de lente omdat het warm wordt.",
+      "exampleNative": "“I like spring because it gets warm.”",
+      "korean": "terugblik",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Ik houd van de lente omdat het warm wordt.\".",
+      "example": "Ik houd van de lente omdat het warm wordt.",
+      "exampleEnglish": "“I like spring because it gets warm.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "het regent",
+      "romanization": "hət RAY-ghent",
+      "nativeText": "“It is raining.” Dutch uses a weather subject much like English.",
+      "pronunciation": "hət RAY-ghent",
+      "exampleTarget": "Vandaag regent het.",
+      "exampleNative": "“Today it is raining.”",
+      "korean": "het regent",
+      "english": "“It is raining.” Dutch uses a weather subject much like English.",
+      "example": "Vandaag regent het.",
+      "exampleEnglish": "“Today it is raining.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "Vandaag regent het.",
+      "romanization": "hət RAY-ghent",
+      "nativeText": "Model use for \"Vandaag regent het.\": “Today it is raining.”",
+      "pronunciation": "hət RAY-ghent",
+      "exampleTarget": "Vandaag regent het.",
+      "exampleNative": "“Today it is raining.”",
+      "korean": "Vandaag regent het.",
+      "english": "Model use for \"Vandaag regent het.\": “Today it is raining.”",
+      "example": "Vandaag regent het.",
+      "exampleEnglish": "“Today it is raining.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "het regent",
+      "romanization": "hət RAY-ghent",
+      "nativeText": "Usage focus for \"het regent\": Use the key language of Level 1 · Unit 10: Weer en Voorkeuren — Weather and Preferences with the register and setting that the lesson requires.",
+      "pronunciation": "hət RAY-ghent",
+      "exampleTarget": "Vandaag regent het.",
+      "exampleNative": "Notice what the form is doing here: “Today it is raining.”",
+      "korean": "het regent",
+      "english": "Usage focus for \"het regent\": Use the key language of Level 1 · Unit 10: Weer en Voorkeuren — Weather and Preferences with the register and setting that the lesson requires.",
+      "example": "Vandaag regent het.",
+      "exampleEnglish": "Notice what the form is doing here: “Today it is raining.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "het regent",
+      "romanization": "hət RAY-ghent",
+      "nativeText": "Contrast check for \"het regent\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "hət RAY-ghent",
+      "exampleTarget": "Vandaag regent het.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Today it is raining.”",
+      "korean": "het regent",
+      "english": "Contrast check for \"het regent\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Vandaag regent het.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Today it is raining.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "het regent",
+      "romanization": "hət RAY-ghent",
+      "nativeText": "Recall \"het regent\" from memory, then explain what would change if a nearby alternative replaced it in \"Vandaag regent het.\".",
+      "pronunciation": "hət RAY-ghent",
+      "exampleTarget": "Vandaag regent het.",
+      "exampleNative": "Self-check against the model before moving on: “Today it is raining.”",
+      "korean": "het regent",
+      "english": "Recall \"het regent\" from memory, then explain what would change if a nearby alternative replaced it in \"Vandaag regent het.\".",
+      "example": "Vandaag regent het.",
+      "exampleEnglish": "Self-check against the model before moving on: “Today it is raining.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "het regent",
+      "romanization": "hət RAY-ghent",
+      "nativeText": "Repair \"het regent\" inside \"Vandaag regent het.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 10: Weer en Voorkeuren — Weather and Preferences with the register and setting that the lesson requires.",
+      "pronunciation": "hət RAY-ghent",
+      "exampleTarget": "Vandaag regent het.",
+      "exampleNative": "Use the model as the repair target: “Today it is raining.”",
+      "korean": "het regent",
+      "english": "Repair \"het regent\" inside \"Vandaag regent het.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 10: Weer en Voorkeuren — Weather and Preferences with the register and setting that the lesson requires.",
+      "example": "Vandaag regent het.",
+      "exampleEnglish": "Use the model as the repair target: “Today it is raining.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "het regent",
+      "romanization": "hət RAY-ghent",
+      "nativeText": "Transfer \"het regent\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Vandaag regent het.\".",
+      "pronunciation": "hət RAY-ghent",
+      "exampleTarget": "Vandaag regent het.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Today it is raining.”",
+      "korean": "het regent",
+      "english": "Transfer \"het regent\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Vandaag regent het.\".",
+      "example": "Vandaag regent het.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Today it is raining.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "het regent",
+      "romanization": "hət RAY-ghent",
+      "nativeText": "Find one word or phrase that naturally travels with \"het regent\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "hət RAY-ghent",
+      "exampleTarget": "Vandaag regent het.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Today it is raining.”",
+      "korean": "het regent",
+      "english": "Find one word or phrase that naturally travels with \"het regent\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Vandaag regent het.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Today it is raining.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "het regent",
+      "romanization": "hət RAY-ghent",
+      "nativeText": "Listen for \"het regent\" inside \"Vandaag regent het.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "hət RAY-ghent",
+      "exampleTarget": "Vandaag regent het.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Today it is raining.”",
+      "korean": "het regent",
+      "english": "Listen for \"het regent\" inside \"Vandaag regent het.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Vandaag regent het.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Today it is raining.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "het regent",
+      "romanization": "hət RAY-ghent",
+      "nativeText": "Write \"het regent\" again without looking, then compare the exact written form against \"Vandaag regent het.\" before moving on.",
+      "pronunciation": "hət RAY-ghent",
+      "exampleTarget": "Vandaag regent het.",
+      "exampleNative": "Use the written model as the final correctness check: “Today it is raining.”",
+      "korean": "het regent",
+      "english": "Write \"het regent\" again without looking, then compare the exact written form against \"Vandaag regent het.\" before moving on.",
+      "example": "Vandaag regent het.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Today it is raining.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "het regent",
+      "romanization": "hət RAY-ghent",
+      "nativeText": "Check whether \"het regent\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Today it is raining.”",
+      "pronunciation": "hət RAY-ghent",
+      "exampleTarget": "Vandaag regent het.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Today it is raining.”",
+      "korean": "het regent",
+      "english": "Check whether \"het regent\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Today it is raining.”",
+      "example": "Vandaag regent het.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Today it is raining.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "het is koud",
+      "romanization": "hət is kowt",
+      "nativeText": "“It is cold.” A common weather statement.",
+      "pronunciation": "hət is kowt",
+      "exampleTarget": "In de winter is het koud.",
+      "exampleNative": "“In winter it is cold.”",
+      "korean": "het is koud",
+      "english": "“It is cold.” A common weather statement.",
+      "example": "In de winter is het koud.",
+      "exampleEnglish": "“In winter it is cold.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "In de winter is het koud.",
+      "romanization": "hət is kowt",
+      "nativeText": "Model use for \"In de winter is het koud.\": “In winter it is cold.”",
+      "pronunciation": "hət is kowt",
+      "exampleTarget": "In de winter is het koud.",
+      "exampleNative": "“In winter it is cold.”",
+      "korean": "In de winter is het koud.",
+      "english": "Model use for \"In de winter is het koud.\": “In winter it is cold.”",
+      "example": "In de winter is het koud.",
+      "exampleEnglish": "“In winter it is cold.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "het is koud",
+      "romanization": "hət is kowt",
+      "nativeText": "Usage focus for \"het is koud\": Distinguish the nearby wording choices that make Level 1 · Unit 10: Weer en Voorkeuren — Weather and Preferences sound precise rather than merely understandable.",
+      "pronunciation": "hət is kowt",
+      "exampleTarget": "In de winter is het koud.",
+      "exampleNative": "Notice what the form is doing here: “In winter it is cold.”",
+      "korean": "het is koud",
+      "english": "Usage focus for \"het is koud\": Distinguish the nearby wording choices that make Level 1 · Unit 10: Weer en Voorkeuren — Weather and Preferences sound precise rather than merely understandable.",
+      "example": "In de winter is het koud.",
+      "exampleEnglish": "Notice what the form is doing here: “In winter it is cold.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "het is koud",
+      "romanization": "hət is kowt",
+      "nativeText": "Contrast check for \"het is koud\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "hət is kowt",
+      "exampleTarget": "In de winter is het koud.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “In winter it is cold.”",
+      "korean": "het is koud",
+      "english": "Contrast check for \"het is koud\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "In de winter is het koud.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “In winter it is cold.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "het is koud",
+      "romanization": "hət is kowt",
+      "nativeText": "Recall \"het is koud\" from memory, then explain what would change if a nearby alternative replaced it in \"In de winter is het koud.\".",
+      "pronunciation": "hət is kowt",
+      "exampleTarget": "In de winter is het koud.",
+      "exampleNative": "Self-check against the model before moving on: “In winter it is cold.”",
+      "korean": "het is koud",
+      "english": "Recall \"het is koud\" from memory, then explain what would change if a nearby alternative replaced it in \"In de winter is het koud.\".",
+      "example": "In de winter is het koud.",
+      "exampleEnglish": "Self-check against the model before moving on: “In winter it is cold.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "het is koud",
+      "romanization": "hət is kowt",
+      "nativeText": "Repair \"het is koud\" inside \"In de winter is het koud.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 10: Weer en Voorkeuren — Weather and Preferences sound precise rather than merely understandable.",
+      "pronunciation": "hət is kowt",
+      "exampleTarget": "In de winter is het koud.",
+      "exampleNative": "Use the model as the repair target: “In winter it is cold.”",
+      "korean": "het is koud",
+      "english": "Repair \"het is koud\" inside \"In de winter is het koud.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 10: Weer en Voorkeuren — Weather and Preferences sound precise rather than merely understandable.",
+      "example": "In de winter is het koud.",
+      "exampleEnglish": "Use the model as the repair target: “In winter it is cold.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "het is koud",
+      "romanization": "hət is kowt",
+      "nativeText": "Transfer \"het is koud\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"In de winter is het koud.\".",
+      "pronunciation": "hət is kowt",
+      "exampleTarget": "In de winter is het koud.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “In winter it is cold.”",
+      "korean": "het is koud",
+      "english": "Transfer \"het is koud\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"In de winter is het koud.\".",
+      "example": "In de winter is het koud.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “In winter it is cold.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "het is koud",
+      "romanization": "hət is kowt",
+      "nativeText": "Find one word or phrase that naturally travels with \"het is koud\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "hət is kowt",
+      "exampleTarget": "In de winter is het koud.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “In winter it is cold.”",
+      "korean": "het is koud",
+      "english": "Find one word or phrase that naturally travels with \"het is koud\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "In de winter is het koud.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “In winter it is cold.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "het is koud",
+      "romanization": "hət is kowt",
+      "nativeText": "Listen for \"het is koud\" inside \"In de winter is het koud.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "hət is kowt",
+      "exampleTarget": "In de winter is het koud.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “In winter it is cold.”",
+      "korean": "het is koud",
+      "english": "Listen for \"het is koud\" inside \"In de winter is het koud.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "In de winter is het koud.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “In winter it is cold.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "het is koud",
+      "romanization": "hət is kowt",
+      "nativeText": "Write \"het is koud\" again without looking, then compare the exact written form against \"In de winter is het koud.\" before moving on.",
+      "pronunciation": "hət is kowt",
+      "exampleTarget": "In de winter is het koud.",
+      "exampleNative": "Use the written model as the final correctness check: “In winter it is cold.”",
+      "korean": "het is koud",
+      "english": "Write \"het is koud\" again without looking, then compare the exact written form against \"In de winter is het koud.\" before moving on.",
+      "example": "In de winter is het koud.",
+      "exampleEnglish": "Use the written model as the final correctness check: “In winter it is cold.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "het is koud",
+      "romanization": "hət is kowt",
+      "nativeText": "Check whether \"het is koud\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “In winter it is cold.”",
+      "pronunciation": "hət is kowt",
+      "exampleTarget": "In de winter is het koud.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “In winter it is cold.”",
+      "korean": "het is koud",
+      "english": "Check whether \"het is koud\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “In winter it is cold.”",
+      "example": "In de winter is het koud.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “In winter it is cold.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "de zon schijnt",
+      "romanization": "də zon skheynt",
+      "nativeText": "“The sun is shining.” A useful positive weather phrase.",
+      "pronunciation": "də zon skheynt",
+      "exampleTarget": "Vandaag schijnt de zon.",
+      "exampleNative": "“Today the sun is shining.”",
+      "korean": "de zon schijnt",
+      "english": "“The sun is shining.” A useful positive weather phrase.",
+      "example": "Vandaag schijnt de zon.",
+      "exampleEnglish": "“Today the sun is shining.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "Vandaag schijnt de zon.",
+      "romanization": "də zon skheynt",
+      "nativeText": "Model use for \"Vandaag schijnt de zon.\": “Today the sun is shining.”",
+      "pronunciation": "də zon skheynt",
+      "exampleTarget": "Vandaag schijnt de zon.",
+      "exampleNative": "“Today the sun is shining.”",
+      "korean": "Vandaag schijnt de zon.",
+      "english": "Model use for \"Vandaag schijnt de zon.\": “Today the sun is shining.”",
+      "example": "Vandaag schijnt de zon.",
+      "exampleEnglish": "“Today the sun is shining.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "de zon schijnt",
+      "romanization": "də zon skheynt",
+      "nativeText": "Usage focus for \"de zon schijnt\": “The sun is shining.” A useful positive weather phrase.",
+      "pronunciation": "də zon skheynt",
+      "exampleTarget": "Vandaag schijnt de zon.",
+      "exampleNative": "Notice what the form is doing here: “Today the sun is shining.”",
+      "korean": "de zon schijnt",
+      "english": "Usage focus for \"de zon schijnt\": “The sun is shining.” A useful positive weather phrase.",
+      "example": "Vandaag schijnt de zon.",
+      "exampleEnglish": "Notice what the form is doing here: “Today the sun is shining.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "de zon schijnt",
+      "romanization": "də zon skheynt",
+      "nativeText": "Contrast check for \"de zon schijnt\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "də zon skheynt",
+      "exampleTarget": "Vandaag schijnt de zon.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Today the sun is shining.”",
+      "korean": "de zon schijnt",
+      "english": "Contrast check for \"de zon schijnt\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Vandaag schijnt de zon.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Today the sun is shining.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "de zon schijnt",
+      "romanization": "də zon skheynt",
+      "nativeText": "Recall \"de zon schijnt\" from memory, then explain what would change if a nearby alternative replaced it in \"Vandaag schijnt de zon.\".",
+      "pronunciation": "də zon skheynt",
+      "exampleTarget": "Vandaag schijnt de zon.",
+      "exampleNative": "Self-check against the model before moving on: “Today the sun is shining.”",
+      "korean": "de zon schijnt",
+      "english": "Recall \"de zon schijnt\" from memory, then explain what would change if a nearby alternative replaced it in \"Vandaag schijnt de zon.\".",
+      "example": "Vandaag schijnt de zon.",
+      "exampleEnglish": "Self-check against the model before moving on: “Today the sun is shining.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "de zon schijnt",
+      "romanization": "də zon skheynt",
+      "nativeText": "Repair \"de zon schijnt\" inside \"Vandaag schijnt de zon.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “The sun is shining.” A useful positive weather phrase.",
+      "pronunciation": "də zon skheynt",
+      "exampleTarget": "Vandaag schijnt de zon.",
+      "exampleNative": "Use the model as the repair target: “Today the sun is shining.”",
+      "korean": "de zon schijnt",
+      "english": "Repair \"de zon schijnt\" inside \"Vandaag schijnt de zon.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “The sun is shining.” A useful positive weather phrase.",
+      "example": "Vandaag schijnt de zon.",
+      "exampleEnglish": "Use the model as the repair target: “Today the sun is shining.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "de zon schijnt",
+      "romanization": "də zon skheynt",
+      "nativeText": "Transfer \"de zon schijnt\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Vandaag schijnt de zon.\".",
+      "pronunciation": "də zon skheynt",
+      "exampleTarget": "Vandaag schijnt de zon.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Today the sun is shining.”",
+      "korean": "de zon schijnt",
+      "english": "Transfer \"de zon schijnt\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Vandaag schijnt de zon.\".",
+      "example": "Vandaag schijnt de zon.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Today the sun is shining.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "de zon schijnt",
+      "romanization": "də zon skheynt",
+      "nativeText": "Find one word or phrase that naturally travels with \"de zon schijnt\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "də zon skheynt",
+      "exampleTarget": "Vandaag schijnt de zon.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Today the sun is shining.”",
+      "korean": "de zon schijnt",
+      "english": "Find one word or phrase that naturally travels with \"de zon schijnt\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Vandaag schijnt de zon.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Today the sun is shining.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "de zon schijnt",
+      "romanization": "də zon skheynt",
+      "nativeText": "Listen for \"de zon schijnt\" inside \"Vandaag schijnt de zon.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "də zon skheynt",
+      "exampleTarget": "Vandaag schijnt de zon.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Today the sun is shining.”",
+      "korean": "de zon schijnt",
+      "english": "Listen for \"de zon schijnt\" inside \"Vandaag schijnt de zon.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Vandaag schijnt de zon.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Today the sun is shining.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "de zon schijnt",
+      "romanization": "də zon skheynt",
+      "nativeText": "Write \"de zon schijnt\" again without looking, then compare the exact written form against \"Vandaag schijnt de zon.\" before moving on.",
+      "pronunciation": "də zon skheynt",
+      "exampleTarget": "Vandaag schijnt de zon.",
+      "exampleNative": "Use the written model as the final correctness check: “Today the sun is shining.”",
+      "korean": "de zon schijnt",
+      "english": "Write \"de zon schijnt\" again without looking, then compare the exact written form against \"Vandaag schijnt de zon.\" before moving on.",
+      "example": "Vandaag schijnt de zon.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Today the sun is shining.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "de zon schijnt",
+      "romanization": "də zon skheynt",
+      "nativeText": "Check whether \"de zon schijnt\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Today the sun is shining.”",
+      "pronunciation": "də zon skheynt",
+      "exampleTarget": "Vandaag schijnt de zon.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Today the sun is shining.”",
+      "korean": "de zon schijnt",
+      "english": "Check whether \"de zon schijnt\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Today the sun is shining.”",
+      "example": "Vandaag schijnt de zon.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Today the sun is shining.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "zomer / winter",
+      "romanization": "ZOH-mer / VIN-ter",
+      "nativeText": "“Summer / winter.” Useful comparison anchors.",
+      "pronunciation": "ZOH-mer / VIN-ter",
+      "exampleTarget": "Ik houd van de zomer.",
+      "exampleNative": "“I like summer.”",
+      "korean": "zomer / winter",
+      "english": "“Summer / winter.” Useful comparison anchors.",
+      "example": "Ik houd van de zomer.",
+      "exampleEnglish": "“I like summer.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "Ik houd van de zomer.",
+      "romanization": "ZOH-mer / VIN-ter",
+      "nativeText": "Model use for \"Ik houd van de zomer.\": “I like summer.”",
+      "pronunciation": "ZOH-mer / VIN-ter",
+      "exampleTarget": "Ik houd van de zomer.",
+      "exampleNative": "“I like summer.”",
+      "korean": "Ik houd van de zomer.",
+      "english": "Model use for \"Ik houd van de zomer.\": “I like summer.”",
+      "example": "Ik houd van de zomer.",
+      "exampleEnglish": "“I like summer.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "zomer / winter",
+      "romanization": "ZOH-mer / VIN-ter",
+      "nativeText": "Usage focus for \"zomer / winter\": “Summer / winter.” Useful comparison anchors.",
+      "pronunciation": "ZOH-mer / VIN-ter",
+      "exampleTarget": "Ik houd van de zomer.",
+      "exampleNative": "Notice what the form is doing here: “I like summer.”",
+      "korean": "zomer / winter",
+      "english": "Usage focus for \"zomer / winter\": “Summer / winter.” Useful comparison anchors.",
+      "example": "Ik houd van de zomer.",
+      "exampleEnglish": "Notice what the form is doing here: “I like summer.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "zomer / winter",
+      "romanization": "ZOH-mer / VIN-ter",
+      "nativeText": "Contrast check for \"zomer / winter\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ZOH-mer / VIN-ter",
+      "exampleTarget": "Ik houd van de zomer.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like summer.”",
+      "korean": "zomer / winter",
+      "english": "Contrast check for \"zomer / winter\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik houd van de zomer.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like summer.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "zomer / winter",
+      "romanization": "ZOH-mer / VIN-ter",
+      "nativeText": "Recall \"zomer / winter\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik houd van de zomer.\".",
+      "pronunciation": "ZOH-mer / VIN-ter",
+      "exampleTarget": "Ik houd van de zomer.",
+      "exampleNative": "Self-check against the model before moving on: “I like summer.”",
+      "korean": "zomer / winter",
+      "english": "Recall \"zomer / winter\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik houd van de zomer.\".",
+      "example": "Ik houd van de zomer.",
+      "exampleEnglish": "Self-check against the model before moving on: “I like summer.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "zomer / winter",
+      "romanization": "ZOH-mer / VIN-ter",
+      "nativeText": "Repair \"zomer / winter\" inside \"Ik houd van de zomer.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Summer / winter.” Useful comparison anchors.",
+      "pronunciation": "ZOH-mer / VIN-ter",
+      "exampleTarget": "Ik houd van de zomer.",
+      "exampleNative": "Use the model as the repair target: “I like summer.”",
+      "korean": "zomer / winter",
+      "english": "Repair \"zomer / winter\" inside \"Ik houd van de zomer.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Summer / winter.” Useful comparison anchors.",
+      "example": "Ik houd van de zomer.",
+      "exampleEnglish": "Use the model as the repair target: “I like summer.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "zomer / winter",
+      "romanization": "ZOH-mer / VIN-ter",
+      "nativeText": "Transfer \"zomer / winter\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik houd van de zomer.\".",
+      "pronunciation": "ZOH-mer / VIN-ter",
+      "exampleTarget": "Ik houd van de zomer.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like summer.”",
+      "korean": "zomer / winter",
+      "english": "Transfer \"zomer / winter\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik houd van de zomer.\".",
+      "example": "Ik houd van de zomer.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like summer.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "zomer / winter",
+      "romanization": "ZOH-mer / VIN-ter",
+      "nativeText": "Find one word or phrase that naturally travels with \"zomer / winter\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ZOH-mer / VIN-ter",
+      "exampleTarget": "Ik houd van de zomer.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I like summer.”",
+      "korean": "zomer / winter",
+      "english": "Find one word or phrase that naturally travels with \"zomer / winter\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik houd van de zomer.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I like summer.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "zomer / winter",
+      "romanization": "ZOH-mer / VIN-ter",
+      "nativeText": "Listen for \"zomer / winter\" inside \"Ik houd van de zomer.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ZOH-mer / VIN-ter",
+      "exampleTarget": "Ik houd van de zomer.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like summer.”",
+      "korean": "zomer / winter",
+      "english": "Listen for \"zomer / winter\" inside \"Ik houd van de zomer.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik houd van de zomer.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like summer.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "zomer / winter",
+      "romanization": "ZOH-mer / VIN-ter",
+      "nativeText": "Write \"zomer / winter\" again without looking, then compare the exact written form against \"Ik houd van de zomer.\" before moving on.",
+      "pronunciation": "ZOH-mer / VIN-ter",
+      "exampleTarget": "Ik houd van de zomer.",
+      "exampleNative": "Use the written model as the final correctness check: “I like summer.”",
+      "korean": "zomer / winter",
+      "english": "Write \"zomer / winter\" again without looking, then compare the exact written form against \"Ik houd van de zomer.\" before moving on.",
+      "example": "Ik houd van de zomer.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I like summer.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "zomer / winter",
+      "romanization": "ZOH-mer / VIN-ter",
+      "nativeText": "Check whether \"zomer / winter\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like summer.”",
+      "pronunciation": "ZOH-mer / VIN-ter",
+      "exampleTarget": "Ik houd van de zomer.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I like summer.”",
+      "korean": "zomer / winter",
+      "english": "Check whether \"zomer / winter\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like summer.”",
+      "example": "Ik houd van de zomer.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I like summer.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "ik houd van",
+      "romanization": "ik howt fan",
+      "nativeText": "“I like / love.” A standard preference frame.",
+      "pronunciation": "ik howt fan",
+      "exampleTarget": "Ik houd van warm weer.",
+      "exampleNative": "“I like warm weather.”",
+      "korean": "ik houd van",
+      "english": "“I like / love.” A standard preference frame.",
+      "example": "Ik houd van warm weer.",
+      "exampleEnglish": "“I like warm weather.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "Ik houd van warm weer.",
+      "romanization": "ik howt fan",
+      "nativeText": "Model use for \"Ik houd van warm weer.\": “I like warm weather.”",
+      "pronunciation": "ik howt fan",
+      "exampleTarget": "Ik houd van warm weer.",
+      "exampleNative": "“I like warm weather.”",
+      "korean": "Ik houd van warm weer.",
+      "english": "Model use for \"Ik houd van warm weer.\": “I like warm weather.”",
+      "example": "Ik houd van warm weer.",
+      "exampleEnglish": "“I like warm weather.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "ik houd van",
+      "romanization": "ik howt fan",
+      "nativeText": "Usage focus for \"ik houd van\": “I like / love.” A standard preference frame.",
+      "pronunciation": "ik howt fan",
+      "exampleTarget": "Ik houd van warm weer.",
+      "exampleNative": "Notice what the form is doing here: “I like warm weather.”",
+      "korean": "ik houd van",
+      "english": "Usage focus for \"ik houd van\": “I like / love.” A standard preference frame.",
+      "example": "Ik houd van warm weer.",
+      "exampleEnglish": "Notice what the form is doing here: “I like warm weather.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "ik houd van",
+      "romanization": "ik howt fan",
+      "nativeText": "Contrast check for \"ik houd van\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ik howt fan",
+      "exampleTarget": "Ik houd van warm weer.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like warm weather.”",
+      "korean": "ik houd van",
+      "english": "Contrast check for \"ik houd van\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik houd van warm weer.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like warm weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "ik houd van",
+      "romanization": "ik howt fan",
+      "nativeText": "Recall \"ik houd van\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik houd van warm weer.\".",
+      "pronunciation": "ik howt fan",
+      "exampleTarget": "Ik houd van warm weer.",
+      "exampleNative": "Self-check against the model before moving on: “I like warm weather.”",
+      "korean": "ik houd van",
+      "english": "Recall \"ik houd van\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik houd van warm weer.\".",
+      "example": "Ik houd van warm weer.",
+      "exampleEnglish": "Self-check against the model before moving on: “I like warm weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "ik houd van",
+      "romanization": "ik howt fan",
+      "nativeText": "Repair \"ik houd van\" inside \"Ik houd van warm weer.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I like / love.” A standard preference frame.",
+      "pronunciation": "ik howt fan",
+      "exampleTarget": "Ik houd van warm weer.",
+      "exampleNative": "Use the model as the repair target: “I like warm weather.”",
+      "korean": "ik houd van",
+      "english": "Repair \"ik houd van\" inside \"Ik houd van warm weer.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I like / love.” A standard preference frame.",
+      "example": "Ik houd van warm weer.",
+      "exampleEnglish": "Use the model as the repair target: “I like warm weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "ik houd van",
+      "romanization": "ik howt fan",
+      "nativeText": "Transfer \"ik houd van\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik houd van warm weer.\".",
+      "pronunciation": "ik howt fan",
+      "exampleTarget": "Ik houd van warm weer.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like warm weather.”",
+      "korean": "ik houd van",
+      "english": "Transfer \"ik houd van\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik houd van warm weer.\".",
+      "example": "Ik houd van warm weer.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like warm weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "ik houd van",
+      "romanization": "ik howt fan",
+      "nativeText": "Find one word or phrase that naturally travels with \"ik houd van\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ik howt fan",
+      "exampleTarget": "Ik houd van warm weer.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I like warm weather.”",
+      "korean": "ik houd van",
+      "english": "Find one word or phrase that naturally travels with \"ik houd van\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik houd van warm weer.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I like warm weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "ik houd van",
+      "romanization": "ik howt fan",
+      "nativeText": "Listen for \"ik houd van\" inside \"Ik houd van warm weer.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ik howt fan",
+      "exampleTarget": "Ik houd van warm weer.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like warm weather.”",
+      "korean": "ik houd van",
+      "english": "Listen for \"ik houd van\" inside \"Ik houd van warm weer.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik houd van warm weer.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like warm weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "ik houd van",
+      "romanization": "ik howt fan",
+      "nativeText": "Write \"ik houd van\" again without looking, then compare the exact written form against \"Ik houd van warm weer.\" before moving on.",
+      "pronunciation": "ik howt fan",
+      "exampleTarget": "Ik houd van warm weer.",
+      "exampleNative": "Use the written model as the final correctness check: “I like warm weather.”",
+      "korean": "ik houd van",
+      "english": "Write \"ik houd van\" again without looking, then compare the exact written form against \"Ik houd van warm weer.\" before moving on.",
+      "example": "Ik houd van warm weer.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I like warm weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "ik houd van",
+      "romanization": "ik howt fan",
+      "nativeText": "Check whether \"ik houd van\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like warm weather.”",
+      "pronunciation": "ik howt fan",
+      "exampleTarget": "Ik houd van warm weer.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I like warm weather.”",
+      "korean": "ik houd van",
+      "english": "Check whether \"ik houd van\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like warm weather.”",
+      "example": "Ik houd van warm weer.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I like warm weather.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "ik vind ... fijn",
+      "romanization": "ik fint ... feyn",
+      "nativeText": "“I find ... nice.” A natural opinion frame.",
+      "pronunciation": "ik fint ... feyn",
+      "exampleTarget": "Ik vind herfstweer fijn.",
+      "exampleNative": "“I like autumn weather.”",
+      "korean": "ik vind ... fijn",
+      "english": "“I find ... nice.” A natural opinion frame.",
+      "example": "Ik vind herfstweer fijn.",
+      "exampleEnglish": "“I like autumn weather.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "Ik vind herfstweer fijn.",
+      "romanization": "ik fint ... feyn",
+      "nativeText": "Model use for \"Ik vind herfstweer fijn.\": “I like autumn weather.”",
+      "pronunciation": "ik fint ... feyn",
+      "exampleTarget": "Ik vind herfstweer fijn.",
+      "exampleNative": "“I like autumn weather.”",
+      "korean": "Ik vind herfstweer fijn.",
+      "english": "Model use for \"Ik vind herfstweer fijn.\": “I like autumn weather.”",
+      "example": "Ik vind herfstweer fijn.",
+      "exampleEnglish": "“I like autumn weather.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "ik vind ... fijn",
+      "romanization": "ik fint ... feyn",
+      "nativeText": "Usage focus for \"ik vind ... fijn\": “I find ... nice.” A natural opinion frame.",
+      "pronunciation": "ik fint ... feyn",
+      "exampleTarget": "Ik vind herfstweer fijn.",
+      "exampleNative": "Notice what the form is doing here: “I like autumn weather.”",
+      "korean": "ik vind ... fijn",
+      "english": "Usage focus for \"ik vind ... fijn\": “I find ... nice.” A natural opinion frame.",
+      "example": "Ik vind herfstweer fijn.",
+      "exampleEnglish": "Notice what the form is doing here: “I like autumn weather.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "ik vind ... fijn",
+      "romanization": "ik fint ... feyn",
+      "nativeText": "Contrast check for \"ik vind ... fijn\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ik fint ... feyn",
+      "exampleTarget": "Ik vind herfstweer fijn.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like autumn weather.”",
+      "korean": "ik vind ... fijn",
+      "english": "Contrast check for \"ik vind ... fijn\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik vind herfstweer fijn.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like autumn weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "ik vind ... fijn",
+      "romanization": "ik fint ... feyn",
+      "nativeText": "Recall \"ik vind ... fijn\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik vind herfstweer fijn.\".",
+      "pronunciation": "ik fint ... feyn",
+      "exampleTarget": "Ik vind herfstweer fijn.",
+      "exampleNative": "Self-check against the model before moving on: “I like autumn weather.”",
+      "korean": "ik vind ... fijn",
+      "english": "Recall \"ik vind ... fijn\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik vind herfstweer fijn.\".",
+      "example": "Ik vind herfstweer fijn.",
+      "exampleEnglish": "Self-check against the model before moving on: “I like autumn weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "ik vind ... fijn",
+      "romanization": "ik fint ... feyn",
+      "nativeText": "Repair \"ik vind ... fijn\" inside \"Ik vind herfstweer fijn.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I find ... nice.” A natural opinion frame.",
+      "pronunciation": "ik fint ... feyn",
+      "exampleTarget": "Ik vind herfstweer fijn.",
+      "exampleNative": "Use the model as the repair target: “I like autumn weather.”",
+      "korean": "ik vind ... fijn",
+      "english": "Repair \"ik vind ... fijn\" inside \"Ik vind herfstweer fijn.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I find ... nice.” A natural opinion frame.",
+      "example": "Ik vind herfstweer fijn.",
+      "exampleEnglish": "Use the model as the repair target: “I like autumn weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "ik vind ... fijn",
+      "romanization": "ik fint ... feyn",
+      "nativeText": "Transfer \"ik vind ... fijn\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik vind herfstweer fijn.\".",
+      "pronunciation": "ik fint ... feyn",
+      "exampleTarget": "Ik vind herfstweer fijn.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like autumn weather.”",
+      "korean": "ik vind ... fijn",
+      "english": "Transfer \"ik vind ... fijn\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik vind herfstweer fijn.\".",
+      "example": "Ik vind herfstweer fijn.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like autumn weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "ik vind ... fijn",
+      "romanization": "ik fint ... feyn",
+      "nativeText": "Find one word or phrase that naturally travels with \"ik vind ... fijn\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ik fint ... feyn",
+      "exampleTarget": "Ik vind herfstweer fijn.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I like autumn weather.”",
+      "korean": "ik vind ... fijn",
+      "english": "Find one word or phrase that naturally travels with \"ik vind ... fijn\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik vind herfstweer fijn.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I like autumn weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "ik vind ... fijn",
+      "romanization": "ik fint ... feyn",
+      "nativeText": "Listen for \"ik vind ... fijn\" inside \"Ik vind herfstweer fijn.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ik fint ... feyn",
+      "exampleTarget": "Ik vind herfstweer fijn.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like autumn weather.”",
+      "korean": "ik vind ... fijn",
+      "english": "Listen for \"ik vind ... fijn\" inside \"Ik vind herfstweer fijn.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik vind herfstweer fijn.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like autumn weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "ik vind ... fijn",
+      "romanization": "ik fint ... feyn",
+      "nativeText": "Write \"ik vind ... fijn\" again without looking, then compare the exact written form against \"Ik vind herfstweer fijn.\" before moving on.",
+      "pronunciation": "ik fint ... feyn",
+      "exampleTarget": "Ik vind herfstweer fijn.",
+      "exampleNative": "Use the written model as the final correctness check: “I like autumn weather.”",
+      "korean": "ik vind ... fijn",
+      "english": "Write \"ik vind ... fijn\" again without looking, then compare the exact written form against \"Ik vind herfstweer fijn.\" before moving on.",
+      "example": "Ik vind herfstweer fijn.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I like autumn weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "ik vind ... fijn",
+      "romanization": "ik fint ... feyn",
+      "nativeText": "Check whether \"ik vind ... fijn\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like autumn weather.”",
+      "pronunciation": "ik fint ... feyn",
+      "exampleTarget": "Ik vind herfstweer fijn.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I like autumn weather.”",
+      "korean": "ik vind ... fijn",
+      "english": "Check whether \"ik vind ... fijn\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like autumn weather.”",
+      "example": "Ik vind herfstweer fijn.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I like autumn weather.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "liever",
+      "romanization": "LEE-ver",
+      "nativeText": "“Preferably / rather.” It often marks preference without needing a long construction.",
+      "pronunciation": "LEE-ver",
+      "exampleTarget": "Ik drink liever thee dan koffie.",
+      "exampleNative": "“I prefer drinking tea to coffee.”",
+      "korean": "liever",
+      "english": "“Preferably / rather.” It often marks preference without needing a long construction.",
+      "example": "Ik drink liever thee dan koffie.",
+      "exampleEnglish": "“I prefer drinking tea to coffee.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "Ik drink liever thee dan koffie.",
+      "romanization": "LEE-ver",
+      "nativeText": "Model use for \"Ik drink liever thee dan koffie.\": “I prefer drinking tea to coffee.”",
+      "pronunciation": "LEE-ver",
+      "exampleTarget": "Ik drink liever thee dan koffie.",
+      "exampleNative": "“I prefer drinking tea to coffee.”",
+      "korean": "Ik drink liever thee dan koffie.",
+      "english": "Model use for \"Ik drink liever thee dan koffie.\": “I prefer drinking tea to coffee.”",
+      "example": "Ik drink liever thee dan koffie.",
+      "exampleEnglish": "“I prefer drinking tea to coffee.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "liever",
+      "romanization": "LEE-ver",
+      "nativeText": "Usage focus for \"liever\": “Preferably / rather.” It often marks preference without needing a long construction.",
+      "pronunciation": "LEE-ver",
+      "exampleTarget": "Ik drink liever thee dan koffie.",
+      "exampleNative": "Notice what the form is doing here: “I prefer drinking tea to coffee.”",
+      "korean": "liever",
+      "english": "Usage focus for \"liever\": “Preferably / rather.” It often marks preference without needing a long construction.",
+      "example": "Ik drink liever thee dan koffie.",
+      "exampleEnglish": "Notice what the form is doing here: “I prefer drinking tea to coffee.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "liever",
+      "romanization": "LEE-ver",
+      "nativeText": "Contrast check for \"liever\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "LEE-ver",
+      "exampleTarget": "Ik drink liever thee dan koffie.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I prefer drinking tea to coffee.”",
+      "korean": "liever",
+      "english": "Contrast check for \"liever\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik drink liever thee dan koffie.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I prefer drinking tea to coffee.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "liever",
+      "romanization": "LEE-ver",
+      "nativeText": "Recall \"liever\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik drink liever thee dan koffie.\".",
+      "pronunciation": "LEE-ver",
+      "exampleTarget": "Ik drink liever thee dan koffie.",
+      "exampleNative": "Self-check against the model before moving on: “I prefer drinking tea to coffee.”",
+      "korean": "liever",
+      "english": "Recall \"liever\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik drink liever thee dan koffie.\".",
+      "example": "Ik drink liever thee dan koffie.",
+      "exampleEnglish": "Self-check against the model before moving on: “I prefer drinking tea to coffee.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "liever",
+      "romanization": "LEE-ver",
+      "nativeText": "Repair \"liever\" inside \"Ik drink liever thee dan koffie.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Preferably / rather.” It often marks preference without needing a long construction.",
+      "pronunciation": "LEE-ver",
+      "exampleTarget": "Ik drink liever thee dan koffie.",
+      "exampleNative": "Use the model as the repair target: “I prefer drinking tea to coffee.”",
+      "korean": "liever",
+      "english": "Repair \"liever\" inside \"Ik drink liever thee dan koffie.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Preferably / rather.” It often marks preference without needing a long construction.",
+      "example": "Ik drink liever thee dan koffie.",
+      "exampleEnglish": "Use the model as the repair target: “I prefer drinking tea to coffee.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "liever",
+      "romanization": "LEE-ver",
+      "nativeText": "Transfer \"liever\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik drink liever thee dan koffie.\".",
+      "pronunciation": "LEE-ver",
+      "exampleTarget": "Ik drink liever thee dan koffie.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I prefer drinking tea to coffee.”",
+      "korean": "liever",
+      "english": "Transfer \"liever\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik drink liever thee dan koffie.\".",
+      "example": "Ik drink liever thee dan koffie.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I prefer drinking tea to coffee.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "liever",
+      "romanization": "LEE-ver",
+      "nativeText": "Find one word or phrase that naturally travels with \"liever\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "LEE-ver",
+      "exampleTarget": "Ik drink liever thee dan koffie.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I prefer drinking tea to coffee.”",
+      "korean": "liever",
+      "english": "Find one word or phrase that naturally travels with \"liever\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik drink liever thee dan koffie.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I prefer drinking tea to coffee.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "liever",
+      "romanization": "LEE-ver",
+      "nativeText": "Listen for \"liever\" inside \"Ik drink liever thee dan koffie.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "LEE-ver",
+      "exampleTarget": "Ik drink liever thee dan koffie.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I prefer drinking tea to coffee.”",
+      "korean": "liever",
+      "english": "Listen for \"liever\" inside \"Ik drink liever thee dan koffie.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik drink liever thee dan koffie.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I prefer drinking tea to coffee.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "liever",
+      "romanization": "LEE-ver",
+      "nativeText": "Write \"liever\" again without looking, then compare the exact written form against \"Ik drink liever thee dan koffie.\" before moving on.",
+      "pronunciation": "LEE-ver",
+      "exampleTarget": "Ik drink liever thee dan koffie.",
+      "exampleNative": "Use the written model as the final correctness check: “I prefer drinking tea to coffee.”",
+      "korean": "liever",
+      "english": "Write \"liever\" again without looking, then compare the exact written form against \"Ik drink liever thee dan koffie.\" before moving on.",
+      "example": "Ik drink liever thee dan koffie.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I prefer drinking tea to coffee.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "liever",
+      "romanization": "LEE-ver",
+      "nativeText": "Check whether \"liever\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I prefer drinking tea to coffee.”",
+      "pronunciation": "LEE-ver",
+      "exampleTarget": "Ik drink liever thee dan koffie.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I prefer drinking tea to coffee.”",
+      "korean": "liever",
+      "english": "Check whether \"liever\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I prefer drinking tea to coffee.”",
+      "example": "Ik drink liever thee dan koffie.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I prefer drinking tea to coffee.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "omdat",
+      "romanization": "om-DAT",
+      "nativeText": "“Because.” It sends the verb to the end in the subordinate clause.",
+      "pronunciation": "om-DAT",
+      "exampleTarget": "Ik houd van de lente omdat het warm wordt.",
+      "exampleNative": "“I like spring because it gets warm.”",
+      "korean": "omdat",
+      "english": "“Because.” It sends the verb to the end in the subordinate clause.",
+      "example": "Ik houd van de lente omdat het warm wordt.",
+      "exampleEnglish": "“I like spring because it gets warm.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "Ik houd van de lente omdat het warm wordt.",
+      "romanization": "om-DAT",
+      "nativeText": "Model use for \"Ik houd van de lente omdat het warm wordt.\": “I like spring because it gets warm.”",
+      "pronunciation": "om-DAT",
+      "exampleTarget": "Ik houd van de lente omdat het warm wordt.",
+      "exampleNative": "“I like spring because it gets warm.”",
+      "korean": "Ik houd van de lente omdat het warm wordt.",
+      "english": "Model use for \"Ik houd van de lente omdat het warm wordt.\": “I like spring because it gets warm.”",
+      "example": "Ik houd van de lente omdat het warm wordt.",
+      "exampleEnglish": "“I like spring because it gets warm.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "omdat",
+      "romanization": "om-DAT",
+      "nativeText": "Usage focus for \"omdat\": “Because.” It sends the verb to the end in the subordinate clause.",
+      "pronunciation": "om-DAT",
+      "exampleTarget": "Ik houd van de lente omdat het warm wordt.",
+      "exampleNative": "Notice what the form is doing here: “I like spring because it gets warm.”",
+      "korean": "omdat",
+      "english": "Usage focus for \"omdat\": “Because.” It sends the verb to the end in the subordinate clause.",
+      "example": "Ik houd van de lente omdat het warm wordt.",
+      "exampleEnglish": "Notice what the form is doing here: “I like spring because it gets warm.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "omdat",
+      "romanization": "om-DAT",
+      "nativeText": "Contrast check for \"omdat\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "om-DAT",
+      "exampleTarget": "Ik houd van de lente omdat het warm wordt.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like spring because it gets warm.”",
+      "korean": "omdat",
+      "english": "Contrast check for \"omdat\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik houd van de lente omdat het warm wordt.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like spring because it gets warm.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "omdat",
+      "romanization": "om-DAT",
+      "nativeText": "Recall \"omdat\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik houd van de lente omdat het warm wordt.\".",
+      "pronunciation": "om-DAT",
+      "exampleTarget": "Ik houd van de lente omdat het warm wordt.",
+      "exampleNative": "Self-check against the model before moving on: “I like spring because it gets warm.”",
+      "korean": "omdat",
+      "english": "Recall \"omdat\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik houd van de lente omdat het warm wordt.\".",
+      "example": "Ik houd van de lente omdat het warm wordt.",
+      "exampleEnglish": "Self-check against the model before moving on: “I like spring because it gets warm.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "omdat",
+      "romanization": "om-DAT",
+      "nativeText": "Repair \"omdat\" inside \"Ik houd van de lente omdat het warm wordt.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Because.” It sends the verb to the end in the subordinate clause.",
+      "pronunciation": "om-DAT",
+      "exampleTarget": "Ik houd van de lente omdat het warm wordt.",
+      "exampleNative": "Use the model as the repair target: “I like spring because it gets warm.”",
+      "korean": "omdat",
+      "english": "Repair \"omdat\" inside \"Ik houd van de lente omdat het warm wordt.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Because.” It sends the verb to the end in the subordinate clause.",
+      "example": "Ik houd van de lente omdat het warm wordt.",
+      "exampleEnglish": "Use the model as the repair target: “I like spring because it gets warm.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "omdat",
+      "romanization": "om-DAT",
+      "nativeText": "Transfer \"omdat\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik houd van de lente omdat het warm wordt.\".",
+      "pronunciation": "om-DAT",
+      "exampleTarget": "Ik houd van de lente omdat het warm wordt.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like spring because it gets warm.”",
+      "korean": "omdat",
+      "english": "Transfer \"omdat\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik houd van de lente omdat het warm wordt.\".",
+      "example": "Ik houd van de lente omdat het warm wordt.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like spring because it gets warm.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "omdat",
+      "romanization": "om-DAT",
+      "nativeText": "Find one word or phrase that naturally travels with \"omdat\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "om-DAT",
+      "exampleTarget": "Ik houd van de lente omdat het warm wordt.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I like spring because it gets warm.”",
+      "korean": "omdat",
+      "english": "Find one word or phrase that naturally travels with \"omdat\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik houd van de lente omdat het warm wordt.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I like spring because it gets warm.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "omdat",
+      "romanization": "om-DAT",
+      "nativeText": "Listen for \"omdat\" inside \"Ik houd van de lente omdat het warm wordt.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "om-DAT",
+      "exampleTarget": "Ik houd van de lente omdat het warm wordt.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like spring because it gets warm.”",
+      "korean": "omdat",
+      "english": "Listen for \"omdat\" inside \"Ik houd van de lente omdat het warm wordt.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik houd van de lente omdat het warm wordt.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like spring because it gets warm.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "omdat",
+      "romanization": "om-DAT",
+      "nativeText": "Write \"omdat\" again without looking, then compare the exact written form against \"Ik houd van de lente omdat het warm wordt.\" before moving on.",
+      "pronunciation": "om-DAT",
+      "exampleTarget": "Ik houd van de lente omdat het warm wordt.",
+      "exampleNative": "Use the written model as the final correctness check: “I like spring because it gets warm.”",
+      "korean": "omdat",
+      "english": "Write \"omdat\" again without looking, then compare the exact written form against \"Ik houd van de lente omdat het warm wordt.\" before moving on.",
+      "example": "Ik houd van de lente omdat het warm wordt.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I like spring because it gets warm.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit10weatherpreferences-vocabulary-1",
+        "nl-level1unit10weatherpreferences-vocabulary-2",
+        "nl-level1unit10weatherpreferences-grammar-1",
+        "nl-level1unit10weatherpreferences-grammar-2",
+        "nl-level1unit10weatherpreferences-reading",
+        "nl-level1unit10weatherpreferences-listening",
+        "nl-level1unit10weatherpreferences-writing",
+        "nl-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "omdat",
+      "romanization": "om-DAT",
+      "nativeText": "Check whether \"omdat\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like spring because it gets warm.”",
+      "pronunciation": "om-DAT",
+      "exampleTarget": "Ik houd van de lente omdat het warm wordt.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I like spring because it gets warm.”",
+      "korean": "omdat",
+      "english": "Check whether \"omdat\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like spring because it gets warm.”",
+      "example": "Ik houd van de lente omdat het warm wordt.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I like spring because it gets warm.”"
+    }
+  ],
+  "targetLang": "nl",
+  "nativeLang": "en",
+  "track": "textbook"
+};

@@ -968,7 +968,9 @@
     "practiceEverywhereAria": "Попрактикуйтесь в этом пункте в другом месте",
     "practiceEverywhere": "Практикуйте это везде",
     "saveReply": "Сохранить ответ",
-    "selfTestReason": "Сохранено из класса для быстрой самопроверки."
+    "selfTestReason": "Сохранено из класса для быстрой самопроверки.",
+    "hideOutline": "Скрыть контур",
+    "showOutline": "Показать схему"
   },
   "classList": {
     "heroAriaLabel": "Сорт",
@@ -1009,7 +1011,10 @@
     },
     "titlePrefix": {
       "unit": "Уровень {{level}} · Юнит {{unit}}: {{title}}"
-    }
+    },
+    "retry": "Попробуйте еще раз",
+    "progressAriaLabel": "Прогресс класса",
+    "progressCaption": "{{percent}}% выполнено · {{completed}} из {{total}} объектов"
   },
   "contextPractice": {
     "title": "Уроки, сформированные вокруг вас",
@@ -1092,7 +1097,9 @@
     "recapWentWell": "Что прошло хорошо",
     "recapUsefulPhrases": "Полезные фразы",
     "recapReview": "Обзор дальше",
-    "recapReviewFallback": "Сохраните одну фразу и используйте ее в другом режиме тренировки."
+    "recapReviewFallback": "Сохраните одну фразу и используйте ее в другом режиме тренировки.",
+    "hideSetup": "Скрыть настройку",
+    "showSetup": "Показать настройку"
   },
   "exerciseHub": {
     "ariaLabel": "Упражнение",
@@ -1187,7 +1194,9 @@
       "default": "{{index}}. {{char}}: скопируйте форму, затем запишите ее по памяти."
     },
     "savedReason": "Отказ от писательской практики для очередного прохода.",
-    "selfTestReason": "Сохранено от практики письма для быстрой самопроверки."
+    "selfTestReason": "Сохранено от практики письма для быстрой самопроверки.",
+    "hideNotebook": "Скрыть блокнот",
+    "showNotebook": "Показать блокнот"
   },
   "institution": {
     "kicker": "Учреждение",

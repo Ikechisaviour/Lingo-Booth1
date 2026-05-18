@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Alert, Platform, ScrollView, StyleSheet, View } from 'react-native';
 import { Button, Card, Text, TextInput, SegmentedButtons } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
+import { useNavigation } from '@react-navigation/native';
 import { billingService } from '../../services/api';
 import { useAppColors, shadows, type AppColors } from '../../config/theme';
 import { useAuthStore } from '../../stores/authStore';
@@ -69,7 +70,8 @@ const BillingScreen: React.FC = () => {
   const { t } = useTranslation();
   const colors = useAppColors();
   const styles = useMemo(() => createStyles(colors), [colors]);
-  const { username } = useAuthStore();
+  const navigation = useNavigation<any>();
+  const { username, token, isGuest, logout } = useAuthStore();
   const [plans, setPlans] = useState<{ individual: Plan[]; institutional: Plan[] }>({ individual: [], institutional: [] });
   const [interval, setBillingInterval] = useState<'monthly' | 'annual'>('monthly');
   const [loading, setLoading] = useState(true);
@@ -97,6 +99,35 @@ const BillingScreen: React.FC = () => {
 
   const choosePlan = async (plan: Plan) => {
     if (plan.id === 'free') return;
+    if (!token || isGuest) {
+      Alert.alert(
+        t('pricing.signInToChooseTitle', 'Create an account to continue'),
+        t('pricing.signInToChooseBody', 'Create an account or sign in before choosing a paid plan so your access can be attached to you.'),
+        [
+          {
+            text: t('login.loginButton', 'Login'),
+            onPress: () => {
+              if (isGuest) {
+                logout();
+                return;
+              }
+              navigation.navigate('Login');
+            },
+          },
+          {
+            text: t('register.signUpButton', 'Sign Up'),
+            onPress: () => {
+              if (isGuest) {
+                logout();
+                return;
+              }
+              navigation.navigate('LanguageSelect', { mode: 'register' });
+            },
+          },
+        ],
+      );
+      return;
+    }
     setBusyPlan(plan.id);
     try {
       const res = await billingService.verifyMobilePurchase({
@@ -222,6 +253,10 @@ const BillingScreen: React.FC = () => {
           </Button>
         </Card.Content>
       </Card>
+
+      <Button mode="outlined" onPress={() => navigation.navigate('Contact')}>
+        {t('contact.navLabel', 'Contact')}
+      </Button>
     </ScrollView>
   );
 };

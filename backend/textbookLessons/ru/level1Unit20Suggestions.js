@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('ru', {
-  slug: 'ru-l1u20',
-  title: 'Level 1 · Unit 20: Предложения и планы — Suggestions and Plans',
-  category: 'planning',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Make friendly suggestions, respond to them, and settle on a plan.',
-  vocabularyGoal: 'Use suggestion, plan, and response phrases.',
-  grammarGoal: 'Use `давай`, `может`, and short response structures naturally.',
-  speakingGoal: 'Suggest one activity, accept or reject a suggestion, and agree on a plan.',
-  task: 'Plan a simple weekend outing.',
-  expressionPractice: [
-    practice('making-suggestion', 'Making suggestion', 'Use `давай` or `может`.'),
-    practice('accepting', 'Accepting suggestion', 'Use one positive response plus detail.'),
-    practice('declining-softly', 'Declining softly', 'Give a reason and another option.'),
+module.exports = {
+  "title": "Level 1 · Unit 20: Предложения и планы — Suggestions and Plans",
+  "category": "planning",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ru-level1unit20suggestions-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Make friendly suggestions, respond to them, and settle on a plan."
+      ],
+      "task": "Plan a simple weekend outing."
+    },
+    {
+      "id": "ru-level1unit20suggestions-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ru-level1unit20suggestions-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 20: Предложения и планы — Suggestions and Plans with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ru-level1unit20suggestions-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 20: Предложения и планы — Suggestions and Plans sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ru-level1unit20suggestions-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Make friendly suggestions, respond to them, and settle on a plan."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ru-level1unit20suggestions-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 20: Предложения и планы — Suggestions and Plans with one nearby Russian form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ru-level1unit20suggestions-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ru-level1unit20suggestions-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ru-level1unit20suggestions-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ru-level1unit20suggestions-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ru-level1unit20suggestions-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Plan a simple weekend outing."
+      ],
+      "task": "Plan a simple weekend outing."
+    }
   ],
-  relatedPools: ['topic-planning', 'topic-leisure'],
-  items: [
-    item('давай', 'davay', '“Let’s.” Warm and very common with peers.', 'Давай выпьем кофе после пары.', '“Let’s have coffee after class.”'),
-    item('может, ...?', 'mozhet', '“Maybe / how about ...?” A softer suggestion frame.', 'Может, пойдём в кино?', '“Maybe we should go to the cinema?”'),
-    item('хорошая идея', 'khoroshaya ideya', '“Good idea.” Agreement makes the adjective feminine with `идея`.', 'Это хорошая идея.', '“That is a good idea.”'),
-    item('договорились', 'dogovorilis', '“Agreed.” A very natural way to close a plan.', 'Хорошо, договорились.', '“Alright, agreed.”'),
-    item('извини, я не могу', 'izvini ya ne mogu', '“Sorry, I cannot.” A polite refusal start.', 'Извини, я не могу в субботу.', '“Sorry, I cannot on Saturday.”'),
-    item('может быть', 'mozhet byt', '“Maybe.” Useful when the speaker is uncertain.', 'Может быть, воскресенье лучше.', '“Maybe Sunday is better.”'),
-    item('лучше', 'luchshe', '“Better.” A practical comparison word in planning.', 'Лучше выйти пораньше.', '“It is better to leave earlier.”'),
-    item('тогда', 'togda', '“Then / in that case.” It helps the plan pivot after new information.', 'Тогда встретимся в пять.', '“Then we will meet at five.”'),
+  "expressionPractice": [
+    {
+      "id": "making-suggestion",
+      "label": "Making suggestion",
+      "goal": "Use `давай` or `может`."
+    },
+    {
+      "id": "accepting",
+      "label": "Accepting suggestion",
+      "goal": "Use one positive response plus detail."
+    },
+    {
+      "id": "declining-softly",
+      "label": "Declining softly",
+      "goal": "Give a reason and another option."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-planning",
+    "topic-leisure"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit20suggestions-orientation"
+      ],
+      "targetText": "цель урока",
+      "romanization": "",
+      "nativeText": "Make friendly suggestions, respond to them, and settle on a plan.",
+      "pronunciation": "",
+      "exampleTarget": "цель урока",
+      "exampleNative": "The whole lesson is built toward this outcome: Plan a simple weekend outing.",
+      "korean": "цель урока",
+      "english": "Make friendly suggestions, respond to them, and settle on a plan.",
+      "example": "цель урока",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Plan a simple weekend outing."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ru-level1unit20suggestions-pronunciation"
+      ],
+      "targetText": "проверка произношения",
+      "romanization": "",
+      "nativeText": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Давай выпьем кофе после пары.\".",
+      "pronunciation": "",
+      "exampleTarget": "Давай выпьем кофе после пары.",
+      "exampleNative": "“Let’s have coffee after class.”",
+      "korean": "проверка произношения",
+      "english": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Давай выпьем кофе после пары.\".",
+      "example": "Давай выпьем кофе после пары.",
+      "exampleEnglish": "“Let’s have coffee after class.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1"
+      ],
+      "targetText": "давай",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 20: Предложения и планы — Suggestions and Plans with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Давай выпьем кофе после пары.",
+      "exampleNative": "“Let’s have coffee after class.”",
+      "korean": "давай",
+      "english": "Use the key language of Level 1 · Unit 20: Предложения и планы — Suggestions and Plans with the register and setting that the lesson requires.",
+      "example": "Давай выпьем кофе после пары.",
+      "exampleEnglish": "“Let’s have coffee after class.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-2"
+      ],
+      "targetText": "может, ...?",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 20: Предложения и планы — Suggestions and Plans sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Может, пойдём в кино?",
+      "exampleNative": "“Maybe we should go to the cinema?”",
+      "korean": "может, ...?",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 20: Предложения и планы — Suggestions and Plans sound precise rather than merely understandable.",
+      "example": "Может, пойдём в кино?",
+      "exampleEnglish": "“Maybe we should go to the cinema?”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ru-level1unit20suggestions-grammar-1"
+      ],
+      "targetText": "давай",
+      "romanization": "",
+      "nativeText": "Make friendly suggestions, respond to them, and settle on a plan.",
+      "pronunciation": "",
+      "exampleTarget": "Давай выпьем кофе после пары.",
+      "exampleNative": "“Let’s have coffee after class.”",
+      "korean": "давай",
+      "english": "Make friendly suggestions, respond to them, and settle on a plan.",
+      "example": "Давай выпьем кофе после пары.",
+      "exampleEnglish": "“Let’s have coffee after class.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ru-level1unit20suggestions-grammar-2"
+      ],
+      "targetText": "может, ...?",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 20: Предложения и планы — Suggestions and Plans with one nearby Russian form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Может, пойдём в кино?",
+      "exampleNative": "“Maybe we should go to the cinema?”",
+      "korean": "может, ...?",
+      "english": "Contrast the main pattern in Level 1 · Unit 20: Предложения и планы — Suggestions and Plans with one nearby Russian form so the learner can avoid literal translation.",
+      "example": "Может, пойдём в кино?",
+      "exampleEnglish": "“Maybe we should go to the cinema?”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ru-level1unit20suggestions-reading"
+      ],
+      "targetText": "модель чтения",
+      "romanization": "",
+      "nativeText": "Read \"Тогда встретимся в пять.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Тогда встретимся в пять.",
+      "exampleNative": "“Then we will meet at five.”",
+      "korean": "модель чтения",
+      "english": "Read \"Тогда встретимся в пять.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Тогда встретимся в пять.",
+      "exampleEnglish": "“Then we will meet at five.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit20suggestions-listening"
+      ],
+      "targetText": "модель диалога",
+      "romanization": "",
+      "nativeText": "Hear \"Тогда встретимся в пять.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Тогда встретимся в пять.",
+      "exampleNative": "“Then we will meet at five.”",
+      "korean": "модель диалога",
+      "english": "Hear \"Тогда встретимся в пять.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Тогда встретимся в пять.",
+      "exampleEnglish": "“Then we will meet at five.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ru-level1unit20suggestions-writing"
+      ],
+      "targetText": "письменная практика",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Давай выпьем кофе после пары.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Давай выпьем кофе после пары.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "письменная практика",
+      "english": "Write your own version after studying \"Давай выпьем кофе после пары.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Давай выпьем кофе после пары.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ru-level1unit20suggestions-culture"
+      ],
+      "targetText": "употребление и контекст",
+      "romanization": "",
+      "nativeText": "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Может, пойдём в кино?",
+      "exampleNative": "“Maybe we should go to the cinema?”",
+      "korean": "употребление и контекст",
+      "english": "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used.",
+      "example": "Может, пойдём в кино?",
+      "exampleEnglish": "“Maybe we should go to the cinema?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "итоговое задание",
+      "romanization": "",
+      "nativeText": "Plan a simple weekend outing.",
+      "pronunciation": "",
+      "exampleTarget": "Тогда встретимся в пять.",
+      "exampleNative": "Plan a simple weekend outing.",
+      "korean": "итоговое задание",
+      "english": "Plan a simple weekend outing.",
+      "example": "Тогда встретимся в пять.",
+      "exampleEnglish": "Plan a simple weekend outing."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit20suggestions-grammar-2"
+      ],
+      "targetText": "частая ошибка",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around case, aspect, motion verbs, and stress-sensitive forms. Begin by checking \"Может, пойдём в кино?\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Может, пойдём в кино?",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “Maybe we should go to the cinema?”",
+      "korean": "частая ошибка",
+      "english": "Watch for literal-translation mistakes around case, aspect, motion verbs, and stress-sensitive forms. Begin by checking \"Может, пойдём в кино?\" against the model.",
+      "example": "Может, пойдём в кино?",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “Maybe we should go to the cinema?”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-culture"
+      ],
+      "targetText": "регистр",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for ты, вы, a service register, or a more formal written choice. Compare the social fit of \"Давай выпьем кофе после пары.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Давай выпьем кофе после пары.",
+      "exampleNative": "“Let’s have coffee after class.”",
+      "korean": "регистр",
+      "english": "Check whether the setting calls for ты, вы, a service register, or a more formal written choice. Compare the social fit of \"Давай выпьем кофе после пары.\" before reusing it elsewhere.",
+      "example": "Давай выпьем кофе после пары.",
+      "exampleEnglish": "“Let’s have coffee after class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "беглость",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Russian message rather than as separate translated fragments. Aim to carry \"Тогда встретимся в пять.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Тогда встретимся в пять.",
+      "exampleNative": "“Then we will meet at five.”",
+      "korean": "беглость",
+      "english": "Say the idea as one connected Russian message rather than as separate translated fragments. Aim to carry \"Тогда встретимся в пять.\" as one thought.",
+      "example": "Тогда встретимся в пять.",
+      "exampleEnglish": "“Then we will meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "перенос",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Давай выпьем кофе после пары.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Давай выпьем кофе после пары.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "перенос",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Давай выпьем кофе после пары.\" and move it into your own life.",
+      "example": "Давай выпьем кофе после пары.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-grammar-1"
+      ],
+      "targetText": "воспроизведение",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"давай\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "давай",
+      "exampleNative": "“Let’s.” Warm and very common with peers.",
+      "korean": "воспроизведение",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"давай\" before looking back.",
+      "example": "давай",
+      "exampleEnglish": "“Let’s.” Warm and very common with peers."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-writing"
+      ],
+      "targetText": "расширение",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Тогда встретимся в пять.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Тогда встретимся в пять.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "расширение",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Тогда встретимся в пять.\" rather than restarting from a blank sentence.",
+      "example": "Тогда встретимся в пять.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading"
+      ],
+      "targetText": "сравнение",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 20: Предложения и планы — Suggestions and Plans with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Может, пойдём в кино?\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Может, пойдём в кино?",
+      "exampleNative": "“Maybe we should go to the cinema?”",
+      "korean": "сравнение",
+      "english": "Compare the central form in Level 1 · Unit 20: Предложения и планы — Suggestions and Plans with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Может, пойдём в кино?\" as the comparison line.",
+      "example": "Может, пойдём в кино?",
+      "exampleEnglish": "“Maybe we should go to the cinema?”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ru-level1unit20suggestions-pronunciation"
+      ],
+      "targetText": "исправление произношения",
+      "romanization": "",
+      "nativeText": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Давай выпьем кофе после пары.\".",
+      "pronunciation": "",
+      "exampleTarget": "Давай выпьем кофе после пары.",
+      "exampleNative": "“Let’s have coffee after class.”",
+      "korean": "исправление произношения",
+      "english": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Давай выпьем кофе после пары.\".",
+      "example": "Давай выпьем кофе после пары.",
+      "exampleEnglish": "“Let’s have coffee after class.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "вариация диалога",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Тогда встретимся в пять.\".",
+      "pronunciation": "",
+      "exampleTarget": "Тогда встретимся в пять.",
+      "exampleNative": "“Then we will meet at five.”",
+      "korean": "вариация диалога",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Тогда встретимся в пять.\".",
+      "example": "Тогда встретимся в пять.",
+      "exampleEnglish": "“Then we will meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-writing"
+      ],
+      "targetText": "построение предложения",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Давай выпьем кофе после пары.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Давай выпьем кофе после пары.",
+      "exampleNative": "“Let’s have coffee after class.”",
+      "korean": "построение предложения",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Давай выпьем кофе после пары.\" one layer at a time.",
+      "example": "Давай выпьем кофе после пары.",
+      "exampleEnglish": "“Let’s have coffee after class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-2"
+      ],
+      "targetText": "быстрая проверка",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Может, пойдём в кино?\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Может, пойдём в кино?",
+      "exampleNative": "“Maybe we should go to the cinema?”",
+      "korean": "быстрая проверка",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Может, пойдём в кино?\" as the deciding example.",
+      "example": "Может, пойдём в кино?",
+      "exampleEnglish": "“Maybe we should go to the cinema?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit20suggestions-culture",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "рефлексия",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Тогда встретимся в пять.\".",
+      "pronunciation": "",
+      "exampleTarget": "Тогда встретимся в пять.",
+      "exampleNative": "“Then we will meet at five.”",
+      "korean": "рефлексия",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Тогда встретимся в пять.\".",
+      "example": "Тогда встретимся в пять.",
+      "exampleEnglish": "“Then we will meet at five.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "давай",
+      "romanization": "davay",
+      "nativeText": "“Let’s.” Warm and very common with peers.",
+      "pronunciation": "davay",
+      "exampleTarget": "Давай выпьем кофе после пары.",
+      "exampleNative": "“Let’s have coffee after class.”",
+      "korean": "давай",
+      "english": "“Let’s.” Warm and very common with peers.",
+      "example": "Давай выпьем кофе после пары.",
+      "exampleEnglish": "“Let’s have coffee after class.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "Давай выпьем кофе после пары.",
+      "romanization": "davay",
+      "nativeText": "Model use for \"Давай выпьем кофе после пары.\": “Let’s have coffee after class.”",
+      "pronunciation": "davay",
+      "exampleTarget": "Давай выпьем кофе после пары.",
+      "exampleNative": "“Let’s have coffee after class.”",
+      "korean": "Давай выпьем кофе после пары.",
+      "english": "Model use for \"Давай выпьем кофе после пары.\": “Let’s have coffee after class.”",
+      "example": "Давай выпьем кофе после пары.",
+      "exampleEnglish": "“Let’s have coffee after class.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "давай",
+      "romanization": "davay",
+      "nativeText": "Usage focus for \"давай\": Use the key language of Level 1 · Unit 20: Предложения и планы — Suggestions and Plans with the register and setting that the lesson requires.",
+      "pronunciation": "davay",
+      "exampleTarget": "Давай выпьем кофе после пары.",
+      "exampleNative": "Notice what the form is doing here: “Let’s have coffee after class.”",
+      "korean": "давай",
+      "english": "Usage focus for \"давай\": Use the key language of Level 1 · Unit 20: Предложения и планы — Suggestions and Plans with the register and setting that the lesson requires.",
+      "example": "Давай выпьем кофе после пары.",
+      "exampleEnglish": "Notice what the form is doing here: “Let’s have coffee after class.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "давай",
+      "romanization": "davay",
+      "nativeText": "Contrast check for \"давай\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "davay",
+      "exampleTarget": "Давай выпьем кофе после пары.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Let’s have coffee after class.”",
+      "korean": "давай",
+      "english": "Contrast check for \"давай\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Давай выпьем кофе после пары.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Let’s have coffee after class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "давай",
+      "romanization": "davay",
+      "nativeText": "Recall \"давай\" from memory, then explain what would change if a nearby alternative replaced it in \"Давай выпьем кофе после пары.\".",
+      "pronunciation": "davay",
+      "exampleTarget": "Давай выпьем кофе после пары.",
+      "exampleNative": "Self-check against the model before moving on: “Let’s have coffee after class.”",
+      "korean": "давай",
+      "english": "Recall \"давай\" from memory, then explain what would change if a nearby alternative replaced it in \"Давай выпьем кофе после пары.\".",
+      "example": "Давай выпьем кофе после пары.",
+      "exampleEnglish": "Self-check against the model before moving on: “Let’s have coffee after class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "давай",
+      "romanization": "davay",
+      "nativeText": "Repair \"давай\" inside \"Давай выпьем кофе после пары.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 20: Предложения и планы — Suggestions and Plans with the register and setting that the lesson requires.",
+      "pronunciation": "davay",
+      "exampleTarget": "Давай выпьем кофе после пары.",
+      "exampleNative": "Use the model as the repair target: “Let’s have coffee after class.”",
+      "korean": "давай",
+      "english": "Repair \"давай\" inside \"Давай выпьем кофе после пары.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 20: Предложения и планы — Suggestions and Plans with the register and setting that the lesson requires.",
+      "example": "Давай выпьем кофе после пары.",
+      "exampleEnglish": "Use the model as the repair target: “Let’s have coffee after class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "давай",
+      "romanization": "davay",
+      "nativeText": "Transfer \"давай\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Давай выпьем кофе после пары.\".",
+      "pronunciation": "davay",
+      "exampleTarget": "Давай выпьем кофе после пары.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Let’s have coffee after class.”",
+      "korean": "давай",
+      "english": "Transfer \"давай\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Давай выпьем кофе после пары.\".",
+      "example": "Давай выпьем кофе после пары.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Let’s have coffee after class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "давай",
+      "romanization": "davay",
+      "nativeText": "Find one word or phrase that naturally travels with \"давай\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "davay",
+      "exampleTarget": "Давай выпьем кофе после пары.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Let’s have coffee after class.”",
+      "korean": "давай",
+      "english": "Find one word or phrase that naturally travels with \"давай\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Давай выпьем кофе после пары.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Let’s have coffee after class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "давай",
+      "romanization": "davay",
+      "nativeText": "Listen for \"давай\" inside \"Давай выпьем кофе после пары.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "davay",
+      "exampleTarget": "Давай выпьем кофе после пары.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Let’s have coffee after class.”",
+      "korean": "давай",
+      "english": "Listen for \"давай\" inside \"Давай выпьем кофе после пары.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Давай выпьем кофе после пары.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Let’s have coffee after class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "давай",
+      "romanization": "davay",
+      "nativeText": "Write \"давай\" again without looking, then compare the exact written form against \"Давай выпьем кофе после пары.\" before moving on.",
+      "pronunciation": "davay",
+      "exampleTarget": "Давай выпьем кофе после пары.",
+      "exampleNative": "Use the written model as the final correctness check: “Let’s have coffee after class.”",
+      "korean": "давай",
+      "english": "Write \"давай\" again without looking, then compare the exact written form against \"Давай выпьем кофе после пары.\" before moving on.",
+      "example": "Давай выпьем кофе после пары.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Let’s have coffee after class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "давай",
+      "romanization": "davay",
+      "nativeText": "Check whether \"давай\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Let’s have coffee after class.”",
+      "pronunciation": "davay",
+      "exampleTarget": "Давай выпьем кофе после пары.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Let’s have coffee after class.”",
+      "korean": "давай",
+      "english": "Check whether \"давай\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Let’s have coffee after class.”",
+      "example": "Давай выпьем кофе после пары.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Let’s have coffee after class.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "может, ...?",
+      "romanization": "mozhet",
+      "nativeText": "“Maybe / how about ...?” A softer suggestion frame.",
+      "pronunciation": "mozhet",
+      "exampleTarget": "Может, пойдём в кино?",
+      "exampleNative": "“Maybe we should go to the cinema?”",
+      "korean": "может, ...?",
+      "english": "“Maybe / how about ...?” A softer suggestion frame.",
+      "example": "Может, пойдём в кино?",
+      "exampleEnglish": "“Maybe we should go to the cinema?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "Может, пойдём в кино?",
+      "romanization": "mozhet",
+      "nativeText": "Model use for \"Может, пойдём в кино?\": “Maybe we should go to the cinema?”",
+      "pronunciation": "mozhet",
+      "exampleTarget": "Может, пойдём в кино?",
+      "exampleNative": "“Maybe we should go to the cinema?”",
+      "korean": "Может, пойдём в кино?",
+      "english": "Model use for \"Может, пойдём в кино?\": “Maybe we should go to the cinema?”",
+      "example": "Может, пойдём в кино?",
+      "exampleEnglish": "“Maybe we should go to the cinema?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "может, ...?",
+      "romanization": "mozhet",
+      "nativeText": "Usage focus for \"может, ...?\": Distinguish the nearby wording choices that make Level 1 · Unit 20: Предложения и планы — Suggestions and Plans sound precise rather than merely understandable.",
+      "pronunciation": "mozhet",
+      "exampleTarget": "Может, пойдём в кино?",
+      "exampleNative": "Notice what the form is doing here: “Maybe we should go to the cinema?”",
+      "korean": "может, ...?",
+      "english": "Usage focus for \"может, ...?\": Distinguish the nearby wording choices that make Level 1 · Unit 20: Предложения и планы — Suggestions and Plans sound precise rather than merely understandable.",
+      "example": "Может, пойдём в кино?",
+      "exampleEnglish": "Notice what the form is doing here: “Maybe we should go to the cinema?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "может, ...?",
+      "romanization": "mozhet",
+      "nativeText": "Contrast check for \"может, ...?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "mozhet",
+      "exampleTarget": "Может, пойдём в кино?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Maybe we should go to the cinema?”",
+      "korean": "может, ...?",
+      "english": "Contrast check for \"может, ...?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Может, пойдём в кино?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Maybe we should go to the cinema?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "может, ...?",
+      "romanization": "mozhet",
+      "nativeText": "Recall \"может, ...?\" from memory, then explain what would change if a nearby alternative replaced it in \"Может, пойдём в кино?\".",
+      "pronunciation": "mozhet",
+      "exampleTarget": "Может, пойдём в кино?",
+      "exampleNative": "Self-check against the model before moving on: “Maybe we should go to the cinema?”",
+      "korean": "может, ...?",
+      "english": "Recall \"может, ...?\" from memory, then explain what would change if a nearby alternative replaced it in \"Может, пойдём в кино?\".",
+      "example": "Может, пойдём в кино?",
+      "exampleEnglish": "Self-check against the model before moving on: “Maybe we should go to the cinema?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "может, ...?",
+      "romanization": "mozhet",
+      "nativeText": "Repair \"может, ...?\" inside \"Может, пойдём в кино?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 20: Предложения и планы — Suggestions and Plans sound precise rather than merely understandable.",
+      "pronunciation": "mozhet",
+      "exampleTarget": "Может, пойдём в кино?",
+      "exampleNative": "Use the model as the repair target: “Maybe we should go to the cinema?”",
+      "korean": "может, ...?",
+      "english": "Repair \"может, ...?\" inside \"Может, пойдём в кино?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 20: Предложения и планы — Suggestions and Plans sound precise rather than merely understandable.",
+      "example": "Может, пойдём в кино?",
+      "exampleEnglish": "Use the model as the repair target: “Maybe we should go to the cinema?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "может, ...?",
+      "romanization": "mozhet",
+      "nativeText": "Transfer \"может, ...?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Может, пойдём в кино?\".",
+      "pronunciation": "mozhet",
+      "exampleTarget": "Может, пойдём в кино?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Maybe we should go to the cinema?”",
+      "korean": "может, ...?",
+      "english": "Transfer \"может, ...?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Может, пойдём в кино?\".",
+      "example": "Может, пойдём в кино?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Maybe we should go to the cinema?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "может, ...?",
+      "romanization": "mozhet",
+      "nativeText": "Find one word or phrase that naturally travels with \"может, ...?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "mozhet",
+      "exampleTarget": "Может, пойдём в кино?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Maybe we should go to the cinema?”",
+      "korean": "может, ...?",
+      "english": "Find one word or phrase that naturally travels with \"может, ...?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Может, пойдём в кино?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Maybe we should go to the cinema?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "может, ...?",
+      "romanization": "mozhet",
+      "nativeText": "Listen for \"может, ...?\" inside \"Может, пойдём в кино?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "mozhet",
+      "exampleTarget": "Может, пойдём в кино?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Maybe we should go to the cinema?”",
+      "korean": "может, ...?",
+      "english": "Listen for \"может, ...?\" inside \"Может, пойдём в кино?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Может, пойдём в кино?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Maybe we should go to the cinema?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "может, ...?",
+      "romanization": "mozhet",
+      "nativeText": "Write \"может, ...?\" again without looking, then compare the exact written form against \"Может, пойдём в кино?\" before moving on.",
+      "pronunciation": "mozhet",
+      "exampleTarget": "Может, пойдём в кино?",
+      "exampleNative": "Use the written model as the final correctness check: “Maybe we should go to the cinema?”",
+      "korean": "может, ...?",
+      "english": "Write \"может, ...?\" again without looking, then compare the exact written form against \"Может, пойдём в кино?\" before moving on.",
+      "example": "Может, пойдём в кино?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Maybe we should go to the cinema?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "может, ...?",
+      "romanization": "mozhet",
+      "nativeText": "Check whether \"может, ...?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Maybe we should go to the cinema?”",
+      "pronunciation": "mozhet",
+      "exampleTarget": "Может, пойдём в кино?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Maybe we should go to the cinema?”",
+      "korean": "может, ...?",
+      "english": "Check whether \"может, ...?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Maybe we should go to the cinema?”",
+      "example": "Может, пойдём в кино?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Maybe we should go to the cinema?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "хорошая идея",
+      "romanization": "khoroshaya ideya",
+      "nativeText": "“Good idea.” Agreement makes the adjective feminine with `идея`.",
+      "pronunciation": "khoroshaya ideya",
+      "exampleTarget": "Это хорошая идея.",
+      "exampleNative": "“That is a good idea.”",
+      "korean": "хорошая идея",
+      "english": "“Good idea.” Agreement makes the adjective feminine with `идея`.",
+      "example": "Это хорошая идея.",
+      "exampleEnglish": "“That is a good idea.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "Это хорошая идея.",
+      "romanization": "khoroshaya ideya",
+      "nativeText": "Model use for \"Это хорошая идея.\": “That is a good idea.”",
+      "pronunciation": "khoroshaya ideya",
+      "exampleTarget": "Это хорошая идея.",
+      "exampleNative": "“That is a good idea.”",
+      "korean": "Это хорошая идея.",
+      "english": "Model use for \"Это хорошая идея.\": “That is a good idea.”",
+      "example": "Это хорошая идея.",
+      "exampleEnglish": "“That is a good idea.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "хорошая идея",
+      "romanization": "khoroshaya ideya",
+      "nativeText": "Usage focus for \"хорошая идея\": “Good idea.” Agreement makes the adjective feminine with `идея`.",
+      "pronunciation": "khoroshaya ideya",
+      "exampleTarget": "Это хорошая идея.",
+      "exampleNative": "Notice what the form is doing here: “That is a good idea.”",
+      "korean": "хорошая идея",
+      "english": "Usage focus for \"хорошая идея\": “Good idea.” Agreement makes the adjective feminine with `идея`.",
+      "example": "Это хорошая идея.",
+      "exampleEnglish": "Notice what the form is doing here: “That is a good idea.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "хорошая идея",
+      "romanization": "khoroshaya ideya",
+      "nativeText": "Contrast check for \"хорошая идея\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "khoroshaya ideya",
+      "exampleTarget": "Это хорошая идея.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “That is a good idea.”",
+      "korean": "хорошая идея",
+      "english": "Contrast check for \"хорошая идея\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Это хорошая идея.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “That is a good idea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "хорошая идея",
+      "romanization": "khoroshaya ideya",
+      "nativeText": "Recall \"хорошая идея\" from memory, then explain what would change if a nearby alternative replaced it in \"Это хорошая идея.\".",
+      "pronunciation": "khoroshaya ideya",
+      "exampleTarget": "Это хорошая идея.",
+      "exampleNative": "Self-check against the model before moving on: “That is a good idea.”",
+      "korean": "хорошая идея",
+      "english": "Recall \"хорошая идея\" from memory, then explain what would change if a nearby alternative replaced it in \"Это хорошая идея.\".",
+      "example": "Это хорошая идея.",
+      "exampleEnglish": "Self-check against the model before moving on: “That is a good idea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "хорошая идея",
+      "romanization": "khoroshaya ideya",
+      "nativeText": "Repair \"хорошая идея\" inside \"Это хорошая идея.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Good idea.” Agreement makes the adjective feminine with `идея`.",
+      "pronunciation": "khoroshaya ideya",
+      "exampleTarget": "Это хорошая идея.",
+      "exampleNative": "Use the model as the repair target: “That is a good idea.”",
+      "korean": "хорошая идея",
+      "english": "Repair \"хорошая идея\" inside \"Это хорошая идея.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Good idea.” Agreement makes the adjective feminine with `идея`.",
+      "example": "Это хорошая идея.",
+      "exampleEnglish": "Use the model as the repair target: “That is a good idea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "хорошая идея",
+      "romanization": "khoroshaya ideya",
+      "nativeText": "Transfer \"хорошая идея\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Это хорошая идея.\".",
+      "pronunciation": "khoroshaya ideya",
+      "exampleTarget": "Это хорошая идея.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “That is a good idea.”",
+      "korean": "хорошая идея",
+      "english": "Transfer \"хорошая идея\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Это хорошая идея.\".",
+      "example": "Это хорошая идея.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “That is a good idea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "хорошая идея",
+      "romanization": "khoroshaya ideya",
+      "nativeText": "Find one word or phrase that naturally travels with \"хорошая идея\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "khoroshaya ideya",
+      "exampleTarget": "Это хорошая идея.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “That is a good idea.”",
+      "korean": "хорошая идея",
+      "english": "Find one word or phrase that naturally travels with \"хорошая идея\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Это хорошая идея.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “That is a good idea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "хорошая идея",
+      "romanization": "khoroshaya ideya",
+      "nativeText": "Listen for \"хорошая идея\" inside \"Это хорошая идея.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "khoroshaya ideya",
+      "exampleTarget": "Это хорошая идея.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “That is a good idea.”",
+      "korean": "хорошая идея",
+      "english": "Listen for \"хорошая идея\" inside \"Это хорошая идея.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Это хорошая идея.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “That is a good idea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "хорошая идея",
+      "romanization": "khoroshaya ideya",
+      "nativeText": "Write \"хорошая идея\" again without looking, then compare the exact written form against \"Это хорошая идея.\" before moving on.",
+      "pronunciation": "khoroshaya ideya",
+      "exampleTarget": "Это хорошая идея.",
+      "exampleNative": "Use the written model as the final correctness check: “That is a good idea.”",
+      "korean": "хорошая идея",
+      "english": "Write \"хорошая идея\" again without looking, then compare the exact written form against \"Это хорошая идея.\" before moving on.",
+      "example": "Это хорошая идея.",
+      "exampleEnglish": "Use the written model as the final correctness check: “That is a good idea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "хорошая идея",
+      "romanization": "khoroshaya ideya",
+      "nativeText": "Check whether \"хорошая идея\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “That is a good idea.”",
+      "pronunciation": "khoroshaya ideya",
+      "exampleTarget": "Это хорошая идея.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “That is a good idea.”",
+      "korean": "хорошая идея",
+      "english": "Check whether \"хорошая идея\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “That is a good idea.”",
+      "example": "Это хорошая идея.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “That is a good idea.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "договорились",
+      "romanization": "dogovorilis",
+      "nativeText": "“Agreed.” A very natural way to close a plan.",
+      "pronunciation": "dogovorilis",
+      "exampleTarget": "Хорошо, договорились.",
+      "exampleNative": "“Alright, agreed.”",
+      "korean": "договорились",
+      "english": "“Agreed.” A very natural way to close a plan.",
+      "example": "Хорошо, договорились.",
+      "exampleEnglish": "“Alright, agreed.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "Хорошо, договорились.",
+      "romanization": "dogovorilis",
+      "nativeText": "Model use for \"Хорошо, договорились.\": “Alright, agreed.”",
+      "pronunciation": "dogovorilis",
+      "exampleTarget": "Хорошо, договорились.",
+      "exampleNative": "“Alright, agreed.”",
+      "korean": "Хорошо, договорились.",
+      "english": "Model use for \"Хорошо, договорились.\": “Alright, agreed.”",
+      "example": "Хорошо, договорились.",
+      "exampleEnglish": "“Alright, agreed.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "договорились",
+      "romanization": "dogovorilis",
+      "nativeText": "Usage focus for \"договорились\": “Agreed.” A very natural way to close a plan.",
+      "pronunciation": "dogovorilis",
+      "exampleTarget": "Хорошо, договорились.",
+      "exampleNative": "Notice what the form is doing here: “Alright, agreed.”",
+      "korean": "договорились",
+      "english": "Usage focus for \"договорились\": “Agreed.” A very natural way to close a plan.",
+      "example": "Хорошо, договорились.",
+      "exampleEnglish": "Notice what the form is doing here: “Alright, agreed.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "договорились",
+      "romanization": "dogovorilis",
+      "nativeText": "Contrast check for \"договорились\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "dogovorilis",
+      "exampleTarget": "Хорошо, договорились.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Alright, agreed.”",
+      "korean": "договорились",
+      "english": "Contrast check for \"договорились\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Хорошо, договорились.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Alright, agreed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "договорились",
+      "romanization": "dogovorilis",
+      "nativeText": "Recall \"договорились\" from memory, then explain what would change if a nearby alternative replaced it in \"Хорошо, договорились.\".",
+      "pronunciation": "dogovorilis",
+      "exampleTarget": "Хорошо, договорились.",
+      "exampleNative": "Self-check against the model before moving on: “Alright, agreed.”",
+      "korean": "договорились",
+      "english": "Recall \"договорились\" from memory, then explain what would change if a nearby alternative replaced it in \"Хорошо, договорились.\".",
+      "example": "Хорошо, договорились.",
+      "exampleEnglish": "Self-check against the model before moving on: “Alright, agreed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "договорились",
+      "romanization": "dogovorilis",
+      "nativeText": "Repair \"договорились\" inside \"Хорошо, договорились.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Agreed.” A very natural way to close a plan.",
+      "pronunciation": "dogovorilis",
+      "exampleTarget": "Хорошо, договорились.",
+      "exampleNative": "Use the model as the repair target: “Alright, agreed.”",
+      "korean": "договорились",
+      "english": "Repair \"договорились\" inside \"Хорошо, договорились.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Agreed.” A very natural way to close a plan.",
+      "example": "Хорошо, договорились.",
+      "exampleEnglish": "Use the model as the repair target: “Alright, agreed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "договорились",
+      "romanization": "dogovorilis",
+      "nativeText": "Transfer \"договорились\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Хорошо, договорились.\".",
+      "pronunciation": "dogovorilis",
+      "exampleTarget": "Хорошо, договорились.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Alright, agreed.”",
+      "korean": "договорились",
+      "english": "Transfer \"договорились\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Хорошо, договорились.\".",
+      "example": "Хорошо, договорились.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Alright, agreed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "договорились",
+      "romanization": "dogovorilis",
+      "nativeText": "Find one word or phrase that naturally travels with \"договорились\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "dogovorilis",
+      "exampleTarget": "Хорошо, договорились.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Alright, agreed.”",
+      "korean": "договорились",
+      "english": "Find one word or phrase that naturally travels with \"договорились\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Хорошо, договорились.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Alright, agreed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "договорились",
+      "romanization": "dogovorilis",
+      "nativeText": "Listen for \"договорились\" inside \"Хорошо, договорились.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "dogovorilis",
+      "exampleTarget": "Хорошо, договорились.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Alright, agreed.”",
+      "korean": "договорились",
+      "english": "Listen for \"договорились\" inside \"Хорошо, договорились.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Хорошо, договорились.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Alright, agreed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "договорились",
+      "romanization": "dogovorilis",
+      "nativeText": "Write \"договорились\" again without looking, then compare the exact written form against \"Хорошо, договорились.\" before moving on.",
+      "pronunciation": "dogovorilis",
+      "exampleTarget": "Хорошо, договорились.",
+      "exampleNative": "Use the written model as the final correctness check: “Alright, agreed.”",
+      "korean": "договорились",
+      "english": "Write \"договорились\" again without looking, then compare the exact written form against \"Хорошо, договорились.\" before moving on.",
+      "example": "Хорошо, договорились.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Alright, agreed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "договорились",
+      "romanization": "dogovorilis",
+      "nativeText": "Check whether \"договорились\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Alright, agreed.”",
+      "pronunciation": "dogovorilis",
+      "exampleTarget": "Хорошо, договорились.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Alright, agreed.”",
+      "korean": "договорились",
+      "english": "Check whether \"договорились\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Alright, agreed.”",
+      "example": "Хорошо, договорились.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Alright, agreed.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "извини, я не могу",
+      "romanization": "izvini ya ne mogu",
+      "nativeText": "“Sorry, I cannot.” A polite refusal start.",
+      "pronunciation": "izvini ya ne mogu",
+      "exampleTarget": "Извини, я не могу в субботу.",
+      "exampleNative": "“Sorry, I cannot on Saturday.”",
+      "korean": "извини, я не могу",
+      "english": "“Sorry, I cannot.” A polite refusal start.",
+      "example": "Извини, я не могу в субботу.",
+      "exampleEnglish": "“Sorry, I cannot on Saturday.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "Извини, я не могу в субботу.",
+      "romanization": "izvini ya ne mogu",
+      "nativeText": "Model use for \"Извини, я не могу в субботу.\": “Sorry, I cannot on Saturday.”",
+      "pronunciation": "izvini ya ne mogu",
+      "exampleTarget": "Извини, я не могу в субботу.",
+      "exampleNative": "“Sorry, I cannot on Saturday.”",
+      "korean": "Извини, я не могу в субботу.",
+      "english": "Model use for \"Извини, я не могу в субботу.\": “Sorry, I cannot on Saturday.”",
+      "example": "Извини, я не могу в субботу.",
+      "exampleEnglish": "“Sorry, I cannot on Saturday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "извини, я не могу",
+      "romanization": "izvini ya ne mogu",
+      "nativeText": "Usage focus for \"извини, я не могу\": “Sorry, I cannot.” A polite refusal start.",
+      "pronunciation": "izvini ya ne mogu",
+      "exampleTarget": "Извини, я не могу в субботу.",
+      "exampleNative": "Notice what the form is doing here: “Sorry, I cannot on Saturday.”",
+      "korean": "извини, я не могу",
+      "english": "Usage focus for \"извини, я не могу\": “Sorry, I cannot.” A polite refusal start.",
+      "example": "Извини, я не могу в субботу.",
+      "exampleEnglish": "Notice what the form is doing here: “Sorry, I cannot on Saturday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "извини, я не могу",
+      "romanization": "izvini ya ne mogu",
+      "nativeText": "Contrast check for \"извини, я не могу\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "izvini ya ne mogu",
+      "exampleTarget": "Извини, я не могу в субботу.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Sorry, I cannot on Saturday.”",
+      "korean": "извини, я не могу",
+      "english": "Contrast check for \"извини, я не могу\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Извини, я не могу в субботу.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Sorry, I cannot on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "извини, я не могу",
+      "romanization": "izvini ya ne mogu",
+      "nativeText": "Recall \"извини, я не могу\" from memory, then explain what would change if a nearby alternative replaced it in \"Извини, я не могу в субботу.\".",
+      "pronunciation": "izvini ya ne mogu",
+      "exampleTarget": "Извини, я не могу в субботу.",
+      "exampleNative": "Self-check against the model before moving on: “Sorry, I cannot on Saturday.”",
+      "korean": "извини, я не могу",
+      "english": "Recall \"извини, я не могу\" from memory, then explain what would change if a nearby alternative replaced it in \"Извини, я не могу в субботу.\".",
+      "example": "Извини, я не могу в субботу.",
+      "exampleEnglish": "Self-check against the model before moving on: “Sorry, I cannot on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "извини, я не могу",
+      "romanization": "izvini ya ne mogu",
+      "nativeText": "Repair \"извини, я не могу\" inside \"Извини, я не могу в субботу.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Sorry, I cannot.” A polite refusal start.",
+      "pronunciation": "izvini ya ne mogu",
+      "exampleTarget": "Извини, я не могу в субботу.",
+      "exampleNative": "Use the model as the repair target: “Sorry, I cannot on Saturday.”",
+      "korean": "извини, я не могу",
+      "english": "Repair \"извини, я не могу\" inside \"Извини, я не могу в субботу.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Sorry, I cannot.” A polite refusal start.",
+      "example": "Извини, я не могу в субботу.",
+      "exampleEnglish": "Use the model as the repair target: “Sorry, I cannot on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "извини, я не могу",
+      "romanization": "izvini ya ne mogu",
+      "nativeText": "Transfer \"извини, я не могу\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Извини, я не могу в субботу.\".",
+      "pronunciation": "izvini ya ne mogu",
+      "exampleTarget": "Извини, я не могу в субботу.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Sorry, I cannot on Saturday.”",
+      "korean": "извини, я не могу",
+      "english": "Transfer \"извини, я не могу\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Извини, я не могу в субботу.\".",
+      "example": "Извини, я не могу в субботу.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Sorry, I cannot on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "извини, я не могу",
+      "romanization": "izvini ya ne mogu",
+      "nativeText": "Find one word or phrase that naturally travels with \"извини, я не могу\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "izvini ya ne mogu",
+      "exampleTarget": "Извини, я не могу в субботу.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Sorry, I cannot on Saturday.”",
+      "korean": "извини, я не могу",
+      "english": "Find one word or phrase that naturally travels with \"извини, я не могу\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Извини, я не могу в субботу.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Sorry, I cannot on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "извини, я не могу",
+      "romanization": "izvini ya ne mogu",
+      "nativeText": "Listen for \"извини, я не могу\" inside \"Извини, я не могу в субботу.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "izvini ya ne mogu",
+      "exampleTarget": "Извини, я не могу в субботу.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Sorry, I cannot on Saturday.”",
+      "korean": "извини, я не могу",
+      "english": "Listen for \"извини, я не могу\" inside \"Извини, я не могу в субботу.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Извини, я не могу в субботу.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Sorry, I cannot on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "извини, я не могу",
+      "romanization": "izvini ya ne mogu",
+      "nativeText": "Write \"извини, я не могу\" again without looking, then compare the exact written form against \"Извини, я не могу в субботу.\" before moving on.",
+      "pronunciation": "izvini ya ne mogu",
+      "exampleTarget": "Извини, я не могу в субботу.",
+      "exampleNative": "Use the written model as the final correctness check: “Sorry, I cannot on Saturday.”",
+      "korean": "извини, я не могу",
+      "english": "Write \"извини, я не могу\" again without looking, then compare the exact written form against \"Извини, я не могу в субботу.\" before moving on.",
+      "example": "Извини, я не могу в субботу.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Sorry, I cannot on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "извини, я не могу",
+      "romanization": "izvini ya ne mogu",
+      "nativeText": "Check whether \"извини, я не могу\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Sorry, I cannot on Saturday.”",
+      "pronunciation": "izvini ya ne mogu",
+      "exampleTarget": "Извини, я не могу в субботу.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Sorry, I cannot on Saturday.”",
+      "korean": "извини, я не могу",
+      "english": "Check whether \"извини, я не могу\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Sorry, I cannot on Saturday.”",
+      "example": "Извини, я не могу в субботу.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Sorry, I cannot on Saturday.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "может быть",
+      "romanization": "mozhet byt",
+      "nativeText": "“Maybe.” Useful when the speaker is uncertain.",
+      "pronunciation": "mozhet byt",
+      "exampleTarget": "Может быть, воскресенье лучше.",
+      "exampleNative": "“Maybe Sunday is better.”",
+      "korean": "может быть",
+      "english": "“Maybe.” Useful when the speaker is uncertain.",
+      "example": "Может быть, воскресенье лучше.",
+      "exampleEnglish": "“Maybe Sunday is better.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "Может быть, воскресенье лучше.",
+      "romanization": "mozhet byt",
+      "nativeText": "Model use for \"Может быть, воскресенье лучше.\": “Maybe Sunday is better.”",
+      "pronunciation": "mozhet byt",
+      "exampleTarget": "Может быть, воскресенье лучше.",
+      "exampleNative": "“Maybe Sunday is better.”",
+      "korean": "Может быть, воскресенье лучше.",
+      "english": "Model use for \"Может быть, воскресенье лучше.\": “Maybe Sunday is better.”",
+      "example": "Может быть, воскресенье лучше.",
+      "exampleEnglish": "“Maybe Sunday is better.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "может быть",
+      "romanization": "mozhet byt",
+      "nativeText": "Usage focus for \"может быть\": “Maybe.” Useful when the speaker is uncertain.",
+      "pronunciation": "mozhet byt",
+      "exampleTarget": "Может быть, воскресенье лучше.",
+      "exampleNative": "Notice what the form is doing here: “Maybe Sunday is better.”",
+      "korean": "может быть",
+      "english": "Usage focus for \"может быть\": “Maybe.” Useful when the speaker is uncertain.",
+      "example": "Может быть, воскресенье лучше.",
+      "exampleEnglish": "Notice what the form is doing here: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "может быть",
+      "romanization": "mozhet byt",
+      "nativeText": "Contrast check for \"может быть\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "mozhet byt",
+      "exampleTarget": "Может быть, воскресенье лучше.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Maybe Sunday is better.”",
+      "korean": "может быть",
+      "english": "Contrast check for \"может быть\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Может быть, воскресенье лучше.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "может быть",
+      "romanization": "mozhet byt",
+      "nativeText": "Recall \"может быть\" from memory, then explain what would change if a nearby alternative replaced it in \"Может быть, воскресенье лучше.\".",
+      "pronunciation": "mozhet byt",
+      "exampleTarget": "Может быть, воскресенье лучше.",
+      "exampleNative": "Self-check against the model before moving on: “Maybe Sunday is better.”",
+      "korean": "может быть",
+      "english": "Recall \"может быть\" from memory, then explain what would change if a nearby alternative replaced it in \"Может быть, воскресенье лучше.\".",
+      "example": "Может быть, воскресенье лучше.",
+      "exampleEnglish": "Self-check against the model before moving on: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "может быть",
+      "romanization": "mozhet byt",
+      "nativeText": "Repair \"может быть\" inside \"Может быть, воскресенье лучше.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Maybe.” Useful when the speaker is uncertain.",
+      "pronunciation": "mozhet byt",
+      "exampleTarget": "Может быть, воскресенье лучше.",
+      "exampleNative": "Use the model as the repair target: “Maybe Sunday is better.”",
+      "korean": "может быть",
+      "english": "Repair \"может быть\" inside \"Может быть, воскресенье лучше.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Maybe.” Useful when the speaker is uncertain.",
+      "example": "Может быть, воскресенье лучше.",
+      "exampleEnglish": "Use the model as the repair target: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "может быть",
+      "romanization": "mozhet byt",
+      "nativeText": "Transfer \"может быть\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Может быть, воскресенье лучше.\".",
+      "pronunciation": "mozhet byt",
+      "exampleTarget": "Может быть, воскресенье лучше.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Maybe Sunday is better.”",
+      "korean": "может быть",
+      "english": "Transfer \"может быть\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Может быть, воскресенье лучше.\".",
+      "example": "Может быть, воскресенье лучше.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "может быть",
+      "romanization": "mozhet byt",
+      "nativeText": "Find one word or phrase that naturally travels with \"может быть\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "mozhet byt",
+      "exampleTarget": "Может быть, воскресенье лучше.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Maybe Sunday is better.”",
+      "korean": "может быть",
+      "english": "Find one word or phrase that naturally travels with \"может быть\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Может быть, воскресенье лучше.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "может быть",
+      "romanization": "mozhet byt",
+      "nativeText": "Listen for \"может быть\" inside \"Может быть, воскресенье лучше.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "mozhet byt",
+      "exampleTarget": "Может быть, воскресенье лучше.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Maybe Sunday is better.”",
+      "korean": "может быть",
+      "english": "Listen for \"может быть\" inside \"Может быть, воскресенье лучше.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Может быть, воскресенье лучше.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "может быть",
+      "romanization": "mozhet byt",
+      "nativeText": "Write \"может быть\" again without looking, then compare the exact written form against \"Может быть, воскресенье лучше.\" before moving on.",
+      "pronunciation": "mozhet byt",
+      "exampleTarget": "Может быть, воскресенье лучше.",
+      "exampleNative": "Use the written model as the final correctness check: “Maybe Sunday is better.”",
+      "korean": "может быть",
+      "english": "Write \"может быть\" again without looking, then compare the exact written form against \"Может быть, воскресенье лучше.\" before moving on.",
+      "example": "Может быть, воскресенье лучше.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "может быть",
+      "romanization": "mozhet byt",
+      "nativeText": "Check whether \"может быть\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Maybe Sunday is better.”",
+      "pronunciation": "mozhet byt",
+      "exampleTarget": "Может быть, воскресенье лучше.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Maybe Sunday is better.”",
+      "korean": "может быть",
+      "english": "Check whether \"может быть\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Maybe Sunday is better.”",
+      "example": "Может быть, воскресенье лучше.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "лучше",
+      "romanization": "luchshe",
+      "nativeText": "“Better.” A practical comparison word in planning.",
+      "pronunciation": "luchshe",
+      "exampleTarget": "Лучше выйти пораньше.",
+      "exampleNative": "“It is better to leave earlier.”",
+      "korean": "лучше",
+      "english": "“Better.” A practical comparison word in planning.",
+      "example": "Лучше выйти пораньше.",
+      "exampleEnglish": "“It is better to leave earlier.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "Лучше выйти пораньше.",
+      "romanization": "luchshe",
+      "nativeText": "Model use for \"Лучше выйти пораньше.\": “It is better to leave earlier.”",
+      "pronunciation": "luchshe",
+      "exampleTarget": "Лучше выйти пораньше.",
+      "exampleNative": "“It is better to leave earlier.”",
+      "korean": "Лучше выйти пораньше.",
+      "english": "Model use for \"Лучше выйти пораньше.\": “It is better to leave earlier.”",
+      "example": "Лучше выйти пораньше.",
+      "exampleEnglish": "“It is better to leave earlier.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "лучше",
+      "romanization": "luchshe",
+      "nativeText": "Usage focus for \"лучше\": “Better.” A practical comparison word in planning.",
+      "pronunciation": "luchshe",
+      "exampleTarget": "Лучше выйти пораньше.",
+      "exampleNative": "Notice what the form is doing here: “It is better to leave earlier.”",
+      "korean": "лучше",
+      "english": "Usage focus for \"лучше\": “Better.” A practical comparison word in planning.",
+      "example": "Лучше выйти пораньше.",
+      "exampleEnglish": "Notice what the form is doing here: “It is better to leave earlier.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "лучше",
+      "romanization": "luchshe",
+      "nativeText": "Contrast check for \"лучше\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "luchshe",
+      "exampleTarget": "Лучше выйти пораньше.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “It is better to leave earlier.”",
+      "korean": "лучше",
+      "english": "Contrast check for \"лучше\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Лучше выйти пораньше.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “It is better to leave earlier.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "лучше",
+      "romanization": "luchshe",
+      "nativeText": "Recall \"лучше\" from memory, then explain what would change if a nearby alternative replaced it in \"Лучше выйти пораньше.\".",
+      "pronunciation": "luchshe",
+      "exampleTarget": "Лучше выйти пораньше.",
+      "exampleNative": "Self-check against the model before moving on: “It is better to leave earlier.”",
+      "korean": "лучше",
+      "english": "Recall \"лучше\" from memory, then explain what would change if a nearby alternative replaced it in \"Лучше выйти пораньше.\".",
+      "example": "Лучше выйти пораньше.",
+      "exampleEnglish": "Self-check against the model before moving on: “It is better to leave earlier.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "лучше",
+      "romanization": "luchshe",
+      "nativeText": "Repair \"лучше\" inside \"Лучше выйти пораньше.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Better.” A practical comparison word in planning.",
+      "pronunciation": "luchshe",
+      "exampleTarget": "Лучше выйти пораньше.",
+      "exampleNative": "Use the model as the repair target: “It is better to leave earlier.”",
+      "korean": "лучше",
+      "english": "Repair \"лучше\" inside \"Лучше выйти пораньше.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Better.” A practical comparison word in planning.",
+      "example": "Лучше выйти пораньше.",
+      "exampleEnglish": "Use the model as the repair target: “It is better to leave earlier.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "лучше",
+      "romanization": "luchshe",
+      "nativeText": "Transfer \"лучше\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Лучше выйти пораньше.\".",
+      "pronunciation": "luchshe",
+      "exampleTarget": "Лучше выйти пораньше.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “It is better to leave earlier.”",
+      "korean": "лучше",
+      "english": "Transfer \"лучше\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Лучше выйти пораньше.\".",
+      "example": "Лучше выйти пораньше.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “It is better to leave earlier.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "лучше",
+      "romanization": "luchshe",
+      "nativeText": "Find one word or phrase that naturally travels with \"лучше\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "luchshe",
+      "exampleTarget": "Лучше выйти пораньше.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “It is better to leave earlier.”",
+      "korean": "лучше",
+      "english": "Find one word or phrase that naturally travels with \"лучше\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Лучше выйти пораньше.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “It is better to leave earlier.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "лучше",
+      "romanization": "luchshe",
+      "nativeText": "Listen for \"лучше\" inside \"Лучше выйти пораньше.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "luchshe",
+      "exampleTarget": "Лучше выйти пораньше.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “It is better to leave earlier.”",
+      "korean": "лучше",
+      "english": "Listen for \"лучше\" inside \"Лучше выйти пораньше.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Лучше выйти пораньше.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “It is better to leave earlier.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "лучше",
+      "romanization": "luchshe",
+      "nativeText": "Write \"лучше\" again without looking, then compare the exact written form against \"Лучше выйти пораньше.\" before moving on.",
+      "pronunciation": "luchshe",
+      "exampleTarget": "Лучше выйти пораньше.",
+      "exampleNative": "Use the written model as the final correctness check: “It is better to leave earlier.”",
+      "korean": "лучше",
+      "english": "Write \"лучше\" again without looking, then compare the exact written form against \"Лучше выйти пораньше.\" before moving on.",
+      "example": "Лучше выйти пораньше.",
+      "exampleEnglish": "Use the written model as the final correctness check: “It is better to leave earlier.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "лучше",
+      "romanization": "luchshe",
+      "nativeText": "Check whether \"лучше\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “It is better to leave earlier.”",
+      "pronunciation": "luchshe",
+      "exampleTarget": "Лучше выйти пораньше.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “It is better to leave earlier.”",
+      "korean": "лучше",
+      "english": "Check whether \"лучше\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “It is better to leave earlier.”",
+      "example": "Лучше выйти пораньше.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “It is better to leave earlier.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "тогда",
+      "romanization": "togda",
+      "nativeText": "“Then / in that case.” It helps the plan pivot after new information.",
+      "pronunciation": "togda",
+      "exampleTarget": "Тогда встретимся в пять.",
+      "exampleNative": "“Then we will meet at five.”",
+      "korean": "тогда",
+      "english": "“Then / in that case.” It helps the plan pivot after new information.",
+      "example": "Тогда встретимся в пять.",
+      "exampleEnglish": "“Then we will meet at five.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "Тогда встретимся в пять.",
+      "romanization": "togda",
+      "nativeText": "Model use for \"Тогда встретимся в пять.\": “Then we will meet at five.”",
+      "pronunciation": "togda",
+      "exampleTarget": "Тогда встретимся в пять.",
+      "exampleNative": "“Then we will meet at five.”",
+      "korean": "Тогда встретимся в пять.",
+      "english": "Model use for \"Тогда встретимся в пять.\": “Then we will meet at five.”",
+      "example": "Тогда встретимся в пять.",
+      "exampleEnglish": "“Then we will meet at five.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "тогда",
+      "romanization": "togda",
+      "nativeText": "Usage focus for \"тогда\": “Then / in that case.” It helps the plan pivot after new information.",
+      "pronunciation": "togda",
+      "exampleTarget": "Тогда встретимся в пять.",
+      "exampleNative": "Notice what the form is doing here: “Then we will meet at five.”",
+      "korean": "тогда",
+      "english": "Usage focus for \"тогда\": “Then / in that case.” It helps the plan pivot after new information.",
+      "example": "Тогда встретимся в пять.",
+      "exampleEnglish": "Notice what the form is doing here: “Then we will meet at five.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "тогда",
+      "romanization": "togda",
+      "nativeText": "Contrast check for \"тогда\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "togda",
+      "exampleTarget": "Тогда встретимся в пять.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Then we will meet at five.”",
+      "korean": "тогда",
+      "english": "Contrast check for \"тогда\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Тогда встретимся в пять.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Then we will meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "тогда",
+      "romanization": "togda",
+      "nativeText": "Recall \"тогда\" from memory, then explain what would change if a nearby alternative replaced it in \"Тогда встретимся в пять.\".",
+      "pronunciation": "togda",
+      "exampleTarget": "Тогда встретимся в пять.",
+      "exampleNative": "Self-check against the model before moving on: “Then we will meet at five.”",
+      "korean": "тогда",
+      "english": "Recall \"тогда\" from memory, then explain what would change if a nearby alternative replaced it in \"Тогда встретимся в пять.\".",
+      "example": "Тогда встретимся в пять.",
+      "exampleEnglish": "Self-check against the model before moving on: “Then we will meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "тогда",
+      "romanization": "togda",
+      "nativeText": "Repair \"тогда\" inside \"Тогда встретимся в пять.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Then / in that case.” It helps the plan pivot after new information.",
+      "pronunciation": "togda",
+      "exampleTarget": "Тогда встретимся в пять.",
+      "exampleNative": "Use the model as the repair target: “Then we will meet at five.”",
+      "korean": "тогда",
+      "english": "Repair \"тогда\" inside \"Тогда встретимся в пять.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Then / in that case.” It helps the plan pivot after new information.",
+      "example": "Тогда встретимся в пять.",
+      "exampleEnglish": "Use the model as the repair target: “Then we will meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "тогда",
+      "romanization": "togda",
+      "nativeText": "Transfer \"тогда\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Тогда встретимся в пять.\".",
+      "pronunciation": "togda",
+      "exampleTarget": "Тогда встретимся в пять.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Then we will meet at five.”",
+      "korean": "тогда",
+      "english": "Transfer \"тогда\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Тогда встретимся в пять.\".",
+      "example": "Тогда встретимся в пять.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Then we will meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "тогда",
+      "romanization": "togda",
+      "nativeText": "Find one word or phrase that naturally travels with \"тогда\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "togda",
+      "exampleTarget": "Тогда встретимся в пять.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Then we will meet at five.”",
+      "korean": "тогда",
+      "english": "Find one word or phrase that naturally travels with \"тогда\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Тогда встретимся в пять.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Then we will meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "тогда",
+      "romanization": "togda",
+      "nativeText": "Listen for \"тогда\" inside \"Тогда встретимся в пять.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "togda",
+      "exampleTarget": "Тогда встретимся в пять.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Then we will meet at five.”",
+      "korean": "тогда",
+      "english": "Listen for \"тогда\" inside \"Тогда встретимся в пять.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Тогда встретимся в пять.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Then we will meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "тогда",
+      "romanization": "togda",
+      "nativeText": "Write \"тогда\" again without looking, then compare the exact written form against \"Тогда встретимся в пять.\" before moving on.",
+      "pronunciation": "togda",
+      "exampleTarget": "Тогда встретимся в пять.",
+      "exampleNative": "Use the written model as the final correctness check: “Then we will meet at five.”",
+      "korean": "тогда",
+      "english": "Write \"тогда\" again without looking, then compare the exact written form against \"Тогда встретимся в пять.\" before moving on.",
+      "example": "Тогда встретимся в пять.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Then we will meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit20suggestions-vocabulary-1",
+        "ru-level1unit20suggestions-vocabulary-2",
+        "ru-level1unit20suggestions-grammar-1",
+        "ru-level1unit20suggestions-grammar-2",
+        "ru-level1unit20suggestions-reading",
+        "ru-level1unit20suggestions-listening",
+        "ru-level1unit20suggestions-writing",
+        "ru-level1unit20suggestions-task"
+      ],
+      "targetText": "тогда",
+      "romanization": "togda",
+      "nativeText": "Check whether \"тогда\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Then we will meet at five.”",
+      "pronunciation": "togda",
+      "exampleTarget": "Тогда встретимся в пять.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Then we will meet at five.”",
+      "korean": "тогда",
+      "english": "Check whether \"тогда\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Then we will meet at five.”",
+      "example": "Тогда встретимся в пять.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Then we will meet at five.”"
+    }
+  ],
+  "targetLang": "ru",
+  "nativeLang": "en",
+  "track": "textbook"
+};

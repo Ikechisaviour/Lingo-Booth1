@@ -1,117 +1,2580 @@
-// Level 1 Unit 4 — Daily Routines (Modern Standard Arabic)
-// Functions: present-tense verbs of daily life, time of day, frequency adverbs.
-
-const createContentItem = (target, romanization, note, type = 'word', example = '', exampleNote = '', breakdown = null, activityIds = []) => ({
-  type, activityIds, targetText: target, romanization, nativeText: note, pronunciation: romanization,
-  exampleTarget: example || target, exampleNative: exampleNote || note,
-  korean: target, english: note, example: example || target, exampleEnglish: exampleNote || note,
-  ...(breakdown ? { breakdown: breakdown.map(b => ({ target: b.target, native: b.note, korean: b.target, english: b.note })) } : {}),
-});
-
-const ACT = {
-  orientation: 'ar-l1u4-orientation', pronunciation: 'ar-l1u4-pronunciation',
-  vocabVerbs: 'ar-l1u4-vocab-verbs', vocabTime: 'ar-l1u4-vocab-time',
-  grammarPresent: 'ar-l1u4-grammar-present', grammarFreq: 'ar-l1u4-grammar-freq',
-  grammarNegPresent: 'ar-l1u4-grammar-neg-present',
-  reading: 'ar-l1u4-reading', listening: 'ar-l1u4-listening',
-  writing: 'ar-l1u4-writing', culture: 'ar-l1u4-culture', task: 'ar-l1u4-task',
-};
-
-const activities = [
-  { id: ACT.orientation, section: 'Orientation', title: 'What you will be able to do',
-    goals: ['Describe a daily routine in MSA using 12+ present-tense Form I verbs.', 'Use time-of-day expressions (صباحًا، ظهرًا، مساءً، ليلًا).', 'Use frequency adverbs (دائمًا، عادةً، أحيانًا، نادرًا، أبدًا) with the correct case.'],
-    task: 'Describe your day from waking to sleeping at King Saud University.' },
-  { id: ACT.pronunciation, section: 'Pronunciation', title: 'Verb-prefix vowels', goals: ['Hear that the present-tense prefix vowel varies: yaktub (he writes) vs yashrab (he drinks) vs yadrus (he studies).', 'Apply emphatics in ظهرًا ẓuhran (noon) and صلاة ṣalāh (prayer).'], task: 'Read 8 present-tense verbs and mark the stem vowel.' },
-  { id: ACT.vocabVerbs, section: 'Vocabulary I', title: 'Daily-routine verbs', goals: ['12+ Form I present-tense verbs in the 1st-person singular: أستيقظ, أصلي, أفطر, أذهب, أعمل, أعود, أتناول, أدرس, أشاهد, أنام.'], task: 'Pair each verb with the time when you typically do it.' },
-  { id: ACT.vocabTime, section: 'Vocabulary II', title: 'Times of day and frequency', goals: ['Times: صباحًا، ظهرًا، عصرًا، مغربًا، عشاءً، ليلًا.', 'Frequency: دائمًا، عادةً، غالبًا، أحيانًا، نادرًا، أبدًا.'], task: 'Build 5 frequency sentences about your routine.' },
-  { id: ACT.grammarPresent, section: 'Grammar I', title: 'Form I present tense — conjugation table', goals: ['Conjugate يَفْعَل for 8 persons (أنا, أنت M, أنت F, هو, هي, نحن, أنتم, هم).', 'Apply the present-tense prefix أَ يَ تَ نَ correctly.'], task: 'Conjugate كَتَبَ (to write) in the present for all 8 persons.' },
-  { id: ACT.grammarFreq, section: 'Grammar II', title: 'Frequency adverbs in the accusative', goals: ['Use frequency adverbs in the accusative (manṣūb) with tanwin al-fath ـًا.', 'Place adverbs flexibly: before or after the verb.'], task: 'Convert 4 sentences from neutral to specifying frequency.' },
-  { id: ACT.grammarNegPresent, section: 'Grammar III', title: 'Negation of the present with لا', goals: ['Negate any present-tense verb with لا (lā) directly before it: لا أفهم, لا يأكل اللحم.', 'Distinguish لا (present) from ما (past, archaic-MSA) from لم (past + jussive).'], task: 'Negate 6 routine verbs with لا.' },
-  { id: ACT.reading, section: 'Reading', title: 'A day in the life', goals: ['Read a paragraph describing a student\'s typical day.', 'Identify each verb\'s subject from its conjugation.'], task: 'Read aloud and answer 4 time-question comprehension items.' },
-  { id: ACT.listening, section: 'Listening', title: 'Comparing schedules', goals: ['Follow a 6-turn schedule-comparison dialogue.'], task: 'Compare your schedule with the AI tutor.' },
-  { id: ACT.writing, section: 'Writing', title: 'Write your weekday routine', goals: ['Write 6 sentences with at least 5 different verbs.', 'Use 2 frequency adverbs.'], task: 'Write your real routine.' },
-  { id: ACT.culture, section: 'Culture', title: 'Five prayers and the day\'s rhythm', goals: ['Understand how the five daily prayers (الفجر، الظهر، العصر، المغرب، العشاء) structure life in observant Muslim contexts.', 'Recognize that work hours, school schedules, and meal times in Saudi Arabia, the Gulf, and much of the Muslim world are organized around the prayer times.'], task: 'List the five prayer names with rough times.' },
-  { id: ACT.task, section: 'Task', title: 'Describe a day at King Saud University', goals: ['Combine verbs, times, and frequency adverbs in a continuous 8-sentence narrative.'], task: 'Roleplay a "tell me about your day" conversation with the AI tutor.' },
-];
-
-const lesson = {
-  title: 'Level 1 · Unit 4: يومي — My Daily Routine',
-  category: 'daily-life', difficulty: 'beginner',
-  targetLang: 'ar', nativeLang: 'en', track: 'textbook', lessonType: 'thematic',
-  activities, expressionPractice: [
-    { id: 'describing-routine', label: 'Describing routine', goal: 'String 6 present-tense verbs into a coherent daily narrative.' },
-    { id: 'time-of-day', label: 'Specifying time of day', goal: 'Pair each routine activity with a time adverbial (صباحًا، ظهرًا، …).' },
-    { id: 'frequency', label: 'Stating frequency', goal: 'Use دائمًا، عادةً، أحيانًا، نادرًا، أبدًا appropriately.' },
+module.exports = {
+  "title": "Level 1 · Unit 4: يومي — My Daily Routine",
+  "category": "daily-life",
+  "difficulty": "beginner",
+  "targetLang": "ar",
+  "nativeLang": "en",
+  "track": "textbook",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ar-level1unit04dailyroutines-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Describe a daily routine in MSA using 12+ present-tense Form I verbs."
+      ],
+      "task": "Roleplay a \"tell me about your day\" conversation with the AI tutor."
+    },
+    {
+      "id": "ar-level1unit04dailyroutines-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep emphatics, pharyngeals, vowel length, and sun-letter assimilation distinct enough that Modern Standard Arabic stays intelligible."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ar-level1unit04dailyroutines-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 4: يومي — My Daily Routine with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ar-level1unit04dailyroutines-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 4: يومي — My Daily Routine sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ar-level1unit04dailyroutines-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Describe a daily routine in MSA using 12+ present-tense Form I verbs."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ar-level1unit04dailyroutines-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 4: يومي — My Daily Routine with one nearby Arabic form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ar-level1unit04dailyroutines-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ar-level1unit04dailyroutines-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ar-level1unit04dailyroutines-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ar-level1unit04dailyroutines-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the formal-register, regional, or courtesy choice that changes how this Arabic is used in real interaction."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ar-level1unit04dailyroutines-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Roleplay a \"tell me about your day\" conversation with the AI tutor."
+      ],
+      "task": "Roleplay a \"tell me about your day\" conversation with the AI tutor."
+    }
   ],
-  relatedPools: ['topic-daily-life'],
-  content: [
-    // Verbs
-    createContentItem('أستيقظ', 'astayqiẓu', 'I wake up. Form X of يَقِظَ. Emphatic ظ at the end; ست- prefix marks Form X.', 'word', 'أستيقظ في الساعة السادسة صباحًا.', '"I wake up at six in the morning."', null, [ACT.vocabVerbs]),
-    createContentItem('أصلي', 'uṣallī', 'I pray. Form II of صلى. The shadda on ل — geminated. Used for the five daily prayers.', 'word', 'أصلي الفجر قبل شروق الشمس.', '"I pray Fajr before sunrise."', null, [ACT.vocabVerbs]),
-    createContentItem('أفطر', 'ufṭiru', 'I eat breakfast / I break my fast. Form IV of فطر. Same word covers daily breakfast AND breaking the Ramadan fast at sunset.', 'word', 'أفطر بعد صلاة الفجر.', '"I eat breakfast after the Fajr prayer."', null, [ACT.vocabVerbs]),
-    createContentItem('أذهب', 'adhhabu', 'I go. Form I of ذَهَبَ. Root ذ ه ب. Combined with إلى + place.', 'word', 'أذهب إلى الجامعة الساعة الثامنة.', '"I go to the university at eight."', null, [ACT.vocabVerbs]),
-    createContentItem('أعمل', 'aʿmalu', 'I work / I do. Form I of عَمِلَ. Multipurpose verb: work, action, doing.', 'word', 'أعمل في المكتبة.', '"I work in the library."', null, [ACT.vocabVerbs]),
-    createContentItem('أتناول', 'atanāwalu', 'I have (a meal). Form VI of ناول. The polite, formal verb for "eat (a meal)"; less casual than آكل.', 'word', 'أتناول الغداء في المطعم.', '"I have lunch at the restaurant."', null, [ACT.vocabVerbs]),
-    createContentItem('آكل', 'ākulu', 'I eat. Form I of أَكَلَ. Note: the present 1st-person uses آ (alif madda) — āku not aʾku.', 'word', 'آكل التمر في رمضان.', '"I eat dates in Ramadan."', null, [ACT.vocabVerbs]),
-    createContentItem('أشرب', 'ashrabu', 'I drink. Form I of شَرِبَ. The vowel pattern is fatha-fatha in the present (yashrab).', 'word', 'أشرب القهوة في الصباح.', '"I drink coffee in the morning."', null, [ACT.vocabVerbs]),
-    createContentItem('أدرس', 'adrusu', 'I study. Form I of دَرَسَ. Root د ر س — same root as درس "lesson" and مدرسة "school".', 'word', 'أدرس اللغة العربية.', '"I study the Arabic language."', null, [ACT.vocabVerbs]),
-    createContentItem('أعود', 'aʿūdu', 'I return / I come back. Form I of عَادَ. Hollow verb (middle root letter is و).', 'word', 'أعود إلى البيت في المساء.', '"I return home in the evening."', null, [ACT.vocabVerbs]),
-    createContentItem('أشاهد', 'ushāhidu', 'I watch. Form III of شاهد. Used for TV, films, sports.', 'word', 'أشاهد الأخبار في التلفاز.', '"I watch the news on TV."', null, [ACT.vocabVerbs]),
-    createContentItem('أقرأ', 'aqraʾu', 'I read. Form I of قَرَأَ. The verb that gives the Quran its name (literally "the recitation").', 'word', 'أقرأ كتابًا قبل النوم.', '"I read a book before sleeping."', null, [ACT.vocabVerbs]),
-    createContentItem('أنام', 'anāmu', 'I sleep. Form I of نَامَ. Hollow verb.', 'word', 'أنام في الساعة الحادية عشرة.', '"I sleep at eleven o\'clock."', null, [ACT.vocabVerbs]),
-
-    // Time
-    createContentItem('صباحًا', 'ṣabāḥan', 'In the morning. Accusative form of صباح with tanwin al-fath ـًا — the adverbial accusative.', 'word', 'أعمل صباحًا.', '"I work in the morning."', null, [ACT.vocabTime]),
-    createContentItem('ظهرًا', 'ẓuhran', 'At noon. Accusative of ظهر. Also the name of the noon prayer.', 'word', 'أتناول الغداء ظهرًا.', '"I have lunch at noon."', null, [ACT.vocabTime]),
-    createContentItem('عصرًا', 'ʿaṣran', 'In the afternoon. Accusative of عصر. Also the name of the afternoon prayer.', 'word', 'أدرس عصرًا.', '"I study in the afternoon."', null, [ACT.vocabTime]),
-    createContentItem('مساءً', 'masāʾan', 'In the evening. Accusative of مساء.', 'word', 'نلتقي مساءً.', '"We meet in the evening."', null, [ACT.vocabTime]),
-    createContentItem('ليلًا', 'laylan', 'At night. Accusative of ليل.', 'word', 'أنام ليلًا.', '"I sleep at night."', null, [ACT.vocabTime]),
-    createContentItem('دائمًا', 'dāʾiman', 'Always. Frequency adverb in the accusative.', 'word', 'أصلي الفجر دائمًا.', '"I always pray Fajr."', null, [ACT.vocabTime]),
-    createContentItem('عادةً', 'ʿādatan', 'Usually. Accusative of عادة "habit". Common conversational frequency word.', 'word', 'عادةً أستيقظ مبكرًا.', '"I usually wake up early."', null, [ACT.vocabTime]),
-    createContentItem('غالبًا', 'ghāliban', 'Most often / often. Stronger than أحيانًا but weaker than دائمًا.', 'word', 'غالبًا أعمل في المكتبة.', '"I often work in the library."', null, [ACT.vocabTime]),
-    createContentItem('أحيانًا', 'aḥyānan', 'Sometimes. Accusative of أحيان (the plural of حين "moment").', 'word', 'أحيانًا أشرب الشاي.', '"Sometimes I drink tea."', null, [ACT.vocabTime]),
-    createContentItem('نادرًا', 'nādiran', 'Rarely. Accusative of نادر.', 'word', 'نادرًا ما أتأخر.', '"I rarely arrive late." — نادرًا ما = "rarely that".', null, [ACT.vocabTime]),
-    createContentItem('أبدًا', 'abadan', 'Never (with negation). Accusative; always paired with لا/لم: لا أدخن أبدًا.', 'word', 'لا أدخن أبدًا.', '"I never smoke."', null, [ACT.vocabTime]),
-
-    // Grammar
-    createContentItem('تصريف الفعل في المضارع', 'taṣrīf al-fiʿl fī l-muḍāriʿ', 'Present-tense conjugation table for Form I. The PREFIX marks person/number; the SUFFIX often marks mood. Pattern shown with كَتَبَ → يَكْتُب.', 'sentence', 'أنا أكتبُ · أنتَ تكتبُ · أنتِ تكتبين · هو يكتبُ · هي تكتبُ · نحن نكتبُ · أنتم تكتبون · هم يكتبون', 'Note F sg adds ـين, M pl adds ـون.', [
-      { target: 'أنا أَـ', note: '1sg prefix' },
-      { target: 'أنتَ تَـ', note: '2msg prefix' },
-      { target: 'أنتِ تَـ + ـِين', note: '2fsg prefix + suffix' },
-      { target: 'هو يَـ', note: '3msg prefix' },
-      { target: 'هي تَـ', note: '3fsg prefix (same shape as 2msg)' },
-      { target: 'نحن نَـ', note: '1pl prefix' },
-      { target: 'أنتم تَـ + ـون', note: '2mpl prefix + suffix' },
-      { target: 'هم يَـ + ـون', note: '3mpl prefix + suffix' },
-    ], [ACT.grammarPresent]),
-    createContentItem('حالة النصب في الظرف', 'ḥālat an-naṣb fī ẓ-ẓarf', 'Adverbials in MSA are in the accusative (manṣūb) and indefinite (tanwin al-fath ـًا). This applies to time, manner, and degree adverbs: صباحًا (in the morning), دائمًا (always), سريعًا (quickly).', 'sentence', 'صباحًا (morning) · ظهرًا (noon) · دائمًا (always) · سريعًا (quickly) · جدًا (very)', 'The tanwin al-fath ending is unmistakable — it always means an indefinite accusative adverb (or noun).', null, [ACT.grammarFreq]),
-    createContentItem('النفي بـ لا', 'an-nafy bi-lā', 'Negate the present tense with لا (lā) placed directly before the verb. لا covers any general/present/habitual negation.', 'sentence', 'أفهم → لا أفهم ("I don\'t understand")\nيأكل اللحم → لا يأكل اللحم ("He doesn\'t eat meat")', 'لا ≠ ما (archaic for past) ≠ لم (past + jussive) ≠ لن (future).', null, [ACT.grammarNegPresent]),
-
-    // Reading
-    createContentItem('يومي في الجامعة', 'yawmī fī l-jāmiʿa', 'A paragraph describing a student\'s typical day at King Saud University.', 'sentence', 'أستيقظ في الساعة السادسة، وأصلي الفجر. ثم أفطر وأذهب إلى الجامعة. أحضر المحاضرات صباحًا، وأتناول الغداء في مطعم الجامعة. عصرًا أدرس في المكتبة. أعود إلى البيت مساءً، وأشاهد الأخبار. أنام في الساعة الحادية عشرة.', 'Translation summary: wake at 6, pray Fajr, breakfast, university, lectures, lunch at uni restaurant, study in afternoon, home in evening, news, sleep at 11.', [
-      { target: 'ثم thumma', note: 'sequencing "then"' },
-      { target: 'أحضر المحاضرات', note: '"I attend the lectures" — حضر means "attend/be present"' },
-      { target: 'في الساعة الحادية عشرة', note: '"at eleven o\'clock"' },
-    ], [ACT.reading]),
-
-    // Listening
-    createContentItem('مقارنة الجداول', 'muqāranat al-jadāwil', 'A 6-turn schedule-comparison dialogue.', 'conversation', 'أ: متى تستيقظ عادةً؟\nب: عادةً أستيقظ في السادسة. وأنت؟\nأ: أنا أستيقظ في السابعة. هل تشرب القهوة صباحًا؟\nب: نعم، دائمًا. والشاي أحيانًا.\nأ: متى تذهب إلى الجامعة؟\nب: عادةً في الثامنة.', 'High-frequency casual exchange among students.', null, [ACT.listening]),
-
-    // Culture
-    createContentItem('أوقات الصلاة', 'awqāt aṣ-ṣalāh', 'The five daily prayers and their rough times structure life in Saudi Arabia, the Gulf, and observant Muslim contexts everywhere. Shops close briefly at each adhān; the workday and the school day are organized around them.', 'sentence', 'الفجر (dawn) · الظهر (noon) · العصر (mid-afternoon) · المغرب (sunset) · العشاء (night)', 'Friday (الجمعة) the noon prayer is the congregational الجمعة prayer; it is a public holiday in most Arab countries.', [
-      { target: 'الفجر', note: 'before sunrise; first prayer of the day' },
-      { target: 'الظهر', note: 'just after noon; lunchtime prayer' },
-      { target: 'العصر', note: 'mid-afternoon' },
-      { target: 'المغرب', note: 'just after sunset; iftar time during Ramadan' },
-      { target: 'العشاء', note: 'about 90 min after sunset' },
-    ], [ACT.culture]),
-
-    // Writing
-    createContentItem('قالب الكتابة', 'qālab al-kitāba', 'Template for writing your weekday routine: 6 sentences with 5+ verbs and 2 frequency adverbs.', 'sentence', 'مثال: أستيقظ عادةً في السابعة. أفطر ثم أذهب إلى الجامعة. أدرس صباحًا وأتناول الغداء ظهرًا. عصرًا أعمل في المكتبة أحيانًا. مساءً أعود إلى البيت وأقرأ. أنام في الحادية عشرة.', 'Keep the verbs in 1st person; switch frequency and time adverbs to vary.', null, [ACT.writing]),
-
-    // Task
-    createContentItem('المهمة — احكِ يومك', 'al-mahamma — iḥki yawmak', 'Roleplay "tell me about your day" with the AI tutor. Use at least 6 verbs, 2 frequency adverbs, and 2 time-of-day adverbs.', 'conversation', 'الأستاذ: احكِ لي عن يومك المعتاد، يا [name].\nأنت: [open with morning routine, 2 verbs]\nالأستاذ: ماذا تفعل في الظهر؟\nأنت: [lunch + afternoon, 2 verbs + frequency]\nالأستاذ: وفي المساء؟\nأنت: [evening, 2 verbs + time]\nالأستاذ: ممتاز. شكرًا.', 'Aim for a fluent 8-sentence answer; the tutor will prompt for elaboration if you stop short.', null, [ACT.task]),
+  "expressionPractice": [
+    {
+      "id": "describing-routine",
+      "label": "Describing routine",
+      "goal": "String 6 present-tense verbs into a coherent daily narrative."
+    },
+    {
+      "id": "time-of-day",
+      "label": "Specifying time of day",
+      "goal": "Pair each routine activity with a time adverbial (صباحًا، ظهرًا، …)."
+    },
+    {
+      "id": "frequency",
+      "label": "Stating frequency",
+      "goal": "Use دائمًا، عادةً، أحيانًا، نادرًا، أبدًا appropriately."
+    }
   ],
+  "relatedPools": [
+    "topic-daily-life"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-orientation"
+      ],
+      "targetText": "هدف الدرس",
+      "romanization": "",
+      "nativeText": "Describe a daily routine in MSA using 12+ present-tense Form I verbs.",
+      "pronunciation": "",
+      "exampleTarget": "هدف الدرس",
+      "exampleNative": "The whole lesson is built toward this outcome: Roleplay a \"tell me about your day\" conversation with the AI tutor.",
+      "korean": "هدف الدرس",
+      "english": "Describe a daily routine in MSA using 12+ present-tense Form I verbs.",
+      "example": "هدف الدرس",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Roleplay a \"tell me about your day\" conversation with the AI tutor."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-pronunciation"
+      ],
+      "targetText": "فحص النطق",
+      "romanization": "",
+      "nativeText": "Keep emphatics, pharyngeals, vowel length, and sun-letter assimilation distinct enough that Modern Standard Arabic stays intelligible. In this lesson, listen especially while saying \"أستيقظ في الساعة السادسة صباحًا.\".",
+      "pronunciation": "",
+      "exampleTarget": "أستيقظ في الساعة السادسة صباحًا.",
+      "exampleNative": "\"I wake up at six in the morning.\"",
+      "korean": "فحص النطق",
+      "english": "Keep emphatics, pharyngeals, vowel length, and sun-letter assimilation distinct enough that Modern Standard Arabic stays intelligible. In this lesson, listen especially while saying \"أستيقظ في الساعة السادسة صباحًا.\".",
+      "example": "أستيقظ في الساعة السادسة صباحًا.",
+      "exampleEnglish": "\"I wake up at six in the morning.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1"
+      ],
+      "targetText": "أستيقظ",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 4: يومي — My Daily Routine with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "أستيقظ في الساعة السادسة صباحًا.",
+      "exampleNative": "\"I wake up at six in the morning.\"",
+      "korean": "أستيقظ",
+      "english": "Use the key language of Level 1 · Unit 4: يومي — My Daily Routine with the register and setting that the lesson requires.",
+      "example": "أستيقظ في الساعة السادسة صباحًا.",
+      "exampleEnglish": "\"I wake up at six in the morning.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-2"
+      ],
+      "targetText": "أصلي",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 4: يومي — My Daily Routine sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "أصلي الفجر قبل شروق الشمس.",
+      "exampleNative": "\"I pray Fajr before sunrise.\"",
+      "korean": "أصلي",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 4: يومي — My Daily Routine sound precise rather than merely understandable.",
+      "example": "أصلي الفجر قبل شروق الشمس.",
+      "exampleEnglish": "\"I pray Fajr before sunrise.\""
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-grammar-1"
+      ],
+      "targetText": "أستيقظ",
+      "romanization": "",
+      "nativeText": "Describe a daily routine in MSA using 12+ present-tense Form I verbs.",
+      "pronunciation": "",
+      "exampleTarget": "أستيقظ في الساعة السادسة صباحًا.",
+      "exampleNative": "\"I wake up at six in the morning.\"",
+      "korean": "أستيقظ",
+      "english": "Describe a daily routine in MSA using 12+ present-tense Form I verbs.",
+      "example": "أستيقظ في الساعة السادسة صباحًا.",
+      "exampleEnglish": "\"I wake up at six in the morning.\""
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-grammar-2"
+      ],
+      "targetText": "أصلي",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 4: يومي — My Daily Routine with one nearby Arabic form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "أصلي الفجر قبل شروق الشمس.",
+      "exampleNative": "\"I pray Fajr before sunrise.\"",
+      "korean": "أصلي",
+      "english": "Contrast the main pattern in Level 1 · Unit 4: يومي — My Daily Routine with one nearby Arabic form so the learner can avoid literal translation.",
+      "example": "أصلي الفجر قبل شروق الشمس.",
+      "exampleEnglish": "\"I pray Fajr before sunrise.\""
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-reading"
+      ],
+      "targetText": "نموذج قراءة",
+      "romanization": "",
+      "nativeText": "Read the connected model for نموذج قراءة as one message. Notice how \"مثال: أستيقظ عادةً في السابعة. أفطر ثم أذهب إلى الجامعة. أدرس صباحًا وأتناول الغداء ظهرًا. عصرًا أعمل في المكتبة أحيانًا. مساءً أعود إلى البيت وأقرأ. أنام في الحادية عشرة.\" lets the lesson vocabulary and grammar work together instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "مثال: أستيقظ عادةً في السابعة. أفطر ثم أذهب إلى الجامعة. أدرس صباحًا وأتناول الغداء ظهرًا. عصرًا أعمل في المكتبة أحيانًا. مساءً أعود إلى البيت وأقرأ. أنام في الحادية عشرة.",
+      "exampleNative": "Keep the verbs in 1st person; switch frequency and time adverbs to vary.",
+      "korean": "نموذج قراءة",
+      "english": "Read the connected model for نموذج قراءة as one message. Notice how \"مثال: أستيقظ عادةً في السابعة. أفطر ثم أذهب إلى الجامعة. أدرس صباحًا وأتناول الغداء ظهرًا. عصرًا أعمل في المكتبة أحيانًا. مساءً أعود إلى البيت وأقرأ. أنام في الحادية عشرة.\" lets the lesson vocabulary and grammar work together instead of appearing as isolated flashcards.",
+      "example": "مثال: أستيقظ عادةً في السابعة. أفطر ثم أذهب إلى الجامعة. أدرس صباحًا وأتناول الغداء ظهرًا. عصرًا أعمل في المكتبة أحيانًا. مساءً أعود إلى البيت وأقرأ. أنام في الحادية عشرة.",
+      "exampleEnglish": "Keep the verbs in 1st person; switch frequency and time adverbs to vary."
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-listening"
+      ],
+      "targetText": "نموذج حوار",
+      "romanization": "",
+      "nativeText": "Hear \"مثال: أستيقظ عادةً في السابعة. أفطر ثم أذهب إلى الجامعة. أدرس صباحًا وأتناول الغداء ظهرًا. عصرًا أعمل في المكتبة أحيانًا. مساءً أعود إلى البيت وأقرأ. أنام في الحادية عشرة.\" as interaction, not as a sentence list. The listening goal is to follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "مثال: أستيقظ عادةً في السابعة. أفطر ثم أذهب إلى الجامعة. أدرس صباحًا وأتناول الغداء ظهرًا. عصرًا أعمل في المكتبة أحيانًا. مساءً أعود إلى البيت وأقرأ. أنام في الحادية عشرة.",
+      "exampleNative": "Keep the verbs in 1st person; switch frequency and time adverbs to vary.",
+      "korean": "نموذج حوار",
+      "english": "Hear \"مثال: أستيقظ عادةً في السابعة. أفطر ثم أذهب إلى الجامعة. أدرس صباحًا وأتناول الغداء ظهرًا. عصرًا أعمل في المكتبة أحيانًا. مساءً أعود إلى البيت وأقرأ. أنام في الحادية عشرة.\" as interaction, not as a sentence list. The listening goal is to follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "مثال: أستيقظ عادةً في السابعة. أفطر ثم أذهب إلى الجامعة. أدرس صباحًا وأتناول الغداء ظهرًا. عصرًا أعمل في المكتبة أحيانًا. مساءً أعود إلى البيت وأقرأ. أنام في الحادية عشرة.",
+      "exampleEnglish": "Keep the verbs in 1st person; switch frequency and time adverbs to vary."
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-writing"
+      ],
+      "targetText": "تدريب كتابي",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"أستيقظ في الساعة السادسة صباحًا.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "أستيقظ في الساعة السادسة صباحًا.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "تدريب كتابي",
+      "english": "Write your own version after studying \"أستيقظ في الساعة السادسة صباحًا.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "أستيقظ في الساعة السادسة صباحًا.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-culture"
+      ],
+      "targetText": "الاستخدام والسياق",
+      "romanization": "",
+      "nativeText": "Notice the formal-register, regional, or courtesy choice that changes how this Arabic is used in real interaction. Use \"أصلي الفجر قبل شروق الشمس.\" as the social comparison point for this lesson.",
+      "pronunciation": "",
+      "exampleTarget": "أصلي الفجر قبل شروق الشمس.",
+      "exampleNative": "\"I pray Fajr before sunrise.\"",
+      "korean": "الاستخدام والسياق",
+      "english": "Notice the formal-register, regional, or courtesy choice that changes how this Arabic is used in real interaction. Use \"أصلي الفجر قبل شروق الشمس.\" as the social comparison point for this lesson.",
+      "example": "أصلي الفجر قبل شروق الشمس.",
+      "exampleEnglish": "\"I pray Fajr before sunrise.\""
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "المهمة النهائية",
+      "romanization": "",
+      "nativeText": "Roleplay a \"tell me about your day\" conversation with the AI tutor.",
+      "pronunciation": "",
+      "exampleTarget": "مثال: أستيقظ عادةً في السابعة. أفطر ثم أذهب إلى الجامعة. أدرس صباحًا وأتناول الغداء ظهرًا. عصرًا أعمل في المكتبة أحيانًا. مساءً أعود إلى البيت وأقرأ. أنام في الحادية عشرة.",
+      "exampleNative": "Roleplay a \"tell me about your day\" conversation with the AI tutor.",
+      "korean": "المهمة النهائية",
+      "english": "Roleplay a \"tell me about your day\" conversation with the AI tutor.",
+      "example": "مثال: أستيقظ عادةً في السابعة. أفطر ثم أذهب إلى الجامعة. أدرس صباحًا وأتناول الغداء ظهرًا. عصرًا أعمل في المكتبة أحيانًا. مساءً أعود إلى البيت وأقرأ. أنام في الحادية عشرة.",
+      "exampleEnglish": "Roleplay a \"tell me about your day\" conversation with the AI tutor."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-grammar-2"
+      ],
+      "targetText": "خطأ شائع",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around root-and-pattern forms, agreement, case-sensitive endings, and register that another language may leave implicit. Begin by checking \"أصلي الفجر قبل شروق الشمس.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "أصلي الفجر قبل شروق الشمس.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: \"I pray Fajr before sunrise.\"",
+      "korean": "خطأ شائع",
+      "english": "Watch for literal-translation mistakes around root-and-pattern forms, agreement, case-sensitive endings, and register that another language may leave implicit. Begin by checking \"أصلي الفجر قبل شروق الشمس.\" against the model.",
+      "example": "أصلي الفجر قبل شروق الشمس.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: \"I pray Fajr before sunrise.\""
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-culture"
+      ],
+      "targetText": "السجل",
+      "romanization": "",
+      "nativeText": "Check whether the situation calls for Modern Standard Arabic, a formal phrase, or a spoken-dialect note before choosing the final wording. Compare the social fit of \"أستيقظ في الساعة السادسة صباحًا.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "أستيقظ في الساعة السادسة صباحًا.",
+      "exampleNative": "\"I wake up at six in the morning.\"",
+      "korean": "السجل",
+      "english": "Check whether the situation calls for Modern Standard Arabic, a formal phrase, or a spoken-dialect note before choosing the final wording. Compare the social fit of \"أستيقظ في الساعة السادسة صباحًا.\" before reusing it elsewhere.",
+      "example": "أستيقظ في الساعة السادسة صباحًا.",
+      "exampleEnglish": "\"I wake up at six in the morning.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "الطلاقة",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Arabic message rather than as separate translated fragments. Aim to carry \"مثال: أستيقظ عادةً في السابعة. أفطر ثم أذهب إلى الجامعة. أدرس صباحًا وأتناول الغداء ظهرًا. عصرًا أعمل في المكتبة أحيانًا. مساءً أعود إلى البيت وأقرأ. أنام في الحادية عشرة.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "مثال: أستيقظ عادةً في السابعة. أفطر ثم أذهب إلى الجامعة. أدرس صباحًا وأتناول الغداء ظهرًا. عصرًا أعمل في المكتبة أحيانًا. مساءً أعود إلى البيت وأقرأ. أنام في الحادية عشرة.",
+      "exampleNative": "Keep the verbs in 1st person; switch frequency and time adverbs to vary.",
+      "korean": "الطلاقة",
+      "english": "Say the idea as one connected Arabic message rather than as separate translated fragments. Aim to carry \"مثال: أستيقظ عادةً في السابعة. أفطر ثم أذهب إلى الجامعة. أدرس صباحًا وأتناول الغداء ظهرًا. عصرًا أعمل في المكتبة أحيانًا. مساءً أعود إلى البيت وأقرأ. أنام في الحادية عشرة.\" as one thought.",
+      "example": "مثال: أستيقظ عادةً في السابعة. أفطر ثم أذهب إلى الجامعة. أدرس صباحًا وأتناول الغداء ظهرًا. عصرًا أعمل في المكتبة أحيانًا. مساءً أعود إلى البيت وأقرأ. أنام في الحادية عشرة.",
+      "exampleEnglish": "Keep the verbs in 1st person; switch frequency and time adverbs to vary."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "التطبيق",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"أستيقظ في الساعة السادسة صباحًا.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "أستيقظ في الساعة السادسة صباحًا.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "التطبيق",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"أستيقظ في الساعة السادسة صباحًا.\" and move it into your own life.",
+      "example": "أستيقظ في الساعة السادسة صباحًا.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-grammar-1"
+      ],
+      "targetText": "الاسترجاع",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"أستيقظ\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "أستيقظ",
+      "exampleNative": "I wake up. Form X of يَقِظَ. Emphatic ظ at the end; ست- prefix marks Form X.",
+      "korean": "الاسترجاع",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"أستيقظ\" before looking back.",
+      "example": "أستيقظ",
+      "exampleEnglish": "I wake up. Form X of يَقِظَ. Emphatic ظ at the end; ست- prefix marks Form X."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-writing"
+      ],
+      "targetText": "التوسيع",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"مثال: أستيقظ عادةً في السابعة. أفطر ثم أذهب إلى الجامعة. أدرس صباحًا وأتناول الغداء ظهرًا. عصرًا أعمل في المكتبة أحيانًا. مساءً أعود إلى البيت وأقرأ. أنام في الحادية عشرة.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "مثال: أستيقظ عادةً في السابعة. أفطر ثم أذهب إلى الجامعة. أدرس صباحًا وأتناول الغداء ظهرًا. عصرًا أعمل في المكتبة أحيانًا. مساءً أعود إلى البيت وأقرأ. أنام في الحادية عشرة.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "التوسيع",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"مثال: أستيقظ عادةً في السابعة. أفطر ثم أذهب إلى الجامعة. أدرس صباحًا وأتناول الغداء ظهرًا. عصرًا أعمل في المكتبة أحيانًا. مساءً أعود إلى البيت وأقرأ. أنام في الحادية عشرة.\" rather than restarting from a blank sentence.",
+      "example": "مثال: أستيقظ عادةً في السابعة. أفطر ثم أذهب إلى الجامعة. أدرس صباحًا وأتناول الغداء ظهرًا. عصرًا أعمل في المكتبة أحيانًا. مساءً أعود إلى البيت وأقرأ. أنام في الحادية عشرة.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading"
+      ],
+      "targetText": "المقارنة",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 4: يومي — My Daily Routine with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"أصلي الفجر قبل شروق الشمس.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "أصلي الفجر قبل شروق الشمس.",
+      "exampleNative": "\"I pray Fajr before sunrise.\"",
+      "korean": "المقارنة",
+      "english": "Compare the central form in Level 1 · Unit 4: يومي — My Daily Routine with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"أصلي الفجر قبل شروق الشمس.\" as the comparison line.",
+      "example": "أصلي الفجر قبل شروق الشمس.",
+      "exampleEnglish": "\"I pray Fajr before sunrise.\""
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-pronunciation"
+      ],
+      "targetText": "تصحيح النطق",
+      "romanization": "",
+      "nativeText": "Keep emphatics, pharyngeals, vowel length, and sun-letter assimilation distinct enough that Modern Standard Arabic stays intelligible. Use \"أستيقظ في الساعة السادسة صباحًا.\" as the repair line.",
+      "pronunciation": "",
+      "exampleTarget": "أستيقظ في الساعة السادسة صباحًا.",
+      "exampleNative": "\"I wake up at six in the morning.\"",
+      "korean": "تصحيح النطق",
+      "english": "Keep emphatics, pharyngeals, vowel length, and sun-letter assimilation distinct enough that Modern Standard Arabic stays intelligible. Use \"أستيقظ في الساعة السادسة صباحًا.\" as the repair line.",
+      "example": "أستيقظ في الساعة السادسة صباحًا.",
+      "exampleEnglish": "\"I wake up at six in the morning.\""
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "تنويع الحوار",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"مثال: أستيقظ عادةً في السابعة. أفطر ثم أذهب إلى الجامعة. أدرس صباحًا وأتناول الغداء ظهرًا. عصرًا أعمل في المكتبة أحيانًا. مساءً أعود إلى البيت وأقرأ. أنام في الحادية عشرة.\".",
+      "pronunciation": "",
+      "exampleTarget": "مثال: أستيقظ عادةً في السابعة. أفطر ثم أذهب إلى الجامعة. أدرس صباحًا وأتناول الغداء ظهرًا. عصرًا أعمل في المكتبة أحيانًا. مساءً أعود إلى البيت وأقرأ. أنام في الحادية عشرة.",
+      "exampleNative": "Keep the verbs in 1st person; switch frequency and time adverbs to vary.",
+      "korean": "تنويع الحوار",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"مثال: أستيقظ عادةً في السابعة. أفطر ثم أذهب إلى الجامعة. أدرس صباحًا وأتناول الغداء ظهرًا. عصرًا أعمل في المكتبة أحيانًا. مساءً أعود إلى البيت وأقرأ. أنام في الحادية عشرة.\".",
+      "example": "مثال: أستيقظ عادةً في السابعة. أفطر ثم أذهب إلى الجامعة. أدرس صباحًا وأتناول الغداء ظهرًا. عصرًا أعمل في المكتبة أحيانًا. مساءً أعود إلى البيت وأقرأ. أنام في الحادية عشرة.",
+      "exampleEnglish": "Keep the verbs in 1st person; switch frequency and time adverbs to vary."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-writing"
+      ],
+      "targetText": "بناء الجملة",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"أستيقظ في الساعة السادسة صباحًا.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "أستيقظ في الساعة السادسة صباحًا.",
+      "exampleNative": "\"I wake up at six in the morning.\"",
+      "korean": "بناء الجملة",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"أستيقظ في الساعة السادسة صباحًا.\" one layer at a time.",
+      "example": "أستيقظ في الساعة السادسة صباحًا.",
+      "exampleEnglish": "\"I wake up at six in the morning.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-2"
+      ],
+      "targetText": "اختبار سريع",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"أصلي الفجر قبل شروق الشمس.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "أصلي الفجر قبل شروق الشمس.",
+      "exampleNative": "\"I pray Fajr before sunrise.\"",
+      "korean": "اختبار سريع",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"أصلي الفجر قبل شروق الشمس.\" as the deciding example.",
+      "example": "أصلي الفجر قبل شروق الشمس.",
+      "exampleEnglish": "\"I pray Fajr before sunrise.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-culture",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "مراجعة",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"مثال: أستيقظ عادةً في السابعة. أفطر ثم أذهب إلى الجامعة. أدرس صباحًا وأتناول الغداء ظهرًا. عصرًا أعمل في المكتبة أحيانًا. مساءً أعود إلى البيت وأقرأ. أنام في الحادية عشرة.\".",
+      "pronunciation": "",
+      "exampleTarget": "مثال: أستيقظ عادةً في السابعة. أفطر ثم أذهب إلى الجامعة. أدرس صباحًا وأتناول الغداء ظهرًا. عصرًا أعمل في المكتبة أحيانًا. مساءً أعود إلى البيت وأقرأ. أنام في الحادية عشرة.",
+      "exampleNative": "Keep the verbs in 1st person; switch frequency and time adverbs to vary.",
+      "korean": "مراجعة",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"مثال: أستيقظ عادةً في السابعة. أفطر ثم أذهب إلى الجامعة. أدرس صباحًا وأتناول الغداء ظهرًا. عصرًا أعمل في المكتبة أحيانًا. مساءً أعود إلى البيت وأقرأ. أنام في الحادية عشرة.\".",
+      "example": "مثال: أستيقظ عادةً في السابعة. أفطر ثم أذهب إلى الجامعة. أدرس صباحًا وأتناول الغداء ظهرًا. عصرًا أعمل في المكتبة أحيانًا. مساءً أعود إلى البيت وأقرأ. أنام في الحادية عشرة.",
+      "exampleEnglish": "Keep the verbs in 1st person; switch frequency and time adverbs to vary."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أستيقظ",
+      "romanization": "astayqiẓu",
+      "nativeText": "I wake up. Form X of يَقِظَ. Emphatic ظ at the end; ست- prefix marks Form X.",
+      "pronunciation": "astayqiẓu",
+      "exampleTarget": "أستيقظ في الساعة السادسة صباحًا.",
+      "exampleNative": "\"I wake up at six in the morning.\"",
+      "korean": "أستيقظ",
+      "english": "I wake up. Form X of يَقِظَ. Emphatic ظ at the end; ست- prefix marks Form X.",
+      "example": "أستيقظ في الساعة السادسة صباحًا.",
+      "exampleEnglish": "\"I wake up at six in the morning.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أصلي",
+      "romanization": "uṣallī",
+      "nativeText": "I pray. Form II of صلى. The shadda on ل — geminated. Used for the five daily prayers.",
+      "pronunciation": "uṣallī",
+      "exampleTarget": "أصلي الفجر قبل شروق الشمس.",
+      "exampleNative": "\"I pray Fajr before sunrise.\"",
+      "korean": "أصلي",
+      "english": "I pray. Form II of صلى. The shadda on ل — geminated. Used for the five daily prayers.",
+      "example": "أصلي الفجر قبل شروق الشمس.",
+      "exampleEnglish": "\"I pray Fajr before sunrise.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أفطر",
+      "romanization": "ufṭiru",
+      "nativeText": "I eat breakfast / I break my fast. Form IV of فطر. Same word covers daily breakfast AND breaking the Ramadan fast at sunset.",
+      "pronunciation": "ufṭiru",
+      "exampleTarget": "أفطر بعد صلاة الفجر.",
+      "exampleNative": "\"I eat breakfast after the Fajr prayer.\"",
+      "korean": "أفطر",
+      "english": "I eat breakfast / I break my fast. Form IV of فطر. Same word covers daily breakfast AND breaking the Ramadan fast at sunset.",
+      "example": "أفطر بعد صلاة الفجر.",
+      "exampleEnglish": "\"I eat breakfast after the Fajr prayer.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أذهب",
+      "romanization": "adhhabu",
+      "nativeText": "I go. Form I of ذَهَبَ. Root ذ ه ب. Combined with إلى + place.",
+      "pronunciation": "adhhabu",
+      "exampleTarget": "أذهب إلى الجامعة الساعة الثامنة.",
+      "exampleNative": "\"I go to the university at eight.\"",
+      "korean": "أذهب",
+      "english": "I go. Form I of ذَهَبَ. Root ذ ه ب. Combined with إلى + place.",
+      "example": "أذهب إلى الجامعة الساعة الثامنة.",
+      "exampleEnglish": "\"I go to the university at eight.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أعمل",
+      "romanization": "aʿmalu",
+      "nativeText": "I work / I do. Form I of عَمِلَ. Multipurpose verb: work, action, doing.",
+      "pronunciation": "aʿmalu",
+      "exampleTarget": "أعمل في المكتبة.",
+      "exampleNative": "\"I work in the library.\"",
+      "korean": "أعمل",
+      "english": "I work / I do. Form I of عَمِلَ. Multipurpose verb: work, action, doing.",
+      "example": "أعمل في المكتبة.",
+      "exampleEnglish": "\"I work in the library.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أتناول",
+      "romanization": "atanāwalu",
+      "nativeText": "I have (a meal). Form VI of ناول. The polite, formal verb for \"eat (a meal)\"; less casual than آكل.",
+      "pronunciation": "atanāwalu",
+      "exampleTarget": "أتناول الغداء في المطعم.",
+      "exampleNative": "\"I have lunch at the restaurant.\"",
+      "korean": "أتناول",
+      "english": "I have (a meal). Form VI of ناول. The polite, formal verb for \"eat (a meal)\"; less casual than آكل.",
+      "example": "أتناول الغداء في المطعم.",
+      "exampleEnglish": "\"I have lunch at the restaurant.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "آكل",
+      "romanization": "ākulu",
+      "nativeText": "I eat. Form I of أَكَلَ. Note: the present 1st-person uses آ (alif madda) — āku not aʾku.",
+      "pronunciation": "ākulu",
+      "exampleTarget": "آكل التمر في رمضان.",
+      "exampleNative": "\"I eat dates in Ramadan.\"",
+      "korean": "آكل",
+      "english": "I eat. Form I of أَكَلَ. Note: the present 1st-person uses آ (alif madda) — āku not aʾku.",
+      "example": "آكل التمر في رمضان.",
+      "exampleEnglish": "\"I eat dates in Ramadan.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أشرب",
+      "romanization": "ashrabu",
+      "nativeText": "I drink. Form I of شَرِبَ. The vowel pattern is fatha-fatha in the present (yashrab).",
+      "pronunciation": "ashrabu",
+      "exampleTarget": "أشرب القهوة في الصباح.",
+      "exampleNative": "\"I drink coffee in the morning.\"",
+      "korean": "أشرب",
+      "english": "I drink. Form I of شَرِبَ. The vowel pattern is fatha-fatha in the present (yashrab).",
+      "example": "أشرب القهوة في الصباح.",
+      "exampleEnglish": "\"I drink coffee in the morning.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أدرس",
+      "romanization": "adrusu",
+      "nativeText": "I study. Form I of دَرَسَ. Root د ر س — same root as درس \"lesson\" and مدرسة \"school\".",
+      "pronunciation": "adrusu",
+      "exampleTarget": "أدرس اللغة العربية.",
+      "exampleNative": "\"I study the Arabic language.\"",
+      "korean": "أدرس",
+      "english": "I study. Form I of دَرَسَ. Root د ر س — same root as درس \"lesson\" and مدرسة \"school\".",
+      "example": "أدرس اللغة العربية.",
+      "exampleEnglish": "\"I study the Arabic language.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أعود",
+      "romanization": "aʿūdu",
+      "nativeText": "I return / I come back. Form I of عَادَ. Hollow verb (middle root letter is و).",
+      "pronunciation": "aʿūdu",
+      "exampleTarget": "أعود إلى البيت في المساء.",
+      "exampleNative": "\"I return home in the evening.\"",
+      "korean": "أعود",
+      "english": "I return / I come back. Form I of عَادَ. Hollow verb (middle root letter is و).",
+      "example": "أعود إلى البيت في المساء.",
+      "exampleEnglish": "\"I return home in the evening.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أشاهد",
+      "romanization": "ushāhidu",
+      "nativeText": "I watch. Form III of شاهد. Used for TV, films, sports.",
+      "pronunciation": "ushāhidu",
+      "exampleTarget": "أشاهد الأخبار في التلفاز.",
+      "exampleNative": "\"I watch the news on TV.\"",
+      "korean": "أشاهد",
+      "english": "I watch. Form III of شاهد. Used for TV, films, sports.",
+      "example": "أشاهد الأخبار في التلفاز.",
+      "exampleEnglish": "\"I watch the news on TV.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أقرأ",
+      "romanization": "aqraʾu",
+      "nativeText": "I read. Form I of قَرَأَ. The verb that gives the Quran its name (literally \"the recitation\").",
+      "pronunciation": "aqraʾu",
+      "exampleTarget": "أقرأ كتابًا قبل النوم.",
+      "exampleNative": "\"I read a book before sleeping.\"",
+      "korean": "أقرأ",
+      "english": "I read. Form I of قَرَأَ. The verb that gives the Quran its name (literally \"the recitation\").",
+      "example": "أقرأ كتابًا قبل النوم.",
+      "exampleEnglish": "\"I read a book before sleeping.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أنام",
+      "romanization": "anāmu",
+      "nativeText": "I sleep. Form I of نَامَ. Hollow verb.",
+      "pronunciation": "anāmu",
+      "exampleTarget": "أنام في الساعة الحادية عشرة.",
+      "exampleNative": "\"I sleep at eleven o'clock.\"",
+      "korean": "أنام",
+      "english": "I sleep. Form I of نَامَ. Hollow verb.",
+      "example": "أنام في الساعة الحادية عشرة.",
+      "exampleEnglish": "\"I sleep at eleven o'clock.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "صباحًا",
+      "romanization": "ṣabāḥan",
+      "nativeText": "In the morning. Accusative form of صباح with tanwin al-fath ـًا — the adverbial accusative.",
+      "pronunciation": "ṣabāḥan",
+      "exampleTarget": "أعمل صباحًا.",
+      "exampleNative": "\"I work in the morning.\"",
+      "korean": "صباحًا",
+      "english": "In the morning. Accusative form of صباح with tanwin al-fath ـًا — the adverbial accusative.",
+      "example": "أعمل صباحًا.",
+      "exampleEnglish": "\"I work in the morning.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "ظهرًا",
+      "romanization": "ẓuhran",
+      "nativeText": "At noon. Accusative of ظهر. Also the name of the noon prayer.",
+      "pronunciation": "ẓuhran",
+      "exampleTarget": "أتناول الغداء ظهرًا.",
+      "exampleNative": "\"I have lunch at noon.\"",
+      "korean": "ظهرًا",
+      "english": "At noon. Accusative of ظهر. Also the name of the noon prayer.",
+      "example": "أتناول الغداء ظهرًا.",
+      "exampleEnglish": "\"I have lunch at noon.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "عصرًا",
+      "romanization": "ʿaṣran",
+      "nativeText": "In the afternoon. Accusative of عصر. Also the name of the afternoon prayer.",
+      "pronunciation": "ʿaṣran",
+      "exampleTarget": "أدرس عصرًا.",
+      "exampleNative": "\"I study in the afternoon.\"",
+      "korean": "عصرًا",
+      "english": "In the afternoon. Accusative of عصر. Also the name of the afternoon prayer.",
+      "example": "أدرس عصرًا.",
+      "exampleEnglish": "\"I study in the afternoon.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "مساءً",
+      "romanization": "masāʾan",
+      "nativeText": "In the evening. Accusative of مساء.",
+      "pronunciation": "masāʾan",
+      "exampleTarget": "نلتقي مساءً.",
+      "exampleNative": "\"We meet in the evening.\"",
+      "korean": "مساءً",
+      "english": "In the evening. Accusative of مساء.",
+      "example": "نلتقي مساءً.",
+      "exampleEnglish": "\"We meet in the evening.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "ليلًا",
+      "romanization": "laylan",
+      "nativeText": "At night. Accusative of ليل.",
+      "pronunciation": "laylan",
+      "exampleTarget": "أنام ليلًا.",
+      "exampleNative": "\"I sleep at night.\"",
+      "korean": "ليلًا",
+      "english": "At night. Accusative of ليل.",
+      "example": "أنام ليلًا.",
+      "exampleEnglish": "\"I sleep at night.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "دائمًا",
+      "romanization": "dāʾiman",
+      "nativeText": "Always. Frequency adverb in the accusative.",
+      "pronunciation": "dāʾiman",
+      "exampleTarget": "أصلي الفجر دائمًا.",
+      "exampleNative": "\"I always pray Fajr.\"",
+      "korean": "دائمًا",
+      "english": "Always. Frequency adverb in the accusative.",
+      "example": "أصلي الفجر دائمًا.",
+      "exampleEnglish": "\"I always pray Fajr.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "عادةً",
+      "romanization": "ʿādatan",
+      "nativeText": "Usually. Accusative of عادة \"habit\". Common conversational frequency word.",
+      "pronunciation": "ʿādatan",
+      "exampleTarget": "عادةً أستيقظ مبكرًا.",
+      "exampleNative": "\"I usually wake up early.\"",
+      "korean": "عادةً",
+      "english": "Usually. Accusative of عادة \"habit\". Common conversational frequency word.",
+      "example": "عادةً أستيقظ مبكرًا.",
+      "exampleEnglish": "\"I usually wake up early.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "غالبًا",
+      "romanization": "ghāliban",
+      "nativeText": "Most often / often. Stronger than أحيانًا but weaker than دائمًا.",
+      "pronunciation": "ghāliban",
+      "exampleTarget": "غالبًا أعمل في المكتبة.",
+      "exampleNative": "\"I often work in the library.\"",
+      "korean": "غالبًا",
+      "english": "Most often / often. Stronger than أحيانًا but weaker than دائمًا.",
+      "example": "غالبًا أعمل في المكتبة.",
+      "exampleEnglish": "\"I often work in the library.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أحيانًا",
+      "romanization": "aḥyānan",
+      "nativeText": "Sometimes. Accusative of أحيان (the plural of حين \"moment\").",
+      "pronunciation": "aḥyānan",
+      "exampleTarget": "أحيانًا أشرب الشاي.",
+      "exampleNative": "\"Sometimes I drink tea.\"",
+      "korean": "أحيانًا",
+      "english": "Sometimes. Accusative of أحيان (the plural of حين \"moment\").",
+      "example": "أحيانًا أشرب الشاي.",
+      "exampleEnglish": "\"Sometimes I drink tea.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "نادرًا",
+      "romanization": "nādiran",
+      "nativeText": "Rarely. Accusative of نادر.",
+      "pronunciation": "nādiran",
+      "exampleTarget": "نادرًا ما أتأخر.",
+      "exampleNative": "\"I rarely arrive late.\" — نادرًا ما = \"rarely that\".",
+      "korean": "نادرًا",
+      "english": "Rarely. Accusative of نادر.",
+      "example": "نادرًا ما أتأخر.",
+      "exampleEnglish": "\"I rarely arrive late.\" — نادرًا ما = \"rarely that\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أبدًا",
+      "romanization": "abadan",
+      "nativeText": "Never (with negation). Accusative; always paired with لا/لم: لا أدخن أبدًا.",
+      "pronunciation": "abadan",
+      "exampleTarget": "لا أدخن أبدًا.",
+      "exampleNative": "\"I never smoke.\"",
+      "korean": "أبدًا",
+      "english": "Never (with negation). Accusative; always paired with لا/لم: لا أدخن أبدًا.",
+      "example": "لا أدخن أبدًا.",
+      "exampleEnglish": "\"I never smoke.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "تصريف الفعل في المضارع",
+      "romanization": "taṣrīf al-fiʿl fī l-muḍāriʿ",
+      "nativeText": "Present-tense conjugation table for Form I. The PREFIX marks person/number; the SUFFIX often marks mood. Pattern shown with كَتَبَ → يَكْتُب.",
+      "pronunciation": "taṣrīf al-fiʿl fī l-muḍāriʿ",
+      "exampleTarget": "أنا أكتبُ · أنتَ تكتبُ · أنتِ تكتبين · هو يكتبُ · هي تكتبُ · نحن نكتبُ · أنتم تكتبون · هم يكتبون",
+      "exampleNative": "Note F sg adds ـين, M pl adds ـون.",
+      "korean": "تصريف الفعل في المضارع",
+      "english": "Present-tense conjugation table for Form I. The PREFIX marks person/number; the SUFFIX often marks mood. Pattern shown with كَتَبَ → يَكْتُب.",
+      "example": "أنا أكتبُ · أنتَ تكتبُ · أنتِ تكتبين · هو يكتبُ · هي تكتبُ · نحن نكتبُ · أنتم تكتبون · هم يكتبون",
+      "exampleEnglish": "Note F sg adds ـين, M pl adds ـون."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "حالة النصب في الظرف",
+      "romanization": "ḥālat an-naṣb fī ẓ-ẓarf",
+      "nativeText": "Adverbials in MSA are in the accusative (manṣūb) and indefinite (tanwin al-fath ـًا). This applies to time, manner, and degree adverbs: صباحًا (in the morning), دائمًا (always), سريعًا (quickly).",
+      "pronunciation": "ḥālat an-naṣb fī ẓ-ẓarf",
+      "exampleTarget": "صباحًا (morning) · ظهرًا (noon) · دائمًا (always) · سريعًا (quickly) · جدًا (very)",
+      "exampleNative": "The tanwin al-fath ending is unmistakable — it always means an indefinite accusative adverb (or noun).",
+      "korean": "حالة النصب في الظرف",
+      "english": "Adverbials in MSA are in the accusative (manṣūb) and indefinite (tanwin al-fath ـًا). This applies to time, manner, and degree adverbs: صباحًا (in the morning), دائمًا (always), سريعًا (quickly).",
+      "example": "صباحًا (morning) · ظهرًا (noon) · دائمًا (always) · سريعًا (quickly) · جدًا (very)",
+      "exampleEnglish": "The tanwin al-fath ending is unmistakable — it always means an indefinite accusative adverb (or noun)."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "النفي بـ لا",
+      "romanization": "an-nafy bi-lā",
+      "nativeText": "Negate the present tense with لا (lā) placed directly before the verb. لا covers any general/present/habitual negation.",
+      "pronunciation": "an-nafy bi-lā",
+      "exampleTarget": "أفهم → لا أفهم (\"I don't understand\")\nيأكل اللحم → لا يأكل اللحم (\"He doesn't eat meat\")",
+      "exampleNative": "لا ≠ ما (archaic for past) ≠ لم (past + jussive) ≠ لن (future).",
+      "korean": "النفي بـ لا",
+      "english": "Negate the present tense with لا (lā) placed directly before the verb. لا covers any general/present/habitual negation.",
+      "example": "أفهم → لا أفهم (\"I don't understand\")\nيأكل اللحم → لا يأكل اللحم (\"He doesn't eat meat\")",
+      "exampleEnglish": "لا ≠ ما (archaic for past) ≠ لم (past + jussive) ≠ لن (future)."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "يومي في الجامعة",
+      "romanization": "yawmī fī l-jāmiʿa",
+      "nativeText": "A paragraph describing a student's typical day at King Saud University.",
+      "pronunciation": "yawmī fī l-jāmiʿa",
+      "exampleTarget": "أستيقظ في الساعة السادسة، وأصلي الفجر. ثم أفطر وأذهب إلى الجامعة. أحضر المحاضرات صباحًا، وأتناول الغداء في مطعم الجامعة. عصرًا أدرس في المكتبة. أعود إلى البيت مساءً، وأشاهد الأخبار. أنام في الساعة الحادية عشرة.",
+      "exampleNative": "Translation summary: wake at 6, pray Fajr, breakfast, university, lectures, lunch at uni restaurant, study in afternoon, home in evening, news, sleep at 11.",
+      "korean": "يومي في الجامعة",
+      "english": "A paragraph describing a student's typical day at King Saud University.",
+      "example": "أستيقظ في الساعة السادسة، وأصلي الفجر. ثم أفطر وأذهب إلى الجامعة. أحضر المحاضرات صباحًا، وأتناول الغداء في مطعم الجامعة. عصرًا أدرس في المكتبة. أعود إلى البيت مساءً، وأشاهد الأخبار. أنام في الساعة الحادية عشرة.",
+      "exampleEnglish": "Translation summary: wake at 6, pray Fajr, breakfast, university, lectures, lunch at uni restaurant, study in afternoon, home in evening, news, sleep at 11."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أوقات الصلاة",
+      "romanization": "awqāt aṣ-ṣalāh",
+      "nativeText": "The five daily prayers and their rough times structure life in Saudi Arabia, the Gulf, and observant Muslim contexts everywhere. Shops close briefly at each adhān; the workday and the school day are organized around them.",
+      "pronunciation": "awqāt aṣ-ṣalāh",
+      "exampleTarget": "الفجر (dawn) · الظهر (noon) · العصر (mid-afternoon) · المغرب (sunset) · العشاء (night)",
+      "exampleNative": "Friday (الجمعة) the noon prayer is the congregational الجمعة prayer; it is a public holiday in most Arab countries.",
+      "korean": "أوقات الصلاة",
+      "english": "The five daily prayers and their rough times structure life in Saudi Arabia, the Gulf, and observant Muslim contexts everywhere. Shops close briefly at each adhān; the workday and the school day are organized around them.",
+      "example": "الفجر (dawn) · الظهر (noon) · العصر (mid-afternoon) · المغرب (sunset) · العشاء (night)",
+      "exampleEnglish": "Friday (الجمعة) the noon prayer is the congregational الجمعة prayer; it is a public holiday in most Arab countries."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "قالب الكتابة",
+      "romanization": "qālab al-kitāba",
+      "nativeText": "Template for writing your weekday routine: 6 sentences with 5+ verbs and 2 frequency adverbs.",
+      "pronunciation": "qālab al-kitāba",
+      "exampleTarget": "مثال: أستيقظ عادةً في السابعة. أفطر ثم أذهب إلى الجامعة. أدرس صباحًا وأتناول الغداء ظهرًا. عصرًا أعمل في المكتبة أحيانًا. مساءً أعود إلى البيت وأقرأ. أنام في الحادية عشرة.",
+      "exampleNative": "Keep the verbs in 1st person; switch frequency and time adverbs to vary.",
+      "korean": "قالب الكتابة",
+      "english": "Template for writing your weekday routine: 6 sentences with 5+ verbs and 2 frequency adverbs.",
+      "example": "مثال: أستيقظ عادةً في السابعة. أفطر ثم أذهب إلى الجامعة. أدرس صباحًا وأتناول الغداء ظهرًا. عصرًا أعمل في المكتبة أحيانًا. مساءً أعود إلى البيت وأقرأ. أنام في الحادية عشرة.",
+      "exampleEnglish": "Keep the verbs in 1st person; switch frequency and time adverbs to vary."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أستيقظ في الساعة السادسة صباحًا.",
+      "romanization": "astayqiẓu",
+      "nativeText": "Model use for \"أستيقظ\": I wake up. Form X of يَقِظَ. Emphatic ظ at the end; ست- prefix marks Form X.",
+      "pronunciation": "astayqiẓu",
+      "exampleTarget": "أستيقظ في الساعة السادسة صباحًا.",
+      "exampleNative": "\"I wake up at six in the morning.\"",
+      "korean": "أستيقظ في الساعة السادسة صباحًا.",
+      "english": "Model use for \"أستيقظ\": I wake up. Form X of يَقِظَ. Emphatic ظ at the end; ست- prefix marks Form X.",
+      "example": "أستيقظ في الساعة السادسة صباحًا.",
+      "exampleEnglish": "\"I wake up at six in the morning.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أستيقظ",
+      "romanization": "astayqiẓu",
+      "nativeText": "Usage focus for \"أستيقظ\": I wake up. Form X of يَقِظَ. Emphatic ظ at the end; ست- prefix marks Form X.",
+      "pronunciation": "astayqiẓu",
+      "exampleTarget": "أستيقظ في الساعة السادسة صباحًا.",
+      "exampleNative": "Notice what the form is doing here: \"I wake up at six in the morning.\"",
+      "korean": "أستيقظ",
+      "english": "Usage focus for \"أستيقظ\": I wake up. Form X of يَقِظَ. Emphatic ظ at the end; ست- prefix marks Form X.",
+      "example": "أستيقظ في الساعة السادسة صباحًا.",
+      "exampleEnglish": "Notice what the form is doing here: \"I wake up at six in the morning.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أستيقظ",
+      "romanization": "astayqiẓu",
+      "nativeText": "Contrast check for \"أستيقظ\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "astayqiẓu",
+      "exampleTarget": "أستيقظ في الساعة السادسة صباحًا.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"I wake up at six in the morning.\"",
+      "korean": "أستيقظ",
+      "english": "Contrast check for \"أستيقظ\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "أستيقظ في الساعة السادسة صباحًا.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"I wake up at six in the morning.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أستيقظ",
+      "romanization": "astayqiẓu",
+      "nativeText": "Recall \"أستيقظ\" from memory, then explain what would change if a nearby alternative replaced it in \"أستيقظ في الساعة السادسة صباحًا.\".",
+      "pronunciation": "astayqiẓu",
+      "exampleTarget": "أستيقظ في الساعة السادسة صباحًا.",
+      "exampleNative": "Self-check against the model before moving on: \"I wake up at six in the morning.\"",
+      "korean": "أستيقظ",
+      "english": "Recall \"أستيقظ\" from memory, then explain what would change if a nearby alternative replaced it in \"أستيقظ في الساعة السادسة صباحًا.\".",
+      "example": "أستيقظ في الساعة السادسة صباحًا.",
+      "exampleEnglish": "Self-check against the model before moving on: \"I wake up at six in the morning.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أستيقظ",
+      "romanization": "astayqiẓu",
+      "nativeText": "Repair \"أستيقظ\" inside \"أستيقظ في الساعة السادسة صباحًا.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: I wake up. Form X of يَقِظَ. Emphatic ظ at the end; ست- prefix marks Form X.",
+      "pronunciation": "astayqiẓu",
+      "exampleTarget": "أستيقظ في الساعة السادسة صباحًا.",
+      "exampleNative": "Use the model as the repair target: \"I wake up at six in the morning.\"",
+      "korean": "أستيقظ",
+      "english": "Repair \"أستيقظ\" inside \"أستيقظ في الساعة السادسة صباحًا.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: I wake up. Form X of يَقِظَ. Emphatic ظ at the end; ست- prefix marks Form X.",
+      "example": "أستيقظ في الساعة السادسة صباحًا.",
+      "exampleEnglish": "Use the model as the repair target: \"I wake up at six in the morning.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أستيقظ",
+      "romanization": "astayqiẓu",
+      "nativeText": "Transfer \"أستيقظ\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"أستيقظ في الساعة السادسة صباحًا.\".",
+      "pronunciation": "astayqiẓu",
+      "exampleTarget": "أستيقظ في الساعة السادسة صباحًا.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: \"I wake up at six in the morning.\"",
+      "korean": "أستيقظ",
+      "english": "Transfer \"أستيقظ\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"أستيقظ في الساعة السادسة صباحًا.\".",
+      "example": "أستيقظ في الساعة السادسة صباحًا.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: \"I wake up at six in the morning.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أستيقظ",
+      "romanization": "astayqiẓu",
+      "nativeText": "Find one word or phrase that naturally travels with \"أستيقظ\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "astayqiẓu",
+      "exampleTarget": "أستيقظ في الساعة السادسة صباحًا.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: \"I wake up at six in the morning.\"",
+      "korean": "أستيقظ",
+      "english": "Find one word or phrase that naturally travels with \"أستيقظ\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "أستيقظ في الساعة السادسة صباحًا.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: \"I wake up at six in the morning.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أستيقظ",
+      "romanization": "astayqiẓu",
+      "nativeText": "Listen for \"أستيقظ\" inside \"أستيقظ في الساعة السادسة صباحًا.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "astayqiẓu",
+      "exampleTarget": "أستيقظ في الساعة السادسة صباحًا.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"I wake up at six in the morning.\"",
+      "korean": "أستيقظ",
+      "english": "Listen for \"أستيقظ\" inside \"أستيقظ في الساعة السادسة صباحًا.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "أستيقظ في الساعة السادسة صباحًا.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"I wake up at six in the morning.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أستيقظ",
+      "romanization": "astayqiẓu",
+      "nativeText": "Write \"أستيقظ\" again without looking, then compare the exact written form against \"أستيقظ في الساعة السادسة صباحًا.\" before moving on.",
+      "pronunciation": "astayqiẓu",
+      "exampleTarget": "أستيقظ في الساعة السادسة صباحًا.",
+      "exampleNative": "Use the written model as the final correctness check: \"I wake up at six in the morning.\"",
+      "korean": "أستيقظ",
+      "english": "Write \"أستيقظ\" again without looking, then compare the exact written form against \"أستيقظ في الساعة السادسة صباحًا.\" before moving on.",
+      "example": "أستيقظ في الساعة السادسة صباحًا.",
+      "exampleEnglish": "Use the written model as the final correctness check: \"I wake up at six in the morning.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أستيقظ",
+      "romanization": "astayqiẓu",
+      "nativeText": "Check whether \"أستيقظ\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"I wake up at six in the morning.\"",
+      "pronunciation": "astayqiẓu",
+      "exampleTarget": "أستيقظ في الساعة السادسة صباحًا.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: \"I wake up at six in the morning.\"",
+      "korean": "أستيقظ",
+      "english": "Check whether \"أستيقظ\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"I wake up at six in the morning.\"",
+      "example": "أستيقظ في الساعة السادسة صباحًا.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: \"I wake up at six in the morning.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أصلي الفجر قبل شروق الشمس.",
+      "romanization": "uṣallī",
+      "nativeText": "Model use for \"أصلي\": I pray. Form II of صلى. The shadda on ل — geminated. Used for the five daily prayers.",
+      "pronunciation": "uṣallī",
+      "exampleTarget": "أصلي الفجر قبل شروق الشمس.",
+      "exampleNative": "\"I pray Fajr before sunrise.\"",
+      "korean": "أصلي الفجر قبل شروق الشمس.",
+      "english": "Model use for \"أصلي\": I pray. Form II of صلى. The shadda on ل — geminated. Used for the five daily prayers.",
+      "example": "أصلي الفجر قبل شروق الشمس.",
+      "exampleEnglish": "\"I pray Fajr before sunrise.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أصلي",
+      "romanization": "uṣallī",
+      "nativeText": "Usage focus for \"أصلي\": I pray. Form II of صلى. The shadda on ل — geminated. Used for the five daily prayers.",
+      "pronunciation": "uṣallī",
+      "exampleTarget": "أصلي الفجر قبل شروق الشمس.",
+      "exampleNative": "Notice what the form is doing here: \"I pray Fajr before sunrise.\"",
+      "korean": "أصلي",
+      "english": "Usage focus for \"أصلي\": I pray. Form II of صلى. The shadda on ل — geminated. Used for the five daily prayers.",
+      "example": "أصلي الفجر قبل شروق الشمس.",
+      "exampleEnglish": "Notice what the form is doing here: \"I pray Fajr before sunrise.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أصلي",
+      "romanization": "uṣallī",
+      "nativeText": "Contrast check for \"أصلي\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "uṣallī",
+      "exampleTarget": "أصلي الفجر قبل شروق الشمس.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"I pray Fajr before sunrise.\"",
+      "korean": "أصلي",
+      "english": "Contrast check for \"أصلي\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "أصلي الفجر قبل شروق الشمس.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"I pray Fajr before sunrise.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أصلي",
+      "romanization": "uṣallī",
+      "nativeText": "Recall \"أصلي\" from memory, then explain what would change if a nearby alternative replaced it in \"أصلي الفجر قبل شروق الشمس.\".",
+      "pronunciation": "uṣallī",
+      "exampleTarget": "أصلي الفجر قبل شروق الشمس.",
+      "exampleNative": "Self-check against the model before moving on: \"I pray Fajr before sunrise.\"",
+      "korean": "أصلي",
+      "english": "Recall \"أصلي\" from memory, then explain what would change if a nearby alternative replaced it in \"أصلي الفجر قبل شروق الشمس.\".",
+      "example": "أصلي الفجر قبل شروق الشمس.",
+      "exampleEnglish": "Self-check against the model before moving on: \"I pray Fajr before sunrise.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أصلي",
+      "romanization": "uṣallī",
+      "nativeText": "Repair \"أصلي\" inside \"أصلي الفجر قبل شروق الشمس.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: I pray. Form II of صلى. The shadda on ل — geminated. Used for the five daily prayers.",
+      "pronunciation": "uṣallī",
+      "exampleTarget": "أصلي الفجر قبل شروق الشمس.",
+      "exampleNative": "Use the model as the repair target: \"I pray Fajr before sunrise.\"",
+      "korean": "أصلي",
+      "english": "Repair \"أصلي\" inside \"أصلي الفجر قبل شروق الشمس.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: I pray. Form II of صلى. The shadda on ل — geminated. Used for the five daily prayers.",
+      "example": "أصلي الفجر قبل شروق الشمس.",
+      "exampleEnglish": "Use the model as the repair target: \"I pray Fajr before sunrise.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أصلي",
+      "romanization": "uṣallī",
+      "nativeText": "Transfer \"أصلي\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"أصلي الفجر قبل شروق الشمس.\".",
+      "pronunciation": "uṣallī",
+      "exampleTarget": "أصلي الفجر قبل شروق الشمس.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: \"I pray Fajr before sunrise.\"",
+      "korean": "أصلي",
+      "english": "Transfer \"أصلي\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"أصلي الفجر قبل شروق الشمس.\".",
+      "example": "أصلي الفجر قبل شروق الشمس.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: \"I pray Fajr before sunrise.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أصلي",
+      "romanization": "uṣallī",
+      "nativeText": "Find one word or phrase that naturally travels with \"أصلي\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "uṣallī",
+      "exampleTarget": "أصلي الفجر قبل شروق الشمس.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: \"I pray Fajr before sunrise.\"",
+      "korean": "أصلي",
+      "english": "Find one word or phrase that naturally travels with \"أصلي\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "أصلي الفجر قبل شروق الشمس.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: \"I pray Fajr before sunrise.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أصلي",
+      "romanization": "uṣallī",
+      "nativeText": "Listen for \"أصلي\" inside \"أصلي الفجر قبل شروق الشمس.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "uṣallī",
+      "exampleTarget": "أصلي الفجر قبل شروق الشمس.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"I pray Fajr before sunrise.\"",
+      "korean": "أصلي",
+      "english": "Listen for \"أصلي\" inside \"أصلي الفجر قبل شروق الشمس.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "أصلي الفجر قبل شروق الشمس.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"I pray Fajr before sunrise.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أصلي",
+      "romanization": "uṣallī",
+      "nativeText": "Write \"أصلي\" again without looking, then compare the exact written form against \"أصلي الفجر قبل شروق الشمس.\" before moving on.",
+      "pronunciation": "uṣallī",
+      "exampleTarget": "أصلي الفجر قبل شروق الشمس.",
+      "exampleNative": "Use the written model as the final correctness check: \"I pray Fajr before sunrise.\"",
+      "korean": "أصلي",
+      "english": "Write \"أصلي\" again without looking, then compare the exact written form against \"أصلي الفجر قبل شروق الشمس.\" before moving on.",
+      "example": "أصلي الفجر قبل شروق الشمس.",
+      "exampleEnglish": "Use the written model as the final correctness check: \"I pray Fajr before sunrise.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أصلي",
+      "romanization": "uṣallī",
+      "nativeText": "Check whether \"أصلي\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"I pray Fajr before sunrise.\"",
+      "pronunciation": "uṣallī",
+      "exampleTarget": "أصلي الفجر قبل شروق الشمس.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: \"I pray Fajr before sunrise.\"",
+      "korean": "أصلي",
+      "english": "Check whether \"أصلي\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"I pray Fajr before sunrise.\"",
+      "example": "أصلي الفجر قبل شروق الشمس.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: \"I pray Fajr before sunrise.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أفطر بعد صلاة الفجر.",
+      "romanization": "ufṭiru",
+      "nativeText": "Model use for \"أفطر\": I eat breakfast / I break my fast. Form IV of فطر. Same word covers daily breakfast AND breaking the Ramadan fast at sunset.",
+      "pronunciation": "ufṭiru",
+      "exampleTarget": "أفطر بعد صلاة الفجر.",
+      "exampleNative": "\"I eat breakfast after the Fajr prayer.\"",
+      "korean": "أفطر بعد صلاة الفجر.",
+      "english": "Model use for \"أفطر\": I eat breakfast / I break my fast. Form IV of فطر. Same word covers daily breakfast AND breaking the Ramadan fast at sunset.",
+      "example": "أفطر بعد صلاة الفجر.",
+      "exampleEnglish": "\"I eat breakfast after the Fajr prayer.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أفطر",
+      "romanization": "ufṭiru",
+      "nativeText": "Usage focus for \"أفطر\": I eat breakfast / I break my fast. Form IV of فطر. Same word covers daily breakfast AND breaking the Ramadan fast at sunset.",
+      "pronunciation": "ufṭiru",
+      "exampleTarget": "أفطر بعد صلاة الفجر.",
+      "exampleNative": "Notice what the form is doing here: \"I eat breakfast after the Fajr prayer.\"",
+      "korean": "أفطر",
+      "english": "Usage focus for \"أفطر\": I eat breakfast / I break my fast. Form IV of فطر. Same word covers daily breakfast AND breaking the Ramadan fast at sunset.",
+      "example": "أفطر بعد صلاة الفجر.",
+      "exampleEnglish": "Notice what the form is doing here: \"I eat breakfast after the Fajr prayer.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أفطر",
+      "romanization": "ufṭiru",
+      "nativeText": "Contrast check for \"أفطر\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ufṭiru",
+      "exampleTarget": "أفطر بعد صلاة الفجر.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"I eat breakfast after the Fajr prayer.\"",
+      "korean": "أفطر",
+      "english": "Contrast check for \"أفطر\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "أفطر بعد صلاة الفجر.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"I eat breakfast after the Fajr prayer.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أفطر",
+      "romanization": "ufṭiru",
+      "nativeText": "Recall \"أفطر\" from memory, then explain what would change if a nearby alternative replaced it in \"أفطر بعد صلاة الفجر.\".",
+      "pronunciation": "ufṭiru",
+      "exampleTarget": "أفطر بعد صلاة الفجر.",
+      "exampleNative": "Self-check against the model before moving on: \"I eat breakfast after the Fajr prayer.\"",
+      "korean": "أفطر",
+      "english": "Recall \"أفطر\" from memory, then explain what would change if a nearby alternative replaced it in \"أفطر بعد صلاة الفجر.\".",
+      "example": "أفطر بعد صلاة الفجر.",
+      "exampleEnglish": "Self-check against the model before moving on: \"I eat breakfast after the Fajr prayer.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أفطر",
+      "romanization": "ufṭiru",
+      "nativeText": "Repair \"أفطر\" inside \"أفطر بعد صلاة الفجر.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: I eat breakfast / I break my fast. Form IV of فطر. Same word covers daily breakfast AND breaking the Ramadan fast at sunset.",
+      "pronunciation": "ufṭiru",
+      "exampleTarget": "أفطر بعد صلاة الفجر.",
+      "exampleNative": "Use the model as the repair target: \"I eat breakfast after the Fajr prayer.\"",
+      "korean": "أفطر",
+      "english": "Repair \"أفطر\" inside \"أفطر بعد صلاة الفجر.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: I eat breakfast / I break my fast. Form IV of فطر. Same word covers daily breakfast AND breaking the Ramadan fast at sunset.",
+      "example": "أفطر بعد صلاة الفجر.",
+      "exampleEnglish": "Use the model as the repair target: \"I eat breakfast after the Fajr prayer.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أفطر",
+      "romanization": "ufṭiru",
+      "nativeText": "Transfer \"أفطر\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"أفطر بعد صلاة الفجر.\".",
+      "pronunciation": "ufṭiru",
+      "exampleTarget": "أفطر بعد صلاة الفجر.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: \"I eat breakfast after the Fajr prayer.\"",
+      "korean": "أفطر",
+      "english": "Transfer \"أفطر\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"أفطر بعد صلاة الفجر.\".",
+      "example": "أفطر بعد صلاة الفجر.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: \"I eat breakfast after the Fajr prayer.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أفطر",
+      "romanization": "ufṭiru",
+      "nativeText": "Find one word or phrase that naturally travels with \"أفطر\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ufṭiru",
+      "exampleTarget": "أفطر بعد صلاة الفجر.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: \"I eat breakfast after the Fajr prayer.\"",
+      "korean": "أفطر",
+      "english": "Find one word or phrase that naturally travels with \"أفطر\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "أفطر بعد صلاة الفجر.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: \"I eat breakfast after the Fajr prayer.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أفطر",
+      "romanization": "ufṭiru",
+      "nativeText": "Listen for \"أفطر\" inside \"أفطر بعد صلاة الفجر.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ufṭiru",
+      "exampleTarget": "أفطر بعد صلاة الفجر.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"I eat breakfast after the Fajr prayer.\"",
+      "korean": "أفطر",
+      "english": "Listen for \"أفطر\" inside \"أفطر بعد صلاة الفجر.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "أفطر بعد صلاة الفجر.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"I eat breakfast after the Fajr prayer.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أفطر",
+      "romanization": "ufṭiru",
+      "nativeText": "Write \"أفطر\" again without looking, then compare the exact written form against \"أفطر بعد صلاة الفجر.\" before moving on.",
+      "pronunciation": "ufṭiru",
+      "exampleTarget": "أفطر بعد صلاة الفجر.",
+      "exampleNative": "Use the written model as the final correctness check: \"I eat breakfast after the Fajr prayer.\"",
+      "korean": "أفطر",
+      "english": "Write \"أفطر\" again without looking, then compare the exact written form against \"أفطر بعد صلاة الفجر.\" before moving on.",
+      "example": "أفطر بعد صلاة الفجر.",
+      "exampleEnglish": "Use the written model as the final correctness check: \"I eat breakfast after the Fajr prayer.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أفطر",
+      "romanization": "ufṭiru",
+      "nativeText": "Check whether \"أفطر\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"I eat breakfast after the Fajr prayer.\"",
+      "pronunciation": "ufṭiru",
+      "exampleTarget": "أفطر بعد صلاة الفجر.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: \"I eat breakfast after the Fajr prayer.\"",
+      "korean": "أفطر",
+      "english": "Check whether \"أفطر\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"I eat breakfast after the Fajr prayer.\"",
+      "example": "أفطر بعد صلاة الفجر.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: \"I eat breakfast after the Fajr prayer.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أذهب إلى الجامعة الساعة الثامنة.",
+      "romanization": "adhhabu",
+      "nativeText": "Model use for \"أذهب\": I go. Form I of ذَهَبَ. Root ذ ه ب. Combined with إلى + place.",
+      "pronunciation": "adhhabu",
+      "exampleTarget": "أذهب إلى الجامعة الساعة الثامنة.",
+      "exampleNative": "\"I go to the university at eight.\"",
+      "korean": "أذهب إلى الجامعة الساعة الثامنة.",
+      "english": "Model use for \"أذهب\": I go. Form I of ذَهَبَ. Root ذ ه ب. Combined with إلى + place.",
+      "example": "أذهب إلى الجامعة الساعة الثامنة.",
+      "exampleEnglish": "\"I go to the university at eight.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أذهب",
+      "romanization": "adhhabu",
+      "nativeText": "Usage focus for \"أذهب\": I go. Form I of ذَهَبَ. Root ذ ه ب. Combined with إلى + place.",
+      "pronunciation": "adhhabu",
+      "exampleTarget": "أذهب إلى الجامعة الساعة الثامنة.",
+      "exampleNative": "Notice what the form is doing here: \"I go to the university at eight.\"",
+      "korean": "أذهب",
+      "english": "Usage focus for \"أذهب\": I go. Form I of ذَهَبَ. Root ذ ه ب. Combined with إلى + place.",
+      "example": "أذهب إلى الجامعة الساعة الثامنة.",
+      "exampleEnglish": "Notice what the form is doing here: \"I go to the university at eight.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أذهب",
+      "romanization": "adhhabu",
+      "nativeText": "Contrast check for \"أذهب\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "adhhabu",
+      "exampleTarget": "أذهب إلى الجامعة الساعة الثامنة.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"I go to the university at eight.\"",
+      "korean": "أذهب",
+      "english": "Contrast check for \"أذهب\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "أذهب إلى الجامعة الساعة الثامنة.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"I go to the university at eight.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أذهب",
+      "romanization": "adhhabu",
+      "nativeText": "Recall \"أذهب\" from memory, then explain what would change if a nearby alternative replaced it in \"أذهب إلى الجامعة الساعة الثامنة.\".",
+      "pronunciation": "adhhabu",
+      "exampleTarget": "أذهب إلى الجامعة الساعة الثامنة.",
+      "exampleNative": "Self-check against the model before moving on: \"I go to the university at eight.\"",
+      "korean": "أذهب",
+      "english": "Recall \"أذهب\" from memory, then explain what would change if a nearby alternative replaced it in \"أذهب إلى الجامعة الساعة الثامنة.\".",
+      "example": "أذهب إلى الجامعة الساعة الثامنة.",
+      "exampleEnglish": "Self-check against the model before moving on: \"I go to the university at eight.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أذهب",
+      "romanization": "adhhabu",
+      "nativeText": "Repair \"أذهب\" inside \"أذهب إلى الجامعة الساعة الثامنة.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: I go. Form I of ذَهَبَ. Root ذ ه ب. Combined with إلى + place.",
+      "pronunciation": "adhhabu",
+      "exampleTarget": "أذهب إلى الجامعة الساعة الثامنة.",
+      "exampleNative": "Use the model as the repair target: \"I go to the university at eight.\"",
+      "korean": "أذهب",
+      "english": "Repair \"أذهب\" inside \"أذهب إلى الجامعة الساعة الثامنة.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: I go. Form I of ذَهَبَ. Root ذ ه ب. Combined with إلى + place.",
+      "example": "أذهب إلى الجامعة الساعة الثامنة.",
+      "exampleEnglish": "Use the model as the repair target: \"I go to the university at eight.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أذهب",
+      "romanization": "adhhabu",
+      "nativeText": "Transfer \"أذهب\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"أذهب إلى الجامعة الساعة الثامنة.\".",
+      "pronunciation": "adhhabu",
+      "exampleTarget": "أذهب إلى الجامعة الساعة الثامنة.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: \"I go to the university at eight.\"",
+      "korean": "أذهب",
+      "english": "Transfer \"أذهب\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"أذهب إلى الجامعة الساعة الثامنة.\".",
+      "example": "أذهب إلى الجامعة الساعة الثامنة.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: \"I go to the university at eight.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أذهب",
+      "romanization": "adhhabu",
+      "nativeText": "Find one word or phrase that naturally travels with \"أذهب\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "adhhabu",
+      "exampleTarget": "أذهب إلى الجامعة الساعة الثامنة.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: \"I go to the university at eight.\"",
+      "korean": "أذهب",
+      "english": "Find one word or phrase that naturally travels with \"أذهب\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "أذهب إلى الجامعة الساعة الثامنة.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: \"I go to the university at eight.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أذهب",
+      "romanization": "adhhabu",
+      "nativeText": "Listen for \"أذهب\" inside \"أذهب إلى الجامعة الساعة الثامنة.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "adhhabu",
+      "exampleTarget": "أذهب إلى الجامعة الساعة الثامنة.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"I go to the university at eight.\"",
+      "korean": "أذهب",
+      "english": "Listen for \"أذهب\" inside \"أذهب إلى الجامعة الساعة الثامنة.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "أذهب إلى الجامعة الساعة الثامنة.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"I go to the university at eight.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أذهب",
+      "romanization": "adhhabu",
+      "nativeText": "Write \"أذهب\" again without looking, then compare the exact written form against \"أذهب إلى الجامعة الساعة الثامنة.\" before moving on.",
+      "pronunciation": "adhhabu",
+      "exampleTarget": "أذهب إلى الجامعة الساعة الثامنة.",
+      "exampleNative": "Use the written model as the final correctness check: \"I go to the university at eight.\"",
+      "korean": "أذهب",
+      "english": "Write \"أذهب\" again without looking, then compare the exact written form against \"أذهب إلى الجامعة الساعة الثامنة.\" before moving on.",
+      "example": "أذهب إلى الجامعة الساعة الثامنة.",
+      "exampleEnglish": "Use the written model as the final correctness check: \"I go to the university at eight.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أذهب",
+      "romanization": "adhhabu",
+      "nativeText": "Check whether \"أذهب\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"I go to the university at eight.\"",
+      "pronunciation": "adhhabu",
+      "exampleTarget": "أذهب إلى الجامعة الساعة الثامنة.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: \"I go to the university at eight.\"",
+      "korean": "أذهب",
+      "english": "Check whether \"أذهب\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"I go to the university at eight.\"",
+      "example": "أذهب إلى الجامعة الساعة الثامنة.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: \"I go to the university at eight.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أعمل في المكتبة.",
+      "romanization": "aʿmalu",
+      "nativeText": "Model use for \"أعمل\": I work / I do. Form I of عَمِلَ. Multipurpose verb: work, action, doing.",
+      "pronunciation": "aʿmalu",
+      "exampleTarget": "أعمل في المكتبة.",
+      "exampleNative": "\"I work in the library.\"",
+      "korean": "أعمل في المكتبة.",
+      "english": "Model use for \"أعمل\": I work / I do. Form I of عَمِلَ. Multipurpose verb: work, action, doing.",
+      "example": "أعمل في المكتبة.",
+      "exampleEnglish": "\"I work in the library.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أعمل",
+      "romanization": "aʿmalu",
+      "nativeText": "Usage focus for \"أعمل\": I work / I do. Form I of عَمِلَ. Multipurpose verb: work, action, doing.",
+      "pronunciation": "aʿmalu",
+      "exampleTarget": "أعمل في المكتبة.",
+      "exampleNative": "Notice what the form is doing here: \"I work in the library.\"",
+      "korean": "أعمل",
+      "english": "Usage focus for \"أعمل\": I work / I do. Form I of عَمِلَ. Multipurpose verb: work, action, doing.",
+      "example": "أعمل في المكتبة.",
+      "exampleEnglish": "Notice what the form is doing here: \"I work in the library.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أعمل",
+      "romanization": "aʿmalu",
+      "nativeText": "Contrast check for \"أعمل\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "aʿmalu",
+      "exampleTarget": "أعمل في المكتبة.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"I work in the library.\"",
+      "korean": "أعمل",
+      "english": "Contrast check for \"أعمل\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "أعمل في المكتبة.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"I work in the library.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أعمل",
+      "romanization": "aʿmalu",
+      "nativeText": "Recall \"أعمل\" from memory, then explain what would change if a nearby alternative replaced it in \"أعمل في المكتبة.\".",
+      "pronunciation": "aʿmalu",
+      "exampleTarget": "أعمل في المكتبة.",
+      "exampleNative": "Self-check against the model before moving on: \"I work in the library.\"",
+      "korean": "أعمل",
+      "english": "Recall \"أعمل\" from memory, then explain what would change if a nearby alternative replaced it in \"أعمل في المكتبة.\".",
+      "example": "أعمل في المكتبة.",
+      "exampleEnglish": "Self-check against the model before moving on: \"I work in the library.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أعمل",
+      "romanization": "aʿmalu",
+      "nativeText": "Repair \"أعمل\" inside \"أعمل في المكتبة.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: I work / I do. Form I of عَمِلَ. Multipurpose verb: work, action, doing.",
+      "pronunciation": "aʿmalu",
+      "exampleTarget": "أعمل في المكتبة.",
+      "exampleNative": "Use the model as the repair target: \"I work in the library.\"",
+      "korean": "أعمل",
+      "english": "Repair \"أعمل\" inside \"أعمل في المكتبة.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: I work / I do. Form I of عَمِلَ. Multipurpose verb: work, action, doing.",
+      "example": "أعمل في المكتبة.",
+      "exampleEnglish": "Use the model as the repair target: \"I work in the library.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أعمل",
+      "romanization": "aʿmalu",
+      "nativeText": "Transfer \"أعمل\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"أعمل في المكتبة.\".",
+      "pronunciation": "aʿmalu",
+      "exampleTarget": "أعمل في المكتبة.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: \"I work in the library.\"",
+      "korean": "أعمل",
+      "english": "Transfer \"أعمل\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"أعمل في المكتبة.\".",
+      "example": "أعمل في المكتبة.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: \"I work in the library.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أعمل",
+      "romanization": "aʿmalu",
+      "nativeText": "Find one word or phrase that naturally travels with \"أعمل\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "aʿmalu",
+      "exampleTarget": "أعمل في المكتبة.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: \"I work in the library.\"",
+      "korean": "أعمل",
+      "english": "Find one word or phrase that naturally travels with \"أعمل\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "أعمل في المكتبة.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: \"I work in the library.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أعمل",
+      "romanization": "aʿmalu",
+      "nativeText": "Listen for \"أعمل\" inside \"أعمل في المكتبة.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "aʿmalu",
+      "exampleTarget": "أعمل في المكتبة.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"I work in the library.\"",
+      "korean": "أعمل",
+      "english": "Listen for \"أعمل\" inside \"أعمل في المكتبة.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "أعمل في المكتبة.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"I work in the library.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أعمل",
+      "romanization": "aʿmalu",
+      "nativeText": "Write \"أعمل\" again without looking, then compare the exact written form against \"أعمل في المكتبة.\" before moving on.",
+      "pronunciation": "aʿmalu",
+      "exampleTarget": "أعمل في المكتبة.",
+      "exampleNative": "Use the written model as the final correctness check: \"I work in the library.\"",
+      "korean": "أعمل",
+      "english": "Write \"أعمل\" again without looking, then compare the exact written form against \"أعمل في المكتبة.\" before moving on.",
+      "example": "أعمل في المكتبة.",
+      "exampleEnglish": "Use the written model as the final correctness check: \"I work in the library.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أعمل",
+      "romanization": "aʿmalu",
+      "nativeText": "Check whether \"أعمل\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"I work in the library.\"",
+      "pronunciation": "aʿmalu",
+      "exampleTarget": "أعمل في المكتبة.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: \"I work in the library.\"",
+      "korean": "أعمل",
+      "english": "Check whether \"أعمل\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"I work in the library.\"",
+      "example": "أعمل في المكتبة.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: \"I work in the library.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أتناول الغداء في المطعم.",
+      "romanization": "atanāwalu",
+      "nativeText": "Model use for \"أتناول\": I have (a meal). Form VI of ناول. The polite, formal verb for \"eat (a meal)\"; less casual than آكل.",
+      "pronunciation": "atanāwalu",
+      "exampleTarget": "أتناول الغداء في المطعم.",
+      "exampleNative": "\"I have lunch at the restaurant.\"",
+      "korean": "أتناول الغداء في المطعم.",
+      "english": "Model use for \"أتناول\": I have (a meal). Form VI of ناول. The polite, formal verb for \"eat (a meal)\"; less casual than آكل.",
+      "example": "أتناول الغداء في المطعم.",
+      "exampleEnglish": "\"I have lunch at the restaurant.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أتناول",
+      "romanization": "atanāwalu",
+      "nativeText": "Usage focus for \"أتناول\": I have (a meal). Form VI of ناول. The polite, formal verb for \"eat (a meal)\"; less casual than آكل.",
+      "pronunciation": "atanāwalu",
+      "exampleTarget": "أتناول الغداء في المطعم.",
+      "exampleNative": "Notice what the form is doing here: \"I have lunch at the restaurant.\"",
+      "korean": "أتناول",
+      "english": "Usage focus for \"أتناول\": I have (a meal). Form VI of ناول. The polite, formal verb for \"eat (a meal)\"; less casual than آكل.",
+      "example": "أتناول الغداء في المطعم.",
+      "exampleEnglish": "Notice what the form is doing here: \"I have lunch at the restaurant.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أتناول",
+      "romanization": "atanāwalu",
+      "nativeText": "Contrast check for \"أتناول\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "atanāwalu",
+      "exampleTarget": "أتناول الغداء في المطعم.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"I have lunch at the restaurant.\"",
+      "korean": "أتناول",
+      "english": "Contrast check for \"أتناول\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "أتناول الغداء في المطعم.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"I have lunch at the restaurant.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أتناول",
+      "romanization": "atanāwalu",
+      "nativeText": "Recall \"أتناول\" from memory, then explain what would change if a nearby alternative replaced it in \"أتناول الغداء في المطعم.\".",
+      "pronunciation": "atanāwalu",
+      "exampleTarget": "أتناول الغداء في المطعم.",
+      "exampleNative": "Self-check against the model before moving on: \"I have lunch at the restaurant.\"",
+      "korean": "أتناول",
+      "english": "Recall \"أتناول\" from memory, then explain what would change if a nearby alternative replaced it in \"أتناول الغداء في المطعم.\".",
+      "example": "أتناول الغداء في المطعم.",
+      "exampleEnglish": "Self-check against the model before moving on: \"I have lunch at the restaurant.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أتناول",
+      "romanization": "atanāwalu",
+      "nativeText": "Repair \"أتناول\" inside \"أتناول الغداء في المطعم.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: I have (a meal). Form VI of ناول. The polite, formal verb for \"eat (a meal)\"; less casual than آكل.",
+      "pronunciation": "atanāwalu",
+      "exampleTarget": "أتناول الغداء في المطعم.",
+      "exampleNative": "Use the model as the repair target: \"I have lunch at the restaurant.\"",
+      "korean": "أتناول",
+      "english": "Repair \"أتناول\" inside \"أتناول الغداء في المطعم.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: I have (a meal). Form VI of ناول. The polite, formal verb for \"eat (a meal)\"; less casual than آكل.",
+      "example": "أتناول الغداء في المطعم.",
+      "exampleEnglish": "Use the model as the repair target: \"I have lunch at the restaurant.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أتناول",
+      "romanization": "atanāwalu",
+      "nativeText": "Transfer \"أتناول\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"أتناول الغداء في المطعم.\".",
+      "pronunciation": "atanāwalu",
+      "exampleTarget": "أتناول الغداء في المطعم.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: \"I have lunch at the restaurant.\"",
+      "korean": "أتناول",
+      "english": "Transfer \"أتناول\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"أتناول الغداء في المطعم.\".",
+      "example": "أتناول الغداء في المطعم.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: \"I have lunch at the restaurant.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أتناول",
+      "romanization": "atanāwalu",
+      "nativeText": "Find one word or phrase that naturally travels with \"أتناول\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "atanāwalu",
+      "exampleTarget": "أتناول الغداء في المطعم.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: \"I have lunch at the restaurant.\"",
+      "korean": "أتناول",
+      "english": "Find one word or phrase that naturally travels with \"أتناول\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "أتناول الغداء في المطعم.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: \"I have lunch at the restaurant.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أتناول",
+      "romanization": "atanāwalu",
+      "nativeText": "Listen for \"أتناول\" inside \"أتناول الغداء في المطعم.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "atanāwalu",
+      "exampleTarget": "أتناول الغداء في المطعم.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"I have lunch at the restaurant.\"",
+      "korean": "أتناول",
+      "english": "Listen for \"أتناول\" inside \"أتناول الغداء في المطعم.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "أتناول الغداء في المطعم.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"I have lunch at the restaurant.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أتناول",
+      "romanization": "atanāwalu",
+      "nativeText": "Write \"أتناول\" again without looking, then compare the exact written form against \"أتناول الغداء في المطعم.\" before moving on.",
+      "pronunciation": "atanāwalu",
+      "exampleTarget": "أتناول الغداء في المطعم.",
+      "exampleNative": "Use the written model as the final correctness check: \"I have lunch at the restaurant.\"",
+      "korean": "أتناول",
+      "english": "Write \"أتناول\" again without looking, then compare the exact written form against \"أتناول الغداء في المطعم.\" before moving on.",
+      "example": "أتناول الغداء في المطعم.",
+      "exampleEnglish": "Use the written model as the final correctness check: \"I have lunch at the restaurant.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit04dailyroutines-vocabulary-1",
+        "ar-level1unit04dailyroutines-vocabulary-2",
+        "ar-level1unit04dailyroutines-grammar-1",
+        "ar-level1unit04dailyroutines-grammar-2",
+        "ar-level1unit04dailyroutines-reading",
+        "ar-level1unit04dailyroutines-listening",
+        "ar-level1unit04dailyroutines-writing",
+        "ar-level1unit04dailyroutines-task"
+      ],
+      "targetText": "أتناول",
+      "romanization": "atanāwalu",
+      "nativeText": "Check whether \"أتناول\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"I have lunch at the restaurant.\"",
+      "pronunciation": "atanāwalu",
+      "exampleTarget": "أتناول الغداء في المطعم.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: \"I have lunch at the restaurant.\"",
+      "korean": "أتناول",
+      "english": "Check whether \"أتناول\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"I have lunch at the restaurant.\"",
+      "example": "أتناول الغداء في المطعم.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: \"I have lunch at the restaurant.\""
+    }
+  ]
 };
-
-module.exports = lesson;

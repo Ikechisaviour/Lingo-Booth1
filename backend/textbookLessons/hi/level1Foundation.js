@@ -306,7 +306,7 @@ const lesson = {
       { target: 'retroflex (capital T/D/N)', note: 'tongue curls back; sounds "rolling" or "drum-like"' },
       { target: 'dental (lowercase t/d/n)', note: 'tongue at teeth; sounds "soft" or "light"' },
     ], [ACT.retroflexDental]),
-    createContentItem('English loanwords', 'angrezii shabd', 'English "t" and "d" map to RETROFLEX in Hindi: टैक्सी (Taxi), डॉक्टर (DaakTar), टीवी (TiiVii). Hindi speakers hear English "t" as retroflex because English "t" is alveolar, not dental.', 'sentence', 'टैक्सी Taxi · डॉक्टर DaakTar · होटल hoTel · चॉकलेट chaakleT', 'When you transliterate ANY English word into Devanagari, default to retroflex for t/d/n.', null, [ACT.retroflexDental]),
+    createContentItem('अंग्रेज़ी शब्द', 'angrezii shabd', 'English "t" and "d" map to RETROFLEX in Hindi: टैक्सी (Taxi), डॉक्टर (DaakTar), टीवी (TiiVii). Hindi speakers hear English "t" as retroflex because English "t" is alveolar, not dental.', 'sentence', 'टैक्सी Taxi · डॉक्टर DaakTar · होटल hoTel · चॉकलेट chaakleT', 'When you transliterate ANY English word into Devanagari, default to retroflex for t/d/n.', null, [ACT.retroflexDental]),
 
     // Activity 6 — Nasals
     createContentItem('अनुस्वार', 'anusvaar', 'The anusvara ं (dot above the line) replaces a nasal consonant + halant before another consonant. हिंदी = हिन्दी (both spell the same word "hindii"). The exact pronunciation depends on the following consonant — it assimilates to its place of articulation.', 'sentence', 'हिंदी hindii ("Hindi") · अंक ank ("digit/grade") · संग sang ("with")', 'Modern publications prefer the anusvara form (हिंदी); classical/Sanskrit spellings keep the full conjunct (हिन्दी).', [

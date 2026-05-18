@@ -968,7 +968,9 @@
     "practiceEverywhereAria": "Pratique este item em outro lugar",
     "practiceEverywhere": "Pratique isso em qualquer lugar",
     "saveReply": "Salvar resposta",
-    "selfTestReason": "Salvo da aula para um autoteste rápido."
+    "selfTestReason": "Salvo da aula para um autoteste rápido.",
+    "hideOutline": "Ocultar contorno",
+    "showOutline": "Mostrar esboço"
   },
   "classList": {
     "heroAriaLabel": "Aula",
@@ -1009,7 +1011,10 @@
     },
     "titlePrefix": {
       "unit": "Nível {{level}} · Unidade {{unit}}: {{title}}"
-    }
+    },
+    "retry": "Tente novamente",
+    "progressAriaLabel": "Progresso da aula",
+    "progressCaption": "{{percent}}% concluído · {{completed}} de {{total}} itens"
   },
   "contextPractice": {
     "title": "Lições moldadas ao seu redor",
@@ -1092,7 +1097,9 @@
     "recapWentWell": "O que correu bem",
     "recapUsefulPhrases": "Frases úteis",
     "recapReview": "Revise a seguir",
-    "recapReviewFallback": "Salve uma frase e reutilize-a em outro modo de prática."
+    "recapReviewFallback": "Salve uma frase e reutilize-a em outro modo de prática.",
+    "hideSetup": "Ocultar configuração",
+    "showSetup": "Mostrar configuração"
   },
   "exerciseHub": {
     "ariaLabel": "Exercício",
@@ -1187,7 +1194,9 @@
       "default": "{{index}}. {{char}}: copie a forma e escreva-a na memória."
     },
     "savedReason": "Salvo da prática de escrita para outra passagem.",
-    "selfTestReason": "Salvo da prática de redação para um rápido autoteste."
+    "selfTestReason": "Salvo da prática de redação para um rápido autoteste.",
+    "hideNotebook": "Ocultar bloco de notas",
+    "showNotebook": "Mostrar bloco de notas"
   },
   "institution": {
     "kicker": "Instituição",

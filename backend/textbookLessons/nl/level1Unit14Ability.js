@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('nl', {
-  slug: 'nl-l1u14',
-  title: 'Level 1 · Unit 14: Kunnen en Mogen — Ability and Permission',
-  category: 'daily-life',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Separate ability, permission, and obligation with Dutch modal verbs.',
-  vocabularyGoal: 'Use skill, permission, and obligation language.',
-  grammarGoal: 'Use `kunnen` for ability, `mogen` for permission, and `moeten` for obligation.',
-  speakingGoal: 'Say what you can do, ask permission, and state one obligation.',
-  task: 'Handle three everyday ability and permission questions.',
-  expressionPractice: [
-    practice('stating-ability', 'Stating ability', 'Use `ik kan`.'),
-    practice('asking-permission', 'Asking permission', 'Use `mag ik ...?`.'),
-    practice('stating-obligation', 'Stating obligation', 'Use `ik moet`.'),
+module.exports = {
+  "title": "Level 1 · Unit 14: Kunnen en Mogen — Ability and Permission",
+  "category": "daily-life",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "nl-level1unit14ability-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Separate ability, permission, and obligation with Dutch modal verbs."
+      ],
+      "task": "Handle three everyday ability and permission questions."
+    },
+    {
+      "id": "nl-level1unit14ability-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "nl-level1unit14ability-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 14: Kunnen en Mogen — Ability and Permission with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "nl-level1unit14ability-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 14: Kunnen en Mogen — Ability and Permission sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "nl-level1unit14ability-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Separate ability, permission, and obligation with Dutch modal verbs."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "nl-level1unit14ability-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 14: Kunnen en Mogen — Ability and Permission with one nearby Dutch form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "nl-level1unit14ability-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "nl-level1unit14ability-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "nl-level1unit14ability-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "nl-level1unit14ability-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "nl-level1unit14ability-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Handle three everyday ability and permission questions."
+      ],
+      "task": "Handle three everyday ability and permission questions."
+    }
   ],
-  relatedPools: ['topic-ability', 'topic-classroom'],
-  items: [
-    item('ik kan', 'ik kan', '“I can.” Use it for ability or practical possibility.', 'Ik kan zwemmen.', '“I can swim.”'),
-    item('ik kan niet', 'ik kan neet', '“I cannot.” A core negative ability phrase.', 'Ik kan vandaag niet komen.', '“I cannot come today.”'),
-    item('mag ik ...?', 'makh ik', '“May I ...?” Use it for permission, not learned skill.', 'Mag ik hier zitten?', '“May I sit here?”'),
-    item('dat mag niet', 'dat makh neet', '“That is not allowed.” A concise prohibition phrase.', 'Hier roken? Dat mag niet.', '“Smoking here? That is not allowed.”'),
-    item('ik moet', 'ik moot', '“I must / have to.” A common obligation modal.', 'Ik moet mijn paspoort meenemen.', '“I have to bring my passport.”'),
-    item('ik hoef niet', 'ik hoof neet', '“I do not need to.” A useful Dutch-specific contrast with English negation.', 'Ik hoef morgen niet te werken.', '“I do not need to work tomorrow.”'),
-    item('leren', 'LAY-ren', '“To learn.” Useful with new abilities.', 'Ik wil autorijden leren.', '“I want to learn to drive.”'),
-    item('het lukt', 'hət lukt', '“It works / I manage.” A natural progress phrase.', 'Het lukt al beter.', '“It is already going better.”'),
+  "expressionPractice": [
+    {
+      "id": "stating-ability",
+      "label": "Stating ability",
+      "goal": "Use `ik kan`."
+    },
+    {
+      "id": "asking-permission",
+      "label": "Asking permission",
+      "goal": "Use `mag ik ...?`."
+    },
+    {
+      "id": "stating-obligation",
+      "label": "Stating obligation",
+      "goal": "Use `ik moet`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-ability",
+    "topic-classroom"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit14ability-orientation"
+      ],
+      "targetText": "lesdoel",
+      "romanization": "",
+      "nativeText": "Separate ability, permission, and obligation with Dutch modal verbs.",
+      "pronunciation": "",
+      "exampleTarget": "lesdoel",
+      "exampleNative": "The whole lesson is built toward this outcome: Handle three everyday ability and permission questions.",
+      "korean": "lesdoel",
+      "english": "Separate ability, permission, and obligation with Dutch modal verbs.",
+      "example": "lesdoel",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Handle three everyday ability and permission questions."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "nl-level1unit14ability-pronunciation"
+      ],
+      "targetText": "klankcontrole",
+      "romanization": "",
+      "nativeText": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Ik kan zwemmen.\".",
+      "pronunciation": "",
+      "exampleTarget": "Ik kan zwemmen.",
+      "exampleNative": "“I can swim.”",
+      "korean": "klankcontrole",
+      "english": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Ik kan zwemmen.\".",
+      "example": "Ik kan zwemmen.",
+      "exampleEnglish": "“I can swim.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1"
+      ],
+      "targetText": "ik kan",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 14: Kunnen en Mogen — Ability and Permission with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Ik kan zwemmen.",
+      "exampleNative": "“I can swim.”",
+      "korean": "ik kan",
+      "english": "Use the key language of Level 1 · Unit 14: Kunnen en Mogen — Ability and Permission with the register and setting that the lesson requires.",
+      "example": "Ik kan zwemmen.",
+      "exampleEnglish": "“I can swim.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-2"
+      ],
+      "targetText": "ik kan niet",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 14: Kunnen en Mogen — Ability and Permission sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Ik kan vandaag niet komen.",
+      "exampleNative": "“I cannot come today.”",
+      "korean": "ik kan niet",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 14: Kunnen en Mogen — Ability and Permission sound precise rather than merely understandable.",
+      "example": "Ik kan vandaag niet komen.",
+      "exampleEnglish": "“I cannot come today.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "nl-level1unit14ability-grammar-1"
+      ],
+      "targetText": "ik kan",
+      "romanization": "",
+      "nativeText": "Separate ability, permission, and obligation with Dutch modal verbs.",
+      "pronunciation": "",
+      "exampleTarget": "Ik kan zwemmen.",
+      "exampleNative": "“I can swim.”",
+      "korean": "ik kan",
+      "english": "Separate ability, permission, and obligation with Dutch modal verbs.",
+      "example": "Ik kan zwemmen.",
+      "exampleEnglish": "“I can swim.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "nl-level1unit14ability-grammar-2"
+      ],
+      "targetText": "ik kan niet",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 14: Kunnen en Mogen — Ability and Permission with one nearby Dutch form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Ik kan vandaag niet komen.",
+      "exampleNative": "“I cannot come today.”",
+      "korean": "ik kan niet",
+      "english": "Contrast the main pattern in Level 1 · Unit 14: Kunnen en Mogen — Ability and Permission with one nearby Dutch form so the learner can avoid literal translation.",
+      "example": "Ik kan vandaag niet komen.",
+      "exampleEnglish": "“I cannot come today.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "nl-level1unit14ability-reading"
+      ],
+      "targetText": "leesmodel",
+      "romanization": "",
+      "nativeText": "Read \"Het lukt al beter.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Het lukt al beter.",
+      "exampleNative": "“It is already going better.”",
+      "korean": "leesmodel",
+      "english": "Read \"Het lukt al beter.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Het lukt al beter.",
+      "exampleEnglish": "“It is already going better.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit14ability-listening"
+      ],
+      "targetText": "dialoogmodel",
+      "romanization": "",
+      "nativeText": "Hear \"Het lukt al beter.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Het lukt al beter.",
+      "exampleNative": "“It is already going better.”",
+      "korean": "dialoogmodel",
+      "english": "Hear \"Het lukt al beter.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Het lukt al beter.",
+      "exampleEnglish": "“It is already going better.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "nl-level1unit14ability-writing"
+      ],
+      "targetText": "schrijfoefening",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Ik kan zwemmen.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Ik kan zwemmen.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "schrijfoefening",
+      "english": "Write your own version after studying \"Ik kan zwemmen.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Ik kan zwemmen.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "nl-level1unit14ability-culture"
+      ],
+      "targetText": "gebruik en context",
+      "romanization": "",
+      "nativeText": "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Ik kan vandaag niet komen.",
+      "exampleNative": "“I cannot come today.”",
+      "korean": "gebruik en context",
+      "english": "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used.",
+      "example": "Ik kan vandaag niet komen.",
+      "exampleEnglish": "“I cannot come today.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "eindtaak",
+      "romanization": "",
+      "nativeText": "Handle three everyday ability and permission questions.",
+      "pronunciation": "",
+      "exampleTarget": "Het lukt al beter.",
+      "exampleNative": "Handle three everyday ability and permission questions.",
+      "korean": "eindtaak",
+      "english": "Handle three everyday ability and permission questions.",
+      "example": "Het lukt al beter.",
+      "exampleEnglish": "Handle three everyday ability and permission questions."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit14ability-grammar-2"
+      ],
+      "targetText": "veelgemaakte fout",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around verb-second order, separable verbs, pronouns, and article choice. Begin by checking \"Ik kan vandaag niet komen.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Ik kan vandaag niet komen.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “I cannot come today.”",
+      "korean": "veelgemaakte fout",
+      "english": "Watch for literal-translation mistakes around verb-second order, separable verbs, pronouns, and article choice. Begin by checking \"Ik kan vandaag niet komen.\" against the model.",
+      "example": "Ik kan vandaag niet komen.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “I cannot come today.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-culture"
+      ],
+      "targetText": "register",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for jij, u, a service register, or a more relaxed everyday choice before selecting the final wording. Compare the social fit of \"Ik kan zwemmen.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Ik kan zwemmen.",
+      "exampleNative": "“I can swim.”",
+      "korean": "register",
+      "english": "Check whether the setting calls for jij, u, a service register, or a more relaxed everyday choice before selecting the final wording. Compare the social fit of \"Ik kan zwemmen.\" before reusing it elsewhere.",
+      "example": "Ik kan zwemmen.",
+      "exampleEnglish": "“I can swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "vloeiendheid",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Dutch message rather than as separate translated fragments. Aim to carry \"Het lukt al beter.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Het lukt al beter.",
+      "exampleNative": "“It is already going better.”",
+      "korean": "vloeiendheid",
+      "english": "Say the idea as one connected Dutch message rather than as separate translated fragments. Aim to carry \"Het lukt al beter.\" as one thought.",
+      "example": "Het lukt al beter.",
+      "exampleEnglish": "“It is already going better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "toepassing",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Ik kan zwemmen.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Ik kan zwemmen.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "toepassing",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Ik kan zwemmen.\" and move it into your own life.",
+      "example": "Ik kan zwemmen.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-grammar-1"
+      ],
+      "targetText": "actief ophalen",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"ik kan\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "ik kan",
+      "exampleNative": "“I can.” Use it for ability or practical possibility.",
+      "korean": "actief ophalen",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"ik kan\" before looking back.",
+      "example": "ik kan",
+      "exampleEnglish": "“I can.” Use it for ability or practical possibility."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-writing"
+      ],
+      "targetText": "uitbreiding",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Het lukt al beter.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Het lukt al beter.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "uitbreiding",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Het lukt al beter.\" rather than restarting from a blank sentence.",
+      "example": "Het lukt al beter.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading"
+      ],
+      "targetText": "vergelijking",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 14: Kunnen en Mogen — Ability and Permission with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Ik kan vandaag niet komen.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Ik kan vandaag niet komen.",
+      "exampleNative": "“I cannot come today.”",
+      "korean": "vergelijking",
+      "english": "Compare the central form in Level 1 · Unit 14: Kunnen en Mogen — Ability and Permission with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Ik kan vandaag niet komen.\" as the comparison line.",
+      "example": "Ik kan vandaag niet komen.",
+      "exampleEnglish": "“I cannot come today.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "nl-level1unit14ability-pronunciation"
+      ],
+      "targetText": "uitspraakcorrectie",
+      "romanization": "",
+      "nativeText": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Ik kan zwemmen.\".",
+      "pronunciation": "",
+      "exampleTarget": "Ik kan zwemmen.",
+      "exampleNative": "“I can swim.”",
+      "korean": "uitspraakcorrectie",
+      "english": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Ik kan zwemmen.\".",
+      "example": "Ik kan zwemmen.",
+      "exampleEnglish": "“I can swim.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "dialoogvariatie",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Het lukt al beter.\".",
+      "pronunciation": "",
+      "exampleTarget": "Het lukt al beter.",
+      "exampleNative": "“It is already going better.”",
+      "korean": "dialoogvariatie",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Het lukt al beter.\".",
+      "example": "Het lukt al beter.",
+      "exampleEnglish": "“It is already going better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-writing"
+      ],
+      "targetText": "zinsbouw",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Ik kan zwemmen.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Ik kan zwemmen.",
+      "exampleNative": "“I can swim.”",
+      "korean": "zinsbouw",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Ik kan zwemmen.\" one layer at a time.",
+      "example": "Ik kan zwemmen.",
+      "exampleEnglish": "“I can swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-2"
+      ],
+      "targetText": "snelle check",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Ik kan vandaag niet komen.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Ik kan vandaag niet komen.",
+      "exampleNative": "“I cannot come today.”",
+      "korean": "snelle check",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Ik kan vandaag niet komen.\" as the deciding example.",
+      "example": "Ik kan vandaag niet komen.",
+      "exampleEnglish": "“I cannot come today.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit14ability-culture",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "terugblik",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Het lukt al beter.\".",
+      "pronunciation": "",
+      "exampleTarget": "Het lukt al beter.",
+      "exampleNative": "“It is already going better.”",
+      "korean": "terugblik",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Het lukt al beter.\".",
+      "example": "Het lukt al beter.",
+      "exampleEnglish": "“It is already going better.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik kan",
+      "romanization": "ik kan",
+      "nativeText": "“I can.” Use it for ability or practical possibility.",
+      "pronunciation": "ik kan",
+      "exampleTarget": "Ik kan zwemmen.",
+      "exampleNative": "“I can swim.”",
+      "korean": "ik kan",
+      "english": "“I can.” Use it for ability or practical possibility.",
+      "example": "Ik kan zwemmen.",
+      "exampleEnglish": "“I can swim.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "Ik kan zwemmen.",
+      "romanization": "ik kan",
+      "nativeText": "Model use for \"Ik kan zwemmen.\": “I can swim.”",
+      "pronunciation": "ik kan",
+      "exampleTarget": "Ik kan zwemmen.",
+      "exampleNative": "“I can swim.”",
+      "korean": "Ik kan zwemmen.",
+      "english": "Model use for \"Ik kan zwemmen.\": “I can swim.”",
+      "example": "Ik kan zwemmen.",
+      "exampleEnglish": "“I can swim.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik kan",
+      "romanization": "ik kan",
+      "nativeText": "Usage focus for \"ik kan\": Use the key language of Level 1 · Unit 14: Kunnen en Mogen — Ability and Permission with the register and setting that the lesson requires.",
+      "pronunciation": "ik kan",
+      "exampleTarget": "Ik kan zwemmen.",
+      "exampleNative": "Notice what the form is doing here: “I can swim.”",
+      "korean": "ik kan",
+      "english": "Usage focus for \"ik kan\": Use the key language of Level 1 · Unit 14: Kunnen en Mogen — Ability and Permission with the register and setting that the lesson requires.",
+      "example": "Ik kan zwemmen.",
+      "exampleEnglish": "Notice what the form is doing here: “I can swim.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik kan",
+      "romanization": "ik kan",
+      "nativeText": "Contrast check for \"ik kan\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ik kan",
+      "exampleTarget": "Ik kan zwemmen.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I can swim.”",
+      "korean": "ik kan",
+      "english": "Contrast check for \"ik kan\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik kan zwemmen.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I can swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik kan",
+      "romanization": "ik kan",
+      "nativeText": "Recall \"ik kan\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik kan zwemmen.\".",
+      "pronunciation": "ik kan",
+      "exampleTarget": "Ik kan zwemmen.",
+      "exampleNative": "Self-check against the model before moving on: “I can swim.”",
+      "korean": "ik kan",
+      "english": "Recall \"ik kan\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik kan zwemmen.\".",
+      "example": "Ik kan zwemmen.",
+      "exampleEnglish": "Self-check against the model before moving on: “I can swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik kan",
+      "romanization": "ik kan",
+      "nativeText": "Repair \"ik kan\" inside \"Ik kan zwemmen.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 14: Kunnen en Mogen — Ability and Permission with the register and setting that the lesson requires.",
+      "pronunciation": "ik kan",
+      "exampleTarget": "Ik kan zwemmen.",
+      "exampleNative": "Use the model as the repair target: “I can swim.”",
+      "korean": "ik kan",
+      "english": "Repair \"ik kan\" inside \"Ik kan zwemmen.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 14: Kunnen en Mogen — Ability and Permission with the register and setting that the lesson requires.",
+      "example": "Ik kan zwemmen.",
+      "exampleEnglish": "Use the model as the repair target: “I can swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik kan",
+      "romanization": "ik kan",
+      "nativeText": "Transfer \"ik kan\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik kan zwemmen.\".",
+      "pronunciation": "ik kan",
+      "exampleTarget": "Ik kan zwemmen.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I can swim.”",
+      "korean": "ik kan",
+      "english": "Transfer \"ik kan\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik kan zwemmen.\".",
+      "example": "Ik kan zwemmen.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I can swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik kan",
+      "romanization": "ik kan",
+      "nativeText": "Find one word or phrase that naturally travels with \"ik kan\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ik kan",
+      "exampleTarget": "Ik kan zwemmen.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I can swim.”",
+      "korean": "ik kan",
+      "english": "Find one word or phrase that naturally travels with \"ik kan\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik kan zwemmen.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I can swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik kan",
+      "romanization": "ik kan",
+      "nativeText": "Listen for \"ik kan\" inside \"Ik kan zwemmen.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ik kan",
+      "exampleTarget": "Ik kan zwemmen.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I can swim.”",
+      "korean": "ik kan",
+      "english": "Listen for \"ik kan\" inside \"Ik kan zwemmen.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik kan zwemmen.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I can swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik kan",
+      "romanization": "ik kan",
+      "nativeText": "Write \"ik kan\" again without looking, then compare the exact written form against \"Ik kan zwemmen.\" before moving on.",
+      "pronunciation": "ik kan",
+      "exampleTarget": "Ik kan zwemmen.",
+      "exampleNative": "Use the written model as the final correctness check: “I can swim.”",
+      "korean": "ik kan",
+      "english": "Write \"ik kan\" again without looking, then compare the exact written form against \"Ik kan zwemmen.\" before moving on.",
+      "example": "Ik kan zwemmen.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I can swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik kan",
+      "romanization": "ik kan",
+      "nativeText": "Check whether \"ik kan\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I can swim.”",
+      "pronunciation": "ik kan",
+      "exampleTarget": "Ik kan zwemmen.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I can swim.”",
+      "korean": "ik kan",
+      "english": "Check whether \"ik kan\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I can swim.”",
+      "example": "Ik kan zwemmen.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I can swim.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik kan niet",
+      "romanization": "ik kan neet",
+      "nativeText": "“I cannot.” A core negative ability phrase.",
+      "pronunciation": "ik kan neet",
+      "exampleTarget": "Ik kan vandaag niet komen.",
+      "exampleNative": "“I cannot come today.”",
+      "korean": "ik kan niet",
+      "english": "“I cannot.” A core negative ability phrase.",
+      "example": "Ik kan vandaag niet komen.",
+      "exampleEnglish": "“I cannot come today.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "Ik kan vandaag niet komen.",
+      "romanization": "ik kan neet",
+      "nativeText": "Model use for \"Ik kan vandaag niet komen.\": “I cannot come today.”",
+      "pronunciation": "ik kan neet",
+      "exampleTarget": "Ik kan vandaag niet komen.",
+      "exampleNative": "“I cannot come today.”",
+      "korean": "Ik kan vandaag niet komen.",
+      "english": "Model use for \"Ik kan vandaag niet komen.\": “I cannot come today.”",
+      "example": "Ik kan vandaag niet komen.",
+      "exampleEnglish": "“I cannot come today.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik kan niet",
+      "romanization": "ik kan neet",
+      "nativeText": "Usage focus for \"ik kan niet\": Distinguish the nearby wording choices that make Level 1 · Unit 14: Kunnen en Mogen — Ability and Permission sound precise rather than merely understandable.",
+      "pronunciation": "ik kan neet",
+      "exampleTarget": "Ik kan vandaag niet komen.",
+      "exampleNative": "Notice what the form is doing here: “I cannot come today.”",
+      "korean": "ik kan niet",
+      "english": "Usage focus for \"ik kan niet\": Distinguish the nearby wording choices that make Level 1 · Unit 14: Kunnen en Mogen — Ability and Permission sound precise rather than merely understandable.",
+      "example": "Ik kan vandaag niet komen.",
+      "exampleEnglish": "Notice what the form is doing here: “I cannot come today.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik kan niet",
+      "romanization": "ik kan neet",
+      "nativeText": "Contrast check for \"ik kan niet\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ik kan neet",
+      "exampleTarget": "Ik kan vandaag niet komen.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I cannot come today.”",
+      "korean": "ik kan niet",
+      "english": "Contrast check for \"ik kan niet\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik kan vandaag niet komen.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I cannot come today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik kan niet",
+      "romanization": "ik kan neet",
+      "nativeText": "Recall \"ik kan niet\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik kan vandaag niet komen.\".",
+      "pronunciation": "ik kan neet",
+      "exampleTarget": "Ik kan vandaag niet komen.",
+      "exampleNative": "Self-check against the model before moving on: “I cannot come today.”",
+      "korean": "ik kan niet",
+      "english": "Recall \"ik kan niet\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik kan vandaag niet komen.\".",
+      "example": "Ik kan vandaag niet komen.",
+      "exampleEnglish": "Self-check against the model before moving on: “I cannot come today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik kan niet",
+      "romanization": "ik kan neet",
+      "nativeText": "Repair \"ik kan niet\" inside \"Ik kan vandaag niet komen.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 14: Kunnen en Mogen — Ability and Permission sound precise rather than merely understandable.",
+      "pronunciation": "ik kan neet",
+      "exampleTarget": "Ik kan vandaag niet komen.",
+      "exampleNative": "Use the model as the repair target: “I cannot come today.”",
+      "korean": "ik kan niet",
+      "english": "Repair \"ik kan niet\" inside \"Ik kan vandaag niet komen.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 14: Kunnen en Mogen — Ability and Permission sound precise rather than merely understandable.",
+      "example": "Ik kan vandaag niet komen.",
+      "exampleEnglish": "Use the model as the repair target: “I cannot come today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik kan niet",
+      "romanization": "ik kan neet",
+      "nativeText": "Transfer \"ik kan niet\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik kan vandaag niet komen.\".",
+      "pronunciation": "ik kan neet",
+      "exampleTarget": "Ik kan vandaag niet komen.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I cannot come today.”",
+      "korean": "ik kan niet",
+      "english": "Transfer \"ik kan niet\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik kan vandaag niet komen.\".",
+      "example": "Ik kan vandaag niet komen.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I cannot come today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik kan niet",
+      "romanization": "ik kan neet",
+      "nativeText": "Find one word or phrase that naturally travels with \"ik kan niet\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ik kan neet",
+      "exampleTarget": "Ik kan vandaag niet komen.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I cannot come today.”",
+      "korean": "ik kan niet",
+      "english": "Find one word or phrase that naturally travels with \"ik kan niet\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik kan vandaag niet komen.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I cannot come today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik kan niet",
+      "romanization": "ik kan neet",
+      "nativeText": "Listen for \"ik kan niet\" inside \"Ik kan vandaag niet komen.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ik kan neet",
+      "exampleTarget": "Ik kan vandaag niet komen.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I cannot come today.”",
+      "korean": "ik kan niet",
+      "english": "Listen for \"ik kan niet\" inside \"Ik kan vandaag niet komen.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik kan vandaag niet komen.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I cannot come today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik kan niet",
+      "romanization": "ik kan neet",
+      "nativeText": "Write \"ik kan niet\" again without looking, then compare the exact written form against \"Ik kan vandaag niet komen.\" before moving on.",
+      "pronunciation": "ik kan neet",
+      "exampleTarget": "Ik kan vandaag niet komen.",
+      "exampleNative": "Use the written model as the final correctness check: “I cannot come today.”",
+      "korean": "ik kan niet",
+      "english": "Write \"ik kan niet\" again without looking, then compare the exact written form against \"Ik kan vandaag niet komen.\" before moving on.",
+      "example": "Ik kan vandaag niet komen.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I cannot come today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik kan niet",
+      "romanization": "ik kan neet",
+      "nativeText": "Check whether \"ik kan niet\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I cannot come today.”",
+      "pronunciation": "ik kan neet",
+      "exampleTarget": "Ik kan vandaag niet komen.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I cannot come today.”",
+      "korean": "ik kan niet",
+      "english": "Check whether \"ik kan niet\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I cannot come today.”",
+      "example": "Ik kan vandaag niet komen.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I cannot come today.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "mag ik ...?",
+      "romanization": "makh ik",
+      "nativeText": "“May I ...?” Use it for permission, not learned skill.",
+      "pronunciation": "makh ik",
+      "exampleTarget": "Mag ik hier zitten?",
+      "exampleNative": "“May I sit here?”",
+      "korean": "mag ik ...?",
+      "english": "“May I ...?” Use it for permission, not learned skill.",
+      "example": "Mag ik hier zitten?",
+      "exampleEnglish": "“May I sit here?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "Mag ik hier zitten?",
+      "romanization": "makh ik",
+      "nativeText": "Model use for \"Mag ik hier zitten?\": “May I sit here?”",
+      "pronunciation": "makh ik",
+      "exampleTarget": "Mag ik hier zitten?",
+      "exampleNative": "“May I sit here?”",
+      "korean": "Mag ik hier zitten?",
+      "english": "Model use for \"Mag ik hier zitten?\": “May I sit here?”",
+      "example": "Mag ik hier zitten?",
+      "exampleEnglish": "“May I sit here?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "mag ik ...?",
+      "romanization": "makh ik",
+      "nativeText": "Usage focus for \"mag ik ...?\": “May I ...?” Use it for permission, not learned skill.",
+      "pronunciation": "makh ik",
+      "exampleTarget": "Mag ik hier zitten?",
+      "exampleNative": "Notice what the form is doing here: “May I sit here?”",
+      "korean": "mag ik ...?",
+      "english": "Usage focus for \"mag ik ...?\": “May I ...?” Use it for permission, not learned skill.",
+      "example": "Mag ik hier zitten?",
+      "exampleEnglish": "Notice what the form is doing here: “May I sit here?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "mag ik ...?",
+      "romanization": "makh ik",
+      "nativeText": "Contrast check for \"mag ik ...?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "makh ik",
+      "exampleTarget": "Mag ik hier zitten?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I sit here?”",
+      "korean": "mag ik ...?",
+      "english": "Contrast check for \"mag ik ...?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Mag ik hier zitten?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I sit here?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "mag ik ...?",
+      "romanization": "makh ik",
+      "nativeText": "Recall \"mag ik ...?\" from memory, then explain what would change if a nearby alternative replaced it in \"Mag ik hier zitten?\".",
+      "pronunciation": "makh ik",
+      "exampleTarget": "Mag ik hier zitten?",
+      "exampleNative": "Self-check against the model before moving on: “May I sit here?”",
+      "korean": "mag ik ...?",
+      "english": "Recall \"mag ik ...?\" from memory, then explain what would change if a nearby alternative replaced it in \"Mag ik hier zitten?\".",
+      "example": "Mag ik hier zitten?",
+      "exampleEnglish": "Self-check against the model before moving on: “May I sit here?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "mag ik ...?",
+      "romanization": "makh ik",
+      "nativeText": "Repair \"mag ik ...?\" inside \"Mag ik hier zitten?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “May I ...?” Use it for permission, not learned skill.",
+      "pronunciation": "makh ik",
+      "exampleTarget": "Mag ik hier zitten?",
+      "exampleNative": "Use the model as the repair target: “May I sit here?”",
+      "korean": "mag ik ...?",
+      "english": "Repair \"mag ik ...?\" inside \"Mag ik hier zitten?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “May I ...?” Use it for permission, not learned skill.",
+      "example": "Mag ik hier zitten?",
+      "exampleEnglish": "Use the model as the repair target: “May I sit here?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "mag ik ...?",
+      "romanization": "makh ik",
+      "nativeText": "Transfer \"mag ik ...?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Mag ik hier zitten?\".",
+      "pronunciation": "makh ik",
+      "exampleTarget": "Mag ik hier zitten?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I sit here?”",
+      "korean": "mag ik ...?",
+      "english": "Transfer \"mag ik ...?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Mag ik hier zitten?\".",
+      "example": "Mag ik hier zitten?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I sit here?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "mag ik ...?",
+      "romanization": "makh ik",
+      "nativeText": "Find one word or phrase that naturally travels with \"mag ik ...?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "makh ik",
+      "exampleTarget": "Mag ik hier zitten?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “May I sit here?”",
+      "korean": "mag ik ...?",
+      "english": "Find one word or phrase that naturally travels with \"mag ik ...?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Mag ik hier zitten?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “May I sit here?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "mag ik ...?",
+      "romanization": "makh ik",
+      "nativeText": "Listen for \"mag ik ...?\" inside \"Mag ik hier zitten?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "makh ik",
+      "exampleTarget": "Mag ik hier zitten?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I sit here?”",
+      "korean": "mag ik ...?",
+      "english": "Listen for \"mag ik ...?\" inside \"Mag ik hier zitten?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Mag ik hier zitten?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I sit here?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "mag ik ...?",
+      "romanization": "makh ik",
+      "nativeText": "Write \"mag ik ...?\" again without looking, then compare the exact written form against \"Mag ik hier zitten?\" before moving on.",
+      "pronunciation": "makh ik",
+      "exampleTarget": "Mag ik hier zitten?",
+      "exampleNative": "Use the written model as the final correctness check: “May I sit here?”",
+      "korean": "mag ik ...?",
+      "english": "Write \"mag ik ...?\" again without looking, then compare the exact written form against \"Mag ik hier zitten?\" before moving on.",
+      "example": "Mag ik hier zitten?",
+      "exampleEnglish": "Use the written model as the final correctness check: “May I sit here?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "mag ik ...?",
+      "romanization": "makh ik",
+      "nativeText": "Check whether \"mag ik ...?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I sit here?”",
+      "pronunciation": "makh ik",
+      "exampleTarget": "Mag ik hier zitten?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “May I sit here?”",
+      "korean": "mag ik ...?",
+      "english": "Check whether \"mag ik ...?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I sit here?”",
+      "example": "Mag ik hier zitten?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “May I sit here?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "dat mag niet",
+      "romanization": "dat makh neet",
+      "nativeText": "“That is not allowed.” A concise prohibition phrase.",
+      "pronunciation": "dat makh neet",
+      "exampleTarget": "Hier roken? Dat mag niet.",
+      "exampleNative": "“Smoking here? That is not allowed.”",
+      "korean": "dat mag niet",
+      "english": "“That is not allowed.” A concise prohibition phrase.",
+      "example": "Hier roken? Dat mag niet.",
+      "exampleEnglish": "“Smoking here? That is not allowed.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "Hier roken? Dat mag niet.",
+      "romanization": "dat makh neet",
+      "nativeText": "Model use for \"Hier roken? Dat mag niet.\": “Smoking here? That is not allowed.”",
+      "pronunciation": "dat makh neet",
+      "exampleTarget": "Hier roken? Dat mag niet.",
+      "exampleNative": "“Smoking here? That is not allowed.”",
+      "korean": "Hier roken? Dat mag niet.",
+      "english": "Model use for \"Hier roken? Dat mag niet.\": “Smoking here? That is not allowed.”",
+      "example": "Hier roken? Dat mag niet.",
+      "exampleEnglish": "“Smoking here? That is not allowed.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "dat mag niet",
+      "romanization": "dat makh neet",
+      "nativeText": "Usage focus for \"dat mag niet\": “That is not allowed.” A concise prohibition phrase.",
+      "pronunciation": "dat makh neet",
+      "exampleTarget": "Hier roken? Dat mag niet.",
+      "exampleNative": "Notice what the form is doing here: “Smoking here? That is not allowed.”",
+      "korean": "dat mag niet",
+      "english": "Usage focus for \"dat mag niet\": “That is not allowed.” A concise prohibition phrase.",
+      "example": "Hier roken? Dat mag niet.",
+      "exampleEnglish": "Notice what the form is doing here: “Smoking here? That is not allowed.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "dat mag niet",
+      "romanization": "dat makh neet",
+      "nativeText": "Contrast check for \"dat mag niet\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "dat makh neet",
+      "exampleTarget": "Hier roken? Dat mag niet.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Smoking here? That is not allowed.”",
+      "korean": "dat mag niet",
+      "english": "Contrast check for \"dat mag niet\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Hier roken? Dat mag niet.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Smoking here? That is not allowed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "dat mag niet",
+      "romanization": "dat makh neet",
+      "nativeText": "Recall \"dat mag niet\" from memory, then explain what would change if a nearby alternative replaced it in \"Hier roken? Dat mag niet.\".",
+      "pronunciation": "dat makh neet",
+      "exampleTarget": "Hier roken? Dat mag niet.",
+      "exampleNative": "Self-check against the model before moving on: “Smoking here? That is not allowed.”",
+      "korean": "dat mag niet",
+      "english": "Recall \"dat mag niet\" from memory, then explain what would change if a nearby alternative replaced it in \"Hier roken? Dat mag niet.\".",
+      "example": "Hier roken? Dat mag niet.",
+      "exampleEnglish": "Self-check against the model before moving on: “Smoking here? That is not allowed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "dat mag niet",
+      "romanization": "dat makh neet",
+      "nativeText": "Repair \"dat mag niet\" inside \"Hier roken? Dat mag niet.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “That is not allowed.” A concise prohibition phrase.",
+      "pronunciation": "dat makh neet",
+      "exampleTarget": "Hier roken? Dat mag niet.",
+      "exampleNative": "Use the model as the repair target: “Smoking here? That is not allowed.”",
+      "korean": "dat mag niet",
+      "english": "Repair \"dat mag niet\" inside \"Hier roken? Dat mag niet.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “That is not allowed.” A concise prohibition phrase.",
+      "example": "Hier roken? Dat mag niet.",
+      "exampleEnglish": "Use the model as the repair target: “Smoking here? That is not allowed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "dat mag niet",
+      "romanization": "dat makh neet",
+      "nativeText": "Transfer \"dat mag niet\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Hier roken? Dat mag niet.\".",
+      "pronunciation": "dat makh neet",
+      "exampleTarget": "Hier roken? Dat mag niet.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Smoking here? That is not allowed.”",
+      "korean": "dat mag niet",
+      "english": "Transfer \"dat mag niet\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Hier roken? Dat mag niet.\".",
+      "example": "Hier roken? Dat mag niet.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Smoking here? That is not allowed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "dat mag niet",
+      "romanization": "dat makh neet",
+      "nativeText": "Find one word or phrase that naturally travels with \"dat mag niet\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "dat makh neet",
+      "exampleTarget": "Hier roken? Dat mag niet.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Smoking here? That is not allowed.”",
+      "korean": "dat mag niet",
+      "english": "Find one word or phrase that naturally travels with \"dat mag niet\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Hier roken? Dat mag niet.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Smoking here? That is not allowed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "dat mag niet",
+      "romanization": "dat makh neet",
+      "nativeText": "Listen for \"dat mag niet\" inside \"Hier roken? Dat mag niet.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "dat makh neet",
+      "exampleTarget": "Hier roken? Dat mag niet.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Smoking here? That is not allowed.”",
+      "korean": "dat mag niet",
+      "english": "Listen for \"dat mag niet\" inside \"Hier roken? Dat mag niet.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Hier roken? Dat mag niet.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Smoking here? That is not allowed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "dat mag niet",
+      "romanization": "dat makh neet",
+      "nativeText": "Write \"dat mag niet\" again without looking, then compare the exact written form against \"Hier roken? Dat mag niet.\" before moving on.",
+      "pronunciation": "dat makh neet",
+      "exampleTarget": "Hier roken? Dat mag niet.",
+      "exampleNative": "Use the written model as the final correctness check: “Smoking here? That is not allowed.”",
+      "korean": "dat mag niet",
+      "english": "Write \"dat mag niet\" again without looking, then compare the exact written form against \"Hier roken? Dat mag niet.\" before moving on.",
+      "example": "Hier roken? Dat mag niet.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Smoking here? That is not allowed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "dat mag niet",
+      "romanization": "dat makh neet",
+      "nativeText": "Check whether \"dat mag niet\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Smoking here? That is not allowed.”",
+      "pronunciation": "dat makh neet",
+      "exampleTarget": "Hier roken? Dat mag niet.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Smoking here? That is not allowed.”",
+      "korean": "dat mag niet",
+      "english": "Check whether \"dat mag niet\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Smoking here? That is not allowed.”",
+      "example": "Hier roken? Dat mag niet.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Smoking here? That is not allowed.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik moet",
+      "romanization": "ik moot",
+      "nativeText": "“I must / have to.” A common obligation modal.",
+      "pronunciation": "ik moot",
+      "exampleTarget": "Ik moet mijn paspoort meenemen.",
+      "exampleNative": "“I have to bring my passport.”",
+      "korean": "ik moet",
+      "english": "“I must / have to.” A common obligation modal.",
+      "example": "Ik moet mijn paspoort meenemen.",
+      "exampleEnglish": "“I have to bring my passport.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "Ik moet mijn paspoort meenemen.",
+      "romanization": "ik moot",
+      "nativeText": "Model use for \"Ik moet mijn paspoort meenemen.\": “I have to bring my passport.”",
+      "pronunciation": "ik moot",
+      "exampleTarget": "Ik moet mijn paspoort meenemen.",
+      "exampleNative": "“I have to bring my passport.”",
+      "korean": "Ik moet mijn paspoort meenemen.",
+      "english": "Model use for \"Ik moet mijn paspoort meenemen.\": “I have to bring my passport.”",
+      "example": "Ik moet mijn paspoort meenemen.",
+      "exampleEnglish": "“I have to bring my passport.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik moet",
+      "romanization": "ik moot",
+      "nativeText": "Usage focus for \"ik moet\": “I must / have to.” A common obligation modal.",
+      "pronunciation": "ik moot",
+      "exampleTarget": "Ik moet mijn paspoort meenemen.",
+      "exampleNative": "Notice what the form is doing here: “I have to bring my passport.”",
+      "korean": "ik moet",
+      "english": "Usage focus for \"ik moet\": “I must / have to.” A common obligation modal.",
+      "example": "Ik moet mijn paspoort meenemen.",
+      "exampleEnglish": "Notice what the form is doing here: “I have to bring my passport.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik moet",
+      "romanization": "ik moot",
+      "nativeText": "Contrast check for \"ik moet\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ik moot",
+      "exampleTarget": "Ik moet mijn paspoort meenemen.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have to bring my passport.”",
+      "korean": "ik moet",
+      "english": "Contrast check for \"ik moet\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik moet mijn paspoort meenemen.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have to bring my passport.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik moet",
+      "romanization": "ik moot",
+      "nativeText": "Recall \"ik moet\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik moet mijn paspoort meenemen.\".",
+      "pronunciation": "ik moot",
+      "exampleTarget": "Ik moet mijn paspoort meenemen.",
+      "exampleNative": "Self-check against the model before moving on: “I have to bring my passport.”",
+      "korean": "ik moet",
+      "english": "Recall \"ik moet\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik moet mijn paspoort meenemen.\".",
+      "example": "Ik moet mijn paspoort meenemen.",
+      "exampleEnglish": "Self-check against the model before moving on: “I have to bring my passport.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik moet",
+      "romanization": "ik moot",
+      "nativeText": "Repair \"ik moet\" inside \"Ik moet mijn paspoort meenemen.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I must / have to.” A common obligation modal.",
+      "pronunciation": "ik moot",
+      "exampleTarget": "Ik moet mijn paspoort meenemen.",
+      "exampleNative": "Use the model as the repair target: “I have to bring my passport.”",
+      "korean": "ik moet",
+      "english": "Repair \"ik moet\" inside \"Ik moet mijn paspoort meenemen.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I must / have to.” A common obligation modal.",
+      "example": "Ik moet mijn paspoort meenemen.",
+      "exampleEnglish": "Use the model as the repair target: “I have to bring my passport.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik moet",
+      "romanization": "ik moot",
+      "nativeText": "Transfer \"ik moet\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik moet mijn paspoort meenemen.\".",
+      "pronunciation": "ik moot",
+      "exampleTarget": "Ik moet mijn paspoort meenemen.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have to bring my passport.”",
+      "korean": "ik moet",
+      "english": "Transfer \"ik moet\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik moet mijn paspoort meenemen.\".",
+      "example": "Ik moet mijn paspoort meenemen.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have to bring my passport.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik moet",
+      "romanization": "ik moot",
+      "nativeText": "Find one word or phrase that naturally travels with \"ik moet\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ik moot",
+      "exampleTarget": "Ik moet mijn paspoort meenemen.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I have to bring my passport.”",
+      "korean": "ik moet",
+      "english": "Find one word or phrase that naturally travels with \"ik moet\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik moet mijn paspoort meenemen.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I have to bring my passport.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik moet",
+      "romanization": "ik moot",
+      "nativeText": "Listen for \"ik moet\" inside \"Ik moet mijn paspoort meenemen.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ik moot",
+      "exampleTarget": "Ik moet mijn paspoort meenemen.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have to bring my passport.”",
+      "korean": "ik moet",
+      "english": "Listen for \"ik moet\" inside \"Ik moet mijn paspoort meenemen.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik moet mijn paspoort meenemen.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have to bring my passport.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik moet",
+      "romanization": "ik moot",
+      "nativeText": "Write \"ik moet\" again without looking, then compare the exact written form against \"Ik moet mijn paspoort meenemen.\" before moving on.",
+      "pronunciation": "ik moot",
+      "exampleTarget": "Ik moet mijn paspoort meenemen.",
+      "exampleNative": "Use the written model as the final correctness check: “I have to bring my passport.”",
+      "korean": "ik moet",
+      "english": "Write \"ik moet\" again without looking, then compare the exact written form against \"Ik moet mijn paspoort meenemen.\" before moving on.",
+      "example": "Ik moet mijn paspoort meenemen.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I have to bring my passport.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik moet",
+      "romanization": "ik moot",
+      "nativeText": "Check whether \"ik moet\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have to bring my passport.”",
+      "pronunciation": "ik moot",
+      "exampleTarget": "Ik moet mijn paspoort meenemen.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I have to bring my passport.”",
+      "korean": "ik moet",
+      "english": "Check whether \"ik moet\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have to bring my passport.”",
+      "example": "Ik moet mijn paspoort meenemen.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I have to bring my passport.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik hoef niet",
+      "romanization": "ik hoof neet",
+      "nativeText": "“I do not need to.” A useful Dutch-specific contrast with English negation.",
+      "pronunciation": "ik hoof neet",
+      "exampleTarget": "Ik hoef morgen niet te werken.",
+      "exampleNative": "“I do not need to work tomorrow.”",
+      "korean": "ik hoef niet",
+      "english": "“I do not need to.” A useful Dutch-specific contrast with English negation.",
+      "example": "Ik hoef morgen niet te werken.",
+      "exampleEnglish": "“I do not need to work tomorrow.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "Ik hoef morgen niet te werken.",
+      "romanization": "ik hoof neet",
+      "nativeText": "Model use for \"Ik hoef morgen niet te werken.\": “I do not need to work tomorrow.”",
+      "pronunciation": "ik hoof neet",
+      "exampleTarget": "Ik hoef morgen niet te werken.",
+      "exampleNative": "“I do not need to work tomorrow.”",
+      "korean": "Ik hoef morgen niet te werken.",
+      "english": "Model use for \"Ik hoef morgen niet te werken.\": “I do not need to work tomorrow.”",
+      "example": "Ik hoef morgen niet te werken.",
+      "exampleEnglish": "“I do not need to work tomorrow.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik hoef niet",
+      "romanization": "ik hoof neet",
+      "nativeText": "Usage focus for \"ik hoef niet\": “I do not need to.” A useful Dutch-specific contrast with English negation.",
+      "pronunciation": "ik hoof neet",
+      "exampleTarget": "Ik hoef morgen niet te werken.",
+      "exampleNative": "Notice what the form is doing here: “I do not need to work tomorrow.”",
+      "korean": "ik hoef niet",
+      "english": "Usage focus for \"ik hoef niet\": “I do not need to.” A useful Dutch-specific contrast with English negation.",
+      "example": "Ik hoef morgen niet te werken.",
+      "exampleEnglish": "Notice what the form is doing here: “I do not need to work tomorrow.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik hoef niet",
+      "romanization": "ik hoof neet",
+      "nativeText": "Contrast check for \"ik hoef niet\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ik hoof neet",
+      "exampleTarget": "Ik hoef morgen niet te werken.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I do not need to work tomorrow.”",
+      "korean": "ik hoef niet",
+      "english": "Contrast check for \"ik hoef niet\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik hoef morgen niet te werken.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I do not need to work tomorrow.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik hoef niet",
+      "romanization": "ik hoof neet",
+      "nativeText": "Recall \"ik hoef niet\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik hoef morgen niet te werken.\".",
+      "pronunciation": "ik hoof neet",
+      "exampleTarget": "Ik hoef morgen niet te werken.",
+      "exampleNative": "Self-check against the model before moving on: “I do not need to work tomorrow.”",
+      "korean": "ik hoef niet",
+      "english": "Recall \"ik hoef niet\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik hoef morgen niet te werken.\".",
+      "example": "Ik hoef morgen niet te werken.",
+      "exampleEnglish": "Self-check against the model before moving on: “I do not need to work tomorrow.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik hoef niet",
+      "romanization": "ik hoof neet",
+      "nativeText": "Repair \"ik hoef niet\" inside \"Ik hoef morgen niet te werken.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I do not need to.” A useful Dutch-specific contrast with English negation.",
+      "pronunciation": "ik hoof neet",
+      "exampleTarget": "Ik hoef morgen niet te werken.",
+      "exampleNative": "Use the model as the repair target: “I do not need to work tomorrow.”",
+      "korean": "ik hoef niet",
+      "english": "Repair \"ik hoef niet\" inside \"Ik hoef morgen niet te werken.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I do not need to.” A useful Dutch-specific contrast with English negation.",
+      "example": "Ik hoef morgen niet te werken.",
+      "exampleEnglish": "Use the model as the repair target: “I do not need to work tomorrow.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik hoef niet",
+      "romanization": "ik hoof neet",
+      "nativeText": "Transfer \"ik hoef niet\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik hoef morgen niet te werken.\".",
+      "pronunciation": "ik hoof neet",
+      "exampleTarget": "Ik hoef morgen niet te werken.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I do not need to work tomorrow.”",
+      "korean": "ik hoef niet",
+      "english": "Transfer \"ik hoef niet\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik hoef morgen niet te werken.\".",
+      "example": "Ik hoef morgen niet te werken.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I do not need to work tomorrow.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik hoef niet",
+      "romanization": "ik hoof neet",
+      "nativeText": "Find one word or phrase that naturally travels with \"ik hoef niet\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ik hoof neet",
+      "exampleTarget": "Ik hoef morgen niet te werken.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I do not need to work tomorrow.”",
+      "korean": "ik hoef niet",
+      "english": "Find one word or phrase that naturally travels with \"ik hoef niet\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik hoef morgen niet te werken.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I do not need to work tomorrow.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik hoef niet",
+      "romanization": "ik hoof neet",
+      "nativeText": "Listen for \"ik hoef niet\" inside \"Ik hoef morgen niet te werken.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ik hoof neet",
+      "exampleTarget": "Ik hoef morgen niet te werken.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I do not need to work tomorrow.”",
+      "korean": "ik hoef niet",
+      "english": "Listen for \"ik hoef niet\" inside \"Ik hoef morgen niet te werken.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik hoef morgen niet te werken.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I do not need to work tomorrow.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik hoef niet",
+      "romanization": "ik hoof neet",
+      "nativeText": "Write \"ik hoef niet\" again without looking, then compare the exact written form against \"Ik hoef morgen niet te werken.\" before moving on.",
+      "pronunciation": "ik hoof neet",
+      "exampleTarget": "Ik hoef morgen niet te werken.",
+      "exampleNative": "Use the written model as the final correctness check: “I do not need to work tomorrow.”",
+      "korean": "ik hoef niet",
+      "english": "Write \"ik hoef niet\" again without looking, then compare the exact written form against \"Ik hoef morgen niet te werken.\" before moving on.",
+      "example": "Ik hoef morgen niet te werken.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I do not need to work tomorrow.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "ik hoef niet",
+      "romanization": "ik hoof neet",
+      "nativeText": "Check whether \"ik hoef niet\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I do not need to work tomorrow.”",
+      "pronunciation": "ik hoof neet",
+      "exampleTarget": "Ik hoef morgen niet te werken.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I do not need to work tomorrow.”",
+      "korean": "ik hoef niet",
+      "english": "Check whether \"ik hoef niet\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I do not need to work tomorrow.”",
+      "example": "Ik hoef morgen niet te werken.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I do not need to work tomorrow.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "leren",
+      "romanization": "LAY-ren",
+      "nativeText": "“To learn.” Useful with new abilities.",
+      "pronunciation": "LAY-ren",
+      "exampleTarget": "Ik wil autorijden leren.",
+      "exampleNative": "“I want to learn to drive.”",
+      "korean": "leren",
+      "english": "“To learn.” Useful with new abilities.",
+      "example": "Ik wil autorijden leren.",
+      "exampleEnglish": "“I want to learn to drive.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "Ik wil autorijden leren.",
+      "romanization": "LAY-ren",
+      "nativeText": "Model use for \"Ik wil autorijden leren.\": “I want to learn to drive.”",
+      "pronunciation": "LAY-ren",
+      "exampleTarget": "Ik wil autorijden leren.",
+      "exampleNative": "“I want to learn to drive.”",
+      "korean": "Ik wil autorijden leren.",
+      "english": "Model use for \"Ik wil autorijden leren.\": “I want to learn to drive.”",
+      "example": "Ik wil autorijden leren.",
+      "exampleEnglish": "“I want to learn to drive.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "leren",
+      "romanization": "LAY-ren",
+      "nativeText": "Usage focus for \"leren\": “To learn.” Useful with new abilities.",
+      "pronunciation": "LAY-ren",
+      "exampleTarget": "Ik wil autorijden leren.",
+      "exampleNative": "Notice what the form is doing here: “I want to learn to drive.”",
+      "korean": "leren",
+      "english": "Usage focus for \"leren\": “To learn.” Useful with new abilities.",
+      "example": "Ik wil autorijden leren.",
+      "exampleEnglish": "Notice what the form is doing here: “I want to learn to drive.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "leren",
+      "romanization": "LAY-ren",
+      "nativeText": "Contrast check for \"leren\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "LAY-ren",
+      "exampleTarget": "Ik wil autorijden leren.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to learn to drive.”",
+      "korean": "leren",
+      "english": "Contrast check for \"leren\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik wil autorijden leren.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to learn to drive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "leren",
+      "romanization": "LAY-ren",
+      "nativeText": "Recall \"leren\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik wil autorijden leren.\".",
+      "pronunciation": "LAY-ren",
+      "exampleTarget": "Ik wil autorijden leren.",
+      "exampleNative": "Self-check against the model before moving on: “I want to learn to drive.”",
+      "korean": "leren",
+      "english": "Recall \"leren\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik wil autorijden leren.\".",
+      "example": "Ik wil autorijden leren.",
+      "exampleEnglish": "Self-check against the model before moving on: “I want to learn to drive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "leren",
+      "romanization": "LAY-ren",
+      "nativeText": "Repair \"leren\" inside \"Ik wil autorijden leren.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To learn.” Useful with new abilities.",
+      "pronunciation": "LAY-ren",
+      "exampleTarget": "Ik wil autorijden leren.",
+      "exampleNative": "Use the model as the repair target: “I want to learn to drive.”",
+      "korean": "leren",
+      "english": "Repair \"leren\" inside \"Ik wil autorijden leren.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To learn.” Useful with new abilities.",
+      "example": "Ik wil autorijden leren.",
+      "exampleEnglish": "Use the model as the repair target: “I want to learn to drive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "leren",
+      "romanization": "LAY-ren",
+      "nativeText": "Transfer \"leren\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik wil autorijden leren.\".",
+      "pronunciation": "LAY-ren",
+      "exampleTarget": "Ik wil autorijden leren.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to learn to drive.”",
+      "korean": "leren",
+      "english": "Transfer \"leren\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik wil autorijden leren.\".",
+      "example": "Ik wil autorijden leren.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to learn to drive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "leren",
+      "romanization": "LAY-ren",
+      "nativeText": "Find one word or phrase that naturally travels with \"leren\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "LAY-ren",
+      "exampleTarget": "Ik wil autorijden leren.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want to learn to drive.”",
+      "korean": "leren",
+      "english": "Find one word or phrase that naturally travels with \"leren\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik wil autorijden leren.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want to learn to drive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "leren",
+      "romanization": "LAY-ren",
+      "nativeText": "Listen for \"leren\" inside \"Ik wil autorijden leren.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "LAY-ren",
+      "exampleTarget": "Ik wil autorijden leren.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to learn to drive.”",
+      "korean": "leren",
+      "english": "Listen for \"leren\" inside \"Ik wil autorijden leren.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik wil autorijden leren.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to learn to drive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "leren",
+      "romanization": "LAY-ren",
+      "nativeText": "Write \"leren\" again without looking, then compare the exact written form against \"Ik wil autorijden leren.\" before moving on.",
+      "pronunciation": "LAY-ren",
+      "exampleTarget": "Ik wil autorijden leren.",
+      "exampleNative": "Use the written model as the final correctness check: “I want to learn to drive.”",
+      "korean": "leren",
+      "english": "Write \"leren\" again without looking, then compare the exact written form against \"Ik wil autorijden leren.\" before moving on.",
+      "example": "Ik wil autorijden leren.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want to learn to drive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "leren",
+      "romanization": "LAY-ren",
+      "nativeText": "Check whether \"leren\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to learn to drive.”",
+      "pronunciation": "LAY-ren",
+      "exampleTarget": "Ik wil autorijden leren.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want to learn to drive.”",
+      "korean": "leren",
+      "english": "Check whether \"leren\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to learn to drive.”",
+      "example": "Ik wil autorijden leren.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want to learn to drive.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "het lukt",
+      "romanization": "hət lukt",
+      "nativeText": "“It works / I manage.” A natural progress phrase.",
+      "pronunciation": "hət lukt",
+      "exampleTarget": "Het lukt al beter.",
+      "exampleNative": "“It is already going better.”",
+      "korean": "het lukt",
+      "english": "“It works / I manage.” A natural progress phrase.",
+      "example": "Het lukt al beter.",
+      "exampleEnglish": "“It is already going better.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "Het lukt al beter.",
+      "romanization": "hət lukt",
+      "nativeText": "Model use for \"Het lukt al beter.\": “It is already going better.”",
+      "pronunciation": "hət lukt",
+      "exampleTarget": "Het lukt al beter.",
+      "exampleNative": "“It is already going better.”",
+      "korean": "Het lukt al beter.",
+      "english": "Model use for \"Het lukt al beter.\": “It is already going better.”",
+      "example": "Het lukt al beter.",
+      "exampleEnglish": "“It is already going better.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "het lukt",
+      "romanization": "hət lukt",
+      "nativeText": "Usage focus for \"het lukt\": “It works / I manage.” A natural progress phrase.",
+      "pronunciation": "hət lukt",
+      "exampleTarget": "Het lukt al beter.",
+      "exampleNative": "Notice what the form is doing here: “It is already going better.”",
+      "korean": "het lukt",
+      "english": "Usage focus for \"het lukt\": “It works / I manage.” A natural progress phrase.",
+      "example": "Het lukt al beter.",
+      "exampleEnglish": "Notice what the form is doing here: “It is already going better.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "het lukt",
+      "romanization": "hət lukt",
+      "nativeText": "Contrast check for \"het lukt\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "hət lukt",
+      "exampleTarget": "Het lukt al beter.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “It is already going better.”",
+      "korean": "het lukt",
+      "english": "Contrast check for \"het lukt\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Het lukt al beter.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “It is already going better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "het lukt",
+      "romanization": "hət lukt",
+      "nativeText": "Recall \"het lukt\" from memory, then explain what would change if a nearby alternative replaced it in \"Het lukt al beter.\".",
+      "pronunciation": "hət lukt",
+      "exampleTarget": "Het lukt al beter.",
+      "exampleNative": "Self-check against the model before moving on: “It is already going better.”",
+      "korean": "het lukt",
+      "english": "Recall \"het lukt\" from memory, then explain what would change if a nearby alternative replaced it in \"Het lukt al beter.\".",
+      "example": "Het lukt al beter.",
+      "exampleEnglish": "Self-check against the model before moving on: “It is already going better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "het lukt",
+      "romanization": "hət lukt",
+      "nativeText": "Repair \"het lukt\" inside \"Het lukt al beter.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “It works / I manage.” A natural progress phrase.",
+      "pronunciation": "hət lukt",
+      "exampleTarget": "Het lukt al beter.",
+      "exampleNative": "Use the model as the repair target: “It is already going better.”",
+      "korean": "het lukt",
+      "english": "Repair \"het lukt\" inside \"Het lukt al beter.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “It works / I manage.” A natural progress phrase.",
+      "example": "Het lukt al beter.",
+      "exampleEnglish": "Use the model as the repair target: “It is already going better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "het lukt",
+      "romanization": "hət lukt",
+      "nativeText": "Transfer \"het lukt\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Het lukt al beter.\".",
+      "pronunciation": "hət lukt",
+      "exampleTarget": "Het lukt al beter.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “It is already going better.”",
+      "korean": "het lukt",
+      "english": "Transfer \"het lukt\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Het lukt al beter.\".",
+      "example": "Het lukt al beter.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “It is already going better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "het lukt",
+      "romanization": "hət lukt",
+      "nativeText": "Find one word or phrase that naturally travels with \"het lukt\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "hət lukt",
+      "exampleTarget": "Het lukt al beter.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “It is already going better.”",
+      "korean": "het lukt",
+      "english": "Find one word or phrase that naturally travels with \"het lukt\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Het lukt al beter.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “It is already going better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "het lukt",
+      "romanization": "hət lukt",
+      "nativeText": "Listen for \"het lukt\" inside \"Het lukt al beter.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "hət lukt",
+      "exampleTarget": "Het lukt al beter.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “It is already going better.”",
+      "korean": "het lukt",
+      "english": "Listen for \"het lukt\" inside \"Het lukt al beter.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Het lukt al beter.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “It is already going better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "het lukt",
+      "romanization": "hət lukt",
+      "nativeText": "Write \"het lukt\" again without looking, then compare the exact written form against \"Het lukt al beter.\" before moving on.",
+      "pronunciation": "hət lukt",
+      "exampleTarget": "Het lukt al beter.",
+      "exampleNative": "Use the written model as the final correctness check: “It is already going better.”",
+      "korean": "het lukt",
+      "english": "Write \"het lukt\" again without looking, then compare the exact written form against \"Het lukt al beter.\" before moving on.",
+      "example": "Het lukt al beter.",
+      "exampleEnglish": "Use the written model as the final correctness check: “It is already going better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit14ability-vocabulary-1",
+        "nl-level1unit14ability-vocabulary-2",
+        "nl-level1unit14ability-grammar-1",
+        "nl-level1unit14ability-grammar-2",
+        "nl-level1unit14ability-reading",
+        "nl-level1unit14ability-listening",
+        "nl-level1unit14ability-writing",
+        "nl-level1unit14ability-task"
+      ],
+      "targetText": "het lukt",
+      "romanization": "hət lukt",
+      "nativeText": "Check whether \"het lukt\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “It is already going better.”",
+      "pronunciation": "hət lukt",
+      "exampleTarget": "Het lukt al beter.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “It is already going better.”",
+      "korean": "het lukt",
+      "english": "Check whether \"het lukt\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “It is already going better.”",
+      "example": "Het lukt al beter.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “It is already going better.”"
+    }
+  ],
+  "targetLang": "nl",
+  "nativeLang": "en",
+  "track": "textbook"
+};

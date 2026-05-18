@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('ta', {
-  slug: 'ta-l1u17',
-  title: 'Level 1 · Unit 17: அஞ்சலகத்தில் — Post Office',
-  category: 'service',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Handle simple postal tasks such as sending letters, parcels, and asking about delivery.',
-  vocabularyGoal: 'Use letter, parcel, stamp, address, and delivery words.',
-  grammarGoal: 'Use object marking, destination marking, and polite service requests.',
-  speakingGoal: 'Say what you want to send, where it goes, and ask when it arrives.',
-  task: 'Send one parcel at a post office counter.',
-  expressionPractice: [
-    practice('service-need', 'Stating service need', 'Use `அனுப்ப வேண்டும்`.'),
-    practice('destination', 'Giving destination', 'Use one dative destination.'),
-    practice('asking-arrival', 'Asking arrival', 'Use `எப்போது சேரும்?`.'),
+module.exports = {
+  "title": "Level 1 · Unit 17: அஞ்சலகத்தில் — Post Office",
+  "category": "service",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ta-level1unit17postoffice-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Handle simple postal tasks such as sending letters, parcels, and asking about delivery."
+      ],
+      "task": "Send one parcel at a post office counter."
+    },
+    {
+      "id": "ta-level1unit17postoffice-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ta-level1unit17postoffice-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 17: அஞ்சலகத்தில் — Post Office with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ta-level1unit17postoffice-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 17: அஞ்சலகத்தில் — Post Office sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ta-level1unit17postoffice-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Handle simple postal tasks such as sending letters, parcels, and asking about delivery."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ta-level1unit17postoffice-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 17: அஞ்சலகத்தில் — Post Office with one nearby Tamil form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ta-level1unit17postoffice-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ta-level1unit17postoffice-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ta-level1unit17postoffice-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ta-level1unit17postoffice-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ta-level1unit17postoffice-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Send one parcel at a post office counter."
+      ],
+      "task": "Send one parcel at a post office counter."
+    }
   ],
-  relatedPools: ['topic-service', 'topic-travel'],
-  items: [
-    item('அஞ்சலகம்', 'añcalakam', '“Post office.” A useful service-location noun.', 'அஞ்சலகம் வங்கியின் அருகில் உள்ளது.', '“The post office is near the bank.”'),
-    item('கடிதம்', 'kaṭitam', '“Letter.” Practical for formal mail.', 'ஒரு கடிதம் அனுப்ப வேண்டும்.', '“I need to send a letter.”'),
-    item('பார்சல்', 'pārcal', '“Parcel.” A common loanword in service contexts.', 'இந்த பார்சல் மதுரைக்கு போகிறது.', '“This parcel is going to Madurai.”'),
-    item('முத்திரை', 'muttirai', '“Stamp.” A small but necessary postal noun.', 'இரண்டு முத்திரைகள் வேண்டும்.', '“I want two stamps.”'),
-    item('முகவரி', 'mukavari', '“Address.” Essential in service interactions.', 'முழு முகவரியை எழுதுங்கள்.', '“Write the full address.”'),
-    item('அனுப்ப வேண்டும்', 'aṉuppa vēṇṭum', '“Need to send.” A natural counter-opening frame.', 'இந்த பார்சலை கோயம்புத்தூருக்கு அனுப்ப வேண்டும்.', '“I need to send this parcel to Coimbatore.”'),
-    item('கட்டணம்', 'kaṭṭaṇam', '“Fee / charge.” Useful for postage costs.', 'அனுப்பும் கட்டணம் எவ்வளவு?', '“How much is the sending fee?”'),
-    item('எப்போது சேரும்?', 'eppōtu cērum', '“When will it arrive?” A concise delivery question.', 'பார்சல் எப்போது சேரும்?', '“When will the parcel arrive?”'),
+  "expressionPractice": [
+    {
+      "id": "service-need",
+      "label": "Stating service need",
+      "goal": "Use `அனுப்ப வேண்டும்`."
+    },
+    {
+      "id": "destination",
+      "label": "Giving destination",
+      "goal": "Use one dative destination."
+    },
+    {
+      "id": "asking-arrival",
+      "label": "Asking arrival",
+      "goal": "Use `எப்போது சேரும்?`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-service",
+    "topic-travel"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit17postoffice-orientation"
+      ],
+      "targetText": "பாட இலக்கு",
+      "romanization": "",
+      "nativeText": "Handle simple postal tasks such as sending letters, parcels, and asking about delivery.",
+      "pronunciation": "",
+      "exampleTarget": "பாட இலக்கு",
+      "exampleNative": "The whole lesson is built toward this outcome: Send one parcel at a post office counter.",
+      "korean": "பாட இலக்கு",
+      "english": "Handle simple postal tasks such as sending letters, parcels, and asking about delivery.",
+      "example": "பாட இலக்கு",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Send one parcel at a post office counter."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1unit17postoffice-pronunciation"
+      ],
+      "targetText": "ஒலி சரிபார்ப்பு",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"அஞ்சலகம் வங்கியின் அருகில் உள்ளது.\".",
+      "pronunciation": "",
+      "exampleTarget": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "exampleNative": "“The post office is near the bank.”",
+      "korean": "ஒலி சரிபார்ப்பு",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"அஞ்சலகம் வங்கியின் அருகில் உள்ளது.\".",
+      "example": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "exampleEnglish": "“The post office is near the bank.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1"
+      ],
+      "targetText": "அஞ்சலகம்",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 17: அஞ்சலகத்தில் — Post Office with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "exampleNative": "“The post office is near the bank.”",
+      "korean": "அஞ்சலகம்",
+      "english": "Use the key language of Level 1 · Unit 17: அஞ்சலகத்தில் — Post Office with the register and setting that the lesson requires.",
+      "example": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "exampleEnglish": "“The post office is near the bank.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-2"
+      ],
+      "targetText": "கடிதம்",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 17: அஞ்சலகத்தில் — Post Office sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "ஒரு கடிதம் அனுப்ப வேண்டும்.",
+      "exampleNative": "“I need to send a letter.”",
+      "korean": "கடிதம்",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 17: அஞ்சலகத்தில் — Post Office sound precise rather than merely understandable.",
+      "example": "ஒரு கடிதம் அனுப்ப வேண்டும்.",
+      "exampleEnglish": "“I need to send a letter.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1unit17postoffice-grammar-1"
+      ],
+      "targetText": "அஞ்சலகம்",
+      "romanization": "",
+      "nativeText": "Handle simple postal tasks such as sending letters, parcels, and asking about delivery.",
+      "pronunciation": "",
+      "exampleTarget": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "exampleNative": "“The post office is near the bank.”",
+      "korean": "அஞ்சலகம்",
+      "english": "Handle simple postal tasks such as sending letters, parcels, and asking about delivery.",
+      "example": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "exampleEnglish": "“The post office is near the bank.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1unit17postoffice-grammar-2"
+      ],
+      "targetText": "கடிதம்",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 17: அஞ்சலகத்தில் — Post Office with one nearby Tamil form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "ஒரு கடிதம் அனுப்ப வேண்டும்.",
+      "exampleNative": "“I need to send a letter.”",
+      "korean": "கடிதம்",
+      "english": "Contrast the main pattern in Level 1 · Unit 17: அஞ்சலகத்தில் — Post Office with one nearby Tamil form so the learner can avoid literal translation.",
+      "example": "ஒரு கடிதம் அனுப்ப வேண்டும்.",
+      "exampleEnglish": "“I need to send a letter.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ta-level1unit17postoffice-reading"
+      ],
+      "targetText": "வாசிப்பு மாதிரி",
+      "romanization": "",
+      "nativeText": "Read \"பார்சல் எப்போது சேரும்?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "பார்சல் எப்போது சேரும்?",
+      "exampleNative": "“When will the parcel arrive?”",
+      "korean": "வாசிப்பு மாதிரி",
+      "english": "Read \"பார்சல் எப்போது சேரும்?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "பார்சல் எப்போது சேரும்?",
+      "exampleEnglish": "“When will the parcel arrive?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit17postoffice-listening"
+      ],
+      "targetText": "உரையாடல் மாதிரி",
+      "romanization": "",
+      "nativeText": "Hear \"பார்சல் எப்போது சேரும்?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "பார்சல் எப்போது சேரும்?",
+      "exampleNative": "“When will the parcel arrive?”",
+      "korean": "உரையாடல் மாதிரி",
+      "english": "Hear \"பார்சல் எப்போது சேரும்?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "பார்சல் எப்போது சேரும்?",
+      "exampleEnglish": "“When will the parcel arrive?”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ta-level1unit17postoffice-writing"
+      ],
+      "targetText": "எழுத்துப் பயிற்சி",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"அஞ்சலகம் வங்கியின் அருகில் உள்ளது.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "எழுத்துப் பயிற்சி",
+      "english": "Write your own version after studying \"அஞ்சலகம் வங்கியின் அருகில் உள்ளது.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1unit17postoffice-culture"
+      ],
+      "targetText": "பயன்பாடும் சூழலும்",
+      "romanization": "",
+      "nativeText": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "ஒரு கடிதம் அனுப்ப வேண்டும்.",
+      "exampleNative": "“I need to send a letter.”",
+      "korean": "பயன்பாடும் சூழலும்",
+      "english": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used.",
+      "example": "ஒரு கடிதம் அனுப்ப வேண்டும்.",
+      "exampleEnglish": "“I need to send a letter.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "இறுதி செயல்",
+      "romanization": "",
+      "nativeText": "Send one parcel at a post office counter.",
+      "pronunciation": "",
+      "exampleTarget": "பார்சல் எப்போது சேரும்?",
+      "exampleNative": "Send one parcel at a post office counter.",
+      "korean": "இறுதி செயல்",
+      "english": "Send one parcel at a post office counter.",
+      "example": "பார்சல் எப்போது சேரும்?",
+      "exampleEnglish": "Send one parcel at a post office counter."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit17postoffice-grammar-2"
+      ],
+      "targetText": "பொதுவான பிழை",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"ஒரு கடிதம் அனுப்ப வேண்டும்.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "ஒரு கடிதம் அனுப்ப வேண்டும்.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “I need to send a letter.”",
+      "korean": "பொதுவான பிழை",
+      "english": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"ஒரு கடிதம் அனுப்ப வேண்டும்.\" against the model.",
+      "example": "ஒரு கடிதம் அனுப்ப வேண்டும்.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “I need to send a letter.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-culture"
+      ],
+      "targetText": "மொழிநடை",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"அஞ்சலகம் வங்கியின் அருகில் உள்ளது.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "exampleNative": "“The post office is near the bank.”",
+      "korean": "மொழிநடை",
+      "english": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"அஞ்சலகம் வங்கியின் அருகில் உள்ளது.\" before reusing it elsewhere.",
+      "example": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "exampleEnglish": "“The post office is near the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "சரளம்",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"பார்சல் எப்போது சேரும்?\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "பார்சல் எப்போது சேரும்?",
+      "exampleNative": "“When will the parcel arrive?”",
+      "korean": "சரளம்",
+      "english": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"பார்சல் எப்போது சேரும்?\" as one thought.",
+      "example": "பார்சல் எப்போது சேரும்?",
+      "exampleEnglish": "“When will the parcel arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "பயன்பாடு",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"அஞ்சலகம் வங்கியின் அருகில் உள்ளது.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "பயன்பாடு",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"அஞ்சலகம் வங்கியின் அருகில் உள்ளது.\" and move it into your own life.",
+      "example": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-grammar-1"
+      ],
+      "targetText": "நினைவூட்டல்",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"அஞ்சலகம்\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "அஞ்சலகம்",
+      "exampleNative": "“Post office.” A useful service-location noun.",
+      "korean": "நினைவூட்டல்",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"அஞ்சலகம்\" before looking back.",
+      "example": "அஞ்சலகம்",
+      "exampleEnglish": "“Post office.” A useful service-location noun."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-writing"
+      ],
+      "targetText": "விரிவாக்கம்",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"பார்சல் எப்போது சேரும்?\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "பார்சல் எப்போது சேரும்?",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "விரிவாக்கம்",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"பார்சல் எப்போது சேரும்?\" rather than restarting from a blank sentence.",
+      "example": "பார்சல் எப்போது சேரும்?",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading"
+      ],
+      "targetText": "ஒப்பீடு",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 17: அஞ்சலகத்தில் — Post Office with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"ஒரு கடிதம் அனுப்ப வேண்டும்.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "ஒரு கடிதம் அனுப்ப வேண்டும்.",
+      "exampleNative": "“I need to send a letter.”",
+      "korean": "ஒப்பீடு",
+      "english": "Compare the central form in Level 1 · Unit 17: அஞ்சலகத்தில் — Post Office with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"ஒரு கடிதம் அனுப்ப வேண்டும்.\" as the comparison line.",
+      "example": "ஒரு கடிதம் அனுப்ப வேண்டும்.",
+      "exampleEnglish": "“I need to send a letter.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1unit17postoffice-pronunciation"
+      ],
+      "targetText": "உச்சரிப்பு திருத்தம்",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"அஞ்சலகம் வங்கியின் அருகில் உள்ளது.\".",
+      "pronunciation": "",
+      "exampleTarget": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "exampleNative": "“The post office is near the bank.”",
+      "korean": "உச்சரிப்பு திருத்தம்",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"அஞ்சலகம் வங்கியின் அருகில் உள்ளது.\".",
+      "example": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "exampleEnglish": "“The post office is near the bank.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "உரையாடல் மாற்றம்",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"பார்சல் எப்போது சேரும்?\".",
+      "pronunciation": "",
+      "exampleTarget": "பார்சல் எப்போது சேரும்?",
+      "exampleNative": "“When will the parcel arrive?”",
+      "korean": "உரையாடல் மாற்றம்",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"பார்சல் எப்போது சேரும்?\".",
+      "example": "பார்சல் எப்போது சேரும்?",
+      "exampleEnglish": "“When will the parcel arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-writing"
+      ],
+      "targetText": "வாக்கிய கட்டமைப்பு",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"அஞ்சலகம் வங்கியின் அருகில் உள்ளது.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "exampleNative": "“The post office is near the bank.”",
+      "korean": "வாக்கிய கட்டமைப்பு",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"அஞ்சலகம் வங்கியின் அருகில் உள்ளது.\" one layer at a time.",
+      "example": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "exampleEnglish": "“The post office is near the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-2"
+      ],
+      "targetText": "விரைவு சோதனை",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"ஒரு கடிதம் அனுப்ப வேண்டும்.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "ஒரு கடிதம் அனுப்ப வேண்டும்.",
+      "exampleNative": "“I need to send a letter.”",
+      "korean": "விரைவு சோதனை",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"ஒரு கடிதம் அனுப்ப வேண்டும்.\" as the deciding example.",
+      "example": "ஒரு கடிதம் அனுப்ப வேண்டும்.",
+      "exampleEnglish": "“I need to send a letter.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit17postoffice-culture",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "மீள்பார்வு",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"பார்சல் எப்போது சேரும்?\".",
+      "pronunciation": "",
+      "exampleTarget": "பார்சல் எப்போது சேரும்?",
+      "exampleNative": "“When will the parcel arrive?”",
+      "korean": "மீள்பார்வு",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"பார்சல் எப்போது சேரும்?\".",
+      "example": "பார்சல் எப்போது சேரும்?",
+      "exampleEnglish": "“When will the parcel arrive?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "அஞ்சலகம்",
+      "romanization": "añcalakam",
+      "nativeText": "“Post office.” A useful service-location noun.",
+      "pronunciation": "añcalakam",
+      "exampleTarget": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "exampleNative": "“The post office is near the bank.”",
+      "korean": "அஞ்சலகம்",
+      "english": "“Post office.” A useful service-location noun.",
+      "example": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "exampleEnglish": "“The post office is near the bank.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "romanization": "añcalakam",
+      "nativeText": "Model use for \"அஞ்சலகம் வங்கியின் அருகில் உள்ளது.\": “The post office is near the bank.”",
+      "pronunciation": "añcalakam",
+      "exampleTarget": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "exampleNative": "“The post office is near the bank.”",
+      "korean": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "english": "Model use for \"அஞ்சலகம் வங்கியின் அருகில் உள்ளது.\": “The post office is near the bank.”",
+      "example": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "exampleEnglish": "“The post office is near the bank.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "அஞ்சலகம்",
+      "romanization": "añcalakam",
+      "nativeText": "Usage focus for \"அஞ்சலகம்\": Use the key language of Level 1 · Unit 17: அஞ்சலகத்தில் — Post Office with the register and setting that the lesson requires.",
+      "pronunciation": "añcalakam",
+      "exampleTarget": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "exampleNative": "Notice what the form is doing here: “The post office is near the bank.”",
+      "korean": "அஞ்சலகம்",
+      "english": "Usage focus for \"அஞ்சலகம்\": Use the key language of Level 1 · Unit 17: அஞ்சலகத்தில் — Post Office with the register and setting that the lesson requires.",
+      "example": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "exampleEnglish": "Notice what the form is doing here: “The post office is near the bank.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "அஞ்சலகம்",
+      "romanization": "añcalakam",
+      "nativeText": "Contrast check for \"அஞ்சலகம்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "añcalakam",
+      "exampleTarget": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The post office is near the bank.”",
+      "korean": "அஞ்சலகம்",
+      "english": "Contrast check for \"அஞ்சலகம்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The post office is near the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "அஞ்சலகம்",
+      "romanization": "añcalakam",
+      "nativeText": "Recall \"அஞ்சலகம்\" from memory, then explain what would change if a nearby alternative replaced it in \"அஞ்சலகம் வங்கியின் அருகில் உள்ளது.\".",
+      "pronunciation": "añcalakam",
+      "exampleTarget": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "exampleNative": "Self-check against the model before moving on: “The post office is near the bank.”",
+      "korean": "அஞ்சலகம்",
+      "english": "Recall \"அஞ்சலகம்\" from memory, then explain what would change if a nearby alternative replaced it in \"அஞ்சலகம் வங்கியின் அருகில் உள்ளது.\".",
+      "example": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "exampleEnglish": "Self-check against the model before moving on: “The post office is near the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "அஞ்சலகம்",
+      "romanization": "añcalakam",
+      "nativeText": "Repair \"அஞ்சலகம்\" inside \"அஞ்சலகம் வங்கியின் அருகில் உள்ளது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 17: அஞ்சலகத்தில் — Post Office with the register and setting that the lesson requires.",
+      "pronunciation": "añcalakam",
+      "exampleTarget": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "exampleNative": "Use the model as the repair target: “The post office is near the bank.”",
+      "korean": "அஞ்சலகம்",
+      "english": "Repair \"அஞ்சலகம்\" inside \"அஞ்சலகம் வங்கியின் அருகில் உள்ளது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 17: அஞ்சலகத்தில் — Post Office with the register and setting that the lesson requires.",
+      "example": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "exampleEnglish": "Use the model as the repair target: “The post office is near the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "அஞ்சலகம்",
+      "romanization": "añcalakam",
+      "nativeText": "Transfer \"அஞ்சலகம்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"அஞ்சலகம் வங்கியின் அருகில் உள்ளது.\".",
+      "pronunciation": "añcalakam",
+      "exampleTarget": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The post office is near the bank.”",
+      "korean": "அஞ்சலகம்",
+      "english": "Transfer \"அஞ்சலகம்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"அஞ்சலகம் வங்கியின் அருகில் உள்ளது.\".",
+      "example": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The post office is near the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "அஞ்சலகம்",
+      "romanization": "añcalakam",
+      "nativeText": "Find one word or phrase that naturally travels with \"அஞ்சலகம்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "añcalakam",
+      "exampleTarget": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The post office is near the bank.”",
+      "korean": "அஞ்சலகம்",
+      "english": "Find one word or phrase that naturally travels with \"அஞ்சலகம்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The post office is near the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "அஞ்சலகம்",
+      "romanization": "añcalakam",
+      "nativeText": "Listen for \"அஞ்சலகம்\" inside \"அஞ்சலகம் வங்கியின் அருகில் உள்ளது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "añcalakam",
+      "exampleTarget": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The post office is near the bank.”",
+      "korean": "அஞ்சலகம்",
+      "english": "Listen for \"அஞ்சலகம்\" inside \"அஞ்சலகம் வங்கியின் அருகில் உள்ளது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The post office is near the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "அஞ்சலகம்",
+      "romanization": "añcalakam",
+      "nativeText": "Write \"அஞ்சலகம்\" again without looking, then compare the exact written form against \"அஞ்சலகம் வங்கியின் அருகில் உள்ளது.\" before moving on.",
+      "pronunciation": "añcalakam",
+      "exampleTarget": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "exampleNative": "Use the written model as the final correctness check: “The post office is near the bank.”",
+      "korean": "அஞ்சலகம்",
+      "english": "Write \"அஞ்சலகம்\" again without looking, then compare the exact written form against \"அஞ்சலகம் வங்கியின் அருகில் உள்ளது.\" before moving on.",
+      "example": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "exampleEnglish": "Use the written model as the final correctness check: “The post office is near the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "அஞ்சலகம்",
+      "romanization": "añcalakam",
+      "nativeText": "Check whether \"அஞ்சலகம்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The post office is near the bank.”",
+      "pronunciation": "añcalakam",
+      "exampleTarget": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The post office is near the bank.”",
+      "korean": "அஞ்சலகம்",
+      "english": "Check whether \"அஞ்சலகம்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The post office is near the bank.”",
+      "example": "அஞ்சலகம் வங்கியின் அருகில் உள்ளது.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The post office is near the bank.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "கடிதம்",
+      "romanization": "kaṭitam",
+      "nativeText": "“Letter.” Practical for formal mail.",
+      "pronunciation": "kaṭitam",
+      "exampleTarget": "ஒரு கடிதம் அனுப்ப வேண்டும்.",
+      "exampleNative": "“I need to send a letter.”",
+      "korean": "கடிதம்",
+      "english": "“Letter.” Practical for formal mail.",
+      "example": "ஒரு கடிதம் அனுப்ப வேண்டும்.",
+      "exampleEnglish": "“I need to send a letter.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "ஒரு கடிதம் அனுப்ப வேண்டும்.",
+      "romanization": "kaṭitam",
+      "nativeText": "Model use for \"ஒரு கடிதம் அனுப்ப வேண்டும்.\": “I need to send a letter.”",
+      "pronunciation": "kaṭitam",
+      "exampleTarget": "ஒரு கடிதம் அனுப்ப வேண்டும்.",
+      "exampleNative": "“I need to send a letter.”",
+      "korean": "ஒரு கடிதம் அனுப்ப வேண்டும்.",
+      "english": "Model use for \"ஒரு கடிதம் அனுப்ப வேண்டும்.\": “I need to send a letter.”",
+      "example": "ஒரு கடிதம் அனுப்ப வேண்டும்.",
+      "exampleEnglish": "“I need to send a letter.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "கடிதம்",
+      "romanization": "kaṭitam",
+      "nativeText": "Usage focus for \"கடிதம்\": Distinguish the nearby wording choices that make Level 1 · Unit 17: அஞ்சலகத்தில் — Post Office sound precise rather than merely understandable.",
+      "pronunciation": "kaṭitam",
+      "exampleTarget": "ஒரு கடிதம் அனுப்ப வேண்டும்.",
+      "exampleNative": "Notice what the form is doing here: “I need to send a letter.”",
+      "korean": "கடிதம்",
+      "english": "Usage focus for \"கடிதம்\": Distinguish the nearby wording choices that make Level 1 · Unit 17: அஞ்சலகத்தில் — Post Office sound precise rather than merely understandable.",
+      "example": "ஒரு கடிதம் அனுப்ப வேண்டும்.",
+      "exampleEnglish": "Notice what the form is doing here: “I need to send a letter.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "கடிதம்",
+      "romanization": "kaṭitam",
+      "nativeText": "Contrast check for \"கடிதம்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kaṭitam",
+      "exampleTarget": "ஒரு கடிதம் அனுப்ப வேண்டும்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I need to send a letter.”",
+      "korean": "கடிதம்",
+      "english": "Contrast check for \"கடிதம்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "ஒரு கடிதம் அனுப்ப வேண்டும்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I need to send a letter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "கடிதம்",
+      "romanization": "kaṭitam",
+      "nativeText": "Recall \"கடிதம்\" from memory, then explain what would change if a nearby alternative replaced it in \"ஒரு கடிதம் அனுப்ப வேண்டும்.\".",
+      "pronunciation": "kaṭitam",
+      "exampleTarget": "ஒரு கடிதம் அனுப்ப வேண்டும்.",
+      "exampleNative": "Self-check against the model before moving on: “I need to send a letter.”",
+      "korean": "கடிதம்",
+      "english": "Recall \"கடிதம்\" from memory, then explain what would change if a nearby alternative replaced it in \"ஒரு கடிதம் அனுப்ப வேண்டும்.\".",
+      "example": "ஒரு கடிதம் அனுப்ப வேண்டும்.",
+      "exampleEnglish": "Self-check against the model before moving on: “I need to send a letter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "கடிதம்",
+      "romanization": "kaṭitam",
+      "nativeText": "Repair \"கடிதம்\" inside \"ஒரு கடிதம் அனுப்ப வேண்டும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 17: அஞ்சலகத்தில் — Post Office sound precise rather than merely understandable.",
+      "pronunciation": "kaṭitam",
+      "exampleTarget": "ஒரு கடிதம் அனுப்ப வேண்டும்.",
+      "exampleNative": "Use the model as the repair target: “I need to send a letter.”",
+      "korean": "கடிதம்",
+      "english": "Repair \"கடிதம்\" inside \"ஒரு கடிதம் அனுப்ப வேண்டும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 17: அஞ்சலகத்தில் — Post Office sound precise rather than merely understandable.",
+      "example": "ஒரு கடிதம் அனுப்ப வேண்டும்.",
+      "exampleEnglish": "Use the model as the repair target: “I need to send a letter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "கடிதம்",
+      "romanization": "kaṭitam",
+      "nativeText": "Transfer \"கடிதம்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ஒரு கடிதம் அனுப்ப வேண்டும்.\".",
+      "pronunciation": "kaṭitam",
+      "exampleTarget": "ஒரு கடிதம் அனுப்ப வேண்டும்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I need to send a letter.”",
+      "korean": "கடிதம்",
+      "english": "Transfer \"கடிதம்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ஒரு கடிதம் அனுப்ப வேண்டும்.\".",
+      "example": "ஒரு கடிதம் அனுப்ப வேண்டும்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I need to send a letter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "கடிதம்",
+      "romanization": "kaṭitam",
+      "nativeText": "Find one word or phrase that naturally travels with \"கடிதம்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kaṭitam",
+      "exampleTarget": "ஒரு கடிதம் அனுப்ப வேண்டும்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I need to send a letter.”",
+      "korean": "கடிதம்",
+      "english": "Find one word or phrase that naturally travels with \"கடிதம்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "ஒரு கடிதம் அனுப்ப வேண்டும்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I need to send a letter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "கடிதம்",
+      "romanization": "kaṭitam",
+      "nativeText": "Listen for \"கடிதம்\" inside \"ஒரு கடிதம் அனுப்ப வேண்டும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kaṭitam",
+      "exampleTarget": "ஒரு கடிதம் அனுப்ப வேண்டும்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I need to send a letter.”",
+      "korean": "கடிதம்",
+      "english": "Listen for \"கடிதம்\" inside \"ஒரு கடிதம் அனுப்ப வேண்டும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "ஒரு கடிதம் அனுப்ப வேண்டும்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I need to send a letter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "கடிதம்",
+      "romanization": "kaṭitam",
+      "nativeText": "Write \"கடிதம்\" again without looking, then compare the exact written form against \"ஒரு கடிதம் அனுப்ப வேண்டும்.\" before moving on.",
+      "pronunciation": "kaṭitam",
+      "exampleTarget": "ஒரு கடிதம் அனுப்ப வேண்டும்.",
+      "exampleNative": "Use the written model as the final correctness check: “I need to send a letter.”",
+      "korean": "கடிதம்",
+      "english": "Write \"கடிதம்\" again without looking, then compare the exact written form against \"ஒரு கடிதம் அனுப்ப வேண்டும்.\" before moving on.",
+      "example": "ஒரு கடிதம் அனுப்ப வேண்டும்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I need to send a letter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "கடிதம்",
+      "romanization": "kaṭitam",
+      "nativeText": "Check whether \"கடிதம்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I need to send a letter.”",
+      "pronunciation": "kaṭitam",
+      "exampleTarget": "ஒரு கடிதம் அனுப்ப வேண்டும்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I need to send a letter.”",
+      "korean": "கடிதம்",
+      "english": "Check whether \"கடிதம்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I need to send a letter.”",
+      "example": "ஒரு கடிதம் அனுப்ப வேண்டும்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I need to send a letter.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "பார்சல்",
+      "romanization": "pārcal",
+      "nativeText": "“Parcel.” A common loanword in service contexts.",
+      "pronunciation": "pārcal",
+      "exampleTarget": "இந்த பார்சல் மதுரைக்கு போகிறது.",
+      "exampleNative": "“This parcel is going to Madurai.”",
+      "korean": "பார்சல்",
+      "english": "“Parcel.” A common loanword in service contexts.",
+      "example": "இந்த பார்சல் மதுரைக்கு போகிறது.",
+      "exampleEnglish": "“This parcel is going to Madurai.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "இந்த பார்சல் மதுரைக்கு போகிறது.",
+      "romanization": "pārcal",
+      "nativeText": "Model use for \"இந்த பார்சல் மதுரைக்கு போகிறது.\": “This parcel is going to Madurai.”",
+      "pronunciation": "pārcal",
+      "exampleTarget": "இந்த பார்சல் மதுரைக்கு போகிறது.",
+      "exampleNative": "“This parcel is going to Madurai.”",
+      "korean": "இந்த பார்சல் மதுரைக்கு போகிறது.",
+      "english": "Model use for \"இந்த பார்சல் மதுரைக்கு போகிறது.\": “This parcel is going to Madurai.”",
+      "example": "இந்த பார்சல் மதுரைக்கு போகிறது.",
+      "exampleEnglish": "“This parcel is going to Madurai.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "பார்சல்",
+      "romanization": "pārcal",
+      "nativeText": "Usage focus for \"பார்சல்\": “Parcel.” A common loanword in service contexts.",
+      "pronunciation": "pārcal",
+      "exampleTarget": "இந்த பார்சல் மதுரைக்கு போகிறது.",
+      "exampleNative": "Notice what the form is doing here: “This parcel is going to Madurai.”",
+      "korean": "பார்சல்",
+      "english": "Usage focus for \"பார்சல்\": “Parcel.” A common loanword in service contexts.",
+      "example": "இந்த பார்சல் மதுரைக்கு போகிறது.",
+      "exampleEnglish": "Notice what the form is doing here: “This parcel is going to Madurai.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "பார்சல்",
+      "romanization": "pārcal",
+      "nativeText": "Contrast check for \"பார்சல்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "pārcal",
+      "exampleTarget": "இந்த பார்சல் மதுரைக்கு போகிறது.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “This parcel is going to Madurai.”",
+      "korean": "பார்சல்",
+      "english": "Contrast check for \"பார்சல்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "இந்த பார்சல் மதுரைக்கு போகிறது.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “This parcel is going to Madurai.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "பார்சல்",
+      "romanization": "pārcal",
+      "nativeText": "Recall \"பார்சல்\" from memory, then explain what would change if a nearby alternative replaced it in \"இந்த பார்சல் மதுரைக்கு போகிறது.\".",
+      "pronunciation": "pārcal",
+      "exampleTarget": "இந்த பார்சல் மதுரைக்கு போகிறது.",
+      "exampleNative": "Self-check against the model before moving on: “This parcel is going to Madurai.”",
+      "korean": "பார்சல்",
+      "english": "Recall \"பார்சல்\" from memory, then explain what would change if a nearby alternative replaced it in \"இந்த பார்சல் மதுரைக்கு போகிறது.\".",
+      "example": "இந்த பார்சல் மதுரைக்கு போகிறது.",
+      "exampleEnglish": "Self-check against the model before moving on: “This parcel is going to Madurai.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "பார்சல்",
+      "romanization": "pārcal",
+      "nativeText": "Repair \"பார்சல்\" inside \"இந்த பார்சல் மதுரைக்கு போகிறது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Parcel.” A common loanword in service contexts.",
+      "pronunciation": "pārcal",
+      "exampleTarget": "இந்த பார்சல் மதுரைக்கு போகிறது.",
+      "exampleNative": "Use the model as the repair target: “This parcel is going to Madurai.”",
+      "korean": "பார்சல்",
+      "english": "Repair \"பார்சல்\" inside \"இந்த பார்சல் மதுரைக்கு போகிறது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Parcel.” A common loanword in service contexts.",
+      "example": "இந்த பார்சல் மதுரைக்கு போகிறது.",
+      "exampleEnglish": "Use the model as the repair target: “This parcel is going to Madurai.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "பார்சல்",
+      "romanization": "pārcal",
+      "nativeText": "Transfer \"பார்சல்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இந்த பார்சல் மதுரைக்கு போகிறது.\".",
+      "pronunciation": "pārcal",
+      "exampleTarget": "இந்த பார்சல் மதுரைக்கு போகிறது.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “This parcel is going to Madurai.”",
+      "korean": "பார்சல்",
+      "english": "Transfer \"பார்சல்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இந்த பார்சல் மதுரைக்கு போகிறது.\".",
+      "example": "இந்த பார்சல் மதுரைக்கு போகிறது.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “This parcel is going to Madurai.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "பார்சல்",
+      "romanization": "pārcal",
+      "nativeText": "Find one word or phrase that naturally travels with \"பார்சல்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "pārcal",
+      "exampleTarget": "இந்த பார்சல் மதுரைக்கு போகிறது.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “This parcel is going to Madurai.”",
+      "korean": "பார்சல்",
+      "english": "Find one word or phrase that naturally travels with \"பார்சல்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "இந்த பார்சல் மதுரைக்கு போகிறது.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “This parcel is going to Madurai.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "பார்சல்",
+      "romanization": "pārcal",
+      "nativeText": "Listen for \"பார்சல்\" inside \"இந்த பார்சல் மதுரைக்கு போகிறது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "pārcal",
+      "exampleTarget": "இந்த பார்சல் மதுரைக்கு போகிறது.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “This parcel is going to Madurai.”",
+      "korean": "பார்சல்",
+      "english": "Listen for \"பார்சல்\" inside \"இந்த பார்சல் மதுரைக்கு போகிறது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "இந்த பார்சல் மதுரைக்கு போகிறது.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “This parcel is going to Madurai.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "பார்சல்",
+      "romanization": "pārcal",
+      "nativeText": "Write \"பார்சல்\" again without looking, then compare the exact written form against \"இந்த பார்சல் மதுரைக்கு போகிறது.\" before moving on.",
+      "pronunciation": "pārcal",
+      "exampleTarget": "இந்த பார்சல் மதுரைக்கு போகிறது.",
+      "exampleNative": "Use the written model as the final correctness check: “This parcel is going to Madurai.”",
+      "korean": "பார்சல்",
+      "english": "Write \"பார்சல்\" again without looking, then compare the exact written form against \"இந்த பார்சல் மதுரைக்கு போகிறது.\" before moving on.",
+      "example": "இந்த பார்சல் மதுரைக்கு போகிறது.",
+      "exampleEnglish": "Use the written model as the final correctness check: “This parcel is going to Madurai.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "பார்சல்",
+      "romanization": "pārcal",
+      "nativeText": "Check whether \"பார்சல்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “This parcel is going to Madurai.”",
+      "pronunciation": "pārcal",
+      "exampleTarget": "இந்த பார்சல் மதுரைக்கு போகிறது.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “This parcel is going to Madurai.”",
+      "korean": "பார்சல்",
+      "english": "Check whether \"பார்சல்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “This parcel is going to Madurai.”",
+      "example": "இந்த பார்சல் மதுரைக்கு போகிறது.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “This parcel is going to Madurai.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "முத்திரை",
+      "romanization": "muttirai",
+      "nativeText": "“Stamp.” A small but necessary postal noun.",
+      "pronunciation": "muttirai",
+      "exampleTarget": "இரண்டு முத்திரைகள் வேண்டும்.",
+      "exampleNative": "“I want two stamps.”",
+      "korean": "முத்திரை",
+      "english": "“Stamp.” A small but necessary postal noun.",
+      "example": "இரண்டு முத்திரைகள் வேண்டும்.",
+      "exampleEnglish": "“I want two stamps.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "இரண்டு முத்திரைகள் வேண்டும்.",
+      "romanization": "muttirai",
+      "nativeText": "Model use for \"இரண்டு முத்திரைகள் வேண்டும்.\": “I want two stamps.”",
+      "pronunciation": "muttirai",
+      "exampleTarget": "இரண்டு முத்திரைகள் வேண்டும்.",
+      "exampleNative": "“I want two stamps.”",
+      "korean": "இரண்டு முத்திரைகள் வேண்டும்.",
+      "english": "Model use for \"இரண்டு முத்திரைகள் வேண்டும்.\": “I want two stamps.”",
+      "example": "இரண்டு முத்திரைகள் வேண்டும்.",
+      "exampleEnglish": "“I want two stamps.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "முத்திரை",
+      "romanization": "muttirai",
+      "nativeText": "Usage focus for \"முத்திரை\": “Stamp.” A small but necessary postal noun.",
+      "pronunciation": "muttirai",
+      "exampleTarget": "இரண்டு முத்திரைகள் வேண்டும்.",
+      "exampleNative": "Notice what the form is doing here: “I want two stamps.”",
+      "korean": "முத்திரை",
+      "english": "Usage focus for \"முத்திரை\": “Stamp.” A small but necessary postal noun.",
+      "example": "இரண்டு முத்திரைகள் வேண்டும்.",
+      "exampleEnglish": "Notice what the form is doing here: “I want two stamps.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "முத்திரை",
+      "romanization": "muttirai",
+      "nativeText": "Contrast check for \"முத்திரை\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "muttirai",
+      "exampleTarget": "இரண்டு முத்திரைகள் வேண்டும்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want two stamps.”",
+      "korean": "முத்திரை",
+      "english": "Contrast check for \"முத்திரை\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "இரண்டு முத்திரைகள் வேண்டும்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want two stamps.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "முத்திரை",
+      "romanization": "muttirai",
+      "nativeText": "Recall \"முத்திரை\" from memory, then explain what would change if a nearby alternative replaced it in \"இரண்டு முத்திரைகள் வேண்டும்.\".",
+      "pronunciation": "muttirai",
+      "exampleTarget": "இரண்டு முத்திரைகள் வேண்டும்.",
+      "exampleNative": "Self-check against the model before moving on: “I want two stamps.”",
+      "korean": "முத்திரை",
+      "english": "Recall \"முத்திரை\" from memory, then explain what would change if a nearby alternative replaced it in \"இரண்டு முத்திரைகள் வேண்டும்.\".",
+      "example": "இரண்டு முத்திரைகள் வேண்டும்.",
+      "exampleEnglish": "Self-check against the model before moving on: “I want two stamps.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "முத்திரை",
+      "romanization": "muttirai",
+      "nativeText": "Repair \"முத்திரை\" inside \"இரண்டு முத்திரைகள் வேண்டும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Stamp.” A small but necessary postal noun.",
+      "pronunciation": "muttirai",
+      "exampleTarget": "இரண்டு முத்திரைகள் வேண்டும்.",
+      "exampleNative": "Use the model as the repair target: “I want two stamps.”",
+      "korean": "முத்திரை",
+      "english": "Repair \"முத்திரை\" inside \"இரண்டு முத்திரைகள் வேண்டும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Stamp.” A small but necessary postal noun.",
+      "example": "இரண்டு முத்திரைகள் வேண்டும்.",
+      "exampleEnglish": "Use the model as the repair target: “I want two stamps.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "முத்திரை",
+      "romanization": "muttirai",
+      "nativeText": "Transfer \"முத்திரை\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இரண்டு முத்திரைகள் வேண்டும்.\".",
+      "pronunciation": "muttirai",
+      "exampleTarget": "இரண்டு முத்திரைகள் வேண்டும்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want two stamps.”",
+      "korean": "முத்திரை",
+      "english": "Transfer \"முத்திரை\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இரண்டு முத்திரைகள் வேண்டும்.\".",
+      "example": "இரண்டு முத்திரைகள் வேண்டும்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want two stamps.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "முத்திரை",
+      "romanization": "muttirai",
+      "nativeText": "Find one word or phrase that naturally travels with \"முத்திரை\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "muttirai",
+      "exampleTarget": "இரண்டு முத்திரைகள் வேண்டும்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want two stamps.”",
+      "korean": "முத்திரை",
+      "english": "Find one word or phrase that naturally travels with \"முத்திரை\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "இரண்டு முத்திரைகள் வேண்டும்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want two stamps.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "முத்திரை",
+      "romanization": "muttirai",
+      "nativeText": "Listen for \"முத்திரை\" inside \"இரண்டு முத்திரைகள் வேண்டும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "muttirai",
+      "exampleTarget": "இரண்டு முத்திரைகள் வேண்டும்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want two stamps.”",
+      "korean": "முத்திரை",
+      "english": "Listen for \"முத்திரை\" inside \"இரண்டு முத்திரைகள் வேண்டும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "இரண்டு முத்திரைகள் வேண்டும்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want two stamps.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "முத்திரை",
+      "romanization": "muttirai",
+      "nativeText": "Write \"முத்திரை\" again without looking, then compare the exact written form against \"இரண்டு முத்திரைகள் வேண்டும்.\" before moving on.",
+      "pronunciation": "muttirai",
+      "exampleTarget": "இரண்டு முத்திரைகள் வேண்டும்.",
+      "exampleNative": "Use the written model as the final correctness check: “I want two stamps.”",
+      "korean": "முத்திரை",
+      "english": "Write \"முத்திரை\" again without looking, then compare the exact written form against \"இரண்டு முத்திரைகள் வேண்டும்.\" before moving on.",
+      "example": "இரண்டு முத்திரைகள் வேண்டும்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want two stamps.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "முத்திரை",
+      "romanization": "muttirai",
+      "nativeText": "Check whether \"முத்திரை\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want two stamps.”",
+      "pronunciation": "muttirai",
+      "exampleTarget": "இரண்டு முத்திரைகள் வேண்டும்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want two stamps.”",
+      "korean": "முத்திரை",
+      "english": "Check whether \"முத்திரை\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want two stamps.”",
+      "example": "இரண்டு முத்திரைகள் வேண்டும்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want two stamps.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "முகவரி",
+      "romanization": "mukavari",
+      "nativeText": "“Address.” Essential in service interactions.",
+      "pronunciation": "mukavari",
+      "exampleTarget": "முழு முகவரியை எழுதுங்கள்.",
+      "exampleNative": "“Write the full address.”",
+      "korean": "முகவரி",
+      "english": "“Address.” Essential in service interactions.",
+      "example": "முழு முகவரியை எழுதுங்கள்.",
+      "exampleEnglish": "“Write the full address.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "முழு முகவரியை எழுதுங்கள்.",
+      "romanization": "mukavari",
+      "nativeText": "Model use for \"முழு முகவரியை எழுதுங்கள்.\": “Write the full address.”",
+      "pronunciation": "mukavari",
+      "exampleTarget": "முழு முகவரியை எழுதுங்கள்.",
+      "exampleNative": "“Write the full address.”",
+      "korean": "முழு முகவரியை எழுதுங்கள்.",
+      "english": "Model use for \"முழு முகவரியை எழுதுங்கள்.\": “Write the full address.”",
+      "example": "முழு முகவரியை எழுதுங்கள்.",
+      "exampleEnglish": "“Write the full address.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "முகவரி",
+      "romanization": "mukavari",
+      "nativeText": "Usage focus for \"முகவரி\": “Address.” Essential in service interactions.",
+      "pronunciation": "mukavari",
+      "exampleTarget": "முழு முகவரியை எழுதுங்கள்.",
+      "exampleNative": "Notice what the form is doing here: “Write the full address.”",
+      "korean": "முகவரி",
+      "english": "Usage focus for \"முகவரி\": “Address.” Essential in service interactions.",
+      "example": "முழு முகவரியை எழுதுங்கள்.",
+      "exampleEnglish": "Notice what the form is doing here: “Write the full address.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "முகவரி",
+      "romanization": "mukavari",
+      "nativeText": "Contrast check for \"முகவரி\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "mukavari",
+      "exampleTarget": "முழு முகவரியை எழுதுங்கள்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Write the full address.”",
+      "korean": "முகவரி",
+      "english": "Contrast check for \"முகவரி\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "முழு முகவரியை எழுதுங்கள்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Write the full address.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "முகவரி",
+      "romanization": "mukavari",
+      "nativeText": "Recall \"முகவரி\" from memory, then explain what would change if a nearby alternative replaced it in \"முழு முகவரியை எழுதுங்கள்.\".",
+      "pronunciation": "mukavari",
+      "exampleTarget": "முழு முகவரியை எழுதுங்கள்.",
+      "exampleNative": "Self-check against the model before moving on: “Write the full address.”",
+      "korean": "முகவரி",
+      "english": "Recall \"முகவரி\" from memory, then explain what would change if a nearby alternative replaced it in \"முழு முகவரியை எழுதுங்கள்.\".",
+      "example": "முழு முகவரியை எழுதுங்கள்.",
+      "exampleEnglish": "Self-check against the model before moving on: “Write the full address.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "முகவரி",
+      "romanization": "mukavari",
+      "nativeText": "Repair \"முகவரி\" inside \"முழு முகவரியை எழுதுங்கள்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Address.” Essential in service interactions.",
+      "pronunciation": "mukavari",
+      "exampleTarget": "முழு முகவரியை எழுதுங்கள்.",
+      "exampleNative": "Use the model as the repair target: “Write the full address.”",
+      "korean": "முகவரி",
+      "english": "Repair \"முகவரி\" inside \"முழு முகவரியை எழுதுங்கள்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Address.” Essential in service interactions.",
+      "example": "முழு முகவரியை எழுதுங்கள்.",
+      "exampleEnglish": "Use the model as the repair target: “Write the full address.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "முகவரி",
+      "romanization": "mukavari",
+      "nativeText": "Transfer \"முகவரி\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"முழு முகவரியை எழுதுங்கள்.\".",
+      "pronunciation": "mukavari",
+      "exampleTarget": "முழு முகவரியை எழுதுங்கள்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Write the full address.”",
+      "korean": "முகவரி",
+      "english": "Transfer \"முகவரி\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"முழு முகவரியை எழுதுங்கள்.\".",
+      "example": "முழு முகவரியை எழுதுங்கள்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Write the full address.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "முகவரி",
+      "romanization": "mukavari",
+      "nativeText": "Find one word or phrase that naturally travels with \"முகவரி\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "mukavari",
+      "exampleTarget": "முழு முகவரியை எழுதுங்கள்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Write the full address.”",
+      "korean": "முகவரி",
+      "english": "Find one word or phrase that naturally travels with \"முகவரி\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "முழு முகவரியை எழுதுங்கள்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Write the full address.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "முகவரி",
+      "romanization": "mukavari",
+      "nativeText": "Listen for \"முகவரி\" inside \"முழு முகவரியை எழுதுங்கள்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "mukavari",
+      "exampleTarget": "முழு முகவரியை எழுதுங்கள்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Write the full address.”",
+      "korean": "முகவரி",
+      "english": "Listen for \"முகவரி\" inside \"முழு முகவரியை எழுதுங்கள்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "முழு முகவரியை எழுதுங்கள்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Write the full address.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "முகவரி",
+      "romanization": "mukavari",
+      "nativeText": "Write \"முகவரி\" again without looking, then compare the exact written form against \"முழு முகவரியை எழுதுங்கள்.\" before moving on.",
+      "pronunciation": "mukavari",
+      "exampleTarget": "முழு முகவரியை எழுதுங்கள்.",
+      "exampleNative": "Use the written model as the final correctness check: “Write the full address.”",
+      "korean": "முகவரி",
+      "english": "Write \"முகவரி\" again without looking, then compare the exact written form against \"முழு முகவரியை எழுதுங்கள்.\" before moving on.",
+      "example": "முழு முகவரியை எழுதுங்கள்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Write the full address.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "முகவரி",
+      "romanization": "mukavari",
+      "nativeText": "Check whether \"முகவரி\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Write the full address.”",
+      "pronunciation": "mukavari",
+      "exampleTarget": "முழு முகவரியை எழுதுங்கள்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Write the full address.”",
+      "korean": "முகவரி",
+      "english": "Check whether \"முகவரி\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Write the full address.”",
+      "example": "முழு முகவரியை எழுதுங்கள்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Write the full address.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "அனுப்ப வேண்டும்",
+      "romanization": "aṉuppa vēṇṭum",
+      "nativeText": "“Need to send.” A natural counter-opening frame.",
+      "pronunciation": "aṉuppa vēṇṭum",
+      "exampleTarget": "இந்த பார்சலை கோயம்புத்தூருக்கு அனுப்ப வேண்டும்.",
+      "exampleNative": "“I need to send this parcel to Coimbatore.”",
+      "korean": "அனுப்ப வேண்டும்",
+      "english": "“Need to send.” A natural counter-opening frame.",
+      "example": "இந்த பார்சலை கோயம்புத்தூருக்கு அனுப்ப வேண்டும்.",
+      "exampleEnglish": "“I need to send this parcel to Coimbatore.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "இந்த பார்சலை கோயம்புத்தூருக்கு அனுப்ப வேண்டும்.",
+      "romanization": "aṉuppa vēṇṭum",
+      "nativeText": "Model use for \"இந்த பார்சலை கோயம்புத்தூருக்கு அனுப்ப வேண்டும்.\": “I need to send this parcel to Coimbatore.”",
+      "pronunciation": "aṉuppa vēṇṭum",
+      "exampleTarget": "இந்த பார்சலை கோயம்புத்தூருக்கு அனுப்ப வேண்டும்.",
+      "exampleNative": "“I need to send this parcel to Coimbatore.”",
+      "korean": "இந்த பார்சலை கோயம்புத்தூருக்கு அனுப்ப வேண்டும்.",
+      "english": "Model use for \"இந்த பார்சலை கோயம்புத்தூருக்கு அனுப்ப வேண்டும்.\": “I need to send this parcel to Coimbatore.”",
+      "example": "இந்த பார்சலை கோயம்புத்தூருக்கு அனுப்ப வேண்டும்.",
+      "exampleEnglish": "“I need to send this parcel to Coimbatore.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "அனுப்ப வேண்டும்",
+      "romanization": "aṉuppa vēṇṭum",
+      "nativeText": "Usage focus for \"அனுப்ப வேண்டும்\": “Need to send.” A natural counter-opening frame.",
+      "pronunciation": "aṉuppa vēṇṭum",
+      "exampleTarget": "இந்த பார்சலை கோயம்புத்தூருக்கு அனுப்ப வேண்டும்.",
+      "exampleNative": "Notice what the form is doing here: “I need to send this parcel to Coimbatore.”",
+      "korean": "அனுப்ப வேண்டும்",
+      "english": "Usage focus for \"அனுப்ப வேண்டும்\": “Need to send.” A natural counter-opening frame.",
+      "example": "இந்த பார்சலை கோயம்புத்தூருக்கு அனுப்ப வேண்டும்.",
+      "exampleEnglish": "Notice what the form is doing here: “I need to send this parcel to Coimbatore.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "அனுப்ப வேண்டும்",
+      "romanization": "aṉuppa vēṇṭum",
+      "nativeText": "Contrast check for \"அனுப்ப வேண்டும்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "aṉuppa vēṇṭum",
+      "exampleTarget": "இந்த பார்சலை கோயம்புத்தூருக்கு அனுப்ப வேண்டும்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I need to send this parcel to Coimbatore.”",
+      "korean": "அனுப்ப வேண்டும்",
+      "english": "Contrast check for \"அனுப்ப வேண்டும்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "இந்த பார்சலை கோயம்புத்தூருக்கு அனுப்ப வேண்டும்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I need to send this parcel to Coimbatore.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "அனுப்ப வேண்டும்",
+      "romanization": "aṉuppa vēṇṭum",
+      "nativeText": "Recall \"அனுப்ப வேண்டும்\" from memory, then explain what would change if a nearby alternative replaced it in \"இந்த பார்சலை கோயம்புத்தூருக்கு அனுப்ப வேண்டும்.\".",
+      "pronunciation": "aṉuppa vēṇṭum",
+      "exampleTarget": "இந்த பார்சலை கோயம்புத்தூருக்கு அனுப்ப வேண்டும்.",
+      "exampleNative": "Self-check against the model before moving on: “I need to send this parcel to Coimbatore.”",
+      "korean": "அனுப்ப வேண்டும்",
+      "english": "Recall \"அனுப்ப வேண்டும்\" from memory, then explain what would change if a nearby alternative replaced it in \"இந்த பார்சலை கோயம்புத்தூருக்கு அனுப்ப வேண்டும்.\".",
+      "example": "இந்த பார்சலை கோயம்புத்தூருக்கு அனுப்ப வேண்டும்.",
+      "exampleEnglish": "Self-check against the model before moving on: “I need to send this parcel to Coimbatore.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "அனுப்ப வேண்டும்",
+      "romanization": "aṉuppa vēṇṭum",
+      "nativeText": "Repair \"அனுப்ப வேண்டும்\" inside \"இந்த பார்சலை கோயம்புத்தூருக்கு அனுப்ப வேண்டும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Need to send.” A natural counter-opening frame.",
+      "pronunciation": "aṉuppa vēṇṭum",
+      "exampleTarget": "இந்த பார்சலை கோயம்புத்தூருக்கு அனுப்ப வேண்டும்.",
+      "exampleNative": "Use the model as the repair target: “I need to send this parcel to Coimbatore.”",
+      "korean": "அனுப்ப வேண்டும்",
+      "english": "Repair \"அனுப்ப வேண்டும்\" inside \"இந்த பார்சலை கோயம்புத்தூருக்கு அனுப்ப வேண்டும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Need to send.” A natural counter-opening frame.",
+      "example": "இந்த பார்சலை கோயம்புத்தூருக்கு அனுப்ப வேண்டும்.",
+      "exampleEnglish": "Use the model as the repair target: “I need to send this parcel to Coimbatore.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "அனுப்ப வேண்டும்",
+      "romanization": "aṉuppa vēṇṭum",
+      "nativeText": "Transfer \"அனுப்ப வேண்டும்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இந்த பார்சலை கோயம்புத்தூருக்கு அனுப்ப வேண்டும்.\".",
+      "pronunciation": "aṉuppa vēṇṭum",
+      "exampleTarget": "இந்த பார்சலை கோயம்புத்தூருக்கு அனுப்ப வேண்டும்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I need to send this parcel to Coimbatore.”",
+      "korean": "அனுப்ப வேண்டும்",
+      "english": "Transfer \"அனுப்ப வேண்டும்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இந்த பார்சலை கோயம்புத்தூருக்கு அனுப்ப வேண்டும்.\".",
+      "example": "இந்த பார்சலை கோயம்புத்தூருக்கு அனுப்ப வேண்டும்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I need to send this parcel to Coimbatore.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "அனுப்ப வேண்டும்",
+      "romanization": "aṉuppa vēṇṭum",
+      "nativeText": "Find one word or phrase that naturally travels with \"அனுப்ப வேண்டும்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "aṉuppa vēṇṭum",
+      "exampleTarget": "இந்த பார்சலை கோயம்புத்தூருக்கு அனுப்ப வேண்டும்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I need to send this parcel to Coimbatore.”",
+      "korean": "அனுப்ப வேண்டும்",
+      "english": "Find one word or phrase that naturally travels with \"அனுப்ப வேண்டும்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "இந்த பார்சலை கோயம்புத்தூருக்கு அனுப்ப வேண்டும்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I need to send this parcel to Coimbatore.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "அனுப்ப வேண்டும்",
+      "romanization": "aṉuppa vēṇṭum",
+      "nativeText": "Listen for \"அனுப்ப வேண்டும்\" inside \"இந்த பார்சலை கோயம்புத்தூருக்கு அனுப்ப வேண்டும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "aṉuppa vēṇṭum",
+      "exampleTarget": "இந்த பார்சலை கோயம்புத்தூருக்கு அனுப்ப வேண்டும்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I need to send this parcel to Coimbatore.”",
+      "korean": "அனுப்ப வேண்டும்",
+      "english": "Listen for \"அனுப்ப வேண்டும்\" inside \"இந்த பார்சலை கோயம்புத்தூருக்கு அனுப்ப வேண்டும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "இந்த பார்சலை கோயம்புத்தூருக்கு அனுப்ப வேண்டும்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I need to send this parcel to Coimbatore.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "அனுப்ப வேண்டும்",
+      "romanization": "aṉuppa vēṇṭum",
+      "nativeText": "Write \"அனுப்ப வேண்டும்\" again without looking, then compare the exact written form against \"இந்த பார்சலை கோயம்புத்தூருக்கு அனுப்ப வேண்டும்.\" before moving on.",
+      "pronunciation": "aṉuppa vēṇṭum",
+      "exampleTarget": "இந்த பார்சலை கோயம்புத்தூருக்கு அனுப்ப வேண்டும்.",
+      "exampleNative": "Use the written model as the final correctness check: “I need to send this parcel to Coimbatore.”",
+      "korean": "அனுப்ப வேண்டும்",
+      "english": "Write \"அனுப்ப வேண்டும்\" again without looking, then compare the exact written form against \"இந்த பார்சலை கோயம்புத்தூருக்கு அனுப்ப வேண்டும்.\" before moving on.",
+      "example": "இந்த பார்சலை கோயம்புத்தூருக்கு அனுப்ப வேண்டும்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I need to send this parcel to Coimbatore.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "அனுப்ப வேண்டும்",
+      "romanization": "aṉuppa vēṇṭum",
+      "nativeText": "Check whether \"அனுப்ப வேண்டும்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I need to send this parcel to Coimbatore.”",
+      "pronunciation": "aṉuppa vēṇṭum",
+      "exampleTarget": "இந்த பார்சலை கோயம்புத்தூருக்கு அனுப்ப வேண்டும்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I need to send this parcel to Coimbatore.”",
+      "korean": "அனுப்ப வேண்டும்",
+      "english": "Check whether \"அனுப்ப வேண்டும்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I need to send this parcel to Coimbatore.”",
+      "example": "இந்த பார்சலை கோயம்புத்தூருக்கு அனுப்ப வேண்டும்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I need to send this parcel to Coimbatore.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "கட்டணம்",
+      "romanization": "kaṭṭaṇam",
+      "nativeText": "“Fee / charge.” Useful for postage costs.",
+      "pronunciation": "kaṭṭaṇam",
+      "exampleTarget": "அனுப்பும் கட்டணம் எவ்வளவு?",
+      "exampleNative": "“How much is the sending fee?”",
+      "korean": "கட்டணம்",
+      "english": "“Fee / charge.” Useful for postage costs.",
+      "example": "அனுப்பும் கட்டணம் எவ்வளவு?",
+      "exampleEnglish": "“How much is the sending fee?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "அனுப்பும் கட்டணம் எவ்வளவு?",
+      "romanization": "kaṭṭaṇam",
+      "nativeText": "Model use for \"அனுப்பும் கட்டணம் எவ்வளவு?\": “How much is the sending fee?”",
+      "pronunciation": "kaṭṭaṇam",
+      "exampleTarget": "அனுப்பும் கட்டணம் எவ்வளவு?",
+      "exampleNative": "“How much is the sending fee?”",
+      "korean": "அனுப்பும் கட்டணம் எவ்வளவு?",
+      "english": "Model use for \"அனுப்பும் கட்டணம் எவ்வளவு?\": “How much is the sending fee?”",
+      "example": "அனுப்பும் கட்டணம் எவ்வளவு?",
+      "exampleEnglish": "“How much is the sending fee?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "கட்டணம்",
+      "romanization": "kaṭṭaṇam",
+      "nativeText": "Usage focus for \"கட்டணம்\": “Fee / charge.” Useful for postage costs.",
+      "pronunciation": "kaṭṭaṇam",
+      "exampleTarget": "அனுப்பும் கட்டணம் எவ்வளவு?",
+      "exampleNative": "Notice what the form is doing here: “How much is the sending fee?”",
+      "korean": "கட்டணம்",
+      "english": "Usage focus for \"கட்டணம்\": “Fee / charge.” Useful for postage costs.",
+      "example": "அனுப்பும் கட்டணம் எவ்வளவு?",
+      "exampleEnglish": "Notice what the form is doing here: “How much is the sending fee?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "கட்டணம்",
+      "romanization": "kaṭṭaṇam",
+      "nativeText": "Contrast check for \"கட்டணம்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kaṭṭaṇam",
+      "exampleTarget": "அனுப்பும் கட்டணம் எவ்வளவு?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How much is the sending fee?”",
+      "korean": "கட்டணம்",
+      "english": "Contrast check for \"கட்டணம்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "அனுப்பும் கட்டணம் எவ்வளவு?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How much is the sending fee?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "கட்டணம்",
+      "romanization": "kaṭṭaṇam",
+      "nativeText": "Recall \"கட்டணம்\" from memory, then explain what would change if a nearby alternative replaced it in \"அனுப்பும் கட்டணம் எவ்வளவு?\".",
+      "pronunciation": "kaṭṭaṇam",
+      "exampleTarget": "அனுப்பும் கட்டணம் எவ்வளவு?",
+      "exampleNative": "Self-check against the model before moving on: “How much is the sending fee?”",
+      "korean": "கட்டணம்",
+      "english": "Recall \"கட்டணம்\" from memory, then explain what would change if a nearby alternative replaced it in \"அனுப்பும் கட்டணம் எவ்வளவு?\".",
+      "example": "அனுப்பும் கட்டணம் எவ்வளவு?",
+      "exampleEnglish": "Self-check against the model before moving on: “How much is the sending fee?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "கட்டணம்",
+      "romanization": "kaṭṭaṇam",
+      "nativeText": "Repair \"கட்டணம்\" inside \"அனுப்பும் கட்டணம் எவ்வளவு?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Fee / charge.” Useful for postage costs.",
+      "pronunciation": "kaṭṭaṇam",
+      "exampleTarget": "அனுப்பும் கட்டணம் எவ்வளவு?",
+      "exampleNative": "Use the model as the repair target: “How much is the sending fee?”",
+      "korean": "கட்டணம்",
+      "english": "Repair \"கட்டணம்\" inside \"அனுப்பும் கட்டணம் எவ்வளவு?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Fee / charge.” Useful for postage costs.",
+      "example": "அனுப்பும் கட்டணம் எவ்வளவு?",
+      "exampleEnglish": "Use the model as the repair target: “How much is the sending fee?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "கட்டணம்",
+      "romanization": "kaṭṭaṇam",
+      "nativeText": "Transfer \"கட்டணம்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"அனுப்பும் கட்டணம் எவ்வளவு?\".",
+      "pronunciation": "kaṭṭaṇam",
+      "exampleTarget": "அனுப்பும் கட்டணம் எவ்வளவு?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “How much is the sending fee?”",
+      "korean": "கட்டணம்",
+      "english": "Transfer \"கட்டணம்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"அனுப்பும் கட்டணம் எவ்வளவு?\".",
+      "example": "அனுப்பும் கட்டணம் எவ்வளவு?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “How much is the sending fee?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "கட்டணம்",
+      "romanization": "kaṭṭaṇam",
+      "nativeText": "Find one word or phrase that naturally travels with \"கட்டணம்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kaṭṭaṇam",
+      "exampleTarget": "அனுப்பும் கட்டணம் எவ்வளவு?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “How much is the sending fee?”",
+      "korean": "கட்டணம்",
+      "english": "Find one word or phrase that naturally travels with \"கட்டணம்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "அனுப்பும் கட்டணம் எவ்வளவு?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “How much is the sending fee?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "கட்டணம்",
+      "romanization": "kaṭṭaṇam",
+      "nativeText": "Listen for \"கட்டணம்\" inside \"அனுப்பும் கட்டணம் எவ்வளவு?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kaṭṭaṇam",
+      "exampleTarget": "அனுப்பும் கட்டணம் எவ்வளவு?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How much is the sending fee?”",
+      "korean": "கட்டணம்",
+      "english": "Listen for \"கட்டணம்\" inside \"அனுப்பும் கட்டணம் எவ்வளவு?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "அனுப்பும் கட்டணம் எவ்வளவு?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How much is the sending fee?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "கட்டணம்",
+      "romanization": "kaṭṭaṇam",
+      "nativeText": "Write \"கட்டணம்\" again without looking, then compare the exact written form against \"அனுப்பும் கட்டணம் எவ்வளவு?\" before moving on.",
+      "pronunciation": "kaṭṭaṇam",
+      "exampleTarget": "அனுப்பும் கட்டணம் எவ்வளவு?",
+      "exampleNative": "Use the written model as the final correctness check: “How much is the sending fee?”",
+      "korean": "கட்டணம்",
+      "english": "Write \"கட்டணம்\" again without looking, then compare the exact written form against \"அனுப்பும் கட்டணம் எவ்வளவு?\" before moving on.",
+      "example": "அனுப்பும் கட்டணம் எவ்வளவு?",
+      "exampleEnglish": "Use the written model as the final correctness check: “How much is the sending fee?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "கட்டணம்",
+      "romanization": "kaṭṭaṇam",
+      "nativeText": "Check whether \"கட்டணம்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How much is the sending fee?”",
+      "pronunciation": "kaṭṭaṇam",
+      "exampleTarget": "அனுப்பும் கட்டணம் எவ்வளவு?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “How much is the sending fee?”",
+      "korean": "கட்டணம்",
+      "english": "Check whether \"கட்டணம்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How much is the sending fee?”",
+      "example": "அனுப்பும் கட்டணம் எவ்வளவு?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “How much is the sending fee?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "எப்போது சேரும்?",
+      "romanization": "eppōtu cērum",
+      "nativeText": "“When will it arrive?” A concise delivery question.",
+      "pronunciation": "eppōtu cērum",
+      "exampleTarget": "பார்சல் எப்போது சேரும்?",
+      "exampleNative": "“When will the parcel arrive?”",
+      "korean": "எப்போது சேரும்?",
+      "english": "“When will it arrive?” A concise delivery question.",
+      "example": "பார்சல் எப்போது சேரும்?",
+      "exampleEnglish": "“When will the parcel arrive?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "பார்சல் எப்போது சேரும்?",
+      "romanization": "eppōtu cērum",
+      "nativeText": "Model use for \"பார்சல் எப்போது சேரும்?\": “When will the parcel arrive?”",
+      "pronunciation": "eppōtu cērum",
+      "exampleTarget": "பார்சல் எப்போது சேரும்?",
+      "exampleNative": "“When will the parcel arrive?”",
+      "korean": "பார்சல் எப்போது சேரும்?",
+      "english": "Model use for \"பார்சல் எப்போது சேரும்?\": “When will the parcel arrive?”",
+      "example": "பார்சல் எப்போது சேரும்?",
+      "exampleEnglish": "“When will the parcel arrive?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "எப்போது சேரும்?",
+      "romanization": "eppōtu cērum",
+      "nativeText": "Usage focus for \"எப்போது சேரும்?\": “When will it arrive?” A concise delivery question.",
+      "pronunciation": "eppōtu cērum",
+      "exampleTarget": "பார்சல் எப்போது சேரும்?",
+      "exampleNative": "Notice what the form is doing here: “When will the parcel arrive?”",
+      "korean": "எப்போது சேரும்?",
+      "english": "Usage focus for \"எப்போது சேரும்?\": “When will it arrive?” A concise delivery question.",
+      "example": "பார்சல் எப்போது சேரும்?",
+      "exampleEnglish": "Notice what the form is doing here: “When will the parcel arrive?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "எப்போது சேரும்?",
+      "romanization": "eppōtu cērum",
+      "nativeText": "Contrast check for \"எப்போது சேரும்?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "eppōtu cērum",
+      "exampleTarget": "பார்சல் எப்போது சேரும்?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “When will the parcel arrive?”",
+      "korean": "எப்போது சேரும்?",
+      "english": "Contrast check for \"எப்போது சேரும்?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "பார்சல் எப்போது சேரும்?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “When will the parcel arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "எப்போது சேரும்?",
+      "romanization": "eppōtu cērum",
+      "nativeText": "Recall \"எப்போது சேரும்?\" from memory, then explain what would change if a nearby alternative replaced it in \"பார்சல் எப்போது சேரும்?\".",
+      "pronunciation": "eppōtu cērum",
+      "exampleTarget": "பார்சல் எப்போது சேரும்?",
+      "exampleNative": "Self-check against the model before moving on: “When will the parcel arrive?”",
+      "korean": "எப்போது சேரும்?",
+      "english": "Recall \"எப்போது சேரும்?\" from memory, then explain what would change if a nearby alternative replaced it in \"பார்சல் எப்போது சேரும்?\".",
+      "example": "பார்சல் எப்போது சேரும்?",
+      "exampleEnglish": "Self-check against the model before moving on: “When will the parcel arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "எப்போது சேரும்?",
+      "romanization": "eppōtu cērum",
+      "nativeText": "Repair \"எப்போது சேரும்?\" inside \"பார்சல் எப்போது சேரும்?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “When will it arrive?” A concise delivery question.",
+      "pronunciation": "eppōtu cērum",
+      "exampleTarget": "பார்சல் எப்போது சேரும்?",
+      "exampleNative": "Use the model as the repair target: “When will the parcel arrive?”",
+      "korean": "எப்போது சேரும்?",
+      "english": "Repair \"எப்போது சேரும்?\" inside \"பார்சல் எப்போது சேரும்?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “When will it arrive?” A concise delivery question.",
+      "example": "பார்சல் எப்போது சேரும்?",
+      "exampleEnglish": "Use the model as the repair target: “When will the parcel arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "எப்போது சேரும்?",
+      "romanization": "eppōtu cērum",
+      "nativeText": "Transfer \"எப்போது சேரும்?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"பார்சல் எப்போது சேரும்?\".",
+      "pronunciation": "eppōtu cērum",
+      "exampleTarget": "பார்சல் எப்போது சேரும்?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “When will the parcel arrive?”",
+      "korean": "எப்போது சேரும்?",
+      "english": "Transfer \"எப்போது சேரும்?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"பார்சல் எப்போது சேரும்?\".",
+      "example": "பார்சல் எப்போது சேரும்?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “When will the parcel arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "எப்போது சேரும்?",
+      "romanization": "eppōtu cērum",
+      "nativeText": "Find one word or phrase that naturally travels with \"எப்போது சேரும்?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "eppōtu cērum",
+      "exampleTarget": "பார்சல் எப்போது சேரும்?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “When will the parcel arrive?”",
+      "korean": "எப்போது சேரும்?",
+      "english": "Find one word or phrase that naturally travels with \"எப்போது சேரும்?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "பார்சல் எப்போது சேரும்?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “When will the parcel arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "எப்போது சேரும்?",
+      "romanization": "eppōtu cērum",
+      "nativeText": "Listen for \"எப்போது சேரும்?\" inside \"பார்சல் எப்போது சேரும்?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "eppōtu cērum",
+      "exampleTarget": "பார்சல் எப்போது சேரும்?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “When will the parcel arrive?”",
+      "korean": "எப்போது சேரும்?",
+      "english": "Listen for \"எப்போது சேரும்?\" inside \"பார்சல் எப்போது சேரும்?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "பார்சல் எப்போது சேரும்?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “When will the parcel arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "எப்போது சேரும்?",
+      "romanization": "eppōtu cērum",
+      "nativeText": "Write \"எப்போது சேரும்?\" again without looking, then compare the exact written form against \"பார்சல் எப்போது சேரும்?\" before moving on.",
+      "pronunciation": "eppōtu cērum",
+      "exampleTarget": "பார்சல் எப்போது சேரும்?",
+      "exampleNative": "Use the written model as the final correctness check: “When will the parcel arrive?”",
+      "korean": "எப்போது சேரும்?",
+      "english": "Write \"எப்போது சேரும்?\" again without looking, then compare the exact written form against \"பார்சல் எப்போது சேரும்?\" before moving on.",
+      "example": "பார்சல் எப்போது சேரும்?",
+      "exampleEnglish": "Use the written model as the final correctness check: “When will the parcel arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit17postoffice-vocabulary-1",
+        "ta-level1unit17postoffice-vocabulary-2",
+        "ta-level1unit17postoffice-grammar-1",
+        "ta-level1unit17postoffice-grammar-2",
+        "ta-level1unit17postoffice-reading",
+        "ta-level1unit17postoffice-listening",
+        "ta-level1unit17postoffice-writing",
+        "ta-level1unit17postoffice-task"
+      ],
+      "targetText": "எப்போது சேரும்?",
+      "romanization": "eppōtu cērum",
+      "nativeText": "Check whether \"எப்போது சேரும்?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “When will the parcel arrive?”",
+      "pronunciation": "eppōtu cērum",
+      "exampleTarget": "பார்சல் எப்போது சேரும்?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “When will the parcel arrive?”",
+      "korean": "எப்போது சேரும்?",
+      "english": "Check whether \"எப்போது சேரும்?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “When will the parcel arrive?”",
+      "example": "பார்சல் எப்போது சேரும்?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “When will the parcel arrive?”"
+    }
+  ],
+  "targetLang": "ta",
+  "nativeLang": "en",
+  "track": "textbook"
+};

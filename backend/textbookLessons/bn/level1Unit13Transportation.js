@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('bn', {
-  slug: 'bn-l1u13',
-  title: 'Level 1 · Unit 13: যাতায়াত — Transportation',
-  category: 'travel',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Use transport language for buses, rickshaws, metro, and travel time.',
-  vocabularyGoal: 'Use vehicle, stop, ticket, and route words.',
-  grammarGoal: 'Use transport postpositions and verbs such as `যাই`, `চড়ি`, and `নামি`.',
-  speakingGoal: 'Ask how to go somewhere, choose transport, and ask how long it takes.',
-  task: 'Plan a trip from campus to the city center.',
-  expressionPractice: [
-    practice('choosing-transport', 'Choosing transport', 'Use one transport phrase.'),
-    practice('asking-route', 'Asking route', 'Use one route question.'),
-    practice('asking-duration', 'Asking duration', 'Use `কত সময় লাগে?`.'),
+module.exports = {
+  "title": "Level 1 · Unit 13: যাতায়াত — Transportation",
+  "category": "travel",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "bn-level1unit13transportation-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Use transport language for buses, rickshaws, metro, and travel time."
+      ],
+      "task": "Plan a trip from campus to the city center."
+    },
+    {
+      "id": "bn-level1unit13transportation-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "bn-level1unit13transportation-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 13: যাতায়াত — Transportation with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "bn-level1unit13transportation-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 13: যাতায়াত — Transportation sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "bn-level1unit13transportation-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Use transport language for buses, rickshaws, metro, and travel time."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "bn-level1unit13transportation-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 13: যাতায়াত — Transportation with one nearby Bengali form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "bn-level1unit13transportation-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "bn-level1unit13transportation-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "bn-level1unit13transportation-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "bn-level1unit13transportation-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "bn-level1unit13transportation-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Plan a trip from campus to the city center."
+      ],
+      "task": "Plan a trip from campus to the city center."
+    }
   ],
-  relatedPools: ['topic-travel', 'topic-city'],
-  items: [
-    item('বাসে যাই', 'bas-e jai', '“I go by bus.” The ending marks transport means here.', 'আমি বিশ্ববিদ্যালয়ে বাসে যাই।', '“I go to university by bus.”'),
-    item('রিকশা', 'riksha', '“Rickshaw.” A very practical local transport word.', 'ঢাকায় রিকশা খুব সাধারণ।', '“Rickshaws are very common in Dhaka.”'),
-    item('মেট্রো', 'metro', '“Metro.” Increasingly important in both Dhaka and Kolkata contexts.', 'মেট্রো দ্রুত।', '“The metro is fast.”'),
-    item('স্টপেজ', 'stopej', '“Stop.” A common transport noun.', 'বাস স্টপেজ কাছে।', '“The bus stop is nearby.”'),
-    item('স্টেশন', 'steshon', '“Station.” Used for rail and metro.', 'পরের স্টেশনে নামবেন।', '“Get off at the next station.”'),
-    item('টিকিট', 'ṭikit', '“Ticket.” Practical across transport and events.', 'একটা টিকিট চাই।', '“I want one ticket.”'),
-    item('... কীভাবে যাব?', '... kibhabe jabo', '“How do I go to ...?” A practical route question.', 'মাঝখানে কীভাবে যাব?', '“How do I get to the center?”'),
-    item('কত সময় লাগে?', 'koto shomoy lage', '“How long does it take?” A complete duration question.', 'বিমানবন্দরে যেতে কত সময় লাগে?', '“How long does it take to go to the airport?”'),
+  "expressionPractice": [
+    {
+      "id": "choosing-transport",
+      "label": "Choosing transport",
+      "goal": "Use one transport phrase."
+    },
+    {
+      "id": "asking-route",
+      "label": "Asking route",
+      "goal": "Use one route question."
+    },
+    {
+      "id": "asking-duration",
+      "label": "Asking duration",
+      "goal": "Use `কত সময় লাগে?`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-travel",
+    "topic-city"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit13transportation-orientation"
+      ],
+      "targetText": "পাঠের লক্ষ্য",
+      "romanization": "",
+      "nativeText": "Use transport language for buses, rickshaws, metro, and travel time.",
+      "pronunciation": "",
+      "exampleTarget": "পাঠের লক্ষ্য",
+      "exampleNative": "The whole lesson is built toward this outcome: Plan a trip from campus to the city center.",
+      "korean": "পাঠের লক্ষ্য",
+      "english": "Use transport language for buses, rickshaws, metro, and travel time.",
+      "example": "পাঠের লক্ষ্য",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Plan a trip from campus to the city center."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "bn-level1unit13transportation-pronunciation"
+      ],
+      "targetText": "উচ্চারণ পরীক্ষা",
+      "romanization": "",
+      "nativeText": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আমি বিশ্ববিদ্যালয়ে বাসে যাই।\".",
+      "pronunciation": "",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "exampleNative": "“I go to university by bus.”",
+      "korean": "উচ্চারণ পরীক্ষা",
+      "english": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আমি বিশ্ববিদ্যালয়ে বাসে যাই।\".",
+      "example": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "exampleEnglish": "“I go to university by bus.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1"
+      ],
+      "targetText": "বাসে যাই",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 13: যাতায়াত — Transportation with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "exampleNative": "“I go to university by bus.”",
+      "korean": "বাসে যাই",
+      "english": "Use the key language of Level 1 · Unit 13: যাতায়াত — Transportation with the register and setting that the lesson requires.",
+      "example": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "exampleEnglish": "“I go to university by bus.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-2"
+      ],
+      "targetText": "রিকশা",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 13: যাতায়াত — Transportation sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "ঢাকায় রিকশা খুব সাধারণ।",
+      "exampleNative": "“Rickshaws are very common in Dhaka.”",
+      "korean": "রিকশা",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 13: যাতায়াত — Transportation sound precise rather than merely understandable.",
+      "example": "ঢাকায় রিকশা খুব সাধারণ।",
+      "exampleEnglish": "“Rickshaws are very common in Dhaka.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "bn-level1unit13transportation-grammar-1"
+      ],
+      "targetText": "বাসে যাই",
+      "romanization": "",
+      "nativeText": "Use transport language for buses, rickshaws, metro, and travel time.",
+      "pronunciation": "",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "exampleNative": "“I go to university by bus.”",
+      "korean": "বাসে যাই",
+      "english": "Use transport language for buses, rickshaws, metro, and travel time.",
+      "example": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "exampleEnglish": "“I go to university by bus.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "bn-level1unit13transportation-grammar-2"
+      ],
+      "targetText": "রিকশা",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 13: যাতায়াত — Transportation with one nearby Bengali form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "ঢাকায় রিকশা খুব সাধারণ।",
+      "exampleNative": "“Rickshaws are very common in Dhaka.”",
+      "korean": "রিকশা",
+      "english": "Contrast the main pattern in Level 1 · Unit 13: যাতায়াত — Transportation with one nearby Bengali form so the learner can avoid literal translation.",
+      "example": "ঢাকায় রিকশা খুব সাধারণ।",
+      "exampleEnglish": "“Rickshaws are very common in Dhaka.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "bn-level1unit13transportation-reading"
+      ],
+      "targetText": "পাঠ মডেল",
+      "romanization": "",
+      "nativeText": "Read \"বিমানবন্দরে যেতে কত সময় লাগে?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "বিমানবন্দরে যেতে কত সময় লাগে?",
+      "exampleNative": "“How long does it take to go to the airport?”",
+      "korean": "পাঠ মডেল",
+      "english": "Read \"বিমানবন্দরে যেতে কত সময় লাগে?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "বিমানবন্দরে যেতে কত সময় লাগে?",
+      "exampleEnglish": "“How long does it take to go to the airport?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit13transportation-listening"
+      ],
+      "targetText": "সংলাপ মডেল",
+      "romanization": "",
+      "nativeText": "Hear \"বিমানবন্দরে যেতে কত সময় লাগে?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "বিমানবন্দরে যেতে কত সময় লাগে?",
+      "exampleNative": "“How long does it take to go to the airport?”",
+      "korean": "সংলাপ মডেল",
+      "english": "Hear \"বিমানবন্দরে যেতে কত সময় লাগে?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "বিমানবন্দরে যেতে কত সময় লাগে?",
+      "exampleEnglish": "“How long does it take to go to the airport?”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "bn-level1unit13transportation-writing"
+      ],
+      "targetText": "লেখার অনুশীলন",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"আমি বিশ্ববিদ্যালয়ে বাসে যাই।\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "লেখার অনুশীলন",
+      "english": "Write your own version after studying \"আমি বিশ্ববিদ্যালয়ে বাসে যাই।\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "bn-level1unit13transportation-culture"
+      ],
+      "targetText": "ব্যবহার ও প্রসঙ্গ",
+      "romanization": "",
+      "nativeText": "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "ঢাকায় রিকশা খুব সাধারণ।",
+      "exampleNative": "“Rickshaws are very common in Dhaka.”",
+      "korean": "ব্যবহার ও প্রসঙ্গ",
+      "english": "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used.",
+      "example": "ঢাকায় রিকশা খুব সাধারণ।",
+      "exampleEnglish": "“Rickshaws are very common in Dhaka.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "চূড়ান্ত কাজ",
+      "romanization": "",
+      "nativeText": "Plan a trip from campus to the city center.",
+      "pronunciation": "",
+      "exampleTarget": "বিমানবন্দরে যেতে কত সময় লাগে?",
+      "exampleNative": "Plan a trip from campus to the city center.",
+      "korean": "চূড়ান্ত কাজ",
+      "english": "Plan a trip from campus to the city center.",
+      "example": "বিমানবন্দরে যেতে কত সময় লাগে?",
+      "exampleEnglish": "Plan a trip from campus to the city center."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit13transportation-grammar-2"
+      ],
+      "targetText": "সাধারণ ভুল",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around pronoun levels, verb agreement, case markers, and register. Begin by checking \"ঢাকায় রিকশা খুব সাধারণ।\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "ঢাকায় রিকশা খুব সাধারণ।",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “Rickshaws are very common in Dhaka.”",
+      "korean": "সাধারণ ভুল",
+      "english": "Watch for literal-translation mistakes around pronoun levels, verb agreement, case markers, and register. Begin by checking \"ঢাকায় রিকশা খুব সাধারণ।\" against the model.",
+      "example": "ঢাকায় রিকশা খুব সাধারণ।",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “Rickshaws are very common in Dhaka.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-culture"
+      ],
+      "targetText": "রেজিস্টার",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for familiar, respectful, or formal Bengali before selecting pronouns and verb endings. Compare the social fit of \"আমি বিশ্ববিদ্যালয়ে বাসে যাই।\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "exampleNative": "“I go to university by bus.”",
+      "korean": "রেজিস্টার",
+      "english": "Check whether the setting calls for familiar, respectful, or formal Bengali before selecting pronouns and verb endings. Compare the social fit of \"আমি বিশ্ববিদ্যালয়ে বাসে যাই।\" before reusing it elsewhere.",
+      "example": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "exampleEnglish": "“I go to university by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "সাবলীলতা",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Bengali message rather than as separate translated fragments. Aim to carry \"বিমানবন্দরে যেতে কত সময় লাগে?\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "বিমানবন্দরে যেতে কত সময় লাগে?",
+      "exampleNative": "“How long does it take to go to the airport?”",
+      "korean": "সাবলীলতা",
+      "english": "Say the idea as one connected Bengali message rather than as separate translated fragments. Aim to carry \"বিমানবন্দরে যেতে কত সময় লাগে?\" as one thought.",
+      "example": "বিমানবন্দরে যেতে কত সময় লাগে?",
+      "exampleEnglish": "“How long does it take to go to the airport?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "প্রয়োগ",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"আমি বিশ্ববিদ্যালয়ে বাসে যাই।\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "প্রয়োগ",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"আমি বিশ্ববিদ্যালয়ে বাসে যাই।\" and move it into your own life.",
+      "example": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-grammar-1"
+      ],
+      "targetText": "স্মরণ",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"বাসে যাই\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "বাসে যাই",
+      "exampleNative": "“I go by bus.” The ending marks transport means here.",
+      "korean": "স্মরণ",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"বাসে যাই\" before looking back.",
+      "example": "বাসে যাই",
+      "exampleEnglish": "“I go by bus.” The ending marks transport means here."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-writing"
+      ],
+      "targetText": "বিস্তার",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"বিমানবন্দরে যেতে কত সময় লাগে?\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "বিমানবন্দরে যেতে কত সময় লাগে?",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "বিস্তার",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"বিমানবন্দরে যেতে কত সময় লাগে?\" rather than restarting from a blank sentence.",
+      "example": "বিমানবন্দরে যেতে কত সময় লাগে?",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading"
+      ],
+      "targetText": "তুলনা",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 13: যাতায়াত — Transportation with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"ঢাকায় রিকশা খুব সাধারণ।\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "ঢাকায় রিকশা খুব সাধারণ।",
+      "exampleNative": "“Rickshaws are very common in Dhaka.”",
+      "korean": "তুলনা",
+      "english": "Compare the central form in Level 1 · Unit 13: যাতায়াত — Transportation with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"ঢাকায় রিকশা খুব সাধারণ।\" as the comparison line.",
+      "example": "ঢাকায় রিকশা খুব সাধারণ।",
+      "exampleEnglish": "“Rickshaws are very common in Dhaka.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "bn-level1unit13transportation-pronunciation"
+      ],
+      "targetText": "উচ্চারণ সংশোধন",
+      "romanization": "",
+      "nativeText": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আমি বিশ্ববিদ্যালয়ে বাসে যাই।\".",
+      "pronunciation": "",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "exampleNative": "“I go to university by bus.”",
+      "korean": "উচ্চারণ সংশোধন",
+      "english": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আমি বিশ্ববিদ্যালয়ে বাসে যাই।\".",
+      "example": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "exampleEnglish": "“I go to university by bus.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "সংলাপ পরিবর্তন",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"বিমানবন্দরে যেতে কত সময় লাগে?\".",
+      "pronunciation": "",
+      "exampleTarget": "বিমানবন্দরে যেতে কত সময় লাগে?",
+      "exampleNative": "“How long does it take to go to the airport?”",
+      "korean": "সংলাপ পরিবর্তন",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"বিমানবন্দরে যেতে কত সময় লাগে?\".",
+      "example": "বিমানবন্দরে যেতে কত সময় লাগে?",
+      "exampleEnglish": "“How long does it take to go to the airport?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-writing"
+      ],
+      "targetText": "বাক্য গঠন",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"আমি বিশ্ববিদ্যালয়ে বাসে যাই।\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "exampleNative": "“I go to university by bus.”",
+      "korean": "বাক্য গঠন",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"আমি বিশ্ববিদ্যালয়ে বাসে যাই।\" one layer at a time.",
+      "example": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "exampleEnglish": "“I go to university by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-2"
+      ],
+      "targetText": "দ্রুত পরীক্ষা",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"ঢাকায় রিকশা খুব সাধারণ।\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "ঢাকায় রিকশা খুব সাধারণ।",
+      "exampleNative": "“Rickshaws are very common in Dhaka.”",
+      "korean": "দ্রুত পরীক্ষা",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"ঢাকায় রিকশা খুব সাধারণ।\" as the deciding example.",
+      "example": "ঢাকায় রিকশা খুব সাধারণ।",
+      "exampleEnglish": "“Rickshaws are very common in Dhaka.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit13transportation-culture",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "পুনরালোচনা",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"বিমানবন্দরে যেতে কত সময় লাগে?\".",
+      "pronunciation": "",
+      "exampleTarget": "বিমানবন্দরে যেতে কত সময় লাগে?",
+      "exampleNative": "“How long does it take to go to the airport?”",
+      "korean": "পুনরালোচনা",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"বিমানবন্দরে যেতে কত সময় লাগে?\".",
+      "example": "বিমানবন্দরে যেতে কত সময় লাগে?",
+      "exampleEnglish": "“How long does it take to go to the airport?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "বাসে যাই",
+      "romanization": "bas-e jai",
+      "nativeText": "“I go by bus.” The ending marks transport means here.",
+      "pronunciation": "bas-e jai",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "exampleNative": "“I go to university by bus.”",
+      "korean": "বাসে যাই",
+      "english": "“I go by bus.” The ending marks transport means here.",
+      "example": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "exampleEnglish": "“I go to university by bus.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "romanization": "bas-e jai",
+      "nativeText": "Model use for \"আমি বিশ্ববিদ্যালয়ে বাসে যাই।\": “I go to university by bus.”",
+      "pronunciation": "bas-e jai",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "exampleNative": "“I go to university by bus.”",
+      "korean": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "english": "Model use for \"আমি বিশ্ববিদ্যালয়ে বাসে যাই।\": “I go to university by bus.”",
+      "example": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "exampleEnglish": "“I go to university by bus.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "বাসে যাই",
+      "romanization": "bas-e jai",
+      "nativeText": "Usage focus for \"বাসে যাই\": Use the key language of Level 1 · Unit 13: যাতায়াত — Transportation with the register and setting that the lesson requires.",
+      "pronunciation": "bas-e jai",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "exampleNative": "Notice what the form is doing here: “I go to university by bus.”",
+      "korean": "বাসে যাই",
+      "english": "Usage focus for \"বাসে যাই\": Use the key language of Level 1 · Unit 13: যাতায়াত — Transportation with the register and setting that the lesson requires.",
+      "example": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "exampleEnglish": "Notice what the form is doing here: “I go to university by bus.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "বাসে যাই",
+      "romanization": "bas-e jai",
+      "nativeText": "Contrast check for \"বাসে যাই\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "bas-e jai",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I go to university by bus.”",
+      "korean": "বাসে যাই",
+      "english": "Contrast check for \"বাসে যাই\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I go to university by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "বাসে যাই",
+      "romanization": "bas-e jai",
+      "nativeText": "Recall \"বাসে যাই\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি বিশ্ববিদ্যালয়ে বাসে যাই।\".",
+      "pronunciation": "bas-e jai",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "exampleNative": "Self-check against the model before moving on: “I go to university by bus.”",
+      "korean": "বাসে যাই",
+      "english": "Recall \"বাসে যাই\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি বিশ্ববিদ্যালয়ে বাসে যাই।\".",
+      "example": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "exampleEnglish": "Self-check against the model before moving on: “I go to university by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "বাসে যাই",
+      "romanization": "bas-e jai",
+      "nativeText": "Repair \"বাসে যাই\" inside \"আমি বিশ্ববিদ্যালয়ে বাসে যাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 13: যাতায়াত — Transportation with the register and setting that the lesson requires.",
+      "pronunciation": "bas-e jai",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "exampleNative": "Use the model as the repair target: “I go to university by bus.”",
+      "korean": "বাসে যাই",
+      "english": "Repair \"বাসে যাই\" inside \"আমি বিশ্ববিদ্যালয়ে বাসে যাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 13: যাতায়াত — Transportation with the register and setting that the lesson requires.",
+      "example": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "exampleEnglish": "Use the model as the repair target: “I go to university by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "বাসে যাই",
+      "romanization": "bas-e jai",
+      "nativeText": "Transfer \"বাসে যাই\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি বিশ্ববিদ্যালয়ে বাসে যাই।\".",
+      "pronunciation": "bas-e jai",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I go to university by bus.”",
+      "korean": "বাসে যাই",
+      "english": "Transfer \"বাসে যাই\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি বিশ্ববিদ্যালয়ে বাসে যাই।\".",
+      "example": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I go to university by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "বাসে যাই",
+      "romanization": "bas-e jai",
+      "nativeText": "Find one word or phrase that naturally travels with \"বাসে যাই\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "bas-e jai",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I go to university by bus.”",
+      "korean": "বাসে যাই",
+      "english": "Find one word or phrase that naturally travels with \"বাসে যাই\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I go to university by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "বাসে যাই",
+      "romanization": "bas-e jai",
+      "nativeText": "Listen for \"বাসে যাই\" inside \"আমি বিশ্ববিদ্যালয়ে বাসে যাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "bas-e jai",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I go to university by bus.”",
+      "korean": "বাসে যাই",
+      "english": "Listen for \"বাসে যাই\" inside \"আমি বিশ্ববিদ্যালয়ে বাসে যাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I go to university by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "বাসে যাই",
+      "romanization": "bas-e jai",
+      "nativeText": "Write \"বাসে যাই\" again without looking, then compare the exact written form against \"আমি বিশ্ববিদ্যালয়ে বাসে যাই।\" before moving on.",
+      "pronunciation": "bas-e jai",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "exampleNative": "Use the written model as the final correctness check: “I go to university by bus.”",
+      "korean": "বাসে যাই",
+      "english": "Write \"বাসে যাই\" again without looking, then compare the exact written form against \"আমি বিশ্ববিদ্যালয়ে বাসে যাই।\" before moving on.",
+      "example": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I go to university by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "বাসে যাই",
+      "romanization": "bas-e jai",
+      "nativeText": "Check whether \"বাসে যাই\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I go to university by bus.”",
+      "pronunciation": "bas-e jai",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I go to university by bus.”",
+      "korean": "বাসে যাই",
+      "english": "Check whether \"বাসে যাই\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I go to university by bus.”",
+      "example": "আমি বিশ্ববিদ্যালয়ে বাসে যাই।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I go to university by bus.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "রিকশা",
+      "romanization": "riksha",
+      "nativeText": "“Rickshaw.” A very practical local transport word.",
+      "pronunciation": "riksha",
+      "exampleTarget": "ঢাকায় রিকশা খুব সাধারণ।",
+      "exampleNative": "“Rickshaws are very common in Dhaka.”",
+      "korean": "রিকশা",
+      "english": "“Rickshaw.” A very practical local transport word.",
+      "example": "ঢাকায় রিকশা খুব সাধারণ।",
+      "exampleEnglish": "“Rickshaws are very common in Dhaka.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "ঢাকায় রিকশা খুব সাধারণ।",
+      "romanization": "riksha",
+      "nativeText": "Model use for \"ঢাকায় রিকশা খুব সাধারণ।\": “Rickshaws are very common in Dhaka.”",
+      "pronunciation": "riksha",
+      "exampleTarget": "ঢাকায় রিকশা খুব সাধারণ।",
+      "exampleNative": "“Rickshaws are very common in Dhaka.”",
+      "korean": "ঢাকায় রিকশা খুব সাধারণ।",
+      "english": "Model use for \"ঢাকায় রিকশা খুব সাধারণ।\": “Rickshaws are very common in Dhaka.”",
+      "example": "ঢাকায় রিকশা খুব সাধারণ।",
+      "exampleEnglish": "“Rickshaws are very common in Dhaka.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "রিকশা",
+      "romanization": "riksha",
+      "nativeText": "Usage focus for \"রিকশা\": Distinguish the nearby wording choices that make Level 1 · Unit 13: যাতায়াত — Transportation sound precise rather than merely understandable.",
+      "pronunciation": "riksha",
+      "exampleTarget": "ঢাকায় রিকশা খুব সাধারণ।",
+      "exampleNative": "Notice what the form is doing here: “Rickshaws are very common in Dhaka.”",
+      "korean": "রিকশা",
+      "english": "Usage focus for \"রিকশা\": Distinguish the nearby wording choices that make Level 1 · Unit 13: যাতায়াত — Transportation sound precise rather than merely understandable.",
+      "example": "ঢাকায় রিকশা খুব সাধারণ।",
+      "exampleEnglish": "Notice what the form is doing here: “Rickshaws are very common in Dhaka.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "রিকশা",
+      "romanization": "riksha",
+      "nativeText": "Contrast check for \"রিকশা\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "riksha",
+      "exampleTarget": "ঢাকায় রিকশা খুব সাধারণ।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Rickshaws are very common in Dhaka.”",
+      "korean": "রিকশা",
+      "english": "Contrast check for \"রিকশা\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "ঢাকায় রিকশা খুব সাধারণ।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Rickshaws are very common in Dhaka.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "রিকশা",
+      "romanization": "riksha",
+      "nativeText": "Recall \"রিকশা\" from memory, then explain what would change if a nearby alternative replaced it in \"ঢাকায় রিকশা খুব সাধারণ।\".",
+      "pronunciation": "riksha",
+      "exampleTarget": "ঢাকায় রিকশা খুব সাধারণ।",
+      "exampleNative": "Self-check against the model before moving on: “Rickshaws are very common in Dhaka.”",
+      "korean": "রিকশা",
+      "english": "Recall \"রিকশা\" from memory, then explain what would change if a nearby alternative replaced it in \"ঢাকায় রিকশা খুব সাধারণ।\".",
+      "example": "ঢাকায় রিকশা খুব সাধারণ।",
+      "exampleEnglish": "Self-check against the model before moving on: “Rickshaws are very common in Dhaka.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "রিকশা",
+      "romanization": "riksha",
+      "nativeText": "Repair \"রিকশা\" inside \"ঢাকায় রিকশা খুব সাধারণ।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 13: যাতায়াত — Transportation sound precise rather than merely understandable.",
+      "pronunciation": "riksha",
+      "exampleTarget": "ঢাকায় রিকশা খুব সাধারণ।",
+      "exampleNative": "Use the model as the repair target: “Rickshaws are very common in Dhaka.”",
+      "korean": "রিকশা",
+      "english": "Repair \"রিকশা\" inside \"ঢাকায় রিকশা খুব সাধারণ।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 13: যাতায়াত — Transportation sound precise rather than merely understandable.",
+      "example": "ঢাকায় রিকশা খুব সাধারণ।",
+      "exampleEnglish": "Use the model as the repair target: “Rickshaws are very common in Dhaka.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "রিকশা",
+      "romanization": "riksha",
+      "nativeText": "Transfer \"রিকশা\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ঢাকায় রিকশা খুব সাধারণ।\".",
+      "pronunciation": "riksha",
+      "exampleTarget": "ঢাকায় রিকশা খুব সাধারণ।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Rickshaws are very common in Dhaka.”",
+      "korean": "রিকশা",
+      "english": "Transfer \"রিকশা\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ঢাকায় রিকশা খুব সাধারণ।\".",
+      "example": "ঢাকায় রিকশা খুব সাধারণ।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Rickshaws are very common in Dhaka.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "রিকশা",
+      "romanization": "riksha",
+      "nativeText": "Find one word or phrase that naturally travels with \"রিকশা\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "riksha",
+      "exampleTarget": "ঢাকায় রিকশা খুব সাধারণ।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Rickshaws are very common in Dhaka.”",
+      "korean": "রিকশা",
+      "english": "Find one word or phrase that naturally travels with \"রিকশা\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "ঢাকায় রিকশা খুব সাধারণ।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Rickshaws are very common in Dhaka.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "রিকশা",
+      "romanization": "riksha",
+      "nativeText": "Listen for \"রিকশা\" inside \"ঢাকায় রিকশা খুব সাধারণ।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "riksha",
+      "exampleTarget": "ঢাকায় রিকশা খুব সাধারণ।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Rickshaws are very common in Dhaka.”",
+      "korean": "রিকশা",
+      "english": "Listen for \"রিকশা\" inside \"ঢাকায় রিকশা খুব সাধারণ।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "ঢাকায় রিকশা খুব সাধারণ।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Rickshaws are very common in Dhaka.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "রিকশা",
+      "romanization": "riksha",
+      "nativeText": "Write \"রিকশা\" again without looking, then compare the exact written form against \"ঢাকায় রিকশা খুব সাধারণ।\" before moving on.",
+      "pronunciation": "riksha",
+      "exampleTarget": "ঢাকায় রিকশা খুব সাধারণ।",
+      "exampleNative": "Use the written model as the final correctness check: “Rickshaws are very common in Dhaka.”",
+      "korean": "রিকশা",
+      "english": "Write \"রিকশা\" again without looking, then compare the exact written form against \"ঢাকায় রিকশা খুব সাধারণ।\" before moving on.",
+      "example": "ঢাকায় রিকশা খুব সাধারণ।",
+      "exampleEnglish": "Use the written model as the final correctness check: “Rickshaws are very common in Dhaka.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "রিকশা",
+      "romanization": "riksha",
+      "nativeText": "Check whether \"রিকশা\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Rickshaws are very common in Dhaka.”",
+      "pronunciation": "riksha",
+      "exampleTarget": "ঢাকায় রিকশা খুব সাধারণ।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Rickshaws are very common in Dhaka.”",
+      "korean": "রিকশা",
+      "english": "Check whether \"রিকশা\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Rickshaws are very common in Dhaka.”",
+      "example": "ঢাকায় রিকশা খুব সাধারণ।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Rickshaws are very common in Dhaka.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "মেট্রো",
+      "romanization": "metro",
+      "nativeText": "“Metro.” Increasingly important in both Dhaka and Kolkata contexts.",
+      "pronunciation": "metro",
+      "exampleTarget": "মেট্রো দ্রুত।",
+      "exampleNative": "“The metro is fast.”",
+      "korean": "মেট্রো",
+      "english": "“Metro.” Increasingly important in both Dhaka and Kolkata contexts.",
+      "example": "মেট্রো দ্রুত।",
+      "exampleEnglish": "“The metro is fast.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "মেট্রো দ্রুত।",
+      "romanization": "metro",
+      "nativeText": "Model use for \"মেট্রো দ্রুত।\": “The metro is fast.”",
+      "pronunciation": "metro",
+      "exampleTarget": "মেট্রো দ্রুত।",
+      "exampleNative": "“The metro is fast.”",
+      "korean": "মেট্রো দ্রুত।",
+      "english": "Model use for \"মেট্রো দ্রুত।\": “The metro is fast.”",
+      "example": "মেট্রো দ্রুত।",
+      "exampleEnglish": "“The metro is fast.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "মেট্রো",
+      "romanization": "metro",
+      "nativeText": "Usage focus for \"মেট্রো\": “Metro.” Increasingly important in both Dhaka and Kolkata contexts.",
+      "pronunciation": "metro",
+      "exampleTarget": "মেট্রো দ্রুত।",
+      "exampleNative": "Notice what the form is doing here: “The metro is fast.”",
+      "korean": "মেট্রো",
+      "english": "Usage focus for \"মেট্রো\": “Metro.” Increasingly important in both Dhaka and Kolkata contexts.",
+      "example": "মেট্রো দ্রুত।",
+      "exampleEnglish": "Notice what the form is doing here: “The metro is fast.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "মেট্রো",
+      "romanization": "metro",
+      "nativeText": "Contrast check for \"মেট্রো\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "metro",
+      "exampleTarget": "মেট্রো দ্রুত।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The metro is fast.”",
+      "korean": "মেট্রো",
+      "english": "Contrast check for \"মেট্রো\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "মেট্রো দ্রুত।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The metro is fast.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "মেট্রো",
+      "romanization": "metro",
+      "nativeText": "Recall \"মেট্রো\" from memory, then explain what would change if a nearby alternative replaced it in \"মেট্রো দ্রুত।\".",
+      "pronunciation": "metro",
+      "exampleTarget": "মেট্রো দ্রুত।",
+      "exampleNative": "Self-check against the model before moving on: “The metro is fast.”",
+      "korean": "মেট্রো",
+      "english": "Recall \"মেট্রো\" from memory, then explain what would change if a nearby alternative replaced it in \"মেট্রো দ্রুত।\".",
+      "example": "মেট্রো দ্রুত।",
+      "exampleEnglish": "Self-check against the model before moving on: “The metro is fast.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "মেট্রো",
+      "romanization": "metro",
+      "nativeText": "Repair \"মেট্রো\" inside \"মেট্রো দ্রুত।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Metro.” Increasingly important in both Dhaka and Kolkata contexts.",
+      "pronunciation": "metro",
+      "exampleTarget": "মেট্রো দ্রুত।",
+      "exampleNative": "Use the model as the repair target: “The metro is fast.”",
+      "korean": "মেট্রো",
+      "english": "Repair \"মেট্রো\" inside \"মেট্রো দ্রুত।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Metro.” Increasingly important in both Dhaka and Kolkata contexts.",
+      "example": "মেট্রো দ্রুত।",
+      "exampleEnglish": "Use the model as the repair target: “The metro is fast.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "মেট্রো",
+      "romanization": "metro",
+      "nativeText": "Transfer \"মেট্রো\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"মেট্রো দ্রুত।\".",
+      "pronunciation": "metro",
+      "exampleTarget": "মেট্রো দ্রুত।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The metro is fast.”",
+      "korean": "মেট্রো",
+      "english": "Transfer \"মেট্রো\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"মেট্রো দ্রুত।\".",
+      "example": "মেট্রো দ্রুত।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The metro is fast.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "মেট্রো",
+      "romanization": "metro",
+      "nativeText": "Find one word or phrase that naturally travels with \"মেট্রো\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "metro",
+      "exampleTarget": "মেট্রো দ্রুত।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The metro is fast.”",
+      "korean": "মেট্রো",
+      "english": "Find one word or phrase that naturally travels with \"মেট্রো\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "মেট্রো দ্রুত।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The metro is fast.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "মেট্রো",
+      "romanization": "metro",
+      "nativeText": "Listen for \"মেট্রো\" inside \"মেট্রো দ্রুত।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "metro",
+      "exampleTarget": "মেট্রো দ্রুত।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The metro is fast.”",
+      "korean": "মেট্রো",
+      "english": "Listen for \"মেট্রো\" inside \"মেট্রো দ্রুত।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "মেট্রো দ্রুত।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The metro is fast.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "মেট্রো",
+      "romanization": "metro",
+      "nativeText": "Write \"মেট্রো\" again without looking, then compare the exact written form against \"মেট্রো দ্রুত।\" before moving on.",
+      "pronunciation": "metro",
+      "exampleTarget": "মেট্রো দ্রুত।",
+      "exampleNative": "Use the written model as the final correctness check: “The metro is fast.”",
+      "korean": "মেট্রো",
+      "english": "Write \"মেট্রো\" again without looking, then compare the exact written form against \"মেট্রো দ্রুত।\" before moving on.",
+      "example": "মেট্রো দ্রুত।",
+      "exampleEnglish": "Use the written model as the final correctness check: “The metro is fast.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "মেট্রো",
+      "romanization": "metro",
+      "nativeText": "Check whether \"মেট্রো\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The metro is fast.”",
+      "pronunciation": "metro",
+      "exampleTarget": "মেট্রো দ্রুত।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The metro is fast.”",
+      "korean": "মেট্রো",
+      "english": "Check whether \"মেট্রো\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The metro is fast.”",
+      "example": "মেট্রো দ্রুত।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The metro is fast.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "স্টপেজ",
+      "romanization": "stopej",
+      "nativeText": "“Stop.” A common transport noun.",
+      "pronunciation": "stopej",
+      "exampleTarget": "বাস স্টপেজ কাছে।",
+      "exampleNative": "“The bus stop is nearby.”",
+      "korean": "স্টপেজ",
+      "english": "“Stop.” A common transport noun.",
+      "example": "বাস স্টপেজ কাছে।",
+      "exampleEnglish": "“The bus stop is nearby.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "বাস স্টপেজ কাছে।",
+      "romanization": "stopej",
+      "nativeText": "Model use for \"বাস স্টপেজ কাছে।\": “The bus stop is nearby.”",
+      "pronunciation": "stopej",
+      "exampleTarget": "বাস স্টপেজ কাছে।",
+      "exampleNative": "“The bus stop is nearby.”",
+      "korean": "বাস স্টপেজ কাছে।",
+      "english": "Model use for \"বাস স্টপেজ কাছে।\": “The bus stop is nearby.”",
+      "example": "বাস স্টপেজ কাছে।",
+      "exampleEnglish": "“The bus stop is nearby.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "স্টপেজ",
+      "romanization": "stopej",
+      "nativeText": "Usage focus for \"স্টপেজ\": “Stop.” A common transport noun.",
+      "pronunciation": "stopej",
+      "exampleTarget": "বাস স্টপেজ কাছে।",
+      "exampleNative": "Notice what the form is doing here: “The bus stop is nearby.”",
+      "korean": "স্টপেজ",
+      "english": "Usage focus for \"স্টপেজ\": “Stop.” A common transport noun.",
+      "example": "বাস স্টপেজ কাছে।",
+      "exampleEnglish": "Notice what the form is doing here: “The bus stop is nearby.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "স্টপেজ",
+      "romanization": "stopej",
+      "nativeText": "Contrast check for \"স্টপেজ\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "stopej",
+      "exampleTarget": "বাস স্টপেজ কাছে।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The bus stop is nearby.”",
+      "korean": "স্টপেজ",
+      "english": "Contrast check for \"স্টপেজ\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "বাস স্টপেজ কাছে।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The bus stop is nearby.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "স্টপেজ",
+      "romanization": "stopej",
+      "nativeText": "Recall \"স্টপেজ\" from memory, then explain what would change if a nearby alternative replaced it in \"বাস স্টপেজ কাছে।\".",
+      "pronunciation": "stopej",
+      "exampleTarget": "বাস স্টপেজ কাছে।",
+      "exampleNative": "Self-check against the model before moving on: “The bus stop is nearby.”",
+      "korean": "স্টপেজ",
+      "english": "Recall \"স্টপেজ\" from memory, then explain what would change if a nearby alternative replaced it in \"বাস স্টপেজ কাছে।\".",
+      "example": "বাস স্টপেজ কাছে।",
+      "exampleEnglish": "Self-check against the model before moving on: “The bus stop is nearby.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "স্টপেজ",
+      "romanization": "stopej",
+      "nativeText": "Repair \"স্টপেজ\" inside \"বাস স্টপেজ কাছে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Stop.” A common transport noun.",
+      "pronunciation": "stopej",
+      "exampleTarget": "বাস স্টপেজ কাছে।",
+      "exampleNative": "Use the model as the repair target: “The bus stop is nearby.”",
+      "korean": "স্টপেজ",
+      "english": "Repair \"স্টপেজ\" inside \"বাস স্টপেজ কাছে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Stop.” A common transport noun.",
+      "example": "বাস স্টপেজ কাছে।",
+      "exampleEnglish": "Use the model as the repair target: “The bus stop is nearby.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "স্টপেজ",
+      "romanization": "stopej",
+      "nativeText": "Transfer \"স্টপেজ\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"বাস স্টপেজ কাছে।\".",
+      "pronunciation": "stopej",
+      "exampleTarget": "বাস স্টপেজ কাছে।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The bus stop is nearby.”",
+      "korean": "স্টপেজ",
+      "english": "Transfer \"স্টপেজ\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"বাস স্টপেজ কাছে।\".",
+      "example": "বাস স্টপেজ কাছে।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The bus stop is nearby.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "স্টপেজ",
+      "romanization": "stopej",
+      "nativeText": "Find one word or phrase that naturally travels with \"স্টপেজ\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "stopej",
+      "exampleTarget": "বাস স্টপেজ কাছে।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The bus stop is nearby.”",
+      "korean": "স্টপেজ",
+      "english": "Find one word or phrase that naturally travels with \"স্টপেজ\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "বাস স্টপেজ কাছে।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The bus stop is nearby.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "স্টপেজ",
+      "romanization": "stopej",
+      "nativeText": "Listen for \"স্টপেজ\" inside \"বাস স্টপেজ কাছে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "stopej",
+      "exampleTarget": "বাস স্টপেজ কাছে।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The bus stop is nearby.”",
+      "korean": "স্টপেজ",
+      "english": "Listen for \"স্টপেজ\" inside \"বাস স্টপেজ কাছে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "বাস স্টপেজ কাছে।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The bus stop is nearby.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "স্টপেজ",
+      "romanization": "stopej",
+      "nativeText": "Write \"স্টপেজ\" again without looking, then compare the exact written form against \"বাস স্টপেজ কাছে।\" before moving on.",
+      "pronunciation": "stopej",
+      "exampleTarget": "বাস স্টপেজ কাছে।",
+      "exampleNative": "Use the written model as the final correctness check: “The bus stop is nearby.”",
+      "korean": "স্টপেজ",
+      "english": "Write \"স্টপেজ\" again without looking, then compare the exact written form against \"বাস স্টপেজ কাছে।\" before moving on.",
+      "example": "বাস স্টপেজ কাছে।",
+      "exampleEnglish": "Use the written model as the final correctness check: “The bus stop is nearby.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "স্টপেজ",
+      "romanization": "stopej",
+      "nativeText": "Check whether \"স্টপেজ\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The bus stop is nearby.”",
+      "pronunciation": "stopej",
+      "exampleTarget": "বাস স্টপেজ কাছে।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The bus stop is nearby.”",
+      "korean": "স্টপেজ",
+      "english": "Check whether \"স্টপেজ\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The bus stop is nearby.”",
+      "example": "বাস স্টপেজ কাছে।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The bus stop is nearby.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "স্টেশন",
+      "romanization": "steshon",
+      "nativeText": "“Station.” Used for rail and metro.",
+      "pronunciation": "steshon",
+      "exampleTarget": "পরের স্টেশনে নামবেন।",
+      "exampleNative": "“Get off at the next station.”",
+      "korean": "স্টেশন",
+      "english": "“Station.” Used for rail and metro.",
+      "example": "পরের স্টেশনে নামবেন।",
+      "exampleEnglish": "“Get off at the next station.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "পরের স্টেশনে নামবেন।",
+      "romanization": "steshon",
+      "nativeText": "Model use for \"পরের স্টেশনে নামবেন।\": “Get off at the next station.”",
+      "pronunciation": "steshon",
+      "exampleTarget": "পরের স্টেশনে নামবেন।",
+      "exampleNative": "“Get off at the next station.”",
+      "korean": "পরের স্টেশনে নামবেন।",
+      "english": "Model use for \"পরের স্টেশনে নামবেন।\": “Get off at the next station.”",
+      "example": "পরের স্টেশনে নামবেন।",
+      "exampleEnglish": "“Get off at the next station.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "স্টেশন",
+      "romanization": "steshon",
+      "nativeText": "Usage focus for \"স্টেশন\": “Station.” Used for rail and metro.",
+      "pronunciation": "steshon",
+      "exampleTarget": "পরের স্টেশনে নামবেন।",
+      "exampleNative": "Notice what the form is doing here: “Get off at the next station.”",
+      "korean": "স্টেশন",
+      "english": "Usage focus for \"স্টেশন\": “Station.” Used for rail and metro.",
+      "example": "পরের স্টেশনে নামবেন।",
+      "exampleEnglish": "Notice what the form is doing here: “Get off at the next station.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "স্টেশন",
+      "romanization": "steshon",
+      "nativeText": "Contrast check for \"স্টেশন\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "steshon",
+      "exampleTarget": "পরের স্টেশনে নামবেন।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Get off at the next station.”",
+      "korean": "স্টেশন",
+      "english": "Contrast check for \"স্টেশন\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "পরের স্টেশনে নামবেন।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Get off at the next station.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "স্টেশন",
+      "romanization": "steshon",
+      "nativeText": "Recall \"স্টেশন\" from memory, then explain what would change if a nearby alternative replaced it in \"পরের স্টেশনে নামবেন।\".",
+      "pronunciation": "steshon",
+      "exampleTarget": "পরের স্টেশনে নামবেন।",
+      "exampleNative": "Self-check against the model before moving on: “Get off at the next station.”",
+      "korean": "স্টেশন",
+      "english": "Recall \"স্টেশন\" from memory, then explain what would change if a nearby alternative replaced it in \"পরের স্টেশনে নামবেন।\".",
+      "example": "পরের স্টেশনে নামবেন।",
+      "exampleEnglish": "Self-check against the model before moving on: “Get off at the next station.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "স্টেশন",
+      "romanization": "steshon",
+      "nativeText": "Repair \"স্টেশন\" inside \"পরের স্টেশনে নামবেন।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Station.” Used for rail and metro.",
+      "pronunciation": "steshon",
+      "exampleTarget": "পরের স্টেশনে নামবেন।",
+      "exampleNative": "Use the model as the repair target: “Get off at the next station.”",
+      "korean": "স্টেশন",
+      "english": "Repair \"স্টেশন\" inside \"পরের স্টেশনে নামবেন।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Station.” Used for rail and metro.",
+      "example": "পরের স্টেশনে নামবেন।",
+      "exampleEnglish": "Use the model as the repair target: “Get off at the next station.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "স্টেশন",
+      "romanization": "steshon",
+      "nativeText": "Transfer \"স্টেশন\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"পরের স্টেশনে নামবেন।\".",
+      "pronunciation": "steshon",
+      "exampleTarget": "পরের স্টেশনে নামবেন।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Get off at the next station.”",
+      "korean": "স্টেশন",
+      "english": "Transfer \"স্টেশন\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"পরের স্টেশনে নামবেন।\".",
+      "example": "পরের স্টেশনে নামবেন।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Get off at the next station.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "স্টেশন",
+      "romanization": "steshon",
+      "nativeText": "Find one word or phrase that naturally travels with \"স্টেশন\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "steshon",
+      "exampleTarget": "পরের স্টেশনে নামবেন।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Get off at the next station.”",
+      "korean": "স্টেশন",
+      "english": "Find one word or phrase that naturally travels with \"স্টেশন\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "পরের স্টেশনে নামবেন।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Get off at the next station.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "স্টেশন",
+      "romanization": "steshon",
+      "nativeText": "Listen for \"স্টেশন\" inside \"পরের স্টেশনে নামবেন।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "steshon",
+      "exampleTarget": "পরের স্টেশনে নামবেন।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Get off at the next station.”",
+      "korean": "স্টেশন",
+      "english": "Listen for \"স্টেশন\" inside \"পরের স্টেশনে নামবেন।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "পরের স্টেশনে নামবেন।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Get off at the next station.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "স্টেশন",
+      "romanization": "steshon",
+      "nativeText": "Write \"স্টেশন\" again without looking, then compare the exact written form against \"পরের স্টেশনে নামবেন।\" before moving on.",
+      "pronunciation": "steshon",
+      "exampleTarget": "পরের স্টেশনে নামবেন।",
+      "exampleNative": "Use the written model as the final correctness check: “Get off at the next station.”",
+      "korean": "স্টেশন",
+      "english": "Write \"স্টেশন\" again without looking, then compare the exact written form against \"পরের স্টেশনে নামবেন।\" before moving on.",
+      "example": "পরের স্টেশনে নামবেন।",
+      "exampleEnglish": "Use the written model as the final correctness check: “Get off at the next station.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "স্টেশন",
+      "romanization": "steshon",
+      "nativeText": "Check whether \"স্টেশন\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Get off at the next station.”",
+      "pronunciation": "steshon",
+      "exampleTarget": "পরের স্টেশনে নামবেন।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Get off at the next station.”",
+      "korean": "স্টেশন",
+      "english": "Check whether \"স্টেশন\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Get off at the next station.”",
+      "example": "পরের স্টেশনে নামবেন।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Get off at the next station.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "টিকিট",
+      "romanization": "ṭikit",
+      "nativeText": "“Ticket.” Practical across transport and events.",
+      "pronunciation": "ṭikit",
+      "exampleTarget": "একটা টিকিট চাই।",
+      "exampleNative": "“I want one ticket.”",
+      "korean": "টিকিট",
+      "english": "“Ticket.” Practical across transport and events.",
+      "example": "একটা টিকিট চাই।",
+      "exampleEnglish": "“I want one ticket.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "একটা টিকিট চাই।",
+      "romanization": "ṭikit",
+      "nativeText": "Model use for \"একটা টিকিট চাই।\": “I want one ticket.”",
+      "pronunciation": "ṭikit",
+      "exampleTarget": "একটা টিকিট চাই।",
+      "exampleNative": "“I want one ticket.”",
+      "korean": "একটা টিকিট চাই।",
+      "english": "Model use for \"একটা টিকিট চাই।\": “I want one ticket.”",
+      "example": "একটা টিকিট চাই।",
+      "exampleEnglish": "“I want one ticket.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "টিকিট",
+      "romanization": "ṭikit",
+      "nativeText": "Usage focus for \"টিকিট\": “Ticket.” Practical across transport and events.",
+      "pronunciation": "ṭikit",
+      "exampleTarget": "একটা টিকিট চাই।",
+      "exampleNative": "Notice what the form is doing here: “I want one ticket.”",
+      "korean": "টিকিট",
+      "english": "Usage focus for \"টিকিট\": “Ticket.” Practical across transport and events.",
+      "example": "একটা টিকিট চাই।",
+      "exampleEnglish": "Notice what the form is doing here: “I want one ticket.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "টিকিট",
+      "romanization": "ṭikit",
+      "nativeText": "Contrast check for \"টিকিট\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ṭikit",
+      "exampleTarget": "একটা টিকিট চাই।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want one ticket.”",
+      "korean": "টিকিট",
+      "english": "Contrast check for \"টিকিট\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "একটা টিকিট চাই।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want one ticket.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "টিকিট",
+      "romanization": "ṭikit",
+      "nativeText": "Recall \"টিকিট\" from memory, then explain what would change if a nearby alternative replaced it in \"একটা টিকিট চাই।\".",
+      "pronunciation": "ṭikit",
+      "exampleTarget": "একটা টিকিট চাই।",
+      "exampleNative": "Self-check against the model before moving on: “I want one ticket.”",
+      "korean": "টিকিট",
+      "english": "Recall \"টিকিট\" from memory, then explain what would change if a nearby alternative replaced it in \"একটা টিকিট চাই।\".",
+      "example": "একটা টিকিট চাই।",
+      "exampleEnglish": "Self-check against the model before moving on: “I want one ticket.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "টিকিট",
+      "romanization": "ṭikit",
+      "nativeText": "Repair \"টিকিট\" inside \"একটা টিকিট চাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Ticket.” Practical across transport and events.",
+      "pronunciation": "ṭikit",
+      "exampleTarget": "একটা টিকিট চাই।",
+      "exampleNative": "Use the model as the repair target: “I want one ticket.”",
+      "korean": "টিকিট",
+      "english": "Repair \"টিকিট\" inside \"একটা টিকিট চাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Ticket.” Practical across transport and events.",
+      "example": "একটা টিকিট চাই।",
+      "exampleEnglish": "Use the model as the repair target: “I want one ticket.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "টিকিট",
+      "romanization": "ṭikit",
+      "nativeText": "Transfer \"টিকিট\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"একটা টিকিট চাই।\".",
+      "pronunciation": "ṭikit",
+      "exampleTarget": "একটা টিকিট চাই।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want one ticket.”",
+      "korean": "টিকিট",
+      "english": "Transfer \"টিকিট\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"একটা টিকিট চাই।\".",
+      "example": "একটা টিকিট চাই।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want one ticket.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "টিকিট",
+      "romanization": "ṭikit",
+      "nativeText": "Find one word or phrase that naturally travels with \"টিকিট\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ṭikit",
+      "exampleTarget": "একটা টিকিট চাই।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want one ticket.”",
+      "korean": "টিকিট",
+      "english": "Find one word or phrase that naturally travels with \"টিকিট\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "একটা টিকিট চাই।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want one ticket.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "টিকিট",
+      "romanization": "ṭikit",
+      "nativeText": "Listen for \"টিকিট\" inside \"একটা টিকিট চাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ṭikit",
+      "exampleTarget": "একটা টিকিট চাই।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want one ticket.”",
+      "korean": "টিকিট",
+      "english": "Listen for \"টিকিট\" inside \"একটা টিকিট চাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "একটা টিকিট চাই।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want one ticket.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "টিকিট",
+      "romanization": "ṭikit",
+      "nativeText": "Write \"টিকিট\" again without looking, then compare the exact written form against \"একটা টিকিট চাই।\" before moving on.",
+      "pronunciation": "ṭikit",
+      "exampleTarget": "একটা টিকিট চাই।",
+      "exampleNative": "Use the written model as the final correctness check: “I want one ticket.”",
+      "korean": "টিকিট",
+      "english": "Write \"টিকিট\" again without looking, then compare the exact written form against \"একটা টিকিট চাই।\" before moving on.",
+      "example": "একটা টিকিট চাই।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want one ticket.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "টিকিট",
+      "romanization": "ṭikit",
+      "nativeText": "Check whether \"টিকিট\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want one ticket.”",
+      "pronunciation": "ṭikit",
+      "exampleTarget": "একটা টিকিট চাই।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want one ticket.”",
+      "korean": "টিকিট",
+      "english": "Check whether \"টিকিট\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want one ticket.”",
+      "example": "একটা টিকিট চাই।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want one ticket.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "... কীভাবে যাব?",
+      "romanization": "... kibhabe jabo",
+      "nativeText": "“How do I go to ...?” A practical route question.",
+      "pronunciation": "... kibhabe jabo",
+      "exampleTarget": "মাঝখানে কীভাবে যাব?",
+      "exampleNative": "“How do I get to the center?”",
+      "korean": "... কীভাবে যাব?",
+      "english": "“How do I go to ...?” A practical route question.",
+      "example": "মাঝখানে কীভাবে যাব?",
+      "exampleEnglish": "“How do I get to the center?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "মাঝখানে কীভাবে যাব?",
+      "romanization": "... kibhabe jabo",
+      "nativeText": "Model use for \"মাঝখানে কীভাবে যাব?\": “How do I get to the center?”",
+      "pronunciation": "... kibhabe jabo",
+      "exampleTarget": "মাঝখানে কীভাবে যাব?",
+      "exampleNative": "“How do I get to the center?”",
+      "korean": "মাঝখানে কীভাবে যাব?",
+      "english": "Model use for \"মাঝখানে কীভাবে যাব?\": “How do I get to the center?”",
+      "example": "মাঝখানে কীভাবে যাব?",
+      "exampleEnglish": "“How do I get to the center?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "... কীভাবে যাব?",
+      "romanization": "... kibhabe jabo",
+      "nativeText": "Usage focus for \"... কীভাবে যাব?\": “How do I go to ...?” A practical route question.",
+      "pronunciation": "... kibhabe jabo",
+      "exampleTarget": "মাঝখানে কীভাবে যাব?",
+      "exampleNative": "Notice what the form is doing here: “How do I get to the center?”",
+      "korean": "... কীভাবে যাব?",
+      "english": "Usage focus for \"... কীভাবে যাব?\": “How do I go to ...?” A practical route question.",
+      "example": "মাঝখানে কীভাবে যাব?",
+      "exampleEnglish": "Notice what the form is doing here: “How do I get to the center?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "... কীভাবে যাব?",
+      "romanization": "... kibhabe jabo",
+      "nativeText": "Contrast check for \"... কীভাবে যাব?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "... kibhabe jabo",
+      "exampleTarget": "মাঝখানে কীভাবে যাব?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How do I get to the center?”",
+      "korean": "... কীভাবে যাব?",
+      "english": "Contrast check for \"... কীভাবে যাব?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "মাঝখানে কীভাবে যাব?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How do I get to the center?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "... কীভাবে যাব?",
+      "romanization": "... kibhabe jabo",
+      "nativeText": "Recall \"... কীভাবে যাব?\" from memory, then explain what would change if a nearby alternative replaced it in \"মাঝখানে কীভাবে যাব?\".",
+      "pronunciation": "... kibhabe jabo",
+      "exampleTarget": "মাঝখানে কীভাবে যাব?",
+      "exampleNative": "Self-check against the model before moving on: “How do I get to the center?”",
+      "korean": "... কীভাবে যাব?",
+      "english": "Recall \"... কীভাবে যাব?\" from memory, then explain what would change if a nearby alternative replaced it in \"মাঝখানে কীভাবে যাব?\".",
+      "example": "মাঝখানে কীভাবে যাব?",
+      "exampleEnglish": "Self-check against the model before moving on: “How do I get to the center?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "... কীভাবে যাব?",
+      "romanization": "... kibhabe jabo",
+      "nativeText": "Repair \"... কীভাবে যাব?\" inside \"মাঝখানে কীভাবে যাব?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “How do I go to ...?” A practical route question.",
+      "pronunciation": "... kibhabe jabo",
+      "exampleTarget": "মাঝখানে কীভাবে যাব?",
+      "exampleNative": "Use the model as the repair target: “How do I get to the center?”",
+      "korean": "... কীভাবে যাব?",
+      "english": "Repair \"... কীভাবে যাব?\" inside \"মাঝখানে কীভাবে যাব?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “How do I go to ...?” A practical route question.",
+      "example": "মাঝখানে কীভাবে যাব?",
+      "exampleEnglish": "Use the model as the repair target: “How do I get to the center?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "... কীভাবে যাব?",
+      "romanization": "... kibhabe jabo",
+      "nativeText": "Transfer \"... কীভাবে যাব?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"মাঝখানে কীভাবে যাব?\".",
+      "pronunciation": "... kibhabe jabo",
+      "exampleTarget": "মাঝখানে কীভাবে যাব?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “How do I get to the center?”",
+      "korean": "... কীভাবে যাব?",
+      "english": "Transfer \"... কীভাবে যাব?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"মাঝখানে কীভাবে যাব?\".",
+      "example": "মাঝখানে কীভাবে যাব?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “How do I get to the center?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "... কীভাবে যাব?",
+      "romanization": "... kibhabe jabo",
+      "nativeText": "Find one word or phrase that naturally travels with \"... কীভাবে যাব?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "... kibhabe jabo",
+      "exampleTarget": "মাঝখানে কীভাবে যাব?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “How do I get to the center?”",
+      "korean": "... কীভাবে যাব?",
+      "english": "Find one word or phrase that naturally travels with \"... কীভাবে যাব?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "মাঝখানে কীভাবে যাব?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “How do I get to the center?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "... কীভাবে যাব?",
+      "romanization": "... kibhabe jabo",
+      "nativeText": "Listen for \"... কীভাবে যাব?\" inside \"মাঝখানে কীভাবে যাব?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "... kibhabe jabo",
+      "exampleTarget": "মাঝখানে কীভাবে যাব?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How do I get to the center?”",
+      "korean": "... কীভাবে যাব?",
+      "english": "Listen for \"... কীভাবে যাব?\" inside \"মাঝখানে কীভাবে যাব?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "মাঝখানে কীভাবে যাব?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How do I get to the center?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "... কীভাবে যাব?",
+      "romanization": "... kibhabe jabo",
+      "nativeText": "Write \"... কীভাবে যাব?\" again without looking, then compare the exact written form against \"মাঝখানে কীভাবে যাব?\" before moving on.",
+      "pronunciation": "... kibhabe jabo",
+      "exampleTarget": "মাঝখানে কীভাবে যাব?",
+      "exampleNative": "Use the written model as the final correctness check: “How do I get to the center?”",
+      "korean": "... কীভাবে যাব?",
+      "english": "Write \"... কীভাবে যাব?\" again without looking, then compare the exact written form against \"মাঝখানে কীভাবে যাব?\" before moving on.",
+      "example": "মাঝখানে কীভাবে যাব?",
+      "exampleEnglish": "Use the written model as the final correctness check: “How do I get to the center?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "... কীভাবে যাব?",
+      "romanization": "... kibhabe jabo",
+      "nativeText": "Check whether \"... কীভাবে যাব?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How do I get to the center?”",
+      "pronunciation": "... kibhabe jabo",
+      "exampleTarget": "মাঝখানে কীভাবে যাব?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “How do I get to the center?”",
+      "korean": "... কীভাবে যাব?",
+      "english": "Check whether \"... কীভাবে যাব?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How do I get to the center?”",
+      "example": "মাঝখানে কীভাবে যাব?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “How do I get to the center?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "কত সময় লাগে?",
+      "romanization": "koto shomoy lage",
+      "nativeText": "“How long does it take?” A complete duration question.",
+      "pronunciation": "koto shomoy lage",
+      "exampleTarget": "বিমানবন্দরে যেতে কত সময় লাগে?",
+      "exampleNative": "“How long does it take to go to the airport?”",
+      "korean": "কত সময় লাগে?",
+      "english": "“How long does it take?” A complete duration question.",
+      "example": "বিমানবন্দরে যেতে কত সময় লাগে?",
+      "exampleEnglish": "“How long does it take to go to the airport?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "বিমানবন্দরে যেতে কত সময় লাগে?",
+      "romanization": "koto shomoy lage",
+      "nativeText": "Model use for \"বিমানবন্দরে যেতে কত সময় লাগে?\": “How long does it take to go to the airport?”",
+      "pronunciation": "koto shomoy lage",
+      "exampleTarget": "বিমানবন্দরে যেতে কত সময় লাগে?",
+      "exampleNative": "“How long does it take to go to the airport?”",
+      "korean": "বিমানবন্দরে যেতে কত সময় লাগে?",
+      "english": "Model use for \"বিমানবন্দরে যেতে কত সময় লাগে?\": “How long does it take to go to the airport?”",
+      "example": "বিমানবন্দরে যেতে কত সময় লাগে?",
+      "exampleEnglish": "“How long does it take to go to the airport?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "কত সময় লাগে?",
+      "romanization": "koto shomoy lage",
+      "nativeText": "Usage focus for \"কত সময় লাগে?\": “How long does it take?” A complete duration question.",
+      "pronunciation": "koto shomoy lage",
+      "exampleTarget": "বিমানবন্দরে যেতে কত সময় লাগে?",
+      "exampleNative": "Notice what the form is doing here: “How long does it take to go to the airport?”",
+      "korean": "কত সময় লাগে?",
+      "english": "Usage focus for \"কত সময় লাগে?\": “How long does it take?” A complete duration question.",
+      "example": "বিমানবন্দরে যেতে কত সময় লাগে?",
+      "exampleEnglish": "Notice what the form is doing here: “How long does it take to go to the airport?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "কত সময় লাগে?",
+      "romanization": "koto shomoy lage",
+      "nativeText": "Contrast check for \"কত সময় লাগে?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "koto shomoy lage",
+      "exampleTarget": "বিমানবন্দরে যেতে কত সময় লাগে?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How long does it take to go to the airport?”",
+      "korean": "কত সময় লাগে?",
+      "english": "Contrast check for \"কত সময় লাগে?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "বিমানবন্দরে যেতে কত সময় লাগে?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How long does it take to go to the airport?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "কত সময় লাগে?",
+      "romanization": "koto shomoy lage",
+      "nativeText": "Recall \"কত সময় লাগে?\" from memory, then explain what would change if a nearby alternative replaced it in \"বিমানবন্দরে যেতে কত সময় লাগে?\".",
+      "pronunciation": "koto shomoy lage",
+      "exampleTarget": "বিমানবন্দরে যেতে কত সময় লাগে?",
+      "exampleNative": "Self-check against the model before moving on: “How long does it take to go to the airport?”",
+      "korean": "কত সময় লাগে?",
+      "english": "Recall \"কত সময় লাগে?\" from memory, then explain what would change if a nearby alternative replaced it in \"বিমানবন্দরে যেতে কত সময় লাগে?\".",
+      "example": "বিমানবন্দরে যেতে কত সময় লাগে?",
+      "exampleEnglish": "Self-check against the model before moving on: “How long does it take to go to the airport?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "কত সময় লাগে?",
+      "romanization": "koto shomoy lage",
+      "nativeText": "Repair \"কত সময় লাগে?\" inside \"বিমানবন্দরে যেতে কত সময় লাগে?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “How long does it take?” A complete duration question.",
+      "pronunciation": "koto shomoy lage",
+      "exampleTarget": "বিমানবন্দরে যেতে কত সময় লাগে?",
+      "exampleNative": "Use the model as the repair target: “How long does it take to go to the airport?”",
+      "korean": "কত সময় লাগে?",
+      "english": "Repair \"কত সময় লাগে?\" inside \"বিমানবন্দরে যেতে কত সময় লাগে?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “How long does it take?” A complete duration question.",
+      "example": "বিমানবন্দরে যেতে কত সময় লাগে?",
+      "exampleEnglish": "Use the model as the repair target: “How long does it take to go to the airport?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "কত সময় লাগে?",
+      "romanization": "koto shomoy lage",
+      "nativeText": "Transfer \"কত সময় লাগে?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"বিমানবন্দরে যেতে কত সময় লাগে?\".",
+      "pronunciation": "koto shomoy lage",
+      "exampleTarget": "বিমানবন্দরে যেতে কত সময় লাগে?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “How long does it take to go to the airport?”",
+      "korean": "কত সময় লাগে?",
+      "english": "Transfer \"কত সময় লাগে?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"বিমানবন্দরে যেতে কত সময় লাগে?\".",
+      "example": "বিমানবন্দরে যেতে কত সময় লাগে?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “How long does it take to go to the airport?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "কত সময় লাগে?",
+      "romanization": "koto shomoy lage",
+      "nativeText": "Find one word or phrase that naturally travels with \"কত সময় লাগে?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "koto shomoy lage",
+      "exampleTarget": "বিমানবন্দরে যেতে কত সময় লাগে?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “How long does it take to go to the airport?”",
+      "korean": "কত সময় লাগে?",
+      "english": "Find one word or phrase that naturally travels with \"কত সময় লাগে?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "বিমানবন্দরে যেতে কত সময় লাগে?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “How long does it take to go to the airport?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "কত সময় লাগে?",
+      "romanization": "koto shomoy lage",
+      "nativeText": "Listen for \"কত সময় লাগে?\" inside \"বিমানবন্দরে যেতে কত সময় লাগে?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "koto shomoy lage",
+      "exampleTarget": "বিমানবন্দরে যেতে কত সময় লাগে?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How long does it take to go to the airport?”",
+      "korean": "কত সময় লাগে?",
+      "english": "Listen for \"কত সময় লাগে?\" inside \"বিমানবন্দরে যেতে কত সময় লাগে?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "বিমানবন্দরে যেতে কত সময় লাগে?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How long does it take to go to the airport?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "কত সময় লাগে?",
+      "romanization": "koto shomoy lage",
+      "nativeText": "Write \"কত সময় লাগে?\" again without looking, then compare the exact written form against \"বিমানবন্দরে যেতে কত সময় লাগে?\" before moving on.",
+      "pronunciation": "koto shomoy lage",
+      "exampleTarget": "বিমানবন্দরে যেতে কত সময় লাগে?",
+      "exampleNative": "Use the written model as the final correctness check: “How long does it take to go to the airport?”",
+      "korean": "কত সময় লাগে?",
+      "english": "Write \"কত সময় লাগে?\" again without looking, then compare the exact written form against \"বিমানবন্দরে যেতে কত সময় লাগে?\" before moving on.",
+      "example": "বিমানবন্দরে যেতে কত সময় লাগে?",
+      "exampleEnglish": "Use the written model as the final correctness check: “How long does it take to go to the airport?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit13transportation-vocabulary-1",
+        "bn-level1unit13transportation-vocabulary-2",
+        "bn-level1unit13transportation-grammar-1",
+        "bn-level1unit13transportation-grammar-2",
+        "bn-level1unit13transportation-reading",
+        "bn-level1unit13transportation-listening",
+        "bn-level1unit13transportation-writing",
+        "bn-level1unit13transportation-task"
+      ],
+      "targetText": "কত সময় লাগে?",
+      "romanization": "koto shomoy lage",
+      "nativeText": "Check whether \"কত সময় লাগে?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How long does it take to go to the airport?”",
+      "pronunciation": "koto shomoy lage",
+      "exampleTarget": "বিমানবন্দরে যেতে কত সময় লাগে?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “How long does it take to go to the airport?”",
+      "korean": "কত সময় লাগে?",
+      "english": "Check whether \"কত সময় লাগে?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How long does it take to go to the airport?”",
+      "example": "বিমানবন্দরে যেতে কত সময় লাগে?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “How long does it take to go to the airport?”"
+    }
+  ],
+  "targetLang": "bn",
+  "nativeLang": "en",
+  "track": "textbook"
+};

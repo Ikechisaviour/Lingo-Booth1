@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('ta', {
-  slug: 'ta-l1u15',
-  title: 'Level 1 · Unit 15: தொலைபேசி மற்றும் செய்திகள் — Phone Calls and Messages',
-  category: 'communication',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Make short calls, leave messages, and ask for repetition politely.',
-  vocabularyGoal: 'Use phone, message, number, and callback vocabulary.',
-  grammarGoal: 'Use respectful request forms such as `... முடியுமா?` and polite imperatives.',
-  speakingGoal: 'Open a call, ask for someone, leave a message, and confirm a number.',
-  task: 'Leave a clear message for a classmate.',
-  expressionPractice: [
-    practice('opening-call', 'Opening call', 'Use one phone greeting and identify yourself.'),
-    practice('leaving-message', 'Leaving message', 'Use `செய்தி சொல்ல முடியுமா?`.'),
-    practice('asking-repeat', 'Asking repetition', 'Use `மீண்டும் சொல்ல முடியுமா?`.'),
+module.exports = {
+  "title": "Level 1 · Unit 15: தொலைபேசி மற்றும் செய்திகள் — Phone Calls and Messages",
+  "category": "communication",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ta-level1unit15phonemessages-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Make short calls, leave messages, and ask for repetition politely."
+      ],
+      "task": "Leave a clear message for a classmate."
+    },
+    {
+      "id": "ta-level1unit15phonemessages-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ta-level1unit15phonemessages-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 15: தொலைபேசி மற்றும் செய்திகள் — Phone Calls and Messages with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ta-level1unit15phonemessages-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 15: தொலைபேசி மற்றும் செய்திகள் — Phone Calls and Messages sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ta-level1unit15phonemessages-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Make short calls, leave messages, and ask for repetition politely."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ta-level1unit15phonemessages-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 15: தொலைபேசி மற்றும் செய்திகள் — Phone Calls and Messages with one nearby Tamil form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ta-level1unit15phonemessages-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ta-level1unit15phonemessages-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ta-level1unit15phonemessages-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ta-level1unit15phonemessages-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ta-level1unit15phonemessages-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Leave a clear message for a classmate."
+      ],
+      "task": "Leave a clear message for a classmate."
+    }
   ],
-  relatedPools: ['topic-communication', 'topic-service'],
-  items: [
-    item('ஹலோ', 'halō', 'The ordinary phone greeting.', 'ஹலோ, நான் மீனா பேசுகிறேன்.', '“Hello, this is Meena speaking.”'),
-    item('... உடன் பேச முடியுமா?', '...uṭaṉ pēca muṭiyumā', '“May I speak with ...?” A polite phone request.', 'ராமுடன் பேச முடியுமா?', '“May I speak with Ram?”'),
-    item('இப்போது இல்லை', 'ippōtu illai', '“Not available now.” A simple status phrase.', 'அவர் இப்போது இல்லை.', '“He is not available now.”'),
-    item('செய்தி', 'ceyti', '“Message.” Useful for phone and text contexts.', 'ஒரு செய்தி விடலாமா?', '“May I leave a message?”'),
-    item('நான் அழைத்தேன் என்று சொல்லுங்கள்', 'nāṉ aḻaittēṉ eṉṟu colluṅkaḷ', '“Please say that I called.” A practical relay request.', 'நான் அழைத்தேன் என்று சொல்லுங்கள்.', '“Please say that I called.”'),
-    item('தொலைபேசி எண்', 'tolaipēci eṇ', '“Phone number.” A common service phrase.', 'உங்கள் தொலைபேசி எண் என்ன?', '“What is your phone number?”'),
-    item('மீண்டும் சொல்ல முடியுமா?', 'mīṇṭum colla muṭiyumā', '“Could you say it again?” A core repair phrase.', 'எண்ணை மீண்டும் சொல்ல முடியுமா?', '“Could you repeat the number?”'),
-    item('பிறகு மீண்டும் அழைக்கிறேன்', 'piṟaku mīṇṭum aḻaikkiṟēṉ', '“I will call again later.” A natural call-ending promise.', 'சரி, பிறகு மீண்டும் அழைக்கிறேன்.', '“Okay, I will call again later.”'),
+  "expressionPractice": [
+    {
+      "id": "opening-call",
+      "label": "Opening call",
+      "goal": "Use one phone greeting and identify yourself."
+    },
+    {
+      "id": "leaving-message",
+      "label": "Leaving message",
+      "goal": "Use `செய்தி சொல்ல முடியுமா?`."
+    },
+    {
+      "id": "asking-repeat",
+      "label": "Asking repetition",
+      "goal": "Use `மீண்டும் சொல்ல முடியுமா?`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-communication",
+    "topic-service"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit15phonemessages-orientation"
+      ],
+      "targetText": "பாட இலக்கு",
+      "romanization": "",
+      "nativeText": "Make short calls, leave messages, and ask for repetition politely.",
+      "pronunciation": "",
+      "exampleTarget": "பாட இலக்கு",
+      "exampleNative": "The whole lesson is built toward this outcome: Leave a clear message for a classmate.",
+      "korean": "பாட இலக்கு",
+      "english": "Make short calls, leave messages, and ask for repetition politely.",
+      "example": "பாட இலக்கு",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Leave a clear message for a classmate."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1unit15phonemessages-pronunciation"
+      ],
+      "targetText": "ஒலி சரிபார்ப்பு",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"ஹலோ, நான் மீனா பேசுகிறேன்.\".",
+      "pronunciation": "",
+      "exampleTarget": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "exampleNative": "“Hello, this is Meena speaking.”",
+      "korean": "ஒலி சரிபார்ப்பு",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"ஹலோ, நான் மீனா பேசுகிறேன்.\".",
+      "example": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "exampleEnglish": "“Hello, this is Meena speaking.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1"
+      ],
+      "targetText": "ஹலோ",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 15: தொலைபேசி மற்றும் செய்திகள் — Phone Calls and Messages with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "exampleNative": "“Hello, this is Meena speaking.”",
+      "korean": "ஹலோ",
+      "english": "Use the key language of Level 1 · Unit 15: தொலைபேசி மற்றும் செய்திகள் — Phone Calls and Messages with the register and setting that the lesson requires.",
+      "example": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "exampleEnglish": "“Hello, this is Meena speaking.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-2"
+      ],
+      "targetText": "... உடன் பேச முடியுமா?",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 15: தொலைபேசி மற்றும் செய்திகள் — Phone Calls and Messages sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "ராமுடன் பேச முடியுமா?",
+      "exampleNative": "“May I speak with Ram?”",
+      "korean": "... உடன் பேச முடியுமா?",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 15: தொலைபேசி மற்றும் செய்திகள் — Phone Calls and Messages sound precise rather than merely understandable.",
+      "example": "ராமுடன் பேச முடியுமா?",
+      "exampleEnglish": "“May I speak with Ram?”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1unit15phonemessages-grammar-1"
+      ],
+      "targetText": "ஹலோ",
+      "romanization": "",
+      "nativeText": "Make short calls, leave messages, and ask for repetition politely.",
+      "pronunciation": "",
+      "exampleTarget": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "exampleNative": "“Hello, this is Meena speaking.”",
+      "korean": "ஹலோ",
+      "english": "Make short calls, leave messages, and ask for repetition politely.",
+      "example": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "exampleEnglish": "“Hello, this is Meena speaking.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1unit15phonemessages-grammar-2"
+      ],
+      "targetText": "... உடன் பேச முடியுமா?",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 15: தொலைபேசி மற்றும் செய்திகள் — Phone Calls and Messages with one nearby Tamil form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "ராமுடன் பேச முடியுமா?",
+      "exampleNative": "“May I speak with Ram?”",
+      "korean": "... உடன் பேச முடியுமா?",
+      "english": "Contrast the main pattern in Level 1 · Unit 15: தொலைபேசி மற்றும் செய்திகள் — Phone Calls and Messages with one nearby Tamil form so the learner can avoid literal translation.",
+      "example": "ராமுடன் பேச முடியுமா?",
+      "exampleEnglish": "“May I speak with Ram?”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ta-level1unit15phonemessages-reading"
+      ],
+      "targetText": "வாசிப்பு மாதிரி",
+      "romanization": "",
+      "nativeText": "Read \"சரி, பிறகு மீண்டும் அழைக்கிறேன்.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "சரி, பிறகு மீண்டும் அழைக்கிறேன்.",
+      "exampleNative": "“Okay, I will call again later.”",
+      "korean": "வாசிப்பு மாதிரி",
+      "english": "Read \"சரி, பிறகு மீண்டும் அழைக்கிறேன்.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "சரி, பிறகு மீண்டும் அழைக்கிறேன்.",
+      "exampleEnglish": "“Okay, I will call again later.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit15phonemessages-listening"
+      ],
+      "targetText": "உரையாடல் மாதிரி",
+      "romanization": "",
+      "nativeText": "Hear \"சரி, பிறகு மீண்டும் அழைக்கிறேன்.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "சரி, பிறகு மீண்டும் அழைக்கிறேன்.",
+      "exampleNative": "“Okay, I will call again later.”",
+      "korean": "உரையாடல் மாதிரி",
+      "english": "Hear \"சரி, பிறகு மீண்டும் அழைக்கிறேன்.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "சரி, பிறகு மீண்டும் அழைக்கிறேன்.",
+      "exampleEnglish": "“Okay, I will call again later.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ta-level1unit15phonemessages-writing"
+      ],
+      "targetText": "எழுத்துப் பயிற்சி",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"ஹலோ, நான் மீனா பேசுகிறேன்.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "எழுத்துப் பயிற்சி",
+      "english": "Write your own version after studying \"ஹலோ, நான் மீனா பேசுகிறேன்.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1unit15phonemessages-culture"
+      ],
+      "targetText": "பயன்பாடும் சூழலும்",
+      "romanization": "",
+      "nativeText": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "ராமுடன் பேச முடியுமா?",
+      "exampleNative": "“May I speak with Ram?”",
+      "korean": "பயன்பாடும் சூழலும்",
+      "english": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used.",
+      "example": "ராமுடன் பேச முடியுமா?",
+      "exampleEnglish": "“May I speak with Ram?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "இறுதி செயல்",
+      "romanization": "",
+      "nativeText": "Leave a clear message for a classmate.",
+      "pronunciation": "",
+      "exampleTarget": "சரி, பிறகு மீண்டும் அழைக்கிறேன்.",
+      "exampleNative": "Leave a clear message for a classmate.",
+      "korean": "இறுதி செயல்",
+      "english": "Leave a clear message for a classmate.",
+      "example": "சரி, பிறகு மீண்டும் அழைக்கிறேன்.",
+      "exampleEnglish": "Leave a clear message for a classmate."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit15phonemessages-grammar-2"
+      ],
+      "targetText": "பொதுவான பிழை",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"ராமுடன் பேச முடியுமா?\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "ராமுடன் பேச முடியுமா?",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “May I speak with Ram?”",
+      "korean": "பொதுவான பிழை",
+      "english": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"ராமுடன் பேச முடியுமா?\" against the model.",
+      "example": "ராமுடன் பேச முடியுமா?",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “May I speak with Ram?”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-culture"
+      ],
+      "targetText": "மொழிநடை",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"ஹலோ, நான் மீனா பேசுகிறேன்.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "exampleNative": "“Hello, this is Meena speaking.”",
+      "korean": "மொழிநடை",
+      "english": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"ஹலோ, நான் மீனா பேசுகிறேன்.\" before reusing it elsewhere.",
+      "example": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "exampleEnglish": "“Hello, this is Meena speaking.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "சரளம்",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"சரி, பிறகு மீண்டும் அழைக்கிறேன்.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "சரி, பிறகு மீண்டும் அழைக்கிறேன்.",
+      "exampleNative": "“Okay, I will call again later.”",
+      "korean": "சரளம்",
+      "english": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"சரி, பிறகு மீண்டும் அழைக்கிறேன்.\" as one thought.",
+      "example": "சரி, பிறகு மீண்டும் அழைக்கிறேன்.",
+      "exampleEnglish": "“Okay, I will call again later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "பயன்பாடு",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"ஹலோ, நான் மீனா பேசுகிறேன்.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "பயன்பாடு",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"ஹலோ, நான் மீனா பேசுகிறேன்.\" and move it into your own life.",
+      "example": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-grammar-1"
+      ],
+      "targetText": "நினைவூட்டல்",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"ஹலோ\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "ஹலோ",
+      "exampleNative": "The ordinary phone greeting.",
+      "korean": "நினைவூட்டல்",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"ஹலோ\" before looking back.",
+      "example": "ஹலோ",
+      "exampleEnglish": "The ordinary phone greeting."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-writing"
+      ],
+      "targetText": "விரிவாக்கம்",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"சரி, பிறகு மீண்டும் அழைக்கிறேன்.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "சரி, பிறகு மீண்டும் அழைக்கிறேன்.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "விரிவாக்கம்",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"சரி, பிறகு மீண்டும் அழைக்கிறேன்.\" rather than restarting from a blank sentence.",
+      "example": "சரி, பிறகு மீண்டும் அழைக்கிறேன்.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading"
+      ],
+      "targetText": "ஒப்பீடு",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 15: தொலைபேசி மற்றும் செய்திகள் — Phone Calls and Messages with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"ராமுடன் பேச முடியுமா?\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "ராமுடன் பேச முடியுமா?",
+      "exampleNative": "“May I speak with Ram?”",
+      "korean": "ஒப்பீடு",
+      "english": "Compare the central form in Level 1 · Unit 15: தொலைபேசி மற்றும் செய்திகள் — Phone Calls and Messages with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"ராமுடன் பேச முடியுமா?\" as the comparison line.",
+      "example": "ராமுடன் பேச முடியுமா?",
+      "exampleEnglish": "“May I speak with Ram?”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1unit15phonemessages-pronunciation"
+      ],
+      "targetText": "உச்சரிப்பு திருத்தம்",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"ஹலோ, நான் மீனா பேசுகிறேன்.\".",
+      "pronunciation": "",
+      "exampleTarget": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "exampleNative": "“Hello, this is Meena speaking.”",
+      "korean": "உச்சரிப்பு திருத்தம்",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"ஹலோ, நான் மீனா பேசுகிறேன்.\".",
+      "example": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "exampleEnglish": "“Hello, this is Meena speaking.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "உரையாடல் மாற்றம்",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"சரி, பிறகு மீண்டும் அழைக்கிறேன்.\".",
+      "pronunciation": "",
+      "exampleTarget": "சரி, பிறகு மீண்டும் அழைக்கிறேன்.",
+      "exampleNative": "“Okay, I will call again later.”",
+      "korean": "உரையாடல் மாற்றம்",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"சரி, பிறகு மீண்டும் அழைக்கிறேன்.\".",
+      "example": "சரி, பிறகு மீண்டும் அழைக்கிறேன்.",
+      "exampleEnglish": "“Okay, I will call again later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-writing"
+      ],
+      "targetText": "வாக்கிய கட்டமைப்பு",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"ஹலோ, நான் மீனா பேசுகிறேன்.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "exampleNative": "“Hello, this is Meena speaking.”",
+      "korean": "வாக்கிய கட்டமைப்பு",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"ஹலோ, நான் மீனா பேசுகிறேன்.\" one layer at a time.",
+      "example": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "exampleEnglish": "“Hello, this is Meena speaking.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-2"
+      ],
+      "targetText": "விரைவு சோதனை",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"ராமுடன் பேச முடியுமா?\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "ராமுடன் பேச முடியுமா?",
+      "exampleNative": "“May I speak with Ram?”",
+      "korean": "விரைவு சோதனை",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"ராமுடன் பேச முடியுமா?\" as the deciding example.",
+      "example": "ராமுடன் பேச முடியுமா?",
+      "exampleEnglish": "“May I speak with Ram?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit15phonemessages-culture",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "மீள்பார்வு",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"சரி, பிறகு மீண்டும் அழைக்கிறேன்.\".",
+      "pronunciation": "",
+      "exampleTarget": "சரி, பிறகு மீண்டும் அழைக்கிறேன்.",
+      "exampleNative": "“Okay, I will call again later.”",
+      "korean": "மீள்பார்வு",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"சரி, பிறகு மீண்டும் அழைக்கிறேன்.\".",
+      "example": "சரி, பிறகு மீண்டும் அழைக்கிறேன்.",
+      "exampleEnglish": "“Okay, I will call again later.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "ஹலோ",
+      "romanization": "halō",
+      "nativeText": "The ordinary phone greeting.",
+      "pronunciation": "halō",
+      "exampleTarget": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "exampleNative": "“Hello, this is Meena speaking.”",
+      "korean": "ஹலோ",
+      "english": "The ordinary phone greeting.",
+      "example": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "exampleEnglish": "“Hello, this is Meena speaking.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "romanization": "halō",
+      "nativeText": "Model use for \"ஹலோ, நான் மீனா பேசுகிறேன்.\": “Hello, this is Meena speaking.”",
+      "pronunciation": "halō",
+      "exampleTarget": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "exampleNative": "“Hello, this is Meena speaking.”",
+      "korean": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "english": "Model use for \"ஹலோ, நான் மீனா பேசுகிறேன்.\": “Hello, this is Meena speaking.”",
+      "example": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "exampleEnglish": "“Hello, this is Meena speaking.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "ஹலோ",
+      "romanization": "halō",
+      "nativeText": "Usage focus for \"ஹலோ\": Use the key language of Level 1 · Unit 15: தொலைபேசி மற்றும் செய்திகள் — Phone Calls and Messages with the register and setting that the lesson requires.",
+      "pronunciation": "halō",
+      "exampleTarget": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "exampleNative": "Notice what the form is doing here: “Hello, this is Meena speaking.”",
+      "korean": "ஹலோ",
+      "english": "Usage focus for \"ஹலோ\": Use the key language of Level 1 · Unit 15: தொலைபேசி மற்றும் செய்திகள் — Phone Calls and Messages with the register and setting that the lesson requires.",
+      "example": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "exampleEnglish": "Notice what the form is doing here: “Hello, this is Meena speaking.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "ஹலோ",
+      "romanization": "halō",
+      "nativeText": "Contrast check for \"ஹலோ\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "halō",
+      "exampleTarget": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Hello, this is Meena speaking.”",
+      "korean": "ஹலோ",
+      "english": "Contrast check for \"ஹலோ\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Hello, this is Meena speaking.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "ஹலோ",
+      "romanization": "halō",
+      "nativeText": "Recall \"ஹலோ\" from memory, then explain what would change if a nearby alternative replaced it in \"ஹலோ, நான் மீனா பேசுகிறேன்.\".",
+      "pronunciation": "halō",
+      "exampleTarget": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "exampleNative": "Self-check against the model before moving on: “Hello, this is Meena speaking.”",
+      "korean": "ஹலோ",
+      "english": "Recall \"ஹலோ\" from memory, then explain what would change if a nearby alternative replaced it in \"ஹலோ, நான் மீனா பேசுகிறேன்.\".",
+      "example": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "exampleEnglish": "Self-check against the model before moving on: “Hello, this is Meena speaking.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "ஹலோ",
+      "romanization": "halō",
+      "nativeText": "Repair \"ஹலோ\" inside \"ஹலோ, நான் மீனா பேசுகிறேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 15: தொலைபேசி மற்றும் செய்திகள் — Phone Calls and Messages with the register and setting that the lesson requires.",
+      "pronunciation": "halō",
+      "exampleTarget": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "exampleNative": "Use the model as the repair target: “Hello, this is Meena speaking.”",
+      "korean": "ஹலோ",
+      "english": "Repair \"ஹலோ\" inside \"ஹலோ, நான் மீனா பேசுகிறேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 15: தொலைபேசி மற்றும் செய்திகள் — Phone Calls and Messages with the register and setting that the lesson requires.",
+      "example": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "exampleEnglish": "Use the model as the repair target: “Hello, this is Meena speaking.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "ஹலோ",
+      "romanization": "halō",
+      "nativeText": "Transfer \"ஹலோ\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ஹலோ, நான் மீனா பேசுகிறேன்.\".",
+      "pronunciation": "halō",
+      "exampleTarget": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Hello, this is Meena speaking.”",
+      "korean": "ஹலோ",
+      "english": "Transfer \"ஹலோ\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ஹலோ, நான் மீனா பேசுகிறேன்.\".",
+      "example": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Hello, this is Meena speaking.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "ஹலோ",
+      "romanization": "halō",
+      "nativeText": "Find one word or phrase that naturally travels with \"ஹலோ\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "halō",
+      "exampleTarget": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Hello, this is Meena speaking.”",
+      "korean": "ஹலோ",
+      "english": "Find one word or phrase that naturally travels with \"ஹலோ\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Hello, this is Meena speaking.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "ஹலோ",
+      "romanization": "halō",
+      "nativeText": "Listen for \"ஹலோ\" inside \"ஹலோ, நான் மீனா பேசுகிறேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "halō",
+      "exampleTarget": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Hello, this is Meena speaking.”",
+      "korean": "ஹலோ",
+      "english": "Listen for \"ஹலோ\" inside \"ஹலோ, நான் மீனா பேசுகிறேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Hello, this is Meena speaking.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "ஹலோ",
+      "romanization": "halō",
+      "nativeText": "Write \"ஹலோ\" again without looking, then compare the exact written form against \"ஹலோ, நான் மீனா பேசுகிறேன்.\" before moving on.",
+      "pronunciation": "halō",
+      "exampleTarget": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "exampleNative": "Use the written model as the final correctness check: “Hello, this is Meena speaking.”",
+      "korean": "ஹலோ",
+      "english": "Write \"ஹலோ\" again without looking, then compare the exact written form against \"ஹலோ, நான் மீனா பேசுகிறேன்.\" before moving on.",
+      "example": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Hello, this is Meena speaking.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "ஹலோ",
+      "romanization": "halō",
+      "nativeText": "Check whether \"ஹலோ\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Hello, this is Meena speaking.”",
+      "pronunciation": "halō",
+      "exampleTarget": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Hello, this is Meena speaking.”",
+      "korean": "ஹலோ",
+      "english": "Check whether \"ஹலோ\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Hello, this is Meena speaking.”",
+      "example": "ஹலோ, நான் மீனா பேசுகிறேன்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Hello, this is Meena speaking.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "... உடன் பேச முடியுமா?",
+      "romanization": "...uṭaṉ pēca muṭiyumā",
+      "nativeText": "“May I speak with ...?” A polite phone request.",
+      "pronunciation": "...uṭaṉ pēca muṭiyumā",
+      "exampleTarget": "ராமுடன் பேச முடியுமா?",
+      "exampleNative": "“May I speak with Ram?”",
+      "korean": "... உடன் பேச முடியுமா?",
+      "english": "“May I speak with ...?” A polite phone request.",
+      "example": "ராமுடன் பேச முடியுமா?",
+      "exampleEnglish": "“May I speak with Ram?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "ராமுடன் பேச முடியுமா?",
+      "romanization": "...uṭaṉ pēca muṭiyumā",
+      "nativeText": "Model use for \"ராமுடன் பேச முடியுமா?\": “May I speak with Ram?”",
+      "pronunciation": "...uṭaṉ pēca muṭiyumā",
+      "exampleTarget": "ராமுடன் பேச முடியுமா?",
+      "exampleNative": "“May I speak with Ram?”",
+      "korean": "ராமுடன் பேச முடியுமா?",
+      "english": "Model use for \"ராமுடன் பேச முடியுமா?\": “May I speak with Ram?”",
+      "example": "ராமுடன் பேச முடியுமா?",
+      "exampleEnglish": "“May I speak with Ram?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "... உடன் பேச முடியுமா?",
+      "romanization": "...uṭaṉ pēca muṭiyumā",
+      "nativeText": "Usage focus for \"... உடன் பேச முடியுமா?\": Distinguish the nearby wording choices that make Level 1 · Unit 15: தொலைபேசி மற்றும் செய்திகள் — Phone Calls and Messages sound precise rather than merely understandable.",
+      "pronunciation": "...uṭaṉ pēca muṭiyumā",
+      "exampleTarget": "ராமுடன் பேச முடியுமா?",
+      "exampleNative": "Notice what the form is doing here: “May I speak with Ram?”",
+      "korean": "... உடன் பேச முடியுமா?",
+      "english": "Usage focus for \"... உடன் பேச முடியுமா?\": Distinguish the nearby wording choices that make Level 1 · Unit 15: தொலைபேசி மற்றும் செய்திகள் — Phone Calls and Messages sound precise rather than merely understandable.",
+      "example": "ராமுடன் பேச முடியுமா?",
+      "exampleEnglish": "Notice what the form is doing here: “May I speak with Ram?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "... உடன் பேச முடியுமா?",
+      "romanization": "...uṭaṉ pēca muṭiyumā",
+      "nativeText": "Contrast check for \"... உடன் பேச முடியுமா?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "...uṭaṉ pēca muṭiyumā",
+      "exampleTarget": "ராமுடன் பேச முடியுமா?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I speak with Ram?”",
+      "korean": "... உடன் பேச முடியுமா?",
+      "english": "Contrast check for \"... உடன் பேச முடியுமா?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "ராமுடன் பேச முடியுமா?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I speak with Ram?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "... உடன் பேச முடியுமா?",
+      "romanization": "...uṭaṉ pēca muṭiyumā",
+      "nativeText": "Recall \"... உடன் பேச முடியுமா?\" from memory, then explain what would change if a nearby alternative replaced it in \"ராமுடன் பேச முடியுமா?\".",
+      "pronunciation": "...uṭaṉ pēca muṭiyumā",
+      "exampleTarget": "ராமுடன் பேச முடியுமா?",
+      "exampleNative": "Self-check against the model before moving on: “May I speak with Ram?”",
+      "korean": "... உடன் பேச முடியுமா?",
+      "english": "Recall \"... உடன் பேச முடியுமா?\" from memory, then explain what would change if a nearby alternative replaced it in \"ராமுடன் பேச முடியுமா?\".",
+      "example": "ராமுடன் பேச முடியுமா?",
+      "exampleEnglish": "Self-check against the model before moving on: “May I speak with Ram?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "... உடன் பேச முடியுமா?",
+      "romanization": "...uṭaṉ pēca muṭiyumā",
+      "nativeText": "Repair \"... உடன் பேச முடியுமா?\" inside \"ராமுடன் பேச முடியுமா?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 15: தொலைபேசி மற்றும் செய்திகள் — Phone Calls and Messages sound precise rather than merely understandable.",
+      "pronunciation": "...uṭaṉ pēca muṭiyumā",
+      "exampleTarget": "ராமுடன் பேச முடியுமா?",
+      "exampleNative": "Use the model as the repair target: “May I speak with Ram?”",
+      "korean": "... உடன் பேச முடியுமா?",
+      "english": "Repair \"... உடன் பேச முடியுமா?\" inside \"ராமுடன் பேச முடியுமா?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 15: தொலைபேசி மற்றும் செய்திகள் — Phone Calls and Messages sound precise rather than merely understandable.",
+      "example": "ராமுடன் பேச முடியுமா?",
+      "exampleEnglish": "Use the model as the repair target: “May I speak with Ram?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "... உடன் பேச முடியுமா?",
+      "romanization": "...uṭaṉ pēca muṭiyumā",
+      "nativeText": "Transfer \"... உடன் பேச முடியுமா?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ராமுடன் பேச முடியுமா?\".",
+      "pronunciation": "...uṭaṉ pēca muṭiyumā",
+      "exampleTarget": "ராமுடன் பேச முடியுமா?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I speak with Ram?”",
+      "korean": "... உடன் பேச முடியுமா?",
+      "english": "Transfer \"... உடன் பேச முடியுமா?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ராமுடன் பேச முடியுமா?\".",
+      "example": "ராமுடன் பேச முடியுமா?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I speak with Ram?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "... உடன் பேச முடியுமா?",
+      "romanization": "...uṭaṉ pēca muṭiyumā",
+      "nativeText": "Find one word or phrase that naturally travels with \"... உடன் பேச முடியுமா?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "...uṭaṉ pēca muṭiyumā",
+      "exampleTarget": "ராமுடன் பேச முடியுமா?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “May I speak with Ram?”",
+      "korean": "... உடன் பேச முடியுமா?",
+      "english": "Find one word or phrase that naturally travels with \"... உடன் பேச முடியுமா?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "ராமுடன் பேச முடியுமா?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “May I speak with Ram?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "... உடன் பேச முடியுமா?",
+      "romanization": "...uṭaṉ pēca muṭiyumā",
+      "nativeText": "Listen for \"... உடன் பேச முடியுமா?\" inside \"ராமுடன் பேச முடியுமா?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "...uṭaṉ pēca muṭiyumā",
+      "exampleTarget": "ராமுடன் பேச முடியுமா?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I speak with Ram?”",
+      "korean": "... உடன் பேச முடியுமா?",
+      "english": "Listen for \"... உடன் பேச முடியுமா?\" inside \"ராமுடன் பேச முடியுமா?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "ராமுடன் பேச முடியுமா?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I speak with Ram?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "... உடன் பேச முடியுமா?",
+      "romanization": "...uṭaṉ pēca muṭiyumā",
+      "nativeText": "Write \"... உடன் பேச முடியுமா?\" again without looking, then compare the exact written form against \"ராமுடன் பேச முடியுமா?\" before moving on.",
+      "pronunciation": "...uṭaṉ pēca muṭiyumā",
+      "exampleTarget": "ராமுடன் பேச முடியுமா?",
+      "exampleNative": "Use the written model as the final correctness check: “May I speak with Ram?”",
+      "korean": "... உடன் பேச முடியுமா?",
+      "english": "Write \"... உடன் பேச முடியுமா?\" again without looking, then compare the exact written form against \"ராமுடன் பேச முடியுமா?\" before moving on.",
+      "example": "ராமுடன் பேச முடியுமா?",
+      "exampleEnglish": "Use the written model as the final correctness check: “May I speak with Ram?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "... உடன் பேச முடியுமா?",
+      "romanization": "...uṭaṉ pēca muṭiyumā",
+      "nativeText": "Check whether \"... உடன் பேச முடியுமா?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I speak with Ram?”",
+      "pronunciation": "...uṭaṉ pēca muṭiyumā",
+      "exampleTarget": "ராமுடன் பேச முடியுமா?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “May I speak with Ram?”",
+      "korean": "... உடன் பேச முடியுமா?",
+      "english": "Check whether \"... உடன் பேச முடியுமா?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I speak with Ram?”",
+      "example": "ராமுடன் பேச முடியுமா?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “May I speak with Ram?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "இப்போது இல்லை",
+      "romanization": "ippōtu illai",
+      "nativeText": "“Not available now.” A simple status phrase.",
+      "pronunciation": "ippōtu illai",
+      "exampleTarget": "அவர் இப்போது இல்லை.",
+      "exampleNative": "“He is not available now.”",
+      "korean": "இப்போது இல்லை",
+      "english": "“Not available now.” A simple status phrase.",
+      "example": "அவர் இப்போது இல்லை.",
+      "exampleEnglish": "“He is not available now.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "அவர் இப்போது இல்லை.",
+      "romanization": "ippōtu illai",
+      "nativeText": "Model use for \"அவர் இப்போது இல்லை.\": “He is not available now.”",
+      "pronunciation": "ippōtu illai",
+      "exampleTarget": "அவர் இப்போது இல்லை.",
+      "exampleNative": "“He is not available now.”",
+      "korean": "அவர் இப்போது இல்லை.",
+      "english": "Model use for \"அவர் இப்போது இல்லை.\": “He is not available now.”",
+      "example": "அவர் இப்போது இல்லை.",
+      "exampleEnglish": "“He is not available now.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "இப்போது இல்லை",
+      "romanization": "ippōtu illai",
+      "nativeText": "Usage focus for \"இப்போது இல்லை\": “Not available now.” A simple status phrase.",
+      "pronunciation": "ippōtu illai",
+      "exampleTarget": "அவர் இப்போது இல்லை.",
+      "exampleNative": "Notice what the form is doing here: “He is not available now.”",
+      "korean": "இப்போது இல்லை",
+      "english": "Usage focus for \"இப்போது இல்லை\": “Not available now.” A simple status phrase.",
+      "example": "அவர் இப்போது இல்லை.",
+      "exampleEnglish": "Notice what the form is doing here: “He is not available now.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "இப்போது இல்லை",
+      "romanization": "ippōtu illai",
+      "nativeText": "Contrast check for \"இப்போது இல்லை\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ippōtu illai",
+      "exampleTarget": "அவர் இப்போது இல்லை.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “He is not available now.”",
+      "korean": "இப்போது இல்லை",
+      "english": "Contrast check for \"இப்போது இல்லை\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "அவர் இப்போது இல்லை.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “He is not available now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "இப்போது இல்லை",
+      "romanization": "ippōtu illai",
+      "nativeText": "Recall \"இப்போது இல்லை\" from memory, then explain what would change if a nearby alternative replaced it in \"அவர் இப்போது இல்லை.\".",
+      "pronunciation": "ippōtu illai",
+      "exampleTarget": "அவர் இப்போது இல்லை.",
+      "exampleNative": "Self-check against the model before moving on: “He is not available now.”",
+      "korean": "இப்போது இல்லை",
+      "english": "Recall \"இப்போது இல்லை\" from memory, then explain what would change if a nearby alternative replaced it in \"அவர் இப்போது இல்லை.\".",
+      "example": "அவர் இப்போது இல்லை.",
+      "exampleEnglish": "Self-check against the model before moving on: “He is not available now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "இப்போது இல்லை",
+      "romanization": "ippōtu illai",
+      "nativeText": "Repair \"இப்போது இல்லை\" inside \"அவர் இப்போது இல்லை.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Not available now.” A simple status phrase.",
+      "pronunciation": "ippōtu illai",
+      "exampleTarget": "அவர் இப்போது இல்லை.",
+      "exampleNative": "Use the model as the repair target: “He is not available now.”",
+      "korean": "இப்போது இல்லை",
+      "english": "Repair \"இப்போது இல்லை\" inside \"அவர் இப்போது இல்லை.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Not available now.” A simple status phrase.",
+      "example": "அவர் இப்போது இல்லை.",
+      "exampleEnglish": "Use the model as the repair target: “He is not available now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "இப்போது இல்லை",
+      "romanization": "ippōtu illai",
+      "nativeText": "Transfer \"இப்போது இல்லை\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"அவர் இப்போது இல்லை.\".",
+      "pronunciation": "ippōtu illai",
+      "exampleTarget": "அவர் இப்போது இல்லை.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “He is not available now.”",
+      "korean": "இப்போது இல்லை",
+      "english": "Transfer \"இப்போது இல்லை\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"அவர் இப்போது இல்லை.\".",
+      "example": "அவர் இப்போது இல்லை.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “He is not available now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "இப்போது இல்லை",
+      "romanization": "ippōtu illai",
+      "nativeText": "Find one word or phrase that naturally travels with \"இப்போது இல்லை\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ippōtu illai",
+      "exampleTarget": "அவர் இப்போது இல்லை.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “He is not available now.”",
+      "korean": "இப்போது இல்லை",
+      "english": "Find one word or phrase that naturally travels with \"இப்போது இல்லை\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "அவர் இப்போது இல்லை.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “He is not available now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "இப்போது இல்லை",
+      "romanization": "ippōtu illai",
+      "nativeText": "Listen for \"இப்போது இல்லை\" inside \"அவர் இப்போது இல்லை.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ippōtu illai",
+      "exampleTarget": "அவர் இப்போது இல்லை.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “He is not available now.”",
+      "korean": "இப்போது இல்லை",
+      "english": "Listen for \"இப்போது இல்லை\" inside \"அவர் இப்போது இல்லை.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "அவர் இப்போது இல்லை.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “He is not available now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "இப்போது இல்லை",
+      "romanization": "ippōtu illai",
+      "nativeText": "Write \"இப்போது இல்லை\" again without looking, then compare the exact written form against \"அவர் இப்போது இல்லை.\" before moving on.",
+      "pronunciation": "ippōtu illai",
+      "exampleTarget": "அவர் இப்போது இல்லை.",
+      "exampleNative": "Use the written model as the final correctness check: “He is not available now.”",
+      "korean": "இப்போது இல்லை",
+      "english": "Write \"இப்போது இல்லை\" again without looking, then compare the exact written form against \"அவர் இப்போது இல்லை.\" before moving on.",
+      "example": "அவர் இப்போது இல்லை.",
+      "exampleEnglish": "Use the written model as the final correctness check: “He is not available now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "இப்போது இல்லை",
+      "romanization": "ippōtu illai",
+      "nativeText": "Check whether \"இப்போது இல்லை\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “He is not available now.”",
+      "pronunciation": "ippōtu illai",
+      "exampleTarget": "அவர் இப்போது இல்லை.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “He is not available now.”",
+      "korean": "இப்போது இல்லை",
+      "english": "Check whether \"இப்போது இல்லை\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “He is not available now.”",
+      "example": "அவர் இப்போது இல்லை.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “He is not available now.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "செய்தி",
+      "romanization": "ceyti",
+      "nativeText": "“Message.” Useful for phone and text contexts.",
+      "pronunciation": "ceyti",
+      "exampleTarget": "ஒரு செய்தி விடலாமா?",
+      "exampleNative": "“May I leave a message?”",
+      "korean": "செய்தி",
+      "english": "“Message.” Useful for phone and text contexts.",
+      "example": "ஒரு செய்தி விடலாமா?",
+      "exampleEnglish": "“May I leave a message?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "ஒரு செய்தி விடலாமா?",
+      "romanization": "ceyti",
+      "nativeText": "Model use for \"ஒரு செய்தி விடலாமா?\": “May I leave a message?”",
+      "pronunciation": "ceyti",
+      "exampleTarget": "ஒரு செய்தி விடலாமா?",
+      "exampleNative": "“May I leave a message?”",
+      "korean": "ஒரு செய்தி விடலாமா?",
+      "english": "Model use for \"ஒரு செய்தி விடலாமா?\": “May I leave a message?”",
+      "example": "ஒரு செய்தி விடலாமா?",
+      "exampleEnglish": "“May I leave a message?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "செய்தி",
+      "romanization": "ceyti",
+      "nativeText": "Usage focus for \"செய்தி\": “Message.” Useful for phone and text contexts.",
+      "pronunciation": "ceyti",
+      "exampleTarget": "ஒரு செய்தி விடலாமா?",
+      "exampleNative": "Notice what the form is doing here: “May I leave a message?”",
+      "korean": "செய்தி",
+      "english": "Usage focus for \"செய்தி\": “Message.” Useful for phone and text contexts.",
+      "example": "ஒரு செய்தி விடலாமா?",
+      "exampleEnglish": "Notice what the form is doing here: “May I leave a message?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "செய்தி",
+      "romanization": "ceyti",
+      "nativeText": "Contrast check for \"செய்தி\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ceyti",
+      "exampleTarget": "ஒரு செய்தி விடலாமா?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I leave a message?”",
+      "korean": "செய்தி",
+      "english": "Contrast check for \"செய்தி\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "ஒரு செய்தி விடலாமா?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I leave a message?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "செய்தி",
+      "romanization": "ceyti",
+      "nativeText": "Recall \"செய்தி\" from memory, then explain what would change if a nearby alternative replaced it in \"ஒரு செய்தி விடலாமா?\".",
+      "pronunciation": "ceyti",
+      "exampleTarget": "ஒரு செய்தி விடலாமா?",
+      "exampleNative": "Self-check against the model before moving on: “May I leave a message?”",
+      "korean": "செய்தி",
+      "english": "Recall \"செய்தி\" from memory, then explain what would change if a nearby alternative replaced it in \"ஒரு செய்தி விடலாமா?\".",
+      "example": "ஒரு செய்தி விடலாமா?",
+      "exampleEnglish": "Self-check against the model before moving on: “May I leave a message?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "செய்தி",
+      "romanization": "ceyti",
+      "nativeText": "Repair \"செய்தி\" inside \"ஒரு செய்தி விடலாமா?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Message.” Useful for phone and text contexts.",
+      "pronunciation": "ceyti",
+      "exampleTarget": "ஒரு செய்தி விடலாமா?",
+      "exampleNative": "Use the model as the repair target: “May I leave a message?”",
+      "korean": "செய்தி",
+      "english": "Repair \"செய்தி\" inside \"ஒரு செய்தி விடலாமா?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Message.” Useful for phone and text contexts.",
+      "example": "ஒரு செய்தி விடலாமா?",
+      "exampleEnglish": "Use the model as the repair target: “May I leave a message?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "செய்தி",
+      "romanization": "ceyti",
+      "nativeText": "Transfer \"செய்தி\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ஒரு செய்தி விடலாமா?\".",
+      "pronunciation": "ceyti",
+      "exampleTarget": "ஒரு செய்தி விடலாமா?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I leave a message?”",
+      "korean": "செய்தி",
+      "english": "Transfer \"செய்தி\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ஒரு செய்தி விடலாமா?\".",
+      "example": "ஒரு செய்தி விடலாமா?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I leave a message?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "செய்தி",
+      "romanization": "ceyti",
+      "nativeText": "Find one word or phrase that naturally travels with \"செய்தி\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ceyti",
+      "exampleTarget": "ஒரு செய்தி விடலாமா?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “May I leave a message?”",
+      "korean": "செய்தி",
+      "english": "Find one word or phrase that naturally travels with \"செய்தி\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "ஒரு செய்தி விடலாமா?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “May I leave a message?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "செய்தி",
+      "romanization": "ceyti",
+      "nativeText": "Listen for \"செய்தி\" inside \"ஒரு செய்தி விடலாமா?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ceyti",
+      "exampleTarget": "ஒரு செய்தி விடலாமா?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I leave a message?”",
+      "korean": "செய்தி",
+      "english": "Listen for \"செய்தி\" inside \"ஒரு செய்தி விடலாமா?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "ஒரு செய்தி விடலாமா?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I leave a message?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "செய்தி",
+      "romanization": "ceyti",
+      "nativeText": "Write \"செய்தி\" again without looking, then compare the exact written form against \"ஒரு செய்தி விடலாமா?\" before moving on.",
+      "pronunciation": "ceyti",
+      "exampleTarget": "ஒரு செய்தி விடலாமா?",
+      "exampleNative": "Use the written model as the final correctness check: “May I leave a message?”",
+      "korean": "செய்தி",
+      "english": "Write \"செய்தி\" again without looking, then compare the exact written form against \"ஒரு செய்தி விடலாமா?\" before moving on.",
+      "example": "ஒரு செய்தி விடலாமா?",
+      "exampleEnglish": "Use the written model as the final correctness check: “May I leave a message?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "செய்தி",
+      "romanization": "ceyti",
+      "nativeText": "Check whether \"செய்தி\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I leave a message?”",
+      "pronunciation": "ceyti",
+      "exampleTarget": "ஒரு செய்தி விடலாமா?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “May I leave a message?”",
+      "korean": "செய்தி",
+      "english": "Check whether \"செய்தி\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I leave a message?”",
+      "example": "ஒரு செய்தி விடலாமா?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “May I leave a message?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "நான் அழைத்தேன் என்று சொல்லுங்கள்",
+      "romanization": "nāṉ aḻaittēṉ eṉṟu colluṅkaḷ",
+      "nativeText": "“Please say that I called.” A practical relay request.",
+      "pronunciation": "nāṉ aḻaittēṉ eṉṟu colluṅkaḷ",
+      "exampleTarget": "நான் அழைத்தேன் என்று சொல்லுங்கள்.",
+      "exampleNative": "“Please say that I called.”",
+      "korean": "நான் அழைத்தேன் என்று சொல்லுங்கள்",
+      "english": "“Please say that I called.” A practical relay request.",
+      "example": "நான் அழைத்தேன் என்று சொல்லுங்கள்.",
+      "exampleEnglish": "“Please say that I called.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "நான் அழைத்தேன் என்று சொல்லுங்கள்.",
+      "romanization": "nāṉ aḻaittēṉ eṉṟu colluṅkaḷ",
+      "nativeText": "Model use for \"நான் அழைத்தேன் என்று சொல்லுங்கள்.\": “Please say that I called.”",
+      "pronunciation": "nāṉ aḻaittēṉ eṉṟu colluṅkaḷ",
+      "exampleTarget": "நான் அழைத்தேன் என்று சொல்லுங்கள்.",
+      "exampleNative": "“Please say that I called.”",
+      "korean": "நான் அழைத்தேன் என்று சொல்லுங்கள்.",
+      "english": "Model use for \"நான் அழைத்தேன் என்று சொல்லுங்கள்.\": “Please say that I called.”",
+      "example": "நான் அழைத்தேன் என்று சொல்லுங்கள்.",
+      "exampleEnglish": "“Please say that I called.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "நான் அழைத்தேன் என்று சொல்லுங்கள்",
+      "romanization": "nāṉ aḻaittēṉ eṉṟu colluṅkaḷ",
+      "nativeText": "Usage focus for \"நான் அழைத்தேன் என்று சொல்லுங்கள்\": “Please say that I called.” A practical relay request.",
+      "pronunciation": "nāṉ aḻaittēṉ eṉṟu colluṅkaḷ",
+      "exampleTarget": "நான் அழைத்தேன் என்று சொல்லுங்கள்.",
+      "exampleNative": "Notice what the form is doing here: “Please say that I called.”",
+      "korean": "நான் அழைத்தேன் என்று சொல்லுங்கள்",
+      "english": "Usage focus for \"நான் அழைத்தேன் என்று சொல்லுங்கள்\": “Please say that I called.” A practical relay request.",
+      "example": "நான் அழைத்தேன் என்று சொல்லுங்கள்.",
+      "exampleEnglish": "Notice what the form is doing here: “Please say that I called.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "நான் அழைத்தேன் என்று சொல்லுங்கள்",
+      "romanization": "nāṉ aḻaittēṉ eṉṟu colluṅkaḷ",
+      "nativeText": "Contrast check for \"நான் அழைத்தேன் என்று சொல்லுங்கள்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "nāṉ aḻaittēṉ eṉṟu colluṅkaḷ",
+      "exampleTarget": "நான் அழைத்தேன் என்று சொல்லுங்கள்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Please say that I called.”",
+      "korean": "நான் அழைத்தேன் என்று சொல்லுங்கள்",
+      "english": "Contrast check for \"நான் அழைத்தேன் என்று சொல்லுங்கள்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "நான் அழைத்தேன் என்று சொல்லுங்கள்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Please say that I called.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "நான் அழைத்தேன் என்று சொல்லுங்கள்",
+      "romanization": "nāṉ aḻaittēṉ eṉṟu colluṅkaḷ",
+      "nativeText": "Recall \"நான் அழைத்தேன் என்று சொல்லுங்கள்\" from memory, then explain what would change if a nearby alternative replaced it in \"நான் அழைத்தேன் என்று சொல்லுங்கள்.\".",
+      "pronunciation": "nāṉ aḻaittēṉ eṉṟu colluṅkaḷ",
+      "exampleTarget": "நான் அழைத்தேன் என்று சொல்லுங்கள்.",
+      "exampleNative": "Self-check against the model before moving on: “Please say that I called.”",
+      "korean": "நான் அழைத்தேன் என்று சொல்லுங்கள்",
+      "english": "Recall \"நான் அழைத்தேன் என்று சொல்லுங்கள்\" from memory, then explain what would change if a nearby alternative replaced it in \"நான் அழைத்தேன் என்று சொல்லுங்கள்.\".",
+      "example": "நான் அழைத்தேன் என்று சொல்லுங்கள்.",
+      "exampleEnglish": "Self-check against the model before moving on: “Please say that I called.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "நான் அழைத்தேன் என்று சொல்லுங்கள்",
+      "romanization": "nāṉ aḻaittēṉ eṉṟu colluṅkaḷ",
+      "nativeText": "Repair \"நான் அழைத்தேன் என்று சொல்லுங்கள்\" inside \"நான் அழைத்தேன் என்று சொல்லுங்கள்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Please say that I called.” A practical relay request.",
+      "pronunciation": "nāṉ aḻaittēṉ eṉṟu colluṅkaḷ",
+      "exampleTarget": "நான் அழைத்தேன் என்று சொல்லுங்கள்.",
+      "exampleNative": "Use the model as the repair target: “Please say that I called.”",
+      "korean": "நான் அழைத்தேன் என்று சொல்லுங்கள்",
+      "english": "Repair \"நான் அழைத்தேன் என்று சொல்லுங்கள்\" inside \"நான் அழைத்தேன் என்று சொல்லுங்கள்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Please say that I called.” A practical relay request.",
+      "example": "நான் அழைத்தேன் என்று சொல்லுங்கள்.",
+      "exampleEnglish": "Use the model as the repair target: “Please say that I called.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "நான் அழைத்தேன் என்று சொல்லுங்கள்",
+      "romanization": "nāṉ aḻaittēṉ eṉṟu colluṅkaḷ",
+      "nativeText": "Transfer \"நான் அழைத்தேன் என்று சொல்லுங்கள்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நான் அழைத்தேன் என்று சொல்லுங்கள்.\".",
+      "pronunciation": "nāṉ aḻaittēṉ eṉṟu colluṅkaḷ",
+      "exampleTarget": "நான் அழைத்தேன் என்று சொல்லுங்கள்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Please say that I called.”",
+      "korean": "நான் அழைத்தேன் என்று சொல்லுங்கள்",
+      "english": "Transfer \"நான் அழைத்தேன் என்று சொல்லுங்கள்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நான் அழைத்தேன் என்று சொல்லுங்கள்.\".",
+      "example": "நான் அழைத்தேன் என்று சொல்லுங்கள்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Please say that I called.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "நான் அழைத்தேன் என்று சொல்லுங்கள்",
+      "romanization": "nāṉ aḻaittēṉ eṉṟu colluṅkaḷ",
+      "nativeText": "Find one word or phrase that naturally travels with \"நான் அழைத்தேன் என்று சொல்லுங்கள்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "nāṉ aḻaittēṉ eṉṟu colluṅkaḷ",
+      "exampleTarget": "நான் அழைத்தேன் என்று சொல்லுங்கள்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Please say that I called.”",
+      "korean": "நான் அழைத்தேன் என்று சொல்லுங்கள்",
+      "english": "Find one word or phrase that naturally travels with \"நான் அழைத்தேன் என்று சொல்லுங்கள்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "நான் அழைத்தேன் என்று சொல்லுங்கள்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Please say that I called.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "நான் அழைத்தேன் என்று சொல்லுங்கள்",
+      "romanization": "nāṉ aḻaittēṉ eṉṟu colluṅkaḷ",
+      "nativeText": "Listen for \"நான் அழைத்தேன் என்று சொல்லுங்கள்\" inside \"நான் அழைத்தேன் என்று சொல்லுங்கள்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "nāṉ aḻaittēṉ eṉṟu colluṅkaḷ",
+      "exampleTarget": "நான் அழைத்தேன் என்று சொல்லுங்கள்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Please say that I called.”",
+      "korean": "நான் அழைத்தேன் என்று சொல்லுங்கள்",
+      "english": "Listen for \"நான் அழைத்தேன் என்று சொல்லுங்கள்\" inside \"நான் அழைத்தேன் என்று சொல்லுங்கள்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "நான் அழைத்தேன் என்று சொல்லுங்கள்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Please say that I called.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "நான் அழைத்தேன் என்று சொல்லுங்கள்",
+      "romanization": "nāṉ aḻaittēṉ eṉṟu colluṅkaḷ",
+      "nativeText": "Write \"நான் அழைத்தேன் என்று சொல்லுங்கள்\" again without looking, then compare the exact written form against \"நான் அழைத்தேன் என்று சொல்லுங்கள்.\" before moving on.",
+      "pronunciation": "nāṉ aḻaittēṉ eṉṟu colluṅkaḷ",
+      "exampleTarget": "நான் அழைத்தேன் என்று சொல்லுங்கள்.",
+      "exampleNative": "Use the written model as the final correctness check: “Please say that I called.”",
+      "korean": "நான் அழைத்தேன் என்று சொல்லுங்கள்",
+      "english": "Write \"நான் அழைத்தேன் என்று சொல்லுங்கள்\" again without looking, then compare the exact written form against \"நான் அழைத்தேன் என்று சொல்லுங்கள்.\" before moving on.",
+      "example": "நான் அழைத்தேன் என்று சொல்லுங்கள்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Please say that I called.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "நான் அழைத்தேன் என்று சொல்லுங்கள்",
+      "romanization": "nāṉ aḻaittēṉ eṉṟu colluṅkaḷ",
+      "nativeText": "Check whether \"நான் அழைத்தேன் என்று சொல்லுங்கள்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Please say that I called.”",
+      "pronunciation": "nāṉ aḻaittēṉ eṉṟu colluṅkaḷ",
+      "exampleTarget": "நான் அழைத்தேன் என்று சொல்லுங்கள்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Please say that I called.”",
+      "korean": "நான் அழைத்தேன் என்று சொல்லுங்கள்",
+      "english": "Check whether \"நான் அழைத்தேன் என்று சொல்லுங்கள்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Please say that I called.”",
+      "example": "நான் அழைத்தேன் என்று சொல்லுங்கள்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Please say that I called.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "தொலைபேசி எண்",
+      "romanization": "tolaipēci eṇ",
+      "nativeText": "“Phone number.” A common service phrase.",
+      "pronunciation": "tolaipēci eṇ",
+      "exampleTarget": "உங்கள் தொலைபேசி எண் என்ன?",
+      "exampleNative": "“What is your phone number?”",
+      "korean": "தொலைபேசி எண்",
+      "english": "“Phone number.” A common service phrase.",
+      "example": "உங்கள் தொலைபேசி எண் என்ன?",
+      "exampleEnglish": "“What is your phone number?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "உங்கள் தொலைபேசி எண் என்ன?",
+      "romanization": "tolaipēci eṇ",
+      "nativeText": "Model use for \"உங்கள் தொலைபேசி எண் என்ன?\": “What is your phone number?”",
+      "pronunciation": "tolaipēci eṇ",
+      "exampleTarget": "உங்கள் தொலைபேசி எண் என்ன?",
+      "exampleNative": "“What is your phone number?”",
+      "korean": "உங்கள் தொலைபேசி எண் என்ன?",
+      "english": "Model use for \"உங்கள் தொலைபேசி எண் என்ன?\": “What is your phone number?”",
+      "example": "உங்கள் தொலைபேசி எண் என்ன?",
+      "exampleEnglish": "“What is your phone number?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "தொலைபேசி எண்",
+      "romanization": "tolaipēci eṇ",
+      "nativeText": "Usage focus for \"தொலைபேசி எண்\": “Phone number.” A common service phrase.",
+      "pronunciation": "tolaipēci eṇ",
+      "exampleTarget": "உங்கள் தொலைபேசி எண் என்ன?",
+      "exampleNative": "Notice what the form is doing here: “What is your phone number?”",
+      "korean": "தொலைபேசி எண்",
+      "english": "Usage focus for \"தொலைபேசி எண்\": “Phone number.” A common service phrase.",
+      "example": "உங்கள் தொலைபேசி எண் என்ன?",
+      "exampleEnglish": "Notice what the form is doing here: “What is your phone number?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "தொலைபேசி எண்",
+      "romanization": "tolaipēci eṇ",
+      "nativeText": "Contrast check for \"தொலைபேசி எண்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "tolaipēci eṇ",
+      "exampleTarget": "உங்கள் தொலைபேசி எண் என்ன?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What is your phone number?”",
+      "korean": "தொலைபேசி எண்",
+      "english": "Contrast check for \"தொலைபேசி எண்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "உங்கள் தொலைபேசி எண் என்ன?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What is your phone number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "தொலைபேசி எண்",
+      "romanization": "tolaipēci eṇ",
+      "nativeText": "Recall \"தொலைபேசி எண்\" from memory, then explain what would change if a nearby alternative replaced it in \"உங்கள் தொலைபேசி எண் என்ன?\".",
+      "pronunciation": "tolaipēci eṇ",
+      "exampleTarget": "உங்கள் தொலைபேசி எண் என்ன?",
+      "exampleNative": "Self-check against the model before moving on: “What is your phone number?”",
+      "korean": "தொலைபேசி எண்",
+      "english": "Recall \"தொலைபேசி எண்\" from memory, then explain what would change if a nearby alternative replaced it in \"உங்கள் தொலைபேசி எண் என்ன?\".",
+      "example": "உங்கள் தொலைபேசி எண் என்ன?",
+      "exampleEnglish": "Self-check against the model before moving on: “What is your phone number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "தொலைபேசி எண்",
+      "romanization": "tolaipēci eṇ",
+      "nativeText": "Repair \"தொலைபேசி எண்\" inside \"உங்கள் தொலைபேசி எண் என்ன?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Phone number.” A common service phrase.",
+      "pronunciation": "tolaipēci eṇ",
+      "exampleTarget": "உங்கள் தொலைபேசி எண் என்ன?",
+      "exampleNative": "Use the model as the repair target: “What is your phone number?”",
+      "korean": "தொலைபேசி எண்",
+      "english": "Repair \"தொலைபேசி எண்\" inside \"உங்கள் தொலைபேசி எண் என்ன?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Phone number.” A common service phrase.",
+      "example": "உங்கள் தொலைபேசி எண் என்ன?",
+      "exampleEnglish": "Use the model as the repair target: “What is your phone number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "தொலைபேசி எண்",
+      "romanization": "tolaipēci eṇ",
+      "nativeText": "Transfer \"தொலைபேசி எண்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"உங்கள் தொலைபேசி எண் என்ன?\".",
+      "pronunciation": "tolaipēci eṇ",
+      "exampleTarget": "உங்கள் தொலைபேசி எண் என்ன?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “What is your phone number?”",
+      "korean": "தொலைபேசி எண்",
+      "english": "Transfer \"தொலைபேசி எண்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"உங்கள் தொலைபேசி எண் என்ன?\".",
+      "example": "உங்கள் தொலைபேசி எண் என்ன?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “What is your phone number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "தொலைபேசி எண்",
+      "romanization": "tolaipēci eṇ",
+      "nativeText": "Find one word or phrase that naturally travels with \"தொலைபேசி எண்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "tolaipēci eṇ",
+      "exampleTarget": "உங்கள் தொலைபேசி எண் என்ன?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “What is your phone number?”",
+      "korean": "தொலைபேசி எண்",
+      "english": "Find one word or phrase that naturally travels with \"தொலைபேசி எண்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "உங்கள் தொலைபேசி எண் என்ன?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “What is your phone number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "தொலைபேசி எண்",
+      "romanization": "tolaipēci eṇ",
+      "nativeText": "Listen for \"தொலைபேசி எண்\" inside \"உங்கள் தொலைபேசி எண் என்ன?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "tolaipēci eṇ",
+      "exampleTarget": "உங்கள் தொலைபேசி எண் என்ன?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What is your phone number?”",
+      "korean": "தொலைபேசி எண்",
+      "english": "Listen for \"தொலைபேசி எண்\" inside \"உங்கள் தொலைபேசி எண் என்ன?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "உங்கள் தொலைபேசி எண் என்ன?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What is your phone number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "தொலைபேசி எண்",
+      "romanization": "tolaipēci eṇ",
+      "nativeText": "Write \"தொலைபேசி எண்\" again without looking, then compare the exact written form against \"உங்கள் தொலைபேசி எண் என்ன?\" before moving on.",
+      "pronunciation": "tolaipēci eṇ",
+      "exampleTarget": "உங்கள் தொலைபேசி எண் என்ன?",
+      "exampleNative": "Use the written model as the final correctness check: “What is your phone number?”",
+      "korean": "தொலைபேசி எண்",
+      "english": "Write \"தொலைபேசி எண்\" again without looking, then compare the exact written form against \"உங்கள் தொலைபேசி எண் என்ன?\" before moving on.",
+      "example": "உங்கள் தொலைபேசி எண் என்ன?",
+      "exampleEnglish": "Use the written model as the final correctness check: “What is your phone number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "தொலைபேசி எண்",
+      "romanization": "tolaipēci eṇ",
+      "nativeText": "Check whether \"தொலைபேசி எண்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What is your phone number?”",
+      "pronunciation": "tolaipēci eṇ",
+      "exampleTarget": "உங்கள் தொலைபேசி எண் என்ன?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “What is your phone number?”",
+      "korean": "தொலைபேசி எண்",
+      "english": "Check whether \"தொலைபேசி எண்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What is your phone number?”",
+      "example": "உங்கள் தொலைபேசி எண் என்ன?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “What is your phone number?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "மீண்டும் சொல்ல முடியுமா?",
+      "romanization": "mīṇṭum colla muṭiyumā",
+      "nativeText": "“Could you say it again?” A core repair phrase.",
+      "pronunciation": "mīṇṭum colla muṭiyumā",
+      "exampleTarget": "எண்ணை மீண்டும் சொல்ல முடியுமா?",
+      "exampleNative": "“Could you repeat the number?”",
+      "korean": "மீண்டும் சொல்ல முடியுமா?",
+      "english": "“Could you say it again?” A core repair phrase.",
+      "example": "எண்ணை மீண்டும் சொல்ல முடியுமா?",
+      "exampleEnglish": "“Could you repeat the number?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "எண்ணை மீண்டும் சொல்ல முடியுமா?",
+      "romanization": "mīṇṭum colla muṭiyumā",
+      "nativeText": "Model use for \"எண்ணை மீண்டும் சொல்ல முடியுமா?\": “Could you repeat the number?”",
+      "pronunciation": "mīṇṭum colla muṭiyumā",
+      "exampleTarget": "எண்ணை மீண்டும் சொல்ல முடியுமா?",
+      "exampleNative": "“Could you repeat the number?”",
+      "korean": "எண்ணை மீண்டும் சொல்ல முடியுமா?",
+      "english": "Model use for \"எண்ணை மீண்டும் சொல்ல முடியுமா?\": “Could you repeat the number?”",
+      "example": "எண்ணை மீண்டும் சொல்ல முடியுமா?",
+      "exampleEnglish": "“Could you repeat the number?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "மீண்டும் சொல்ல முடியுமா?",
+      "romanization": "mīṇṭum colla muṭiyumā",
+      "nativeText": "Usage focus for \"மீண்டும் சொல்ல முடியுமா?\": “Could you say it again?” A core repair phrase.",
+      "pronunciation": "mīṇṭum colla muṭiyumā",
+      "exampleTarget": "எண்ணை மீண்டும் சொல்ல முடியுமா?",
+      "exampleNative": "Notice what the form is doing here: “Could you repeat the number?”",
+      "korean": "மீண்டும் சொல்ல முடியுமா?",
+      "english": "Usage focus for \"மீண்டும் சொல்ல முடியுமா?\": “Could you say it again?” A core repair phrase.",
+      "example": "எண்ணை மீண்டும் சொல்ல முடியுமா?",
+      "exampleEnglish": "Notice what the form is doing here: “Could you repeat the number?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "மீண்டும் சொல்ல முடியுமா?",
+      "romanization": "mīṇṭum colla muṭiyumā",
+      "nativeText": "Contrast check for \"மீண்டும் சொல்ல முடியுமா?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "mīṇṭum colla muṭiyumā",
+      "exampleTarget": "எண்ணை மீண்டும் சொல்ல முடியுமா?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Could you repeat the number?”",
+      "korean": "மீண்டும் சொல்ல முடியுமா?",
+      "english": "Contrast check for \"மீண்டும் சொல்ல முடியுமா?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "எண்ணை மீண்டும் சொல்ல முடியுமா?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Could you repeat the number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "மீண்டும் சொல்ல முடியுமா?",
+      "romanization": "mīṇṭum colla muṭiyumā",
+      "nativeText": "Recall \"மீண்டும் சொல்ல முடியுமா?\" from memory, then explain what would change if a nearby alternative replaced it in \"எண்ணை மீண்டும் சொல்ல முடியுமா?\".",
+      "pronunciation": "mīṇṭum colla muṭiyumā",
+      "exampleTarget": "எண்ணை மீண்டும் சொல்ல முடியுமா?",
+      "exampleNative": "Self-check against the model before moving on: “Could you repeat the number?”",
+      "korean": "மீண்டும் சொல்ல முடியுமா?",
+      "english": "Recall \"மீண்டும் சொல்ல முடியுமா?\" from memory, then explain what would change if a nearby alternative replaced it in \"எண்ணை மீண்டும் சொல்ல முடியுமா?\".",
+      "example": "எண்ணை மீண்டும் சொல்ல முடியுமா?",
+      "exampleEnglish": "Self-check against the model before moving on: “Could you repeat the number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "மீண்டும் சொல்ல முடியுமா?",
+      "romanization": "mīṇṭum colla muṭiyumā",
+      "nativeText": "Repair \"மீண்டும் சொல்ல முடியுமா?\" inside \"எண்ணை மீண்டும் சொல்ல முடியுமா?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Could you say it again?” A core repair phrase.",
+      "pronunciation": "mīṇṭum colla muṭiyumā",
+      "exampleTarget": "எண்ணை மீண்டும் சொல்ல முடியுமா?",
+      "exampleNative": "Use the model as the repair target: “Could you repeat the number?”",
+      "korean": "மீண்டும் சொல்ல முடியுமா?",
+      "english": "Repair \"மீண்டும் சொல்ல முடியுமா?\" inside \"எண்ணை மீண்டும் சொல்ல முடியுமா?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Could you say it again?” A core repair phrase.",
+      "example": "எண்ணை மீண்டும் சொல்ல முடியுமா?",
+      "exampleEnglish": "Use the model as the repair target: “Could you repeat the number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "மீண்டும் சொல்ல முடியுமா?",
+      "romanization": "mīṇṭum colla muṭiyumā",
+      "nativeText": "Transfer \"மீண்டும் சொல்ல முடியுமா?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"எண்ணை மீண்டும் சொல்ல முடியுமா?\".",
+      "pronunciation": "mīṇṭum colla muṭiyumā",
+      "exampleTarget": "எண்ணை மீண்டும் சொல்ல முடியுமா?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Could you repeat the number?”",
+      "korean": "மீண்டும் சொல்ல முடியுமா?",
+      "english": "Transfer \"மீண்டும் சொல்ல முடியுமா?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"எண்ணை மீண்டும் சொல்ல முடியுமா?\".",
+      "example": "எண்ணை மீண்டும் சொல்ல முடியுமா?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Could you repeat the number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "மீண்டும் சொல்ல முடியுமா?",
+      "romanization": "mīṇṭum colla muṭiyumā",
+      "nativeText": "Find one word or phrase that naturally travels with \"மீண்டும் சொல்ல முடியுமா?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "mīṇṭum colla muṭiyumā",
+      "exampleTarget": "எண்ணை மீண்டும் சொல்ல முடியுமா?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Could you repeat the number?”",
+      "korean": "மீண்டும் சொல்ல முடியுமா?",
+      "english": "Find one word or phrase that naturally travels with \"மீண்டும் சொல்ல முடியுமா?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "எண்ணை மீண்டும் சொல்ல முடியுமா?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Could you repeat the number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "மீண்டும் சொல்ல முடியுமா?",
+      "romanization": "mīṇṭum colla muṭiyumā",
+      "nativeText": "Listen for \"மீண்டும் சொல்ல முடியுமா?\" inside \"எண்ணை மீண்டும் சொல்ல முடியுமா?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "mīṇṭum colla muṭiyumā",
+      "exampleTarget": "எண்ணை மீண்டும் சொல்ல முடியுமா?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Could you repeat the number?”",
+      "korean": "மீண்டும் சொல்ல முடியுமா?",
+      "english": "Listen for \"மீண்டும் சொல்ல முடியுமா?\" inside \"எண்ணை மீண்டும் சொல்ல முடியுமா?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "எண்ணை மீண்டும் சொல்ல முடியுமா?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Could you repeat the number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "மீண்டும் சொல்ல முடியுமா?",
+      "romanization": "mīṇṭum colla muṭiyumā",
+      "nativeText": "Write \"மீண்டும் சொல்ல முடியுமா?\" again without looking, then compare the exact written form against \"எண்ணை மீண்டும் சொல்ல முடியுமா?\" before moving on.",
+      "pronunciation": "mīṇṭum colla muṭiyumā",
+      "exampleTarget": "எண்ணை மீண்டும் சொல்ல முடியுமா?",
+      "exampleNative": "Use the written model as the final correctness check: “Could you repeat the number?”",
+      "korean": "மீண்டும் சொல்ல முடியுமா?",
+      "english": "Write \"மீண்டும் சொல்ல முடியுமா?\" again without looking, then compare the exact written form against \"எண்ணை மீண்டும் சொல்ல முடியுமா?\" before moving on.",
+      "example": "எண்ணை மீண்டும் சொல்ல முடியுமா?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Could you repeat the number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "மீண்டும் சொல்ல முடியுமா?",
+      "romanization": "mīṇṭum colla muṭiyumā",
+      "nativeText": "Check whether \"மீண்டும் சொல்ல முடியுமா?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Could you repeat the number?”",
+      "pronunciation": "mīṇṭum colla muṭiyumā",
+      "exampleTarget": "எண்ணை மீண்டும் சொல்ல முடியுமா?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Could you repeat the number?”",
+      "korean": "மீண்டும் சொல்ல முடியுமா?",
+      "english": "Check whether \"மீண்டும் சொல்ல முடியுமா?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Could you repeat the number?”",
+      "example": "எண்ணை மீண்டும் சொல்ல முடியுமா?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Could you repeat the number?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "பிறகு மீண்டும் அழைக்கிறேன்",
+      "romanization": "piṟaku mīṇṭum aḻaikkiṟēṉ",
+      "nativeText": "“I will call again later.” A natural call-ending promise.",
+      "pronunciation": "piṟaku mīṇṭum aḻaikkiṟēṉ",
+      "exampleTarget": "சரி, பிறகு மீண்டும் அழைக்கிறேன்.",
+      "exampleNative": "“Okay, I will call again later.”",
+      "korean": "பிறகு மீண்டும் அழைக்கிறேன்",
+      "english": "“I will call again later.” A natural call-ending promise.",
+      "example": "சரி, பிறகு மீண்டும் அழைக்கிறேன்.",
+      "exampleEnglish": "“Okay, I will call again later.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "சரி, பிறகு மீண்டும் அழைக்கிறேன்.",
+      "romanization": "piṟaku mīṇṭum aḻaikkiṟēṉ",
+      "nativeText": "Model use for \"சரி, பிறகு மீண்டும் அழைக்கிறேன்.\": “Okay, I will call again later.”",
+      "pronunciation": "piṟaku mīṇṭum aḻaikkiṟēṉ",
+      "exampleTarget": "சரி, பிறகு மீண்டும் அழைக்கிறேன்.",
+      "exampleNative": "“Okay, I will call again later.”",
+      "korean": "சரி, பிறகு மீண்டும் அழைக்கிறேன்.",
+      "english": "Model use for \"சரி, பிறகு மீண்டும் அழைக்கிறேன்.\": “Okay, I will call again later.”",
+      "example": "சரி, பிறகு மீண்டும் அழைக்கிறேன்.",
+      "exampleEnglish": "“Okay, I will call again later.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "பிறகு மீண்டும் அழைக்கிறேன்",
+      "romanization": "piṟaku mīṇṭum aḻaikkiṟēṉ",
+      "nativeText": "Usage focus for \"பிறகு மீண்டும் அழைக்கிறேன்\": “I will call again later.” A natural call-ending promise.",
+      "pronunciation": "piṟaku mīṇṭum aḻaikkiṟēṉ",
+      "exampleTarget": "சரி, பிறகு மீண்டும் அழைக்கிறேன்.",
+      "exampleNative": "Notice what the form is doing here: “Okay, I will call again later.”",
+      "korean": "பிறகு மீண்டும் அழைக்கிறேன்",
+      "english": "Usage focus for \"பிறகு மீண்டும் அழைக்கிறேன்\": “I will call again later.” A natural call-ending promise.",
+      "example": "சரி, பிறகு மீண்டும் அழைக்கிறேன்.",
+      "exampleEnglish": "Notice what the form is doing here: “Okay, I will call again later.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "பிறகு மீண்டும் அழைக்கிறேன்",
+      "romanization": "piṟaku mīṇṭum aḻaikkiṟēṉ",
+      "nativeText": "Contrast check for \"பிறகு மீண்டும் அழைக்கிறேன்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "piṟaku mīṇṭum aḻaikkiṟēṉ",
+      "exampleTarget": "சரி, பிறகு மீண்டும் அழைக்கிறேன்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Okay, I will call again later.”",
+      "korean": "பிறகு மீண்டும் அழைக்கிறேன்",
+      "english": "Contrast check for \"பிறகு மீண்டும் அழைக்கிறேன்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "சரி, பிறகு மீண்டும் அழைக்கிறேன்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Okay, I will call again later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "பிறகு மீண்டும் அழைக்கிறேன்",
+      "romanization": "piṟaku mīṇṭum aḻaikkiṟēṉ",
+      "nativeText": "Recall \"பிறகு மீண்டும் அழைக்கிறேன்\" from memory, then explain what would change if a nearby alternative replaced it in \"சரி, பிறகு மீண்டும் அழைக்கிறேன்.\".",
+      "pronunciation": "piṟaku mīṇṭum aḻaikkiṟēṉ",
+      "exampleTarget": "சரி, பிறகு மீண்டும் அழைக்கிறேன்.",
+      "exampleNative": "Self-check against the model before moving on: “Okay, I will call again later.”",
+      "korean": "பிறகு மீண்டும் அழைக்கிறேன்",
+      "english": "Recall \"பிறகு மீண்டும் அழைக்கிறேன்\" from memory, then explain what would change if a nearby alternative replaced it in \"சரி, பிறகு மீண்டும் அழைக்கிறேன்.\".",
+      "example": "சரி, பிறகு மீண்டும் அழைக்கிறேன்.",
+      "exampleEnglish": "Self-check against the model before moving on: “Okay, I will call again later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "பிறகு மீண்டும் அழைக்கிறேன்",
+      "romanization": "piṟaku mīṇṭum aḻaikkiṟēṉ",
+      "nativeText": "Repair \"பிறகு மீண்டும் அழைக்கிறேன்\" inside \"சரி, பிறகு மீண்டும் அழைக்கிறேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I will call again later.” A natural call-ending promise.",
+      "pronunciation": "piṟaku mīṇṭum aḻaikkiṟēṉ",
+      "exampleTarget": "சரி, பிறகு மீண்டும் அழைக்கிறேன்.",
+      "exampleNative": "Use the model as the repair target: “Okay, I will call again later.”",
+      "korean": "பிறகு மீண்டும் அழைக்கிறேன்",
+      "english": "Repair \"பிறகு மீண்டும் அழைக்கிறேன்\" inside \"சரி, பிறகு மீண்டும் அழைக்கிறேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I will call again later.” A natural call-ending promise.",
+      "example": "சரி, பிறகு மீண்டும் அழைக்கிறேன்.",
+      "exampleEnglish": "Use the model as the repair target: “Okay, I will call again later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "பிறகு மீண்டும் அழைக்கிறேன்",
+      "romanization": "piṟaku mīṇṭum aḻaikkiṟēṉ",
+      "nativeText": "Transfer \"பிறகு மீண்டும் அழைக்கிறேன்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"சரி, பிறகு மீண்டும் அழைக்கிறேன்.\".",
+      "pronunciation": "piṟaku mīṇṭum aḻaikkiṟēṉ",
+      "exampleTarget": "சரி, பிறகு மீண்டும் அழைக்கிறேன்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Okay, I will call again later.”",
+      "korean": "பிறகு மீண்டும் அழைக்கிறேன்",
+      "english": "Transfer \"பிறகு மீண்டும் அழைக்கிறேன்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"சரி, பிறகு மீண்டும் அழைக்கிறேன்.\".",
+      "example": "சரி, பிறகு மீண்டும் அழைக்கிறேன்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Okay, I will call again later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "பிறகு மீண்டும் அழைக்கிறேன்",
+      "romanization": "piṟaku mīṇṭum aḻaikkiṟēṉ",
+      "nativeText": "Find one word or phrase that naturally travels with \"பிறகு மீண்டும் அழைக்கிறேன்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "piṟaku mīṇṭum aḻaikkiṟēṉ",
+      "exampleTarget": "சரி, பிறகு மீண்டும் அழைக்கிறேன்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Okay, I will call again later.”",
+      "korean": "பிறகு மீண்டும் அழைக்கிறேன்",
+      "english": "Find one word or phrase that naturally travels with \"பிறகு மீண்டும் அழைக்கிறேன்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "சரி, பிறகு மீண்டும் அழைக்கிறேன்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Okay, I will call again later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "பிறகு மீண்டும் அழைக்கிறேன்",
+      "romanization": "piṟaku mīṇṭum aḻaikkiṟēṉ",
+      "nativeText": "Listen for \"பிறகு மீண்டும் அழைக்கிறேன்\" inside \"சரி, பிறகு மீண்டும் அழைக்கிறேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "piṟaku mīṇṭum aḻaikkiṟēṉ",
+      "exampleTarget": "சரி, பிறகு மீண்டும் அழைக்கிறேன்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Okay, I will call again later.”",
+      "korean": "பிறகு மீண்டும் அழைக்கிறேன்",
+      "english": "Listen for \"பிறகு மீண்டும் அழைக்கிறேன்\" inside \"சரி, பிறகு மீண்டும் அழைக்கிறேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "சரி, பிறகு மீண்டும் அழைக்கிறேன்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Okay, I will call again later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "பிறகு மீண்டும் அழைக்கிறேன்",
+      "romanization": "piṟaku mīṇṭum aḻaikkiṟēṉ",
+      "nativeText": "Write \"பிறகு மீண்டும் அழைக்கிறேன்\" again without looking, then compare the exact written form against \"சரி, பிறகு மீண்டும் அழைக்கிறேன்.\" before moving on.",
+      "pronunciation": "piṟaku mīṇṭum aḻaikkiṟēṉ",
+      "exampleTarget": "சரி, பிறகு மீண்டும் அழைக்கிறேன்.",
+      "exampleNative": "Use the written model as the final correctness check: “Okay, I will call again later.”",
+      "korean": "பிறகு மீண்டும் அழைக்கிறேன்",
+      "english": "Write \"பிறகு மீண்டும் அழைக்கிறேன்\" again without looking, then compare the exact written form against \"சரி, பிறகு மீண்டும் அழைக்கிறேன்.\" before moving on.",
+      "example": "சரி, பிறகு மீண்டும் அழைக்கிறேன்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Okay, I will call again later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit15phonemessages-vocabulary-1",
+        "ta-level1unit15phonemessages-vocabulary-2",
+        "ta-level1unit15phonemessages-grammar-1",
+        "ta-level1unit15phonemessages-grammar-2",
+        "ta-level1unit15phonemessages-reading",
+        "ta-level1unit15phonemessages-listening",
+        "ta-level1unit15phonemessages-writing",
+        "ta-level1unit15phonemessages-task"
+      ],
+      "targetText": "பிறகு மீண்டும் அழைக்கிறேன்",
+      "romanization": "piṟaku mīṇṭum aḻaikkiṟēṉ",
+      "nativeText": "Check whether \"பிறகு மீண்டும் அழைக்கிறேன்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Okay, I will call again later.”",
+      "pronunciation": "piṟaku mīṇṭum aḻaikkiṟēṉ",
+      "exampleTarget": "சரி, பிறகு மீண்டும் அழைக்கிறேன்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Okay, I will call again later.”",
+      "korean": "பிறகு மீண்டும் அழைக்கிறேன்",
+      "english": "Check whether \"பிறகு மீண்டும் அழைக்கிறேன்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Okay, I will call again later.”",
+      "example": "சரி, பிறகு மீண்டும் அழைக்கிறேன்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Okay, I will call again later.”"
+    }
+  ],
+  "targetLang": "ta",
+  "nativeLang": "en",
+  "track": "textbook"
+};

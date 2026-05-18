@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('tr', {
-  slug: 'tr-l1u9',
-  title: 'Level 1 · Unit 9: Yemek Siparişi — Ordering Food',
-  category: 'food',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Order food and drinks politely in cafes and lokantas.',
-  vocabularyGoal: 'Use food, drink, portion, and service words.',
-  grammarGoal: 'Use `istiyorum`, `alabilir miyim`, and `-siz` to request and customize.',
-  speakingGoal: 'Place a complete order, change one detail, and ask for the bill.',
-  task: 'Roleplay ordering lunch in a lokanta.',
-  expressionPractice: [
-    practice('ordering-politely', 'Ordering politely', 'Use `alabilir miyim?`.'),
-    practice('customizing', 'Customizing', 'Use `-siz` or `az`.'),
-    practice('closing-order', 'Closing order', 'Ask for the bill naturally.'),
+module.exports = {
+  "title": "Level 1 · Unit 9: Yemek Siparişi — Ordering Food",
+  "category": "food",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "tr-level1unit09orderingfood-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Order food and drinks politely in cafes and lokantas."
+      ],
+      "task": "Roleplay ordering lunch in a lokanta."
+    },
+    {
+      "id": "tr-level1unit09orderingfood-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "tr-level1unit09orderingfood-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 9: Yemek Siparişi — Ordering Food with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "tr-level1unit09orderingfood-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 9: Yemek Siparişi — Ordering Food sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "tr-level1unit09orderingfood-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Order food and drinks politely in cafes and lokantas."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "tr-level1unit09orderingfood-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 9: Yemek Siparişi — Ordering Food with one nearby Turkish form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "tr-level1unit09orderingfood-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "tr-level1unit09orderingfood-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "tr-level1unit09orderingfood-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "tr-level1unit09orderingfood-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "tr-level1unit09orderingfood-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Roleplay ordering lunch in a lokanta."
+      ],
+      "task": "Roleplay ordering lunch in a lokanta."
+    }
   ],
-  relatedPools: ['topic-food', 'topic-service'],
-  items: [
-    item('bir çay alabilir miyim?', 'bir çay a-la-bi-LİR mi-YİM', '“May I get one tea?” This is a polite service request.', 'Bir çay alabilir miyim?', '“May I get one tea?”'),
-    item('ben bir çorba istiyorum', 'ben bir çor-BA is-ti-YO-rum', '“I want one soup.” Straightforward and acceptable in many casual restaurants.', 'Ben bir mercimek çorbası istiyorum.', '“I want one lentil soup.”'),
-    item('şekersiz', 'şe-ker-SİZ', '“Without sugar.” The suffix `-siz/-sız/-suz/-süz` means “without,” shaped by vowel harmony.', 'Şekersiz kahve istiyorum.', '“I want coffee without sugar.”'),
-    item('az acılı', 'az a-cı-LI', '“Mild / with little spice.” `-lı` means “with,” the opposite of `-siz`.', 'Az acılı kebap alabilir miyim?', '“May I have mildly spicy kebap?”'),
-    item('burada yemek', 'bu-RA-da ye-MEK', '“Eat here.” `Burada` is location, and the infinitive names the action.', 'Burada mı, paket mi?', '“For here or takeaway?”'),
-    item('paket', 'pa-KET', '“Takeaway / package.” Very common in food-service contexts.', 'Bunu paket yapar mısınız?', '“Could you make this takeaway?”'),
-    item('bir porsiyon', 'bir por-si-YON', '“One portion.” A useful serving noun for many dishes.', 'Bir porsiyon mantı istiyorum.', '“I want one portion of mantı.”'),
-    item('hesap lütfen', 'he-SAP lüt-FEN', '“The bill, please.” A compact must-know phrase.', 'Hesap lütfen.', '“The bill, please.”'),
+  "expressionPractice": [
+    {
+      "id": "ordering-politely",
+      "label": "Ordering politely",
+      "goal": "Use `alabilir miyim?`."
+    },
+    {
+      "id": "customizing",
+      "label": "Customizing",
+      "goal": "Use `-siz` or `az`."
+    },
+    {
+      "id": "closing-order",
+      "label": "Closing order",
+      "goal": "Ask for the bill naturally."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-food",
+    "topic-service"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit09orderingfood-orientation"
+      ],
+      "targetText": "ders hedefi",
+      "romanization": "",
+      "nativeText": "Order food and drinks politely in cafes and lokantas.",
+      "pronunciation": "",
+      "exampleTarget": "ders hedefi",
+      "exampleNative": "The whole lesson is built toward this outcome: Roleplay ordering lunch in a lokanta.",
+      "korean": "ders hedefi",
+      "english": "Order food and drinks politely in cafes and lokantas.",
+      "example": "ders hedefi",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Roleplay ordering lunch in a lokanta."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "tr-level1unit09orderingfood-pronunciation"
+      ],
+      "targetText": "ses kontrolü",
+      "romanization": "",
+      "nativeText": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Bir çay alabilir miyim?\".",
+      "pronunciation": "",
+      "exampleTarget": "Bir çay alabilir miyim?",
+      "exampleNative": "“May I get one tea?”",
+      "korean": "ses kontrolü",
+      "english": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Bir çay alabilir miyim?\".",
+      "example": "Bir çay alabilir miyim?",
+      "exampleEnglish": "“May I get one tea?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1"
+      ],
+      "targetText": "bir çay alabilir miyim?",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 9: Yemek Siparişi — Ordering Food with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Bir çay alabilir miyim?",
+      "exampleNative": "“May I get one tea?”",
+      "korean": "bir çay alabilir miyim?",
+      "english": "Use the key language of Level 1 · Unit 9: Yemek Siparişi — Ordering Food with the register and setting that the lesson requires.",
+      "example": "Bir çay alabilir miyim?",
+      "exampleEnglish": "“May I get one tea?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-2"
+      ],
+      "targetText": "ben bir çorba istiyorum",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 9: Yemek Siparişi — Ordering Food sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Ben bir mercimek çorbası istiyorum.",
+      "exampleNative": "“I want one lentil soup.”",
+      "korean": "ben bir çorba istiyorum",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 9: Yemek Siparişi — Ordering Food sound precise rather than merely understandable.",
+      "example": "Ben bir mercimek çorbası istiyorum.",
+      "exampleEnglish": "“I want one lentil soup.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "tr-level1unit09orderingfood-grammar-1"
+      ],
+      "targetText": "bir çay alabilir miyim?",
+      "romanization": "",
+      "nativeText": "Order food and drinks politely in cafes and lokantas.",
+      "pronunciation": "",
+      "exampleTarget": "Bir çay alabilir miyim?",
+      "exampleNative": "“May I get one tea?”",
+      "korean": "bir çay alabilir miyim?",
+      "english": "Order food and drinks politely in cafes and lokantas.",
+      "example": "Bir çay alabilir miyim?",
+      "exampleEnglish": "“May I get one tea?”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "tr-level1unit09orderingfood-grammar-2"
+      ],
+      "targetText": "ben bir çorba istiyorum",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 9: Yemek Siparişi — Ordering Food with one nearby Turkish form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Ben bir mercimek çorbası istiyorum.",
+      "exampleNative": "“I want one lentil soup.”",
+      "korean": "ben bir çorba istiyorum",
+      "english": "Contrast the main pattern in Level 1 · Unit 9: Yemek Siparişi — Ordering Food with one nearby Turkish form so the learner can avoid literal translation.",
+      "example": "Ben bir mercimek çorbası istiyorum.",
+      "exampleEnglish": "“I want one lentil soup.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "tr-level1unit09orderingfood-reading"
+      ],
+      "targetText": "okuma modeli",
+      "romanization": "",
+      "nativeText": "Read \"Hesap lütfen.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Hesap lütfen.",
+      "exampleNative": "“The bill, please.”",
+      "korean": "okuma modeli",
+      "english": "Read \"Hesap lütfen.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Hesap lütfen.",
+      "exampleEnglish": "“The bill, please.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit09orderingfood-listening"
+      ],
+      "targetText": "diyalog modeli",
+      "romanization": "",
+      "nativeText": "Hear \"Hesap lütfen.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Hesap lütfen.",
+      "exampleNative": "“The bill, please.”",
+      "korean": "diyalog modeli",
+      "english": "Hear \"Hesap lütfen.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Hesap lütfen.",
+      "exampleEnglish": "“The bill, please.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "tr-level1unit09orderingfood-writing"
+      ],
+      "targetText": "yazma alıştırması",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Bir çay alabilir miyim?\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Bir çay alabilir miyim?",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "yazma alıştırması",
+      "english": "Write your own version after studying \"Bir çay alabilir miyim?\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Bir çay alabilir miyim?",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "tr-level1unit09orderingfood-culture"
+      ],
+      "targetText": "kullanım ve bağlam",
+      "romanization": "",
+      "nativeText": "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Ben bir mercimek çorbası istiyorum.",
+      "exampleNative": "“I want one lentil soup.”",
+      "korean": "kullanım ve bağlam",
+      "english": "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used.",
+      "example": "Ben bir mercimek çorbası istiyorum.",
+      "exampleEnglish": "“I want one lentil soup.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "son görev",
+      "romanization": "",
+      "nativeText": "Roleplay ordering lunch in a lokanta.",
+      "pronunciation": "",
+      "exampleTarget": "Hesap lütfen.",
+      "exampleNative": "Roleplay ordering lunch in a lokanta.",
+      "korean": "son görev",
+      "english": "Roleplay ordering lunch in a lokanta.",
+      "example": "Hesap lütfen.",
+      "exampleEnglish": "Roleplay ordering lunch in a lokanta."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit09orderingfood-grammar-2"
+      ],
+      "targetText": "yaygın hata",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around suffix chains, vowel harmony, evidentiality, and word order. Begin by checking \"Ben bir mercimek çorbası istiyorum.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Ben bir mercimek çorbası istiyorum.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “I want one lentil soup.”",
+      "korean": "yaygın hata",
+      "english": "Watch for literal-translation mistakes around suffix chains, vowel harmony, evidentiality, and word order. Begin by checking \"Ben bir mercimek çorbası istiyorum.\" against the model.",
+      "example": "Ben bir mercimek çorbası istiyorum.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “I want one lentil soup.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-culture"
+      ],
+      "targetText": "üslup",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for sen, siz, a service tone, or a more formal wording before selecting the final form. Compare the social fit of \"Bir çay alabilir miyim?\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Bir çay alabilir miyim?",
+      "exampleNative": "“May I get one tea?”",
+      "korean": "üslup",
+      "english": "Check whether the setting calls for sen, siz, a service tone, or a more formal wording before selecting the final form. Compare the social fit of \"Bir çay alabilir miyim?\" before reusing it elsewhere.",
+      "example": "Bir çay alabilir miyim?",
+      "exampleEnglish": "“May I get one tea?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "akıcılık",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Turkish message rather than as separate translated fragments. Aim to carry \"Hesap lütfen.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Hesap lütfen.",
+      "exampleNative": "“The bill, please.”",
+      "korean": "akıcılık",
+      "english": "Say the idea as one connected Turkish message rather than as separate translated fragments. Aim to carry \"Hesap lütfen.\" as one thought.",
+      "example": "Hesap lütfen.",
+      "exampleEnglish": "“The bill, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "uygulama",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Bir çay alabilir miyim?\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Bir çay alabilir miyim?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "uygulama",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Bir çay alabilir miyim?\" and move it into your own life.",
+      "example": "Bir çay alabilir miyim?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-grammar-1"
+      ],
+      "targetText": "hatırlama",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"bir çay alabilir miyim?\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "bir çay alabilir miyim?",
+      "exampleNative": "“May I get one tea?” This is a polite service request.",
+      "korean": "hatırlama",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"bir çay alabilir miyim?\" before looking back.",
+      "example": "bir çay alabilir miyim?",
+      "exampleEnglish": "“May I get one tea?” This is a polite service request."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-writing"
+      ],
+      "targetText": "genişletme",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Hesap lütfen.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Hesap lütfen.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "genişletme",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Hesap lütfen.\" rather than restarting from a blank sentence.",
+      "example": "Hesap lütfen.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading"
+      ],
+      "targetText": "karşılaştırma",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 9: Yemek Siparişi — Ordering Food with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Ben bir mercimek çorbası istiyorum.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Ben bir mercimek çorbası istiyorum.",
+      "exampleNative": "“I want one lentil soup.”",
+      "korean": "karşılaştırma",
+      "english": "Compare the central form in Level 1 · Unit 9: Yemek Siparişi — Ordering Food with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Ben bir mercimek çorbası istiyorum.\" as the comparison line.",
+      "example": "Ben bir mercimek çorbası istiyorum.",
+      "exampleEnglish": "“I want one lentil soup.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "tr-level1unit09orderingfood-pronunciation"
+      ],
+      "targetText": "telaffuz düzeltme",
+      "romanization": "",
+      "nativeText": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Bir çay alabilir miyim?\".",
+      "pronunciation": "",
+      "exampleTarget": "Bir çay alabilir miyim?",
+      "exampleNative": "“May I get one tea?”",
+      "korean": "telaffuz düzeltme",
+      "english": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Bir çay alabilir miyim?\".",
+      "example": "Bir çay alabilir miyim?",
+      "exampleEnglish": "“May I get one tea?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "diyalog varyasyonu",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Hesap lütfen.\".",
+      "pronunciation": "",
+      "exampleTarget": "Hesap lütfen.",
+      "exampleNative": "“The bill, please.”",
+      "korean": "diyalog varyasyonu",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Hesap lütfen.\".",
+      "example": "Hesap lütfen.",
+      "exampleEnglish": "“The bill, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-writing"
+      ],
+      "targetText": "cümle kurma",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Bir çay alabilir miyim?\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Bir çay alabilir miyim?",
+      "exampleNative": "“May I get one tea?”",
+      "korean": "cümle kurma",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Bir çay alabilir miyim?\" one layer at a time.",
+      "example": "Bir çay alabilir miyim?",
+      "exampleEnglish": "“May I get one tea?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-2"
+      ],
+      "targetText": "hızlı kontrol",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Ben bir mercimek çorbası istiyorum.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Ben bir mercimek çorbası istiyorum.",
+      "exampleNative": "“I want one lentil soup.”",
+      "korean": "hızlı kontrol",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Ben bir mercimek çorbası istiyorum.\" as the deciding example.",
+      "example": "Ben bir mercimek çorbası istiyorum.",
+      "exampleEnglish": "“I want one lentil soup.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit09orderingfood-culture",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "değerlendirme",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Hesap lütfen.\".",
+      "pronunciation": "",
+      "exampleTarget": "Hesap lütfen.",
+      "exampleNative": "“The bill, please.”",
+      "korean": "değerlendirme",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Hesap lütfen.\".",
+      "example": "Hesap lütfen.",
+      "exampleEnglish": "“The bill, please.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "bir çay alabilir miyim?",
+      "romanization": "bir çay a-la-bi-LİR mi-YİM",
+      "nativeText": "“May I get one tea?” This is a polite service request.",
+      "pronunciation": "bir çay a-la-bi-LİR mi-YİM",
+      "exampleTarget": "Bir çay alabilir miyim?",
+      "exampleNative": "“May I get one tea?”",
+      "korean": "bir çay alabilir miyim?",
+      "english": "“May I get one tea?” This is a polite service request.",
+      "example": "Bir çay alabilir miyim?",
+      "exampleEnglish": "“May I get one tea?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "Bir çay alabilir miyim?",
+      "romanization": "bir çay a-la-bi-LİR mi-YİM",
+      "nativeText": "Model use for \"Bir çay alabilir miyim?\": “May I get one tea?”",
+      "pronunciation": "bir çay a-la-bi-LİR mi-YİM",
+      "exampleTarget": "Bir çay alabilir miyim?",
+      "exampleNative": "“May I get one tea?”",
+      "korean": "Bir çay alabilir miyim?",
+      "english": "Model use for \"Bir çay alabilir miyim?\": “May I get one tea?”",
+      "example": "Bir çay alabilir miyim?",
+      "exampleEnglish": "“May I get one tea?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "bir çay alabilir miyim?",
+      "romanization": "bir çay a-la-bi-LİR mi-YİM",
+      "nativeText": "Usage focus for \"bir çay alabilir miyim?\": Use the key language of Level 1 · Unit 9: Yemek Siparişi — Ordering Food with the register and setting that the lesson requires.",
+      "pronunciation": "bir çay a-la-bi-LİR mi-YİM",
+      "exampleTarget": "Bir çay alabilir miyim?",
+      "exampleNative": "Notice what the form is doing here: “May I get one tea?”",
+      "korean": "bir çay alabilir miyim?",
+      "english": "Usage focus for \"bir çay alabilir miyim?\": Use the key language of Level 1 · Unit 9: Yemek Siparişi — Ordering Food with the register and setting that the lesson requires.",
+      "example": "Bir çay alabilir miyim?",
+      "exampleEnglish": "Notice what the form is doing here: “May I get one tea?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "bir çay alabilir miyim?",
+      "romanization": "bir çay a-la-bi-LİR mi-YİM",
+      "nativeText": "Contrast check for \"bir çay alabilir miyim?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "bir çay a-la-bi-LİR mi-YİM",
+      "exampleTarget": "Bir çay alabilir miyim?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I get one tea?”",
+      "korean": "bir çay alabilir miyim?",
+      "english": "Contrast check for \"bir çay alabilir miyim?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Bir çay alabilir miyim?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I get one tea?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "bir çay alabilir miyim?",
+      "romanization": "bir çay a-la-bi-LİR mi-YİM",
+      "nativeText": "Recall \"bir çay alabilir miyim?\" from memory, then explain what would change if a nearby alternative replaced it in \"Bir çay alabilir miyim?\".",
+      "pronunciation": "bir çay a-la-bi-LİR mi-YİM",
+      "exampleTarget": "Bir çay alabilir miyim?",
+      "exampleNative": "Self-check against the model before moving on: “May I get one tea?”",
+      "korean": "bir çay alabilir miyim?",
+      "english": "Recall \"bir çay alabilir miyim?\" from memory, then explain what would change if a nearby alternative replaced it in \"Bir çay alabilir miyim?\".",
+      "example": "Bir çay alabilir miyim?",
+      "exampleEnglish": "Self-check against the model before moving on: “May I get one tea?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "bir çay alabilir miyim?",
+      "romanization": "bir çay a-la-bi-LİR mi-YİM",
+      "nativeText": "Repair \"bir çay alabilir miyim?\" inside \"Bir çay alabilir miyim?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 9: Yemek Siparişi — Ordering Food with the register and setting that the lesson requires.",
+      "pronunciation": "bir çay a-la-bi-LİR mi-YİM",
+      "exampleTarget": "Bir çay alabilir miyim?",
+      "exampleNative": "Use the model as the repair target: “May I get one tea?”",
+      "korean": "bir çay alabilir miyim?",
+      "english": "Repair \"bir çay alabilir miyim?\" inside \"Bir çay alabilir miyim?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 9: Yemek Siparişi — Ordering Food with the register and setting that the lesson requires.",
+      "example": "Bir çay alabilir miyim?",
+      "exampleEnglish": "Use the model as the repair target: “May I get one tea?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "bir çay alabilir miyim?",
+      "romanization": "bir çay a-la-bi-LİR mi-YİM",
+      "nativeText": "Transfer \"bir çay alabilir miyim?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bir çay alabilir miyim?\".",
+      "pronunciation": "bir çay a-la-bi-LİR mi-YİM",
+      "exampleTarget": "Bir çay alabilir miyim?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I get one tea?”",
+      "korean": "bir çay alabilir miyim?",
+      "english": "Transfer \"bir çay alabilir miyim?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bir çay alabilir miyim?\".",
+      "example": "Bir çay alabilir miyim?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I get one tea?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "bir çay alabilir miyim?",
+      "romanization": "bir çay a-la-bi-LİR mi-YİM",
+      "nativeText": "Find one word or phrase that naturally travels with \"bir çay alabilir miyim?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "bir çay a-la-bi-LİR mi-YİM",
+      "exampleTarget": "Bir çay alabilir miyim?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “May I get one tea?”",
+      "korean": "bir çay alabilir miyim?",
+      "english": "Find one word or phrase that naturally travels with \"bir çay alabilir miyim?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Bir çay alabilir miyim?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “May I get one tea?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "bir çay alabilir miyim?",
+      "romanization": "bir çay a-la-bi-LİR mi-YİM",
+      "nativeText": "Listen for \"bir çay alabilir miyim?\" inside \"Bir çay alabilir miyim?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "bir çay a-la-bi-LİR mi-YİM",
+      "exampleTarget": "Bir çay alabilir miyim?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I get one tea?”",
+      "korean": "bir çay alabilir miyim?",
+      "english": "Listen for \"bir çay alabilir miyim?\" inside \"Bir çay alabilir miyim?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Bir çay alabilir miyim?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I get one tea?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "bir çay alabilir miyim?",
+      "romanization": "bir çay a-la-bi-LİR mi-YİM",
+      "nativeText": "Write \"bir çay alabilir miyim?\" again without looking, then compare the exact written form against \"Bir çay alabilir miyim?\" before moving on.",
+      "pronunciation": "bir çay a-la-bi-LİR mi-YİM",
+      "exampleTarget": "Bir çay alabilir miyim?",
+      "exampleNative": "Use the written model as the final correctness check: “May I get one tea?”",
+      "korean": "bir çay alabilir miyim?",
+      "english": "Write \"bir çay alabilir miyim?\" again without looking, then compare the exact written form against \"Bir çay alabilir miyim?\" before moving on.",
+      "example": "Bir çay alabilir miyim?",
+      "exampleEnglish": "Use the written model as the final correctness check: “May I get one tea?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "bir çay alabilir miyim?",
+      "romanization": "bir çay a-la-bi-LİR mi-YİM",
+      "nativeText": "Check whether \"bir çay alabilir miyim?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I get one tea?”",
+      "pronunciation": "bir çay a-la-bi-LİR mi-YİM",
+      "exampleTarget": "Bir çay alabilir miyim?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “May I get one tea?”",
+      "korean": "bir çay alabilir miyim?",
+      "english": "Check whether \"bir çay alabilir miyim?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I get one tea?”",
+      "example": "Bir çay alabilir miyim?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “May I get one tea?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "ben bir çorba istiyorum",
+      "romanization": "ben bir çor-BA is-ti-YO-rum",
+      "nativeText": "“I want one soup.” Straightforward and acceptable in many casual restaurants.",
+      "pronunciation": "ben bir çor-BA is-ti-YO-rum",
+      "exampleTarget": "Ben bir mercimek çorbası istiyorum.",
+      "exampleNative": "“I want one lentil soup.”",
+      "korean": "ben bir çorba istiyorum",
+      "english": "“I want one soup.” Straightforward and acceptable in many casual restaurants.",
+      "example": "Ben bir mercimek çorbası istiyorum.",
+      "exampleEnglish": "“I want one lentil soup.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "Ben bir mercimek çorbası istiyorum.",
+      "romanization": "ben bir çor-BA is-ti-YO-rum",
+      "nativeText": "Model use for \"Ben bir mercimek çorbası istiyorum.\": “I want one lentil soup.”",
+      "pronunciation": "ben bir çor-BA is-ti-YO-rum",
+      "exampleTarget": "Ben bir mercimek çorbası istiyorum.",
+      "exampleNative": "“I want one lentil soup.”",
+      "korean": "Ben bir mercimek çorbası istiyorum.",
+      "english": "Model use for \"Ben bir mercimek çorbası istiyorum.\": “I want one lentil soup.”",
+      "example": "Ben bir mercimek çorbası istiyorum.",
+      "exampleEnglish": "“I want one lentil soup.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "ben bir çorba istiyorum",
+      "romanization": "ben bir çor-BA is-ti-YO-rum",
+      "nativeText": "Usage focus for \"ben bir çorba istiyorum\": Distinguish the nearby wording choices that make Level 1 · Unit 9: Yemek Siparişi — Ordering Food sound precise rather than merely understandable.",
+      "pronunciation": "ben bir çor-BA is-ti-YO-rum",
+      "exampleTarget": "Ben bir mercimek çorbası istiyorum.",
+      "exampleNative": "Notice what the form is doing here: “I want one lentil soup.”",
+      "korean": "ben bir çorba istiyorum",
+      "english": "Usage focus for \"ben bir çorba istiyorum\": Distinguish the nearby wording choices that make Level 1 · Unit 9: Yemek Siparişi — Ordering Food sound precise rather than merely understandable.",
+      "example": "Ben bir mercimek çorbası istiyorum.",
+      "exampleEnglish": "Notice what the form is doing here: “I want one lentil soup.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "ben bir çorba istiyorum",
+      "romanization": "ben bir çor-BA is-ti-YO-rum",
+      "nativeText": "Contrast check for \"ben bir çorba istiyorum\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ben bir çor-BA is-ti-YO-rum",
+      "exampleTarget": "Ben bir mercimek çorbası istiyorum.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want one lentil soup.”",
+      "korean": "ben bir çorba istiyorum",
+      "english": "Contrast check for \"ben bir çorba istiyorum\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ben bir mercimek çorbası istiyorum.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want one lentil soup.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "ben bir çorba istiyorum",
+      "romanization": "ben bir çor-BA is-ti-YO-rum",
+      "nativeText": "Recall \"ben bir çorba istiyorum\" from memory, then explain what would change if a nearby alternative replaced it in \"Ben bir mercimek çorbası istiyorum.\".",
+      "pronunciation": "ben bir çor-BA is-ti-YO-rum",
+      "exampleTarget": "Ben bir mercimek çorbası istiyorum.",
+      "exampleNative": "Self-check against the model before moving on: “I want one lentil soup.”",
+      "korean": "ben bir çorba istiyorum",
+      "english": "Recall \"ben bir çorba istiyorum\" from memory, then explain what would change if a nearby alternative replaced it in \"Ben bir mercimek çorbası istiyorum.\".",
+      "example": "Ben bir mercimek çorbası istiyorum.",
+      "exampleEnglish": "Self-check against the model before moving on: “I want one lentil soup.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "ben bir çorba istiyorum",
+      "romanization": "ben bir çor-BA is-ti-YO-rum",
+      "nativeText": "Repair \"ben bir çorba istiyorum\" inside \"Ben bir mercimek çorbası istiyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 9: Yemek Siparişi — Ordering Food sound precise rather than merely understandable.",
+      "pronunciation": "ben bir çor-BA is-ti-YO-rum",
+      "exampleTarget": "Ben bir mercimek çorbası istiyorum.",
+      "exampleNative": "Use the model as the repair target: “I want one lentil soup.”",
+      "korean": "ben bir çorba istiyorum",
+      "english": "Repair \"ben bir çorba istiyorum\" inside \"Ben bir mercimek çorbası istiyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 9: Yemek Siparişi — Ordering Food sound precise rather than merely understandable.",
+      "example": "Ben bir mercimek çorbası istiyorum.",
+      "exampleEnglish": "Use the model as the repair target: “I want one lentil soup.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "ben bir çorba istiyorum",
+      "romanization": "ben bir çor-BA is-ti-YO-rum",
+      "nativeText": "Transfer \"ben bir çorba istiyorum\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ben bir mercimek çorbası istiyorum.\".",
+      "pronunciation": "ben bir çor-BA is-ti-YO-rum",
+      "exampleTarget": "Ben bir mercimek çorbası istiyorum.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want one lentil soup.”",
+      "korean": "ben bir çorba istiyorum",
+      "english": "Transfer \"ben bir çorba istiyorum\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ben bir mercimek çorbası istiyorum.\".",
+      "example": "Ben bir mercimek çorbası istiyorum.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want one lentil soup.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "ben bir çorba istiyorum",
+      "romanization": "ben bir çor-BA is-ti-YO-rum",
+      "nativeText": "Find one word or phrase that naturally travels with \"ben bir çorba istiyorum\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ben bir çor-BA is-ti-YO-rum",
+      "exampleTarget": "Ben bir mercimek çorbası istiyorum.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want one lentil soup.”",
+      "korean": "ben bir çorba istiyorum",
+      "english": "Find one word or phrase that naturally travels with \"ben bir çorba istiyorum\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ben bir mercimek çorbası istiyorum.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want one lentil soup.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "ben bir çorba istiyorum",
+      "romanization": "ben bir çor-BA is-ti-YO-rum",
+      "nativeText": "Listen for \"ben bir çorba istiyorum\" inside \"Ben bir mercimek çorbası istiyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ben bir çor-BA is-ti-YO-rum",
+      "exampleTarget": "Ben bir mercimek çorbası istiyorum.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want one lentil soup.”",
+      "korean": "ben bir çorba istiyorum",
+      "english": "Listen for \"ben bir çorba istiyorum\" inside \"Ben bir mercimek çorbası istiyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ben bir mercimek çorbası istiyorum.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want one lentil soup.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "ben bir çorba istiyorum",
+      "romanization": "ben bir çor-BA is-ti-YO-rum",
+      "nativeText": "Write \"ben bir çorba istiyorum\" again without looking, then compare the exact written form against \"Ben bir mercimek çorbası istiyorum.\" before moving on.",
+      "pronunciation": "ben bir çor-BA is-ti-YO-rum",
+      "exampleTarget": "Ben bir mercimek çorbası istiyorum.",
+      "exampleNative": "Use the written model as the final correctness check: “I want one lentil soup.”",
+      "korean": "ben bir çorba istiyorum",
+      "english": "Write \"ben bir çorba istiyorum\" again without looking, then compare the exact written form against \"Ben bir mercimek çorbası istiyorum.\" before moving on.",
+      "example": "Ben bir mercimek çorbası istiyorum.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want one lentil soup.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "ben bir çorba istiyorum",
+      "romanization": "ben bir çor-BA is-ti-YO-rum",
+      "nativeText": "Check whether \"ben bir çorba istiyorum\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want one lentil soup.”",
+      "pronunciation": "ben bir çor-BA is-ti-YO-rum",
+      "exampleTarget": "Ben bir mercimek çorbası istiyorum.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want one lentil soup.”",
+      "korean": "ben bir çorba istiyorum",
+      "english": "Check whether \"ben bir çorba istiyorum\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want one lentil soup.”",
+      "example": "Ben bir mercimek çorbası istiyorum.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want one lentil soup.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "şekersiz",
+      "romanization": "şe-ker-SİZ",
+      "nativeText": "“Without sugar.” The suffix `-siz/-sız/-suz/-süz` means “without,” shaped by vowel harmony.",
+      "pronunciation": "şe-ker-SİZ",
+      "exampleTarget": "Şekersiz kahve istiyorum.",
+      "exampleNative": "“I want coffee without sugar.”",
+      "korean": "şekersiz",
+      "english": "“Without sugar.” The suffix `-siz/-sız/-suz/-süz` means “without,” shaped by vowel harmony.",
+      "example": "Şekersiz kahve istiyorum.",
+      "exampleEnglish": "“I want coffee without sugar.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "Şekersiz kahve istiyorum.",
+      "romanization": "şe-ker-SİZ",
+      "nativeText": "Model use for \"Şekersiz kahve istiyorum.\": “I want coffee without sugar.”",
+      "pronunciation": "şe-ker-SİZ",
+      "exampleTarget": "Şekersiz kahve istiyorum.",
+      "exampleNative": "“I want coffee without sugar.”",
+      "korean": "Şekersiz kahve istiyorum.",
+      "english": "Model use for \"Şekersiz kahve istiyorum.\": “I want coffee without sugar.”",
+      "example": "Şekersiz kahve istiyorum.",
+      "exampleEnglish": "“I want coffee without sugar.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "şekersiz",
+      "romanization": "şe-ker-SİZ",
+      "nativeText": "Usage focus for \"şekersiz\": “Without sugar.” The suffix `-siz/-sız/-suz/-süz` means “without,” shaped by vowel harmony.",
+      "pronunciation": "şe-ker-SİZ",
+      "exampleTarget": "Şekersiz kahve istiyorum.",
+      "exampleNative": "Notice what the form is doing here: “I want coffee without sugar.”",
+      "korean": "şekersiz",
+      "english": "Usage focus for \"şekersiz\": “Without sugar.” The suffix `-siz/-sız/-suz/-süz` means “without,” shaped by vowel harmony.",
+      "example": "Şekersiz kahve istiyorum.",
+      "exampleEnglish": "Notice what the form is doing here: “I want coffee without sugar.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "şekersiz",
+      "romanization": "şe-ker-SİZ",
+      "nativeText": "Contrast check for \"şekersiz\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "şe-ker-SİZ",
+      "exampleTarget": "Şekersiz kahve istiyorum.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want coffee without sugar.”",
+      "korean": "şekersiz",
+      "english": "Contrast check for \"şekersiz\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Şekersiz kahve istiyorum.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want coffee without sugar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "şekersiz",
+      "romanization": "şe-ker-SİZ",
+      "nativeText": "Recall \"şekersiz\" from memory, then explain what would change if a nearby alternative replaced it in \"Şekersiz kahve istiyorum.\".",
+      "pronunciation": "şe-ker-SİZ",
+      "exampleTarget": "Şekersiz kahve istiyorum.",
+      "exampleNative": "Self-check against the model before moving on: “I want coffee without sugar.”",
+      "korean": "şekersiz",
+      "english": "Recall \"şekersiz\" from memory, then explain what would change if a nearby alternative replaced it in \"Şekersiz kahve istiyorum.\".",
+      "example": "Şekersiz kahve istiyorum.",
+      "exampleEnglish": "Self-check against the model before moving on: “I want coffee without sugar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "şekersiz",
+      "romanization": "şe-ker-SİZ",
+      "nativeText": "Repair \"şekersiz\" inside \"Şekersiz kahve istiyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Without sugar.” The suffix `-siz/-sız/-suz/-süz` means “without,” shaped by vowel harmony.",
+      "pronunciation": "şe-ker-SİZ",
+      "exampleTarget": "Şekersiz kahve istiyorum.",
+      "exampleNative": "Use the model as the repair target: “I want coffee without sugar.”",
+      "korean": "şekersiz",
+      "english": "Repair \"şekersiz\" inside \"Şekersiz kahve istiyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Without sugar.” The suffix `-siz/-sız/-suz/-süz` means “without,” shaped by vowel harmony.",
+      "example": "Şekersiz kahve istiyorum.",
+      "exampleEnglish": "Use the model as the repair target: “I want coffee without sugar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "şekersiz",
+      "romanization": "şe-ker-SİZ",
+      "nativeText": "Transfer \"şekersiz\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Şekersiz kahve istiyorum.\".",
+      "pronunciation": "şe-ker-SİZ",
+      "exampleTarget": "Şekersiz kahve istiyorum.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want coffee without sugar.”",
+      "korean": "şekersiz",
+      "english": "Transfer \"şekersiz\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Şekersiz kahve istiyorum.\".",
+      "example": "Şekersiz kahve istiyorum.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want coffee without sugar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "şekersiz",
+      "romanization": "şe-ker-SİZ",
+      "nativeText": "Find one word or phrase that naturally travels with \"şekersiz\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "şe-ker-SİZ",
+      "exampleTarget": "Şekersiz kahve istiyorum.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want coffee without sugar.”",
+      "korean": "şekersiz",
+      "english": "Find one word or phrase that naturally travels with \"şekersiz\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Şekersiz kahve istiyorum.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want coffee without sugar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "şekersiz",
+      "romanization": "şe-ker-SİZ",
+      "nativeText": "Listen for \"şekersiz\" inside \"Şekersiz kahve istiyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "şe-ker-SİZ",
+      "exampleTarget": "Şekersiz kahve istiyorum.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want coffee without sugar.”",
+      "korean": "şekersiz",
+      "english": "Listen for \"şekersiz\" inside \"Şekersiz kahve istiyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Şekersiz kahve istiyorum.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want coffee without sugar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "şekersiz",
+      "romanization": "şe-ker-SİZ",
+      "nativeText": "Write \"şekersiz\" again without looking, then compare the exact written form against \"Şekersiz kahve istiyorum.\" before moving on.",
+      "pronunciation": "şe-ker-SİZ",
+      "exampleTarget": "Şekersiz kahve istiyorum.",
+      "exampleNative": "Use the written model as the final correctness check: “I want coffee without sugar.”",
+      "korean": "şekersiz",
+      "english": "Write \"şekersiz\" again without looking, then compare the exact written form against \"Şekersiz kahve istiyorum.\" before moving on.",
+      "example": "Şekersiz kahve istiyorum.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want coffee without sugar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "şekersiz",
+      "romanization": "şe-ker-SİZ",
+      "nativeText": "Check whether \"şekersiz\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want coffee without sugar.”",
+      "pronunciation": "şe-ker-SİZ",
+      "exampleTarget": "Şekersiz kahve istiyorum.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want coffee without sugar.”",
+      "korean": "şekersiz",
+      "english": "Check whether \"şekersiz\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want coffee without sugar.”",
+      "example": "Şekersiz kahve istiyorum.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want coffee without sugar.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "az acılı",
+      "romanization": "az a-cı-LI",
+      "nativeText": "“Mild / with little spice.” `-lı` means “with,” the opposite of `-siz`.",
+      "pronunciation": "az a-cı-LI",
+      "exampleTarget": "Az acılı kebap alabilir miyim?",
+      "exampleNative": "“May I have mildly spicy kebap?”",
+      "korean": "az acılı",
+      "english": "“Mild / with little spice.” `-lı` means “with,” the opposite of `-siz`.",
+      "example": "Az acılı kebap alabilir miyim?",
+      "exampleEnglish": "“May I have mildly spicy kebap?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "Az acılı kebap alabilir miyim?",
+      "romanization": "az a-cı-LI",
+      "nativeText": "Model use for \"Az acılı kebap alabilir miyim?\": “May I have mildly spicy kebap?”",
+      "pronunciation": "az a-cı-LI",
+      "exampleTarget": "Az acılı kebap alabilir miyim?",
+      "exampleNative": "“May I have mildly spicy kebap?”",
+      "korean": "Az acılı kebap alabilir miyim?",
+      "english": "Model use for \"Az acılı kebap alabilir miyim?\": “May I have mildly spicy kebap?”",
+      "example": "Az acılı kebap alabilir miyim?",
+      "exampleEnglish": "“May I have mildly spicy kebap?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "az acılı",
+      "romanization": "az a-cı-LI",
+      "nativeText": "Usage focus for \"az acılı\": “Mild / with little spice.” `-lı` means “with,” the opposite of `-siz`.",
+      "pronunciation": "az a-cı-LI",
+      "exampleTarget": "Az acılı kebap alabilir miyim?",
+      "exampleNative": "Notice what the form is doing here: “May I have mildly spicy kebap?”",
+      "korean": "az acılı",
+      "english": "Usage focus for \"az acılı\": “Mild / with little spice.” `-lı` means “with,” the opposite of `-siz`.",
+      "example": "Az acılı kebap alabilir miyim?",
+      "exampleEnglish": "Notice what the form is doing here: “May I have mildly spicy kebap?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "az acılı",
+      "romanization": "az a-cı-LI",
+      "nativeText": "Contrast check for \"az acılı\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "az a-cı-LI",
+      "exampleTarget": "Az acılı kebap alabilir miyim?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I have mildly spicy kebap?”",
+      "korean": "az acılı",
+      "english": "Contrast check for \"az acılı\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Az acılı kebap alabilir miyim?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I have mildly spicy kebap?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "az acılı",
+      "romanization": "az a-cı-LI",
+      "nativeText": "Recall \"az acılı\" from memory, then explain what would change if a nearby alternative replaced it in \"Az acılı kebap alabilir miyim?\".",
+      "pronunciation": "az a-cı-LI",
+      "exampleTarget": "Az acılı kebap alabilir miyim?",
+      "exampleNative": "Self-check against the model before moving on: “May I have mildly spicy kebap?”",
+      "korean": "az acılı",
+      "english": "Recall \"az acılı\" from memory, then explain what would change if a nearby alternative replaced it in \"Az acılı kebap alabilir miyim?\".",
+      "example": "Az acılı kebap alabilir miyim?",
+      "exampleEnglish": "Self-check against the model before moving on: “May I have mildly spicy kebap?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "az acılı",
+      "romanization": "az a-cı-LI",
+      "nativeText": "Repair \"az acılı\" inside \"Az acılı kebap alabilir miyim?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Mild / with little spice.” `-lı` means “with,” the opposite of `-siz`.",
+      "pronunciation": "az a-cı-LI",
+      "exampleTarget": "Az acılı kebap alabilir miyim?",
+      "exampleNative": "Use the model as the repair target: “May I have mildly spicy kebap?”",
+      "korean": "az acılı",
+      "english": "Repair \"az acılı\" inside \"Az acılı kebap alabilir miyim?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Mild / with little spice.” `-lı` means “with,” the opposite of `-siz`.",
+      "example": "Az acılı kebap alabilir miyim?",
+      "exampleEnglish": "Use the model as the repair target: “May I have mildly spicy kebap?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "az acılı",
+      "romanization": "az a-cı-LI",
+      "nativeText": "Transfer \"az acılı\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Az acılı kebap alabilir miyim?\".",
+      "pronunciation": "az a-cı-LI",
+      "exampleTarget": "Az acılı kebap alabilir miyim?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I have mildly spicy kebap?”",
+      "korean": "az acılı",
+      "english": "Transfer \"az acılı\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Az acılı kebap alabilir miyim?\".",
+      "example": "Az acılı kebap alabilir miyim?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I have mildly spicy kebap?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "az acılı",
+      "romanization": "az a-cı-LI",
+      "nativeText": "Find one word or phrase that naturally travels with \"az acılı\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "az a-cı-LI",
+      "exampleTarget": "Az acılı kebap alabilir miyim?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “May I have mildly spicy kebap?”",
+      "korean": "az acılı",
+      "english": "Find one word or phrase that naturally travels with \"az acılı\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Az acılı kebap alabilir miyim?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “May I have mildly spicy kebap?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "az acılı",
+      "romanization": "az a-cı-LI",
+      "nativeText": "Listen for \"az acılı\" inside \"Az acılı kebap alabilir miyim?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "az a-cı-LI",
+      "exampleTarget": "Az acılı kebap alabilir miyim?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I have mildly spicy kebap?”",
+      "korean": "az acılı",
+      "english": "Listen for \"az acılı\" inside \"Az acılı kebap alabilir miyim?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Az acılı kebap alabilir miyim?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I have mildly spicy kebap?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "az acılı",
+      "romanization": "az a-cı-LI",
+      "nativeText": "Write \"az acılı\" again without looking, then compare the exact written form against \"Az acılı kebap alabilir miyim?\" before moving on.",
+      "pronunciation": "az a-cı-LI",
+      "exampleTarget": "Az acılı kebap alabilir miyim?",
+      "exampleNative": "Use the written model as the final correctness check: “May I have mildly spicy kebap?”",
+      "korean": "az acılı",
+      "english": "Write \"az acılı\" again without looking, then compare the exact written form against \"Az acılı kebap alabilir miyim?\" before moving on.",
+      "example": "Az acılı kebap alabilir miyim?",
+      "exampleEnglish": "Use the written model as the final correctness check: “May I have mildly spicy kebap?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "az acılı",
+      "romanization": "az a-cı-LI",
+      "nativeText": "Check whether \"az acılı\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I have mildly spicy kebap?”",
+      "pronunciation": "az a-cı-LI",
+      "exampleTarget": "Az acılı kebap alabilir miyim?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “May I have mildly spicy kebap?”",
+      "korean": "az acılı",
+      "english": "Check whether \"az acılı\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I have mildly spicy kebap?”",
+      "example": "Az acılı kebap alabilir miyim?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “May I have mildly spicy kebap?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "burada yemek",
+      "romanization": "bu-RA-da ye-MEK",
+      "nativeText": "“Eat here.” `Burada` is location, and the infinitive names the action.",
+      "pronunciation": "bu-RA-da ye-MEK",
+      "exampleTarget": "Burada mı, paket mi?",
+      "exampleNative": "“For here or takeaway?”",
+      "korean": "burada yemek",
+      "english": "“Eat here.” `Burada` is location, and the infinitive names the action.",
+      "example": "Burada mı, paket mi?",
+      "exampleEnglish": "“For here or takeaway?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "Burada mı, paket mi?",
+      "romanization": "bu-RA-da ye-MEK",
+      "nativeText": "Model use for \"Burada mı, paket mi?\": “For here or takeaway?”",
+      "pronunciation": "bu-RA-da ye-MEK",
+      "exampleTarget": "Burada mı, paket mi?",
+      "exampleNative": "“For here or takeaway?”",
+      "korean": "Burada mı, paket mi?",
+      "english": "Model use for \"Burada mı, paket mi?\": “For here or takeaway?”",
+      "example": "Burada mı, paket mi?",
+      "exampleEnglish": "“For here or takeaway?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "burada yemek",
+      "romanization": "bu-RA-da ye-MEK",
+      "nativeText": "Usage focus for \"burada yemek\": “Eat here.” `Burada` is location, and the infinitive names the action.",
+      "pronunciation": "bu-RA-da ye-MEK",
+      "exampleTarget": "Burada mı, paket mi?",
+      "exampleNative": "Notice what the form is doing here: “For here or takeaway?”",
+      "korean": "burada yemek",
+      "english": "Usage focus for \"burada yemek\": “Eat here.” `Burada` is location, and the infinitive names the action.",
+      "example": "Burada mı, paket mi?",
+      "exampleEnglish": "Notice what the form is doing here: “For here or takeaway?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "burada yemek",
+      "romanization": "bu-RA-da ye-MEK",
+      "nativeText": "Contrast check for \"burada yemek\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "bu-RA-da ye-MEK",
+      "exampleTarget": "Burada mı, paket mi?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “For here or takeaway?”",
+      "korean": "burada yemek",
+      "english": "Contrast check for \"burada yemek\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Burada mı, paket mi?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “For here or takeaway?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "burada yemek",
+      "romanization": "bu-RA-da ye-MEK",
+      "nativeText": "Recall \"burada yemek\" from memory, then explain what would change if a nearby alternative replaced it in \"Burada mı, paket mi?\".",
+      "pronunciation": "bu-RA-da ye-MEK",
+      "exampleTarget": "Burada mı, paket mi?",
+      "exampleNative": "Self-check against the model before moving on: “For here or takeaway?”",
+      "korean": "burada yemek",
+      "english": "Recall \"burada yemek\" from memory, then explain what would change if a nearby alternative replaced it in \"Burada mı, paket mi?\".",
+      "example": "Burada mı, paket mi?",
+      "exampleEnglish": "Self-check against the model before moving on: “For here or takeaway?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "burada yemek",
+      "romanization": "bu-RA-da ye-MEK",
+      "nativeText": "Repair \"burada yemek\" inside \"Burada mı, paket mi?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Eat here.” `Burada` is location, and the infinitive names the action.",
+      "pronunciation": "bu-RA-da ye-MEK",
+      "exampleTarget": "Burada mı, paket mi?",
+      "exampleNative": "Use the model as the repair target: “For here or takeaway?”",
+      "korean": "burada yemek",
+      "english": "Repair \"burada yemek\" inside \"Burada mı, paket mi?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Eat here.” `Burada` is location, and the infinitive names the action.",
+      "example": "Burada mı, paket mi?",
+      "exampleEnglish": "Use the model as the repair target: “For here or takeaway?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "burada yemek",
+      "romanization": "bu-RA-da ye-MEK",
+      "nativeText": "Transfer \"burada yemek\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Burada mı, paket mi?\".",
+      "pronunciation": "bu-RA-da ye-MEK",
+      "exampleTarget": "Burada mı, paket mi?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “For here or takeaway?”",
+      "korean": "burada yemek",
+      "english": "Transfer \"burada yemek\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Burada mı, paket mi?\".",
+      "example": "Burada mı, paket mi?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “For here or takeaway?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "burada yemek",
+      "romanization": "bu-RA-da ye-MEK",
+      "nativeText": "Find one word or phrase that naturally travels with \"burada yemek\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "bu-RA-da ye-MEK",
+      "exampleTarget": "Burada mı, paket mi?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “For here or takeaway?”",
+      "korean": "burada yemek",
+      "english": "Find one word or phrase that naturally travels with \"burada yemek\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Burada mı, paket mi?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “For here or takeaway?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "burada yemek",
+      "romanization": "bu-RA-da ye-MEK",
+      "nativeText": "Listen for \"burada yemek\" inside \"Burada mı, paket mi?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "bu-RA-da ye-MEK",
+      "exampleTarget": "Burada mı, paket mi?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “For here or takeaway?”",
+      "korean": "burada yemek",
+      "english": "Listen for \"burada yemek\" inside \"Burada mı, paket mi?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Burada mı, paket mi?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “For here or takeaway?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "burada yemek",
+      "romanization": "bu-RA-da ye-MEK",
+      "nativeText": "Write \"burada yemek\" again without looking, then compare the exact written form against \"Burada mı, paket mi?\" before moving on.",
+      "pronunciation": "bu-RA-da ye-MEK",
+      "exampleTarget": "Burada mı, paket mi?",
+      "exampleNative": "Use the written model as the final correctness check: “For here or takeaway?”",
+      "korean": "burada yemek",
+      "english": "Write \"burada yemek\" again without looking, then compare the exact written form against \"Burada mı, paket mi?\" before moving on.",
+      "example": "Burada mı, paket mi?",
+      "exampleEnglish": "Use the written model as the final correctness check: “For here or takeaway?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "burada yemek",
+      "romanization": "bu-RA-da ye-MEK",
+      "nativeText": "Check whether \"burada yemek\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “For here or takeaway?”",
+      "pronunciation": "bu-RA-da ye-MEK",
+      "exampleTarget": "Burada mı, paket mi?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “For here or takeaway?”",
+      "korean": "burada yemek",
+      "english": "Check whether \"burada yemek\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “For here or takeaway?”",
+      "example": "Burada mı, paket mi?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “For here or takeaway?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "paket",
+      "romanization": "pa-KET",
+      "nativeText": "“Takeaway / package.” Very common in food-service contexts.",
+      "pronunciation": "pa-KET",
+      "exampleTarget": "Bunu paket yapar mısınız?",
+      "exampleNative": "“Could you make this takeaway?”",
+      "korean": "paket",
+      "english": "“Takeaway / package.” Very common in food-service contexts.",
+      "example": "Bunu paket yapar mısınız?",
+      "exampleEnglish": "“Could you make this takeaway?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "Bunu paket yapar mısınız?",
+      "romanization": "pa-KET",
+      "nativeText": "Model use for \"Bunu paket yapar mısınız?\": “Could you make this takeaway?”",
+      "pronunciation": "pa-KET",
+      "exampleTarget": "Bunu paket yapar mısınız?",
+      "exampleNative": "“Could you make this takeaway?”",
+      "korean": "Bunu paket yapar mısınız?",
+      "english": "Model use for \"Bunu paket yapar mısınız?\": “Could you make this takeaway?”",
+      "example": "Bunu paket yapar mısınız?",
+      "exampleEnglish": "“Could you make this takeaway?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "paket",
+      "romanization": "pa-KET",
+      "nativeText": "Usage focus for \"paket\": “Takeaway / package.” Very common in food-service contexts.",
+      "pronunciation": "pa-KET",
+      "exampleTarget": "Bunu paket yapar mısınız?",
+      "exampleNative": "Notice what the form is doing here: “Could you make this takeaway?”",
+      "korean": "paket",
+      "english": "Usage focus for \"paket\": “Takeaway / package.” Very common in food-service contexts.",
+      "example": "Bunu paket yapar mısınız?",
+      "exampleEnglish": "Notice what the form is doing here: “Could you make this takeaway?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "paket",
+      "romanization": "pa-KET",
+      "nativeText": "Contrast check for \"paket\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "pa-KET",
+      "exampleTarget": "Bunu paket yapar mısınız?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Could you make this takeaway?”",
+      "korean": "paket",
+      "english": "Contrast check for \"paket\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Bunu paket yapar mısınız?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Could you make this takeaway?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "paket",
+      "romanization": "pa-KET",
+      "nativeText": "Recall \"paket\" from memory, then explain what would change if a nearby alternative replaced it in \"Bunu paket yapar mısınız?\".",
+      "pronunciation": "pa-KET",
+      "exampleTarget": "Bunu paket yapar mısınız?",
+      "exampleNative": "Self-check against the model before moving on: “Could you make this takeaway?”",
+      "korean": "paket",
+      "english": "Recall \"paket\" from memory, then explain what would change if a nearby alternative replaced it in \"Bunu paket yapar mısınız?\".",
+      "example": "Bunu paket yapar mısınız?",
+      "exampleEnglish": "Self-check against the model before moving on: “Could you make this takeaway?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "paket",
+      "romanization": "pa-KET",
+      "nativeText": "Repair \"paket\" inside \"Bunu paket yapar mısınız?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Takeaway / package.” Very common in food-service contexts.",
+      "pronunciation": "pa-KET",
+      "exampleTarget": "Bunu paket yapar mısınız?",
+      "exampleNative": "Use the model as the repair target: “Could you make this takeaway?”",
+      "korean": "paket",
+      "english": "Repair \"paket\" inside \"Bunu paket yapar mısınız?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Takeaway / package.” Very common in food-service contexts.",
+      "example": "Bunu paket yapar mısınız?",
+      "exampleEnglish": "Use the model as the repair target: “Could you make this takeaway?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "paket",
+      "romanization": "pa-KET",
+      "nativeText": "Transfer \"paket\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bunu paket yapar mısınız?\".",
+      "pronunciation": "pa-KET",
+      "exampleTarget": "Bunu paket yapar mısınız?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Could you make this takeaway?”",
+      "korean": "paket",
+      "english": "Transfer \"paket\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bunu paket yapar mısınız?\".",
+      "example": "Bunu paket yapar mısınız?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Could you make this takeaway?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "paket",
+      "romanization": "pa-KET",
+      "nativeText": "Find one word or phrase that naturally travels with \"paket\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "pa-KET",
+      "exampleTarget": "Bunu paket yapar mısınız?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Could you make this takeaway?”",
+      "korean": "paket",
+      "english": "Find one word or phrase that naturally travels with \"paket\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Bunu paket yapar mısınız?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Could you make this takeaway?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "paket",
+      "romanization": "pa-KET",
+      "nativeText": "Listen for \"paket\" inside \"Bunu paket yapar mısınız?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "pa-KET",
+      "exampleTarget": "Bunu paket yapar mısınız?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Could you make this takeaway?”",
+      "korean": "paket",
+      "english": "Listen for \"paket\" inside \"Bunu paket yapar mısınız?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Bunu paket yapar mısınız?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Could you make this takeaway?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "paket",
+      "romanization": "pa-KET",
+      "nativeText": "Write \"paket\" again without looking, then compare the exact written form against \"Bunu paket yapar mısınız?\" before moving on.",
+      "pronunciation": "pa-KET",
+      "exampleTarget": "Bunu paket yapar mısınız?",
+      "exampleNative": "Use the written model as the final correctness check: “Could you make this takeaway?”",
+      "korean": "paket",
+      "english": "Write \"paket\" again without looking, then compare the exact written form against \"Bunu paket yapar mısınız?\" before moving on.",
+      "example": "Bunu paket yapar mısınız?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Could you make this takeaway?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "paket",
+      "romanization": "pa-KET",
+      "nativeText": "Check whether \"paket\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Could you make this takeaway?”",
+      "pronunciation": "pa-KET",
+      "exampleTarget": "Bunu paket yapar mısınız?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Could you make this takeaway?”",
+      "korean": "paket",
+      "english": "Check whether \"paket\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Could you make this takeaway?”",
+      "example": "Bunu paket yapar mısınız?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Could you make this takeaway?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "bir porsiyon",
+      "romanization": "bir por-si-YON",
+      "nativeText": "“One portion.” A useful serving noun for many dishes.",
+      "pronunciation": "bir por-si-YON",
+      "exampleTarget": "Bir porsiyon mantı istiyorum.",
+      "exampleNative": "“I want one portion of mantı.”",
+      "korean": "bir porsiyon",
+      "english": "“One portion.” A useful serving noun for many dishes.",
+      "example": "Bir porsiyon mantı istiyorum.",
+      "exampleEnglish": "“I want one portion of mantı.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "Bir porsiyon mantı istiyorum.",
+      "romanization": "bir por-si-YON",
+      "nativeText": "Model use for \"Bir porsiyon mantı istiyorum.\": “I want one portion of mantı.”",
+      "pronunciation": "bir por-si-YON",
+      "exampleTarget": "Bir porsiyon mantı istiyorum.",
+      "exampleNative": "“I want one portion of mantı.”",
+      "korean": "Bir porsiyon mantı istiyorum.",
+      "english": "Model use for \"Bir porsiyon mantı istiyorum.\": “I want one portion of mantı.”",
+      "example": "Bir porsiyon mantı istiyorum.",
+      "exampleEnglish": "“I want one portion of mantı.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "bir porsiyon",
+      "romanization": "bir por-si-YON",
+      "nativeText": "Usage focus for \"bir porsiyon\": “One portion.” A useful serving noun for many dishes.",
+      "pronunciation": "bir por-si-YON",
+      "exampleTarget": "Bir porsiyon mantı istiyorum.",
+      "exampleNative": "Notice what the form is doing here: “I want one portion of mantı.”",
+      "korean": "bir porsiyon",
+      "english": "Usage focus for \"bir porsiyon\": “One portion.” A useful serving noun for many dishes.",
+      "example": "Bir porsiyon mantı istiyorum.",
+      "exampleEnglish": "Notice what the form is doing here: “I want one portion of mantı.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "bir porsiyon",
+      "romanization": "bir por-si-YON",
+      "nativeText": "Contrast check for \"bir porsiyon\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "bir por-si-YON",
+      "exampleTarget": "Bir porsiyon mantı istiyorum.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want one portion of mantı.”",
+      "korean": "bir porsiyon",
+      "english": "Contrast check for \"bir porsiyon\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Bir porsiyon mantı istiyorum.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want one portion of mantı.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "bir porsiyon",
+      "romanization": "bir por-si-YON",
+      "nativeText": "Recall \"bir porsiyon\" from memory, then explain what would change if a nearby alternative replaced it in \"Bir porsiyon mantı istiyorum.\".",
+      "pronunciation": "bir por-si-YON",
+      "exampleTarget": "Bir porsiyon mantı istiyorum.",
+      "exampleNative": "Self-check against the model before moving on: “I want one portion of mantı.”",
+      "korean": "bir porsiyon",
+      "english": "Recall \"bir porsiyon\" from memory, then explain what would change if a nearby alternative replaced it in \"Bir porsiyon mantı istiyorum.\".",
+      "example": "Bir porsiyon mantı istiyorum.",
+      "exampleEnglish": "Self-check against the model before moving on: “I want one portion of mantı.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "bir porsiyon",
+      "romanization": "bir por-si-YON",
+      "nativeText": "Repair \"bir porsiyon\" inside \"Bir porsiyon mantı istiyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “One portion.” A useful serving noun for many dishes.",
+      "pronunciation": "bir por-si-YON",
+      "exampleTarget": "Bir porsiyon mantı istiyorum.",
+      "exampleNative": "Use the model as the repair target: “I want one portion of mantı.”",
+      "korean": "bir porsiyon",
+      "english": "Repair \"bir porsiyon\" inside \"Bir porsiyon mantı istiyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “One portion.” A useful serving noun for many dishes.",
+      "example": "Bir porsiyon mantı istiyorum.",
+      "exampleEnglish": "Use the model as the repair target: “I want one portion of mantı.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "bir porsiyon",
+      "romanization": "bir por-si-YON",
+      "nativeText": "Transfer \"bir porsiyon\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bir porsiyon mantı istiyorum.\".",
+      "pronunciation": "bir por-si-YON",
+      "exampleTarget": "Bir porsiyon mantı istiyorum.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want one portion of mantı.”",
+      "korean": "bir porsiyon",
+      "english": "Transfer \"bir porsiyon\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bir porsiyon mantı istiyorum.\".",
+      "example": "Bir porsiyon mantı istiyorum.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want one portion of mantı.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "bir porsiyon",
+      "romanization": "bir por-si-YON",
+      "nativeText": "Find one word or phrase that naturally travels with \"bir porsiyon\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "bir por-si-YON",
+      "exampleTarget": "Bir porsiyon mantı istiyorum.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want one portion of mantı.”",
+      "korean": "bir porsiyon",
+      "english": "Find one word or phrase that naturally travels with \"bir porsiyon\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Bir porsiyon mantı istiyorum.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want one portion of mantı.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "bir porsiyon",
+      "romanization": "bir por-si-YON",
+      "nativeText": "Listen for \"bir porsiyon\" inside \"Bir porsiyon mantı istiyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "bir por-si-YON",
+      "exampleTarget": "Bir porsiyon mantı istiyorum.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want one portion of mantı.”",
+      "korean": "bir porsiyon",
+      "english": "Listen for \"bir porsiyon\" inside \"Bir porsiyon mantı istiyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Bir porsiyon mantı istiyorum.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want one portion of mantı.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "bir porsiyon",
+      "romanization": "bir por-si-YON",
+      "nativeText": "Write \"bir porsiyon\" again without looking, then compare the exact written form against \"Bir porsiyon mantı istiyorum.\" before moving on.",
+      "pronunciation": "bir por-si-YON",
+      "exampleTarget": "Bir porsiyon mantı istiyorum.",
+      "exampleNative": "Use the written model as the final correctness check: “I want one portion of mantı.”",
+      "korean": "bir porsiyon",
+      "english": "Write \"bir porsiyon\" again without looking, then compare the exact written form against \"Bir porsiyon mantı istiyorum.\" before moving on.",
+      "example": "Bir porsiyon mantı istiyorum.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want one portion of mantı.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "bir porsiyon",
+      "romanization": "bir por-si-YON",
+      "nativeText": "Check whether \"bir porsiyon\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want one portion of mantı.”",
+      "pronunciation": "bir por-si-YON",
+      "exampleTarget": "Bir porsiyon mantı istiyorum.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want one portion of mantı.”",
+      "korean": "bir porsiyon",
+      "english": "Check whether \"bir porsiyon\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want one portion of mantı.”",
+      "example": "Bir porsiyon mantı istiyorum.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want one portion of mantı.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "hesap lütfen",
+      "romanization": "he-SAP lüt-FEN",
+      "nativeText": "“The bill, please.” A compact must-know phrase.",
+      "pronunciation": "he-SAP lüt-FEN",
+      "exampleTarget": "Hesap lütfen.",
+      "exampleNative": "“The bill, please.”",
+      "korean": "hesap lütfen",
+      "english": "“The bill, please.” A compact must-know phrase.",
+      "example": "Hesap lütfen.",
+      "exampleEnglish": "“The bill, please.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "Hesap lütfen.",
+      "romanization": "he-SAP lüt-FEN",
+      "nativeText": "Model use for \"Hesap lütfen.\": “The bill, please.”",
+      "pronunciation": "he-SAP lüt-FEN",
+      "exampleTarget": "Hesap lütfen.",
+      "exampleNative": "“The bill, please.”",
+      "korean": "Hesap lütfen.",
+      "english": "Model use for \"Hesap lütfen.\": “The bill, please.”",
+      "example": "Hesap lütfen.",
+      "exampleEnglish": "“The bill, please.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "hesap lütfen",
+      "romanization": "he-SAP lüt-FEN",
+      "nativeText": "Usage focus for \"hesap lütfen\": “The bill, please.” A compact must-know phrase.",
+      "pronunciation": "he-SAP lüt-FEN",
+      "exampleTarget": "Hesap lütfen.",
+      "exampleNative": "Notice what the form is doing here: “The bill, please.”",
+      "korean": "hesap lütfen",
+      "english": "Usage focus for \"hesap lütfen\": “The bill, please.” A compact must-know phrase.",
+      "example": "Hesap lütfen.",
+      "exampleEnglish": "Notice what the form is doing here: “The bill, please.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "hesap lütfen",
+      "romanization": "he-SAP lüt-FEN",
+      "nativeText": "Contrast check for \"hesap lütfen\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "he-SAP lüt-FEN",
+      "exampleTarget": "Hesap lütfen.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The bill, please.”",
+      "korean": "hesap lütfen",
+      "english": "Contrast check for \"hesap lütfen\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Hesap lütfen.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The bill, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "hesap lütfen",
+      "romanization": "he-SAP lüt-FEN",
+      "nativeText": "Recall \"hesap lütfen\" from memory, then explain what would change if a nearby alternative replaced it in \"Hesap lütfen.\".",
+      "pronunciation": "he-SAP lüt-FEN",
+      "exampleTarget": "Hesap lütfen.",
+      "exampleNative": "Self-check against the model before moving on: “The bill, please.”",
+      "korean": "hesap lütfen",
+      "english": "Recall \"hesap lütfen\" from memory, then explain what would change if a nearby alternative replaced it in \"Hesap lütfen.\".",
+      "example": "Hesap lütfen.",
+      "exampleEnglish": "Self-check against the model before moving on: “The bill, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "hesap lütfen",
+      "romanization": "he-SAP lüt-FEN",
+      "nativeText": "Repair \"hesap lütfen\" inside \"Hesap lütfen.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “The bill, please.” A compact must-know phrase.",
+      "pronunciation": "he-SAP lüt-FEN",
+      "exampleTarget": "Hesap lütfen.",
+      "exampleNative": "Use the model as the repair target: “The bill, please.”",
+      "korean": "hesap lütfen",
+      "english": "Repair \"hesap lütfen\" inside \"Hesap lütfen.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “The bill, please.” A compact must-know phrase.",
+      "example": "Hesap lütfen.",
+      "exampleEnglish": "Use the model as the repair target: “The bill, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "hesap lütfen",
+      "romanization": "he-SAP lüt-FEN",
+      "nativeText": "Transfer \"hesap lütfen\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Hesap lütfen.\".",
+      "pronunciation": "he-SAP lüt-FEN",
+      "exampleTarget": "Hesap lütfen.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The bill, please.”",
+      "korean": "hesap lütfen",
+      "english": "Transfer \"hesap lütfen\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Hesap lütfen.\".",
+      "example": "Hesap lütfen.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The bill, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "hesap lütfen",
+      "romanization": "he-SAP lüt-FEN",
+      "nativeText": "Find one word or phrase that naturally travels with \"hesap lütfen\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "he-SAP lüt-FEN",
+      "exampleTarget": "Hesap lütfen.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The bill, please.”",
+      "korean": "hesap lütfen",
+      "english": "Find one word or phrase that naturally travels with \"hesap lütfen\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Hesap lütfen.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The bill, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "hesap lütfen",
+      "romanization": "he-SAP lüt-FEN",
+      "nativeText": "Listen for \"hesap lütfen\" inside \"Hesap lütfen.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "he-SAP lüt-FEN",
+      "exampleTarget": "Hesap lütfen.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The bill, please.”",
+      "korean": "hesap lütfen",
+      "english": "Listen for \"hesap lütfen\" inside \"Hesap lütfen.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Hesap lütfen.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The bill, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "hesap lütfen",
+      "romanization": "he-SAP lüt-FEN",
+      "nativeText": "Write \"hesap lütfen\" again without looking, then compare the exact written form against \"Hesap lütfen.\" before moving on.",
+      "pronunciation": "he-SAP lüt-FEN",
+      "exampleTarget": "Hesap lütfen.",
+      "exampleNative": "Use the written model as the final correctness check: “The bill, please.”",
+      "korean": "hesap lütfen",
+      "english": "Write \"hesap lütfen\" again without looking, then compare the exact written form against \"Hesap lütfen.\" before moving on.",
+      "example": "Hesap lütfen.",
+      "exampleEnglish": "Use the written model as the final correctness check: “The bill, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit09orderingfood-vocabulary-1",
+        "tr-level1unit09orderingfood-vocabulary-2",
+        "tr-level1unit09orderingfood-grammar-1",
+        "tr-level1unit09orderingfood-grammar-2",
+        "tr-level1unit09orderingfood-reading",
+        "tr-level1unit09orderingfood-listening",
+        "tr-level1unit09orderingfood-writing",
+        "tr-level1unit09orderingfood-task"
+      ],
+      "targetText": "hesap lütfen",
+      "romanization": "he-SAP lüt-FEN",
+      "nativeText": "Check whether \"hesap lütfen\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The bill, please.”",
+      "pronunciation": "he-SAP lüt-FEN",
+      "exampleTarget": "Hesap lütfen.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The bill, please.”",
+      "korean": "hesap lütfen",
+      "english": "Check whether \"hesap lütfen\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The bill, please.”",
+      "example": "Hesap lütfen.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The bill, please.”"
+    }
+  ],
+  "targetLang": "tr",
+  "nativeLang": "en",
+  "track": "textbook"
+};

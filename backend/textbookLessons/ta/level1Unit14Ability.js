@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('ta', {
-  slug: 'ta-l1u14',
-  title: 'Level 1 · Unit 14: திறன் மற்றும் அனுமதி — Ability and Permission',
-  category: 'daily-life',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Talk about ability, permission, and obligation in everyday situations.',
-  vocabularyGoal: 'Use skill, permission, and obligation language.',
-  grammarGoal: 'Use `முடியும்`, `முடியாது`, permission questions, and `வேண்டும்` for necessity.',
-  speakingGoal: 'Say what you can do, ask permission, and state one obligation.',
-  task: 'Handle three everyday ability and permission questions.',
-  expressionPractice: [
-    practice('stating-ability', 'Stating ability', 'Use `எனக்கு ... முடியும்`.'),
-    practice('asking-permission', 'Asking permission', 'Use `...லாமா?`.'),
-    practice('stating-obligation', 'Stating obligation', 'Use `வேண்டும்`.'),
+module.exports = {
+  "title": "Level 1 · Unit 14: திறன் மற்றும் அனுமதி — Ability and Permission",
+  "category": "daily-life",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ta-level1unit14ability-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Talk about ability, permission, and obligation in everyday situations."
+      ],
+      "task": "Handle three everyday ability and permission questions."
+    },
+    {
+      "id": "ta-level1unit14ability-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ta-level1unit14ability-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 14: திறன் மற்றும் அனுமதி — Ability and Permission with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ta-level1unit14ability-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 14: திறன் மற்றும் அனுமதி — Ability and Permission sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ta-level1unit14ability-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Talk about ability, permission, and obligation in everyday situations."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ta-level1unit14ability-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 14: திறன் மற்றும் அனுமதி — Ability and Permission with one nearby Tamil form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ta-level1unit14ability-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ta-level1unit14ability-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ta-level1unit14ability-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ta-level1unit14ability-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ta-level1unit14ability-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Handle three everyday ability and permission questions."
+      ],
+      "task": "Handle three everyday ability and permission questions."
+    }
   ],
-  relatedPools: ['topic-ability', 'topic-classroom'],
-  items: [
-    item('எனக்கு நீந்த முடியும்', 'eṉakku nīnta muṭiyum', '“I can swim.” Tamil often frames ability through what is possible for the person.', 'எனக்கு நீந்த முடியும்.', '“I can swim.”'),
-    item('எனக்கு வர முடியாது', 'eṉakku vara muṭiyātu', '“I cannot come.” The negative ability form is built into the verb phrase.', 'இன்று எனக்கு வர முடியாது.', '“Today I cannot come.”'),
-    item('உள்ளே வரலாமா?', 'uḷḷē varalāmā', '“May I come inside?” A common permission question.', 'உள்ளே வரலாமா?', '“May I come inside?”'),
-    item('கூடாது', 'kūṭātu', '“Must not / not allowed.” A core prohibition form.', 'இங்கே புகை பிடிக்கக் கூடாது.', '“Smoking is not allowed here.”'),
-    item('படிக்க வேண்டும்', 'paṭikka vēṇṭum', '“Need to study / must study.” `வேண்டும்` carries necessity.', 'தேர்வுக்கு படிக்க வேண்டும்.', '“I must study for the exam.”'),
-    item('தேவை', 'tēvai', '“Need.” A noun-like expression used in many practical sentences.', 'பாஸ்போர்ட் தேவை.', '“A passport is needed.”'),
-    item('கற்க', 'kaṟka', '“To learn.” Useful in ability and future-goal talk.', 'கார் ஓட்ட கற்க விரும்புகிறேன்.', '“I want to learn to drive.”'),
-    item('செய்ய முடியும்', 'ceyya muṭiyum', '“Can do.” A broad productive pattern with many verbs.', 'நான் இதை செய்ய முடியும்.', '“I can do this.”'),
+  "expressionPractice": [
+    {
+      "id": "stating-ability",
+      "label": "Stating ability",
+      "goal": "Use `எனக்கு ... முடியும்`."
+    },
+    {
+      "id": "asking-permission",
+      "label": "Asking permission",
+      "goal": "Use `...லாமா?`."
+    },
+    {
+      "id": "stating-obligation",
+      "label": "Stating obligation",
+      "goal": "Use `வேண்டும்`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-ability",
+    "topic-classroom"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit14ability-orientation"
+      ],
+      "targetText": "பாட இலக்கு",
+      "romanization": "",
+      "nativeText": "Talk about ability, permission, and obligation in everyday situations.",
+      "pronunciation": "",
+      "exampleTarget": "பாட இலக்கு",
+      "exampleNative": "The whole lesson is built toward this outcome: Handle three everyday ability and permission questions.",
+      "korean": "பாட இலக்கு",
+      "english": "Talk about ability, permission, and obligation in everyday situations.",
+      "example": "பாட இலக்கு",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Handle three everyday ability and permission questions."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1unit14ability-pronunciation"
+      ],
+      "targetText": "ஒலி சரிபார்ப்பு",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"எனக்கு நீந்த முடியும்.\".",
+      "pronunciation": "",
+      "exampleTarget": "எனக்கு நீந்த முடியும்.",
+      "exampleNative": "“I can swim.”",
+      "korean": "ஒலி சரிபார்ப்பு",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"எனக்கு நீந்த முடியும்.\".",
+      "example": "எனக்கு நீந்த முடியும்.",
+      "exampleEnglish": "“I can swim.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1"
+      ],
+      "targetText": "எனக்கு நீந்த முடியும்",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 14: திறன் மற்றும் அனுமதி — Ability and Permission with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "எனக்கு நீந்த முடியும்.",
+      "exampleNative": "“I can swim.”",
+      "korean": "எனக்கு நீந்த முடியும்",
+      "english": "Use the key language of Level 1 · Unit 14: திறன் மற்றும் அனுமதி — Ability and Permission with the register and setting that the lesson requires.",
+      "example": "எனக்கு நீந்த முடியும்.",
+      "exampleEnglish": "“I can swim.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-2"
+      ],
+      "targetText": "எனக்கு வர முடியாது",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 14: திறன் மற்றும் அனுமதி — Ability and Permission sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "இன்று எனக்கு வர முடியாது.",
+      "exampleNative": "“Today I cannot come.”",
+      "korean": "எனக்கு வர முடியாது",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 14: திறன் மற்றும் அனுமதி — Ability and Permission sound precise rather than merely understandable.",
+      "example": "இன்று எனக்கு வர முடியாது.",
+      "exampleEnglish": "“Today I cannot come.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1unit14ability-grammar-1"
+      ],
+      "targetText": "எனக்கு நீந்த முடியும்",
+      "romanization": "",
+      "nativeText": "Talk about ability, permission, and obligation in everyday situations.",
+      "pronunciation": "",
+      "exampleTarget": "எனக்கு நீந்த முடியும்.",
+      "exampleNative": "“I can swim.”",
+      "korean": "எனக்கு நீந்த முடியும்",
+      "english": "Talk about ability, permission, and obligation in everyday situations.",
+      "example": "எனக்கு நீந்த முடியும்.",
+      "exampleEnglish": "“I can swim.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1unit14ability-grammar-2"
+      ],
+      "targetText": "எனக்கு வர முடியாது",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 14: திறன் மற்றும் அனுமதி — Ability and Permission with one nearby Tamil form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "இன்று எனக்கு வர முடியாது.",
+      "exampleNative": "“Today I cannot come.”",
+      "korean": "எனக்கு வர முடியாது",
+      "english": "Contrast the main pattern in Level 1 · Unit 14: திறன் மற்றும் அனுமதி — Ability and Permission with one nearby Tamil form so the learner can avoid literal translation.",
+      "example": "இன்று எனக்கு வர முடியாது.",
+      "exampleEnglish": "“Today I cannot come.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ta-level1unit14ability-reading"
+      ],
+      "targetText": "வாசிப்பு மாதிரி",
+      "romanization": "",
+      "nativeText": "Read \"நான் இதை செய்ய முடியும்.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "நான் இதை செய்ய முடியும்.",
+      "exampleNative": "“I can do this.”",
+      "korean": "வாசிப்பு மாதிரி",
+      "english": "Read \"நான் இதை செய்ய முடியும்.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "நான் இதை செய்ய முடியும்.",
+      "exampleEnglish": "“I can do this.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit14ability-listening"
+      ],
+      "targetText": "உரையாடல் மாதிரி",
+      "romanization": "",
+      "nativeText": "Hear \"நான் இதை செய்ய முடியும்.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "நான் இதை செய்ய முடியும்.",
+      "exampleNative": "“I can do this.”",
+      "korean": "உரையாடல் மாதிரி",
+      "english": "Hear \"நான் இதை செய்ய முடியும்.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "நான் இதை செய்ய முடியும்.",
+      "exampleEnglish": "“I can do this.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ta-level1unit14ability-writing"
+      ],
+      "targetText": "எழுத்துப் பயிற்சி",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"எனக்கு நீந்த முடியும்.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "எனக்கு நீந்த முடியும்.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "எழுத்துப் பயிற்சி",
+      "english": "Write your own version after studying \"எனக்கு நீந்த முடியும்.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "எனக்கு நீந்த முடியும்.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1unit14ability-culture"
+      ],
+      "targetText": "பயன்பாடும் சூழலும்",
+      "romanization": "",
+      "nativeText": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "இன்று எனக்கு வர முடியாது.",
+      "exampleNative": "“Today I cannot come.”",
+      "korean": "பயன்பாடும் சூழலும்",
+      "english": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used.",
+      "example": "இன்று எனக்கு வர முடியாது.",
+      "exampleEnglish": "“Today I cannot come.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "இறுதி செயல்",
+      "romanization": "",
+      "nativeText": "Handle three everyday ability and permission questions.",
+      "pronunciation": "",
+      "exampleTarget": "நான் இதை செய்ய முடியும்.",
+      "exampleNative": "Handle three everyday ability and permission questions.",
+      "korean": "இறுதி செயல்",
+      "english": "Handle three everyday ability and permission questions.",
+      "example": "நான் இதை செய்ய முடியும்.",
+      "exampleEnglish": "Handle three everyday ability and permission questions."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit14ability-grammar-2"
+      ],
+      "targetText": "பொதுவான பிழை",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"இன்று எனக்கு வர முடியாது.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "இன்று எனக்கு வர முடியாது.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “Today I cannot come.”",
+      "korean": "பொதுவான பிழை",
+      "english": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"இன்று எனக்கு வர முடியாது.\" against the model.",
+      "example": "இன்று எனக்கு வர முடியாது.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “Today I cannot come.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-culture"
+      ],
+      "targetText": "மொழிநடை",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"எனக்கு நீந்த முடியும்.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "எனக்கு நீந்த முடியும்.",
+      "exampleNative": "“I can swim.”",
+      "korean": "மொழிநடை",
+      "english": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"எனக்கு நீந்த முடியும்.\" before reusing it elsewhere.",
+      "example": "எனக்கு நீந்த முடியும்.",
+      "exampleEnglish": "“I can swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "சரளம்",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"நான் இதை செய்ய முடியும்.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "நான் இதை செய்ய முடியும்.",
+      "exampleNative": "“I can do this.”",
+      "korean": "சரளம்",
+      "english": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"நான் இதை செய்ய முடியும்.\" as one thought.",
+      "example": "நான் இதை செய்ய முடியும்.",
+      "exampleEnglish": "“I can do this.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "பயன்பாடு",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"எனக்கு நீந்த முடியும்.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "எனக்கு நீந்த முடியும்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "பயன்பாடு",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"எனக்கு நீந்த முடியும்.\" and move it into your own life.",
+      "example": "எனக்கு நீந்த முடியும்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-grammar-1"
+      ],
+      "targetText": "நினைவூட்டல்",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"எனக்கு நீந்த முடியும்\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "எனக்கு நீந்த முடியும்",
+      "exampleNative": "“I can swim.” Tamil often frames ability through what is possible for the person.",
+      "korean": "நினைவூட்டல்",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"எனக்கு நீந்த முடியும்\" before looking back.",
+      "example": "எனக்கு நீந்த முடியும்",
+      "exampleEnglish": "“I can swim.” Tamil often frames ability through what is possible for the person."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-writing"
+      ],
+      "targetText": "விரிவாக்கம்",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"நான் இதை செய்ய முடியும்.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "நான் இதை செய்ய முடியும்.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "விரிவாக்கம்",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"நான் இதை செய்ய முடியும்.\" rather than restarting from a blank sentence.",
+      "example": "நான் இதை செய்ய முடியும்.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading"
+      ],
+      "targetText": "ஒப்பீடு",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 14: திறன் மற்றும் அனுமதி — Ability and Permission with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"இன்று எனக்கு வர முடியாது.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "இன்று எனக்கு வர முடியாது.",
+      "exampleNative": "“Today I cannot come.”",
+      "korean": "ஒப்பீடு",
+      "english": "Compare the central form in Level 1 · Unit 14: திறன் மற்றும் அனுமதி — Ability and Permission with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"இன்று எனக்கு வர முடியாது.\" as the comparison line.",
+      "example": "இன்று எனக்கு வர முடியாது.",
+      "exampleEnglish": "“Today I cannot come.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1unit14ability-pronunciation"
+      ],
+      "targetText": "உச்சரிப்பு திருத்தம்",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"எனக்கு நீந்த முடியும்.\".",
+      "pronunciation": "",
+      "exampleTarget": "எனக்கு நீந்த முடியும்.",
+      "exampleNative": "“I can swim.”",
+      "korean": "உச்சரிப்பு திருத்தம்",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"எனக்கு நீந்த முடியும்.\".",
+      "example": "எனக்கு நீந்த முடியும்.",
+      "exampleEnglish": "“I can swim.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "உரையாடல் மாற்றம்",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"நான் இதை செய்ய முடியும்.\".",
+      "pronunciation": "",
+      "exampleTarget": "நான் இதை செய்ய முடியும்.",
+      "exampleNative": "“I can do this.”",
+      "korean": "உரையாடல் மாற்றம்",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"நான் இதை செய்ய முடியும்.\".",
+      "example": "நான் இதை செய்ய முடியும்.",
+      "exampleEnglish": "“I can do this.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-writing"
+      ],
+      "targetText": "வாக்கிய கட்டமைப்பு",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"எனக்கு நீந்த முடியும்.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "எனக்கு நீந்த முடியும்.",
+      "exampleNative": "“I can swim.”",
+      "korean": "வாக்கிய கட்டமைப்பு",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"எனக்கு நீந்த முடியும்.\" one layer at a time.",
+      "example": "எனக்கு நீந்த முடியும்.",
+      "exampleEnglish": "“I can swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-2"
+      ],
+      "targetText": "விரைவு சோதனை",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"இன்று எனக்கு வர முடியாது.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "இன்று எனக்கு வர முடியாது.",
+      "exampleNative": "“Today I cannot come.”",
+      "korean": "விரைவு சோதனை",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"இன்று எனக்கு வர முடியாது.\" as the deciding example.",
+      "example": "இன்று எனக்கு வர முடியாது.",
+      "exampleEnglish": "“Today I cannot come.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit14ability-culture",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "மீள்பார்வு",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"நான் இதை செய்ய முடியும்.\".",
+      "pronunciation": "",
+      "exampleTarget": "நான் இதை செய்ய முடியும்.",
+      "exampleNative": "“I can do this.”",
+      "korean": "மீள்பார்வு",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"நான் இதை செய்ய முடியும்.\".",
+      "example": "நான் இதை செய்ய முடியும்.",
+      "exampleEnglish": "“I can do this.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "எனக்கு நீந்த முடியும்",
+      "romanization": "eṉakku nīnta muṭiyum",
+      "nativeText": "“I can swim.” Tamil often frames ability through what is possible for the person.",
+      "pronunciation": "eṉakku nīnta muṭiyum",
+      "exampleTarget": "எனக்கு நீந்த முடியும்.",
+      "exampleNative": "“I can swim.”",
+      "korean": "எனக்கு நீந்த முடியும்",
+      "english": "“I can swim.” Tamil often frames ability through what is possible for the person.",
+      "example": "எனக்கு நீந்த முடியும்.",
+      "exampleEnglish": "“I can swim.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "எனக்கு நீந்த முடியும்.",
+      "romanization": "eṉakku nīnta muṭiyum",
+      "nativeText": "Model use for \"எனக்கு நீந்த முடியும்.\": “I can swim.”",
+      "pronunciation": "eṉakku nīnta muṭiyum",
+      "exampleTarget": "எனக்கு நீந்த முடியும்.",
+      "exampleNative": "“I can swim.”",
+      "korean": "எனக்கு நீந்த முடியும்.",
+      "english": "Model use for \"எனக்கு நீந்த முடியும்.\": “I can swim.”",
+      "example": "எனக்கு நீந்த முடியும்.",
+      "exampleEnglish": "“I can swim.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "எனக்கு நீந்த முடியும்",
+      "romanization": "eṉakku nīnta muṭiyum",
+      "nativeText": "Usage focus for \"எனக்கு நீந்த முடியும்\": Use the key language of Level 1 · Unit 14: திறன் மற்றும் அனுமதி — Ability and Permission with the register and setting that the lesson requires.",
+      "pronunciation": "eṉakku nīnta muṭiyum",
+      "exampleTarget": "எனக்கு நீந்த முடியும்.",
+      "exampleNative": "Notice what the form is doing here: “I can swim.”",
+      "korean": "எனக்கு நீந்த முடியும்",
+      "english": "Usage focus for \"எனக்கு நீந்த முடியும்\": Use the key language of Level 1 · Unit 14: திறன் மற்றும் அனுமதி — Ability and Permission with the register and setting that the lesson requires.",
+      "example": "எனக்கு நீந்த முடியும்.",
+      "exampleEnglish": "Notice what the form is doing here: “I can swim.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "எனக்கு நீந்த முடியும்",
+      "romanization": "eṉakku nīnta muṭiyum",
+      "nativeText": "Contrast check for \"எனக்கு நீந்த முடியும்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "eṉakku nīnta muṭiyum",
+      "exampleTarget": "எனக்கு நீந்த முடியும்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I can swim.”",
+      "korean": "எனக்கு நீந்த முடியும்",
+      "english": "Contrast check for \"எனக்கு நீந்த முடியும்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "எனக்கு நீந்த முடியும்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I can swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "எனக்கு நீந்த முடியும்",
+      "romanization": "eṉakku nīnta muṭiyum",
+      "nativeText": "Recall \"எனக்கு நீந்த முடியும்\" from memory, then explain what would change if a nearby alternative replaced it in \"எனக்கு நீந்த முடியும்.\".",
+      "pronunciation": "eṉakku nīnta muṭiyum",
+      "exampleTarget": "எனக்கு நீந்த முடியும்.",
+      "exampleNative": "Self-check against the model before moving on: “I can swim.”",
+      "korean": "எனக்கு நீந்த முடியும்",
+      "english": "Recall \"எனக்கு நீந்த முடியும்\" from memory, then explain what would change if a nearby alternative replaced it in \"எனக்கு நீந்த முடியும்.\".",
+      "example": "எனக்கு நீந்த முடியும்.",
+      "exampleEnglish": "Self-check against the model before moving on: “I can swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "எனக்கு நீந்த முடியும்",
+      "romanization": "eṉakku nīnta muṭiyum",
+      "nativeText": "Repair \"எனக்கு நீந்த முடியும்\" inside \"எனக்கு நீந்த முடியும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 14: திறன் மற்றும் அனுமதி — Ability and Permission with the register and setting that the lesson requires.",
+      "pronunciation": "eṉakku nīnta muṭiyum",
+      "exampleTarget": "எனக்கு நீந்த முடியும்.",
+      "exampleNative": "Use the model as the repair target: “I can swim.”",
+      "korean": "எனக்கு நீந்த முடியும்",
+      "english": "Repair \"எனக்கு நீந்த முடியும்\" inside \"எனக்கு நீந்த முடியும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 14: திறன் மற்றும் அனுமதி — Ability and Permission with the register and setting that the lesson requires.",
+      "example": "எனக்கு நீந்த முடியும்.",
+      "exampleEnglish": "Use the model as the repair target: “I can swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "எனக்கு நீந்த முடியும்",
+      "romanization": "eṉakku nīnta muṭiyum",
+      "nativeText": "Transfer \"எனக்கு நீந்த முடியும்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"எனக்கு நீந்த முடியும்.\".",
+      "pronunciation": "eṉakku nīnta muṭiyum",
+      "exampleTarget": "எனக்கு நீந்த முடியும்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I can swim.”",
+      "korean": "எனக்கு நீந்த முடியும்",
+      "english": "Transfer \"எனக்கு நீந்த முடியும்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"எனக்கு நீந்த முடியும்.\".",
+      "example": "எனக்கு நீந்த முடியும்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I can swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "எனக்கு நீந்த முடியும்",
+      "romanization": "eṉakku nīnta muṭiyum",
+      "nativeText": "Find one word or phrase that naturally travels with \"எனக்கு நீந்த முடியும்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "eṉakku nīnta muṭiyum",
+      "exampleTarget": "எனக்கு நீந்த முடியும்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I can swim.”",
+      "korean": "எனக்கு நீந்த முடியும்",
+      "english": "Find one word or phrase that naturally travels with \"எனக்கு நீந்த முடியும்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "எனக்கு நீந்த முடியும்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I can swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "எனக்கு நீந்த முடியும்",
+      "romanization": "eṉakku nīnta muṭiyum",
+      "nativeText": "Listen for \"எனக்கு நீந்த முடியும்\" inside \"எனக்கு நீந்த முடியும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "eṉakku nīnta muṭiyum",
+      "exampleTarget": "எனக்கு நீந்த முடியும்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I can swim.”",
+      "korean": "எனக்கு நீந்த முடியும்",
+      "english": "Listen for \"எனக்கு நீந்த முடியும்\" inside \"எனக்கு நீந்த முடியும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "எனக்கு நீந்த முடியும்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I can swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "எனக்கு நீந்த முடியும்",
+      "romanization": "eṉakku nīnta muṭiyum",
+      "nativeText": "Write \"எனக்கு நீந்த முடியும்\" again without looking, then compare the exact written form against \"எனக்கு நீந்த முடியும்.\" before moving on.",
+      "pronunciation": "eṉakku nīnta muṭiyum",
+      "exampleTarget": "எனக்கு நீந்த முடியும்.",
+      "exampleNative": "Use the written model as the final correctness check: “I can swim.”",
+      "korean": "எனக்கு நீந்த முடியும்",
+      "english": "Write \"எனக்கு நீந்த முடியும்\" again without looking, then compare the exact written form against \"எனக்கு நீந்த முடியும்.\" before moving on.",
+      "example": "எனக்கு நீந்த முடியும்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I can swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "எனக்கு நீந்த முடியும்",
+      "romanization": "eṉakku nīnta muṭiyum",
+      "nativeText": "Check whether \"எனக்கு நீந்த முடியும்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I can swim.”",
+      "pronunciation": "eṉakku nīnta muṭiyum",
+      "exampleTarget": "எனக்கு நீந்த முடியும்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I can swim.”",
+      "korean": "எனக்கு நீந்த முடியும்",
+      "english": "Check whether \"எனக்கு நீந்த முடியும்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I can swim.”",
+      "example": "எனக்கு நீந்த முடியும்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I can swim.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "எனக்கு வர முடியாது",
+      "romanization": "eṉakku vara muṭiyātu",
+      "nativeText": "“I cannot come.” The negative ability form is built into the verb phrase.",
+      "pronunciation": "eṉakku vara muṭiyātu",
+      "exampleTarget": "இன்று எனக்கு வர முடியாது.",
+      "exampleNative": "“Today I cannot come.”",
+      "korean": "எனக்கு வர முடியாது",
+      "english": "“I cannot come.” The negative ability form is built into the verb phrase.",
+      "example": "இன்று எனக்கு வர முடியாது.",
+      "exampleEnglish": "“Today I cannot come.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "இன்று எனக்கு வர முடியாது.",
+      "romanization": "eṉakku vara muṭiyātu",
+      "nativeText": "Model use for \"இன்று எனக்கு வர முடியாது.\": “Today I cannot come.”",
+      "pronunciation": "eṉakku vara muṭiyātu",
+      "exampleTarget": "இன்று எனக்கு வர முடியாது.",
+      "exampleNative": "“Today I cannot come.”",
+      "korean": "இன்று எனக்கு வர முடியாது.",
+      "english": "Model use for \"இன்று எனக்கு வர முடியாது.\": “Today I cannot come.”",
+      "example": "இன்று எனக்கு வர முடியாது.",
+      "exampleEnglish": "“Today I cannot come.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "எனக்கு வர முடியாது",
+      "romanization": "eṉakku vara muṭiyātu",
+      "nativeText": "Usage focus for \"எனக்கு வர முடியாது\": Distinguish the nearby wording choices that make Level 1 · Unit 14: திறன் மற்றும் அனுமதி — Ability and Permission sound precise rather than merely understandable.",
+      "pronunciation": "eṉakku vara muṭiyātu",
+      "exampleTarget": "இன்று எனக்கு வர முடியாது.",
+      "exampleNative": "Notice what the form is doing here: “Today I cannot come.”",
+      "korean": "எனக்கு வர முடியாது",
+      "english": "Usage focus for \"எனக்கு வர முடியாது\": Distinguish the nearby wording choices that make Level 1 · Unit 14: திறன் மற்றும் அனுமதி — Ability and Permission sound precise rather than merely understandable.",
+      "example": "இன்று எனக்கு வர முடியாது.",
+      "exampleEnglish": "Notice what the form is doing here: “Today I cannot come.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "எனக்கு வர முடியாது",
+      "romanization": "eṉakku vara muṭiyātu",
+      "nativeText": "Contrast check for \"எனக்கு வர முடியாது\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "eṉakku vara muṭiyātu",
+      "exampleTarget": "இன்று எனக்கு வர முடியாது.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Today I cannot come.”",
+      "korean": "எனக்கு வர முடியாது",
+      "english": "Contrast check for \"எனக்கு வர முடியாது\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "இன்று எனக்கு வர முடியாது.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Today I cannot come.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "எனக்கு வர முடியாது",
+      "romanization": "eṉakku vara muṭiyātu",
+      "nativeText": "Recall \"எனக்கு வர முடியாது\" from memory, then explain what would change if a nearby alternative replaced it in \"இன்று எனக்கு வர முடியாது.\".",
+      "pronunciation": "eṉakku vara muṭiyātu",
+      "exampleTarget": "இன்று எனக்கு வர முடியாது.",
+      "exampleNative": "Self-check against the model before moving on: “Today I cannot come.”",
+      "korean": "எனக்கு வர முடியாது",
+      "english": "Recall \"எனக்கு வர முடியாது\" from memory, then explain what would change if a nearby alternative replaced it in \"இன்று எனக்கு வர முடியாது.\".",
+      "example": "இன்று எனக்கு வர முடியாது.",
+      "exampleEnglish": "Self-check against the model before moving on: “Today I cannot come.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "எனக்கு வர முடியாது",
+      "romanization": "eṉakku vara muṭiyātu",
+      "nativeText": "Repair \"எனக்கு வர முடியாது\" inside \"இன்று எனக்கு வர முடியாது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 14: திறன் மற்றும் அனுமதி — Ability and Permission sound precise rather than merely understandable.",
+      "pronunciation": "eṉakku vara muṭiyātu",
+      "exampleTarget": "இன்று எனக்கு வர முடியாது.",
+      "exampleNative": "Use the model as the repair target: “Today I cannot come.”",
+      "korean": "எனக்கு வர முடியாது",
+      "english": "Repair \"எனக்கு வர முடியாது\" inside \"இன்று எனக்கு வர முடியாது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 14: திறன் மற்றும் அனுமதி — Ability and Permission sound precise rather than merely understandable.",
+      "example": "இன்று எனக்கு வர முடியாது.",
+      "exampleEnglish": "Use the model as the repair target: “Today I cannot come.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "எனக்கு வர முடியாது",
+      "romanization": "eṉakku vara muṭiyātu",
+      "nativeText": "Transfer \"எனக்கு வர முடியாது\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இன்று எனக்கு வர முடியாது.\".",
+      "pronunciation": "eṉakku vara muṭiyātu",
+      "exampleTarget": "இன்று எனக்கு வர முடியாது.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Today I cannot come.”",
+      "korean": "எனக்கு வர முடியாது",
+      "english": "Transfer \"எனக்கு வர முடியாது\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இன்று எனக்கு வர முடியாது.\".",
+      "example": "இன்று எனக்கு வர முடியாது.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Today I cannot come.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "எனக்கு வர முடியாது",
+      "romanization": "eṉakku vara muṭiyātu",
+      "nativeText": "Find one word or phrase that naturally travels with \"எனக்கு வர முடியாது\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "eṉakku vara muṭiyātu",
+      "exampleTarget": "இன்று எனக்கு வர முடியாது.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Today I cannot come.”",
+      "korean": "எனக்கு வர முடியாது",
+      "english": "Find one word or phrase that naturally travels with \"எனக்கு வர முடியாது\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "இன்று எனக்கு வர முடியாது.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Today I cannot come.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "எனக்கு வர முடியாது",
+      "romanization": "eṉakku vara muṭiyātu",
+      "nativeText": "Listen for \"எனக்கு வர முடியாது\" inside \"இன்று எனக்கு வர முடியாது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "eṉakku vara muṭiyātu",
+      "exampleTarget": "இன்று எனக்கு வர முடியாது.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Today I cannot come.”",
+      "korean": "எனக்கு வர முடியாது",
+      "english": "Listen for \"எனக்கு வர முடியாது\" inside \"இன்று எனக்கு வர முடியாது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "இன்று எனக்கு வர முடியாது.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Today I cannot come.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "எனக்கு வர முடியாது",
+      "romanization": "eṉakku vara muṭiyātu",
+      "nativeText": "Write \"எனக்கு வர முடியாது\" again without looking, then compare the exact written form against \"இன்று எனக்கு வர முடியாது.\" before moving on.",
+      "pronunciation": "eṉakku vara muṭiyātu",
+      "exampleTarget": "இன்று எனக்கு வர முடியாது.",
+      "exampleNative": "Use the written model as the final correctness check: “Today I cannot come.”",
+      "korean": "எனக்கு வர முடியாது",
+      "english": "Write \"எனக்கு வர முடியாது\" again without looking, then compare the exact written form against \"இன்று எனக்கு வர முடியாது.\" before moving on.",
+      "example": "இன்று எனக்கு வர முடியாது.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Today I cannot come.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "எனக்கு வர முடியாது",
+      "romanization": "eṉakku vara muṭiyātu",
+      "nativeText": "Check whether \"எனக்கு வர முடியாது\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Today I cannot come.”",
+      "pronunciation": "eṉakku vara muṭiyātu",
+      "exampleTarget": "இன்று எனக்கு வர முடியாது.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Today I cannot come.”",
+      "korean": "எனக்கு வர முடியாது",
+      "english": "Check whether \"எனக்கு வர முடியாது\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Today I cannot come.”",
+      "example": "இன்று எனக்கு வர முடியாது.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Today I cannot come.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "உள்ளே வரலாமா?",
+      "romanization": "uḷḷē varalāmā",
+      "nativeText": "“May I come inside?” A common permission question.",
+      "pronunciation": "uḷḷē varalāmā",
+      "exampleTarget": "உள்ளே வரலாமா?",
+      "exampleNative": "“May I come inside?”",
+      "korean": "உள்ளே வரலாமா?",
+      "english": "“May I come inside?” A common permission question.",
+      "example": "உள்ளே வரலாமா?",
+      "exampleEnglish": "“May I come inside?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "உள்ளே வரலாமா?",
+      "romanization": "uḷḷē varalāmā",
+      "nativeText": "Model use for \"உள்ளே வரலாமா?\": “May I come inside?” A common permission question.",
+      "pronunciation": "uḷḷē varalāmā",
+      "exampleTarget": "உள்ளே வரலாமா?",
+      "exampleNative": "“May I come inside?”",
+      "korean": "உள்ளே வரலாமா?",
+      "english": "Model use for \"உள்ளே வரலாமா?\": “May I come inside?” A common permission question.",
+      "example": "உள்ளே வரலாமா?",
+      "exampleEnglish": "“May I come inside?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "உள்ளே வரலாமா?",
+      "romanization": "uḷḷē varalāmā",
+      "nativeText": "Usage focus for \"உள்ளே வரலாமா?\": “May I come inside?” A common permission question.",
+      "pronunciation": "uḷḷē varalāmā",
+      "exampleTarget": "உள்ளே வரலாமா?",
+      "exampleNative": "Notice what the form is doing here: “May I come inside?”",
+      "korean": "உள்ளே வரலாமா?",
+      "english": "Usage focus for \"உள்ளே வரலாமா?\": “May I come inside?” A common permission question.",
+      "example": "உள்ளே வரலாமா?",
+      "exampleEnglish": "Notice what the form is doing here: “May I come inside?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "உள்ளே வரலாமா?",
+      "romanization": "uḷḷē varalāmā",
+      "nativeText": "Contrast check for \"உள்ளே வரலாமா?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "uḷḷē varalāmā",
+      "exampleTarget": "உள்ளே வரலாமா?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I come inside?”",
+      "korean": "உள்ளே வரலாமா?",
+      "english": "Contrast check for \"உள்ளே வரலாமா?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "உள்ளே வரலாமா?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I come inside?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "உள்ளே வரலாமா?",
+      "romanization": "uḷḷē varalāmā",
+      "nativeText": "Recall \"உள்ளே வரலாமா?\" from memory, then explain what would change if a nearby alternative replaced it in \"உள்ளே வரலாமா?\".",
+      "pronunciation": "uḷḷē varalāmā",
+      "exampleTarget": "உள்ளே வரலாமா?",
+      "exampleNative": "Self-check against the model before moving on: “May I come inside?”",
+      "korean": "உள்ளே வரலாமா?",
+      "english": "Recall \"உள்ளே வரலாமா?\" from memory, then explain what would change if a nearby alternative replaced it in \"உள்ளே வரலாமா?\".",
+      "example": "உள்ளே வரலாமா?",
+      "exampleEnglish": "Self-check against the model before moving on: “May I come inside?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "உள்ளே வரலாமா?",
+      "romanization": "uḷḷē varalāmā",
+      "nativeText": "Repair \"உள்ளே வரலாமா?\" inside \"உள்ளே வரலாமா?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “May I come inside?” A common permission question.",
+      "pronunciation": "uḷḷē varalāmā",
+      "exampleTarget": "உள்ளே வரலாமா?",
+      "exampleNative": "Use the model as the repair target: “May I come inside?”",
+      "korean": "உள்ளே வரலாமா?",
+      "english": "Repair \"உள்ளே வரலாமா?\" inside \"உள்ளே வரலாமா?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “May I come inside?” A common permission question.",
+      "example": "உள்ளே வரலாமா?",
+      "exampleEnglish": "Use the model as the repair target: “May I come inside?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "உள்ளே வரலாமா?",
+      "romanization": "uḷḷē varalāmā",
+      "nativeText": "Transfer \"உள்ளே வரலாமா?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"உள்ளே வரலாமா?\".",
+      "pronunciation": "uḷḷē varalāmā",
+      "exampleTarget": "உள்ளே வரலாமா?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I come inside?”",
+      "korean": "உள்ளே வரலாமா?",
+      "english": "Transfer \"உள்ளே வரலாமா?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"உள்ளே வரலாமா?\".",
+      "example": "உள்ளே வரலாமா?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I come inside?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "உள்ளே வரலாமா?",
+      "romanization": "uḷḷē varalāmā",
+      "nativeText": "Find one word or phrase that naturally travels with \"உள்ளே வரலாமா?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "uḷḷē varalāmā",
+      "exampleTarget": "உள்ளே வரலாமா?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “May I come inside?”",
+      "korean": "உள்ளே வரலாமா?",
+      "english": "Find one word or phrase that naturally travels with \"உள்ளே வரலாமா?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "உள்ளே வரலாமா?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “May I come inside?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "உள்ளே வரலாமா?",
+      "romanization": "uḷḷē varalāmā",
+      "nativeText": "Listen for \"உள்ளே வரலாமா?\" inside \"உள்ளே வரலாமா?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "uḷḷē varalāmā",
+      "exampleTarget": "உள்ளே வரலாமா?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I come inside?”",
+      "korean": "உள்ளே வரலாமா?",
+      "english": "Listen for \"உள்ளே வரலாமா?\" inside \"உள்ளே வரலாமா?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "உள்ளே வரலாமா?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I come inside?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "உள்ளே வரலாமா?",
+      "romanization": "uḷḷē varalāmā",
+      "nativeText": "Write \"உள்ளே வரலாமா?\" again without looking, then compare the exact written form against \"உள்ளே வரலாமா?\" before moving on.",
+      "pronunciation": "uḷḷē varalāmā",
+      "exampleTarget": "உள்ளே வரலாமா?",
+      "exampleNative": "Use the written model as the final correctness check: “May I come inside?”",
+      "korean": "உள்ளே வரலாமா?",
+      "english": "Write \"உள்ளே வரலாமா?\" again without looking, then compare the exact written form against \"உள்ளே வரலாமா?\" before moving on.",
+      "example": "உள்ளே வரலாமா?",
+      "exampleEnglish": "Use the written model as the final correctness check: “May I come inside?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "உள்ளே வரலாமா?",
+      "romanization": "uḷḷē varalāmā",
+      "nativeText": "Check whether \"உள்ளே வரலாமா?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I come inside?”",
+      "pronunciation": "uḷḷē varalāmā",
+      "exampleTarget": "உள்ளே வரலாமா?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “May I come inside?”",
+      "korean": "உள்ளே வரலாமா?",
+      "english": "Check whether \"உள்ளே வரலாமா?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I come inside?”",
+      "example": "உள்ளே வரலாமா?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “May I come inside?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "கூடாது",
+      "romanization": "kūṭātu",
+      "nativeText": "“Must not / not allowed.” A core prohibition form.",
+      "pronunciation": "kūṭātu",
+      "exampleTarget": "இங்கே புகை பிடிக்கக் கூடாது.",
+      "exampleNative": "“Smoking is not allowed here.”",
+      "korean": "கூடாது",
+      "english": "“Must not / not allowed.” A core prohibition form.",
+      "example": "இங்கே புகை பிடிக்கக் கூடாது.",
+      "exampleEnglish": "“Smoking is not allowed here.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "இங்கே புகை பிடிக்கக் கூடாது.",
+      "romanization": "kūṭātu",
+      "nativeText": "Model use for \"இங்கே புகை பிடிக்கக் கூடாது.\": “Smoking is not allowed here.”",
+      "pronunciation": "kūṭātu",
+      "exampleTarget": "இங்கே புகை பிடிக்கக் கூடாது.",
+      "exampleNative": "“Smoking is not allowed here.”",
+      "korean": "இங்கே புகை பிடிக்கக் கூடாது.",
+      "english": "Model use for \"இங்கே புகை பிடிக்கக் கூடாது.\": “Smoking is not allowed here.”",
+      "example": "இங்கே புகை பிடிக்கக் கூடாது.",
+      "exampleEnglish": "“Smoking is not allowed here.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "கூடாது",
+      "romanization": "kūṭātu",
+      "nativeText": "Usage focus for \"கூடாது\": “Must not / not allowed.” A core prohibition form.",
+      "pronunciation": "kūṭātu",
+      "exampleTarget": "இங்கே புகை பிடிக்கக் கூடாது.",
+      "exampleNative": "Notice what the form is doing here: “Smoking is not allowed here.”",
+      "korean": "கூடாது",
+      "english": "Usage focus for \"கூடாது\": “Must not / not allowed.” A core prohibition form.",
+      "example": "இங்கே புகை பிடிக்கக் கூடாது.",
+      "exampleEnglish": "Notice what the form is doing here: “Smoking is not allowed here.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "கூடாது",
+      "romanization": "kūṭātu",
+      "nativeText": "Contrast check for \"கூடாது\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kūṭātu",
+      "exampleTarget": "இங்கே புகை பிடிக்கக் கூடாது.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Smoking is not allowed here.”",
+      "korean": "கூடாது",
+      "english": "Contrast check for \"கூடாது\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "இங்கே புகை பிடிக்கக் கூடாது.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Smoking is not allowed here.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "கூடாது",
+      "romanization": "kūṭātu",
+      "nativeText": "Recall \"கூடாது\" from memory, then explain what would change if a nearby alternative replaced it in \"இங்கே புகை பிடிக்கக் கூடாது.\".",
+      "pronunciation": "kūṭātu",
+      "exampleTarget": "இங்கே புகை பிடிக்கக் கூடாது.",
+      "exampleNative": "Self-check against the model before moving on: “Smoking is not allowed here.”",
+      "korean": "கூடாது",
+      "english": "Recall \"கூடாது\" from memory, then explain what would change if a nearby alternative replaced it in \"இங்கே புகை பிடிக்கக் கூடாது.\".",
+      "example": "இங்கே புகை பிடிக்கக் கூடாது.",
+      "exampleEnglish": "Self-check against the model before moving on: “Smoking is not allowed here.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "கூடாது",
+      "romanization": "kūṭātu",
+      "nativeText": "Repair \"கூடாது\" inside \"இங்கே புகை பிடிக்கக் கூடாது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Must not / not allowed.” A core prohibition form.",
+      "pronunciation": "kūṭātu",
+      "exampleTarget": "இங்கே புகை பிடிக்கக் கூடாது.",
+      "exampleNative": "Use the model as the repair target: “Smoking is not allowed here.”",
+      "korean": "கூடாது",
+      "english": "Repair \"கூடாது\" inside \"இங்கே புகை பிடிக்கக் கூடாது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Must not / not allowed.” A core prohibition form.",
+      "example": "இங்கே புகை பிடிக்கக் கூடாது.",
+      "exampleEnglish": "Use the model as the repair target: “Smoking is not allowed here.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "கூடாது",
+      "romanization": "kūṭātu",
+      "nativeText": "Transfer \"கூடாது\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இங்கே புகை பிடிக்கக் கூடாது.\".",
+      "pronunciation": "kūṭātu",
+      "exampleTarget": "இங்கே புகை பிடிக்கக் கூடாது.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Smoking is not allowed here.”",
+      "korean": "கூடாது",
+      "english": "Transfer \"கூடாது\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இங்கே புகை பிடிக்கக் கூடாது.\".",
+      "example": "இங்கே புகை பிடிக்கக் கூடாது.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Smoking is not allowed here.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "கூடாது",
+      "romanization": "kūṭātu",
+      "nativeText": "Find one word or phrase that naturally travels with \"கூடாது\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kūṭātu",
+      "exampleTarget": "இங்கே புகை பிடிக்கக் கூடாது.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Smoking is not allowed here.”",
+      "korean": "கூடாது",
+      "english": "Find one word or phrase that naturally travels with \"கூடாது\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "இங்கே புகை பிடிக்கக் கூடாது.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Smoking is not allowed here.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "கூடாது",
+      "romanization": "kūṭātu",
+      "nativeText": "Listen for \"கூடாது\" inside \"இங்கே புகை பிடிக்கக் கூடாது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kūṭātu",
+      "exampleTarget": "இங்கே புகை பிடிக்கக் கூடாது.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Smoking is not allowed here.”",
+      "korean": "கூடாது",
+      "english": "Listen for \"கூடாது\" inside \"இங்கே புகை பிடிக்கக் கூடாது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "இங்கே புகை பிடிக்கக் கூடாது.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Smoking is not allowed here.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "கூடாது",
+      "romanization": "kūṭātu",
+      "nativeText": "Write \"கூடாது\" again without looking, then compare the exact written form against \"இங்கே புகை பிடிக்கக் கூடாது.\" before moving on.",
+      "pronunciation": "kūṭātu",
+      "exampleTarget": "இங்கே புகை பிடிக்கக் கூடாது.",
+      "exampleNative": "Use the written model as the final correctness check: “Smoking is not allowed here.”",
+      "korean": "கூடாது",
+      "english": "Write \"கூடாது\" again without looking, then compare the exact written form against \"இங்கே புகை பிடிக்கக் கூடாது.\" before moving on.",
+      "example": "இங்கே புகை பிடிக்கக் கூடாது.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Smoking is not allowed here.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "கூடாது",
+      "romanization": "kūṭātu",
+      "nativeText": "Check whether \"கூடாது\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Smoking is not allowed here.”",
+      "pronunciation": "kūṭātu",
+      "exampleTarget": "இங்கே புகை பிடிக்கக் கூடாது.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Smoking is not allowed here.”",
+      "korean": "கூடாது",
+      "english": "Check whether \"கூடாது\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Smoking is not allowed here.”",
+      "example": "இங்கே புகை பிடிக்கக் கூடாது.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Smoking is not allowed here.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "படிக்க வேண்டும்",
+      "romanization": "paṭikka vēṇṭum",
+      "nativeText": "“Need to study / must study.” `வேண்டும்` carries necessity.",
+      "pronunciation": "paṭikka vēṇṭum",
+      "exampleTarget": "தேர்வுக்கு படிக்க வேண்டும்.",
+      "exampleNative": "“I must study for the exam.”",
+      "korean": "படிக்க வேண்டும்",
+      "english": "“Need to study / must study.” `வேண்டும்` carries necessity.",
+      "example": "தேர்வுக்கு படிக்க வேண்டும்.",
+      "exampleEnglish": "“I must study for the exam.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "தேர்வுக்கு படிக்க வேண்டும்.",
+      "romanization": "paṭikka vēṇṭum",
+      "nativeText": "Model use for \"தேர்வுக்கு படிக்க வேண்டும்.\": “I must study for the exam.”",
+      "pronunciation": "paṭikka vēṇṭum",
+      "exampleTarget": "தேர்வுக்கு படிக்க வேண்டும்.",
+      "exampleNative": "“I must study for the exam.”",
+      "korean": "தேர்வுக்கு படிக்க வேண்டும்.",
+      "english": "Model use for \"தேர்வுக்கு படிக்க வேண்டும்.\": “I must study for the exam.”",
+      "example": "தேர்வுக்கு படிக்க வேண்டும்.",
+      "exampleEnglish": "“I must study for the exam.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "படிக்க வேண்டும்",
+      "romanization": "paṭikka vēṇṭum",
+      "nativeText": "Usage focus for \"படிக்க வேண்டும்\": “Need to study / must study.” `வேண்டும்` carries necessity.",
+      "pronunciation": "paṭikka vēṇṭum",
+      "exampleTarget": "தேர்வுக்கு படிக்க வேண்டும்.",
+      "exampleNative": "Notice what the form is doing here: “I must study for the exam.”",
+      "korean": "படிக்க வேண்டும்",
+      "english": "Usage focus for \"படிக்க வேண்டும்\": “Need to study / must study.” `வேண்டும்` carries necessity.",
+      "example": "தேர்வுக்கு படிக்க வேண்டும்.",
+      "exampleEnglish": "Notice what the form is doing here: “I must study for the exam.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "படிக்க வேண்டும்",
+      "romanization": "paṭikka vēṇṭum",
+      "nativeText": "Contrast check for \"படிக்க வேண்டும்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "paṭikka vēṇṭum",
+      "exampleTarget": "தேர்வுக்கு படிக்க வேண்டும்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I must study for the exam.”",
+      "korean": "படிக்க வேண்டும்",
+      "english": "Contrast check for \"படிக்க வேண்டும்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "தேர்வுக்கு படிக்க வேண்டும்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I must study for the exam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "படிக்க வேண்டும்",
+      "romanization": "paṭikka vēṇṭum",
+      "nativeText": "Recall \"படிக்க வேண்டும்\" from memory, then explain what would change if a nearby alternative replaced it in \"தேர்வுக்கு படிக்க வேண்டும்.\".",
+      "pronunciation": "paṭikka vēṇṭum",
+      "exampleTarget": "தேர்வுக்கு படிக்க வேண்டும்.",
+      "exampleNative": "Self-check against the model before moving on: “I must study for the exam.”",
+      "korean": "படிக்க வேண்டும்",
+      "english": "Recall \"படிக்க வேண்டும்\" from memory, then explain what would change if a nearby alternative replaced it in \"தேர்வுக்கு படிக்க வேண்டும்.\".",
+      "example": "தேர்வுக்கு படிக்க வேண்டும்.",
+      "exampleEnglish": "Self-check against the model before moving on: “I must study for the exam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "படிக்க வேண்டும்",
+      "romanization": "paṭikka vēṇṭum",
+      "nativeText": "Repair \"படிக்க வேண்டும்\" inside \"தேர்வுக்கு படிக்க வேண்டும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Need to study / must study.” `வேண்டும்` carries necessity.",
+      "pronunciation": "paṭikka vēṇṭum",
+      "exampleTarget": "தேர்வுக்கு படிக்க வேண்டும்.",
+      "exampleNative": "Use the model as the repair target: “I must study for the exam.”",
+      "korean": "படிக்க வேண்டும்",
+      "english": "Repair \"படிக்க வேண்டும்\" inside \"தேர்வுக்கு படிக்க வேண்டும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Need to study / must study.” `வேண்டும்` carries necessity.",
+      "example": "தேர்வுக்கு படிக்க வேண்டும்.",
+      "exampleEnglish": "Use the model as the repair target: “I must study for the exam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "படிக்க வேண்டும்",
+      "romanization": "paṭikka vēṇṭum",
+      "nativeText": "Transfer \"படிக்க வேண்டும்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"தேர்வுக்கு படிக்க வேண்டும்.\".",
+      "pronunciation": "paṭikka vēṇṭum",
+      "exampleTarget": "தேர்வுக்கு படிக்க வேண்டும்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I must study for the exam.”",
+      "korean": "படிக்க வேண்டும்",
+      "english": "Transfer \"படிக்க வேண்டும்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"தேர்வுக்கு படிக்க வேண்டும்.\".",
+      "example": "தேர்வுக்கு படிக்க வேண்டும்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I must study for the exam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "படிக்க வேண்டும்",
+      "romanization": "paṭikka vēṇṭum",
+      "nativeText": "Find one word or phrase that naturally travels with \"படிக்க வேண்டும்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "paṭikka vēṇṭum",
+      "exampleTarget": "தேர்வுக்கு படிக்க வேண்டும்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I must study for the exam.”",
+      "korean": "படிக்க வேண்டும்",
+      "english": "Find one word or phrase that naturally travels with \"படிக்க வேண்டும்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "தேர்வுக்கு படிக்க வேண்டும்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I must study for the exam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "படிக்க வேண்டும்",
+      "romanization": "paṭikka vēṇṭum",
+      "nativeText": "Listen for \"படிக்க வேண்டும்\" inside \"தேர்வுக்கு படிக்க வேண்டும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "paṭikka vēṇṭum",
+      "exampleTarget": "தேர்வுக்கு படிக்க வேண்டும்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I must study for the exam.”",
+      "korean": "படிக்க வேண்டும்",
+      "english": "Listen for \"படிக்க வேண்டும்\" inside \"தேர்வுக்கு படிக்க வேண்டும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "தேர்வுக்கு படிக்க வேண்டும்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I must study for the exam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "படிக்க வேண்டும்",
+      "romanization": "paṭikka vēṇṭum",
+      "nativeText": "Write \"படிக்க வேண்டும்\" again without looking, then compare the exact written form against \"தேர்வுக்கு படிக்க வேண்டும்.\" before moving on.",
+      "pronunciation": "paṭikka vēṇṭum",
+      "exampleTarget": "தேர்வுக்கு படிக்க வேண்டும்.",
+      "exampleNative": "Use the written model as the final correctness check: “I must study for the exam.”",
+      "korean": "படிக்க வேண்டும்",
+      "english": "Write \"படிக்க வேண்டும்\" again without looking, then compare the exact written form against \"தேர்வுக்கு படிக்க வேண்டும்.\" before moving on.",
+      "example": "தேர்வுக்கு படிக்க வேண்டும்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I must study for the exam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "படிக்க வேண்டும்",
+      "romanization": "paṭikka vēṇṭum",
+      "nativeText": "Check whether \"படிக்க வேண்டும்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I must study for the exam.”",
+      "pronunciation": "paṭikka vēṇṭum",
+      "exampleTarget": "தேர்வுக்கு படிக்க வேண்டும்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I must study for the exam.”",
+      "korean": "படிக்க வேண்டும்",
+      "english": "Check whether \"படிக்க வேண்டும்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I must study for the exam.”",
+      "example": "தேர்வுக்கு படிக்க வேண்டும்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I must study for the exam.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "தேவை",
+      "romanization": "tēvai",
+      "nativeText": "“Need.” A noun-like expression used in many practical sentences.",
+      "pronunciation": "tēvai",
+      "exampleTarget": "பாஸ்போர்ட் தேவை.",
+      "exampleNative": "“A passport is needed.”",
+      "korean": "தேவை",
+      "english": "“Need.” A noun-like expression used in many practical sentences.",
+      "example": "பாஸ்போர்ட் தேவை.",
+      "exampleEnglish": "“A passport is needed.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "பாஸ்போர்ட் தேவை.",
+      "romanization": "tēvai",
+      "nativeText": "Model use for \"பாஸ்போர்ட் தேவை.\": “A passport is needed.”",
+      "pronunciation": "tēvai",
+      "exampleTarget": "பாஸ்போர்ட் தேவை.",
+      "exampleNative": "“A passport is needed.”",
+      "korean": "பாஸ்போர்ட் தேவை.",
+      "english": "Model use for \"பாஸ்போர்ட் தேவை.\": “A passport is needed.”",
+      "example": "பாஸ்போர்ட் தேவை.",
+      "exampleEnglish": "“A passport is needed.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "தேவை",
+      "romanization": "tēvai",
+      "nativeText": "Usage focus for \"தேவை\": “Need.” A noun-like expression used in many practical sentences.",
+      "pronunciation": "tēvai",
+      "exampleTarget": "பாஸ்போர்ட் தேவை.",
+      "exampleNative": "Notice what the form is doing here: “A passport is needed.”",
+      "korean": "தேவை",
+      "english": "Usage focus for \"தேவை\": “Need.” A noun-like expression used in many practical sentences.",
+      "example": "பாஸ்போர்ட் தேவை.",
+      "exampleEnglish": "Notice what the form is doing here: “A passport is needed.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "தேவை",
+      "romanization": "tēvai",
+      "nativeText": "Contrast check for \"தேவை\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "tēvai",
+      "exampleTarget": "பாஸ்போர்ட் தேவை.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “A passport is needed.”",
+      "korean": "தேவை",
+      "english": "Contrast check for \"தேவை\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "பாஸ்போர்ட் தேவை.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “A passport is needed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "தேவை",
+      "romanization": "tēvai",
+      "nativeText": "Recall \"தேவை\" from memory, then explain what would change if a nearby alternative replaced it in \"பாஸ்போர்ட் தேவை.\".",
+      "pronunciation": "tēvai",
+      "exampleTarget": "பாஸ்போர்ட் தேவை.",
+      "exampleNative": "Self-check against the model before moving on: “A passport is needed.”",
+      "korean": "தேவை",
+      "english": "Recall \"தேவை\" from memory, then explain what would change if a nearby alternative replaced it in \"பாஸ்போர்ட் தேவை.\".",
+      "example": "பாஸ்போர்ட் தேவை.",
+      "exampleEnglish": "Self-check against the model before moving on: “A passport is needed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "தேவை",
+      "romanization": "tēvai",
+      "nativeText": "Repair \"தேவை\" inside \"பாஸ்போர்ட் தேவை.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Need.” A noun-like expression used in many practical sentences.",
+      "pronunciation": "tēvai",
+      "exampleTarget": "பாஸ்போர்ட் தேவை.",
+      "exampleNative": "Use the model as the repair target: “A passport is needed.”",
+      "korean": "தேவை",
+      "english": "Repair \"தேவை\" inside \"பாஸ்போர்ட் தேவை.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Need.” A noun-like expression used in many practical sentences.",
+      "example": "பாஸ்போர்ட் தேவை.",
+      "exampleEnglish": "Use the model as the repair target: “A passport is needed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "தேவை",
+      "romanization": "tēvai",
+      "nativeText": "Transfer \"தேவை\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"பாஸ்போர்ட் தேவை.\".",
+      "pronunciation": "tēvai",
+      "exampleTarget": "பாஸ்போர்ட் தேவை.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “A passport is needed.”",
+      "korean": "தேவை",
+      "english": "Transfer \"தேவை\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"பாஸ்போர்ட் தேவை.\".",
+      "example": "பாஸ்போர்ட் தேவை.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “A passport is needed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "தேவை",
+      "romanization": "tēvai",
+      "nativeText": "Find one word or phrase that naturally travels with \"தேவை\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "tēvai",
+      "exampleTarget": "பாஸ்போர்ட் தேவை.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “A passport is needed.”",
+      "korean": "தேவை",
+      "english": "Find one word or phrase that naturally travels with \"தேவை\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "பாஸ்போர்ட் தேவை.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “A passport is needed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "தேவை",
+      "romanization": "tēvai",
+      "nativeText": "Listen for \"தேவை\" inside \"பாஸ்போர்ட் தேவை.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "tēvai",
+      "exampleTarget": "பாஸ்போர்ட் தேவை.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “A passport is needed.”",
+      "korean": "தேவை",
+      "english": "Listen for \"தேவை\" inside \"பாஸ்போர்ட் தேவை.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "பாஸ்போர்ட் தேவை.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “A passport is needed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "தேவை",
+      "romanization": "tēvai",
+      "nativeText": "Write \"தேவை\" again without looking, then compare the exact written form against \"பாஸ்போர்ட் தேவை.\" before moving on.",
+      "pronunciation": "tēvai",
+      "exampleTarget": "பாஸ்போர்ட் தேவை.",
+      "exampleNative": "Use the written model as the final correctness check: “A passport is needed.”",
+      "korean": "தேவை",
+      "english": "Write \"தேவை\" again without looking, then compare the exact written form against \"பாஸ்போர்ட் தேவை.\" before moving on.",
+      "example": "பாஸ்போர்ட் தேவை.",
+      "exampleEnglish": "Use the written model as the final correctness check: “A passport is needed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "தேவை",
+      "romanization": "tēvai",
+      "nativeText": "Check whether \"தேவை\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “A passport is needed.”",
+      "pronunciation": "tēvai",
+      "exampleTarget": "பாஸ்போர்ட் தேவை.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “A passport is needed.”",
+      "korean": "தேவை",
+      "english": "Check whether \"தேவை\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “A passport is needed.”",
+      "example": "பாஸ்போர்ட் தேவை.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “A passport is needed.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "கற்க",
+      "romanization": "kaṟka",
+      "nativeText": "“To learn.” Useful in ability and future-goal talk.",
+      "pronunciation": "kaṟka",
+      "exampleTarget": "கார் ஓட்ட கற்க விரும்புகிறேன்.",
+      "exampleNative": "“I want to learn to drive.”",
+      "korean": "கற்க",
+      "english": "“To learn.” Useful in ability and future-goal talk.",
+      "example": "கார் ஓட்ட கற்க விரும்புகிறேன்.",
+      "exampleEnglish": "“I want to learn to drive.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "கார் ஓட்ட கற்க விரும்புகிறேன்.",
+      "romanization": "kaṟka",
+      "nativeText": "Model use for \"கார் ஓட்ட கற்க விரும்புகிறேன்.\": “I want to learn to drive.”",
+      "pronunciation": "kaṟka",
+      "exampleTarget": "கார் ஓட்ட கற்க விரும்புகிறேன்.",
+      "exampleNative": "“I want to learn to drive.”",
+      "korean": "கார் ஓட்ட கற்க விரும்புகிறேன்.",
+      "english": "Model use for \"கார் ஓட்ட கற்க விரும்புகிறேன்.\": “I want to learn to drive.”",
+      "example": "கார் ஓட்ட கற்க விரும்புகிறேன்.",
+      "exampleEnglish": "“I want to learn to drive.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "கற்க",
+      "romanization": "kaṟka",
+      "nativeText": "Usage focus for \"கற்க\": “To learn.” Useful in ability and future-goal talk.",
+      "pronunciation": "kaṟka",
+      "exampleTarget": "கார் ஓட்ட கற்க விரும்புகிறேன்.",
+      "exampleNative": "Notice what the form is doing here: “I want to learn to drive.”",
+      "korean": "கற்க",
+      "english": "Usage focus for \"கற்க\": “To learn.” Useful in ability and future-goal talk.",
+      "example": "கார் ஓட்ட கற்க விரும்புகிறேன்.",
+      "exampleEnglish": "Notice what the form is doing here: “I want to learn to drive.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "கற்க",
+      "romanization": "kaṟka",
+      "nativeText": "Contrast check for \"கற்க\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kaṟka",
+      "exampleTarget": "கார் ஓட்ட கற்க விரும்புகிறேன்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to learn to drive.”",
+      "korean": "கற்க",
+      "english": "Contrast check for \"கற்க\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "கார் ஓட்ட கற்க விரும்புகிறேன்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to learn to drive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "கற்க",
+      "romanization": "kaṟka",
+      "nativeText": "Recall \"கற்க\" from memory, then explain what would change if a nearby alternative replaced it in \"கார் ஓட்ட கற்க விரும்புகிறேன்.\".",
+      "pronunciation": "kaṟka",
+      "exampleTarget": "கார் ஓட்ட கற்க விரும்புகிறேன்.",
+      "exampleNative": "Self-check against the model before moving on: “I want to learn to drive.”",
+      "korean": "கற்க",
+      "english": "Recall \"கற்க\" from memory, then explain what would change if a nearby alternative replaced it in \"கார் ஓட்ட கற்க விரும்புகிறேன்.\".",
+      "example": "கார் ஓட்ட கற்க விரும்புகிறேன்.",
+      "exampleEnglish": "Self-check against the model before moving on: “I want to learn to drive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "கற்க",
+      "romanization": "kaṟka",
+      "nativeText": "Repair \"கற்க\" inside \"கார் ஓட்ட கற்க விரும்புகிறேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To learn.” Useful in ability and future-goal talk.",
+      "pronunciation": "kaṟka",
+      "exampleTarget": "கார் ஓட்ட கற்க விரும்புகிறேன்.",
+      "exampleNative": "Use the model as the repair target: “I want to learn to drive.”",
+      "korean": "கற்க",
+      "english": "Repair \"கற்க\" inside \"கார் ஓட்ட கற்க விரும்புகிறேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To learn.” Useful in ability and future-goal talk.",
+      "example": "கார் ஓட்ட கற்க விரும்புகிறேன்.",
+      "exampleEnglish": "Use the model as the repair target: “I want to learn to drive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "கற்க",
+      "romanization": "kaṟka",
+      "nativeText": "Transfer \"கற்க\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"கார் ஓட்ட கற்க விரும்புகிறேன்.\".",
+      "pronunciation": "kaṟka",
+      "exampleTarget": "கார் ஓட்ட கற்க விரும்புகிறேன்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to learn to drive.”",
+      "korean": "கற்க",
+      "english": "Transfer \"கற்க\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"கார் ஓட்ட கற்க விரும்புகிறேன்.\".",
+      "example": "கார் ஓட்ட கற்க விரும்புகிறேன்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to learn to drive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "கற்க",
+      "romanization": "kaṟka",
+      "nativeText": "Find one word or phrase that naturally travels with \"கற்க\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kaṟka",
+      "exampleTarget": "கார் ஓட்ட கற்க விரும்புகிறேன்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want to learn to drive.”",
+      "korean": "கற்க",
+      "english": "Find one word or phrase that naturally travels with \"கற்க\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "கார் ஓட்ட கற்க விரும்புகிறேன்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want to learn to drive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "கற்க",
+      "romanization": "kaṟka",
+      "nativeText": "Listen for \"கற்க\" inside \"கார் ஓட்ட கற்க விரும்புகிறேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kaṟka",
+      "exampleTarget": "கார் ஓட்ட கற்க விரும்புகிறேன்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to learn to drive.”",
+      "korean": "கற்க",
+      "english": "Listen for \"கற்க\" inside \"கார் ஓட்ட கற்க விரும்புகிறேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "கார் ஓட்ட கற்க விரும்புகிறேன்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to learn to drive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "கற்க",
+      "romanization": "kaṟka",
+      "nativeText": "Write \"கற்க\" again without looking, then compare the exact written form against \"கார் ஓட்ட கற்க விரும்புகிறேன்.\" before moving on.",
+      "pronunciation": "kaṟka",
+      "exampleTarget": "கார் ஓட்ட கற்க விரும்புகிறேன்.",
+      "exampleNative": "Use the written model as the final correctness check: “I want to learn to drive.”",
+      "korean": "கற்க",
+      "english": "Write \"கற்க\" again without looking, then compare the exact written form against \"கார் ஓட்ட கற்க விரும்புகிறேன்.\" before moving on.",
+      "example": "கார் ஓட்ட கற்க விரும்புகிறேன்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want to learn to drive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "கற்க",
+      "romanization": "kaṟka",
+      "nativeText": "Check whether \"கற்க\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to learn to drive.”",
+      "pronunciation": "kaṟka",
+      "exampleTarget": "கார் ஓட்ட கற்க விரும்புகிறேன்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want to learn to drive.”",
+      "korean": "கற்க",
+      "english": "Check whether \"கற்க\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to learn to drive.”",
+      "example": "கார் ஓட்ட கற்க விரும்புகிறேன்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want to learn to drive.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "செய்ய முடியும்",
+      "romanization": "ceyya muṭiyum",
+      "nativeText": "“Can do.” A broad productive pattern with many verbs.",
+      "pronunciation": "ceyya muṭiyum",
+      "exampleTarget": "நான் இதை செய்ய முடியும்.",
+      "exampleNative": "“I can do this.”",
+      "korean": "செய்ய முடியும்",
+      "english": "“Can do.” A broad productive pattern with many verbs.",
+      "example": "நான் இதை செய்ய முடியும்.",
+      "exampleEnglish": "“I can do this.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "நான் இதை செய்ய முடியும்.",
+      "romanization": "ceyya muṭiyum",
+      "nativeText": "Model use for \"நான் இதை செய்ய முடியும்.\": “I can do this.”",
+      "pronunciation": "ceyya muṭiyum",
+      "exampleTarget": "நான் இதை செய்ய முடியும்.",
+      "exampleNative": "“I can do this.”",
+      "korean": "நான் இதை செய்ய முடியும்.",
+      "english": "Model use for \"நான் இதை செய்ய முடியும்.\": “I can do this.”",
+      "example": "நான் இதை செய்ய முடியும்.",
+      "exampleEnglish": "“I can do this.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "செய்ய முடியும்",
+      "romanization": "ceyya muṭiyum",
+      "nativeText": "Usage focus for \"செய்ய முடியும்\": “Can do.” A broad productive pattern with many verbs.",
+      "pronunciation": "ceyya muṭiyum",
+      "exampleTarget": "நான் இதை செய்ய முடியும்.",
+      "exampleNative": "Notice what the form is doing here: “I can do this.”",
+      "korean": "செய்ய முடியும்",
+      "english": "Usage focus for \"செய்ய முடியும்\": “Can do.” A broad productive pattern with many verbs.",
+      "example": "நான் இதை செய்ய முடியும்.",
+      "exampleEnglish": "Notice what the form is doing here: “I can do this.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "செய்ய முடியும்",
+      "romanization": "ceyya muṭiyum",
+      "nativeText": "Contrast check for \"செய்ய முடியும்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ceyya muṭiyum",
+      "exampleTarget": "நான் இதை செய்ய முடியும்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I can do this.”",
+      "korean": "செய்ய முடியும்",
+      "english": "Contrast check for \"செய்ய முடியும்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "நான் இதை செய்ய முடியும்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I can do this.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "செய்ய முடியும்",
+      "romanization": "ceyya muṭiyum",
+      "nativeText": "Recall \"செய்ய முடியும்\" from memory, then explain what would change if a nearby alternative replaced it in \"நான் இதை செய்ய முடியும்.\".",
+      "pronunciation": "ceyya muṭiyum",
+      "exampleTarget": "நான் இதை செய்ய முடியும்.",
+      "exampleNative": "Self-check against the model before moving on: “I can do this.”",
+      "korean": "செய்ய முடியும்",
+      "english": "Recall \"செய்ய முடியும்\" from memory, then explain what would change if a nearby alternative replaced it in \"நான் இதை செய்ய முடியும்.\".",
+      "example": "நான் இதை செய்ய முடியும்.",
+      "exampleEnglish": "Self-check against the model before moving on: “I can do this.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "செய்ய முடியும்",
+      "romanization": "ceyya muṭiyum",
+      "nativeText": "Repair \"செய்ய முடியும்\" inside \"நான் இதை செய்ய முடியும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Can do.” A broad productive pattern with many verbs.",
+      "pronunciation": "ceyya muṭiyum",
+      "exampleTarget": "நான் இதை செய்ய முடியும்.",
+      "exampleNative": "Use the model as the repair target: “I can do this.”",
+      "korean": "செய்ய முடியும்",
+      "english": "Repair \"செய்ய முடியும்\" inside \"நான் இதை செய்ய முடியும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Can do.” A broad productive pattern with many verbs.",
+      "example": "நான் இதை செய்ய முடியும்.",
+      "exampleEnglish": "Use the model as the repair target: “I can do this.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "செய்ய முடியும்",
+      "romanization": "ceyya muṭiyum",
+      "nativeText": "Transfer \"செய்ய முடியும்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நான் இதை செய்ய முடியும்.\".",
+      "pronunciation": "ceyya muṭiyum",
+      "exampleTarget": "நான் இதை செய்ய முடியும்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I can do this.”",
+      "korean": "செய்ய முடியும்",
+      "english": "Transfer \"செய்ய முடியும்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நான் இதை செய்ய முடியும்.\".",
+      "example": "நான் இதை செய்ய முடியும்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I can do this.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "செய்ய முடியும்",
+      "romanization": "ceyya muṭiyum",
+      "nativeText": "Find one word or phrase that naturally travels with \"செய்ய முடியும்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ceyya muṭiyum",
+      "exampleTarget": "நான் இதை செய்ய முடியும்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I can do this.”",
+      "korean": "செய்ய முடியும்",
+      "english": "Find one word or phrase that naturally travels with \"செய்ய முடியும்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "நான் இதை செய்ய முடியும்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I can do this.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "செய்ய முடியும்",
+      "romanization": "ceyya muṭiyum",
+      "nativeText": "Listen for \"செய்ய முடியும்\" inside \"நான் இதை செய்ய முடியும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ceyya muṭiyum",
+      "exampleTarget": "நான் இதை செய்ய முடியும்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I can do this.”",
+      "korean": "செய்ய முடியும்",
+      "english": "Listen for \"செய்ய முடியும்\" inside \"நான் இதை செய்ய முடியும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "நான் இதை செய்ய முடியும்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I can do this.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "செய்ய முடியும்",
+      "romanization": "ceyya muṭiyum",
+      "nativeText": "Write \"செய்ய முடியும்\" again without looking, then compare the exact written form against \"நான் இதை செய்ய முடியும்.\" before moving on.",
+      "pronunciation": "ceyya muṭiyum",
+      "exampleTarget": "நான் இதை செய்ய முடியும்.",
+      "exampleNative": "Use the written model as the final correctness check: “I can do this.”",
+      "korean": "செய்ய முடியும்",
+      "english": "Write \"செய்ய முடியும்\" again without looking, then compare the exact written form against \"நான் இதை செய்ய முடியும்.\" before moving on.",
+      "example": "நான் இதை செய்ய முடியும்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I can do this.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit14ability-vocabulary-1",
+        "ta-level1unit14ability-vocabulary-2",
+        "ta-level1unit14ability-grammar-1",
+        "ta-level1unit14ability-grammar-2",
+        "ta-level1unit14ability-reading",
+        "ta-level1unit14ability-listening",
+        "ta-level1unit14ability-writing",
+        "ta-level1unit14ability-task"
+      ],
+      "targetText": "செய்ய முடியும்",
+      "romanization": "ceyya muṭiyum",
+      "nativeText": "Check whether \"செய்ய முடியும்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I can do this.”",
+      "pronunciation": "ceyya muṭiyum",
+      "exampleTarget": "நான் இதை செய்ய முடியும்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I can do this.”",
+      "korean": "செய்ய முடியும்",
+      "english": "Check whether \"செய்ய முடியும்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I can do this.”",
+      "example": "நான் இதை செய்ய முடியும்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I can do this.”"
+    }
+  ],
+  "targetLang": "ta",
+  "nativeLang": "en",
+  "track": "textbook"
+};

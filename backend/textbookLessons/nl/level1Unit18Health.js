@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('nl', {
-  slug: 'nl-l1u18',
-  title: 'Level 1 · Unit 18: Gezondheid — Health',
-  category: 'health',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Describe simple symptoms, ask for help, and understand basic advice.',
-  vocabularyGoal: 'Use body-part, symptom, medicine, and clinic words.',
-  grammarGoal: 'Use `ik heb`, `ik heb pijn aan`, and modal advice with `moeten`.',
-  speakingGoal: 'Say what hurts, describe one symptom, and understand one instruction.',
-  task: 'Explain a minor illness at a pharmacy or clinic.',
-  expressionPractice: [
-    practice('describing-symptom', 'Describing symptom', 'Use `ik heb` or `ik heb pijn aan`.'),
-    practice('asking-help', 'Asking help', 'Use `ik heb ... nodig`.'),
-    practice('understanding-advice', 'Understanding advice', 'Recognize one recommendation and one prohibition.'),
+module.exports = {
+  "title": "Level 1 · Unit 18: Gezondheid — Health",
+  "category": "health",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "nl-level1unit18health-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Describe simple symptoms, ask for help, and understand basic advice."
+      ],
+      "task": "Explain a minor illness at a pharmacy or clinic."
+    },
+    {
+      "id": "nl-level1unit18health-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "nl-level1unit18health-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 18: Gezondheid — Health with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "nl-level1unit18health-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 18: Gezondheid — Health sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "nl-level1unit18health-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Describe simple symptoms, ask for help, and understand basic advice."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "nl-level1unit18health-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 18: Gezondheid — Health with one nearby Dutch form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "nl-level1unit18health-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "nl-level1unit18health-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "nl-level1unit18health-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "nl-level1unit18health-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "nl-level1unit18health-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Explain a minor illness at a pharmacy or clinic."
+      ],
+      "task": "Explain a minor illness at a pharmacy or clinic."
+    }
   ],
-  relatedPools: ['topic-health', 'topic-service'],
-  items: [
-    item('ik heb hoofdpijn', 'ik hep HOHFT-peyn', '“I have a headache.” Dutch often compounds the body part and pain noun.', 'Ik heb sinds vanochtend hoofdpijn.', '“I have had a headache since this morning.”'),
-    item('koorts', 'kohrts', '“Fever.” A common clinic word.', 'Ik heb hoge koorts.', '“I have a high fever.”'),
-    item('hoest', 'hoost', '“Cough.” A common symptom noun.', 'Ik heb een droge hoest.', '“I have a dry cough.”'),
-    item('buikpijn', 'BOYK-peyn', '“Stomachache.” Another useful compound.', 'Ik heb buikpijn na het eten.', '“I have stomach pain after eating.”'),
-    item('medicijn', 'may-dee-SEYN', '“Medicine.” Practical in pharmacy talk.', 'Ik heb een medicijn tegen griep nodig.', '“I need medicine for the flu.”'),
-    item('dokter', 'DOK-ter', '“Doctor.” A central service noun.', 'Ik moet naar de dokter.', '“I have to go to the doctor.”'),
-    item('u moet rusten', 'y moot RUS-ten', '“You must rest.” A polite advice sentence.', 'U moet twee dagen rusten.', '“You must rest for two days.”'),
-    item('eet geen pittig eten', 'ayt khayn PIT-tikh AY-ten', '“Do not eat spicy food.” Dutch often uses `geen` to negate nouns.', 'Eet vandaag geen pittig eten.', '“Do not eat spicy food today.”'),
+  "expressionPractice": [
+    {
+      "id": "describing-symptom",
+      "label": "Describing symptom",
+      "goal": "Use `ik heb` or `ik heb pijn aan`."
+    },
+    {
+      "id": "asking-help",
+      "label": "Asking help",
+      "goal": "Use `ik heb ... nodig`."
+    },
+    {
+      "id": "understanding-advice",
+      "label": "Understanding advice",
+      "goal": "Recognize one recommendation and one prohibition."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-health",
+    "topic-service"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit18health-orientation"
+      ],
+      "targetText": "lesdoel",
+      "romanization": "",
+      "nativeText": "Describe simple symptoms, ask for help, and understand basic advice.",
+      "pronunciation": "",
+      "exampleTarget": "lesdoel",
+      "exampleNative": "The whole lesson is built toward this outcome: Explain a minor illness at a pharmacy or clinic.",
+      "korean": "lesdoel",
+      "english": "Describe simple symptoms, ask for help, and understand basic advice.",
+      "example": "lesdoel",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Explain a minor illness at a pharmacy or clinic."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "nl-level1unit18health-pronunciation"
+      ],
+      "targetText": "klankcontrole",
+      "romanization": "",
+      "nativeText": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Ik heb sinds vanochtend hoofdpijn.\".",
+      "pronunciation": "",
+      "exampleTarget": "Ik heb sinds vanochtend hoofdpijn.",
+      "exampleNative": "“I have had a headache since this morning.”",
+      "korean": "klankcontrole",
+      "english": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Ik heb sinds vanochtend hoofdpijn.\".",
+      "example": "Ik heb sinds vanochtend hoofdpijn.",
+      "exampleEnglish": "“I have had a headache since this morning.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1"
+      ],
+      "targetText": "ik heb hoofdpijn",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 18: Gezondheid — Health with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Ik heb sinds vanochtend hoofdpijn.",
+      "exampleNative": "“I have had a headache since this morning.”",
+      "korean": "ik heb hoofdpijn",
+      "english": "Use the key language of Level 1 · Unit 18: Gezondheid — Health with the register and setting that the lesson requires.",
+      "example": "Ik heb sinds vanochtend hoofdpijn.",
+      "exampleEnglish": "“I have had a headache since this morning.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-2"
+      ],
+      "targetText": "koorts",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 18: Gezondheid — Health sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Ik heb hoge koorts.",
+      "exampleNative": "“I have a high fever.”",
+      "korean": "koorts",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 18: Gezondheid — Health sound precise rather than merely understandable.",
+      "example": "Ik heb hoge koorts.",
+      "exampleEnglish": "“I have a high fever.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "nl-level1unit18health-grammar-1"
+      ],
+      "targetText": "ik heb hoofdpijn",
+      "romanization": "",
+      "nativeText": "Describe simple symptoms, ask for help, and understand basic advice.",
+      "pronunciation": "",
+      "exampleTarget": "Ik heb sinds vanochtend hoofdpijn.",
+      "exampleNative": "“I have had a headache since this morning.”",
+      "korean": "ik heb hoofdpijn",
+      "english": "Describe simple symptoms, ask for help, and understand basic advice.",
+      "example": "Ik heb sinds vanochtend hoofdpijn.",
+      "exampleEnglish": "“I have had a headache since this morning.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "nl-level1unit18health-grammar-2"
+      ],
+      "targetText": "koorts",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 18: Gezondheid — Health with one nearby Dutch form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Ik heb hoge koorts.",
+      "exampleNative": "“I have a high fever.”",
+      "korean": "koorts",
+      "english": "Contrast the main pattern in Level 1 · Unit 18: Gezondheid — Health with one nearby Dutch form so the learner can avoid literal translation.",
+      "example": "Ik heb hoge koorts.",
+      "exampleEnglish": "“I have a high fever.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "nl-level1unit18health-reading"
+      ],
+      "targetText": "leesmodel",
+      "romanization": "",
+      "nativeText": "Read \"Eet vandaag geen pittig eten.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Eet vandaag geen pittig eten.",
+      "exampleNative": "“Do not eat spicy food today.”",
+      "korean": "leesmodel",
+      "english": "Read \"Eet vandaag geen pittig eten.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Eet vandaag geen pittig eten.",
+      "exampleEnglish": "“Do not eat spicy food today.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit18health-listening"
+      ],
+      "targetText": "dialoogmodel",
+      "romanization": "",
+      "nativeText": "Hear \"Eet vandaag geen pittig eten.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Eet vandaag geen pittig eten.",
+      "exampleNative": "“Do not eat spicy food today.”",
+      "korean": "dialoogmodel",
+      "english": "Hear \"Eet vandaag geen pittig eten.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Eet vandaag geen pittig eten.",
+      "exampleEnglish": "“Do not eat spicy food today.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "nl-level1unit18health-writing"
+      ],
+      "targetText": "schrijfoefening",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Ik heb sinds vanochtend hoofdpijn.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Ik heb sinds vanochtend hoofdpijn.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "schrijfoefening",
+      "english": "Write your own version after studying \"Ik heb sinds vanochtend hoofdpijn.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Ik heb sinds vanochtend hoofdpijn.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "nl-level1unit18health-culture"
+      ],
+      "targetText": "gebruik en context",
+      "romanization": "",
+      "nativeText": "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Ik heb hoge koorts.",
+      "exampleNative": "“I have a high fever.”",
+      "korean": "gebruik en context",
+      "english": "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used.",
+      "example": "Ik heb hoge koorts.",
+      "exampleEnglish": "“I have a high fever.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "eindtaak",
+      "romanization": "",
+      "nativeText": "Explain a minor illness at a pharmacy or clinic.",
+      "pronunciation": "",
+      "exampleTarget": "Eet vandaag geen pittig eten.",
+      "exampleNative": "Explain a minor illness at a pharmacy or clinic.",
+      "korean": "eindtaak",
+      "english": "Explain a minor illness at a pharmacy or clinic.",
+      "example": "Eet vandaag geen pittig eten.",
+      "exampleEnglish": "Explain a minor illness at a pharmacy or clinic."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit18health-grammar-2"
+      ],
+      "targetText": "veelgemaakte fout",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around verb-second order, separable verbs, pronouns, and article choice. Begin by checking \"Ik heb hoge koorts.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Ik heb hoge koorts.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “I have a high fever.”",
+      "korean": "veelgemaakte fout",
+      "english": "Watch for literal-translation mistakes around verb-second order, separable verbs, pronouns, and article choice. Begin by checking \"Ik heb hoge koorts.\" against the model.",
+      "example": "Ik heb hoge koorts.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “I have a high fever.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-culture"
+      ],
+      "targetText": "register",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for jij, u, a service register, or a more relaxed everyday choice before selecting the final wording. Compare the social fit of \"Ik heb sinds vanochtend hoofdpijn.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Ik heb sinds vanochtend hoofdpijn.",
+      "exampleNative": "“I have had a headache since this morning.”",
+      "korean": "register",
+      "english": "Check whether the setting calls for jij, u, a service register, or a more relaxed everyday choice before selecting the final wording. Compare the social fit of \"Ik heb sinds vanochtend hoofdpijn.\" before reusing it elsewhere.",
+      "example": "Ik heb sinds vanochtend hoofdpijn.",
+      "exampleEnglish": "“I have had a headache since this morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "vloeiendheid",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Dutch message rather than as separate translated fragments. Aim to carry \"Eet vandaag geen pittig eten.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Eet vandaag geen pittig eten.",
+      "exampleNative": "“Do not eat spicy food today.”",
+      "korean": "vloeiendheid",
+      "english": "Say the idea as one connected Dutch message rather than as separate translated fragments. Aim to carry \"Eet vandaag geen pittig eten.\" as one thought.",
+      "example": "Eet vandaag geen pittig eten.",
+      "exampleEnglish": "“Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "toepassing",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Ik heb sinds vanochtend hoofdpijn.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Ik heb sinds vanochtend hoofdpijn.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "toepassing",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Ik heb sinds vanochtend hoofdpijn.\" and move it into your own life.",
+      "example": "Ik heb sinds vanochtend hoofdpijn.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-grammar-1"
+      ],
+      "targetText": "actief ophalen",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"ik heb hoofdpijn\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "ik heb hoofdpijn",
+      "exampleNative": "“I have a headache.” Dutch often compounds the body part and pain noun.",
+      "korean": "actief ophalen",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"ik heb hoofdpijn\" before looking back.",
+      "example": "ik heb hoofdpijn",
+      "exampleEnglish": "“I have a headache.” Dutch often compounds the body part and pain noun."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-writing"
+      ],
+      "targetText": "uitbreiding",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Eet vandaag geen pittig eten.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Eet vandaag geen pittig eten.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "uitbreiding",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Eet vandaag geen pittig eten.\" rather than restarting from a blank sentence.",
+      "example": "Eet vandaag geen pittig eten.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading"
+      ],
+      "targetText": "vergelijking",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 18: Gezondheid — Health with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Ik heb hoge koorts.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Ik heb hoge koorts.",
+      "exampleNative": "“I have a high fever.”",
+      "korean": "vergelijking",
+      "english": "Compare the central form in Level 1 · Unit 18: Gezondheid — Health with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Ik heb hoge koorts.\" as the comparison line.",
+      "example": "Ik heb hoge koorts.",
+      "exampleEnglish": "“I have a high fever.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "nl-level1unit18health-pronunciation"
+      ],
+      "targetText": "uitspraakcorrectie",
+      "romanization": "",
+      "nativeText": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Ik heb sinds vanochtend hoofdpijn.\".",
+      "pronunciation": "",
+      "exampleTarget": "Ik heb sinds vanochtend hoofdpijn.",
+      "exampleNative": "“I have had a headache since this morning.”",
+      "korean": "uitspraakcorrectie",
+      "english": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Ik heb sinds vanochtend hoofdpijn.\".",
+      "example": "Ik heb sinds vanochtend hoofdpijn.",
+      "exampleEnglish": "“I have had a headache since this morning.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "dialoogvariatie",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Eet vandaag geen pittig eten.\".",
+      "pronunciation": "",
+      "exampleTarget": "Eet vandaag geen pittig eten.",
+      "exampleNative": "“Do not eat spicy food today.”",
+      "korean": "dialoogvariatie",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Eet vandaag geen pittig eten.\".",
+      "example": "Eet vandaag geen pittig eten.",
+      "exampleEnglish": "“Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-writing"
+      ],
+      "targetText": "zinsbouw",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Ik heb sinds vanochtend hoofdpijn.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Ik heb sinds vanochtend hoofdpijn.",
+      "exampleNative": "“I have had a headache since this morning.”",
+      "korean": "zinsbouw",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Ik heb sinds vanochtend hoofdpijn.\" one layer at a time.",
+      "example": "Ik heb sinds vanochtend hoofdpijn.",
+      "exampleEnglish": "“I have had a headache since this morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-2"
+      ],
+      "targetText": "snelle check",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Ik heb hoge koorts.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Ik heb hoge koorts.",
+      "exampleNative": "“I have a high fever.”",
+      "korean": "snelle check",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Ik heb hoge koorts.\" as the deciding example.",
+      "example": "Ik heb hoge koorts.",
+      "exampleEnglish": "“I have a high fever.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit18health-culture",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "terugblik",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Eet vandaag geen pittig eten.\".",
+      "pronunciation": "",
+      "exampleTarget": "Eet vandaag geen pittig eten.",
+      "exampleNative": "“Do not eat spicy food today.”",
+      "korean": "terugblik",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Eet vandaag geen pittig eten.\".",
+      "example": "Eet vandaag geen pittig eten.",
+      "exampleEnglish": "“Do not eat spicy food today.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "ik heb hoofdpijn",
+      "romanization": "ik hep HOHFT-peyn",
+      "nativeText": "“I have a headache.” Dutch often compounds the body part and pain noun.",
+      "pronunciation": "ik hep HOHFT-peyn",
+      "exampleTarget": "Ik heb sinds vanochtend hoofdpijn.",
+      "exampleNative": "“I have had a headache since this morning.”",
+      "korean": "ik heb hoofdpijn",
+      "english": "“I have a headache.” Dutch often compounds the body part and pain noun.",
+      "example": "Ik heb sinds vanochtend hoofdpijn.",
+      "exampleEnglish": "“I have had a headache since this morning.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "Ik heb sinds vanochtend hoofdpijn.",
+      "romanization": "ik hep HOHFT-peyn",
+      "nativeText": "Model use for \"Ik heb sinds vanochtend hoofdpijn.\": “I have had a headache since this morning.”",
+      "pronunciation": "ik hep HOHFT-peyn",
+      "exampleTarget": "Ik heb sinds vanochtend hoofdpijn.",
+      "exampleNative": "“I have had a headache since this morning.”",
+      "korean": "Ik heb sinds vanochtend hoofdpijn.",
+      "english": "Model use for \"Ik heb sinds vanochtend hoofdpijn.\": “I have had a headache since this morning.”",
+      "example": "Ik heb sinds vanochtend hoofdpijn.",
+      "exampleEnglish": "“I have had a headache since this morning.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "ik heb hoofdpijn",
+      "romanization": "ik hep HOHFT-peyn",
+      "nativeText": "Usage focus for \"ik heb hoofdpijn\": Use the key language of Level 1 · Unit 18: Gezondheid — Health with the register and setting that the lesson requires.",
+      "pronunciation": "ik hep HOHFT-peyn",
+      "exampleTarget": "Ik heb sinds vanochtend hoofdpijn.",
+      "exampleNative": "Notice what the form is doing here: “I have had a headache since this morning.”",
+      "korean": "ik heb hoofdpijn",
+      "english": "Usage focus for \"ik heb hoofdpijn\": Use the key language of Level 1 · Unit 18: Gezondheid — Health with the register and setting that the lesson requires.",
+      "example": "Ik heb sinds vanochtend hoofdpijn.",
+      "exampleEnglish": "Notice what the form is doing here: “I have had a headache since this morning.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "ik heb hoofdpijn",
+      "romanization": "ik hep HOHFT-peyn",
+      "nativeText": "Contrast check for \"ik heb hoofdpijn\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ik hep HOHFT-peyn",
+      "exampleTarget": "Ik heb sinds vanochtend hoofdpijn.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have had a headache since this morning.”",
+      "korean": "ik heb hoofdpijn",
+      "english": "Contrast check for \"ik heb hoofdpijn\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik heb sinds vanochtend hoofdpijn.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have had a headache since this morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "ik heb hoofdpijn",
+      "romanization": "ik hep HOHFT-peyn",
+      "nativeText": "Recall \"ik heb hoofdpijn\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik heb sinds vanochtend hoofdpijn.\".",
+      "pronunciation": "ik hep HOHFT-peyn",
+      "exampleTarget": "Ik heb sinds vanochtend hoofdpijn.",
+      "exampleNative": "Self-check against the model before moving on: “I have had a headache since this morning.”",
+      "korean": "ik heb hoofdpijn",
+      "english": "Recall \"ik heb hoofdpijn\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik heb sinds vanochtend hoofdpijn.\".",
+      "example": "Ik heb sinds vanochtend hoofdpijn.",
+      "exampleEnglish": "Self-check against the model before moving on: “I have had a headache since this morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "ik heb hoofdpijn",
+      "romanization": "ik hep HOHFT-peyn",
+      "nativeText": "Repair \"ik heb hoofdpijn\" inside \"Ik heb sinds vanochtend hoofdpijn.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 18: Gezondheid — Health with the register and setting that the lesson requires.",
+      "pronunciation": "ik hep HOHFT-peyn",
+      "exampleTarget": "Ik heb sinds vanochtend hoofdpijn.",
+      "exampleNative": "Use the model as the repair target: “I have had a headache since this morning.”",
+      "korean": "ik heb hoofdpijn",
+      "english": "Repair \"ik heb hoofdpijn\" inside \"Ik heb sinds vanochtend hoofdpijn.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 18: Gezondheid — Health with the register and setting that the lesson requires.",
+      "example": "Ik heb sinds vanochtend hoofdpijn.",
+      "exampleEnglish": "Use the model as the repair target: “I have had a headache since this morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "ik heb hoofdpijn",
+      "romanization": "ik hep HOHFT-peyn",
+      "nativeText": "Transfer \"ik heb hoofdpijn\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik heb sinds vanochtend hoofdpijn.\".",
+      "pronunciation": "ik hep HOHFT-peyn",
+      "exampleTarget": "Ik heb sinds vanochtend hoofdpijn.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have had a headache since this morning.”",
+      "korean": "ik heb hoofdpijn",
+      "english": "Transfer \"ik heb hoofdpijn\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik heb sinds vanochtend hoofdpijn.\".",
+      "example": "Ik heb sinds vanochtend hoofdpijn.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have had a headache since this morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "ik heb hoofdpijn",
+      "romanization": "ik hep HOHFT-peyn",
+      "nativeText": "Find one word or phrase that naturally travels with \"ik heb hoofdpijn\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ik hep HOHFT-peyn",
+      "exampleTarget": "Ik heb sinds vanochtend hoofdpijn.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I have had a headache since this morning.”",
+      "korean": "ik heb hoofdpijn",
+      "english": "Find one word or phrase that naturally travels with \"ik heb hoofdpijn\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik heb sinds vanochtend hoofdpijn.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I have had a headache since this morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "ik heb hoofdpijn",
+      "romanization": "ik hep HOHFT-peyn",
+      "nativeText": "Listen for \"ik heb hoofdpijn\" inside \"Ik heb sinds vanochtend hoofdpijn.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ik hep HOHFT-peyn",
+      "exampleTarget": "Ik heb sinds vanochtend hoofdpijn.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have had a headache since this morning.”",
+      "korean": "ik heb hoofdpijn",
+      "english": "Listen for \"ik heb hoofdpijn\" inside \"Ik heb sinds vanochtend hoofdpijn.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik heb sinds vanochtend hoofdpijn.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have had a headache since this morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "ik heb hoofdpijn",
+      "romanization": "ik hep HOHFT-peyn",
+      "nativeText": "Write \"ik heb hoofdpijn\" again without looking, then compare the exact written form against \"Ik heb sinds vanochtend hoofdpijn.\" before moving on.",
+      "pronunciation": "ik hep HOHFT-peyn",
+      "exampleTarget": "Ik heb sinds vanochtend hoofdpijn.",
+      "exampleNative": "Use the written model as the final correctness check: “I have had a headache since this morning.”",
+      "korean": "ik heb hoofdpijn",
+      "english": "Write \"ik heb hoofdpijn\" again without looking, then compare the exact written form against \"Ik heb sinds vanochtend hoofdpijn.\" before moving on.",
+      "example": "Ik heb sinds vanochtend hoofdpijn.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I have had a headache since this morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "ik heb hoofdpijn",
+      "romanization": "ik hep HOHFT-peyn",
+      "nativeText": "Check whether \"ik heb hoofdpijn\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have had a headache since this morning.”",
+      "pronunciation": "ik hep HOHFT-peyn",
+      "exampleTarget": "Ik heb sinds vanochtend hoofdpijn.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I have had a headache since this morning.”",
+      "korean": "ik heb hoofdpijn",
+      "english": "Check whether \"ik heb hoofdpijn\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have had a headache since this morning.”",
+      "example": "Ik heb sinds vanochtend hoofdpijn.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I have had a headache since this morning.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "koorts",
+      "romanization": "kohrts",
+      "nativeText": "“Fever.” A common clinic word.",
+      "pronunciation": "kohrts",
+      "exampleTarget": "Ik heb hoge koorts.",
+      "exampleNative": "“I have a high fever.”",
+      "korean": "koorts",
+      "english": "“Fever.” A common clinic word.",
+      "example": "Ik heb hoge koorts.",
+      "exampleEnglish": "“I have a high fever.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "Ik heb hoge koorts.",
+      "romanization": "kohrts",
+      "nativeText": "Model use for \"Ik heb hoge koorts.\": “I have a high fever.”",
+      "pronunciation": "kohrts",
+      "exampleTarget": "Ik heb hoge koorts.",
+      "exampleNative": "“I have a high fever.”",
+      "korean": "Ik heb hoge koorts.",
+      "english": "Model use for \"Ik heb hoge koorts.\": “I have a high fever.”",
+      "example": "Ik heb hoge koorts.",
+      "exampleEnglish": "“I have a high fever.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "koorts",
+      "romanization": "kohrts",
+      "nativeText": "Usage focus for \"koorts\": Distinguish the nearby wording choices that make Level 1 · Unit 18: Gezondheid — Health sound precise rather than merely understandable.",
+      "pronunciation": "kohrts",
+      "exampleTarget": "Ik heb hoge koorts.",
+      "exampleNative": "Notice what the form is doing here: “I have a high fever.”",
+      "korean": "koorts",
+      "english": "Usage focus for \"koorts\": Distinguish the nearby wording choices that make Level 1 · Unit 18: Gezondheid — Health sound precise rather than merely understandable.",
+      "example": "Ik heb hoge koorts.",
+      "exampleEnglish": "Notice what the form is doing here: “I have a high fever.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "koorts",
+      "romanization": "kohrts",
+      "nativeText": "Contrast check for \"koorts\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kohrts",
+      "exampleTarget": "Ik heb hoge koorts.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have a high fever.”",
+      "korean": "koorts",
+      "english": "Contrast check for \"koorts\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik heb hoge koorts.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have a high fever.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "koorts",
+      "romanization": "kohrts",
+      "nativeText": "Recall \"koorts\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik heb hoge koorts.\".",
+      "pronunciation": "kohrts",
+      "exampleTarget": "Ik heb hoge koorts.",
+      "exampleNative": "Self-check against the model before moving on: “I have a high fever.”",
+      "korean": "koorts",
+      "english": "Recall \"koorts\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik heb hoge koorts.\".",
+      "example": "Ik heb hoge koorts.",
+      "exampleEnglish": "Self-check against the model before moving on: “I have a high fever.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "koorts",
+      "romanization": "kohrts",
+      "nativeText": "Repair \"koorts\" inside \"Ik heb hoge koorts.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 18: Gezondheid — Health sound precise rather than merely understandable.",
+      "pronunciation": "kohrts",
+      "exampleTarget": "Ik heb hoge koorts.",
+      "exampleNative": "Use the model as the repair target: “I have a high fever.”",
+      "korean": "koorts",
+      "english": "Repair \"koorts\" inside \"Ik heb hoge koorts.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 18: Gezondheid — Health sound precise rather than merely understandable.",
+      "example": "Ik heb hoge koorts.",
+      "exampleEnglish": "Use the model as the repair target: “I have a high fever.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "koorts",
+      "romanization": "kohrts",
+      "nativeText": "Transfer \"koorts\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik heb hoge koorts.\".",
+      "pronunciation": "kohrts",
+      "exampleTarget": "Ik heb hoge koorts.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have a high fever.”",
+      "korean": "koorts",
+      "english": "Transfer \"koorts\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik heb hoge koorts.\".",
+      "example": "Ik heb hoge koorts.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have a high fever.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "koorts",
+      "romanization": "kohrts",
+      "nativeText": "Find one word or phrase that naturally travels with \"koorts\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kohrts",
+      "exampleTarget": "Ik heb hoge koorts.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I have a high fever.”",
+      "korean": "koorts",
+      "english": "Find one word or phrase that naturally travels with \"koorts\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik heb hoge koorts.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I have a high fever.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "koorts",
+      "romanization": "kohrts",
+      "nativeText": "Listen for \"koorts\" inside \"Ik heb hoge koorts.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kohrts",
+      "exampleTarget": "Ik heb hoge koorts.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have a high fever.”",
+      "korean": "koorts",
+      "english": "Listen for \"koorts\" inside \"Ik heb hoge koorts.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik heb hoge koorts.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have a high fever.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "koorts",
+      "romanization": "kohrts",
+      "nativeText": "Write \"koorts\" again without looking, then compare the exact written form against \"Ik heb hoge koorts.\" before moving on.",
+      "pronunciation": "kohrts",
+      "exampleTarget": "Ik heb hoge koorts.",
+      "exampleNative": "Use the written model as the final correctness check: “I have a high fever.”",
+      "korean": "koorts",
+      "english": "Write \"koorts\" again without looking, then compare the exact written form against \"Ik heb hoge koorts.\" before moving on.",
+      "example": "Ik heb hoge koorts.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I have a high fever.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "koorts",
+      "romanization": "kohrts",
+      "nativeText": "Check whether \"koorts\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have a high fever.”",
+      "pronunciation": "kohrts",
+      "exampleTarget": "Ik heb hoge koorts.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I have a high fever.”",
+      "korean": "koorts",
+      "english": "Check whether \"koorts\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have a high fever.”",
+      "example": "Ik heb hoge koorts.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I have a high fever.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "hoest",
+      "romanization": "hoost",
+      "nativeText": "“Cough.” A common symptom noun.",
+      "pronunciation": "hoost",
+      "exampleTarget": "Ik heb een droge hoest.",
+      "exampleNative": "“I have a dry cough.”",
+      "korean": "hoest",
+      "english": "“Cough.” A common symptom noun.",
+      "example": "Ik heb een droge hoest.",
+      "exampleEnglish": "“I have a dry cough.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "Ik heb een droge hoest.",
+      "romanization": "hoost",
+      "nativeText": "Model use for \"Ik heb een droge hoest.\": “I have a dry cough.”",
+      "pronunciation": "hoost",
+      "exampleTarget": "Ik heb een droge hoest.",
+      "exampleNative": "“I have a dry cough.”",
+      "korean": "Ik heb een droge hoest.",
+      "english": "Model use for \"Ik heb een droge hoest.\": “I have a dry cough.”",
+      "example": "Ik heb een droge hoest.",
+      "exampleEnglish": "“I have a dry cough.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "hoest",
+      "romanization": "hoost",
+      "nativeText": "Usage focus for \"hoest\": “Cough.” A common symptom noun.",
+      "pronunciation": "hoost",
+      "exampleTarget": "Ik heb een droge hoest.",
+      "exampleNative": "Notice what the form is doing here: “I have a dry cough.”",
+      "korean": "hoest",
+      "english": "Usage focus for \"hoest\": “Cough.” A common symptom noun.",
+      "example": "Ik heb een droge hoest.",
+      "exampleEnglish": "Notice what the form is doing here: “I have a dry cough.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "hoest",
+      "romanization": "hoost",
+      "nativeText": "Contrast check for \"hoest\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "hoost",
+      "exampleTarget": "Ik heb een droge hoest.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have a dry cough.”",
+      "korean": "hoest",
+      "english": "Contrast check for \"hoest\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik heb een droge hoest.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have a dry cough.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "hoest",
+      "romanization": "hoost",
+      "nativeText": "Recall \"hoest\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik heb een droge hoest.\".",
+      "pronunciation": "hoost",
+      "exampleTarget": "Ik heb een droge hoest.",
+      "exampleNative": "Self-check against the model before moving on: “I have a dry cough.”",
+      "korean": "hoest",
+      "english": "Recall \"hoest\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik heb een droge hoest.\".",
+      "example": "Ik heb een droge hoest.",
+      "exampleEnglish": "Self-check against the model before moving on: “I have a dry cough.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "hoest",
+      "romanization": "hoost",
+      "nativeText": "Repair \"hoest\" inside \"Ik heb een droge hoest.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Cough.” A common symptom noun.",
+      "pronunciation": "hoost",
+      "exampleTarget": "Ik heb een droge hoest.",
+      "exampleNative": "Use the model as the repair target: “I have a dry cough.”",
+      "korean": "hoest",
+      "english": "Repair \"hoest\" inside \"Ik heb een droge hoest.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Cough.” A common symptom noun.",
+      "example": "Ik heb een droge hoest.",
+      "exampleEnglish": "Use the model as the repair target: “I have a dry cough.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "hoest",
+      "romanization": "hoost",
+      "nativeText": "Transfer \"hoest\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik heb een droge hoest.\".",
+      "pronunciation": "hoost",
+      "exampleTarget": "Ik heb een droge hoest.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have a dry cough.”",
+      "korean": "hoest",
+      "english": "Transfer \"hoest\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik heb een droge hoest.\".",
+      "example": "Ik heb een droge hoest.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have a dry cough.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "hoest",
+      "romanization": "hoost",
+      "nativeText": "Find one word or phrase that naturally travels with \"hoest\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "hoost",
+      "exampleTarget": "Ik heb een droge hoest.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I have a dry cough.”",
+      "korean": "hoest",
+      "english": "Find one word or phrase that naturally travels with \"hoest\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik heb een droge hoest.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I have a dry cough.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "hoest",
+      "romanization": "hoost",
+      "nativeText": "Listen for \"hoest\" inside \"Ik heb een droge hoest.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "hoost",
+      "exampleTarget": "Ik heb een droge hoest.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have a dry cough.”",
+      "korean": "hoest",
+      "english": "Listen for \"hoest\" inside \"Ik heb een droge hoest.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik heb een droge hoest.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have a dry cough.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "hoest",
+      "romanization": "hoost",
+      "nativeText": "Write \"hoest\" again without looking, then compare the exact written form against \"Ik heb een droge hoest.\" before moving on.",
+      "pronunciation": "hoost",
+      "exampleTarget": "Ik heb een droge hoest.",
+      "exampleNative": "Use the written model as the final correctness check: “I have a dry cough.”",
+      "korean": "hoest",
+      "english": "Write \"hoest\" again without looking, then compare the exact written form against \"Ik heb een droge hoest.\" before moving on.",
+      "example": "Ik heb een droge hoest.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I have a dry cough.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "hoest",
+      "romanization": "hoost",
+      "nativeText": "Check whether \"hoest\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have a dry cough.”",
+      "pronunciation": "hoost",
+      "exampleTarget": "Ik heb een droge hoest.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I have a dry cough.”",
+      "korean": "hoest",
+      "english": "Check whether \"hoest\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have a dry cough.”",
+      "example": "Ik heb een droge hoest.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I have a dry cough.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "buikpijn",
+      "romanization": "BOYK-peyn",
+      "nativeText": "“Stomachache.” Another useful compound.",
+      "pronunciation": "BOYK-peyn",
+      "exampleTarget": "Ik heb buikpijn na het eten.",
+      "exampleNative": "“I have stomach pain after eating.”",
+      "korean": "buikpijn",
+      "english": "“Stomachache.” Another useful compound.",
+      "example": "Ik heb buikpijn na het eten.",
+      "exampleEnglish": "“I have stomach pain after eating.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "Ik heb buikpijn na het eten.",
+      "romanization": "BOYK-peyn",
+      "nativeText": "Model use for \"Ik heb buikpijn na het eten.\": “I have stomach pain after eating.”",
+      "pronunciation": "BOYK-peyn",
+      "exampleTarget": "Ik heb buikpijn na het eten.",
+      "exampleNative": "“I have stomach pain after eating.”",
+      "korean": "Ik heb buikpijn na het eten.",
+      "english": "Model use for \"Ik heb buikpijn na het eten.\": “I have stomach pain after eating.”",
+      "example": "Ik heb buikpijn na het eten.",
+      "exampleEnglish": "“I have stomach pain after eating.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "buikpijn",
+      "romanization": "BOYK-peyn",
+      "nativeText": "Usage focus for \"buikpijn\": “Stomachache.” Another useful compound.",
+      "pronunciation": "BOYK-peyn",
+      "exampleTarget": "Ik heb buikpijn na het eten.",
+      "exampleNative": "Notice what the form is doing here: “I have stomach pain after eating.”",
+      "korean": "buikpijn",
+      "english": "Usage focus for \"buikpijn\": “Stomachache.” Another useful compound.",
+      "example": "Ik heb buikpijn na het eten.",
+      "exampleEnglish": "Notice what the form is doing here: “I have stomach pain after eating.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "buikpijn",
+      "romanization": "BOYK-peyn",
+      "nativeText": "Contrast check for \"buikpijn\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "BOYK-peyn",
+      "exampleTarget": "Ik heb buikpijn na het eten.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have stomach pain after eating.”",
+      "korean": "buikpijn",
+      "english": "Contrast check for \"buikpijn\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik heb buikpijn na het eten.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have stomach pain after eating.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "buikpijn",
+      "romanization": "BOYK-peyn",
+      "nativeText": "Recall \"buikpijn\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik heb buikpijn na het eten.\".",
+      "pronunciation": "BOYK-peyn",
+      "exampleTarget": "Ik heb buikpijn na het eten.",
+      "exampleNative": "Self-check against the model before moving on: “I have stomach pain after eating.”",
+      "korean": "buikpijn",
+      "english": "Recall \"buikpijn\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik heb buikpijn na het eten.\".",
+      "example": "Ik heb buikpijn na het eten.",
+      "exampleEnglish": "Self-check against the model before moving on: “I have stomach pain after eating.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "buikpijn",
+      "romanization": "BOYK-peyn",
+      "nativeText": "Repair \"buikpijn\" inside \"Ik heb buikpijn na het eten.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Stomachache.” Another useful compound.",
+      "pronunciation": "BOYK-peyn",
+      "exampleTarget": "Ik heb buikpijn na het eten.",
+      "exampleNative": "Use the model as the repair target: “I have stomach pain after eating.”",
+      "korean": "buikpijn",
+      "english": "Repair \"buikpijn\" inside \"Ik heb buikpijn na het eten.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Stomachache.” Another useful compound.",
+      "example": "Ik heb buikpijn na het eten.",
+      "exampleEnglish": "Use the model as the repair target: “I have stomach pain after eating.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "buikpijn",
+      "romanization": "BOYK-peyn",
+      "nativeText": "Transfer \"buikpijn\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik heb buikpijn na het eten.\".",
+      "pronunciation": "BOYK-peyn",
+      "exampleTarget": "Ik heb buikpijn na het eten.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have stomach pain after eating.”",
+      "korean": "buikpijn",
+      "english": "Transfer \"buikpijn\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik heb buikpijn na het eten.\".",
+      "example": "Ik heb buikpijn na het eten.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have stomach pain after eating.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "buikpijn",
+      "romanization": "BOYK-peyn",
+      "nativeText": "Find one word or phrase that naturally travels with \"buikpijn\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "BOYK-peyn",
+      "exampleTarget": "Ik heb buikpijn na het eten.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I have stomach pain after eating.”",
+      "korean": "buikpijn",
+      "english": "Find one word or phrase that naturally travels with \"buikpijn\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik heb buikpijn na het eten.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I have stomach pain after eating.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "buikpijn",
+      "romanization": "BOYK-peyn",
+      "nativeText": "Listen for \"buikpijn\" inside \"Ik heb buikpijn na het eten.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "BOYK-peyn",
+      "exampleTarget": "Ik heb buikpijn na het eten.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have stomach pain after eating.”",
+      "korean": "buikpijn",
+      "english": "Listen for \"buikpijn\" inside \"Ik heb buikpijn na het eten.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik heb buikpijn na het eten.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have stomach pain after eating.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "buikpijn",
+      "romanization": "BOYK-peyn",
+      "nativeText": "Write \"buikpijn\" again without looking, then compare the exact written form against \"Ik heb buikpijn na het eten.\" before moving on.",
+      "pronunciation": "BOYK-peyn",
+      "exampleTarget": "Ik heb buikpijn na het eten.",
+      "exampleNative": "Use the written model as the final correctness check: “I have stomach pain after eating.”",
+      "korean": "buikpijn",
+      "english": "Write \"buikpijn\" again without looking, then compare the exact written form against \"Ik heb buikpijn na het eten.\" before moving on.",
+      "example": "Ik heb buikpijn na het eten.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I have stomach pain after eating.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "buikpijn",
+      "romanization": "BOYK-peyn",
+      "nativeText": "Check whether \"buikpijn\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have stomach pain after eating.”",
+      "pronunciation": "BOYK-peyn",
+      "exampleTarget": "Ik heb buikpijn na het eten.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I have stomach pain after eating.”",
+      "korean": "buikpijn",
+      "english": "Check whether \"buikpijn\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have stomach pain after eating.”",
+      "example": "Ik heb buikpijn na het eten.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I have stomach pain after eating.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "medicijn",
+      "romanization": "may-dee-SEYN",
+      "nativeText": "“Medicine.” Practical in pharmacy talk.",
+      "pronunciation": "may-dee-SEYN",
+      "exampleTarget": "Ik heb een medicijn tegen griep nodig.",
+      "exampleNative": "“I need medicine for the flu.”",
+      "korean": "medicijn",
+      "english": "“Medicine.” Practical in pharmacy talk.",
+      "example": "Ik heb een medicijn tegen griep nodig.",
+      "exampleEnglish": "“I need medicine for the flu.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "Ik heb een medicijn tegen griep nodig.",
+      "romanization": "may-dee-SEYN",
+      "nativeText": "Model use for \"Ik heb een medicijn tegen griep nodig.\": “I need medicine for the flu.”",
+      "pronunciation": "may-dee-SEYN",
+      "exampleTarget": "Ik heb een medicijn tegen griep nodig.",
+      "exampleNative": "“I need medicine for the flu.”",
+      "korean": "Ik heb een medicijn tegen griep nodig.",
+      "english": "Model use for \"Ik heb een medicijn tegen griep nodig.\": “I need medicine for the flu.”",
+      "example": "Ik heb een medicijn tegen griep nodig.",
+      "exampleEnglish": "“I need medicine for the flu.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "medicijn",
+      "romanization": "may-dee-SEYN",
+      "nativeText": "Usage focus for \"medicijn\": “Medicine.” Practical in pharmacy talk.",
+      "pronunciation": "may-dee-SEYN",
+      "exampleTarget": "Ik heb een medicijn tegen griep nodig.",
+      "exampleNative": "Notice what the form is doing here: “I need medicine for the flu.”",
+      "korean": "medicijn",
+      "english": "Usage focus for \"medicijn\": “Medicine.” Practical in pharmacy talk.",
+      "example": "Ik heb een medicijn tegen griep nodig.",
+      "exampleEnglish": "Notice what the form is doing here: “I need medicine for the flu.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "medicijn",
+      "romanization": "may-dee-SEYN",
+      "nativeText": "Contrast check for \"medicijn\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "may-dee-SEYN",
+      "exampleTarget": "Ik heb een medicijn tegen griep nodig.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I need medicine for the flu.”",
+      "korean": "medicijn",
+      "english": "Contrast check for \"medicijn\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik heb een medicijn tegen griep nodig.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I need medicine for the flu.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "medicijn",
+      "romanization": "may-dee-SEYN",
+      "nativeText": "Recall \"medicijn\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik heb een medicijn tegen griep nodig.\".",
+      "pronunciation": "may-dee-SEYN",
+      "exampleTarget": "Ik heb een medicijn tegen griep nodig.",
+      "exampleNative": "Self-check against the model before moving on: “I need medicine for the flu.”",
+      "korean": "medicijn",
+      "english": "Recall \"medicijn\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik heb een medicijn tegen griep nodig.\".",
+      "example": "Ik heb een medicijn tegen griep nodig.",
+      "exampleEnglish": "Self-check against the model before moving on: “I need medicine for the flu.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "medicijn",
+      "romanization": "may-dee-SEYN",
+      "nativeText": "Repair \"medicijn\" inside \"Ik heb een medicijn tegen griep nodig.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Medicine.” Practical in pharmacy talk.",
+      "pronunciation": "may-dee-SEYN",
+      "exampleTarget": "Ik heb een medicijn tegen griep nodig.",
+      "exampleNative": "Use the model as the repair target: “I need medicine for the flu.”",
+      "korean": "medicijn",
+      "english": "Repair \"medicijn\" inside \"Ik heb een medicijn tegen griep nodig.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Medicine.” Practical in pharmacy talk.",
+      "example": "Ik heb een medicijn tegen griep nodig.",
+      "exampleEnglish": "Use the model as the repair target: “I need medicine for the flu.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "medicijn",
+      "romanization": "may-dee-SEYN",
+      "nativeText": "Transfer \"medicijn\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik heb een medicijn tegen griep nodig.\".",
+      "pronunciation": "may-dee-SEYN",
+      "exampleTarget": "Ik heb een medicijn tegen griep nodig.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I need medicine for the flu.”",
+      "korean": "medicijn",
+      "english": "Transfer \"medicijn\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik heb een medicijn tegen griep nodig.\".",
+      "example": "Ik heb een medicijn tegen griep nodig.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I need medicine for the flu.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "medicijn",
+      "romanization": "may-dee-SEYN",
+      "nativeText": "Find one word or phrase that naturally travels with \"medicijn\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "may-dee-SEYN",
+      "exampleTarget": "Ik heb een medicijn tegen griep nodig.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I need medicine for the flu.”",
+      "korean": "medicijn",
+      "english": "Find one word or phrase that naturally travels with \"medicijn\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik heb een medicijn tegen griep nodig.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I need medicine for the flu.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "medicijn",
+      "romanization": "may-dee-SEYN",
+      "nativeText": "Listen for \"medicijn\" inside \"Ik heb een medicijn tegen griep nodig.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "may-dee-SEYN",
+      "exampleTarget": "Ik heb een medicijn tegen griep nodig.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I need medicine for the flu.”",
+      "korean": "medicijn",
+      "english": "Listen for \"medicijn\" inside \"Ik heb een medicijn tegen griep nodig.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik heb een medicijn tegen griep nodig.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I need medicine for the flu.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "medicijn",
+      "romanization": "may-dee-SEYN",
+      "nativeText": "Write \"medicijn\" again without looking, then compare the exact written form against \"Ik heb een medicijn tegen griep nodig.\" before moving on.",
+      "pronunciation": "may-dee-SEYN",
+      "exampleTarget": "Ik heb een medicijn tegen griep nodig.",
+      "exampleNative": "Use the written model as the final correctness check: “I need medicine for the flu.”",
+      "korean": "medicijn",
+      "english": "Write \"medicijn\" again without looking, then compare the exact written form against \"Ik heb een medicijn tegen griep nodig.\" before moving on.",
+      "example": "Ik heb een medicijn tegen griep nodig.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I need medicine for the flu.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "medicijn",
+      "romanization": "may-dee-SEYN",
+      "nativeText": "Check whether \"medicijn\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I need medicine for the flu.”",
+      "pronunciation": "may-dee-SEYN",
+      "exampleTarget": "Ik heb een medicijn tegen griep nodig.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I need medicine for the flu.”",
+      "korean": "medicijn",
+      "english": "Check whether \"medicijn\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I need medicine for the flu.”",
+      "example": "Ik heb een medicijn tegen griep nodig.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I need medicine for the flu.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "dokter",
+      "romanization": "DOK-ter",
+      "nativeText": "“Doctor.” A central service noun.",
+      "pronunciation": "DOK-ter",
+      "exampleTarget": "Ik moet naar de dokter.",
+      "exampleNative": "“I have to go to the doctor.”",
+      "korean": "dokter",
+      "english": "“Doctor.” A central service noun.",
+      "example": "Ik moet naar de dokter.",
+      "exampleEnglish": "“I have to go to the doctor.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "Ik moet naar de dokter.",
+      "romanization": "DOK-ter",
+      "nativeText": "Model use for \"Ik moet naar de dokter.\": “I have to go to the doctor.”",
+      "pronunciation": "DOK-ter",
+      "exampleTarget": "Ik moet naar de dokter.",
+      "exampleNative": "“I have to go to the doctor.”",
+      "korean": "Ik moet naar de dokter.",
+      "english": "Model use for \"Ik moet naar de dokter.\": “I have to go to the doctor.”",
+      "example": "Ik moet naar de dokter.",
+      "exampleEnglish": "“I have to go to the doctor.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "dokter",
+      "romanization": "DOK-ter",
+      "nativeText": "Usage focus for \"dokter\": “Doctor.” A central service noun.",
+      "pronunciation": "DOK-ter",
+      "exampleTarget": "Ik moet naar de dokter.",
+      "exampleNative": "Notice what the form is doing here: “I have to go to the doctor.”",
+      "korean": "dokter",
+      "english": "Usage focus for \"dokter\": “Doctor.” A central service noun.",
+      "example": "Ik moet naar de dokter.",
+      "exampleEnglish": "Notice what the form is doing here: “I have to go to the doctor.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "dokter",
+      "romanization": "DOK-ter",
+      "nativeText": "Contrast check for \"dokter\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "DOK-ter",
+      "exampleTarget": "Ik moet naar de dokter.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have to go to the doctor.”",
+      "korean": "dokter",
+      "english": "Contrast check for \"dokter\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik moet naar de dokter.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have to go to the doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "dokter",
+      "romanization": "DOK-ter",
+      "nativeText": "Recall \"dokter\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik moet naar de dokter.\".",
+      "pronunciation": "DOK-ter",
+      "exampleTarget": "Ik moet naar de dokter.",
+      "exampleNative": "Self-check against the model before moving on: “I have to go to the doctor.”",
+      "korean": "dokter",
+      "english": "Recall \"dokter\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik moet naar de dokter.\".",
+      "example": "Ik moet naar de dokter.",
+      "exampleEnglish": "Self-check against the model before moving on: “I have to go to the doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "dokter",
+      "romanization": "DOK-ter",
+      "nativeText": "Repair \"dokter\" inside \"Ik moet naar de dokter.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Doctor.” A central service noun.",
+      "pronunciation": "DOK-ter",
+      "exampleTarget": "Ik moet naar de dokter.",
+      "exampleNative": "Use the model as the repair target: “I have to go to the doctor.”",
+      "korean": "dokter",
+      "english": "Repair \"dokter\" inside \"Ik moet naar de dokter.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Doctor.” A central service noun.",
+      "example": "Ik moet naar de dokter.",
+      "exampleEnglish": "Use the model as the repair target: “I have to go to the doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "dokter",
+      "romanization": "DOK-ter",
+      "nativeText": "Transfer \"dokter\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik moet naar de dokter.\".",
+      "pronunciation": "DOK-ter",
+      "exampleTarget": "Ik moet naar de dokter.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have to go to the doctor.”",
+      "korean": "dokter",
+      "english": "Transfer \"dokter\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik moet naar de dokter.\".",
+      "example": "Ik moet naar de dokter.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have to go to the doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "dokter",
+      "romanization": "DOK-ter",
+      "nativeText": "Find one word or phrase that naturally travels with \"dokter\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "DOK-ter",
+      "exampleTarget": "Ik moet naar de dokter.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I have to go to the doctor.”",
+      "korean": "dokter",
+      "english": "Find one word or phrase that naturally travels with \"dokter\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik moet naar de dokter.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I have to go to the doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "dokter",
+      "romanization": "DOK-ter",
+      "nativeText": "Listen for \"dokter\" inside \"Ik moet naar de dokter.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "DOK-ter",
+      "exampleTarget": "Ik moet naar de dokter.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have to go to the doctor.”",
+      "korean": "dokter",
+      "english": "Listen for \"dokter\" inside \"Ik moet naar de dokter.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik moet naar de dokter.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have to go to the doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "dokter",
+      "romanization": "DOK-ter",
+      "nativeText": "Write \"dokter\" again without looking, then compare the exact written form against \"Ik moet naar de dokter.\" before moving on.",
+      "pronunciation": "DOK-ter",
+      "exampleTarget": "Ik moet naar de dokter.",
+      "exampleNative": "Use the written model as the final correctness check: “I have to go to the doctor.”",
+      "korean": "dokter",
+      "english": "Write \"dokter\" again without looking, then compare the exact written form against \"Ik moet naar de dokter.\" before moving on.",
+      "example": "Ik moet naar de dokter.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I have to go to the doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "dokter",
+      "romanization": "DOK-ter",
+      "nativeText": "Check whether \"dokter\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have to go to the doctor.”",
+      "pronunciation": "DOK-ter",
+      "exampleTarget": "Ik moet naar de dokter.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I have to go to the doctor.”",
+      "korean": "dokter",
+      "english": "Check whether \"dokter\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have to go to the doctor.”",
+      "example": "Ik moet naar de dokter.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I have to go to the doctor.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "u moet rusten",
+      "romanization": "y moot RUS-ten",
+      "nativeText": "“You must rest.” A polite advice sentence.",
+      "pronunciation": "y moot RUS-ten",
+      "exampleTarget": "U moet twee dagen rusten.",
+      "exampleNative": "“You must rest for two days.”",
+      "korean": "u moet rusten",
+      "english": "“You must rest.” A polite advice sentence.",
+      "example": "U moet twee dagen rusten.",
+      "exampleEnglish": "“You must rest for two days.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "U moet twee dagen rusten.",
+      "romanization": "y moot RUS-ten",
+      "nativeText": "Model use for \"U moet twee dagen rusten.\": “You must rest for two days.”",
+      "pronunciation": "y moot RUS-ten",
+      "exampleTarget": "U moet twee dagen rusten.",
+      "exampleNative": "“You must rest for two days.”",
+      "korean": "U moet twee dagen rusten.",
+      "english": "Model use for \"U moet twee dagen rusten.\": “You must rest for two days.”",
+      "example": "U moet twee dagen rusten.",
+      "exampleEnglish": "“You must rest for two days.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "u moet rusten",
+      "romanization": "y moot RUS-ten",
+      "nativeText": "Usage focus for \"u moet rusten\": “You must rest.” A polite advice sentence.",
+      "pronunciation": "y moot RUS-ten",
+      "exampleTarget": "U moet twee dagen rusten.",
+      "exampleNative": "Notice what the form is doing here: “You must rest for two days.”",
+      "korean": "u moet rusten",
+      "english": "Usage focus for \"u moet rusten\": “You must rest.” A polite advice sentence.",
+      "example": "U moet twee dagen rusten.",
+      "exampleEnglish": "Notice what the form is doing here: “You must rest for two days.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "u moet rusten",
+      "romanization": "y moot RUS-ten",
+      "nativeText": "Contrast check for \"u moet rusten\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "y moot RUS-ten",
+      "exampleTarget": "U moet twee dagen rusten.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “You must rest for two days.”",
+      "korean": "u moet rusten",
+      "english": "Contrast check for \"u moet rusten\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "U moet twee dagen rusten.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “You must rest for two days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "u moet rusten",
+      "romanization": "y moot RUS-ten",
+      "nativeText": "Recall \"u moet rusten\" from memory, then explain what would change if a nearby alternative replaced it in \"U moet twee dagen rusten.\".",
+      "pronunciation": "y moot RUS-ten",
+      "exampleTarget": "U moet twee dagen rusten.",
+      "exampleNative": "Self-check against the model before moving on: “You must rest for two days.”",
+      "korean": "u moet rusten",
+      "english": "Recall \"u moet rusten\" from memory, then explain what would change if a nearby alternative replaced it in \"U moet twee dagen rusten.\".",
+      "example": "U moet twee dagen rusten.",
+      "exampleEnglish": "Self-check against the model before moving on: “You must rest for two days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "u moet rusten",
+      "romanization": "y moot RUS-ten",
+      "nativeText": "Repair \"u moet rusten\" inside \"U moet twee dagen rusten.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “You must rest.” A polite advice sentence.",
+      "pronunciation": "y moot RUS-ten",
+      "exampleTarget": "U moet twee dagen rusten.",
+      "exampleNative": "Use the model as the repair target: “You must rest for two days.”",
+      "korean": "u moet rusten",
+      "english": "Repair \"u moet rusten\" inside \"U moet twee dagen rusten.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “You must rest.” A polite advice sentence.",
+      "example": "U moet twee dagen rusten.",
+      "exampleEnglish": "Use the model as the repair target: “You must rest for two days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "u moet rusten",
+      "romanization": "y moot RUS-ten",
+      "nativeText": "Transfer \"u moet rusten\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"U moet twee dagen rusten.\".",
+      "pronunciation": "y moot RUS-ten",
+      "exampleTarget": "U moet twee dagen rusten.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “You must rest for two days.”",
+      "korean": "u moet rusten",
+      "english": "Transfer \"u moet rusten\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"U moet twee dagen rusten.\".",
+      "example": "U moet twee dagen rusten.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “You must rest for two days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "u moet rusten",
+      "romanization": "y moot RUS-ten",
+      "nativeText": "Find one word or phrase that naturally travels with \"u moet rusten\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "y moot RUS-ten",
+      "exampleTarget": "U moet twee dagen rusten.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “You must rest for two days.”",
+      "korean": "u moet rusten",
+      "english": "Find one word or phrase that naturally travels with \"u moet rusten\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "U moet twee dagen rusten.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “You must rest for two days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "u moet rusten",
+      "romanization": "y moot RUS-ten",
+      "nativeText": "Listen for \"u moet rusten\" inside \"U moet twee dagen rusten.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "y moot RUS-ten",
+      "exampleTarget": "U moet twee dagen rusten.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “You must rest for two days.”",
+      "korean": "u moet rusten",
+      "english": "Listen for \"u moet rusten\" inside \"U moet twee dagen rusten.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "U moet twee dagen rusten.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “You must rest for two days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "u moet rusten",
+      "romanization": "y moot RUS-ten",
+      "nativeText": "Write \"u moet rusten\" again without looking, then compare the exact written form against \"U moet twee dagen rusten.\" before moving on.",
+      "pronunciation": "y moot RUS-ten",
+      "exampleTarget": "U moet twee dagen rusten.",
+      "exampleNative": "Use the written model as the final correctness check: “You must rest for two days.”",
+      "korean": "u moet rusten",
+      "english": "Write \"u moet rusten\" again without looking, then compare the exact written form against \"U moet twee dagen rusten.\" before moving on.",
+      "example": "U moet twee dagen rusten.",
+      "exampleEnglish": "Use the written model as the final correctness check: “You must rest for two days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "u moet rusten",
+      "romanization": "y moot RUS-ten",
+      "nativeText": "Check whether \"u moet rusten\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “You must rest for two days.”",
+      "pronunciation": "y moot RUS-ten",
+      "exampleTarget": "U moet twee dagen rusten.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “You must rest for two days.”",
+      "korean": "u moet rusten",
+      "english": "Check whether \"u moet rusten\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “You must rest for two days.”",
+      "example": "U moet twee dagen rusten.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “You must rest for two days.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "eet geen pittig eten",
+      "romanization": "ayt khayn PIT-tikh AY-ten",
+      "nativeText": "“Do not eat spicy food.” Dutch often uses `geen` to negate nouns.",
+      "pronunciation": "ayt khayn PIT-tikh AY-ten",
+      "exampleTarget": "Eet vandaag geen pittig eten.",
+      "exampleNative": "“Do not eat spicy food today.”",
+      "korean": "eet geen pittig eten",
+      "english": "“Do not eat spicy food.” Dutch often uses `geen` to negate nouns.",
+      "example": "Eet vandaag geen pittig eten.",
+      "exampleEnglish": "“Do not eat spicy food today.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "Eet vandaag geen pittig eten.",
+      "romanization": "ayt khayn PIT-tikh AY-ten",
+      "nativeText": "Model use for \"Eet vandaag geen pittig eten.\": “Do not eat spicy food today.”",
+      "pronunciation": "ayt khayn PIT-tikh AY-ten",
+      "exampleTarget": "Eet vandaag geen pittig eten.",
+      "exampleNative": "“Do not eat spicy food today.”",
+      "korean": "Eet vandaag geen pittig eten.",
+      "english": "Model use for \"Eet vandaag geen pittig eten.\": “Do not eat spicy food today.”",
+      "example": "Eet vandaag geen pittig eten.",
+      "exampleEnglish": "“Do not eat spicy food today.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "eet geen pittig eten",
+      "romanization": "ayt khayn PIT-tikh AY-ten",
+      "nativeText": "Usage focus for \"eet geen pittig eten\": “Do not eat spicy food.” Dutch often uses `geen` to negate nouns.",
+      "pronunciation": "ayt khayn PIT-tikh AY-ten",
+      "exampleTarget": "Eet vandaag geen pittig eten.",
+      "exampleNative": "Notice what the form is doing here: “Do not eat spicy food today.”",
+      "korean": "eet geen pittig eten",
+      "english": "Usage focus for \"eet geen pittig eten\": “Do not eat spicy food.” Dutch often uses `geen` to negate nouns.",
+      "example": "Eet vandaag geen pittig eten.",
+      "exampleEnglish": "Notice what the form is doing here: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "eet geen pittig eten",
+      "romanization": "ayt khayn PIT-tikh AY-ten",
+      "nativeText": "Contrast check for \"eet geen pittig eten\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ayt khayn PIT-tikh AY-ten",
+      "exampleTarget": "Eet vandaag geen pittig eten.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Do not eat spicy food today.”",
+      "korean": "eet geen pittig eten",
+      "english": "Contrast check for \"eet geen pittig eten\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Eet vandaag geen pittig eten.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "eet geen pittig eten",
+      "romanization": "ayt khayn PIT-tikh AY-ten",
+      "nativeText": "Recall \"eet geen pittig eten\" from memory, then explain what would change if a nearby alternative replaced it in \"Eet vandaag geen pittig eten.\".",
+      "pronunciation": "ayt khayn PIT-tikh AY-ten",
+      "exampleTarget": "Eet vandaag geen pittig eten.",
+      "exampleNative": "Self-check against the model before moving on: “Do not eat spicy food today.”",
+      "korean": "eet geen pittig eten",
+      "english": "Recall \"eet geen pittig eten\" from memory, then explain what would change if a nearby alternative replaced it in \"Eet vandaag geen pittig eten.\".",
+      "example": "Eet vandaag geen pittig eten.",
+      "exampleEnglish": "Self-check against the model before moving on: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "eet geen pittig eten",
+      "romanization": "ayt khayn PIT-tikh AY-ten",
+      "nativeText": "Repair \"eet geen pittig eten\" inside \"Eet vandaag geen pittig eten.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Do not eat spicy food.” Dutch often uses `geen` to negate nouns.",
+      "pronunciation": "ayt khayn PIT-tikh AY-ten",
+      "exampleTarget": "Eet vandaag geen pittig eten.",
+      "exampleNative": "Use the model as the repair target: “Do not eat spicy food today.”",
+      "korean": "eet geen pittig eten",
+      "english": "Repair \"eet geen pittig eten\" inside \"Eet vandaag geen pittig eten.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Do not eat spicy food.” Dutch often uses `geen` to negate nouns.",
+      "example": "Eet vandaag geen pittig eten.",
+      "exampleEnglish": "Use the model as the repair target: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "eet geen pittig eten",
+      "romanization": "ayt khayn PIT-tikh AY-ten",
+      "nativeText": "Transfer \"eet geen pittig eten\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Eet vandaag geen pittig eten.\".",
+      "pronunciation": "ayt khayn PIT-tikh AY-ten",
+      "exampleTarget": "Eet vandaag geen pittig eten.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Do not eat spicy food today.”",
+      "korean": "eet geen pittig eten",
+      "english": "Transfer \"eet geen pittig eten\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Eet vandaag geen pittig eten.\".",
+      "example": "Eet vandaag geen pittig eten.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "eet geen pittig eten",
+      "romanization": "ayt khayn PIT-tikh AY-ten",
+      "nativeText": "Find one word or phrase that naturally travels with \"eet geen pittig eten\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ayt khayn PIT-tikh AY-ten",
+      "exampleTarget": "Eet vandaag geen pittig eten.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Do not eat spicy food today.”",
+      "korean": "eet geen pittig eten",
+      "english": "Find one word or phrase that naturally travels with \"eet geen pittig eten\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Eet vandaag geen pittig eten.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "eet geen pittig eten",
+      "romanization": "ayt khayn PIT-tikh AY-ten",
+      "nativeText": "Listen for \"eet geen pittig eten\" inside \"Eet vandaag geen pittig eten.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ayt khayn PIT-tikh AY-ten",
+      "exampleTarget": "Eet vandaag geen pittig eten.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Do not eat spicy food today.”",
+      "korean": "eet geen pittig eten",
+      "english": "Listen for \"eet geen pittig eten\" inside \"Eet vandaag geen pittig eten.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Eet vandaag geen pittig eten.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "eet geen pittig eten",
+      "romanization": "ayt khayn PIT-tikh AY-ten",
+      "nativeText": "Write \"eet geen pittig eten\" again without looking, then compare the exact written form against \"Eet vandaag geen pittig eten.\" before moving on.",
+      "pronunciation": "ayt khayn PIT-tikh AY-ten",
+      "exampleTarget": "Eet vandaag geen pittig eten.",
+      "exampleNative": "Use the written model as the final correctness check: “Do not eat spicy food today.”",
+      "korean": "eet geen pittig eten",
+      "english": "Write \"eet geen pittig eten\" again without looking, then compare the exact written form against \"Eet vandaag geen pittig eten.\" before moving on.",
+      "example": "Eet vandaag geen pittig eten.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit18health-vocabulary-1",
+        "nl-level1unit18health-vocabulary-2",
+        "nl-level1unit18health-grammar-1",
+        "nl-level1unit18health-grammar-2",
+        "nl-level1unit18health-reading",
+        "nl-level1unit18health-listening",
+        "nl-level1unit18health-writing",
+        "nl-level1unit18health-task"
+      ],
+      "targetText": "eet geen pittig eten",
+      "romanization": "ayt khayn PIT-tikh AY-ten",
+      "nativeText": "Check whether \"eet geen pittig eten\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Do not eat spicy food today.”",
+      "pronunciation": "ayt khayn PIT-tikh AY-ten",
+      "exampleTarget": "Eet vandaag geen pittig eten.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Do not eat spicy food today.”",
+      "korean": "eet geen pittig eten",
+      "english": "Check whether \"eet geen pittig eten\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Do not eat spicy food today.”",
+      "example": "Eet vandaag geen pittig eten.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Do not eat spicy food today.”"
+    }
+  ],
+  "targetLang": "nl",
+  "nativeLang": "en",
+  "track": "textbook"
+};

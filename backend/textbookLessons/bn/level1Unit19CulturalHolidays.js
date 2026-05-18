@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('bn', {
-  slug: 'bn-l1u19',
-  title: 'Level 1 · Unit 19: উৎসব ও ঐতিহ্য — Cultural Holidays',
-  category: 'culture',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Talk about Bengali festivals, greetings, and family customs.',
-  vocabularyGoal: 'Use holiday, family, greeting, and tradition words.',
-  grammarGoal: 'Use habitual present forms and simple future forms to describe customs and plans.',
-  speakingGoal: 'Describe one festival, say what people usually do, and give an appropriate greeting.',
-  task: 'Explain one Bengali festival to a visitor.',
-  expressionPractice: [
-    practice('naming-holiday', 'Naming holiday', 'Introduce one festival clearly.'),
-    practice('describing-custom', 'Describing custom', 'Use one repeated action.'),
-    practice('giving-greeting', 'Giving greeting', 'Use the formula that fits the occasion.'),
+module.exports = {
+  "title": "Level 1 · Unit 19: উৎসব ও ঐতিহ্য — Cultural Holidays",
+  "category": "culture",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "bn-level1unit19culturalholidays-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Talk about Bengali festivals, greetings, and family customs."
+      ],
+      "task": "Explain one Bengali festival to a visitor."
+    },
+    {
+      "id": "bn-level1unit19culturalholidays-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "bn-level1unit19culturalholidays-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 19: উৎসব ও ঐতিহ্য — Cultural Holidays with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "bn-level1unit19culturalholidays-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 19: উৎসব ও ঐতিহ্য — Cultural Holidays sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "bn-level1unit19culturalholidays-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Talk about Bengali festivals, greetings, and family customs."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "bn-level1unit19culturalholidays-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 19: উৎসব ও ঐতিহ্য — Cultural Holidays with one nearby Bengali form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "bn-level1unit19culturalholidays-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "bn-level1unit19culturalholidays-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "bn-level1unit19culturalholidays-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "bn-level1unit19culturalholidays-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "bn-level1unit19culturalholidays-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Explain one Bengali festival to a visitor."
+      ],
+      "task": "Explain one Bengali festival to a visitor."
+    }
   ],
-  relatedPools: ['topic-culture', 'topic-family'],
-  items: [
-    item('পয়লা বৈশাখ', 'poila boishakh', 'Bengali New Year, a major cultural celebration in Bangladesh and West Bengal.', 'পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।', '“At Poila Boishakh people wear new clothes.”'),
-    item('দুর্গাপূজা', 'durgapuja', 'A major Bengali Hindu festival, especially visible in West Bengal.', 'দুর্গাপূজায় প্যান্ডেল দেখা হয়।', '“At Durga Puja people visit pandals.”'),
-    item('ঈদ', 'eid', 'A major Muslim festival in Bangladesh and Bengali-speaking Muslim communities.', 'ঈদে পরিবার একসঙ্গে হয়।', '“At Eid the family gathers together.”'),
-    item('নববর্ষ', 'noboborsho', '“New Year.” A useful general festival noun.', 'শুভ নববর্ষ!', '“Happy New Year!”'),
-    item('সাধারণত', 'shadharonoto', '“Usually.” A useful word for customs.', 'সাধারণত আমরা আত্মীয়দের দেখি।', '“Usually we see relatives.”'),
-    item('উদযাপন করা', 'udjapon kora', '“To celebrate.” A central festival verb.', 'আপনারা কীভাবে ঈদ উদযাপন করেন?', '“How do you celebrate Eid?”'),
-    item('শুভেচ্ছা', 'shubhechchha', '“Greetings / good wishes.” A useful holiday word.', 'সবাইকে শুভেচ্ছা জানাই।', '“I send greetings to everyone.”'),
-    item('ঐতিহ্য', 'oitihyo', '“Tradition.” A bridge noun for cultural explanation.', 'এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।', '“This is a very important tradition.”'),
+  "expressionPractice": [
+    {
+      "id": "naming-holiday",
+      "label": "Naming holiday",
+      "goal": "Introduce one festival clearly."
+    },
+    {
+      "id": "describing-custom",
+      "label": "Describing custom",
+      "goal": "Use one repeated action."
+    },
+    {
+      "id": "giving-greeting",
+      "label": "Giving greeting",
+      "goal": "Use the formula that fits the occasion."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-culture",
+    "topic-family"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-orientation"
+      ],
+      "targetText": "পাঠের লক্ষ্য",
+      "romanization": "",
+      "nativeText": "Talk about Bengali festivals, greetings, and family customs.",
+      "pronunciation": "",
+      "exampleTarget": "পাঠের লক্ষ্য",
+      "exampleNative": "The whole lesson is built toward this outcome: Explain one Bengali festival to a visitor.",
+      "korean": "পাঠের লক্ষ্য",
+      "english": "Talk about Bengali festivals, greetings, and family customs.",
+      "example": "পাঠের লক্ষ্য",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Explain one Bengali festival to a visitor."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-pronunciation"
+      ],
+      "targetText": "উচ্চারণ পরীক্ষা",
+      "romanization": "",
+      "nativeText": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।\".",
+      "pronunciation": "",
+      "exampleTarget": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "exampleNative": "“At Poila Boishakh people wear new clothes.”",
+      "korean": "উচ্চারণ পরীক্ষা",
+      "english": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।\".",
+      "example": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "exampleEnglish": "“At Poila Boishakh people wear new clothes.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1"
+      ],
+      "targetText": "পয়লা বৈশাখ",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 19: উৎসব ও ঐতিহ্য — Cultural Holidays with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "exampleNative": "“At Poila Boishakh people wear new clothes.”",
+      "korean": "পয়লা বৈশাখ",
+      "english": "Use the key language of Level 1 · Unit 19: উৎসব ও ঐতিহ্য — Cultural Holidays with the register and setting that the lesson requires.",
+      "example": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "exampleEnglish": "“At Poila Boishakh people wear new clothes.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-2"
+      ],
+      "targetText": "দুর্গাপূজা",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 19: উৎসব ও ঐতিহ্য — Cultural Holidays sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "দুর্গাপূজায় প্যান্ডেল দেখা হয়।",
+      "exampleNative": "“At Durga Puja people visit pandals.”",
+      "korean": "দুর্গাপূজা",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 19: উৎসব ও ঐতিহ্য — Cultural Holidays sound precise rather than merely understandable.",
+      "example": "দুর্গাপূজায় প্যান্ডেল দেখা হয়।",
+      "exampleEnglish": "“At Durga Puja people visit pandals.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-grammar-1"
+      ],
+      "targetText": "পয়লা বৈশাখ",
+      "romanization": "",
+      "nativeText": "Talk about Bengali festivals, greetings, and family customs.",
+      "pronunciation": "",
+      "exampleTarget": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "exampleNative": "“At Poila Boishakh people wear new clothes.”",
+      "korean": "পয়লা বৈশাখ",
+      "english": "Talk about Bengali festivals, greetings, and family customs.",
+      "example": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "exampleEnglish": "“At Poila Boishakh people wear new clothes.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-grammar-2"
+      ],
+      "targetText": "দুর্গাপূজা",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 19: উৎসব ও ঐতিহ্য — Cultural Holidays with one nearby Bengali form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "দুর্গাপূজায় প্যান্ডেল দেখা হয়।",
+      "exampleNative": "“At Durga Puja people visit pandals.”",
+      "korean": "দুর্গাপূজা",
+      "english": "Contrast the main pattern in Level 1 · Unit 19: উৎসব ও ঐতিহ্য — Cultural Holidays with one nearby Bengali form so the learner can avoid literal translation.",
+      "example": "দুর্গাপূজায় প্যান্ডেল দেখা হয়।",
+      "exampleEnglish": "“At Durga Puja people visit pandals.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-reading"
+      ],
+      "targetText": "পাঠ মডেল",
+      "romanization": "",
+      "nativeText": "Read \"এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।",
+      "exampleNative": "“This is a very important tradition.”",
+      "korean": "পাঠ মডেল",
+      "english": "Read \"এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।",
+      "exampleEnglish": "“This is a very important tradition.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-listening"
+      ],
+      "targetText": "সংলাপ মডেল",
+      "romanization": "",
+      "nativeText": "Hear \"এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।",
+      "exampleNative": "“This is a very important tradition.”",
+      "korean": "সংলাপ মডেল",
+      "english": "Hear \"এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।",
+      "exampleEnglish": "“This is a very important tradition.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-writing"
+      ],
+      "targetText": "লেখার অনুশীলন",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "লেখার অনুশীলন",
+      "english": "Write your own version after studying \"পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-culture"
+      ],
+      "targetText": "ব্যবহার ও প্রসঙ্গ",
+      "romanization": "",
+      "nativeText": "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "দুর্গাপূজায় প্যান্ডেল দেখা হয়।",
+      "exampleNative": "“At Durga Puja people visit pandals.”",
+      "korean": "ব্যবহার ও প্রসঙ্গ",
+      "english": "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used.",
+      "example": "দুর্গাপূজায় প্যান্ডেল দেখা হয়।",
+      "exampleEnglish": "“At Durga Puja people visit pandals.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "চূড়ান্ত কাজ",
+      "romanization": "",
+      "nativeText": "Explain one Bengali festival to a visitor.",
+      "pronunciation": "",
+      "exampleTarget": "এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।",
+      "exampleNative": "Explain one Bengali festival to a visitor.",
+      "korean": "চূড়ান্ত কাজ",
+      "english": "Explain one Bengali festival to a visitor.",
+      "example": "এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।",
+      "exampleEnglish": "Explain one Bengali festival to a visitor."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-grammar-2"
+      ],
+      "targetText": "সাধারণ ভুল",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around pronoun levels, verb agreement, case markers, and register. Begin by checking \"দুর্গাপূজায় প্যান্ডেল দেখা হয়।\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "দুর্গাপূজায় প্যান্ডেল দেখা হয়।",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “At Durga Puja people visit pandals.”",
+      "korean": "সাধারণ ভুল",
+      "english": "Watch for literal-translation mistakes around pronoun levels, verb agreement, case markers, and register. Begin by checking \"দুর্গাপূজায় প্যান্ডেল দেখা হয়।\" against the model.",
+      "example": "দুর্গাপূজায় প্যান্ডেল দেখা হয়।",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “At Durga Puja people visit pandals.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-culture"
+      ],
+      "targetText": "রেজিস্টার",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for familiar, respectful, or formal Bengali before selecting pronouns and verb endings. Compare the social fit of \"পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "exampleNative": "“At Poila Boishakh people wear new clothes.”",
+      "korean": "রেজিস্টার",
+      "english": "Check whether the setting calls for familiar, respectful, or formal Bengali before selecting pronouns and verb endings. Compare the social fit of \"পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।\" before reusing it elsewhere.",
+      "example": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "exampleEnglish": "“At Poila Boishakh people wear new clothes.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "সাবলীলতা",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Bengali message rather than as separate translated fragments. Aim to carry \"এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।",
+      "exampleNative": "“This is a very important tradition.”",
+      "korean": "সাবলীলতা",
+      "english": "Say the idea as one connected Bengali message rather than as separate translated fragments. Aim to carry \"এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।\" as one thought.",
+      "example": "এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।",
+      "exampleEnglish": "“This is a very important tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "প্রয়োগ",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "প্রয়োগ",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।\" and move it into your own life.",
+      "example": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-grammar-1"
+      ],
+      "targetText": "স্মরণ",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"পয়লা বৈশাখ\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "পয়লা বৈশাখ",
+      "exampleNative": "Bengali New Year, a major cultural celebration in Bangladesh and West Bengal.",
+      "korean": "স্মরণ",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"পয়লা বৈশাখ\" before looking back.",
+      "example": "পয়লা বৈশাখ",
+      "exampleEnglish": "Bengali New Year, a major cultural celebration in Bangladesh and West Bengal."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-writing"
+      ],
+      "targetText": "বিস্তার",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "বিস্তার",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।\" rather than restarting from a blank sentence.",
+      "example": "এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading"
+      ],
+      "targetText": "তুলনা",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 19: উৎসব ও ঐতিহ্য — Cultural Holidays with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"দুর্গাপূজায় প্যান্ডেল দেখা হয়।\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "দুর্গাপূজায় প্যান্ডেল দেখা হয়।",
+      "exampleNative": "“At Durga Puja people visit pandals.”",
+      "korean": "তুলনা",
+      "english": "Compare the central form in Level 1 · Unit 19: উৎসব ও ঐতিহ্য — Cultural Holidays with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"দুর্গাপূজায় প্যান্ডেল দেখা হয়।\" as the comparison line.",
+      "example": "দুর্গাপূজায় প্যান্ডেল দেখা হয়।",
+      "exampleEnglish": "“At Durga Puja people visit pandals.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-pronunciation"
+      ],
+      "targetText": "উচ্চারণ সংশোধন",
+      "romanization": "",
+      "nativeText": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।\".",
+      "pronunciation": "",
+      "exampleTarget": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "exampleNative": "“At Poila Boishakh people wear new clothes.”",
+      "korean": "উচ্চারণ সংশোধন",
+      "english": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।\".",
+      "example": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "exampleEnglish": "“At Poila Boishakh people wear new clothes.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "সংলাপ পরিবর্তন",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।\".",
+      "pronunciation": "",
+      "exampleTarget": "এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।",
+      "exampleNative": "“This is a very important tradition.”",
+      "korean": "সংলাপ পরিবর্তন",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।\".",
+      "example": "এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।",
+      "exampleEnglish": "“This is a very important tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-writing"
+      ],
+      "targetText": "বাক্য গঠন",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "exampleNative": "“At Poila Boishakh people wear new clothes.”",
+      "korean": "বাক্য গঠন",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।\" one layer at a time.",
+      "example": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "exampleEnglish": "“At Poila Boishakh people wear new clothes.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-2"
+      ],
+      "targetText": "দ্রুত পরীক্ষা",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"দুর্গাপূজায় প্যান্ডেল দেখা হয়।\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "দুর্গাপূজায় প্যান্ডেল দেখা হয়।",
+      "exampleNative": "“At Durga Puja people visit pandals.”",
+      "korean": "দ্রুত পরীক্ষা",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"দুর্গাপূজায় প্যান্ডেল দেখা হয়।\" as the deciding example.",
+      "example": "দুর্গাপূজায় প্যান্ডেল দেখা হয়।",
+      "exampleEnglish": "“At Durga Puja people visit pandals.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-culture",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "পুনরালোচনা",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।\".",
+      "pronunciation": "",
+      "exampleTarget": "এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।",
+      "exampleNative": "“This is a very important tradition.”",
+      "korean": "পুনরালোচনা",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।\".",
+      "example": "এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।",
+      "exampleEnglish": "“This is a very important tradition.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "পয়লা বৈশাখ",
+      "romanization": "poila boishakh",
+      "nativeText": "Bengali New Year, a major cultural celebration in Bangladesh and West Bengal.",
+      "pronunciation": "poila boishakh",
+      "exampleTarget": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "exampleNative": "“At Poila Boishakh people wear new clothes.”",
+      "korean": "পয়লা বৈশাখ",
+      "english": "Bengali New Year, a major cultural celebration in Bangladesh and West Bengal.",
+      "example": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "exampleEnglish": "“At Poila Boishakh people wear new clothes.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "romanization": "poila boishakh",
+      "nativeText": "Model use for \"পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।\": “At Poila Boishakh people wear new clothes.”",
+      "pronunciation": "poila boishakh",
+      "exampleTarget": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "exampleNative": "“At Poila Boishakh people wear new clothes.”",
+      "korean": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "english": "Model use for \"পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।\": “At Poila Boishakh people wear new clothes.”",
+      "example": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "exampleEnglish": "“At Poila Boishakh people wear new clothes.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "পয়লা বৈশাখ",
+      "romanization": "poila boishakh",
+      "nativeText": "Usage focus for \"পয়লা বৈশাখ\": Use the key language of Level 1 · Unit 19: উৎসব ও ঐতিহ্য — Cultural Holidays with the register and setting that the lesson requires.",
+      "pronunciation": "poila boishakh",
+      "exampleTarget": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "exampleNative": "Notice what the form is doing here: “At Poila Boishakh people wear new clothes.”",
+      "korean": "পয়লা বৈশাখ",
+      "english": "Usage focus for \"পয়লা বৈশাখ\": Use the key language of Level 1 · Unit 19: উৎসব ও ঐতিহ্য — Cultural Holidays with the register and setting that the lesson requires.",
+      "example": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "exampleEnglish": "Notice what the form is doing here: “At Poila Boishakh people wear new clothes.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "পয়লা বৈশাখ",
+      "romanization": "poila boishakh",
+      "nativeText": "Contrast check for \"পয়লা বৈশাখ\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "poila boishakh",
+      "exampleTarget": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “At Poila Boishakh people wear new clothes.”",
+      "korean": "পয়লা বৈশাখ",
+      "english": "Contrast check for \"পয়লা বৈশাখ\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “At Poila Boishakh people wear new clothes.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "পয়লা বৈশাখ",
+      "romanization": "poila boishakh",
+      "nativeText": "Recall \"পয়লা বৈশাখ\" from memory, then explain what would change if a nearby alternative replaced it in \"পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।\".",
+      "pronunciation": "poila boishakh",
+      "exampleTarget": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "exampleNative": "Self-check against the model before moving on: “At Poila Boishakh people wear new clothes.”",
+      "korean": "পয়লা বৈশাখ",
+      "english": "Recall \"পয়লা বৈশাখ\" from memory, then explain what would change if a nearby alternative replaced it in \"পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।\".",
+      "example": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "exampleEnglish": "Self-check against the model before moving on: “At Poila Boishakh people wear new clothes.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "পয়লা বৈশাখ",
+      "romanization": "poila boishakh",
+      "nativeText": "Repair \"পয়লা বৈশাখ\" inside \"পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 19: উৎসব ও ঐতিহ্য — Cultural Holidays with the register and setting that the lesson requires.",
+      "pronunciation": "poila boishakh",
+      "exampleTarget": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "exampleNative": "Use the model as the repair target: “At Poila Boishakh people wear new clothes.”",
+      "korean": "পয়লা বৈশাখ",
+      "english": "Repair \"পয়লা বৈশাখ\" inside \"পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 19: উৎসব ও ঐতিহ্য — Cultural Holidays with the register and setting that the lesson requires.",
+      "example": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "exampleEnglish": "Use the model as the repair target: “At Poila Boishakh people wear new clothes.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "পয়লা বৈশাখ",
+      "romanization": "poila boishakh",
+      "nativeText": "Transfer \"পয়লা বৈশাখ\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।\".",
+      "pronunciation": "poila boishakh",
+      "exampleTarget": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “At Poila Boishakh people wear new clothes.”",
+      "korean": "পয়লা বৈশাখ",
+      "english": "Transfer \"পয়লা বৈশাখ\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।\".",
+      "example": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “At Poila Boishakh people wear new clothes.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "পয়লা বৈশাখ",
+      "romanization": "poila boishakh",
+      "nativeText": "Find one word or phrase that naturally travels with \"পয়লা বৈশাখ\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "poila boishakh",
+      "exampleTarget": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “At Poila Boishakh people wear new clothes.”",
+      "korean": "পয়লা বৈশাখ",
+      "english": "Find one word or phrase that naturally travels with \"পয়লা বৈশাখ\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “At Poila Boishakh people wear new clothes.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "পয়লা বৈশাখ",
+      "romanization": "poila boishakh",
+      "nativeText": "Listen for \"পয়লা বৈশাখ\" inside \"পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "poila boishakh",
+      "exampleTarget": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “At Poila Boishakh people wear new clothes.”",
+      "korean": "পয়লা বৈশাখ",
+      "english": "Listen for \"পয়লা বৈশাখ\" inside \"পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “At Poila Boishakh people wear new clothes.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "পয়লা বৈশাখ",
+      "romanization": "poila boishakh",
+      "nativeText": "Write \"পয়লা বৈশাখ\" again without looking, then compare the exact written form against \"পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।\" before moving on.",
+      "pronunciation": "poila boishakh",
+      "exampleTarget": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "exampleNative": "Use the written model as the final correctness check: “At Poila Boishakh people wear new clothes.”",
+      "korean": "পয়লা বৈশাখ",
+      "english": "Write \"পয়লা বৈশাখ\" again without looking, then compare the exact written form against \"পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।\" before moving on.",
+      "example": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "exampleEnglish": "Use the written model as the final correctness check: “At Poila Boishakh people wear new clothes.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "পয়লা বৈশাখ",
+      "romanization": "poila boishakh",
+      "nativeText": "Check whether \"পয়লা বৈশাখ\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “At Poila Boishakh people wear new clothes.”",
+      "pronunciation": "poila boishakh",
+      "exampleTarget": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “At Poila Boishakh people wear new clothes.”",
+      "korean": "পয়লা বৈশাখ",
+      "english": "Check whether \"পয়লা বৈশাখ\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “At Poila Boishakh people wear new clothes.”",
+      "example": "পয়লা বৈশাখে মানুষ নতুন পোশাক পরে।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “At Poila Boishakh people wear new clothes.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "দুর্গাপূজা",
+      "romanization": "durgapuja",
+      "nativeText": "A major Bengali Hindu festival, especially visible in West Bengal.",
+      "pronunciation": "durgapuja",
+      "exampleTarget": "দুর্গাপূজায় প্যান্ডেল দেখা হয়।",
+      "exampleNative": "“At Durga Puja people visit pandals.”",
+      "korean": "দুর্গাপূজা",
+      "english": "A major Bengali Hindu festival, especially visible in West Bengal.",
+      "example": "দুর্গাপূজায় প্যান্ডেল দেখা হয়।",
+      "exampleEnglish": "“At Durga Puja people visit pandals.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "দুর্গাপূজায় প্যান্ডেল দেখা হয়।",
+      "romanization": "durgapuja",
+      "nativeText": "Model use for \"দুর্গাপূজায় প্যান্ডেল দেখা হয়।\": “At Durga Puja people visit pandals.”",
+      "pronunciation": "durgapuja",
+      "exampleTarget": "দুর্গাপূজায় প্যান্ডেল দেখা হয়।",
+      "exampleNative": "“At Durga Puja people visit pandals.”",
+      "korean": "দুর্গাপূজায় প্যান্ডেল দেখা হয়।",
+      "english": "Model use for \"দুর্গাপূজায় প্যান্ডেল দেখা হয়।\": “At Durga Puja people visit pandals.”",
+      "example": "দুর্গাপূজায় প্যান্ডেল দেখা হয়।",
+      "exampleEnglish": "“At Durga Puja people visit pandals.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "দুর্গাপূজা",
+      "romanization": "durgapuja",
+      "nativeText": "Usage focus for \"দুর্গাপূজা\": Distinguish the nearby wording choices that make Level 1 · Unit 19: উৎসব ও ঐতিহ্য — Cultural Holidays sound precise rather than merely understandable.",
+      "pronunciation": "durgapuja",
+      "exampleTarget": "দুর্গাপূজায় প্যান্ডেল দেখা হয়।",
+      "exampleNative": "Notice what the form is doing here: “At Durga Puja people visit pandals.”",
+      "korean": "দুর্গাপূজা",
+      "english": "Usage focus for \"দুর্গাপূজা\": Distinguish the nearby wording choices that make Level 1 · Unit 19: উৎসব ও ঐতিহ্য — Cultural Holidays sound precise rather than merely understandable.",
+      "example": "দুর্গাপূজায় প্যান্ডেল দেখা হয়।",
+      "exampleEnglish": "Notice what the form is doing here: “At Durga Puja people visit pandals.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "দুর্গাপূজা",
+      "romanization": "durgapuja",
+      "nativeText": "Contrast check for \"দুর্গাপূজা\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "durgapuja",
+      "exampleTarget": "দুর্গাপূজায় প্যান্ডেল দেখা হয়।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “At Durga Puja people visit pandals.”",
+      "korean": "দুর্গাপূজা",
+      "english": "Contrast check for \"দুর্গাপূজা\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "দুর্গাপূজায় প্যান্ডেল দেখা হয়।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “At Durga Puja people visit pandals.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "দুর্গাপূজা",
+      "romanization": "durgapuja",
+      "nativeText": "Recall \"দুর্গাপূজা\" from memory, then explain what would change if a nearby alternative replaced it in \"দুর্গাপূজায় প্যান্ডেল দেখা হয়।\".",
+      "pronunciation": "durgapuja",
+      "exampleTarget": "দুর্গাপূজায় প্যান্ডেল দেখা হয়।",
+      "exampleNative": "Self-check against the model before moving on: “At Durga Puja people visit pandals.”",
+      "korean": "দুর্গাপূজা",
+      "english": "Recall \"দুর্গাপূজা\" from memory, then explain what would change if a nearby alternative replaced it in \"দুর্গাপূজায় প্যান্ডেল দেখা হয়।\".",
+      "example": "দুর্গাপূজায় প্যান্ডেল দেখা হয়।",
+      "exampleEnglish": "Self-check against the model before moving on: “At Durga Puja people visit pandals.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "দুর্গাপূজা",
+      "romanization": "durgapuja",
+      "nativeText": "Repair \"দুর্গাপূজা\" inside \"দুর্গাপূজায় প্যান্ডেল দেখা হয়।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 19: উৎসব ও ঐতিহ্য — Cultural Holidays sound precise rather than merely understandable.",
+      "pronunciation": "durgapuja",
+      "exampleTarget": "দুর্গাপূজায় প্যান্ডেল দেখা হয়।",
+      "exampleNative": "Use the model as the repair target: “At Durga Puja people visit pandals.”",
+      "korean": "দুর্গাপূজা",
+      "english": "Repair \"দুর্গাপূজা\" inside \"দুর্গাপূজায় প্যান্ডেল দেখা হয়।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 19: উৎসব ও ঐতিহ্য — Cultural Holidays sound precise rather than merely understandable.",
+      "example": "দুর্গাপূজায় প্যান্ডেল দেখা হয়।",
+      "exampleEnglish": "Use the model as the repair target: “At Durga Puja people visit pandals.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "দুর্গাপূজা",
+      "romanization": "durgapuja",
+      "nativeText": "Transfer \"দুর্গাপূজা\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"দুর্গাপূজায় প্যান্ডেল দেখা হয়।\".",
+      "pronunciation": "durgapuja",
+      "exampleTarget": "দুর্গাপূজায় প্যান্ডেল দেখা হয়।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “At Durga Puja people visit pandals.”",
+      "korean": "দুর্গাপূজা",
+      "english": "Transfer \"দুর্গাপূজা\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"দুর্গাপূজায় প্যান্ডেল দেখা হয়।\".",
+      "example": "দুর্গাপূজায় প্যান্ডেল দেখা হয়।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “At Durga Puja people visit pandals.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "দুর্গাপূজা",
+      "romanization": "durgapuja",
+      "nativeText": "Find one word or phrase that naturally travels with \"দুর্গাপূজা\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "durgapuja",
+      "exampleTarget": "দুর্গাপূজায় প্যান্ডেল দেখা হয়।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “At Durga Puja people visit pandals.”",
+      "korean": "দুর্গাপূজা",
+      "english": "Find one word or phrase that naturally travels with \"দুর্গাপূজা\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "দুর্গাপূজায় প্যান্ডেল দেখা হয়।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “At Durga Puja people visit pandals.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "দুর্গাপূজা",
+      "romanization": "durgapuja",
+      "nativeText": "Listen for \"দুর্গাপূজা\" inside \"দুর্গাপূজায় প্যান্ডেল দেখা হয়।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "durgapuja",
+      "exampleTarget": "দুর্গাপূজায় প্যান্ডেল দেখা হয়।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “At Durga Puja people visit pandals.”",
+      "korean": "দুর্গাপূজা",
+      "english": "Listen for \"দুর্গাপূজা\" inside \"দুর্গাপূজায় প্যান্ডেল দেখা হয়।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "দুর্গাপূজায় প্যান্ডেল দেখা হয়।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “At Durga Puja people visit pandals.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "দুর্গাপূজা",
+      "romanization": "durgapuja",
+      "nativeText": "Write \"দুর্গাপূজা\" again without looking, then compare the exact written form against \"দুর্গাপূজায় প্যান্ডেল দেখা হয়।\" before moving on.",
+      "pronunciation": "durgapuja",
+      "exampleTarget": "দুর্গাপূজায় প্যান্ডেল দেখা হয়।",
+      "exampleNative": "Use the written model as the final correctness check: “At Durga Puja people visit pandals.”",
+      "korean": "দুর্গাপূজা",
+      "english": "Write \"দুর্গাপূজা\" again without looking, then compare the exact written form against \"দুর্গাপূজায় প্যান্ডেল দেখা হয়।\" before moving on.",
+      "example": "দুর্গাপূজায় প্যান্ডেল দেখা হয়।",
+      "exampleEnglish": "Use the written model as the final correctness check: “At Durga Puja people visit pandals.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "দুর্গাপূজা",
+      "romanization": "durgapuja",
+      "nativeText": "Check whether \"দুর্গাপূজা\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “At Durga Puja people visit pandals.”",
+      "pronunciation": "durgapuja",
+      "exampleTarget": "দুর্গাপূজায় প্যান্ডেল দেখা হয়।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “At Durga Puja people visit pandals.”",
+      "korean": "দুর্গাপূজা",
+      "english": "Check whether \"দুর্গাপূজা\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “At Durga Puja people visit pandals.”",
+      "example": "দুর্গাপূজায় প্যান্ডেল দেখা হয়।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “At Durga Puja people visit pandals.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "ঈদ",
+      "romanization": "eid",
+      "nativeText": "A major Muslim festival in Bangladesh and Bengali-speaking Muslim communities.",
+      "pronunciation": "eid",
+      "exampleTarget": "ঈদে পরিবার একসঙ্গে হয়।",
+      "exampleNative": "“At Eid the family gathers together.”",
+      "korean": "ঈদ",
+      "english": "A major Muslim festival in Bangladesh and Bengali-speaking Muslim communities.",
+      "example": "ঈদে পরিবার একসঙ্গে হয়।",
+      "exampleEnglish": "“At Eid the family gathers together.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "ঈদে পরিবার একসঙ্গে হয়।",
+      "romanization": "eid",
+      "nativeText": "Model use for \"ঈদে পরিবার একসঙ্গে হয়।\": “At Eid the family gathers together.”",
+      "pronunciation": "eid",
+      "exampleTarget": "ঈদে পরিবার একসঙ্গে হয়।",
+      "exampleNative": "“At Eid the family gathers together.”",
+      "korean": "ঈদে পরিবার একসঙ্গে হয়।",
+      "english": "Model use for \"ঈদে পরিবার একসঙ্গে হয়।\": “At Eid the family gathers together.”",
+      "example": "ঈদে পরিবার একসঙ্গে হয়।",
+      "exampleEnglish": "“At Eid the family gathers together.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "ঈদ",
+      "romanization": "eid",
+      "nativeText": "Usage focus for \"ঈদ\": A major Muslim festival in Bangladesh and Bengali-speaking Muslim communities.",
+      "pronunciation": "eid",
+      "exampleTarget": "ঈদে পরিবার একসঙ্গে হয়।",
+      "exampleNative": "Notice what the form is doing here: “At Eid the family gathers together.”",
+      "korean": "ঈদ",
+      "english": "Usage focus for \"ঈদ\": A major Muslim festival in Bangladesh and Bengali-speaking Muslim communities.",
+      "example": "ঈদে পরিবার একসঙ্গে হয়।",
+      "exampleEnglish": "Notice what the form is doing here: “At Eid the family gathers together.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "ঈদ",
+      "romanization": "eid",
+      "nativeText": "Contrast check for \"ঈদ\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "eid",
+      "exampleTarget": "ঈদে পরিবার একসঙ্গে হয়।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “At Eid the family gathers together.”",
+      "korean": "ঈদ",
+      "english": "Contrast check for \"ঈদ\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "ঈদে পরিবার একসঙ্গে হয়।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “At Eid the family gathers together.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "ঈদ",
+      "romanization": "eid",
+      "nativeText": "Recall \"ঈদ\" from memory, then explain what would change if a nearby alternative replaced it in \"ঈদে পরিবার একসঙ্গে হয়।\".",
+      "pronunciation": "eid",
+      "exampleTarget": "ঈদে পরিবার একসঙ্গে হয়।",
+      "exampleNative": "Self-check against the model before moving on: “At Eid the family gathers together.”",
+      "korean": "ঈদ",
+      "english": "Recall \"ঈদ\" from memory, then explain what would change if a nearby alternative replaced it in \"ঈদে পরিবার একসঙ্গে হয়।\".",
+      "example": "ঈদে পরিবার একসঙ্গে হয়।",
+      "exampleEnglish": "Self-check against the model before moving on: “At Eid the family gathers together.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "ঈদ",
+      "romanization": "eid",
+      "nativeText": "Repair \"ঈদ\" inside \"ঈদে পরিবার একসঙ্গে হয়।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: A major Muslim festival in Bangladesh and Bengali-speaking Muslim communities.",
+      "pronunciation": "eid",
+      "exampleTarget": "ঈদে পরিবার একসঙ্গে হয়।",
+      "exampleNative": "Use the model as the repair target: “At Eid the family gathers together.”",
+      "korean": "ঈদ",
+      "english": "Repair \"ঈদ\" inside \"ঈদে পরিবার একসঙ্গে হয়।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: A major Muslim festival in Bangladesh and Bengali-speaking Muslim communities.",
+      "example": "ঈদে পরিবার একসঙ্গে হয়।",
+      "exampleEnglish": "Use the model as the repair target: “At Eid the family gathers together.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "ঈদ",
+      "romanization": "eid",
+      "nativeText": "Transfer \"ঈদ\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ঈদে পরিবার একসঙ্গে হয়।\".",
+      "pronunciation": "eid",
+      "exampleTarget": "ঈদে পরিবার একসঙ্গে হয়।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “At Eid the family gathers together.”",
+      "korean": "ঈদ",
+      "english": "Transfer \"ঈদ\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ঈদে পরিবার একসঙ্গে হয়।\".",
+      "example": "ঈদে পরিবার একসঙ্গে হয়।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “At Eid the family gathers together.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "ঈদ",
+      "romanization": "eid",
+      "nativeText": "Find one word or phrase that naturally travels with \"ঈদ\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "eid",
+      "exampleTarget": "ঈদে পরিবার একসঙ্গে হয়।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “At Eid the family gathers together.”",
+      "korean": "ঈদ",
+      "english": "Find one word or phrase that naturally travels with \"ঈদ\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "ঈদে পরিবার একসঙ্গে হয়।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “At Eid the family gathers together.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "ঈদ",
+      "romanization": "eid",
+      "nativeText": "Listen for \"ঈদ\" inside \"ঈদে পরিবার একসঙ্গে হয়।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "eid",
+      "exampleTarget": "ঈদে পরিবার একসঙ্গে হয়।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “At Eid the family gathers together.”",
+      "korean": "ঈদ",
+      "english": "Listen for \"ঈদ\" inside \"ঈদে পরিবার একসঙ্গে হয়।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "ঈদে পরিবার একসঙ্গে হয়।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “At Eid the family gathers together.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "ঈদ",
+      "romanization": "eid",
+      "nativeText": "Write \"ঈদ\" again without looking, then compare the exact written form against \"ঈদে পরিবার একসঙ্গে হয়।\" before moving on.",
+      "pronunciation": "eid",
+      "exampleTarget": "ঈদে পরিবার একসঙ্গে হয়।",
+      "exampleNative": "Use the written model as the final correctness check: “At Eid the family gathers together.”",
+      "korean": "ঈদ",
+      "english": "Write \"ঈদ\" again without looking, then compare the exact written form against \"ঈদে পরিবার একসঙ্গে হয়।\" before moving on.",
+      "example": "ঈদে পরিবার একসঙ্গে হয়।",
+      "exampleEnglish": "Use the written model as the final correctness check: “At Eid the family gathers together.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "ঈদ",
+      "romanization": "eid",
+      "nativeText": "Check whether \"ঈদ\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “At Eid the family gathers together.”",
+      "pronunciation": "eid",
+      "exampleTarget": "ঈদে পরিবার একসঙ্গে হয়।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “At Eid the family gathers together.”",
+      "korean": "ঈদ",
+      "english": "Check whether \"ঈদ\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “At Eid the family gathers together.”",
+      "example": "ঈদে পরিবার একসঙ্গে হয়।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “At Eid the family gathers together.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "নববর্ষ",
+      "romanization": "noboborsho",
+      "nativeText": "“New Year.” A useful general festival noun.",
+      "pronunciation": "noboborsho",
+      "exampleTarget": "শুভ নববর্ষ!",
+      "exampleNative": "“Happy New Year!”",
+      "korean": "নববর্ষ",
+      "english": "“New Year.” A useful general festival noun.",
+      "example": "শুভ নববর্ষ!",
+      "exampleEnglish": "“Happy New Year!”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "শুভ নববর্ষ!",
+      "romanization": "noboborsho",
+      "nativeText": "Model use for \"শুভ নববর্ষ!\": “Happy New Year!”",
+      "pronunciation": "noboborsho",
+      "exampleTarget": "শুভ নববর্ষ!",
+      "exampleNative": "“Happy New Year!”",
+      "korean": "শুভ নববর্ষ!",
+      "english": "Model use for \"শুভ নববর্ষ!\": “Happy New Year!”",
+      "example": "শুভ নববর্ষ!",
+      "exampleEnglish": "“Happy New Year!”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "নববর্ষ",
+      "romanization": "noboborsho",
+      "nativeText": "Usage focus for \"নববর্ষ\": “New Year.” A useful general festival noun.",
+      "pronunciation": "noboborsho",
+      "exampleTarget": "শুভ নববর্ষ!",
+      "exampleNative": "Notice what the form is doing here: “Happy New Year!”",
+      "korean": "নববর্ষ",
+      "english": "Usage focus for \"নববর্ষ\": “New Year.” A useful general festival noun.",
+      "example": "শুভ নববর্ষ!",
+      "exampleEnglish": "Notice what the form is doing here: “Happy New Year!”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "নববর্ষ",
+      "romanization": "noboborsho",
+      "nativeText": "Contrast check for \"নববর্ষ\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "noboborsho",
+      "exampleTarget": "শুভ নববর্ষ!",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Happy New Year!”",
+      "korean": "নববর্ষ",
+      "english": "Contrast check for \"নববর্ষ\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "শুভ নববর্ষ!",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Happy New Year!”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "নববর্ষ",
+      "romanization": "noboborsho",
+      "nativeText": "Recall \"নববর্ষ\" from memory, then explain what would change if a nearby alternative replaced it in \"শুভ নববর্ষ!\".",
+      "pronunciation": "noboborsho",
+      "exampleTarget": "শুভ নববর্ষ!",
+      "exampleNative": "Self-check against the model before moving on: “Happy New Year!”",
+      "korean": "নববর্ষ",
+      "english": "Recall \"নববর্ষ\" from memory, then explain what would change if a nearby alternative replaced it in \"শুভ নববর্ষ!\".",
+      "example": "শুভ নববর্ষ!",
+      "exampleEnglish": "Self-check against the model before moving on: “Happy New Year!”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "নববর্ষ",
+      "romanization": "noboborsho",
+      "nativeText": "Repair \"নববর্ষ\" inside \"শুভ নববর্ষ!\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “New Year.” A useful general festival noun.",
+      "pronunciation": "noboborsho",
+      "exampleTarget": "শুভ নববর্ষ!",
+      "exampleNative": "Use the model as the repair target: “Happy New Year!”",
+      "korean": "নববর্ষ",
+      "english": "Repair \"নববর্ষ\" inside \"শুভ নববর্ষ!\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “New Year.” A useful general festival noun.",
+      "example": "শুভ নববর্ষ!",
+      "exampleEnglish": "Use the model as the repair target: “Happy New Year!”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "নববর্ষ",
+      "romanization": "noboborsho",
+      "nativeText": "Transfer \"নববর্ষ\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"শুভ নববর্ষ!\".",
+      "pronunciation": "noboborsho",
+      "exampleTarget": "শুভ নববর্ষ!",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Happy New Year!”",
+      "korean": "নববর্ষ",
+      "english": "Transfer \"নববর্ষ\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"শুভ নববর্ষ!\".",
+      "example": "শুভ নববর্ষ!",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Happy New Year!”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "নববর্ষ",
+      "romanization": "noboborsho",
+      "nativeText": "Find one word or phrase that naturally travels with \"নববর্ষ\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "noboborsho",
+      "exampleTarget": "শুভ নববর্ষ!",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Happy New Year!”",
+      "korean": "নববর্ষ",
+      "english": "Find one word or phrase that naturally travels with \"নববর্ষ\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "শুভ নববর্ষ!",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Happy New Year!”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "নববর্ষ",
+      "romanization": "noboborsho",
+      "nativeText": "Listen for \"নববর্ষ\" inside \"শুভ নববর্ষ!\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "noboborsho",
+      "exampleTarget": "শুভ নববর্ষ!",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Happy New Year!”",
+      "korean": "নববর্ষ",
+      "english": "Listen for \"নববর্ষ\" inside \"শুভ নববর্ষ!\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "শুভ নববর্ষ!",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Happy New Year!”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "নববর্ষ",
+      "romanization": "noboborsho",
+      "nativeText": "Write \"নববর্ষ\" again without looking, then compare the exact written form against \"শুভ নববর্ষ!\" before moving on.",
+      "pronunciation": "noboborsho",
+      "exampleTarget": "শুভ নববর্ষ!",
+      "exampleNative": "Use the written model as the final correctness check: “Happy New Year!”",
+      "korean": "নববর্ষ",
+      "english": "Write \"নববর্ষ\" again without looking, then compare the exact written form against \"শুভ নববর্ষ!\" before moving on.",
+      "example": "শুভ নববর্ষ!",
+      "exampleEnglish": "Use the written model as the final correctness check: “Happy New Year!”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "নববর্ষ",
+      "romanization": "noboborsho",
+      "nativeText": "Check whether \"নববর্ষ\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Happy New Year!”",
+      "pronunciation": "noboborsho",
+      "exampleTarget": "শুভ নববর্ষ!",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Happy New Year!”",
+      "korean": "নববর্ষ",
+      "english": "Check whether \"নববর্ষ\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Happy New Year!”",
+      "example": "শুভ নববর্ষ!",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Happy New Year!”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "সাধারণত",
+      "romanization": "shadharonoto",
+      "nativeText": "“Usually.” A useful word for customs.",
+      "pronunciation": "shadharonoto",
+      "exampleTarget": "সাধারণত আমরা আত্মীয়দের দেখি।",
+      "exampleNative": "“Usually we see relatives.”",
+      "korean": "সাধারণত",
+      "english": "“Usually.” A useful word for customs.",
+      "example": "সাধারণত আমরা আত্মীয়দের দেখি।",
+      "exampleEnglish": "“Usually we see relatives.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "সাধারণত আমরা আত্মীয়দের দেখি।",
+      "romanization": "shadharonoto",
+      "nativeText": "Model use for \"সাধারণত আমরা আত্মীয়দের দেখি।\": “Usually we see relatives.”",
+      "pronunciation": "shadharonoto",
+      "exampleTarget": "সাধারণত আমরা আত্মীয়দের দেখি।",
+      "exampleNative": "“Usually we see relatives.”",
+      "korean": "সাধারণত আমরা আত্মীয়দের দেখি।",
+      "english": "Model use for \"সাধারণত আমরা আত্মীয়দের দেখি।\": “Usually we see relatives.”",
+      "example": "সাধারণত আমরা আত্মীয়দের দেখি।",
+      "exampleEnglish": "“Usually we see relatives.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "সাধারণত",
+      "romanization": "shadharonoto",
+      "nativeText": "Usage focus for \"সাধারণত\": “Usually.” A useful word for customs.",
+      "pronunciation": "shadharonoto",
+      "exampleTarget": "সাধারণত আমরা আত্মীয়দের দেখি।",
+      "exampleNative": "Notice what the form is doing here: “Usually we see relatives.”",
+      "korean": "সাধারণত",
+      "english": "Usage focus for \"সাধারণত\": “Usually.” A useful word for customs.",
+      "example": "সাধারণত আমরা আত্মীয়দের দেখি।",
+      "exampleEnglish": "Notice what the form is doing here: “Usually we see relatives.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "সাধারণত",
+      "romanization": "shadharonoto",
+      "nativeText": "Contrast check for \"সাধারণত\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "shadharonoto",
+      "exampleTarget": "সাধারণত আমরা আত্মীয়দের দেখি।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Usually we see relatives.”",
+      "korean": "সাধারণত",
+      "english": "Contrast check for \"সাধারণত\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "সাধারণত আমরা আত্মীয়দের দেখি।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Usually we see relatives.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "সাধারণত",
+      "romanization": "shadharonoto",
+      "nativeText": "Recall \"সাধারণত\" from memory, then explain what would change if a nearby alternative replaced it in \"সাধারণত আমরা আত্মীয়দের দেখি।\".",
+      "pronunciation": "shadharonoto",
+      "exampleTarget": "সাধারণত আমরা আত্মীয়দের দেখি।",
+      "exampleNative": "Self-check against the model before moving on: “Usually we see relatives.”",
+      "korean": "সাধারণত",
+      "english": "Recall \"সাধারণত\" from memory, then explain what would change if a nearby alternative replaced it in \"সাধারণত আমরা আত্মীয়দের দেখি।\".",
+      "example": "সাধারণত আমরা আত্মীয়দের দেখি।",
+      "exampleEnglish": "Self-check against the model before moving on: “Usually we see relatives.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "সাধারণত",
+      "romanization": "shadharonoto",
+      "nativeText": "Repair \"সাধারণত\" inside \"সাধারণত আমরা আত্মীয়দের দেখি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Usually.” A useful word for customs.",
+      "pronunciation": "shadharonoto",
+      "exampleTarget": "সাধারণত আমরা আত্মীয়দের দেখি।",
+      "exampleNative": "Use the model as the repair target: “Usually we see relatives.”",
+      "korean": "সাধারণত",
+      "english": "Repair \"সাধারণত\" inside \"সাধারণত আমরা আত্মীয়দের দেখি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Usually.” A useful word for customs.",
+      "example": "সাধারণত আমরা আত্মীয়দের দেখি।",
+      "exampleEnglish": "Use the model as the repair target: “Usually we see relatives.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "সাধারণত",
+      "romanization": "shadharonoto",
+      "nativeText": "Transfer \"সাধারণত\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"সাধারণত আমরা আত্মীয়দের দেখি।\".",
+      "pronunciation": "shadharonoto",
+      "exampleTarget": "সাধারণত আমরা আত্মীয়দের দেখি।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Usually we see relatives.”",
+      "korean": "সাধারণত",
+      "english": "Transfer \"সাধারণত\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"সাধারণত আমরা আত্মীয়দের দেখি।\".",
+      "example": "সাধারণত আমরা আত্মীয়দের দেখি।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Usually we see relatives.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "সাধারণত",
+      "romanization": "shadharonoto",
+      "nativeText": "Find one word or phrase that naturally travels with \"সাধারণত\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "shadharonoto",
+      "exampleTarget": "সাধারণত আমরা আত্মীয়দের দেখি।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Usually we see relatives.”",
+      "korean": "সাধারণত",
+      "english": "Find one word or phrase that naturally travels with \"সাধারণত\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "সাধারণত আমরা আত্মীয়দের দেখি।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Usually we see relatives.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "সাধারণত",
+      "romanization": "shadharonoto",
+      "nativeText": "Listen for \"সাধারণত\" inside \"সাধারণত আমরা আত্মীয়দের দেখি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "shadharonoto",
+      "exampleTarget": "সাধারণত আমরা আত্মীয়দের দেখি।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Usually we see relatives.”",
+      "korean": "সাধারণত",
+      "english": "Listen for \"সাধারণত\" inside \"সাধারণত আমরা আত্মীয়দের দেখি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "সাধারণত আমরা আত্মীয়দের দেখি।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Usually we see relatives.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "সাধারণত",
+      "romanization": "shadharonoto",
+      "nativeText": "Write \"সাধারণত\" again without looking, then compare the exact written form against \"সাধারণত আমরা আত্মীয়দের দেখি।\" before moving on.",
+      "pronunciation": "shadharonoto",
+      "exampleTarget": "সাধারণত আমরা আত্মীয়দের দেখি।",
+      "exampleNative": "Use the written model as the final correctness check: “Usually we see relatives.”",
+      "korean": "সাধারণত",
+      "english": "Write \"সাধারণত\" again without looking, then compare the exact written form against \"সাধারণত আমরা আত্মীয়দের দেখি।\" before moving on.",
+      "example": "সাধারণত আমরা আত্মীয়দের দেখি।",
+      "exampleEnglish": "Use the written model as the final correctness check: “Usually we see relatives.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "সাধারণত",
+      "romanization": "shadharonoto",
+      "nativeText": "Check whether \"সাধারণত\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Usually we see relatives.”",
+      "pronunciation": "shadharonoto",
+      "exampleTarget": "সাধারণত আমরা আত্মীয়দের দেখি।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Usually we see relatives.”",
+      "korean": "সাধারণত",
+      "english": "Check whether \"সাধারণত\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Usually we see relatives.”",
+      "example": "সাধারণত আমরা আত্মীয়দের দেখি।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Usually we see relatives.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "উদযাপন করা",
+      "romanization": "udjapon kora",
+      "nativeText": "“To celebrate.” A central festival verb.",
+      "pronunciation": "udjapon kora",
+      "exampleTarget": "আপনারা কীভাবে ঈদ উদযাপন করেন?",
+      "exampleNative": "“How do you celebrate Eid?”",
+      "korean": "উদযাপন করা",
+      "english": "“To celebrate.” A central festival verb.",
+      "example": "আপনারা কীভাবে ঈদ উদযাপন করেন?",
+      "exampleEnglish": "“How do you celebrate Eid?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "আপনারা কীভাবে ঈদ উদযাপন করেন?",
+      "romanization": "udjapon kora",
+      "nativeText": "Model use for \"আপনারা কীভাবে ঈদ উদযাপন করেন?\": “How do you celebrate Eid?”",
+      "pronunciation": "udjapon kora",
+      "exampleTarget": "আপনারা কীভাবে ঈদ উদযাপন করেন?",
+      "exampleNative": "“How do you celebrate Eid?”",
+      "korean": "আপনারা কীভাবে ঈদ উদযাপন করেন?",
+      "english": "Model use for \"আপনারা কীভাবে ঈদ উদযাপন করেন?\": “How do you celebrate Eid?”",
+      "example": "আপনারা কীভাবে ঈদ উদযাপন করেন?",
+      "exampleEnglish": "“How do you celebrate Eid?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "উদযাপন করা",
+      "romanization": "udjapon kora",
+      "nativeText": "Usage focus for \"উদযাপন করা\": “To celebrate.” A central festival verb.",
+      "pronunciation": "udjapon kora",
+      "exampleTarget": "আপনারা কীভাবে ঈদ উদযাপন করেন?",
+      "exampleNative": "Notice what the form is doing here: “How do you celebrate Eid?”",
+      "korean": "উদযাপন করা",
+      "english": "Usage focus for \"উদযাপন করা\": “To celebrate.” A central festival verb.",
+      "example": "আপনারা কীভাবে ঈদ উদযাপন করেন?",
+      "exampleEnglish": "Notice what the form is doing here: “How do you celebrate Eid?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "উদযাপন করা",
+      "romanization": "udjapon kora",
+      "nativeText": "Contrast check for \"উদযাপন করা\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "udjapon kora",
+      "exampleTarget": "আপনারা কীভাবে ঈদ উদযাপন করেন?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How do you celebrate Eid?”",
+      "korean": "উদযাপন করা",
+      "english": "Contrast check for \"উদযাপন করা\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আপনারা কীভাবে ঈদ উদযাপন করেন?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How do you celebrate Eid?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "উদযাপন করা",
+      "romanization": "udjapon kora",
+      "nativeText": "Recall \"উদযাপন করা\" from memory, then explain what would change if a nearby alternative replaced it in \"আপনারা কীভাবে ঈদ উদযাপন করেন?\".",
+      "pronunciation": "udjapon kora",
+      "exampleTarget": "আপনারা কীভাবে ঈদ উদযাপন করেন?",
+      "exampleNative": "Self-check against the model before moving on: “How do you celebrate Eid?”",
+      "korean": "উদযাপন করা",
+      "english": "Recall \"উদযাপন করা\" from memory, then explain what would change if a nearby alternative replaced it in \"আপনারা কীভাবে ঈদ উদযাপন করেন?\".",
+      "example": "আপনারা কীভাবে ঈদ উদযাপন করেন?",
+      "exampleEnglish": "Self-check against the model before moving on: “How do you celebrate Eid?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "উদযাপন করা",
+      "romanization": "udjapon kora",
+      "nativeText": "Repair \"উদযাপন করা\" inside \"আপনারা কীভাবে ঈদ উদযাপন করেন?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To celebrate.” A central festival verb.",
+      "pronunciation": "udjapon kora",
+      "exampleTarget": "আপনারা কীভাবে ঈদ উদযাপন করেন?",
+      "exampleNative": "Use the model as the repair target: “How do you celebrate Eid?”",
+      "korean": "উদযাপন করা",
+      "english": "Repair \"উদযাপন করা\" inside \"আপনারা কীভাবে ঈদ উদযাপন করেন?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To celebrate.” A central festival verb.",
+      "example": "আপনারা কীভাবে ঈদ উদযাপন করেন?",
+      "exampleEnglish": "Use the model as the repair target: “How do you celebrate Eid?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "উদযাপন করা",
+      "romanization": "udjapon kora",
+      "nativeText": "Transfer \"উদযাপন করা\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আপনারা কীভাবে ঈদ উদযাপন করেন?\".",
+      "pronunciation": "udjapon kora",
+      "exampleTarget": "আপনারা কীভাবে ঈদ উদযাপন করেন?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “How do you celebrate Eid?”",
+      "korean": "উদযাপন করা",
+      "english": "Transfer \"উদযাপন করা\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আপনারা কীভাবে ঈদ উদযাপন করেন?\".",
+      "example": "আপনারা কীভাবে ঈদ উদযাপন করেন?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “How do you celebrate Eid?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "উদযাপন করা",
+      "romanization": "udjapon kora",
+      "nativeText": "Find one word or phrase that naturally travels with \"উদযাপন করা\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "udjapon kora",
+      "exampleTarget": "আপনারা কীভাবে ঈদ উদযাপন করেন?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “How do you celebrate Eid?”",
+      "korean": "উদযাপন করা",
+      "english": "Find one word or phrase that naturally travels with \"উদযাপন করা\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আপনারা কীভাবে ঈদ উদযাপন করেন?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “How do you celebrate Eid?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "উদযাপন করা",
+      "romanization": "udjapon kora",
+      "nativeText": "Listen for \"উদযাপন করা\" inside \"আপনারা কীভাবে ঈদ উদযাপন করেন?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "udjapon kora",
+      "exampleTarget": "আপনারা কীভাবে ঈদ উদযাপন করেন?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How do you celebrate Eid?”",
+      "korean": "উদযাপন করা",
+      "english": "Listen for \"উদযাপন করা\" inside \"আপনারা কীভাবে ঈদ উদযাপন করেন?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আপনারা কীভাবে ঈদ উদযাপন করেন?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How do you celebrate Eid?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "উদযাপন করা",
+      "romanization": "udjapon kora",
+      "nativeText": "Write \"উদযাপন করা\" again without looking, then compare the exact written form against \"আপনারা কীভাবে ঈদ উদযাপন করেন?\" before moving on.",
+      "pronunciation": "udjapon kora",
+      "exampleTarget": "আপনারা কীভাবে ঈদ উদযাপন করেন?",
+      "exampleNative": "Use the written model as the final correctness check: “How do you celebrate Eid?”",
+      "korean": "উদযাপন করা",
+      "english": "Write \"উদযাপন করা\" again without looking, then compare the exact written form against \"আপনারা কীভাবে ঈদ উদযাপন করেন?\" before moving on.",
+      "example": "আপনারা কীভাবে ঈদ উদযাপন করেন?",
+      "exampleEnglish": "Use the written model as the final correctness check: “How do you celebrate Eid?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "উদযাপন করা",
+      "romanization": "udjapon kora",
+      "nativeText": "Check whether \"উদযাপন করা\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How do you celebrate Eid?”",
+      "pronunciation": "udjapon kora",
+      "exampleTarget": "আপনারা কীভাবে ঈদ উদযাপন করেন?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “How do you celebrate Eid?”",
+      "korean": "উদযাপন করা",
+      "english": "Check whether \"উদযাপন করা\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How do you celebrate Eid?”",
+      "example": "আপনারা কীভাবে ঈদ উদযাপন করেন?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “How do you celebrate Eid?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "শুভেচ্ছা",
+      "romanization": "shubhechchha",
+      "nativeText": "“Greetings / good wishes.” A useful holiday word.",
+      "pronunciation": "shubhechchha",
+      "exampleTarget": "সবাইকে শুভেচ্ছা জানাই।",
+      "exampleNative": "“I send greetings to everyone.”",
+      "korean": "শুভেচ্ছা",
+      "english": "“Greetings / good wishes.” A useful holiday word.",
+      "example": "সবাইকে শুভেচ্ছা জানাই।",
+      "exampleEnglish": "“I send greetings to everyone.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "সবাইকে শুভেচ্ছা জানাই।",
+      "romanization": "shubhechchha",
+      "nativeText": "Model use for \"সবাইকে শুভেচ্ছা জানাই।\": “I send greetings to everyone.”",
+      "pronunciation": "shubhechchha",
+      "exampleTarget": "সবাইকে শুভেচ্ছা জানাই।",
+      "exampleNative": "“I send greetings to everyone.”",
+      "korean": "সবাইকে শুভেচ্ছা জানাই।",
+      "english": "Model use for \"সবাইকে শুভেচ্ছা জানাই।\": “I send greetings to everyone.”",
+      "example": "সবাইকে শুভেচ্ছা জানাই।",
+      "exampleEnglish": "“I send greetings to everyone.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "শুভেচ্ছা",
+      "romanization": "shubhechchha",
+      "nativeText": "Usage focus for \"শুভেচ্ছা\": “Greetings / good wishes.” A useful holiday word.",
+      "pronunciation": "shubhechchha",
+      "exampleTarget": "সবাইকে শুভেচ্ছা জানাই।",
+      "exampleNative": "Notice what the form is doing here: “I send greetings to everyone.”",
+      "korean": "শুভেচ্ছা",
+      "english": "Usage focus for \"শুভেচ্ছা\": “Greetings / good wishes.” A useful holiday word.",
+      "example": "সবাইকে শুভেচ্ছা জানাই।",
+      "exampleEnglish": "Notice what the form is doing here: “I send greetings to everyone.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "শুভেচ্ছা",
+      "romanization": "shubhechchha",
+      "nativeText": "Contrast check for \"শুভেচ্ছা\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "shubhechchha",
+      "exampleTarget": "সবাইকে শুভেচ্ছা জানাই।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I send greetings to everyone.”",
+      "korean": "শুভেচ্ছা",
+      "english": "Contrast check for \"শুভেচ্ছা\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "সবাইকে শুভেচ্ছা জানাই।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I send greetings to everyone.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "শুভেচ্ছা",
+      "romanization": "shubhechchha",
+      "nativeText": "Recall \"শুভেচ্ছা\" from memory, then explain what would change if a nearby alternative replaced it in \"সবাইকে শুভেচ্ছা জানাই।\".",
+      "pronunciation": "shubhechchha",
+      "exampleTarget": "সবাইকে শুভেচ্ছা জানাই।",
+      "exampleNative": "Self-check against the model before moving on: “I send greetings to everyone.”",
+      "korean": "শুভেচ্ছা",
+      "english": "Recall \"শুভেচ্ছা\" from memory, then explain what would change if a nearby alternative replaced it in \"সবাইকে শুভেচ্ছা জানাই।\".",
+      "example": "সবাইকে শুভেচ্ছা জানাই।",
+      "exampleEnglish": "Self-check against the model before moving on: “I send greetings to everyone.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "শুভেচ্ছা",
+      "romanization": "shubhechchha",
+      "nativeText": "Repair \"শুভেচ্ছা\" inside \"সবাইকে শুভেচ্ছা জানাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Greetings / good wishes.” A useful holiday word.",
+      "pronunciation": "shubhechchha",
+      "exampleTarget": "সবাইকে শুভেচ্ছা জানাই।",
+      "exampleNative": "Use the model as the repair target: “I send greetings to everyone.”",
+      "korean": "শুভেচ্ছা",
+      "english": "Repair \"শুভেচ্ছা\" inside \"সবাইকে শুভেচ্ছা জানাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Greetings / good wishes.” A useful holiday word.",
+      "example": "সবাইকে শুভেচ্ছা জানাই।",
+      "exampleEnglish": "Use the model as the repair target: “I send greetings to everyone.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "শুভেচ্ছা",
+      "romanization": "shubhechchha",
+      "nativeText": "Transfer \"শুভেচ্ছা\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"সবাইকে শুভেচ্ছা জানাই।\".",
+      "pronunciation": "shubhechchha",
+      "exampleTarget": "সবাইকে শুভেচ্ছা জানাই।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I send greetings to everyone.”",
+      "korean": "শুভেচ্ছা",
+      "english": "Transfer \"শুভেচ্ছা\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"সবাইকে শুভেচ্ছা জানাই।\".",
+      "example": "সবাইকে শুভেচ্ছা জানাই।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I send greetings to everyone.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "শুভেচ্ছা",
+      "romanization": "shubhechchha",
+      "nativeText": "Find one word or phrase that naturally travels with \"শুভেচ্ছা\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "shubhechchha",
+      "exampleTarget": "সবাইকে শুভেচ্ছা জানাই।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I send greetings to everyone.”",
+      "korean": "শুভেচ্ছা",
+      "english": "Find one word or phrase that naturally travels with \"শুভেচ্ছা\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "সবাইকে শুভেচ্ছা জানাই।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I send greetings to everyone.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "শুভেচ্ছা",
+      "romanization": "shubhechchha",
+      "nativeText": "Listen for \"শুভেচ্ছা\" inside \"সবাইকে শুভেচ্ছা জানাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "shubhechchha",
+      "exampleTarget": "সবাইকে শুভেচ্ছা জানাই।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I send greetings to everyone.”",
+      "korean": "শুভেচ্ছা",
+      "english": "Listen for \"শুভেচ্ছা\" inside \"সবাইকে শুভেচ্ছা জানাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "সবাইকে শুভেচ্ছা জানাই।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I send greetings to everyone.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "শুভেচ্ছা",
+      "romanization": "shubhechchha",
+      "nativeText": "Write \"শুভেচ্ছা\" again without looking, then compare the exact written form against \"সবাইকে শুভেচ্ছা জানাই।\" before moving on.",
+      "pronunciation": "shubhechchha",
+      "exampleTarget": "সবাইকে শুভেচ্ছা জানাই।",
+      "exampleNative": "Use the written model as the final correctness check: “I send greetings to everyone.”",
+      "korean": "শুভেচ্ছা",
+      "english": "Write \"শুভেচ্ছা\" again without looking, then compare the exact written form against \"সবাইকে শুভেচ্ছা জানাই।\" before moving on.",
+      "example": "সবাইকে শুভেচ্ছা জানাই।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I send greetings to everyone.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "শুভেচ্ছা",
+      "romanization": "shubhechchha",
+      "nativeText": "Check whether \"শুভেচ্ছা\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I send greetings to everyone.”",
+      "pronunciation": "shubhechchha",
+      "exampleTarget": "সবাইকে শুভেচ্ছা জানাই।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I send greetings to everyone.”",
+      "korean": "শুভেচ্ছা",
+      "english": "Check whether \"শুভেচ্ছা\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I send greetings to everyone.”",
+      "example": "সবাইকে শুভেচ্ছা জানাই।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I send greetings to everyone.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "ঐতিহ্য",
+      "romanization": "oitihyo",
+      "nativeText": "“Tradition.” A bridge noun for cultural explanation.",
+      "pronunciation": "oitihyo",
+      "exampleTarget": "এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।",
+      "exampleNative": "“This is a very important tradition.”",
+      "korean": "ঐতিহ্য",
+      "english": "“Tradition.” A bridge noun for cultural explanation.",
+      "example": "এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।",
+      "exampleEnglish": "“This is a very important tradition.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।",
+      "romanization": "oitihyo",
+      "nativeText": "Model use for \"এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।\": “This is a very important tradition.”",
+      "pronunciation": "oitihyo",
+      "exampleTarget": "এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।",
+      "exampleNative": "“This is a very important tradition.”",
+      "korean": "এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।",
+      "english": "Model use for \"এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।\": “This is a very important tradition.”",
+      "example": "এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।",
+      "exampleEnglish": "“This is a very important tradition.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "ঐতিহ্য",
+      "romanization": "oitihyo",
+      "nativeText": "Usage focus for \"ঐতিহ্য\": “Tradition.” A bridge noun for cultural explanation.",
+      "pronunciation": "oitihyo",
+      "exampleTarget": "এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।",
+      "exampleNative": "Notice what the form is doing here: “This is a very important tradition.”",
+      "korean": "ঐতিহ্য",
+      "english": "Usage focus for \"ঐতিহ্য\": “Tradition.” A bridge noun for cultural explanation.",
+      "example": "এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।",
+      "exampleEnglish": "Notice what the form is doing here: “This is a very important tradition.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "ঐতিহ্য",
+      "romanization": "oitihyo",
+      "nativeText": "Contrast check for \"ঐতিহ্য\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "oitihyo",
+      "exampleTarget": "এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “This is a very important tradition.”",
+      "korean": "ঐতিহ্য",
+      "english": "Contrast check for \"ঐতিহ্য\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “This is a very important tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "ঐতিহ্য",
+      "romanization": "oitihyo",
+      "nativeText": "Recall \"ঐতিহ্য\" from memory, then explain what would change if a nearby alternative replaced it in \"এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।\".",
+      "pronunciation": "oitihyo",
+      "exampleTarget": "এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।",
+      "exampleNative": "Self-check against the model before moving on: “This is a very important tradition.”",
+      "korean": "ঐতিহ্য",
+      "english": "Recall \"ঐতিহ্য\" from memory, then explain what would change if a nearby alternative replaced it in \"এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।\".",
+      "example": "এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।",
+      "exampleEnglish": "Self-check against the model before moving on: “This is a very important tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "ঐতিহ্য",
+      "romanization": "oitihyo",
+      "nativeText": "Repair \"ঐতিহ্য\" inside \"এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Tradition.” A bridge noun for cultural explanation.",
+      "pronunciation": "oitihyo",
+      "exampleTarget": "এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।",
+      "exampleNative": "Use the model as the repair target: “This is a very important tradition.”",
+      "korean": "ঐতিহ্য",
+      "english": "Repair \"ঐতিহ্য\" inside \"এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Tradition.” A bridge noun for cultural explanation.",
+      "example": "এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।",
+      "exampleEnglish": "Use the model as the repair target: “This is a very important tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "ঐতিহ্য",
+      "romanization": "oitihyo",
+      "nativeText": "Transfer \"ঐতিহ্য\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।\".",
+      "pronunciation": "oitihyo",
+      "exampleTarget": "এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “This is a very important tradition.”",
+      "korean": "ঐতিহ্য",
+      "english": "Transfer \"ঐতিহ্য\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।\".",
+      "example": "এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “This is a very important tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "ঐতিহ্য",
+      "romanization": "oitihyo",
+      "nativeText": "Find one word or phrase that naturally travels with \"ঐতিহ্য\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "oitihyo",
+      "exampleTarget": "এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “This is a very important tradition.”",
+      "korean": "ঐতিহ্য",
+      "english": "Find one word or phrase that naturally travels with \"ঐতিহ্য\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “This is a very important tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "ঐতিহ্য",
+      "romanization": "oitihyo",
+      "nativeText": "Listen for \"ঐতিহ্য\" inside \"এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "oitihyo",
+      "exampleTarget": "এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “This is a very important tradition.”",
+      "korean": "ঐতিহ্য",
+      "english": "Listen for \"ঐতিহ্য\" inside \"এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “This is a very important tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "ঐতিহ্য",
+      "romanization": "oitihyo",
+      "nativeText": "Write \"ঐতিহ্য\" again without looking, then compare the exact written form against \"এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।\" before moving on.",
+      "pronunciation": "oitihyo",
+      "exampleTarget": "এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।",
+      "exampleNative": "Use the written model as the final correctness check: “This is a very important tradition.”",
+      "korean": "ঐতিহ্য",
+      "english": "Write \"ঐতিহ্য\" again without looking, then compare the exact written form against \"এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।\" before moving on.",
+      "example": "এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।",
+      "exampleEnglish": "Use the written model as the final correctness check: “This is a very important tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit19culturalholidays-vocabulary-1",
+        "bn-level1unit19culturalholidays-vocabulary-2",
+        "bn-level1unit19culturalholidays-grammar-1",
+        "bn-level1unit19culturalholidays-grammar-2",
+        "bn-level1unit19culturalholidays-reading",
+        "bn-level1unit19culturalholidays-listening",
+        "bn-level1unit19culturalholidays-writing",
+        "bn-level1unit19culturalholidays-task"
+      ],
+      "targetText": "ঐতিহ্য",
+      "romanization": "oitihyo",
+      "nativeText": "Check whether \"ঐতিহ্য\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “This is a very important tradition.”",
+      "pronunciation": "oitihyo",
+      "exampleTarget": "এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “This is a very important tradition.”",
+      "korean": "ঐতিহ্য",
+      "english": "Check whether \"ঐতিহ্য\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “This is a very important tradition.”",
+      "example": "এটা খুব গুরুত্বপূর্ণ ঐতিহ্য।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “This is a very important tradition.”"
+    }
+  ],
+  "targetLang": "bn",
+  "nativeLang": "en",
+  "track": "textbook"
+};

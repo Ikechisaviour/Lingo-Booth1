@@ -968,7 +968,9 @@
     "practiceEverywhereAria": "תרגל פריט זה במקום אחר",
     "practiceEverywhere": "תתאמן על זה בכל מקום",
     "saveReply": "שמור תשובה",
-    "selfTestReason": "נשמר מהכיתה לבדיקה עצמית מהירה."
+    "selfTestReason": "נשמר מהכיתה לבדיקה עצמית מהירה.",
+    "hideOutline": "הסתר קווי מתאר",
+    "showOutline": "הצג קווי מתאר"
   },
   "classList": {
     "heroAriaLabel": "מַחלָקָה",
@@ -1009,7 +1011,10 @@
     },
     "titlePrefix": {
       "unit": "רמה {{level}} · יחידה {{unit}}: {{title}}"
-    }
+    },
+    "retry": "נסה שוב",
+    "progressAriaLabel": "התקדמות הכיתה",
+    "progressCaption": "{{percent}}% הושלמו · {{completed}} מתוך {{total}} פריטים"
   },
   "contextPractice": {
     "title": "שיעורים שעוצבו סביבך",
@@ -1092,7 +1097,9 @@
     "recapWentWell": "מה הלך טוב",
     "recapUsefulPhrases": "ביטויים שימושיים",
     "recapReview": "סקירה הבאה",
-    "recapReviewFallback": "שמור ביטוי אחד והשתמש בו שוב במצב תרגול אחר."
+    "recapReviewFallback": "שמור ביטוי אחד והשתמש בו שוב במצב תרגול אחר.",
+    "hideSetup": "הסתר את ההגדרה",
+    "showSetup": "הצג את ההגדרה"
   },
   "exerciseHub": {
     "ariaLabel": "תַרגִיל",
@@ -1187,7 +1194,9 @@
       "default": "{{index}}. {{char}}: העתק את הצורה ולאחר מכן כתוב אותה מהזיכרון."
     },
     "savedReason": "נשמר מאימון כתיבה למעבר נוסף.",
-    "selfTestReason": "נשמר מאימון כתיבה למבחן עצמי מהיר."
+    "selfTestReason": "נשמר מאימון כתיבה למבחן עצמי מהיר.",
+    "hideNotebook": "הסתר מחברת",
+    "showNotebook": "הצג מחברת"
   },
   "institution": {
     "kicker": "מוֹסָד",

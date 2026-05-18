@@ -830,7 +830,7 @@
     "personalizedForYou": "Personalized for you",
     "expressionPractice": "Expression practice",
     "lessonMaterialAriaLabel": "Lesson material",
-    "noItemsTagged": "No items are tagged for this activity yet. Pick another activity, or seed reading/listening/pronunciation/culture content for this section.",
+    "noItemsTagged": "Nothing in this section yet. Try another activity to keep going.",
     "translationPending": "Translation is being prepared for your language.",
     "examplePrefix": "Example:",
     "breakdown": "Breakdown",
@@ -968,7 +968,9 @@
     "practiceEverywhereAria": "Practice this item elsewhere",
     "practiceEverywhere": "Practice this everywhere",
     "saveReply": "Save reply",
-    "selfTestReason": "Saved from class for a quick self-test."
+    "selfTestReason": "Saved from class for a quick self-test.",
+    "hideOutline": "Hide outline",
+    "showOutline": "Show outline"
   },
   "classList": {
     "heroAriaLabel": "Class",
@@ -979,6 +981,8 @@
     "note": "Built for guided lessons, not quick drills.",
     "overviewAriaLabel": "Class overview",
     "availableUnits": "available class units",
+    "progressAriaLabel": "Class progress",
+    "progressCaption": "{{percent}}% complete · {{completed}} of {{total}} items",
     "contentOverviewAriaLabel": "Class content overview",
     "statUnits": "Units",
     "statVocabulary": "Vocabulary",
@@ -994,7 +998,8 @@
     "guidedTutor": "Guided tutor",
     "startClass": "Start class",
     "classFallback": "Class",
-    "loadError": "Could not load class lessons. Make sure the backend is running and seeded.",
+    "loadError": "We couldn't load your lessons right now. Please check your connection and try again.",
+    "retry": "Try again",
     "titlePrefix": {
       "unit": "Level {{level}} · Unit {{unit}}: {{title}}"
     },
@@ -1092,7 +1097,9 @@
     "recapWentWell": "What went well",
     "recapUsefulPhrases": "Useful phrases",
     "recapReview": "Review next",
-    "recapReviewFallback": "Save one phrase and reuse it in another practice mode."
+    "recapReviewFallback": "Save one phrase and reuse it in another practice mode.",
+    "hideSetup": "Hide setup",
+    "showSetup": "Show setup"
   },
   "exerciseHub": {
     "ariaLabel": "Exercise",
@@ -1187,7 +1194,9 @@
     "saveForReview": "Save for review",
     "markCompleteNext": "Mark complete and next",
     "savedReason": "Saved from writing practice for another pass.",
-    "selfTestReason": "Saved from writing practice for a quick self-test."
+    "selfTestReason": "Saved from writing practice for a quick self-test.",
+    "hideNotebook": "Hide notebook",
+    "showNotebook": "Show notebook"
   },
   "institution": {
     "kicker": "Institution",

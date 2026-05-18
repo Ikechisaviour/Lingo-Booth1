@@ -23,7 +23,8 @@
     "saving": "توفير...",
     "search": "يبحث",
     "notSet": "لم يتم ضبطه",
-    "all": "الجميع"
+    "all": "الجميع",
+    "reset": "إعادة ضبط"
   },
   "languages": {
     "en": "الإنجليزية",
@@ -218,7 +219,8 @@
       "fri": "ف",
       "sat": "س",
       "sun": "س"
-    }
+    },
+    "contactDesc": "أسئلة أو تعليقات أو مشكلة للإبلاغ عنها"
   },
   "lessons": {
     "title": "{{language}} دروس",
@@ -738,7 +740,102 @@
     "modeBreakdown": "وضع الدراسة",
     "searchUsers": "البحث عن مستخدمين...",
     "all": "الكل",
-    "demo": "تجريبي"
+    "demo": "تجريبي",
+    "failures": "الفشل",
+    "messages": "رسائل",
+    "userFailures": "فشل من جانب المستخدم",
+    "openFailures": "{{count}} الأعطال المفتوحة",
+    "criticalFailures": "{{count}} حرجة",
+    "clearing": "المقاصة...",
+    "loadingFailures": "فشل التحميل...",
+    "noOpenFailures": "لا يوجد فشل مفتوح من جانب المستخدم.",
+    "acknowledge": "يُقرّ",
+    "page": "صفحة",
+    "device": "جهاز",
+    "languagePair": "زوج اللغة",
+    "clientStatus": "عميل",
+    "pageOf": "صفحة {{page}} من {{total}}",
+    "guestUser": "مستخدم ضيف",
+    "unknownUser": "مستخدم غير معروف",
+    "unknown": "مجهول",
+    "clearFailuresTitle": "مسح الفشل المفتوح؟",
+    "clearFailuresBody": "هل تم وضع علامة على جميع حالات الفشل المفتوحة {{count}} على أنها معترف بها؟",
+    "contactMessages": "رسائل الاتصال",
+    "unreadMessages": "{{count}} الرسائل غير المقروءة",
+    "allMessages": "جميع الرسائل",
+    "registeredUsers": "المستخدمين المسجلين",
+    "guestUsers": "المستخدمين الضيوف",
+    "loadingMessages": "جارٍ تحميل الرسائل...",
+    "noUnreadMessages": "لا توجد رسائل اتصال غير مقروءة.",
+    "registeredUser": "مستخدم مسجل",
+    "contactMessage": "رسالة الاتصال",
+    "markRead": "مارك اقرأ",
+    "name": "اسم",
+    "accountTier": "طبقة الحساب",
+    "clearMessagesTitle": "هل تريد مسح الرسائل غير المقروءة؟",
+    "clearMessagesBody": "هل تريد وضع علامة على جميع رسائل الاتصال غير المقروءة {{count}} كمقروءة؟",
+    "demoDifficulty": {
+      "beginner": "مبتدئ",
+      "balanced": "متوازن",
+      "natural": "طبيعي",
+      "challenge": "تحدي"
+    },
+    "demoScenarios": {
+      "friendlyChat": "دردشة ودية",
+      "cafeWorker": "التحدث مع عامل مقهى",
+      "taxiDriver": "طلب المساعدة من سائق التاكسي",
+      "meetingNew": "لقاء شخص جديد"
+    },
+    "demoReplyPlaceholder": "ستظهر هنا استجابة شريك الممارسة.",
+    "demoTipPlaceholder": "اسأل بأي من اللغتين المحددتين. يمكنك تغيير الموضوع أو السؤال عن المعاني أو طلب صياغة أسهل.",
+    "promoteConfirmShort": "جعل {{username}} مشرف؟",
+    "promote": "يرقي",
+    "deleteUserTitle": "حذف المستخدم",
+    "deleteUserConfirmShort": "هل تريد حذف {{username}} نهائيًا؟ لا يمكن التراجع عن هذا.",
+    "demoReset": "إعادة ضبط المحادثة.",
+    "demoNoReply": "لم يتم إرجاع أي رد.",
+    "demoNoCoachingNote": "لا يوجد مذكرة التدريب.",
+    "demoResponseFailed": "لم أستطع الرد هذه المرة. يرجى المحاولة مرة أخرى.",
+    "demoConnectionIssue": "مشكلة الاتصال. حاول مرة أخرى بعد قليل.",
+    "tapForDetails": "انقر للحصول على التفاصيل",
+    "activeWeek": "نشط 7 د",
+    "countries": "بلدان",
+    "conversion": "تحويل",
+    "engagement": "ارتباط",
+    "totalCardsStudied": "إجمالي البطاقات المدروسة",
+    "totalAudioPlays": "إجمالي عمليات تشغيل الصوت",
+    "lessonsViewed": "تم الاطلاع على الدروس",
+    "topLanguagePairs": "أهم أزواج اللغات",
+    "sessionsCount": "جلسات {{count}}",
+    "deviceBreakdown": "انهيار الجهاز",
+    "recentSessions": "الجلسات الأخيرة ({{count}})",
+    "cardsStudiedCount": "بطاقات {{count}}",
+    "pageNumber": "الصفحة {{page}}",
+    "noGuestData": "لا توجد بيانات الضيف المتاحة",
+    "loadData": "تحميل البيانات",
+    "speakingDemo": "التحدث التجريبي",
+    "demoIntro": "معاينة المحادثة للمسؤول فقط. ولا يحفظ الصوت أو تقدم المتعلم.",
+    "scenario": "سيناريو",
+    "customScenario": "السيناريو المخصص",
+    "learningLanguage": "تعلم اللغة",
+    "nativeLanguage": "اللغة الأصلية",
+    "listenFor": "استمع ل",
+    "difficulty": "صعوبة",
+    "learnerTurnInput": "اكتب أو الصق ما قاله المتعلم",
+    "interrupt": "مقاطعة",
+    "conversationState": "حالة المحادثة",
+    "lastLearnerTurn": "آخر دور للمتعلم",
+    "noTurnSentYet": "لم يتم إرسال أي دور بعد.",
+    "practicePartnerResponse": "تدرب على استجابة الشريك",
+    "coachNote": "ملاحظة المدرب",
+    "userDetails": "تفاصيل المستخدم",
+    "totalXp": "إجمالي XP",
+    "studyMode": "وضع الدراسة",
+    "languages": "اللغات",
+    "loginCount": "عدد تسجيل الدخول",
+    "memberSince": "عضو منذ",
+    "suspendReasonLabel": "تعليق السبب",
+    "userDetailsLoadFailed": "لا يمكن تحميل تفاصيل المستخدم"
   },
   "pricing": {
     "kicker": "الخطط",
@@ -820,7 +917,9 @@
     "discountCode": "رمز الخصم",
     "discountPlaceholder": "رمز اختياري",
     "discountUnavailable": "رمز الخصم هذا غير متوفر لهذه الخطة.",
-    "automaticDiscountApplied": "تم تطبيق خصم تلقائي {{discount}}"
+    "automaticDiscountApplied": "تم تطبيق خصم تلقائي {{discount}}",
+    "signInToChooseTitle": "قم بإنشاء حساب للمتابعة",
+    "signInToChooseBody": "قم بإنشاء حساب أو قم بتسجيل الدخول قبل اختيار خطة مدفوعة حتى يمكن ربط وصولك بك."
   },
   "billing": {
     "kicker": "الفواتير",
@@ -975,7 +1074,8 @@
     },
     "titlePrefix": {
       "unit": "المستوى {{level}} · الوحدة {{unit}}: {{title}}"
-    }
+    },
+    "retry": "حاول ثانية"
   },
   "classLesson": {
     "loading": "جارٍ تحميل الدرس الصفي...",
@@ -1114,7 +1214,10 @@
     "saveReply": "حفظ الرد",
     "saveExample": "حفظ المثال",
     "practiceEverywhere": "ممارسة هذا في كل مكان",
-    "selfTestReason": "تم الحفظ من الفصل لإجراء اختبار ذاتي سريع."
+    "selfTestReason": "تم الحفظ من الفصل لإجراء اختبار ذاتي سريع.",
+    "previous": "سابق",
+    "lessonGuide": "دليل الدرس",
+    "activityXOfY": "النشاط {{current}} من {{total}}"
   },
   "exercise": {
     "kicker": "يمارس",
@@ -1182,7 +1285,8 @@
     "recapUsefulPhrases": "عبارات مفيدة",
     "recapReview": "مراجعة المقبل",
     "recapReviewFallback": "احفظ عبارة واحدة وأعد استخدامها في وضع تدريبي آخر.",
-    "practiceLabel": "ممارسة المحادثة"
+    "practiceLabel": "ممارسة المحادثة",
+    "practiceSetup": "ممارسة الإعداد"
   },
   "context": {
     "backToProfile": "العودة إلى الملف الشخصي",
@@ -1304,7 +1408,10 @@
       "memory": "من الذاكرة"
     },
     "savedReason": "تم الحفظ من ممارسة الكتابة لتمرير آخر.",
-    "selfTestReason": "تم الحفظ من ممارسة الكتابة لإجراء اختبار ذاتي سريع."
+    "selfTestReason": "تم الحفظ من ممارسة الكتابة لإجراء اختبار ذاتي سريع.",
+    "hideNotebook": "إخفاء دفتر الملاحظات",
+    "showNotebook": "عرض دفتر الملاحظات",
+    "hideAddPanel": "إخفاء لوحة الإضافة"
   },
   "certificates": {
     "kicker": "شهادة",
@@ -1472,5 +1579,44 @@
     "firstThreeDayReviewBody": "عد مرة واحدة إلى ما رأيته بالأمس حتى تبدأ العناصر الأولى في الالتصاق.",
     "firstThreeDaySpeakBody": "استخدم منعطفًا قصيرًا في التحدث حتى تترك اللغة الصفحة مبكرًا.",
     "firstThreeDayLearnBody": "ابدأ بدرس موجه صغير حتى يكون للزوجين نقطة بداية واضحة."
+  },
+  "resetPassword": {
+    "title": "إعادة تعيين كلمة المرور",
+    "subtitle": "أدخل كلمة المرور الجديدة.",
+    "error": "فشل إعادة تعيين كلمة المرور. يرجى المحاولة مرة أخرى.",
+    "invalidLink": "رابط إعادة التعيين هذا غير صالح أو منتهي الصلاحية.",
+    "noToken": "رمز إعادة التعيين مفقود. يرجى طلب رابط جديد.",
+    "requestNew": "طلب رابط جديد",
+    "success": "تم إعادة تعيين كلمة المرور بنجاح.",
+    "goToLogin": "الذهاب إلى تسجيل الدخول",
+    "newPasswordPlaceholder": "كلمة المرور الجديدة",
+    "resetButton": "إعادة تعيين كلمة المرور",
+    "failed": "لا يمكن إعادة تعيين كلمة المرور. يرجى المحاولة مرة أخرى.",
+    "kicker": "إعادة تعيين كلمة المرور",
+    "missingToken": "رابط إعادة التعيين هذا مفقود أو غير صالح.",
+    "newPassword": "كلمة المرور الجديدة",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "submit": "إعادة تعيين كلمة المرور"
+  },
+  "contact": {
+    "navLabel": "اتصال",
+    "kicker": "اتصل بنا",
+    "title": "أخبرنا بما تحتاجه",
+    "subtitle": "أرسل سؤالاً، أو أبلغ عن مشكلة، أو شارك بتعليقاتك. سنراجع رسالتك ونرد عليها عند الحاجة.",
+    "infoTitle": "نحن نستمع",
+    "infoText": "يتم حفظ الرسائل الواردة من هذا النموذج بشكل آمن مع سياق الحساب عندما يكون ذلك متاحًا، حتى نتمكن من فهم ما حدث وتقديم المساعدة بشكل أسرع.",
+    "name": "اسم",
+    "namePlaceholder": "اسمك",
+    "email": "بريد إلكتروني",
+    "emailPlaceholder": "you@example.com",
+    "subject": "موضوع",
+    "subjectPlaceholder": "ما هو هذا؟",
+    "message": "رسالة",
+    "messagePlaceholder": "أكتب رسالتك هنا...",
+    "send": "أرسل رسالة",
+    "success": "شكرًا. لقد تم استلام رسالتك.",
+    "error": "لم نتمكن من إرسال رسالتك الآن. يرجى المحاولة مرة أخرى.",
+    "companyTrap": "شركة",
+    "profileHint": "يمكنك إرسال سؤال أو الإبلاغ عن مشكلة أو مشاركة التعليقات من هذا الجهاز."
   }
 }

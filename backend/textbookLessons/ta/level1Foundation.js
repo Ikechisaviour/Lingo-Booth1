@@ -1,579 +1,2509 @@
-// Level 1 — Foundation: Tamil Script (Vatteluttu) & Sounds
-// First lesson on the Tamil / Foundation track. Pre-grammar, pre-vocabulary.
-// Covers the vowels (uyir), consonants (mei), aytham, the special ழ (zh),
-// retroflex series, gemination, short/long vowels, and the basics of the
-// Centhamizh/Koduntamizh diglossia. Sets up Anna University (Chennai) as the
-// course anchor and references Sri Lanka and Singapore/Malaysia diaspora.
-//
-// All content is authored with Tamil script (target) + ISO-15919 / simplified
-// transliteration (romanization) + English glosses (canonical source). The AI
-// conversation tutor reads this curriculum and delivers it to each learner in
-// their preferred native language at runtime — never assume a specific L1.
-//
-// Glosses follow the rich-gloss rule (AGENTS.md → "Gloss Richness"):
-// every nativeText, exampleNative, and breakdown.native carries register,
-// usage context, or contrast info — not a bare definition.
-
-const createContentItem = (
-  target,
-  romanization,
-  note,
-  type = 'word',
-  example = '',
-  exampleNote = '',
-  breakdown = null,
-  activityIds = [],
-) => ({
-  type,
-  activityIds,
-  targetText: target,
-  romanization,
-  nativeText: note,
-  pronunciation: romanization,
-  exampleTarget: example || target,
-  exampleNative: exampleNote || note,
-  korean: target,
-  english: note,
-  example: example || target,
-  exampleEnglish: exampleNote || note,
-  ...(breakdown ? { breakdown: breakdown.map(b => ({ target: b.target, native: b.note, korean: b.target, english: b.note })) } : {}),
-});
-
-const ACT = {
-  intro: 'ta-foundation-intro',
-  vowels: 'ta-foundation-vowels',
-  consonants: 'ta-foundation-consonants',
-  retroflex: 'ta-foundation-retroflex',
-  zhSound: 'ta-foundation-zh',
-  gemination: 'ta-foundation-gemination',
-  vowelLength: 'ta-foundation-vowel-length',
-  syllables: 'ta-foundation-syllables',
-  voicing: 'ta-foundation-voicing',
-  diglossia: 'ta-foundation-diglossia',
-  numerals: 'ta-foundation-numerals',
-  reading: 'ta-foundation-reading',
-};
-
-const activities = [
-  {
-    id: ACT.intro,
-    section: 'Why Tamil Script & Sounds',
-    title: 'எழுத்து அறிமுகம் — How Tamil sounds are organized',
-    goals: [
-      'Understand that Tamil is an abugida-style alphasyllabary: each base consonant carries an inherent vowel that vowel signs override — different from Latin one-letter-one-sound.',
-      'See why the Tamil alphabet has just 12 vowels and 18 core consonants (plus the special āytam ஃ) but yields hundreds of combined syllables, each with its own glyph.',
-      'Know that Tamil sound has FOUR famous features English speakers must learn: no voicing distinction at phoneme level, retroflex consonants (ட ண ள), the unique ழ "zh" (IPA ɻ), and phonemic gemination + vowel length.',
-    ],
-    task: 'Read the four structural facts. By the end of this lesson you should be able to read a Tamil-script syllable aloud with the correct sound, even before you know the word.',
-  },
-  {
-    id: ACT.vowels,
-    section: 'Vowels (உயிர் uyir)',
-    title: '12 vowels — short / long pairs',
-    goals: [
-      'Learn the 12 vowels arranged in pairs: அ/ஆ (a/ā), இ/ஈ (i/ī), உ/ஊ (u/ū), எ/ஏ (e/ē), ஒ/ஓ (o/ō) plus ஐ (ai) and ஔ (au).',
-      'Pronounce short vs long vowel pairs clearly — vowel length is PHONEMIC: சதம் catam ("hundred") vs சாதம் cātam ("rice") are two completely different words.',
-    ],
-    task: 'Read each vowel aloud, then drill the short/long contrast pairs (a/ā, i/ī, u/ū) until the distinction is automatic.',
-  },
-  {
-    id: ACT.consonants,
-    section: 'Consonants (மெய் mei)',
-    title: '18 core consonants — six groups of three',
-    goals: [
-      'Learn the 18 mei: hard (வல்லினம் vallinam: க ச ட த ப ற), soft/nasal (மெல்லினம் mellinam: ங ஞ ண ந ம ன), and medium (இடையினம் idaiyinam: ய ர ல வ ழ ள).',
-      'Notice the symmetrical 6×3 structure — Tamil consonants are organized by place AND manner, making the chart predictable.',
-    ],
-    task: 'Read each consonant aloud with the inherent vowel a (க ka, ச ca, ட ṭa, த ta, …) and place each one in its row of the 6×3 chart.',
-  },
-  {
-    id: ACT.retroflex,
-    section: 'Retroflex Series',
-    title: 'ட ண ள — tongue curled back',
-    goals: [
-      'Pronounce the retroflex series ட (ṭ), ண (ṇ), ள (ḷ) by curling the tongue tip backward and touching the hard palate — distinct from the dental series த (t), ந (n), ல (l) where the tongue touches the teeth.',
-      'Hear the contrast in minimal pairs: பட (paṭa "spread!") vs பத (pata "lesson"); ணை (ṇai retroflex) vs நை (nai dental).',
-    ],
-    task: 'Read each retroflex/dental minimal pair side by side, curling the tongue back ONLY for the retroflex version.',
-  },
-  {
-    id: ACT.zhSound,
-    section: 'The Famous ழ (zh)',
-    title: 'ழ — the unique Tamil sound (IPA ɻ)',
-    goals: [
-      'Pronounce ழ — a retroflex approximant unique to Tamil and Malayalam, written "zh" in ISO-15919 but NOT a /z/ sound at all. The tongue tip curls far back without quite touching anything.',
-      'Use it in iconic words: தமிழ் tamiḻ (Tamil itself!), பழம் paḻam ("fruit"), மழை maḻai ("rain"). Getting ழ right is a litmus test for Tamil pronunciation.',
-    ],
-    task: 'Curl your tongue back as if for ட but keep a tiny gap; say "ḻa" — slightly r-like, slightly l-like, not quite either. Drill tamiḻ, paḻam, maḻai.',
-  },
-  {
-    id: ACT.gemination,
-    section: 'Gemination (இரட்டிப்பு iraṭṭippu)',
-    title: 'Double consonants change meaning',
-    goals: [
-      'Pronounce geminate (doubled) consonants as a single LONG consonant — like English "book-keeper" pronounced fast. Spelled with the consonant repeated or with puḷḷi: க்க, ட்ட, ப்ப.',
-      'Hear gemination as phonemic: படம் paṭam ("picture") vs பட்டம் paṭṭam ("title/degree"); படி paṭi ("step") vs பட்டி paṭṭi ("village/hamlet"). One consonant or two changes meaning.',
-    ],
-    task: 'Read each minimal pair side by side, holding the doubled consonant for nearly twice as long.',
-  },
-  {
-    id: ACT.vowelLength,
-    section: 'Short vs Long Vowels',
-    title: 'Vowel length is phonemic',
-    goals: [
-      'Pronounce short vowels (அ இ உ எ ஒ) for one beat and long vowels (ஆ ஈ ஊ ஏ ஓ) for two beats — the contrast carries meaning.',
-      'Drill iconic pairs: சதம் catam (hundred) vs சாதம் cātam (cooked rice); பல pala (many) vs பால் pāl (milk); இல illa (no — short) vs ஈ ī (housefly).',
-    ],
-    task: 'Hold the long vowel for two clear counts; cut the short vowel cleanly after one. Repeat each pair five times.',
-  },
-  {
-    id: ACT.syllables,
-    section: 'Syllables (உயிர்மெய் uyirmei)',
-    title: 'Consonant + vowel = one glyph',
-    goals: [
-      'Read combined consonant-vowel glyphs: க + ஆ = கா (kā), ம + இ = மி (mi), த + உ = து (tu). Each combination has its own visual form — vowel signs sit above, below, or beside the consonant.',
-      'Recognize the puḷḷi (dot ்) that marks a "pure consonant" with no vowel: க் = k alone, used in word-final and consonant cluster positions.',
-    ],
-    task: 'Take the consonant க and combine it with all 12 vowels (க, கா, கி, கீ, கு, கூ, கெ, கே, கை, கொ, கோ, கௌ, plus க்) — see how each glyph differs.',
-  },
-  {
-    id: ACT.voicing,
-    section: 'Voicing Rules (வல்லினம்)',
-    title: 'No voicing distinction — k IS g positionally',
-    goals: [
-      'Understand that Tamil has NO phonemic voicing distinction: க is /k/ at the start of a word but /g/ between vowels — the same letter, predicted by environment, not contrast.',
-      'Apply the rule: க is /k/ word-initially or geminated; /g/ between vowels or after nasals (போக pōka /pōga/, தங்கம் taṅkam /taṅgam/). Same applies to ச (c/s/j), ட (ṭ/ḍ), த (t/d), ப (p/b).',
-    ],
-    task: 'Read each example word and predict whether the medial vallinam is voiced or voiceless based on its position; then say it aloud.',
-  },
-  {
-    id: ACT.diglossia,
-    section: 'Centhamizh vs Koduntamizh',
-    title: 'Two registers — written vs spoken Tamil',
-    goals: [
-      'Understand Tamil diglossia: செந்தமிழ் centamiḻ is the formal/literary/written register (news, textbooks, formal speeches), while கொடுந்தமிழ் koṭuntamiḻ is colloquial spoken Tamil (everyday talk, Tanglish-mixed in cities).',
-      'See that the two registers differ in grammar AND vocabulary — formal நான் வருகிறேன் (nāṉ varukiṟēṉ "I come") becomes spoken நான் வரேன் (nāṉ varēṉ); written இருக்கிறது is spoken இருக்கு.',
-    ],
-    task: 'Read each register-pair example and identify whether each version is centamiḻ (literary) or koṭuntamiḻ (spoken).',
-  },
-  {
-    id: ACT.numerals,
-    section: 'Numerals & Special Symbols',
-    title: '௦ ௧ ௨ ௩ ௪ ௫ ௬ ௭ ௮ ௯ — Tamil digits',
-    goals: [
-      'Recognize the 10 Tamil digits (௦-௯) — though everyday writing now uses Arabic numerals, classical and ornamental Tamil texts still use the Tamil digits.',
-      'Recognize the āytam (ஃ) — a special "half-sound" symbol used in Centhamizh and in transliterating foreign sounds like "f" (e.g., ஃபோன் for "phone").',
-    ],
-    task: 'Read the Tamil digits 0-9 aloud, then read aloud one number formed with them: ௨௦௨௬ = 2026.',
-  },
-  {
-    id: ACT.reading,
-    section: 'Reading Practice',
-    title: 'Read a full Tamil sentence aloud',
-    goals: [
-      'Read a short Tamil sentence applying all the rules: vowel length, retroflex, gemination, ழ, and positional voicing.',
-      'Identify each rule in the example sentence and label why each consonant is pronounced as it is.',
-    ],
-    task: 'Read aloud: "வணக்கம்! என் பெயர் ராஜா. நான் சென்னையில் இருக்கிறேன்." (Vaṇakkam! En peyar Rājā. Nāṉ Cennaiyil irukkiṟēṉ. "Hello! My name is Raja. I am in Chennai.") — then mark every gemination and every retroflex.',
-  },
-];
-
-const level1Foundation = {
-  title: 'Foundation: Tamil Script & Sounds — Reading & Pronouncing Tamil',
-  category: 'greetings',
-  difficulty: 'beginner',
-  targetLang: 'ta',
-  nativeLang: 'en',
-  track: 'textbook',
-  lessonType: 'foundation',
-  activities,
-  expressionPractice: [],
-  relatedPools: [],
-  content: [
-    // Activity 1 — Why Tamil Script & Sounds
-    createContentItem(
-      'தமிழ் எழுத்து',
-      'tamiḻ eḻuttu',
-      'Tamil is one of the oldest continuously-spoken languages in the world (Sangam literature dates back over 2000 years). Its script is an abugida: each consonant carries an inherent /a/ unless a vowel sign overrides it.',
-      'word',
-      'தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).',
-      'When Tamil speakers say their language name correctly, the final consonant is the retroflex approximant ழ — the same sound that distinguishes Tamil pronunciation.',
-      [
-        { target: 'த ta', note: 'dental t; tongue at upper teeth' },
-        { target: 'மி mi', note: 'consonant ம with vowel sign for i' },
-        { target: 'ழ் ḻ', note: 'the famous retroflex approximant; puḷḷi marks it as a pure consonant with no vowel' },
+module.exports = {
+  "title": "Foundation: Tamil Script & Sounds — Reading & Pronouncing Tamil",
+  "category": "greetings",
+  "difficulty": "beginner",
+  "targetLang": "ta",
+  "nativeLang": "en",
+  "track": "textbook",
+  "lessonType": "foundation",
+  "activities": [
+    {
+      "id": "ta-level1foundation-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Understand that Tamil is an abugida-style alphasyllabary: each base consonant carries an inherent vowel that vowel signs override — different from Latin one-letter-one-sound."
       ],
-      [ACT.intro],
-    ),
-    createContentItem(
-      'நான்கு பெரிய அம்சங்கள்',
-      'nāṉku periya amcaṅkaḷ',
-      'Four features of Tamil that English speakers must internalize: (1) no voicing contrast — same letter for k/g, t/d, p/b; (2) retroflex consonants ட ண ள with tongue curled back; (3) the unique ழ; (4) phonemic gemination and vowel length.',
-      'word',
-      '(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)',
-      'These four contrasts are what make Tamil sound distinctly Tamil rather than another South Asian language.',
-      null,
-      [ACT.intro],
-    ),
-    createContentItem(
-      'அண்ணா பல்கலைக்கழகம்',
-      'aṇṇā palkalaikkaḻakam',
-      'Anna University in Chennai (named after C. N. Annadurai, "Anna") is one of South India\'s leading technical universities and our anchor campus for this course. Throughout the lessons we will reference Chennai life — IIT Madras nearby, Loyola College, Marina Beach, T. Nagar shopping.',
-      'word',
-      'நான் அண்ணா பல்கலைக்கழகத்தில் படிக்கிறேன். Nāṉ Aṇṇā Palkalaikkaḻakattil paṭikkiṟēṉ. "I study at Anna University."',
-      'Notice the locative suffix -il (-இல்) — Anna University + in. Eight-case agglutination, introduced in detail later.',
-      null,
-      [ACT.intro],
-    ),
-
-    // Activity 2 — Vowels (12 uyir)
-    createContentItem(
-      'அ / ஆ',
-      'a / ā',
-      'Short a vs long ā — the first vowel pair. Short அ is one beat; long ஆ is two beats. Vowel length carries meaning and tone of the word changes audibly.',
-      'word',
-      'பல pala (many) vs பால் pāl (milk); அடி aṭi (hit/foot) vs ஆடு āṭu (goat/dance)',
-      'Hold the long vowel clearly for two counts — Tamil rhythm depends on it. Bunching the long vowel into a short one yields a different word.',
-      [
-        { target: 'அ a', note: 'short low central vowel, ~1 mora' },
-        { target: 'ஆ ā', note: 'long low central vowel, ~2 morae' },
+      "task": "Read aloud: \"வணக்கம்! என் பெயர் ராஜா. நான் சென்னையில் இருக்கிறேன்.\" (Vaṇakkam! En peyar Rājā. Nāṉ Cennaiyil irukkiṟēṉ. \"Hello! My name is Raja. I am in Chennai.\") — then mark every gemination and every retroflex."
+    },
+    {
+      "id": "ta-level1foundation-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow."
       ],
-      [ACT.vowels],
-    ),
-    createContentItem(
-      'இ / ஈ',
-      'i / ī',
-      'Short i vs long ī. Short இ is similar to English "bit"; long ஈ is held for two beats like English "beet" (but pure, not diphthongized).',
-      'word',
-      'இல illa (no/not, in spoken) vs ஈ ī (housefly)',
-      'The contrast is clearer than in English because Tamil keeps vowels pure (no glide off the long form).',
-      [
-        { target: 'இ i', note: 'short high front vowel' },
-        { target: 'ஈ ī', note: 'long high front vowel; never glides into a y-sound' },
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ta-level1foundation-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Foundation: Tamil Script & Sounds — Reading & Pronouncing Tamil with the register and setting that the lesson requires."
       ],
-      [ACT.vowels],
-    ),
-    createContentItem(
-      'உ / ஊ',
-      'u / ū',
-      'Short u vs long ū. Short உ is reduced to almost a schwa in word-final position in colloquial speech (the famous "kuṛṛiyalukaram"). Long ஊ is two beats, fully rounded.',
-      'word',
-      'புது putu (new) vs பூ pū (flower); உலகம் ulakam (world) vs ஊர் ūr (hometown/village)',
-      'In colloquial Tamil, word-final short u barely sounds at all — அவன் சாப்பிட்டான் /avan sāppiṭṭān/ has a barely audible final u.',
-      [
-        { target: 'உ u', note: 'short rounded back vowel; word-finally reduced' },
-        { target: 'ஊ ū', note: 'long rounded back vowel; held two beats' },
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ta-level1foundation-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Foundation: Tamil Script & Sounds — Reading & Pronouncing Tamil sound precise rather than merely understandable."
       ],
-      [ACT.vowels],
-    ),
-    createContentItem(
-      'எ / ஏ',
-      'e / ē',
-      'Short e (like English "bet") vs long ē (held two beats, no glide). Tamil ē is pure — unlike English "say" which glides into y.',
-      'word',
-      'எரி eri (burn!) vs ஏரி ēri (lake); என் eṉ (my) vs ஏன் ēṉ (why)',
-      'The pair ē/eṉ is grammatically high-frequency: ēṉ "why" opens countless questions.',
-      [
-        { target: 'எ e', note: 'short mid front vowel' },
-        { target: 'ஏ ē', note: 'long mid front vowel; pure, no English-style glide' },
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ta-level1foundation-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Understand that Tamil is an abugida-style alphasyllabary: each base consonant carries an inherent vowel that vowel signs override — different from Latin one-letter-one-sound."
       ],
-      [ACT.vowels],
-    ),
-    createContentItem(
-      'ஒ / ஓ',
-      'o / ō',
-      'Short o (like English "bought" but shorter) vs long ō (held two beats, no glide off into w). Tamil ō stays pure throughout.',
-      'word',
-      'ஒன்று oṉṟu (one) vs ஓடு ōṭu (run!); கொடு koṭu (give!) vs கோடு kōṭu (line/horn)',
-      'The number 1 (ஒன்று) uses the short form; "ten" (ஓரு wait — ten is பத்து) — koṭu/kōṭu is the cleanest minimal pair.',
-      [
-        { target: 'ஒ o', note: 'short mid back rounded vowel' },
-        { target: 'ஓ ō', note: 'long mid back rounded vowel; held two beats' },
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ta-level1foundation-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Foundation: Tamil Script & Sounds — Reading & Pronouncing Tamil with one nearby Tamil form so the learner can avoid literal translation."
       ],
-      [ACT.vowels],
-    ),
-    createContentItem(
-      'ஐ / ஔ',
-      'ai / au',
-      'The two diphthongs: ai (like English "I/eye") and au (like English "ow/cow"). Both behave like long vowels in word rhythm.',
-      'word',
-      'ஐந்து aintu (five); ஔஷதம் auṣatam (medicine — Sanskrit loan)',
-      'ஔ is rare in native Tamil words but appears in Sanskrit loans and in formal Centhamizh.',
-      [
-        { target: 'ஐ ai', note: 'diphthong; like "eye"; very common — used for direct-object suffix -ai too' },
-        { target: 'ஔ au', note: 'diphthong; rare in native words; mostly in Sanskrit loans' },
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ta-level1foundation-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
       ],
-      [ACT.vowels],
-    ),
-
-    // Activity 3 — Consonants (18 mei)
-    createContentItem(
-      'வல்லினம் (Hard Six)',
-      'vallinam',
-      'The hard series: க (k/g), ச (c/s/j), ட (ṭ/ḍ retroflex), த (t/d dental), ப (p/b), ற (ṟ trill or alveolar t). These take voicing positionally — voiceless at word start or when geminated, voiced between vowels.',
-      'word',
-      'க ka, ச ca, ட ṭa, த ta, ப pa, ற ṟa',
-      'Each row of the Tamil consonant chart pairs a vallinam with its mellinam nasal (க/ங, ச/ஞ, ட/ண, த/ந, ப/ம, ற/ன) — 6 pairs total.',
-      [
-        { target: 'க', note: 'velar stop k/g; the most frequent consonant in Tamil' },
-        { target: 'ச', note: 'palatal stop c/s/j; word-initially often /s/ in modern speech' },
-        { target: 'ட', note: 'retroflex stop ṭ/ḍ; tongue curled back' },
-        { target: 'த', note: 'dental stop t/d; tongue at upper teeth' },
-        { target: 'ப', note: 'bilabial stop p/b' },
-        { target: 'ற', note: 'alveolar trill ṟ; distinct from ர (r); doubled becomes geminate ṟṟ /ttr/' },
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ta-level1foundation-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
       ],
-      [ACT.consonants],
-    ),
-    createContentItem(
-      'மெல்லினம் (Soft Six)',
-      'mellinam',
-      'The nasal series: ங (ṅ velar), ஞ (ñ palatal), ண (ṇ retroflex), ந (n dental), ம (m bilabial), ன (ṉ alveolar). Each shares place of articulation with its vallinam pair.',
-      'word',
-      'ங ṅa, ஞ ña, ண ṇa, ந na, ம ma, ன ṉa',
-      'Tamil distinguishes THREE n-sounds in writing (ந, ண, ன) where most languages have one — though in spoken Tamil ந and ன often merge.',
-      [
-        { target: 'ண ṇ', note: 'retroflex n; paired with ட ṭ' },
-        { target: 'ந n', note: 'dental n; word-initially in many native words' },
-        { target: 'ன ṉ', note: 'alveolar n; word-medially and finally' },
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ta-level1foundation-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
       ],
-      [ACT.consonants],
-    ),
-    createContentItem(
-      'இடையினம் (Medium Six)',
-      'iṭaiyiṉam',
-      'The "in-between" series: ய (y), ர (r alveolar tap), ல (l dental), வ (v/w), ழ (ḻ retroflex approximant — the famous Tamil sound), ள (ḷ retroflex lateral). These are sonorants, never geminate as harshly as the vallinam.',
-      'word',
-      'ய ya, ர ra, ல la, வ va, ழ ḻa, ள ḷa',
-      'Tamil distinguishes ல (dental l) and ள (retroflex l) and ழ (retroflex approximant) — three l-like sounds where English has one.',
-      [
-        { target: 'ய y', note: 'palatal glide; like English "y" in "yes"' },
-        { target: 'ர r', note: 'alveolar tap; like Spanish "pero"; single quick flap' },
-        { target: 'ல l', note: 'dental lateral; tongue at upper teeth' },
-        { target: 'வ v', note: 'bilabial-dental approximant; between English v and w' },
-        { target: 'ழ ḻ', note: 'THE Tamil sound — retroflex approximant, IPA ɻ; curl tongue back without touching' },
-        { target: 'ள ḷ', note: 'retroflex lateral; tongue curled back AND lateral release' },
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ta-level1foundation-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used."
       ],
-      [ACT.consonants],
-    ),
-
-    // Activity 4 — Retroflex
-    createContentItem(
-      'ட vs த',
-      'ṭ vs t',
-      'Retroflex ட vs dental த: the tongue position is the only difference. For ட, curl the tip backward and tap the hard palate; for த, the tip touches the upper teeth.',
-      'word',
-      'பட paṭa (spread out!) vs பத pata (lesson/section); அடி aṭi (foot) vs அதி ati (very, intense)',
-      'Mixing these up gives different words; minimal-pair drill is essential.',
-      [
-        { target: 'ட (retroflex)', note: 'tongue tip curled back to hard palate' },
-        { target: 'த (dental)', note: 'tongue tip at upper teeth' },
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ta-level1foundation-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Read aloud: \"வணக்கம்! என் பெயர் ராஜா. நான் சென்னையில் இருக்கிறேன்.\" (Vaṇakkam! En peyar Rājā. Nāṉ Cennaiyil irukkiṟēṉ. \"Hello! My name is Raja. I am in Chennai.\") — then mark every gemination and every retroflex."
       ],
-      [ACT.retroflex],
-    ),
-    createContentItem(
-      'ண vs ந vs ன',
-      'ṇ vs n vs ṉ',
-      'Three n-sounds: ண retroflex (curl tongue back), ந dental (tongue at teeth), ன alveolar (tongue at ridge). In careful Tamil all three are distinct; in fast spoken Tamil, ந and ன often merge.',
-      'word',
-      'ஆணி āṇi (nail) vs ஆனி āṉi (June-July month name); ந is word-initial in many words while ன is word-medial/final.',
-      'Written Tamil insists on the three-way distinction; spoken Tamil collapses it. Both are needed.',
-      [
-        { target: 'ண ṇ retroflex', note: 'paired with ட; tongue curled' },
-        { target: 'ந n dental', note: 'word-initial native words' },
-        { target: 'ன ṉ alveolar', note: 'word-medial / final native words' },
-      ],
-      [ACT.retroflex],
-    ),
-    createContentItem(
-      'ள vs ல',
-      'ḷ vs l',
-      'Retroflex ள vs dental ல: minimum-pair distinction. ள has the tongue curled back; ல has it at the teeth. ள is also distinct from ழ — three l-like sounds total in Tamil.',
-      'word',
-      'பல pala (many) vs பள் paḷ (sleep!); கல் kal (stone) vs கள் kaḷ (toddy, also plural marker)',
-      'The plural marker -kaḷ uses retroflex ள — every Tamil plural noun ends in this sound.',
-      [
-        { target: 'ள (retroflex l)', note: 'tongue curled back with lateral release' },
-        { target: 'ல (dental l)', note: 'tongue at upper teeth' },
-        { target: 'ழ (retroflex approximant)', note: 'curl back but NO contact; the famous Tamil sound' },
-      ],
-      [ACT.retroflex],
-    ),
-
-    // Activity 5 — ழ (zh)
-    createContentItem(
-      'ழ — IPA ɻ',
-      'ḻ — retroflex approximant',
-      'The most famous Tamil sound. Curl your tongue tip far back, almost touching the soft palate, but leave a small gap so air flows freely. Result: a sound somewhere between American "r", British "l", and a soft "zh" — but truly its own thing.',
-      'word',
-      'தமிழ் tamiḻ (Tamil); பழம் paḻam (fruit); மழை maḻai (rain); எழுது eḻutu (write!); ஆழம் āḻam (depth)',
-      'Tamils take great pride in this sound — saying "tamil" instead of "tamiḻ" is a giveaway you are learning. Practice until it feels natural.',
-      [
-        { target: 'Tongue position', note: 'tip curled back, hovering near soft palate, NO contact' },
-        { target: 'Airflow', note: 'continuous like an English r, but with the tongue much further back' },
-        { target: 'Common confusion', note: 'NOT a /z/ sound despite the "zh" spelling; NOT identical to ள (which has contact)' },
-      ],
-      [ACT.zhSound],
-    ),
-    createContentItem(
-      'ழ in iconic words',
-      'ḻ in iconic words',
-      'Four high-frequency Tamil words use ழ — drill these as core pronunciation practice. The language\'s own name ends in this sound.',
-      'word',
-      'தமிழ் tamiḻ · பழம் paḻam · மழை maḻai · எழுத்து eḻuttu (script/letter)',
-      'If you can say "tamiḻ" with a clean ழ in front of a native speaker, you have arrived.',
-      [
-        { target: 'தமிழ் tamiḻ', note: 'the language; word-final ḻ' },
-        { target: 'பழம் paḻam', note: 'fruit; intervocalic ḻ' },
-        { target: 'மழை maḻai', note: 'rain; intervocalic ḻ before ai diphthong' },
-        { target: 'எழுத்து eḻuttu', note: 'script, letter; ḻ before geminate tt' },
-      ],
-      [ACT.zhSound],
-    ),
-
-    // Activity 6 — Gemination
-    createContentItem(
-      'இரட்டிப்பு',
-      'iraṭṭippu',
-      'Gemination: a consonant held twice as long as a single one. Spelled with the consonant + puḷḷi + same consonant: க்க, ட்ட, த்த, ப்ப. Phonemic — one or two changes the word.',
-      'word',
-      'பட்டி paṭṭi (village) vs படி paṭi (step); அப்பா appā (dad) vs அபா apā (~rare); எண் eṇ (number) vs எண்ணு eṇṇu (think!)',
-      'Hold the doubled consonant for nearly twice as long; sloppy speakers shorten the geminate and produce a different word.',
-      [
-        { target: 'Single ட paṭi', note: 'one ṭ-sound; word = "step"' },
-        { target: 'Geminate ட்ட paṭṭi', note: 'doubled ṭṭ-sound; word = "village"' },
-      ],
-      [ACT.gemination],
-    ),
-    createContentItem(
-      'Vallinam gemination devoices',
-      'vallinam gemination devoices',
-      'IMPORTANT RULE: when a vallinam (k/c/ṭ/t/p/ṟ) is geminated, it is ALWAYS pronounced voiceless. Compare போக pōka /pōga/ ("to go") with போக்கு pōkku /pōkku/ ("way/manner") — the geminate kk is /kk/ never /gg/.',
-      'word',
-      'எழுது eḻutu /eḻudu/ (write!) vs எழுத்து eḻuttu /eḻuttu/ (script — note the /tt/ never /dd/)',
-      'This rule + the no-voicing-distinction rule together let you predict every Tamil voicing without a dictionary.',
-      [
-        { target: 'Single intervocalic k', note: 'voiced /g/: போக /pōga/' },
-        { target: 'Geminate kk', note: 'voiceless /kk/: போக்கு /pōkku/' },
-      ],
-      [ACT.gemination],
-    ),
-
-    // Activity 7 — Vowel length
-    createContentItem(
-      'குறில் / நெடில்',
-      'kuṟil / neṭil',
-      'Tamil distinguishes "short" (குறில் kuṟil) and "long" (நெடில் neṭil) vowels. Length is phonemic: each long vowel is held for ~2 morae, each short for ~1. Five short/long pairs plus 2 long diphthongs.',
-      'word',
-      'சதம் catam (hundred) vs சாதம் cātam (cooked rice) — same consonants, different first vowel length, different words.',
-      'In Centhamizh poetry, vowel length controls meter; in everyday speech, it controls meaning. Either way, it is non-negotiable.',
-      [
-        { target: 'குறில் (short)', note: 'அ இ உ எ ஒ — held 1 mora' },
-        { target: 'நெடில் (long)', note: 'ஆ ஈ ஊ ஏ ஓ + ஐ ஔ — held 2 morae' },
-      ],
-      [ACT.vowelLength],
-    ),
-
-    // Activity 8 — Syllables / uyirmei
-    createContentItem(
-      'உயிர்மெய் எழுத்து',
-      'uyirmei eḻuttu',
-      'Consonant + vowel = a combined "uyirmei" glyph. The vowel sign attaches to the consonant in a specific position: above (ே), below, beside, or wrapping. Each of the 18 consonants × 12 vowels = 216 syllable glyphs (plus 18 puḷḷi-marked pure consonants).',
-      'word',
-      'க + ஆ = கா kā; க + இ = கி ki; க + ஈ = கீ kī; க + உ = கு ku; க + ஊ = கூ kū; க + எ = கெ ke; க + ஏ = கே kē; க + ஐ = கை kai; க + ஒ = கொ ko; க + ஓ = கோ kō; க + ஔ = கௌ kau',
-      'Once you learn the vowel signs once, you can read any of the 216 combinations.',
-      [
-        { target: '்', note: 'puḷḷi (dot) — kills the inherent vowel, leaving a pure consonant க்' },
-        { target: 'ா', note: 'long-a sign — placed after consonant: கா' },
-        { target: 'ி ீ', note: 'short-i, long-ī signs — above-right of consonant' },
-        { target: 'ு ூ', note: 'short-u, long-ū signs — usually wrap below' },
-        { target: 'ெ ே ை', note: 'short-e, long-ē, ai signs — placed before consonant' },
-      ],
-      [ACT.syllables],
-    ),
-
-    // Activity 9 — Voicing
-    createContentItem(
-      'ஒலி நிலை',
-      'oli nilai',
-      'Tamil has NO phonemic voicing distinction. The same letter க is /k/ at the start of a word, /g/ between vowels, /kk/ when geminated. Voicing is positional, not contrastive. Same applies to ச (c/s/j), ட (ṭ/ḍ), த (t/d), ப (p/b).',
-      'word',
-      'காகம் kākam /kāgam/ (crow); பழம் paḻam /paḻam/; போதும் pōtum /pōdum/ (enough)',
-      'This is the OPPOSITE of English/most languages, where /k/ and /g/ are different phonemes. In Tamil, the writing system needs only one letter because context predicts the sound.',
-      [
-        { target: 'Word-initial', note: 'voiceless: க /k/, ப /p/, த /t/' },
-        { target: 'Intervocalic', note: 'voiced: க /g/, ப /b/, த /d/' },
-        { target: 'After nasal', note: 'voiced: ங்க /ṅg/, ம்ப /mb/, ந்த /nd/' },
-        { target: 'Geminated', note: 'voiceless (rule overrides): க்க /kk/, ப்ப /pp/' },
-      ],
-      [ACT.voicing],
-    ),
-
-    // Activity 10 — Diglossia
-    createContentItem(
-      'செந்தமிழ் vs கொடுந்தமிழ்',
-      'centamiḻ vs koṭuntamiḻ',
-      'Centhamizh (செந்தமிழ் "pure Tamil") is the formal literary register: news broadcasts, textbooks, formal speeches, religious texts. Koduntamizh (கொடுந்தமிழ் "regional Tamil") is everyday spoken Tamil — heavily contracted, with regional flavors and Tanglish in cities.',
-      'sentence',
-      'WRITTEN: நான் வருகிறேன். nāṉ varukiṟēṉ. ("I come/am coming.")\nSPOKEN: நான் வரேன். nāṉ varēṉ.',
-      'Tamil diglossia is one of the strongest in the world — news Tamil and spoken Tamil differ in verb endings, copula, even basic pronouns. Both must be learned.',
-      [
-        { target: 'Centhamizh -kiṟēṉ', note: 'literary present-1st-singular suffix; "I VERB"' },
-        { target: 'Koduntamizh -ēṉ', note: 'spoken contraction; same meaning' },
-      ],
-      [ACT.diglossia],
-    ),
-    createContentItem(
-      'Tanglish & regional dialects',
-      'tanglish & regional dialects',
-      'In urban Tamil Nadu (especially Chennai, Coimbatore) and among Singapore/Malaysia diaspora, code-switching with English ("Tanglish") is universal in speech: "நான் office-க்கு போறேன்" (Nāṉ office-kku pōṟēṉ "I am going to office"). Regional dialects differ too: Chennai, Madurai, Coimbatore, Jaffna (Sri Lanka), and diaspora Tamil each have their own flavor.',
-      'sentence',
-      'Chennai-style: சாப்ட்டியா? cāppṭṭiyā? ("Have you eaten?")\nMadurai-style: சாப்பிட்டீங்களா? cāppiṭṭīṅkaḷā?\nJaffna-style: சாப்பிட்டியோ? cāppiṭṭiyō?',
-      'Madurai Tamil is conservative; Chennai Tamil contracts the most; Jaffna Tamil preserves classical features lost on the mainland.',
-      null,
-      [ACT.diglossia],
-    ),
-
-    // Activity 11 — Numerals
-    createContentItem(
-      'தமிழ் எண்கள்',
-      'tamiḻ eṇkaḷ',
-      'The 10 native Tamil digits — though Arabic numerals dominate modern writing, Tamil digits appear in classical texts, calendars, and ornamental use.',
-      'word',
-      '௦ 0 · ௧ 1 · ௨ 2 · ௩ 3 · ௪ 4 · ௫ 5 · ௬ 6 · ௭ 7 · ௮ 8 · ௯ 9',
-      'Memorize for reading classical texts; in everyday Tamil writing you can use 0-9 freely.',
-      null,
-      [ACT.numerals],
-    ),
-    createContentItem(
-      'ஃ (āytam)',
-      'ḥ (āytam)',
-      'The āytam ஃ is a special "half-syllable" symbol used in Centhamizh for certain phonological environments and in modern Tamil to transliterate foreign sounds like /f/. ஃபோன் ḥpōṉ = "phone".',
-      'word',
-      'ஃபோன் /fōn/ (phone); ஃபேஸ்புக் fēsbuk (Facebook — Tanglish transliteration)',
-      'Modern Tamil uses ஃ mainly to bend the script to English loanwords; classical use is for vowel-resolution in poetry.',
-      null,
-      [ACT.numerals],
-    ),
-
-    // Activity 12 — Reading practice
-    createContentItem(
-      'வாசிப்பு பயிற்சி',
-      'vācippu payiṟci',
-      'A reading-aloud exercise applying every rule from this lesson: vowel length, retroflex, gemination, ழ, and positional voicing. Read this sentence and identify each rule as it appears.',
-      'sentence',
-      'வணக்கம்! என் பெயர் ராஜா. நான் சென்னை, அண்ணா பல்கலைக்கழகத்தில் தமிழ் படிக்கிறேன்.',
-      'Translation: "Hello! My name is Raja. I study Tamil at Anna University, Chennai."',
-      [
-        { target: 'வணக்கம் vaṇakkam', note: 'retroflex ṇ + geminate kk; standard greeting' },
-        { target: 'என் பெயர் eṉ peyar', note: 'alveolar ṉ; "my name"' },
-        { target: 'சென்னை ceṉṉai', note: 'geminate ṉṉ; the city Chennai itself' },
-        { target: 'பல்கலைக்கழகத்தில் palkalaikkaḻakattil', note: 'long agglutinative word: "university-in" (case suffix -il); contains both ḻ and geminate tt' },
-        { target: 'தமிழ் tamiḻ', note: 'the language; with the iconic word-final ḻ' },
-        { target: 'படிக்கிறேன் paṭikkiṟēṉ', note: 'verb "I study/read"; retroflex ṭ + geminate kk + present marker -kiṟēṉ' },
-      ],
-      [ACT.reading],
-    ),
+      "task": "Read aloud: \"வணக்கம்! என் பெயர் ராஜா. நான் சென்னையில் இருக்கிறேன்.\" (Vaṇakkam! En peyar Rājā. Nāṉ Cennaiyil irukkiṟēṉ. \"Hello! My name is Raja. I am in Chennai.\") — then mark every gemination and every retroflex."
+    }
   ],
+  "expressionPractice": [
+    {
+      "id": "ta-level1foundation-main",
+      "label": "Using the main pattern",
+      "goal": "Use the central pattern naturally in a personally relevant answer."
+    },
+    {
+      "id": "ta-level1foundation-extend",
+      "label": "Extending the answer",
+      "goal": "Add one reason, contrast, or example so the answer sounds lived-in rather than memorized."
+    },
+    {
+      "id": "ta-level1foundation-repair",
+      "label": "Repairing a likely mistake",
+      "goal": "Notice one nearby target-language form learners often confuse with this pattern and choose the better option."
+    }
+  ],
+  "relatedPools": [],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1foundation-orientation"
+      ],
+      "targetText": "பாட இலக்கு",
+      "romanization": "",
+      "nativeText": "Understand that Tamil is an abugida-style alphasyllabary: each base consonant carries an inherent vowel that vowel signs override — different from Latin one-letter-one-sound.",
+      "pronunciation": "",
+      "exampleTarget": "பாட இலக்கு",
+      "exampleNative": "The whole lesson is built toward this outcome: Read aloud: \"வணக்கம்! என் பெயர் ராஜா. நான் சென்னையில் இருக்கிறேன்.\" (Vaṇakkam! En peyar Rājā. Nāṉ Cennaiyil irukkiṟēṉ. \"Hello! My name is Raja. I am in Chennai.\") — then mark every gemination and every retroflex.",
+      "korean": "பாட இலக்கு",
+      "english": "Understand that Tamil is an abugida-style alphasyllabary: each base consonant carries an inherent vowel that vowel signs override — different from Latin one-letter-one-sound.",
+      "example": "பாட இலக்கு",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Read aloud: \"வணக்கம்! என் பெயர் ராஜா. நான் சென்னையில் இருக்கிறேன்.\" (Vaṇakkam! En peyar Rājā. Nāṉ Cennaiyil irukkiṟēṉ. \"Hello! My name is Raja. I am in Chennai.\") — then mark every gemination and every retroflex."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1foundation-pronunciation"
+      ],
+      "targetText": "ஒலி சரிபார்ப்பு",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).\".",
+      "pronunciation": "",
+      "exampleTarget": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "exampleNative": "When Tamil speakers say their language name correctly, the final consonant is the retroflex approximant ழ — the same sound that distinguishes Tamil pronunciation.",
+      "korean": "ஒலி சரிபார்ப்பு",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).\".",
+      "example": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "exampleEnglish": "When Tamil speakers say their language name correctly, the final consonant is the retroflex approximant ழ — the same sound that distinguishes Tamil pronunciation."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1"
+      ],
+      "targetText": "தமிழ் எழுத்து",
+      "romanization": "",
+      "nativeText": "Use the key language of Foundation: Tamil Script & Sounds — Reading & Pronouncing Tamil with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "exampleNative": "When Tamil speakers say their language name correctly, the final consonant is the retroflex approximant ழ — the same sound that distinguishes Tamil pronunciation.",
+      "korean": "தமிழ் எழுத்து",
+      "english": "Use the key language of Foundation: Tamil Script & Sounds — Reading & Pronouncing Tamil with the register and setting that the lesson requires.",
+      "example": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "exampleEnglish": "When Tamil speakers say their language name correctly, the final consonant is the retroflex approximant ழ — the same sound that distinguishes Tamil pronunciation."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-2"
+      ],
+      "targetText": "நான்கு பெரிய அம்சங்கள்",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Foundation: Tamil Script & Sounds — Reading & Pronouncing Tamil sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)",
+      "exampleNative": "These four contrasts are what make Tamil sound distinctly Tamil rather than another South Asian language.",
+      "korean": "நான்கு பெரிய அம்சங்கள்",
+      "english": "Distinguish the nearby wording choices that make Foundation: Tamil Script & Sounds — Reading & Pronouncing Tamil sound precise rather than merely understandable.",
+      "example": "(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)",
+      "exampleEnglish": "These four contrasts are what make Tamil sound distinctly Tamil rather than another South Asian language."
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1foundation-grammar-1"
+      ],
+      "targetText": "தமிழ் எழுத்து",
+      "romanization": "",
+      "nativeText": "Understand that Tamil is an abugida-style alphasyllabary: each base consonant carries an inherent vowel that vowel signs override — different from Latin one-letter-one-sound.",
+      "pronunciation": "",
+      "exampleTarget": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "exampleNative": "When Tamil speakers say their language name correctly, the final consonant is the retroflex approximant ழ — the same sound that distinguishes Tamil pronunciation.",
+      "korean": "தமிழ் எழுத்து",
+      "english": "Understand that Tamil is an abugida-style alphasyllabary: each base consonant carries an inherent vowel that vowel signs override — different from Latin one-letter-one-sound.",
+      "example": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "exampleEnglish": "When Tamil speakers say their language name correctly, the final consonant is the retroflex approximant ழ — the same sound that distinguishes Tamil pronunciation."
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1foundation-grammar-2"
+      ],
+      "targetText": "நான்கு பெரிய அம்சங்கள்",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Foundation: Tamil Script & Sounds — Reading & Pronouncing Tamil with one nearby Tamil form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)",
+      "exampleNative": "These four contrasts are what make Tamil sound distinctly Tamil rather than another South Asian language.",
+      "korean": "நான்கு பெரிய அம்சங்கள்",
+      "english": "Contrast the main pattern in Foundation: Tamil Script & Sounds — Reading & Pronouncing Tamil with one nearby Tamil form so the learner can avoid literal translation.",
+      "example": "(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)",
+      "exampleEnglish": "These four contrasts are what make Tamil sound distinctly Tamil rather than another South Asian language."
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ta-level1foundation-reading"
+      ],
+      "targetText": "வாசிப்பு மாதிரி",
+      "romanization": "",
+      "nativeText": "Read the connected model for வாசிப்பு மாதிரி as one message. Notice how \"வணக்கம்! என் பெயர் ராஜா. நான் சென்னை, அண்ணா பல்கலைக்கழகத்தில் தமிழ் படிக்கிறேன்.\" lets the lesson vocabulary and grammar work together instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "வணக்கம்! என் பெயர் ராஜா. நான் சென்னை, அண்ணா பல்கலைக்கழகத்தில் தமிழ் படிக்கிறேன்.",
+      "exampleNative": "Translation: \"Hello! My name is Raja. I study Tamil at Anna University, Chennai.\"",
+      "korean": "வாசிப்பு மாதிரி",
+      "english": "Read the connected model for வாசிப்பு மாதிரி as one message. Notice how \"வணக்கம்! என் பெயர் ராஜா. நான் சென்னை, அண்ணா பல்கலைக்கழகத்தில் தமிழ் படிக்கிறேன்.\" lets the lesson vocabulary and grammar work together instead of appearing as isolated flashcards.",
+      "example": "வணக்கம்! என் பெயர் ராஜா. நான் சென்னை, அண்ணா பல்கலைக்கழகத்தில் தமிழ் படிக்கிறேன்.",
+      "exampleEnglish": "Translation: \"Hello! My name is Raja. I study Tamil at Anna University, Chennai.\""
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1foundation-listening"
+      ],
+      "targetText": "உரையாடல் மாதிரி",
+      "romanization": "",
+      "nativeText": "Hear \"வணக்கம்! என் பெயர் ராஜா. நான் சென்னை, அண்ணா பல்கலைக்கழகத்தில் தமிழ் படிக்கிறேன்.\" as interaction, not as a sentence list. The listening goal is to follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "வணக்கம்! என் பெயர் ராஜா. நான் சென்னை, அண்ணா பல்கலைக்கழகத்தில் தமிழ் படிக்கிறேன்.",
+      "exampleNative": "Translation: \"Hello! My name is Raja. I study Tamil at Anna University, Chennai.\"",
+      "korean": "உரையாடல் மாதிரி",
+      "english": "Hear \"வணக்கம்! என் பெயர் ராஜா. நான் சென்னை, அண்ணா பல்கலைக்கழகத்தில் தமிழ் படிக்கிறேன்.\" as interaction, not as a sentence list. The listening goal is to follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "வணக்கம்! என் பெயர் ராஜா. நான் சென்னை, அண்ணா பல்கலைக்கழகத்தில் தமிழ் படிக்கிறேன்.",
+      "exampleEnglish": "Translation: \"Hello! My name is Raja. I study Tamil at Anna University, Chennai.\""
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ta-level1foundation-writing"
+      ],
+      "targetText": "எழுத்துப் பயிற்சி",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "எழுத்துப் பயிற்சி",
+      "english": "Write your own version after studying \"தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1foundation-culture"
+      ],
+      "targetText": "பயன்பாடும் சூழலும்",
+      "romanization": "",
+      "nativeText": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used. Use \"(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)\" as the social comparison point for this lesson.",
+      "pronunciation": "",
+      "exampleTarget": "(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)",
+      "exampleNative": "These four contrasts are what make Tamil sound distinctly Tamil rather than another South Asian language.",
+      "korean": "பயன்பாடும் சூழலும்",
+      "english": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used. Use \"(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)\" as the social comparison point for this lesson.",
+      "example": "(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)",
+      "exampleEnglish": "These four contrasts are what make Tamil sound distinctly Tamil rather than another South Asian language."
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1foundation-task"
+      ],
+      "targetText": "இறுதி செயல்",
+      "romanization": "",
+      "nativeText": "Read aloud: \"வணக்கம்! என் பெயர் ராஜா. நான் சென்னையில் இருக்கிறேன்.\" (Vaṇakkam! En peyar Rājā. Nāṉ Cennaiyil irukkiṟēṉ. \"Hello! My name is Raja. I am in Chennai.\") — then mark every gemination and every retroflex.",
+      "pronunciation": "",
+      "exampleTarget": "வணக்கம்! என் பெயர் ராஜா. நான் சென்னை, அண்ணா பல்கலைக்கழகத்தில் தமிழ் படிக்கிறேன்.",
+      "exampleNative": "Read aloud: \"வணக்கம்! என் பெயர் ராஜா. நான் சென்னையில் இருக்கிறேன்.\" (Vaṇakkam! En peyar Rājā. Nāṉ Cennaiyil irukkiṟēṉ. \"Hello! My name is Raja. I am in Chennai.\") — then mark every gemination and every retroflex.",
+      "korean": "இறுதி செயல்",
+      "english": "Read aloud: \"வணக்கம்! என் பெயர் ராஜா. நான் சென்னையில் இருக்கிறேன்.\" (Vaṇakkam! En peyar Rājā. Nāṉ Cennaiyil irukkiṟēṉ. \"Hello! My name is Raja. I am in Chennai.\") — then mark every gemination and every retroflex.",
+      "example": "வணக்கம்! என் பெயர் ராஜா. நான் சென்னை, அண்ணா பல்கலைக்கழகத்தில் தமிழ் படிக்கிறேன்.",
+      "exampleEnglish": "Read aloud: \"வணக்கம்! என் பெயர் ராஜா. நான் சென்னையில் இருக்கிறேன்.\" (Vaṇakkam! En peyar Rājā. Nāṉ Cennaiyil irukkiṟēṉ. \"Hello! My name is Raja. I am in Chennai.\") — then mark every gemination and every retroflex."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1foundation-grammar-2"
+      ],
+      "targetText": "பொதுவான பிழை",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: These four contrasts are what make Tamil sound distinctly Tamil rather than another South Asian language.",
+      "korean": "பொதுவான பிழை",
+      "english": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)\" against the model.",
+      "example": "(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: These four contrasts are what make Tamil sound distinctly Tamil rather than another South Asian language."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-culture"
+      ],
+      "targetText": "மொழிநடை",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "exampleNative": "When Tamil speakers say their language name correctly, the final consonant is the retroflex approximant ழ — the same sound that distinguishes Tamil pronunciation.",
+      "korean": "மொழிநடை",
+      "english": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).\" before reusing it elsewhere.",
+      "example": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "exampleEnglish": "When Tamil speakers say their language name correctly, the final consonant is the retroflex approximant ழ — the same sound that distinguishes Tamil pronunciation."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-listening",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "சரளம்",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"வணக்கம்! என் பெயர் ராஜா. நான் சென்னை, அண்ணா பல்கலைக்கழகத்தில் தமிழ் படிக்கிறேன்.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "வணக்கம்! என் பெயர் ராஜா. நான் சென்னை, அண்ணா பல்கலைக்கழகத்தில் தமிழ் படிக்கிறேன்.",
+      "exampleNative": "Translation: \"Hello! My name is Raja. I study Tamil at Anna University, Chennai.\"",
+      "korean": "சரளம்",
+      "english": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"வணக்கம்! என் பெயர் ராஜா. நான் சென்னை, அண்ணா பல்கலைக்கழகத்தில் தமிழ் படிக்கிறேன்.\" as one thought.",
+      "example": "வணக்கம்! என் பெயர் ராஜா. நான் சென்னை, அண்ணா பல்கலைக்கழகத்தில் தமிழ் படிக்கிறேன்.",
+      "exampleEnglish": "Translation: \"Hello! My name is Raja. I study Tamil at Anna University, Chennai.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "பயன்பாடு",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "பயன்பாடு",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).\" and move it into your own life.",
+      "example": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-grammar-1"
+      ],
+      "targetText": "நினைவூட்டல்",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"தமிழ் எழுத்து\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "தமிழ் எழுத்து",
+      "exampleNative": "Tamil is one of the oldest continuously-spoken languages in the world (Sangam literature dates back over 2000 years). Its script is an abugida: each consonant carries an inherent /a/ unless a vowel sign overrides it.",
+      "korean": "நினைவூட்டல்",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"தமிழ் எழுத்து\" before looking back.",
+      "example": "தமிழ் எழுத்து",
+      "exampleEnglish": "Tamil is one of the oldest continuously-spoken languages in the world (Sangam literature dates back over 2000 years). Its script is an abugida: each consonant carries an inherent /a/ unless a vowel sign overrides it."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1foundation-reading",
+        "ta-level1foundation-writing"
+      ],
+      "targetText": "விரிவாக்கம்",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"வணக்கம்! என் பெயர் ராஜா. நான் சென்னை, அண்ணா பல்கலைக்கழகத்தில் தமிழ் படிக்கிறேன்.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "வணக்கம்! என் பெயர் ராஜா. நான் சென்னை, அண்ணா பல்கலைக்கழகத்தில் தமிழ் படிக்கிறேன்.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "விரிவாக்கம்",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"வணக்கம்! என் பெயர் ராஜா. நான் சென்னை, அண்ணா பல்கலைக்கழகத்தில் தமிழ் படிக்கிறேன்.\" rather than restarting from a blank sentence.",
+      "example": "வணக்கம்! என் பெயர் ராஜா. நான் சென்னை, அண்ணா பல்கலைக்கழகத்தில் தமிழ் படிக்கிறேன்.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading"
+      ],
+      "targetText": "ஒப்பீடு",
+      "romanization": "",
+      "nativeText": "Compare the central form in Foundation: Tamil Script & Sounds — Reading & Pronouncing Tamil with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)",
+      "exampleNative": "These four contrasts are what make Tamil sound distinctly Tamil rather than another South Asian language.",
+      "korean": "ஒப்பீடு",
+      "english": "Compare the central form in Foundation: Tamil Script & Sounds — Reading & Pronouncing Tamil with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)\" as the comparison line.",
+      "example": "(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)",
+      "exampleEnglish": "These four contrasts are what make Tamil sound distinctly Tamil rather than another South Asian language."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1foundation-pronunciation"
+      ],
+      "targetText": "உச்சரிப்பு திருத்தம்",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. Use \"தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).\" as the repair line.",
+      "pronunciation": "",
+      "exampleTarget": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "exampleNative": "When Tamil speakers say their language name correctly, the final consonant is the retroflex approximant ழ — the same sound that distinguishes Tamil pronunciation.",
+      "korean": "உச்சரிப்பு திருத்தம்",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. Use \"தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).\" as the repair line.",
+      "example": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "exampleEnglish": "When Tamil speakers say their language name correctly, the final consonant is the retroflex approximant ழ — the same sound that distinguishes Tamil pronunciation."
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1foundation-listening",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "உரையாடல் மாற்றம்",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"வணக்கம்! என் பெயர் ராஜா. நான் சென்னை, அண்ணா பல்கலைக்கழகத்தில் தமிழ் படிக்கிறேன்.\".",
+      "pronunciation": "",
+      "exampleTarget": "வணக்கம்! என் பெயர் ராஜா. நான் சென்னை, அண்ணா பல்கலைக்கழகத்தில் தமிழ் படிக்கிறேன்.",
+      "exampleNative": "Translation: \"Hello! My name is Raja. I study Tamil at Anna University, Chennai.\"",
+      "korean": "உரையாடல் மாற்றம்",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"வணக்கம்! என் பெயர் ராஜா. நான் சென்னை, அண்ணா பல்கலைக்கழகத்தில் தமிழ் படிக்கிறேன்.\".",
+      "example": "வணக்கம்! என் பெயர் ராஜா. நான் சென்னை, அண்ணா பல்கலைக்கழகத்தில் தமிழ் படிக்கிறேன்.",
+      "exampleEnglish": "Translation: \"Hello! My name is Raja. I study Tamil at Anna University, Chennai.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-writing"
+      ],
+      "targetText": "வாக்கிய கட்டமைப்பு",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "exampleNative": "When Tamil speakers say their language name correctly, the final consonant is the retroflex approximant ழ — the same sound that distinguishes Tamil pronunciation.",
+      "korean": "வாக்கிய கட்டமைப்பு",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).\" one layer at a time.",
+      "example": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "exampleEnglish": "When Tamil speakers say their language name correctly, the final consonant is the retroflex approximant ழ — the same sound that distinguishes Tamil pronunciation."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-2"
+      ],
+      "targetText": "விரைவு சோதனை",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)",
+      "exampleNative": "These four contrasts are what make Tamil sound distinctly Tamil rather than another South Asian language.",
+      "korean": "விரைவு சோதனை",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)\" as the deciding example.",
+      "example": "(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)",
+      "exampleEnglish": "These four contrasts are what make Tamil sound distinctly Tamil rather than another South Asian language."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1foundation-culture",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "மீள்பார்வு",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"வணக்கம்! என் பெயர் ராஜா. நான் சென்னை, அண்ணா பல்கலைக்கழகத்தில் தமிழ் படிக்கிறேன்.\".",
+      "pronunciation": "",
+      "exampleTarget": "வணக்கம்! என் பெயர் ராஜா. நான் சென்னை, அண்ணா பல்கலைக்கழகத்தில் தமிழ் படிக்கிறேன்.",
+      "exampleNative": "Translation: \"Hello! My name is Raja. I study Tamil at Anna University, Chennai.\"",
+      "korean": "மீள்பார்வு",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"வணக்கம்! என் பெயர் ராஜா. நான் சென்னை, அண்ணா பல்கலைக்கழகத்தில் தமிழ் படிக்கிறேன்.\".",
+      "example": "வணக்கம்! என் பெயர் ராஜா. நான் சென்னை, அண்ணா பல்கலைக்கழகத்தில் தமிழ் படிக்கிறேன்.",
+      "exampleEnglish": "Translation: \"Hello! My name is Raja. I study Tamil at Anna University, Chennai.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "தமிழ் எழுத்து",
+      "romanization": "tamiḻ eḻuttu",
+      "nativeText": "Tamil is one of the oldest continuously-spoken languages in the world (Sangam literature dates back over 2000 years). Its script is an abugida: each consonant carries an inherent /a/ unless a vowel sign overrides it.",
+      "pronunciation": "tamiḻ eḻuttu",
+      "exampleTarget": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "exampleNative": "When Tamil speakers say their language name correctly, the final consonant is the retroflex approximant ழ — the same sound that distinguishes Tamil pronunciation.",
+      "korean": "தமிழ் எழுத்து",
+      "english": "Tamil is one of the oldest continuously-spoken languages in the world (Sangam literature dates back over 2000 years). Its script is an abugida: each consonant carries an inherent /a/ unless a vowel sign overrides it.",
+      "example": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "exampleEnglish": "When Tamil speakers say their language name correctly, the final consonant is the retroflex approximant ழ — the same sound that distinguishes Tamil pronunciation."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "நான்கு பெரிய அம்சங்கள்",
+      "romanization": "nāṉku periya amcaṅkaḷ",
+      "nativeText": "Four features of Tamil that English speakers must internalize: (1) no voicing contrast — same letter for k/g, t/d, p/b; (2) retroflex consonants ட ண ள with tongue curled back; (3) the unique ழ; (4) phonemic gemination and vowel length.",
+      "pronunciation": "nāṉku periya amcaṅkaḷ",
+      "exampleTarget": "(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)",
+      "exampleNative": "These four contrasts are what make Tamil sound distinctly Tamil rather than another South Asian language.",
+      "korean": "நான்கு பெரிய அம்சங்கள்",
+      "english": "Four features of Tamil that English speakers must internalize: (1) no voicing contrast — same letter for k/g, t/d, p/b; (2) retroflex consonants ட ண ள with tongue curled back; (3) the unique ழ; (4) phonemic gemination and vowel length.",
+      "example": "(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)",
+      "exampleEnglish": "These four contrasts are what make Tamil sound distinctly Tamil rather than another South Asian language."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "அண்ணா பல்கலைக்கழகம்",
+      "romanization": "aṇṇā palkalaikkaḻakam",
+      "nativeText": "Anna University in Chennai (named after C. N. Annadurai, \"Anna\") is one of South India's leading technical universities and our anchor campus for this course. Throughout the lessons we will reference Chennai life — IIT Madras nearby, Loyola College, Marina Beach, T. Nagar shopping.",
+      "pronunciation": "aṇṇā palkalaikkaḻakam",
+      "exampleTarget": "நான் அண்ணா பல்கலைக்கழகத்தில் படிக்கிறேன். Nāṉ Aṇṇā Palkalaikkaḻakattil paṭikkiṟēṉ. \"I study at Anna University.\"",
+      "exampleNative": "Notice the locative suffix -il (-இல்) — Anna University + in. Eight-case agglutination, introduced in detail later.",
+      "korean": "அண்ணா பல்கலைக்கழகம்",
+      "english": "Anna University in Chennai (named after C. N. Annadurai, \"Anna\") is one of South India's leading technical universities and our anchor campus for this course. Throughout the lessons we will reference Chennai life — IIT Madras nearby, Loyola College, Marina Beach, T. Nagar shopping.",
+      "example": "நான் அண்ணா பல்கலைக்கழகத்தில் படிக்கிறேன். Nāṉ Aṇṇā Palkalaikkaḻakattil paṭikkiṟēṉ. \"I study at Anna University.\"",
+      "exampleEnglish": "Notice the locative suffix -il (-இல்) — Anna University + in. Eight-case agglutination, introduced in detail later."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "அ / ஆ",
+      "romanization": "a / ā",
+      "nativeText": "Short a vs long ā — the first vowel pair. Short அ is one beat; long ஆ is two beats. Vowel length carries meaning and tone of the word changes audibly.",
+      "pronunciation": "a / ā",
+      "exampleTarget": "பல pala (many) vs பால் pāl (milk); அடி aṭi (hit/foot) vs ஆடு āṭu (goat/dance)",
+      "exampleNative": "Hold the long vowel clearly for two counts — Tamil rhythm depends on it. Bunching the long vowel into a short one yields a different word.",
+      "korean": "அ / ஆ",
+      "english": "Short a vs long ā — the first vowel pair. Short அ is one beat; long ஆ is two beats. Vowel length carries meaning and tone of the word changes audibly.",
+      "example": "பல pala (many) vs பால் pāl (milk); அடி aṭi (hit/foot) vs ஆடு āṭu (goat/dance)",
+      "exampleEnglish": "Hold the long vowel clearly for two counts — Tamil rhythm depends on it. Bunching the long vowel into a short one yields a different word."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "இ / ஈ",
+      "romanization": "i / ī",
+      "nativeText": "Short i vs long ī. Short இ is similar to English \"bit\"; long ஈ is held for two beats like English \"beet\" (but pure, not diphthongized).",
+      "pronunciation": "i / ī",
+      "exampleTarget": "இல illa (no/not, in spoken) vs ஈ ī (housefly)",
+      "exampleNative": "The contrast is clearer than in English because Tamil keeps vowels pure (no glide off the long form).",
+      "korean": "இ / ஈ",
+      "english": "Short i vs long ī. Short இ is similar to English \"bit\"; long ஈ is held for two beats like English \"beet\" (but pure, not diphthongized).",
+      "example": "இல illa (no/not, in spoken) vs ஈ ī (housefly)",
+      "exampleEnglish": "The contrast is clearer than in English because Tamil keeps vowels pure (no glide off the long form)."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "உ / ஊ",
+      "romanization": "u / ū",
+      "nativeText": "Short u vs long ū. Short உ is reduced to almost a schwa in word-final position in colloquial speech (the famous \"kuṛṛiyalukaram\"). Long ஊ is two beats, fully rounded.",
+      "pronunciation": "u / ū",
+      "exampleTarget": "புது putu (new) vs பூ pū (flower); உலகம் ulakam (world) vs ஊர் ūr (hometown/village)",
+      "exampleNative": "In colloquial Tamil, word-final short u barely sounds at all — அவன் சாப்பிட்டான் /avan sāppiṭṭān/ has a barely audible final u.",
+      "korean": "உ / ஊ",
+      "english": "Short u vs long ū. Short உ is reduced to almost a schwa in word-final position in colloquial speech (the famous \"kuṛṛiyalukaram\"). Long ஊ is two beats, fully rounded.",
+      "example": "புது putu (new) vs பூ pū (flower); உலகம் ulakam (world) vs ஊர் ūr (hometown/village)",
+      "exampleEnglish": "In colloquial Tamil, word-final short u barely sounds at all — அவன் சாப்பிட்டான் /avan sāppiṭṭān/ has a barely audible final u."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "எ / ஏ",
+      "romanization": "e / ē",
+      "nativeText": "Short e (like English \"bet\") vs long ē (held two beats, no glide). Tamil ē is pure — unlike English \"say\" which glides into y.",
+      "pronunciation": "e / ē",
+      "exampleTarget": "எரி eri (burn!) vs ஏரி ēri (lake); என் eṉ (my) vs ஏன் ēṉ (why)",
+      "exampleNative": "The pair ē/eṉ is grammatically high-frequency: ēṉ \"why\" opens countless questions.",
+      "korean": "எ / ஏ",
+      "english": "Short e (like English \"bet\") vs long ē (held two beats, no glide). Tamil ē is pure — unlike English \"say\" which glides into y.",
+      "example": "எரி eri (burn!) vs ஏரி ēri (lake); என் eṉ (my) vs ஏன் ēṉ (why)",
+      "exampleEnglish": "The pair ē/eṉ is grammatically high-frequency: ēṉ \"why\" opens countless questions."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "ஒ / ஓ",
+      "romanization": "o / ō",
+      "nativeText": "Short o (like English \"bought\" but shorter) vs long ō (held two beats, no glide off into w). Tamil ō stays pure throughout.",
+      "pronunciation": "o / ō",
+      "exampleTarget": "ஒன்று oṉṟu (one) vs ஓடு ōṭu (run!); கொடு koṭu (give!) vs கோடு kōṭu (line/horn)",
+      "exampleNative": "The number 1 (ஒன்று) uses the short form; \"ten\" (ஓரு wait — ten is பத்து) — koṭu/kōṭu is the cleanest minimal pair.",
+      "korean": "ஒ / ஓ",
+      "english": "Short o (like English \"bought\" but shorter) vs long ō (held two beats, no glide off into w). Tamil ō stays pure throughout.",
+      "example": "ஒன்று oṉṟu (one) vs ஓடு ōṭu (run!); கொடு koṭu (give!) vs கோடு kōṭu (line/horn)",
+      "exampleEnglish": "The number 1 (ஒன்று) uses the short form; \"ten\" (ஓரு wait — ten is பத்து) — koṭu/kōṭu is the cleanest minimal pair."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "ஐ / ஔ",
+      "romanization": "ai / au",
+      "nativeText": "The two diphthongs: ai (like English \"I/eye\") and au (like English \"ow/cow\"). Both behave like long vowels in word rhythm.",
+      "pronunciation": "ai / au",
+      "exampleTarget": "ஐந்து aintu (five); ஔஷதம் auṣatam (medicine — Sanskrit loan)",
+      "exampleNative": "ஔ is rare in native Tamil words but appears in Sanskrit loans and in formal Centhamizh.",
+      "korean": "ஐ / ஔ",
+      "english": "The two diphthongs: ai (like English \"I/eye\") and au (like English \"ow/cow\"). Both behave like long vowels in word rhythm.",
+      "example": "ஐந்து aintu (five); ஔஷதம் auṣatam (medicine — Sanskrit loan)",
+      "exampleEnglish": "ஔ is rare in native Tamil words but appears in Sanskrit loans and in formal Centhamizh."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "வல்லினம் (Hard Six)",
+      "romanization": "vallinam",
+      "nativeText": "The hard series: க (k/g), ச (c/s/j), ட (ṭ/ḍ retroflex), த (t/d dental), ப (p/b), ற (ṟ trill or alveolar t). These take voicing positionally — voiceless at word start or when geminated, voiced between vowels.",
+      "pronunciation": "vallinam",
+      "exampleTarget": "க ka, ச ca, ட ṭa, த ta, ப pa, ற ṟa",
+      "exampleNative": "Each row of the Tamil consonant chart pairs a vallinam with its mellinam nasal (க/ங, ச/ஞ, ட/ண, த/ந, ப/ம, ற/ன) — 6 pairs total.",
+      "korean": "வல்லினம் (Hard Six)",
+      "english": "The hard series: க (k/g), ச (c/s/j), ட (ṭ/ḍ retroflex), த (t/d dental), ப (p/b), ற (ṟ trill or alveolar t). These take voicing positionally — voiceless at word start or when geminated, voiced between vowels.",
+      "example": "க ka, ச ca, ட ṭa, த ta, ப pa, ற ṟa",
+      "exampleEnglish": "Each row of the Tamil consonant chart pairs a vallinam with its mellinam nasal (க/ங, ச/ஞ, ட/ண, த/ந, ப/ம, ற/ன) — 6 pairs total."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "மெல்லினம் (Soft Six)",
+      "romanization": "mellinam",
+      "nativeText": "The nasal series: ங (ṅ velar), ஞ (ñ palatal), ண (ṇ retroflex), ந (n dental), ம (m bilabial), ன (ṉ alveolar). Each shares place of articulation with its vallinam pair.",
+      "pronunciation": "mellinam",
+      "exampleTarget": "ங ṅa, ஞ ña, ண ṇa, ந na, ம ma, ன ṉa",
+      "exampleNative": "Tamil distinguishes THREE n-sounds in writing (ந, ண, ன) where most languages have one — though in spoken Tamil ந and ன often merge.",
+      "korean": "மெல்லினம் (Soft Six)",
+      "english": "The nasal series: ங (ṅ velar), ஞ (ñ palatal), ண (ṇ retroflex), ந (n dental), ம (m bilabial), ன (ṉ alveolar). Each shares place of articulation with its vallinam pair.",
+      "example": "ங ṅa, ஞ ña, ண ṇa, ந na, ம ma, ன ṉa",
+      "exampleEnglish": "Tamil distinguishes THREE n-sounds in writing (ந, ண, ன) where most languages have one — though in spoken Tamil ந and ன often merge."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "இடையினம் (Medium Six)",
+      "romanization": "iṭaiyiṉam",
+      "nativeText": "The \"in-between\" series: ய (y), ர (r alveolar tap), ல (l dental), வ (v/w), ழ (ḻ retroflex approximant — the famous Tamil sound), ள (ḷ retroflex lateral). These are sonorants, never geminate as harshly as the vallinam.",
+      "pronunciation": "iṭaiyiṉam",
+      "exampleTarget": "ய ya, ர ra, ல la, வ va, ழ ḻa, ள ḷa",
+      "exampleNative": "Tamil distinguishes ல (dental l) and ள (retroflex l) and ழ (retroflex approximant) — three l-like sounds where English has one.",
+      "korean": "இடையினம் (Medium Six)",
+      "english": "The \"in-between\" series: ய (y), ர (r alveolar tap), ல (l dental), வ (v/w), ழ (ḻ retroflex approximant — the famous Tamil sound), ள (ḷ retroflex lateral). These are sonorants, never geminate as harshly as the vallinam.",
+      "example": "ய ya, ர ra, ல la, வ va, ழ ḻa, ள ḷa",
+      "exampleEnglish": "Tamil distinguishes ல (dental l) and ள (retroflex l) and ழ (retroflex approximant) — three l-like sounds where English has one."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "ட vs த",
+      "romanization": "ṭ vs t",
+      "nativeText": "Retroflex ட vs dental த: the tongue position is the only difference. For ட, curl the tip backward and tap the hard palate; for த, the tip touches the upper teeth.",
+      "pronunciation": "ṭ vs t",
+      "exampleTarget": "பட paṭa (spread out!) vs பத pata (lesson/section); அடி aṭi (foot) vs அதி ati (very, intense)",
+      "exampleNative": "Mixing these up gives different words; minimal-pair drill is essential.",
+      "korean": "ட vs த",
+      "english": "Retroflex ட vs dental த: the tongue position is the only difference. For ட, curl the tip backward and tap the hard palate; for த, the tip touches the upper teeth.",
+      "example": "பட paṭa (spread out!) vs பத pata (lesson/section); அடி aṭi (foot) vs அதி ati (very, intense)",
+      "exampleEnglish": "Mixing these up gives different words; minimal-pair drill is essential."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "ண vs ந vs ன",
+      "romanization": "ṇ vs n vs ṉ",
+      "nativeText": "Three n-sounds: ண retroflex (curl tongue back), ந dental (tongue at teeth), ன alveolar (tongue at ridge). In careful Tamil all three are distinct; in fast spoken Tamil, ந and ன often merge.",
+      "pronunciation": "ṇ vs n vs ṉ",
+      "exampleTarget": "ஆணி āṇi (nail) vs ஆனி āṉi (June-July month name); ந is word-initial in many words while ன is word-medial/final.",
+      "exampleNative": "Written Tamil insists on the three-way distinction; spoken Tamil collapses it. Both are needed.",
+      "korean": "ண vs ந vs ன",
+      "english": "Three n-sounds: ண retroflex (curl tongue back), ந dental (tongue at teeth), ன alveolar (tongue at ridge). In careful Tamil all three are distinct; in fast spoken Tamil, ந and ன often merge.",
+      "example": "ஆணி āṇi (nail) vs ஆனி āṉi (June-July month name); ந is word-initial in many words while ன is word-medial/final.",
+      "exampleEnglish": "Written Tamil insists on the three-way distinction; spoken Tamil collapses it. Both are needed."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "ள vs ல",
+      "romanization": "ḷ vs l",
+      "nativeText": "Retroflex ள vs dental ல: minimum-pair distinction. ள has the tongue curled back; ல has it at the teeth. ள is also distinct from ழ — three l-like sounds total in Tamil.",
+      "pronunciation": "ḷ vs l",
+      "exampleTarget": "பல pala (many) vs பள் paḷ (sleep!); கல் kal (stone) vs கள் kaḷ (toddy, also plural marker)",
+      "exampleNative": "The plural marker -kaḷ uses retroflex ள — every Tamil plural noun ends in this sound.",
+      "korean": "ள vs ல",
+      "english": "Retroflex ள vs dental ல: minimum-pair distinction. ள has the tongue curled back; ல has it at the teeth. ள is also distinct from ழ — three l-like sounds total in Tamil.",
+      "example": "பல pala (many) vs பள் paḷ (sleep!); கல் kal (stone) vs கள் kaḷ (toddy, also plural marker)",
+      "exampleEnglish": "The plural marker -kaḷ uses retroflex ள — every Tamil plural noun ends in this sound."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "ழ — IPA ɻ",
+      "romanization": "ḻ — retroflex approximant",
+      "nativeText": "The most famous Tamil sound. Curl your tongue tip far back, almost touching the soft palate, but leave a small gap so air flows freely. Result: a sound somewhere between American \"r\", British \"l\", and a soft \"zh\" — but truly its own thing.",
+      "pronunciation": "ḻ — retroflex approximant",
+      "exampleTarget": "தமிழ் tamiḻ (Tamil); பழம் paḻam (fruit); மழை maḻai (rain); எழுது eḻutu (write!); ஆழம் āḻam (depth)",
+      "exampleNative": "Tamils take great pride in this sound — saying \"tamil\" instead of \"tamiḻ\" is a giveaway you are learning. Practice until it feels natural.",
+      "korean": "ழ — IPA ɻ",
+      "english": "The most famous Tamil sound. Curl your tongue tip far back, almost touching the soft palate, but leave a small gap so air flows freely. Result: a sound somewhere between American \"r\", British \"l\", and a soft \"zh\" — but truly its own thing.",
+      "example": "தமிழ் tamiḻ (Tamil); பழம் paḻam (fruit); மழை maḻai (rain); எழுது eḻutu (write!); ஆழம் āḻam (depth)",
+      "exampleEnglish": "Tamils take great pride in this sound — saying \"tamil\" instead of \"tamiḻ\" is a giveaway you are learning. Practice until it feels natural."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "ழ in iconic words",
+      "romanization": "ḻ in iconic words",
+      "nativeText": "Four high-frequency Tamil words use ழ — drill these as core pronunciation practice. The language's own name ends in this sound.",
+      "pronunciation": "ḻ in iconic words",
+      "exampleTarget": "தமிழ் tamiḻ · பழம் paḻam · மழை maḻai · எழுத்து eḻuttu (script/letter)",
+      "exampleNative": "If you can say \"tamiḻ\" with a clean ழ in front of a native speaker, you have arrived.",
+      "korean": "ழ in iconic words",
+      "english": "Four high-frequency Tamil words use ழ — drill these as core pronunciation practice. The language's own name ends in this sound.",
+      "example": "தமிழ் tamiḻ · பழம் paḻam · மழை maḻai · எழுத்து eḻuttu (script/letter)",
+      "exampleEnglish": "If you can say \"tamiḻ\" with a clean ழ in front of a native speaker, you have arrived."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "இரட்டிப்பு",
+      "romanization": "iraṭṭippu",
+      "nativeText": "Gemination: a consonant held twice as long as a single one. Spelled with the consonant + puḷḷi + same consonant: க்க, ட்ட, த்த, ப்ப. Phonemic — one or two changes the word.",
+      "pronunciation": "iraṭṭippu",
+      "exampleTarget": "பட்டி paṭṭi (village) vs படி paṭi (step); அப்பா appā (dad) vs அபா apā (~rare); எண் eṇ (number) vs எண்ணு eṇṇu (think!)",
+      "exampleNative": "Hold the doubled consonant for nearly twice as long; sloppy speakers shorten the geminate and produce a different word.",
+      "korean": "இரட்டிப்பு",
+      "english": "Gemination: a consonant held twice as long as a single one. Spelled with the consonant + puḷḷi + same consonant: க்க, ட்ட, த்த, ப்ப. Phonemic — one or two changes the word.",
+      "example": "பட்டி paṭṭi (village) vs படி paṭi (step); அப்பா appā (dad) vs அபா apā (~rare); எண் eṇ (number) vs எண்ணு eṇṇu (think!)",
+      "exampleEnglish": "Hold the doubled consonant for nearly twice as long; sloppy speakers shorten the geminate and produce a different word."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "வல்லின இரட்டிப்பு",
+      "romanization": "vallinam gemination devoices",
+      "nativeText": "IMPORTANT RULE: when a vallinam (k/c/ṭ/t/p/ṟ) is geminated, it is ALWAYS pronounced voiceless. Compare போக pōka /pōga/ (\"to go\") with போக்கு pōkku /pōkku/ (\"way/manner\") — the geminate kk is /kk/ never /gg/.",
+      "pronunciation": "vallinam gemination devoices",
+      "exampleTarget": "எழுது eḻutu /eḻudu/ (write!) vs எழுத்து eḻuttu /eḻuttu/ (script — note the /tt/ never /dd/)",
+      "exampleNative": "This rule + the no-voicing-distinction rule together let you predict every Tamil voicing without a dictionary.",
+      "korean": "வல்லின இரட்டிப்பு",
+      "english": "IMPORTANT RULE: when a vallinam (k/c/ṭ/t/p/ṟ) is geminated, it is ALWAYS pronounced voiceless. Compare போக pōka /pōga/ (\"to go\") with போக்கு pōkku /pōkku/ (\"way/manner\") — the geminate kk is /kk/ never /gg/.",
+      "example": "எழுது eḻutu /eḻudu/ (write!) vs எழுத்து eḻuttu /eḻuttu/ (script — note the /tt/ never /dd/)",
+      "exampleEnglish": "This rule + the no-voicing-distinction rule together let you predict every Tamil voicing without a dictionary."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "குறில் / நெடில்",
+      "romanization": "kuṟil / neṭil",
+      "nativeText": "Tamil distinguishes \"short\" (குறில் kuṟil) and \"long\" (நெடில் neṭil) vowels. Length is phonemic: each long vowel is held for ~2 morae, each short for ~1. Five short/long pairs plus 2 long diphthongs.",
+      "pronunciation": "kuṟil / neṭil",
+      "exampleTarget": "சதம் catam (hundred) vs சாதம் cātam (cooked rice) — same consonants, different first vowel length, different words.",
+      "exampleNative": "In Centhamizh poetry, vowel length controls meter; in everyday speech, it controls meaning. Either way, it is non-negotiable.",
+      "korean": "குறில் / நெடில்",
+      "english": "Tamil distinguishes \"short\" (குறில் kuṟil) and \"long\" (நெடில் neṭil) vowels. Length is phonemic: each long vowel is held for ~2 morae, each short for ~1. Five short/long pairs plus 2 long diphthongs.",
+      "example": "சதம் catam (hundred) vs சாதம் cātam (cooked rice) — same consonants, different first vowel length, different words.",
+      "exampleEnglish": "In Centhamizh poetry, vowel length controls meter; in everyday speech, it controls meaning. Either way, it is non-negotiable."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "உயிர்மெய் எழுத்து",
+      "romanization": "uyirmei eḻuttu",
+      "nativeText": "Consonant + vowel = a combined \"uyirmei\" glyph. The vowel sign attaches to the consonant in a specific position: above (ே), below, beside, or wrapping. Each of the 18 consonants × 12 vowels = 216 syllable glyphs (plus 18 puḷḷi-marked pure consonants).",
+      "pronunciation": "uyirmei eḻuttu",
+      "exampleTarget": "க + ஆ = கா kā; க + இ = கி ki; க + ஈ = கீ kī; க + உ = கு ku; க + ஊ = கூ kū; க + எ = கெ ke; க + ஏ = கே kē; க + ஐ = கை kai; க + ஒ = கொ ko; க + ஓ = கோ kō; க + ஔ = கௌ kau",
+      "exampleNative": "Once you learn the vowel signs once, you can read any of the 216 combinations.",
+      "korean": "உயிர்மெய் எழுத்து",
+      "english": "Consonant + vowel = a combined \"uyirmei\" glyph. The vowel sign attaches to the consonant in a specific position: above (ே), below, beside, or wrapping. Each of the 18 consonants × 12 vowels = 216 syllable glyphs (plus 18 puḷḷi-marked pure consonants).",
+      "example": "க + ஆ = கா kā; க + இ = கி ki; க + ஈ = கீ kī; க + உ = கு ku; க + ஊ = கூ kū; க + எ = கெ ke; க + ஏ = கே kē; க + ஐ = கை kai; க + ஒ = கொ ko; க + ஓ = கோ kō; க + ஔ = கௌ kau",
+      "exampleEnglish": "Once you learn the vowel signs once, you can read any of the 216 combinations."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "ஒலி நிலை",
+      "romanization": "oli nilai",
+      "nativeText": "Tamil has NO phonemic voicing distinction. The same letter க is /k/ at the start of a word, /g/ between vowels, /kk/ when geminated. Voicing is positional, not contrastive. Same applies to ச (c/s/j), ட (ṭ/ḍ), த (t/d), ப (p/b).",
+      "pronunciation": "oli nilai",
+      "exampleTarget": "காகம் kākam /kāgam/ (crow); பழம் paḻam /paḻam/; போதும் pōtum /pōdum/ (enough)",
+      "exampleNative": "This is the OPPOSITE of English/most languages, where /k/ and /g/ are different phonemes. In Tamil, the writing system needs only one letter because context predicts the sound.",
+      "korean": "ஒலி நிலை",
+      "english": "Tamil has NO phonemic voicing distinction. The same letter க is /k/ at the start of a word, /g/ between vowels, /kk/ when geminated. Voicing is positional, not contrastive. Same applies to ச (c/s/j), ட (ṭ/ḍ), த (t/d), ப (p/b).",
+      "example": "காகம் kākam /kāgam/ (crow); பழம் paḻam /paḻam/; போதும் pōtum /pōdum/ (enough)",
+      "exampleEnglish": "This is the OPPOSITE of English/most languages, where /k/ and /g/ are different phonemes. In Tamil, the writing system needs only one letter because context predicts the sound."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "செந்தமிழ் vs கொடுந்தமிழ்",
+      "romanization": "centamiḻ vs koṭuntamiḻ",
+      "nativeText": "Centhamizh (செந்தமிழ் \"pure Tamil\") is the formal literary register: news broadcasts, textbooks, formal speeches, religious texts. Koduntamizh (கொடுந்தமிழ் \"regional Tamil\") is everyday spoken Tamil — heavily contracted, with regional flavors and Tanglish in cities.",
+      "pronunciation": "centamiḻ vs koṭuntamiḻ",
+      "exampleTarget": "WRITTEN: நான் வருகிறேன். nāṉ varukiṟēṉ. (\"I come/am coming.\")\nSPOKEN: நான் வரேன். nāṉ varēṉ.",
+      "exampleNative": "Tamil diglossia is one of the strongest in the world — news Tamil and spoken Tamil differ in verb endings, copula, even basic pronouns. Both must be learned.",
+      "korean": "செந்தமிழ் vs கொடுந்தமிழ்",
+      "english": "Centhamizh (செந்தமிழ் \"pure Tamil\") is the formal literary register: news broadcasts, textbooks, formal speeches, religious texts. Koduntamizh (கொடுந்தமிழ் \"regional Tamil\") is everyday spoken Tamil — heavily contracted, with regional flavors and Tanglish in cities.",
+      "example": "WRITTEN: நான் வருகிறேன். nāṉ varukiṟēṉ. (\"I come/am coming.\")\nSPOKEN: நான் வரேன். nāṉ varēṉ.",
+      "exampleEnglish": "Tamil diglossia is one of the strongest in the world — news Tamil and spoken Tamil differ in verb endings, copula, even basic pronouns. Both must be learned."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "தமிங்கிலம் மற்றும் வட்டார வழக்குகள்",
+      "romanization": "tanglish & regional dialects",
+      "nativeText": "In urban Tamil Nadu (especially Chennai, Coimbatore) and among Singapore/Malaysia diaspora, code-switching with English (\"Tanglish\") is universal in speech: \"நான் office-க்கு போறேன்\" (Nāṉ office-kku pōṟēṉ \"I am going to office\"). Regional dialects differ too: Chennai, Madurai, Coimbatore, Jaffna (Sri Lanka), and diaspora Tamil each have their own flavor.",
+      "pronunciation": "tanglish & regional dialects",
+      "exampleTarget": "Chennai-style: சாப்ட்டியா? cāppṭṭiyā? (\"Have you eaten?\")\nMadurai-style: சாப்பிட்டீங்களா? cāppiṭṭīṅkaḷā?\nJaffna-style: சாப்பிட்டியோ? cāppiṭṭiyō?",
+      "exampleNative": "Madurai Tamil is conservative; Chennai Tamil contracts the most; Jaffna Tamil preserves classical features lost on the mainland.",
+      "korean": "தமிங்கிலம் மற்றும் வட்டார வழக்குகள்",
+      "english": "In urban Tamil Nadu (especially Chennai, Coimbatore) and among Singapore/Malaysia diaspora, code-switching with English (\"Tanglish\") is universal in speech: \"நான் office-க்கு போறேன்\" (Nāṉ office-kku pōṟēṉ \"I am going to office\"). Regional dialects differ too: Chennai, Madurai, Coimbatore, Jaffna (Sri Lanka), and diaspora Tamil each have their own flavor.",
+      "example": "Chennai-style: சாப்ட்டியா? cāppṭṭiyā? (\"Have you eaten?\")\nMadurai-style: சாப்பிட்டீங்களா? cāppiṭṭīṅkaḷā?\nJaffna-style: சாப்பிட்டியோ? cāppiṭṭiyō?",
+      "exampleEnglish": "Madurai Tamil is conservative; Chennai Tamil contracts the most; Jaffna Tamil preserves classical features lost on the mainland."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "தமிழ் எண்கள்",
+      "romanization": "tamiḻ eṇkaḷ",
+      "nativeText": "The 10 native Tamil digits — though Arabic numerals dominate modern writing, Tamil digits appear in classical texts, calendars, and ornamental use.",
+      "pronunciation": "tamiḻ eṇkaḷ",
+      "exampleTarget": "௦ 0 · ௧ 1 · ௨ 2 · ௩ 3 · ௪ 4 · ௫ 5 · ௬ 6 · ௭ 7 · ௮ 8 · ௯ 9",
+      "exampleNative": "Memorize for reading classical texts; in everyday Tamil writing you can use 0-9 freely.",
+      "korean": "தமிழ் எண்கள்",
+      "english": "The 10 native Tamil digits — though Arabic numerals dominate modern writing, Tamil digits appear in classical texts, calendars, and ornamental use.",
+      "example": "௦ 0 · ௧ 1 · ௨ 2 · ௩ 3 · ௪ 4 · ௫ 5 · ௬ 6 · ௭ 7 · ௮ 8 · ௯ 9",
+      "exampleEnglish": "Memorize for reading classical texts; in everyday Tamil writing you can use 0-9 freely."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "ஃ (āytam)",
+      "romanization": "ḥ (āytam)",
+      "nativeText": "The āytam ஃ is a special \"half-syllable\" symbol used in Centhamizh for certain phonological environments and in modern Tamil to transliterate foreign sounds like /f/. ஃபோன் ḥpōṉ = \"phone\".",
+      "pronunciation": "ḥ (āytam)",
+      "exampleTarget": "ஃபோன் /fōn/ (phone); ஃபேஸ்புக் fēsbuk (Facebook — Tanglish transliteration)",
+      "exampleNative": "Modern Tamil uses ஃ mainly to bend the script to English loanwords; classical use is for vowel-resolution in poetry.",
+      "korean": "ஃ (āytam)",
+      "english": "The āytam ஃ is a special \"half-syllable\" symbol used in Centhamizh for certain phonological environments and in modern Tamil to transliterate foreign sounds like /f/. ஃபோன் ḥpōṉ = \"phone\".",
+      "example": "ஃபோன் /fōn/ (phone); ஃபேஸ்புக் fēsbuk (Facebook — Tanglish transliteration)",
+      "exampleEnglish": "Modern Tamil uses ஃ mainly to bend the script to English loanwords; classical use is for vowel-resolution in poetry."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "வாசிப்பு பயிற்சி",
+      "romanization": "vācippu payiṟci",
+      "nativeText": "A reading-aloud exercise applying every rule from this lesson: vowel length, retroflex, gemination, ழ, and positional voicing. Read this sentence and identify each rule as it appears.",
+      "pronunciation": "vācippu payiṟci",
+      "exampleTarget": "வணக்கம்! என் பெயர் ராஜா. நான் சென்னை, அண்ணா பல்கலைக்கழகத்தில் தமிழ் படிக்கிறேன்.",
+      "exampleNative": "Translation: \"Hello! My name is Raja. I study Tamil at Anna University, Chennai.\"",
+      "korean": "வாசிப்பு பயிற்சி",
+      "english": "A reading-aloud exercise applying every rule from this lesson: vowel length, retroflex, gemination, ழ, and positional voicing. Read this sentence and identify each rule as it appears.",
+      "example": "வணக்கம்! என் பெயர் ராஜா. நான் சென்னை, அண்ணா பல்கலைக்கழகத்தில் தமிழ் படிக்கிறேன்.",
+      "exampleEnglish": "Translation: \"Hello! My name is Raja. I study Tamil at Anna University, Chennai.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "romanization": "tamiḻ eḻuttu",
+      "nativeText": "Model use for \"தமிழ் எழுத்து\": Tamil is one of the oldest continuously-spoken languages in the world (Sangam literature dates back over 2000 years). Its script is an abugida: each consonant carries an inherent /a/ unless a vowel sign overrides it.",
+      "pronunciation": "tamiḻ eḻuttu",
+      "exampleTarget": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "exampleNative": "When Tamil speakers say their language name correctly, the final consonant is the retroflex approximant ழ — the same sound that distinguishes Tamil pronunciation.",
+      "korean": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "english": "Model use for \"தமிழ் எழுத்து\": Tamil is one of the oldest continuously-spoken languages in the world (Sangam literature dates back over 2000 years). Its script is an abugida: each consonant carries an inherent /a/ unless a vowel sign overrides it.",
+      "example": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "exampleEnglish": "When Tamil speakers say their language name correctly, the final consonant is the retroflex approximant ழ — the same sound that distinguishes Tamil pronunciation."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "தமிழ் எழுத்து",
+      "romanization": "tamiḻ eḻuttu",
+      "nativeText": "Usage focus for \"தமிழ் எழுத்து\": Tamil is one of the oldest continuously-spoken languages in the world (Sangam literature dates back over 2000 years). Its script is an abugida: each consonant carries an inherent /a/ unless a vowel sign overrides it.",
+      "pronunciation": "tamiḻ eḻuttu",
+      "exampleTarget": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "exampleNative": "Notice what the form is doing here: When Tamil speakers say their language name correctly, the final consonant is the retroflex approximant ழ — the same sound that distinguishes Tamil pronunciation.",
+      "korean": "தமிழ் எழுத்து",
+      "english": "Usage focus for \"தமிழ் எழுத்து\": Tamil is one of the oldest continuously-spoken languages in the world (Sangam literature dates back over 2000 years). Its script is an abugida: each consonant carries an inherent /a/ unless a vowel sign overrides it.",
+      "example": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "exampleEnglish": "Notice what the form is doing here: When Tamil speakers say their language name correctly, the final consonant is the retroflex approximant ழ — the same sound that distinguishes Tamil pronunciation."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "தமிழ் எழுத்து",
+      "romanization": "tamiḻ eḻuttu",
+      "nativeText": "Contrast check for \"தமிழ் எழுத்து\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "tamiḻ eḻuttu",
+      "exampleTarget": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: When Tamil speakers say their language name correctly, the final consonant is the retroflex approximant ழ — the same sound that distinguishes Tamil pronunciation.",
+      "korean": "தமிழ் எழுத்து",
+      "english": "Contrast check for \"தமிழ் எழுத்து\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: When Tamil speakers say their language name correctly, the final consonant is the retroflex approximant ழ — the same sound that distinguishes Tamil pronunciation."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "தமிழ் எழுத்து",
+      "romanization": "tamiḻ eḻuttu",
+      "nativeText": "Recall \"தமிழ் எழுத்து\" from memory, then explain what would change if a nearby alternative replaced it in \"தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).\".",
+      "pronunciation": "tamiḻ eḻuttu",
+      "exampleTarget": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "exampleNative": "Self-check against the model before moving on: When Tamil speakers say their language name correctly, the final consonant is the retroflex approximant ழ — the same sound that distinguishes Tamil pronunciation.",
+      "korean": "தமிழ் எழுத்து",
+      "english": "Recall \"தமிழ் எழுத்து\" from memory, then explain what would change if a nearby alternative replaced it in \"தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).\".",
+      "example": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "exampleEnglish": "Self-check against the model before moving on: When Tamil speakers say their language name correctly, the final consonant is the retroflex approximant ழ — the same sound that distinguishes Tamil pronunciation."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "தமிழ் எழுத்து",
+      "romanization": "tamiḻ eḻuttu",
+      "nativeText": "Repair \"தமிழ் எழுத்து\" inside \"தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Tamil is one of the oldest continuously-spoken languages in the world (Sangam literature dates back over 2000 years). Its script is an abugida: each consonant carries an inherent /a/ unless a vowel sign overrides it.",
+      "pronunciation": "tamiḻ eḻuttu",
+      "exampleTarget": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "exampleNative": "Use the model as the repair target: When Tamil speakers say their language name correctly, the final consonant is the retroflex approximant ழ — the same sound that distinguishes Tamil pronunciation.",
+      "korean": "தமிழ் எழுத்து",
+      "english": "Repair \"தமிழ் எழுத்து\" inside \"தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Tamil is one of the oldest continuously-spoken languages in the world (Sangam literature dates back over 2000 years). Its script is an abugida: each consonant carries an inherent /a/ unless a vowel sign overrides it.",
+      "example": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "exampleEnglish": "Use the model as the repair target: When Tamil speakers say their language name correctly, the final consonant is the retroflex approximant ழ — the same sound that distinguishes Tamil pronunciation."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "தமிழ் எழுத்து",
+      "romanization": "tamiḻ eḻuttu",
+      "nativeText": "Transfer \"தமிழ் எழுத்து\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).\".",
+      "pronunciation": "tamiḻ eḻuttu",
+      "exampleTarget": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: When Tamil speakers say their language name correctly, the final consonant is the retroflex approximant ழ — the same sound that distinguishes Tamil pronunciation.",
+      "korean": "தமிழ் எழுத்து",
+      "english": "Transfer \"தமிழ் எழுத்து\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).\".",
+      "example": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: When Tamil speakers say their language name correctly, the final consonant is the retroflex approximant ழ — the same sound that distinguishes Tamil pronunciation."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "தமிழ் எழுத்து",
+      "romanization": "tamiḻ eḻuttu",
+      "nativeText": "Find one word or phrase that naturally travels with \"தமிழ் எழுத்து\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "tamiḻ eḻuttu",
+      "exampleTarget": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: When Tamil speakers say their language name correctly, the final consonant is the retroflex approximant ழ — the same sound that distinguishes Tamil pronunciation.",
+      "korean": "தமிழ் எழுத்து",
+      "english": "Find one word or phrase that naturally travels with \"தமிழ் எழுத்து\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: When Tamil speakers say their language name correctly, the final consonant is the retroflex approximant ழ — the same sound that distinguishes Tamil pronunciation."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "தமிழ் எழுத்து",
+      "romanization": "tamiḻ eḻuttu",
+      "nativeText": "Listen for \"தமிழ் எழுத்து\" inside \"தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "tamiḻ eḻuttu",
+      "exampleTarget": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: When Tamil speakers say their language name correctly, the final consonant is the retroflex approximant ழ — the same sound that distinguishes Tamil pronunciation.",
+      "korean": "தமிழ் எழுத்து",
+      "english": "Listen for \"தமிழ் எழுத்து\" inside \"தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: When Tamil speakers say their language name correctly, the final consonant is the retroflex approximant ழ — the same sound that distinguishes Tamil pronunciation."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "தமிழ் எழுத்து",
+      "romanization": "tamiḻ eḻuttu",
+      "nativeText": "Write \"தமிழ் எழுத்து\" again without looking, then compare the exact written form against \"தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).\" before moving on.",
+      "pronunciation": "tamiḻ eḻuttu",
+      "exampleTarget": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "exampleNative": "Use the written model as the final correctness check: When Tamil speakers say their language name correctly, the final consonant is the retroflex approximant ழ — the same sound that distinguishes Tamil pronunciation.",
+      "korean": "தமிழ் எழுத்து",
+      "english": "Write \"தமிழ் எழுத்து\" again without looking, then compare the exact written form against \"தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).\" before moving on.",
+      "example": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "exampleEnglish": "Use the written model as the final correctness check: When Tamil speakers say their language name correctly, the final consonant is the retroflex approximant ழ — the same sound that distinguishes Tamil pronunciation."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "தமிழ் எழுத்து",
+      "romanization": "tamiḻ eḻuttu",
+      "nativeText": "Check whether \"தமிழ் எழுத்து\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: When Tamil speakers say their language name correctly, the final consonant is the retroflex approximant ழ — the same sound that distinguishes Tamil pronunciation.",
+      "pronunciation": "tamiḻ eḻuttu",
+      "exampleTarget": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: When Tamil speakers say their language name correctly, the final consonant is the retroflex approximant ழ — the same sound that distinguishes Tamil pronunciation.",
+      "korean": "தமிழ் எழுத்து",
+      "english": "Check whether \"தமிழ் எழுத்து\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: When Tamil speakers say their language name correctly, the final consonant is the retroflex approximant ழ — the same sound that distinguishes Tamil pronunciation.",
+      "example": "தமிழ் tamiḻ — the language itself; note the famous ழ at the end (IPA ɻ).",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: When Tamil speakers say their language name correctly, the final consonant is the retroflex approximant ழ — the same sound that distinguishes Tamil pronunciation."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)",
+      "romanization": "nāṉku periya amcaṅkaḷ",
+      "nativeText": "Model use for \"நான்கு பெரிய அம்சங்கள்\": Four features of Tamil that English speakers must internalize: (1) no voicing contrast — same letter for k/g, t/d, p/b; (2) retroflex consonants ட ண ள with tongue curled back; (3) the unique ழ; (4) phonemic gemination and vowel length.",
+      "pronunciation": "nāṉku periya amcaṅkaḷ",
+      "exampleTarget": "(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)",
+      "exampleNative": "These four contrasts are what make Tamil sound distinctly Tamil rather than another South Asian language.",
+      "korean": "(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)",
+      "english": "Model use for \"நான்கு பெரிய அம்சங்கள்\": Four features of Tamil that English speakers must internalize: (1) no voicing contrast — same letter for k/g, t/d, p/b; (2) retroflex consonants ட ண ள with tongue curled back; (3) the unique ழ; (4) phonemic gemination and vowel length.",
+      "example": "(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)",
+      "exampleEnglish": "These four contrasts are what make Tamil sound distinctly Tamil rather than another South Asian language."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "நான்கு பெரிய அம்சங்கள்",
+      "romanization": "nāṉku periya amcaṅkaḷ",
+      "nativeText": "Usage focus for \"நான்கு பெரிய அம்சங்கள்\": Four features of Tamil that English speakers must internalize: (1) no voicing contrast — same letter for k/g, t/d, p/b; (2) retroflex consonants ட ண ள with tongue curled back; (3) the unique ழ; (4) phonemic gemination and vowel length.",
+      "pronunciation": "nāṉku periya amcaṅkaḷ",
+      "exampleTarget": "(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)",
+      "exampleNative": "Notice what the form is doing here: These four contrasts are what make Tamil sound distinctly Tamil rather than another South Asian language.",
+      "korean": "நான்கு பெரிய அம்சங்கள்",
+      "english": "Usage focus for \"நான்கு பெரிய அம்சங்கள்\": Four features of Tamil that English speakers must internalize: (1) no voicing contrast — same letter for k/g, t/d, p/b; (2) retroflex consonants ட ண ள with tongue curled back; (3) the unique ழ; (4) phonemic gemination and vowel length.",
+      "example": "(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)",
+      "exampleEnglish": "Notice what the form is doing here: These four contrasts are what make Tamil sound distinctly Tamil rather than another South Asian language."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "நான்கு பெரிய அம்சங்கள்",
+      "romanization": "nāṉku periya amcaṅkaḷ",
+      "nativeText": "Contrast check for \"நான்கு பெரிய அம்சங்கள்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "nāṉku periya amcaṅkaḷ",
+      "exampleTarget": "(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: These four contrasts are what make Tamil sound distinctly Tamil rather than another South Asian language.",
+      "korean": "நான்கு பெரிய அம்சங்கள்",
+      "english": "Contrast check for \"நான்கு பெரிய அம்சங்கள்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: These four contrasts are what make Tamil sound distinctly Tamil rather than another South Asian language."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "நான்கு பெரிய அம்சங்கள்",
+      "romanization": "nāṉku periya amcaṅkaḷ",
+      "nativeText": "Recall \"நான்கு பெரிய அம்சங்கள்\" from memory, then explain what would change if a nearby alternative replaced it in \"(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)\".",
+      "pronunciation": "nāṉku periya amcaṅkaḷ",
+      "exampleTarget": "(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)",
+      "exampleNative": "Self-check against the model before moving on: These four contrasts are what make Tamil sound distinctly Tamil rather than another South Asian language.",
+      "korean": "நான்கு பெரிய அம்சங்கள்",
+      "english": "Recall \"நான்கு பெரிய அம்சங்கள்\" from memory, then explain what would change if a nearby alternative replaced it in \"(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)\".",
+      "example": "(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)",
+      "exampleEnglish": "Self-check against the model before moving on: These four contrasts are what make Tamil sound distinctly Tamil rather than another South Asian language."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "நான்கு பெரிய அம்சங்கள்",
+      "romanization": "nāṉku periya amcaṅkaḷ",
+      "nativeText": "Repair \"நான்கு பெரிய அம்சங்கள்\" inside \"(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Four features of Tamil that English speakers must internalize: (1) no voicing contrast — same letter for k/g, t/d, p/b; (2) retroflex consonants ட ண ள with tongue curled back; (3) the unique ழ; (4) phonemic gemination and vowel length.",
+      "pronunciation": "nāṉku periya amcaṅkaḷ",
+      "exampleTarget": "(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)",
+      "exampleNative": "Use the model as the repair target: These four contrasts are what make Tamil sound distinctly Tamil rather than another South Asian language.",
+      "korean": "நான்கு பெரிய அம்சங்கள்",
+      "english": "Repair \"நான்கு பெரிய அம்சங்கள்\" inside \"(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Four features of Tamil that English speakers must internalize: (1) no voicing contrast — same letter for k/g, t/d, p/b; (2) retroflex consonants ட ண ள with tongue curled back; (3) the unique ழ; (4) phonemic gemination and vowel length.",
+      "example": "(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)",
+      "exampleEnglish": "Use the model as the repair target: These four contrasts are what make Tamil sound distinctly Tamil rather than another South Asian language."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "நான்கு பெரிய அம்சங்கள்",
+      "romanization": "nāṉku periya amcaṅkaḷ",
+      "nativeText": "Transfer \"நான்கு பெரிய அம்சங்கள்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)\".",
+      "pronunciation": "nāṉku periya amcaṅkaḷ",
+      "exampleTarget": "(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: These four contrasts are what make Tamil sound distinctly Tamil rather than another South Asian language.",
+      "korean": "நான்கு பெரிய அம்சங்கள்",
+      "english": "Transfer \"நான்கு பெரிய அம்சங்கள்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)\".",
+      "example": "(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: These four contrasts are what make Tamil sound distinctly Tamil rather than another South Asian language."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "நான்கு பெரிய அம்சங்கள்",
+      "romanization": "nāṉku periya amcaṅkaḷ",
+      "nativeText": "Find one word or phrase that naturally travels with \"நான்கு பெரிய அம்சங்கள்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "nāṉku periya amcaṅkaḷ",
+      "exampleTarget": "(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: These four contrasts are what make Tamil sound distinctly Tamil rather than another South Asian language.",
+      "korean": "நான்கு பெரிய அம்சங்கள்",
+      "english": "Find one word or phrase that naturally travels with \"நான்கு பெரிய அம்சங்கள்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: These four contrasts are what make Tamil sound distinctly Tamil rather than another South Asian language."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "நான்கு பெரிய அம்சங்கள்",
+      "romanization": "nāṉku periya amcaṅkaḷ",
+      "nativeText": "Listen for \"நான்கு பெரிய அம்சங்கள்\" inside \"(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "nāṉku periya amcaṅkaḷ",
+      "exampleTarget": "(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: These four contrasts are what make Tamil sound distinctly Tamil rather than another South Asian language.",
+      "korean": "நான்கு பெரிய அம்சங்கள்",
+      "english": "Listen for \"நான்கு பெரிய அம்சங்கள்\" inside \"(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: These four contrasts are what make Tamil sound distinctly Tamil rather than another South Asian language."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "நான்கு பெரிய அம்சங்கள்",
+      "romanization": "nāṉku periya amcaṅkaḷ",
+      "nativeText": "Write \"நான்கு பெரிய அம்சங்கள்\" again without looking, then compare the exact written form against \"(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)\" before moving on.",
+      "pronunciation": "nāṉku periya amcaṅkaḷ",
+      "exampleTarget": "(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)",
+      "exampleNative": "Use the written model as the final correctness check: These four contrasts are what make Tamil sound distinctly Tamil rather than another South Asian language.",
+      "korean": "நான்கு பெரிய அம்சங்கள்",
+      "english": "Write \"நான்கு பெரிய அம்சங்கள்\" again without looking, then compare the exact written form against \"(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)\" before moving on.",
+      "example": "(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)",
+      "exampleEnglish": "Use the written model as the final correctness check: These four contrasts are what make Tamil sound distinctly Tamil rather than another South Asian language."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "நான்கு பெரிய அம்சங்கள்",
+      "romanization": "nāṉku periya amcaṅkaḷ",
+      "nativeText": "Check whether \"நான்கு பெரிய அம்சங்கள்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: These four contrasts are what make Tamil sound distinctly Tamil rather than another South Asian language.",
+      "pronunciation": "nāṉku periya amcaṅkaḷ",
+      "exampleTarget": "(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: These four contrasts are what make Tamil sound distinctly Tamil rather than another South Asian language.",
+      "korean": "நான்கு பெரிய அம்சங்கள்",
+      "english": "Check whether \"நான்கு பெரிய அம்சங்கள்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: These four contrasts are what make Tamil sound distinctly Tamil rather than another South Asian language.",
+      "example": "(1) போக pōka /pōga/  (2) பாட்டி pāṭṭi grandma  (3) தமிழ் tamiḻ  (4) படம்/பட்டம் paṭam/paṭṭam (picture/title)",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: These four contrasts are what make Tamil sound distinctly Tamil rather than another South Asian language."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "நான் அண்ணா பல்கலைக்கழகத்தில் படிக்கிறேன். Nāṉ Aṇṇā Palkalaikkaḻakattil paṭikkiṟēṉ. \"I study at Anna University.\"",
+      "romanization": "aṇṇā palkalaikkaḻakam",
+      "nativeText": "Model use for \"அண்ணா பல்கலைக்கழகம்\": Anna University in Chennai (named after C. N. Annadurai, \"Anna\") is one of South India's leading technical universities and our anchor campus for this course. Throughout the lessons we will reference Chennai life — IIT Madras nearby, Loyola College, Marina Beach, T. Nagar shopping.",
+      "pronunciation": "aṇṇā palkalaikkaḻakam",
+      "exampleTarget": "நான் அண்ணா பல்கலைக்கழகத்தில் படிக்கிறேன். Nāṉ Aṇṇā Palkalaikkaḻakattil paṭikkiṟēṉ. \"I study at Anna University.\"",
+      "exampleNative": "Notice the locative suffix -il (-இல்) — Anna University + in. Eight-case agglutination, introduced in detail later.",
+      "korean": "நான் அண்ணா பல்கலைக்கழகத்தில் படிக்கிறேன். Nāṉ Aṇṇā Palkalaikkaḻakattil paṭikkiṟēṉ. \"I study at Anna University.\"",
+      "english": "Model use for \"அண்ணா பல்கலைக்கழகம்\": Anna University in Chennai (named after C. N. Annadurai, \"Anna\") is one of South India's leading technical universities and our anchor campus for this course. Throughout the lessons we will reference Chennai life — IIT Madras nearby, Loyola College, Marina Beach, T. Nagar shopping.",
+      "example": "நான் அண்ணா பல்கலைக்கழகத்தில் படிக்கிறேன். Nāṉ Aṇṇā Palkalaikkaḻakattil paṭikkiṟēṉ. \"I study at Anna University.\"",
+      "exampleEnglish": "Notice the locative suffix -il (-இல்) — Anna University + in. Eight-case agglutination, introduced in detail later."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "அண்ணா பல்கலைக்கழகம்",
+      "romanization": "aṇṇā palkalaikkaḻakam",
+      "nativeText": "Usage focus for \"அண்ணா பல்கலைக்கழகம்\": Anna University in Chennai (named after C. N. Annadurai, \"Anna\") is one of South India's leading technical universities and our anchor campus for this course. Throughout the lessons we will reference Chennai life — IIT Madras nearby, Loyola College, Marina Beach, T. Nagar shopping.",
+      "pronunciation": "aṇṇā palkalaikkaḻakam",
+      "exampleTarget": "நான் அண்ணா பல்கலைக்கழகத்தில் படிக்கிறேன். Nāṉ Aṇṇā Palkalaikkaḻakattil paṭikkiṟēṉ. \"I study at Anna University.\"",
+      "exampleNative": "Notice what the form is doing here: Notice the locative suffix -il (-இல்) — Anna University + in. Eight-case agglutination, introduced in detail later.",
+      "korean": "அண்ணா பல்கலைக்கழகம்",
+      "english": "Usage focus for \"அண்ணா பல்கலைக்கழகம்\": Anna University in Chennai (named after C. N. Annadurai, \"Anna\") is one of South India's leading technical universities and our anchor campus for this course. Throughout the lessons we will reference Chennai life — IIT Madras nearby, Loyola College, Marina Beach, T. Nagar shopping.",
+      "example": "நான் அண்ணா பல்கலைக்கழகத்தில் படிக்கிறேன். Nāṉ Aṇṇā Palkalaikkaḻakattil paṭikkiṟēṉ. \"I study at Anna University.\"",
+      "exampleEnglish": "Notice what the form is doing here: Notice the locative suffix -il (-இல்) — Anna University + in. Eight-case agglutination, introduced in detail later."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "அண்ணா பல்கலைக்கழகம்",
+      "romanization": "aṇṇā palkalaikkaḻakam",
+      "nativeText": "Contrast check for \"அண்ணா பல்கலைக்கழகம்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "aṇṇā palkalaikkaḻakam",
+      "exampleTarget": "நான் அண்ணா பல்கலைக்கழகத்தில் படிக்கிறேன். Nāṉ Aṇṇā Palkalaikkaḻakattil paṭikkiṟēṉ. \"I study at Anna University.\"",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: Notice the locative suffix -il (-இல்) — Anna University + in. Eight-case agglutination, introduced in detail later.",
+      "korean": "அண்ணா பல்கலைக்கழகம்",
+      "english": "Contrast check for \"அண்ணா பல்கலைக்கழகம்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "நான் அண்ணா பல்கலைக்கழகத்தில் படிக்கிறேன். Nāṉ Aṇṇā Palkalaikkaḻakattil paṭikkiṟēṉ. \"I study at Anna University.\"",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: Notice the locative suffix -il (-இல்) — Anna University + in. Eight-case agglutination, introduced in detail later."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "அண்ணா பல்கலைக்கழகம்",
+      "romanization": "aṇṇā palkalaikkaḻakam",
+      "nativeText": "Recall \"அண்ணா பல்கலைக்கழகம்\" from memory, then explain what would change if a nearby alternative replaced it in \"நான் அண்ணா பல்கலைக்கழகத்தில் படிக்கிறேன். Nāṉ Aṇṇā Palkalaikkaḻakattil paṭikkiṟēṉ. \"I study at Anna University.\"\".",
+      "pronunciation": "aṇṇā palkalaikkaḻakam",
+      "exampleTarget": "நான் அண்ணா பல்கலைக்கழகத்தில் படிக்கிறேன். Nāṉ Aṇṇā Palkalaikkaḻakattil paṭikkiṟēṉ. \"I study at Anna University.\"",
+      "exampleNative": "Self-check against the model before moving on: Notice the locative suffix -il (-இல்) — Anna University + in. Eight-case agglutination, introduced in detail later.",
+      "korean": "அண்ணா பல்கலைக்கழகம்",
+      "english": "Recall \"அண்ணா பல்கலைக்கழகம்\" from memory, then explain what would change if a nearby alternative replaced it in \"நான் அண்ணா பல்கலைக்கழகத்தில் படிக்கிறேன். Nāṉ Aṇṇā Palkalaikkaḻakattil paṭikkiṟēṉ. \"I study at Anna University.\"\".",
+      "example": "நான் அண்ணா பல்கலைக்கழகத்தில் படிக்கிறேன். Nāṉ Aṇṇā Palkalaikkaḻakattil paṭikkiṟēṉ. \"I study at Anna University.\"",
+      "exampleEnglish": "Self-check against the model before moving on: Notice the locative suffix -il (-இல்) — Anna University + in. Eight-case agglutination, introduced in detail later."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "அண்ணா பல்கலைக்கழகம்",
+      "romanization": "aṇṇā palkalaikkaḻakam",
+      "nativeText": "Repair \"அண்ணா பல்கலைக்கழகம்\" inside \"நான் அண்ணா பல்கலைக்கழகத்தில் படிக்கிறேன். Nāṉ Aṇṇā Palkalaikkaḻakattil paṭikkiṟēṉ. \"I study at Anna University.\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Anna University in Chennai (named after C. N. Annadurai, \"Anna\") is one of South India's leading technical universities and our anchor campus for this course. Throughout the lessons we will reference Chennai life — IIT Madras nearby, Loyola College, Marina Beach, T. Nagar shopping.",
+      "pronunciation": "aṇṇā palkalaikkaḻakam",
+      "exampleTarget": "நான் அண்ணா பல்கலைக்கழகத்தில் படிக்கிறேன். Nāṉ Aṇṇā Palkalaikkaḻakattil paṭikkiṟēṉ. \"I study at Anna University.\"",
+      "exampleNative": "Use the model as the repair target: Notice the locative suffix -il (-இல்) — Anna University + in. Eight-case agglutination, introduced in detail later.",
+      "korean": "அண்ணா பல்கலைக்கழகம்",
+      "english": "Repair \"அண்ணா பல்கலைக்கழகம்\" inside \"நான் அண்ணா பல்கலைக்கழகத்தில் படிக்கிறேன். Nāṉ Aṇṇā Palkalaikkaḻakattil paṭikkiṟēṉ. \"I study at Anna University.\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Anna University in Chennai (named after C. N. Annadurai, \"Anna\") is one of South India's leading technical universities and our anchor campus for this course. Throughout the lessons we will reference Chennai life — IIT Madras nearby, Loyola College, Marina Beach, T. Nagar shopping.",
+      "example": "நான் அண்ணா பல்கலைக்கழகத்தில் படிக்கிறேன். Nāṉ Aṇṇā Palkalaikkaḻakattil paṭikkiṟēṉ. \"I study at Anna University.\"",
+      "exampleEnglish": "Use the model as the repair target: Notice the locative suffix -il (-இல்) — Anna University + in. Eight-case agglutination, introduced in detail later."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "அண்ணா பல்கலைக்கழகம்",
+      "romanization": "aṇṇā palkalaikkaḻakam",
+      "nativeText": "Transfer \"அண்ணா பல்கலைக்கழகம்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நான் அண்ணா பல்கலைக்கழகத்தில் படிக்கிறேன். Nāṉ Aṇṇā Palkalaikkaḻakattil paṭikkiṟēṉ. \"I study at Anna University.\"\".",
+      "pronunciation": "aṇṇā palkalaikkaḻakam",
+      "exampleTarget": "நான் அண்ணா பல்கலைக்கழகத்தில் படிக்கிறேன். Nāṉ Aṇṇā Palkalaikkaḻakattil paṭikkiṟēṉ. \"I study at Anna University.\"",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: Notice the locative suffix -il (-இல்) — Anna University + in. Eight-case agglutination, introduced in detail later.",
+      "korean": "அண்ணா பல்கலைக்கழகம்",
+      "english": "Transfer \"அண்ணா பல்கலைக்கழகம்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நான் அண்ணா பல்கலைக்கழகத்தில் படிக்கிறேன். Nāṉ Aṇṇā Palkalaikkaḻakattil paṭikkiṟēṉ. \"I study at Anna University.\"\".",
+      "example": "நான் அண்ணா பல்கலைக்கழகத்தில் படிக்கிறேன். Nāṉ Aṇṇā Palkalaikkaḻakattil paṭikkiṟēṉ. \"I study at Anna University.\"",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: Notice the locative suffix -il (-இல்) — Anna University + in. Eight-case agglutination, introduced in detail later."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "அண்ணா பல்கலைக்கழகம்",
+      "romanization": "aṇṇā palkalaikkaḻakam",
+      "nativeText": "Find one word or phrase that naturally travels with \"அண்ணா பல்கலைக்கழகம்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "aṇṇā palkalaikkaḻakam",
+      "exampleTarget": "நான் அண்ணா பல்கலைக்கழகத்தில் படிக்கிறேன். Nāṉ Aṇṇā Palkalaikkaḻakattil paṭikkiṟēṉ. \"I study at Anna University.\"",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: Notice the locative suffix -il (-இல்) — Anna University + in. Eight-case agglutination, introduced in detail later.",
+      "korean": "அண்ணா பல்கலைக்கழகம்",
+      "english": "Find one word or phrase that naturally travels with \"அண்ணா பல்கலைக்கழகம்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "நான் அண்ணா பல்கலைக்கழகத்தில் படிக்கிறேன். Nāṉ Aṇṇā Palkalaikkaḻakattil paṭikkiṟēṉ. \"I study at Anna University.\"",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: Notice the locative suffix -il (-இல்) — Anna University + in. Eight-case agglutination, introduced in detail later."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "அண்ணா பல்கலைக்கழகம்",
+      "romanization": "aṇṇā palkalaikkaḻakam",
+      "nativeText": "Listen for \"அண்ணா பல்கலைக்கழகம்\" inside \"நான் அண்ணா பல்கலைக்கழகத்தில் படிக்கிறேன். Nāṉ Aṇṇā Palkalaikkaḻakattil paṭikkiṟēṉ. \"I study at Anna University.\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "aṇṇā palkalaikkaḻakam",
+      "exampleTarget": "நான் அண்ணா பல்கலைக்கழகத்தில் படிக்கிறேன். Nāṉ Aṇṇā Palkalaikkaḻakattil paṭikkiṟēṉ. \"I study at Anna University.\"",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Notice the locative suffix -il (-இல்) — Anna University + in. Eight-case agglutination, introduced in detail later.",
+      "korean": "அண்ணா பல்கலைக்கழகம்",
+      "english": "Listen for \"அண்ணா பல்கலைக்கழகம்\" inside \"நான் அண்ணா பல்கலைக்கழகத்தில் படிக்கிறேன். Nāṉ Aṇṇā Palkalaikkaḻakattil paṭikkiṟēṉ. \"I study at Anna University.\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "நான் அண்ணா பல்கலைக்கழகத்தில் படிக்கிறேன். Nāṉ Aṇṇā Palkalaikkaḻakattil paṭikkiṟēṉ. \"I study at Anna University.\"",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Notice the locative suffix -il (-இல்) — Anna University + in. Eight-case agglutination, introduced in detail later."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "அண்ணா பல்கலைக்கழகம்",
+      "romanization": "aṇṇā palkalaikkaḻakam",
+      "nativeText": "Write \"அண்ணா பல்கலைக்கழகம்\" again without looking, then compare the exact written form against \"நான் அண்ணா பல்கலைக்கழகத்தில் படிக்கிறேன். Nāṉ Aṇṇā Palkalaikkaḻakattil paṭikkiṟēṉ. \"I study at Anna University.\"\" before moving on.",
+      "pronunciation": "aṇṇā palkalaikkaḻakam",
+      "exampleTarget": "நான் அண்ணா பல்கலைக்கழகத்தில் படிக்கிறேன். Nāṉ Aṇṇā Palkalaikkaḻakattil paṭikkiṟēṉ. \"I study at Anna University.\"",
+      "exampleNative": "Use the written model as the final correctness check: Notice the locative suffix -il (-இல்) — Anna University + in. Eight-case agglutination, introduced in detail later.",
+      "korean": "அண்ணா பல்கலைக்கழகம்",
+      "english": "Write \"அண்ணா பல்கலைக்கழகம்\" again without looking, then compare the exact written form against \"நான் அண்ணா பல்கலைக்கழகத்தில் படிக்கிறேன். Nāṉ Aṇṇā Palkalaikkaḻakattil paṭikkiṟēṉ. \"I study at Anna University.\"\" before moving on.",
+      "example": "நான் அண்ணா பல்கலைக்கழகத்தில் படிக்கிறேன். Nāṉ Aṇṇā Palkalaikkaḻakattil paṭikkiṟēṉ. \"I study at Anna University.\"",
+      "exampleEnglish": "Use the written model as the final correctness check: Notice the locative suffix -il (-இல்) — Anna University + in. Eight-case agglutination, introduced in detail later."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "அண்ணா பல்கலைக்கழகம்",
+      "romanization": "aṇṇā palkalaikkaḻakam",
+      "nativeText": "Check whether \"அண்ணா பல்கலைக்கழகம்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Notice the locative suffix -il (-இல்) — Anna University + in. Eight-case agglutination, introduced in detail later.",
+      "pronunciation": "aṇṇā palkalaikkaḻakam",
+      "exampleTarget": "நான் அண்ணா பல்கலைக்கழகத்தில் படிக்கிறேன். Nāṉ Aṇṇā Palkalaikkaḻakattil paṭikkiṟēṉ. \"I study at Anna University.\"",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: Notice the locative suffix -il (-இல்) — Anna University + in. Eight-case agglutination, introduced in detail later.",
+      "korean": "அண்ணா பல்கலைக்கழகம்",
+      "english": "Check whether \"அண்ணா பல்கலைக்கழகம்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Notice the locative suffix -il (-இல்) — Anna University + in. Eight-case agglutination, introduced in detail later.",
+      "example": "நான் அண்ணா பல்கலைக்கழகத்தில் படிக்கிறேன். Nāṉ Aṇṇā Palkalaikkaḻakattil paṭikkiṟēṉ. \"I study at Anna University.\"",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: Notice the locative suffix -il (-இல்) — Anna University + in. Eight-case agglutination, introduced in detail later."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "பல pala (many) vs பால் pāl (milk); அடி aṭi (hit/foot) vs ஆடு āṭu (goat/dance)",
+      "romanization": "a / ā",
+      "nativeText": "Model use for \"அ / ஆ\": Short a vs long ā — the first vowel pair. Short அ is one beat; long ஆ is two beats. Vowel length carries meaning and tone of the word changes audibly.",
+      "pronunciation": "a / ā",
+      "exampleTarget": "பல pala (many) vs பால் pāl (milk); அடி aṭi (hit/foot) vs ஆடு āṭu (goat/dance)",
+      "exampleNative": "Hold the long vowel clearly for two counts — Tamil rhythm depends on it. Bunching the long vowel into a short one yields a different word.",
+      "korean": "பல pala (many) vs பால் pāl (milk); அடி aṭi (hit/foot) vs ஆடு āṭu (goat/dance)",
+      "english": "Model use for \"அ / ஆ\": Short a vs long ā — the first vowel pair. Short அ is one beat; long ஆ is two beats. Vowel length carries meaning and tone of the word changes audibly.",
+      "example": "பல pala (many) vs பால் pāl (milk); அடி aṭi (hit/foot) vs ஆடு āṭu (goat/dance)",
+      "exampleEnglish": "Hold the long vowel clearly for two counts — Tamil rhythm depends on it. Bunching the long vowel into a short one yields a different word."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "அ / ஆ",
+      "romanization": "a / ā",
+      "nativeText": "Usage focus for \"அ / ஆ\": Short a vs long ā — the first vowel pair. Short அ is one beat; long ஆ is two beats. Vowel length carries meaning and tone of the word changes audibly.",
+      "pronunciation": "a / ā",
+      "exampleTarget": "பல pala (many) vs பால் pāl (milk); அடி aṭi (hit/foot) vs ஆடு āṭu (goat/dance)",
+      "exampleNative": "Notice what the form is doing here: Hold the long vowel clearly for two counts — Tamil rhythm depends on it. Bunching the long vowel into a short one yields a different word.",
+      "korean": "அ / ஆ",
+      "english": "Usage focus for \"அ / ஆ\": Short a vs long ā — the first vowel pair. Short அ is one beat; long ஆ is two beats. Vowel length carries meaning and tone of the word changes audibly.",
+      "example": "பல pala (many) vs பால் pāl (milk); அடி aṭi (hit/foot) vs ஆடு āṭu (goat/dance)",
+      "exampleEnglish": "Notice what the form is doing here: Hold the long vowel clearly for two counts — Tamil rhythm depends on it. Bunching the long vowel into a short one yields a different word."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "அ / ஆ",
+      "romanization": "a / ā",
+      "nativeText": "Contrast check for \"அ / ஆ\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "a / ā",
+      "exampleTarget": "பல pala (many) vs பால் pāl (milk); அடி aṭi (hit/foot) vs ஆடு āṭu (goat/dance)",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: Hold the long vowel clearly for two counts — Tamil rhythm depends on it. Bunching the long vowel into a short one yields a different word.",
+      "korean": "அ / ஆ",
+      "english": "Contrast check for \"அ / ஆ\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "பல pala (many) vs பால் pāl (milk); அடி aṭi (hit/foot) vs ஆடு āṭu (goat/dance)",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: Hold the long vowel clearly for two counts — Tamil rhythm depends on it. Bunching the long vowel into a short one yields a different word."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "அ / ஆ",
+      "romanization": "a / ā",
+      "nativeText": "Recall \"அ / ஆ\" from memory, then explain what would change if a nearby alternative replaced it in \"பல pala (many) vs பால் pāl (milk); அடி aṭi (hit/foot) vs ஆடு āṭu (goat/dance)\".",
+      "pronunciation": "a / ā",
+      "exampleTarget": "பல pala (many) vs பால் pāl (milk); அடி aṭi (hit/foot) vs ஆடு āṭu (goat/dance)",
+      "exampleNative": "Self-check against the model before moving on: Hold the long vowel clearly for two counts — Tamil rhythm depends on it. Bunching the long vowel into a short one yields a different word.",
+      "korean": "அ / ஆ",
+      "english": "Recall \"அ / ஆ\" from memory, then explain what would change if a nearby alternative replaced it in \"பல pala (many) vs பால் pāl (milk); அடி aṭi (hit/foot) vs ஆடு āṭu (goat/dance)\".",
+      "example": "பல pala (many) vs பால் pāl (milk); அடி aṭi (hit/foot) vs ஆடு āṭu (goat/dance)",
+      "exampleEnglish": "Self-check against the model before moving on: Hold the long vowel clearly for two counts — Tamil rhythm depends on it. Bunching the long vowel into a short one yields a different word."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "அ / ஆ",
+      "romanization": "a / ā",
+      "nativeText": "Repair \"அ / ஆ\" inside \"பல pala (many) vs பால் pāl (milk); அடி aṭi (hit/foot) vs ஆடு āṭu (goat/dance)\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Short a vs long ā — the first vowel pair. Short அ is one beat; long ஆ is two beats. Vowel length carries meaning and tone of the word changes audibly.",
+      "pronunciation": "a / ā",
+      "exampleTarget": "பல pala (many) vs பால் pāl (milk); அடி aṭi (hit/foot) vs ஆடு āṭu (goat/dance)",
+      "exampleNative": "Use the model as the repair target: Hold the long vowel clearly for two counts — Tamil rhythm depends on it. Bunching the long vowel into a short one yields a different word.",
+      "korean": "அ / ஆ",
+      "english": "Repair \"அ / ஆ\" inside \"பல pala (many) vs பால் pāl (milk); அடி aṭi (hit/foot) vs ஆடு āṭu (goat/dance)\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Short a vs long ā — the first vowel pair. Short அ is one beat; long ஆ is two beats. Vowel length carries meaning and tone of the word changes audibly.",
+      "example": "பல pala (many) vs பால் pāl (milk); அடி aṭi (hit/foot) vs ஆடு āṭu (goat/dance)",
+      "exampleEnglish": "Use the model as the repair target: Hold the long vowel clearly for two counts — Tamil rhythm depends on it. Bunching the long vowel into a short one yields a different word."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "அ / ஆ",
+      "romanization": "a / ā",
+      "nativeText": "Transfer \"அ / ஆ\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"பல pala (many) vs பால் pāl (milk); அடி aṭi (hit/foot) vs ஆடு āṭu (goat/dance)\".",
+      "pronunciation": "a / ā",
+      "exampleTarget": "பல pala (many) vs பால் pāl (milk); அடி aṭi (hit/foot) vs ஆடு āṭu (goat/dance)",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: Hold the long vowel clearly for two counts — Tamil rhythm depends on it. Bunching the long vowel into a short one yields a different word.",
+      "korean": "அ / ஆ",
+      "english": "Transfer \"அ / ஆ\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"பல pala (many) vs பால் pāl (milk); அடி aṭi (hit/foot) vs ஆடு āṭu (goat/dance)\".",
+      "example": "பல pala (many) vs பால் pāl (milk); அடி aṭi (hit/foot) vs ஆடு āṭu (goat/dance)",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: Hold the long vowel clearly for two counts — Tamil rhythm depends on it. Bunching the long vowel into a short one yields a different word."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "அ / ஆ",
+      "romanization": "a / ā",
+      "nativeText": "Find one word or phrase that naturally travels with \"அ / ஆ\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "a / ā",
+      "exampleTarget": "பல pala (many) vs பால் pāl (milk); அடி aṭi (hit/foot) vs ஆடு āṭu (goat/dance)",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: Hold the long vowel clearly for two counts — Tamil rhythm depends on it. Bunching the long vowel into a short one yields a different word.",
+      "korean": "அ / ஆ",
+      "english": "Find one word or phrase that naturally travels with \"அ / ஆ\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "பல pala (many) vs பால் pāl (milk); அடி aṭi (hit/foot) vs ஆடு āṭu (goat/dance)",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: Hold the long vowel clearly for two counts — Tamil rhythm depends on it. Bunching the long vowel into a short one yields a different word."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "அ / ஆ",
+      "romanization": "a / ā",
+      "nativeText": "Listen for \"அ / ஆ\" inside \"பல pala (many) vs பால் pāl (milk); அடி aṭi (hit/foot) vs ஆடு āṭu (goat/dance)\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "a / ā",
+      "exampleTarget": "பல pala (many) vs பால் pāl (milk); அடி aṭi (hit/foot) vs ஆடு āṭu (goat/dance)",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Hold the long vowel clearly for two counts — Tamil rhythm depends on it. Bunching the long vowel into a short one yields a different word.",
+      "korean": "அ / ஆ",
+      "english": "Listen for \"அ / ஆ\" inside \"பல pala (many) vs பால் pāl (milk); அடி aṭi (hit/foot) vs ஆடு āṭu (goat/dance)\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "பல pala (many) vs பால் pāl (milk); அடி aṭi (hit/foot) vs ஆடு āṭu (goat/dance)",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Hold the long vowel clearly for two counts — Tamil rhythm depends on it. Bunching the long vowel into a short one yields a different word."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "அ / ஆ",
+      "romanization": "a / ā",
+      "nativeText": "Write \"அ / ஆ\" again without looking, then compare the exact written form against \"பல pala (many) vs பால் pāl (milk); அடி aṭi (hit/foot) vs ஆடு āṭu (goat/dance)\" before moving on.",
+      "pronunciation": "a / ā",
+      "exampleTarget": "பல pala (many) vs பால் pāl (milk); அடி aṭi (hit/foot) vs ஆடு āṭu (goat/dance)",
+      "exampleNative": "Use the written model as the final correctness check: Hold the long vowel clearly for two counts — Tamil rhythm depends on it. Bunching the long vowel into a short one yields a different word.",
+      "korean": "அ / ஆ",
+      "english": "Write \"அ / ஆ\" again without looking, then compare the exact written form against \"பல pala (many) vs பால் pāl (milk); அடி aṭi (hit/foot) vs ஆடு āṭu (goat/dance)\" before moving on.",
+      "example": "பல pala (many) vs பால் pāl (milk); அடி aṭi (hit/foot) vs ஆடு āṭu (goat/dance)",
+      "exampleEnglish": "Use the written model as the final correctness check: Hold the long vowel clearly for two counts — Tamil rhythm depends on it. Bunching the long vowel into a short one yields a different word."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "அ / ஆ",
+      "romanization": "a / ā",
+      "nativeText": "Check whether \"அ / ஆ\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Hold the long vowel clearly for two counts — Tamil rhythm depends on it. Bunching the long vowel into a short one yields a different word.",
+      "pronunciation": "a / ā",
+      "exampleTarget": "பல pala (many) vs பால் pāl (milk); அடி aṭi (hit/foot) vs ஆடு āṭu (goat/dance)",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: Hold the long vowel clearly for two counts — Tamil rhythm depends on it. Bunching the long vowel into a short one yields a different word.",
+      "korean": "அ / ஆ",
+      "english": "Check whether \"அ / ஆ\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Hold the long vowel clearly for two counts — Tamil rhythm depends on it. Bunching the long vowel into a short one yields a different word.",
+      "example": "பல pala (many) vs பால் pāl (milk); அடி aṭi (hit/foot) vs ஆடு āṭu (goat/dance)",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: Hold the long vowel clearly for two counts — Tamil rhythm depends on it. Bunching the long vowel into a short one yields a different word."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "இல illa (no/not, in spoken) vs ஈ ī (housefly)",
+      "romanization": "i / ī",
+      "nativeText": "Model use for \"இ / ஈ\": Short i vs long ī. Short இ is similar to English \"bit\"; long ஈ is held for two beats like English \"beet\" (but pure, not diphthongized).",
+      "pronunciation": "i / ī",
+      "exampleTarget": "இல illa (no/not, in spoken) vs ஈ ī (housefly)",
+      "exampleNative": "The contrast is clearer than in English because Tamil keeps vowels pure (no glide off the long form).",
+      "korean": "இல illa (no/not, in spoken) vs ஈ ī (housefly)",
+      "english": "Model use for \"இ / ஈ\": Short i vs long ī. Short இ is similar to English \"bit\"; long ஈ is held for two beats like English \"beet\" (but pure, not diphthongized).",
+      "example": "இல illa (no/not, in spoken) vs ஈ ī (housefly)",
+      "exampleEnglish": "The contrast is clearer than in English because Tamil keeps vowels pure (no glide off the long form)."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "இ / ஈ",
+      "romanization": "i / ī",
+      "nativeText": "Usage focus for \"இ / ஈ\": Short i vs long ī. Short இ is similar to English \"bit\"; long ஈ is held for two beats like English \"beet\" (but pure, not diphthongized).",
+      "pronunciation": "i / ī",
+      "exampleTarget": "இல illa (no/not, in spoken) vs ஈ ī (housefly)",
+      "exampleNative": "Notice what the form is doing here: The contrast is clearer than in English because Tamil keeps vowels pure (no glide off the long form).",
+      "korean": "இ / ஈ",
+      "english": "Usage focus for \"இ / ஈ\": Short i vs long ī. Short இ is similar to English \"bit\"; long ஈ is held for two beats like English \"beet\" (but pure, not diphthongized).",
+      "example": "இல illa (no/not, in spoken) vs ஈ ī (housefly)",
+      "exampleEnglish": "Notice what the form is doing here: The contrast is clearer than in English because Tamil keeps vowels pure (no glide off the long form)."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "இ / ஈ",
+      "romanization": "i / ī",
+      "nativeText": "Contrast check for \"இ / ஈ\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "i / ī",
+      "exampleTarget": "இல illa (no/not, in spoken) vs ஈ ī (housefly)",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: The contrast is clearer than in English because Tamil keeps vowels pure (no glide off the long form).",
+      "korean": "இ / ஈ",
+      "english": "Contrast check for \"இ / ஈ\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "இல illa (no/not, in spoken) vs ஈ ī (housefly)",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: The contrast is clearer than in English because Tamil keeps vowels pure (no glide off the long form)."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "இ / ஈ",
+      "romanization": "i / ī",
+      "nativeText": "Recall \"இ / ஈ\" from memory, then explain what would change if a nearby alternative replaced it in \"இல illa (no/not, in spoken) vs ஈ ī (housefly)\".",
+      "pronunciation": "i / ī",
+      "exampleTarget": "இல illa (no/not, in spoken) vs ஈ ī (housefly)",
+      "exampleNative": "Self-check against the model before moving on: The contrast is clearer than in English because Tamil keeps vowels pure (no glide off the long form).",
+      "korean": "இ / ஈ",
+      "english": "Recall \"இ / ஈ\" from memory, then explain what would change if a nearby alternative replaced it in \"இல illa (no/not, in spoken) vs ஈ ī (housefly)\".",
+      "example": "இல illa (no/not, in spoken) vs ஈ ī (housefly)",
+      "exampleEnglish": "Self-check against the model before moving on: The contrast is clearer than in English because Tamil keeps vowels pure (no glide off the long form)."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "இ / ஈ",
+      "romanization": "i / ī",
+      "nativeText": "Repair \"இ / ஈ\" inside \"இல illa (no/not, in spoken) vs ஈ ī (housefly)\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Short i vs long ī. Short இ is similar to English \"bit\"; long ஈ is held for two beats like English \"beet\" (but pure, not diphthongized).",
+      "pronunciation": "i / ī",
+      "exampleTarget": "இல illa (no/not, in spoken) vs ஈ ī (housefly)",
+      "exampleNative": "Use the model as the repair target: The contrast is clearer than in English because Tamil keeps vowels pure (no glide off the long form).",
+      "korean": "இ / ஈ",
+      "english": "Repair \"இ / ஈ\" inside \"இல illa (no/not, in spoken) vs ஈ ī (housefly)\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Short i vs long ī. Short இ is similar to English \"bit\"; long ஈ is held for two beats like English \"beet\" (but pure, not diphthongized).",
+      "example": "இல illa (no/not, in spoken) vs ஈ ī (housefly)",
+      "exampleEnglish": "Use the model as the repair target: The contrast is clearer than in English because Tamil keeps vowels pure (no glide off the long form)."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "இ / ஈ",
+      "romanization": "i / ī",
+      "nativeText": "Transfer \"இ / ஈ\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இல illa (no/not, in spoken) vs ஈ ī (housefly)\".",
+      "pronunciation": "i / ī",
+      "exampleTarget": "இல illa (no/not, in spoken) vs ஈ ī (housefly)",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: The contrast is clearer than in English because Tamil keeps vowels pure (no glide off the long form).",
+      "korean": "இ / ஈ",
+      "english": "Transfer \"இ / ஈ\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இல illa (no/not, in spoken) vs ஈ ī (housefly)\".",
+      "example": "இல illa (no/not, in spoken) vs ஈ ī (housefly)",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: The contrast is clearer than in English because Tamil keeps vowels pure (no glide off the long form)."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "இ / ஈ",
+      "romanization": "i / ī",
+      "nativeText": "Find one word or phrase that naturally travels with \"இ / ஈ\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "i / ī",
+      "exampleTarget": "இல illa (no/not, in spoken) vs ஈ ī (housefly)",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: The contrast is clearer than in English because Tamil keeps vowels pure (no glide off the long form).",
+      "korean": "இ / ஈ",
+      "english": "Find one word or phrase that naturally travels with \"இ / ஈ\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "இல illa (no/not, in spoken) vs ஈ ī (housefly)",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: The contrast is clearer than in English because Tamil keeps vowels pure (no glide off the long form)."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "இ / ஈ",
+      "romanization": "i / ī",
+      "nativeText": "Listen for \"இ / ஈ\" inside \"இல illa (no/not, in spoken) vs ஈ ī (housefly)\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "i / ī",
+      "exampleTarget": "இல illa (no/not, in spoken) vs ஈ ī (housefly)",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: The contrast is clearer than in English because Tamil keeps vowels pure (no glide off the long form).",
+      "korean": "இ / ஈ",
+      "english": "Listen for \"இ / ஈ\" inside \"இல illa (no/not, in spoken) vs ஈ ī (housefly)\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "இல illa (no/not, in spoken) vs ஈ ī (housefly)",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: The contrast is clearer than in English because Tamil keeps vowels pure (no glide off the long form)."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "இ / ஈ",
+      "romanization": "i / ī",
+      "nativeText": "Write \"இ / ஈ\" again without looking, then compare the exact written form against \"இல illa (no/not, in spoken) vs ஈ ī (housefly)\" before moving on.",
+      "pronunciation": "i / ī",
+      "exampleTarget": "இல illa (no/not, in spoken) vs ஈ ī (housefly)",
+      "exampleNative": "Use the written model as the final correctness check: The contrast is clearer than in English because Tamil keeps vowels pure (no glide off the long form).",
+      "korean": "இ / ஈ",
+      "english": "Write \"இ / ஈ\" again without looking, then compare the exact written form against \"இல illa (no/not, in spoken) vs ஈ ī (housefly)\" before moving on.",
+      "example": "இல illa (no/not, in spoken) vs ஈ ī (housefly)",
+      "exampleEnglish": "Use the written model as the final correctness check: The contrast is clearer than in English because Tamil keeps vowels pure (no glide off the long form)."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "இ / ஈ",
+      "romanization": "i / ī",
+      "nativeText": "Check whether \"இ / ஈ\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The contrast is clearer than in English because Tamil keeps vowels pure (no glide off the long form).",
+      "pronunciation": "i / ī",
+      "exampleTarget": "இல illa (no/not, in spoken) vs ஈ ī (housefly)",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: The contrast is clearer than in English because Tamil keeps vowels pure (no glide off the long form).",
+      "korean": "இ / ஈ",
+      "english": "Check whether \"இ / ஈ\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The contrast is clearer than in English because Tamil keeps vowels pure (no glide off the long form).",
+      "example": "இல illa (no/not, in spoken) vs ஈ ī (housefly)",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: The contrast is clearer than in English because Tamil keeps vowels pure (no glide off the long form)."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "புது putu (new) vs பூ pū (flower); உலகம் ulakam (world) vs ஊர் ūr (hometown/village)",
+      "romanization": "u / ū",
+      "nativeText": "Model use for \"உ / ஊ\": Short u vs long ū. Short உ is reduced to almost a schwa in word-final position in colloquial speech (the famous \"kuṛṛiyalukaram\"). Long ஊ is two beats, fully rounded.",
+      "pronunciation": "u / ū",
+      "exampleTarget": "புது putu (new) vs பூ pū (flower); உலகம் ulakam (world) vs ஊர் ūr (hometown/village)",
+      "exampleNative": "In colloquial Tamil, word-final short u barely sounds at all — அவன் சாப்பிட்டான் /avan sāppiṭṭān/ has a barely audible final u.",
+      "korean": "புது putu (new) vs பூ pū (flower); உலகம் ulakam (world) vs ஊர் ūr (hometown/village)",
+      "english": "Model use for \"உ / ஊ\": Short u vs long ū. Short உ is reduced to almost a schwa in word-final position in colloquial speech (the famous \"kuṛṛiyalukaram\"). Long ஊ is two beats, fully rounded.",
+      "example": "புது putu (new) vs பூ pū (flower); உலகம் ulakam (world) vs ஊர் ūr (hometown/village)",
+      "exampleEnglish": "In colloquial Tamil, word-final short u barely sounds at all — அவன் சாப்பிட்டான் /avan sāppiṭṭān/ has a barely audible final u."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "உ / ஊ",
+      "romanization": "u / ū",
+      "nativeText": "Usage focus for \"உ / ஊ\": Short u vs long ū. Short உ is reduced to almost a schwa in word-final position in colloquial speech (the famous \"kuṛṛiyalukaram\"). Long ஊ is two beats, fully rounded.",
+      "pronunciation": "u / ū",
+      "exampleTarget": "புது putu (new) vs பூ pū (flower); உலகம் ulakam (world) vs ஊர் ūr (hometown/village)",
+      "exampleNative": "Notice what the form is doing here: In colloquial Tamil, word-final short u barely sounds at all — அவன் சாப்பிட்டான் /avan sāppiṭṭān/ has a barely audible final u.",
+      "korean": "உ / ஊ",
+      "english": "Usage focus for \"உ / ஊ\": Short u vs long ū. Short உ is reduced to almost a schwa in word-final position in colloquial speech (the famous \"kuṛṛiyalukaram\"). Long ஊ is two beats, fully rounded.",
+      "example": "புது putu (new) vs பூ pū (flower); உலகம் ulakam (world) vs ஊர் ūr (hometown/village)",
+      "exampleEnglish": "Notice what the form is doing here: In colloquial Tamil, word-final short u barely sounds at all — அவன் சாப்பிட்டான் /avan sāppiṭṭān/ has a barely audible final u."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "உ / ஊ",
+      "romanization": "u / ū",
+      "nativeText": "Contrast check for \"உ / ஊ\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "u / ū",
+      "exampleTarget": "புது putu (new) vs பூ pū (flower); உலகம் ulakam (world) vs ஊர் ūr (hometown/village)",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: In colloquial Tamil, word-final short u barely sounds at all — அவன் சாப்பிட்டான் /avan sāppiṭṭān/ has a barely audible final u.",
+      "korean": "உ / ஊ",
+      "english": "Contrast check for \"உ / ஊ\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "புது putu (new) vs பூ pū (flower); உலகம் ulakam (world) vs ஊர் ūr (hometown/village)",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: In colloquial Tamil, word-final short u barely sounds at all — அவன் சாப்பிட்டான் /avan sāppiṭṭān/ has a barely audible final u."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "உ / ஊ",
+      "romanization": "u / ū",
+      "nativeText": "Recall \"உ / ஊ\" from memory, then explain what would change if a nearby alternative replaced it in \"புது putu (new) vs பூ pū (flower); உலகம் ulakam (world) vs ஊர் ūr (hometown/village)\".",
+      "pronunciation": "u / ū",
+      "exampleTarget": "புது putu (new) vs பூ pū (flower); உலகம் ulakam (world) vs ஊர் ūr (hometown/village)",
+      "exampleNative": "Self-check against the model before moving on: In colloquial Tamil, word-final short u barely sounds at all — அவன் சாப்பிட்டான் /avan sāppiṭṭān/ has a barely audible final u.",
+      "korean": "உ / ஊ",
+      "english": "Recall \"உ / ஊ\" from memory, then explain what would change if a nearby alternative replaced it in \"புது putu (new) vs பூ pū (flower); உலகம் ulakam (world) vs ஊர் ūr (hometown/village)\".",
+      "example": "புது putu (new) vs பூ pū (flower); உலகம் ulakam (world) vs ஊர் ūr (hometown/village)",
+      "exampleEnglish": "Self-check against the model before moving on: In colloquial Tamil, word-final short u barely sounds at all — அவன் சாப்பிட்டான் /avan sāppiṭṭān/ has a barely audible final u."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "உ / ஊ",
+      "romanization": "u / ū",
+      "nativeText": "Repair \"உ / ஊ\" inside \"புது putu (new) vs பூ pū (flower); உலகம் ulakam (world) vs ஊர் ūr (hometown/village)\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Short u vs long ū. Short உ is reduced to almost a schwa in word-final position in colloquial speech (the famous \"kuṛṛiyalukaram\"). Long ஊ is two beats, fully rounded.",
+      "pronunciation": "u / ū",
+      "exampleTarget": "புது putu (new) vs பூ pū (flower); உலகம் ulakam (world) vs ஊர் ūr (hometown/village)",
+      "exampleNative": "Use the model as the repair target: In colloquial Tamil, word-final short u barely sounds at all — அவன் சாப்பிட்டான் /avan sāppiṭṭān/ has a barely audible final u.",
+      "korean": "உ / ஊ",
+      "english": "Repair \"உ / ஊ\" inside \"புது putu (new) vs பூ pū (flower); உலகம் ulakam (world) vs ஊர் ūr (hometown/village)\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Short u vs long ū. Short உ is reduced to almost a schwa in word-final position in colloquial speech (the famous \"kuṛṛiyalukaram\"). Long ஊ is two beats, fully rounded.",
+      "example": "புது putu (new) vs பூ pū (flower); உலகம் ulakam (world) vs ஊர் ūr (hometown/village)",
+      "exampleEnglish": "Use the model as the repair target: In colloquial Tamil, word-final short u barely sounds at all — அவன் சாப்பிட்டான் /avan sāppiṭṭān/ has a barely audible final u."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "உ / ஊ",
+      "romanization": "u / ū",
+      "nativeText": "Transfer \"உ / ஊ\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"புது putu (new) vs பூ pū (flower); உலகம் ulakam (world) vs ஊர் ūr (hometown/village)\".",
+      "pronunciation": "u / ū",
+      "exampleTarget": "புது putu (new) vs பூ pū (flower); உலகம் ulakam (world) vs ஊர் ūr (hometown/village)",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: In colloquial Tamil, word-final short u barely sounds at all — அவன் சாப்பிட்டான் /avan sāppiṭṭān/ has a barely audible final u.",
+      "korean": "உ / ஊ",
+      "english": "Transfer \"உ / ஊ\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"புது putu (new) vs பூ pū (flower); உலகம் ulakam (world) vs ஊர் ūr (hometown/village)\".",
+      "example": "புது putu (new) vs பூ pū (flower); உலகம் ulakam (world) vs ஊர் ūr (hometown/village)",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: In colloquial Tamil, word-final short u barely sounds at all — அவன் சாப்பிட்டான் /avan sāppiṭṭān/ has a barely audible final u."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "உ / ஊ",
+      "romanization": "u / ū",
+      "nativeText": "Find one word or phrase that naturally travels with \"உ / ஊ\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "u / ū",
+      "exampleTarget": "புது putu (new) vs பூ pū (flower); உலகம் ulakam (world) vs ஊர் ūr (hometown/village)",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: In colloquial Tamil, word-final short u barely sounds at all — அவன் சாப்பிட்டான் /avan sāppiṭṭān/ has a barely audible final u.",
+      "korean": "உ / ஊ",
+      "english": "Find one word or phrase that naturally travels with \"உ / ஊ\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "புது putu (new) vs பூ pū (flower); உலகம் ulakam (world) vs ஊர் ūr (hometown/village)",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: In colloquial Tamil, word-final short u barely sounds at all — அவன் சாப்பிட்டான் /avan sāppiṭṭān/ has a barely audible final u."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "உ / ஊ",
+      "romanization": "u / ū",
+      "nativeText": "Listen for \"உ / ஊ\" inside \"புது putu (new) vs பூ pū (flower); உலகம் ulakam (world) vs ஊர் ūr (hometown/village)\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "u / ū",
+      "exampleTarget": "புது putu (new) vs பூ pū (flower); உலகம் ulakam (world) vs ஊர் ūr (hometown/village)",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: In colloquial Tamil, word-final short u barely sounds at all — அவன் சாப்பிட்டான் /avan sāppiṭṭān/ has a barely audible final u.",
+      "korean": "உ / ஊ",
+      "english": "Listen for \"உ / ஊ\" inside \"புது putu (new) vs பூ pū (flower); உலகம் ulakam (world) vs ஊர் ūr (hometown/village)\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "புது putu (new) vs பூ pū (flower); உலகம் ulakam (world) vs ஊர் ūr (hometown/village)",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: In colloquial Tamil, word-final short u barely sounds at all — அவன் சாப்பிட்டான் /avan sāppiṭṭān/ has a barely audible final u."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "உ / ஊ",
+      "romanization": "u / ū",
+      "nativeText": "Write \"உ / ஊ\" again without looking, then compare the exact written form against \"புது putu (new) vs பூ pū (flower); உலகம் ulakam (world) vs ஊர் ūr (hometown/village)\" before moving on.",
+      "pronunciation": "u / ū",
+      "exampleTarget": "புது putu (new) vs பூ pū (flower); உலகம் ulakam (world) vs ஊர் ūr (hometown/village)",
+      "exampleNative": "Use the written model as the final correctness check: In colloquial Tamil, word-final short u barely sounds at all — அவன் சாப்பிட்டான் /avan sāppiṭṭān/ has a barely audible final u.",
+      "korean": "உ / ஊ",
+      "english": "Write \"உ / ஊ\" again without looking, then compare the exact written form against \"புது putu (new) vs பூ pū (flower); உலகம் ulakam (world) vs ஊர் ūr (hometown/village)\" before moving on.",
+      "example": "புது putu (new) vs பூ pū (flower); உலகம் ulakam (world) vs ஊர் ūr (hometown/village)",
+      "exampleEnglish": "Use the written model as the final correctness check: In colloquial Tamil, word-final short u barely sounds at all — அவன் சாப்பிட்டான் /avan sāppiṭṭān/ has a barely audible final u."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1foundation-vocabulary-1",
+        "ta-level1foundation-vocabulary-2",
+        "ta-level1foundation-grammar-1",
+        "ta-level1foundation-grammar-2",
+        "ta-level1foundation-reading",
+        "ta-level1foundation-listening",
+        "ta-level1foundation-writing",
+        "ta-level1foundation-task"
+      ],
+      "targetText": "உ / ஊ",
+      "romanization": "u / ū",
+      "nativeText": "Check whether \"உ / ஊ\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: In colloquial Tamil, word-final short u barely sounds at all — அவன் சாப்பிட்டான் /avan sāppiṭṭān/ has a barely audible final u.",
+      "pronunciation": "u / ū",
+      "exampleTarget": "புது putu (new) vs பூ pū (flower); உலகம் ulakam (world) vs ஊர் ūr (hometown/village)",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: In colloquial Tamil, word-final short u barely sounds at all — அவன் சாப்பிட்டான் /avan sāppiṭṭān/ has a barely audible final u.",
+      "korean": "உ / ஊ",
+      "english": "Check whether \"உ / ஊ\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: In colloquial Tamil, word-final short u barely sounds at all — அவன் சாப்பிட்டான் /avan sāppiṭṭān/ has a barely audible final u.",
+      "example": "புது putu (new) vs பூ pū (flower); உலகம் ulakam (world) vs ஊர் ūr (hometown/village)",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: In colloquial Tamil, word-final short u barely sounds at all — அவன் சாப்பிட்டான் /avan sāppiṭṭān/ has a barely audible final u."
+    }
+  ]
 };
-
-module.exports = level1Foundation;

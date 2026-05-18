@@ -1,120 +1,2678 @@
-// Level 1 Unit 4 — Daily Routines (Filipino/Tagalog)
-// Functions: daily routine verbs, time expressions, frequency adverbs,
-// aspect markers, talking about a typical day.
-
-const createContentItem = (target, pron, note, type = 'word', example = '', exampleNote = '', breakdown = null, activityIds = []) => ({
-  type, activityIds, targetText: target, romanization: pron, nativeText: note,
-  pronunciation: pron, exampleTarget: example || target, exampleNative: exampleNote || note,
-  korean: target, english: note, example: example || target, exampleEnglish: exampleNote || note,
-  ...(breakdown ? { breakdown: breakdown.map(b => ({ target: b.target, native: b.note, korean: b.target, english: b.note })) } : {}),
-});
-
-const ACT = {
-  orientation: 'fil-l1u4-orientation',
-  pronunciation: 'fil-l1u4-pronunciation',
-  vocabularyMorning: 'fil-l1u4-vocab-morning',
-  vocabularyEvening: 'fil-l1u4-vocab-evening',
-  grammarMagPrefix: 'fil-l1u4-grammar-mag',
-  grammarAspect: 'fil-l1u4-grammar-aspect',
-  grammarFrequency: 'fil-l1u4-grammar-frequency',
-  reading: 'fil-l1u4-reading',
-  listening: 'fil-l1u4-listening',
-  writing: 'fil-l1u4-writing',
-  culture: 'fil-l1u4-culture',
-  task: 'fil-l1u4-task',
-};
-
-const activities = [
-  { id: ACT.orientation, section: 'Orientation', title: 'What you will be able to do', goals: ['Describe a typical day in Filipino using 20+ daily-routine verbs.', 'Use the mag- prefix to form actor-focus verbs in three aspects (will, doing, did).', 'Use time and frequency expressions (palagi, minsan, tuwing) accurately.'], task: 'Describe your routine to a roommate at UP Diliman — by the end of this lesson, you should be able to narrate your morning, day, and evening fluently.' },
-  { id: ACT.pronunciation, section: 'Pronunciation', title: 'Sound traps in mag- verbs', goals: ['Pronounce the reduplication in future aspect: maglu-luto (will cook) — the lu- is the reduplicated first CV of the root.', 'Apply correct stress on aspectual forms; the stress can shift slightly.'], task: 'Read each aspect form aloud.' },
-  { id: ACT.vocabularyMorning, section: 'Vocabulary I', title: 'Morning routine verbs', goals: ['Memorize 10 morning routine verbs (gumising, maligo, magbihis, kumain, magsipilyo, etc.).'], task: 'Sequence them in order of your morning.' },
-  { id: ACT.vocabularyEvening, section: 'Vocabulary II', title: 'Evening routine verbs', goals: ['Memorize 10 evening routine verbs (umuwi, mag-shower, manood, magbasa, matulog, etc.).'], task: 'Sequence them.' },
-  { id: ACT.grammarMagPrefix, section: 'Grammar I', title: 'Mag- prefix for actor-focus habitual verbs', goals: ['Use mag- to form actor-focus verbs from roots: maglinis (clean), magluto (cook), magbasa (read).', 'Distinguish mag- (habitual/instrumental) from -um- (single completed action) — mag-aral (study habitually) vs umaral (took up the cause of).'], task: 'Form 5 mag- verbs from roots you know.' },
-  { id: ACT.grammarAspect, section: 'Grammar II', title: 'Three aspects: contemplated, imperfective, completed', goals: ['Form the three aspects of any mag- verb: mag-aaral (will study), nag-aaral (studying/studies), nag-aral (studied).', 'Filipino has NO TENSE, only aspect. The aspect tells you about completion, not the time per se.'], task: 'Conjugate three verbs through all three aspects.' },
-  { id: ACT.grammarFrequency, section: 'Grammar III', title: 'Time and frequency expressions', goals: ['Use palagi (always), madalas (often), minsan (sometimes), bihira (rarely), hindi (never).', 'Use tuwing + day/time = "every (day)": tuwing Lunes "every Monday".'], task: 'Form sentences using each frequency.' },
-  { id: ACT.reading, section: 'Reading', title: 'A typical day at UP', goals: ['Read a paragraph describing a student\'s typical day.', 'Identify aspect markers and frequency.'], task: 'Read; answer questions.' },
-  { id: ACT.listening, section: 'Listening', title: 'Roommate routine talk', goals: ['Follow a dialogue between two UP dorm roommates discussing their schedules.'], task: 'Listen; perform with swapped roles.' },
-  { id: ACT.writing, section: 'Writing', title: 'My typical day', goals: ['Write 6-8 sentences describing your daily routine using mag- verbs in three aspects and at least two frequency expressions.'], task: 'Write and read aloud.' },
-  { id: ACT.culture, section: 'Culture', title: 'Filipino daily rhythm', goals: ['Know that Filipinos eat 3 meals + 2 merienda (snack times); siesta (afternoon nap) is traditional but rare in modern urban life.', 'Sunday is family/church day; Saturday is errand day.'], task: 'Compare your weekly rhythm with the Filipino one.' },
-  { id: ACT.task, section: 'Task', title: 'Describe a typical school day', goals: ['Combine: greet, narrate from morning to evening with at least 3 mag- verbs in 3 aspects and 2 frequencies.'], task: 'Roleplay with the AI tutor.' },
-];
-
-const lesson = {
-  title: 'Level 1 · Unit 4: Araw-Araw na Gawain — Daily Routines',
-  category: 'daily-routines',
-  difficulty: 'beginner',
-  targetLang: 'fil',
-  nativeLang: 'en',
-  track: 'textbook',
-  lessonType: 'thematic',
-  activities,
-  expressionPractice: [
-    { id: 'morning-routine', label: 'Morning routine', goal: 'Sequence morning actions using gumising → maligo → magbihis → kumain.' },
-    { id: 'evening-routine', label: 'Evening routine', goal: 'Sequence evening actions using umuwi → kumain → mag-shower → matulog.' },
-    { id: 'frequency', label: 'Talking about frequency', goal: 'Use palagi / madalas / minsan / bihira to express how often.' },
-    { id: 'time-of-day', label: 'Talking about time of day', goal: 'Use tuwing umaga / sa hapon / sa gabi naturally.' },
+module.exports = {
+  "title": "Level 1 · Unit 4: Araw-Araw na Gawain — Daily Routines",
+  "category": "daily-routines",
+  "difficulty": "beginner",
+  "targetLang": "fil",
+  "nativeLang": "en",
+  "track": "textbook",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "fil-level1unit04dailyroutines-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Describe a typical day in Filipino using 20+ daily-routine verbs."
+      ],
+      "task": "Roleplay with the AI tutor."
+    },
+    {
+      "id": "fil-level1unit04dailyroutines-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Filipino stress, glottal stops, borrowed-word rhythm, and affix boundaries clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "fil-level1unit04dailyroutines-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 4: Araw-Araw na Gawain — Daily Routines with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "fil-level1unit04dailyroutines-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 4: Araw-Araw na Gawain — Daily Routines sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "fil-level1unit04dailyroutines-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Describe a typical day in Filipino using 20+ daily-routine verbs."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "fil-level1unit04dailyroutines-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 4: Araw-Araw na Gawain — Daily Routines with one nearby Filipino form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "fil-level1unit04dailyroutines-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "fil-level1unit04dailyroutines-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "fil-level1unit04dailyroutines-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "fil-level1unit04dailyroutines-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the politeness, kinship, or multilingual context that changes how this Filipino is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "fil-level1unit04dailyroutines-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Roleplay with the AI tutor."
+      ],
+      "task": "Roleplay with the AI tutor."
+    }
   ],
-  relatedPools: ['topic-routines', 'topic-daily-life'],
-  content: [
-    createContentItem('Layunin', 'la-YU-nin', 'Filipino has NO tense — only aspect. The mag- prefix forms an actor-focus verb that can be habitual or instrumental. The three aspects (contemplated, imperfective, completed) tell you about completion, not the absolute time. This is one of the most distinctive features of Philippine languages.', 'word', 'mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)', 'Three aspects, one verb, no tense — what is completed, what is ongoing, what is contemplated.', null, [ACT.orientation]),
-    createContentItem('Tunay na sitwasyon', 'TU-nay na sit-wa-SYON', 'You are sharing a dorm room at UP Diliman with a roommate. On the second day, you both compare schedules: who wakes when, who showers when, who eats at the canteen, who studies late. The whole conversation involves only mag- and -um- verbs in three aspects.', 'word', 'Roommate: "Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?"', '"What time do you wake up? — I wake up around 6, you?" — typical roommate exchange.', null, [ACT.orientation]),
-
-    createContentItem('mag- prefix', 'MAG-', 'Actor-focus prefix used to form HABITUAL or instrumental verbs from roots. Attaches before any root: mag- + linis (clean) = maglinis "to clean (regularly)". The actor (the subject doing the action) is the focus.', 'sentence', 'mag- + luto = magluto "to cook"; mag- + bihis = magbihis "to dress"; mag- + aral = mag-aral "to study"', 'Three example verbs formed with mag-. The root is the bare meaning; mag- adds the actor-focus and habitual/instrumental nuance.', [
-      { target: 'mag- + root', note: 'forms actor-focus, habitual verb' },
-      { target: 'contrast with -um-', note: '-um- is for single completed actions; mag- is for habitual/extended actions' },
-      { target: 'three aspects', note: 'all mag- verbs conjugate through three aspects' },
-    ], [ACT.grammarMagPrefix]),
-    createContentItem('Tatlong aspeto', 'TAT-long as-PE-to', 'The THREE ASPECTS of any mag- verb: 1) Contemplated (will / about to / planning to): mag- + reduplicated first CV + root → MAG-LU-LUTO "will cook". 2) Imperfective (doing / does habitually): NAG- + reduplicated first CV + root → NAG-LU-LUTO "is cooking / cooks". 3) Completed (did / has done): NAG- + root → NAG-LUTO "cooked".', 'sentence', 'magluluto / nagluluto / nagluto = "will cook / cooks / cooked"', 'Same verb, three aspect forms. The first letter changes (m- → n-) and the reduplication appears or disappears.', [
-      { target: 'CONTEMPLATED: mag- + redup + root', note: 'magluluto, mag-aaral, magbabasa' },
-      { target: 'IMPERFECTIVE: nag- + redup + root', note: 'nagluluto, nag-aaral, nagbabasa' },
-      { target: 'COMPLETED: nag- + root', note: 'nagluto, nag-aral, nagbasa' },
-    ], [ACT.grammarAspect]),
-
-    createContentItem('gumising', 'gu-MI-sing', '"To wake up". Actor-focus, root: gising. Aspects: gigising (will), gumigising (waking up / wakes up), gumising (woke up). Common time: alas-sais (6 AM, Spanish-style), alas-siyete (7 AM).', 'word', 'Gumising ako ng alas-sais.', '"I woke up at 6 AM" — completed aspect; alas- + Spanish number for time.', null, [ACT.vocabularyMorning]),
-    createContentItem('maligo', 'ma-LI-go', '"To take a bath / shower". Actor-focus, native root: ligo. Aspects: maliligo (will), naliligo (showering), naligo (showered). In Filipino tropics, two showers a day is normal.', 'word', 'Naligo na ako kaninang umaga.', '"I already showered this morning" — kaninang = "earlier today".', null, [ACT.vocabularyMorning]),
-    createContentItem('magbihis', 'mag-BI-his', '"To get dressed". Mag- + bihis. Aspects: magbibihis (will), nagbibihis (getting dressed), nagbihis (got dressed).', 'word', 'Magbibihis ka pa ba?', '"Are you still going to dress?" — pa = still, ba = question.', null, [ACT.vocabularyMorning]),
-    createContentItem('kumain', 'ku-MA-in', '"To eat". Actor-focus, root: kain. Aspects: kakain (will), kumakain (eating), kumain (ate). Filipinos eat three meals: almusal/breakfast, tanghalian/lunch, hapunan/dinner — plus two merienda (snack times).', 'word', 'Kumain na ako ng almusal.', '"I have already eaten breakfast" — na = "already".', null, [ACT.vocabularyMorning]),
-    createContentItem('magsipilyo', 'mag-si-PI-lyo', '"To brush (teeth)". From Spanish "cepillo" (brush). Refers specifically to brushing teeth. Aspects: magsisipilyo, nagsisipilyo, nagsipilyo.', 'word', 'Nagsisipilyo siya bago matulog.', '"He brushes his teeth before sleeping."', null, [ACT.vocabularyMorning]),
-    createContentItem('magtimpla ng kape', 'mag-TIM-pla ng KA-pe', '"To make coffee". Mag- + timpla (mix/prepare) + ng + kape. Coffee culture is huge in the Philippines; both 3-in-1 instant and brewed are common.', 'word', 'Nagtimpla ako ng kape para sa nanay.', '"I made coffee for mom" — para = "for".', null, [ACT.vocabularyMorning]),
-    createContentItem('umalis', 'u-ma-LIS', '"To leave / depart". Actor-focus, root: alis. Aspects: aalis (will leave), umaalis (leaving / leaves), umalis (left). Common with sa + destination/origin: umalis ako sa bahay "I left from home".', 'word', 'Aalis na ako papunta sa eskwelahan.', '"I am about to leave for school" — na = "already / now"; papunta = "going (to)".', null, [ACT.vocabularyMorning]),
-    createContentItem('pumasok', 'pu-MA-sok', '"To enter / go to school / go to work". Actor-focus, root: pasok. Aspects: papasok (will enter / go), pumapasok (entering / goes), pumasok (entered / went). Special meanings: pumasok sa eskwelahan = "go to school"; pumasok sa trabaho = "go to work".', 'word', 'Pumasok ako sa UP kahapon.', '"I went to UP yesterday."', null, [ACT.vocabularyMorning]),
-    createContentItem('sumakay', 'su-ma-KAY', '"To ride (transit)". Actor-focus, root: sakay. Aspects: sasakay, sumasakay, sumakay. With ng + transit type: sumakay ng jeep "ride a jeepney".', 'word', 'Sumakay ako ng MRT papuntang Cubao.', '"I rode the MRT to Cubao."', null, [ACT.vocabularyMorning]),
-
-    createContentItem('mag-aral', 'mag-A-ral', '"To study". Mag- + aral. Aspects: mag-aaral (will study), nag-aaral (studying), nag-aral (studied). One of the highest-frequency verbs for students.', 'word', 'Nag-aaral ako sa library tuwing gabi.', '"I study at the library every night" — tuwing + time = "every (day/time)".', null, [ACT.vocabularyEvening]),
-    createContentItem('umuwi', 'u-MU-wi', '"To go home". Actor-focus, root: uwi. Aspects: uuwi (will go home), umuuwi (going home / goes home), umuwi (went home). Always with implicit sa bahay "to home", often omitted.', 'word', 'Anong oras ka uuwi?', '"What time will you go home?" — typical end-of-day question.', null, [ACT.vocabularyEvening]),
-    createContentItem('manood', 'ma-NO-od', '"To watch (TV / movies)". Ma- prefix actor-focus, root: nood. Aspects: manonood (will watch), nanonood (watching), nanood (watched). Common: manood ng TV / manood ng movie / manood ng K-drama.', 'word', 'Nanonood ako ng K-drama tuwing gabi.', '"I watch K-drama every night" — K-pop and K-drama are massive in the Philippines.', null, [ACT.vocabularyEvening]),
-    createContentItem('magbasa', 'mag-BA-sa', '"To read". Mag- + basa. Aspects: magbabasa, nagbabasa, nagbasa. Contrast with bumasa (-um-, single act of reading): mag-basa is habitual/extended, bumasa is one read-through.', 'word', 'Nagbabasa siya ng libro bago matulog.', '"He reads a book before sleeping" — bago = "before".', null, [ACT.vocabularyEvening]),
-    createContentItem('magluto', 'mag-LU-to', '"To cook". Mag- + luto. Aspects: magluluto, nagluluto, nagluto. Cooking dinner is often a family activity in Filipino households.', 'word', 'Nagluluto ang nanay ng adobo para sa hapunan.', '"Mom is cooking adobo for dinner" — adobo is the national dish.', null, [ACT.vocabularyEvening]),
-    createContentItem('maghapunan', 'mag-ha-PU-nan', '"To have dinner". Mag- + hapunan (dinner). Aspects: maghahapunan, naghahapunan, naghapunan. Dinner is typically 6-8 PM, family-style.', 'word', 'Maghahapunan tayo ng alas-sais.', '"Let\'s have dinner at 6" — tayo (inclusive we).', null, [ACT.vocabularyEvening]),
-    createContentItem('matulog', 'ma-TU-log', '"To sleep". Ma- actor-focus, root: tulog. Aspects: matutulog (will sleep), natutulog (sleeping / sleeps), natulog (slept).', 'word', 'Natutulog ako mga alas-onse.', '"I sleep around 11 (PM)."', null, [ACT.vocabularyEvening]),
-    createContentItem('mag-shower', 'mag-SHA-wer', '"To shower". Taglish: mag- + English shower. Common urban usage alongside native maligo. Aspects: magsha-shower, nagsha-shower, nag-shower.', 'word', 'Magsha-shower muna ako bago kumain.', '"I will shower first before eating."', null, [ACT.vocabularyEvening]),
-    createContentItem('mag-Facebook / mag-social media', 'mag-FAYS-buk', '"To use Facebook / social media". Taglish hybrid: mag- + brand. Aspects: magfa-Facebook, nagfa-Facebook, nag-Facebook. Filipinos are among the world\'s heaviest social media users.', 'word', 'Nagfa-Facebook lang ako mamayang gabi.', '"I\'m just on Facebook tonight."', null, [ACT.vocabularyEvening]),
-    createContentItem('magpahinga', 'mag-pa-HI-nga', '"To rest". Mag- + pahinga. Used both for resting after work and longer breaks. Aspects: magpapahinga, nagpapahinga, nagpahinga.', 'word', 'Magpapahinga muna ako.', '"I will rest first" — muna = "first / for now".', null, [ACT.vocabularyEvening]),
-
-    createContentItem('palagi', 'pa-LA-gi', '"Always". The strongest frequency adverb. Positioned before or after the verb.', 'sentence', 'Palagi akong kumakain ng kanin.', '"I always eat rice" — kanin (cooked rice) is a Filipino staple.', null, [ACT.grammarFrequency]),
-    createContentItem('madalas', 'ma-DA-las', '"Often". Less than palagi, more than minsan. Variant: madalas-dalas (very often).', 'sentence', 'Madalas siyang umuwi ng late.', '"He often goes home late."', null, [ACT.grammarFrequency]),
-    createContentItem('minsan', 'min-SAN', '"Sometimes / once". Two meanings depending on context: sometimes (frequency), or once (counting).', 'sentence', 'Minsan, kumakain kami sa mall.', '"Sometimes, we eat at the mall."', null, [ACT.grammarFrequency]),
-    createContentItem('bihira', 'bi-HI-ra', '"Rarely". A specific frequency word — less than minsan.', 'sentence', 'Bihira kong makita ang kapatid ko.', '"I rarely see my sibling."', null, [ACT.grammarFrequency]),
-    createContentItem('hindi (never with verbs)', 'hin-DI', '"Never (in negative habitual context)". Use hindi + present aspect verb. Filipino does not have a single word for "never"; uses hindi + verb.', 'sentence', 'Hindi ako kumakain ng karne.', '"I don\'t eat meat" / "I never eat meat".', null, [ACT.grammarFrequency]),
-    createContentItem('tuwing', 'TU-wing', '"Every / every time". Tuwing + day/time = "every (day/time)". Tuwing Linggo "every Sunday"; tuwing umaga "every morning".', 'sentence', 'Tuwing Linggo, nagsisimba kami.', '"Every Sunday, we attend mass."', null, [ACT.grammarFrequency]),
-    createContentItem('araw-araw', 'A-raw-A-raw', '"Every day / daily". Native reduplication: araw "day" repeated. Equivalent to tuwing araw but more emphatic.', 'sentence', 'Araw-araw siyang nag-eehersisyo.', '"He exercises every day."', null, [ACT.grammarFrequency]),
-
-    createContentItem('Pagbasa', 'pag-BA-sa', 'Read: Si Juan ay estudyante sa UP Diliman. Tuwing umaga, gumigising siya ng alas-sais. Naliligo siya, nagbibihis, at nagsisipilyo. Pagkatapos, kumakain siya ng almusal — kanin, itlog, at tuyo. Umaalis siya ng alas-siyete papuntang UP. Pumapasok siya sa unang klase ng alas-otso. Pagkatapos ng klase, nag-aaral siya sa library. Tuwing gabi, umuuwi siya, naghahapunan kasama ang pamilya, at nanonood ng TV. Natutulog siya mga alas-onse.', 'sentence', 'Juan is a UP Diliman student. Every morning, he wakes at 6. He showers, dresses, brushes. Then he eats breakfast — rice, egg, and dried fish. He leaves at 7 to UP. He goes to his first class at 8. After class, he studies at the library. Every night, he goes home, has dinner with the family, and watches TV. He sleeps around 11.', 'Note: aspect markers throughout (imperfective for habitual: gumigising, naliligo); frequency (tuwing umaga, tuwing gabi); meal vocabulary; time with alas-.', null, [ACT.reading]),
-
-    createContentItem('Diyalogo', 'di-YA-lo-go', 'Dialogue: Roommate A: "Kailan ka gumigising?" / B: "Mga alas-sais. Ikaw?" / A: "Alas-siyete ako. Kumakain ka ba ng almusal sa dorm?" / B: "Hindi, sa canteen ng UP ako kumakain. Mas mura." / A: "Mas mura nga. Sige, sa canteen din ako mamaya."', 'sentence', 'A: "When do you wake up?" / B: "Around 6. You?" / A: "I\'m 7. Do you eat breakfast at the dorm?" / B: "No, I eat at the UP canteen. Cheaper." / A: "Cheaper indeed. OK, I\'ll go to the canteen too later."', 'Peer register between roommates; mura = cheap; canteen = UP campus eating area.', null, [ACT.listening]),
-
-    createContentItem('Pagsulat', 'pag-SU-lat', 'Write 6-8 sentences describing your typical school/work day. Required: at least three mag- verbs in different aspects; at least one frequency adverb (palagi, madalas, minsan); at least one tuwing + time.', 'sentence', 'Modelo: Araw-araw, gumigising ako ng alas-sais. Nag-aaral ako sa UP. Tuwing tanghali, kumakain ako sa canteen. Madalas akong umuuwi ng alas-singko. Tuwing gabi, nagbabasa ako bago matulog. Minsan, nanonood ako ng K-drama. Natutulog ako mga alas-onse.', 'Sample: "Every day, I wake at 6. I study at UP. Every noon, I eat at the canteen. I often go home at 5. Every night, I read before sleeping. Sometimes, I watch K-drama. I sleep around 11."', null, [ACT.writing]),
-
-    createContentItem('Filipino daily rhythm', 'FI-li-pi-no DAY-li RI-them', 'Filipinos eat THREE meals plus TWO merienda (snack times) per day: almusal (~7 AM), merienda sa umaga (~10 AM), tanghalian (~12 PM), merienda sa hapon (~3-4 PM), hapunan (~6-7 PM). Coffee or chocolate drink with merienda. Sunday is family/church day; Saturday is errand and laundry day. Siesta (afternoon nap, 1-3 PM) is traditional but rare in urban offices.', 'word', 'Tuwing alas-tres ng hapon, may merienda kami sa opisina.', '"Every 3 PM, we have merienda in the office" — workplace merienda culture is alive in many companies.', [
-      { target: 'almusal (~7 AM)', note: 'breakfast — kanin, itlog, tuyo or longanisa typical' },
-      { target: 'merienda sa umaga (~10 AM)', note: 'morning snack — pandesal with coffee, or kakanin' },
-      { target: 'tanghalian (~12 PM)', note: 'lunch — rice + viand (ulam)' },
-      { target: 'merienda sa hapon (~3-4 PM)', note: 'afternoon snack — kakanin, halo-halo, banana cue' },
-      { target: 'hapunan (~6-7 PM)', note: 'dinner — family meal, often the biggest of the day' },
-    ], [ACT.culture]),
-
-    createContentItem('Gawain', 'ga-WA-in', 'Task: Describe a typical school day to a new roommate at UP. 6-8 turns. Required: morning routine sequence, mid-day activity, evening routine, with at least 3 mag- verbs in 3 aspects and 2 frequency words.', 'sentence', 'Halimbawa: "Tuwing umaga, gumigising ako ng alas-sais. Naliligo ako, nagbibihis, kumakain ng kanin at itlog. Sumasakay ako ng jeep papuntang UP. Pumapasok ako sa klase ng alas-otso. Tanghali, kumakain ako sa canteen. Hapon, nag-aaral ako sa library. Gabi, umuuwi ako, nanonood ng TV, at natutulog ng alas-onse."', '"Every morning, I wake at 6. I shower, dress, eat rice and eggs. I ride a jeep to UP. I enter class at 8. Noon, I eat at the canteen. Afternoon, I study at the library. Night, I go home, watch TV, sleep at 11."', null, [ACT.task]),
+  "expressionPractice": [
+    {
+      "id": "morning-routine",
+      "label": "Morning routine",
+      "goal": "Sequence morning actions using gumising → maligo → magbihis → kumain."
+    },
+    {
+      "id": "evening-routine",
+      "label": "Evening routine",
+      "goal": "Sequence evening actions using umuwi → kumain → mag-shower → matulog."
+    },
+    {
+      "id": "frequency",
+      "label": "Talking about frequency",
+      "goal": "Use palagi / madalas / minsan / bihira to express how often."
+    },
+    {
+      "id": "time-of-day",
+      "label": "Talking about time of day",
+      "goal": "Use tuwing umaga / sa hapon / sa gabi naturally."
+    }
   ],
+  "relatedPools": [
+    "topic-routines",
+    "topic-daily-life"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-orientation"
+      ],
+      "targetText": "layunin ng aralin",
+      "romanization": "",
+      "nativeText": "Describe a typical day in Filipino using 20+ daily-routine verbs.",
+      "pronunciation": "",
+      "exampleTarget": "layunin ng aralin",
+      "exampleNative": "The whole lesson is built toward this outcome: Roleplay with the AI tutor.",
+      "korean": "layunin ng aralin",
+      "english": "Describe a typical day in Filipino using 20+ daily-routine verbs.",
+      "example": "layunin ng aralin",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Roleplay with the AI tutor."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-pronunciation"
+      ],
+      "targetText": "suri sa bigkas",
+      "romanization": "",
+      "nativeText": "Keep Filipino stress, glottal stops, borrowed-word rhythm, and affix boundaries clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)\".",
+      "pronunciation": "",
+      "exampleTarget": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "exampleNative": "Three aspects, one verb, no tense — what is completed, what is ongoing, what is contemplated.",
+      "korean": "suri sa bigkas",
+      "english": "Keep Filipino stress, glottal stops, borrowed-word rhythm, and affix boundaries clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)\".",
+      "example": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "exampleEnglish": "Three aspects, one verb, no tense — what is completed, what is ongoing, what is contemplated."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1"
+      ],
+      "targetText": "Layunin",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 4: Araw-Araw na Gawain — Daily Routines with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "exampleNative": "Three aspects, one verb, no tense — what is completed, what is ongoing, what is contemplated.",
+      "korean": "Layunin",
+      "english": "Use the key language of Level 1 · Unit 4: Araw-Araw na Gawain — Daily Routines with the register and setting that the lesson requires.",
+      "example": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "exampleEnglish": "Three aspects, one verb, no tense — what is completed, what is ongoing, what is contemplated."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-2"
+      ],
+      "targetText": "Tunay na sitwasyon",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 4: Araw-Araw na Gawain — Daily Routines sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"",
+      "exampleNative": "\"What time do you wake up? — I wake up around 6, you?\" — typical roommate exchange.",
+      "korean": "Tunay na sitwasyon",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 4: Araw-Araw na Gawain — Daily Routines sound precise rather than merely understandable.",
+      "example": "Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"",
+      "exampleEnglish": "\"What time do you wake up? — I wake up around 6, you?\" — typical roommate exchange."
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-grammar-1"
+      ],
+      "targetText": "Layunin",
+      "romanization": "",
+      "nativeText": "Describe a typical day in Filipino using 20+ daily-routine verbs.",
+      "pronunciation": "",
+      "exampleTarget": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "exampleNative": "Three aspects, one verb, no tense — what is completed, what is ongoing, what is contemplated.",
+      "korean": "Layunin",
+      "english": "Describe a typical day in Filipino using 20+ daily-routine verbs.",
+      "example": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "exampleEnglish": "Three aspects, one verb, no tense — what is completed, what is ongoing, what is contemplated."
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-grammar-2"
+      ],
+      "targetText": "Tunay na sitwasyon",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 4: Araw-Araw na Gawain — Daily Routines with one nearby Filipino form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"",
+      "exampleNative": "\"What time do you wake up? — I wake up around 6, you?\" — typical roommate exchange.",
+      "korean": "Tunay na sitwasyon",
+      "english": "Contrast the main pattern in Level 1 · Unit 4: Araw-Araw na Gawain — Daily Routines with one nearby Filipino form so the learner can avoid literal translation.",
+      "example": "Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"",
+      "exampleEnglish": "\"What time do you wake up? — I wake up around 6, you?\" — typical roommate exchange."
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-reading"
+      ],
+      "targetText": "halimbawang basa",
+      "romanization": "",
+      "nativeText": "Read the connected model for halimbawang basa as one message. Notice how \"Halimbawa: \"Tuwing umaga, gumigising ako ng alas-sais. Naliligo ako, nagbibihis, kumakain ng kanin at itlog. Sumasakay ako ng jeep papuntang UP. Pumapasok ako sa klase ng alas-otso. Tanghali, kumakain ako sa canteen. Hapon, nag-aaral ako sa library. Gabi, umuuwi ako, nanonood ng TV, at natutulog ng alas-onse.\"\" lets the lesson vocabulary and grammar work together instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Halimbawa: \"Tuwing umaga, gumigising ako ng alas-sais. Naliligo ako, nagbibihis, kumakain ng kanin at itlog. Sumasakay ako ng jeep papuntang UP. Pumapasok ako sa klase ng alas-otso. Tanghali, kumakain ako sa canteen. Hapon, nag-aaral ako sa library. Gabi, umuuwi ako, nanonood ng TV, at natutulog ng alas-onse.\"",
+      "exampleNative": "\"Every morning, I wake at 6. I shower, dress, eat rice and eggs. I ride a jeep to UP. I enter class at 8. Noon, I eat at the canteen. Afternoon, I study at the library. Night, I go home, watch TV, sleep at 11.\"",
+      "korean": "halimbawang basa",
+      "english": "Read the connected model for halimbawang basa as one message. Notice how \"Halimbawa: \"Tuwing umaga, gumigising ako ng alas-sais. Naliligo ako, nagbibihis, kumakain ng kanin at itlog. Sumasakay ako ng jeep papuntang UP. Pumapasok ako sa klase ng alas-otso. Tanghali, kumakain ako sa canteen. Hapon, nag-aaral ako sa library. Gabi, umuuwi ako, nanonood ng TV, at natutulog ng alas-onse.\"\" lets the lesson vocabulary and grammar work together instead of appearing as isolated flashcards.",
+      "example": "Halimbawa: \"Tuwing umaga, gumigising ako ng alas-sais. Naliligo ako, nagbibihis, kumakain ng kanin at itlog. Sumasakay ako ng jeep papuntang UP. Pumapasok ako sa klase ng alas-otso. Tanghali, kumakain ako sa canteen. Hapon, nag-aaral ako sa library. Gabi, umuuwi ako, nanonood ng TV, at natutulog ng alas-onse.\"",
+      "exampleEnglish": "\"Every morning, I wake at 6. I shower, dress, eat rice and eggs. I ride a jeep to UP. I enter class at 8. Noon, I eat at the canteen. Afternoon, I study at the library. Night, I go home, watch TV, sleep at 11.\""
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-listening"
+      ],
+      "targetText": "halimbawang usapan",
+      "romanization": "",
+      "nativeText": "Hear \"Halimbawa: \"Tuwing umaga, gumigising ako ng alas-sais. Naliligo ako, nagbibihis, kumakain ng kanin at itlog. Sumasakay ako ng jeep papuntang UP. Pumapasok ako sa klase ng alas-otso. Tanghali, kumakain ako sa canteen. Hapon, nag-aaral ako sa library. Gabi, umuuwi ako, nanonood ng TV, at natutulog ng alas-onse.\"\" as interaction, not as a sentence list. The listening goal is to follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Halimbawa: \"Tuwing umaga, gumigising ako ng alas-sais. Naliligo ako, nagbibihis, kumakain ng kanin at itlog. Sumasakay ako ng jeep papuntang UP. Pumapasok ako sa klase ng alas-otso. Tanghali, kumakain ako sa canteen. Hapon, nag-aaral ako sa library. Gabi, umuuwi ako, nanonood ng TV, at natutulog ng alas-onse.\"",
+      "exampleNative": "\"Every morning, I wake at 6. I shower, dress, eat rice and eggs. I ride a jeep to UP. I enter class at 8. Noon, I eat at the canteen. Afternoon, I study at the library. Night, I go home, watch TV, sleep at 11.\"",
+      "korean": "halimbawang usapan",
+      "english": "Hear \"Halimbawa: \"Tuwing umaga, gumigising ako ng alas-sais. Naliligo ako, nagbibihis, kumakain ng kanin at itlog. Sumasakay ako ng jeep papuntang UP. Pumapasok ako sa klase ng alas-otso. Tanghali, kumakain ako sa canteen. Hapon, nag-aaral ako sa library. Gabi, umuuwi ako, nanonood ng TV, at natutulog ng alas-onse.\"\" as interaction, not as a sentence list. The listening goal is to follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Halimbawa: \"Tuwing umaga, gumigising ako ng alas-sais. Naliligo ako, nagbibihis, kumakain ng kanin at itlog. Sumasakay ako ng jeep papuntang UP. Pumapasok ako sa klase ng alas-otso. Tanghali, kumakain ako sa canteen. Hapon, nag-aaral ako sa library. Gabi, umuuwi ako, nanonood ng TV, at natutulog ng alas-onse.\"",
+      "exampleEnglish": "\"Every morning, I wake at 6. I shower, dress, eat rice and eggs. I ride a jeep to UP. I enter class at 8. Noon, I eat at the canteen. Afternoon, I study at the library. Night, I go home, watch TV, sleep at 11.\""
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-writing"
+      ],
+      "targetText": "gabay sa pagsulat",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "gabay sa pagsulat",
+      "english": "Write your own version after studying \"mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-culture"
+      ],
+      "targetText": "gamit at konteksto",
+      "romanization": "",
+      "nativeText": "Notice the politeness, kinship, or multilingual context that changes how this Filipino is naturally used. Use \"Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"\" as the social comparison point for this lesson.",
+      "pronunciation": "",
+      "exampleTarget": "Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"",
+      "exampleNative": "\"What time do you wake up? — I wake up around 6, you?\" — typical roommate exchange.",
+      "korean": "gamit at konteksto",
+      "english": "Notice the politeness, kinship, or multilingual context that changes how this Filipino is naturally used. Use \"Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"\" as the social comparison point for this lesson.",
+      "example": "Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"",
+      "exampleEnglish": "\"What time do you wake up? — I wake up around 6, you?\" — typical roommate exchange."
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "pangwakas na gawain",
+      "romanization": "",
+      "nativeText": "Roleplay with the AI tutor.",
+      "pronunciation": "",
+      "exampleTarget": "Halimbawa: \"Tuwing umaga, gumigising ako ng alas-sais. Naliligo ako, nagbibihis, kumakain ng kanin at itlog. Sumasakay ako ng jeep papuntang UP. Pumapasok ako sa klase ng alas-otso. Tanghali, kumakain ako sa canteen. Hapon, nag-aaral ako sa library. Gabi, umuuwi ako, nanonood ng TV, at natutulog ng alas-onse.\"",
+      "exampleNative": "Roleplay with the AI tutor.",
+      "korean": "pangwakas na gawain",
+      "english": "Roleplay with the AI tutor.",
+      "example": "Halimbawa: \"Tuwing umaga, gumigising ako ng alas-sais. Naliligo ako, nagbibihis, kumakain ng kanin at itlog. Sumasakay ako ng jeep papuntang UP. Pumapasok ako sa klase ng alas-otso. Tanghali, kumakain ako sa canteen. Hapon, nag-aaral ako sa library. Gabi, umuuwi ako, nanonood ng TV, at natutulog ng alas-onse.\"",
+      "exampleEnglish": "Roleplay with the AI tutor."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-grammar-2"
+      ],
+      "targetText": "karaniwang pagkakamali",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around focus marking, affixes, particles, and word order. Begin by checking \"Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: \"What time do you wake up? — I wake up around 6, you?\" — typical roommate exchange.",
+      "korean": "karaniwang pagkakamali",
+      "english": "Watch for literal-translation mistakes around focus marking, affixes, particles, and word order. Begin by checking \"Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"\" against the model.",
+      "example": "Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: \"What time do you wake up? — I wake up around 6, you?\" — typical roommate exchange."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-culture"
+      ],
+      "targetText": "antas ng pananalita",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for neutral Filipino, a respectful tone, or a more conversational mixed-register choice. Compare the social fit of \"mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "exampleNative": "Three aspects, one verb, no tense — what is completed, what is ongoing, what is contemplated.",
+      "korean": "antas ng pananalita",
+      "english": "Check whether the setting calls for neutral Filipino, a respectful tone, or a more conversational mixed-register choice. Compare the social fit of \"mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)\" before reusing it elsewhere.",
+      "example": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "exampleEnglish": "Three aspects, one verb, no tense — what is completed, what is ongoing, what is contemplated."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "daloy",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Filipino message rather than as separate translated fragments. Aim to carry \"Halimbawa: \"Tuwing umaga, gumigising ako ng alas-sais. Naliligo ako, nagbibihis, kumakain ng kanin at itlog. Sumasakay ako ng jeep papuntang UP. Pumapasok ako sa klase ng alas-otso. Tanghali, kumakain ako sa canteen. Hapon, nag-aaral ako sa library. Gabi, umuuwi ako, nanonood ng TV, at natutulog ng alas-onse.\"\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Halimbawa: \"Tuwing umaga, gumigising ako ng alas-sais. Naliligo ako, nagbibihis, kumakain ng kanin at itlog. Sumasakay ako ng jeep papuntang UP. Pumapasok ako sa klase ng alas-otso. Tanghali, kumakain ako sa canteen. Hapon, nag-aaral ako sa library. Gabi, umuuwi ako, nanonood ng TV, at natutulog ng alas-onse.\"",
+      "exampleNative": "\"Every morning, I wake at 6. I shower, dress, eat rice and eggs. I ride a jeep to UP. I enter class at 8. Noon, I eat at the canteen. Afternoon, I study at the library. Night, I go home, watch TV, sleep at 11.\"",
+      "korean": "daloy",
+      "english": "Say the idea as one connected Filipino message rather than as separate translated fragments. Aim to carry \"Halimbawa: \"Tuwing umaga, gumigising ako ng alas-sais. Naliligo ako, nagbibihis, kumakain ng kanin at itlog. Sumasakay ako ng jeep papuntang UP. Pumapasok ako sa klase ng alas-otso. Tanghali, kumakain ako sa canteen. Hapon, nag-aaral ako sa library. Gabi, umuuwi ako, nanonood ng TV, at natutulog ng alas-onse.\"\" as one thought.",
+      "example": "Halimbawa: \"Tuwing umaga, gumigising ako ng alas-sais. Naliligo ako, nagbibihis, kumakain ng kanin at itlog. Sumasakay ako ng jeep papuntang UP. Pumapasok ako sa klase ng alas-otso. Tanghali, kumakain ako sa canteen. Hapon, nag-aaral ako sa library. Gabi, umuuwi ako, nanonood ng TV, at natutulog ng alas-onse.\"",
+      "exampleEnglish": "\"Every morning, I wake at 6. I shower, dress, eat rice and eggs. I ride a jeep to UP. I enter class at 8. Noon, I eat at the canteen. Afternoon, I study at the library. Night, I go home, watch TV, sleep at 11.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "paglalapat",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "paglalapat",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)\" and move it into your own life.",
+      "example": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-grammar-1"
+      ],
+      "targetText": "paggunita",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"Layunin\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "Layunin",
+      "exampleNative": "Filipino has NO tense — only aspect. The mag- prefix forms an actor-focus verb that can be habitual or instrumental. The three aspects (contemplated, imperfective, completed) tell you about completion, not the absolute time. This is one of the most distinctive features of Philippine languages.",
+      "korean": "paggunita",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"Layunin\" before looking back.",
+      "example": "Layunin",
+      "exampleEnglish": "Filipino has NO tense — only aspect. The mag- prefix forms an actor-focus verb that can be habitual or instrumental. The three aspects (contemplated, imperfective, completed) tell you about completion, not the absolute time. This is one of the most distinctive features of Philippine languages."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-writing"
+      ],
+      "targetText": "pagpapalawak",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Halimbawa: \"Tuwing umaga, gumigising ako ng alas-sais. Naliligo ako, nagbibihis, kumakain ng kanin at itlog. Sumasakay ako ng jeep papuntang UP. Pumapasok ako sa klase ng alas-otso. Tanghali, kumakain ako sa canteen. Hapon, nag-aaral ako sa library. Gabi, umuuwi ako, nanonood ng TV, at natutulog ng alas-onse.\"\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Halimbawa: \"Tuwing umaga, gumigising ako ng alas-sais. Naliligo ako, nagbibihis, kumakain ng kanin at itlog. Sumasakay ako ng jeep papuntang UP. Pumapasok ako sa klase ng alas-otso. Tanghali, kumakain ako sa canteen. Hapon, nag-aaral ako sa library. Gabi, umuuwi ako, nanonood ng TV, at natutulog ng alas-onse.\"",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "pagpapalawak",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Halimbawa: \"Tuwing umaga, gumigising ako ng alas-sais. Naliligo ako, nagbibihis, kumakain ng kanin at itlog. Sumasakay ako ng jeep papuntang UP. Pumapasok ako sa klase ng alas-otso. Tanghali, kumakain ako sa canteen. Hapon, nag-aaral ako sa library. Gabi, umuuwi ako, nanonood ng TV, at natutulog ng alas-onse.\"\" rather than restarting from a blank sentence.",
+      "example": "Halimbawa: \"Tuwing umaga, gumigising ako ng alas-sais. Naliligo ako, nagbibihis, kumakain ng kanin at itlog. Sumasakay ako ng jeep papuntang UP. Pumapasok ako sa klase ng alas-otso. Tanghali, kumakain ako sa canteen. Hapon, nag-aaral ako sa library. Gabi, umuuwi ako, nanonood ng TV, at natutulog ng alas-onse.\"",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading"
+      ],
+      "targetText": "paghahambing",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 4: Araw-Araw na Gawain — Daily Routines with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"",
+      "exampleNative": "\"What time do you wake up? — I wake up around 6, you?\" — typical roommate exchange.",
+      "korean": "paghahambing",
+      "english": "Compare the central form in Level 1 · Unit 4: Araw-Araw na Gawain — Daily Routines with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"\" as the comparison line.",
+      "example": "Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"",
+      "exampleEnglish": "\"What time do you wake up? — I wake up around 6, you?\" — typical roommate exchange."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-pronunciation"
+      ],
+      "targetText": "ayos-bigkas",
+      "romanization": "",
+      "nativeText": "Keep Filipino stress, glottal stops, borrowed-word rhythm, and affix boundaries clear enough that the sentence remains easy to follow. Use \"mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)\" as the repair line.",
+      "pronunciation": "",
+      "exampleTarget": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "exampleNative": "Three aspects, one verb, no tense — what is completed, what is ongoing, what is contemplated.",
+      "korean": "ayos-bigkas",
+      "english": "Keep Filipino stress, glottal stops, borrowed-word rhythm, and affix boundaries clear enough that the sentence remains easy to follow. Use \"mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)\" as the repair line.",
+      "example": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "exampleEnglish": "Three aspects, one verb, no tense — what is completed, what is ongoing, what is contemplated."
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "pagbabago ng usapan",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Halimbawa: \"Tuwing umaga, gumigising ako ng alas-sais. Naliligo ako, nagbibihis, kumakain ng kanin at itlog. Sumasakay ako ng jeep papuntang UP. Pumapasok ako sa klase ng alas-otso. Tanghali, kumakain ako sa canteen. Hapon, nag-aaral ako sa library. Gabi, umuuwi ako, nanonood ng TV, at natutulog ng alas-onse.\"\".",
+      "pronunciation": "",
+      "exampleTarget": "Halimbawa: \"Tuwing umaga, gumigising ako ng alas-sais. Naliligo ako, nagbibihis, kumakain ng kanin at itlog. Sumasakay ako ng jeep papuntang UP. Pumapasok ako sa klase ng alas-otso. Tanghali, kumakain ako sa canteen. Hapon, nag-aaral ako sa library. Gabi, umuuwi ako, nanonood ng TV, at natutulog ng alas-onse.\"",
+      "exampleNative": "\"Every morning, I wake at 6. I shower, dress, eat rice and eggs. I ride a jeep to UP. I enter class at 8. Noon, I eat at the canteen. Afternoon, I study at the library. Night, I go home, watch TV, sleep at 11.\"",
+      "korean": "pagbabago ng usapan",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Halimbawa: \"Tuwing umaga, gumigising ako ng alas-sais. Naliligo ako, nagbibihis, kumakain ng kanin at itlog. Sumasakay ako ng jeep papuntang UP. Pumapasok ako sa klase ng alas-otso. Tanghali, kumakain ako sa canteen. Hapon, nag-aaral ako sa library. Gabi, umuuwi ako, nanonood ng TV, at natutulog ng alas-onse.\"\".",
+      "example": "Halimbawa: \"Tuwing umaga, gumigising ako ng alas-sais. Naliligo ako, nagbibihis, kumakain ng kanin at itlog. Sumasakay ako ng jeep papuntang UP. Pumapasok ako sa klase ng alas-otso. Tanghali, kumakain ako sa canteen. Hapon, nag-aaral ako sa library. Gabi, umuuwi ako, nanonood ng TV, at natutulog ng alas-onse.\"",
+      "exampleEnglish": "\"Every morning, I wake at 6. I shower, dress, eat rice and eggs. I ride a jeep to UP. I enter class at 8. Noon, I eat at the canteen. Afternoon, I study at the library. Night, I go home, watch TV, sleep at 11.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-writing"
+      ],
+      "targetText": "pagbuo ng pangungusap",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "exampleNative": "Three aspects, one verb, no tense — what is completed, what is ongoing, what is contemplated.",
+      "korean": "pagbuo ng pangungusap",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)\" one layer at a time.",
+      "example": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "exampleEnglish": "Three aspects, one verb, no tense — what is completed, what is ongoing, what is contemplated."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-2"
+      ],
+      "targetText": "mabilisang suri",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"",
+      "exampleNative": "\"What time do you wake up? — I wake up around 6, you?\" — typical roommate exchange.",
+      "korean": "mabilisang suri",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"\" as the deciding example.",
+      "example": "Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"",
+      "exampleEnglish": "\"What time do you wake up? — I wake up around 6, you?\" — typical roommate exchange."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-culture",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "pagmumuni",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Halimbawa: \"Tuwing umaga, gumigising ako ng alas-sais. Naliligo ako, nagbibihis, kumakain ng kanin at itlog. Sumasakay ako ng jeep papuntang UP. Pumapasok ako sa klase ng alas-otso. Tanghali, kumakain ako sa canteen. Hapon, nag-aaral ako sa library. Gabi, umuuwi ako, nanonood ng TV, at natutulog ng alas-onse.\"\".",
+      "pronunciation": "",
+      "exampleTarget": "Halimbawa: \"Tuwing umaga, gumigising ako ng alas-sais. Naliligo ako, nagbibihis, kumakain ng kanin at itlog. Sumasakay ako ng jeep papuntang UP. Pumapasok ako sa klase ng alas-otso. Tanghali, kumakain ako sa canteen. Hapon, nag-aaral ako sa library. Gabi, umuuwi ako, nanonood ng TV, at natutulog ng alas-onse.\"",
+      "exampleNative": "\"Every morning, I wake at 6. I shower, dress, eat rice and eggs. I ride a jeep to UP. I enter class at 8. Noon, I eat at the canteen. Afternoon, I study at the library. Night, I go home, watch TV, sleep at 11.\"",
+      "korean": "pagmumuni",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Halimbawa: \"Tuwing umaga, gumigising ako ng alas-sais. Naliligo ako, nagbibihis, kumakain ng kanin at itlog. Sumasakay ako ng jeep papuntang UP. Pumapasok ako sa klase ng alas-otso. Tanghali, kumakain ako sa canteen. Hapon, nag-aaral ako sa library. Gabi, umuuwi ako, nanonood ng TV, at natutulog ng alas-onse.\"\".",
+      "example": "Halimbawa: \"Tuwing umaga, gumigising ako ng alas-sais. Naliligo ako, nagbibihis, kumakain ng kanin at itlog. Sumasakay ako ng jeep papuntang UP. Pumapasok ako sa klase ng alas-otso. Tanghali, kumakain ako sa canteen. Hapon, nag-aaral ako sa library. Gabi, umuuwi ako, nanonood ng TV, at natutulog ng alas-onse.\"",
+      "exampleEnglish": "\"Every morning, I wake at 6. I shower, dress, eat rice and eggs. I ride a jeep to UP. I enter class at 8. Noon, I eat at the canteen. Afternoon, I study at the library. Night, I go home, watch TV, sleep at 11.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Layunin",
+      "romanization": "la-YU-nin",
+      "nativeText": "Filipino has NO tense — only aspect. The mag- prefix forms an actor-focus verb that can be habitual or instrumental. The three aspects (contemplated, imperfective, completed) tell you about completion, not the absolute time. This is one of the most distinctive features of Philippine languages.",
+      "pronunciation": "la-YU-nin",
+      "exampleTarget": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "exampleNative": "Three aspects, one verb, no tense — what is completed, what is ongoing, what is contemplated.",
+      "korean": "Layunin",
+      "english": "Filipino has NO tense — only aspect. The mag- prefix forms an actor-focus verb that can be habitual or instrumental. The three aspects (contemplated, imperfective, completed) tell you about completion, not the absolute time. This is one of the most distinctive features of Philippine languages.",
+      "example": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "exampleEnglish": "Three aspects, one verb, no tense — what is completed, what is ongoing, what is contemplated."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Tunay na sitwasyon",
+      "romanization": "TU-nay na sit-wa-SYON",
+      "nativeText": "You are sharing a dorm room at UP Diliman with a roommate. On the second day, you both compare schedules: who wakes when, who showers when, who eats at the canteen, who studies late. The whole conversation involves only mag- and -um- verbs in three aspects.",
+      "pronunciation": "TU-nay na sit-wa-SYON",
+      "exampleTarget": "Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"",
+      "exampleNative": "\"What time do you wake up? — I wake up around 6, you?\" — typical roommate exchange.",
+      "korean": "Tunay na sitwasyon",
+      "english": "You are sharing a dorm room at UP Diliman with a roommate. On the second day, you both compare schedules: who wakes when, who showers when, who eats at the canteen, who studies late. The whole conversation involves only mag- and -um- verbs in three aspects.",
+      "example": "Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"",
+      "exampleEnglish": "\"What time do you wake up? — I wake up around 6, you?\" — typical roommate exchange."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "mag- prefix",
+      "romanization": "MAG-",
+      "nativeText": "Actor-focus prefix used to form HABITUAL or instrumental verbs from roots. Attaches before any root: mag- + linis (clean) = maglinis \"to clean (regularly)\". The actor (the subject doing the action) is the focus.",
+      "pronunciation": "MAG-",
+      "exampleTarget": "mag- + luto = magluto \"to cook\"; mag- + bihis = magbihis \"to dress\"; mag- + aral = mag-aral \"to study\"",
+      "exampleNative": "Three example verbs formed with mag-. The root is the bare meaning; mag- adds the actor-focus and habitual/instrumental nuance.",
+      "korean": "mag- prefix",
+      "english": "Actor-focus prefix used to form HABITUAL or instrumental verbs from roots. Attaches before any root: mag- + linis (clean) = maglinis \"to clean (regularly)\". The actor (the subject doing the action) is the focus.",
+      "example": "mag- + luto = magluto \"to cook\"; mag- + bihis = magbihis \"to dress\"; mag- + aral = mag-aral \"to study\"",
+      "exampleEnglish": "Three example verbs formed with mag-. The root is the bare meaning; mag- adds the actor-focus and habitual/instrumental nuance."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Tatlong aspeto",
+      "romanization": "TAT-long as-PE-to",
+      "nativeText": "The THREE ASPECTS of any mag- verb: 1) Contemplated (will / about to / planning to): mag- + reduplicated first CV + root → MAG-LU-LUTO \"will cook\". 2) Imperfective (doing / does habitually): NAG- + reduplicated first CV + root → NAG-LU-LUTO \"is cooking / cooks\". 3) Completed (did / has done): NAG- + root → NAG-LUTO \"cooked\".",
+      "pronunciation": "TAT-long as-PE-to",
+      "exampleTarget": "magluluto / nagluluto / nagluto = \"will cook / cooks / cooked\"",
+      "exampleNative": "Same verb, three aspect forms. The first letter changes (m- → n-) and the reduplication appears or disappears.",
+      "korean": "Tatlong aspeto",
+      "english": "The THREE ASPECTS of any mag- verb: 1) Contemplated (will / about to / planning to): mag- + reduplicated first CV + root → MAG-LU-LUTO \"will cook\". 2) Imperfective (doing / does habitually): NAG- + reduplicated first CV + root → NAG-LU-LUTO \"is cooking / cooks\". 3) Completed (did / has done): NAG- + root → NAG-LUTO \"cooked\".",
+      "example": "magluluto / nagluluto / nagluto = \"will cook / cooks / cooked\"",
+      "exampleEnglish": "Same verb, three aspect forms. The first letter changes (m- → n-) and the reduplication appears or disappears."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "gumising",
+      "romanization": "gu-MI-sing",
+      "nativeText": "\"To wake up\". Actor-focus, root: gising. Aspects: gigising (will), gumigising (waking up / wakes up), gumising (woke up). Common time: alas-sais (6 AM, Spanish-style), alas-siyete (7 AM).",
+      "pronunciation": "gu-MI-sing",
+      "exampleTarget": "Gumising ako ng alas-sais.",
+      "exampleNative": "\"I woke up at 6 AM\" — completed aspect; alas- + Spanish number for time.",
+      "korean": "gumising",
+      "english": "\"To wake up\". Actor-focus, root: gising. Aspects: gigising (will), gumigising (waking up / wakes up), gumising (woke up). Common time: alas-sais (6 AM, Spanish-style), alas-siyete (7 AM).",
+      "example": "Gumising ako ng alas-sais.",
+      "exampleEnglish": "\"I woke up at 6 AM\" — completed aspect; alas- + Spanish number for time."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "maligo",
+      "romanization": "ma-LI-go",
+      "nativeText": "\"To take a bath / shower\". Actor-focus, native root: ligo. Aspects: maliligo (will), naliligo (showering), naligo (showered). In Filipino tropics, two showers a day is normal.",
+      "pronunciation": "ma-LI-go",
+      "exampleTarget": "Naligo na ako kaninang umaga.",
+      "exampleNative": "\"I already showered this morning\" — kaninang = \"earlier today\".",
+      "korean": "maligo",
+      "english": "\"To take a bath / shower\". Actor-focus, native root: ligo. Aspects: maliligo (will), naliligo (showering), naligo (showered). In Filipino tropics, two showers a day is normal.",
+      "example": "Naligo na ako kaninang umaga.",
+      "exampleEnglish": "\"I already showered this morning\" — kaninang = \"earlier today\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "magbihis",
+      "romanization": "mag-BI-his",
+      "nativeText": "\"To get dressed\". Mag- + bihis. Aspects: magbibihis (will), nagbibihis (getting dressed), nagbihis (got dressed).",
+      "pronunciation": "mag-BI-his",
+      "exampleTarget": "Magbibihis ka pa ba?",
+      "exampleNative": "\"Are you still going to dress?\" — pa = still, ba = question.",
+      "korean": "magbihis",
+      "english": "\"To get dressed\". Mag- + bihis. Aspects: magbibihis (will), nagbibihis (getting dressed), nagbihis (got dressed).",
+      "example": "Magbibihis ka pa ba?",
+      "exampleEnglish": "\"Are you still going to dress?\" — pa = still, ba = question."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "kumain",
+      "romanization": "ku-MA-in",
+      "nativeText": "\"To eat\". Actor-focus, root: kain. Aspects: kakain (will), kumakain (eating), kumain (ate). Filipinos eat three meals: almusal/breakfast, tanghalian/lunch, hapunan/dinner — plus two merienda (snack times).",
+      "pronunciation": "ku-MA-in",
+      "exampleTarget": "Kumain na ako ng almusal.",
+      "exampleNative": "\"I have already eaten breakfast\" — na = \"already\".",
+      "korean": "kumain",
+      "english": "\"To eat\". Actor-focus, root: kain. Aspects: kakain (will), kumakain (eating), kumain (ate). Filipinos eat three meals: almusal/breakfast, tanghalian/lunch, hapunan/dinner — plus two merienda (snack times).",
+      "example": "Kumain na ako ng almusal.",
+      "exampleEnglish": "\"I have already eaten breakfast\" — na = \"already\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "magsipilyo",
+      "romanization": "mag-si-PI-lyo",
+      "nativeText": "\"To brush (teeth)\". From Spanish \"cepillo\" (brush). Refers specifically to brushing teeth. Aspects: magsisipilyo, nagsisipilyo, nagsipilyo.",
+      "pronunciation": "mag-si-PI-lyo",
+      "exampleTarget": "Nagsisipilyo siya bago matulog.",
+      "exampleNative": "\"He brushes his teeth before sleeping.\"",
+      "korean": "magsipilyo",
+      "english": "\"To brush (teeth)\". From Spanish \"cepillo\" (brush). Refers specifically to brushing teeth. Aspects: magsisipilyo, nagsisipilyo, nagsipilyo.",
+      "example": "Nagsisipilyo siya bago matulog.",
+      "exampleEnglish": "\"He brushes his teeth before sleeping.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "magtimpla ng kape",
+      "romanization": "mag-TIM-pla ng KA-pe",
+      "nativeText": "\"To make coffee\". Mag- + timpla (mix/prepare) + ng + kape. Coffee culture is huge in the Philippines; both 3-in-1 instant and brewed are common.",
+      "pronunciation": "mag-TIM-pla ng KA-pe",
+      "exampleTarget": "Nagtimpla ako ng kape para sa nanay.",
+      "exampleNative": "\"I made coffee for mom\" — para = \"for\".",
+      "korean": "magtimpla ng kape",
+      "english": "\"To make coffee\". Mag- + timpla (mix/prepare) + ng + kape. Coffee culture is huge in the Philippines; both 3-in-1 instant and brewed are common.",
+      "example": "Nagtimpla ako ng kape para sa nanay.",
+      "exampleEnglish": "\"I made coffee for mom\" — para = \"for\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "umalis",
+      "romanization": "u-ma-LIS",
+      "nativeText": "\"To leave / depart\". Actor-focus, root: alis. Aspects: aalis (will leave), umaalis (leaving / leaves), umalis (left). Common with sa + destination/origin: umalis ako sa bahay \"I left from home\".",
+      "pronunciation": "u-ma-LIS",
+      "exampleTarget": "Aalis na ako papunta sa eskwelahan.",
+      "exampleNative": "\"I am about to leave for school\" — na = \"already / now\"; papunta = \"going (to)\".",
+      "korean": "umalis",
+      "english": "\"To leave / depart\". Actor-focus, root: alis. Aspects: aalis (will leave), umaalis (leaving / leaves), umalis (left). Common with sa + destination/origin: umalis ako sa bahay \"I left from home\".",
+      "example": "Aalis na ako papunta sa eskwelahan.",
+      "exampleEnglish": "\"I am about to leave for school\" — na = \"already / now\"; papunta = \"going (to)\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "pumasok",
+      "romanization": "pu-MA-sok",
+      "nativeText": "\"To enter / go to school / go to work\". Actor-focus, root: pasok. Aspects: papasok (will enter / go), pumapasok (entering / goes), pumasok (entered / went). Special meanings: pumasok sa eskwelahan = \"go to school\"; pumasok sa trabaho = \"go to work\".",
+      "pronunciation": "pu-MA-sok",
+      "exampleTarget": "Pumasok ako sa UP kahapon.",
+      "exampleNative": "\"I went to UP yesterday.\"",
+      "korean": "pumasok",
+      "english": "\"To enter / go to school / go to work\". Actor-focus, root: pasok. Aspects: papasok (will enter / go), pumapasok (entering / goes), pumasok (entered / went). Special meanings: pumasok sa eskwelahan = \"go to school\"; pumasok sa trabaho = \"go to work\".",
+      "example": "Pumasok ako sa UP kahapon.",
+      "exampleEnglish": "\"I went to UP yesterday.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "sumakay",
+      "romanization": "su-ma-KAY",
+      "nativeText": "\"To ride (transit)\". Actor-focus, root: sakay. Aspects: sasakay, sumasakay, sumakay. With ng + transit type: sumakay ng jeep \"ride a jeepney\".",
+      "pronunciation": "su-ma-KAY",
+      "exampleTarget": "Sumakay ako ng MRT papuntang Cubao.",
+      "exampleNative": "\"I rode the MRT to Cubao.\"",
+      "korean": "sumakay",
+      "english": "\"To ride (transit)\". Actor-focus, root: sakay. Aspects: sasakay, sumasakay, sumakay. With ng + transit type: sumakay ng jeep \"ride a jeepney\".",
+      "example": "Sumakay ako ng MRT papuntang Cubao.",
+      "exampleEnglish": "\"I rode the MRT to Cubao.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "mag-aral",
+      "romanization": "mag-A-ral",
+      "nativeText": "\"To study\". Mag- + aral. Aspects: mag-aaral (will study), nag-aaral (studying), nag-aral (studied). One of the highest-frequency verbs for students.",
+      "pronunciation": "mag-A-ral",
+      "exampleTarget": "Nag-aaral ako sa library tuwing gabi.",
+      "exampleNative": "\"I study at the library every night\" — tuwing + time = \"every (day/time)\".",
+      "korean": "mag-aral",
+      "english": "\"To study\". Mag- + aral. Aspects: mag-aaral (will study), nag-aaral (studying), nag-aral (studied). One of the highest-frequency verbs for students.",
+      "example": "Nag-aaral ako sa library tuwing gabi.",
+      "exampleEnglish": "\"I study at the library every night\" — tuwing + time = \"every (day/time)\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "umuwi",
+      "romanization": "u-MU-wi",
+      "nativeText": "\"To go home\". Actor-focus, root: uwi. Aspects: uuwi (will go home), umuuwi (going home / goes home), umuwi (went home). Always with implicit sa bahay \"to home\", often omitted.",
+      "pronunciation": "u-MU-wi",
+      "exampleTarget": "Anong oras ka uuwi?",
+      "exampleNative": "\"What time will you go home?\" — typical end-of-day question.",
+      "korean": "umuwi",
+      "english": "\"To go home\". Actor-focus, root: uwi. Aspects: uuwi (will go home), umuuwi (going home / goes home), umuwi (went home). Always with implicit sa bahay \"to home\", often omitted.",
+      "example": "Anong oras ka uuwi?",
+      "exampleEnglish": "\"What time will you go home?\" — typical end-of-day question."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "manood",
+      "romanization": "ma-NO-od",
+      "nativeText": "\"To watch (TV / movies)\". Ma- prefix actor-focus, root: nood. Aspects: manonood (will watch), nanonood (watching), nanood (watched). Common: manood ng TV / manood ng movie / manood ng K-drama.",
+      "pronunciation": "ma-NO-od",
+      "exampleTarget": "Nanonood ako ng K-drama tuwing gabi.",
+      "exampleNative": "\"I watch K-drama every night\" — K-pop and K-drama are massive in the Philippines.",
+      "korean": "manood",
+      "english": "\"To watch (TV / movies)\". Ma- prefix actor-focus, root: nood. Aspects: manonood (will watch), nanonood (watching), nanood (watched). Common: manood ng TV / manood ng movie / manood ng K-drama.",
+      "example": "Nanonood ako ng K-drama tuwing gabi.",
+      "exampleEnglish": "\"I watch K-drama every night\" — K-pop and K-drama are massive in the Philippines."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "magbasa",
+      "romanization": "mag-BA-sa",
+      "nativeText": "\"To read\". Mag- + basa. Aspects: magbabasa, nagbabasa, nagbasa. Contrast with bumasa (-um-, single act of reading): mag-basa is habitual/extended, bumasa is one read-through.",
+      "pronunciation": "mag-BA-sa",
+      "exampleTarget": "Nagbabasa siya ng libro bago matulog.",
+      "exampleNative": "\"He reads a book before sleeping\" — bago = \"before\".",
+      "korean": "magbasa",
+      "english": "\"To read\". Mag- + basa. Aspects: magbabasa, nagbabasa, nagbasa. Contrast with bumasa (-um-, single act of reading): mag-basa is habitual/extended, bumasa is one read-through.",
+      "example": "Nagbabasa siya ng libro bago matulog.",
+      "exampleEnglish": "\"He reads a book before sleeping\" — bago = \"before\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "magluto",
+      "romanization": "mag-LU-to",
+      "nativeText": "\"To cook\". Mag- + luto. Aspects: magluluto, nagluluto, nagluto. Cooking dinner is often a family activity in Filipino households.",
+      "pronunciation": "mag-LU-to",
+      "exampleTarget": "Nagluluto ang nanay ng adobo para sa hapunan.",
+      "exampleNative": "\"Mom is cooking adobo for dinner\" — adobo is the national dish.",
+      "korean": "magluto",
+      "english": "\"To cook\". Mag- + luto. Aspects: magluluto, nagluluto, nagluto. Cooking dinner is often a family activity in Filipino households.",
+      "example": "Nagluluto ang nanay ng adobo para sa hapunan.",
+      "exampleEnglish": "\"Mom is cooking adobo for dinner\" — adobo is the national dish."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "maghapunan",
+      "romanization": "mag-ha-PU-nan",
+      "nativeText": "\"To have dinner\". Mag- + hapunan (dinner). Aspects: maghahapunan, naghahapunan, naghapunan. Dinner is typically 6-8 PM, family-style.",
+      "pronunciation": "mag-ha-PU-nan",
+      "exampleTarget": "Maghahapunan tayo ng alas-sais.",
+      "exampleNative": "\"Let's have dinner at 6\" — tayo (inclusive we).",
+      "korean": "maghapunan",
+      "english": "\"To have dinner\". Mag- + hapunan (dinner). Aspects: maghahapunan, naghahapunan, naghapunan. Dinner is typically 6-8 PM, family-style.",
+      "example": "Maghahapunan tayo ng alas-sais.",
+      "exampleEnglish": "\"Let's have dinner at 6\" — tayo (inclusive we)."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "matulog",
+      "romanization": "ma-TU-log",
+      "nativeText": "\"To sleep\". Ma- actor-focus, root: tulog. Aspects: matutulog (will sleep), natutulog (sleeping / sleeps), natulog (slept).",
+      "pronunciation": "ma-TU-log",
+      "exampleTarget": "Natutulog ako mga alas-onse.",
+      "exampleNative": "\"I sleep around 11 (PM).\"",
+      "korean": "matulog",
+      "english": "\"To sleep\". Ma- actor-focus, root: tulog. Aspects: matutulog (will sleep), natutulog (sleeping / sleeps), natulog (slept).",
+      "example": "Natutulog ako mga alas-onse.",
+      "exampleEnglish": "\"I sleep around 11 (PM).\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "mag-shower",
+      "romanization": "mag-SHA-wer",
+      "nativeText": "\"To shower\". Taglish: mag- + English shower. Common urban usage alongside native maligo. Aspects: magsha-shower, nagsha-shower, nag-shower.",
+      "pronunciation": "mag-SHA-wer",
+      "exampleTarget": "Magsha-shower muna ako bago kumain.",
+      "exampleNative": "\"I will shower first before eating.\"",
+      "korean": "mag-shower",
+      "english": "\"To shower\". Taglish: mag- + English shower. Common urban usage alongside native maligo. Aspects: magsha-shower, nagsha-shower, nag-shower.",
+      "example": "Magsha-shower muna ako bago kumain.",
+      "exampleEnglish": "\"I will shower first before eating.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "mag-Facebook / mag-social media",
+      "romanization": "mag-FAYS-buk",
+      "nativeText": "\"To use Facebook / social media\". Taglish hybrid: mag- + brand. Aspects: magfa-Facebook, nagfa-Facebook, nag-Facebook. Filipinos are among the world's heaviest social media users.",
+      "pronunciation": "mag-FAYS-buk",
+      "exampleTarget": "Nagfa-Facebook lang ako mamayang gabi.",
+      "exampleNative": "\"I'm just on Facebook tonight.\"",
+      "korean": "mag-Facebook / mag-social media",
+      "english": "\"To use Facebook / social media\". Taglish hybrid: mag- + brand. Aspects: magfa-Facebook, nagfa-Facebook, nag-Facebook. Filipinos are among the world's heaviest social media users.",
+      "example": "Nagfa-Facebook lang ako mamayang gabi.",
+      "exampleEnglish": "\"I'm just on Facebook tonight.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "magpahinga",
+      "romanization": "mag-pa-HI-nga",
+      "nativeText": "\"To rest\". Mag- + pahinga. Used both for resting after work and longer breaks. Aspects: magpapahinga, nagpapahinga, nagpahinga.",
+      "pronunciation": "mag-pa-HI-nga",
+      "exampleTarget": "Magpapahinga muna ako.",
+      "exampleNative": "\"I will rest first\" — muna = \"first / for now\".",
+      "korean": "magpahinga",
+      "english": "\"To rest\". Mag- + pahinga. Used both for resting after work and longer breaks. Aspects: magpapahinga, nagpapahinga, nagpahinga.",
+      "example": "Magpapahinga muna ako.",
+      "exampleEnglish": "\"I will rest first\" — muna = \"first / for now\"."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "palagi",
+      "romanization": "pa-LA-gi",
+      "nativeText": "\"Always\". The strongest frequency adverb. Positioned before or after the verb.",
+      "pronunciation": "pa-LA-gi",
+      "exampleTarget": "Palagi akong kumakain ng kanin.",
+      "exampleNative": "\"I always eat rice\" — kanin (cooked rice) is a Filipino staple.",
+      "korean": "palagi",
+      "english": "\"Always\". The strongest frequency adverb. Positioned before or after the verb.",
+      "example": "Palagi akong kumakain ng kanin.",
+      "exampleEnglish": "\"I always eat rice\" — kanin (cooked rice) is a Filipino staple."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "madalas",
+      "romanization": "ma-DA-las",
+      "nativeText": "\"Often\". Less than palagi, more than minsan. Variant: madalas-dalas (very often).",
+      "pronunciation": "ma-DA-las",
+      "exampleTarget": "Madalas siyang umuwi ng late.",
+      "exampleNative": "\"He often goes home late.\"",
+      "korean": "madalas",
+      "english": "\"Often\". Less than palagi, more than minsan. Variant: madalas-dalas (very often).",
+      "example": "Madalas siyang umuwi ng late.",
+      "exampleEnglish": "\"He often goes home late.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "minsan",
+      "romanization": "min-SAN",
+      "nativeText": "\"Sometimes / once\". Two meanings depending on context: sometimes (frequency), or once (counting).",
+      "pronunciation": "min-SAN",
+      "exampleTarget": "Minsan, kumakain kami sa mall.",
+      "exampleNative": "\"Sometimes, we eat at the mall.\"",
+      "korean": "minsan",
+      "english": "\"Sometimes / once\". Two meanings depending on context: sometimes (frequency), or once (counting).",
+      "example": "Minsan, kumakain kami sa mall.",
+      "exampleEnglish": "\"Sometimes, we eat at the mall.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "bihira",
+      "romanization": "bi-HI-ra",
+      "nativeText": "\"Rarely\". A specific frequency word — less than minsan.",
+      "pronunciation": "bi-HI-ra",
+      "exampleTarget": "Bihira kong makita ang kapatid ko.",
+      "exampleNative": "\"I rarely see my sibling.\"",
+      "korean": "bihira",
+      "english": "\"Rarely\". A specific frequency word — less than minsan.",
+      "example": "Bihira kong makita ang kapatid ko.",
+      "exampleEnglish": "\"I rarely see my sibling.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "hindi (never with verbs)",
+      "romanization": "hin-DI",
+      "nativeText": "\"Never (in negative habitual context)\". Use hindi + present aspect verb. Filipino does not have a single word for \"never\"; uses hindi + verb.",
+      "pronunciation": "hin-DI",
+      "exampleTarget": "Hindi ako kumakain ng karne.",
+      "exampleNative": "\"I don't eat meat\" / \"I never eat meat\".",
+      "korean": "hindi (never with verbs)",
+      "english": "\"Never (in negative habitual context)\". Use hindi + present aspect verb. Filipino does not have a single word for \"never\"; uses hindi + verb.",
+      "example": "Hindi ako kumakain ng karne.",
+      "exampleEnglish": "\"I don't eat meat\" / \"I never eat meat\"."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "tuwing",
+      "romanization": "TU-wing",
+      "nativeText": "\"Every / every time\". Tuwing + day/time = \"every (day/time)\". Tuwing Linggo \"every Sunday\"; tuwing umaga \"every morning\".",
+      "pronunciation": "TU-wing",
+      "exampleTarget": "Tuwing Linggo, nagsisimba kami.",
+      "exampleNative": "\"Every Sunday, we attend mass.\"",
+      "korean": "tuwing",
+      "english": "\"Every / every time\". Tuwing + day/time = \"every (day/time)\". Tuwing Linggo \"every Sunday\"; tuwing umaga \"every morning\".",
+      "example": "Tuwing Linggo, nagsisimba kami.",
+      "exampleEnglish": "\"Every Sunday, we attend mass.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "araw-araw",
+      "romanization": "A-raw-A-raw",
+      "nativeText": "\"Every day / daily\". Native reduplication: araw \"day\" repeated. Equivalent to tuwing araw but more emphatic.",
+      "pronunciation": "A-raw-A-raw",
+      "exampleTarget": "Araw-araw siyang nag-eehersisyo.",
+      "exampleNative": "\"He exercises every day.\"",
+      "korean": "araw-araw",
+      "english": "\"Every day / daily\". Native reduplication: araw \"day\" repeated. Equivalent to tuwing araw but more emphatic.",
+      "example": "Araw-araw siyang nag-eehersisyo.",
+      "exampleEnglish": "\"He exercises every day.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Pagbasa",
+      "romanization": "pag-BA-sa",
+      "nativeText": "Read: Si Juan ay estudyante sa UP Diliman. Tuwing umaga, gumigising siya ng alas-sais. Naliligo siya, nagbibihis, at nagsisipilyo. Pagkatapos, kumakain siya ng almusal — kanin, itlog, at tuyo. Umaalis siya ng alas-siyete papuntang UP. Pumapasok siya sa unang klase ng alas-otso. Pagkatapos ng klase, nag-aaral siya sa library. Tuwing gabi, umuuwi siya, naghahapunan kasama ang pamilya, at nanonood ng TV. Natutulog siya mga alas-onse.",
+      "pronunciation": "pag-BA-sa",
+      "exampleTarget": "Juan is a UP Diliman student. Every morning, he wakes at 6. He showers, dresses, brushes. Then he eats breakfast — rice, egg, and dried fish. He leaves at 7 to UP. He goes to his first class at 8. After class, he studies at the library. Every night, he goes home, has dinner with the family, and watches TV. He sleeps around 11.",
+      "exampleNative": "Note: aspect markers throughout (imperfective for habitual: gumigising, naliligo); frequency (tuwing umaga, tuwing gabi); meal vocabulary; time with alas-.",
+      "korean": "Pagbasa",
+      "english": "Read: Si Juan ay estudyante sa UP Diliman. Tuwing umaga, gumigising siya ng alas-sais. Naliligo siya, nagbibihis, at nagsisipilyo. Pagkatapos, kumakain siya ng almusal — kanin, itlog, at tuyo. Umaalis siya ng alas-siyete papuntang UP. Pumapasok siya sa unang klase ng alas-otso. Pagkatapos ng klase, nag-aaral siya sa library. Tuwing gabi, umuuwi siya, naghahapunan kasama ang pamilya, at nanonood ng TV. Natutulog siya mga alas-onse.",
+      "example": "Juan is a UP Diliman student. Every morning, he wakes at 6. He showers, dresses, brushes. Then he eats breakfast — rice, egg, and dried fish. He leaves at 7 to UP. He goes to his first class at 8. After class, he studies at the library. Every night, he goes home, has dinner with the family, and watches TV. He sleeps around 11.",
+      "exampleEnglish": "Note: aspect markers throughout (imperfective for habitual: gumigising, naliligo); frequency (tuwing umaga, tuwing gabi); meal vocabulary; time with alas-."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Diyalogo",
+      "romanization": "di-YA-lo-go",
+      "nativeText": "Dialogue: Roommate A: \"Kailan ka gumigising?\" / B: \"Mga alas-sais. Ikaw?\" / A: \"Alas-siyete ako. Kumakain ka ba ng almusal sa dorm?\" / B: \"Hindi, sa canteen ng UP ako kumakain. Mas mura.\" / A: \"Mas mura nga. Sige, sa canteen din ako mamaya.\"",
+      "pronunciation": "di-YA-lo-go",
+      "exampleTarget": "A: \"When do you wake up?\" / B: \"Around 6. You?\" / A: \"I'm 7. Do you eat breakfast at the dorm?\" / B: \"No, I eat at the UP canteen. Cheaper.\" / A: \"Cheaper indeed. OK, I'll go to the canteen too later.\"",
+      "exampleNative": "Peer register between roommates; mura = cheap; canteen = UP campus eating area.",
+      "korean": "Diyalogo",
+      "english": "Dialogue: Roommate A: \"Kailan ka gumigising?\" / B: \"Mga alas-sais. Ikaw?\" / A: \"Alas-siyete ako. Kumakain ka ba ng almusal sa dorm?\" / B: \"Hindi, sa canteen ng UP ako kumakain. Mas mura.\" / A: \"Mas mura nga. Sige, sa canteen din ako mamaya.\"",
+      "example": "A: \"When do you wake up?\" / B: \"Around 6. You?\" / A: \"I'm 7. Do you eat breakfast at the dorm?\" / B: \"No, I eat at the UP canteen. Cheaper.\" / A: \"Cheaper indeed. OK, I'll go to the canteen too later.\"",
+      "exampleEnglish": "Peer register between roommates; mura = cheap; canteen = UP campus eating area."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Filipino daily rhythm",
+      "romanization": "FI-li-pi-no DAY-li RI-them",
+      "nativeText": "Filipinos eat THREE meals plus TWO merienda (snack times) per day: almusal (~7 AM), merienda sa umaga (~10 AM), tanghalian (~12 PM), merienda sa hapon (~3-4 PM), hapunan (~6-7 PM). Coffee or chocolate drink with merienda. Sunday is family/church day; Saturday is errand and laundry day. Siesta (afternoon nap, 1-3 PM) is traditional but rare in urban offices.",
+      "pronunciation": "FI-li-pi-no DAY-li RI-them",
+      "exampleTarget": "Tuwing alas-tres ng hapon, may merienda kami sa opisina.",
+      "exampleNative": "\"Every 3 PM, we have merienda in the office\" — workplace merienda culture is alive in many companies.",
+      "korean": "Filipino daily rhythm",
+      "english": "Filipinos eat THREE meals plus TWO merienda (snack times) per day: almusal (~7 AM), merienda sa umaga (~10 AM), tanghalian (~12 PM), merienda sa hapon (~3-4 PM), hapunan (~6-7 PM). Coffee or chocolate drink with merienda. Sunday is family/church day; Saturday is errand and laundry day. Siesta (afternoon nap, 1-3 PM) is traditional but rare in urban offices.",
+      "example": "Tuwing alas-tres ng hapon, may merienda kami sa opisina.",
+      "exampleEnglish": "\"Every 3 PM, we have merienda in the office\" — workplace merienda culture is alive in many companies."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Gawain",
+      "romanization": "ga-WA-in",
+      "nativeText": "Task: Describe a typical school day to a new roommate at UP. 6-8 turns. Required: morning routine sequence, mid-day activity, evening routine, with at least 3 mag- verbs in 3 aspects and 2 frequency words.",
+      "pronunciation": "ga-WA-in",
+      "exampleTarget": "Halimbawa: \"Tuwing umaga, gumigising ako ng alas-sais. Naliligo ako, nagbibihis, kumakain ng kanin at itlog. Sumasakay ako ng jeep papuntang UP. Pumapasok ako sa klase ng alas-otso. Tanghali, kumakain ako sa canteen. Hapon, nag-aaral ako sa library. Gabi, umuuwi ako, nanonood ng TV, at natutulog ng alas-onse.\"",
+      "exampleNative": "\"Every morning, I wake at 6. I shower, dress, eat rice and eggs. I ride a jeep to UP. I enter class at 8. Noon, I eat at the canteen. Afternoon, I study at the library. Night, I go home, watch TV, sleep at 11.\"",
+      "korean": "Gawain",
+      "english": "Task: Describe a typical school day to a new roommate at UP. 6-8 turns. Required: morning routine sequence, mid-day activity, evening routine, with at least 3 mag- verbs in 3 aspects and 2 frequency words.",
+      "example": "Halimbawa: \"Tuwing umaga, gumigising ako ng alas-sais. Naliligo ako, nagbibihis, kumakain ng kanin at itlog. Sumasakay ako ng jeep papuntang UP. Pumapasok ako sa klase ng alas-otso. Tanghali, kumakain ako sa canteen. Hapon, nag-aaral ako sa library. Gabi, umuuwi ako, nanonood ng TV, at natutulog ng alas-onse.\"",
+      "exampleEnglish": "\"Every morning, I wake at 6. I shower, dress, eat rice and eggs. I ride a jeep to UP. I enter class at 8. Noon, I eat at the canteen. Afternoon, I study at the library. Night, I go home, watch TV, sleep at 11.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "romanization": "la-YU-nin",
+      "nativeText": "Model use for \"Layunin\": Filipino has NO tense — only aspect. The mag- prefix forms an actor-focus verb that can be habitual or instrumental. The three aspects (contemplated, imperfective, completed) tell you about completion, not the absolute time. This is one of the most distinctive features of Philippine languages.",
+      "pronunciation": "la-YU-nin",
+      "exampleTarget": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "exampleNative": "Three aspects, one verb, no tense — what is completed, what is ongoing, what is contemplated.",
+      "korean": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "english": "Model use for \"Layunin\": Filipino has NO tense — only aspect. The mag- prefix forms an actor-focus verb that can be habitual or instrumental. The three aspects (contemplated, imperfective, completed) tell you about completion, not the absolute time. This is one of the most distinctive features of Philippine languages.",
+      "example": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "exampleEnglish": "Three aspects, one verb, no tense — what is completed, what is ongoing, what is contemplated."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Layunin",
+      "romanization": "la-YU-nin",
+      "nativeText": "Usage focus for \"Layunin\": Filipino has NO tense — only aspect. The mag- prefix forms an actor-focus verb that can be habitual or instrumental. The three aspects (contemplated, imperfective, completed) tell you about completion, not the absolute time. This is one of the most distinctive features of Philippine languages.",
+      "pronunciation": "la-YU-nin",
+      "exampleTarget": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "exampleNative": "Notice what the form is doing here: Three aspects, one verb, no tense — what is completed, what is ongoing, what is contemplated.",
+      "korean": "Layunin",
+      "english": "Usage focus for \"Layunin\": Filipino has NO tense — only aspect. The mag- prefix forms an actor-focus verb that can be habitual or instrumental. The three aspects (contemplated, imperfective, completed) tell you about completion, not the absolute time. This is one of the most distinctive features of Philippine languages.",
+      "example": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "exampleEnglish": "Notice what the form is doing here: Three aspects, one verb, no tense — what is completed, what is ongoing, what is contemplated."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Layunin",
+      "romanization": "la-YU-nin",
+      "nativeText": "Contrast check for \"Layunin\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "la-YU-nin",
+      "exampleTarget": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: Three aspects, one verb, no tense — what is completed, what is ongoing, what is contemplated.",
+      "korean": "Layunin",
+      "english": "Contrast check for \"Layunin\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: Three aspects, one verb, no tense — what is completed, what is ongoing, what is contemplated."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Layunin",
+      "romanization": "la-YU-nin",
+      "nativeText": "Recall \"Layunin\" from memory, then explain what would change if a nearby alternative replaced it in \"mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)\".",
+      "pronunciation": "la-YU-nin",
+      "exampleTarget": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "exampleNative": "Self-check against the model before moving on: Three aspects, one verb, no tense — what is completed, what is ongoing, what is contemplated.",
+      "korean": "Layunin",
+      "english": "Recall \"Layunin\" from memory, then explain what would change if a nearby alternative replaced it in \"mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)\".",
+      "example": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "exampleEnglish": "Self-check against the model before moving on: Three aspects, one verb, no tense — what is completed, what is ongoing, what is contemplated."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Layunin",
+      "romanization": "la-YU-nin",
+      "nativeText": "Repair \"Layunin\" inside \"mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Filipino has NO tense — only aspect. The mag- prefix forms an actor-focus verb that can be habitual or instrumental. The three aspects (contemplated, imperfective, completed) tell you about completion, not the absolute time. This is one of the most distinctive features of Philippine languages.",
+      "pronunciation": "la-YU-nin",
+      "exampleTarget": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "exampleNative": "Use the model as the repair target: Three aspects, one verb, no tense — what is completed, what is ongoing, what is contemplated.",
+      "korean": "Layunin",
+      "english": "Repair \"Layunin\" inside \"mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Filipino has NO tense — only aspect. The mag- prefix forms an actor-focus verb that can be habitual or instrumental. The three aspects (contemplated, imperfective, completed) tell you about completion, not the absolute time. This is one of the most distinctive features of Philippine languages.",
+      "example": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "exampleEnglish": "Use the model as the repair target: Three aspects, one verb, no tense — what is completed, what is ongoing, what is contemplated."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Layunin",
+      "romanization": "la-YU-nin",
+      "nativeText": "Transfer \"Layunin\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)\".",
+      "pronunciation": "la-YU-nin",
+      "exampleTarget": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: Three aspects, one verb, no tense — what is completed, what is ongoing, what is contemplated.",
+      "korean": "Layunin",
+      "english": "Transfer \"Layunin\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)\".",
+      "example": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: Three aspects, one verb, no tense — what is completed, what is ongoing, what is contemplated."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Layunin",
+      "romanization": "la-YU-nin",
+      "nativeText": "Find one word or phrase that naturally travels with \"Layunin\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "la-YU-nin",
+      "exampleTarget": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: Three aspects, one verb, no tense — what is completed, what is ongoing, what is contemplated.",
+      "korean": "Layunin",
+      "english": "Find one word or phrase that naturally travels with \"Layunin\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: Three aspects, one verb, no tense — what is completed, what is ongoing, what is contemplated."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Layunin",
+      "romanization": "la-YU-nin",
+      "nativeText": "Listen for \"Layunin\" inside \"mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "la-YU-nin",
+      "exampleTarget": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Three aspects, one verb, no tense — what is completed, what is ongoing, what is contemplated.",
+      "korean": "Layunin",
+      "english": "Listen for \"Layunin\" inside \"mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Three aspects, one verb, no tense — what is completed, what is ongoing, what is contemplated."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Layunin",
+      "romanization": "la-YU-nin",
+      "nativeText": "Write \"Layunin\" again without looking, then compare the exact written form against \"mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)\" before moving on.",
+      "pronunciation": "la-YU-nin",
+      "exampleTarget": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "exampleNative": "Use the written model as the final correctness check: Three aspects, one verb, no tense — what is completed, what is ongoing, what is contemplated.",
+      "korean": "Layunin",
+      "english": "Write \"Layunin\" again without looking, then compare the exact written form against \"mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)\" before moving on.",
+      "example": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "exampleEnglish": "Use the written model as the final correctness check: Three aspects, one verb, no tense — what is completed, what is ongoing, what is contemplated."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Layunin",
+      "romanization": "la-YU-nin",
+      "nativeText": "Check whether \"Layunin\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Three aspects, one verb, no tense — what is completed, what is ongoing, what is contemplated.",
+      "pronunciation": "la-YU-nin",
+      "exampleTarget": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: Three aspects, one verb, no tense — what is completed, what is ongoing, what is contemplated.",
+      "korean": "Layunin",
+      "english": "Check whether \"Layunin\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Three aspects, one verb, no tense — what is completed, what is ongoing, what is contemplated.",
+      "example": "mag-aaral (will study) / nag-aaral (studying) / nag-aral (studied)",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: Three aspects, one verb, no tense — what is completed, what is ongoing, what is contemplated."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"",
+      "romanization": "TU-nay na sit-wa-SYON",
+      "nativeText": "Model use for \"Tunay na sitwasyon\": You are sharing a dorm room at UP Diliman with a roommate. On the second day, you both compare schedules: who wakes when, who showers when, who eats at the canteen, who studies late. The whole conversation involves only mag- and -um- verbs in three aspects.",
+      "pronunciation": "TU-nay na sit-wa-SYON",
+      "exampleTarget": "Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"",
+      "exampleNative": "\"What time do you wake up? — I wake up around 6, you?\" — typical roommate exchange.",
+      "korean": "Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"",
+      "english": "Model use for \"Tunay na sitwasyon\": You are sharing a dorm room at UP Diliman with a roommate. On the second day, you both compare schedules: who wakes when, who showers when, who eats at the canteen, who studies late. The whole conversation involves only mag- and -um- verbs in three aspects.",
+      "example": "Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"",
+      "exampleEnglish": "\"What time do you wake up? — I wake up around 6, you?\" — typical roommate exchange."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Tunay na sitwasyon",
+      "romanization": "TU-nay na sit-wa-SYON",
+      "nativeText": "Usage focus for \"Tunay na sitwasyon\": You are sharing a dorm room at UP Diliman with a roommate. On the second day, you both compare schedules: who wakes when, who showers when, who eats at the canteen, who studies late. The whole conversation involves only mag- and -um- verbs in three aspects.",
+      "pronunciation": "TU-nay na sit-wa-SYON",
+      "exampleTarget": "Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"",
+      "exampleNative": "Notice what the form is doing here: \"What time do you wake up? — I wake up around 6, you?\" — typical roommate exchange.",
+      "korean": "Tunay na sitwasyon",
+      "english": "Usage focus for \"Tunay na sitwasyon\": You are sharing a dorm room at UP Diliman with a roommate. On the second day, you both compare schedules: who wakes when, who showers when, who eats at the canteen, who studies late. The whole conversation involves only mag- and -um- verbs in three aspects.",
+      "example": "Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"",
+      "exampleEnglish": "Notice what the form is doing here: \"What time do you wake up? — I wake up around 6, you?\" — typical roommate exchange."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Tunay na sitwasyon",
+      "romanization": "TU-nay na sit-wa-SYON",
+      "nativeText": "Contrast check for \"Tunay na sitwasyon\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "TU-nay na sit-wa-SYON",
+      "exampleTarget": "Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"What time do you wake up? — I wake up around 6, you?\" — typical roommate exchange.",
+      "korean": "Tunay na sitwasyon",
+      "english": "Contrast check for \"Tunay na sitwasyon\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"What time do you wake up? — I wake up around 6, you?\" — typical roommate exchange."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Tunay na sitwasyon",
+      "romanization": "TU-nay na sit-wa-SYON",
+      "nativeText": "Recall \"Tunay na sitwasyon\" from memory, then explain what would change if a nearby alternative replaced it in \"Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"\".",
+      "pronunciation": "TU-nay na sit-wa-SYON",
+      "exampleTarget": "Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"",
+      "exampleNative": "Self-check against the model before moving on: \"What time do you wake up? — I wake up around 6, you?\" — typical roommate exchange.",
+      "korean": "Tunay na sitwasyon",
+      "english": "Recall \"Tunay na sitwasyon\" from memory, then explain what would change if a nearby alternative replaced it in \"Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"\".",
+      "example": "Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"",
+      "exampleEnglish": "Self-check against the model before moving on: \"What time do you wake up? — I wake up around 6, you?\" — typical roommate exchange."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Tunay na sitwasyon",
+      "romanization": "TU-nay na sit-wa-SYON",
+      "nativeText": "Repair \"Tunay na sitwasyon\" inside \"Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: You are sharing a dorm room at UP Diliman with a roommate. On the second day, you both compare schedules: who wakes when, who showers when, who eats at the canteen, who studies late. The whole conversation involves only mag- and -um- verbs in three aspects.",
+      "pronunciation": "TU-nay na sit-wa-SYON",
+      "exampleTarget": "Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"",
+      "exampleNative": "Use the model as the repair target: \"What time do you wake up? — I wake up around 6, you?\" — typical roommate exchange.",
+      "korean": "Tunay na sitwasyon",
+      "english": "Repair \"Tunay na sitwasyon\" inside \"Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: You are sharing a dorm room at UP Diliman with a roommate. On the second day, you both compare schedules: who wakes when, who showers when, who eats at the canteen, who studies late. The whole conversation involves only mag- and -um- verbs in three aspects.",
+      "example": "Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"",
+      "exampleEnglish": "Use the model as the repair target: \"What time do you wake up? — I wake up around 6, you?\" — typical roommate exchange."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Tunay na sitwasyon",
+      "romanization": "TU-nay na sit-wa-SYON",
+      "nativeText": "Transfer \"Tunay na sitwasyon\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"\".",
+      "pronunciation": "TU-nay na sit-wa-SYON",
+      "exampleTarget": "Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: \"What time do you wake up? — I wake up around 6, you?\" — typical roommate exchange.",
+      "korean": "Tunay na sitwasyon",
+      "english": "Transfer \"Tunay na sitwasyon\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"\".",
+      "example": "Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: \"What time do you wake up? — I wake up around 6, you?\" — typical roommate exchange."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Tunay na sitwasyon",
+      "romanization": "TU-nay na sit-wa-SYON",
+      "nativeText": "Find one word or phrase that naturally travels with \"Tunay na sitwasyon\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "TU-nay na sit-wa-SYON",
+      "exampleTarget": "Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: \"What time do you wake up? — I wake up around 6, you?\" — typical roommate exchange.",
+      "korean": "Tunay na sitwasyon",
+      "english": "Find one word or phrase that naturally travels with \"Tunay na sitwasyon\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: \"What time do you wake up? — I wake up around 6, you?\" — typical roommate exchange."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Tunay na sitwasyon",
+      "romanization": "TU-nay na sit-wa-SYON",
+      "nativeText": "Listen for \"Tunay na sitwasyon\" inside \"Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "TU-nay na sit-wa-SYON",
+      "exampleTarget": "Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"What time do you wake up? — I wake up around 6, you?\" — typical roommate exchange.",
+      "korean": "Tunay na sitwasyon",
+      "english": "Listen for \"Tunay na sitwasyon\" inside \"Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"What time do you wake up? — I wake up around 6, you?\" — typical roommate exchange."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Tunay na sitwasyon",
+      "romanization": "TU-nay na sit-wa-SYON",
+      "nativeText": "Write \"Tunay na sitwasyon\" again without looking, then compare the exact written form against \"Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"\" before moving on.",
+      "pronunciation": "TU-nay na sit-wa-SYON",
+      "exampleTarget": "Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"",
+      "exampleNative": "Use the written model as the final correctness check: \"What time do you wake up? — I wake up around 6, you?\" — typical roommate exchange.",
+      "korean": "Tunay na sitwasyon",
+      "english": "Write \"Tunay na sitwasyon\" again without looking, then compare the exact written form against \"Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"\" before moving on.",
+      "example": "Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"",
+      "exampleEnglish": "Use the written model as the final correctness check: \"What time do you wake up? — I wake up around 6, you?\" — typical roommate exchange."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Tunay na sitwasyon",
+      "romanization": "TU-nay na sit-wa-SYON",
+      "nativeText": "Check whether \"Tunay na sitwasyon\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"What time do you wake up? — I wake up around 6, you?\" — typical roommate exchange.",
+      "pronunciation": "TU-nay na sit-wa-SYON",
+      "exampleTarget": "Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: \"What time do you wake up? — I wake up around 6, you?\" — typical roommate exchange.",
+      "korean": "Tunay na sitwasyon",
+      "english": "Check whether \"Tunay na sitwasyon\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"What time do you wake up? — I wake up around 6, you?\" — typical roommate exchange.",
+      "example": "Roommate: \"Kailan ka gumigising? — Mga alas-sais ako gumigising, ikaw?\"",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: \"What time do you wake up? — I wake up around 6, you?\" — typical roommate exchange."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "mag- + luto = magluto \"to cook\"; mag- + bihis = magbihis \"to dress\"; mag- + aral = mag-aral \"to study\"",
+      "romanization": "MAG-",
+      "nativeText": "Model use for \"mag- prefix\": Actor-focus prefix used to form HABITUAL or instrumental verbs from roots. Attaches before any root: mag- + linis (clean) = maglinis \"to clean (regularly)\". The actor (the subject doing the action) is the focus.",
+      "pronunciation": "MAG-",
+      "exampleTarget": "mag- + luto = magluto \"to cook\"; mag- + bihis = magbihis \"to dress\"; mag- + aral = mag-aral \"to study\"",
+      "exampleNative": "Three example verbs formed with mag-. The root is the bare meaning; mag- adds the actor-focus and habitual/instrumental nuance.",
+      "korean": "mag- + luto = magluto \"to cook\"; mag- + bihis = magbihis \"to dress\"; mag- + aral = mag-aral \"to study\"",
+      "english": "Model use for \"mag- prefix\": Actor-focus prefix used to form HABITUAL or instrumental verbs from roots. Attaches before any root: mag- + linis (clean) = maglinis \"to clean (regularly)\". The actor (the subject doing the action) is the focus.",
+      "example": "mag- + luto = magluto \"to cook\"; mag- + bihis = magbihis \"to dress\"; mag- + aral = mag-aral \"to study\"",
+      "exampleEnglish": "Three example verbs formed with mag-. The root is the bare meaning; mag- adds the actor-focus and habitual/instrumental nuance."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "mag- prefix",
+      "romanization": "MAG-",
+      "nativeText": "Usage focus for \"mag- prefix\": Actor-focus prefix used to form HABITUAL or instrumental verbs from roots. Attaches before any root: mag- + linis (clean) = maglinis \"to clean (regularly)\". The actor (the subject doing the action) is the focus.",
+      "pronunciation": "MAG-",
+      "exampleTarget": "mag- + luto = magluto \"to cook\"; mag- + bihis = magbihis \"to dress\"; mag- + aral = mag-aral \"to study\"",
+      "exampleNative": "Notice what the form is doing here: Three example verbs formed with mag-. The root is the bare meaning; mag- adds the actor-focus and habitual/instrumental nuance.",
+      "korean": "mag- prefix",
+      "english": "Usage focus for \"mag- prefix\": Actor-focus prefix used to form HABITUAL or instrumental verbs from roots. Attaches before any root: mag- + linis (clean) = maglinis \"to clean (regularly)\". The actor (the subject doing the action) is the focus.",
+      "example": "mag- + luto = magluto \"to cook\"; mag- + bihis = magbihis \"to dress\"; mag- + aral = mag-aral \"to study\"",
+      "exampleEnglish": "Notice what the form is doing here: Three example verbs formed with mag-. The root is the bare meaning; mag- adds the actor-focus and habitual/instrumental nuance."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "mag- prefix",
+      "romanization": "MAG-",
+      "nativeText": "Contrast check for \"mag- prefix\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "MAG-",
+      "exampleTarget": "mag- + luto = magluto \"to cook\"; mag- + bihis = magbihis \"to dress\"; mag- + aral = mag-aral \"to study\"",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: Three example verbs formed with mag-. The root is the bare meaning; mag- adds the actor-focus and habitual/instrumental nuance.",
+      "korean": "mag- prefix",
+      "english": "Contrast check for \"mag- prefix\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "mag- + luto = magluto \"to cook\"; mag- + bihis = magbihis \"to dress\"; mag- + aral = mag-aral \"to study\"",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: Three example verbs formed with mag-. The root is the bare meaning; mag- adds the actor-focus and habitual/instrumental nuance."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "mag- prefix",
+      "romanization": "MAG-",
+      "nativeText": "Recall \"mag- prefix\" from memory, then explain what would change if a nearby alternative replaced it in \"mag- + luto = magluto \"to cook\"; mag- + bihis = magbihis \"to dress\"; mag- + aral = mag-aral \"to study\"\".",
+      "pronunciation": "MAG-",
+      "exampleTarget": "mag- + luto = magluto \"to cook\"; mag- + bihis = magbihis \"to dress\"; mag- + aral = mag-aral \"to study\"",
+      "exampleNative": "Self-check against the model before moving on: Three example verbs formed with mag-. The root is the bare meaning; mag- adds the actor-focus and habitual/instrumental nuance.",
+      "korean": "mag- prefix",
+      "english": "Recall \"mag- prefix\" from memory, then explain what would change if a nearby alternative replaced it in \"mag- + luto = magluto \"to cook\"; mag- + bihis = magbihis \"to dress\"; mag- + aral = mag-aral \"to study\"\".",
+      "example": "mag- + luto = magluto \"to cook\"; mag- + bihis = magbihis \"to dress\"; mag- + aral = mag-aral \"to study\"",
+      "exampleEnglish": "Self-check against the model before moving on: Three example verbs formed with mag-. The root is the bare meaning; mag- adds the actor-focus and habitual/instrumental nuance."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "mag- prefix",
+      "romanization": "MAG-",
+      "nativeText": "Repair \"mag- prefix\" inside \"mag- + luto = magluto \"to cook\"; mag- + bihis = magbihis \"to dress\"; mag- + aral = mag-aral \"to study\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Actor-focus prefix used to form HABITUAL or instrumental verbs from roots. Attaches before any root: mag- + linis (clean) = maglinis \"to clean (regularly)\". The actor (the subject doing the action) is the focus.",
+      "pronunciation": "MAG-",
+      "exampleTarget": "mag- + luto = magluto \"to cook\"; mag- + bihis = magbihis \"to dress\"; mag- + aral = mag-aral \"to study\"",
+      "exampleNative": "Use the model as the repair target: Three example verbs formed with mag-. The root is the bare meaning; mag- adds the actor-focus and habitual/instrumental nuance.",
+      "korean": "mag- prefix",
+      "english": "Repair \"mag- prefix\" inside \"mag- + luto = magluto \"to cook\"; mag- + bihis = magbihis \"to dress\"; mag- + aral = mag-aral \"to study\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Actor-focus prefix used to form HABITUAL or instrumental verbs from roots. Attaches before any root: mag- + linis (clean) = maglinis \"to clean (regularly)\". The actor (the subject doing the action) is the focus.",
+      "example": "mag- + luto = magluto \"to cook\"; mag- + bihis = magbihis \"to dress\"; mag- + aral = mag-aral \"to study\"",
+      "exampleEnglish": "Use the model as the repair target: Three example verbs formed with mag-. The root is the bare meaning; mag- adds the actor-focus and habitual/instrumental nuance."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "mag- prefix",
+      "romanization": "MAG-",
+      "nativeText": "Transfer \"mag- prefix\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"mag- + luto = magluto \"to cook\"; mag- + bihis = magbihis \"to dress\"; mag- + aral = mag-aral \"to study\"\".",
+      "pronunciation": "MAG-",
+      "exampleTarget": "mag- + luto = magluto \"to cook\"; mag- + bihis = magbihis \"to dress\"; mag- + aral = mag-aral \"to study\"",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: Three example verbs formed with mag-. The root is the bare meaning; mag- adds the actor-focus and habitual/instrumental nuance.",
+      "korean": "mag- prefix",
+      "english": "Transfer \"mag- prefix\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"mag- + luto = magluto \"to cook\"; mag- + bihis = magbihis \"to dress\"; mag- + aral = mag-aral \"to study\"\".",
+      "example": "mag- + luto = magluto \"to cook\"; mag- + bihis = magbihis \"to dress\"; mag- + aral = mag-aral \"to study\"",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: Three example verbs formed with mag-. The root is the bare meaning; mag- adds the actor-focus and habitual/instrumental nuance."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "mag- prefix",
+      "romanization": "MAG-",
+      "nativeText": "Find one word or phrase that naturally travels with \"mag- prefix\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "MAG-",
+      "exampleTarget": "mag- + luto = magluto \"to cook\"; mag- + bihis = magbihis \"to dress\"; mag- + aral = mag-aral \"to study\"",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: Three example verbs formed with mag-. The root is the bare meaning; mag- adds the actor-focus and habitual/instrumental nuance.",
+      "korean": "mag- prefix",
+      "english": "Find one word or phrase that naturally travels with \"mag- prefix\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "mag- + luto = magluto \"to cook\"; mag- + bihis = magbihis \"to dress\"; mag- + aral = mag-aral \"to study\"",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: Three example verbs formed with mag-. The root is the bare meaning; mag- adds the actor-focus and habitual/instrumental nuance."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "mag- prefix",
+      "romanization": "MAG-",
+      "nativeText": "Listen for \"mag- prefix\" inside \"mag- + luto = magluto \"to cook\"; mag- + bihis = magbihis \"to dress\"; mag- + aral = mag-aral \"to study\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "MAG-",
+      "exampleTarget": "mag- + luto = magluto \"to cook\"; mag- + bihis = magbihis \"to dress\"; mag- + aral = mag-aral \"to study\"",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Three example verbs formed with mag-. The root is the bare meaning; mag- adds the actor-focus and habitual/instrumental nuance.",
+      "korean": "mag- prefix",
+      "english": "Listen for \"mag- prefix\" inside \"mag- + luto = magluto \"to cook\"; mag- + bihis = magbihis \"to dress\"; mag- + aral = mag-aral \"to study\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "mag- + luto = magluto \"to cook\"; mag- + bihis = magbihis \"to dress\"; mag- + aral = mag-aral \"to study\"",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Three example verbs formed with mag-. The root is the bare meaning; mag- adds the actor-focus and habitual/instrumental nuance."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "mag- prefix",
+      "romanization": "MAG-",
+      "nativeText": "Write \"mag- prefix\" again without looking, then compare the exact written form against \"mag- + luto = magluto \"to cook\"; mag- + bihis = magbihis \"to dress\"; mag- + aral = mag-aral \"to study\"\" before moving on.",
+      "pronunciation": "MAG-",
+      "exampleTarget": "mag- + luto = magluto \"to cook\"; mag- + bihis = magbihis \"to dress\"; mag- + aral = mag-aral \"to study\"",
+      "exampleNative": "Use the written model as the final correctness check: Three example verbs formed with mag-. The root is the bare meaning; mag- adds the actor-focus and habitual/instrumental nuance.",
+      "korean": "mag- prefix",
+      "english": "Write \"mag- prefix\" again without looking, then compare the exact written form against \"mag- + luto = magluto \"to cook\"; mag- + bihis = magbihis \"to dress\"; mag- + aral = mag-aral \"to study\"\" before moving on.",
+      "example": "mag- + luto = magluto \"to cook\"; mag- + bihis = magbihis \"to dress\"; mag- + aral = mag-aral \"to study\"",
+      "exampleEnglish": "Use the written model as the final correctness check: Three example verbs formed with mag-. The root is the bare meaning; mag- adds the actor-focus and habitual/instrumental nuance."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "mag- prefix",
+      "romanization": "MAG-",
+      "nativeText": "Check whether \"mag- prefix\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Three example verbs formed with mag-. The root is the bare meaning; mag- adds the actor-focus and habitual/instrumental nuance.",
+      "pronunciation": "MAG-",
+      "exampleTarget": "mag- + luto = magluto \"to cook\"; mag- + bihis = magbihis \"to dress\"; mag- + aral = mag-aral \"to study\"",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: Three example verbs formed with mag-. The root is the bare meaning; mag- adds the actor-focus and habitual/instrumental nuance.",
+      "korean": "mag- prefix",
+      "english": "Check whether \"mag- prefix\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Three example verbs formed with mag-. The root is the bare meaning; mag- adds the actor-focus and habitual/instrumental nuance.",
+      "example": "mag- + luto = magluto \"to cook\"; mag- + bihis = magbihis \"to dress\"; mag- + aral = mag-aral \"to study\"",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: Three example verbs formed with mag-. The root is the bare meaning; mag- adds the actor-focus and habitual/instrumental nuance."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "magluluto / nagluluto / nagluto = \"will cook / cooks / cooked\"",
+      "romanization": "TAT-long as-PE-to",
+      "nativeText": "Model use for \"Tatlong aspeto\": The THREE ASPECTS of any mag- verb: 1) Contemplated (will / about to / planning to): mag- + reduplicated first CV + root → MAG-LU-LUTO \"will cook\". 2) Imperfective (doing / does habitually): NAG- + reduplicated first CV + root → NAG-LU-LUTO \"is cooking / cooks\". 3) Completed (did / has done): NAG- + root → NAG-LUTO \"cooked\".",
+      "pronunciation": "TAT-long as-PE-to",
+      "exampleTarget": "magluluto / nagluluto / nagluto = \"will cook / cooks / cooked\"",
+      "exampleNative": "Same verb, three aspect forms. The first letter changes (m- → n-) and the reduplication appears or disappears.",
+      "korean": "magluluto / nagluluto / nagluto = \"will cook / cooks / cooked\"",
+      "english": "Model use for \"Tatlong aspeto\": The THREE ASPECTS of any mag- verb: 1) Contemplated (will / about to / planning to): mag- + reduplicated first CV + root → MAG-LU-LUTO \"will cook\". 2) Imperfective (doing / does habitually): NAG- + reduplicated first CV + root → NAG-LU-LUTO \"is cooking / cooks\". 3) Completed (did / has done): NAG- + root → NAG-LUTO \"cooked\".",
+      "example": "magluluto / nagluluto / nagluto = \"will cook / cooks / cooked\"",
+      "exampleEnglish": "Same verb, three aspect forms. The first letter changes (m- → n-) and the reduplication appears or disappears."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Tatlong aspeto",
+      "romanization": "TAT-long as-PE-to",
+      "nativeText": "Usage focus for \"Tatlong aspeto\": The THREE ASPECTS of any mag- verb: 1) Contemplated (will / about to / planning to): mag- + reduplicated first CV + root → MAG-LU-LUTO \"will cook\". 2) Imperfective (doing / does habitually): NAG- + reduplicated first CV + root → NAG-LU-LUTO \"is cooking / cooks\". 3) Completed (did / has done): NAG- + root → NAG-LUTO \"cooked\".",
+      "pronunciation": "TAT-long as-PE-to",
+      "exampleTarget": "magluluto / nagluluto / nagluto = \"will cook / cooks / cooked\"",
+      "exampleNative": "Notice what the form is doing here: Same verb, three aspect forms. The first letter changes (m- → n-) and the reduplication appears or disappears.",
+      "korean": "Tatlong aspeto",
+      "english": "Usage focus for \"Tatlong aspeto\": The THREE ASPECTS of any mag- verb: 1) Contemplated (will / about to / planning to): mag- + reduplicated first CV + root → MAG-LU-LUTO \"will cook\". 2) Imperfective (doing / does habitually): NAG- + reduplicated first CV + root → NAG-LU-LUTO \"is cooking / cooks\". 3) Completed (did / has done): NAG- + root → NAG-LUTO \"cooked\".",
+      "example": "magluluto / nagluluto / nagluto = \"will cook / cooks / cooked\"",
+      "exampleEnglish": "Notice what the form is doing here: Same verb, three aspect forms. The first letter changes (m- → n-) and the reduplication appears or disappears."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Tatlong aspeto",
+      "romanization": "TAT-long as-PE-to",
+      "nativeText": "Contrast check for \"Tatlong aspeto\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "TAT-long as-PE-to",
+      "exampleTarget": "magluluto / nagluluto / nagluto = \"will cook / cooks / cooked\"",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: Same verb, three aspect forms. The first letter changes (m- → n-) and the reduplication appears or disappears.",
+      "korean": "Tatlong aspeto",
+      "english": "Contrast check for \"Tatlong aspeto\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "magluluto / nagluluto / nagluto = \"will cook / cooks / cooked\"",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: Same verb, three aspect forms. The first letter changes (m- → n-) and the reduplication appears or disappears."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Tatlong aspeto",
+      "romanization": "TAT-long as-PE-to",
+      "nativeText": "Recall \"Tatlong aspeto\" from memory, then explain what would change if a nearby alternative replaced it in \"magluluto / nagluluto / nagluto = \"will cook / cooks / cooked\"\".",
+      "pronunciation": "TAT-long as-PE-to",
+      "exampleTarget": "magluluto / nagluluto / nagluto = \"will cook / cooks / cooked\"",
+      "exampleNative": "Self-check against the model before moving on: Same verb, three aspect forms. The first letter changes (m- → n-) and the reduplication appears or disappears.",
+      "korean": "Tatlong aspeto",
+      "english": "Recall \"Tatlong aspeto\" from memory, then explain what would change if a nearby alternative replaced it in \"magluluto / nagluluto / nagluto = \"will cook / cooks / cooked\"\".",
+      "example": "magluluto / nagluluto / nagluto = \"will cook / cooks / cooked\"",
+      "exampleEnglish": "Self-check against the model before moving on: Same verb, three aspect forms. The first letter changes (m- → n-) and the reduplication appears or disappears."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Tatlong aspeto",
+      "romanization": "TAT-long as-PE-to",
+      "nativeText": "Repair \"Tatlong aspeto\" inside \"magluluto / nagluluto / nagluto = \"will cook / cooks / cooked\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: The THREE ASPECTS of any mag- verb: 1) Contemplated (will / about to / planning to): mag- + reduplicated first CV + root → MAG-LU-LUTO \"will cook\". 2) Imperfective (doing / does habitually): NAG- + reduplicated first CV + root → NAG-LU-LUTO \"is cooking / cooks\". 3) Completed (did / has done): NAG- + root → NAG-LUTO \"cooked\".",
+      "pronunciation": "TAT-long as-PE-to",
+      "exampleTarget": "magluluto / nagluluto / nagluto = \"will cook / cooks / cooked\"",
+      "exampleNative": "Use the model as the repair target: Same verb, three aspect forms. The first letter changes (m- → n-) and the reduplication appears or disappears.",
+      "korean": "Tatlong aspeto",
+      "english": "Repair \"Tatlong aspeto\" inside \"magluluto / nagluluto / nagluto = \"will cook / cooks / cooked\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: The THREE ASPECTS of any mag- verb: 1) Contemplated (will / about to / planning to): mag- + reduplicated first CV + root → MAG-LU-LUTO \"will cook\". 2) Imperfective (doing / does habitually): NAG- + reduplicated first CV + root → NAG-LU-LUTO \"is cooking / cooks\". 3) Completed (did / has done): NAG- + root → NAG-LUTO \"cooked\".",
+      "example": "magluluto / nagluluto / nagluto = \"will cook / cooks / cooked\"",
+      "exampleEnglish": "Use the model as the repair target: Same verb, three aspect forms. The first letter changes (m- → n-) and the reduplication appears or disappears."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Tatlong aspeto",
+      "romanization": "TAT-long as-PE-to",
+      "nativeText": "Transfer \"Tatlong aspeto\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"magluluto / nagluluto / nagluto = \"will cook / cooks / cooked\"\".",
+      "pronunciation": "TAT-long as-PE-to",
+      "exampleTarget": "magluluto / nagluluto / nagluto = \"will cook / cooks / cooked\"",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: Same verb, three aspect forms. The first letter changes (m- → n-) and the reduplication appears or disappears.",
+      "korean": "Tatlong aspeto",
+      "english": "Transfer \"Tatlong aspeto\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"magluluto / nagluluto / nagluto = \"will cook / cooks / cooked\"\".",
+      "example": "magluluto / nagluluto / nagluto = \"will cook / cooks / cooked\"",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: Same verb, three aspect forms. The first letter changes (m- → n-) and the reduplication appears or disappears."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Tatlong aspeto",
+      "romanization": "TAT-long as-PE-to",
+      "nativeText": "Find one word or phrase that naturally travels with \"Tatlong aspeto\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "TAT-long as-PE-to",
+      "exampleTarget": "magluluto / nagluluto / nagluto = \"will cook / cooks / cooked\"",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: Same verb, three aspect forms. The first letter changes (m- → n-) and the reduplication appears or disappears.",
+      "korean": "Tatlong aspeto",
+      "english": "Find one word or phrase that naturally travels with \"Tatlong aspeto\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "magluluto / nagluluto / nagluto = \"will cook / cooks / cooked\"",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: Same verb, three aspect forms. The first letter changes (m- → n-) and the reduplication appears or disappears."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Tatlong aspeto",
+      "romanization": "TAT-long as-PE-to",
+      "nativeText": "Listen for \"Tatlong aspeto\" inside \"magluluto / nagluluto / nagluto = \"will cook / cooks / cooked\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "TAT-long as-PE-to",
+      "exampleTarget": "magluluto / nagluluto / nagluto = \"will cook / cooks / cooked\"",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Same verb, three aspect forms. The first letter changes (m- → n-) and the reduplication appears or disappears.",
+      "korean": "Tatlong aspeto",
+      "english": "Listen for \"Tatlong aspeto\" inside \"magluluto / nagluluto / nagluto = \"will cook / cooks / cooked\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "magluluto / nagluluto / nagluto = \"will cook / cooks / cooked\"",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Same verb, three aspect forms. The first letter changes (m- → n-) and the reduplication appears or disappears."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Tatlong aspeto",
+      "romanization": "TAT-long as-PE-to",
+      "nativeText": "Write \"Tatlong aspeto\" again without looking, then compare the exact written form against \"magluluto / nagluluto / nagluto = \"will cook / cooks / cooked\"\" before moving on.",
+      "pronunciation": "TAT-long as-PE-to",
+      "exampleTarget": "magluluto / nagluluto / nagluto = \"will cook / cooks / cooked\"",
+      "exampleNative": "Use the written model as the final correctness check: Same verb, three aspect forms. The first letter changes (m- → n-) and the reduplication appears or disappears.",
+      "korean": "Tatlong aspeto",
+      "english": "Write \"Tatlong aspeto\" again without looking, then compare the exact written form against \"magluluto / nagluluto / nagluto = \"will cook / cooks / cooked\"\" before moving on.",
+      "example": "magluluto / nagluluto / nagluto = \"will cook / cooks / cooked\"",
+      "exampleEnglish": "Use the written model as the final correctness check: Same verb, three aspect forms. The first letter changes (m- → n-) and the reduplication appears or disappears."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Tatlong aspeto",
+      "romanization": "TAT-long as-PE-to",
+      "nativeText": "Check whether \"Tatlong aspeto\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Same verb, three aspect forms. The first letter changes (m- → n-) and the reduplication appears or disappears.",
+      "pronunciation": "TAT-long as-PE-to",
+      "exampleTarget": "magluluto / nagluluto / nagluto = \"will cook / cooks / cooked\"",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: Same verb, three aspect forms. The first letter changes (m- → n-) and the reduplication appears or disappears.",
+      "korean": "Tatlong aspeto",
+      "english": "Check whether \"Tatlong aspeto\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Same verb, three aspect forms. The first letter changes (m- → n-) and the reduplication appears or disappears.",
+      "example": "magluluto / nagluluto / nagluto = \"will cook / cooks / cooked\"",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: Same verb, three aspect forms. The first letter changes (m- → n-) and the reduplication appears or disappears."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Gumising ako ng alas-sais.",
+      "romanization": "gu-MI-sing",
+      "nativeText": "Model use for \"gumising\": \"To wake up\". Actor-focus, root: gising. Aspects: gigising (will), gumigising (waking up / wakes up), gumising (woke up). Common time: alas-sais (6 AM, Spanish-style), alas-siyete (7 AM).",
+      "pronunciation": "gu-MI-sing",
+      "exampleTarget": "Gumising ako ng alas-sais.",
+      "exampleNative": "\"I woke up at 6 AM\" — completed aspect; alas- + Spanish number for time.",
+      "korean": "Gumising ako ng alas-sais.",
+      "english": "Model use for \"gumising\": \"To wake up\". Actor-focus, root: gising. Aspects: gigising (will), gumigising (waking up / wakes up), gumising (woke up). Common time: alas-sais (6 AM, Spanish-style), alas-siyete (7 AM).",
+      "example": "Gumising ako ng alas-sais.",
+      "exampleEnglish": "\"I woke up at 6 AM\" — completed aspect; alas- + Spanish number for time."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "gumising",
+      "romanization": "gu-MI-sing",
+      "nativeText": "Usage focus for \"gumising\": \"To wake up\". Actor-focus, root: gising. Aspects: gigising (will), gumigising (waking up / wakes up), gumising (woke up). Common time: alas-sais (6 AM, Spanish-style), alas-siyete (7 AM).",
+      "pronunciation": "gu-MI-sing",
+      "exampleTarget": "Gumising ako ng alas-sais.",
+      "exampleNative": "Notice what the form is doing here: \"I woke up at 6 AM\" — completed aspect; alas- + Spanish number for time.",
+      "korean": "gumising",
+      "english": "Usage focus for \"gumising\": \"To wake up\". Actor-focus, root: gising. Aspects: gigising (will), gumigising (waking up / wakes up), gumising (woke up). Common time: alas-sais (6 AM, Spanish-style), alas-siyete (7 AM).",
+      "example": "Gumising ako ng alas-sais.",
+      "exampleEnglish": "Notice what the form is doing here: \"I woke up at 6 AM\" — completed aspect; alas- + Spanish number for time."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "gumising",
+      "romanization": "gu-MI-sing",
+      "nativeText": "Contrast check for \"gumising\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "gu-MI-sing",
+      "exampleTarget": "Gumising ako ng alas-sais.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"I woke up at 6 AM\" — completed aspect; alas- + Spanish number for time.",
+      "korean": "gumising",
+      "english": "Contrast check for \"gumising\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Gumising ako ng alas-sais.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"I woke up at 6 AM\" — completed aspect; alas- + Spanish number for time."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "gumising",
+      "romanization": "gu-MI-sing",
+      "nativeText": "Recall \"gumising\" from memory, then explain what would change if a nearby alternative replaced it in \"Gumising ako ng alas-sais.\".",
+      "pronunciation": "gu-MI-sing",
+      "exampleTarget": "Gumising ako ng alas-sais.",
+      "exampleNative": "Self-check against the model before moving on: \"I woke up at 6 AM\" — completed aspect; alas- + Spanish number for time.",
+      "korean": "gumising",
+      "english": "Recall \"gumising\" from memory, then explain what would change if a nearby alternative replaced it in \"Gumising ako ng alas-sais.\".",
+      "example": "Gumising ako ng alas-sais.",
+      "exampleEnglish": "Self-check against the model before moving on: \"I woke up at 6 AM\" — completed aspect; alas- + Spanish number for time."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "gumising",
+      "romanization": "gu-MI-sing",
+      "nativeText": "Repair \"gumising\" inside \"Gumising ako ng alas-sais.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: \"To wake up\". Actor-focus, root: gising. Aspects: gigising (will), gumigising (waking up / wakes up), gumising (woke up). Common time: alas-sais (6 AM, Spanish-style), alas-siyete (7 AM).",
+      "pronunciation": "gu-MI-sing",
+      "exampleTarget": "Gumising ako ng alas-sais.",
+      "exampleNative": "Use the model as the repair target: \"I woke up at 6 AM\" — completed aspect; alas- + Spanish number for time.",
+      "korean": "gumising",
+      "english": "Repair \"gumising\" inside \"Gumising ako ng alas-sais.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: \"To wake up\". Actor-focus, root: gising. Aspects: gigising (will), gumigising (waking up / wakes up), gumising (woke up). Common time: alas-sais (6 AM, Spanish-style), alas-siyete (7 AM).",
+      "example": "Gumising ako ng alas-sais.",
+      "exampleEnglish": "Use the model as the repair target: \"I woke up at 6 AM\" — completed aspect; alas- + Spanish number for time."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "gumising",
+      "romanization": "gu-MI-sing",
+      "nativeText": "Transfer \"gumising\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Gumising ako ng alas-sais.\".",
+      "pronunciation": "gu-MI-sing",
+      "exampleTarget": "Gumising ako ng alas-sais.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: \"I woke up at 6 AM\" — completed aspect; alas- + Spanish number for time.",
+      "korean": "gumising",
+      "english": "Transfer \"gumising\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Gumising ako ng alas-sais.\".",
+      "example": "Gumising ako ng alas-sais.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: \"I woke up at 6 AM\" — completed aspect; alas- + Spanish number for time."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "gumising",
+      "romanization": "gu-MI-sing",
+      "nativeText": "Find one word or phrase that naturally travels with \"gumising\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "gu-MI-sing",
+      "exampleTarget": "Gumising ako ng alas-sais.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: \"I woke up at 6 AM\" — completed aspect; alas- + Spanish number for time.",
+      "korean": "gumising",
+      "english": "Find one word or phrase that naturally travels with \"gumising\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Gumising ako ng alas-sais.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: \"I woke up at 6 AM\" — completed aspect; alas- + Spanish number for time."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "gumising",
+      "romanization": "gu-MI-sing",
+      "nativeText": "Listen for \"gumising\" inside \"Gumising ako ng alas-sais.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "gu-MI-sing",
+      "exampleTarget": "Gumising ako ng alas-sais.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"I woke up at 6 AM\" — completed aspect; alas- + Spanish number for time.",
+      "korean": "gumising",
+      "english": "Listen for \"gumising\" inside \"Gumising ako ng alas-sais.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Gumising ako ng alas-sais.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"I woke up at 6 AM\" — completed aspect; alas- + Spanish number for time."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "gumising",
+      "romanization": "gu-MI-sing",
+      "nativeText": "Write \"gumising\" again without looking, then compare the exact written form against \"Gumising ako ng alas-sais.\" before moving on.",
+      "pronunciation": "gu-MI-sing",
+      "exampleTarget": "Gumising ako ng alas-sais.",
+      "exampleNative": "Use the written model as the final correctness check: \"I woke up at 6 AM\" — completed aspect; alas- + Spanish number for time.",
+      "korean": "gumising",
+      "english": "Write \"gumising\" again without looking, then compare the exact written form against \"Gumising ako ng alas-sais.\" before moving on.",
+      "example": "Gumising ako ng alas-sais.",
+      "exampleEnglish": "Use the written model as the final correctness check: \"I woke up at 6 AM\" — completed aspect; alas- + Spanish number for time."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "gumising",
+      "romanization": "gu-MI-sing",
+      "nativeText": "Check whether \"gumising\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"I woke up at 6 AM\" — completed aspect; alas- + Spanish number for time.",
+      "pronunciation": "gu-MI-sing",
+      "exampleTarget": "Gumising ako ng alas-sais.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: \"I woke up at 6 AM\" — completed aspect; alas- + Spanish number for time.",
+      "korean": "gumising",
+      "english": "Check whether \"gumising\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"I woke up at 6 AM\" — completed aspect; alas- + Spanish number for time.",
+      "example": "Gumising ako ng alas-sais.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: \"I woke up at 6 AM\" — completed aspect; alas- + Spanish number for time."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Naligo na ako kaninang umaga.",
+      "romanization": "ma-LI-go",
+      "nativeText": "Model use for \"maligo\": \"To take a bath / shower\". Actor-focus, native root: ligo. Aspects: maliligo (will), naliligo (showering), naligo (showered). In Filipino tropics, two showers a day is normal.",
+      "pronunciation": "ma-LI-go",
+      "exampleTarget": "Naligo na ako kaninang umaga.",
+      "exampleNative": "\"I already showered this morning\" — kaninang = \"earlier today\".",
+      "korean": "Naligo na ako kaninang umaga.",
+      "english": "Model use for \"maligo\": \"To take a bath / shower\". Actor-focus, native root: ligo. Aspects: maliligo (will), naliligo (showering), naligo (showered). In Filipino tropics, two showers a day is normal.",
+      "example": "Naligo na ako kaninang umaga.",
+      "exampleEnglish": "\"I already showered this morning\" — kaninang = \"earlier today\"."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "maligo",
+      "romanization": "ma-LI-go",
+      "nativeText": "Usage focus for \"maligo\": \"To take a bath / shower\". Actor-focus, native root: ligo. Aspects: maliligo (will), naliligo (showering), naligo (showered). In Filipino tropics, two showers a day is normal.",
+      "pronunciation": "ma-LI-go",
+      "exampleTarget": "Naligo na ako kaninang umaga.",
+      "exampleNative": "Notice what the form is doing here: \"I already showered this morning\" — kaninang = \"earlier today\".",
+      "korean": "maligo",
+      "english": "Usage focus for \"maligo\": \"To take a bath / shower\". Actor-focus, native root: ligo. Aspects: maliligo (will), naliligo (showering), naligo (showered). In Filipino tropics, two showers a day is normal.",
+      "example": "Naligo na ako kaninang umaga.",
+      "exampleEnglish": "Notice what the form is doing here: \"I already showered this morning\" — kaninang = \"earlier today\"."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "maligo",
+      "romanization": "ma-LI-go",
+      "nativeText": "Contrast check for \"maligo\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ma-LI-go",
+      "exampleTarget": "Naligo na ako kaninang umaga.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"I already showered this morning\" — kaninang = \"earlier today\".",
+      "korean": "maligo",
+      "english": "Contrast check for \"maligo\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Naligo na ako kaninang umaga.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"I already showered this morning\" — kaninang = \"earlier today\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "maligo",
+      "romanization": "ma-LI-go",
+      "nativeText": "Recall \"maligo\" from memory, then explain what would change if a nearby alternative replaced it in \"Naligo na ako kaninang umaga.\".",
+      "pronunciation": "ma-LI-go",
+      "exampleTarget": "Naligo na ako kaninang umaga.",
+      "exampleNative": "Self-check against the model before moving on: \"I already showered this morning\" — kaninang = \"earlier today\".",
+      "korean": "maligo",
+      "english": "Recall \"maligo\" from memory, then explain what would change if a nearby alternative replaced it in \"Naligo na ako kaninang umaga.\".",
+      "example": "Naligo na ako kaninang umaga.",
+      "exampleEnglish": "Self-check against the model before moving on: \"I already showered this morning\" — kaninang = \"earlier today\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "maligo",
+      "romanization": "ma-LI-go",
+      "nativeText": "Repair \"maligo\" inside \"Naligo na ako kaninang umaga.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: \"To take a bath / shower\". Actor-focus, native root: ligo. Aspects: maliligo (will), naliligo (showering), naligo (showered). In Filipino tropics, two showers a day is normal.",
+      "pronunciation": "ma-LI-go",
+      "exampleTarget": "Naligo na ako kaninang umaga.",
+      "exampleNative": "Use the model as the repair target: \"I already showered this morning\" — kaninang = \"earlier today\".",
+      "korean": "maligo",
+      "english": "Repair \"maligo\" inside \"Naligo na ako kaninang umaga.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: \"To take a bath / shower\". Actor-focus, native root: ligo. Aspects: maliligo (will), naliligo (showering), naligo (showered). In Filipino tropics, two showers a day is normal.",
+      "example": "Naligo na ako kaninang umaga.",
+      "exampleEnglish": "Use the model as the repair target: \"I already showered this morning\" — kaninang = \"earlier today\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "maligo",
+      "romanization": "ma-LI-go",
+      "nativeText": "Transfer \"maligo\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Naligo na ako kaninang umaga.\".",
+      "pronunciation": "ma-LI-go",
+      "exampleTarget": "Naligo na ako kaninang umaga.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: \"I already showered this morning\" — kaninang = \"earlier today\".",
+      "korean": "maligo",
+      "english": "Transfer \"maligo\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Naligo na ako kaninang umaga.\".",
+      "example": "Naligo na ako kaninang umaga.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: \"I already showered this morning\" — kaninang = \"earlier today\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "maligo",
+      "romanization": "ma-LI-go",
+      "nativeText": "Find one word or phrase that naturally travels with \"maligo\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ma-LI-go",
+      "exampleTarget": "Naligo na ako kaninang umaga.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: \"I already showered this morning\" — kaninang = \"earlier today\".",
+      "korean": "maligo",
+      "english": "Find one word or phrase that naturally travels with \"maligo\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Naligo na ako kaninang umaga.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: \"I already showered this morning\" — kaninang = \"earlier today\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "maligo",
+      "romanization": "ma-LI-go",
+      "nativeText": "Listen for \"maligo\" inside \"Naligo na ako kaninang umaga.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ma-LI-go",
+      "exampleTarget": "Naligo na ako kaninang umaga.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"I already showered this morning\" — kaninang = \"earlier today\".",
+      "korean": "maligo",
+      "english": "Listen for \"maligo\" inside \"Naligo na ako kaninang umaga.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Naligo na ako kaninang umaga.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"I already showered this morning\" — kaninang = \"earlier today\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "maligo",
+      "romanization": "ma-LI-go",
+      "nativeText": "Write \"maligo\" again without looking, then compare the exact written form against \"Naligo na ako kaninang umaga.\" before moving on.",
+      "pronunciation": "ma-LI-go",
+      "exampleTarget": "Naligo na ako kaninang umaga.",
+      "exampleNative": "Use the written model as the final correctness check: \"I already showered this morning\" — kaninang = \"earlier today\".",
+      "korean": "maligo",
+      "english": "Write \"maligo\" again without looking, then compare the exact written form against \"Naligo na ako kaninang umaga.\" before moving on.",
+      "example": "Naligo na ako kaninang umaga.",
+      "exampleEnglish": "Use the written model as the final correctness check: \"I already showered this morning\" — kaninang = \"earlier today\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit04dailyroutines-vocabulary-1",
+        "fil-level1unit04dailyroutines-vocabulary-2",
+        "fil-level1unit04dailyroutines-grammar-1",
+        "fil-level1unit04dailyroutines-grammar-2",
+        "fil-level1unit04dailyroutines-reading",
+        "fil-level1unit04dailyroutines-listening",
+        "fil-level1unit04dailyroutines-writing",
+        "fil-level1unit04dailyroutines-task"
+      ],
+      "targetText": "maligo",
+      "romanization": "ma-LI-go",
+      "nativeText": "Check whether \"maligo\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"I already showered this morning\" — kaninang = \"earlier today\".",
+      "pronunciation": "ma-LI-go",
+      "exampleTarget": "Naligo na ako kaninang umaga.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: \"I already showered this morning\" — kaninang = \"earlier today\".",
+      "korean": "maligo",
+      "english": "Check whether \"maligo\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"I already showered this morning\" — kaninang = \"earlier today\".",
+      "example": "Naligo na ako kaninang umaga.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: \"I already showered this morning\" — kaninang = \"earlier today\"."
+    }
+  ]
 };
-
-module.exports = lesson;

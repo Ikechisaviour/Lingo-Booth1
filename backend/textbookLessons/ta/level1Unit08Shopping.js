@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('ta', {
-  slug: 'ta-l1u8',
-  title: 'Level 1 · Unit 8: வாங்குவது — Shopping',
-  category: 'shopping',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Shop for everyday items, ask prices, compare options, and pay.',
-  vocabularyGoal: 'Use price, size, color, and payment words.',
-  grammarGoal: 'Use demonstratives, object marking, and comparative forms in practical shopping talk.',
-  speakingGoal: 'Ask a price, request one item, and compare two options.',
-  task: 'Buy one practical item at a shop or market.',
-  expressionPractice: [
-    practice('asking-price', 'Asking price', 'Use `இது எவ்வளவு?`.'),
-    practice('choosing-item', 'Choosing item', 'Use `இதைக் வேண்டும்`.'),
-    practice('comparing', 'Comparing items', 'Use `இதைவிட மலிவு`.'),
+module.exports = {
+  "title": "Level 1 · Unit 8: வாங்குவது — Shopping",
+  "category": "shopping",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ta-level1unit08shopping-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Shop for everyday items, ask prices, compare options, and pay."
+      ],
+      "task": "Buy one practical item at a shop or market."
+    },
+    {
+      "id": "ta-level1unit08shopping-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ta-level1unit08shopping-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 8: வாங்குவது — Shopping with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ta-level1unit08shopping-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 8: வாங்குவது — Shopping sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ta-level1unit08shopping-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Shop for everyday items, ask prices, compare options, and pay."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ta-level1unit08shopping-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 8: வாங்குவது — Shopping with one nearby Tamil form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ta-level1unit08shopping-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ta-level1unit08shopping-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ta-level1unit08shopping-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ta-level1unit08shopping-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ta-level1unit08shopping-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Buy one practical item at a shop or market."
+      ],
+      "task": "Buy one practical item at a shop or market."
+    }
   ],
-  relatedPools: ['topic-shopping', 'topic-service'],
-  items: [
-    item('இது எவ்வளவு?', 'itu evvaḷavu', '“How much is this?” A core service question.', 'இந்த பை எவ்வளவு?', '“How much is this bag?”'),
-    item('இதைக் வேண்டும்', 'itaik vēṇṭum', '“I want this.” The object marker attaches to the demonstrative.', 'இதைக் வேண்டும், அதைக் வேண்டாம்.', '“I want this, not that.”'),
-    item('மலிவு', 'malivu', '“Cheap / inexpensive.” Useful in comparison talk.', 'இதைவிட மலிவு உள்ளதா?', '“Is there something cheaper than this?”'),
-    item('விலை உயர்ந்தது', 'vilai uyarntatu', '“Expensive.” Literally “price-raised,” a natural descriptive phrase.', 'இந்த சட்டை விலை உயர்ந்தது.', '“This shirt is expensive.”'),
-    item('பெரிய அளவு', 'periya aḷavu', '“Large size.” A practical clothing phrase.', 'பெரிய அளவு இருக்கிறதா?', '“Do you have a large size?”'),
-    item('சிவப்பு', 'civappu', '“Red.” A common color adjective.', 'சிவப்பு சேலை வேண்டும்.', '“I want a red sari.”'),
-    item('ஒரு கிலோ', 'oru kilō', '“One kilo.” Market shopping naturally uses measure nouns.', 'ஒரு கிலோ மாம்பழம் வேண்டும்.', '“I want one kilo of mangoes.”'),
-    item('பணம் / அட்டை', 'paṇam / aṭṭai', '“Cash / card.” Useful for payment choices.', 'அட்டையால் கட்டலாமா?', '“May I pay by card?”'),
+  "expressionPractice": [
+    {
+      "id": "asking-price",
+      "label": "Asking price",
+      "goal": "Use `இது எவ்வளவு?`."
+    },
+    {
+      "id": "choosing-item",
+      "label": "Choosing item",
+      "goal": "Use `இதைக் வேண்டும்`."
+    },
+    {
+      "id": "comparing",
+      "label": "Comparing items",
+      "goal": "Use `இதைவிட மலிவு`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-shopping",
+    "topic-service"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit08shopping-orientation"
+      ],
+      "targetText": "பாட இலக்கு",
+      "romanization": "",
+      "nativeText": "Shop for everyday items, ask prices, compare options, and pay.",
+      "pronunciation": "",
+      "exampleTarget": "பாட இலக்கு",
+      "exampleNative": "The whole lesson is built toward this outcome: Buy one practical item at a shop or market.",
+      "korean": "பாட இலக்கு",
+      "english": "Shop for everyday items, ask prices, compare options, and pay.",
+      "example": "பாட இலக்கு",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Buy one practical item at a shop or market."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1unit08shopping-pronunciation"
+      ],
+      "targetText": "ஒலி சரிபார்ப்பு",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"இந்த பை எவ்வளவு?\".",
+      "pronunciation": "",
+      "exampleTarget": "இந்த பை எவ்வளவு?",
+      "exampleNative": "“How much is this bag?”",
+      "korean": "ஒலி சரிபார்ப்பு",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"இந்த பை எவ்வளவு?\".",
+      "example": "இந்த பை எவ்வளவு?",
+      "exampleEnglish": "“How much is this bag?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1"
+      ],
+      "targetText": "இது எவ்வளவு?",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 8: வாங்குவது — Shopping with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "இந்த பை எவ்வளவு?",
+      "exampleNative": "“How much is this bag?”",
+      "korean": "இது எவ்வளவு?",
+      "english": "Use the key language of Level 1 · Unit 8: வாங்குவது — Shopping with the register and setting that the lesson requires.",
+      "example": "இந்த பை எவ்வளவு?",
+      "exampleEnglish": "“How much is this bag?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-2"
+      ],
+      "targetText": "இதைக் வேண்டும்",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 8: வாங்குவது — Shopping sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "இதைக் வேண்டும், அதைக் வேண்டாம்.",
+      "exampleNative": "“I want this, not that.”",
+      "korean": "இதைக் வேண்டும்",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 8: வாங்குவது — Shopping sound precise rather than merely understandable.",
+      "example": "இதைக் வேண்டும், அதைக் வேண்டாம்.",
+      "exampleEnglish": "“I want this, not that.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1unit08shopping-grammar-1"
+      ],
+      "targetText": "இது எவ்வளவு?",
+      "romanization": "",
+      "nativeText": "Shop for everyday items, ask prices, compare options, and pay.",
+      "pronunciation": "",
+      "exampleTarget": "இந்த பை எவ்வளவு?",
+      "exampleNative": "“How much is this bag?”",
+      "korean": "இது எவ்வளவு?",
+      "english": "Shop for everyday items, ask prices, compare options, and pay.",
+      "example": "இந்த பை எவ்வளவு?",
+      "exampleEnglish": "“How much is this bag?”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1unit08shopping-grammar-2"
+      ],
+      "targetText": "இதைக் வேண்டும்",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 8: வாங்குவது — Shopping with one nearby Tamil form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "இதைக் வேண்டும், அதைக் வேண்டாம்.",
+      "exampleNative": "“I want this, not that.”",
+      "korean": "இதைக் வேண்டும்",
+      "english": "Contrast the main pattern in Level 1 · Unit 8: வாங்குவது — Shopping with one nearby Tamil form so the learner can avoid literal translation.",
+      "example": "இதைக் வேண்டும், அதைக் வேண்டாம்.",
+      "exampleEnglish": "“I want this, not that.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ta-level1unit08shopping-reading"
+      ],
+      "targetText": "வாசிப்பு மாதிரி",
+      "romanization": "",
+      "nativeText": "Read \"அட்டையால் கட்டலாமா?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "அட்டையால் கட்டலாமா?",
+      "exampleNative": "“May I pay by card?”",
+      "korean": "வாசிப்பு மாதிரி",
+      "english": "Read \"அட்டையால் கட்டலாமா?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "அட்டையால் கட்டலாமா?",
+      "exampleEnglish": "“May I pay by card?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit08shopping-listening"
+      ],
+      "targetText": "உரையாடல் மாதிரி",
+      "romanization": "",
+      "nativeText": "Hear \"அட்டையால் கட்டலாமா?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "அட்டையால் கட்டலாமா?",
+      "exampleNative": "“May I pay by card?”",
+      "korean": "உரையாடல் மாதிரி",
+      "english": "Hear \"அட்டையால் கட்டலாமா?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "அட்டையால் கட்டலாமா?",
+      "exampleEnglish": "“May I pay by card?”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ta-level1unit08shopping-writing"
+      ],
+      "targetText": "எழுத்துப் பயிற்சி",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"இந்த பை எவ்வளவு?\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "இந்த பை எவ்வளவு?",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "எழுத்துப் பயிற்சி",
+      "english": "Write your own version after studying \"இந்த பை எவ்வளவு?\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "இந்த பை எவ்வளவு?",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1unit08shopping-culture"
+      ],
+      "targetText": "பயன்பாடும் சூழலும்",
+      "romanization": "",
+      "nativeText": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "இதைக் வேண்டும், அதைக் வேண்டாம்.",
+      "exampleNative": "“I want this, not that.”",
+      "korean": "பயன்பாடும் சூழலும்",
+      "english": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used.",
+      "example": "இதைக் வேண்டும், அதைக் வேண்டாம்.",
+      "exampleEnglish": "“I want this, not that.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "இறுதி செயல்",
+      "romanization": "",
+      "nativeText": "Buy one practical item at a shop or market.",
+      "pronunciation": "",
+      "exampleTarget": "அட்டையால் கட்டலாமா?",
+      "exampleNative": "Buy one practical item at a shop or market.",
+      "korean": "இறுதி செயல்",
+      "english": "Buy one practical item at a shop or market.",
+      "example": "அட்டையால் கட்டலாமா?",
+      "exampleEnglish": "Buy one practical item at a shop or market."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit08shopping-grammar-2"
+      ],
+      "targetText": "பொதுவான பிழை",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"இதைக் வேண்டும், அதைக் வேண்டாம்.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "இதைக் வேண்டும், அதைக் வேண்டாம்.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “I want this, not that.”",
+      "korean": "பொதுவான பிழை",
+      "english": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"இதைக் வேண்டும், அதைக் வேண்டாம்.\" against the model.",
+      "example": "இதைக் வேண்டும், அதைக் வேண்டாம்.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “I want this, not that.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-culture"
+      ],
+      "targetText": "மொழிநடை",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"இந்த பை எவ்வளவு?\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "இந்த பை எவ்வளவு?",
+      "exampleNative": "“How much is this bag?”",
+      "korean": "மொழிநடை",
+      "english": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"இந்த பை எவ்வளவு?\" before reusing it elsewhere.",
+      "example": "இந்த பை எவ்வளவு?",
+      "exampleEnglish": "“How much is this bag?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "சரளம்",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"அட்டையால் கட்டலாமா?\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "அட்டையால் கட்டலாமா?",
+      "exampleNative": "“May I pay by card?”",
+      "korean": "சரளம்",
+      "english": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"அட்டையால் கட்டலாமா?\" as one thought.",
+      "example": "அட்டையால் கட்டலாமா?",
+      "exampleEnglish": "“May I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "பயன்பாடு",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"இந்த பை எவ்வளவு?\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "இந்த பை எவ்வளவு?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "பயன்பாடு",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"இந்த பை எவ்வளவு?\" and move it into your own life.",
+      "example": "இந்த பை எவ்வளவு?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-grammar-1"
+      ],
+      "targetText": "நினைவூட்டல்",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"இது எவ்வளவு?\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "இது எவ்வளவு?",
+      "exampleNative": "“How much is this?” A core service question.",
+      "korean": "நினைவூட்டல்",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"இது எவ்வளவு?\" before looking back.",
+      "example": "இது எவ்வளவு?",
+      "exampleEnglish": "“How much is this?” A core service question."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-writing"
+      ],
+      "targetText": "விரிவாக்கம்",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"அட்டையால் கட்டலாமா?\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "அட்டையால் கட்டலாமா?",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "விரிவாக்கம்",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"அட்டையால் கட்டலாமா?\" rather than restarting from a blank sentence.",
+      "example": "அட்டையால் கட்டலாமா?",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading"
+      ],
+      "targetText": "ஒப்பீடு",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 8: வாங்குவது — Shopping with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"இதைக் வேண்டும், அதைக் வேண்டாம்.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "இதைக் வேண்டும், அதைக் வேண்டாம்.",
+      "exampleNative": "“I want this, not that.”",
+      "korean": "ஒப்பீடு",
+      "english": "Compare the central form in Level 1 · Unit 8: வாங்குவது — Shopping with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"இதைக் வேண்டும், அதைக் வேண்டாம்.\" as the comparison line.",
+      "example": "இதைக் வேண்டும், அதைக் வேண்டாம்.",
+      "exampleEnglish": "“I want this, not that.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1unit08shopping-pronunciation"
+      ],
+      "targetText": "உச்சரிப்பு திருத்தம்",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"இந்த பை எவ்வளவு?\".",
+      "pronunciation": "",
+      "exampleTarget": "இந்த பை எவ்வளவு?",
+      "exampleNative": "“How much is this bag?”",
+      "korean": "உச்சரிப்பு திருத்தம்",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"இந்த பை எவ்வளவு?\".",
+      "example": "இந்த பை எவ்வளவு?",
+      "exampleEnglish": "“How much is this bag?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "உரையாடல் மாற்றம்",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"அட்டையால் கட்டலாமா?\".",
+      "pronunciation": "",
+      "exampleTarget": "அட்டையால் கட்டலாமா?",
+      "exampleNative": "“May I pay by card?”",
+      "korean": "உரையாடல் மாற்றம்",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"அட்டையால் கட்டலாமா?\".",
+      "example": "அட்டையால் கட்டலாமா?",
+      "exampleEnglish": "“May I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-writing"
+      ],
+      "targetText": "வாக்கிய கட்டமைப்பு",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"இந்த பை எவ்வளவு?\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "இந்த பை எவ்வளவு?",
+      "exampleNative": "“How much is this bag?”",
+      "korean": "வாக்கிய கட்டமைப்பு",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"இந்த பை எவ்வளவு?\" one layer at a time.",
+      "example": "இந்த பை எவ்வளவு?",
+      "exampleEnglish": "“How much is this bag?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-2"
+      ],
+      "targetText": "விரைவு சோதனை",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"இதைக் வேண்டும், அதைக் வேண்டாம்.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "இதைக் வேண்டும், அதைக் வேண்டாம்.",
+      "exampleNative": "“I want this, not that.”",
+      "korean": "விரைவு சோதனை",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"இதைக் வேண்டும், அதைக் வேண்டாம்.\" as the deciding example.",
+      "example": "இதைக் வேண்டும், அதைக் வேண்டாம்.",
+      "exampleEnglish": "“I want this, not that.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit08shopping-culture",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "மீள்பார்வு",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"அட்டையால் கட்டலாமா?\".",
+      "pronunciation": "",
+      "exampleTarget": "அட்டையால் கட்டலாமா?",
+      "exampleNative": "“May I pay by card?”",
+      "korean": "மீள்பார்வு",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"அட்டையால் கட்டலாமா?\".",
+      "example": "அட்டையால் கட்டலாமா?",
+      "exampleEnglish": "“May I pay by card?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "இது எவ்வளவு?",
+      "romanization": "itu evvaḷavu",
+      "nativeText": "“How much is this?” A core service question.",
+      "pronunciation": "itu evvaḷavu",
+      "exampleTarget": "இந்த பை எவ்வளவு?",
+      "exampleNative": "“How much is this bag?”",
+      "korean": "இது எவ்வளவு?",
+      "english": "“How much is this?” A core service question.",
+      "example": "இந்த பை எவ்வளவு?",
+      "exampleEnglish": "“How much is this bag?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "இந்த பை எவ்வளவு?",
+      "romanization": "itu evvaḷavu",
+      "nativeText": "Model use for \"இந்த பை எவ்வளவு?\": “How much is this bag?”",
+      "pronunciation": "itu evvaḷavu",
+      "exampleTarget": "இந்த பை எவ்வளவு?",
+      "exampleNative": "“How much is this bag?”",
+      "korean": "இந்த பை எவ்வளவு?",
+      "english": "Model use for \"இந்த பை எவ்வளவு?\": “How much is this bag?”",
+      "example": "இந்த பை எவ்வளவு?",
+      "exampleEnglish": "“How much is this bag?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "இது எவ்வளவு?",
+      "romanization": "itu evvaḷavu",
+      "nativeText": "Usage focus for \"இது எவ்வளவு?\": Use the key language of Level 1 · Unit 8: வாங்குவது — Shopping with the register and setting that the lesson requires.",
+      "pronunciation": "itu evvaḷavu",
+      "exampleTarget": "இந்த பை எவ்வளவு?",
+      "exampleNative": "Notice what the form is doing here: “How much is this bag?”",
+      "korean": "இது எவ்வளவு?",
+      "english": "Usage focus for \"இது எவ்வளவு?\": Use the key language of Level 1 · Unit 8: வாங்குவது — Shopping with the register and setting that the lesson requires.",
+      "example": "இந்த பை எவ்வளவு?",
+      "exampleEnglish": "Notice what the form is doing here: “How much is this bag?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "இது எவ்வளவு?",
+      "romanization": "itu evvaḷavu",
+      "nativeText": "Contrast check for \"இது எவ்வளவு?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "itu evvaḷavu",
+      "exampleTarget": "இந்த பை எவ்வளவு?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How much is this bag?”",
+      "korean": "இது எவ்வளவு?",
+      "english": "Contrast check for \"இது எவ்வளவு?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "இந்த பை எவ்வளவு?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How much is this bag?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "இது எவ்வளவு?",
+      "romanization": "itu evvaḷavu",
+      "nativeText": "Recall \"இது எவ்வளவு?\" from memory, then explain what would change if a nearby alternative replaced it in \"இந்த பை எவ்வளவு?\".",
+      "pronunciation": "itu evvaḷavu",
+      "exampleTarget": "இந்த பை எவ்வளவு?",
+      "exampleNative": "Self-check against the model before moving on: “How much is this bag?”",
+      "korean": "இது எவ்வளவு?",
+      "english": "Recall \"இது எவ்வளவு?\" from memory, then explain what would change if a nearby alternative replaced it in \"இந்த பை எவ்வளவு?\".",
+      "example": "இந்த பை எவ்வளவு?",
+      "exampleEnglish": "Self-check against the model before moving on: “How much is this bag?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "இது எவ்வளவு?",
+      "romanization": "itu evvaḷavu",
+      "nativeText": "Repair \"இது எவ்வளவு?\" inside \"இந்த பை எவ்வளவு?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 8: வாங்குவது — Shopping with the register and setting that the lesson requires.",
+      "pronunciation": "itu evvaḷavu",
+      "exampleTarget": "இந்த பை எவ்வளவு?",
+      "exampleNative": "Use the model as the repair target: “How much is this bag?”",
+      "korean": "இது எவ்வளவு?",
+      "english": "Repair \"இது எவ்வளவு?\" inside \"இந்த பை எவ்வளவு?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 8: வாங்குவது — Shopping with the register and setting that the lesson requires.",
+      "example": "இந்த பை எவ்வளவு?",
+      "exampleEnglish": "Use the model as the repair target: “How much is this bag?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "இது எவ்வளவு?",
+      "romanization": "itu evvaḷavu",
+      "nativeText": "Transfer \"இது எவ்வளவு?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இந்த பை எவ்வளவு?\".",
+      "pronunciation": "itu evvaḷavu",
+      "exampleTarget": "இந்த பை எவ்வளவு?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “How much is this bag?”",
+      "korean": "இது எவ்வளவு?",
+      "english": "Transfer \"இது எவ்வளவு?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இந்த பை எவ்வளவு?\".",
+      "example": "இந்த பை எவ்வளவு?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “How much is this bag?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "இது எவ்வளவு?",
+      "romanization": "itu evvaḷavu",
+      "nativeText": "Find one word or phrase that naturally travels with \"இது எவ்வளவு?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "itu evvaḷavu",
+      "exampleTarget": "இந்த பை எவ்வளவு?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “How much is this bag?”",
+      "korean": "இது எவ்வளவு?",
+      "english": "Find one word or phrase that naturally travels with \"இது எவ்வளவு?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "இந்த பை எவ்வளவு?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “How much is this bag?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "இது எவ்வளவு?",
+      "romanization": "itu evvaḷavu",
+      "nativeText": "Listen for \"இது எவ்வளவு?\" inside \"இந்த பை எவ்வளவு?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "itu evvaḷavu",
+      "exampleTarget": "இந்த பை எவ்வளவு?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How much is this bag?”",
+      "korean": "இது எவ்வளவு?",
+      "english": "Listen for \"இது எவ்வளவு?\" inside \"இந்த பை எவ்வளவு?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "இந்த பை எவ்வளவு?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How much is this bag?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "இது எவ்வளவு?",
+      "romanization": "itu evvaḷavu",
+      "nativeText": "Write \"இது எவ்வளவு?\" again without looking, then compare the exact written form against \"இந்த பை எவ்வளவு?\" before moving on.",
+      "pronunciation": "itu evvaḷavu",
+      "exampleTarget": "இந்த பை எவ்வளவு?",
+      "exampleNative": "Use the written model as the final correctness check: “How much is this bag?”",
+      "korean": "இது எவ்வளவு?",
+      "english": "Write \"இது எவ்வளவு?\" again without looking, then compare the exact written form against \"இந்த பை எவ்வளவு?\" before moving on.",
+      "example": "இந்த பை எவ்வளவு?",
+      "exampleEnglish": "Use the written model as the final correctness check: “How much is this bag?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "இது எவ்வளவு?",
+      "romanization": "itu evvaḷavu",
+      "nativeText": "Check whether \"இது எவ்வளவு?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How much is this bag?”",
+      "pronunciation": "itu evvaḷavu",
+      "exampleTarget": "இந்த பை எவ்வளவு?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “How much is this bag?”",
+      "korean": "இது எவ்வளவு?",
+      "english": "Check whether \"இது எவ்வளவு?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How much is this bag?”",
+      "example": "இந்த பை எவ்வளவு?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “How much is this bag?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "இதைக் வேண்டும்",
+      "romanization": "itaik vēṇṭum",
+      "nativeText": "“I want this.” The object marker attaches to the demonstrative.",
+      "pronunciation": "itaik vēṇṭum",
+      "exampleTarget": "இதைக் வேண்டும், அதைக் வேண்டாம்.",
+      "exampleNative": "“I want this, not that.”",
+      "korean": "இதைக் வேண்டும்",
+      "english": "“I want this.” The object marker attaches to the demonstrative.",
+      "example": "இதைக் வேண்டும், அதைக் வேண்டாம்.",
+      "exampleEnglish": "“I want this, not that.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "இதைக் வேண்டும், அதைக் வேண்டாம்.",
+      "romanization": "itaik vēṇṭum",
+      "nativeText": "Model use for \"இதைக் வேண்டும், அதைக் வேண்டாம்.\": “I want this, not that.”",
+      "pronunciation": "itaik vēṇṭum",
+      "exampleTarget": "இதைக் வேண்டும், அதைக் வேண்டாம்.",
+      "exampleNative": "“I want this, not that.”",
+      "korean": "இதைக் வேண்டும், அதைக் வேண்டாம்.",
+      "english": "Model use for \"இதைக் வேண்டும், அதைக் வேண்டாம்.\": “I want this, not that.”",
+      "example": "இதைக் வேண்டும், அதைக் வேண்டாம்.",
+      "exampleEnglish": "“I want this, not that.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "இதைக் வேண்டும்",
+      "romanization": "itaik vēṇṭum",
+      "nativeText": "Usage focus for \"இதைக் வேண்டும்\": Distinguish the nearby wording choices that make Level 1 · Unit 8: வாங்குவது — Shopping sound precise rather than merely understandable.",
+      "pronunciation": "itaik vēṇṭum",
+      "exampleTarget": "இதைக் வேண்டும், அதைக் வேண்டாம்.",
+      "exampleNative": "Notice what the form is doing here: “I want this, not that.”",
+      "korean": "இதைக் வேண்டும்",
+      "english": "Usage focus for \"இதைக் வேண்டும்\": Distinguish the nearby wording choices that make Level 1 · Unit 8: வாங்குவது — Shopping sound precise rather than merely understandable.",
+      "example": "இதைக் வேண்டும், அதைக் வேண்டாம்.",
+      "exampleEnglish": "Notice what the form is doing here: “I want this, not that.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "இதைக் வேண்டும்",
+      "romanization": "itaik vēṇṭum",
+      "nativeText": "Contrast check for \"இதைக் வேண்டும்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "itaik vēṇṭum",
+      "exampleTarget": "இதைக் வேண்டும், அதைக் வேண்டாம்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want this, not that.”",
+      "korean": "இதைக் வேண்டும்",
+      "english": "Contrast check for \"இதைக் வேண்டும்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "இதைக் வேண்டும், அதைக் வேண்டாம்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want this, not that.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "இதைக் வேண்டும்",
+      "romanization": "itaik vēṇṭum",
+      "nativeText": "Recall \"இதைக் வேண்டும்\" from memory, then explain what would change if a nearby alternative replaced it in \"இதைக் வேண்டும், அதைக் வேண்டாம்.\".",
+      "pronunciation": "itaik vēṇṭum",
+      "exampleTarget": "இதைக் வேண்டும், அதைக் வேண்டாம்.",
+      "exampleNative": "Self-check against the model before moving on: “I want this, not that.”",
+      "korean": "இதைக் வேண்டும்",
+      "english": "Recall \"இதைக் வேண்டும்\" from memory, then explain what would change if a nearby alternative replaced it in \"இதைக் வேண்டும், அதைக் வேண்டாம்.\".",
+      "example": "இதைக் வேண்டும், அதைக் வேண்டாம்.",
+      "exampleEnglish": "Self-check against the model before moving on: “I want this, not that.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "இதைக் வேண்டும்",
+      "romanization": "itaik vēṇṭum",
+      "nativeText": "Repair \"இதைக் வேண்டும்\" inside \"இதைக் வேண்டும், அதைக் வேண்டாம்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 8: வாங்குவது — Shopping sound precise rather than merely understandable.",
+      "pronunciation": "itaik vēṇṭum",
+      "exampleTarget": "இதைக் வேண்டும், அதைக் வேண்டாம்.",
+      "exampleNative": "Use the model as the repair target: “I want this, not that.”",
+      "korean": "இதைக் வேண்டும்",
+      "english": "Repair \"இதைக் வேண்டும்\" inside \"இதைக் வேண்டும், அதைக் வேண்டாம்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 8: வாங்குவது — Shopping sound precise rather than merely understandable.",
+      "example": "இதைக் வேண்டும், அதைக் வேண்டாம்.",
+      "exampleEnglish": "Use the model as the repair target: “I want this, not that.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "இதைக் வேண்டும்",
+      "romanization": "itaik vēṇṭum",
+      "nativeText": "Transfer \"இதைக் வேண்டும்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இதைக் வேண்டும், அதைக் வேண்டாம்.\".",
+      "pronunciation": "itaik vēṇṭum",
+      "exampleTarget": "இதைக் வேண்டும், அதைக் வேண்டாம்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want this, not that.”",
+      "korean": "இதைக் வேண்டும்",
+      "english": "Transfer \"இதைக் வேண்டும்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இதைக் வேண்டும், அதைக் வேண்டாம்.\".",
+      "example": "இதைக் வேண்டும், அதைக் வேண்டாம்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want this, not that.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "இதைக் வேண்டும்",
+      "romanization": "itaik vēṇṭum",
+      "nativeText": "Find one word or phrase that naturally travels with \"இதைக் வேண்டும்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "itaik vēṇṭum",
+      "exampleTarget": "இதைக் வேண்டும், அதைக் வேண்டாம்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want this, not that.”",
+      "korean": "இதைக் வேண்டும்",
+      "english": "Find one word or phrase that naturally travels with \"இதைக் வேண்டும்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "இதைக் வேண்டும், அதைக் வேண்டாம்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want this, not that.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "இதைக் வேண்டும்",
+      "romanization": "itaik vēṇṭum",
+      "nativeText": "Listen for \"இதைக் வேண்டும்\" inside \"இதைக் வேண்டும், அதைக் வேண்டாம்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "itaik vēṇṭum",
+      "exampleTarget": "இதைக் வேண்டும், அதைக் வேண்டாம்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want this, not that.”",
+      "korean": "இதைக் வேண்டும்",
+      "english": "Listen for \"இதைக் வேண்டும்\" inside \"இதைக் வேண்டும், அதைக் வேண்டாம்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "இதைக் வேண்டும், அதைக் வேண்டாம்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want this, not that.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "இதைக் வேண்டும்",
+      "romanization": "itaik vēṇṭum",
+      "nativeText": "Write \"இதைக் வேண்டும்\" again without looking, then compare the exact written form against \"இதைக் வேண்டும், அதைக் வேண்டாம்.\" before moving on.",
+      "pronunciation": "itaik vēṇṭum",
+      "exampleTarget": "இதைக் வேண்டும், அதைக் வேண்டாம்.",
+      "exampleNative": "Use the written model as the final correctness check: “I want this, not that.”",
+      "korean": "இதைக் வேண்டும்",
+      "english": "Write \"இதைக் வேண்டும்\" again without looking, then compare the exact written form against \"இதைக் வேண்டும், அதைக் வேண்டாம்.\" before moving on.",
+      "example": "இதைக் வேண்டும், அதைக் வேண்டாம்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want this, not that.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "இதைக் வேண்டும்",
+      "romanization": "itaik vēṇṭum",
+      "nativeText": "Check whether \"இதைக் வேண்டும்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want this, not that.”",
+      "pronunciation": "itaik vēṇṭum",
+      "exampleTarget": "இதைக் வேண்டும், அதைக் வேண்டாம்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want this, not that.”",
+      "korean": "இதைக் வேண்டும்",
+      "english": "Check whether \"இதைக் வேண்டும்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want this, not that.”",
+      "example": "இதைக் வேண்டும், அதைக் வேண்டாம்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want this, not that.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "மலிவு",
+      "romanization": "malivu",
+      "nativeText": "“Cheap / inexpensive.” Useful in comparison talk.",
+      "pronunciation": "malivu",
+      "exampleTarget": "இதைவிட மலிவு உள்ளதா?",
+      "exampleNative": "“Is there something cheaper than this?”",
+      "korean": "மலிவு",
+      "english": "“Cheap / inexpensive.” Useful in comparison talk.",
+      "example": "இதைவிட மலிவு உள்ளதா?",
+      "exampleEnglish": "“Is there something cheaper than this?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "இதைவிட மலிவு உள்ளதா?",
+      "romanization": "malivu",
+      "nativeText": "Model use for \"இதைவிட மலிவு உள்ளதா?\": “Is there something cheaper than this?”",
+      "pronunciation": "malivu",
+      "exampleTarget": "இதைவிட மலிவு உள்ளதா?",
+      "exampleNative": "“Is there something cheaper than this?”",
+      "korean": "இதைவிட மலிவு உள்ளதா?",
+      "english": "Model use for \"இதைவிட மலிவு உள்ளதா?\": “Is there something cheaper than this?”",
+      "example": "இதைவிட மலிவு உள்ளதா?",
+      "exampleEnglish": "“Is there something cheaper than this?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "மலிவு",
+      "romanization": "malivu",
+      "nativeText": "Usage focus for \"மலிவு\": “Cheap / inexpensive.” Useful in comparison talk.",
+      "pronunciation": "malivu",
+      "exampleTarget": "இதைவிட மலிவு உள்ளதா?",
+      "exampleNative": "Notice what the form is doing here: “Is there something cheaper than this?”",
+      "korean": "மலிவு",
+      "english": "Usage focus for \"மலிவு\": “Cheap / inexpensive.” Useful in comparison talk.",
+      "example": "இதைவிட மலிவு உள்ளதா?",
+      "exampleEnglish": "Notice what the form is doing here: “Is there something cheaper than this?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "மலிவு",
+      "romanization": "malivu",
+      "nativeText": "Contrast check for \"மலிவு\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "malivu",
+      "exampleTarget": "இதைவிட மலிவு உள்ளதா?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Is there something cheaper than this?”",
+      "korean": "மலிவு",
+      "english": "Contrast check for \"மலிவு\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "இதைவிட மலிவு உள்ளதா?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Is there something cheaper than this?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "மலிவு",
+      "romanization": "malivu",
+      "nativeText": "Recall \"மலிவு\" from memory, then explain what would change if a nearby alternative replaced it in \"இதைவிட மலிவு உள்ளதா?\".",
+      "pronunciation": "malivu",
+      "exampleTarget": "இதைவிட மலிவு உள்ளதா?",
+      "exampleNative": "Self-check against the model before moving on: “Is there something cheaper than this?”",
+      "korean": "மலிவு",
+      "english": "Recall \"மலிவு\" from memory, then explain what would change if a nearby alternative replaced it in \"இதைவிட மலிவு உள்ளதா?\".",
+      "example": "இதைவிட மலிவு உள்ளதா?",
+      "exampleEnglish": "Self-check against the model before moving on: “Is there something cheaper than this?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "மலிவு",
+      "romanization": "malivu",
+      "nativeText": "Repair \"மலிவு\" inside \"இதைவிட மலிவு உள்ளதா?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Cheap / inexpensive.” Useful in comparison talk.",
+      "pronunciation": "malivu",
+      "exampleTarget": "இதைவிட மலிவு உள்ளதா?",
+      "exampleNative": "Use the model as the repair target: “Is there something cheaper than this?”",
+      "korean": "மலிவு",
+      "english": "Repair \"மலிவு\" inside \"இதைவிட மலிவு உள்ளதா?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Cheap / inexpensive.” Useful in comparison talk.",
+      "example": "இதைவிட மலிவு உள்ளதா?",
+      "exampleEnglish": "Use the model as the repair target: “Is there something cheaper than this?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "மலிவு",
+      "romanization": "malivu",
+      "nativeText": "Transfer \"மலிவு\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இதைவிட மலிவு உள்ளதா?\".",
+      "pronunciation": "malivu",
+      "exampleTarget": "இதைவிட மலிவு உள்ளதா?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Is there something cheaper than this?”",
+      "korean": "மலிவு",
+      "english": "Transfer \"மலிவு\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இதைவிட மலிவு உள்ளதா?\".",
+      "example": "இதைவிட மலிவு உள்ளதா?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Is there something cheaper than this?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "மலிவு",
+      "romanization": "malivu",
+      "nativeText": "Find one word or phrase that naturally travels with \"மலிவு\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "malivu",
+      "exampleTarget": "இதைவிட மலிவு உள்ளதா?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Is there something cheaper than this?”",
+      "korean": "மலிவு",
+      "english": "Find one word or phrase that naturally travels with \"மலிவு\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "இதைவிட மலிவு உள்ளதா?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Is there something cheaper than this?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "மலிவு",
+      "romanization": "malivu",
+      "nativeText": "Listen for \"மலிவு\" inside \"இதைவிட மலிவு உள்ளதா?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "malivu",
+      "exampleTarget": "இதைவிட மலிவு உள்ளதா?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Is there something cheaper than this?”",
+      "korean": "மலிவு",
+      "english": "Listen for \"மலிவு\" inside \"இதைவிட மலிவு உள்ளதா?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "இதைவிட மலிவு உள்ளதா?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Is there something cheaper than this?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "மலிவு",
+      "romanization": "malivu",
+      "nativeText": "Write \"மலிவு\" again without looking, then compare the exact written form against \"இதைவிட மலிவு உள்ளதா?\" before moving on.",
+      "pronunciation": "malivu",
+      "exampleTarget": "இதைவிட மலிவு உள்ளதா?",
+      "exampleNative": "Use the written model as the final correctness check: “Is there something cheaper than this?”",
+      "korean": "மலிவு",
+      "english": "Write \"மலிவு\" again without looking, then compare the exact written form against \"இதைவிட மலிவு உள்ளதா?\" before moving on.",
+      "example": "இதைவிட மலிவு உள்ளதா?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Is there something cheaper than this?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "மலிவு",
+      "romanization": "malivu",
+      "nativeText": "Check whether \"மலிவு\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Is there something cheaper than this?”",
+      "pronunciation": "malivu",
+      "exampleTarget": "இதைவிட மலிவு உள்ளதா?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Is there something cheaper than this?”",
+      "korean": "மலிவு",
+      "english": "Check whether \"மலிவு\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Is there something cheaper than this?”",
+      "example": "இதைவிட மலிவு உள்ளதா?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Is there something cheaper than this?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "விலை உயர்ந்தது",
+      "romanization": "vilai uyarntatu",
+      "nativeText": "“Expensive.” Literally “price-raised,” a natural descriptive phrase.",
+      "pronunciation": "vilai uyarntatu",
+      "exampleTarget": "இந்த சட்டை விலை உயர்ந்தது.",
+      "exampleNative": "“This shirt is expensive.”",
+      "korean": "விலை உயர்ந்தது",
+      "english": "“Expensive.” Literally “price-raised,” a natural descriptive phrase.",
+      "example": "இந்த சட்டை விலை உயர்ந்தது.",
+      "exampleEnglish": "“This shirt is expensive.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "இந்த சட்டை விலை உயர்ந்தது.",
+      "romanization": "vilai uyarntatu",
+      "nativeText": "Model use for \"இந்த சட்டை விலை உயர்ந்தது.\": “This shirt is expensive.”",
+      "pronunciation": "vilai uyarntatu",
+      "exampleTarget": "இந்த சட்டை விலை உயர்ந்தது.",
+      "exampleNative": "“This shirt is expensive.”",
+      "korean": "இந்த சட்டை விலை உயர்ந்தது.",
+      "english": "Model use for \"இந்த சட்டை விலை உயர்ந்தது.\": “This shirt is expensive.”",
+      "example": "இந்த சட்டை விலை உயர்ந்தது.",
+      "exampleEnglish": "“This shirt is expensive.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "விலை உயர்ந்தது",
+      "romanization": "vilai uyarntatu",
+      "nativeText": "Usage focus for \"விலை உயர்ந்தது\": “Expensive.” Literally “price-raised,” a natural descriptive phrase.",
+      "pronunciation": "vilai uyarntatu",
+      "exampleTarget": "இந்த சட்டை விலை உயர்ந்தது.",
+      "exampleNative": "Notice what the form is doing here: “This shirt is expensive.”",
+      "korean": "விலை உயர்ந்தது",
+      "english": "Usage focus for \"விலை உயர்ந்தது\": “Expensive.” Literally “price-raised,” a natural descriptive phrase.",
+      "example": "இந்த சட்டை விலை உயர்ந்தது.",
+      "exampleEnglish": "Notice what the form is doing here: “This shirt is expensive.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "விலை உயர்ந்தது",
+      "romanization": "vilai uyarntatu",
+      "nativeText": "Contrast check for \"விலை உயர்ந்தது\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "vilai uyarntatu",
+      "exampleTarget": "இந்த சட்டை விலை உயர்ந்தது.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “This shirt is expensive.”",
+      "korean": "விலை உயர்ந்தது",
+      "english": "Contrast check for \"விலை உயர்ந்தது\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "இந்த சட்டை விலை உயர்ந்தது.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “This shirt is expensive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "விலை உயர்ந்தது",
+      "romanization": "vilai uyarntatu",
+      "nativeText": "Recall \"விலை உயர்ந்தது\" from memory, then explain what would change if a nearby alternative replaced it in \"இந்த சட்டை விலை உயர்ந்தது.\".",
+      "pronunciation": "vilai uyarntatu",
+      "exampleTarget": "இந்த சட்டை விலை உயர்ந்தது.",
+      "exampleNative": "Self-check against the model before moving on: “This shirt is expensive.”",
+      "korean": "விலை உயர்ந்தது",
+      "english": "Recall \"விலை உயர்ந்தது\" from memory, then explain what would change if a nearby alternative replaced it in \"இந்த சட்டை விலை உயர்ந்தது.\".",
+      "example": "இந்த சட்டை விலை உயர்ந்தது.",
+      "exampleEnglish": "Self-check against the model before moving on: “This shirt is expensive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "விலை உயர்ந்தது",
+      "romanization": "vilai uyarntatu",
+      "nativeText": "Repair \"விலை உயர்ந்தது\" inside \"இந்த சட்டை விலை உயர்ந்தது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Expensive.” Literally “price-raised,” a natural descriptive phrase.",
+      "pronunciation": "vilai uyarntatu",
+      "exampleTarget": "இந்த சட்டை விலை உயர்ந்தது.",
+      "exampleNative": "Use the model as the repair target: “This shirt is expensive.”",
+      "korean": "விலை உயர்ந்தது",
+      "english": "Repair \"விலை உயர்ந்தது\" inside \"இந்த சட்டை விலை உயர்ந்தது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Expensive.” Literally “price-raised,” a natural descriptive phrase.",
+      "example": "இந்த சட்டை விலை உயர்ந்தது.",
+      "exampleEnglish": "Use the model as the repair target: “This shirt is expensive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "விலை உயர்ந்தது",
+      "romanization": "vilai uyarntatu",
+      "nativeText": "Transfer \"விலை உயர்ந்தது\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இந்த சட்டை விலை உயர்ந்தது.\".",
+      "pronunciation": "vilai uyarntatu",
+      "exampleTarget": "இந்த சட்டை விலை உயர்ந்தது.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “This shirt is expensive.”",
+      "korean": "விலை உயர்ந்தது",
+      "english": "Transfer \"விலை உயர்ந்தது\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இந்த சட்டை விலை உயர்ந்தது.\".",
+      "example": "இந்த சட்டை விலை உயர்ந்தது.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “This shirt is expensive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "விலை உயர்ந்தது",
+      "romanization": "vilai uyarntatu",
+      "nativeText": "Find one word or phrase that naturally travels with \"விலை உயர்ந்தது\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "vilai uyarntatu",
+      "exampleTarget": "இந்த சட்டை விலை உயர்ந்தது.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “This shirt is expensive.”",
+      "korean": "விலை உயர்ந்தது",
+      "english": "Find one word or phrase that naturally travels with \"விலை உயர்ந்தது\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "இந்த சட்டை விலை உயர்ந்தது.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “This shirt is expensive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "விலை உயர்ந்தது",
+      "romanization": "vilai uyarntatu",
+      "nativeText": "Listen for \"விலை உயர்ந்தது\" inside \"இந்த சட்டை விலை உயர்ந்தது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "vilai uyarntatu",
+      "exampleTarget": "இந்த சட்டை விலை உயர்ந்தது.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “This shirt is expensive.”",
+      "korean": "விலை உயர்ந்தது",
+      "english": "Listen for \"விலை உயர்ந்தது\" inside \"இந்த சட்டை விலை உயர்ந்தது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "இந்த சட்டை விலை உயர்ந்தது.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “This shirt is expensive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "விலை உயர்ந்தது",
+      "romanization": "vilai uyarntatu",
+      "nativeText": "Write \"விலை உயர்ந்தது\" again without looking, then compare the exact written form against \"இந்த சட்டை விலை உயர்ந்தது.\" before moving on.",
+      "pronunciation": "vilai uyarntatu",
+      "exampleTarget": "இந்த சட்டை விலை உயர்ந்தது.",
+      "exampleNative": "Use the written model as the final correctness check: “This shirt is expensive.”",
+      "korean": "விலை உயர்ந்தது",
+      "english": "Write \"விலை உயர்ந்தது\" again without looking, then compare the exact written form against \"இந்த சட்டை விலை உயர்ந்தது.\" before moving on.",
+      "example": "இந்த சட்டை விலை உயர்ந்தது.",
+      "exampleEnglish": "Use the written model as the final correctness check: “This shirt is expensive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "விலை உயர்ந்தது",
+      "romanization": "vilai uyarntatu",
+      "nativeText": "Check whether \"விலை உயர்ந்தது\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “This shirt is expensive.”",
+      "pronunciation": "vilai uyarntatu",
+      "exampleTarget": "இந்த சட்டை விலை உயர்ந்தது.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “This shirt is expensive.”",
+      "korean": "விலை உயர்ந்தது",
+      "english": "Check whether \"விலை உயர்ந்தது\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “This shirt is expensive.”",
+      "example": "இந்த சட்டை விலை உயர்ந்தது.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “This shirt is expensive.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "பெரிய அளவு",
+      "romanization": "periya aḷavu",
+      "nativeText": "“Large size.” A practical clothing phrase.",
+      "pronunciation": "periya aḷavu",
+      "exampleTarget": "பெரிய அளவு இருக்கிறதா?",
+      "exampleNative": "“Do you have a large size?”",
+      "korean": "பெரிய அளவு",
+      "english": "“Large size.” A practical clothing phrase.",
+      "example": "பெரிய அளவு இருக்கிறதா?",
+      "exampleEnglish": "“Do you have a large size?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "பெரிய அளவு இருக்கிறதா?",
+      "romanization": "periya aḷavu",
+      "nativeText": "Model use for \"பெரிய அளவு இருக்கிறதா?\": “Do you have a large size?”",
+      "pronunciation": "periya aḷavu",
+      "exampleTarget": "பெரிய அளவு இருக்கிறதா?",
+      "exampleNative": "“Do you have a large size?”",
+      "korean": "பெரிய அளவு இருக்கிறதா?",
+      "english": "Model use for \"பெரிய அளவு இருக்கிறதா?\": “Do you have a large size?”",
+      "example": "பெரிய அளவு இருக்கிறதா?",
+      "exampleEnglish": "“Do you have a large size?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "பெரிய அளவு",
+      "romanization": "periya aḷavu",
+      "nativeText": "Usage focus for \"பெரிய அளவு\": “Large size.” A practical clothing phrase.",
+      "pronunciation": "periya aḷavu",
+      "exampleTarget": "பெரிய அளவு இருக்கிறதா?",
+      "exampleNative": "Notice what the form is doing here: “Do you have a large size?”",
+      "korean": "பெரிய அளவு",
+      "english": "Usage focus for \"பெரிய அளவு\": “Large size.” A practical clothing phrase.",
+      "example": "பெரிய அளவு இருக்கிறதா?",
+      "exampleEnglish": "Notice what the form is doing here: “Do you have a large size?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "பெரிய அளவு",
+      "romanization": "periya aḷavu",
+      "nativeText": "Contrast check for \"பெரிய அளவு\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "periya aḷavu",
+      "exampleTarget": "பெரிய அளவு இருக்கிறதா?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Do you have a large size?”",
+      "korean": "பெரிய அளவு",
+      "english": "Contrast check for \"பெரிய அளவு\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "பெரிய அளவு இருக்கிறதா?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Do you have a large size?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "பெரிய அளவு",
+      "romanization": "periya aḷavu",
+      "nativeText": "Recall \"பெரிய அளவு\" from memory, then explain what would change if a nearby alternative replaced it in \"பெரிய அளவு இருக்கிறதா?\".",
+      "pronunciation": "periya aḷavu",
+      "exampleTarget": "பெரிய அளவு இருக்கிறதா?",
+      "exampleNative": "Self-check against the model before moving on: “Do you have a large size?”",
+      "korean": "பெரிய அளவு",
+      "english": "Recall \"பெரிய அளவு\" from memory, then explain what would change if a nearby alternative replaced it in \"பெரிய அளவு இருக்கிறதா?\".",
+      "example": "பெரிய அளவு இருக்கிறதா?",
+      "exampleEnglish": "Self-check against the model before moving on: “Do you have a large size?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "பெரிய அளவு",
+      "romanization": "periya aḷavu",
+      "nativeText": "Repair \"பெரிய அளவு\" inside \"பெரிய அளவு இருக்கிறதா?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Large size.” A practical clothing phrase.",
+      "pronunciation": "periya aḷavu",
+      "exampleTarget": "பெரிய அளவு இருக்கிறதா?",
+      "exampleNative": "Use the model as the repair target: “Do you have a large size?”",
+      "korean": "பெரிய அளவு",
+      "english": "Repair \"பெரிய அளவு\" inside \"பெரிய அளவு இருக்கிறதா?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Large size.” A practical clothing phrase.",
+      "example": "பெரிய அளவு இருக்கிறதா?",
+      "exampleEnglish": "Use the model as the repair target: “Do you have a large size?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "பெரிய அளவு",
+      "romanization": "periya aḷavu",
+      "nativeText": "Transfer \"பெரிய அளவு\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"பெரிய அளவு இருக்கிறதா?\".",
+      "pronunciation": "periya aḷavu",
+      "exampleTarget": "பெரிய அளவு இருக்கிறதா?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Do you have a large size?”",
+      "korean": "பெரிய அளவு",
+      "english": "Transfer \"பெரிய அளவு\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"பெரிய அளவு இருக்கிறதா?\".",
+      "example": "பெரிய அளவு இருக்கிறதா?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Do you have a large size?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "பெரிய அளவு",
+      "romanization": "periya aḷavu",
+      "nativeText": "Find one word or phrase that naturally travels with \"பெரிய அளவு\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "periya aḷavu",
+      "exampleTarget": "பெரிய அளவு இருக்கிறதா?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Do you have a large size?”",
+      "korean": "பெரிய அளவு",
+      "english": "Find one word or phrase that naturally travels with \"பெரிய அளவு\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "பெரிய அளவு இருக்கிறதா?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Do you have a large size?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "பெரிய அளவு",
+      "romanization": "periya aḷavu",
+      "nativeText": "Listen for \"பெரிய அளவு\" inside \"பெரிய அளவு இருக்கிறதா?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "periya aḷavu",
+      "exampleTarget": "பெரிய அளவு இருக்கிறதா?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Do you have a large size?”",
+      "korean": "பெரிய அளவு",
+      "english": "Listen for \"பெரிய அளவு\" inside \"பெரிய அளவு இருக்கிறதா?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "பெரிய அளவு இருக்கிறதா?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Do you have a large size?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "பெரிய அளவு",
+      "romanization": "periya aḷavu",
+      "nativeText": "Write \"பெரிய அளவு\" again without looking, then compare the exact written form against \"பெரிய அளவு இருக்கிறதா?\" before moving on.",
+      "pronunciation": "periya aḷavu",
+      "exampleTarget": "பெரிய அளவு இருக்கிறதா?",
+      "exampleNative": "Use the written model as the final correctness check: “Do you have a large size?”",
+      "korean": "பெரிய அளவு",
+      "english": "Write \"பெரிய அளவு\" again without looking, then compare the exact written form against \"பெரிய அளவு இருக்கிறதா?\" before moving on.",
+      "example": "பெரிய அளவு இருக்கிறதா?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Do you have a large size?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "பெரிய அளவு",
+      "romanization": "periya aḷavu",
+      "nativeText": "Check whether \"பெரிய அளவு\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Do you have a large size?”",
+      "pronunciation": "periya aḷavu",
+      "exampleTarget": "பெரிய அளவு இருக்கிறதா?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Do you have a large size?”",
+      "korean": "பெரிய அளவு",
+      "english": "Check whether \"பெரிய அளவு\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Do you have a large size?”",
+      "example": "பெரிய அளவு இருக்கிறதா?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Do you have a large size?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "சிவப்பு",
+      "romanization": "civappu",
+      "nativeText": "“Red.” A common color adjective.",
+      "pronunciation": "civappu",
+      "exampleTarget": "சிவப்பு சேலை வேண்டும்.",
+      "exampleNative": "“I want a red sari.”",
+      "korean": "சிவப்பு",
+      "english": "“Red.” A common color adjective.",
+      "example": "சிவப்பு சேலை வேண்டும்.",
+      "exampleEnglish": "“I want a red sari.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "சிவப்பு சேலை வேண்டும்.",
+      "romanization": "civappu",
+      "nativeText": "Model use for \"சிவப்பு சேலை வேண்டும்.\": “I want a red sari.”",
+      "pronunciation": "civappu",
+      "exampleTarget": "சிவப்பு சேலை வேண்டும்.",
+      "exampleNative": "“I want a red sari.”",
+      "korean": "சிவப்பு சேலை வேண்டும்.",
+      "english": "Model use for \"சிவப்பு சேலை வேண்டும்.\": “I want a red sari.”",
+      "example": "சிவப்பு சேலை வேண்டும்.",
+      "exampleEnglish": "“I want a red sari.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "சிவப்பு",
+      "romanization": "civappu",
+      "nativeText": "Usage focus for \"சிவப்பு\": “Red.” A common color adjective.",
+      "pronunciation": "civappu",
+      "exampleTarget": "சிவப்பு சேலை வேண்டும்.",
+      "exampleNative": "Notice what the form is doing here: “I want a red sari.”",
+      "korean": "சிவப்பு",
+      "english": "Usage focus for \"சிவப்பு\": “Red.” A common color adjective.",
+      "example": "சிவப்பு சேலை வேண்டும்.",
+      "exampleEnglish": "Notice what the form is doing here: “I want a red sari.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "சிவப்பு",
+      "romanization": "civappu",
+      "nativeText": "Contrast check for \"சிவப்பு\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "civappu",
+      "exampleTarget": "சிவப்பு சேலை வேண்டும்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want a red sari.”",
+      "korean": "சிவப்பு",
+      "english": "Contrast check for \"சிவப்பு\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "சிவப்பு சேலை வேண்டும்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want a red sari.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "சிவப்பு",
+      "romanization": "civappu",
+      "nativeText": "Recall \"சிவப்பு\" from memory, then explain what would change if a nearby alternative replaced it in \"சிவப்பு சேலை வேண்டும்.\".",
+      "pronunciation": "civappu",
+      "exampleTarget": "சிவப்பு சேலை வேண்டும்.",
+      "exampleNative": "Self-check against the model before moving on: “I want a red sari.”",
+      "korean": "சிவப்பு",
+      "english": "Recall \"சிவப்பு\" from memory, then explain what would change if a nearby alternative replaced it in \"சிவப்பு சேலை வேண்டும்.\".",
+      "example": "சிவப்பு சேலை வேண்டும்.",
+      "exampleEnglish": "Self-check against the model before moving on: “I want a red sari.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "சிவப்பு",
+      "romanization": "civappu",
+      "nativeText": "Repair \"சிவப்பு\" inside \"சிவப்பு சேலை வேண்டும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Red.” A common color adjective.",
+      "pronunciation": "civappu",
+      "exampleTarget": "சிவப்பு சேலை வேண்டும்.",
+      "exampleNative": "Use the model as the repair target: “I want a red sari.”",
+      "korean": "சிவப்பு",
+      "english": "Repair \"சிவப்பு\" inside \"சிவப்பு சேலை வேண்டும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Red.” A common color adjective.",
+      "example": "சிவப்பு சேலை வேண்டும்.",
+      "exampleEnglish": "Use the model as the repair target: “I want a red sari.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "சிவப்பு",
+      "romanization": "civappu",
+      "nativeText": "Transfer \"சிவப்பு\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"சிவப்பு சேலை வேண்டும்.\".",
+      "pronunciation": "civappu",
+      "exampleTarget": "சிவப்பு சேலை வேண்டும்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want a red sari.”",
+      "korean": "சிவப்பு",
+      "english": "Transfer \"சிவப்பு\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"சிவப்பு சேலை வேண்டும்.\".",
+      "example": "சிவப்பு சேலை வேண்டும்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want a red sari.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "சிவப்பு",
+      "romanization": "civappu",
+      "nativeText": "Find one word or phrase that naturally travels with \"சிவப்பு\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "civappu",
+      "exampleTarget": "சிவப்பு சேலை வேண்டும்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want a red sari.”",
+      "korean": "சிவப்பு",
+      "english": "Find one word or phrase that naturally travels with \"சிவப்பு\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "சிவப்பு சேலை வேண்டும்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want a red sari.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "சிவப்பு",
+      "romanization": "civappu",
+      "nativeText": "Listen for \"சிவப்பு\" inside \"சிவப்பு சேலை வேண்டும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "civappu",
+      "exampleTarget": "சிவப்பு சேலை வேண்டும்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want a red sari.”",
+      "korean": "சிவப்பு",
+      "english": "Listen for \"சிவப்பு\" inside \"சிவப்பு சேலை வேண்டும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "சிவப்பு சேலை வேண்டும்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want a red sari.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "சிவப்பு",
+      "romanization": "civappu",
+      "nativeText": "Write \"சிவப்பு\" again without looking, then compare the exact written form against \"சிவப்பு சேலை வேண்டும்.\" before moving on.",
+      "pronunciation": "civappu",
+      "exampleTarget": "சிவப்பு சேலை வேண்டும்.",
+      "exampleNative": "Use the written model as the final correctness check: “I want a red sari.”",
+      "korean": "சிவப்பு",
+      "english": "Write \"சிவப்பு\" again without looking, then compare the exact written form against \"சிவப்பு சேலை வேண்டும்.\" before moving on.",
+      "example": "சிவப்பு சேலை வேண்டும்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want a red sari.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "சிவப்பு",
+      "romanization": "civappu",
+      "nativeText": "Check whether \"சிவப்பு\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want a red sari.”",
+      "pronunciation": "civappu",
+      "exampleTarget": "சிவப்பு சேலை வேண்டும்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want a red sari.”",
+      "korean": "சிவப்பு",
+      "english": "Check whether \"சிவப்பு\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want a red sari.”",
+      "example": "சிவப்பு சேலை வேண்டும்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want a red sari.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "ஒரு கிலோ",
+      "romanization": "oru kilō",
+      "nativeText": "“One kilo.” Market shopping naturally uses measure nouns.",
+      "pronunciation": "oru kilō",
+      "exampleTarget": "ஒரு கிலோ மாம்பழம் வேண்டும்.",
+      "exampleNative": "“I want one kilo of mangoes.”",
+      "korean": "ஒரு கிலோ",
+      "english": "“One kilo.” Market shopping naturally uses measure nouns.",
+      "example": "ஒரு கிலோ மாம்பழம் வேண்டும்.",
+      "exampleEnglish": "“I want one kilo of mangoes.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "ஒரு கிலோ மாம்பழம் வேண்டும்.",
+      "romanization": "oru kilō",
+      "nativeText": "Model use for \"ஒரு கிலோ மாம்பழம் வேண்டும்.\": “I want one kilo of mangoes.”",
+      "pronunciation": "oru kilō",
+      "exampleTarget": "ஒரு கிலோ மாம்பழம் வேண்டும்.",
+      "exampleNative": "“I want one kilo of mangoes.”",
+      "korean": "ஒரு கிலோ மாம்பழம் வேண்டும்.",
+      "english": "Model use for \"ஒரு கிலோ மாம்பழம் வேண்டும்.\": “I want one kilo of mangoes.”",
+      "example": "ஒரு கிலோ மாம்பழம் வேண்டும்.",
+      "exampleEnglish": "“I want one kilo of mangoes.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "ஒரு கிலோ",
+      "romanization": "oru kilō",
+      "nativeText": "Usage focus for \"ஒரு கிலோ\": “One kilo.” Market shopping naturally uses measure nouns.",
+      "pronunciation": "oru kilō",
+      "exampleTarget": "ஒரு கிலோ மாம்பழம் வேண்டும்.",
+      "exampleNative": "Notice what the form is doing here: “I want one kilo of mangoes.”",
+      "korean": "ஒரு கிலோ",
+      "english": "Usage focus for \"ஒரு கிலோ\": “One kilo.” Market shopping naturally uses measure nouns.",
+      "example": "ஒரு கிலோ மாம்பழம் வேண்டும்.",
+      "exampleEnglish": "Notice what the form is doing here: “I want one kilo of mangoes.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "ஒரு கிலோ",
+      "romanization": "oru kilō",
+      "nativeText": "Contrast check for \"ஒரு கிலோ\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "oru kilō",
+      "exampleTarget": "ஒரு கிலோ மாம்பழம் வேண்டும்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want one kilo of mangoes.”",
+      "korean": "ஒரு கிலோ",
+      "english": "Contrast check for \"ஒரு கிலோ\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "ஒரு கிலோ மாம்பழம் வேண்டும்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want one kilo of mangoes.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "ஒரு கிலோ",
+      "romanization": "oru kilō",
+      "nativeText": "Recall \"ஒரு கிலோ\" from memory, then explain what would change if a nearby alternative replaced it in \"ஒரு கிலோ மாம்பழம் வேண்டும்.\".",
+      "pronunciation": "oru kilō",
+      "exampleTarget": "ஒரு கிலோ மாம்பழம் வேண்டும்.",
+      "exampleNative": "Self-check against the model before moving on: “I want one kilo of mangoes.”",
+      "korean": "ஒரு கிலோ",
+      "english": "Recall \"ஒரு கிலோ\" from memory, then explain what would change if a nearby alternative replaced it in \"ஒரு கிலோ மாம்பழம் வேண்டும்.\".",
+      "example": "ஒரு கிலோ மாம்பழம் வேண்டும்.",
+      "exampleEnglish": "Self-check against the model before moving on: “I want one kilo of mangoes.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "ஒரு கிலோ",
+      "romanization": "oru kilō",
+      "nativeText": "Repair \"ஒரு கிலோ\" inside \"ஒரு கிலோ மாம்பழம் வேண்டும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “One kilo.” Market shopping naturally uses measure nouns.",
+      "pronunciation": "oru kilō",
+      "exampleTarget": "ஒரு கிலோ மாம்பழம் வேண்டும்.",
+      "exampleNative": "Use the model as the repair target: “I want one kilo of mangoes.”",
+      "korean": "ஒரு கிலோ",
+      "english": "Repair \"ஒரு கிலோ\" inside \"ஒரு கிலோ மாம்பழம் வேண்டும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “One kilo.” Market shopping naturally uses measure nouns.",
+      "example": "ஒரு கிலோ மாம்பழம் வேண்டும்.",
+      "exampleEnglish": "Use the model as the repair target: “I want one kilo of mangoes.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "ஒரு கிலோ",
+      "romanization": "oru kilō",
+      "nativeText": "Transfer \"ஒரு கிலோ\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ஒரு கிலோ மாம்பழம் வேண்டும்.\".",
+      "pronunciation": "oru kilō",
+      "exampleTarget": "ஒரு கிலோ மாம்பழம் வேண்டும்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want one kilo of mangoes.”",
+      "korean": "ஒரு கிலோ",
+      "english": "Transfer \"ஒரு கிலோ\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ஒரு கிலோ மாம்பழம் வேண்டும்.\".",
+      "example": "ஒரு கிலோ மாம்பழம் வேண்டும்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want one kilo of mangoes.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "ஒரு கிலோ",
+      "romanization": "oru kilō",
+      "nativeText": "Find one word or phrase that naturally travels with \"ஒரு கிலோ\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "oru kilō",
+      "exampleTarget": "ஒரு கிலோ மாம்பழம் வேண்டும்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want one kilo of mangoes.”",
+      "korean": "ஒரு கிலோ",
+      "english": "Find one word or phrase that naturally travels with \"ஒரு கிலோ\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "ஒரு கிலோ மாம்பழம் வேண்டும்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want one kilo of mangoes.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "ஒரு கிலோ",
+      "romanization": "oru kilō",
+      "nativeText": "Listen for \"ஒரு கிலோ\" inside \"ஒரு கிலோ மாம்பழம் வேண்டும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "oru kilō",
+      "exampleTarget": "ஒரு கிலோ மாம்பழம் வேண்டும்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want one kilo of mangoes.”",
+      "korean": "ஒரு கிலோ",
+      "english": "Listen for \"ஒரு கிலோ\" inside \"ஒரு கிலோ மாம்பழம் வேண்டும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "ஒரு கிலோ மாம்பழம் வேண்டும்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want one kilo of mangoes.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "ஒரு கிலோ",
+      "romanization": "oru kilō",
+      "nativeText": "Write \"ஒரு கிலோ\" again without looking, then compare the exact written form against \"ஒரு கிலோ மாம்பழம் வேண்டும்.\" before moving on.",
+      "pronunciation": "oru kilō",
+      "exampleTarget": "ஒரு கிலோ மாம்பழம் வேண்டும்.",
+      "exampleNative": "Use the written model as the final correctness check: “I want one kilo of mangoes.”",
+      "korean": "ஒரு கிலோ",
+      "english": "Write \"ஒரு கிலோ\" again without looking, then compare the exact written form against \"ஒரு கிலோ மாம்பழம் வேண்டும்.\" before moving on.",
+      "example": "ஒரு கிலோ மாம்பழம் வேண்டும்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want one kilo of mangoes.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "ஒரு கிலோ",
+      "romanization": "oru kilō",
+      "nativeText": "Check whether \"ஒரு கிலோ\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want one kilo of mangoes.”",
+      "pronunciation": "oru kilō",
+      "exampleTarget": "ஒரு கிலோ மாம்பழம் வேண்டும்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want one kilo of mangoes.”",
+      "korean": "ஒரு கிலோ",
+      "english": "Check whether \"ஒரு கிலோ\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want one kilo of mangoes.”",
+      "example": "ஒரு கிலோ மாம்பழம் வேண்டும்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want one kilo of mangoes.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "பணம் / அட்டை",
+      "romanization": "paṇam / aṭṭai",
+      "nativeText": "“Cash / card.” Useful for payment choices.",
+      "pronunciation": "paṇam / aṭṭai",
+      "exampleTarget": "அட்டையால் கட்டலாமா?",
+      "exampleNative": "“May I pay by card?”",
+      "korean": "பணம் / அட்டை",
+      "english": "“Cash / card.” Useful for payment choices.",
+      "example": "அட்டையால் கட்டலாமா?",
+      "exampleEnglish": "“May I pay by card?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "அட்டையால் கட்டலாமா?",
+      "romanization": "paṇam / aṭṭai",
+      "nativeText": "Model use for \"அட்டையால் கட்டலாமா?\": “May I pay by card?”",
+      "pronunciation": "paṇam / aṭṭai",
+      "exampleTarget": "அட்டையால் கட்டலாமா?",
+      "exampleNative": "“May I pay by card?”",
+      "korean": "அட்டையால் கட்டலாமா?",
+      "english": "Model use for \"அட்டையால் கட்டலாமா?\": “May I pay by card?”",
+      "example": "அட்டையால் கட்டலாமா?",
+      "exampleEnglish": "“May I pay by card?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "பணம் / அட்டை",
+      "romanization": "paṇam / aṭṭai",
+      "nativeText": "Usage focus for \"பணம் / அட்டை\": “Cash / card.” Useful for payment choices.",
+      "pronunciation": "paṇam / aṭṭai",
+      "exampleTarget": "அட்டையால் கட்டலாமா?",
+      "exampleNative": "Notice what the form is doing here: “May I pay by card?”",
+      "korean": "பணம் / அட்டை",
+      "english": "Usage focus for \"பணம் / அட்டை\": “Cash / card.” Useful for payment choices.",
+      "example": "அட்டையால் கட்டலாமா?",
+      "exampleEnglish": "Notice what the form is doing here: “May I pay by card?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "பணம் / அட்டை",
+      "romanization": "paṇam / aṭṭai",
+      "nativeText": "Contrast check for \"பணம் / அட்டை\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "paṇam / aṭṭai",
+      "exampleTarget": "அட்டையால் கட்டலாமா?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I pay by card?”",
+      "korean": "பணம் / அட்டை",
+      "english": "Contrast check for \"பணம் / அட்டை\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "அட்டையால் கட்டலாமா?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "பணம் / அட்டை",
+      "romanization": "paṇam / aṭṭai",
+      "nativeText": "Recall \"பணம் / அட்டை\" from memory, then explain what would change if a nearby alternative replaced it in \"அட்டையால் கட்டலாமா?\".",
+      "pronunciation": "paṇam / aṭṭai",
+      "exampleTarget": "அட்டையால் கட்டலாமா?",
+      "exampleNative": "Self-check against the model before moving on: “May I pay by card?”",
+      "korean": "பணம் / அட்டை",
+      "english": "Recall \"பணம் / அட்டை\" from memory, then explain what would change if a nearby alternative replaced it in \"அட்டையால் கட்டலாமா?\".",
+      "example": "அட்டையால் கட்டலாமா?",
+      "exampleEnglish": "Self-check against the model before moving on: “May I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "பணம் / அட்டை",
+      "romanization": "paṇam / aṭṭai",
+      "nativeText": "Repair \"பணம் / அட்டை\" inside \"அட்டையால் கட்டலாமா?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Cash / card.” Useful for payment choices.",
+      "pronunciation": "paṇam / aṭṭai",
+      "exampleTarget": "அட்டையால் கட்டலாமா?",
+      "exampleNative": "Use the model as the repair target: “May I pay by card?”",
+      "korean": "பணம் / அட்டை",
+      "english": "Repair \"பணம் / அட்டை\" inside \"அட்டையால் கட்டலாமா?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Cash / card.” Useful for payment choices.",
+      "example": "அட்டையால் கட்டலாமா?",
+      "exampleEnglish": "Use the model as the repair target: “May I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "பணம் / அட்டை",
+      "romanization": "paṇam / aṭṭai",
+      "nativeText": "Transfer \"பணம் / அட்டை\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"அட்டையால் கட்டலாமா?\".",
+      "pronunciation": "paṇam / aṭṭai",
+      "exampleTarget": "அட்டையால் கட்டலாமா?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I pay by card?”",
+      "korean": "பணம் / அட்டை",
+      "english": "Transfer \"பணம் / அட்டை\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"அட்டையால் கட்டலாமா?\".",
+      "example": "அட்டையால் கட்டலாமா?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "பணம் / அட்டை",
+      "romanization": "paṇam / aṭṭai",
+      "nativeText": "Find one word or phrase that naturally travels with \"பணம் / அட்டை\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "paṇam / aṭṭai",
+      "exampleTarget": "அட்டையால் கட்டலாமா?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “May I pay by card?”",
+      "korean": "பணம் / அட்டை",
+      "english": "Find one word or phrase that naturally travels with \"பணம் / அட்டை\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "அட்டையால் கட்டலாமா?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “May I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "பணம் / அட்டை",
+      "romanization": "paṇam / aṭṭai",
+      "nativeText": "Listen for \"பணம் / அட்டை\" inside \"அட்டையால் கட்டலாமா?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "paṇam / aṭṭai",
+      "exampleTarget": "அட்டையால் கட்டலாமா?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I pay by card?”",
+      "korean": "பணம் / அட்டை",
+      "english": "Listen for \"பணம் / அட்டை\" inside \"அட்டையால் கட்டலாமா?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "அட்டையால் கட்டலாமா?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "பணம் / அட்டை",
+      "romanization": "paṇam / aṭṭai",
+      "nativeText": "Write \"பணம் / அட்டை\" again without looking, then compare the exact written form against \"அட்டையால் கட்டலாமா?\" before moving on.",
+      "pronunciation": "paṇam / aṭṭai",
+      "exampleTarget": "அட்டையால் கட்டலாமா?",
+      "exampleNative": "Use the written model as the final correctness check: “May I pay by card?”",
+      "korean": "பணம் / அட்டை",
+      "english": "Write \"பணம் / அட்டை\" again without looking, then compare the exact written form against \"அட்டையால் கட்டலாமா?\" before moving on.",
+      "example": "அட்டையால் கட்டலாமா?",
+      "exampleEnglish": "Use the written model as the final correctness check: “May I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit08shopping-vocabulary-1",
+        "ta-level1unit08shopping-vocabulary-2",
+        "ta-level1unit08shopping-grammar-1",
+        "ta-level1unit08shopping-grammar-2",
+        "ta-level1unit08shopping-reading",
+        "ta-level1unit08shopping-listening",
+        "ta-level1unit08shopping-writing",
+        "ta-level1unit08shopping-task"
+      ],
+      "targetText": "பணம் / அட்டை",
+      "romanization": "paṇam / aṭṭai",
+      "nativeText": "Check whether \"பணம் / அட்டை\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I pay by card?”",
+      "pronunciation": "paṇam / aṭṭai",
+      "exampleTarget": "அட்டையால் கட்டலாமா?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “May I pay by card?”",
+      "korean": "பணம் / அட்டை",
+      "english": "Check whether \"பணம் / அட்டை\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I pay by card?”",
+      "example": "அட்டையால் கட்டலாமா?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “May I pay by card?”"
+    }
+  ],
+  "targetLang": "ta",
+  "nativeLang": "en",
+  "track": "textbook"
+};

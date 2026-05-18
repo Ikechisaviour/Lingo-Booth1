@@ -9,6 +9,7 @@ const classListPage = path.join(frontendRoot, 'src', 'pages', 'ClassLessonsPage.
 const webApi = path.join(frontendRoot, 'src', 'services', 'api.js');
 const mobileApi = path.join(repoRoot, 'mobile', 'src', 'services', 'api.ts');
 const backendLessonsRoute = path.join(repoRoot, 'backend', 'routes', 'lessons.js');
+const backendTargetLayerPolicy = path.join(repoRoot, 'backend', 'utils', 'targetLayerPolicy.js');
 const zhFoundationSeed = path.join(repoRoot, 'backend', 'textbookLessons', 'zh', 'level1Foundation.js');
 const webLocalesRoot = path.join(frontendRoot, 'src', 'locales');
 const mobileLocalesRoot = path.join(repoRoot, 'mobile', 'src', 'locales');
@@ -115,6 +116,15 @@ if (
   || !/results\[k\]\?\.failed/.test(backendSource)
 ) {
   issues.push('Backend class-lesson detail route must normalize nativeLang, translate native examples/breakdowns, reject failed translation fallbacks, and clean English meanings out of target examples for non-English learners.');
+}
+
+const targetLayerPolicySource = read(backendTargetLayerPolicy);
+if (
+  !/stripObviousEnglishTargetScaffolding/.test(targetLayerPolicySource)
+  || !/exampleTarget/.test(targetLayerPolicySource)
+  || !/breakdown/.test(targetLayerPolicySource)
+) {
+  issues.push('Target-layer policy must clean obvious English scaffolding from target examples and breakdown rows before class lessons are served.');
 }
 
 if (fs.existsSync(zhFoundationSeed)) {

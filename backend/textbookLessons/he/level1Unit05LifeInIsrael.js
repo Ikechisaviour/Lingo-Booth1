@@ -1,110 +1,2697 @@
-// Level 1 Unit 5 — Life in Israel (Modern Hebrew)
-// Functions: talking about Israeli culture, places, food, family, daily life;
-// answering "what is life like in Israel?" with vocabulary anchored to real places.
-
-const createContentItem = (target, translit, note, type = 'word', example = '', exampleNote = '', breakdown = null, activityIds = []) => ({
-  type, activityIds, targetText: target, romanization: translit, nativeText: note, pronunciation: translit,
-  exampleTarget: example || target, exampleNative: exampleNote || note,
-  korean: target, english: note, example: example || target, exampleEnglish: exampleNote || note,
-  ...(breakdown ? { breakdown: breakdown.map(b => ({ target: b.target, native: b.note, korean: b.target, english: b.note })) } : {}),
-});
-
-const ACT = {
-  orientation: 'he-l1u5-orientation', pronunciation: 'he-l1u5-pronunciation',
-  vocabCities: 'he-l1u5-vocab-cities', vocabFood: 'he-l1u5-vocab-food', vocabFamily: 'he-l1u5-vocab-family',
-  grammarPossession: 'he-l1u5-grammar-possession', grammarAdjectives: 'he-l1u5-grammar-adjectives',
-  reading: 'he-l1u5-reading', listening: 'he-l1u5-listening', writing: 'he-l1u5-writing',
-  culture: 'he-l1u5-culture', task: 'he-l1u5-task',
-};
-
-const activities = [
-  { id: ACT.orientation, section: 'Orientation', title: 'What you will be able to do', goals: ['Name 10 major Israeli cities and the regions they\'re in.', 'Describe 10 iconic Israeli foods.', 'Name 12 family relations with gender.'], task: 'By the end you should describe Israeli daily life vividly to a friend at home.' },
-  { id: ACT.pronunciation, section: 'Pronunciation', title: 'Names with Hebrew sounds', goals: ['Pronounce city names with correct stress: yeruSHALaim, tel aVIV, cheiFA, be\'ER SHEva.', 'Apply chet in Cheifa and Hanukkah words.', 'Pronounce family terms with stress: aba (a-BA), ima (i-MA), achot (a-CHOT, mil\'ra).'], task: 'Pronounce 8 names and family terms with correct stress.' },
-  { id: ACT.vocabCities, section: 'Vocabulary I', title: 'Israeli cities & places', goals: ['Memorize 10 cities and 5 famous sites.', 'Pair each with the region (north/center/south).'], task: 'Locate each city on a mental map of Israel.' },
-  { id: ACT.vocabFood, section: 'Vocabulary II', title: 'Israeli foods', goals: ['Memorize 10 iconic Israeli foods (hummus, shakshuka, falafel, sabich).', 'Know the origin of each (Arab, Mizrahi Jewish, Yemenite, etc.).'], task: 'Order three Israeli dishes in Hebrew.' },
-  { id: ACT.vocabFamily, section: 'Vocabulary III', title: 'Family vocabulary', goals: ['Memorize 12 family terms with gender (father, mother, sibling, child, etc.).', 'Apply possessive endings: my dad (aba sheli), her mom (ima shela).'], task: 'Introduce 4 family members with their relations.' },
-  { id: ACT.grammarPossession, section: 'Grammar I', title: 'Possession with של', goals: ['Use של (shel, "of") to mark possession: הספר של דני (ha-sefer shel Dani, "Dani\'s book").', 'Combine של with pronoun endings: שלי (sheli, mine), שלך (shelcha/shelach), שלו (shelo), שלה (shela).', 'Distinguish from the older construct possession (smichut) — Level 3 topic.'], task: 'Construct 6 possessive phrases for family members and possessions.' },
-  { id: ACT.grammarAdjectives, section: 'Grammar II', title: 'Adjective agreement', goals: ['Apply masculine/feminine and singular/plural agreement to adjectives.', 'Use טוב (tov) → tova / tovim / tovot; גדול (gadol) → gdola / gdolim / gdolot.', 'Place adjectives AFTER the noun (not before): בית גדול (bayit gadol, big house) not gadol bayit.'], task: 'Describe 5 nouns with appropriate adjective agreement.' },
-  { id: ACT.reading, section: 'Reading and Speaking', title: 'My Israel', goals: ['Read a paragraph by an immigrant describing their Israel.', 'Identify all city, food, and family references.'], task: 'Read aloud and answer six comprehension questions.' },
-  { id: ACT.listening, section: 'Listening and Speaking', title: 'Tour guide overview', goals: ['Follow a brief tour-guide introduction to Israel\'s regions.', 'Identify the cities and what each is famous for.'], task: 'Match each region to one cultural feature.' },
-  { id: ACT.writing, section: 'Writing', title: 'A letter home about Israel', goals: ['Write 8 sentences about your impressions of Israel.', 'Use possessives, adjective agreement, and vocabulary from this unit.'], task: 'Compose your letter.' },
-  { id: ACT.culture, section: 'Culture Note', title: 'Israel\'s ethnic mosaic', goals: ['Understand the basic Jewish ethnic divisions: Ashkenazi (European-origin), Mizrahi/Sephardi (Middle Eastern/Iberian), Ethiopian.', 'Know about Arab Israelis (~20% of population), Druze, Bedouin, and Christian communities.', 'Recognize religious-secular continuum: chiloni (secular), masorti (traditional), dati (religious), charedi (ultra-orthodox).'], task: 'Match three Israeli foods to their ethnic origin.' },
-  { id: ACT.task, section: 'Task', title: 'Introduce Israel to a visitor', goals: ['Combine cities, food, family, and culture vocabulary in a continuous Israel-overview.', 'Speak for ~2 minutes describing Israel to a foreigner.'], task: 'Roleplay as a tour guide showing a foreign student Israel\'s highlights.' },
-];
-
-const lesson = {
-  title: 'Level 1 · Unit 5: החיים בישראל — Life in Israel',
-  category: 'culture', difficulty: 'beginner', targetLang: 'he', nativeLang: 'en', track: 'textbook', lessonType: 'thematic',
-  activities,
-  expressionPractice: [
-    { id: 'describing-cities', label: 'Describing cities', goal: 'Name a city, locate it, and say one famous feature.' },
-    { id: 'ordering-food', label: 'Ordering iconic food', goal: 'Order falafel, hummus, or shakshuka and add a drink.' },
-    { id: 'introducing-family', label: 'Introducing family', goal: 'Present 3 family members with names, ages, and roles.' },
+module.exports = {
+  "title": "Level 1 · Unit 5: החיים בישראל — Life in Israel",
+  "category": "culture",
+  "difficulty": "beginner",
+  "targetLang": "he",
+  "nativeLang": "en",
+  "track": "textbook",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "he-level1unit05lifeinisrael-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Name 10 major Israeli cities and the regions they're in."
+      ],
+      "task": "Roleplay as a tour guide showing a foreign student Israel's highlights."
+    },
+    {
+      "id": "he-level1unit05lifeinisrael-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Hebrew gutturals, stress, begadkefat contrasts, and reduced-vowel patterns clear enough that the sentence remains easy to parse."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "he-level1unit05lifeinisrael-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 5: החיים בישראל — Life in Israel with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "he-level1unit05lifeinisrael-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 5: החיים בישראל — Life in Israel sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "he-level1unit05lifeinisrael-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Name 10 major Israeli cities and the regions they're in."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "he-level1unit05lifeinisrael-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 5: החיים בישראל — Life in Israel with one nearby Hebrew form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "he-level1unit05lifeinisrael-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "he-level1unit05lifeinisrael-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "he-level1unit05lifeinisrael-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "he-level1unit05lifeinisrael-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the social, religious, or regional cue that changes how this Hebrew is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "he-level1unit05lifeinisrael-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Roleplay as a tour guide showing a foreign student Israel's highlights."
+      ],
+      "task": "Roleplay as a tour guide showing a foreign student Israel's highlights."
+    }
   ],
-  relatedPools: ['topic-culture', 'topic-geography', 'topic-family'],
-  content: [
-    createContentItem('ישראל', 'Yisrael', 'The State of Israel — מדינת ישראל (medinat Yisrael). Founded 1948, capital Jerusalem (Yerushalayim). Population ~9.5M; languages Hebrew (official), Arabic (official, demoted to "special status" in 2018), English (de facto). The lesson covers the country\'s cities, food, family terms, and ethnic mosaic.', 'word', 'אני בישראל. — ani be-yisrael — "I am in Israel."', 'Note: ישראלי (yisre\'eli) is the nationality (Israeli); יהודי (yehudi) is the religion/ethnicity (Jewish); not the same.', null, [ACT.orientation]),
-
-    createContentItem('ירושלים', 'Yerushalayim (ye-ru-sha-LAYIM)', 'Jerusalem — Israel\'s capital, ancient holy city of Judaism, Christianity, and Islam. Hebrew University is here on Mount Scopus (Har ha-Tzofim) and Givat Ram. The name ends with the dual suffix -ayim (interpreted as "city of double peace").', 'word', 'ירושלים יפה מאוד. — yerushalayim yafa me\'od — "Jerusalem is very beautiful."', 'Old City divided into Jewish, Muslim, Christian, and Armenian quarters; the Western Wall (ha-Kotel), Dome of the Rock, and Church of the Holy Sepulchre are within walking distance.', null, [ACT.vocabCities]),
-    createContentItem('תל אביב', 'Tel Aviv (tel a-VIV)', 'Israel\'s commercial and cultural capital — modern, secular, beach-front. Founded 1909. Home to Tel Aviv University. Nickname: "the city that never sleeps". The Bauhaus White City is a UNESCO heritage site.', 'word', 'אני גרה בתל אביב. — ani gara be-tel aviv — "I live in Tel Aviv."', 'Tel Aviv = "Hill of Spring"; the name was given by founders to evoke renewal.', null, [ACT.vocabCities]),
-    createContentItem('חיפה', 'Cheifa (CHEI-fa)', 'Haifa — Israel\'s third-largest city, major port on the Mediterranean. Home to the Technion (Israel Institute of Technology) and the Baha\'i World Center. Built on Mount Carmel.', 'word', 'חיפה היא עיר נמל. — Cheifa hi ir namal — "Haifa is a port city."', 'Haifa has a strong Arab-Jewish coexistence reputation; Hebrew U-Haifa is also here.', null, [ACT.vocabCities]),
-    createContentItem('באר שבע', 'Be\'er Sheva (be-ER SHE-va)', 'Be\'er Sheva — capital of the Negev desert in the south. Home to Ben-Gurion University. Mentioned in the Bible as Abraham\'s well; literal meaning "Well of the Seven (oath)".', 'word', 'באר שבע בדרום. — Be\'er Sheva ba-darom — "Be\'er Sheva is in the south."', 'The fastest-growing city in Israel; a major high-tech hub now too.', null, [ACT.vocabCities]),
-    createContentItem('אילת', 'Eilat (ei-LAT)', 'Eilat — Israel\'s southernmost city, a Red Sea resort. Tax-free zone; major tourism hub for scuba diving and beach holidays.', 'word', 'אנחנו נוסעים לאילת בקיץ. — anachnu nos\'im le-eilat ba-kayitz — "We\'re going to Eilat in the summer."', 'The Red Sea coral reefs at Eilat are among the northernmost on Earth.', null, [ACT.vocabCities]),
-    createContentItem('נצרת', 'Natzeret', 'Nazareth — major Arab Israeli city in the Galilee; childhood home of Jesus. Predominantly Christian Arab and Muslim Arab population.', 'word', 'נצרת בצפון. — Natzeret ba-tzafon — "Nazareth is in the north."', 'Nazareth Illit (Upper Nazareth, now Nof ha-Galil) is the Jewish twin city.', null, [ACT.vocabCities]),
-    createContentItem('צפת', 'Tzfat', 'Safed — small mountain city in the Upper Galilee, famous as the historic center of Kabbalah (Jewish mysticism). Artists\' colony and tourist destination.', 'word', 'צפת היא עיר עתיקה. — Tzfat hi ir atika — "Safed is an ancient city."', 'One of the Four Holy Cities of Judaism (with Jerusalem, Hebron, Tiberias).', null, [ACT.vocabCities]),
-    createContentItem('הכותל המערבי', 'ha-Kotel ha-ma\'aravi', 'The Western Wall (Wailing Wall) — remnant of the Second Temple\'s retaining wall. Judaism\'s holiest accessible site. Located in the Old City of Jerusalem.', 'word', 'אנשים מתפללים בכותל. — anashim mit\'palelim ba-kotel — "People pray at the Wall."', 'Often just called הכותל (ha-Kotel) without the modifier.', null, [ACT.vocabCities]),
-    createContentItem('ים המלח', 'Yam ha-Melach', 'The Dead Sea — saltwater lake, lowest point on Earth (~430m below sea level). Border with Jordan. Famous for therapeutic salts and floating.', 'word', 'אנשים צפים בים המלח. — anashim tzafim be-yam ha-melach — "People float in the Dead Sea."', 'The Dead Sea is shrinking ~1m/year due to water diversion; major environmental issue.', null, [ACT.vocabCities]),
-    createContentItem('מצדה', 'Metzada', 'Masada — ancient fortress in the Judean Desert. Site of the 73 CE Jewish revolt against Rome; symbol of Israeli national identity.', 'word', 'עליתי על מצדה לראות את הזריחה. — aliti al Metzada lirot et ha-zricha — "I climbed Masada to see the sunrise."', 'The IDF traditionally held swearing-in ceremonies at Masada with the slogan "Masada shall not fall again".', null, [ACT.vocabCities]),
-
-    createContentItem('חומוס', 'chumus (CHU-mus)', 'Hummus — the iconic Israeli/Levantine chickpea spread. Eaten as a meal with pita, salads, falafel, or pickles. Initial chet /kh/.', 'word', 'בא לי חומוס בפיתה. — ba li chumus be-pita — "I feel like having hummus in a pita."', 'Israel\'s hummus wars (with Lebanon and Palestinian claims) are deeply felt; everyone has a favorite hummusiya (hummus joint).', null, [ACT.vocabFood]),
-    createContentItem('פלאפל', 'falafel', 'Falafel — deep-fried chickpea balls in pita, with salads, tehina, and hot sauce. Israel\'s street food and national dish (along with hummus).', 'word', 'פלאפל בפיתה, חריף, בלי עגבניות. — falafel be-pita, charif, bli agvaniyot — "Falafel in pita, spicy, no tomatoes."', 'Origin disputed — Egyptian, Yemenite, or Palestinian. In Israel, eaten standing at a falafel stand for ~20 shekels.', null, [ACT.vocabFood]),
-    createContentItem('שקשוקה', 'shakshuka', 'Shakshuka — eggs poached in a spicy tomato-pepper sauce. North African (Tunisian/Libyan) origin, brought by Mizrahi Jews. Standard breakfast or brunch dish.', 'word', 'שקשוקה בבוקר! — shakshuka ba-boker — "Shakshuka for breakfast!"', 'Best shakshuka in Israel is famously at Dr. Shakshuka in Jaffa; debate is endless.', null, [ACT.vocabFood]),
-    createContentItem('סביח', 'sabich', 'Sabich — pita stuffed with fried eggplant, boiled egg, tehina, salads. Iraqi-Jewish origin; sabich began as the Shabbat-morning breakfast carried to synagogue, became Israeli street food in the 1960s.', 'word', 'סביח עם תהינה ועמבה. — sabich im techina ve-amba — "Sabich with tehina and amba."', 'Amba is a pickled mango sauce, also of Iraqi-Jewish origin; signature of sabich.', null, [ACT.vocabFood]),
-    createContentItem('שווארמה', 'shawarma', 'Shawarma — sliced spit-roasted meat in pita or laffa. Levantine origin, ubiquitous in Israel. Usually chicken or turkey; lamb in higher-end places.', 'word', 'שווארמה בלאפה. — shawarma be-laffa — "Shawarma in laffa (large flatbread)."', 'The Hebrew form שווארמה is borrowed from Arabic shawurma.', null, [ACT.vocabFood]),
-    createContentItem('בורקס', 'bourekas', 'Bourekas — flaky pastries stuffed with cheese, potato, or spinach. Sephardi/Balkan origin. Israeli breakfast staple.', 'word', 'אני אוהבת בורקס גבינה. — ani ohevet bourekas gvina — "I love cheese bourekas."', 'Bakeries (מאפיות, ma\'afiyot) sell fresh bourekas daily; Friday-morning bourekas-and-coffee is a national ritual.', null, [ACT.vocabFood]),
-    createContentItem('פיתה', 'pita', 'Pita — round flatbread with a pocket. The basic bread for hummus, falafel, sabich, shawarma. From Greek/Arabic.', 'word', 'פיתה חמה. — pita chama — "Hot pita."', 'Israeli pitas are larger and softer than the dry pita chips of US supermarkets.', null, [ACT.vocabFood]),
-    createContentItem('תהינה', 'techina', 'Tahini — sesame paste sauce. Used on falafel, sabich, shawarma, and as a standalone dip. Made from raw or roasted sesame.', 'word', 'תהינה עם לימון. — techina im lemon — "Tahini with lemon."', 'Israeli technina is typically thinned with lemon, garlic, and water before serving.', null, [ACT.vocabFood]),
-    createContentItem('סלט ישראלי', 'salat yisre\'eli', 'Israeli salad — finely chopped tomato, cucumber, onion, parsley, olive oil, lemon. Side dish or breakfast staple.', 'word', 'תני לי סלט ישראלי, בבקשה. — tni li salat yisre\'eli, bevakasha — "Give me an Israeli salad, please."', 'Origin: Palestinian/Levantine; the Israeli version emphasizes very fine chopping.', null, [ACT.vocabFood]),
-    createContentItem('מלאווח', 'malawach', 'Malawach — Yemenite flaky fried flatbread. Often served with hard-boiled egg and tomato-chili sauce.', 'word', 'מלאווח חם. — malawach cham — "Hot malawach."', 'Brought by Yemenite Jews; one of the most distinctive Yemenite contributions to Israeli food.', null, [ACT.vocabFood]),
-
-    createContentItem('אבא / אמא', 'aba / ima', 'Father / mother. Universal terms for dad/mom. From Aramaic. Used in all registers — Israelis call their parents aba/ima from toddlerhood through adulthood. Mil\'ra: a-BA, i-MA.', 'word', 'אבא שלי הוא מהנדס. — aba sheli hu mehandes — "My dad is an engineer."', 'No formal vs casual; Hebrew lacks the "father/dad" or "mother/mom" register split of English.', null, [ACT.vocabFamily]),
-    createContentItem('אח / אחות', 'ach / achot', 'Brother / sister. Singular masc ach (mil\'ra: ACH), fem achot (mil\'ra: a-CHOT). Plural: achim (m) / achayot (f, irregular).', 'word', 'יש לי אח גדול ואחות קטנה. — yesh li ach gadol ve-achot ktana — "I have a big brother and little sister."', 'אח (ach) also means "brother" in the figurative sense — Israelis use it as casual address (achi = "bro").', null, [ACT.vocabFamily]),
-    createContentItem('בן / בת', 'ben / bat', 'Son / daughter. Also "boy/girl" in younger contexts. Plural: בנים (banim) / בנות (banot).', 'word', 'הבן שלי בכיתה ג׳. — ha-ben sheli ba-kita gimel — "My son is in third grade."', 'Ben/Bat is used in age-stating: ben 21 (ben esrim ve-echad) = "21 years old" (m); bat 21 = same (f).', null, [ACT.vocabFamily]),
-    createContentItem('סבא / סבתא', 'saba / savta', 'Grandfather / grandmother. From Aramaic. Mil\'el: SA-ba, SAV-ta.', 'word', 'סבא וסבתא שלי גרים בחיפה. — saba ve-savta sheli garim be-cheifa — "My grandpa and grandma live in Haifa."', 'Israeli kids often have strong relationships with savta and saba; intergenerational Friday dinners are common.', null, [ACT.vocabFamily]),
-    createContentItem('דוד / דודה', 'dod / doda', 'Uncle / aunt. Doda is also used to refer to any older woman in casual address ("auntie").', 'word', 'הדודה שלי מבקרת בקיץ. — ha-doda sheli mevakeret ba-kayitz — "My aunt visits in the summer."', 'No distinction between paternal and maternal uncle/aunt — same word.', null, [ACT.vocabFamily]),
-    createContentItem('בן דוד / בת דודה', 'ben dod / bat doda', 'Cousin — masculine ben dod ("son of uncle"), feminine bat doda ("daughter of aunt"). Hebrew specifies the cousin relation through the parent.', 'word', 'נפגשתי עם בני הדודים שלי. — nifgashti im b\'nei ha-dodim sheli — "I met with my cousins."', 'Plural: b\'nei dodim (cousins, mixed); b\'not dodim (female cousins).', null, [ACT.vocabFamily]),
-    createContentItem('בעל / אישה', 'ba\'al / isha', 'Husband / wife. Ba\'al also means "owner, master"; isha also means "woman". Plural: be\'alim / nashim.', 'word', 'הבעל שלי טייס. — ha-ba\'al sheli tayas — "My husband is a pilot."', 'Modern Hebrew increasingly uses זוגיות (zugiyut, "couplehood") and בן/בת זוג (ben/bat zug, partner) instead of ba\'al/isha, especially for unmarried couples.', null, [ACT.vocabFamily]),
-    createContentItem('ילד / ילדה / ילדים', 'yeled / yalda / yeladim', 'Child (m) / child (f) / children. Yeled is mil\'el (YE-led), the classic segolate noun. Yeladim covers any group of children.', 'word', 'יש לי שני ילדים. — yesh li sh\'nei yeladim — "I have two children."', 'In modern Hebrew, yeladim also informally means "guys/folks" addressing a group.', null, [ACT.vocabFamily]),
-
-    createContentItem('של', 'shel', 'The possessive marker "of". Place between the possessed noun and the owner: הספר של דני (ha-sefer shel Dani, "the book of Dani / Dani\'s book"). The standard everyday possessive — much more common than the construct state (smichut).', 'sentence', 'הבית של אמא — ha-bayit shel ima — "Mom\'s house"\nהמכונית של חברי — ha-mechonit shel chaveri — "my friend\'s car"', 'Note: the possessed noun is usually definite (with ha-), and shel + owner follows.', null, [ACT.grammarPossession]),
-    createContentItem('של + suffix', 'shel + pronoun suffix', 'Shel combines with pronoun endings to form personal possessives: שלי (sheli, mine), שלך (shelcha m / shelach f, yours), שלו (shelo, his), שלה (shela, hers), שלנו (shelanu, ours), שלכם/שלכן (shelachem/shelachen, yours-pl), שלהם/שלהן (shelahem/shelahen, theirs).', 'sentence', 'הספר שלי. — ha-sefer sheli — "my book"\nהמשפחה שלה. — ha-mishpacha shela — "her family"', 'Note the same -i/-cha/-o etc. pronoun-suffix system attaches to many Hebrew prepositions.', [
-      { target: 'שלי sheli', note: 'mine; -i = my' },
-      { target: 'שלך shelcha (m) / shelach (f)', note: 'yours; gender-marked' },
-      { target: 'שלו / שלה shelo / shela', note: 'his / hers' },
-      { target: 'שלנו shelanu', note: 'ours' },
-    ], [ACT.grammarPossession]),
-
-    createContentItem('שמות תואר', 'shemot to\'ar', 'Adjectives. Hebrew adjectives agree with the noun in gender AND number. They come AFTER the noun (not before, as in English). Pattern: masc-sg (gadol), fem-sg (gdola), masc-pl (gdolim), fem-pl (gdolot).', 'sentence', 'בית גדול / דירה גדולה / בתים גדולים / דירות גדולות — bayit gadol / dira gdola / batim gdolim / dirot gdolot — big house / big apartment / big houses / big apartments.', 'In definite phrases, BOTH noun and adjective take ha-: הבית הגדול (ha-bayit ha-gadol, "the big house").', [
-      { target: 'masc-sg adjective', note: 'unmarked form: gadol (big), tov (good), yafe (beautiful)' },
-      { target: 'fem-sg adjective', note: '-a ending: gdola, tova, yafa' },
-      { target: 'plural -im / -ot', note: 'masculine plural in -im, feminine in -ot' },
-    ], [ACT.grammarAdjectives]),
-
-    createContentItem('הישראל שלי', 'ha-yisra\'el sheli', 'A paragraph by an immigrant student describing the Israel she has come to know. Read aloud for vocabulary practice.', 'sentence', 'אני באה לישראל לפני שנתיים. אני סטודנטית באוניברסיטה העברית בירושלים. הירושלים שלי היא העיר העתיקה והשוק מחנה יהודה. אבל אני נוסעת לתל אביב בסוף השבוע, לחוף הים. המשפחה שלי בארצות הברית, אבל יש לי כאן חברים טובים. אני אוהבת את האוכל הישראלי, במיוחד שקשוקה וחומוס.', 'Translation: "I came to Israel two years ago. I am a student at Hebrew University in Jerusalem. My Jerusalem is the Old City and the Mahane Yehuda market. But I travel to Tel Aviv on weekends, to the beach. My family is in the United States, but I have good friends here. I love Israeli food, especially shakshuka and hummus."', null, [ACT.reading]),
-
-    createContentItem('סיור באזורים', 'siyur ba-ezorim', 'A tour guide gives a brief overview of Israel\'s regions. Listen for the regional vocabulary.', 'conversation', 'מדריך: ברוכים הבאים לישראל! ארץ קטנה, אבל מגוונת.\nמדריך: בצפון יש את חיפה, הגליל, ואת הכינרת.\nמדריך: במרכז יש את תל אביב, את שדה התעופה, ואת ירושלים.\nמדריך: בדרום יש את ים המלח, את הנגב, ואת אילת.\nמדריך: בכל אזור יש אוכל אחר, מבטא אחר, ואופי אחר.\nמדריך: יש שאלות?', 'A natural Israeli tour guide opening — short, packed, and inviting questions.', [
-      { target: 'מגוון megavan', note: '"diverse, varied"; from the root ג-ו-ן (color, variety)' },
-      { target: 'מבטא mivta', note: '"accent" — Israelis are aware of strong regional and ethnic accents' },
-      { target: 'אופי ofi', note: '"character, personality"' },
-    ], [ACT.listening]),
-
-    createContentItem('תרגיל כתיבה', 'targil ktiva', 'Write 8 sentences about your impressions of Israel. Use possessives, adjective agreement, and unit vocabulary.', 'sentence', 'דוגמה: אני בישראל שני חודשים. הירושלים שלי יפה ומיוחדת. החברים שלי כאן מאד נחמדים. אני אוהב את האוכל — במיוחד את החומוס והפיתה הטרייה. בסוף השבוע אני נוסע לתל אביב, לחוף. תל אביב היא עיר גדולה ועצבנית. ים המלח הוא מקום מעניין. אני שמח שאני כאן.', 'Translation: "I have been in Israel two months. My Jerusalem is beautiful and special. My friends here are very nice. I love the food — especially the hummus and the fresh pita. On weekends I travel to Tel Aviv, to the beach. Tel Aviv is a big and intense city. The Dead Sea is an interesting place. I\'m glad I am here."', null, [ACT.writing]),
-
-    createContentItem('עדות בישראל', 'edot be-yisrael', 'Israel\'s ethnic mosaic. Jewish ethnic groups: אשכנזים (Ashkenazim, European origin), ספרדים/מזרחים (Sefardim/Mizrachim, Iberian/Middle Eastern origin), אתיופים (Etyopim, Ethiopian). Plus ערבים (Aravim, Arab Israelis, ~20%), דרוזים (Druzim, Druze), בדואים (Bedu\'im, Bedouin).', 'sentence', 'בישראל יש עדות רבות — yhudim, aravim, druzim, ve-od. — "In Israel there are many communities — Jews, Arabs, Druze, and more."', 'Each group has its food, music, accent, and customs; modern Israel is a layered mosaic, not a melting pot.', null, [ACT.culture]),
-    createContentItem('דתי או חילוני', 'dati o chiloni', 'Religious continuum: חילוני (chiloni, secular), מסורתי (masorti, traditional), דתי (dati, religious/modern orthodox), חרדי (charedi, ultra-orthodox/Haredi). Each has distinct dress, schooling, and Shabbat observance.', 'sentence', 'אני חילוני, אבל המשפחה שלי מסורתית. — ani chiloni, aval ha-mishpacha sheli masorti — "I am secular, but my family is traditional."', 'About 45% chiloni, 25% masorti, 16% dati, 14% charedi (rough numbers, shifting); secular Tel Aviv vs religious Jerusalem is a classic dichotomy.', null, [ACT.culture]),
-
-    createContentItem('משימה: סיור לאורח', 'mesima: siyur le-ore\'ach', 'Roleplay as a tour guide showing a foreign visitor Israel\'s highlights. Use cities, food, family, and culture vocabulary.', 'conversation', '[Tel Aviv beach, Friday afternoon]\nאורח: מה רואים בישראל?\nאתה: יש המון! בצפון — חיפה והגליל. במרכז — תל אביב וירושלים. בדרום — ים המלח ואילת.\nאורח: ומה אוכלים?\nאתה: [שלוש מנות איקוניות]\nאורח: ומה עושים בסוף השבוע?\nאתה: [מתאר ערב שישי בבית]\nאורח: וואו, תודה רבה!', 'Eight-turn exchange covering regions, food, weekend life.', null, [ACT.task]),
+  "expressionPractice": [
+    {
+      "id": "describing-cities",
+      "label": "Describing cities",
+      "goal": "Name a city, locate it, and say one famous feature."
+    },
+    {
+      "id": "ordering-food",
+      "label": "Ordering iconic food",
+      "goal": "Order falafel, hummus, or shakshuka and add a drink."
+    },
+    {
+      "id": "introducing-family",
+      "label": "Introducing family",
+      "goal": "Present 3 family members with names, ages, and roles."
+    }
   ],
+  "relatedPools": [
+    "topic-culture",
+    "topic-geography",
+    "topic-family"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-orientation"
+      ],
+      "targetText": "מטרת השיעור",
+      "romanization": "",
+      "nativeText": "Name 10 major Israeli cities and the regions they're in.",
+      "pronunciation": "",
+      "exampleTarget": "מטרת השיעור",
+      "exampleNative": "The whole lesson is built toward this outcome: Roleplay as a tour guide showing a foreign student Israel's highlights.",
+      "korean": "מטרת השיעור",
+      "english": "Name 10 major Israeli cities and the regions they're in.",
+      "example": "מטרת השיעור",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Roleplay as a tour guide showing a foreign student Israel's highlights."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-pronunciation"
+      ],
+      "targetText": "בדיקת הגייה",
+      "romanization": "",
+      "nativeText": "Keep Hebrew gutturals, stress, begadkefat contrasts, and reduced-vowel patterns clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"אני בישראל. — ani be-yisrael — \"I am in Israel.\"\".",
+      "pronunciation": "",
+      "exampleTarget": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "exampleNative": "Note: ישראלי (yisre'eli) is the nationality (Israeli); יהודי (yehudi) is the religion/ethnicity (Jewish); not the same.",
+      "korean": "בדיקת הגייה",
+      "english": "Keep Hebrew gutturals, stress, begadkefat contrasts, and reduced-vowel patterns clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"אני בישראל. — ani be-yisrael — \"I am in Israel.\"\".",
+      "example": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "exampleEnglish": "Note: ישראלי (yisre'eli) is the nationality (Israeli); יהודי (yehudi) is the religion/ethnicity (Jewish); not the same."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1"
+      ],
+      "targetText": "ישראל",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 5: החיים בישראל — Life in Israel with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "exampleNative": "Note: ישראלי (yisre'eli) is the nationality (Israeli); יהודי (yehudi) is the religion/ethnicity (Jewish); not the same.",
+      "korean": "ישראל",
+      "english": "Use the key language of Level 1 · Unit 5: החיים בישראל — Life in Israel with the register and setting that the lesson requires.",
+      "example": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "exampleEnglish": "Note: ישראלי (yisre'eli) is the nationality (Israeli); יהודי (yehudi) is the religion/ethnicity (Jewish); not the same."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-2"
+      ],
+      "targetText": "ירושלים",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 5: החיים בישראל — Life in Israel sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"",
+      "exampleNative": "Old City divided into Jewish, Muslim, Christian, and Armenian quarters; the Western Wall (ha-Kotel), Dome of the Rock, and Church of the Holy Sepulchre are within walking distance.",
+      "korean": "ירושלים",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 5: החיים בישראל — Life in Israel sound precise rather than merely understandable.",
+      "example": "ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"",
+      "exampleEnglish": "Old City divided into Jewish, Muslim, Christian, and Armenian quarters; the Western Wall (ha-Kotel), Dome of the Rock, and Church of the Holy Sepulchre are within walking distance."
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-grammar-1"
+      ],
+      "targetText": "ישראל",
+      "romanization": "",
+      "nativeText": "Name 10 major Israeli cities and the regions they're in.",
+      "pronunciation": "",
+      "exampleTarget": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "exampleNative": "Note: ישראלי (yisre'eli) is the nationality (Israeli); יהודי (yehudi) is the religion/ethnicity (Jewish); not the same.",
+      "korean": "ישראל",
+      "english": "Name 10 major Israeli cities and the regions they're in.",
+      "example": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "exampleEnglish": "Note: ישראלי (yisre'eli) is the nationality (Israeli); יהודי (yehudi) is the religion/ethnicity (Jewish); not the same."
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-grammar-2"
+      ],
+      "targetText": "ירושלים",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 5: החיים בישראל — Life in Israel with one nearby Hebrew form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"",
+      "exampleNative": "Old City divided into Jewish, Muslim, Christian, and Armenian quarters; the Western Wall (ha-Kotel), Dome of the Rock, and Church of the Holy Sepulchre are within walking distance.",
+      "korean": "ירושלים",
+      "english": "Contrast the main pattern in Level 1 · Unit 5: החיים בישראל — Life in Israel with one nearby Hebrew form so the learner can avoid literal translation.",
+      "example": "ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"",
+      "exampleEnglish": "Old City divided into Jewish, Muslim, Christian, and Armenian quarters; the Western Wall (ha-Kotel), Dome of the Rock, and Church of the Holy Sepulchre are within walking distance."
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-reading"
+      ],
+      "targetText": "מודל קריאה",
+      "romanization": "",
+      "nativeText": "Read the connected model for מודל קריאה as one message. Notice how \"אני חילוני, אבל המשפחה שלי מסורתית. — ani chiloni, aval ha-mishpacha sheli masorti — \"I am secular, but my family is traditional.\"\" lets the lesson vocabulary and grammar work together instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "אני חילוני, אבל המשפחה שלי מסורתית. — ani chiloni, aval ha-mishpacha sheli masorti — \"I am secular, but my family is traditional.\"",
+      "exampleNative": "About 45% chiloni, 25% masorti, 16% dati, 14% charedi (rough numbers, shifting); secular Tel Aviv vs religious Jerusalem is a classic dichotomy.",
+      "korean": "מודל קריאה",
+      "english": "Read the connected model for מודל קריאה as one message. Notice how \"אני חילוני, אבל המשפחה שלי מסורתית. — ani chiloni, aval ha-mishpacha sheli masorti — \"I am secular, but my family is traditional.\"\" lets the lesson vocabulary and grammar work together instead of appearing as isolated flashcards.",
+      "example": "אני חילוני, אבל המשפחה שלי מסורתית. — ani chiloni, aval ha-mishpacha sheli masorti — \"I am secular, but my family is traditional.\"",
+      "exampleEnglish": "About 45% chiloni, 25% masorti, 16% dati, 14% charedi (rough numbers, shifting); secular Tel Aviv vs religious Jerusalem is a classic dichotomy."
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-listening"
+      ],
+      "targetText": "מודל שיחה",
+      "romanization": "",
+      "nativeText": "Hear \"אני חילוני, אבל המשפחה שלי מסורתית. — ani chiloni, aval ha-mishpacha sheli masorti — \"I am secular, but my family is traditional.\"\" as interaction, not as a sentence list. The listening goal is to follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "אני חילוני, אבל המשפחה שלי מסורתית. — ani chiloni, aval ha-mishpacha sheli masorti — \"I am secular, but my family is traditional.\"",
+      "exampleNative": "About 45% chiloni, 25% masorti, 16% dati, 14% charedi (rough numbers, shifting); secular Tel Aviv vs religious Jerusalem is a classic dichotomy.",
+      "korean": "מודל שיחה",
+      "english": "Hear \"אני חילוני, אבל המשפחה שלי מסורתית. — ani chiloni, aval ha-mishpacha sheli masorti — \"I am secular, but my family is traditional.\"\" as interaction, not as a sentence list. The listening goal is to follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "אני חילוני, אבל המשפחה שלי מסורתית. — ani chiloni, aval ha-mishpacha sheli masorti — \"I am secular, but my family is traditional.\"",
+      "exampleEnglish": "About 45% chiloni, 25% masorti, 16% dati, 14% charedi (rough numbers, shifting); secular Tel Aviv vs religious Jerusalem is a classic dichotomy."
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-writing"
+      ],
+      "targetText": "תרגול כתיבה",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"אני בישראל. — ani be-yisrael — \"I am in Israel.\"\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "תרגול כתיבה",
+      "english": "Write your own version after studying \"אני בישראל. — ani be-yisrael — \"I am in Israel.\"\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-culture"
+      ],
+      "targetText": "שימוש והקשר",
+      "romanization": "",
+      "nativeText": "Notice the social, religious, or regional cue that changes how this Hebrew is naturally used. Use \"ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"\" as the social comparison point for this lesson.",
+      "pronunciation": "",
+      "exampleTarget": "ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"",
+      "exampleNative": "Old City divided into Jewish, Muslim, Christian, and Armenian quarters; the Western Wall (ha-Kotel), Dome of the Rock, and Church of the Holy Sepulchre are within walking distance.",
+      "korean": "שימוש והקשר",
+      "english": "Notice the social, religious, or regional cue that changes how this Hebrew is naturally used. Use \"ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"\" as the social comparison point for this lesson.",
+      "example": "ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"",
+      "exampleEnglish": "Old City divided into Jewish, Muslim, Christian, and Armenian quarters; the Western Wall (ha-Kotel), Dome of the Rock, and Church of the Holy Sepulchre are within walking distance."
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "משימה מסכמת",
+      "romanization": "",
+      "nativeText": "Roleplay as a tour guide showing a foreign student Israel's highlights.",
+      "pronunciation": "",
+      "exampleTarget": "אני חילוני, אבל המשפחה שלי מסורתית. — ani chiloni, aval ha-mishpacha sheli masorti — \"I am secular, but my family is traditional.\"",
+      "exampleNative": "Roleplay as a tour guide showing a foreign student Israel's highlights.",
+      "korean": "משימה מסכמת",
+      "english": "Roleplay as a tour guide showing a foreign student Israel's highlights.",
+      "example": "אני חילוני, אבל המשפחה שלי מסורתית. — ani chiloni, aval ha-mishpacha sheli masorti — \"I am secular, but my family is traditional.\"",
+      "exampleEnglish": "Roleplay as a tour guide showing a foreign student Israel's highlights."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-grammar-2"
+      ],
+      "targetText": "טעות נפוצה",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around gender agreement, root patterns, construct phrases, and direct-object marking. Begin by checking \"ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: Old City divided into Jewish, Muslim, Christian, and Armenian quarters; the Western Wall (ha-Kotel), Dome of the Rock, and Church of the Holy Sepulchre are within walking distance.",
+      "korean": "טעות נפוצה",
+      "english": "Watch for literal-translation mistakes around gender agreement, root patterns, construct phrases, and direct-object marking. Begin by checking \"ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"\" against the model.",
+      "example": "ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: Old City divided into Jewish, Muslim, Christian, and Armenian quarters; the Western Wall (ha-Kotel), Dome of the Rock, and Church of the Holy Sepulchre are within walking distance."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-culture"
+      ],
+      "targetText": "משלב",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for everyday spoken Hebrew, a polite service tone, or a more formal written choice. Compare the social fit of \"אני בישראל. — ani be-yisrael — \"I am in Israel.\"\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "exampleNative": "Note: ישראלי (yisre'eli) is the nationality (Israeli); יהודי (yehudi) is the religion/ethnicity (Jewish); not the same.",
+      "korean": "משלב",
+      "english": "Check whether the setting calls for everyday spoken Hebrew, a polite service tone, or a more formal written choice. Compare the social fit of \"אני בישראל. — ani be-yisrael — \"I am in Israel.\"\" before reusing it elsewhere.",
+      "example": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "exampleEnglish": "Note: ישראלי (yisre'eli) is the nationality (Israeli); יהודי (yehudi) is the religion/ethnicity (Jewish); not the same."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "שטף",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Hebrew message rather than as separate translated fragments. Aim to carry \"אני חילוני, אבל המשפחה שלי מסורתית. — ani chiloni, aval ha-mishpacha sheli masorti — \"I am secular, but my family is traditional.\"\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "אני חילוני, אבל המשפחה שלי מסורתית. — ani chiloni, aval ha-mishpacha sheli masorti — \"I am secular, but my family is traditional.\"",
+      "exampleNative": "About 45% chiloni, 25% masorti, 16% dati, 14% charedi (rough numbers, shifting); secular Tel Aviv vs religious Jerusalem is a classic dichotomy.",
+      "korean": "שטף",
+      "english": "Say the idea as one connected Hebrew message rather than as separate translated fragments. Aim to carry \"אני חילוני, אבל המשפחה שלי מסורתית. — ani chiloni, aval ha-mishpacha sheli masorti — \"I am secular, but my family is traditional.\"\" as one thought.",
+      "example": "אני חילוני, אבל המשפחה שלי מסורתית. — ani chiloni, aval ha-mishpacha sheli masorti — \"I am secular, but my family is traditional.\"",
+      "exampleEnglish": "About 45% chiloni, 25% masorti, 16% dati, 14% charedi (rough numbers, shifting); secular Tel Aviv vs religious Jerusalem is a classic dichotomy."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "יישום",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"אני בישראל. — ani be-yisrael — \"I am in Israel.\"\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "יישום",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"אני בישראל. — ani be-yisrael — \"I am in Israel.\"\" and move it into your own life.",
+      "example": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-grammar-1"
+      ],
+      "targetText": "שליפה",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"ישראל\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "ישראל",
+      "exampleNative": "The State of Israel — מדינת ישראל (medinat Yisrael). Founded 1948, capital Jerusalem (Yerushalayim). Population ~9.5M; languages Hebrew (official), Arabic (official, demoted to \"special status\" in 2018), English (de facto). The lesson covers the country's cities, food, family terms, and ethnic mosaic.",
+      "korean": "שליפה",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"ישראל\" before looking back.",
+      "example": "ישראל",
+      "exampleEnglish": "The State of Israel — מדינת ישראל (medinat Yisrael). Founded 1948, capital Jerusalem (Yerushalayim). Population ~9.5M; languages Hebrew (official), Arabic (official, demoted to \"special status\" in 2018), English (de facto). The lesson covers the country's cities, food, family terms, and ethnic mosaic."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-writing"
+      ],
+      "targetText": "הרחבה",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"אני חילוני, אבל המשפחה שלי מסורתית. — ani chiloni, aval ha-mishpacha sheli masorti — \"I am secular, but my family is traditional.\"\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "אני חילוני, אבל המשפחה שלי מסורתית. — ani chiloni, aval ha-mishpacha sheli masorti — \"I am secular, but my family is traditional.\"",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "הרחבה",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"אני חילוני, אבל המשפחה שלי מסורתית. — ani chiloni, aval ha-mishpacha sheli masorti — \"I am secular, but my family is traditional.\"\" rather than restarting from a blank sentence.",
+      "example": "אני חילוני, אבל המשפחה שלי מסורתית. — ani chiloni, aval ha-mishpacha sheli masorti — \"I am secular, but my family is traditional.\"",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading"
+      ],
+      "targetText": "השוואה",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 5: החיים בישראל — Life in Israel with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"",
+      "exampleNative": "Old City divided into Jewish, Muslim, Christian, and Armenian quarters; the Western Wall (ha-Kotel), Dome of the Rock, and Church of the Holy Sepulchre are within walking distance.",
+      "korean": "השוואה",
+      "english": "Compare the central form in Level 1 · Unit 5: החיים בישראל — Life in Israel with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"\" as the comparison line.",
+      "example": "ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"",
+      "exampleEnglish": "Old City divided into Jewish, Muslim, Christian, and Armenian quarters; the Western Wall (ha-Kotel), Dome of the Rock, and Church of the Holy Sepulchre are within walking distance."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-pronunciation"
+      ],
+      "targetText": "תיקון הגייה",
+      "romanization": "",
+      "nativeText": "Keep Hebrew gutturals, stress, begadkefat contrasts, and reduced-vowel patterns clear enough that the sentence remains easy to parse. Use \"אני בישראל. — ani be-yisrael — \"I am in Israel.\"\" as the repair line.",
+      "pronunciation": "",
+      "exampleTarget": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "exampleNative": "Note: ישראלי (yisre'eli) is the nationality (Israeli); יהודי (yehudi) is the religion/ethnicity (Jewish); not the same.",
+      "korean": "תיקון הגייה",
+      "english": "Keep Hebrew gutturals, stress, begadkefat contrasts, and reduced-vowel patterns clear enough that the sentence remains easy to parse. Use \"אני בישראל. — ani be-yisrael — \"I am in Israel.\"\" as the repair line.",
+      "example": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "exampleEnglish": "Note: ישראלי (yisre'eli) is the nationality (Israeli); יהודי (yehudi) is the religion/ethnicity (Jewish); not the same."
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "וריאציית שיחה",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"אני חילוני, אבל המשפחה שלי מסורתית. — ani chiloni, aval ha-mishpacha sheli masorti — \"I am secular, but my family is traditional.\"\".",
+      "pronunciation": "",
+      "exampleTarget": "אני חילוני, אבל המשפחה שלי מסורתית. — ani chiloni, aval ha-mishpacha sheli masorti — \"I am secular, but my family is traditional.\"",
+      "exampleNative": "About 45% chiloni, 25% masorti, 16% dati, 14% charedi (rough numbers, shifting); secular Tel Aviv vs religious Jerusalem is a classic dichotomy.",
+      "korean": "וריאציית שיחה",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"אני חילוני, אבל המשפחה שלי מסורתית. — ani chiloni, aval ha-mishpacha sheli masorti — \"I am secular, but my family is traditional.\"\".",
+      "example": "אני חילוני, אבל המשפחה שלי מסורתית. — ani chiloni, aval ha-mishpacha sheli masorti — \"I am secular, but my family is traditional.\"",
+      "exampleEnglish": "About 45% chiloni, 25% masorti, 16% dati, 14% charedi (rough numbers, shifting); secular Tel Aviv vs religious Jerusalem is a classic dichotomy."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-writing"
+      ],
+      "targetText": "בניית משפט",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"אני בישראל. — ani be-yisrael — \"I am in Israel.\"\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "exampleNative": "Note: ישראלי (yisre'eli) is the nationality (Israeli); יהודי (yehudi) is the religion/ethnicity (Jewish); not the same.",
+      "korean": "בניית משפט",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"אני בישראל. — ani be-yisrael — \"I am in Israel.\"\" one layer at a time.",
+      "example": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "exampleEnglish": "Note: ישראלי (yisre'eli) is the nationality (Israeli); יהודי (yehudi) is the religion/ethnicity (Jewish); not the same."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-2"
+      ],
+      "targetText": "בדיקה מהירה",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"",
+      "exampleNative": "Old City divided into Jewish, Muslim, Christian, and Armenian quarters; the Western Wall (ha-Kotel), Dome of the Rock, and Church of the Holy Sepulchre are within walking distance.",
+      "korean": "בדיקה מהירה",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"\" as the deciding example.",
+      "example": "ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"",
+      "exampleEnglish": "Old City divided into Jewish, Muslim, Christian, and Armenian quarters; the Western Wall (ha-Kotel), Dome of the Rock, and Church of the Holy Sepulchre are within walking distance."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-culture",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "סיכום",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"אני חילוני, אבל המשפחה שלי מסורתית. — ani chiloni, aval ha-mishpacha sheli masorti — \"I am secular, but my family is traditional.\"\".",
+      "pronunciation": "",
+      "exampleTarget": "אני חילוני, אבל המשפחה שלי מסורתית. — ani chiloni, aval ha-mishpacha sheli masorti — \"I am secular, but my family is traditional.\"",
+      "exampleNative": "About 45% chiloni, 25% masorti, 16% dati, 14% charedi (rough numbers, shifting); secular Tel Aviv vs religious Jerusalem is a classic dichotomy.",
+      "korean": "סיכום",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"אני חילוני, אבל המשפחה שלי מסורתית. — ani chiloni, aval ha-mishpacha sheli masorti — \"I am secular, but my family is traditional.\"\".",
+      "example": "אני חילוני, אבל המשפחה שלי מסורתית. — ani chiloni, aval ha-mishpacha sheli masorti — \"I am secular, but my family is traditional.\"",
+      "exampleEnglish": "About 45% chiloni, 25% masorti, 16% dati, 14% charedi (rough numbers, shifting); secular Tel Aviv vs religious Jerusalem is a classic dichotomy."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "ישראל",
+      "romanization": "Yisrael",
+      "nativeText": "The State of Israel — מדינת ישראל (medinat Yisrael). Founded 1948, capital Jerusalem (Yerushalayim). Population ~9.5M; languages Hebrew (official), Arabic (official, demoted to \"special status\" in 2018), English (de facto). The lesson covers the country's cities, food, family terms, and ethnic mosaic.",
+      "pronunciation": "Yisrael",
+      "exampleTarget": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "exampleNative": "Note: ישראלי (yisre'eli) is the nationality (Israeli); יהודי (yehudi) is the religion/ethnicity (Jewish); not the same.",
+      "korean": "ישראל",
+      "english": "The State of Israel — מדינת ישראל (medinat Yisrael). Founded 1948, capital Jerusalem (Yerushalayim). Population ~9.5M; languages Hebrew (official), Arabic (official, demoted to \"special status\" in 2018), English (de facto). The lesson covers the country's cities, food, family terms, and ethnic mosaic.",
+      "example": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "exampleEnglish": "Note: ישראלי (yisre'eli) is the nationality (Israeli); יהודי (yehudi) is the religion/ethnicity (Jewish); not the same."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "ירושלים",
+      "romanization": "Yerushalayim (ye-ru-sha-LAYIM)",
+      "nativeText": "Jerusalem — Israel's capital, ancient holy city of Judaism, Christianity, and Islam. Hebrew University is here on Mount Scopus (Har ha-Tzofim) and Givat Ram. The name ends with the dual suffix -ayim (interpreted as \"city of double peace\").",
+      "pronunciation": "Yerushalayim (ye-ru-sha-LAYIM)",
+      "exampleTarget": "ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"",
+      "exampleNative": "Old City divided into Jewish, Muslim, Christian, and Armenian quarters; the Western Wall (ha-Kotel), Dome of the Rock, and Church of the Holy Sepulchre are within walking distance.",
+      "korean": "ירושלים",
+      "english": "Jerusalem — Israel's capital, ancient holy city of Judaism, Christianity, and Islam. Hebrew University is here on Mount Scopus (Har ha-Tzofim) and Givat Ram. The name ends with the dual suffix -ayim (interpreted as \"city of double peace\").",
+      "example": "ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"",
+      "exampleEnglish": "Old City divided into Jewish, Muslim, Christian, and Armenian quarters; the Western Wall (ha-Kotel), Dome of the Rock, and Church of the Holy Sepulchre are within walking distance."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "תל אביב",
+      "romanization": "Tel Aviv (tel a-VIV)",
+      "nativeText": "Israel's commercial and cultural capital — modern, secular, beach-front. Founded 1909. Home to Tel Aviv University. Nickname: \"the city that never sleeps\". The Bauhaus White City is a UNESCO heritage site.",
+      "pronunciation": "Tel Aviv (tel a-VIV)",
+      "exampleTarget": "אני גרה בתל אביב. — ani gara be-tel aviv — \"I live in Tel Aviv.\"",
+      "exampleNative": "Tel Aviv = \"Hill of Spring\"; the name was given by founders to evoke renewal.",
+      "korean": "תל אביב",
+      "english": "Israel's commercial and cultural capital — modern, secular, beach-front. Founded 1909. Home to Tel Aviv University. Nickname: \"the city that never sleeps\". The Bauhaus White City is a UNESCO heritage site.",
+      "example": "אני גרה בתל אביב. — ani gara be-tel aviv — \"I live in Tel Aviv.\"",
+      "exampleEnglish": "Tel Aviv = \"Hill of Spring\"; the name was given by founders to evoke renewal."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "חיפה",
+      "romanization": "Cheifa (CHEI-fa)",
+      "nativeText": "Haifa — Israel's third-largest city, major port on the Mediterranean. Home to the Technion (Israel Institute of Technology) and the Baha'i World Center. Built on Mount Carmel.",
+      "pronunciation": "Cheifa (CHEI-fa)",
+      "exampleTarget": "חיפה היא עיר נמל. — Cheifa hi ir namal — \"Haifa is a port city.\"",
+      "exampleNative": "Haifa has a strong Arab-Jewish coexistence reputation; Hebrew U-Haifa is also here.",
+      "korean": "חיפה",
+      "english": "Haifa — Israel's third-largest city, major port on the Mediterranean. Home to the Technion (Israel Institute of Technology) and the Baha'i World Center. Built on Mount Carmel.",
+      "example": "חיפה היא עיר נמל. — Cheifa hi ir namal — \"Haifa is a port city.\"",
+      "exampleEnglish": "Haifa has a strong Arab-Jewish coexistence reputation; Hebrew U-Haifa is also here."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "באר שבע",
+      "romanization": "Be'er Sheva (be-ER SHE-va)",
+      "nativeText": "Be'er Sheva — capital of the Negev desert in the south. Home to Ben-Gurion University. Mentioned in the Bible as Abraham's well; literal meaning \"Well of the Seven (oath)\".",
+      "pronunciation": "Be'er Sheva (be-ER SHE-va)",
+      "exampleTarget": "באר שבע בדרום. — Be'er Sheva ba-darom — \"Be'er Sheva is in the south.\"",
+      "exampleNative": "The fastest-growing city in Israel; a major high-tech hub now too.",
+      "korean": "באר שבע",
+      "english": "Be'er Sheva — capital of the Negev desert in the south. Home to Ben-Gurion University. Mentioned in the Bible as Abraham's well; literal meaning \"Well of the Seven (oath)\".",
+      "example": "באר שבע בדרום. — Be'er Sheva ba-darom — \"Be'er Sheva is in the south.\"",
+      "exampleEnglish": "The fastest-growing city in Israel; a major high-tech hub now too."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "אילת",
+      "romanization": "Eilat (ei-LAT)",
+      "nativeText": "Eilat — Israel's southernmost city, a Red Sea resort. Tax-free zone; major tourism hub for scuba diving and beach holidays.",
+      "pronunciation": "Eilat (ei-LAT)",
+      "exampleTarget": "אנחנו נוסעים לאילת בקיץ. — anachnu nos'im le-eilat ba-kayitz — \"We're going to Eilat in the summer.\"",
+      "exampleNative": "The Red Sea coral reefs at Eilat are among the northernmost on Earth.",
+      "korean": "אילת",
+      "english": "Eilat — Israel's southernmost city, a Red Sea resort. Tax-free zone; major tourism hub for scuba diving and beach holidays.",
+      "example": "אנחנו נוסעים לאילת בקיץ. — anachnu nos'im le-eilat ba-kayitz — \"We're going to Eilat in the summer.\"",
+      "exampleEnglish": "The Red Sea coral reefs at Eilat are among the northernmost on Earth."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "נצרת",
+      "romanization": "Natzeret",
+      "nativeText": "Nazareth — major Arab Israeli city in the Galilee; childhood home of Jesus. Predominantly Christian Arab and Muslim Arab population.",
+      "pronunciation": "Natzeret",
+      "exampleTarget": "נצרת בצפון. — Natzeret ba-tzafon — \"Nazareth is in the north.\"",
+      "exampleNative": "Nazareth Illit (Upper Nazareth, now Nof ha-Galil) is the Jewish twin city.",
+      "korean": "נצרת",
+      "english": "Nazareth — major Arab Israeli city in the Galilee; childhood home of Jesus. Predominantly Christian Arab and Muslim Arab population.",
+      "example": "נצרת בצפון. — Natzeret ba-tzafon — \"Nazareth is in the north.\"",
+      "exampleEnglish": "Nazareth Illit (Upper Nazareth, now Nof ha-Galil) is the Jewish twin city."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "צפת",
+      "romanization": "Tzfat",
+      "nativeText": "Safed — small mountain city in the Upper Galilee, famous as the historic center of Kabbalah (Jewish mysticism). Artists' colony and tourist destination.",
+      "pronunciation": "Tzfat",
+      "exampleTarget": "צפת היא עיר עתיקה. — Tzfat hi ir atika — \"Safed is an ancient city.\"",
+      "exampleNative": "One of the Four Holy Cities of Judaism (with Jerusalem, Hebron, Tiberias).",
+      "korean": "צפת",
+      "english": "Safed — small mountain city in the Upper Galilee, famous as the historic center of Kabbalah (Jewish mysticism). Artists' colony and tourist destination.",
+      "example": "צפת היא עיר עתיקה. — Tzfat hi ir atika — \"Safed is an ancient city.\"",
+      "exampleEnglish": "One of the Four Holy Cities of Judaism (with Jerusalem, Hebron, Tiberias)."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "הכותל המערבי",
+      "romanization": "ha-Kotel ha-ma'aravi",
+      "nativeText": "The Western Wall (Wailing Wall) — remnant of the Second Temple's retaining wall. Judaism's holiest accessible site. Located in the Old City of Jerusalem.",
+      "pronunciation": "ha-Kotel ha-ma'aravi",
+      "exampleTarget": "אנשים מתפללים בכותל. — anashim mit'palelim ba-kotel — \"People pray at the Wall.\"",
+      "exampleNative": "Often just called הכותל (ha-Kotel) without the modifier.",
+      "korean": "הכותל המערבי",
+      "english": "The Western Wall (Wailing Wall) — remnant of the Second Temple's retaining wall. Judaism's holiest accessible site. Located in the Old City of Jerusalem.",
+      "example": "אנשים מתפללים בכותל. — anashim mit'palelim ba-kotel — \"People pray at the Wall.\"",
+      "exampleEnglish": "Often just called הכותל (ha-Kotel) without the modifier."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "ים המלח",
+      "romanization": "Yam ha-Melach",
+      "nativeText": "The Dead Sea — saltwater lake, lowest point on Earth (~430m below sea level). Border with Jordan. Famous for therapeutic salts and floating.",
+      "pronunciation": "Yam ha-Melach",
+      "exampleTarget": "אנשים צפים בים המלח. — anashim tzafim be-yam ha-melach — \"People float in the Dead Sea.\"",
+      "exampleNative": "The Dead Sea is shrinking ~1m/year due to water diversion; major environmental issue.",
+      "korean": "ים המלח",
+      "english": "The Dead Sea — saltwater lake, lowest point on Earth (~430m below sea level). Border with Jordan. Famous for therapeutic salts and floating.",
+      "example": "אנשים צפים בים המלח. — anashim tzafim be-yam ha-melach — \"People float in the Dead Sea.\"",
+      "exampleEnglish": "The Dead Sea is shrinking ~1m/year due to water diversion; major environmental issue."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "מצדה",
+      "romanization": "Metzada",
+      "nativeText": "Masada — ancient fortress in the Judean Desert. Site of the 73 CE Jewish revolt against Rome; symbol of Israeli national identity.",
+      "pronunciation": "Metzada",
+      "exampleTarget": "עליתי על מצדה לראות את הזריחה. — aliti al Metzada lirot et ha-zricha — \"I climbed Masada to see the sunrise.\"",
+      "exampleNative": "The IDF traditionally held swearing-in ceremonies at Masada with the slogan \"Masada shall not fall again\".",
+      "korean": "מצדה",
+      "english": "Masada — ancient fortress in the Judean Desert. Site of the 73 CE Jewish revolt against Rome; symbol of Israeli national identity.",
+      "example": "עליתי על מצדה לראות את הזריחה. — aliti al Metzada lirot et ha-zricha — \"I climbed Masada to see the sunrise.\"",
+      "exampleEnglish": "The IDF traditionally held swearing-in ceremonies at Masada with the slogan \"Masada shall not fall again\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "חומוס",
+      "romanization": "chumus (CHU-mus)",
+      "nativeText": "Hummus — the iconic Israeli/Levantine chickpea spread. Eaten as a meal with pita, salads, falafel, or pickles. Initial chet /kh/.",
+      "pronunciation": "chumus (CHU-mus)",
+      "exampleTarget": "בא לי חומוס בפיתה. — ba li chumus be-pita — \"I feel like having hummus in a pita.\"",
+      "exampleNative": "Israel's hummus wars (with Lebanon and Palestinian claims) are deeply felt; everyone has a favorite hummusiya (hummus joint).",
+      "korean": "חומוס",
+      "english": "Hummus — the iconic Israeli/Levantine chickpea spread. Eaten as a meal with pita, salads, falafel, or pickles. Initial chet /kh/.",
+      "example": "בא לי חומוס בפיתה. — ba li chumus be-pita — \"I feel like having hummus in a pita.\"",
+      "exampleEnglish": "Israel's hummus wars (with Lebanon and Palestinian claims) are deeply felt; everyone has a favorite hummusiya (hummus joint)."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "פלאפל",
+      "romanization": "falafel",
+      "nativeText": "Falafel — deep-fried chickpea balls in pita, with salads, tehina, and hot sauce. Israel's street food and national dish (along with hummus).",
+      "pronunciation": "falafel",
+      "exampleTarget": "פלאפל בפיתה, חריף, בלי עגבניות. — falafel be-pita, charif, bli agvaniyot — \"Falafel in pita, spicy, no tomatoes.\"",
+      "exampleNative": "Origin disputed — Egyptian, Yemenite, or Palestinian. In Israel, eaten standing at a falafel stand for ~20 shekels.",
+      "korean": "פלאפל",
+      "english": "Falafel — deep-fried chickpea balls in pita, with salads, tehina, and hot sauce. Israel's street food and national dish (along with hummus).",
+      "example": "פלאפל בפיתה, חריף, בלי עגבניות. — falafel be-pita, charif, bli agvaniyot — \"Falafel in pita, spicy, no tomatoes.\"",
+      "exampleEnglish": "Origin disputed — Egyptian, Yemenite, or Palestinian. In Israel, eaten standing at a falafel stand for ~20 shekels."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "שקשוקה",
+      "romanization": "shakshuka",
+      "nativeText": "Shakshuka — eggs poached in a spicy tomato-pepper sauce. North African (Tunisian/Libyan) origin, brought by Mizrahi Jews. Standard breakfast or brunch dish.",
+      "pronunciation": "shakshuka",
+      "exampleTarget": "שקשוקה בבוקר! — shakshuka ba-boker — \"Shakshuka for breakfast!\"",
+      "exampleNative": "Best shakshuka in Israel is famously at Dr. Shakshuka in Jaffa; debate is endless.",
+      "korean": "שקשוקה",
+      "english": "Shakshuka — eggs poached in a spicy tomato-pepper sauce. North African (Tunisian/Libyan) origin, brought by Mizrahi Jews. Standard breakfast or brunch dish.",
+      "example": "שקשוקה בבוקר! — shakshuka ba-boker — \"Shakshuka for breakfast!\"",
+      "exampleEnglish": "Best shakshuka in Israel is famously at Dr. Shakshuka in Jaffa; debate is endless."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "סביח",
+      "romanization": "sabich",
+      "nativeText": "Sabich — pita stuffed with fried eggplant, boiled egg, tehina, salads. Iraqi-Jewish origin; sabich began as the Shabbat-morning breakfast carried to synagogue, became Israeli street food in the 1960s.",
+      "pronunciation": "sabich",
+      "exampleTarget": "סביח עם תהינה ועמבה. — sabich im techina ve-amba — \"Sabich with tehina and amba.\"",
+      "exampleNative": "Amba is a pickled mango sauce, also of Iraqi-Jewish origin; signature of sabich.",
+      "korean": "סביח",
+      "english": "Sabich — pita stuffed with fried eggplant, boiled egg, tehina, salads. Iraqi-Jewish origin; sabich began as the Shabbat-morning breakfast carried to synagogue, became Israeli street food in the 1960s.",
+      "example": "סביח עם תהינה ועמבה. — sabich im techina ve-amba — \"Sabich with tehina and amba.\"",
+      "exampleEnglish": "Amba is a pickled mango sauce, also of Iraqi-Jewish origin; signature of sabich."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "שווארמה",
+      "romanization": "shawarma",
+      "nativeText": "Shawarma — sliced spit-roasted meat in pita or laffa. Levantine origin, ubiquitous in Israel. Usually chicken or turkey; lamb in higher-end places.",
+      "pronunciation": "shawarma",
+      "exampleTarget": "שווארמה בלאפה. — shawarma be-laffa — \"Shawarma in laffa (large flatbread).\"",
+      "exampleNative": "The Hebrew form שווארמה is borrowed from Arabic shawurma.",
+      "korean": "שווארמה",
+      "english": "Shawarma — sliced spit-roasted meat in pita or laffa. Levantine origin, ubiquitous in Israel. Usually chicken or turkey; lamb in higher-end places.",
+      "example": "שווארמה בלאפה. — shawarma be-laffa — \"Shawarma in laffa (large flatbread).\"",
+      "exampleEnglish": "The Hebrew form שווארמה is borrowed from Arabic shawurma."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "בורקס",
+      "romanization": "bourekas",
+      "nativeText": "Bourekas — flaky pastries stuffed with cheese, potato, or spinach. Sephardi/Balkan origin. Israeli breakfast staple.",
+      "pronunciation": "bourekas",
+      "exampleTarget": "אני אוהבת בורקס גבינה. — ani ohevet bourekas gvina — \"I love cheese bourekas.\"",
+      "exampleNative": "Bakeries (מאפיות, ma'afiyot) sell fresh bourekas daily; Friday-morning bourekas-and-coffee is a national ritual.",
+      "korean": "בורקס",
+      "english": "Bourekas — flaky pastries stuffed with cheese, potato, or spinach. Sephardi/Balkan origin. Israeli breakfast staple.",
+      "example": "אני אוהבת בורקס גבינה. — ani ohevet bourekas gvina — \"I love cheese bourekas.\"",
+      "exampleEnglish": "Bakeries (מאפיות, ma'afiyot) sell fresh bourekas daily; Friday-morning bourekas-and-coffee is a national ritual."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "פיתה",
+      "romanization": "pita",
+      "nativeText": "Pita — round flatbread with a pocket. The basic bread for hummus, falafel, sabich, shawarma. From Greek/Arabic.",
+      "pronunciation": "pita",
+      "exampleTarget": "פיתה חמה. — pita chama — \"Hot pita.\"",
+      "exampleNative": "Israeli pitas are larger and softer than the dry pita chips of US supermarkets.",
+      "korean": "פיתה",
+      "english": "Pita — round flatbread with a pocket. The basic bread for hummus, falafel, sabich, shawarma. From Greek/Arabic.",
+      "example": "פיתה חמה. — pita chama — \"Hot pita.\"",
+      "exampleEnglish": "Israeli pitas are larger and softer than the dry pita chips of US supermarkets."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "תהינה",
+      "romanization": "techina",
+      "nativeText": "Tahini — sesame paste sauce. Used on falafel, sabich, shawarma, and as a standalone dip. Made from raw or roasted sesame.",
+      "pronunciation": "techina",
+      "exampleTarget": "תהינה עם לימון. — techina im lemon — \"Tahini with lemon.\"",
+      "exampleNative": "Israeli technina is typically thinned with lemon, garlic, and water before serving.",
+      "korean": "תהינה",
+      "english": "Tahini — sesame paste sauce. Used on falafel, sabich, shawarma, and as a standalone dip. Made from raw or roasted sesame.",
+      "example": "תהינה עם לימון. — techina im lemon — \"Tahini with lemon.\"",
+      "exampleEnglish": "Israeli technina is typically thinned with lemon, garlic, and water before serving."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "סלט ישראלי",
+      "romanization": "salat yisre'eli",
+      "nativeText": "Israeli salad — finely chopped tomato, cucumber, onion, parsley, olive oil, lemon. Side dish or breakfast staple.",
+      "pronunciation": "salat yisre'eli",
+      "exampleTarget": "תני לי סלט ישראלי, בבקשה. — tni li salat yisre'eli, bevakasha — \"Give me an Israeli salad, please.\"",
+      "exampleNative": "Origin: Palestinian/Levantine; the Israeli version emphasizes very fine chopping.",
+      "korean": "סלט ישראלי",
+      "english": "Israeli salad — finely chopped tomato, cucumber, onion, parsley, olive oil, lemon. Side dish or breakfast staple.",
+      "example": "תני לי סלט ישראלי, בבקשה. — tni li salat yisre'eli, bevakasha — \"Give me an Israeli salad, please.\"",
+      "exampleEnglish": "Origin: Palestinian/Levantine; the Israeli version emphasizes very fine chopping."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "מלאווח",
+      "romanization": "malawach",
+      "nativeText": "Malawach — Yemenite flaky fried flatbread. Often served with hard-boiled egg and tomato-chili sauce.",
+      "pronunciation": "malawach",
+      "exampleTarget": "מלאווח חם. — malawach cham — \"Hot malawach.\"",
+      "exampleNative": "Brought by Yemenite Jews; one of the most distinctive Yemenite contributions to Israeli food.",
+      "korean": "מלאווח",
+      "english": "Malawach — Yemenite flaky fried flatbread. Often served with hard-boiled egg and tomato-chili sauce.",
+      "example": "מלאווח חם. — malawach cham — \"Hot malawach.\"",
+      "exampleEnglish": "Brought by Yemenite Jews; one of the most distinctive Yemenite contributions to Israeli food."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "אבא / אמא",
+      "romanization": "aba / ima",
+      "nativeText": "Father / mother. Universal terms for dad/mom. From Aramaic. Used in all registers — Israelis call their parents aba/ima from toddlerhood through adulthood. Mil'ra: a-BA, i-MA.",
+      "pronunciation": "aba / ima",
+      "exampleTarget": "אבא שלי הוא מהנדס. — aba sheli hu mehandes — \"My dad is an engineer.\"",
+      "exampleNative": "No formal vs casual; Hebrew lacks the \"father/dad\" or \"mother/mom\" register split of English.",
+      "korean": "אבא / אמא",
+      "english": "Father / mother. Universal terms for dad/mom. From Aramaic. Used in all registers — Israelis call their parents aba/ima from toddlerhood through adulthood. Mil'ra: a-BA, i-MA.",
+      "example": "אבא שלי הוא מהנדס. — aba sheli hu mehandes — \"My dad is an engineer.\"",
+      "exampleEnglish": "No formal vs casual; Hebrew lacks the \"father/dad\" or \"mother/mom\" register split of English."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "אח / אחות",
+      "romanization": "ach / achot",
+      "nativeText": "Brother / sister. Singular masc ach (mil'ra: ACH), fem achot (mil'ra: a-CHOT). Plural: achim (m) / achayot (f, irregular).",
+      "pronunciation": "ach / achot",
+      "exampleTarget": "יש לי אח גדול ואחות קטנה. — yesh li ach gadol ve-achot ktana — \"I have a big brother and little sister.\"",
+      "exampleNative": "אח (ach) also means \"brother\" in the figurative sense — Israelis use it as casual address (achi = \"bro\").",
+      "korean": "אח / אחות",
+      "english": "Brother / sister. Singular masc ach (mil'ra: ACH), fem achot (mil'ra: a-CHOT). Plural: achim (m) / achayot (f, irregular).",
+      "example": "יש לי אח גדול ואחות קטנה. — yesh li ach gadol ve-achot ktana — \"I have a big brother and little sister.\"",
+      "exampleEnglish": "אח (ach) also means \"brother\" in the figurative sense — Israelis use it as casual address (achi = \"bro\")."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "בן / בת",
+      "romanization": "ben / bat",
+      "nativeText": "Son / daughter. Also \"boy/girl\" in younger contexts. Plural: בנים (banim) / בנות (banot).",
+      "pronunciation": "ben / bat",
+      "exampleTarget": "הבן שלי בכיתה ג׳. — ha-ben sheli ba-kita gimel — \"My son is in third grade.\"",
+      "exampleNative": "Ben/Bat is used in age-stating: ben 21 (ben esrim ve-echad) = \"21 years old\" (m); bat 21 = same (f).",
+      "korean": "בן / בת",
+      "english": "Son / daughter. Also \"boy/girl\" in younger contexts. Plural: בנים (banim) / בנות (banot).",
+      "example": "הבן שלי בכיתה ג׳. — ha-ben sheli ba-kita gimel — \"My son is in third grade.\"",
+      "exampleEnglish": "Ben/Bat is used in age-stating: ben 21 (ben esrim ve-echad) = \"21 years old\" (m); bat 21 = same (f)."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "סבא / סבתא",
+      "romanization": "saba / savta",
+      "nativeText": "Grandfather / grandmother. From Aramaic. Mil'el: SA-ba, SAV-ta.",
+      "pronunciation": "saba / savta",
+      "exampleTarget": "סבא וסבתא שלי גרים בחיפה. — saba ve-savta sheli garim be-cheifa — \"My grandpa and grandma live in Haifa.\"",
+      "exampleNative": "Israeli kids often have strong relationships with savta and saba; intergenerational Friday dinners are common.",
+      "korean": "סבא / סבתא",
+      "english": "Grandfather / grandmother. From Aramaic. Mil'el: SA-ba, SAV-ta.",
+      "example": "סבא וסבתא שלי גרים בחיפה. — saba ve-savta sheli garim be-cheifa — \"My grandpa and grandma live in Haifa.\"",
+      "exampleEnglish": "Israeli kids often have strong relationships with savta and saba; intergenerational Friday dinners are common."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "דוד / דודה",
+      "romanization": "dod / doda",
+      "nativeText": "Uncle / aunt. Doda is also used to refer to any older woman in casual address (\"auntie\").",
+      "pronunciation": "dod / doda",
+      "exampleTarget": "הדודה שלי מבקרת בקיץ. — ha-doda sheli mevakeret ba-kayitz — \"My aunt visits in the summer.\"",
+      "exampleNative": "No distinction between paternal and maternal uncle/aunt — same word.",
+      "korean": "דוד / דודה",
+      "english": "Uncle / aunt. Doda is also used to refer to any older woman in casual address (\"auntie\").",
+      "example": "הדודה שלי מבקרת בקיץ. — ha-doda sheli mevakeret ba-kayitz — \"My aunt visits in the summer.\"",
+      "exampleEnglish": "No distinction between paternal and maternal uncle/aunt — same word."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "בן דוד / בת דודה",
+      "romanization": "ben dod / bat doda",
+      "nativeText": "Cousin — masculine ben dod (\"son of uncle\"), feminine bat doda (\"daughter of aunt\"). Hebrew specifies the cousin relation through the parent.",
+      "pronunciation": "ben dod / bat doda",
+      "exampleTarget": "נפגשתי עם בני הדודים שלי. — nifgashti im b'nei ha-dodim sheli — \"I met with my cousins.\"",
+      "exampleNative": "Plural: b'nei dodim (cousins, mixed); b'not dodim (female cousins).",
+      "korean": "בן דוד / בת דודה",
+      "english": "Cousin — masculine ben dod (\"son of uncle\"), feminine bat doda (\"daughter of aunt\"). Hebrew specifies the cousin relation through the parent.",
+      "example": "נפגשתי עם בני הדודים שלי. — nifgashti im b'nei ha-dodim sheli — \"I met with my cousins.\"",
+      "exampleEnglish": "Plural: b'nei dodim (cousins, mixed); b'not dodim (female cousins)."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "בעל / אישה",
+      "romanization": "ba'al / isha",
+      "nativeText": "Husband / wife. Ba'al also means \"owner, master\"; isha also means \"woman\". Plural: be'alim / nashim.",
+      "pronunciation": "ba'al / isha",
+      "exampleTarget": "הבעל שלי טייס. — ha-ba'al sheli tayas — \"My husband is a pilot.\"",
+      "exampleNative": "Modern Hebrew increasingly uses זוגיות (zugiyut, \"couplehood\") and בן/בת זוג (ben/bat zug, partner) instead of ba'al/isha, especially for unmarried couples.",
+      "korean": "בעל / אישה",
+      "english": "Husband / wife. Ba'al also means \"owner, master\"; isha also means \"woman\". Plural: be'alim / nashim.",
+      "example": "הבעל שלי טייס. — ha-ba'al sheli tayas — \"My husband is a pilot.\"",
+      "exampleEnglish": "Modern Hebrew increasingly uses זוגיות (zugiyut, \"couplehood\") and בן/בת זוג (ben/bat zug, partner) instead of ba'al/isha, especially for unmarried couples."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "ילד / ילדה / ילדים",
+      "romanization": "yeled / yalda / yeladim",
+      "nativeText": "Child (m) / child (f) / children. Yeled is mil'el (YE-led), the classic segolate noun. Yeladim covers any group of children.",
+      "pronunciation": "yeled / yalda / yeladim",
+      "exampleTarget": "יש לי שני ילדים. — yesh li sh'nei yeladim — \"I have two children.\"",
+      "exampleNative": "In modern Hebrew, yeladim also informally means \"guys/folks\" addressing a group.",
+      "korean": "ילד / ילדה / ילדים",
+      "english": "Child (m) / child (f) / children. Yeled is mil'el (YE-led), the classic segolate noun. Yeladim covers any group of children.",
+      "example": "יש לי שני ילדים. — yesh li sh'nei yeladim — \"I have two children.\"",
+      "exampleEnglish": "In modern Hebrew, yeladim also informally means \"guys/folks\" addressing a group."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "של",
+      "romanization": "shel",
+      "nativeText": "The possessive marker \"of\". Place between the possessed noun and the owner: הספר של דני (ha-sefer shel Dani, \"the book of Dani / Dani's book\"). The standard everyday possessive — much more common than the construct state (smichut).",
+      "pronunciation": "shel",
+      "exampleTarget": "הבית של אמא — ha-bayit shel ima — \"Mom's house\"\nהמכונית של חברי — ha-mechonit shel chaveri — \"my friend's car\"",
+      "exampleNative": "Note: the possessed noun is usually definite (with ha-), and shel + owner follows.",
+      "korean": "של",
+      "english": "The possessive marker \"of\". Place between the possessed noun and the owner: הספר של דני (ha-sefer shel Dani, \"the book of Dani / Dani's book\"). The standard everyday possessive — much more common than the construct state (smichut).",
+      "example": "הבית של אמא — ha-bayit shel ima — \"Mom's house\"\nהמכונית של חברי — ha-mechonit shel chaveri — \"my friend's car\"",
+      "exampleEnglish": "Note: the possessed noun is usually definite (with ha-), and shel + owner follows."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "של + suffix",
+      "romanization": "shel + pronoun suffix",
+      "nativeText": "Shel combines with pronoun endings to form personal possessives: שלי (sheli, mine), שלך (shelcha m / shelach f, yours), שלו (shelo, his), שלה (shela, hers), שלנו (shelanu, ours), שלכם/שלכן (shelachem/shelachen, yours-pl), שלהם/שלהן (shelahem/shelahen, theirs).",
+      "pronunciation": "shel + pronoun suffix",
+      "exampleTarget": "הספר שלי. — ha-sefer sheli — \"my book\"\nהמשפחה שלה. — ha-mishpacha shela — \"her family\"",
+      "exampleNative": "Note the same -i/-cha/-o etc. pronoun-suffix system attaches to many Hebrew prepositions.",
+      "korean": "של + suffix",
+      "english": "Shel combines with pronoun endings to form personal possessives: שלי (sheli, mine), שלך (shelcha m / shelach f, yours), שלו (shelo, his), שלה (shela, hers), שלנו (shelanu, ours), שלכם/שלכן (shelachem/shelachen, yours-pl), שלהם/שלהן (shelahem/shelahen, theirs).",
+      "example": "הספר שלי. — ha-sefer sheli — \"my book\"\nהמשפחה שלה. — ha-mishpacha shela — \"her family\"",
+      "exampleEnglish": "Note the same -i/-cha/-o etc. pronoun-suffix system attaches to many Hebrew prepositions."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "שמות תואר",
+      "romanization": "shemot to'ar",
+      "nativeText": "Adjectives. Hebrew adjectives agree with the noun in gender AND number. They come AFTER the noun (not before, as in English). Pattern: masc-sg (gadol), fem-sg (gdola), masc-pl (gdolim), fem-pl (gdolot).",
+      "pronunciation": "shemot to'ar",
+      "exampleTarget": "בית גדול / דירה גדולה / בתים גדולים / דירות גדולות — bayit gadol / dira gdola / batim gdolim / dirot gdolot — big house / big apartment / big houses / big apartments.",
+      "exampleNative": "In definite phrases, BOTH noun and adjective take ha-: הבית הגדול (ha-bayit ha-gadol, \"the big house\").",
+      "korean": "שמות תואר",
+      "english": "Adjectives. Hebrew adjectives agree with the noun in gender AND number. They come AFTER the noun (not before, as in English). Pattern: masc-sg (gadol), fem-sg (gdola), masc-pl (gdolim), fem-pl (gdolot).",
+      "example": "בית גדול / דירה גדולה / בתים גדולים / דירות גדולות — bayit gadol / dira gdola / batim gdolim / dirot gdolot — big house / big apartment / big houses / big apartments.",
+      "exampleEnglish": "In definite phrases, BOTH noun and adjective take ha-: הבית הגדול (ha-bayit ha-gadol, \"the big house\")."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "הישראל שלי",
+      "romanization": "ha-yisra'el sheli",
+      "nativeText": "A paragraph by an immigrant student describing the Israel she has come to know. Read aloud for vocabulary practice.",
+      "pronunciation": "ha-yisra'el sheli",
+      "exampleTarget": "אני באה לישראל לפני שנתיים. אני סטודנטית באוניברסיטה העברית בירושלים. הירושלים שלי היא העיר העתיקה והשוק מחנה יהודה. אבל אני נוסעת לתל אביב בסוף השבוע, לחוף הים. המשפחה שלי בארצות הברית, אבל יש לי כאן חברים טובים. אני אוהבת את האוכל הישראלי, במיוחד שקשוקה וחומוס.",
+      "exampleNative": "Translation: \"I came to Israel two years ago. I am a student at Hebrew University in Jerusalem. My Jerusalem is the Old City and the Mahane Yehuda market. But I travel to Tel Aviv on weekends, to the beach. My family is in the United States, but I have good friends here. I love Israeli food, especially shakshuka and hummus.\"",
+      "korean": "הישראל שלי",
+      "english": "A paragraph by an immigrant student describing the Israel she has come to know. Read aloud for vocabulary practice.",
+      "example": "אני באה לישראל לפני שנתיים. אני סטודנטית באוניברסיטה העברית בירושלים. הירושלים שלי היא העיר העתיקה והשוק מחנה יהודה. אבל אני נוסעת לתל אביב בסוף השבוע, לחוף הים. המשפחה שלי בארצות הברית, אבל יש לי כאן חברים טובים. אני אוהבת את האוכל הישראלי, במיוחד שקשוקה וחומוס.",
+      "exampleEnglish": "Translation: \"I came to Israel two years ago. I am a student at Hebrew University in Jerusalem. My Jerusalem is the Old City and the Mahane Yehuda market. But I travel to Tel Aviv on weekends, to the beach. My family is in the United States, but I have good friends here. I love Israeli food, especially shakshuka and hummus.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "עדות בישראל",
+      "romanization": "edot be-yisrael",
+      "nativeText": "Israel's ethnic mosaic. Jewish ethnic groups: אשכנזים (Ashkenazim, European origin), ספרדים/מזרחים (Sefardim/Mizrachim, Iberian/Middle Eastern origin), אתיופים (Etyopim, Ethiopian). Plus ערבים (Aravim, Arab Israelis, ~20%), דרוזים (Druzim, Druze), בדואים (Bedu'im, Bedouin).",
+      "pronunciation": "edot be-yisrael",
+      "exampleTarget": "בישראל יש עדות רבות — yhudim, aravim, druzim, ve-od. — \"In Israel there are many communities — Jews, Arabs, Druze, and more.\"",
+      "exampleNative": "Each group has its food, music, accent, and customs; modern Israel is a layered mosaic, not a melting pot.",
+      "korean": "עדות בישראל",
+      "english": "Israel's ethnic mosaic. Jewish ethnic groups: אשכנזים (Ashkenazim, European origin), ספרדים/מזרחים (Sefardim/Mizrachim, Iberian/Middle Eastern origin), אתיופים (Etyopim, Ethiopian). Plus ערבים (Aravim, Arab Israelis, ~20%), דרוזים (Druzim, Druze), בדואים (Bedu'im, Bedouin).",
+      "example": "בישראל יש עדות רבות — yhudim, aravim, druzim, ve-od. — \"In Israel there are many communities — Jews, Arabs, Druze, and more.\"",
+      "exampleEnglish": "Each group has its food, music, accent, and customs; modern Israel is a layered mosaic, not a melting pot."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "דתי או חילוני",
+      "romanization": "dati o chiloni",
+      "nativeText": "Religious continuum: חילוני (chiloni, secular), מסורתי (masorti, traditional), דתי (dati, religious/modern orthodox), חרדי (charedi, ultra-orthodox/Haredi). Each has distinct dress, schooling, and Shabbat observance.",
+      "pronunciation": "dati o chiloni",
+      "exampleTarget": "אני חילוני, אבל המשפחה שלי מסורתית. — ani chiloni, aval ha-mishpacha sheli masorti — \"I am secular, but my family is traditional.\"",
+      "exampleNative": "About 45% chiloni, 25% masorti, 16% dati, 14% charedi (rough numbers, shifting); secular Tel Aviv vs religious Jerusalem is a classic dichotomy.",
+      "korean": "דתי או חילוני",
+      "english": "Religious continuum: חילוני (chiloni, secular), מסורתי (masorti, traditional), דתי (dati, religious/modern orthodox), חרדי (charedi, ultra-orthodox/Haredi). Each has distinct dress, schooling, and Shabbat observance.",
+      "example": "אני חילוני, אבל המשפחה שלי מסורתית. — ani chiloni, aval ha-mishpacha sheli masorti — \"I am secular, but my family is traditional.\"",
+      "exampleEnglish": "About 45% chiloni, 25% masorti, 16% dati, 14% charedi (rough numbers, shifting); secular Tel Aviv vs religious Jerusalem is a classic dichotomy."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "romanization": "Yisrael",
+      "nativeText": "Model use for \"ישראל\": The State of Israel — מדינת ישראל (medinat Yisrael). Founded 1948, capital Jerusalem (Yerushalayim). Population ~9.5M; languages Hebrew (official), Arabic (official, demoted to \"special status\" in 2018), English (de facto). The lesson covers the country's cities, food, family terms, and ethnic mosaic.",
+      "pronunciation": "Yisrael",
+      "exampleTarget": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "exampleNative": "Note: ישראלי (yisre'eli) is the nationality (Israeli); יהודי (yehudi) is the religion/ethnicity (Jewish); not the same.",
+      "korean": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "english": "Model use for \"ישראל\": The State of Israel — מדינת ישראל (medinat Yisrael). Founded 1948, capital Jerusalem (Yerushalayim). Population ~9.5M; languages Hebrew (official), Arabic (official, demoted to \"special status\" in 2018), English (de facto). The lesson covers the country's cities, food, family terms, and ethnic mosaic.",
+      "example": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "exampleEnglish": "Note: ישראלי (yisre'eli) is the nationality (Israeli); יהודי (yehudi) is the religion/ethnicity (Jewish); not the same."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "ישראל",
+      "romanization": "Yisrael",
+      "nativeText": "Usage focus for \"ישראל\": The State of Israel — מדינת ישראל (medinat Yisrael). Founded 1948, capital Jerusalem (Yerushalayim). Population ~9.5M; languages Hebrew (official), Arabic (official, demoted to \"special status\" in 2018), English (de facto). The lesson covers the country's cities, food, family terms, and ethnic mosaic.",
+      "pronunciation": "Yisrael",
+      "exampleTarget": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "exampleNative": "Notice what the form is doing here: Note: ישראלי (yisre'eli) is the nationality (Israeli); יהודי (yehudi) is the religion/ethnicity (Jewish); not the same.",
+      "korean": "ישראל",
+      "english": "Usage focus for \"ישראל\": The State of Israel — מדינת ישראל (medinat Yisrael). Founded 1948, capital Jerusalem (Yerushalayim). Population ~9.5M; languages Hebrew (official), Arabic (official, demoted to \"special status\" in 2018), English (de facto). The lesson covers the country's cities, food, family terms, and ethnic mosaic.",
+      "example": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "exampleEnglish": "Notice what the form is doing here: Note: ישראלי (yisre'eli) is the nationality (Israeli); יהודי (yehudi) is the religion/ethnicity (Jewish); not the same."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "ישראל",
+      "romanization": "Yisrael",
+      "nativeText": "Contrast check for \"ישראל\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "Yisrael",
+      "exampleTarget": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: Note: ישראלי (yisre'eli) is the nationality (Israeli); יהודי (yehudi) is the religion/ethnicity (Jewish); not the same.",
+      "korean": "ישראל",
+      "english": "Contrast check for \"ישראל\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: Note: ישראלי (yisre'eli) is the nationality (Israeli); יהודי (yehudi) is the religion/ethnicity (Jewish); not the same."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "ישראל",
+      "romanization": "Yisrael",
+      "nativeText": "Recall \"ישראל\" from memory, then explain what would change if a nearby alternative replaced it in \"אני בישראל. — ani be-yisrael — \"I am in Israel.\"\".",
+      "pronunciation": "Yisrael",
+      "exampleTarget": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "exampleNative": "Self-check against the model before moving on: Note: ישראלי (yisre'eli) is the nationality (Israeli); יהודי (yehudi) is the religion/ethnicity (Jewish); not the same.",
+      "korean": "ישראל",
+      "english": "Recall \"ישראל\" from memory, then explain what would change if a nearby alternative replaced it in \"אני בישראל. — ani be-yisrael — \"I am in Israel.\"\".",
+      "example": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "exampleEnglish": "Self-check against the model before moving on: Note: ישראלי (yisre'eli) is the nationality (Israeli); יהודי (yehudi) is the religion/ethnicity (Jewish); not the same."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "ישראל",
+      "romanization": "Yisrael",
+      "nativeText": "Repair \"ישראל\" inside \"אני בישראל. — ani be-yisrael — \"I am in Israel.\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: The State of Israel — מדינת ישראל (medinat Yisrael). Founded 1948, capital Jerusalem (Yerushalayim). Population ~9.5M; languages Hebrew (official), Arabic (official, demoted to \"special status\" in 2018), English (de facto). The lesson covers the country's cities, food, family terms, and ethnic mosaic.",
+      "pronunciation": "Yisrael",
+      "exampleTarget": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "exampleNative": "Use the model as the repair target: Note: ישראלי (yisre'eli) is the nationality (Israeli); יהודי (yehudi) is the religion/ethnicity (Jewish); not the same.",
+      "korean": "ישראל",
+      "english": "Repair \"ישראל\" inside \"אני בישראל. — ani be-yisrael — \"I am in Israel.\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: The State of Israel — מדינת ישראל (medinat Yisrael). Founded 1948, capital Jerusalem (Yerushalayim). Population ~9.5M; languages Hebrew (official), Arabic (official, demoted to \"special status\" in 2018), English (de facto). The lesson covers the country's cities, food, family terms, and ethnic mosaic.",
+      "example": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "exampleEnglish": "Use the model as the repair target: Note: ישראלי (yisre'eli) is the nationality (Israeli); יהודי (yehudi) is the religion/ethnicity (Jewish); not the same."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "ישראל",
+      "romanization": "Yisrael",
+      "nativeText": "Transfer \"ישראל\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"אני בישראל. — ani be-yisrael — \"I am in Israel.\"\".",
+      "pronunciation": "Yisrael",
+      "exampleTarget": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: Note: ישראלי (yisre'eli) is the nationality (Israeli); יהודי (yehudi) is the religion/ethnicity (Jewish); not the same.",
+      "korean": "ישראל",
+      "english": "Transfer \"ישראל\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"אני בישראל. — ani be-yisrael — \"I am in Israel.\"\".",
+      "example": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: Note: ישראלי (yisre'eli) is the nationality (Israeli); יהודי (yehudi) is the religion/ethnicity (Jewish); not the same."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "ישראל",
+      "romanization": "Yisrael",
+      "nativeText": "Find one word or phrase that naturally travels with \"ישראל\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "Yisrael",
+      "exampleTarget": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: Note: ישראלי (yisre'eli) is the nationality (Israeli); יהודי (yehudi) is the religion/ethnicity (Jewish); not the same.",
+      "korean": "ישראל",
+      "english": "Find one word or phrase that naturally travels with \"ישראל\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: Note: ישראלי (yisre'eli) is the nationality (Israeli); יהודי (yehudi) is the religion/ethnicity (Jewish); not the same."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "ישראל",
+      "romanization": "Yisrael",
+      "nativeText": "Listen for \"ישראל\" inside \"אני בישראל. — ani be-yisrael — \"I am in Israel.\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "Yisrael",
+      "exampleTarget": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Note: ישראלי (yisre'eli) is the nationality (Israeli); יהודי (yehudi) is the religion/ethnicity (Jewish); not the same.",
+      "korean": "ישראל",
+      "english": "Listen for \"ישראל\" inside \"אני בישראל. — ani be-yisrael — \"I am in Israel.\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Note: ישראלי (yisre'eli) is the nationality (Israeli); יהודי (yehudi) is the religion/ethnicity (Jewish); not the same."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "ישראל",
+      "romanization": "Yisrael",
+      "nativeText": "Write \"ישראל\" again without looking, then compare the exact written form against \"אני בישראל. — ani be-yisrael — \"I am in Israel.\"\" before moving on.",
+      "pronunciation": "Yisrael",
+      "exampleTarget": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "exampleNative": "Use the written model as the final correctness check: Note: ישראלי (yisre'eli) is the nationality (Israeli); יהודי (yehudi) is the religion/ethnicity (Jewish); not the same.",
+      "korean": "ישראל",
+      "english": "Write \"ישראל\" again without looking, then compare the exact written form against \"אני בישראל. — ani be-yisrael — \"I am in Israel.\"\" before moving on.",
+      "example": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "exampleEnglish": "Use the written model as the final correctness check: Note: ישראלי (yisre'eli) is the nationality (Israeli); יהודי (yehudi) is the religion/ethnicity (Jewish); not the same."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "ישראל",
+      "romanization": "Yisrael",
+      "nativeText": "Check whether \"ישראל\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Note: ישראלי (yisre'eli) is the nationality (Israeli); יהודי (yehudi) is the religion/ethnicity (Jewish); not the same.",
+      "pronunciation": "Yisrael",
+      "exampleTarget": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: Note: ישראלי (yisre'eli) is the nationality (Israeli); יהודי (yehudi) is the religion/ethnicity (Jewish); not the same.",
+      "korean": "ישראל",
+      "english": "Check whether \"ישראל\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Note: ישראלי (yisre'eli) is the nationality (Israeli); יהודי (yehudi) is the religion/ethnicity (Jewish); not the same.",
+      "example": "אני בישראל. — ani be-yisrael — \"I am in Israel.\"",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: Note: ישראלי (yisre'eli) is the nationality (Israeli); יהודי (yehudi) is the religion/ethnicity (Jewish); not the same."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"",
+      "romanization": "Yerushalayim (ye-ru-sha-LAYIM)",
+      "nativeText": "Model use for \"ירושלים\": Jerusalem — Israel's capital, ancient holy city of Judaism, Christianity, and Islam. Hebrew University is here on Mount Scopus (Har ha-Tzofim) and Givat Ram. The name ends with the dual suffix -ayim (interpreted as \"city of double peace\").",
+      "pronunciation": "Yerushalayim (ye-ru-sha-LAYIM)",
+      "exampleTarget": "ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"",
+      "exampleNative": "Old City divided into Jewish, Muslim, Christian, and Armenian quarters; the Western Wall (ha-Kotel), Dome of the Rock, and Church of the Holy Sepulchre are within walking distance.",
+      "korean": "ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"",
+      "english": "Model use for \"ירושלים\": Jerusalem — Israel's capital, ancient holy city of Judaism, Christianity, and Islam. Hebrew University is here on Mount Scopus (Har ha-Tzofim) and Givat Ram. The name ends with the dual suffix -ayim (interpreted as \"city of double peace\").",
+      "example": "ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"",
+      "exampleEnglish": "Old City divided into Jewish, Muslim, Christian, and Armenian quarters; the Western Wall (ha-Kotel), Dome of the Rock, and Church of the Holy Sepulchre are within walking distance."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "ירושלים",
+      "romanization": "Yerushalayim (ye-ru-sha-LAYIM)",
+      "nativeText": "Usage focus for \"ירושלים\": Jerusalem — Israel's capital, ancient holy city of Judaism, Christianity, and Islam. Hebrew University is here on Mount Scopus (Har ha-Tzofim) and Givat Ram. The name ends with the dual suffix -ayim (interpreted as \"city of double peace\").",
+      "pronunciation": "Yerushalayim (ye-ru-sha-LAYIM)",
+      "exampleTarget": "ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"",
+      "exampleNative": "Notice what the form is doing here: Old City divided into Jewish, Muslim, Christian, and Armenian quarters; the Western Wall (ha-Kotel), Dome of the Rock, and Church of the Holy Sepulchre are within walking distance.",
+      "korean": "ירושלים",
+      "english": "Usage focus for \"ירושלים\": Jerusalem — Israel's capital, ancient holy city of Judaism, Christianity, and Islam. Hebrew University is here on Mount Scopus (Har ha-Tzofim) and Givat Ram. The name ends with the dual suffix -ayim (interpreted as \"city of double peace\").",
+      "example": "ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"",
+      "exampleEnglish": "Notice what the form is doing here: Old City divided into Jewish, Muslim, Christian, and Armenian quarters; the Western Wall (ha-Kotel), Dome of the Rock, and Church of the Holy Sepulchre are within walking distance."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "ירושלים",
+      "romanization": "Yerushalayim (ye-ru-sha-LAYIM)",
+      "nativeText": "Contrast check for \"ירושלים\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "Yerushalayim (ye-ru-sha-LAYIM)",
+      "exampleTarget": "ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: Old City divided into Jewish, Muslim, Christian, and Armenian quarters; the Western Wall (ha-Kotel), Dome of the Rock, and Church of the Holy Sepulchre are within walking distance.",
+      "korean": "ירושלים",
+      "english": "Contrast check for \"ירושלים\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: Old City divided into Jewish, Muslim, Christian, and Armenian quarters; the Western Wall (ha-Kotel), Dome of the Rock, and Church of the Holy Sepulchre are within walking distance."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "ירושלים",
+      "romanization": "Yerushalayim (ye-ru-sha-LAYIM)",
+      "nativeText": "Recall \"ירושלים\" from memory, then explain what would change if a nearby alternative replaced it in \"ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"\".",
+      "pronunciation": "Yerushalayim (ye-ru-sha-LAYIM)",
+      "exampleTarget": "ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"",
+      "exampleNative": "Self-check against the model before moving on: Old City divided into Jewish, Muslim, Christian, and Armenian quarters; the Western Wall (ha-Kotel), Dome of the Rock, and Church of the Holy Sepulchre are within walking distance.",
+      "korean": "ירושלים",
+      "english": "Recall \"ירושלים\" from memory, then explain what would change if a nearby alternative replaced it in \"ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"\".",
+      "example": "ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"",
+      "exampleEnglish": "Self-check against the model before moving on: Old City divided into Jewish, Muslim, Christian, and Armenian quarters; the Western Wall (ha-Kotel), Dome of the Rock, and Church of the Holy Sepulchre are within walking distance."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "ירושלים",
+      "romanization": "Yerushalayim (ye-ru-sha-LAYIM)",
+      "nativeText": "Repair \"ירושלים\" inside \"ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Jerusalem — Israel's capital, ancient holy city of Judaism, Christianity, and Islam. Hebrew University is here on Mount Scopus (Har ha-Tzofim) and Givat Ram. The name ends with the dual suffix -ayim (interpreted as \"city of double peace\").",
+      "pronunciation": "Yerushalayim (ye-ru-sha-LAYIM)",
+      "exampleTarget": "ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"",
+      "exampleNative": "Use the model as the repair target: Old City divided into Jewish, Muslim, Christian, and Armenian quarters; the Western Wall (ha-Kotel), Dome of the Rock, and Church of the Holy Sepulchre are within walking distance.",
+      "korean": "ירושלים",
+      "english": "Repair \"ירושלים\" inside \"ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Jerusalem — Israel's capital, ancient holy city of Judaism, Christianity, and Islam. Hebrew University is here on Mount Scopus (Har ha-Tzofim) and Givat Ram. The name ends with the dual suffix -ayim (interpreted as \"city of double peace\").",
+      "example": "ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"",
+      "exampleEnglish": "Use the model as the repair target: Old City divided into Jewish, Muslim, Christian, and Armenian quarters; the Western Wall (ha-Kotel), Dome of the Rock, and Church of the Holy Sepulchre are within walking distance."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "ירושלים",
+      "romanization": "Yerushalayim (ye-ru-sha-LAYIM)",
+      "nativeText": "Transfer \"ירושלים\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"\".",
+      "pronunciation": "Yerushalayim (ye-ru-sha-LAYIM)",
+      "exampleTarget": "ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: Old City divided into Jewish, Muslim, Christian, and Armenian quarters; the Western Wall (ha-Kotel), Dome of the Rock, and Church of the Holy Sepulchre are within walking distance.",
+      "korean": "ירושלים",
+      "english": "Transfer \"ירושלים\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"\".",
+      "example": "ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: Old City divided into Jewish, Muslim, Christian, and Armenian quarters; the Western Wall (ha-Kotel), Dome of the Rock, and Church of the Holy Sepulchre are within walking distance."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "ירושלים",
+      "romanization": "Yerushalayim (ye-ru-sha-LAYIM)",
+      "nativeText": "Find one word or phrase that naturally travels with \"ירושלים\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "Yerushalayim (ye-ru-sha-LAYIM)",
+      "exampleTarget": "ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: Old City divided into Jewish, Muslim, Christian, and Armenian quarters; the Western Wall (ha-Kotel), Dome of the Rock, and Church of the Holy Sepulchre are within walking distance.",
+      "korean": "ירושלים",
+      "english": "Find one word or phrase that naturally travels with \"ירושלים\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: Old City divided into Jewish, Muslim, Christian, and Armenian quarters; the Western Wall (ha-Kotel), Dome of the Rock, and Church of the Holy Sepulchre are within walking distance."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "ירושלים",
+      "romanization": "Yerushalayim (ye-ru-sha-LAYIM)",
+      "nativeText": "Listen for \"ירושלים\" inside \"ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "Yerushalayim (ye-ru-sha-LAYIM)",
+      "exampleTarget": "ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Old City divided into Jewish, Muslim, Christian, and Armenian quarters; the Western Wall (ha-Kotel), Dome of the Rock, and Church of the Holy Sepulchre are within walking distance.",
+      "korean": "ירושלים",
+      "english": "Listen for \"ירושלים\" inside \"ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Old City divided into Jewish, Muslim, Christian, and Armenian quarters; the Western Wall (ha-Kotel), Dome of the Rock, and Church of the Holy Sepulchre are within walking distance."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "ירושלים",
+      "romanization": "Yerushalayim (ye-ru-sha-LAYIM)",
+      "nativeText": "Write \"ירושלים\" again without looking, then compare the exact written form against \"ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"\" before moving on.",
+      "pronunciation": "Yerushalayim (ye-ru-sha-LAYIM)",
+      "exampleTarget": "ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"",
+      "exampleNative": "Use the written model as the final correctness check: Old City divided into Jewish, Muslim, Christian, and Armenian quarters; the Western Wall (ha-Kotel), Dome of the Rock, and Church of the Holy Sepulchre are within walking distance.",
+      "korean": "ירושלים",
+      "english": "Write \"ירושלים\" again without looking, then compare the exact written form against \"ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"\" before moving on.",
+      "example": "ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"",
+      "exampleEnglish": "Use the written model as the final correctness check: Old City divided into Jewish, Muslim, Christian, and Armenian quarters; the Western Wall (ha-Kotel), Dome of the Rock, and Church of the Holy Sepulchre are within walking distance."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "ירושלים",
+      "romanization": "Yerushalayim (ye-ru-sha-LAYIM)",
+      "nativeText": "Check whether \"ירושלים\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Old City divided into Jewish, Muslim, Christian, and Armenian quarters; the Western Wall (ha-Kotel), Dome of the Rock, and Church of the Holy Sepulchre are within walking distance.",
+      "pronunciation": "Yerushalayim (ye-ru-sha-LAYIM)",
+      "exampleTarget": "ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: Old City divided into Jewish, Muslim, Christian, and Armenian quarters; the Western Wall (ha-Kotel), Dome of the Rock, and Church of the Holy Sepulchre are within walking distance.",
+      "korean": "ירושלים",
+      "english": "Check whether \"ירושלים\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Old City divided into Jewish, Muslim, Christian, and Armenian quarters; the Western Wall (ha-Kotel), Dome of the Rock, and Church of the Holy Sepulchre are within walking distance.",
+      "example": "ירושלים יפה מאוד. — yerushalayim yafa me'od — \"Jerusalem is very beautiful.\"",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: Old City divided into Jewish, Muslim, Christian, and Armenian quarters; the Western Wall (ha-Kotel), Dome of the Rock, and Church of the Holy Sepulchre are within walking distance."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "אני גרה בתל אביב. — ani gara be-tel aviv — \"I live in Tel Aviv.\"",
+      "romanization": "Tel Aviv (tel a-VIV)",
+      "nativeText": "Model use for \"תל אביב\": Israel's commercial and cultural capital — modern, secular, beach-front. Founded 1909. Home to Tel Aviv University. Nickname: \"the city that never sleeps\". The Bauhaus White City is a UNESCO heritage site.",
+      "pronunciation": "Tel Aviv (tel a-VIV)",
+      "exampleTarget": "אני גרה בתל אביב. — ani gara be-tel aviv — \"I live in Tel Aviv.\"",
+      "exampleNative": "Tel Aviv = \"Hill of Spring\"; the name was given by founders to evoke renewal.",
+      "korean": "אני גרה בתל אביב. — ani gara be-tel aviv — \"I live in Tel Aviv.\"",
+      "english": "Model use for \"תל אביב\": Israel's commercial and cultural capital — modern, secular, beach-front. Founded 1909. Home to Tel Aviv University. Nickname: \"the city that never sleeps\". The Bauhaus White City is a UNESCO heritage site.",
+      "example": "אני גרה בתל אביב. — ani gara be-tel aviv — \"I live in Tel Aviv.\"",
+      "exampleEnglish": "Tel Aviv = \"Hill of Spring\"; the name was given by founders to evoke renewal."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "תל אביב",
+      "romanization": "Tel Aviv (tel a-VIV)",
+      "nativeText": "Usage focus for \"תל אביב\": Israel's commercial and cultural capital — modern, secular, beach-front. Founded 1909. Home to Tel Aviv University. Nickname: \"the city that never sleeps\". The Bauhaus White City is a UNESCO heritage site.",
+      "pronunciation": "Tel Aviv (tel a-VIV)",
+      "exampleTarget": "אני גרה בתל אביב. — ani gara be-tel aviv — \"I live in Tel Aviv.\"",
+      "exampleNative": "Notice what the form is doing here: Tel Aviv = \"Hill of Spring\"; the name was given by founders to evoke renewal.",
+      "korean": "תל אביב",
+      "english": "Usage focus for \"תל אביב\": Israel's commercial and cultural capital — modern, secular, beach-front. Founded 1909. Home to Tel Aviv University. Nickname: \"the city that never sleeps\". The Bauhaus White City is a UNESCO heritage site.",
+      "example": "אני גרה בתל אביב. — ani gara be-tel aviv — \"I live in Tel Aviv.\"",
+      "exampleEnglish": "Notice what the form is doing here: Tel Aviv = \"Hill of Spring\"; the name was given by founders to evoke renewal."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "תל אביב",
+      "romanization": "Tel Aviv (tel a-VIV)",
+      "nativeText": "Contrast check for \"תל אביב\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "Tel Aviv (tel a-VIV)",
+      "exampleTarget": "אני גרה בתל אביב. — ani gara be-tel aviv — \"I live in Tel Aviv.\"",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: Tel Aviv = \"Hill of Spring\"; the name was given by founders to evoke renewal.",
+      "korean": "תל אביב",
+      "english": "Contrast check for \"תל אביב\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "אני גרה בתל אביב. — ani gara be-tel aviv — \"I live in Tel Aviv.\"",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: Tel Aviv = \"Hill of Spring\"; the name was given by founders to evoke renewal."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "תל אביב",
+      "romanization": "Tel Aviv (tel a-VIV)",
+      "nativeText": "Recall \"תל אביב\" from memory, then explain what would change if a nearby alternative replaced it in \"אני גרה בתל אביב. — ani gara be-tel aviv — \"I live in Tel Aviv.\"\".",
+      "pronunciation": "Tel Aviv (tel a-VIV)",
+      "exampleTarget": "אני גרה בתל אביב. — ani gara be-tel aviv — \"I live in Tel Aviv.\"",
+      "exampleNative": "Self-check against the model before moving on: Tel Aviv = \"Hill of Spring\"; the name was given by founders to evoke renewal.",
+      "korean": "תל אביב",
+      "english": "Recall \"תל אביב\" from memory, then explain what would change if a nearby alternative replaced it in \"אני גרה בתל אביב. — ani gara be-tel aviv — \"I live in Tel Aviv.\"\".",
+      "example": "אני גרה בתל אביב. — ani gara be-tel aviv — \"I live in Tel Aviv.\"",
+      "exampleEnglish": "Self-check against the model before moving on: Tel Aviv = \"Hill of Spring\"; the name was given by founders to evoke renewal."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "תל אביב",
+      "romanization": "Tel Aviv (tel a-VIV)",
+      "nativeText": "Repair \"תל אביב\" inside \"אני גרה בתל אביב. — ani gara be-tel aviv — \"I live in Tel Aviv.\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Israel's commercial and cultural capital — modern, secular, beach-front. Founded 1909. Home to Tel Aviv University. Nickname: \"the city that never sleeps\". The Bauhaus White City is a UNESCO heritage site.",
+      "pronunciation": "Tel Aviv (tel a-VIV)",
+      "exampleTarget": "אני גרה בתל אביב. — ani gara be-tel aviv — \"I live in Tel Aviv.\"",
+      "exampleNative": "Use the model as the repair target: Tel Aviv = \"Hill of Spring\"; the name was given by founders to evoke renewal.",
+      "korean": "תל אביב",
+      "english": "Repair \"תל אביב\" inside \"אני גרה בתל אביב. — ani gara be-tel aviv — \"I live in Tel Aviv.\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Israel's commercial and cultural capital — modern, secular, beach-front. Founded 1909. Home to Tel Aviv University. Nickname: \"the city that never sleeps\". The Bauhaus White City is a UNESCO heritage site.",
+      "example": "אני גרה בתל אביב. — ani gara be-tel aviv — \"I live in Tel Aviv.\"",
+      "exampleEnglish": "Use the model as the repair target: Tel Aviv = \"Hill of Spring\"; the name was given by founders to evoke renewal."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "תל אביב",
+      "romanization": "Tel Aviv (tel a-VIV)",
+      "nativeText": "Transfer \"תל אביב\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"אני גרה בתל אביב. — ani gara be-tel aviv — \"I live in Tel Aviv.\"\".",
+      "pronunciation": "Tel Aviv (tel a-VIV)",
+      "exampleTarget": "אני גרה בתל אביב. — ani gara be-tel aviv — \"I live in Tel Aviv.\"",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: Tel Aviv = \"Hill of Spring\"; the name was given by founders to evoke renewal.",
+      "korean": "תל אביב",
+      "english": "Transfer \"תל אביב\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"אני גרה בתל אביב. — ani gara be-tel aviv — \"I live in Tel Aviv.\"\".",
+      "example": "אני גרה בתל אביב. — ani gara be-tel aviv — \"I live in Tel Aviv.\"",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: Tel Aviv = \"Hill of Spring\"; the name was given by founders to evoke renewal."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "תל אביב",
+      "romanization": "Tel Aviv (tel a-VIV)",
+      "nativeText": "Find one word or phrase that naturally travels with \"תל אביב\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "Tel Aviv (tel a-VIV)",
+      "exampleTarget": "אני גרה בתל אביב. — ani gara be-tel aviv — \"I live in Tel Aviv.\"",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: Tel Aviv = \"Hill of Spring\"; the name was given by founders to evoke renewal.",
+      "korean": "תל אביב",
+      "english": "Find one word or phrase that naturally travels with \"תל אביב\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "אני גרה בתל אביב. — ani gara be-tel aviv — \"I live in Tel Aviv.\"",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: Tel Aviv = \"Hill of Spring\"; the name was given by founders to evoke renewal."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "תל אביב",
+      "romanization": "Tel Aviv (tel a-VIV)",
+      "nativeText": "Listen for \"תל אביב\" inside \"אני גרה בתל אביב. — ani gara be-tel aviv — \"I live in Tel Aviv.\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "Tel Aviv (tel a-VIV)",
+      "exampleTarget": "אני גרה בתל אביב. — ani gara be-tel aviv — \"I live in Tel Aviv.\"",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Tel Aviv = \"Hill of Spring\"; the name was given by founders to evoke renewal.",
+      "korean": "תל אביב",
+      "english": "Listen for \"תל אביב\" inside \"אני גרה בתל אביב. — ani gara be-tel aviv — \"I live in Tel Aviv.\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "אני גרה בתל אביב. — ani gara be-tel aviv — \"I live in Tel Aviv.\"",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Tel Aviv = \"Hill of Spring\"; the name was given by founders to evoke renewal."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "תל אביב",
+      "romanization": "Tel Aviv (tel a-VIV)",
+      "nativeText": "Write \"תל אביב\" again without looking, then compare the exact written form against \"אני גרה בתל אביב. — ani gara be-tel aviv — \"I live in Tel Aviv.\"\" before moving on.",
+      "pronunciation": "Tel Aviv (tel a-VIV)",
+      "exampleTarget": "אני גרה בתל אביב. — ani gara be-tel aviv — \"I live in Tel Aviv.\"",
+      "exampleNative": "Use the written model as the final correctness check: Tel Aviv = \"Hill of Spring\"; the name was given by founders to evoke renewal.",
+      "korean": "תל אביב",
+      "english": "Write \"תל אביב\" again without looking, then compare the exact written form against \"אני גרה בתל אביב. — ani gara be-tel aviv — \"I live in Tel Aviv.\"\" before moving on.",
+      "example": "אני גרה בתל אביב. — ani gara be-tel aviv — \"I live in Tel Aviv.\"",
+      "exampleEnglish": "Use the written model as the final correctness check: Tel Aviv = \"Hill of Spring\"; the name was given by founders to evoke renewal."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "תל אביב",
+      "romanization": "Tel Aviv (tel a-VIV)",
+      "nativeText": "Check whether \"תל אביב\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Tel Aviv = \"Hill of Spring\"; the name was given by founders to evoke renewal.",
+      "pronunciation": "Tel Aviv (tel a-VIV)",
+      "exampleTarget": "אני גרה בתל אביב. — ani gara be-tel aviv — \"I live in Tel Aviv.\"",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: Tel Aviv = \"Hill of Spring\"; the name was given by founders to evoke renewal.",
+      "korean": "תל אביב",
+      "english": "Check whether \"תל אביב\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Tel Aviv = \"Hill of Spring\"; the name was given by founders to evoke renewal.",
+      "example": "אני גרה בתל אביב. — ani gara be-tel aviv — \"I live in Tel Aviv.\"",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: Tel Aviv = \"Hill of Spring\"; the name was given by founders to evoke renewal."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "חיפה היא עיר נמל. — Cheifa hi ir namal — \"Haifa is a port city.\"",
+      "romanization": "Cheifa (CHEI-fa)",
+      "nativeText": "Model use for \"חיפה\": Haifa — Israel's third-largest city, major port on the Mediterranean. Home to the Technion (Israel Institute of Technology) and the Baha'i World Center. Built on Mount Carmel.",
+      "pronunciation": "Cheifa (CHEI-fa)",
+      "exampleTarget": "חיפה היא עיר נמל. — Cheifa hi ir namal — \"Haifa is a port city.\"",
+      "exampleNative": "Haifa has a strong Arab-Jewish coexistence reputation; Hebrew U-Haifa is also here.",
+      "korean": "חיפה היא עיר נמל. — Cheifa hi ir namal — \"Haifa is a port city.\"",
+      "english": "Model use for \"חיפה\": Haifa — Israel's third-largest city, major port on the Mediterranean. Home to the Technion (Israel Institute of Technology) and the Baha'i World Center. Built on Mount Carmel.",
+      "example": "חיפה היא עיר נמל. — Cheifa hi ir namal — \"Haifa is a port city.\"",
+      "exampleEnglish": "Haifa has a strong Arab-Jewish coexistence reputation; Hebrew U-Haifa is also here."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "חיפה",
+      "romanization": "Cheifa (CHEI-fa)",
+      "nativeText": "Usage focus for \"חיפה\": Haifa — Israel's third-largest city, major port on the Mediterranean. Home to the Technion (Israel Institute of Technology) and the Baha'i World Center. Built on Mount Carmel.",
+      "pronunciation": "Cheifa (CHEI-fa)",
+      "exampleTarget": "חיפה היא עיר נמל. — Cheifa hi ir namal — \"Haifa is a port city.\"",
+      "exampleNative": "Notice what the form is doing here: Haifa has a strong Arab-Jewish coexistence reputation; Hebrew U-Haifa is also here.",
+      "korean": "חיפה",
+      "english": "Usage focus for \"חיפה\": Haifa — Israel's third-largest city, major port on the Mediterranean. Home to the Technion (Israel Institute of Technology) and the Baha'i World Center. Built on Mount Carmel.",
+      "example": "חיפה היא עיר נמל. — Cheifa hi ir namal — \"Haifa is a port city.\"",
+      "exampleEnglish": "Notice what the form is doing here: Haifa has a strong Arab-Jewish coexistence reputation; Hebrew U-Haifa is also here."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "חיפה",
+      "romanization": "Cheifa (CHEI-fa)",
+      "nativeText": "Contrast check for \"חיפה\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "Cheifa (CHEI-fa)",
+      "exampleTarget": "חיפה היא עיר נמל. — Cheifa hi ir namal — \"Haifa is a port city.\"",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: Haifa has a strong Arab-Jewish coexistence reputation; Hebrew U-Haifa is also here.",
+      "korean": "חיפה",
+      "english": "Contrast check for \"חיפה\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "חיפה היא עיר נמל. — Cheifa hi ir namal — \"Haifa is a port city.\"",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: Haifa has a strong Arab-Jewish coexistence reputation; Hebrew U-Haifa is also here."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "חיפה",
+      "romanization": "Cheifa (CHEI-fa)",
+      "nativeText": "Recall \"חיפה\" from memory, then explain what would change if a nearby alternative replaced it in \"חיפה היא עיר נמל. — Cheifa hi ir namal — \"Haifa is a port city.\"\".",
+      "pronunciation": "Cheifa (CHEI-fa)",
+      "exampleTarget": "חיפה היא עיר נמל. — Cheifa hi ir namal — \"Haifa is a port city.\"",
+      "exampleNative": "Self-check against the model before moving on: Haifa has a strong Arab-Jewish coexistence reputation; Hebrew U-Haifa is also here.",
+      "korean": "חיפה",
+      "english": "Recall \"חיפה\" from memory, then explain what would change if a nearby alternative replaced it in \"חיפה היא עיר נמל. — Cheifa hi ir namal — \"Haifa is a port city.\"\".",
+      "example": "חיפה היא עיר נמל. — Cheifa hi ir namal — \"Haifa is a port city.\"",
+      "exampleEnglish": "Self-check against the model before moving on: Haifa has a strong Arab-Jewish coexistence reputation; Hebrew U-Haifa is also here."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "חיפה",
+      "romanization": "Cheifa (CHEI-fa)",
+      "nativeText": "Repair \"חיפה\" inside \"חיפה היא עיר נמל. — Cheifa hi ir namal — \"Haifa is a port city.\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Haifa — Israel's third-largest city, major port on the Mediterranean. Home to the Technion (Israel Institute of Technology) and the Baha'i World Center. Built on Mount Carmel.",
+      "pronunciation": "Cheifa (CHEI-fa)",
+      "exampleTarget": "חיפה היא עיר נמל. — Cheifa hi ir namal — \"Haifa is a port city.\"",
+      "exampleNative": "Use the model as the repair target: Haifa has a strong Arab-Jewish coexistence reputation; Hebrew U-Haifa is also here.",
+      "korean": "חיפה",
+      "english": "Repair \"חיפה\" inside \"חיפה היא עיר נמל. — Cheifa hi ir namal — \"Haifa is a port city.\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Haifa — Israel's third-largest city, major port on the Mediterranean. Home to the Technion (Israel Institute of Technology) and the Baha'i World Center. Built on Mount Carmel.",
+      "example": "חיפה היא עיר נמל. — Cheifa hi ir namal — \"Haifa is a port city.\"",
+      "exampleEnglish": "Use the model as the repair target: Haifa has a strong Arab-Jewish coexistence reputation; Hebrew U-Haifa is also here."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "חיפה",
+      "romanization": "Cheifa (CHEI-fa)",
+      "nativeText": "Transfer \"חיפה\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"חיפה היא עיר נמל. — Cheifa hi ir namal — \"Haifa is a port city.\"\".",
+      "pronunciation": "Cheifa (CHEI-fa)",
+      "exampleTarget": "חיפה היא עיר נמל. — Cheifa hi ir namal — \"Haifa is a port city.\"",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: Haifa has a strong Arab-Jewish coexistence reputation; Hebrew U-Haifa is also here.",
+      "korean": "חיפה",
+      "english": "Transfer \"חיפה\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"חיפה היא עיר נמל. — Cheifa hi ir namal — \"Haifa is a port city.\"\".",
+      "example": "חיפה היא עיר נמל. — Cheifa hi ir namal — \"Haifa is a port city.\"",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: Haifa has a strong Arab-Jewish coexistence reputation; Hebrew U-Haifa is also here."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "חיפה",
+      "romanization": "Cheifa (CHEI-fa)",
+      "nativeText": "Find one word or phrase that naturally travels with \"חיפה\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "Cheifa (CHEI-fa)",
+      "exampleTarget": "חיפה היא עיר נמל. — Cheifa hi ir namal — \"Haifa is a port city.\"",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: Haifa has a strong Arab-Jewish coexistence reputation; Hebrew U-Haifa is also here.",
+      "korean": "חיפה",
+      "english": "Find one word or phrase that naturally travels with \"חיפה\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "חיפה היא עיר נמל. — Cheifa hi ir namal — \"Haifa is a port city.\"",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: Haifa has a strong Arab-Jewish coexistence reputation; Hebrew U-Haifa is also here."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "חיפה",
+      "romanization": "Cheifa (CHEI-fa)",
+      "nativeText": "Listen for \"חיפה\" inside \"חיפה היא עיר נמל. — Cheifa hi ir namal — \"Haifa is a port city.\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "Cheifa (CHEI-fa)",
+      "exampleTarget": "חיפה היא עיר נמל. — Cheifa hi ir namal — \"Haifa is a port city.\"",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Haifa has a strong Arab-Jewish coexistence reputation; Hebrew U-Haifa is also here.",
+      "korean": "חיפה",
+      "english": "Listen for \"חיפה\" inside \"חיפה היא עיר נמל. — Cheifa hi ir namal — \"Haifa is a port city.\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "חיפה היא עיר נמל. — Cheifa hi ir namal — \"Haifa is a port city.\"",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Haifa has a strong Arab-Jewish coexistence reputation; Hebrew U-Haifa is also here."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "חיפה",
+      "romanization": "Cheifa (CHEI-fa)",
+      "nativeText": "Write \"חיפה\" again without looking, then compare the exact written form against \"חיפה היא עיר נמל. — Cheifa hi ir namal — \"Haifa is a port city.\"\" before moving on.",
+      "pronunciation": "Cheifa (CHEI-fa)",
+      "exampleTarget": "חיפה היא עיר נמל. — Cheifa hi ir namal — \"Haifa is a port city.\"",
+      "exampleNative": "Use the written model as the final correctness check: Haifa has a strong Arab-Jewish coexistence reputation; Hebrew U-Haifa is also here.",
+      "korean": "חיפה",
+      "english": "Write \"חיפה\" again without looking, then compare the exact written form against \"חיפה היא עיר נמל. — Cheifa hi ir namal — \"Haifa is a port city.\"\" before moving on.",
+      "example": "חיפה היא עיר נמל. — Cheifa hi ir namal — \"Haifa is a port city.\"",
+      "exampleEnglish": "Use the written model as the final correctness check: Haifa has a strong Arab-Jewish coexistence reputation; Hebrew U-Haifa is also here."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "חיפה",
+      "romanization": "Cheifa (CHEI-fa)",
+      "nativeText": "Check whether \"חיפה\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Haifa has a strong Arab-Jewish coexistence reputation; Hebrew U-Haifa is also here.",
+      "pronunciation": "Cheifa (CHEI-fa)",
+      "exampleTarget": "חיפה היא עיר נמל. — Cheifa hi ir namal — \"Haifa is a port city.\"",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: Haifa has a strong Arab-Jewish coexistence reputation; Hebrew U-Haifa is also here.",
+      "korean": "חיפה",
+      "english": "Check whether \"חיפה\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Haifa has a strong Arab-Jewish coexistence reputation; Hebrew U-Haifa is also here.",
+      "example": "חיפה היא עיר נמל. — Cheifa hi ir namal — \"Haifa is a port city.\"",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: Haifa has a strong Arab-Jewish coexistence reputation; Hebrew U-Haifa is also here."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "באר שבע בדרום. — Be'er Sheva ba-darom — \"Be'er Sheva is in the south.\"",
+      "romanization": "Be'er Sheva (be-ER SHE-va)",
+      "nativeText": "Model use for \"באר שבע\": Be'er Sheva — capital of the Negev desert in the south. Home to Ben-Gurion University. Mentioned in the Bible as Abraham's well; literal meaning \"Well of the Seven (oath)\".",
+      "pronunciation": "Be'er Sheva (be-ER SHE-va)",
+      "exampleTarget": "באר שבע בדרום. — Be'er Sheva ba-darom — \"Be'er Sheva is in the south.\"",
+      "exampleNative": "The fastest-growing city in Israel; a major high-tech hub now too.",
+      "korean": "באר שבע בדרום. — Be'er Sheva ba-darom — \"Be'er Sheva is in the south.\"",
+      "english": "Model use for \"באר שבע\": Be'er Sheva — capital of the Negev desert in the south. Home to Ben-Gurion University. Mentioned in the Bible as Abraham's well; literal meaning \"Well of the Seven (oath)\".",
+      "example": "באר שבע בדרום. — Be'er Sheva ba-darom — \"Be'er Sheva is in the south.\"",
+      "exampleEnglish": "The fastest-growing city in Israel; a major high-tech hub now too."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "באר שבע",
+      "romanization": "Be'er Sheva (be-ER SHE-va)",
+      "nativeText": "Usage focus for \"באר שבע\": Be'er Sheva — capital of the Negev desert in the south. Home to Ben-Gurion University. Mentioned in the Bible as Abraham's well; literal meaning \"Well of the Seven (oath)\".",
+      "pronunciation": "Be'er Sheva (be-ER SHE-va)",
+      "exampleTarget": "באר שבע בדרום. — Be'er Sheva ba-darom — \"Be'er Sheva is in the south.\"",
+      "exampleNative": "Notice what the form is doing here: The fastest-growing city in Israel; a major high-tech hub now too.",
+      "korean": "באר שבע",
+      "english": "Usage focus for \"באר שבע\": Be'er Sheva — capital of the Negev desert in the south. Home to Ben-Gurion University. Mentioned in the Bible as Abraham's well; literal meaning \"Well of the Seven (oath)\".",
+      "example": "באר שבע בדרום. — Be'er Sheva ba-darom — \"Be'er Sheva is in the south.\"",
+      "exampleEnglish": "Notice what the form is doing here: The fastest-growing city in Israel; a major high-tech hub now too."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "באר שבע",
+      "romanization": "Be'er Sheva (be-ER SHE-va)",
+      "nativeText": "Contrast check for \"באר שבע\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "Be'er Sheva (be-ER SHE-va)",
+      "exampleTarget": "באר שבע בדרום. — Be'er Sheva ba-darom — \"Be'er Sheva is in the south.\"",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: The fastest-growing city in Israel; a major high-tech hub now too.",
+      "korean": "באר שבע",
+      "english": "Contrast check for \"באר שבע\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "באר שבע בדרום. — Be'er Sheva ba-darom — \"Be'er Sheva is in the south.\"",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: The fastest-growing city in Israel; a major high-tech hub now too."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "באר שבע",
+      "romanization": "Be'er Sheva (be-ER SHE-va)",
+      "nativeText": "Recall \"באר שבע\" from memory, then explain what would change if a nearby alternative replaced it in \"באר שבע בדרום. — Be'er Sheva ba-darom — \"Be'er Sheva is in the south.\"\".",
+      "pronunciation": "Be'er Sheva (be-ER SHE-va)",
+      "exampleTarget": "באר שבע בדרום. — Be'er Sheva ba-darom — \"Be'er Sheva is in the south.\"",
+      "exampleNative": "Self-check against the model before moving on: The fastest-growing city in Israel; a major high-tech hub now too.",
+      "korean": "באר שבע",
+      "english": "Recall \"באר שבע\" from memory, then explain what would change if a nearby alternative replaced it in \"באר שבע בדרום. — Be'er Sheva ba-darom — \"Be'er Sheva is in the south.\"\".",
+      "example": "באר שבע בדרום. — Be'er Sheva ba-darom — \"Be'er Sheva is in the south.\"",
+      "exampleEnglish": "Self-check against the model before moving on: The fastest-growing city in Israel; a major high-tech hub now too."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "באר שבע",
+      "romanization": "Be'er Sheva (be-ER SHE-va)",
+      "nativeText": "Repair \"באר שבע\" inside \"באר שבע בדרום. — Be'er Sheva ba-darom — \"Be'er Sheva is in the south.\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Be'er Sheva — capital of the Negev desert in the south. Home to Ben-Gurion University. Mentioned in the Bible as Abraham's well; literal meaning \"Well of the Seven (oath)\".",
+      "pronunciation": "Be'er Sheva (be-ER SHE-va)",
+      "exampleTarget": "באר שבע בדרום. — Be'er Sheva ba-darom — \"Be'er Sheva is in the south.\"",
+      "exampleNative": "Use the model as the repair target: The fastest-growing city in Israel; a major high-tech hub now too.",
+      "korean": "באר שבע",
+      "english": "Repair \"באר שבע\" inside \"באר שבע בדרום. — Be'er Sheva ba-darom — \"Be'er Sheva is in the south.\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Be'er Sheva — capital of the Negev desert in the south. Home to Ben-Gurion University. Mentioned in the Bible as Abraham's well; literal meaning \"Well of the Seven (oath)\".",
+      "example": "באר שבע בדרום. — Be'er Sheva ba-darom — \"Be'er Sheva is in the south.\"",
+      "exampleEnglish": "Use the model as the repair target: The fastest-growing city in Israel; a major high-tech hub now too."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "באר שבע",
+      "romanization": "Be'er Sheva (be-ER SHE-va)",
+      "nativeText": "Transfer \"באר שבע\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"באר שבע בדרום. — Be'er Sheva ba-darom — \"Be'er Sheva is in the south.\"\".",
+      "pronunciation": "Be'er Sheva (be-ER SHE-va)",
+      "exampleTarget": "באר שבע בדרום. — Be'er Sheva ba-darom — \"Be'er Sheva is in the south.\"",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: The fastest-growing city in Israel; a major high-tech hub now too.",
+      "korean": "באר שבע",
+      "english": "Transfer \"באר שבע\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"באר שבע בדרום. — Be'er Sheva ba-darom — \"Be'er Sheva is in the south.\"\".",
+      "example": "באר שבע בדרום. — Be'er Sheva ba-darom — \"Be'er Sheva is in the south.\"",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: The fastest-growing city in Israel; a major high-tech hub now too."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "באר שבע",
+      "romanization": "Be'er Sheva (be-ER SHE-va)",
+      "nativeText": "Find one word or phrase that naturally travels with \"באר שבע\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "Be'er Sheva (be-ER SHE-va)",
+      "exampleTarget": "באר שבע בדרום. — Be'er Sheva ba-darom — \"Be'er Sheva is in the south.\"",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: The fastest-growing city in Israel; a major high-tech hub now too.",
+      "korean": "באר שבע",
+      "english": "Find one word or phrase that naturally travels with \"באר שבע\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "באר שבע בדרום. — Be'er Sheva ba-darom — \"Be'er Sheva is in the south.\"",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: The fastest-growing city in Israel; a major high-tech hub now too."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "באר שבע",
+      "romanization": "Be'er Sheva (be-ER SHE-va)",
+      "nativeText": "Listen for \"באר שבע\" inside \"באר שבע בדרום. — Be'er Sheva ba-darom — \"Be'er Sheva is in the south.\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "Be'er Sheva (be-ER SHE-va)",
+      "exampleTarget": "באר שבע בדרום. — Be'er Sheva ba-darom — \"Be'er Sheva is in the south.\"",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: The fastest-growing city in Israel; a major high-tech hub now too.",
+      "korean": "באר שבע",
+      "english": "Listen for \"באר שבע\" inside \"באר שבע בדרום. — Be'er Sheva ba-darom — \"Be'er Sheva is in the south.\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "באר שבע בדרום. — Be'er Sheva ba-darom — \"Be'er Sheva is in the south.\"",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: The fastest-growing city in Israel; a major high-tech hub now too."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "באר שבע",
+      "romanization": "Be'er Sheva (be-ER SHE-va)",
+      "nativeText": "Write \"באר שבע\" again without looking, then compare the exact written form against \"באר שבע בדרום. — Be'er Sheva ba-darom — \"Be'er Sheva is in the south.\"\" before moving on.",
+      "pronunciation": "Be'er Sheva (be-ER SHE-va)",
+      "exampleTarget": "באר שבע בדרום. — Be'er Sheva ba-darom — \"Be'er Sheva is in the south.\"",
+      "exampleNative": "Use the written model as the final correctness check: The fastest-growing city in Israel; a major high-tech hub now too.",
+      "korean": "באר שבע",
+      "english": "Write \"באר שבע\" again without looking, then compare the exact written form against \"באר שבע בדרום. — Be'er Sheva ba-darom — \"Be'er Sheva is in the south.\"\" before moving on.",
+      "example": "באר שבע בדרום. — Be'er Sheva ba-darom — \"Be'er Sheva is in the south.\"",
+      "exampleEnglish": "Use the written model as the final correctness check: The fastest-growing city in Israel; a major high-tech hub now too."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "באר שבע",
+      "romanization": "Be'er Sheva (be-ER SHE-va)",
+      "nativeText": "Check whether \"באר שבע\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The fastest-growing city in Israel; a major high-tech hub now too.",
+      "pronunciation": "Be'er Sheva (be-ER SHE-va)",
+      "exampleTarget": "באר שבע בדרום. — Be'er Sheva ba-darom — \"Be'er Sheva is in the south.\"",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: The fastest-growing city in Israel; a major high-tech hub now too.",
+      "korean": "באר שבע",
+      "english": "Check whether \"באר שבע\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The fastest-growing city in Israel; a major high-tech hub now too.",
+      "example": "באר שבע בדרום. — Be'er Sheva ba-darom — \"Be'er Sheva is in the south.\"",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: The fastest-growing city in Israel; a major high-tech hub now too."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "אנחנו נוסעים לאילת בקיץ. — anachnu nos'im le-eilat ba-kayitz — \"We're going to Eilat in the summer.\"",
+      "romanization": "Eilat (ei-LAT)",
+      "nativeText": "Model use for \"אילת\": Eilat — Israel's southernmost city, a Red Sea resort. Tax-free zone; major tourism hub for scuba diving and beach holidays.",
+      "pronunciation": "Eilat (ei-LAT)",
+      "exampleTarget": "אנחנו נוסעים לאילת בקיץ. — anachnu nos'im le-eilat ba-kayitz — \"We're going to Eilat in the summer.\"",
+      "exampleNative": "The Red Sea coral reefs at Eilat are among the northernmost on Earth.",
+      "korean": "אנחנו נוסעים לאילת בקיץ. — anachnu nos'im le-eilat ba-kayitz — \"We're going to Eilat in the summer.\"",
+      "english": "Model use for \"אילת\": Eilat — Israel's southernmost city, a Red Sea resort. Tax-free zone; major tourism hub for scuba diving and beach holidays.",
+      "example": "אנחנו נוסעים לאילת בקיץ. — anachnu nos'im le-eilat ba-kayitz — \"We're going to Eilat in the summer.\"",
+      "exampleEnglish": "The Red Sea coral reefs at Eilat are among the northernmost on Earth."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "אילת",
+      "romanization": "Eilat (ei-LAT)",
+      "nativeText": "Usage focus for \"אילת\": Eilat — Israel's southernmost city, a Red Sea resort. Tax-free zone; major tourism hub for scuba diving and beach holidays.",
+      "pronunciation": "Eilat (ei-LAT)",
+      "exampleTarget": "אנחנו נוסעים לאילת בקיץ. — anachnu nos'im le-eilat ba-kayitz — \"We're going to Eilat in the summer.\"",
+      "exampleNative": "Notice what the form is doing here: The Red Sea coral reefs at Eilat are among the northernmost on Earth.",
+      "korean": "אילת",
+      "english": "Usage focus for \"אילת\": Eilat — Israel's southernmost city, a Red Sea resort. Tax-free zone; major tourism hub for scuba diving and beach holidays.",
+      "example": "אנחנו נוסעים לאילת בקיץ. — anachnu nos'im le-eilat ba-kayitz — \"We're going to Eilat in the summer.\"",
+      "exampleEnglish": "Notice what the form is doing here: The Red Sea coral reefs at Eilat are among the northernmost on Earth."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "אילת",
+      "romanization": "Eilat (ei-LAT)",
+      "nativeText": "Contrast check for \"אילת\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "Eilat (ei-LAT)",
+      "exampleTarget": "אנחנו נוסעים לאילת בקיץ. — anachnu nos'im le-eilat ba-kayitz — \"We're going to Eilat in the summer.\"",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: The Red Sea coral reefs at Eilat are among the northernmost on Earth.",
+      "korean": "אילת",
+      "english": "Contrast check for \"אילת\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "אנחנו נוסעים לאילת בקיץ. — anachnu nos'im le-eilat ba-kayitz — \"We're going to Eilat in the summer.\"",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: The Red Sea coral reefs at Eilat are among the northernmost on Earth."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "אילת",
+      "romanization": "Eilat (ei-LAT)",
+      "nativeText": "Recall \"אילת\" from memory, then explain what would change if a nearby alternative replaced it in \"אנחנו נוסעים לאילת בקיץ. — anachnu nos'im le-eilat ba-kayitz — \"We're going to Eilat in the summer.\"\".",
+      "pronunciation": "Eilat (ei-LAT)",
+      "exampleTarget": "אנחנו נוסעים לאילת בקיץ. — anachnu nos'im le-eilat ba-kayitz — \"We're going to Eilat in the summer.\"",
+      "exampleNative": "Self-check against the model before moving on: The Red Sea coral reefs at Eilat are among the northernmost on Earth.",
+      "korean": "אילת",
+      "english": "Recall \"אילת\" from memory, then explain what would change if a nearby alternative replaced it in \"אנחנו נוסעים לאילת בקיץ. — anachnu nos'im le-eilat ba-kayitz — \"We're going to Eilat in the summer.\"\".",
+      "example": "אנחנו נוסעים לאילת בקיץ. — anachnu nos'im le-eilat ba-kayitz — \"We're going to Eilat in the summer.\"",
+      "exampleEnglish": "Self-check against the model before moving on: The Red Sea coral reefs at Eilat are among the northernmost on Earth."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "אילת",
+      "romanization": "Eilat (ei-LAT)",
+      "nativeText": "Repair \"אילת\" inside \"אנחנו נוסעים לאילת בקיץ. — anachnu nos'im le-eilat ba-kayitz — \"We're going to Eilat in the summer.\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Eilat — Israel's southernmost city, a Red Sea resort. Tax-free zone; major tourism hub for scuba diving and beach holidays.",
+      "pronunciation": "Eilat (ei-LAT)",
+      "exampleTarget": "אנחנו נוסעים לאילת בקיץ. — anachnu nos'im le-eilat ba-kayitz — \"We're going to Eilat in the summer.\"",
+      "exampleNative": "Use the model as the repair target: The Red Sea coral reefs at Eilat are among the northernmost on Earth.",
+      "korean": "אילת",
+      "english": "Repair \"אילת\" inside \"אנחנו נוסעים לאילת בקיץ. — anachnu nos'im le-eilat ba-kayitz — \"We're going to Eilat in the summer.\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Eilat — Israel's southernmost city, a Red Sea resort. Tax-free zone; major tourism hub for scuba diving and beach holidays.",
+      "example": "אנחנו נוסעים לאילת בקיץ. — anachnu nos'im le-eilat ba-kayitz — \"We're going to Eilat in the summer.\"",
+      "exampleEnglish": "Use the model as the repair target: The Red Sea coral reefs at Eilat are among the northernmost on Earth."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "אילת",
+      "romanization": "Eilat (ei-LAT)",
+      "nativeText": "Transfer \"אילת\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"אנחנו נוסעים לאילת בקיץ. — anachnu nos'im le-eilat ba-kayitz — \"We're going to Eilat in the summer.\"\".",
+      "pronunciation": "Eilat (ei-LAT)",
+      "exampleTarget": "אנחנו נוסעים לאילת בקיץ. — anachnu nos'im le-eilat ba-kayitz — \"We're going to Eilat in the summer.\"",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: The Red Sea coral reefs at Eilat are among the northernmost on Earth.",
+      "korean": "אילת",
+      "english": "Transfer \"אילת\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"אנחנו נוסעים לאילת בקיץ. — anachnu nos'im le-eilat ba-kayitz — \"We're going to Eilat in the summer.\"\".",
+      "example": "אנחנו נוסעים לאילת בקיץ. — anachnu nos'im le-eilat ba-kayitz — \"We're going to Eilat in the summer.\"",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: The Red Sea coral reefs at Eilat are among the northernmost on Earth."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "אילת",
+      "romanization": "Eilat (ei-LAT)",
+      "nativeText": "Find one word or phrase that naturally travels with \"אילת\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "Eilat (ei-LAT)",
+      "exampleTarget": "אנחנו נוסעים לאילת בקיץ. — anachnu nos'im le-eilat ba-kayitz — \"We're going to Eilat in the summer.\"",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: The Red Sea coral reefs at Eilat are among the northernmost on Earth.",
+      "korean": "אילת",
+      "english": "Find one word or phrase that naturally travels with \"אילת\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "אנחנו נוסעים לאילת בקיץ. — anachnu nos'im le-eilat ba-kayitz — \"We're going to Eilat in the summer.\"",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: The Red Sea coral reefs at Eilat are among the northernmost on Earth."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "אילת",
+      "romanization": "Eilat (ei-LAT)",
+      "nativeText": "Listen for \"אילת\" inside \"אנחנו נוסעים לאילת בקיץ. — anachnu nos'im le-eilat ba-kayitz — \"We're going to Eilat in the summer.\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "Eilat (ei-LAT)",
+      "exampleTarget": "אנחנו נוסעים לאילת בקיץ. — anachnu nos'im le-eilat ba-kayitz — \"We're going to Eilat in the summer.\"",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: The Red Sea coral reefs at Eilat are among the northernmost on Earth.",
+      "korean": "אילת",
+      "english": "Listen for \"אילת\" inside \"אנחנו נוסעים לאילת בקיץ. — anachnu nos'im le-eilat ba-kayitz — \"We're going to Eilat in the summer.\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "אנחנו נוסעים לאילת בקיץ. — anachnu nos'im le-eilat ba-kayitz — \"We're going to Eilat in the summer.\"",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: The Red Sea coral reefs at Eilat are among the northernmost on Earth."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "אילת",
+      "romanization": "Eilat (ei-LAT)",
+      "nativeText": "Write \"אילת\" again without looking, then compare the exact written form against \"אנחנו נוסעים לאילת בקיץ. — anachnu nos'im le-eilat ba-kayitz — \"We're going to Eilat in the summer.\"\" before moving on.",
+      "pronunciation": "Eilat (ei-LAT)",
+      "exampleTarget": "אנחנו נוסעים לאילת בקיץ. — anachnu nos'im le-eilat ba-kayitz — \"We're going to Eilat in the summer.\"",
+      "exampleNative": "Use the written model as the final correctness check: The Red Sea coral reefs at Eilat are among the northernmost on Earth.",
+      "korean": "אילת",
+      "english": "Write \"אילת\" again without looking, then compare the exact written form against \"אנחנו נוסעים לאילת בקיץ. — anachnu nos'im le-eilat ba-kayitz — \"We're going to Eilat in the summer.\"\" before moving on.",
+      "example": "אנחנו נוסעים לאילת בקיץ. — anachnu nos'im le-eilat ba-kayitz — \"We're going to Eilat in the summer.\"",
+      "exampleEnglish": "Use the written model as the final correctness check: The Red Sea coral reefs at Eilat are among the northernmost on Earth."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "he-level1unit05lifeinisrael-vocabulary-1",
+        "he-level1unit05lifeinisrael-vocabulary-2",
+        "he-level1unit05lifeinisrael-grammar-1",
+        "he-level1unit05lifeinisrael-grammar-2",
+        "he-level1unit05lifeinisrael-reading",
+        "he-level1unit05lifeinisrael-listening",
+        "he-level1unit05lifeinisrael-writing",
+        "he-level1unit05lifeinisrael-task"
+      ],
+      "targetText": "אילת",
+      "romanization": "Eilat (ei-LAT)",
+      "nativeText": "Check whether \"אילת\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The Red Sea coral reefs at Eilat are among the northernmost on Earth.",
+      "pronunciation": "Eilat (ei-LAT)",
+      "exampleTarget": "אנחנו נוסעים לאילת בקיץ. — anachnu nos'im le-eilat ba-kayitz — \"We're going to Eilat in the summer.\"",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: The Red Sea coral reefs at Eilat are among the northernmost on Earth.",
+      "korean": "אילת",
+      "english": "Check whether \"אילת\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The Red Sea coral reefs at Eilat are among the northernmost on Earth.",
+      "example": "אנחנו נוסעים לאילת בקיץ. — anachnu nos'im le-eilat ba-kayitz — \"We're going to Eilat in the summer.\"",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: The Red Sea coral reefs at Eilat are among the northernmost on Earth."
+    }
+  ]
 };
-
-module.exports = lesson;

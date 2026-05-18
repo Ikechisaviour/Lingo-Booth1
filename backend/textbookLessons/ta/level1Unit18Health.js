@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('ta', {
-  slug: 'ta-l1u18',
-  title: 'Level 1 · Unit 18: உடல்நலம் — Health',
-  category: 'health',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Describe simple symptoms, ask for help, and understand basic health advice.',
-  vocabularyGoal: 'Use body-part, symptom, medicine, and clinic vocabulary.',
-  grammarGoal: 'Use possession-like body expressions, `வேண்டும்`, and negative imperatives.',
-  speakingGoal: 'Say what hurts, describe one symptom, and understand one instruction.',
-  task: 'Explain a minor illness at a clinic or pharmacy.',
-  expressionPractice: [
-    practice('describing-symptom', 'Describing symptom', 'Use one body-part phrase.'),
-    practice('asking-help', 'Asking help', 'Use `மருந்து வேண்டும்`.'),
-    practice('understanding-advice', 'Understanding advice', 'Recognize one recommendation and one prohibition.'),
+module.exports = {
+  "title": "Level 1 · Unit 18: உடல்நலம் — Health",
+  "category": "health",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ta-level1unit18health-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Describe simple symptoms, ask for help, and understand basic health advice."
+      ],
+      "task": "Explain a minor illness at a clinic or pharmacy."
+    },
+    {
+      "id": "ta-level1unit18health-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ta-level1unit18health-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 18: உடல்நலம் — Health with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ta-level1unit18health-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 18: உடல்நலம் — Health sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ta-level1unit18health-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Describe simple symptoms, ask for help, and understand basic health advice."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ta-level1unit18health-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 18: உடல்நலம் — Health with one nearby Tamil form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ta-level1unit18health-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ta-level1unit18health-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ta-level1unit18health-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ta-level1unit18health-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ta-level1unit18health-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Explain a minor illness at a clinic or pharmacy."
+      ],
+      "task": "Explain a minor illness at a clinic or pharmacy."
+    }
   ],
-  relatedPools: ['topic-health', 'topic-service'],
-  items: [
-    item('எனக்கு தலைவலி', 'eṉakku talaivali', '“I have a headache.” Tamil often uses an experiencer frame with `எனக்கு`.', 'காலை முதல் எனக்கு தலைவலி.', '“I have had a headache since morning.”'),
-    item('காய்ச்சல்', 'kāyccal', '“Fever.” A common clinic word.', 'எனக்கு காய்ச்சல் உள்ளது.', '“I have a fever.”'),
-    item('இருமல்', 'irumal', '“Cough.” A practical symptom noun.', 'எனக்கு உலர் இருமல் உள்ளது.', '“I have a dry cough.”'),
-    item('வயிற்றுவலி', 'vayiṟṟuvali', '“Stomachache.” A compound body-pain word.', 'உணவுக்குப் பிறகு வயிற்றுவலி உள்ளது.', '“I have stomach pain after eating.”'),
-    item('மருந்து', 'maruntu', '“Medicine.” Useful in pharmacy talk.', 'சளிக்கான மருந்து வேண்டும்.', '“I need medicine for a cold.”'),
-    item('மருத்துவர்', 'maruttuvar', '“Doctor.” A respectful professional noun.', 'மருத்துவரை பார்க்க வேண்டும்.', '“I need to see the doctor.”'),
-    item('ஓய்வு எடுக்க வேண்டும்', 'ōyvu eṭukka vēṇṭum', '“You need to rest.” A common advice phrase.', 'இரண்டு நாள் ஓய்வு எடுக்க வேண்டும்.', '“You need to rest for two days.”'),
-    item('காரம் சாப்பிடாதீர்கள்', 'kāram cāppiṭātīrkaḷ', '“Do not eat spicy food.” Polite negative imperative.', 'இன்று காரம் சாப்பிடாதீர்கள்.', '“Do not eat spicy food today.”'),
+  "expressionPractice": [
+    {
+      "id": "describing-symptom",
+      "label": "Describing symptom",
+      "goal": "Use one body-part phrase."
+    },
+    {
+      "id": "asking-help",
+      "label": "Asking help",
+      "goal": "Use `மருந்து வேண்டும்`."
+    },
+    {
+      "id": "understanding-advice",
+      "label": "Understanding advice",
+      "goal": "Recognize one recommendation and one prohibition."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-health",
+    "topic-service"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit18health-orientation"
+      ],
+      "targetText": "பாட இலக்கு",
+      "romanization": "",
+      "nativeText": "Describe simple symptoms, ask for help, and understand basic health advice.",
+      "pronunciation": "",
+      "exampleTarget": "பாட இலக்கு",
+      "exampleNative": "The whole lesson is built toward this outcome: Explain a minor illness at a clinic or pharmacy.",
+      "korean": "பாட இலக்கு",
+      "english": "Describe simple symptoms, ask for help, and understand basic health advice.",
+      "example": "பாட இலக்கு",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Explain a minor illness at a clinic or pharmacy."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1unit18health-pronunciation"
+      ],
+      "targetText": "ஒலி சரிபார்ப்பு",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"காலை முதல் எனக்கு தலைவலி.\".",
+      "pronunciation": "",
+      "exampleTarget": "காலை முதல் எனக்கு தலைவலி.",
+      "exampleNative": "“I have had a headache since morning.”",
+      "korean": "ஒலி சரிபார்ப்பு",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"காலை முதல் எனக்கு தலைவலி.\".",
+      "example": "காலை முதல் எனக்கு தலைவலி.",
+      "exampleEnglish": "“I have had a headache since morning.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1"
+      ],
+      "targetText": "எனக்கு தலைவலி",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 18: உடல்நலம் — Health with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "காலை முதல் எனக்கு தலைவலி.",
+      "exampleNative": "“I have had a headache since morning.”",
+      "korean": "எனக்கு தலைவலி",
+      "english": "Use the key language of Level 1 · Unit 18: உடல்நலம் — Health with the register and setting that the lesson requires.",
+      "example": "காலை முதல் எனக்கு தலைவலி.",
+      "exampleEnglish": "“I have had a headache since morning.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-2"
+      ],
+      "targetText": "காய்ச்சல்",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 18: உடல்நலம் — Health sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "எனக்கு காய்ச்சல் உள்ளது.",
+      "exampleNative": "“I have a fever.”",
+      "korean": "காய்ச்சல்",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 18: உடல்நலம் — Health sound precise rather than merely understandable.",
+      "example": "எனக்கு காய்ச்சல் உள்ளது.",
+      "exampleEnglish": "“I have a fever.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1unit18health-grammar-1"
+      ],
+      "targetText": "எனக்கு தலைவலி",
+      "romanization": "",
+      "nativeText": "Describe simple symptoms, ask for help, and understand basic health advice.",
+      "pronunciation": "",
+      "exampleTarget": "காலை முதல் எனக்கு தலைவலி.",
+      "exampleNative": "“I have had a headache since morning.”",
+      "korean": "எனக்கு தலைவலி",
+      "english": "Describe simple symptoms, ask for help, and understand basic health advice.",
+      "example": "காலை முதல் எனக்கு தலைவலி.",
+      "exampleEnglish": "“I have had a headache since morning.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1unit18health-grammar-2"
+      ],
+      "targetText": "காய்ச்சல்",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 18: உடல்நலம் — Health with one nearby Tamil form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "எனக்கு காய்ச்சல் உள்ளது.",
+      "exampleNative": "“I have a fever.”",
+      "korean": "காய்ச்சல்",
+      "english": "Contrast the main pattern in Level 1 · Unit 18: உடல்நலம் — Health with one nearby Tamil form so the learner can avoid literal translation.",
+      "example": "எனக்கு காய்ச்சல் உள்ளது.",
+      "exampleEnglish": "“I have a fever.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ta-level1unit18health-reading"
+      ],
+      "targetText": "வாசிப்பு மாதிரி",
+      "romanization": "",
+      "nativeText": "Read \"இன்று காரம் சாப்பிடாதீர்கள்.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "இன்று காரம் சாப்பிடாதீர்கள்.",
+      "exampleNative": "“Do not eat spicy food today.”",
+      "korean": "வாசிப்பு மாதிரி",
+      "english": "Read \"இன்று காரம் சாப்பிடாதீர்கள்.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "இன்று காரம் சாப்பிடாதீர்கள்.",
+      "exampleEnglish": "“Do not eat spicy food today.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit18health-listening"
+      ],
+      "targetText": "உரையாடல் மாதிரி",
+      "romanization": "",
+      "nativeText": "Hear \"இன்று காரம் சாப்பிடாதீர்கள்.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "இன்று காரம் சாப்பிடாதீர்கள்.",
+      "exampleNative": "“Do not eat spicy food today.”",
+      "korean": "உரையாடல் மாதிரி",
+      "english": "Hear \"இன்று காரம் சாப்பிடாதீர்கள்.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "இன்று காரம் சாப்பிடாதீர்கள்.",
+      "exampleEnglish": "“Do not eat spicy food today.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ta-level1unit18health-writing"
+      ],
+      "targetText": "எழுத்துப் பயிற்சி",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"காலை முதல் எனக்கு தலைவலி.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "காலை முதல் எனக்கு தலைவலி.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "எழுத்துப் பயிற்சி",
+      "english": "Write your own version after studying \"காலை முதல் எனக்கு தலைவலி.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "காலை முதல் எனக்கு தலைவலி.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1unit18health-culture"
+      ],
+      "targetText": "பயன்பாடும் சூழலும்",
+      "romanization": "",
+      "nativeText": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "எனக்கு காய்ச்சல் உள்ளது.",
+      "exampleNative": "“I have a fever.”",
+      "korean": "பயன்பாடும் சூழலும்",
+      "english": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used.",
+      "example": "எனக்கு காய்ச்சல் உள்ளது.",
+      "exampleEnglish": "“I have a fever.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "இறுதி செயல்",
+      "romanization": "",
+      "nativeText": "Explain a minor illness at a clinic or pharmacy.",
+      "pronunciation": "",
+      "exampleTarget": "இன்று காரம் சாப்பிடாதீர்கள்.",
+      "exampleNative": "Explain a minor illness at a clinic or pharmacy.",
+      "korean": "இறுதி செயல்",
+      "english": "Explain a minor illness at a clinic or pharmacy.",
+      "example": "இன்று காரம் சாப்பிடாதீர்கள்.",
+      "exampleEnglish": "Explain a minor illness at a clinic or pharmacy."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit18health-grammar-2"
+      ],
+      "targetText": "பொதுவான பிழை",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"எனக்கு காய்ச்சல் உள்ளது.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "எனக்கு காய்ச்சல் உள்ளது.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “I have a fever.”",
+      "korean": "பொதுவான பிழை",
+      "english": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"எனக்கு காய்ச்சல் உள்ளது.\" against the model.",
+      "example": "எனக்கு காய்ச்சல் உள்ளது.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “I have a fever.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-culture"
+      ],
+      "targetText": "மொழிநடை",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"காலை முதல் எனக்கு தலைவலி.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "காலை முதல் எனக்கு தலைவலி.",
+      "exampleNative": "“I have had a headache since morning.”",
+      "korean": "மொழிநடை",
+      "english": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"காலை முதல் எனக்கு தலைவலி.\" before reusing it elsewhere.",
+      "example": "காலை முதல் எனக்கு தலைவலி.",
+      "exampleEnglish": "“I have had a headache since morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "சரளம்",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"இன்று காரம் சாப்பிடாதீர்கள்.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "இன்று காரம் சாப்பிடாதீர்கள்.",
+      "exampleNative": "“Do not eat spicy food today.”",
+      "korean": "சரளம்",
+      "english": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"இன்று காரம் சாப்பிடாதீர்கள்.\" as one thought.",
+      "example": "இன்று காரம் சாப்பிடாதீர்கள்.",
+      "exampleEnglish": "“Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "பயன்பாடு",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"காலை முதல் எனக்கு தலைவலி.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "காலை முதல் எனக்கு தலைவலி.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "பயன்பாடு",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"காலை முதல் எனக்கு தலைவலி.\" and move it into your own life.",
+      "example": "காலை முதல் எனக்கு தலைவலி.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-grammar-1"
+      ],
+      "targetText": "நினைவூட்டல்",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"எனக்கு தலைவலி\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "எனக்கு தலைவலி",
+      "exampleNative": "“I have a headache.” Tamil often uses an experiencer frame with `எனக்கு`.",
+      "korean": "நினைவூட்டல்",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"எனக்கு தலைவலி\" before looking back.",
+      "example": "எனக்கு தலைவலி",
+      "exampleEnglish": "“I have a headache.” Tamil often uses an experiencer frame with `எனக்கு`."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-writing"
+      ],
+      "targetText": "விரிவாக்கம்",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"இன்று காரம் சாப்பிடாதீர்கள்.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "இன்று காரம் சாப்பிடாதீர்கள்.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "விரிவாக்கம்",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"இன்று காரம் சாப்பிடாதீர்கள்.\" rather than restarting from a blank sentence.",
+      "example": "இன்று காரம் சாப்பிடாதீர்கள்.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading"
+      ],
+      "targetText": "ஒப்பீடு",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 18: உடல்நலம் — Health with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"எனக்கு காய்ச்சல் உள்ளது.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "எனக்கு காய்ச்சல் உள்ளது.",
+      "exampleNative": "“I have a fever.”",
+      "korean": "ஒப்பீடு",
+      "english": "Compare the central form in Level 1 · Unit 18: உடல்நலம் — Health with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"எனக்கு காய்ச்சல் உள்ளது.\" as the comparison line.",
+      "example": "எனக்கு காய்ச்சல் உள்ளது.",
+      "exampleEnglish": "“I have a fever.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1unit18health-pronunciation"
+      ],
+      "targetText": "உச்சரிப்பு திருத்தம்",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"காலை முதல் எனக்கு தலைவலி.\".",
+      "pronunciation": "",
+      "exampleTarget": "காலை முதல் எனக்கு தலைவலி.",
+      "exampleNative": "“I have had a headache since morning.”",
+      "korean": "உச்சரிப்பு திருத்தம்",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"காலை முதல் எனக்கு தலைவலி.\".",
+      "example": "காலை முதல் எனக்கு தலைவலி.",
+      "exampleEnglish": "“I have had a headache since morning.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "உரையாடல் மாற்றம்",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"இன்று காரம் சாப்பிடாதீர்கள்.\".",
+      "pronunciation": "",
+      "exampleTarget": "இன்று காரம் சாப்பிடாதீர்கள்.",
+      "exampleNative": "“Do not eat spicy food today.”",
+      "korean": "உரையாடல் மாற்றம்",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"இன்று காரம் சாப்பிடாதீர்கள்.\".",
+      "example": "இன்று காரம் சாப்பிடாதீர்கள்.",
+      "exampleEnglish": "“Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-writing"
+      ],
+      "targetText": "வாக்கிய கட்டமைப்பு",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"காலை முதல் எனக்கு தலைவலி.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "காலை முதல் எனக்கு தலைவலி.",
+      "exampleNative": "“I have had a headache since morning.”",
+      "korean": "வாக்கிய கட்டமைப்பு",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"காலை முதல் எனக்கு தலைவலி.\" one layer at a time.",
+      "example": "காலை முதல் எனக்கு தலைவலி.",
+      "exampleEnglish": "“I have had a headache since morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-2"
+      ],
+      "targetText": "விரைவு சோதனை",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"எனக்கு காய்ச்சல் உள்ளது.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "எனக்கு காய்ச்சல் உள்ளது.",
+      "exampleNative": "“I have a fever.”",
+      "korean": "விரைவு சோதனை",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"எனக்கு காய்ச்சல் உள்ளது.\" as the deciding example.",
+      "example": "எனக்கு காய்ச்சல் உள்ளது.",
+      "exampleEnglish": "“I have a fever.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit18health-culture",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "மீள்பார்வு",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"இன்று காரம் சாப்பிடாதீர்கள்.\".",
+      "pronunciation": "",
+      "exampleTarget": "இன்று காரம் சாப்பிடாதீர்கள்.",
+      "exampleNative": "“Do not eat spicy food today.”",
+      "korean": "மீள்பார்வு",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"இன்று காரம் சாப்பிடாதீர்கள்.\".",
+      "example": "இன்று காரம் சாப்பிடாதீர்கள்.",
+      "exampleEnglish": "“Do not eat spicy food today.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "எனக்கு தலைவலி",
+      "romanization": "eṉakku talaivali",
+      "nativeText": "“I have a headache.” Tamil often uses an experiencer frame with `எனக்கு`.",
+      "pronunciation": "eṉakku talaivali",
+      "exampleTarget": "காலை முதல் எனக்கு தலைவலி.",
+      "exampleNative": "“I have had a headache since morning.”",
+      "korean": "எனக்கு தலைவலி",
+      "english": "“I have a headache.” Tamil often uses an experiencer frame with `எனக்கு`.",
+      "example": "காலை முதல் எனக்கு தலைவலி.",
+      "exampleEnglish": "“I have had a headache since morning.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "காலை முதல் எனக்கு தலைவலி.",
+      "romanization": "eṉakku talaivali",
+      "nativeText": "Model use for \"காலை முதல் எனக்கு தலைவலி.\": “I have had a headache since morning.”",
+      "pronunciation": "eṉakku talaivali",
+      "exampleTarget": "காலை முதல் எனக்கு தலைவலி.",
+      "exampleNative": "“I have had a headache since morning.”",
+      "korean": "காலை முதல் எனக்கு தலைவலி.",
+      "english": "Model use for \"காலை முதல் எனக்கு தலைவலி.\": “I have had a headache since morning.”",
+      "example": "காலை முதல் எனக்கு தலைவலி.",
+      "exampleEnglish": "“I have had a headache since morning.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "எனக்கு தலைவலி",
+      "romanization": "eṉakku talaivali",
+      "nativeText": "Usage focus for \"எனக்கு தலைவலி\": Use the key language of Level 1 · Unit 18: உடல்நலம் — Health with the register and setting that the lesson requires.",
+      "pronunciation": "eṉakku talaivali",
+      "exampleTarget": "காலை முதல் எனக்கு தலைவலி.",
+      "exampleNative": "Notice what the form is doing here: “I have had a headache since morning.”",
+      "korean": "எனக்கு தலைவலி",
+      "english": "Usage focus for \"எனக்கு தலைவலி\": Use the key language of Level 1 · Unit 18: உடல்நலம் — Health with the register and setting that the lesson requires.",
+      "example": "காலை முதல் எனக்கு தலைவலி.",
+      "exampleEnglish": "Notice what the form is doing here: “I have had a headache since morning.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "எனக்கு தலைவலி",
+      "romanization": "eṉakku talaivali",
+      "nativeText": "Contrast check for \"எனக்கு தலைவலி\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "eṉakku talaivali",
+      "exampleTarget": "காலை முதல் எனக்கு தலைவலி.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have had a headache since morning.”",
+      "korean": "எனக்கு தலைவலி",
+      "english": "Contrast check for \"எனக்கு தலைவலி\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "காலை முதல் எனக்கு தலைவலி.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have had a headache since morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "எனக்கு தலைவலி",
+      "romanization": "eṉakku talaivali",
+      "nativeText": "Recall \"எனக்கு தலைவலி\" from memory, then explain what would change if a nearby alternative replaced it in \"காலை முதல் எனக்கு தலைவலி.\".",
+      "pronunciation": "eṉakku talaivali",
+      "exampleTarget": "காலை முதல் எனக்கு தலைவலி.",
+      "exampleNative": "Self-check against the model before moving on: “I have had a headache since morning.”",
+      "korean": "எனக்கு தலைவலி",
+      "english": "Recall \"எனக்கு தலைவலி\" from memory, then explain what would change if a nearby alternative replaced it in \"காலை முதல் எனக்கு தலைவலி.\".",
+      "example": "காலை முதல் எனக்கு தலைவலி.",
+      "exampleEnglish": "Self-check against the model before moving on: “I have had a headache since morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "எனக்கு தலைவலி",
+      "romanization": "eṉakku talaivali",
+      "nativeText": "Repair \"எனக்கு தலைவலி\" inside \"காலை முதல் எனக்கு தலைவலி.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 18: உடல்நலம் — Health with the register and setting that the lesson requires.",
+      "pronunciation": "eṉakku talaivali",
+      "exampleTarget": "காலை முதல் எனக்கு தலைவலி.",
+      "exampleNative": "Use the model as the repair target: “I have had a headache since morning.”",
+      "korean": "எனக்கு தலைவலி",
+      "english": "Repair \"எனக்கு தலைவலி\" inside \"காலை முதல் எனக்கு தலைவலி.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 18: உடல்நலம் — Health with the register and setting that the lesson requires.",
+      "example": "காலை முதல் எனக்கு தலைவலி.",
+      "exampleEnglish": "Use the model as the repair target: “I have had a headache since morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "எனக்கு தலைவலி",
+      "romanization": "eṉakku talaivali",
+      "nativeText": "Transfer \"எனக்கு தலைவலி\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"காலை முதல் எனக்கு தலைவலி.\".",
+      "pronunciation": "eṉakku talaivali",
+      "exampleTarget": "காலை முதல் எனக்கு தலைவலி.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have had a headache since morning.”",
+      "korean": "எனக்கு தலைவலி",
+      "english": "Transfer \"எனக்கு தலைவலி\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"காலை முதல் எனக்கு தலைவலி.\".",
+      "example": "காலை முதல் எனக்கு தலைவலி.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have had a headache since morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "எனக்கு தலைவலி",
+      "romanization": "eṉakku talaivali",
+      "nativeText": "Find one word or phrase that naturally travels with \"எனக்கு தலைவலி\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "eṉakku talaivali",
+      "exampleTarget": "காலை முதல் எனக்கு தலைவலி.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I have had a headache since morning.”",
+      "korean": "எனக்கு தலைவலி",
+      "english": "Find one word or phrase that naturally travels with \"எனக்கு தலைவலி\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "காலை முதல் எனக்கு தலைவலி.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I have had a headache since morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "எனக்கு தலைவலி",
+      "romanization": "eṉakku talaivali",
+      "nativeText": "Listen for \"எனக்கு தலைவலி\" inside \"காலை முதல் எனக்கு தலைவலி.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "eṉakku talaivali",
+      "exampleTarget": "காலை முதல் எனக்கு தலைவலி.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have had a headache since morning.”",
+      "korean": "எனக்கு தலைவலி",
+      "english": "Listen for \"எனக்கு தலைவலி\" inside \"காலை முதல் எனக்கு தலைவலி.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "காலை முதல் எனக்கு தலைவலி.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have had a headache since morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "எனக்கு தலைவலி",
+      "romanization": "eṉakku talaivali",
+      "nativeText": "Write \"எனக்கு தலைவலி\" again without looking, then compare the exact written form against \"காலை முதல் எனக்கு தலைவலி.\" before moving on.",
+      "pronunciation": "eṉakku talaivali",
+      "exampleTarget": "காலை முதல் எனக்கு தலைவலி.",
+      "exampleNative": "Use the written model as the final correctness check: “I have had a headache since morning.”",
+      "korean": "எனக்கு தலைவலி",
+      "english": "Write \"எனக்கு தலைவலி\" again without looking, then compare the exact written form against \"காலை முதல் எனக்கு தலைவலி.\" before moving on.",
+      "example": "காலை முதல் எனக்கு தலைவலி.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I have had a headache since morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "எனக்கு தலைவலி",
+      "romanization": "eṉakku talaivali",
+      "nativeText": "Check whether \"எனக்கு தலைவலி\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have had a headache since morning.”",
+      "pronunciation": "eṉakku talaivali",
+      "exampleTarget": "காலை முதல் எனக்கு தலைவலி.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I have had a headache since morning.”",
+      "korean": "எனக்கு தலைவலி",
+      "english": "Check whether \"எனக்கு தலைவலி\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have had a headache since morning.”",
+      "example": "காலை முதல் எனக்கு தலைவலி.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I have had a headache since morning.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "காய்ச்சல்",
+      "romanization": "kāyccal",
+      "nativeText": "“Fever.” A common clinic word.",
+      "pronunciation": "kāyccal",
+      "exampleTarget": "எனக்கு காய்ச்சல் உள்ளது.",
+      "exampleNative": "“I have a fever.”",
+      "korean": "காய்ச்சல்",
+      "english": "“Fever.” A common clinic word.",
+      "example": "எனக்கு காய்ச்சல் உள்ளது.",
+      "exampleEnglish": "“I have a fever.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "எனக்கு காய்ச்சல் உள்ளது.",
+      "romanization": "kāyccal",
+      "nativeText": "Model use for \"எனக்கு காய்ச்சல் உள்ளது.\": “I have a fever.”",
+      "pronunciation": "kāyccal",
+      "exampleTarget": "எனக்கு காய்ச்சல் உள்ளது.",
+      "exampleNative": "“I have a fever.”",
+      "korean": "எனக்கு காய்ச்சல் உள்ளது.",
+      "english": "Model use for \"எனக்கு காய்ச்சல் உள்ளது.\": “I have a fever.”",
+      "example": "எனக்கு காய்ச்சல் உள்ளது.",
+      "exampleEnglish": "“I have a fever.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "காய்ச்சல்",
+      "romanization": "kāyccal",
+      "nativeText": "Usage focus for \"காய்ச்சல்\": Distinguish the nearby wording choices that make Level 1 · Unit 18: உடல்நலம் — Health sound precise rather than merely understandable.",
+      "pronunciation": "kāyccal",
+      "exampleTarget": "எனக்கு காய்ச்சல் உள்ளது.",
+      "exampleNative": "Notice what the form is doing here: “I have a fever.”",
+      "korean": "காய்ச்சல்",
+      "english": "Usage focus for \"காய்ச்சல்\": Distinguish the nearby wording choices that make Level 1 · Unit 18: உடல்நலம் — Health sound precise rather than merely understandable.",
+      "example": "எனக்கு காய்ச்சல் உள்ளது.",
+      "exampleEnglish": "Notice what the form is doing here: “I have a fever.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "காய்ச்சல்",
+      "romanization": "kāyccal",
+      "nativeText": "Contrast check for \"காய்ச்சல்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kāyccal",
+      "exampleTarget": "எனக்கு காய்ச்சல் உள்ளது.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have a fever.”",
+      "korean": "காய்ச்சல்",
+      "english": "Contrast check for \"காய்ச்சல்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "எனக்கு காய்ச்சல் உள்ளது.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have a fever.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "காய்ச்சல்",
+      "romanization": "kāyccal",
+      "nativeText": "Recall \"காய்ச்சல்\" from memory, then explain what would change if a nearby alternative replaced it in \"எனக்கு காய்ச்சல் உள்ளது.\".",
+      "pronunciation": "kāyccal",
+      "exampleTarget": "எனக்கு காய்ச்சல் உள்ளது.",
+      "exampleNative": "Self-check against the model before moving on: “I have a fever.”",
+      "korean": "காய்ச்சல்",
+      "english": "Recall \"காய்ச்சல்\" from memory, then explain what would change if a nearby alternative replaced it in \"எனக்கு காய்ச்சல் உள்ளது.\".",
+      "example": "எனக்கு காய்ச்சல் உள்ளது.",
+      "exampleEnglish": "Self-check against the model before moving on: “I have a fever.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "காய்ச்சல்",
+      "romanization": "kāyccal",
+      "nativeText": "Repair \"காய்ச்சல்\" inside \"எனக்கு காய்ச்சல் உள்ளது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 18: உடல்நலம் — Health sound precise rather than merely understandable.",
+      "pronunciation": "kāyccal",
+      "exampleTarget": "எனக்கு காய்ச்சல் உள்ளது.",
+      "exampleNative": "Use the model as the repair target: “I have a fever.”",
+      "korean": "காய்ச்சல்",
+      "english": "Repair \"காய்ச்சல்\" inside \"எனக்கு காய்ச்சல் உள்ளது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 18: உடல்நலம் — Health sound precise rather than merely understandable.",
+      "example": "எனக்கு காய்ச்சல் உள்ளது.",
+      "exampleEnglish": "Use the model as the repair target: “I have a fever.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "காய்ச்சல்",
+      "romanization": "kāyccal",
+      "nativeText": "Transfer \"காய்ச்சல்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"எனக்கு காய்ச்சல் உள்ளது.\".",
+      "pronunciation": "kāyccal",
+      "exampleTarget": "எனக்கு காய்ச்சல் உள்ளது.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have a fever.”",
+      "korean": "காய்ச்சல்",
+      "english": "Transfer \"காய்ச்சல்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"எனக்கு காய்ச்சல் உள்ளது.\".",
+      "example": "எனக்கு காய்ச்சல் உள்ளது.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have a fever.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "காய்ச்சல்",
+      "romanization": "kāyccal",
+      "nativeText": "Find one word or phrase that naturally travels with \"காய்ச்சல்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kāyccal",
+      "exampleTarget": "எனக்கு காய்ச்சல் உள்ளது.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I have a fever.”",
+      "korean": "காய்ச்சல்",
+      "english": "Find one word or phrase that naturally travels with \"காய்ச்சல்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "எனக்கு காய்ச்சல் உள்ளது.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I have a fever.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "காய்ச்சல்",
+      "romanization": "kāyccal",
+      "nativeText": "Listen for \"காய்ச்சல்\" inside \"எனக்கு காய்ச்சல் உள்ளது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kāyccal",
+      "exampleTarget": "எனக்கு காய்ச்சல் உள்ளது.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have a fever.”",
+      "korean": "காய்ச்சல்",
+      "english": "Listen for \"காய்ச்சல்\" inside \"எனக்கு காய்ச்சல் உள்ளது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "எனக்கு காய்ச்சல் உள்ளது.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have a fever.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "காய்ச்சல்",
+      "romanization": "kāyccal",
+      "nativeText": "Write \"காய்ச்சல்\" again without looking, then compare the exact written form against \"எனக்கு காய்ச்சல் உள்ளது.\" before moving on.",
+      "pronunciation": "kāyccal",
+      "exampleTarget": "எனக்கு காய்ச்சல் உள்ளது.",
+      "exampleNative": "Use the written model as the final correctness check: “I have a fever.”",
+      "korean": "காய்ச்சல்",
+      "english": "Write \"காய்ச்சல்\" again without looking, then compare the exact written form against \"எனக்கு காய்ச்சல் உள்ளது.\" before moving on.",
+      "example": "எனக்கு காய்ச்சல் உள்ளது.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I have a fever.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "காய்ச்சல்",
+      "romanization": "kāyccal",
+      "nativeText": "Check whether \"காய்ச்சல்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have a fever.”",
+      "pronunciation": "kāyccal",
+      "exampleTarget": "எனக்கு காய்ச்சல் உள்ளது.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I have a fever.”",
+      "korean": "காய்ச்சல்",
+      "english": "Check whether \"காய்ச்சல்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have a fever.”",
+      "example": "எனக்கு காய்ச்சல் உள்ளது.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I have a fever.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "இருமல்",
+      "romanization": "irumal",
+      "nativeText": "“Cough.” A practical symptom noun.",
+      "pronunciation": "irumal",
+      "exampleTarget": "எனக்கு உலர் இருமல் உள்ளது.",
+      "exampleNative": "“I have a dry cough.”",
+      "korean": "இருமல்",
+      "english": "“Cough.” A practical symptom noun.",
+      "example": "எனக்கு உலர் இருமல் உள்ளது.",
+      "exampleEnglish": "“I have a dry cough.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "எனக்கு உலர் இருமல் உள்ளது.",
+      "romanization": "irumal",
+      "nativeText": "Model use for \"எனக்கு உலர் இருமல் உள்ளது.\": “I have a dry cough.”",
+      "pronunciation": "irumal",
+      "exampleTarget": "எனக்கு உலர் இருமல் உள்ளது.",
+      "exampleNative": "“I have a dry cough.”",
+      "korean": "எனக்கு உலர் இருமல் உள்ளது.",
+      "english": "Model use for \"எனக்கு உலர் இருமல் உள்ளது.\": “I have a dry cough.”",
+      "example": "எனக்கு உலர் இருமல் உள்ளது.",
+      "exampleEnglish": "“I have a dry cough.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "இருமல்",
+      "romanization": "irumal",
+      "nativeText": "Usage focus for \"இருமல்\": “Cough.” A practical symptom noun.",
+      "pronunciation": "irumal",
+      "exampleTarget": "எனக்கு உலர் இருமல் உள்ளது.",
+      "exampleNative": "Notice what the form is doing here: “I have a dry cough.”",
+      "korean": "இருமல்",
+      "english": "Usage focus for \"இருமல்\": “Cough.” A practical symptom noun.",
+      "example": "எனக்கு உலர் இருமல் உள்ளது.",
+      "exampleEnglish": "Notice what the form is doing here: “I have a dry cough.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "இருமல்",
+      "romanization": "irumal",
+      "nativeText": "Contrast check for \"இருமல்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "irumal",
+      "exampleTarget": "எனக்கு உலர் இருமல் உள்ளது.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have a dry cough.”",
+      "korean": "இருமல்",
+      "english": "Contrast check for \"இருமல்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "எனக்கு உலர் இருமல் உள்ளது.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have a dry cough.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "இருமல்",
+      "romanization": "irumal",
+      "nativeText": "Recall \"இருமல்\" from memory, then explain what would change if a nearby alternative replaced it in \"எனக்கு உலர் இருமல் உள்ளது.\".",
+      "pronunciation": "irumal",
+      "exampleTarget": "எனக்கு உலர் இருமல் உள்ளது.",
+      "exampleNative": "Self-check against the model before moving on: “I have a dry cough.”",
+      "korean": "இருமல்",
+      "english": "Recall \"இருமல்\" from memory, then explain what would change if a nearby alternative replaced it in \"எனக்கு உலர் இருமல் உள்ளது.\".",
+      "example": "எனக்கு உலர் இருமல் உள்ளது.",
+      "exampleEnglish": "Self-check against the model before moving on: “I have a dry cough.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "இருமல்",
+      "romanization": "irumal",
+      "nativeText": "Repair \"இருமல்\" inside \"எனக்கு உலர் இருமல் உள்ளது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Cough.” A practical symptom noun.",
+      "pronunciation": "irumal",
+      "exampleTarget": "எனக்கு உலர் இருமல் உள்ளது.",
+      "exampleNative": "Use the model as the repair target: “I have a dry cough.”",
+      "korean": "இருமல்",
+      "english": "Repair \"இருமல்\" inside \"எனக்கு உலர் இருமல் உள்ளது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Cough.” A practical symptom noun.",
+      "example": "எனக்கு உலர் இருமல் உள்ளது.",
+      "exampleEnglish": "Use the model as the repair target: “I have a dry cough.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "இருமல்",
+      "romanization": "irumal",
+      "nativeText": "Transfer \"இருமல்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"எனக்கு உலர் இருமல் உள்ளது.\".",
+      "pronunciation": "irumal",
+      "exampleTarget": "எனக்கு உலர் இருமல் உள்ளது.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have a dry cough.”",
+      "korean": "இருமல்",
+      "english": "Transfer \"இருமல்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"எனக்கு உலர் இருமல் உள்ளது.\".",
+      "example": "எனக்கு உலர் இருமல் உள்ளது.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have a dry cough.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "இருமல்",
+      "romanization": "irumal",
+      "nativeText": "Find one word or phrase that naturally travels with \"இருமல்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "irumal",
+      "exampleTarget": "எனக்கு உலர் இருமல் உள்ளது.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I have a dry cough.”",
+      "korean": "இருமல்",
+      "english": "Find one word or phrase that naturally travels with \"இருமல்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "எனக்கு உலர் இருமல் உள்ளது.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I have a dry cough.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "இருமல்",
+      "romanization": "irumal",
+      "nativeText": "Listen for \"இருமல்\" inside \"எனக்கு உலர் இருமல் உள்ளது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "irumal",
+      "exampleTarget": "எனக்கு உலர் இருமல் உள்ளது.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have a dry cough.”",
+      "korean": "இருமல்",
+      "english": "Listen for \"இருமல்\" inside \"எனக்கு உலர் இருமல் உள்ளது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "எனக்கு உலர் இருமல் உள்ளது.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have a dry cough.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "இருமல்",
+      "romanization": "irumal",
+      "nativeText": "Write \"இருமல்\" again without looking, then compare the exact written form against \"எனக்கு உலர் இருமல் உள்ளது.\" before moving on.",
+      "pronunciation": "irumal",
+      "exampleTarget": "எனக்கு உலர் இருமல் உள்ளது.",
+      "exampleNative": "Use the written model as the final correctness check: “I have a dry cough.”",
+      "korean": "இருமல்",
+      "english": "Write \"இருமல்\" again without looking, then compare the exact written form against \"எனக்கு உலர் இருமல் உள்ளது.\" before moving on.",
+      "example": "எனக்கு உலர் இருமல் உள்ளது.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I have a dry cough.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "இருமல்",
+      "romanization": "irumal",
+      "nativeText": "Check whether \"இருமல்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have a dry cough.”",
+      "pronunciation": "irumal",
+      "exampleTarget": "எனக்கு உலர் இருமல் உள்ளது.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I have a dry cough.”",
+      "korean": "இருமல்",
+      "english": "Check whether \"இருமல்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have a dry cough.”",
+      "example": "எனக்கு உலர் இருமல் உள்ளது.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I have a dry cough.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "வயிற்றுவலி",
+      "romanization": "vayiṟṟuvali",
+      "nativeText": "“Stomachache.” A compound body-pain word.",
+      "pronunciation": "vayiṟṟuvali",
+      "exampleTarget": "உணவுக்குப் பிறகு வயிற்றுவலி உள்ளது.",
+      "exampleNative": "“I have stomach pain after eating.”",
+      "korean": "வயிற்றுவலி",
+      "english": "“Stomachache.” A compound body-pain word.",
+      "example": "உணவுக்குப் பிறகு வயிற்றுவலி உள்ளது.",
+      "exampleEnglish": "“I have stomach pain after eating.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "உணவுக்குப் பிறகு வயிற்றுவலி உள்ளது.",
+      "romanization": "vayiṟṟuvali",
+      "nativeText": "Model use for \"உணவுக்குப் பிறகு வயிற்றுவலி உள்ளது.\": “I have stomach pain after eating.”",
+      "pronunciation": "vayiṟṟuvali",
+      "exampleTarget": "உணவுக்குப் பிறகு வயிற்றுவலி உள்ளது.",
+      "exampleNative": "“I have stomach pain after eating.”",
+      "korean": "உணவுக்குப் பிறகு வயிற்றுவலி உள்ளது.",
+      "english": "Model use for \"உணவுக்குப் பிறகு வயிற்றுவலி உள்ளது.\": “I have stomach pain after eating.”",
+      "example": "உணவுக்குப் பிறகு வயிற்றுவலி உள்ளது.",
+      "exampleEnglish": "“I have stomach pain after eating.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "வயிற்றுவலி",
+      "romanization": "vayiṟṟuvali",
+      "nativeText": "Usage focus for \"வயிற்றுவலி\": “Stomachache.” A compound body-pain word.",
+      "pronunciation": "vayiṟṟuvali",
+      "exampleTarget": "உணவுக்குப் பிறகு வயிற்றுவலி உள்ளது.",
+      "exampleNative": "Notice what the form is doing here: “I have stomach pain after eating.”",
+      "korean": "வயிற்றுவலி",
+      "english": "Usage focus for \"வயிற்றுவலி\": “Stomachache.” A compound body-pain word.",
+      "example": "உணவுக்குப் பிறகு வயிற்றுவலி உள்ளது.",
+      "exampleEnglish": "Notice what the form is doing here: “I have stomach pain after eating.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "வயிற்றுவலி",
+      "romanization": "vayiṟṟuvali",
+      "nativeText": "Contrast check for \"வயிற்றுவலி\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "vayiṟṟuvali",
+      "exampleTarget": "உணவுக்குப் பிறகு வயிற்றுவலி உள்ளது.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have stomach pain after eating.”",
+      "korean": "வயிற்றுவலி",
+      "english": "Contrast check for \"வயிற்றுவலி\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "உணவுக்குப் பிறகு வயிற்றுவலி உள்ளது.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have stomach pain after eating.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "வயிற்றுவலி",
+      "romanization": "vayiṟṟuvali",
+      "nativeText": "Recall \"வயிற்றுவலி\" from memory, then explain what would change if a nearby alternative replaced it in \"உணவுக்குப் பிறகு வயிற்றுவலி உள்ளது.\".",
+      "pronunciation": "vayiṟṟuvali",
+      "exampleTarget": "உணவுக்குப் பிறகு வயிற்றுவலி உள்ளது.",
+      "exampleNative": "Self-check against the model before moving on: “I have stomach pain after eating.”",
+      "korean": "வயிற்றுவலி",
+      "english": "Recall \"வயிற்றுவலி\" from memory, then explain what would change if a nearby alternative replaced it in \"உணவுக்குப் பிறகு வயிற்றுவலி உள்ளது.\".",
+      "example": "உணவுக்குப் பிறகு வயிற்றுவலி உள்ளது.",
+      "exampleEnglish": "Self-check against the model before moving on: “I have stomach pain after eating.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "வயிற்றுவலி",
+      "romanization": "vayiṟṟuvali",
+      "nativeText": "Repair \"வயிற்றுவலி\" inside \"உணவுக்குப் பிறகு வயிற்றுவலி உள்ளது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Stomachache.” A compound body-pain word.",
+      "pronunciation": "vayiṟṟuvali",
+      "exampleTarget": "உணவுக்குப் பிறகு வயிற்றுவலி உள்ளது.",
+      "exampleNative": "Use the model as the repair target: “I have stomach pain after eating.”",
+      "korean": "வயிற்றுவலி",
+      "english": "Repair \"வயிற்றுவலி\" inside \"உணவுக்குப் பிறகு வயிற்றுவலி உள்ளது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Stomachache.” A compound body-pain word.",
+      "example": "உணவுக்குப் பிறகு வயிற்றுவலி உள்ளது.",
+      "exampleEnglish": "Use the model as the repair target: “I have stomach pain after eating.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "வயிற்றுவலி",
+      "romanization": "vayiṟṟuvali",
+      "nativeText": "Transfer \"வயிற்றுவலி\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"உணவுக்குப் பிறகு வயிற்றுவலி உள்ளது.\".",
+      "pronunciation": "vayiṟṟuvali",
+      "exampleTarget": "உணவுக்குப் பிறகு வயிற்றுவலி உள்ளது.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have stomach pain after eating.”",
+      "korean": "வயிற்றுவலி",
+      "english": "Transfer \"வயிற்றுவலி\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"உணவுக்குப் பிறகு வயிற்றுவலி உள்ளது.\".",
+      "example": "உணவுக்குப் பிறகு வயிற்றுவலி உள்ளது.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have stomach pain after eating.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "வயிற்றுவலி",
+      "romanization": "vayiṟṟuvali",
+      "nativeText": "Find one word or phrase that naturally travels with \"வயிற்றுவலி\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "vayiṟṟuvali",
+      "exampleTarget": "உணவுக்குப் பிறகு வயிற்றுவலி உள்ளது.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I have stomach pain after eating.”",
+      "korean": "வயிற்றுவலி",
+      "english": "Find one word or phrase that naturally travels with \"வயிற்றுவலி\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "உணவுக்குப் பிறகு வயிற்றுவலி உள்ளது.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I have stomach pain after eating.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "வயிற்றுவலி",
+      "romanization": "vayiṟṟuvali",
+      "nativeText": "Listen for \"வயிற்றுவலி\" inside \"உணவுக்குப் பிறகு வயிற்றுவலி உள்ளது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "vayiṟṟuvali",
+      "exampleTarget": "உணவுக்குப் பிறகு வயிற்றுவலி உள்ளது.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have stomach pain after eating.”",
+      "korean": "வயிற்றுவலி",
+      "english": "Listen for \"வயிற்றுவலி\" inside \"உணவுக்குப் பிறகு வயிற்றுவலி உள்ளது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "உணவுக்குப் பிறகு வயிற்றுவலி உள்ளது.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have stomach pain after eating.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "வயிற்றுவலி",
+      "romanization": "vayiṟṟuvali",
+      "nativeText": "Write \"வயிற்றுவலி\" again without looking, then compare the exact written form against \"உணவுக்குப் பிறகு வயிற்றுவலி உள்ளது.\" before moving on.",
+      "pronunciation": "vayiṟṟuvali",
+      "exampleTarget": "உணவுக்குப் பிறகு வயிற்றுவலி உள்ளது.",
+      "exampleNative": "Use the written model as the final correctness check: “I have stomach pain after eating.”",
+      "korean": "வயிற்றுவலி",
+      "english": "Write \"வயிற்றுவலி\" again without looking, then compare the exact written form against \"உணவுக்குப் பிறகு வயிற்றுவலி உள்ளது.\" before moving on.",
+      "example": "உணவுக்குப் பிறகு வயிற்றுவலி உள்ளது.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I have stomach pain after eating.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "வயிற்றுவலி",
+      "romanization": "vayiṟṟuvali",
+      "nativeText": "Check whether \"வயிற்றுவலி\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have stomach pain after eating.”",
+      "pronunciation": "vayiṟṟuvali",
+      "exampleTarget": "உணவுக்குப் பிறகு வயிற்றுவலி உள்ளது.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I have stomach pain after eating.”",
+      "korean": "வயிற்றுவலி",
+      "english": "Check whether \"வயிற்றுவலி\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have stomach pain after eating.”",
+      "example": "உணவுக்குப் பிறகு வயிற்றுவலி உள்ளது.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I have stomach pain after eating.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "மருந்து",
+      "romanization": "maruntu",
+      "nativeText": "“Medicine.” Useful in pharmacy talk.",
+      "pronunciation": "maruntu",
+      "exampleTarget": "சளிக்கான மருந்து வேண்டும்.",
+      "exampleNative": "“I need medicine for a cold.”",
+      "korean": "மருந்து",
+      "english": "“Medicine.” Useful in pharmacy talk.",
+      "example": "சளிக்கான மருந்து வேண்டும்.",
+      "exampleEnglish": "“I need medicine for a cold.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "சளிக்கான மருந்து வேண்டும்.",
+      "romanization": "maruntu",
+      "nativeText": "Model use for \"சளிக்கான மருந்து வேண்டும்.\": “I need medicine for a cold.”",
+      "pronunciation": "maruntu",
+      "exampleTarget": "சளிக்கான மருந்து வேண்டும்.",
+      "exampleNative": "“I need medicine for a cold.”",
+      "korean": "சளிக்கான மருந்து வேண்டும்.",
+      "english": "Model use for \"சளிக்கான மருந்து வேண்டும்.\": “I need medicine for a cold.”",
+      "example": "சளிக்கான மருந்து வேண்டும்.",
+      "exampleEnglish": "“I need medicine for a cold.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "மருந்து",
+      "romanization": "maruntu",
+      "nativeText": "Usage focus for \"மருந்து\": “Medicine.” Useful in pharmacy talk.",
+      "pronunciation": "maruntu",
+      "exampleTarget": "சளிக்கான மருந்து வேண்டும்.",
+      "exampleNative": "Notice what the form is doing here: “I need medicine for a cold.”",
+      "korean": "மருந்து",
+      "english": "Usage focus for \"மருந்து\": “Medicine.” Useful in pharmacy talk.",
+      "example": "சளிக்கான மருந்து வேண்டும்.",
+      "exampleEnglish": "Notice what the form is doing here: “I need medicine for a cold.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "மருந்து",
+      "romanization": "maruntu",
+      "nativeText": "Contrast check for \"மருந்து\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "maruntu",
+      "exampleTarget": "சளிக்கான மருந்து வேண்டும்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I need medicine for a cold.”",
+      "korean": "மருந்து",
+      "english": "Contrast check for \"மருந்து\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "சளிக்கான மருந்து வேண்டும்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I need medicine for a cold.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "மருந்து",
+      "romanization": "maruntu",
+      "nativeText": "Recall \"மருந்து\" from memory, then explain what would change if a nearby alternative replaced it in \"சளிக்கான மருந்து வேண்டும்.\".",
+      "pronunciation": "maruntu",
+      "exampleTarget": "சளிக்கான மருந்து வேண்டும்.",
+      "exampleNative": "Self-check against the model before moving on: “I need medicine for a cold.”",
+      "korean": "மருந்து",
+      "english": "Recall \"மருந்து\" from memory, then explain what would change if a nearby alternative replaced it in \"சளிக்கான மருந்து வேண்டும்.\".",
+      "example": "சளிக்கான மருந்து வேண்டும்.",
+      "exampleEnglish": "Self-check against the model before moving on: “I need medicine for a cold.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "மருந்து",
+      "romanization": "maruntu",
+      "nativeText": "Repair \"மருந்து\" inside \"சளிக்கான மருந்து வேண்டும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Medicine.” Useful in pharmacy talk.",
+      "pronunciation": "maruntu",
+      "exampleTarget": "சளிக்கான மருந்து வேண்டும்.",
+      "exampleNative": "Use the model as the repair target: “I need medicine for a cold.”",
+      "korean": "மருந்து",
+      "english": "Repair \"மருந்து\" inside \"சளிக்கான மருந்து வேண்டும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Medicine.” Useful in pharmacy talk.",
+      "example": "சளிக்கான மருந்து வேண்டும்.",
+      "exampleEnglish": "Use the model as the repair target: “I need medicine for a cold.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "மருந்து",
+      "romanization": "maruntu",
+      "nativeText": "Transfer \"மருந்து\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"சளிக்கான மருந்து வேண்டும்.\".",
+      "pronunciation": "maruntu",
+      "exampleTarget": "சளிக்கான மருந்து வேண்டும்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I need medicine for a cold.”",
+      "korean": "மருந்து",
+      "english": "Transfer \"மருந்து\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"சளிக்கான மருந்து வேண்டும்.\".",
+      "example": "சளிக்கான மருந்து வேண்டும்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I need medicine for a cold.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "மருந்து",
+      "romanization": "maruntu",
+      "nativeText": "Find one word or phrase that naturally travels with \"மருந்து\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "maruntu",
+      "exampleTarget": "சளிக்கான மருந்து வேண்டும்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I need medicine for a cold.”",
+      "korean": "மருந்து",
+      "english": "Find one word or phrase that naturally travels with \"மருந்து\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "சளிக்கான மருந்து வேண்டும்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I need medicine for a cold.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "மருந்து",
+      "romanization": "maruntu",
+      "nativeText": "Listen for \"மருந்து\" inside \"சளிக்கான மருந்து வேண்டும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "maruntu",
+      "exampleTarget": "சளிக்கான மருந்து வேண்டும்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I need medicine for a cold.”",
+      "korean": "மருந்து",
+      "english": "Listen for \"மருந்து\" inside \"சளிக்கான மருந்து வேண்டும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "சளிக்கான மருந்து வேண்டும்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I need medicine for a cold.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "மருந்து",
+      "romanization": "maruntu",
+      "nativeText": "Write \"மருந்து\" again without looking, then compare the exact written form against \"சளிக்கான மருந்து வேண்டும்.\" before moving on.",
+      "pronunciation": "maruntu",
+      "exampleTarget": "சளிக்கான மருந்து வேண்டும்.",
+      "exampleNative": "Use the written model as the final correctness check: “I need medicine for a cold.”",
+      "korean": "மருந்து",
+      "english": "Write \"மருந்து\" again without looking, then compare the exact written form against \"சளிக்கான மருந்து வேண்டும்.\" before moving on.",
+      "example": "சளிக்கான மருந்து வேண்டும்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I need medicine for a cold.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "மருந்து",
+      "romanization": "maruntu",
+      "nativeText": "Check whether \"மருந்து\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I need medicine for a cold.”",
+      "pronunciation": "maruntu",
+      "exampleTarget": "சளிக்கான மருந்து வேண்டும்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I need medicine for a cold.”",
+      "korean": "மருந்து",
+      "english": "Check whether \"மருந்து\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I need medicine for a cold.”",
+      "example": "சளிக்கான மருந்து வேண்டும்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I need medicine for a cold.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "மருத்துவர்",
+      "romanization": "maruttuvar",
+      "nativeText": "“Doctor.” A respectful professional noun.",
+      "pronunciation": "maruttuvar",
+      "exampleTarget": "மருத்துவரை பார்க்க வேண்டும்.",
+      "exampleNative": "“I need to see the doctor.”",
+      "korean": "மருத்துவர்",
+      "english": "“Doctor.” A respectful professional noun.",
+      "example": "மருத்துவரை பார்க்க வேண்டும்.",
+      "exampleEnglish": "“I need to see the doctor.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "மருத்துவரை பார்க்க வேண்டும்.",
+      "romanization": "maruttuvar",
+      "nativeText": "Model use for \"மருத்துவரை பார்க்க வேண்டும்.\": “I need to see the doctor.”",
+      "pronunciation": "maruttuvar",
+      "exampleTarget": "மருத்துவரை பார்க்க வேண்டும்.",
+      "exampleNative": "“I need to see the doctor.”",
+      "korean": "மருத்துவரை பார்க்க வேண்டும்.",
+      "english": "Model use for \"மருத்துவரை பார்க்க வேண்டும்.\": “I need to see the doctor.”",
+      "example": "மருத்துவரை பார்க்க வேண்டும்.",
+      "exampleEnglish": "“I need to see the doctor.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "மருத்துவர்",
+      "romanization": "maruttuvar",
+      "nativeText": "Usage focus for \"மருத்துவர்\": “Doctor.” A respectful professional noun.",
+      "pronunciation": "maruttuvar",
+      "exampleTarget": "மருத்துவரை பார்க்க வேண்டும்.",
+      "exampleNative": "Notice what the form is doing here: “I need to see the doctor.”",
+      "korean": "மருத்துவர்",
+      "english": "Usage focus for \"மருத்துவர்\": “Doctor.” A respectful professional noun.",
+      "example": "மருத்துவரை பார்க்க வேண்டும்.",
+      "exampleEnglish": "Notice what the form is doing here: “I need to see the doctor.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "மருத்துவர்",
+      "romanization": "maruttuvar",
+      "nativeText": "Contrast check for \"மருத்துவர்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "maruttuvar",
+      "exampleTarget": "மருத்துவரை பார்க்க வேண்டும்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I need to see the doctor.”",
+      "korean": "மருத்துவர்",
+      "english": "Contrast check for \"மருத்துவர்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "மருத்துவரை பார்க்க வேண்டும்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I need to see the doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "மருத்துவர்",
+      "romanization": "maruttuvar",
+      "nativeText": "Recall \"மருத்துவர்\" from memory, then explain what would change if a nearby alternative replaced it in \"மருத்துவரை பார்க்க வேண்டும்.\".",
+      "pronunciation": "maruttuvar",
+      "exampleTarget": "மருத்துவரை பார்க்க வேண்டும்.",
+      "exampleNative": "Self-check against the model before moving on: “I need to see the doctor.”",
+      "korean": "மருத்துவர்",
+      "english": "Recall \"மருத்துவர்\" from memory, then explain what would change if a nearby alternative replaced it in \"மருத்துவரை பார்க்க வேண்டும்.\".",
+      "example": "மருத்துவரை பார்க்க வேண்டும்.",
+      "exampleEnglish": "Self-check against the model before moving on: “I need to see the doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "மருத்துவர்",
+      "romanization": "maruttuvar",
+      "nativeText": "Repair \"மருத்துவர்\" inside \"மருத்துவரை பார்க்க வேண்டும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Doctor.” A respectful professional noun.",
+      "pronunciation": "maruttuvar",
+      "exampleTarget": "மருத்துவரை பார்க்க வேண்டும்.",
+      "exampleNative": "Use the model as the repair target: “I need to see the doctor.”",
+      "korean": "மருத்துவர்",
+      "english": "Repair \"மருத்துவர்\" inside \"மருத்துவரை பார்க்க வேண்டும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Doctor.” A respectful professional noun.",
+      "example": "மருத்துவரை பார்க்க வேண்டும்.",
+      "exampleEnglish": "Use the model as the repair target: “I need to see the doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "மருத்துவர்",
+      "romanization": "maruttuvar",
+      "nativeText": "Transfer \"மருத்துவர்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"மருத்துவரை பார்க்க வேண்டும்.\".",
+      "pronunciation": "maruttuvar",
+      "exampleTarget": "மருத்துவரை பார்க்க வேண்டும்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I need to see the doctor.”",
+      "korean": "மருத்துவர்",
+      "english": "Transfer \"மருத்துவர்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"மருத்துவரை பார்க்க வேண்டும்.\".",
+      "example": "மருத்துவரை பார்க்க வேண்டும்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I need to see the doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "மருத்துவர்",
+      "romanization": "maruttuvar",
+      "nativeText": "Find one word or phrase that naturally travels with \"மருத்துவர்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "maruttuvar",
+      "exampleTarget": "மருத்துவரை பார்க்க வேண்டும்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I need to see the doctor.”",
+      "korean": "மருத்துவர்",
+      "english": "Find one word or phrase that naturally travels with \"மருத்துவர்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "மருத்துவரை பார்க்க வேண்டும்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I need to see the doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "மருத்துவர்",
+      "romanization": "maruttuvar",
+      "nativeText": "Listen for \"மருத்துவர்\" inside \"மருத்துவரை பார்க்க வேண்டும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "maruttuvar",
+      "exampleTarget": "மருத்துவரை பார்க்க வேண்டும்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I need to see the doctor.”",
+      "korean": "மருத்துவர்",
+      "english": "Listen for \"மருத்துவர்\" inside \"மருத்துவரை பார்க்க வேண்டும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "மருத்துவரை பார்க்க வேண்டும்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I need to see the doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "மருத்துவர்",
+      "romanization": "maruttuvar",
+      "nativeText": "Write \"மருத்துவர்\" again without looking, then compare the exact written form against \"மருத்துவரை பார்க்க வேண்டும்.\" before moving on.",
+      "pronunciation": "maruttuvar",
+      "exampleTarget": "மருத்துவரை பார்க்க வேண்டும்.",
+      "exampleNative": "Use the written model as the final correctness check: “I need to see the doctor.”",
+      "korean": "மருத்துவர்",
+      "english": "Write \"மருத்துவர்\" again without looking, then compare the exact written form against \"மருத்துவரை பார்க்க வேண்டும்.\" before moving on.",
+      "example": "மருத்துவரை பார்க்க வேண்டும்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I need to see the doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "மருத்துவர்",
+      "romanization": "maruttuvar",
+      "nativeText": "Check whether \"மருத்துவர்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I need to see the doctor.”",
+      "pronunciation": "maruttuvar",
+      "exampleTarget": "மருத்துவரை பார்க்க வேண்டும்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I need to see the doctor.”",
+      "korean": "மருத்துவர்",
+      "english": "Check whether \"மருத்துவர்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I need to see the doctor.”",
+      "example": "மருத்துவரை பார்க்க வேண்டும்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I need to see the doctor.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "ஓய்வு எடுக்க வேண்டும்",
+      "romanization": "ōyvu eṭukka vēṇṭum",
+      "nativeText": "“You need to rest.” A common advice phrase.",
+      "pronunciation": "ōyvu eṭukka vēṇṭum",
+      "exampleTarget": "இரண்டு நாள் ஓய்வு எடுக்க வேண்டும்.",
+      "exampleNative": "“You need to rest for two days.”",
+      "korean": "ஓய்வு எடுக்க வேண்டும்",
+      "english": "“You need to rest.” A common advice phrase.",
+      "example": "இரண்டு நாள் ஓய்வு எடுக்க வேண்டும்.",
+      "exampleEnglish": "“You need to rest for two days.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "இரண்டு நாள் ஓய்வு எடுக்க வேண்டும்.",
+      "romanization": "ōyvu eṭukka vēṇṭum",
+      "nativeText": "Model use for \"இரண்டு நாள் ஓய்வு எடுக்க வேண்டும்.\": “You need to rest for two days.”",
+      "pronunciation": "ōyvu eṭukka vēṇṭum",
+      "exampleTarget": "இரண்டு நாள் ஓய்வு எடுக்க வேண்டும்.",
+      "exampleNative": "“You need to rest for two days.”",
+      "korean": "இரண்டு நாள் ஓய்வு எடுக்க வேண்டும்.",
+      "english": "Model use for \"இரண்டு நாள் ஓய்வு எடுக்க வேண்டும்.\": “You need to rest for two days.”",
+      "example": "இரண்டு நாள் ஓய்வு எடுக்க வேண்டும்.",
+      "exampleEnglish": "“You need to rest for two days.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "ஓய்வு எடுக்க வேண்டும்",
+      "romanization": "ōyvu eṭukka vēṇṭum",
+      "nativeText": "Usage focus for \"ஓய்வு எடுக்க வேண்டும்\": “You need to rest.” A common advice phrase.",
+      "pronunciation": "ōyvu eṭukka vēṇṭum",
+      "exampleTarget": "இரண்டு நாள் ஓய்வு எடுக்க வேண்டும்.",
+      "exampleNative": "Notice what the form is doing here: “You need to rest for two days.”",
+      "korean": "ஓய்வு எடுக்க வேண்டும்",
+      "english": "Usage focus for \"ஓய்வு எடுக்க வேண்டும்\": “You need to rest.” A common advice phrase.",
+      "example": "இரண்டு நாள் ஓய்வு எடுக்க வேண்டும்.",
+      "exampleEnglish": "Notice what the form is doing here: “You need to rest for two days.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "ஓய்வு எடுக்க வேண்டும்",
+      "romanization": "ōyvu eṭukka vēṇṭum",
+      "nativeText": "Contrast check for \"ஓய்வு எடுக்க வேண்டும்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ōyvu eṭukka vēṇṭum",
+      "exampleTarget": "இரண்டு நாள் ஓய்வு எடுக்க வேண்டும்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “You need to rest for two days.”",
+      "korean": "ஓய்வு எடுக்க வேண்டும்",
+      "english": "Contrast check for \"ஓய்வு எடுக்க வேண்டும்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "இரண்டு நாள் ஓய்வு எடுக்க வேண்டும்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “You need to rest for two days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "ஓய்வு எடுக்க வேண்டும்",
+      "romanization": "ōyvu eṭukka vēṇṭum",
+      "nativeText": "Recall \"ஓய்வு எடுக்க வேண்டும்\" from memory, then explain what would change if a nearby alternative replaced it in \"இரண்டு நாள் ஓய்வு எடுக்க வேண்டும்.\".",
+      "pronunciation": "ōyvu eṭukka vēṇṭum",
+      "exampleTarget": "இரண்டு நாள் ஓய்வு எடுக்க வேண்டும்.",
+      "exampleNative": "Self-check against the model before moving on: “You need to rest for two days.”",
+      "korean": "ஓய்வு எடுக்க வேண்டும்",
+      "english": "Recall \"ஓய்வு எடுக்க வேண்டும்\" from memory, then explain what would change if a nearby alternative replaced it in \"இரண்டு நாள் ஓய்வு எடுக்க வேண்டும்.\".",
+      "example": "இரண்டு நாள் ஓய்வு எடுக்க வேண்டும்.",
+      "exampleEnglish": "Self-check against the model before moving on: “You need to rest for two days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "ஓய்வு எடுக்க வேண்டும்",
+      "romanization": "ōyvu eṭukka vēṇṭum",
+      "nativeText": "Repair \"ஓய்வு எடுக்க வேண்டும்\" inside \"இரண்டு நாள் ஓய்வு எடுக்க வேண்டும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “You need to rest.” A common advice phrase.",
+      "pronunciation": "ōyvu eṭukka vēṇṭum",
+      "exampleTarget": "இரண்டு நாள் ஓய்வு எடுக்க வேண்டும்.",
+      "exampleNative": "Use the model as the repair target: “You need to rest for two days.”",
+      "korean": "ஓய்வு எடுக்க வேண்டும்",
+      "english": "Repair \"ஓய்வு எடுக்க வேண்டும்\" inside \"இரண்டு நாள் ஓய்வு எடுக்க வேண்டும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “You need to rest.” A common advice phrase.",
+      "example": "இரண்டு நாள் ஓய்வு எடுக்க வேண்டும்.",
+      "exampleEnglish": "Use the model as the repair target: “You need to rest for two days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "ஓய்வு எடுக்க வேண்டும்",
+      "romanization": "ōyvu eṭukka vēṇṭum",
+      "nativeText": "Transfer \"ஓய்வு எடுக்க வேண்டும்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இரண்டு நாள் ஓய்வு எடுக்க வேண்டும்.\".",
+      "pronunciation": "ōyvu eṭukka vēṇṭum",
+      "exampleTarget": "இரண்டு நாள் ஓய்வு எடுக்க வேண்டும்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “You need to rest for two days.”",
+      "korean": "ஓய்வு எடுக்க வேண்டும்",
+      "english": "Transfer \"ஓய்வு எடுக்க வேண்டும்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இரண்டு நாள் ஓய்வு எடுக்க வேண்டும்.\".",
+      "example": "இரண்டு நாள் ஓய்வு எடுக்க வேண்டும்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “You need to rest for two days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "ஓய்வு எடுக்க வேண்டும்",
+      "romanization": "ōyvu eṭukka vēṇṭum",
+      "nativeText": "Find one word or phrase that naturally travels with \"ஓய்வு எடுக்க வேண்டும்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ōyvu eṭukka vēṇṭum",
+      "exampleTarget": "இரண்டு நாள் ஓய்வு எடுக்க வேண்டும்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “You need to rest for two days.”",
+      "korean": "ஓய்வு எடுக்க வேண்டும்",
+      "english": "Find one word or phrase that naturally travels with \"ஓய்வு எடுக்க வேண்டும்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "இரண்டு நாள் ஓய்வு எடுக்க வேண்டும்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “You need to rest for two days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "ஓய்வு எடுக்க வேண்டும்",
+      "romanization": "ōyvu eṭukka vēṇṭum",
+      "nativeText": "Listen for \"ஓய்வு எடுக்க வேண்டும்\" inside \"இரண்டு நாள் ஓய்வு எடுக்க வேண்டும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ōyvu eṭukka vēṇṭum",
+      "exampleTarget": "இரண்டு நாள் ஓய்வு எடுக்க வேண்டும்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “You need to rest for two days.”",
+      "korean": "ஓய்வு எடுக்க வேண்டும்",
+      "english": "Listen for \"ஓய்வு எடுக்க வேண்டும்\" inside \"இரண்டு நாள் ஓய்வு எடுக்க வேண்டும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "இரண்டு நாள் ஓய்வு எடுக்க வேண்டும்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “You need to rest for two days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "ஓய்வு எடுக்க வேண்டும்",
+      "romanization": "ōyvu eṭukka vēṇṭum",
+      "nativeText": "Write \"ஓய்வு எடுக்க வேண்டும்\" again without looking, then compare the exact written form against \"இரண்டு நாள் ஓய்வு எடுக்க வேண்டும்.\" before moving on.",
+      "pronunciation": "ōyvu eṭukka vēṇṭum",
+      "exampleTarget": "இரண்டு நாள் ஓய்வு எடுக்க வேண்டும்.",
+      "exampleNative": "Use the written model as the final correctness check: “You need to rest for two days.”",
+      "korean": "ஓய்வு எடுக்க வேண்டும்",
+      "english": "Write \"ஓய்வு எடுக்க வேண்டும்\" again without looking, then compare the exact written form against \"இரண்டு நாள் ஓய்வு எடுக்க வேண்டும்.\" before moving on.",
+      "example": "இரண்டு நாள் ஓய்வு எடுக்க வேண்டும்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “You need to rest for two days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "ஓய்வு எடுக்க வேண்டும்",
+      "romanization": "ōyvu eṭukka vēṇṭum",
+      "nativeText": "Check whether \"ஓய்வு எடுக்க வேண்டும்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “You need to rest for two days.”",
+      "pronunciation": "ōyvu eṭukka vēṇṭum",
+      "exampleTarget": "இரண்டு நாள் ஓய்வு எடுக்க வேண்டும்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “You need to rest for two days.”",
+      "korean": "ஓய்வு எடுக்க வேண்டும்",
+      "english": "Check whether \"ஓய்வு எடுக்க வேண்டும்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “You need to rest for two days.”",
+      "example": "இரண்டு நாள் ஓய்வு எடுக்க வேண்டும்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “You need to rest for two days.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "காரம் சாப்பிடாதீர்கள்",
+      "romanization": "kāram cāppiṭātīrkaḷ",
+      "nativeText": "“Do not eat spicy food.” Polite negative imperative.",
+      "pronunciation": "kāram cāppiṭātīrkaḷ",
+      "exampleTarget": "இன்று காரம் சாப்பிடாதீர்கள்.",
+      "exampleNative": "“Do not eat spicy food today.”",
+      "korean": "காரம் சாப்பிடாதீர்கள்",
+      "english": "“Do not eat spicy food.” Polite negative imperative.",
+      "example": "இன்று காரம் சாப்பிடாதீர்கள்.",
+      "exampleEnglish": "“Do not eat spicy food today.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "இன்று காரம் சாப்பிடாதீர்கள்.",
+      "romanization": "kāram cāppiṭātīrkaḷ",
+      "nativeText": "Model use for \"இன்று காரம் சாப்பிடாதீர்கள்.\": “Do not eat spicy food today.”",
+      "pronunciation": "kāram cāppiṭātīrkaḷ",
+      "exampleTarget": "இன்று காரம் சாப்பிடாதீர்கள்.",
+      "exampleNative": "“Do not eat spicy food today.”",
+      "korean": "இன்று காரம் சாப்பிடாதீர்கள்.",
+      "english": "Model use for \"இன்று காரம் சாப்பிடாதீர்கள்.\": “Do not eat spicy food today.”",
+      "example": "இன்று காரம் சாப்பிடாதீர்கள்.",
+      "exampleEnglish": "“Do not eat spicy food today.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "காரம் சாப்பிடாதீர்கள்",
+      "romanization": "kāram cāppiṭātīrkaḷ",
+      "nativeText": "Usage focus for \"காரம் சாப்பிடாதீர்கள்\": “Do not eat spicy food.” Polite negative imperative.",
+      "pronunciation": "kāram cāppiṭātīrkaḷ",
+      "exampleTarget": "இன்று காரம் சாப்பிடாதீர்கள்.",
+      "exampleNative": "Notice what the form is doing here: “Do not eat spicy food today.”",
+      "korean": "காரம் சாப்பிடாதீர்கள்",
+      "english": "Usage focus for \"காரம் சாப்பிடாதீர்கள்\": “Do not eat spicy food.” Polite negative imperative.",
+      "example": "இன்று காரம் சாப்பிடாதீர்கள்.",
+      "exampleEnglish": "Notice what the form is doing here: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "காரம் சாப்பிடாதீர்கள்",
+      "romanization": "kāram cāppiṭātīrkaḷ",
+      "nativeText": "Contrast check for \"காரம் சாப்பிடாதீர்கள்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kāram cāppiṭātīrkaḷ",
+      "exampleTarget": "இன்று காரம் சாப்பிடாதீர்கள்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Do not eat spicy food today.”",
+      "korean": "காரம் சாப்பிடாதீர்கள்",
+      "english": "Contrast check for \"காரம் சாப்பிடாதீர்கள்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "இன்று காரம் சாப்பிடாதீர்கள்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "காரம் சாப்பிடாதீர்கள்",
+      "romanization": "kāram cāppiṭātīrkaḷ",
+      "nativeText": "Recall \"காரம் சாப்பிடாதீர்கள்\" from memory, then explain what would change if a nearby alternative replaced it in \"இன்று காரம் சாப்பிடாதீர்கள்.\".",
+      "pronunciation": "kāram cāppiṭātīrkaḷ",
+      "exampleTarget": "இன்று காரம் சாப்பிடாதீர்கள்.",
+      "exampleNative": "Self-check against the model before moving on: “Do not eat spicy food today.”",
+      "korean": "காரம் சாப்பிடாதீர்கள்",
+      "english": "Recall \"காரம் சாப்பிடாதீர்கள்\" from memory, then explain what would change if a nearby alternative replaced it in \"இன்று காரம் சாப்பிடாதீர்கள்.\".",
+      "example": "இன்று காரம் சாப்பிடாதீர்கள்.",
+      "exampleEnglish": "Self-check against the model before moving on: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "காரம் சாப்பிடாதீர்கள்",
+      "romanization": "kāram cāppiṭātīrkaḷ",
+      "nativeText": "Repair \"காரம் சாப்பிடாதீர்கள்\" inside \"இன்று காரம் சாப்பிடாதீர்கள்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Do not eat spicy food.” Polite negative imperative.",
+      "pronunciation": "kāram cāppiṭātīrkaḷ",
+      "exampleTarget": "இன்று காரம் சாப்பிடாதீர்கள்.",
+      "exampleNative": "Use the model as the repair target: “Do not eat spicy food today.”",
+      "korean": "காரம் சாப்பிடாதீர்கள்",
+      "english": "Repair \"காரம் சாப்பிடாதீர்கள்\" inside \"இன்று காரம் சாப்பிடாதீர்கள்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Do not eat spicy food.” Polite negative imperative.",
+      "example": "இன்று காரம் சாப்பிடாதீர்கள்.",
+      "exampleEnglish": "Use the model as the repair target: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "காரம் சாப்பிடாதீர்கள்",
+      "romanization": "kāram cāppiṭātīrkaḷ",
+      "nativeText": "Transfer \"காரம் சாப்பிடாதீர்கள்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இன்று காரம் சாப்பிடாதீர்கள்.\".",
+      "pronunciation": "kāram cāppiṭātīrkaḷ",
+      "exampleTarget": "இன்று காரம் சாப்பிடாதீர்கள்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Do not eat spicy food today.”",
+      "korean": "காரம் சாப்பிடாதீர்கள்",
+      "english": "Transfer \"காரம் சாப்பிடாதீர்கள்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இன்று காரம் சாப்பிடாதீர்கள்.\".",
+      "example": "இன்று காரம் சாப்பிடாதீர்கள்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "காரம் சாப்பிடாதீர்கள்",
+      "romanization": "kāram cāppiṭātīrkaḷ",
+      "nativeText": "Find one word or phrase that naturally travels with \"காரம் சாப்பிடாதீர்கள்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kāram cāppiṭātīrkaḷ",
+      "exampleTarget": "இன்று காரம் சாப்பிடாதீர்கள்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Do not eat spicy food today.”",
+      "korean": "காரம் சாப்பிடாதீர்கள்",
+      "english": "Find one word or phrase that naturally travels with \"காரம் சாப்பிடாதீர்கள்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "இன்று காரம் சாப்பிடாதீர்கள்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "காரம் சாப்பிடாதீர்கள்",
+      "romanization": "kāram cāppiṭātīrkaḷ",
+      "nativeText": "Listen for \"காரம் சாப்பிடாதீர்கள்\" inside \"இன்று காரம் சாப்பிடாதீர்கள்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kāram cāppiṭātīrkaḷ",
+      "exampleTarget": "இன்று காரம் சாப்பிடாதீர்கள்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Do not eat spicy food today.”",
+      "korean": "காரம் சாப்பிடாதீர்கள்",
+      "english": "Listen for \"காரம் சாப்பிடாதீர்கள்\" inside \"இன்று காரம் சாப்பிடாதீர்கள்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "இன்று காரம் சாப்பிடாதீர்கள்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "காரம் சாப்பிடாதீர்கள்",
+      "romanization": "kāram cāppiṭātīrkaḷ",
+      "nativeText": "Write \"காரம் சாப்பிடாதீர்கள்\" again without looking, then compare the exact written form against \"இன்று காரம் சாப்பிடாதீர்கள்.\" before moving on.",
+      "pronunciation": "kāram cāppiṭātīrkaḷ",
+      "exampleTarget": "இன்று காரம் சாப்பிடாதீர்கள்.",
+      "exampleNative": "Use the written model as the final correctness check: “Do not eat spicy food today.”",
+      "korean": "காரம் சாப்பிடாதீர்கள்",
+      "english": "Write \"காரம் சாப்பிடாதீர்கள்\" again without looking, then compare the exact written form against \"இன்று காரம் சாப்பிடாதீர்கள்.\" before moving on.",
+      "example": "இன்று காரம் சாப்பிடாதீர்கள்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit18health-vocabulary-1",
+        "ta-level1unit18health-vocabulary-2",
+        "ta-level1unit18health-grammar-1",
+        "ta-level1unit18health-grammar-2",
+        "ta-level1unit18health-reading",
+        "ta-level1unit18health-listening",
+        "ta-level1unit18health-writing",
+        "ta-level1unit18health-task"
+      ],
+      "targetText": "காரம் சாப்பிடாதீர்கள்",
+      "romanization": "kāram cāppiṭātīrkaḷ",
+      "nativeText": "Check whether \"காரம் சாப்பிடாதீர்கள்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Do not eat spicy food today.”",
+      "pronunciation": "kāram cāppiṭātīrkaḷ",
+      "exampleTarget": "இன்று காரம் சாப்பிடாதீர்கள்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Do not eat spicy food today.”",
+      "korean": "காரம் சாப்பிடாதீர்கள்",
+      "english": "Check whether \"காரம் சாப்பிடாதீர்கள்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Do not eat spicy food today.”",
+      "example": "இன்று காரம் சாப்பிடாதீர்கள்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Do not eat spicy food today.”"
+    }
+  ],
+  "targetLang": "ta",
+  "nativeLang": "en",
+  "track": "textbook"
+};

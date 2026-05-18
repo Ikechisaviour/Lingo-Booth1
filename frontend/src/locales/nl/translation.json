@@ -968,7 +968,9 @@
     "practiceEverywhereAria": "Oefen dit item elders",
     "practiceEverywhere": "Oefen dit overal",
     "saveReply": "Antwoord opslaan",
-    "selfTestReason": "Opgeslagen uit de les voor een snelle zelftest."
+    "selfTestReason": "Opgeslagen uit de les voor een snelle zelftest.",
+    "hideOutline": "Omtrek verbergen",
+    "showOutline": "Toon overzicht"
   },
   "classList": {
     "heroAriaLabel": "Klas",
@@ -994,7 +996,7 @@
     "guidedTutor": "Begeleide docent",
     "startClass": "Begin klasse",
     "classFallback": "Klas",
-    "loadError": "Kan leslessen niet laden. Zorg ervoor dat de backend actief en gezaaid is.",
+    "loadError": "We kunnen je lessen momenteel niet laden. Controleer uw verbinding en probeer het opnieuw.",
     "tracks": {
       "foundationTitle": "Niveau {{level}} - Fundering",
       "foundationSubtitle": "Begin hier met het klank- en schrijfsysteem voor {{language}}.",
@@ -1009,7 +1011,10 @@
     },
     "titlePrefix": {
       "unit": "Niveau {{level}} · Eenheid {{unit}}: {{title}}"
-    }
+    },
+    "retry": "Probeer het opnieuw",
+    "progressAriaLabel": "Vooruitgang in de klas",
+    "progressCaption": "{{percent}}% voltooid · {{completed}} van {{total}} items"
   },
   "contextPractice": {
     "title": "Lessen die rondom jou zijn gevormd",
@@ -1092,7 +1097,9 @@
     "recapWentWell": "Wat ging er goed",
     "recapUsefulPhrases": "Nuttige zinnen",
     "recapReview": "Beoordeel hierna",
-    "recapReviewFallback": "Bewaar één zin en hergebruik deze in een andere oefenmodus."
+    "recapReviewFallback": "Bewaar één zin en hergebruik deze in een andere oefenmodus.",
+    "hideSetup": "Instellingen verbergen",
+    "showSetup": "Toon opstelling"
   },
   "exerciseHub": {
     "ariaLabel": "Oefening",
@@ -1187,7 +1194,9 @@
       "default": "{{index}}. {{char}}: kopieer de vorm en schrijf deze vervolgens vanuit het geheugen."
     },
     "savedReason": "Gered van schrijfoefening voor nog een pasje.",
-    "selfTestReason": "Gered uit de schrijfoefening voor een snelle zelftest."
+    "selfTestReason": "Gered uit de schrijfoefening voor een snelle zelftest.",
+    "hideNotebook": "Notitieboekje verbergen",
+    "showNotebook": "Notitieboekje tonen"
   },
   "institution": {
     "kicker": "Instelling",
